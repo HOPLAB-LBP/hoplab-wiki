@@ -1,0 +1,7 @@
+site_name: Lab Wiki
+theme:
+  name: 'material'
+nav:
+  - Home: index.md
+  - Guide: guide.md
+
