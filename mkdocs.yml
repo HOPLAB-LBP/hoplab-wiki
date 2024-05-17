@@ -3,7 +3,7 @@ site_name: Hoplab Wiki
 nav:
   - Home: index.md
   - Guide: guide.md
-  - New Page: new-page.md
+  - Contribute to the Wiki: contribute.md
 
 theme:
   name: material
