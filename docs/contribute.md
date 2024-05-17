@@ -57,7 +57,7 @@ The easiest but less preferred way to update the Wiki is to create or edit the M
 
 1. Navigate to the `hoplab-wiki` repository on GitHub.
 2. Go to the `docs` folder.
-3a. To **edit** an existing file:
+3. To **edit** an existing file:
 
   - Click on the file you want to edit.
   - Click on the pencil icon (✏️) at the top right to edit the file.
@@ -65,7 +65,7 @@ The easiest but less preferred way to update the Wiki is to create or edit the M
   - Add a commit message describing your changes.
   - Select "Commit directly to the `main` branch" and click "Commit changes".
      
-3b. To **create** a new file:
+4. To **create** a new file:
 
   - Click on "Add file" > "Create new file".
   - Enter a name for your file in the `docs` directory (e.g., `docs/new-page.md`).
@@ -74,7 +74,7 @@ The easiest but less preferred way to update the Wiki is to create or edit the M
   - Add a commit message describing your new file.
   - Select "Commit directly to the `main` branch" and click "Commit new file".
      
-4. Update the `mkdocs.yml` file:
+5. Update the `mkdocs.yml` file:
    
   - Navigate to the `mkdocs.yml` file.
   - Click on the pencil icon (✏️) at the top right to edit the file.
