@@ -1,0 +1,18 @@
+/* stylesheets/extra.css */
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+ol {
+  list-style-type: decimal;
+  margin-left: 20px;
+}
+
+ul ul, ul ol, ol ul, ol ol {
+  margin-left: 20px;
+}
+
+.md-header {
+    background-color: rgb(68, 84, 106);
+}
