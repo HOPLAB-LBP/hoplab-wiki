@@ -6,8 +6,8 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
 
 1. [Getting Started](#getting-started)
 2. [Editing the Wiki](#editing-the-wiki)
-3. [How to Contribute - Easy Workflow](#how-to-contribute---easy-workflow)
-4. [How to Contribute - Advanced Workflow](#how-to-contribute---advanced-workflow)
+3. [How to Contribute - Easy Workflow](#how-to-contribute-easy-workflow)
+4. [How to Contribute - Advanced Workflow](#how-to-contribute-advanced-workflow)
 5. [Reviewing and Accepting Pull Requests (for Admins)](#reviewing-and-accepting-pull-requests-for-admins)
 6. [Troubleshooting](#troubleshooting)
 
@@ -17,11 +17,11 @@ Before you begin, ensure you have the following:
 
 - A GitHub account
 - Write access to the `hoplab-wiki` repository in the `HOPLAB-LBP` organization
-- If you plan on following the [Advanced Workflow](#how-to-contribute---advanced-workflow) (encouraged), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installed
+- If you plan on following the [Advanced Workflow](#how-to-contribute-advanced-workflow) (encouraged), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installed
 
 ## Editing the Wiki
 
-We welcome contributions from all members. All the content of the wiki is written in Markdown files located in the `docs` directory. You can edit these files in your browser (if you follow the [Easy Workflow](#how-to-contribute---easy-workflow) or locally using any text editor or IDE (e.g., VSCode, Sublime Text) if you follow the [Advanced Workflow](#how-to-contribute---advanced-workflow). 
+We welcome contributions from all members. All the content of the wiki is written in Markdown files located in the `docs` directory. You can edit these files in your browser (if you follow the [Easy Workflow](#how-to-contribute-easy-workflow) or locally using any text editor or IDE (e.g., VSCode, Sublime Text) if you follow the [Advanced Workflow](#how-to-contribute-advanced-workflow). 
 
 ### Adding a New Page
 
