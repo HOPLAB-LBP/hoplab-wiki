@@ -157,8 +157,6 @@ git push origin main
 
 This repository is set up to use GitHub Actions for automatic deployment. This means that every time changes are pushed to the `main` branch, the documentation will automatically be built and deployed to GitHub Pages.
 
-##### What This Means for You
-
 !!! note You do not need to manually run the `mkdocs gh-deploy` command each time you make changes. Simply push your changes to the `main` branch, and GitHub Actions will handle the deployment.
 
 ### Creating a Pull Request
