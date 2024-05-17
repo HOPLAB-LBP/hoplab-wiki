@@ -1,7 +1,8 @@
 site_name: Hoplab Wiki
-theme:
-  name: 'material'
+
 nav:
   - Home: index.md
   - Guide: guide.md
 
+theme:
+  name: material
