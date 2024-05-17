@@ -4,7 +4,6 @@ Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an on
 
 This guide will help you set up, update, and maintain the Wiki both locally and online. Follow the instructions if you want to make changes to the wiki.
 
-## Table of Contents
 1. [Getting Started](#getting-started)
 2. [Setting Up Your Local Environment](#setting-up-your-local-environment)
 3. [Editing the Wiki](#editing-the-wiki)
