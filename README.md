@@ -5,59 +5,22 @@ Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an on
 This guide will help you set up, update, and maintain the Wiki both locally and online. Follow the instructions if you want to make changes to the wiki.
 
 1. [Getting Started](#getting-started)
-2. [Setting Up Your Local Environment](#setting-up-your-local-environment)
-3. [Editing the Wiki](#editing-the-wiki)
-4. [Building and Serving Locally](#building-and-serving-locally)
-5. [Deploying to GitHub Pages](#deploying-to-github-pages)
-6. [Contributing](#contributing)
-7. [Troubleshooting](#troubleshooting)
+2. [Editing the Wiki](#editing-the-wiki)
+3. [How to Contribute - Easy Workflow](#how-to-contribute---easy-workflow)
+4. [How to Contribute - Advanced Workflow](#how-to-contribute---advanced-workflow)
+5. [Reviewing and Accepting Pull Requests (for Admins)](#reviewing-and-accepting-pull-requests-for-admins)
+6. [Troubleshooting](#troubleshooting)
 
 ## Getting Started
 
 Before you begin, ensure you have the following:
 - A GitHub account
 - Write access to the `hoplab-wiki` repository in the `HOPLAB-LBP` organization
-- [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installed
-
-## Setting Up Your Local Environment
-
-### Installing Dependencies
-
-First, create a conda environment and install the necessary dependencies within this environment.
-```sh
-conda create --name hoplab-wiki python=3.9
-conda activate hoplab-wiki
-pip install mkdocs mkdocs-material
-```
-
-### Cloning the Repository
-
-You can use GitHub Desktop for an easier experience, or Git from the command line.
-
-#### Using GitHub Desktop
-1. Open GitHub Desktop.
-2. Click "File" > "Clone Repository".
-3. Select the `hoplab-wiki` repository from the `HOPLAB-LBP` organization.
-4. Choose a local path and click "Clone".
-
-#### Using Git
-1. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux).
-2. Navigate to the directory where you want to clone the repository:
-```sh
- cd path/to/your/directory
-```
-3. Clone the repository:
-```sh
-git clone https://github.com/HOPLAB-LBP/hoplab-wiki.git
-```
-4. Navigate to the repository directory:
-```sh
-cd hoplab-wiki
-```
+- If you plan on following the [Advanced Workflow](#how-to-contribute---advanced-workflow) (encouraged), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installed
 
 ## Editing the Wiki
 
-All the content of the wiki is written in Markdown files located in the `docs` directory. You can edit these files using any text editor or IDE (e.g., VSCode, Sublime Text).
+We welcome contributions from all members. All the content of the wiki is written in Markdown files located in the `docs` directory. You can edit these files in your browser (if you follow the [Easy Workflow](#how-to-contribute---easy-workflow) or locally using any text editor or IDE (e.g., VSCode, Sublime Text) if you follow the [Advanced Workflow](#how-to-contribute---advanced-workflow). 
 
 ### Adding a New Page
 
@@ -87,7 +50,73 @@ nav:
 
 For more information on Markdown formatting, refer to the Markdown Guide for [basic](https://www.markdownguide.org/basic-syntax/) and more [advanced](https://www.markdownguide.org/extended-syntax/) syntax.
 
-## Building and Serving Locally
+## How to Contribute - Easy Workflow
+
+The easiest but less preferred way to update the Wiki is to create or edit the Markdown files in the repository directly in your browser. Here’s how to do it:
+
+1. Navigate to the `hoplab-wiki` repository on GitHub.
+2. Go to the `docs` folder.
+3a. To **edit** an existing file:
+   - Click on the file you want to edit.
+   - Click on the pencil icon (✏️) at the top right to edit the file.
+   - Make your changes (see [Editing the Wiki](#editing-the-wiki) for more info) and scroll down to the "Commit changes" section.
+   - Add a commit message describing your changes.
+   - Select "Commit directly to the `main` branch" and click "Commit changes".
+3b. To **create** a new file:
+   - Click on "Add file" > "Create new file".
+   - Enter a name for your file in the `docs` directory (e.g., `docs/new-page.md`).
+   - Add your content in Markdown format (see [Editing the Wiki](#editing-the-wiki) for more info).
+   - Scroll down to the "Commit changes" section.
+   - Add a commit message describing your new file.
+   - Select "Commit directly to the `main` branch" and click "Commit new file".
+4. Update the `mkdocs.yml` file:
+   - Navigate to the `mkdocs.yml` file.
+   - Click on the pencil icon (✏️) at the top right to edit the file.
+   - Add the new page to the `nav` section.
+   - Commit your changes directly to the `main` branch.
+
+While this method is straightforward, direct changes to the `main` branch are discouraged as it bypasses the review process.
+
+## How to Contribute - Advanced Workflow
+
+The preferred way to contribute is to clone the repository locally, make your changes, and create a pull request. This ensures that all changes are reviewed before being merged into the main codebase and avoids potential destructive actions. Here’s how to do it:
+
+### Setting Up Your Local Environment
+
+First, create a conda environment and install the necessary dependencies within this environment.
+```sh
+conda create --name hoplab-wiki python=3.9
+conda activate hoplab-wiki
+pip install mkdocs mkdocs-material
+```
+
+### Cloning and Editing the Repository
+
+You can use GitHub Desktop for an easier experience, or Git from the command line.
+
+#### Using GitHub Desktop
+1. Open GitHub Desktop.
+2. Click "File" > "Clone Repository".
+3. Select the `hoplab-wiki` repository from the `HOPLAB-LBP` organization and click "Clone".
+4. Make your changes (see [Editing the Wiki](#editing-the-wiki) for more details)
+
+#### Using Git
+1. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux).
+2. Navigate to the directory where you want to clone the repository:
+```sh
+cd path/to/your/directory
+```
+3. Clone the repository:
+```sh
+git clone https://github.com/HOPLAB-LBP/hoplab-wiki.git
+```
+4. Navigate to the repository directory:
+```sh
+cd hoplab-wiki
+```
+5. Make your changes (see [Editing the Wiki](#editing-the-wiki) for more details)
+
+### Building and Serving Locally (to test your changes)
 
 To preview your changes locally, you need to build and serve the documentation.
 
@@ -106,7 +135,7 @@ mkdocs serve
 ```
 5. Open your browser and navigate to http://127.0.0.1:8000/.
 
-## Deploying to GitHub Pages
+### Deploying Your Changes
 
 To deploy your changes to GitHub Pages:
 
@@ -120,108 +149,24 @@ git commit -m "Describe your changes"
 git push origin main
 ```
 
-### Automatic Deployment with GitHub Actions
+#### Automatic Deployment with GitHub Actions
 
 This repository is set up to use GitHub Actions for automatic deployment. This means that every time changes are pushed to the `main` branch, the documentation will automatically be built and deployed to GitHub Pages.
 
-#### What This Means for You
+##### What This Means for You
 
 - You do not need to manually run the `mkdocs gh-deploy` command each time you make changes.
 - Simply push your changes to the `main` branch, and GitHub Actions will handle the deployment.
 
-## Contributing
+### Creating a Pull Request
 
-We welcome contributions from all members.
+After pushing your changes to GitHub, create a pull request to ensure that all changes are reviewed before being merged into the main codebase.
 
-### Easy Way (Discouraged)
+1. Go to the `hoplab-wiki` repository on GitHub.
+2. Click on "Compare & pull request".
+3. Add a description of your changes and submit the pull request.
 
-The easiest but less preferred way to update the Wiki is to create a Markdown file locally (if you want to create a new page) or edit the Markdown files in the repository directly in your browser. Here’s how to do it:
-
-1. Navigate to the `hoplab-wiki` repository on GitHub.
-2. Go to the `docs` folder.
-3. To edit an existing file:
-   - Click on the file you want to edit.
-   - Click on the pencil icon (✏️) at the top right to edit the file.
-   - Make your changes and scroll down to the "Commit changes" section.
-   - Add a commit message describing your changes.
-   - Select "Commit directly to the `main` branch" and click "Commit changes".
-4. To create a new file:
-   - Click on "Add file" > "Create new file".
-   - Enter a name for your file in the `docs` directory (e.g., `docs/new-page.md`).
-   - Add your content in Markdown format.
-   - Scroll down to the "Commit changes" section.
-   - Add a commit message describing your new file.
-   - Select "Commit directly to the `main` branch" and click "Commit new file".
-5. Update the `mkdocs.yml` file:
-   - Navigate to the `mkdocs.yml` file.
-   - Click on the pencil icon (✏️) at the top right to edit the file.
-   - Add the new page to the `nav` section.
-   - Commit your changes directly to the `main` branch.
-
-While this method is straightforward, direct changes to the `main` branch are discouraged as it bypasses the review process.
-
-### Hard Way (Encouraged)
-
-The preferred way to contribute is to clone the repository locally, make your changes, and create a pull request. This ensures that all changes are reviewed before being merged into the main codebase. Here’s how to do it using both GitHub Desktop and Git.
-
-#### Using GitHub Desktop
-
-1. Open GitHub Desktop.
-2. Click "File" > "Clone Repository".
-3. Select the `hoplab-wiki` repository from the `HOPLAB-LBP` organization and click "Clone".
-4. Create a new branch:
-   - Click "Branch" > "New Branch".
-   - Enter a branch name (e.g., `your-branch-name`) and click "Create Branch".
-5. Make your changes in the `docs` folder and update the `mkdocs.yml` file accordingly.
-6. Commit your changes:
-   - In GitHub Desktop, you should see your changes listed.
-   - Enter a commit message describing your changes.
-   - Click "Commit to your-branch-name".
-7. Push your branch to GitHub:
-   - Click "Push origin".
-8. Create a pull request:
-   - Go to the `hoplab-wiki` repository on GitHub.
-   - Click on "Compare & pull request".
-   - Add a description of your changes and submit the pull request.
-
-#### Using Git
-
-1. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux).
-2. Navigate to the directory where you want to clone the repository:
-```sh
-cd path/to/your/directory
-```
-3. Clone the repository:
-```sh
-git clone https://github.com/HOPLAB-LBP/hoplab-wiki.git
-```
-4. Navigate to the repository directory:
-```sh
-cd hoplab-wiki
-```
-5. Create a new branch for your changes:
-```sh
-git checkout -b your-branch-name
-```
-6. Make your changes in the `docs` folder and update the `mkdocs.yml` file accordingly.
-7. Stage your changes:
-```sh
-git add .
-```
-8. Commit your changes:
-```sh
-git commit -m "Describe your changes"
-```
-9. Push your branch to GitHub:
-```sh
-git push origin your-branch-name
-```
-10. Create a pull request:
-    - Go to the `hoplab-wiki` repository on GitHub.
-    - Click on "Compare & pull request".
-    - Add a description of your changes and submit the pull request.
-
-### Reviewing and Accepting Pull Requests
+## Reviewing and Accepting Pull Requests (for Admins)
 
 1. Go to the `hoplab-wiki` repository on GitHub.
 2. Click on the "Pull requests" tab.
@@ -230,8 +175,6 @@ git push origin your-branch-name
    - Add comments if necessary.
 4. If the changes are satisfactory, click "Merge pull request".
 5. Delete the branch after merging if it's no longer needed.
-
-By following these steps, we ensure that all changes are properly reviewed and maintain the integrity of the `main` branch. Thank you for contributing to the Hoplab Wiki!
 
 ## Troubleshooting
 
