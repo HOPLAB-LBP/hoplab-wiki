@@ -10,16 +10,8 @@ theme:
   name: material
   logo: assets/thicker_white_brain.svg
   favicon: assets/hoplab_favicon_white.ico 
-  
+
 markdown_extensions:
-  - pymdownx.superfences
-  - pymdownx.tabbed
-  - pymdownx.tilde
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.tasklist:
-      custom_checkbox: true
   - toc:
       permalink: true
   - attr_list
@@ -39,7 +31,15 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.progressbar
   - pymdownx.details
-
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      
 extra_css:
   - stylesheets/extra.css
   
