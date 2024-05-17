@@ -6,8 +6,8 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
 
 1. [Getting Started](#getting-started)
 2. [Editing the Wiki](#editing-the-wiki)
-3. [How to Contribute - Easy Workflow](#how-to-contribute---easy-workflow)
-4. [How to Contribute - Advanced Workflow](#how-to-contribute---advanced-workflow)
+3. [How to Contribute - Easy Workflow](#how-to-contribute-easy-workflow)
+4. [How to Contribute - Advanced Workflow](#how-to-contribute-advanced-workflow)
 5. [Reviewing and Accepting Pull Requests (for Admins)](#reviewing-and-accepting-pull-requests-for-admins)
 6. [Troubleshooting](#troubleshooting)
 
@@ -17,11 +17,11 @@ Before you begin, ensure you have the following:
 
 - A GitHub account
 - Write access to the `hoplab-wiki` repository in the `HOPLAB-LBP` organization
-- If you plan on following the [Advanced Workflow](#how-to-contribute---advanced-workflow) (encouraged), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installed
+- If you plan on following the [Advanced Workflow](#how-to-contribute-advanced-workflow) (encouraged), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installed
 
 ## Editing the Wiki
 
-We welcome contributions from all members. All the content of the wiki is written in Markdown files located in the `docs` directory. You can edit these files in your browser (if you follow the [Easy Workflow](#how-to-contribute---easy-workflow) or locally using any text editor or IDE (e.g., VSCode, Sublime Text) if you follow the [Advanced Workflow](#how-to-contribute---advanced-workflow). 
+We welcome contributions from all members. All the content of the wiki is written in Markdown files located in the `docs` directory. You can edit these files in your browser (if you follow the [Easy Workflow](#how-to-contribute-easy-workflow) or locally using any text editor or IDE (e.g., VSCode, Sublime Text) if you follow the [Advanced Workflow](#how-to-contribute-advanced-workflow). 
 
 ### Adding a New Page
 
@@ -59,24 +59,24 @@ The easiest but less preferred way to update the Wiki is to create or edit the M
 2. Go to the `docs` folder.
 3. To **edit** an existing file:
 
-- Click on the file you want to edit.
-- Click on the pencil icon (✏️) at the top right to edit the file.
-- Make your changes (see [Editing the Wiki](#editing-the-wiki) for more info) and scroll down to the "Commit changes" section.
-- Add a commit message describing your changes.
-- Select "Commit directly to the `main` branch" and click "Commit changes".
+	- Click on the file you want to edit.
+	- Click on the pencil icon (✏️) at the top right to edit the file.
+	- Make your changes (see [Editing the Wiki](#editing-the-wiki) for more info) and scroll down to the "Commit changes" section.
+	- Add a commit message describing your changes.
+	- Select "Commit directly to the `main` branch" and click "Commit changes".
      
 4. To **create** a new file:
 
-- Click on "Add file" > "Create new file".
-- Enter a name for your file in the `docs` directory (e.g., `docs/new-page.md`).
-- Add your content in Markdown format (see [Editing the Wiki](#editing-the-wiki) for more info).
-- Scroll down to the "Commit changes" section.
-- Add a commit message describing your new file.
-- Select "Commit directly to the `main` branch" and click "Commit new file".
-- Navigate to the `mkdocs.yml` file.
-- Click on the pencil icon (✏️) at the top right to edit the file.
-- Add the new page to the `nav` section.
-- Commit your changes directly to the `main` branch.
+	- Click on "Add file" > "Create new file".
+	- Enter a name for your file in the `docs` directory (e.g., `docs/new-page.md`).
+	- Add your content in Markdown format (see [Editing the Wiki](#editing-the-wiki) for more info).
+	- Scroll down to the "Commit changes" section.
+	- Add a commit message describing your new file.
+	- Select "Commit directly to the `main` branch" and click "Commit new file".
+	- Navigate to the `mkdocs.yml` file.
+	- Click on the pencil icon (✏️) at the top right to edit the file.
+	- Add the new page to the `nav` section.
+	- Commit your changes directly to the `main` branch.
 
 While this method is straightforward, direct changes to the `main` branch are discouraged as it bypasses the review process.
 
@@ -138,6 +138,9 @@ mkdocs serve
 ```
 5. Open your browser and navigate to http://127.0.0.1:8000/.
 
+!!! note
+    You can edit your files while your serve is deployed, and see the changes live on your browser every time you modify (i.e., save) a file. This will save you a ton of time and commits.
+
 ### Deploying Your Changes
 
 To deploy your changes to GitHub Pages:
@@ -190,6 +193,7 @@ If you encounter issues with pushing to the repository, you may need to use a pe
 ### Additional Help
 
 For further assistance, refer to the following resources:
+
 - [MkDocs Documentation](https://www.mkdocs.org/)
 - [MkDocs Material Theme](https://squidfunk.github.io/mkdocs-material/)
 - [GitHub Pages Documentation](https://docs.github.com/en/pages)
