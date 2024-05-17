@@ -1,8 +1,16 @@
 name: Deploy to GitHub Pages
 
 on:
+  push:
+    branches:
+      - main
+
   repository_dispatch:
     types: [start-gh-pages]
+
+concurrency:
+  group: "gh-pages"
+  cancel-in-progress: true
 
 jobs:
   deploy:
