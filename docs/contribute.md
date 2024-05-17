@@ -1,6 +1,6 @@
 # Hoplab Wiki
 
-Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by [@costantino_ai](https://github.com/costantinoai). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be).
+Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by [@costantinoai](https://github.com/costantinoai). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be).
 
 This guide will help you set up, update, and maintain the Wiki both locally and online. Follow the instructions if you want to make changes to the wiki.
 
@@ -64,7 +64,7 @@ All the content of the wiki is written in Markdown files located in the `docs` d
 
 1. Create a new Markdown file in the `docs` directory (e.g., `docs/new-page.md`).
 2. Add the new page to the `nav` section of `mkdocs.yml`:
-   ```yaml
+   ```
    nav:
      - Home: index.md
      - Guide: guide.md
@@ -78,7 +78,7 @@ To create a child page, place the Markdown file in a subdirectory and update the
 1. Create a new subdirectory in the `docs` directory (e.g., `docs/subdir`).
 2. Create a new Markdown file in the subdirectory (e.g., `docs/subdir/child-page.md`).
 3. Update the `nav` section in `mkdocs.yml`:
-   ```yaml
+   ```
    nav:
      - Home: index.md
      - Guide: guide.md
