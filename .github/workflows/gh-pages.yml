@@ -1,28 +1,27 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
+  repository_dispatch:
+    types: [start-gh-pages]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-    - name: Install dependencies
-      run: |
-        pip install mkdocs-material
+      - name: Install dependencies
+        run: |
+          pip install mkdocs-material
 
-    - name: Deploy
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        mkdocs gh-deploy --force
+      - name: Deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdocs gh-deploy --force
