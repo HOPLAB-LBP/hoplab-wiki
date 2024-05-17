@@ -59,27 +59,27 @@ The easiest but less preferred way to update the Wiki is to create or edit the M
 2. Go to the `docs` folder.
 3. To **edit** an existing file:
 
-  - Click on the file you want to edit.
-  - Click on the pencil icon (✏️) at the top right to edit the file.
-  - Make your changes (see [Editing the Wiki](#editing-the-wiki) for more info) and scroll down to the "Commit changes" section.
-  - Add a commit message describing your changes.
-  - Select "Commit directly to the `main` branch" and click "Commit changes".
+- Click on the file you want to edit.
+- Click on the pencil icon (✏️) at the top right to edit the file.
+- Make your changes (see [Editing the Wiki](#editing-the-wiki) for more info) and scroll down to the "Commit changes" section.
+- Add a commit message describing your changes.
+- Select "Commit directly to the `main` branch" and click "Commit changes".
      
 4. To **create** a new file:
 
-  - Click on "Add file" > "Create new file".
-  - Enter a name for your file in the `docs` directory (e.g., `docs/new-page.md`).
-  - Add your content in Markdown format (see [Editing the Wiki](#editing-the-wiki) for more info).
-  - Scroll down to the "Commit changes" section.
-  - Add a commit message describing your new file.
-  - Select "Commit directly to the `main` branch" and click "Commit new file".
+- Click on "Add file" > "Create new file".
+- Enter a name for your file in the `docs` directory (e.g., `docs/new-page.md`).
+- Add your content in Markdown format (see [Editing the Wiki](#editing-the-wiki) for more info).
+- Scroll down to the "Commit changes" section.
+- Add a commit message describing your new file.
+- Select "Commit directly to the `main` branch" and click "Commit new file".
      
 5. Update the `mkdocs.yml` file:
    
-  - Navigate to the `mkdocs.yml` file.
-  - Click on the pencil icon (✏️) at the top right to edit the file.
-  - Add the new page to the `nav` section.
-  - Commit your changes directly to the `main` branch.
+- Navigate to the `mkdocs.yml` file.
+- Click on the pencil icon (✏️) at the top right to edit the file.
+- Add the new page to the `nav` section.
+- Commit your changes directly to the `main` branch.
 
 While this method is straightforward, direct changes to the `main` branch are discouraged as it bypasses the review process.
 
