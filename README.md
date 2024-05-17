@@ -64,7 +64,8 @@ All the content of the wiki is written in Markdown files located in the `docs` d
 
 1. Create a new Markdown file in the `docs` directory (e.g., `docs/new-page.md`).
 2. Add the new page to the `nav` section of `mkdocs.yml`:
-   ```
+   
+   ```yaml
    nav:
      - Home: index.md
      - Guide: guide.md
@@ -78,7 +79,8 @@ To create a child page, place the Markdown file in a subdirectory and update the
 1. Create a new subdirectory in the `docs` directory (e.g., `docs/subdir`).
 2. Create a new Markdown file in the subdirectory (e.g., `docs/subdir/child-page.md`).
 3. Update the `nav` section in `mkdocs.yml`:
-   ```
+   
+   ```yaml
    nav:
      - Home: index.md
      - Guide: guide.md
@@ -112,11 +114,14 @@ To preview your changes locally, you need to build and serve the documentation.
 To deploy your changes to GitHub Pages:
 
 1. Commit your changes in GitHub Desktop or via Git:
+   
    ```sh
    git add .
    git commit -m "Describe your changes"
    ```
-2. Push your changes:
+   
+3. Push your changes:
+   
    ```sh
    git push origin main
    ```
