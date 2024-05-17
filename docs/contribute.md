@@ -64,6 +64,7 @@ The easiest but less preferred way to update the Wiki is to create or edit the M
    - Make your changes (see [Editing the Wiki](#editing-the-wiki) for more info) and scroll down to the "Commit changes" section.
    - Add a commit message describing your changes.
    - Select "Commit directly to the `main` branch" and click "Commit changes".
+     
 3b. To **create** a new file:
 
    - Click on "Add file" > "Create new file".
