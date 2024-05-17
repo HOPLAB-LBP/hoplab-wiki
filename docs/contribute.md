@@ -24,7 +24,6 @@ Before you begin, ensure you have the following:
 ### Installing Dependencies
 
 First, create a conda environment and install the necessary dependencies within this environment.
-
 ```sh
 conda create --name hoplab-wiki python=3.9
 conda activate hoplab-wiki
@@ -44,17 +43,17 @@ You can use GitHub Desktop for an easier experience, or Git from the command lin
 #### Using Git
 1. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux).
 2. Navigate to the directory where you want to clone the repository:
-   ```sh
-   cd path/to/your/directory
-   ```
+```sh
+ cd path/to/your/directory
+```
 3. Clone the repository:
-   ```sh
-   git clone https://github.com/HOPLAB-LBP/hoplab-wiki.git
-   ```
+```sh
+git clone https://github.com/HOPLAB-LBP/hoplab-wiki.git
+```
 4. Navigate to the repository directory:
-   ```sh
-   cd hoplab-wiki
-   ```
+```sh
+cd hoplab-wiki
+```
 
 ## Editing the Wiki
 
@@ -63,14 +62,13 @@ All the content of the wiki is written in Markdown files located in the `docs` d
 ### Adding a New Page
 
 1. Create a new Markdown file in the `docs` directory (e.g., `docs/new-page.md`).
-2. Add the new page to the `nav` section of `mkdocs.yml`:
-   
-   ```yaml
-   nav:
-     - Home: index.md
-     - Guide: guide.md
-     - New Page: new-page.md
-   ```
+2. Add the new page to the `nav` section of `mkdocs.yml`:   
+```yaml
+nav:
+  - Home: index.md
+  - Guide: guide.md
+  - New Page: new-page.md
+```
 
 ### Creating Child Pages
 
@@ -78,15 +76,14 @@ To create a child page, place the Markdown file in a subdirectory and update the
 
 1. Create a new subdirectory in the `docs` directory (e.g., `docs/subdir`).
 2. Create a new Markdown file in the subdirectory (e.g., `docs/subdir/child-page.md`).
-3. Update the `nav` section in `mkdocs.yml`:
-   
-   ```yaml
-   nav:
-     - Home: index.md
-     - Guide: guide.md
-     - Subdir:
-         - Child Page: subdir/child-page.md
-   ```
+3. Update the `nav` section in `mkdocs.yml`:   
+```yaml
+nav:
+  - Home: index.md
+  - Guide: guide.md
+  - Subdir:
+      - Child Page: subdir/child-page.md
+```
 
 For more information on Markdown formatting, refer to the Markdown Guide for [basic](https://www.markdownguide.org/basic-syntax/) and more [advanced](https://www.markdownguide.org/extended-syntax/) syntax.
 
@@ -96,35 +93,32 @@ To preview your changes locally, you need to build and serve the documentation.
 
 1. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux).
 2. Navigate to the `hoplab-wiki` directory:
-   ```sh
-   cd path/to/your/hoplab-wiki
-   ```
+```sh
+cd path/to/your/hoplab-wiki
+```
 3. Activate your conda environment:
-   ```sh
-   conda activate hoplab-wiki
-   ```
+```sh
+conda activate hoplab-wiki
+```
 4. Serve the documentation locally:
-   ```sh
-   mkdocs serve
-   ```
+```sh
+mkdocs serve
+```
 5. Open your browser and navigate to http://127.0.0.1:8000/.
 
 ## Deploying to GitHub Pages
 
 To deploy your changes to GitHub Pages:
 
-1. Commit your changes in GitHub Desktop or via Git:
-   
-   ```sh
-   git add .
-   git commit -m "Describe your changes"
-   ```
-   
-3. Push your changes:
-   
-   ```sh
-   git push origin main
-   ```
+1. Commit your changes in GitHub Desktop or via Git:   
+```sh
+git add .
+git commit -m "Describe your changes"
+```
+2. Push your changes:
+```sh
+git push origin main
+```
 
 ### Automatic Deployment with GitHub Actions
 
@@ -194,34 +188,34 @@ The preferred way to contribute is to clone the repository locally, make your ch
 
 1. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux).
 2. Navigate to the directory where you want to clone the repository:
-   ```sh
-   cd path/to/your/directory
-   ```
+```sh
+cd path/to/your/directory
+```
 3. Clone the repository:
-   ```sh
-   git clone https://github.com/HOPLAB-LBP/hoplab-wiki.git
-   ```
+```sh
+git clone https://github.com/HOPLAB-LBP/hoplab-wiki.git
+```
 4. Navigate to the repository directory:
-   ```sh
-   cd hoplab-wiki
-   ```
+```sh
+cd hoplab-wiki
+```
 5. Create a new branch for your changes:
-   ```sh
-   git checkout -b your-branch-name
-   ```
+```sh
+git checkout -b your-branch-name
+```
 6. Make your changes in the `docs` folder and update the `mkdocs.yml` file accordingly.
 7. Stage your changes:
-   ```sh
-   git add .
-   ```
+```sh
+git add .
+```
 8. Commit your changes:
-   ```sh
-   git commit -m "Describe your changes"
-   ```
+```sh
+git commit -m "Describe your changes"
+```
 9. Push your branch to GitHub:
-   ```sh
-   git push origin your-branch-name
-   ```
+```sh
+git push origin your-branch-name
+```
 10. Create a pull request:
     - Go to the `hoplab-wiki` repository on GitHub.
     - Click on "Compare & pull request".
