@@ -24,6 +24,7 @@ markdown_extensions:
   - attr_list
   - def_list
   - footnotes
+  - admonition
   - meta
   - pymdownx.arithmatex
   - pymdownx.betterem
