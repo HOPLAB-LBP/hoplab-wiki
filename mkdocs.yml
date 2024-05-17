@@ -3,6 +3,12 @@ site_name: Hoplab Wiki
 nav:
   - Home: index.md
   - Guide: guide.md
+  - New Page: new-page.md
 
 theme:
   name: material
+
+markdown_extensions:
+  - toc:
+      permalink: true
+
