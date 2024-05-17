@@ -73,9 +73,6 @@ The easiest but less preferred way to update the Wiki is to create or edit the M
 - Scroll down to the "Commit changes" section.
 - Add a commit message describing your new file.
 - Select "Commit directly to the `main` branch" and click "Commit new file".
-     
-5. Update the `mkdocs.yml` file:
-   
 - Navigate to the `mkdocs.yml` file.
 - Click on the pencil icon (✏️) at the top right to edit the file.
 - Add the new page to the `nav` section.
