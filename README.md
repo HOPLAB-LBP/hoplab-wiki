@@ -10,7 +10,7 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
 4. [Building and Serving Locally](#building-and-serving-locally)
 5. [Deploying to GitHub Pages](#deploying-to-github-pages)
 6. [Contributing](#contributing)
-7. [Troubleshooting](#troubleshooting) 
+7. [Troubleshooting](#troubleshooting)
 
 ## Getting Started
 
