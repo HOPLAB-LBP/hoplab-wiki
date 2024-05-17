@@ -9,7 +9,10 @@ theme:
   name: material
   logo: thicker_white_brain.svg
   favicon: hoplab_favicon_white.ico 
-
+  
+extra_css:
+  - extra.css
+  
 markdown_extensions:
   - toc:
       permalink: true
