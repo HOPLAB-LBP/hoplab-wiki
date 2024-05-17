@@ -7,11 +7,23 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
 ## Table of Contents
 1. [Getting Started](#getting-started)
 2. [Setting Up Your Local Environment](#setting-up-your-local-environment)
+   - [Installing Dependencies](#installing-dependencies)
+   - [Cloning the Repository](#cloning-the-repository)
 3. [Editing the Wiki](#editing-the-wiki)
+   - [Adding a New Page](#adding-a-new-page)
+   - [Creating Child Pages](#creating-child-pages)
 4. [Building and Serving Locally](#building-and-serving-locally)
 5. [Deploying to GitHub Pages](#deploying-to-github-pages)
+   - [Automatic Deployment with GitHub Actions](#automatic-deployment-with-github-actions)
 6. [Contributing](#contributing)
+   - [Easy Way (Discouraged)](#easy-way-discouraged)
+   - [Hard Way (Encouraged)](#hard-way-encouraged)
+     - [Using GitHub Desktop](#using-github-desktop)
+     - [Using Git](#using-git)
+   - [Reviewing and Accepting Pull Requests](#reviewing-and-accepting-pull-requests)
 7. [Troubleshooting](#troubleshooting)
+   - [Permission Denied or Authentication Issues](#permission-denied-or-authentication-issues)
+   - [Additional Help](#additional-help)
 
 ## Getting Started
 
