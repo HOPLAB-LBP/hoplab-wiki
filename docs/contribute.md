@@ -14,6 +14,7 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
 ## Getting Started
 
 Before you begin, ensure you have the following:
+
 - A GitHub account
 - Write access to the `hoplab-wiki` repository in the `HOPLAB-LBP` organization
 - If you plan on following the [Advanced Workflow](#how-to-contribute---advanced-workflow) (encouraged), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installed
