@@ -7,8 +7,8 @@ nav:
 
 theme:
   name: material
-  logo: hoplab-logo-full.png   
-  favicon: hoplab-favicon.ico 
+  logo: thicker_white_brain.svg
+  favicon: hoplab_favicon_white.ico 
 
 markdown_extensions:
   - toc:
