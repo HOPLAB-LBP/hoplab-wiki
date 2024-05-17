@@ -2,8 +2,8 @@ site_name: Hoplab Wiki
 
 nav:
   - Home: index.md
-  - Guide: guide.md
-  - Contribute to the Wiki: contribute.md
+  - Get started in the lab: getstarted.md
+  - Contribute: contribute.md
 
 theme:
   name: material
