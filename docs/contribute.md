@@ -58,12 +58,14 @@ The easiest but less preferred way to update the Wiki is to create or edit the M
 1. Navigate to the `hoplab-wiki` repository on GitHub.
 2. Go to the `docs` folder.
 3a. To **edit** an existing file:
+
    - Click on the file you want to edit.
    - Click on the pencil icon (✏️) at the top right to edit the file.
    - Make your changes (see [Editing the Wiki](#editing-the-wiki) for more info) and scroll down to the "Commit changes" section.
    - Add a commit message describing your changes.
    - Select "Commit directly to the `main` branch" and click "Commit changes".
 3b. To **create** a new file:
+
    - Click on "Add file" > "Create new file".
    - Enter a name for your file in the `docs` directory (e.g., `docs/new-page.md`).
    - Add your content in Markdown format (see [Editing the Wiki](#editing-the-wiki) for more info).
@@ -71,6 +73,7 @@ The easiest but less preferred way to update the Wiki is to create or edit the M
    - Add a commit message describing your new file.
    - Select "Commit directly to the `main` branch" and click "Commit new file".
 4. Update the `mkdocs.yml` file:
+   
    - Navigate to the `mkdocs.yml` file.
    - Click on the pencil icon (✏️) at the top right to edit the file.
    - Add the new page to the `nav` section.
@@ -156,8 +159,9 @@ This repository is set up to use GitHub Actions for automatic deployment. This m
 
 ##### What This Means for You
 
-- You do not need to manually run the `mkdocs gh-deploy` command each time you make changes.
-- Simply push your changes to the `main` branch, and GitHub Actions will handle the deployment.
+!!! note
+    - You do not need to manually run the `mkdocs gh-deploy` command each time you make changes.
+    - Simply push your changes to the `main` branch, and GitHub Actions will handle the deployment.
 
 ### Creating a Pull Request
 
@@ -172,6 +176,7 @@ After pushing your changes to GitHub, create a pull request to ensure that all c
 1. Go to the `hoplab-wiki` repository on GitHub.
 2. Click on the "Pull requests" tab.
 3. Review the pull request:
+   
    - Check the changes.
    - Add comments if necessary.
 4. If the changes are satisfactory, click "Merge pull request".
