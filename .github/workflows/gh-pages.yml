@@ -22,5 +22,7 @@ jobs:
         pip install mkdocs-material
 
     - name: Deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         mkdocs gh-deploy --force
