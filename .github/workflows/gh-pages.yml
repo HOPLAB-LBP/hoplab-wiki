@@ -28,7 +28,15 @@ jobs:
         run: |
           pip install mkdocs-material mkauthdocs
 
-      - name: Deploy
+      - name: Build the documentation
+        run: |
+          mkdocs build
+
+      - name: Add authentication to the documentation
+        run: |
+          mkauthdocs hoplab-member welovefmri site/ --heading "Please login to see the Wiki."
+
+      - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
