@@ -1,0 +1,56 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+  repository_dispatch:
+    types: [start-gh-pages]
+
+concurrency:
+  group: "gh-pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs-material mkauthdocs setuptools
+
+      - name: Build the documentation
+        run: |
+          mkdocs build
+
+      - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdocs gh-deploy --force
+
+      - name: Check out the gh-pages branch
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+
+      - name: Add authentication to the documentation
+        run: |
+          mkauthdocs hoplab-member welovefmri . --heading "Please login to see the Wiki."
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add .
+          git commit -m "Add authentication to gh-pages"
+          git push origin gh-pages
