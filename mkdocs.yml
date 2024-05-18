@@ -3,7 +3,7 @@ site_name: Hoplab Wiki
 nav:
   - Home: index.md
   - Get started in the lab: getstarted.md
-  - Functional MRI: FunctionalMRI/fmri-home.md
+  - Functional MRI: fmri-home.md
   - Contribute: contribute.md
 
 theme:
@@ -35,10 +35,15 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.tilde
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.tasklist:
       custom_checkbox: true
+      
+plugins:
+  - offline
+  - privacy
+  - search
       
 extra_css:
   - stylesheets/extra.css
