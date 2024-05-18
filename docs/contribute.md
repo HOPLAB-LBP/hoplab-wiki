@@ -59,24 +59,24 @@ The easiest but less preferred way to update the Wiki is to create or edit the M
 2. Go to the `docs` folder.
 3. To **edit** an existing file:
 
-- Click on the file you want to edit.
-- Click on the pencil icon (✏️) at the top right to edit the file.
-- Make your changes (see [Editing the Wiki](#editing-the-wiki) for more info) and scroll down to the "Commit changes" section.
-- Add a commit message describing your changes.
-- Select "Commit directly to the `main` branch" and click "Commit changes".
+	- Click on the file you want to edit.
+	- Click on the pencil icon (✏️) at the top right to edit the file.
+	- Make your changes (see [Editing the Wiki](#editing-the-wiki) for more info) and scroll down to the "Commit changes" section.
+	- Add a commit message describing your changes.
+	- Select "Commit directly to the `main` branch" and click "Commit changes".
      
 4. To **create** a new file:
 
-- Click on "Add file" > "Create new file".
-- Enter a name for your file in the `docs` directory (e.g., `docs/new-page.md`).
-- Add your content in Markdown format (see [Editing the Wiki](#editing-the-wiki) for more info).
-- Scroll down to the "Commit changes" section.
-- Add a commit message describing your new file.
-- Select "Commit directly to the `main` branch" and click "Commit new file".
-- Navigate to the `mkdocs.yml` file.
-- Click on the pencil icon (✏️) at the top right to edit the file.
-- Add the new page to the `nav` section.
-- Commit your changes directly to the `main` branch.
+	- Click on "Add file" > "Create new file".
+	- Enter a name for your file in the `docs` directory (e.g., `docs/new-page.md`).
+	- Add your content in Markdown format (see [Editing the Wiki](#editing-the-wiki) for more info).
+	- Scroll down to the "Commit changes" section.
+	- Add a commit message describing your new file.
+	- Select "Commit directly to the `main` branch" and click "Commit new file".
+	- Navigate to the `mkdocs.yml` file.
+	- Click on the pencil icon (✏️) at the top right to edit the file.
+	- Add the new page to the `nav` section.
+	- Commit your changes directly to the `main` branch.
 
 While this method is straightforward, direct changes to the `main` branch are discouraged as it bypasses the review process.
 
@@ -173,8 +173,9 @@ After pushing your changes to GitHub, create a pull request to ensure that all c
 2. Click on the "Pull requests" tab.
 3. Review the pull request:
    
-   - Check the changes.
-   - Add comments if necessary.
+	- Check the changes.
+	- Add comments if necessary.
+   
 4. If the changes are satisfactory, click "Merge pull request".
 5. Delete the branch after merging if it's no longer needed.
 
@@ -190,6 +191,7 @@ If you encounter issues with pushing to the repository, you may need to use a pe
 ### Additional Help
 
 For further assistance, refer to the following resources:
+
 - [MkDocs Documentation](https://www.mkdocs.org/)
 - [MkDocs Material Theme](https://squidfunk.github.io/mkdocs-material/)
 - [GitHub Pages Documentation](https://docs.github.com/en/pages)
