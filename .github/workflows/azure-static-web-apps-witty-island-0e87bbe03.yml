@@ -33,16 +33,18 @@ jobs:
         run: |
           mkdocs build
 
-      - name: Build And Deploy
-        id: builddeploy
+      - name: Print build directory list # Debugging step to check the contents of the site directory
+        run: |
+          ls -lah site/
+
+      - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WITTY_ISLAND_0E87BBE03 }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
-          action: "upload"
-          app_location: "docs/" # App source code path
-          api_location: "" # Api source code path - optional
-          output_location: "site" # Built app content directory - optional
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Provided by Actions, do not need to create your own secret
+          action: 'upload'
+          app_location: "/" # This should point to where your mkdocs.yml is, if it's in the root, use '/'
+          output_location: "site" # This should be the directory where MkDocs generates the site.
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -50,7 +52,6 @@ jobs:
     name: Close Pull Request Job
     steps:
       - name: Close Pull Request
-        id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WITTY_ISLAND_0E87BBE03 }}
