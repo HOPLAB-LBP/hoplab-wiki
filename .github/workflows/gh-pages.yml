@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install mkdocs-material mkauthdocs
+          pip install mkdocs-material mkauthdocs setuptools ditribute
 
       - name: Build the documentation
         run: |
