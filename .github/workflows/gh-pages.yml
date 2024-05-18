@@ -32,12 +32,25 @@ jobs:
         run: |
           mkdocs build
 
-      - name: Add authentication to the documentation
-        run: |
-          mkauthdocs hoplab-member welovefmri site/ --heading "Please login to see the Wiki."
-
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdocs gh-deploy --force
+
+      - name: Check out the gh-pages branch
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+
+      - name: Add authentication to the documentation
+        run: |
+          mkauthdocs hoplab-member welovefmri . --heading "Please login to see the Wiki."
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add .
+          git commit -m "Add authentication to gh-pages"
+          git push origin gh-pages
