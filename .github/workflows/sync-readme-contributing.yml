@@ -28,9 +28,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Trigger gh-pages workflow
-        run: |
-          curl -X POST -H "Accept: application/vnd.github.v3+json" \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/HOPLAB-LBP/hoplab-wiki/dispatches \
-          -d '{"event_type":"start-gh-pages"}'
