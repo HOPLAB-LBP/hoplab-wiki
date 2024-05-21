@@ -5,6 +5,8 @@ nav:
   - Get started in the lab: getstarted.md
   - Functional MRI: fmri-home.md
   - Contribute: contribute.md
+  - Get started:
+    - Mailing lists: get-started/mailing-lists.md
 
 theme:
   name: material

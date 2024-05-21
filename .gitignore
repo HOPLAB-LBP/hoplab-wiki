@@ -1,2 +1,7 @@
 local/
 .cache
+
+# for mac users, ignore the .DS_store files
+.DS_Store
+/*/.DS_Store
+/*/*/.DS_Store
