@@ -2,7 +2,6 @@ site_name: Hoplab Wiki
 
 nav:
   - Home: index.md
-  - Get started in the lab: getstarted.md
   - Functional MRI: fmri-home.md
   - Contribute: contribute.md
   - Get started:
