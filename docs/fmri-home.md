@@ -20,7 +20,7 @@ In order to avoid error while converting into BIDS format, the raw data (i.e., t
 
 ```
 sourcedata
-└── sub-01
+└── sub-41
     ├── bh
     │   ├── 20240503104938_log_41-1-2_exp.tsv
     │   ├── 20240503105558_41_1_exp.mat
@@ -61,6 +61,8 @@ Despite these steps, some BIDS fields in the sidecar JSON files may remain empty
     - This BIDS tag allows tools to undistort images.
     - While the Philips DICOM header distinguishes the phase encoding axis (e.g., anterior-posterior vs. left-right), it does not encode the polarity (A->P vs. P->A).
     - You will need to check at the scanner or consult with Ron whether the polarity is AP or PA, and correct the `?` in the JSON file to `+` or `-`.
+ 
+- TODO: add info about NaNs in the JSON file (raw and fmriprep) and how to change them. NaNs will raise errors during the mriqc workflow. See [this](https://groups.google.com/g/mriqc-users/c/0v170KRJoKk) and [this](https://github.com/nipreps/mriqc/issues/1089). The bst strategy would be to write a small utility script to sanitize these fields in a JSON compliant way, for instace by changing the NaN values to null (to be tested). Alternatively, these fields can be removed. In any case, a BIDS validation is encouraged after sanitizing the files.
 
 For more details on Philips DICOM conversion, refer to the following resources:
 
