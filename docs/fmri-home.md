@@ -62,7 +62,7 @@ Despite these steps, some BIDS fields in the sidecar JSON files may remain empty
     - While the Philips DICOM header distinguishes the phase encoding axis (e.g., anterior-posterior vs. left-right), it does not encode the polarity (A->P vs. P->A).
     - You will need to check at the scanner or consult with Ron whether the polarity is AP or PA, and correct the `?` in the JSON file to `+` or `-`.
  
-- TODO: add info about NaNs in the JSON file (raw and fmriprep) and how to change them. NaNs will raise errors during the mriqc workflow. See [this](https://groups.google.com/g/mriqc-users/c/0v170KRJoKk) and [this](https://github.com/nipreps/mriqc/issues/1089). The bst strategy would be to write a small utility script to sanitize these fields in a JSON compliant way, for instace by changing the NaN values to null (to be tested). Alternatively, these fields can be removed. In any case, a BIDS validation is encouraged after sanitizing the files.
+- TODO: add info about NaNs in the JSON file (raw and fmriprep) and how to change them. NaNs will raise errors during the mriqc workflow. See [this](https://groups.google.com/g/mriqc-users/c/0v170KRJoKk), [this](https://github.com/nipreps/mriqc/issues/1089) and [this](https://neurostars.org/t/node-error-on-mriqc-wf-dwimriqc-computeiqms-datasink/29188). 
 
 For more details on Philips DICOM conversion, refer to the following resources:
 
