@@ -2,13 +2,13 @@
 
 This page is a work in progress and it is based on what I do in my fMRI pipeline. This info may change once we agree on shared practices.
 
-IMPORTANT: talk to Joan and Elahe to check on what they do, and standardize.
+- **TODO:** talk to Joan and Elahe to check on what they do, and standardize.
 
-TODO: Add info and links about fmri tasks, preprocessing, GLM, ROIs, MVPA/RSA.
+- **TODO:** Add info and links about fmri tasks, preprocessing, GLM, ROIs, MVPA/RSA.
 
-TODO: info on how to install main tools used for the fmri workflow for different OSs.
+- **TODO:** info on how to install main tools used for the fmri workflow for different OSs.
 
-TODO: info about instruments and procedures at the hospital.
+- **TODO:** info about instruments and procedures at the hospital.
 
 A template folder structure, along with the code to reproduce these analyses, can be found at [PLACEHOLDER]
 
@@ -63,14 +63,14 @@ Despite these steps, some BIDS fields in the sidecar JSON files may remain empty
 - **SliceTiming**:
     - This field is used by fMRIPrep during slice timing correction.
     - It can be populated using the `/utils/get_philips_MB_slicetiming.py` script, assuming you have access to a DICOM file and know the multiband factor (default is 2, as used in our lab).
-    - Note: The script assumes an interleaved, foot-to-head acquisition, and will not work for other types of acquisitions.
+    - **NOTE:** The script assumes an interleaved, foot-to-head acquisition, and will not work for other types of acquisitions.
 
 - **PhaseEncodingDirection**:
     - This BIDS tag allows tools to undistort images.
     - While the Philips DICOM header distinguishes the phase encoding axis (e.g., anterior-posterior vs. left-right), it does not encode the polarity (A->P vs. P->A).
     - You will need to check at the scanner or consult with Ron whether the polarity is AP or PA, and correct the `?` in the JSON file to `+` or `-`.
  
-- TODO: add info about NaNs in the JSON file (raw and fmriprep) and how to change them. NaNs will raise errors during the mriqc workflow. See [this](https://groups.google.com/g/mriqc-users/c/0v170KRJoKk), [this](https://github.com/nipreps/mriqc/issues/1089) and [this](https://neurostars.org/t/node-error-on-mriqc-wf-dwimriqc-computeiqms-datasink/29188). 
+- **TODO:** add info about NaNs in the JSON file (raw and fmriprep) and how to change them. NaNs will raise errors during the mriqc workflow. See [this](https://groups.google.com/g/mriqc-users/c/0v170KRJoKk), [this](https://github.com/nipreps/mriqc/issues/1089) and [this](https://neurostars.org/t/node-error-on-mriqc-wf-dwimriqc-computeiqms-datasink/29188). 
 
 For more details on Philips DICOM conversion, refer to the following resources:
 
@@ -81,19 +81,19 @@ For more details on Philips DICOM conversion, refer to the following resources:
 
 Additional information on the sequence can be found at the scanner by following these steps:
 	
-	- TODO: document the correct steps to get info on the geometry etc. we need to start new examination, load our sequence, click on one run/T1, and go in the geometry tab. here we have info about polarity, direction etc.
+	- **TODO:** document the correct steps to get info on the geometry etc. we need to start new examination, load our sequence, click on one run/T1, and go in the geometry tab. here we have info about polarity, direction etc.
 	
 ### BIDS standards
 
-TODO: add info about the BIDS standard, and how we use it (from raw to BIDS + derivatives)
+**TODO:** add info about the BIDS standard, and how we use it (from raw to BIDS + derivatives)
 	
 ## Workflow
 
 ### Behavioral Data
 
-TODO: here Tim should describe name and format of the logfiles
+**TODO:** here Tim should describe name and format of the logfiles
 
-TODO: add ref to fMRI task repo
+**TODO:** add ref to fMRI task repo
 
 The fMRI task script should give two files per run as output (see the folder structure [here](#how-to-store-raw-data). Here is a description of the naming structure and file content:
 
@@ -111,9 +111,9 @@ The fMRI task script should give two files per run as output (see the folder str
 
 If the behavioural data is stored in a `sourcedata/sub-xx/bh/` folder consistent to the one described [above](#how-to-store-raw-data), you can run the `02_behavioural-to-BIDS.m` script, after editing the parameters at the top of the script. This script iterates through subject-specific directories targeting behavioral .mat files, then processes and exports trial-related info into BIDS-compliant TSV event files in the BIDS folder provided as parameters.
 
-TODO: above, we need to phrase better and add more info about what these parameters are, possibly with a screenshot of the code. Also, in the code make more clear where the parameters are.
-TODO: perhaps wrap nifti and bh 2 BIDS in a single script that takes some input arguments? 
-TODO: we need to add more info about how these files are saved, and more in general about the BIDS structure
+- **TODO:** above, we need to phrase better and add more info about what these parameters are, possibly with a screenshot of the code. Also, in the code make more clear where the parameters are.
+- **TODO:** perhaps wrap nifti and bh 2 BIDS in a single script that takes some input arguments? 
+- **TODO:** we need to add more info about how these files are saved, and more in general about the BIDS structure
 
 Ensure that each resulting tsv file has at least three columns representing: `onset`, `duration`, `trial_type`.
 
@@ -125,7 +125,7 @@ Ensure that each resulting tsv file has at least three columns representing: `on
 
 1. Run the ET script to convert to ASC in BIDS format.
 
-**Note:** BEP020 has not been approved yet. Not sure if the events MSG should be included here or not.
+- **NOTE:** BEP020 has not been approved yet. Not sure if the events MSG should be included here or not.
 
 ### fMRI Data
 
@@ -162,7 +162,7 @@ Ensure that each resulting tsv file has at least three columns representing: `on
 
     Copy your `sub-01` folder from `dicom_converted` into the BIDS folder (make a new one if you don't have one).
 
-    **Note:** The pop-up only appeared with the first participant and then does it automatically. This is quite annoying as it never gets the participant number right so you have to manually go in and change it. It also only worked when providing it with (enhanced) DICOM files.
+    ****NOTE:**** The pop-up only appeared with the first participant and then does it automatically. This is quite annoying as it never gets the participant number right so you have to manually go in and change it. It also only worked when providing it with (enhanced) DICOM files.
 
 2. **Validate the BIDS directory (and solve errors):**
     - [BIDS Validator](https://bids-standard.github.io/bids-validator/)
@@ -171,9 +171,9 @@ Ensure that each resulting tsv file has at least three columns representing: `on
 
 link: [mriqc](https://mriqc.readthedocs.io/en/latest/)
 
-TODO: explain how to save and run this below
+- **TODO:** explain how to save and run this below
 
-TODO: explain that the one below may fail, in that case run the single commands separately
+- **TODO:** explain that the one below may fail, in that case run the single commands separately
 
 ```sh
 #!/bin/bash
@@ -238,23 +238,43 @@ FastSurfer offers a significantly faster alternative to traditional FreeSurfer p
 - **WSL (Windows Subsystem for Linux):** Required only for Windows users. Installation guidelines [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
 ##### Verifying GPU Accessibility via Docker
-- **Check if Docker can access the GPU:**
-  - For Windows, use WSL to execute the following command:
-    ```
-    sudo docker run --rm --gpus all nvidia/cuda:12.0.1-base-ubuntu20.04 nvidia-smi
-    ```
-  - Ensure that `cuda:12.0.1` and `ubuntu20.04` match your CUDA drivers and Ubuntu version, respectively. Check your CUDA version by running `nvidia-smi` in a Linux/WSL terminal.
-  - The command should output a table showing CUDA version and GPU details. If no NVIDIA GPU is listed, troubleshoot the NVIDIA Docker installation.
+Run this in your terminal (for Windows, use WSL to execute the following command):
+  ```
+  sudo docker run --rm --gpus all nvidia/cuda:12.0.1-base-ubuntu20.04 nvidia-smi
+  ```
+!!! note
+  Ensure that `cuda:12.0.1` and `ubuntu20.04` match your CUDA drivers and Ubuntu version, respectively. Check your CUDA version by running `nvidia-smi` in a Linux/WSL terminal.
+
+The command should output a table showing CUDA version and GPU details. If no NVIDIA GPU is listed, troubleshoot the NVIDIA Docker installation.
 
 ##### Running FastSurfer
-- **Example Command for Andrea's Ubuntu Laptop:**
+- Example Command for Andrea's Ubuntu Laptop:
   ```
-  sudo docker run --gpus all -v /media/costantino_ai/T7/fMRI_chess/data/BIDS:/data -v /media/costantino_ai/T7/fMRI_chess/data/BIDS/derivatives/FastSurfer:/output -v /media/costantino_ai/T7/fMRI_chess/misc:/fs_license --rm --user $(id -u):$(id -g) deepmi/fastsurfer --fs_license /fs_license/license.txt --t1 /data/sub-00/anat/sub-00_T1w.nii --sid sub-00 --sd /output --parallel
+  sudo docker run --gpus all \
+  -v /media/costantino_ai/T7/fMRI_chess/data/BIDS:/data \
+  -v /media/costantino_ai/T7/fMRI_chess/data/BIDS/derivatives/FastSurfer:/output \
+  -v /media/costantino_ai/T7/fMRI_chess/misc:/fs_license \
+  --rm --user $(id -u):$(id -g) deepmi/fastsurfer \
+  --fs_license /fs_license/license.txt \
+  --t1 /data/sub-00/anat/sub-00_T1w.nii \
+  --sid sub-00 \
+  --sd /output \
+  --parallel
   ```
 
-- **Example Command for LBP Computer:**
+- Example Command for Windows LBP Computer:
   ```
-  docker run --gpus all -v /mnt/c/Andrea/data/BIDS_Laura:/data -v /mnt/c/Andrea/data/BIDS_Laura/derivatives/fastsurfer:/output -v /mnt/c/Andrea/data/scripts\ and\ codes:/fs_license --rm --user $(id -u):$(id -g) deepmi/fastsurfer --fs_license /fs_license/license.txt --t1 /data/sub-00/anat/sub-00_T1w.nii --sid sub-00 --sd /output --device cuda:0 --surfreg --parallel
+  docker run --gpus all \
+  -v /mnt/c/Andrea/data/BIDS_Laura:/data \
+  -v /mnt/c/Andrea/data/BIDS_Laura/derivatives/fastsurfer:/output \
+  -v /mnt/c/Andrea/data/scripts\ and\ codes:/fs_license \
+  --rm --user $(id -u):$(id -g) deepmi/fastsurfer \
+  --fs_license /fs_license/license.txt \
+  --t1 /data/sub-00/anat/sub-00_T1w.nii \
+  --sid sub-00 \
+  --sd /output \
+  --device cuda:0 \
+  --parallel
   ```
 
 - **Volumes Explanation:**
@@ -262,22 +282,20 @@ FastSurfer offers a significantly faster alternative to traditional FreeSurfer p
   - Second `-v` specifies where you want the outputs saved.
   - Third `-v` is the path where the FreeSurfer license is stored.
 
-##### Notes on Path Formatting
-- **Windows WSL Users:**
+##### Notes on Path Formatting for Windows users
 - The C-drive is accessible at `/mnt/c/`.
 - Replace backslashes `\` with forward slashes `/` in paths.
 - To handle spaces in directory paths, insert a backslash before each space, e.g., `/mnt/c/folder with space/` becomes `/mnt/c/folder\ with\ space/`.
 
-##### Known Issues
 - **FIXME:** There's an issue with Docker incorrectly selecting the Intel GPU instead of the NVIDIA GPU on the LBP machine. Verify GPU selection before processing the next subject.
 
 #### Minimal preprocessing
 
 link: [fMRIprep](https://fmriprep.org/en/stable/)
 
-TODO: explain how to install docker and fmriprep-docker
+- **TODO:** explain how to install docker and fmriprep-docker
 
-NOTE: the parameters `n-cpus` and `mem-mb` depend on the computer hardware, and may need some tuning to avoid out of memory errors. The memory assigned with `mem-mb` is not the total memory, but the memory per process. That means that the actual memory used can exceed by far that value. Set the `mem-mb` to at least 1/3 or 1/4 of you RAM memory.
+**NOTE:** the parameters `n-cpus` and `mem-mb` depend on the computer hardware, and may need some tuning to avoid out of memory errors. The memory assigned with `mem-mb` is not the total memory, but the memory per process. That means that the actual memory used can exceed by far that value. Set the `mem-mb` to at least 1/3 or 1/4 of you RAM memory.
 
 Add info about the `work-dir` and how big one of these folder can get (to avoid SSD space errors)
 
@@ -307,7 +325,7 @@ fmriprep-docker \
 
 #### Running a GLM in SPM
 
-TODO: show code snippets perhaps? or just reference to the code
+- **TODO:** show code snippets perhaps? or just reference to the code
 
 #### Regions of Interest
 
