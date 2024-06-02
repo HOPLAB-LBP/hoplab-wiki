@@ -12,9 +12,9 @@ TODO: info about instruments and procedures at the hospital.
 
 A template folder structure, along with the code to reproduce these analyses, can be found at [PLACEHOLDER]
 
-# General Notes
+## General Notes
 
-## How to store raw data
+### How to store raw data
 
 In order to avoid error while converting into BIDS format, the raw data (i.e., the data collected from the scanner, behavioural measure, eye-tracking) should be stored in a folder with the following structure:
 
@@ -41,7 +41,7 @@ sourcedata
 	    └── sub-41_WIP_Functional_run5_7_1.nii
 ```
 
-## How to get images from the scanner
+### How to get images from the scanner
 
 For optimal BIDS conversion of fMRI data, it is recommended to initially collect DICOM files (not NIfTI or PAR/REC) at the scanner. Although this adds an extra conversion step and takes longer, it ensures proper conversion into BIDS format. Here is the recommended process:
 
@@ -56,7 +56,7 @@ For optimal BIDS conversion of fMRI data, it is recommended to initially collect
 3. **Subsequent Data Collection**:
     - After creating the template JSON files, collect future data in NIfTI format to save time. The `01_nifti-to-BIDS.m` script will use the JSON templates to populate the BIDS folders, provided that the fMRI sequence remained unchaged (in that case you need to generate new templates from the DICOM files).
 
-## Missing fields in JSON files
+### Missing fields in JSON files
 
 Despite these steps, some BIDS fields in the sidecar JSON files may remain empty due to limitations of the Philips scanner, not the conversion tools. The most relevant fields that are left empty due to these limitations are `SliceTiming` and [`PhaseEncodingDirection`](https://github.com/xiangruili/dicm2nii/issues/49).
 
@@ -77,19 +77,19 @@ For more details on Philips DICOM conversion, refer to the following resources:
 - [Philips DICOM Missing Information - dcm2niix](https://github.com/rordenlab/dcm2niix/tree/master/Philips#missing-information)
 - [PARREC Conversion - dcm2niix](https://github.com/rordenlab/dcm2niix/tree/master/PARREC)
 
-## Where to find additional info on the fMRI sequence
+### Where to find additional info on the fMRI sequence
 
 Additional information on the sequence can be found at the scanner by following these steps:
 	
 	- TODO: document the correct steps to get info on the geometry etc. we need to start new examination, load our sequence, click on one run/T1, and go in the geometry tab. here we have info about polarity, direction etc.
 	
-## BIDS standards
+### BIDS standards
 
 TODO: add info about the BIDS standard, and how we use it (from raw to BIDS + derivatives)
 	
-# Workflow
+## Workflow
 
-## Behavioral Data
+### Behavioral Data
 
 TODO: here Tim should describe name and format of the logfiles
 
@@ -117,7 +117,7 @@ TODO: we need to add more info about how these files are saved, and more in gene
 
 Ensure that each resulting tsv file has at least three columns representing: `onset`, `duration`, `trial_type`.
 
-## Eye-Tracking Data
+### Eye-Tracking Data
 
 **Pre-requisite:** To convert EDF files into more easy-to-read ASC files, you need to install the EyeLink Developers Kit / API. More info and how-to:
 
@@ -127,9 +127,9 @@ Ensure that each resulting tsv file has at least three columns representing: `on
 
 **Note:** BEP020 has not been approved yet. Not sure if the events MSG should be included here or not.
 
-## fMRI Data
+### fMRI Data
 
-### BIDS conversion
+#### BIDS conversion
 
 !!! note Automatic Deployment with GitHub Actions
     This step should only be performed for the first subject in your dataset, and can be skipped if the anatomical and functional JSON templates are available in `code/misc/` (see [here](#how-to-get-images-from-the-scanner) for more info on the template files)
@@ -167,7 +167,7 @@ Ensure that each resulting tsv file has at least three columns representing: `on
 2. **Validate the BIDS directory (and solve errors):**
     - [BIDS Validator](https://bids-standard.github.io/bids-validator/)
 
-### Quality check
+#### Quality check
 
 link: [mriqc](https://mriqc.readthedocs.io/en/latest/)
 
@@ -178,18 +178,18 @@ TODO: explain that the one below may fail, in that case run the single commands 
 ```sh
 #!/bin/bash
 
-# Iterate over subject numbers
+## Iterate over subject numbers
 for i in {0..40}; do
-    # Skip subject 0, 5, 14, 31
+    ## Skip subject 0, 5, 14, 31
     if [ $i -eq 0 ] || [ $i -eq 5 ] || [ $i -eq 14 ] || [ $i -eq 31 ]; then
         continue
     fi
 
-    # Format subject number with leading zeros
+    ## Format subject number with leading zeros
     subID=$(printf "sub-%02d" $i)
     echo "Processing $subID"
 
-    # Docker command with dynamic subject ID using sudo
+    ## Docker command with dynamic subject ID using sudo
     docker run -it --rm \
     -v /data/BIDS:/data:ro \
     -v /data/BIDS/derivatives/mriqc:/out \
@@ -200,7 +200,7 @@ for i in {0..40}; do
      --work-dir /scratch \
      --verbose-reports --resource-monitor -vv
 
-    # Wait or perform other actions between runs if needed
+    ## Wait or perform other actions between runs if needed
     sleep 0.5
 done
 
@@ -225,19 +225,19 @@ docker run \
  --load-classifier -X /resdir/group_T1w.tsv
 ```
 
-### Surface Preprocessing
+#### Surface Preprocessing
 
 link: [FastSurfer](https://github.com/Deep-MI/FastSurfer)
 
 FastSurfer offers a significantly faster alternative to traditional FreeSurfer processing, leveraging NVIDIA GPU acceleration if available. If a suitable GPU is not available, consider using fMRIprep for CPU-based processing, which will integrate FreeSurfer's recon-all but will take longer (approx. 15 hours).
 
-#### Prerequisites
+##### Prerequisites
 - **Docker Desktop:** Install Docker Desktop [here](https://docs.docker.com/desktop/install/ubuntu/).
 - **NVIDIA Docker:** Necessary for GPU utilization, installable from [here](https://developer.nvidia.com/blog/nvidia-docker-gpu-server-application-deployment-made-easy/).
 - **FreeSurfer License:** Download necessary licensing for FreeSurfer.
 - **WSL (Windows Subsystem for Linux):** Required only for Windows users. Installation guidelines [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
-#### Verifying GPU Accessibility via Docker
+##### Verifying GPU Accessibility via Docker
 - **Check if Docker can access the GPU:**
   - For Windows, use WSL to execute the following command:
     ```
@@ -246,7 +246,7 @@ FastSurfer offers a significantly faster alternative to traditional FreeSurfer p
   - Ensure that `cuda:12.0.1` and `ubuntu20.04` match your CUDA drivers and Ubuntu version, respectively. Check your CUDA version by running `nvidia-smi` in a Linux/WSL terminal.
   - The command should output a table showing CUDA version and GPU details. If no NVIDIA GPU is listed, troubleshoot the NVIDIA Docker installation.
 
-#### Running FastSurfer
+##### Running FastSurfer
 - **Example Command for Andrea's Ubuntu Laptop:**
   ```
   sudo docker run --gpus all -v /media/costantino_ai/T7/fMRI_chess/data/BIDS:/data -v /media/costantino_ai/T7/fMRI_chess/data/BIDS/derivatives/FastSurfer:/output -v /media/costantino_ai/T7/fMRI_chess/misc:/fs_license --rm --user $(id -u):$(id -g) deepmi/fastsurfer --fs_license /fs_license/license.txt --t1 /data/sub-00/anat/sub-00_T1w.nii --sid sub-00 --sd /output --parallel
@@ -262,16 +262,16 @@ FastSurfer offers a significantly faster alternative to traditional FreeSurfer p
   - Second `-v` specifies where you want the outputs saved.
   - Third `-v` is the path where the FreeSurfer license is stored.
 
-#### Notes on Path Formatting
+##### Notes on Path Formatting
 - **Windows WSL Users:**
 - The C-drive is accessible at `/mnt/c/`.
 - Replace backslashes `\` with forward slashes `/` in paths.
 - To handle spaces in directory paths, insert a backslash before each space, e.g., `/mnt/c/folder with space/` becomes `/mnt/c/folder\ with\ space/`.
 
-#### Known Issues
+##### Known Issues
 - **FIXME:** There's an issue with Docker incorrectly selecting the Intel GPU instead of the NVIDIA GPU on the LBP machine. Verify GPU selection before processing the next subject.
 
-### Minimal preprocessing
+#### Minimal preprocessing
 
 link: [fMRIprep](https://fmriprep.org/en/stable/)
 
@@ -303,23 +303,23 @@ fmriprep-docker \
     --participant-label 37 38 39 40
 ```
 
-#### How to interpret fMRIprep visual reports
+##### How to interpret fMRIprep visual reports
 
-### Running a GLM in SPM
+#### Running a GLM in SPM
 
 TODO: show code snippets perhaps? or just reference to the code
 
-### Regions of Interest
+#### Regions of Interest
 
-#### ROIs from localizers
+##### ROIs from localizers
 
-#### HCP Glasser parcellation
+##### HCP Glasser parcellation
 
-#### Other parcels/atlases
+##### Other parcels/atlases
 
-### MVPA/RSA
+#### MVPA/RSA
 
-### Plotting and reporting
+#### Plotting and reporting
 
 
 
