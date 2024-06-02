@@ -21,16 +21,24 @@ In order to avoid error while converting into BIDS format, the raw data (i.e., t
 ```
 sourcedata
 └── sub-41
-    ├── bh
-    │   ├── 20240503104938_log_41-1-2_exp.tsv
-    │   ├── 20240503105558_41_1_exp.mat
-    │   ├── 20240503105640_log_41-2-1_exp.tsv
-    │   ├── 20240503110226_41_2_exp.mat
-    │   ├── 20240503110241_log_41-3-2_exp.tsv
-    └── nifti
-        ├── SUBJECTNAME_WIP_CS_3DTFE_8_1.nii
-        ├── SUBJECTNAME_WIP_Functional_run1_13_1.nii
-        └── SUBJECTNAME_WIP_Functional_run2_12_1.nii
+	├── bh
+	│   ├── 20240503104938_log_41-1-2_exp.tsv
+	│   ├── 20240503105558_41_1_exp.mat
+	│   ├── 20240503105640_log_41-2-1_exp.tsv
+	│   ├── 20240503110226_41_2_exp.mat
+	│   ├── 20240503110241_log_41-3-2_exp.tsv
+	│   ├── 20240503110825_41_3_exp.mat
+	│   ├── 20240503110851_log_41-4-1_exp.tsv
+	│   ├── 20240503111433_41_4_exp.mat
+	│   ├── 20240503111450_log_41-5-2_exp.tsv
+	│   └── 20240503112032_41_5_exp.mat
+	└── nifti
+	    ├── sub-41_WIP_CS_3DTFE_8_1.nii
+	    ├── sub-41_WIP_Functional_run1_3_1.nii
+	    ├── sub-41_WIP_Functional_run2_4_1.nii
+	    ├── sub-41_WIP_Functional_run3_5_1.nii
+	    ├── sub-41_WIP_Functional_run4_6_1.nii
+	    └── sub-41_WIP_Functional_run5_7_1.nii
 ```
 
 ### How to get images from the scanner
@@ -39,7 +47,7 @@ For optimal BIDS conversion of fMRI data, it is recommended to initially collect
 
 1. **Initial DICOM Collection**:
     - Collect DICOM files for each modality (e.g., T1 and BOLD) for one subject.
-    - Convert these DICOM files to NIfTI format, which will generate JSON sidecar files.
+    - Convert these DICOM files to NIfTI format using `dcm2nii`, which will generate JSON sidecar files (refer to [this section](#bids-conversion) for more info on the conversion process).
 
 2. **Template Creation**:
     - Rename the JSON files for T1 and BOLD image to `sub-xx_T1w.json` and `sub-xx_task-exp_run-x_bold.json`
@@ -50,7 +58,7 @@ For optimal BIDS conversion of fMRI data, it is recommended to initially collect
 
 ### Missing fields in JSON files
 
-Despite these steps, some BIDS fields in the sidecar JSON files may remain empty due to limitations of the Philips scanner, not the conversion tools. The most relevant fields that are left empty due to these limitations are `SliceTiming` and `PhaseEncodingDirection`.
+Despite these steps, some BIDS fields in the sidecar JSON files may remain empty due to limitations of the Philips scanner, not the conversion tools. The most relevant fields that are left empty due to these limitations are `SliceTiming` and [`PhaseEncodingDirection`](https://github.com/xiangruili/dicm2nii/issues/49).
 
 - **SliceTiming**:
     - This field is used by fMRIPrep during slice timing correction.
@@ -87,12 +95,21 @@ TODO: here Tim should describe name and format of the logfiles
 
 TODO: add ref to fMRI task repo
 
-The fMRI task script should give two files per run as output. Here is a description of the naming structure and file content:
+The fMRI task script should give two files per run as output (see the folder structure [here](#how-to-store-raw-data). Here is a description of the naming structure and file content:
 
-1. `<timestamp>_log_<subID>-<run>-<buttonMapping>_<taskName>.tsv`: [PLACEHOLDER]
-2. `<timestamp>_log_<subID>_<run>_<taskName>.mat`: [PLACEHOLDER]
+1. `<timestamp>_log_<subID>-<run>-<buttonMapping>_<taskName>.tsv`: This is the human-readable log file produced by the task. Here is an extract from the file:
 
-If the behavioural data is stored in a `sourcedata/sub-xx/bh/` folder consistent to the one described [above](#how-to-store-raw-data), you can run the `02_behavioural-to-BIDS.m` script, after editing the parameters at the top of the script. This script iterates through subject-specific directories, targeting behavioral .mat files, then processes and exports trial-related data into BIDS-compliant TSV event files. 
+| EVENT_TYPE | EVENT_NAME | DATETIME                | EXP_ONSET | ACTUAL_ONSET | DELTA      | EVENT_ID |
+|------------|------------|-------------------------|-----------|--------------|------------|----------|
+| START      | -          | 2024-05-03 10:49:43.099 | -         | 0            | -          | -        |
+| FLIP       | Instr      | 2024-05-03 10:50:11.399 | -         | 28.300201    | -          | -        |
+| RESP       | KeyPress   | 2024-05-03 10:50:34.160 | -         | 51.063114    | -          | 51       |
+| FLIP       | TgrWait    | 2024-05-03 10:50:34.216 | -         | 51.117046    | -          | -        |
+| PULSE      | Trigger    | 2024-05-03 10:50:40.000 | -         | 56.904357    | -          | 53       |
+
+2. `<timestamp>_log_<subID>_<run>_<taskName>.mat`: This MATLAB file contains all the parameters to reproduce the experimental run, and stores input parameters and results.
+
+If the behavioural data is stored in a `sourcedata/sub-xx/bh/` folder consistent to the one described [above](#how-to-store-raw-data), you can run the `02_behavioural-to-BIDS.m` script, after editing the parameters at the top of the script. This script iterates through subject-specific directories targeting behavioral .mat files, then processes and exports trial-related info into BIDS-compliant TSV event files in the BIDS folder provided as parameters.
 
 TODO: above, we need to phrase better and add more info about what these parameters are, possibly with a screenshot of the code. Also, in the code make more clear where the parameters are.
 TODO: perhaps wrap nifti and bh 2 BIDS in a single script that takes some input arguments? 
@@ -113,6 +130,7 @@ Ensure that each resulting tsv file has at least three columns representing: `on
 ## fMRI Data
 
 ### BIDS conversion
+!!! note **NOTE:** This step should only be performed for the first subject in your dataset, and can be skipped if the anatomical and functional JSON templates are available in `code/misc/` (see [here](#how-to-get-images-from-the-scanner) for more info on the template files)
 
 1. **Convert DICOM to BIDS (NIfTI):**
     - **Prerequisites:**
@@ -147,12 +165,114 @@ Ensure that each resulting tsv file has at least three columns representing: `on
 2. **Validate the BIDS directory (and solve errors):**
     - [BIDS Validator](https://bids-standard.github.io/bids-validator/)
 
-### Surface preprocessing (FastSurfer)
+### Quality check ([mriqc](https://mriqc.readthedocs.io/en/latest/))
 
+TODO: explain how to save and run this below
+TODO: explain that the one below may fail, in that case run the single commands separately
 
-### Minimal preprocessing (fMRIprep)
+```sh
+#!/bin/bash
+
+# Iterate over subject numbers
+for i in {0..40}; do
+    # Skip subject 0, 5, 14, 31
+    if [ $i -eq 0 ] || [ $i -eq 5 ] || [ $i -eq 14 ] || [ $i -eq 31 ]; then
+        continue
+    fi
+
+    # Format subject number with leading zeros
+    subID=$(printf "sub-%02d" $i)
+    echo "Processing $subID"
+
+    # Docker command with dynamic subject ID using sudo
+    docker run -it --rm \
+    -v /data/BIDS:/data:ro \
+    -v /data/BIDS/derivatives/mriqc:/out \
+    -v /temp_mriqc:/scratch \
+    nipreps/mriqc:latest /data /out participant \
+    --participant-label ${subID} \
+    --nprocs 16 --mem-gb 40 --float32 \
+     --work-dir /scratch \
+     --verbose-reports --resource-monitor -vv
+
+    # Wait or perform other actions between runs if needed
+    sleep 0.5
+done
+
+echo "Running group analysis"
+
+docker run -it --rm \
+-v /data/BIDS:/data:ro \
+-v /data/BIDS/derivatives/mriqc:/out \
+-v /temp_mriqc:/scratch \
+nipreps/mriqc:latest /data /out group \
+--nprocs 16 --mem-gb 40 --float32 \
+ --work-dir /scratch \
+ --verbose-reports --resource-monitor -vv
+
+sleep 0.5
+
+echo "Running classifier"
+docker run \
+-v /temp_mriqc:/scratch \
+-v /data/BIDS/derivatives/mriqc:/resdir \
+-w /scratch --entrypoint=mriqc_clf poldracklab/mriqc:latest \
+ --load-classifier -X /resdir/group_T1w.tsv
+```
+
+### Surface Preprocessing ([FastSurfer](https://github.com/Deep-MI/FastSurfer))
+
+FastSurfer offers a significantly faster alternative to traditional FreeSurfer processing, leveraging NVIDIA GPU acceleration if available. If a suitable GPU is not available, consider using fMRIprep for CPU-based processing, which will integrate FreeSurfer's recon-all but will take longer (approx. 15 hours).
+
+#### Prerequisites
+- **Docker Desktop:** Install Docker Desktop [here](https://docs.docker.com/desktop/install/ubuntu/).
+- **NVIDIA Docker:** Necessary for GPU utilization, installable from [here](https://developer.nvidia.com/blog/nvidia-docker-gpu-server-application-deployment-made-easy/).
+- **FreeSurfer License:** Download necessary licensing for FreeSurfer.
+- **WSL (Windows Subsystem for Linux):** Required only for Windows users. Installation guidelines [here](https://docs.microsoft.com/en-us/windows/wsl/install).
+
+#### Verifying GPU Accessibility via Docker
+- **Check if Docker can access the GPU:**
+  - For Windows, use WSL to execute the following command:
+    ```
+    sudo docker run --rm --gpus all nvidia/cuda:12.0.1-base-ubuntu20.04 nvidia-smi
+    ```
+  - Ensure that `cuda:12.0.1` and `ubuntu20.04` match your CUDA drivers and Ubuntu version, respectively. Check your CUDA version by running `nvidia-smi` in a Linux/WSL terminal.
+  - The command should output a table showing CUDA version and GPU details. If no NVIDIA GPU is listed, troubleshoot the NVIDIA Docker installation.
+
+#### Running FastSurfer
+- **Example Command for Andrea's Ubuntu Laptop:**
+  ```
+  sudo docker run --gpus all -v /media/costantino_ai/T7/fMRI_chess/data/BIDS:/data -v /media/costantino_ai/T7/fMRI_chess/data/BIDS/derivatives/FastSurfer:/output -v /media/costantino_ai/T7/fMRI_chess/misc:/fs_license --rm --user $(id -u):$(id -g) deepmi/fastsurfer --fs_license /fs_license/license.txt --t1 /data/sub-00/anat/sub-00_T1w.nii --sid sub-00 --sd /output --parallel
+  ```
+
+- **Example Command for LBP Computer:**
+  ```
+  docker run --gpus all -v /mnt/c/Andrea/data/BIDS_Laura:/data -v /mnt/c/Andrea/data/BIDS_Laura/derivatives/fastsurfer:/output -v /mnt/c/Andrea/data/scripts\ and\ codes:/fs_license --rm --user $(id -u):$(id -g) deepmi/fastsurfer --fs_license /fs_license/license.txt --t1 /data/sub-00/anat/sub-00_T1w.nii --sid sub-00 --sd /output --device cuda:0 --surfreg --parallel
+  ```
+
+- **Volumes Explanation:**
+  - First `-v` specifies the path to your BIDS folder.
+  - Second `-v` specifies where you want the outputs saved.
+  - Third `-v` is the path where the FreeSurfer license is stored.
+
+#### Notes on Path Formatting
+- **Windows WSL Users:**
+- The C-drive is accessible at `/mnt/c/`.
+- Replace backslashes `\` with forward slashes `/` in paths.
+- To handle spaces in directory paths, insert a backslash before each space, e.g., `/mnt/c/folder with space/` becomes `/mnt/c/folder\ with\ space/`.
+
+#### Known Issues
+- **FIXME:** There's an issue with Docker incorrectly selecting the Intel GPU instead of the NVIDIA GPU on the LBP machine. Verify GPU selection before processing the next subject.
+
+### Minimal preprocessing ([fMRIprep](https://fmriprep.org/en/stable/))
 
 TODO: explain how to install docker and fmriprep-docker
+
+NOTE: the parameters `n-cpus` and `mem-mb` depend on the computer hardware, and may need some tuning to avoid out of memory errors. The memory assigned with `mem-mb` is not the total memory, but the memory per process. That means that the actual memory used can exceed by far that value. Set the `mem-mb` to at least 1/3 or 1/4 of you RAM memory.
+
+Add info about the `work-dir` and how big one of these folder can get (to avoid SSD space errors)
+
+Add info about running in parallel rather than multiple subjects in the same terminal
 
 ```sh
 fmriprep-docker \
@@ -175,61 +295,6 @@ fmriprep-docker \
 ```
 
 #### How to interpret fMRIprep visual reports
-
-### Quality check (mriqc)
-
-TODO: explain how to save and run this below
-TODO: explain that the one below may fail, in that case run the single commands separately
-
-```sh
-#!/bin/bash
-
-# Iterate over subject numbers
-for i in {37..40}; do
-    # Skip subject 0, 5, 14, 31
-    if [ $i -eq 0 ] || [ $i -eq 5 ] || [ $i -eq 14 ] || [ $i -eq 31 ]; then
-        continue
-    fi
-
-    # Format subject number with leading zeros
-    subID=$(printf "sub-%02d" $i)
-    echo "Processing $subID"
-
-    # Docker command with dynamic subject ID using sudo
-    docker run -it --rm \
-    -v /data/BIDS/derivatives/fmriprep:/data:ro \
-    -v /data/BIDS/derivatives/mriqc:/out \
-    -v /temp_mriqc:/scratch \
-    nipreps/mriqc:latest /data /out participant \
-    --participant-label ${subID} \
-    --nprocs 16 --mem-gb 40 --float32 \
-     --work-dir /scratch \
-     --verbose-reports --resource-monitor -vv
-
-    # Wait or perform other actions between runs if needed
-    sleep 0.5
-done
-
-echo "Running group analysis"
-
-docker run -it --rm \
--v /data/BIDS/derivatives/fmriprep:/data:ro \
--v /data/BIDS/derivatives/mriqc:/out \
--v /temp_mriqc:/scratch \
-nipreps/mriqc:latest /data /out group \
---nprocs 16 --mem-gb 40 --float32 \
- --work-dir /scratch \
- --verbose-reports --resource-monitor -vv
-
-sleep 0.5
-
-echo "Running classifier"
-docker run \
--v /temp_mriqc:/scratch \
--v /data/BIDS/derivatives/mriqc:/resdir \
--w /scratch --entrypoint=mriqc_clf poldracklab/mriqc:latest \
- --load-classifier -X /resdir/group_T1w.tsv
-```
 
 ### Running a GLM in SPM
 
