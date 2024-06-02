@@ -169,7 +169,7 @@ Ensure that each resulting tsv file has at least three columns representing: `on
 
 ### Quality check
 
- [mriqc](https://mriqc.readthedocs.io/en/latest/)
+link: [mriqc](https://mriqc.readthedocs.io/en/latest/)
 
 TODO: explain how to save and run this below
 
@@ -227,7 +227,7 @@ docker run \
 
 ### Surface Preprocessing
 
-[FastSurfer](https://github.com/Deep-MI/FastSurfer)
+link: [FastSurfer](https://github.com/Deep-MI/FastSurfer)
 
 FastSurfer offers a significantly faster alternative to traditional FreeSurfer processing, leveraging NVIDIA GPU acceleration if available. If a suitable GPU is not available, consider using fMRIprep for CPU-based processing, which will integrate FreeSurfer's recon-all but will take longer (approx. 15 hours).
 
@@ -272,7 +272,8 @@ FastSurfer offers a significantly faster alternative to traditional FreeSurfer p
 - **FIXME:** There's an issue with Docker incorrectly selecting the Intel GPU instead of the NVIDIA GPU on the LBP machine. Verify GPU selection before processing the next subject.
 
 ### Minimal preprocessing
-[fMRIprep](https://fmriprep.org/en/stable/)
+
+link: [fMRIprep](https://fmriprep.org/en/stable/)
 
 TODO: explain how to install docker and fmriprep-docker
 
