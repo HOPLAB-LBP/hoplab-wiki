@@ -3,11 +3,8 @@
 This page is a work in progress and it is based on what I do in my fMRI pipeline. This info may change once we agree on shared practices.
 
 - **TODO:** talk to Joan and Elahe to check on what they do, and standardize.
-
 - **TODO:** Add info and links about fmri tasks, preprocessing, GLM, ROIs, MVPA/RSA.
-
 - **TODO:** info on how to install main tools used for the fmri workflow for different OSs.
-
 - **TODO:** info about instruments and procedures at the hospital.
 
 A template folder structure, along with the code to reproduce these analyses, can be found at [PLACEHOLDER]
@@ -81,19 +78,18 @@ For more details on Philips DICOM conversion, refer to the following resources:
 
 Additional information on the sequence can be found at the scanner by following these steps:
 	
-	- **TODO:** document the correct steps to get info on the geometry etc. we need to start new examination, load our sequence, click on one run/T1, and go in the geometry tab. here we have info about polarity, direction etc.
+- **TODO:** document the correct steps to get info on the geometry etc. we need to start new examination, load our sequence, click on one run/T1, and go in the geometry tab. here we have info about polarity, direction etc.
 	
 ### BIDS standards
 
-**TODO:** add info about the BIDS standard, and how we use it (from raw to BIDS + derivatives)
+- **TODO:** add info about the BIDS standard, and how we use it (from raw to BIDS + derivatives)
 	
 ## Workflow
 
 ### Behavioral Data
 
-**TODO:** here Tim should describe name and format of the logfiles
-
-**TODO:** add ref to fMRI task repo
+- **TODO:** here Tim should describe name and format of the logfiles
+- **TODO:** add ref to fMRI task repo
 
 The fMRI task script should give two files per run as output (see the folder structure [here](#how-to-store-raw-data). Here is a description of the naming structure and file content:
 
