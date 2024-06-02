@@ -6,8 +6,8 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
 
 1. [Getting Started](#getting-started)
 2. [Editing the Wiki](#editing-the-wiki)
-3. [How to Contribute - Easy Workflow](#how-to-contribute-easy-workflow)
-4. [How to Contribute - Advanced Workflow](#how-to-contribute-advanced-workflow)
+3. [How to Contribute - Easy Workflow](#how-to-contribute---easy-workflow)
+4. [How to Contribute - Advanced Workflow](#how-to-contribute---advanced-workflow)
 5. [Reviewing and Accepting Pull Requests (for Admins)](#reviewing-and-accepting-pull-requests-for-admins)
 6. [Troubleshooting](#troubleshooting)
 
@@ -82,92 +82,102 @@ While this method is straightforward, direct changes to the `main` branch are di
 
 ## How to Contribute - Advanced Workflow
 
-The preferred way to contribute is to clone the repository locally, make your changes, and create a pull request. This ensures that all changes are reviewed before being merged into the main codebase and avoids potential destructive actions. Here’s how to do it:
+The preferred way to contribute, but it requires some familiarity wit git and Python. Here's a step-by-step guide that includes forking the repository, making and testing changes locally, and then submitting those changes for review through a pull request.
 
-### Setting Up Your Local Environment
+### Step 1: Forking the Repository
 
-First, create a conda environment and install the necessary dependencies within this environment.
-```sh
-conda create --name hoplab-wiki python=3.9
-conda activate hoplab-wiki
-pip install mkdocs mkdocs-material
-```
+1. **Visit the Original Repository:**
+   - Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
+   - This repository contains all the files and documentation you will need to work with.
 
-### Cloning and Editing the Repository
+2. **Fork the Repository:**
+   - Click the "Fork" button located at the top right corner of the repository page. This action will create a copy of the repository in your own GitHub account, allowing you to make changes without affecting the original codebase.
 
-You can use GitHub Desktop for an easier experience, or Git from the command line.
+### Step 2: Setting Up Your Local Environment
 
-#### Using GitHub Desktop
-1. Open GitHub Desktop.
-2. Click "File" > "Clone Repository".
-3. Select the `hoplab-wiki` repository from the `HOPLAB-LBP` organization and click "Clone".
-4. Make your changes (see [Editing the Wiki](#editing-the-wiki) for more details)
+1. **Create and Activate a Conda Environment:**
+   - Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux).
+   - To create a new environment specifically for this project, type:
+     ```
+     conda create --name hoplab-wiki python=3.9
+     ```
+   - Activate the newly created environment by typing:
+     ```
+     conda activate hoplab-wiki
+     ```
+   - Install necessary packages to work with MkDocs and the Material theme:
+     ```
+     pip install mkdocs mkdocs-material
+     ```
 
-#### Using Git
-1. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux).
-2. Navigate to the directory where you want to clone the repository:
-```sh
-cd path/to/your/directory
-```
-3. Clone the repository:
-```sh
-git clone https://github.com/HOPLAB-LBP/hoplab-wiki.git
-```
-4. Navigate to the repository directory:
-```sh
-cd hoplab-wiki
-```
-5. Make your changes (see [Editing the Wiki](#editing-the-wiki) for more details)
+### Step 3: Cloning Your Fork Locally
 
-### Building and Serving Locally (to test your changes)
+1. **Clone the Forked Repository:**
+   - Ensure your terminal or command prompt is open.
+   - Decide on a directory where you want to store the project, then navigate there:
+     ```
+     cd path/to/your/directory
+     ```
+   - Clone your fork using the URL from your repository on GitHub:
+     ```
+     git clone https://github.com/your-username/hoplab-wiki.git
+     ```
+   - Change into the directory of the cloned repository:
+     ```
+     cd hoplab-wiki
+     ```
 
-To preview your changes locally, you need to build and serve the documentation.
+### Step 4: Making Changes
 
-1. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux).
-2. Navigate to the `hoplab-wiki` directory:
-```sh
-cd path/to/your/hoplab-wiki
-```
-3. Activate your conda environment:
-```sh
-conda activate hoplab-wiki
-```
-4. Serve the documentation locally:
-```sh
-mkdocs serve
-```
-5. Open your browser and navigate to http://127.0.0.1:8000/.
+ 1. **Edit Documentation:**
+   - You can now make changes to the documentation. Use a text editor or an IDE to open and edit the Markdown files in the repository.
+   - If changes are extensive, consider splitting them into smaller, manageable commits that focus on specific pages or sections for clarity and ease of review.
 
-### Deploying Your Changes
+### Step 5: Testing Your Changes Locally
 
-To deploy your changes to GitHub Pages:
+1. **Serve the Documentation Locally:**
+   - While in your project directory and with the Conda environment activated, launch the local server by typing:
+     ```
+     mkdocs serve
+     ```
+   - Open a web browser and navigate to `http://127.0.0.1:8000/`. This allows you to see your changes as they would appear on the live site.
+   - Keep this server running as you make changes; refresh your browser to update the preview.
 
-1. Commit your changes in GitHub Desktop or via Git:   
-```sh
-git add .
-git commit -m "Describe your changes"
-```
-2. Push your changes:
-```sh
-git push origin main
-```
+### Step 6: Committing Your Changes
 
-#### Automatic Deployment with GitHub Actions
+1. **Stage and Commit Your Changes:**
+   - From your terminal, add all modified files to your commit:
+     ```
+     git add .
+     ```
+   - Commit the changes, including a clear message about what was modified and why:
+     ```
+     git commit -m "Detailed description of changes"
+     ```
+   - Push your commits to GitHub:
+     ```
+     git push origin main
+     ```
 
-This repository is set up to use GitHub Actions for automatic deployment. This means that every time changes are pushed to the `main` branch, the documentation will automatically be built and deployed to GitHub Pages.
-
-!!! note
-    You do not need to manually run the `mkdocs gh-deploy` command each time you make changes. Simply push your changes to the `main` branch, and GitHub Actions will handle the deployment.
-
-### Creating a Pull Request
+### Step 7: Creating a Pull Request
 
 After pushing your changes to GitHub, create a pull request to ensure that all changes are reviewed before being merged into the main codebase.
+1. **Initiate a Pull Request:**
+   - Go to your GitHub account and navigate to your fork of the `hoplab-wiki`.
+   - Select "Pull requests" and then click "New pull request".
+   - Choose the original repository as the base, and your repository branch as the compare.
+   - Fill out the form to describe the changes made and then submit the pull request for review.
+   - 
 
-1. Go to the `hoplab-wiki` repository on GitHub.
-2. Click on "Compare & pull request".
-3. Add a description of your changes and submit the pull request.
+!!! note Automatic Deployment with GitHub Actions
+    This repository is set up to use GitHub Actions for automatic deployment. This means that every time changes are pushed to the `main` branch, the documentation will automatically be built and deployed to GitHub Pages. You do not need to manually run the `mkdocs gh-deploy` command each time you make changes. Simply push your changes to the `main` branch, and GitHub Actions will handle the deployment.
+    
+### Step 8: Closing the Local Server
 
-## Reviewing and Accepting Pull Requests (for Admins)
+ 1. **Stop the Server:**
+   - When you are done previewing and editing, go back to the terminal where your server is running and press `Ctrl+C` to stop the server.
+
+### Reviewing and Accepting Pull Requests (for Admins)
 
 1. Go to the `hoplab-wiki` repository on GitHub.
 2. Click on the "Pull requests" tab.
