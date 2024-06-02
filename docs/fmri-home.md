@@ -243,7 +243,7 @@ Run this in your terminal (for Windows, use WSL to execute the following command
   sudo docker run --rm --gpus all nvidia/cuda:12.0.1-base-ubuntu20.04 nvidia-smi
   ```
 !!! note
-  Ensure that `cuda:12.0.1` and `ubuntu20.04` match your CUDA drivers and Ubuntu version, respectively. Check your CUDA version by running `nvidia-smi` in a Linux/WSL terminal.
+    Ensure that `cuda:12.0.1` and `ubuntu20.04` match your CUDA drivers and Ubuntu version, respectively. Check your CUDA version by running `nvidia-smi` in a Linux/WSL terminal.
 
 The command should output a table showing CUDA version and GPU details. If no NVIDIA GPU is listed, troubleshoot the NVIDIA Docker installation.
 
