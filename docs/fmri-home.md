@@ -14,7 +14,7 @@ A template folder structure, along with the code to reproduce these analyses, ca
 
 # General Notes
 
-### How to store raw data
+## How to store raw data
 
 In order to avoid error while converting into BIDS format, the raw data (i.e., the data collected from the scanner, behavioural measure, eye-tracking) should be stored in a folder with the following structure:
 
@@ -41,7 +41,7 @@ sourcedata
 	    └── sub-41_WIP_Functional_run5_7_1.nii
 ```
 
-### How to get images from the scanner
+## How to get images from the scanner
 
 For optimal BIDS conversion of fMRI data, it is recommended to initially collect DICOM files (not NIfTI or PAR/REC) at the scanner. Although this adds an extra conversion step and takes longer, it ensures proper conversion into BIDS format. Here is the recommended process:
 
@@ -56,7 +56,7 @@ For optimal BIDS conversion of fMRI data, it is recommended to initially collect
 3. **Subsequent Data Collection**:
     - After creating the template JSON files, collect future data in NIfTI format to save time. The `01_nifti-to-BIDS.m` script will use the JSON templates to populate the BIDS folders, provided that the fMRI sequence remained unchaged (in that case you need to generate new templates from the DICOM files).
 
-### Missing fields in JSON files
+## Missing fields in JSON files
 
 Despite these steps, some BIDS fields in the sidecar JSON files may remain empty due to limitations of the Philips scanner, not the conversion tools. The most relevant fields that are left empty due to these limitations are `SliceTiming` and [`PhaseEncodingDirection`](https://github.com/xiangruili/dicm2nii/issues/49).
 
@@ -77,13 +77,13 @@ For more details on Philips DICOM conversion, refer to the following resources:
 - [Philips DICOM Missing Information - dcm2niix](https://github.com/rordenlab/dcm2niix/tree/master/Philips#missing-information)
 - [PARREC Conversion - dcm2niix](https://github.com/rordenlab/dcm2niix/tree/master/PARREC)
 
-### Where to find additional info on the fMRI sequence
+## Where to find additional info on the fMRI sequence
 
 Additional information on the sequence can be found at the scanner by following these steps:
 	
 	- TODO: document the correct steps to get info on the geometry etc. we need to start new examination, load our sequence, click on one run/T1, and go in the geometry tab. here we have info about polarity, direction etc.
 	
-### BIDS standards
+## BIDS standards
 
 TODO: add info about the BIDS standard, and how we use it (from raw to BIDS + derivatives)
 	
