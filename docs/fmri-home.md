@@ -199,7 +199,7 @@ link: [mriqc](https://mriqc.readthedocs.io/en/latest/)
 
 - **TODO:** explain that the one below may fail, in that case run the single commands separately
 
-```sh
+```sh linenums="1" title="mriqc_batch.sh"
 #!/bin/bash
 
 ## Iterate over subject numbers
@@ -279,7 +279,7 @@ Example Commands:
 
 === "Andrea's Ubuntu Laptop"
 
-    ```sh
+    ```sh linenums="1"
     sudo docker run --gpus all \
     -v /media/costantino_ai/T7/fMRI_chess/data/BIDS:/data \
     -v /media/costantino_ai/T7/fMRI_chess/data/BIDS/derivatives/FastSurfer:/output \
@@ -294,7 +294,7 @@ Example Commands:
 
 === "Windows LBP Computer"
 
-    ```sh
+    ```sh linenums="1"
     docker run --gpus all \
     -v /mnt/c/Andrea/data/BIDS_Laura:/data \
     -v /mnt/c/Andrea/data/BIDS_Laura/derivatives/fastsurfer:/output \
@@ -332,7 +332,7 @@ Add info about the `work-dir` and how big one of these folder can get (to avoid 
 
 Add info about running in parallel rather than multiple subjects in the same terminal
 
-```sh
+```sh linenums="1"
 fmriprep-docker \
     /data/BIDS \
     /data/BIDS/derivatives/fmriprep \
