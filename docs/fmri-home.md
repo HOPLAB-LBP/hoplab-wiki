@@ -114,6 +114,14 @@ Additional information on the sequence can be found at the scanner. Here's how:
 	
 ## Workflow
 
+### At the hospital - step by step procedure
+
+**TODO:** we need to populated this with specific instructions on everything that needs to be done at the hospital.
+    - sign forms, check in, how to reach the scanning room, PCs (scan, task, ET), make sure everything is connected correctly (headphones, coil, ET), etc. follow/link the MRI checklist
+    - NOTE: coil/headphones connections: the top left plug is for the headphones. bottom left and top right for the coil (need to connect the 2 big wires coming out of the scanner)
+    - which speaker to use? the black one with the white hp, connected top right
+
+
 ### Behavioral Data
 
 - **TODO:** here Tim should describe name and format of the logfiles
