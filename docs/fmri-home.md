@@ -311,7 +311,7 @@ The command should output a table showing CUDA version and GPU details. If no NV
   - Second `-v` specifies where you want the outputs saved.
   - Third `-v` is the path where the FreeSurfer license is stored.
 
-!!! tip Path Formatting for Windows users
+!!! tip "Path Formatting for Windows users"
     - The C-drive is accessible at `/mnt/c/`.
     - Replace backslashes `\` with forward slashes `/` in paths.
     - To handle spaces in directory paths, insert a backslash before each space, e.g., `/mnt/c/folder with space/` becomes `/mnt/c/folder\ with\ space/`.
