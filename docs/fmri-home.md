@@ -107,18 +107,18 @@ Additional information on the sequence can be found at the scanner. Here's how:
 
 - **TODO:** add info about the BIDS standard, and how we use it (from raw to BIDS + derivatives)
 	
-## Workflow
-
-- **TODO:** info on how to install main tools used for the fmri workflow for different OSs.
-- **TODO:** Add info and links about fmri tasks, preprocessing, GLM, ROIs, MVPA/RSA.
-
-### At the hospital - step by step procedure
+## At the hospital - step by step procedure
 
 **TODO:** we need to populated this with specific instructions on everything that needs to be done at the hospital. e.g., coils and headphones connections + how to check whether it is correctly connected, projector, eye-tracker.
     - sign forms, check in, how to reach the scanning room, PCs (scan, task, ET), make sure everything is connected correctly (headphones, coil, ET), etc. follow/link the MRI checklist
     - NOTE: coil/headphones connections: the top left plug is for the headphones. bottom left and top right for the coil (need to connect the 2 big wires coming out of the scanner)
     - which speaker to use? the black one with the white hp, connected top right
-    
+
+## Data Workflow
+
+- **TODO:** info on how to install main tools used for the fmri workflow for different OSs.
+- **TODO:** Add info and links about fmri tasks, preprocessing, GLM, ROIs, MVPA/RSA.
+
 ### Behavioral Data
 
 - **TODO:** here Tim should describe name and format of the logfiles
