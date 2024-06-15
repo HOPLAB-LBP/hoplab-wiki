@@ -155,7 +155,7 @@ Ensure that each resulting tsv file has at least three columns representing: `on
 
 #### BIDS conversion
 
-!!! note
+!!! info
     This step should only be performed for the first subject in your dataset, and can be skipped if the anatomical and functional JSON templates are available in `code/misc/` (see [here](#how-to-get-images-from-the-scanner) for more info on the template files)
 
 1. **Convert DICOM to BIDS (NIfTI):**
@@ -248,8 +248,8 @@ docker run \
 -w /scratch --entrypoint=mriqc_clf poldracklab/mriqc:latest \
  --load-classifier -X /resdir/group_T1w.tsv
 ```
-!!!note
-    In some cases, the JSON files corresponding to each nifti file can include `NaN` values, that are not compatible with JSON encoders and will raise an error when running mriqc. A quick (and dirty) solution would be to sanitize all the JSON files before running mriqc. I made a small utility script that can help with that. See `./utils/sanitize_json.py`
+!!! warning
+    In some cases, the JSON files corresponding to each nifti file can include `NaN` values, which are not compatible with JSON encoders and will raise an error when running mriqc. A quick (and dirty) solution would be to sanitize all the JSON files before running mriqc. I made a small utility script that can help with that. See `./utils/sanitize_json.py`.
 
 #### Surface Preprocessing
 
@@ -268,7 +268,7 @@ Run this in your terminal (for Windows, use WSL to execute the following command
   ```
   sudo docker run --rm --gpus all nvidia/cuda:12.0.1-base-ubuntu20.04 nvidia-smi
   ```
-!!! note
+!!! warning
     Ensure that `cuda:12.0.1` and `ubuntu20.04` match your CUDA drivers and Ubuntu version, respectively. Check your CUDA version by running `nvidia-smi` in a Linux/WSL terminal.
 
 The command should output a table showing CUDA version and GPU details. If no NVIDIA GPU is listed, troubleshoot the NVIDIA Docker installation.
