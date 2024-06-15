@@ -2,11 +2,6 @@
 
 This page is a work in progress and it is based on what I do in my fMRI pipeline. This info may change once we agree on shared practices.
 
-- **TODO:** talk to Joan and Elahe to check on what they do, and standardize.
-- **TODO:** Add info and links about fmri tasks, preprocessing, GLM, ROIs, MVPA/RSA.
-- **TODO:** info on how to install main tools used for the fmri workflow for different OSs.
-- **TODO:** info about instruments and procedures at the hospital. e.g., coils and headphones connections + how to check whether it is correctly connected, projector, eye-tracker.
-
 A template folder structure, along with the code to reproduce these analyses, can be found at [PLACEHOLDER]
 
 ## General Notes
@@ -114,14 +109,16 @@ Additional information on the sequence can be found at the scanner. Here's how:
 	
 ## Workflow
 
+- **TODO:** info on how to install main tools used for the fmri workflow for different OSs.
+- **TODO:** Add info and links about fmri tasks, preprocessing, GLM, ROIs, MVPA/RSA.
+
 ### At the hospital - step by step procedure
 
-**TODO:** we need to populated this with specific instructions on everything that needs to be done at the hospital.
+**TODO:** we need to populated this with specific instructions on everything that needs to be done at the hospital. e.g., coils and headphones connections + how to check whether it is correctly connected, projector, eye-tracker.
     - sign forms, check in, how to reach the scanning room, PCs (scan, task, ET), make sure everything is connected correctly (headphones, coil, ET), etc. follow/link the MRI checklist
     - NOTE: coil/headphones connections: the top left plug is for the headphones. bottom left and top right for the coil (need to connect the 2 big wires coming out of the scanner)
     - which speaker to use? the black one with the white hp, connected top right
-
-
+    
 ### Behavioral Data
 
 - **TODO:** here Tim should describe name and format of the logfiles
