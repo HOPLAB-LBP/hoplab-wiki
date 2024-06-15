@@ -155,7 +155,7 @@ Ensure that each resulting tsv file has at least three columns representing: `on
 
 #### BIDS conversion
 
-!!! note Automatic Deployment with GitHub Actions
+!!! note
     This step should only be performed for the first subject in your dataset, and can be skipped if the anatomical and functional JSON templates are available in `code/misc/` (see [here](#how-to-get-images-from-the-scanner) for more info on the template files)
 
 1. **Convert DICOM to BIDS (NIfTI):**
