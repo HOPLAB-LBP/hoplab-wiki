@@ -5,7 +5,7 @@ This page is a work in progress and it is based on what I do in my fMRI pipeline
 - **TODO:** talk to Joan and Elahe to check on what they do, and standardize.
 - **TODO:** Add info and links about fmri tasks, preprocessing, GLM, ROIs, MVPA/RSA.
 - **TODO:** info on how to install main tools used for the fmri workflow for different OSs.
-- **TODO:** info about instruments and procedures at the hospital.
+- **TODO:** info about instruments and procedures at the hospital. e.g., coils and headphones connections + how to check whether it is correctly connected, projector, eye-tracker.
 
 A template folder structure, along with the code to reproduce these analyses, can be found at [PLACEHOLDER]
 
