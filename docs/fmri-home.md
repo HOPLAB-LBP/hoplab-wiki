@@ -79,34 +79,34 @@ For more details on Philips DICOM conversion, refer to the following resources:
 Additional information on the sequence can be found at the scanner. Here's how:
 
 1. **Start the Examination**
-   - Navigate to **Patients** -> **New Examination** -> **RIS**.
-   - Select your subject and fill out the form:
-     - **Weight:** Enter the subject's weight.
-     - **Implants:** Specify if the subject has any implants.
-     - **Pregnant:** Indicate if the subject is pregnant.
+    - Navigate to **Patients** -> **New Examination** -> **RIS**.
+    - Select your subject and fill out the form:
+        - **Weight:** Enter the subject's weight.
+        - **Implants:** Specify if the subject has any implants.
+        - **Pregnant:** Indicate if the subject is pregnant.
 
 2. **Load the Scanning Sequence**
-   - Drag and drop your scanning sequence from the bottom panel to the left panel.
+    - Drag and drop your scanning sequence from the bottom panel to the left panel.
 
 3. **Select a Run**
-   - Click on either a functional or anatomical run from the list of available runs.
+    - Click on either a functional or anatomical run from the list of available runs.
 
 4. **Expand the Tabs**
-   - Locate the `>>` symbol in the bottom panel, below the sagittal, coronal, and horizontal views.
-   - Click on this symbol to expand additional tabs.
+    - Locate the `>>` symbol in the bottom panel, below the sagittal, coronal, and horizontal views.
+    - Click on this symbol to expand additional tabs.
 
 5. **Access Geometry Settings**
-   - Click on the **Geometry** tab to access important scan parameters:
-     - **MB factor:** The Multi-band factor, which indicates how many slices are recorded simultaneously. This is used for slice timing correction.
-     - **Slices:** The total number of horizontal slices.
-     - **Fold-over direction:** Necessary information to correct the phase encoding direction in the BIDS field.
-     - **Slice scan order:** Indicates the direction of slice acquisition, typically Foot to Head (FH), used for slice timing correction.
+    - Click on the **Geometry** tab to access important scan parameters:
+        - **MB factor:** The Multi-band factor, which indicates how many slices are recorded simultaneously. This is used for slice timing correction.
+        - **Slices:** The total number of horizontal slices.
+        - **Fold-over direction:** Necessary information to correct the phase encoding direction in the BIDS field.
+        - **Slice scan order:** Indicates the direction of slice acquisition, typically Foot to Head (FH), used for slice timing correction.
 
 6. **Check Additional Fields**
-   - Visit the **Coils** tab to obtain more details about the head coils used during the scan.
-   - In the **Contrast** tab, check the following fields:
-     - **TE (Echo Time):** Typically a single echo of 30 ms by default.
-     - **TR (Repetition Time):** Generally set to 2000 ms by default.
+    - Visit the **Coils** tab to obtain more details about the head coils used during the scan.
+    - In the **Contrast** tab, check the following fields:
+        - **TE (Echo Time):** Typically a single echo of 30 ms by default.
+        - **TR (Repetition Time):** Generally set to 2000 ms by default.
 	
 ### BIDS standards
 
