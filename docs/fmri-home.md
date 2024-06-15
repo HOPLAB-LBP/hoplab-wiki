@@ -274,8 +274,10 @@ Run this in your terminal (for Windows, use WSL to execute the following command
 The command should output a table showing CUDA version and GPU details. If no NVIDIA GPU is listed, troubleshoot the NVIDIA Docker installation.
 
 ##### Running FastSurfer
-- Example Command for Andrea's Ubuntu Laptop:
-  ```
+- Example Commands:
+=== "Andrea's Ubuntu Laptop"
+
+  ```sh
   sudo docker run --gpus all \
   -v /media/costantino_ai/T7/fMRI_chess/data/BIDS:/data \
   -v /media/costantino_ai/T7/fMRI_chess/data/BIDS/derivatives/FastSurfer:/output \
@@ -288,8 +290,9 @@ The command should output a table showing CUDA version and GPU details. If no NV
   --parallel
   ```
 
-- Example Command for Windows LBP Computer:
-  ```
+=== "Windows LBP Computer"
+
+  ```sh
   docker run --gpus all \
   -v /mnt/c/Andrea/data/BIDS_Laura:/data \
   -v /mnt/c/Andrea/data/BIDS_Laura/derivatives/fastsurfer:/output \
@@ -308,10 +311,10 @@ The command should output a table showing CUDA version and GPU details. If no NV
   - Second `-v` specifies where you want the outputs saved.
   - Third `-v` is the path where the FreeSurfer license is stored.
 
-##### Notes on Path Formatting for Windows users
-- The C-drive is accessible at `/mnt/c/`.
-- Replace backslashes `\` with forward slashes `/` in paths.
-- To handle spaces in directory paths, insert a backslash before each space, e.g., `/mnt/c/folder with space/` becomes `/mnt/c/folder\ with\ space/`.
+!!! tip Path Formatting for Windows users
+    - The C-drive is accessible at `/mnt/c/`.
+    - Replace backslashes `\` with forward slashes `/` in paths.
+    - To handle spaces in directory paths, insert a backslash before each space, e.g., `/mnt/c/folder with space/` becomes `/mnt/c/folder\ with\ space/`.
 
 - **FIXME:** There's an issue with Docker incorrectly selecting the Intel GPU instead of the NVIDIA GPU on the LBP machine. Verify GPU selection before processing the next subject.
 
