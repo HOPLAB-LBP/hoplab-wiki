@@ -274,7 +274,8 @@ Run this in your terminal (for Windows, use WSL to execute the following command
 The command should output a table showing CUDA version and GPU details. If no NVIDIA GPU is listed, troubleshoot the NVIDIA Docker installation.
 
 ##### Running FastSurfer
-- Example Commands:
+
+Example Commands:
 
     === "Andrea's Ubuntu Laptop"
 
