@@ -13,6 +13,8 @@ theme:
   favicon: assets/hoplab_favicon_white.ico 
   features:
     - content.tabs.link
+    - content.code.copy
+    - content.code.select
 
 markdown_extensions:
   - toc:
@@ -46,7 +48,11 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tasklist:
       custom_checkbox: true
-      
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  
 plugins:
   - offline
   - privacy
