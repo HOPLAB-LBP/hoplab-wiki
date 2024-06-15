@@ -275,6 +275,7 @@ The command should output a table showing CUDA version and GPU details. If no NV
 
 ##### Running FastSurfer
 - Example Commands:
+
 === "Andrea's Ubuntu Laptop"
 
   ```sh
