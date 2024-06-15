@@ -277,7 +277,7 @@ The command should output a table showing CUDA version and GPU details. If no NV
 
 Example Commands:
 
-    === "Andrea's Ubuntu Laptop"
+=== "Andrea's Ubuntu Laptop"
 
     ```sh
     sudo docker run --gpus all \
@@ -292,7 +292,7 @@ Example Commands:
     --parallel
     ```
 
-    === "Windows LBP Computer"
+=== "Windows LBP Computer"
 
     ```sh
     docker run --gpus all \
