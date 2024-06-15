@@ -40,11 +40,20 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
       
 plugins:
   - offline
   - privacy
   - search
+  
+theme:
+  features:
+    - content.tabs.link
       
 extra_css:
   - stylesheets/extra.css
