@@ -249,7 +249,7 @@ docker run \
  --load-classifier -X /resdir/group_T1w.tsv
 ```
 !!!note
-In some cases, the JSON files corresponding to each nifti file can include `NaN` values, that are not compatible with JSON encoders and will raise an error when running mriqc. A quick (and dirty) solution would be to sanitize all the JSON files before running mriqc. I made a small utility script that can help with that. See `./utils/sanitize_json.py`
+    In some cases, the JSON files corresponding to each nifti file can include `NaN` values, that are not compatible with JSON encoders and will raise an error when running mriqc. A quick (and dirty) solution would be to sanitize all the JSON files before running mriqc. I made a small utility script that can help with that. See `./utils/sanitize_json.py`
 
 #### Surface Preprocessing
 
