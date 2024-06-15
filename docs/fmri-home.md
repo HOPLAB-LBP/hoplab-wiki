@@ -276,36 +276,36 @@ The command should output a table showing CUDA version and GPU details. If no NV
 ##### Running FastSurfer
 - Example Commands:
 
-=== "Andrea's Ubuntu Laptop"
+    === "Andrea's Ubuntu Laptop"
 
-  ```sh
-  sudo docker run --gpus all \
-  -v /media/costantino_ai/T7/fMRI_chess/data/BIDS:/data \
-  -v /media/costantino_ai/T7/fMRI_chess/data/BIDS/derivatives/FastSurfer:/output \
-  -v /media/costantino_ai/T7/fMRI_chess/misc:/fs_license \
-  --rm --user $(id -u):$(id -g) deepmi/fastsurfer \
-  --fs_license /fs_license/license.txt \
-  --t1 /data/sub-00/anat/sub-00_T1w.nii \
-  --sid sub-00 \
-  --sd /output \
-  --parallel
-  ```
+    ```sh
+    sudo docker run --gpus all \
+    -v /media/costantino_ai/T7/fMRI_chess/data/BIDS:/data \
+    -v /media/costantino_ai/T7/fMRI_chess/data/BIDS/derivatives/FastSurfer:/output \
+    -v /media/costantino_ai/T7/fMRI_chess/misc:/fs_license \
+    --rm --user $(id -u):$(id -g) deepmi/fastsurfer \
+    --fs_license /fs_license/license.txt \
+    --t1 /data/sub-00/anat/sub-00_T1w.nii \
+    --sid sub-00 \
+    --sd /output \
+    --parallel
+    ```
 
-=== "Windows LBP Computer"
+    === "Windows LBP Computer"
 
-  ```sh
-  docker run --gpus all \
-  -v /mnt/c/Andrea/data/BIDS_Laura:/data \
-  -v /mnt/c/Andrea/data/BIDS_Laura/derivatives/fastsurfer:/output \
-  -v /mnt/c/Andrea/data/scripts\ and\ codes:/fs_license \
-  --rm --user $(id -u):$(id -g) deepmi/fastsurfer \
-  --fs_license /fs_license/license.txt \
-  --t1 /data/sub-00/anat/sub-00_T1w.nii \
-  --sid sub-00 \
-  --sd /output \
-  --device cuda:0 \
-  --parallel
-  ```
+    ```sh
+    docker run --gpus all \
+    -v /mnt/c/Andrea/data/BIDS_Laura:/data \
+    -v /mnt/c/Andrea/data/BIDS_Laura/derivatives/fastsurfer:/output \
+    -v /mnt/c/Andrea/data/scripts\ and\ codes:/fs_license \
+    --rm --user $(id -u):$(id -g) deepmi/fastsurfer \
+    --fs_license /fs_license/license.txt \
+    --t1 /data/sub-00/anat/sub-00_T1w.nii \
+    --sid sub-00 \
+    --sd /output \
+    --device cuda:0 \
+    --parallel
+    ```
 
 - **Volumes Explanation:**
   - First `-v` specifies the path to your BIDS folder.
