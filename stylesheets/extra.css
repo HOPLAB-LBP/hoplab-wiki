@@ -1,0 +1,26 @@
+/* stylesheets/extra.css */
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+ol {
+  list-style-type: decimal;
+  margin-left: 20px;
+}
+
+ul ul, ul ol, ol ul, ol ol {
+  margin-left: 20px;
+}
+
+.md-header {
+    background-color: rgb(68, 84, 106);
+}
+
+.info-box {
+  border: 1px solid #007BFF; /* Border color */
+  background-color: #E7F3FF; /* Background color */
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+}

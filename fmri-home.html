@@ -1,0 +1,1524 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="contribute.html">
+      
+      
+      <link rel="icon" href="assets/hoplab_favicon_white.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>Functional MRI - Hoplab Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="assets/external/unpkg.com/iframe-worker/shim.js"></script>
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#functional-mri" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Hoplab Wiki" class="md-header__button md-logo" aria-label="Hoplab Wiki" data-md-component="logo">
+      
+  <img src="assets/thicker_white_brain.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hoplab Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Functional MRI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Hoplab Wiki" class="md-nav__button md-logo" aria-label="Hoplab Wiki" data-md-component="logo">
+      
+  <img src="assets/thicker_white_brain.svg" alt="logo">
+
+    </a>
+    Hoplab Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Functional MRI
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="fmri-home.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Functional MRI
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-store-raw-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to store raw data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-get-images-from-the-scanner" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to get images from the scanner
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-fields-in-json-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing fields in JSON files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-to-find-additional-info-on-the-fmri-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where to find additional info on the fMRI sequence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bids-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      BIDS standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#at-the-hospital-step-by-step-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      At the hospital - step by step procedure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#behavioral-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Behavioral Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eye-tracking-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eye-Tracking Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmri-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      fMRI Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="fMRI Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bids-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      BIDS conversion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#surface-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Surface Preprocessing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Surface Preprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-gpu-accessibility-via-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verifying GPU Accessibility via Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-fastsurfer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running FastSurfer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimal-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimal preprocessing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimal preprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-interpret-fmriprep-visual-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to interpret fMRIprep visual reports
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-glm-in-spm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a GLM in SPM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regions-of-interest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regions of Interest
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Regions of Interest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rois-from-localizers" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROIs from localizers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hcp-glasser-parcellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      HCP Glasser parcellation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-parcelsatlases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other parcels/atlases
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mvparsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVPA/RSA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plotting-and-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plotting and reporting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contribute.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contribute
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Get started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="get-started/mailing-lists.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mailing lists
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-store-raw-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to store raw data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-get-images-from-the-scanner" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to get images from the scanner
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-fields-in-json-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing fields in JSON files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-to-find-additional-info-on-the-fmri-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where to find additional info on the fMRI sequence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bids-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      BIDS standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#at-the-hospital-step-by-step-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      At the hospital - step by step procedure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#behavioral-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Behavioral Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eye-tracking-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eye-Tracking Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmri-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      fMRI Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="fMRI Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bids-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      BIDS conversion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#surface-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Surface Preprocessing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Surface Preprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-gpu-accessibility-via-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verifying GPU Accessibility via Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-fastsurfer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running FastSurfer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimal-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimal preprocessing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimal preprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-interpret-fmriprep-visual-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to interpret fMRIprep visual reports
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-glm-in-spm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a GLM in SPM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regions-of-interest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regions of Interest
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Regions of Interest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rois-from-localizers" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROIs from localizers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hcp-glasser-parcellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      HCP Glasser parcellation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-parcelsatlases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other parcels/atlases
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mvparsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVPA/RSA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plotting-and-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plotting and reporting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="functional-mri">Functional MRI<a class="headerlink" href="#functional-mri" title="Permanent link">&para;</a></h1>
+<p>This page is a work in progress and it is based on what I do in my fMRI pipeline. This info may change once we agree on shared practices.</p>
+<p>A template folder structure, along with the code to reproduce these analyses, can be found at [PLACEHOLDER]</p>
+<h2 id="general-notes">General Notes<a class="headerlink" href="#general-notes" title="Permanent link">&para;</a></h2>
+<h3 id="how-to-store-raw-data">How to store raw data<a class="headerlink" href="#how-to-store-raw-data" title="Permanent link">&para;</a></h3>
+<p>In order to avoid error while converting into BIDS format, the raw data (i.e., the data collected from the scanner, behavioural measure, eye-tracking) should be stored in a folder with the following structure:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sourcedata
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└── sub-41
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ├── bh
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    │   ├── 20240503104938_log_41-1-2_exp.tsv
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    │   ├── 20240503105558_41_1_exp.mat
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    │   ├── 20240503105640_log_41-2-1_exp.tsv
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    │   ├── 20240503110226_41_2_exp.mat
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    │   ├── 20240503110241_log_41-3-2_exp.tsv
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    │   ├── 20240503110825_41_3_exp.mat
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    │   ├── 20240503110851_log_41-4-1_exp.tsv
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    │   ├── 20240503111433_41_4_exp.mat
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    │   ├── 20240503111450_log_41-5-2_exp.tsv
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    │   └── 20240503112032_41_5_exp.mat
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    └── nifti
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        ├── sub-41_WIP_CS_3DTFE_8_1.nii
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        ├── sub-41_WIP_Functional_run1_3_1.nii
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        ├── sub-41_WIP_Functional_run2_4_1.nii
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        ├── sub-41_WIP_Functional_run3_5_1.nii
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        ├── sub-41_WIP_Functional_run4_6_1.nii
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        └── sub-41_WIP_Functional_run5_7_1.nii
+</span></code></pre></div>
+<h3 id="how-to-get-images-from-the-scanner">How to get images from the scanner<a class="headerlink" href="#how-to-get-images-from-the-scanner" title="Permanent link">&para;</a></h3>
+<p>For optimal BIDS conversion of fMRI data, it is recommended to initially collect DICOM files (not NIfTI or PAR/REC) at the scanner. Although this adds an extra conversion step and takes longer, it ensures proper conversion into BIDS format. Here is the recommended process:</p>
+<ol>
+<li>
+<p><strong>Initial DICOM Collection</strong>:</p>
+<ul>
+<li>Collect DICOM files for each modality (e.g., T1 and BOLD) for one subject.</li>
+<li>Convert these DICOM files to NIfTI format using <code>dcm2nii</code>, which will generate JSON sidecar files (refer to <a href="#bids-conversion">this section</a> for more info on the conversion process).</li>
+</ul>
+</li>
+<li>
+<p><strong>Template Creation</strong>:</p>
+<ul>
+<li>Rename the JSON files for T1 and BOLD image to <code>sub-xx_T1w.json</code> and <code>sub-xx_task-exp_run-x_bold.json</code></li>
+<li>Move the JSON files into <code>misc/</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Subsequent Data Collection</strong>:</p>
+<ul>
+<li>After creating the template JSON files, collect future data in NIfTI format to save time. The <code>01_nifti-to-BIDS.m</code> script will use the JSON templates to populate the BIDS folders, provided that the fMRI sequence remained unchaged (in that case you need to generate new templates from the DICOM files).</li>
+</ul>
+</li>
+</ol>
+<h3 id="missing-fields-in-json-files">Missing fields in JSON files<a class="headerlink" href="#missing-fields-in-json-files" title="Permanent link">&para;</a></h3>
+<p>Despite these steps, some BIDS fields in the sidecar JSON files may remain empty due to limitations of the Philips scanner, not the conversion tools. The most relevant fields that are left empty due to these limitations are <code>SliceTiming</code> and <a href="https://github.com/xiangruili/dicm2nii/issues/49"><code>PhaseEncodingDirection</code></a>.</p>
+<ul>
+<li>
+<p><strong>SliceTiming</strong>:</p>
+<ul>
+<li>This field is used by fMRIPrep during slice timing correction.</li>
+<li>It can be populated using the <code>/utils/get_philips_MB_slicetiming.py</code> script, assuming you have access to a DICOM file and know the multiband factor (default is 2, as used in our lab).</li>
+<li><strong>NOTE:</strong> The script assumes an interleaved, foot-to-head acquisition, and will not work for other types of acquisitions.</li>
+</ul>
+</li>
+<li>
+<p><strong>PhaseEncodingDirection</strong>:</p>
+<ul>
+<li>This BIDS tag allows tools to undistort images.</li>
+<li>While the Philips DICOM header distinguishes the phase encoding axis (e.g., anterior-posterior vs. left-right), it does not encode the polarity (A-&gt;P vs. P-&gt;A).</li>
+<li>You will need to check at the scanner or consult with Ron whether the polarity is AP or PA, and correct the <code>?</code> in the JSON file to <code>+</code> or <code>-</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>TODO:</strong> add info about NaNs in the JSON file (raw and fmriprep) and how to change them. NaNs will raise errors during the mriqc workflow. See <a href="https://groups.google.com/g/mriqc-users/c/0v170KRJoKk">this</a>, <a href="https://github.com/nipreps/mriqc/issues/1089">this</a> and <a href="https://neurostars.org/t/node-error-on-mriqc-wf-dwimriqc-computeiqms-datasink/29188">this</a>. </p>
+</li>
+</ul>
+<p>For more details on Philips DICOM conversion, refer to the following resources:</p>
+<ul>
+<li><a href="https://github.com/rordenlab/dcm2niix/tree/master/Philips#missing-information">Philips DICOM Missing Information - dcm2niix</a></li>
+<li><a href="https://github.com/rordenlab/dcm2niix/tree/master/PARREC">PARREC Conversion - dcm2niix</a></li>
+</ul>
+<h3 id="where-to-find-additional-info-on-the-fmri-sequence">Where to find additional info on the fMRI sequence<a class="headerlink" href="#where-to-find-additional-info-on-the-fmri-sequence" title="Permanent link">&para;</a></h3>
+<p>Additional information on the sequence can be found at the scanner. Here's how:</p>
+<ol>
+<li>
+<p><strong>Start the Examination</strong></p>
+<ul>
+<li>Navigate to <strong>Patients</strong> -&gt; <strong>New Examination</strong> -&gt; <strong>RIS</strong>.</li>
+<li>Select your subject and fill out the form:<ul>
+<li><strong>Weight:</strong> Enter the subject's weight.</li>
+<li><strong>Implants:</strong> Specify if the subject has any implants.</li>
+<li><strong>Pregnant:</strong> Indicate if the subject is pregnant.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Load the Scanning Sequence</strong></p>
+<ul>
+<li>Drag and drop your scanning sequence from the bottom panel to the left panel.</li>
+</ul>
+</li>
+<li>
+<p><strong>Select a Run</strong></p>
+<ul>
+<li>Click on either a functional or anatomical run from the list of available runs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Expand the Tabs</strong></p>
+<ul>
+<li>Locate the <code>&gt;&gt;</code> symbol in the bottom panel, below the sagittal, coronal, and horizontal views.</li>
+<li>Click on this symbol to expand additional tabs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Access Geometry Settings</strong></p>
+<ul>
+<li>Click on the <strong>Geometry</strong> tab to access important scan parameters:<ul>
+<li><strong>MB factor:</strong> The Multi-band factor, which indicates how many slices are recorded simultaneously. This is used for slice timing correction.</li>
+<li><strong>Slices:</strong> The total number of horizontal slices.</li>
+<li><strong>Fold-over direction:</strong> Necessary information to correct the phase encoding direction in the BIDS field.</li>
+<li><strong>Slice scan order:</strong> Indicates the direction of slice acquisition, typically Foot to Head (FH), used for slice timing correction.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Check Additional Fields</strong></p>
+<ul>
+<li>Visit the <strong>Coils</strong> tab to obtain more details about the head coils used during the scan.</li>
+<li>In the <strong>Contrast</strong> tab, check the following fields:<ul>
+<li><strong>TE (Echo Time):</strong> Typically a single echo of 30 ms by default.</li>
+<li><strong>TR (Repetition Time):</strong> Generally set to 2000 ms by default.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="bids-standards">BIDS standards<a class="headerlink" href="#bids-standards" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>TODO:</strong> add info about the BIDS standard, and how we use it (from raw to BIDS + derivatives)</li>
+</ul>
+<h2 id="at-the-hospital-step-by-step-procedure">At the hospital - step by step procedure<a class="headerlink" href="#at-the-hospital-step-by-step-procedure" title="Permanent link">&para;</a></h2>
+<p><strong>TODO:</strong> we need to populated this with specific instructions on everything that needs to be done at the hospital. e.g., coils and headphones connections + how to check whether it is correctly connected, projector, eye-tracker.
+    - sign forms, check in, how to reach the scanning room, PCs (scan, task, ET), make sure everything is connected correctly (headphones, coil, ET), etc. follow/link the MRI checklist
+    - NOTE: coil/headphones connections: the top left plug is for the headphones. bottom left and top right for the coil (need to connect the 2 big wires coming out of the scanner)
+    - which speaker to use? the black one with the white hp, connected top right</p>
+<h2 id="data-workflow">Data Workflow<a class="headerlink" href="#data-workflow" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>TODO:</strong> info on how to install main tools used for the fmri workflow for different OSs.</li>
+<li><strong>TODO:</strong> Add info and links about fmri tasks, preprocessing, GLM, ROIs, MVPA/RSA.</li>
+</ul>
+<h3 id="behavioral-data">Behavioral Data<a class="headerlink" href="#behavioral-data" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>TODO:</strong> here Tim should describe name and format of the logfiles</li>
+<li><strong>TODO:</strong> add ref to fMRI task repo</li>
+</ul>
+<p>The fMRI task script should give two files per run as output (see the folder structure <a href="#how-to-store-raw-data">here</a>. Here is a description of the naming structure and file content:</p>
+<ol>
+<li><code>&lt;timestamp&gt;_log_&lt;subID&gt;-&lt;run&gt;-&lt;buttonMapping&gt;_&lt;taskName&gt;.tsv</code>: This is the human-readable log file produced by the task. Here is an extract from the file:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>EVENT_TYPE</th>
+<th>EVENT_NAME</th>
+<th>DATETIME</th>
+<th>EXP_ONSET</th>
+<th>ACTUAL_ONSET</th>
+<th>DELTA</th>
+<th>EVENT_ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>START</td>
+<td>-</td>
+<td>2024-05-03 10:49:43.099</td>
+<td>-</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>FLIP</td>
+<td>Instr</td>
+<td>2024-05-03 10:50:11.399</td>
+<td>-</td>
+<td>28.300201</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RESP</td>
+<td>KeyPress</td>
+<td>2024-05-03 10:50:34.160</td>
+<td>-</td>
+<td>51.063114</td>
+<td>-</td>
+<td>51</td>
+</tr>
+<tr>
+<td>FLIP</td>
+<td>TgrWait</td>
+<td>2024-05-03 10:50:34.216</td>
+<td>-</td>
+<td>51.117046</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PULSE</td>
+<td>Trigger</td>
+<td>2024-05-03 10:50:40.000</td>
+<td>-</td>
+<td>56.904357</td>
+<td>-</td>
+<td>53</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><code>&lt;timestamp&gt;_log_&lt;subID&gt;_&lt;run&gt;_&lt;taskName&gt;.mat</code>: This MATLAB file contains all the parameters to reproduce the experimental run, and stores input parameters and results.</li>
+</ol>
+<p>If the behavioural data is stored in a <code>sourcedata/sub-xx/bh/</code> folder consistent to the one described <a href="#how-to-store-raw-data">above</a>, you can run the <code>02_behavioural-to-BIDS.m</code> script, after editing the parameters at the top of the script. This script iterates through subject-specific directories targeting behavioral .mat files, then processes and exports trial-related info into BIDS-compliant TSV event files in the BIDS folder provided as parameters.</p>
+<ul>
+<li><strong>TODO:</strong> above, we need to phrase better and add more info about what these parameters are, possibly with a screenshot of the code. Also, in the code make more clear where the parameters are.</li>
+<li><strong>TODO:</strong> perhaps wrap nifti and bh 2 BIDS in a single script that takes some input arguments? </li>
+<li><strong>TODO:</strong> we need to add more info about how these files are saved, and more in general about the BIDS structure</li>
+</ul>
+<p>Ensure that each resulting tsv file has at least three columns representing: <code>onset</code>, <code>duration</code>, <code>trial_type</code>.</p>
+<h3 id="eye-tracking-data">Eye-Tracking Data<a class="headerlink" href="#eye-tracking-data" title="Permanent link">&para;</a></h3>
+<p><strong>Pre-requisite:</strong> To convert EDF files into more easy-to-read ASC files, you need to install the EyeLink Developers Kit / API. More info and how-to:</p>
+<ul>
+<li>
+<p><a href="https://www.sr-research.com/support/thread-13.html">EyeLink Developers Kit / API</a></p>
+</li>
+<li>
+<p>Run the ET script to convert to ASC in BIDS format.</p>
+</li>
+<li>
+<p><strong>NOTE:</strong> BEP020 has not been approved yet. Not sure if the events MSG should be included here or not.</p>
+</li>
+</ul>
+<h3 id="fmri-data">fMRI Data<a class="headerlink" href="#fmri-data" title="Permanent link">&para;</a></h3>
+<h4 id="bids-conversion">BIDS conversion<a class="headerlink" href="#bids-conversion" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This step should only be performed for the first subject in your dataset, and can be skipped if the anatomical and functional JSON templates are available in <code>code/misc/</code> (see <a href="#how-to-get-images-from-the-scanner">here</a> for more info on the template files)</p>
+</div>
+<ol>
+<li>
+<p><strong>Convert DICOM to BIDS (NIfTI):</strong></p>
+<ul>
+<li><strong>Prerequisites:</strong><ul>
+<li><code>dcm2nii</code></li>
+<li>Raw data should be organized as: <code>/sourcedata/sub-&lt;xx&gt;/dicom</code></li>
+<li>MATLAB</li>
+</ul>
+</li>
+</ul>
+<p>1.1. Download <code>dicm2nii</code> from <a href="https://github.com/xiangruili/dicm2nii">dicm2nii</a>, unzip, and add to the MATLAB path.</p>
+<p>1.2. Open MATLAB and type <code>anonymize_dicm</code> in the console. Enter and it will ask you to select the folder where the files are and the folder in which you want to save it: <code>/sourcedata/sub-&lt;xx&gt;/dicom_Anon</code>.</p>
+<p>1.3. Run the <code>dicm2nii</code> MATLAB function from the unzipped file. Just write <code>dicm2nii</code> in the command window. A pop-up will appear: select DICOM folder (Dicom_Anon. files) and result folder (Dicom_Converted). Untick the compress box and make sure you select save JSON file. Start conversion. A pop-up appears: subject (only number of the subject, e.g., 01). Type: <code>func</code> (T2 scans) and <code>anat</code> (T1 scans). Under modality, we need <code>task-{name of the task}_run-{number of run}_bold</code>, e.g., <code>task-exp_run-2_bold</code>. Modality for anatomical scans is <code>T1W</code>. This pop-up will appear for each run of the fMRI sequence.</p>
+<p>At the end of this process, we have a new folder called <code>dicom_converted</code> structured as follows:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dicom_converted
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── sub-01
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── anat
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   │   ├── sub-01_T1w.json
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   │   └── sub-01_T1w.nii.gz
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   ├── func
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   │   ├── sub-01_task-exp_run-1_bold.json
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   │   └── sub-01_task-exp_run-1_bold.nii.gz
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   └── dcmHeaders.mat
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>└── participants.tsv
+</span></code></pre></div></p>
+<p>Copy your <code>sub-01</code> folder from <code>dicom_converted</code> into the BIDS folder (make a new one if you don't have one).</p>
+<p><em>*</em><em>NOTE:</em><em>*</em> The pop-up only appeared with the first participant and then does it automatically. This is quite annoying as it never gets the participant number right so you have to manually go in and change it. It also only worked when providing it with (enhanced) DICOM files.</p>
+</li>
+<li>
+<p><strong>Validate the BIDS directory (and solve errors):</strong></p>
+<ul>
+<li><a href="https://bids-standard.github.io/bids-validator/">BIDS Validator</a></li>
+</ul>
+</li>
+</ol>
+<h4 id="quality-check">Quality check<a class="headerlink" href="#quality-check" title="Permanent link">&para;</a></h4>
+<p>link: <a href="https://mriqc.readthedocs.io/en/latest/">mriqc</a></p>
+<ul>
+<li>
+<p><strong>TODO:</strong> explain how to save and run this below</p>
+</li>
+<li>
+<p><strong>TODO:</strong> explain that the one below may fail, in that case run the single commands separately</p>
+</li>
+</ul>
+<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">mriqc_batch.sh</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span>
+<span class="normal"><a href="#__codelineno-2-40">40</a></span>
+<span class="normal"><a href="#__codelineno-2-41">41</a></span>
+<span class="normal"><a href="#__codelineno-2-42">42</a></span>
+<span class="normal"><a href="#__codelineno-2-43">43</a></span>
+<span class="normal"><a href="#__codelineno-2-44">44</a></span>
+<span class="normal"><a href="#__codelineno-2-45">45</a></span>
+<span class="normal"><a href="#__codelineno-2-46">46</a></span>
+<span class="normal"><a href="#__codelineno-2-47">47</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1">## Iterate over subject numbers</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">0</span>..40<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="c1">## Skip subject 0, 5, 14, 31</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">        </span><span class="k">continue</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">    </span><span class="c1">## Format subject number with leading zeros</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">    </span><span class="nv">subID</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;sub-%02d&quot;</span><span class="w"> </span><span class="nv">$i</span><span class="k">)</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Processing </span><span class="nv">$subID</span><span class="s2">&quot;</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">    </span><span class="c1">## Docker command with dynamic subject ID using sudo</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">    </span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">    </span>-v<span class="w"> </span>/data/BIDS:/data:ro<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">    </span>-v<span class="w"> </span>/data/BIDS/derivatives/mriqc:/out<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">    </span>-v<span class="w"> </span>/temp_mriqc:/scratch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">    </span>nipreps/mriqc:latest<span class="w"> </span>/data<span class="w"> </span>/out<span class="w"> </span>participant<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">    </span>--participant-label<span class="w"> </span><span class="si">${</span><span class="nv">subID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">    </span>--nprocs<span class="w"> </span><span class="m">16</span><span class="w"> </span>--mem-gb<span class="w"> </span><span class="m">40</span><span class="w"> </span>--float32<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">     </span>--work-dir<span class="w"> </span>/scratch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="w">     </span>--verbose-reports<span class="w"> </span>--resource-monitor<span class="w"> </span>-vv
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="w">    </span><span class="c1">## Wait or perform other actions between runs if needed</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="w">    </span>sleep<span class="w"> </span><span class="m">0</span>.5
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="k">done</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Running group analysis&quot;</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a>-v<span class="w"> </span>/data/BIDS:/data:ro<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a>-v<span class="w"> </span>/data/BIDS/derivatives/mriqc:/out<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34"></a>-v<span class="w"> </span>/temp_mriqc:/scratch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a>nipreps/mriqc:latest<span class="w"> </span>/data<span class="w"> </span>/out<span class="w"> </span>group<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36"></a>--nprocs<span class="w"> </span><span class="m">16</span><span class="w"> </span>--mem-gb<span class="w"> </span><span class="m">40</span><span class="w"> </span>--float32<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="w"> </span>--work-dir<span class="w"> </span>/scratch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="w"> </span>--verbose-reports<span class="w"> </span>--resource-monitor<span class="w"> </span>-vv
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39"></a>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40"></a>sleep<span class="w"> </span><span class="m">0</span>.5
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41"></a>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Running classifier&quot;</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44"></a>-v<span class="w"> </span>/temp_mriqc:/scratch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45"></a>-v<span class="w"> </span>/data/BIDS/derivatives/mriqc:/resdir<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46"></a>-w<span class="w"> </span>/scratch<span class="w"> </span>--entrypoint<span class="o">=</span>mriqc_clf<span class="w"> </span>poldracklab/mriqc:latest<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="w"> </span>--load-classifier<span class="w"> </span>-X<span class="w"> </span>/resdir/group_T1w.tsv
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In some cases, the JSON files corresponding to each nifti file can include <code>NaN</code> values, which are not compatible with JSON encoders and will raise an error when running mriqc. A quick (and dirty) solution would be to sanitize all the JSON files before running mriqc. I made a small utility script that can help with that. See <code>./utils/sanitize_json.py</code>.</p>
+</div>
+<h4 id="surface-preprocessing">Surface Preprocessing<a class="headerlink" href="#surface-preprocessing" title="Permanent link">&para;</a></h4>
+<p>link: <a href="https://github.com/Deep-MI/FastSurfer">FastSurfer</a></p>
+<p>FastSurfer offers a significantly faster alternative to traditional FreeSurfer processing, leveraging NVIDIA GPU acceleration if available. If a suitable GPU is not available, consider using fMRIprep for CPU-based processing, which will integrate FreeSurfer's recon-all but will take longer (approx. 15 hours).</p>
+<h5 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Docker Desktop:</strong> Install Docker Desktop <a href="https://docs.docker.com/desktop/install/ubuntu/">here</a>.</li>
+<li><strong>NVIDIA Docker:</strong> Necessary for GPU utilization, installable from <a href="https://developer.nvidia.com/blog/nvidia-docker-gpu-server-application-deployment-made-easy/">here</a>.</li>
+<li><strong>FreeSurfer License:</strong> Download necessary licensing for FreeSurfer.</li>
+<li><strong>WSL (Windows Subsystem for Linux):</strong> Required only for Windows users. Installation guidelines <a href="https://docs.microsoft.com/en-us/windows/wsl/install">here</a>.</li>
+</ul>
+<h5 id="verifying-gpu-accessibility-via-docker">Verifying GPU Accessibility via Docker<a class="headerlink" href="#verifying-gpu-accessibility-via-docker" title="Permanent link">&para;</a></h5>
+<p>Run this in your terminal (for Windows, use WSL to execute the following command):
+  <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo docker run --rm --gpus all nvidia/cuda:12.0.1-base-ubuntu20.04 nvidia-smi
+</span></code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ensure that <code>cuda:12.0.1</code> and <code>ubuntu20.04</code> match your CUDA drivers and Ubuntu version, respectively. Check your CUDA version by running <code>nvidia-smi</code> in a Linux/WSL terminal.</p>
+</div>
+<p>The command should output a table showing CUDA version and GPU details. If no NVIDIA GPU is listed, troubleshoot the NVIDIA Docker installation.</p>
+<h5 id="running-fastsurfer">Running FastSurfer<a class="headerlink" href="#running-fastsurfer" title="Permanent link">&para;</a></h5>
+<p>Example Commands:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="andreas-ubuntu-laptop" name="__tabbed_1" type="radio" /><input id="windows-lbp-computer" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="andreas-ubuntu-laptop">Andrea's Ubuntu Laptop</label><label for="windows-lbp-computer">Windows LBP Computer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>-v<span class="w"> </span>/media/costantino_ai/T7/fMRI_chess/data/BIDS:/data<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>-v<span class="w"> </span>/media/costantino_ai/T7/fMRI_chess/data/BIDS/derivatives/FastSurfer:/output<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a>-v<span class="w"> </span>/media/costantino_ai/T7/fMRI_chess/misc:/fs_license<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>--rm<span class="w"> </span>--user<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span>deepmi/fastsurfer<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a>--fs_license<span class="w"> </span>/fs_license/license.txt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a>--t1<span class="w"> </span>/data/sub-00/anat/sub-00_T1w.nii<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a>--sid<span class="w"> </span>sub-00<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a>--sd<span class="w"> </span>/output<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a>--parallel
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>-v<span class="w"> </span>/mnt/c/Andrea/data/BIDS_Laura:/data<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>-v<span class="w"> </span>/mnt/c/Andrea/data/BIDS_Laura/derivatives/fastsurfer:/output<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>-v<span class="w"> </span>/mnt/c/Andrea/data/scripts<span class="se">\ </span>and<span class="se">\ </span>codes:/fs_license<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>--rm<span class="w"> </span>--user<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span>deepmi/fastsurfer<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>--fs_license<span class="w"> </span>/fs_license/license.txt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a>--t1<span class="w"> </span>/data/sub-00/anat/sub-00_T1w.nii<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a>--sid<span class="w"> </span>sub-00<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a>--sd<span class="w"> </span>/output<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a>--device<span class="w"> </span>cuda:0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a>--parallel
+</span></code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Volumes Explanation:</strong></li>
+<li>First <code>-v</code> specifies the path to your BIDS folder.</li>
+<li>Second <code>-v</code> specifies where you want the outputs saved.</li>
+<li>Third <code>-v</code> is the path where the FreeSurfer license is stored.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Path Formatting for Windows users</p>
+<ul>
+<li>The C-drive is accessible at <code>/mnt/c/</code>.</li>
+<li>Replace backslashes <code>\</code> with forward slashes <code>/</code> in paths.</li>
+<li>To handle spaces in directory paths, insert a backslash before each space, e.g., <code>/mnt/c/folder with space/</code> becomes <code>/mnt/c/folder\ with\ space/</code>.</li>
+</ul>
+</div>
+<ul>
+<li><strong>FIXME:</strong> There's an issue with Docker incorrectly selecting the Intel GPU instead of the NVIDIA GPU on the LBP machine. Verify GPU selection before processing the next subject.</li>
+</ul>
+<h4 id="minimal-preprocessing">Minimal preprocessing<a class="headerlink" href="#minimal-preprocessing" title="Permanent link">&para;</a></h4>
+<p>link: <a href="https://fmriprep.org/en/stable/">fMRIprep</a></p>
+<ul>
+<li><strong>TODO:</strong> explain how to install docker and fmriprep-docker</li>
+</ul>
+<p><strong>NOTE:</strong> the parameters <code>n-cpus</code> and <code>mem-mb</code> depend on the computer hardware, and may need some tuning to avoid out of memory errors. The memory assigned with <code>mem-mb</code> is not the total memory, but the memory per process. That means that the actual memory used can exceed by far that value. Set the <code>mem-mb</code> to at least &#8531; or &frac14; of you RAM memory.</p>
+<p>Add info about the <code>work-dir</code> and how big one of these folder can get (to avoid SSD space errors)</p>
+<p>Add info about running in parallel rather than multiple subjects in the same terminal</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>fmriprep-docker<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span>/data/BIDS<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span>/data/BIDS/derivatives/fmriprep<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span>participant<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span>--work-dir<span class="w"> </span>/chess/temp<span class="w"> </span><span class="se">\ </span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">    </span>--mem-mb<span class="w"> </span><span class="m">13000</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">    </span>--n-cpus<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="w">    </span>--resource-monitor<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">    </span>-vv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">    </span>--output-spaces<span class="w"> </span>MNI152NLin2009cAsym:res-2<span class="w"> </span>anat<span class="w"> </span>fsnative<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">    </span>--fs-license-file<span class="w"> </span>/misc/.license<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">    </span>--bold2t1w-dof<span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="w">    </span>--task<span class="w"> </span>exp<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="w">    </span>--dummy-scans<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="w">    </span>--fs-subjects-dir<span class="w"> </span>/data/BIDS/derivatives/fastsurfer<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="w">    </span>--notrack<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">    </span>--participant-label<span class="w"> </span><span class="m">37</span><span class="w"> </span><span class="m">38</span><span class="w"> </span><span class="m">39</span><span class="w"> </span><span class="m">40</span>
+</span></code></pre></div></td></tr></table></div>
+<h5 id="how-to-interpret-fmriprep-visual-reports">How to interpret fMRIprep visual reports<a class="headerlink" href="#how-to-interpret-fmriprep-visual-reports" title="Permanent link">&para;</a></h5>
+<h4 id="running-a-glm-in-spm">Running a GLM in SPM<a class="headerlink" href="#running-a-glm-in-spm" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>TODO:</strong> show code snippets perhaps? or just reference to the code</li>
+</ul>
+<h4 id="regions-of-interest">Regions of Interest<a class="headerlink" href="#regions-of-interest" title="Permanent link">&para;</a></h4>
+<h5 id="rois-from-localizers">ROIs from localizers<a class="headerlink" href="#rois-from-localizers" title="Permanent link">&para;</a></h5>
+<h5 id="hcp-glasser-parcellation">HCP Glasser parcellation<a class="headerlink" href="#hcp-glasser-parcellation" title="Permanent link">&para;</a></h5>
+<h5 id="other-parcelsatlases">Other parcels/atlases<a class="headerlink" href="#other-parcelsatlases" title="Permanent link">&para;</a></h5>
+<h4 id="mvparsa">MVPA/RSA<a class="headerlink" href="#mvparsa" title="Permanent link">&para;</a></h4>
+<h4 id="plotting-and-reporting">Plotting and reporting<a class="headerlink" href="#plotting-and-reporting" title="Permanent link">&para;</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["content.tabs.link", "content.code.copy", "content.code.select"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="assets/external/unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
