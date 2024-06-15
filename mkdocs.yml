@@ -11,6 +11,8 @@ theme:
   name: material
   logo: assets/thicker_white_brain.svg
   favicon: assets/hoplab_favicon_white.ico 
+  features:
+    - content.tabs.link
 
 markdown_extensions:
   - toc:
@@ -50,10 +52,6 @@ plugins:
   - offline
   - privacy
   - search
-  
-theme:
-  features:
-    - content.tabs.link
       
 extra_css:
   - stylesheets/extra.css
