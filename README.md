@@ -53,7 +53,7 @@ For more information on Markdown formatting, refer to the Markdown Guide for [ba
 
 ## How to Contribute - Easy Workflow
 
-The easiest but less preferred way to update the Wiki is to create or edit the Markdown files in the repository directly in your browser. Here’s how to do it:
+The easiest ~~but less preferred~~ way to update the Wiki is to create or edit the Markdown files in the repository directly in your browser. Here’s how to do it:
 
 1. Navigate to the `hoplab-wiki` repository on GitHub.
 2. Go to the `docs` folder.
@@ -82,7 +82,9 @@ While this method is straightforward, direct changes to the `main` branch are di
 
 ## How to Contribute - Advanced Workflow
 
-The preferred way to contribute, but it requires some familiarity wit git and Python. Here's a step-by-step guide that includes forking the repository, making and testing changes locally, and then submitting those changes for review through a pull request.
+NOTE: although all the info above is correct, some actions in this workflow can have disruptive or unwanted consequences. Until we fix this, avoid this workflow if you are not familiar with git.
+
+~~The preferred way to contribute, but~~ it requires some familiarity wit git and Python. Here's a step-by-step guide that includes forking the repository, making and testing changes locally, and then submitting those changes for review through a pull request. 
 
 ### Step 1: Forking the Repository
 
