@@ -260,7 +260,7 @@ docker run \
 
 link: [FastSurfer](https://github.com/Deep-MI/FastSurfer)
 
-FastSurfer offers a significantly faster alternative to traditional FreeSurfer processing, leveraging NVIDIA GPU acceleration if available. If a suitable GPU is not available, consider using fMRIprep for CPU-based processing, which will integrate FreeSurfer's recon-all but will take longer (approx. 15 hours).
+FastSurfer offers a significantly faster alternative to traditional FreeSurfer processing, leveraging NVIDIA GPU acceleration if available. If a suitable GPU is not available, consider using fMRIprep for CPU-based processing, which will integrate FreeSurfer's recon-all but will take **significantly** longer.
 
 ##### Prerequisites
 - **Docker Desktop:** Install Docker Desktop [here](https://docs.docker.com/desktop/install/ubuntu/).
