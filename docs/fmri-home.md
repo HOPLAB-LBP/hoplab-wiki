@@ -173,6 +173,8 @@ Ensure that each resulting tsv file has at least three columns representing: `on
 
     1.2. Open MATLAB and type `anonymize_dicm` in the console. Enter and it will ask you to select the folder where the files are and the folder in which you want to save it: `/sourcedata/sub-<xx>/dicom_Anon`.
 
+- **TODO:** for simplicity, probably a good idea to check out and add to pipeline this https://github.com/PeerHerholz/BIDSonym
+
     1.3. Run the `dicm2nii` MATLAB function from the unzipped file. Just write `dicm2nii` in the command window. A pop-up will appear: select DICOM folder (Dicom_Anon. files) and result folder (Dicom_Converted). Untick the compress box and make sure you select save JSON file. Start conversion. A pop-up appears: subject (only number of the subject, e.g., 01). Type: `func` (T2 scans) and `anat` (T1 scans). Under modality, we need `task-{name of the task}_run-{number of run}_bold`, e.g., `task-exp_run-2_bold`. Modality for anatomical scans is `T1W`. This pop-up will appear for each run of the fMRI sequence.
 
     At the end of this process, we have a new folder called `dicom_converted` structured as follows:
@@ -193,7 +195,7 @@ Ensure that each resulting tsv file has at least three columns representing: `on
 
     ****NOTE:**** The pop-up only appeared with the first participant and then does it automatically. This is quite annoying as it never gets the participant number right so you have to manually go in and change it. It also only worked when providing it with (enhanced) DICOM files.
 
-2. **Validate the BIDS directory (and solve errors):**
+3. **Validate the BIDS directory (and solve errors):**
     - [BIDS Validator](https://bids-standard.github.io/bids-validator/)
 
 #### Quality check
