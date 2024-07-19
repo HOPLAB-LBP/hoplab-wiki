@@ -15,7 +15,7 @@ Luckily, you have found the most useful link of all, i.e., the link to this Wiki
 
 Apart from this Wiki, we try to keep the [**HopLab website**](https://www.hoplab.be/) up to date, and that includes new people. Send a picture of yourself and a short introductory text (see the [*members*](https://www.hoplab.be/people/) page for inspiration) to the person in charge of the Lab website (as of January 2022, this is Tim, from December 2024 on, this will be Klara) along with useful links if wanted (ORCID, LinkedIn, Scholar, Twitter,…).
 
-??? info "What is ORCID?"
+??? question "What is ORCID?"
     ORCID is a unique digital identifier system for researchers, used by most journals during paper submission. To create your ORCID ID, go [*here*](https://orcid.org/), select "Sign In/Register", choose "Access through your institution" and select "KU Leuven Association". Follow the site's instructions. For assistance, check out their [*support page*](https://support.orcid.org/hc/en-us/articles/360006897454-How-do-I-register-for-an-ORCID-ID).
 
 In the Wiki, we frequently will refer you to shared documents on Microsoft **X**, which you can find here (**Add link to OneDrive/Teams**).
