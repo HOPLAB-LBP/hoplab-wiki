@@ -4,8 +4,14 @@ nav:
   - Home: index.md
   - Functional MRI: fmri-home.md
   - Contribute: contribute.md
-  - Get started:
+  - Administrative procedures: admin-procedures.md
+  - Science outreach: outreach.md
+  - Getting started:
+    - Useful links: get-started/useful-links.md
     - Mailing lists: get-started/mailing-lists.md
+    - Practical set-up: get-started/practical-setup.md
+    - Computer set-up: get-started/computer-setup.md
+    - KU Loket: get-started/kuloket.md
 
 theme:
   name: material
