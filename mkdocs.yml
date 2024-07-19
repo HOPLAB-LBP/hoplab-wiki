@@ -2,16 +2,17 @@ site_name: Hoplab Wiki
 
 nav:
   - Home: index.md
-  - Functional MRI: fmri-home.md
-  - Contribute: contribute.md
-  - Administrative procedures: admin-procedures.md
-  - Science outreach: outreach.md
   - Getting started:
     - Useful links: get-started/useful-links.md
     - Mailing lists: get-started/mailing-lists.md
     - Practical set-up: get-started/practical-setup.md
     - Computer set-up: get-started/computer-setup.md
     - KU Loket: get-started/kuloket.md
+  - Administrative procedures: admin-procedures.md
+  - Functional MRI: fmri-home.md
+  - Science outreach: outreach.md
+  - Contribute: contribute.md
+
 
 theme:
   name: material
