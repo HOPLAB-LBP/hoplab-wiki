@@ -2,7 +2,9 @@
 
 This page is a work in progress and it is based on what I do in my fMRI pipeline. This info may change once we agree on shared practices.
 
-A template folder structure, along with the code to reproduce these analyses, can be found at [PLACEHOLDER]
+The code to reproduce these analyses can be found [here](https://github.com/costantinoai/chess-expertise-2024).
+
+- **TODO:**  add links to folder structure and/or data
 
 ## Before you start
 - **TODO:**  add info about tools we will use, how to install/configure and links to docs
