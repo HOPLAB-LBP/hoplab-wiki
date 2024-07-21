@@ -9,7 +9,10 @@ nav:
     - Computer set-up: get-started/computer-setup.md
     - KU Loket: get-started/kuloket.md
   - Administrative procedures: admin-procedures.md
-  - Functional MRI: fmri-home.md
+  - fMRI:
+    - General information: fmri/fmri-general.md
+    - Hospital information: fmri/fmri-hospital.md
+    - fMRI analysis workflow: fmri/fmri-andrea-workflow.md
   - Science outreach: outreach.md
   - Contribute: contribute.md
 
