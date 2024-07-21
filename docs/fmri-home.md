@@ -46,7 +46,7 @@ For optimal BIDS conversion of fMRI data, it is recommended to initially collect
     - Move the JSON files into `misc/`.
 
 3. **Subsequent Data Collection**:
-    - After creating the template JSON files, collect future data in NIfTI format to save time. The `01_nifti-to-BIDS.m` script will use the JSON templates to populate the BIDS folders, provided that the fMRI sequence remained unchaged (in that case you need to generate new templates from the DICOM files).
+    - After creating the template JSON files, collect future data in NIfTI format to save time. The `script01_nifti-to-BIDS.m` script will use the JSON templates to populate the BIDS folders, provided that the fMRI sequence remained unchaged (in that case you need to generate new templates from the DICOM files).
 
 ### Missing fields in JSON files
 
@@ -114,16 +114,25 @@ It is crucial that you get familiar with BIDS folders/files naming convention an
 The BIDS Specification provides guidelines on how to organize all your data formats, including [(f/d)MRI](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/magnetic-resonance-imaging-data.html), [EEG](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/electroencephalography.html), [eye-tracking](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/physiological-and-other-continuous-recordings.html), [Task events](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html) associated with Neuro-Imaging recordings or [not](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/behavioral-experiments.html), and [Derivatives](https://bids-specification.readthedocs.io/en/stable/derivatives/imaging.html) (e.g., pre-processed files, Regions Of Interest mask files, GLM files, etc.).
 	
 ## At the hospital - step by step procedure
-**TODO:** add hospitel checklist + other forms
+**TODO:** add hospital checklist + other forms
 **TODO:** we need to populated this with specific instructions on everything that needs to be done at the hospital. e.g., coils and headphones connections + how to check whether it is correctly connected, projector, eye-tracker.
     - sign forms, check in, how to reach the scanning room, PCs (scan, task, ET), make sure everything is connected correctly (headphones, coil, ET), etc. follow/link the MRI checklist
     - NOTE: coil/headphones connections: the top left plug is for the headphones. bottom left and top right for the coil (need to connect the 2 big wires coming out of the scanner)
     - which speaker to use? the black one with the white hp, connected top right
+- **TODO:** add info on how to save images to disk, and describe the filename anon process
 
 ## Data Workflow
 
 - **TODO:** info on how to install main tools used for the fmri workflow for different OSs.
 - **TODO:** Add info and links about fmri tasks, preprocessing, GLM, ROIs, MVPA/RSA.
+
+Tools we use : MATLAB, Python (explain how to make a new env, and what packages), fMRIprep, SPM, Cosmomvpa, Docker.
+
+### Raw data to BIDS
+
+This step assumes that your raw data is organized in a `sourcedata/sub-xx` folder, and that you already created the JSON templates in the `misc/` folder, as described in [here](#how-to-store-raw-data). 
+
+- **TODO:**  add info about defacing/anonymizing (also the filenames.. use my script). 
 
 ### Behavioral Data
 
@@ -144,7 +153,7 @@ The fMRI task script should give two files per run as output (see the folder str
 
 2. `<timestamp>_log_<subID>_<run>_<taskName>.mat`: This MATLAB file contains all the parameters to reproduce the experimental run, and stores input parameters and results.
 
-If the behavioural data is stored in a `sourcedata/sub-xx/bh/` folder consistent to the one described [above](#how-to-store-raw-data), you can run the `02_behavioural-to-BIDS.m` script, after editing the parameters at the top of the script. This script iterates through subject-specific directories targeting behavioral .mat files, then processes and exports trial-related info into BIDS-compliant TSV event files in the BIDS folder provided as parameters.
+If the behavioural data is stored in a `sourcedata/sub-xx/bh/` folder consistent to the one described [above](#how-to-store-raw-data), you can run the `script02_behavioural-to-BIDS.m` script, after editing the parameters at the top of the script. This script iterates through subject-specific directories targeting behavioral .mat files, then processes and exports trial-related info into BIDS-compliant TSV event files in the BIDS folder provided as parameters.
 
 - **TODO:** above, we need to phrase better and add more info about what these parameters are, possibly with a screenshot of the code. Also, in the code make more clear where the parameters are.
 - **TODO:** perhaps wrap nifti and bh 2 BIDS in a single script that takes some input arguments? 
