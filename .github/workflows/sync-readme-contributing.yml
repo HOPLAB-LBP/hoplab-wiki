@@ -23,9 +23,13 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-      - name: Create new branch and commit changes
+      - name: Fetch latest changes
+        run: git fetch origin
+
+      - name: Create new branch and rebase
         run: |
           git checkout -b sync-readme
+          git rebase origin/main
           git add docs/contribute.md
           git commit -m "Sync README.md to docs/contribute.md"
           git push origin sync-readme
@@ -33,6 +37,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -41,3 +46,19 @@ jobs:
           title: Sync README.md to docs/contribute.md
           body: This PR syncs README.md with docs/contribute.md
           base: main
+          merge-method: merge
+
+      - name: Auto Merge Pull Request
+        if: steps.cpr.outputs.pull-request-number != ''
+        uses: ahmadnassri/action-auto-merge@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          merge-method: merge
+
+      - name: Delete Branch After Merge
+        if: steps.cpr.outputs.pull-request-number != ''
+        run: |
+          git push origin --delete sync-readme
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
