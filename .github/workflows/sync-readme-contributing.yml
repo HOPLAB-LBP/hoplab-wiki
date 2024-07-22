@@ -45,7 +45,7 @@ jobs:
 
       - name: Auto Merge Pull Request
         if: ${{ steps.cpr.outputs.pull-request-number != '' }}
-        uses: ahmadnassri/action-auto-merge@v2
+        uses: lots0logs/gh-action-auto-merge@1.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
