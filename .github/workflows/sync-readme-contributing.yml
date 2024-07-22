@@ -18,13 +18,26 @@ jobs:
         run: |
           cp README.md docs/contribute.md
 
-      - name: Commit and push changes
+      - name: Configure Git
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Create new branch and commit changes
+        run: |
+          git checkout -b sync-readme
           git add docs/contribute.md
           git commit -m "Sync README.md to docs/contribute.md"
-          git push origin main
+          git push origin sync-readme
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Sync README.md to docs/contribute.md
+          branch: sync-readme
+          title: Sync README.md to docs/contribute.md
+          body: This PR syncs README.md with docs/contribute.md
+          base: main
