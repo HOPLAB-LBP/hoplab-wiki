@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository content
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.sha }}
 
       - name: Copy README.md to contribute.md
         run: |
@@ -26,34 +26,52 @@ jobs:
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git add docs/contribute.md
           git commit -m "Sync README.md to docs/contribute.md"
-          git push origin HEAD:${{ github.head_ref }}
+          git push origin HEAD:${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Pull Request
-        if: ${{ github.event_name == 'push' && github.base_ref == 'main' }}
         id: cpr
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Sync README.md to docs/contribute.md
-          branch: ${{ github.head_ref }}
+          branch: ${{ github.ref }}
           title: Sync README.md to docs/contribute.md
           body: This PR syncs README.md with docs/contribute.md
           base: main
           merge-method: merge
 
       - name: Auto Merge Pull Request
-        if: ${{ steps.cpr.outputs.pull-request-number != '' }}
-        uses: lots0logs/gh-action-auto-merge@1.0.0
+        if: steps.cpr.outputs.pull-request-url != ''
+        uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
-          merge-method: merge
+          script: |
+            const pull_request_url = `{{ steps.cpr.outputs.pull-request-url }}`;
+            const pull_request_number = pull_request_url.split('/').pop();
+            await github.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pull_request_number,
+              merge_method: 'merge'
+            });
 
       - name: Delete Branch After Merge
-        if: ${{ steps.cpr.outputs.pull-request-number != '' }}
-        run: |
-          git push origin --delete ${{ github.head_ref }}
+        if: steps.cpr.outputs.pull-request-url != ''
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const pull_request_url = `{{ steps.cpr.outputs.pull-request-url }}`;
+            const pull_request_number = pull_request_url.split('/').pop();
+            const { data: pull_request } = await github.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pull_request_number
+            });
+            await github.git.deleteRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: `heads/${pull_request.head.ref}`
+            });
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
