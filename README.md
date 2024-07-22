@@ -1,4 +1,4 @@
-# Hoplab Wiki
+# Hoplab Wiki 
 
 Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be). 
 
@@ -94,14 +94,12 @@ This is the suggested workflow for smaller changes to the Wiki. The easiest way 
 
 ### Step 1: Make your changes 
 
-  a. **To edit an existing page:**
-  
+  a. **To edit an existing page:** 
     - Navigate to the [`HOPLAB-LBP/hoplab-wiki`](https://github.com/HOPLAB-LBP/hoplab-wiki) repository.
     - Click on the file you want to edit (usually, in `docs/`).
     - Click on the pencil icon (✏️) at the top right to edit the file.
   
-  b. **To create a new page:**
-  
+  b. **To create a new page:**  
     - Navigate to the `mkdocs.yml` file.
     - Click on the pencil icon (✏️) at the top right to edit the file.
     - Add the new page (e.g., `docs/new-page.md`) to the `nav` section and commit (follow the steps in the section 2 below).
