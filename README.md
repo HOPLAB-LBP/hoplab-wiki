@@ -94,17 +94,17 @@ This is the suggested workflow for smaller changes to the Wiki. The easiest way 
 
 ### Step 1: Make your changes 
 
-  a. **To edit an existing page:** 
-    - Navigate to the [`HOPLAB-LBP/hoplab-wiki`](https://github.com/HOPLAB-LBP/hoplab-wiki) repository.
-    - Click on the file you want to edit (usually, in `docs/`).
-    - Click on the pencil icon (✏️) at the top right to edit the file.
+a. **To edit an existing page:** 
+- Navigate to the [`HOPLAB-LBP/hoplab-wiki`](https://github.com/HOPLAB-LBP/hoplab-wiki) repository.
+- Click on the file you want to edit (usually, in `docs/`).
+- Click on the pencil icon (✏️) at the top right to edit the file.
 
-  b. **To create a new page:**  
-    - Navigate to the `mkdocs.yml` file.
-    - Click on the pencil icon (✏️) at the top right to edit the file.
-    - Add the new page (e.g., `docs/new-page.md`) to the `nav` section and commit (follow the steps in the section 2 below).
-    - In the `docs` folder, click on "Add file" > "Create new file".
-    - Enter a name for your file in the `docs` directory (the same you used before, e.g., `docs/new-page.md`).
+b. **To create a new page:**  
+- Navigate to the `mkdocs.yml` file.
+- Click on the pencil icon (✏️) at the top right to edit the file.
+- Add the new page (e.g., `docs/new-page.md`) to the `nav` section and commit (follow the steps in the section 2 below).
+- In the `docs` folder, click on "Add file" > "Create new file".
+- Enter a name for your file in the `docs` directory (the same you used before, e.g., `docs/new-page.md`).
        
 You can then add/edit your content in Markdown format (see [Editing the Wiki](#editing-the-wiki) for more info), and click on "Preview" next to the "Edit" tab to see how your changes will look like. Once you are happy with the Preview of your changes, you can commit them to a temporary branch (see below).
 
@@ -113,7 +113,6 @@ You can then add/edit your content in Markdown format (see [Editing the Wiki](#e
 - Click on "Commit changes" after any necessary adjustments.
 - In the pop-up window, and add a commit message and description for your changes.
 - Select "Create a new branch for this commit and start a pull request".
-- Choose an informative name for the new branch (usually, "yourusername-tag", e.g., "costantinoai-fmri").
 - Click on "Propose changes".
 
 ### Step 3: Submit a PR with your proposed changes 
@@ -122,7 +121,7 @@ You can then add/edit your content in Markdown format (see [Editing the Wiki](#e
 - In the right panel, make sure to assign an admin (as of July 2024, [@costantinoai](https://github.com/costantinoai)) to review your changes.
 - Click on "Create pull request" to submit your changes.
 
-These steps above will create a new branch in the repository, that will be visible in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches), and a new PR visible in the [PRs list](https://github.com/HOPLAB-LBP/hoplab-wiki/pulls). Once the PR is approved by at least one reviewer and merged into the main branch, the newly created branch will be automatically deleted.
+These steps above will create a new branch in the repository, that will be visible in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches), and a new PR visible in the [PRs list](https://github.com/HOPLAB-LBP/hoplab-wiki/pulls). Once the PR is approved by at least one reviewer and merged into the main branch, the newly created branch will be automatically deleted and the changes will go live.
          
 !!! tip
     If you want to make additional changes related to an already opened PR (e.g., you need to change info in two separate files, or make additional adjustments), you do not need to open a new PR. Just go in the main page of the branch your created (you can find the branch in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches)) and **keep editing your files in this branch**. Every new commit you make in this branch will have the option to "Commit directly to the <name-of-new-branch> branch" or "Create a new branch for this commit and start a pull request". Make sure you select the first option to include your new commits to the original PR. Importantly, if you plan to add several commits to a PR this way, make sure you assign a reviewer **only after your last commit** to avoid merging PRs halfway in the process.
