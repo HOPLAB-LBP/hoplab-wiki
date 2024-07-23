@@ -122,20 +122,20 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
     1. **Navigate to the Original Repository:**
     
-       - Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
+       1. Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
     
     2. **Fork the Repository:**
     
-       - Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
+       1. Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
     
     3. **Clone Your Fork:**
     
-       - Click the "Code" button on your forked repository page and copy the URL.
-       - Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux) and navigate to the directory where you want to store the project, then type:
+       1. Click the "Code" button on your forked repository page and copy the URL.
+       2. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux) and navigate to the directory where you want to store the project, then type:
          ```bash
          git clone https://github.com/your-username/hoplab-wiki.git
          ```
-       - Change into the directory of the cloned repository:
+       3. Change into the directory of the cloned repository:
          ```bash
          cd hoplab-wiki
          ```
@@ -144,44 +144,44 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
     
     1. **Navigate to the Original Repository:**
     
-       - Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
+       1. Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
     
     2. **Fork the Repository:**
     
-       - Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
+       1. Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
     
     3. **Open GitHub Desktop:**
     
-       - If you do not have GitHub Desktop installed, download and install it from [GitHub Desktop's official website](https://desktop.github.com/).
+       1. If you do not have GitHub Desktop installed, download and install it from [GitHub Desktop's official website](https://desktop.github.com/).
     
     4. **Clone Your Fork Using GitHub Desktop:**
     
-       - Open GitHub Desktop.
-       - In the top menu, click on `File > Clone Repository`.
-       - In the "URL" tab, paste the URL of your forked repository from your GitHub account into the "Repository URL" field.
-       - Choose the local path where you want to store the repository on your computer.
-       - Click "Clone".
+       1. Open GitHub Desktop.
+       2. In the top menu, click on `File > Clone Repository`.
+       3. In the "URL" tab, paste the URL of your forked repository from your GitHub account into the "Repository URL" field.
+       4. Choose the local path where you want to store the repository on your computer.
+       5. Click "Clone".
 
 ### Step 2: Setting Up Your Local Environment
 
 1. **Install Conda:**
 
-   - If you don't have Conda installed, download and install it from [Conda's official website](https://docs.conda.io/en/latest/miniconda.html).
+   1. If you don't have Conda installed, download and install it from [Conda's official website](https://docs.conda.io/en/latest/miniconda.html).
 
 2. **Create and Activate a Conda Environment:**
 
-   - To create a new environment specifically for this project, type:
+   1. To create a new environment specifically for this project, type:
      ```bash
      conda create --name hoplab-wiki python=3.9
      ```
-   - Activate the newly created environment by typing:
+   2. Activate the newly created environment by typing:
      ```bash
      conda activate hoplab-wiki
      ```
 
 3. **Install Necessary Packages:**
 
-   - With the Conda environment activated, install the required packages:
+    1. With the Conda environment activated, install the required packages:
      ```bash
      pip install mkdocs mkdocs-material
      ```
@@ -190,25 +190,25 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
 1. **Edit Documentation:**
 
-   - You can now make changes to your local clone of the documentation. Use a text editor or an IDE to open and edit the Markdown files in the repository.
-   - If changes are extensive, consider splitting them into smaller, manageable commits that focus on specific pages or sections for clarity and ease of review.
+    1. You can now make changes to your local clone of the documentation. Use a text editor or an IDE to open and edit the Markdown files in the repository.
+    2. If changes are extensive, consider splitting them into smaller, manageable commits that focus on specific pages or sections for clarity and ease of review.
 
 ### Step 4: Testing Your Changes Locally
 
 1. **Serve the Documentation Locally:**
-
-   - While in your project directory and with the Conda environment activated, launch the local server by typing:
+    
+    1. While in your project directory and with the Conda environment activated, launch the local server by typing:
      ```bash
      mkdocs serve
      ```
-   - Open a web browser and navigate to `http://127.0.0.1:8000/`. This allows you to see your changes as they would appear on the live site.
-   - Keep this server running as you make changes; refresh your browser to update the preview.
+    2. Open a web browser and navigate to `http://127.0.0.1:8000/`. This allows you to see your changes as they would appear on the live site.
+    3. Keep this server running as you make changes; refresh your browser to update the preview.
 
 ### Step 5: Closing the Local Server
 
 1. **Stop the Server:**
 
-   - When you are done previewing and editing and you are done with the changes, go back to the terminal where your server is running and press `Ctrl+C` to stop the server.
+    1. When you are done previewing and editing and you are done with the changes, go back to the terminal where your server is running and press `Ctrl+C` to stop the server.
 
 ### Step 6: Committing Your Changes
 
@@ -216,15 +216,15 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
     
     1. **Stage and Commit Your Changes:**
    
-       - From your terminal, add all modified files to your commit:
+       1. From your terminal, add all modified files to your commit:
          ```bash
          git add .
          ```
-       - Commit the changes, including a clear message about what was modified and why:
+       2. Commit the changes, including a clear message about what was modified and why:
          ```bash
          git commit -m "Detailed description of changes"
          ```
-       - Push your commits to the forked repository on GitHub:
+       3. Push your commits to the forked repository on GitHub:
          ```bash
          git push origin main
          ```
@@ -233,12 +233,12 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
     1. **Stage and Commit Your Changes:**
        
-       - In GitHub Desktop, you should see the list of changed files in the left sidebar.
-       - Review the changes by clicking on each file.
-       - Once you are ready to commit, write a summary of the changes in the "Summary" field at the bottom left.
-       - Add a more detailed description in the "Description" field if necessary.
-       - Click the "Commit to main" button.
-       - In GitHub Desktop, click on the `Push origin` button at the top to push your commits to GitHub.
+       1. In GitHub Desktop, you should see the list of changed files in the left sidebar.
+       2. Review the changes by clicking on each file.
+       3. Once you are ready to commit, write a summary of the changes in the "Summary" field at the bottom left.
+       4. Add a more detailed description in the "Description" field if necessary.
+       5. Click the "Commit to main" button.
+       6. In GitHub Desktop, click on the `Push origin` button at the top to push your commits to GitHub.
    
 ### Step 7: Creating a Pull Request
 
