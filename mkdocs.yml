@@ -1,10 +1,6 @@
 site_name: Hoplab Wiki
-
-# Repository configuration
 repo_url: https://github.com/HOPLAB-LBP/hoplab-wiki/
-repo_name: GitHub
-
-# Edit URI configuration
+repo_name: HOPLAB-LBP/hoplab-wiki
 edit_uri: edit/main/docs/
 
 nav:
@@ -15,7 +11,7 @@ nav:
     - Practical set-up: get-started/practical-setup.md
     - Computer set-up: get-started/computer-setup.md
     - KU Loket: get-started/kuloket.md
-  - Administrative procedures: admin-procedures.md
+    - Administrative procedures: admin-procedures.md
   - fMRI:
     - General information: fmri/fmri-general.md
     - Hospital information: fmri/fmri-hospital.md
@@ -27,10 +23,35 @@ theme:
   name: material
   logo: assets/thicker_white_brain.svg
   favicon: assets/hoplab_favicon_white.ico 
+  icon:
+    repo: fontawesome/brands/github 
+
+  palette: 
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      toggle:
+        icon: material/lightbulb 
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
   features:
     - content.tabs.link
     - content.code.copy
     - content.code.select
+    - content.action.edit
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.expand
 
 markdown_extensions:
   - toc:
