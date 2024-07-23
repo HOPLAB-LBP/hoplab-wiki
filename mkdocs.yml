@@ -1,5 +1,17 @@
 site_name: Hoplab Wiki
 
+# Repository configuration
+repo_url: https://github.com/HOPLAB-LBP/hoplab-wiki/
+repo_name: GitHub
+
+# Edit URI configuration
+edit_uri: edit/main/docs/
+
+extra:
+  social:
+    - icon: fontawesome/solid/pencil-alt
+      link: 'https://github.com/HOPLAB-LBP/hoplab-wiki/edit/main/docs/{path}'
+      name: 'Edit this page'
 nav:
   - Home: index.md
   - Getting started:
