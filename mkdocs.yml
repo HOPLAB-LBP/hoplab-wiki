@@ -16,7 +16,6 @@ nav:
   - Science outreach: outreach.md
   - Contribute: contribute.md
 
-
 theme:
   name: material
   logo: assets/thicker_white_brain.svg
