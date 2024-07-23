@@ -63,28 +63,6 @@ nav:
 
 For more information on Markdown formatting, refer to the [MkDocs Reference Guide](https://squidfunk.github.io/mkdocs-material/reference/) for more complex formatting syntax.
 
-#### Adding Images
-
-1. **Upload Images:**
-   - Navigate to the `assets/` folder in your forked repository.
-   - Click on "Add file" > "Upload files".
-   - Select the image files from your computer and upload them to the `assets/` folder.
-   - Add a commit message describing the image upload.
-   - Select "Commit directly to the `main` branch" in your fork and click "Commit changes".
-
-2. **Get the Link for Uploaded Images:**
-   - Go to the `assets/` folder in your forked repository.
-   - Click on the uploaded image file.
-   - Click on the "Download" button to open the image in a new tab.
-   - Copy the URL from the address bar.
-
-3. **Add Images in Markdown:**
-   - To add an image in your Markdown file, use the following syntax:
-     ```markdown
-     ![Alt text](URL)
-     ```
-   - Replace `Alt text` with a description of the image and `URL` with the link you copied.
-
 ## How to Contribute - Easy Workflow
 
 This is the suggested workflow for smaller changes to the Wiki. The easiest way to update the Wiki is to create or edit the Markdown files in a separate branch, and open a Pull Request (PR) to merge the changes into the main branch. This workflow does not require any knowledge of git, and can be performed end-to-end in your browser. Here’s how to do it:
@@ -95,16 +73,16 @@ This is the suggested workflow for smaller changes to the Wiki. The easiest way 
 ### Step 1: Make your changes 
 
 a. **To edit an existing page:** 
-- Navigate to the [`HOPLAB-LBP/hoplab-wiki`](https://github.com/HOPLAB-LBP/hoplab-wiki) repository.
-- Click on the file you want to edit (usually, in `docs/`).
-- Click on the pencil icon (✏️) at the top right to edit the file.
+    - Navigate to the [`HOPLAB-LBP/hoplab-wiki`](https://github.com/HOPLAB-LBP/hoplab-wiki) repository.
+    - Click on the file you want to edit (usually, in `docs/`).
+    - Click on the pencil icon (✏️) at the top right to edit the file.
 
 b. **To create a new page:**  
-- Navigate to the `mkdocs.yml` file.
-- Click on the pencil icon (✏️) at the top right to edit the file.
-- Add the new page (e.g., `docs/new-page.md`) to the `nav` section and commit (follow the steps in the section 2 below).
-- In the `docs` folder, click on "Add file" > "Create new file".
-- Enter a name for your file in the `docs` directory (the same you used before, e.g., `docs/new-page.md`).
+    - Navigate to the `mkdocs.yml` file.
+    - Click on the pencil icon (✏️) at the top right to edit the file.
+    - Add the new page (e.g., `docs/new-page.md`) to the `nav` section and commit (follow the steps in the section 2 below).
+    - In the `docs` folder, click on "Add file" > "Create new file".
+    - Enter a name for your file in the `docs` directory (the same you used before, e.g., `docs/new-page.md`).
        
 You can then add/edit your content in Markdown format (see [Editing the Wiki](#editing-the-wiki) for more info), and click on "Preview" next to the "Edit" tab to see how your changes will look like. Once you are happy with the Preview of your changes, you can commit them to a temporary branch (see below).
 
@@ -138,42 +116,42 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
 ### Step 1: Forking the Repository and Cloning Your Fork
 
-#### Using the Command Line Interface (CLI)
+=== "Using the CLI"
 
-1. **Navigate to the Original Repository:**
-   - Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
+    1. **Navigate to the Original Repository:**
+       - Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
+    
+    2. **Fork the Repository:**
+       - Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
+    
+    3. **Clone Your Fork:**
+       - Click the "Code" button on your forked repository page and copy the URL.
+       - Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux) and navigate to the directory where you want to store the project, then type:
+         ```bash
+         git clone https://github.com/your-username/hoplab-wiki.git
+         ```
+       - Change into the directory of the cloned repository:
+         ```bash
+         cd hoplab-wiki
+         ```
 
-2. **Fork the Repository:**
-   - Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
-
-3. **Clone Your Fork:**
-   - Click the "Code" button on your forked repository page and copy the URL.
-   - Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux) and navigate to the directory where you want to store the project, then type:
-     ```bash
-     git clone https://github.com/your-username/hoplab-wiki.git
-     ```
-   - Change into the directory of the cloned repository:
-     ```bash
-     cd hoplab-wiki
-     ```
-
-#### Using GitHub Desktop
-
-1. **Navigate to the Original Repository:**
-   - Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
-
-2. **Fork the Repository:**
-   - Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
-
-3. **Open GitHub Desktop:**
-   - If you do not have GitHub Desktop installed, download and install it from [GitHub Desktop's official website](https://desktop.github.com/).
-
-4. **Clone Your Fork Using GitHub Desktop:**
-   - Open GitHub Desktop.
-   - In the top menu, click on `File > Clone Repository`.
-   - In the "URL" tab, paste the URL of your forked repository from your GitHub account into the "Repository URL" field.
-   - Choose the local path where you want to store the repository on your computer.
-   - Click "Clone".
+=== "Using GitHub Desktop"
+    
+    1. **Navigate to the Original Repository:**
+       - Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
+    
+    2. **Fork the Repository:**
+       - Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
+    
+    3. **Open GitHub Desktop:**
+       - If you do not have GitHub Desktop installed, download and install it from [GitHub Desktop's official website](https://desktop.github.com/).
+    
+    4. **Clone Your Fork Using GitHub Desktop:**
+       - Open GitHub Desktop.
+       - In the top menu, click on `File > Clone Repository`.
+       - In the "URL" tab, paste the URL of your forked repository from your GitHub account into the "Repository URL" field.
+       - Choose the local path where you want to store the repository on your computer.
+       - Click "Clone".
 
 ### Step 2: Setting Up Your Local Environment
 
@@ -219,31 +197,31 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
 ### Step 6: Committing Your Changes
 
-#### Using the Command Line Interface (CLI)
+=== "Using the CLI"
+    
+    1. **Stage and Commit Your Changes:**
+       - From your terminal, add all modified files to your commit:
+         ```bash
+         git add .
+         ```
+       - Commit the changes, including a clear message about what was modified and why:
+         ```bash
+         git commit -m "Detailed description of changes"
+         ```
+       - Push your commits to the forked repository on GitHub:
+         ```bash
+         git push origin main
+         ```
 
-1. **Stage and Commit Your Changes:**
-   - From your terminal, add all modified files to your commit:
-     ```bash
-     git add .
-     ```
-   - Commit the changes, including a clear message about what was modified and why:
-     ```bash
-     git commit -m "Detailed description of changes"
-     ```
-   - Push your commits to the forked repository on GitHub:
-     ```bash
-     git push origin main
-     ```
+=== "Using GitHub Desktop"
 
-#### Using GitHub Desktop
-
-1. **Stage and Commit Your Changes:**
-   - In GitHub Desktop, you should see the list of changed files in the left sidebar.
-   - Review the changes by clicking on each file.
-   - Once you are ready to commit, write a summary of the changes in the "Summary" field at the bottom left.
-   - Add a more detailed description in the "Description" field if necessary.
-   - Click the "Commit to main" button.
-   - In GitHub Desktop, click on the `Push origin` button at the top to push your commits to GitHub.
+    1. **Stage and Commit Your Changes:**
+       - In GitHub Desktop, you should see the list of changed files in the left sidebar.
+       - Review the changes by clicking on each file.
+       - Once you are ready to commit, write a summary of the changes in the "Summary" field at the bottom left.
+       - Add a more detailed description in the "Description" field if necessary.
+       - Click the "Commit to main" button.
+       - In GitHub Desktop, click on the `Push origin` button at the top to push your commits to GitHub.
    
 ### Step 7: Creating a Pull Request
 
