@@ -9,7 +9,6 @@ edit_uri: edit/main/docs/
 
 extra:
   social:
-    - icon: fontawesome/solid/pencil-alt
       link: 'https://github.com/HOPLAB-LBP/hoplab-wiki/edit/main/docs/{path}'
       name: 'Edit this page'
 nav:
