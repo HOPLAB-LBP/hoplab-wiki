@@ -72,32 +72,34 @@ This is the suggested workflow for smaller changes to the Wiki. The easiest way 
 
 ### Step 1: Make your changes 
 
-a. **To edit an existing page:** 
-    - Navigate to the [`HOPLAB-LBP/hoplab-wiki`](https://github.com/HOPLAB-LBP/hoplab-wiki) repository.
-    - Click on the file you want to edit (usually, in `docs/`).
-    - Click on the pencil icon (✏️) at the top right to edit the file.
+1. **To edit an existing page:**
+   
+    1. Navigate to the [`HOPLAB-LBP/hoplab-wiki`](https://github.com/HOPLAB-LBP/hoplab-wiki) repository.
+    2. Click on the file you want to edit (usually, in `docs/`).
+    3. Click on the pencil icon (✏️) at the top right to edit the file.
 
-b. **To create a new page:**  
-    - Navigate to the `mkdocs.yml` file.
-    - Click on the pencil icon (✏️) at the top right to edit the file.
-    - Add the new page (e.g., `docs/new-page.md`) to the `nav` section and commit (follow the steps in the section 2 below).
-    - In the `docs` folder, click on "Add file" > "Create new file".
-    - Enter a name for your file in the `docs` directory (the same you used before, e.g., `docs/new-page.md`).
+2. **To create a new page:**  
+
+    1. Navigate to the `mkdocs.yml` file.
+    2. Click on the pencil icon (✏️) at the top right to edit the file.
+    3. Add the new page (e.g., `docs/new-page.md`) to the `nav` section and commit (follow the steps in the section 2 below).
+    4. In the `docs` folder, click on "Add file" > "Create new file".
+    5. Enter a name for your file in the `docs` directory (the same you used before, e.g., `docs/new-page.md`).
        
 You can then add/edit your content in Markdown format (see [Editing the Wiki](#editing-the-wiki) for more info), and click on "Preview" next to the "Edit" tab to see how your changes will look like. Once you are happy with the Preview of your changes, you can commit them to a temporary branch (see below).
 
 ### Step 2: Commit changes to a temporary branch
 
-- Click on "Commit changes" after any necessary adjustments.
-- In the pop-up window, and add a commit message and description for your changes.
-- Select "Create a new branch for this commit and start a pull request".
-- Click on "Propose changes".
+1. Click on "Commit changes" after any necessary adjustments.
+2. In the pop-up window, and add a commit message and description for your changes.
+3. Select "Create a new branch for this commit and start a pull request".
+4. Click on "Propose changes".
 
 ### Step 3: Submit a PR with your proposed changes 
 
-- In the "Open a pull request page", add an informative title and a description of the changes in the PR.
-- In the right panel, make sure to assign an admin (as of July 2024, [@costantinoai](https://github.com/costantinoai)) to review your changes.
-- Click on "Create pull request" to submit your changes.
+1. In the "Open a pull request page", add an informative title and a description of the changes in the PR.
+2. In the right panel, make sure to assign an admin (as of July 2024, [@costantinoai](https://github.com/costantinoai)) to review your changes.
+3. Click on "Create pull request" to submit your changes.
 
 These steps above will create a new branch in the repository, that will be visible in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches), and a new PR visible in the [PRs list](https://github.com/HOPLAB-LBP/hoplab-wiki/pulls). Once the PR is approved by at least one reviewer and merged into the main branch, the newly created branch will be automatically deleted and the changes will go live.
          
@@ -119,12 +121,15 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 === "Using the CLI"
 
     1. **Navigate to the Original Repository:**
+    
        - Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
     
     2. **Fork the Repository:**
+    
        - Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
     
     3. **Clone Your Fork:**
+    
        - Click the "Code" button on your forked repository page and copy the URL.
        - Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux) and navigate to the directory where you want to store the project, then type:
          ```bash
@@ -138,15 +143,19 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 === "Using GitHub Desktop"
     
     1. **Navigate to the Original Repository:**
+    
        - Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
     
     2. **Fork the Repository:**
+    
        - Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
     
     3. **Open GitHub Desktop:**
+    
        - If you do not have GitHub Desktop installed, download and install it from [GitHub Desktop's official website](https://desktop.github.com/).
     
     4. **Clone Your Fork Using GitHub Desktop:**
+    
        - Open GitHub Desktop.
        - In the top menu, click on `File > Clone Repository`.
        - In the "URL" tab, paste the URL of your forked repository from your GitHub account into the "Repository URL" field.
@@ -156,9 +165,11 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 ### Step 2: Setting Up Your Local Environment
 
 1. **Install Conda:**
+
    - If you don't have Conda installed, download and install it from [Conda's official website](https://docs.conda.io/en/latest/miniconda.html).
 
 2. **Create and Activate a Conda Environment:**
+
    - To create a new environment specifically for this project, type:
      ```bash
      conda create --name hoplab-wiki python=3.9
@@ -169,6 +180,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
      ```
 
 3. **Install Necessary Packages:**
+
    - With the Conda environment activated, install the required packages:
      ```bash
      pip install mkdocs mkdocs-material
@@ -177,12 +189,14 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 ### Step 3: Making Changes
 
 1. **Edit Documentation:**
+
    - You can now make changes to your local clone of the documentation. Use a text editor or an IDE to open and edit the Markdown files in the repository.
    - If changes are extensive, consider splitting them into smaller, manageable commits that focus on specific pages or sections for clarity and ease of review.
 
 ### Step 4: Testing Your Changes Locally
 
 1. **Serve the Documentation Locally:**
+
    - While in your project directory and with the Conda environment activated, launch the local server by typing:
      ```bash
      mkdocs serve
@@ -193,6 +207,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 ### Step 5: Closing the Local Server
 
 1. **Stop the Server:**
+
    - When you are done previewing and editing and you are done with the changes, go back to the terminal where your server is running and press `Ctrl+C` to stop the server.
 
 ### Step 6: Committing Your Changes
@@ -200,6 +215,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 === "Using the CLI"
     
     1. **Stage and Commit Your Changes:**
+   
        - From your terminal, add all modified files to your commit:
          ```bash
          git add .
@@ -216,6 +232,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 === "Using GitHub Desktop"
 
     1. **Stage and Commit Your Changes:**
+       
        - In GitHub Desktop, you should see the list of changed files in the left sidebar.
        - Review the changes by clicking on each file.
        - Once you are ready to commit, write a summary of the changes in the "Summary" field at the bottom left.
@@ -226,6 +243,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 ### Step 7: Creating a Pull Request
 
 1. **Initiate a Pull Request:**
+
    - Navigate to your forked repository on GitHub.
    - Click on the "Pull requests" tab.
    - Click on "New pull request".
