@@ -94,6 +94,7 @@ plugins:
   - offline
   - privacy
   - search
+  - git-revision-date-localized
       
 extra_css:
   - stylesheets/extra.css
