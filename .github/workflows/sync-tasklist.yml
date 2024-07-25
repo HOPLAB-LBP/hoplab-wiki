@@ -3,7 +3,8 @@ name: Sync Task List
 on:
   pull_request:
     paths:
-      - '**/*.md'  
+      - '**/*.md'  # Adjust this path if needed to match the files your PRs usually change
+
 jobs:
   sync-task-list:
     runs-on: ubuntu-latest
@@ -33,12 +34,14 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          if git diff --exit-code docs/tasks-list.md; then
+          # Compare generated tasks-list.md with the existing one in ./docs/
+          if [ ! -f docs/tasks-list.md ] || ! cmp -s site/tasks-list.md docs/tasks-list.md; then
+            echo "Changes detected in tasks-list.md or file does not exist"
+            echo "changed=true" >> $GITHUB_ENV
+            cp site/tasks-list.md docs/tasks-list.md
+          else
             echo "No changes in tasks-list.md"
             echo "changed=false" >> $GITHUB_ENV
-          else
-            echo "Changes detected in tasks-list.md"
-            echo "changed=true" >> $GITHUB_ENV
           fi
 
       - name: Commit and push changes
