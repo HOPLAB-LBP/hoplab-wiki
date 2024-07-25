@@ -2,6 +2,10 @@ local/
 .cache
 
 # for mac users, ignore the .DS_store files
-.DS_Store
-/*/.DS_Store
-/*/*/.DS_Store
+**/.DS_Store
+
+# Ignore the tasks list generated during build. This is not needed because, 
+# if you work locally, you will have your own copy. If you want to deploy 
+# on GH pages, the tasks page gets automatically generated during build so
+# the md file is not needed in the repository. 
+**/tasks-list.md
