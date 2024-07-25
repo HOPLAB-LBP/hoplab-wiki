@@ -100,7 +100,7 @@ plugins:
   - privacy
   - search
   - git-revision-date-localized
-  - task_collector:
+  - task-collector:
       output_file: 'tasks-list.md'
       
 extra_css:
