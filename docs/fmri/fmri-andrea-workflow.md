@@ -249,7 +249,7 @@ The script produces a `BIDS/derivatives/mvpa` folder organized in a BIDS structu
 #### Plotting and reporting
 The Glasser parcellation has percels at three levels, where each higher level groups several ROIs into a single ROI. In my pipeline, I run the analysis at the lowest level (180 parcels per hemisphere), and average the results of the ROIs within a bigger ROI to get the average accuracy of the bigger ROI. This can be done with the script06. This script prepares the average accuracies at each level by averaging the accuracies at the lowest level, compute the significance against chance for each decoding accuracy, and plots the significant accuracies on an inflated brain for each grouping level. For instance:
 
-![Decoding Example](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/assets/fmri/combined_brain_grid.png)
+![Decoding Example](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/combined_brain_grid.png)
 
 
 
