@@ -100,6 +100,7 @@ plugins:
   - privacy
   - search
   - git-revision-date-localized
+      type: datetime
   - task-collector:
       output_file: 'tasks-list.md'
       
