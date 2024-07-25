@@ -180,7 +180,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
     1. With the Conda environment activated, install the required packages:
      ```bash
-     pip install mkdocs mkdocs-material
+     pip install mkdocs mkdocs-material mkdocs-task-collector mkdocs-git-revision-date-localized-plugin
      ```
 
 ### Step 3: Making Changes
