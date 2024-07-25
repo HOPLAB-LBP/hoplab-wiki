@@ -12,11 +12,14 @@ nav:
     - Computer set-up: get-started/computer-setup.md
     - Administrative procedures: get-started/admin-procedures.md
   - fMRI:
-    - General information: fmri/fmri-general.md
+    - First steps: fmri/fmri-get-started.md
     - Hospital information: fmri/fmri-hospital.md
-    - fMRI analysis workflow: fmri/fmri-andrea-workflow.md
+    - Analysis workflow: 
+        - General information: fmri/fmri-general.md
+        - fMRI analysis workflow: fmri/fmri-andrea-workflow.md
   - Science outreach: outreach.md
   - Contribute: contribute.md
+  - Tasks List: tasks-list.md
 
 theme:
   name: material
@@ -51,6 +54,8 @@ theme:
     - navigation.tabs.sticky
     - navigation.top
     - navigation.expand
+    - navigation.sections
+    #- toc.integrate # (1)!
 
 markdown_extensions:
   - toc:
@@ -95,6 +100,8 @@ plugins:
   - privacy
   - search
   - git-revision-date-localized
+  - task_collector:
+      output_file: 'tasks-list.md'
       
 extra_css:
   - stylesheets/extra.css
