@@ -1,4 +1,4 @@
-# Hoplab Wiki 
+# Hoplab Wiki
 
 Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be). 
 
@@ -17,7 +17,7 @@ Before you begin, ensure you have the following:
 
 - A GitHub account.
 - Be part of the `HOPLAB-LBP` organization.
-- If you plan on following the [Advanced Workflow](#how-to-contribute-advanced-workflow) (encouraged for more complex changes), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html), and git or GitHub Desktop installed.
+- If you plan on following the [Advanced Workflow](#how-to-contribute-advanced-workflow) (encouraged for more complex changes), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html), and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or [GitHub Desktop](https://desktop.github.com/download/) (strongly encouraged) installed.
 
 ## Editing the Wiki
 
