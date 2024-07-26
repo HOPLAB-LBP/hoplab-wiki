@@ -37,8 +37,8 @@
   
 
 
-  <script type="application/json" id="client-env">{"locale":"en","featureFlags":["code_vulnerability_scanning","copilot_beta_features_opt_in","copilot_chat_static_thread_suggestions","copilot_conversational_ux_history_refs","copilot_followup_to_agent","copilot_implicit_context","copilot_smell_icebreaker_ux","custom_inp","failbot_handle_non_errors","geojson_azure_maps","issues_react_is_read","marketing_pages_search_explore_provider","remove_child_patch","sample_network_conn_type","turbo_experiment_risky"]}</script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/wp-runtime-65aa04a0d461.js"></script>
+  <script type="application/json" id="client-env">{"locale":"en","featureFlags":["code_vulnerability_scanning","copilot_beta_features_opt_in","copilot_chat_static_thread_suggestions","copilot_conversational_ux_history_refs","copilot_followup_to_agent","copilot_implicit_context","copilot_smell_icebreaker_ux","custom_inp","experimentation_azure_variant_endpoint","failbot_handle_non_errors","geojson_azure_maps","issues_react_is_read","marketing_pages_search_explore_provider","remove_child_patch","sample_network_conn_type","turbo_experiment_risky"]}</script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/wp-runtime-5faf52848524.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_dompurify_dist_purify_js-89a69c248502.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_oddbird_popover-polyfill_dist_popover_js-56729c905fe2.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_mini-throttle_dist_index_js-node_modules_smoothscroll-polyfill_di-75db2e-adf929d695f3.js"></script>
@@ -53,7 +53,7 @@
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_file-attachment-element_dist_index_js-node_modules_primer_view-co-15cdfa-9117dc700fdf.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_onfocus_ts-ui_packages_trusted-types-policies_policy_ts-ui_packages-6fe316-d8f40351c6bb.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/github-elements-f4ec49d0b0e0.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/element-registry-86c2a8426ce8.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/element-registry-c50abd212280.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_catalyst_lib_index_js-node_modules_github_hydro-analytics-client_-7901e7-4b84c23ea573.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_braintree_browser-detection_dist_browser-detection_js-node_modules_stack-68835d-a18220f1db8d.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_lit-html_lit-html_js-ce7225a304c5.js"></script>
@@ -71,7 +71,7 @@
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_ajax-error_ts-app_assets_modules_github_behaviors_include-467754-12b67c78b7f2.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_commenting_edit_ts-app_assets_modules_github_behaviors_ht-83c235-39e927e92ed9.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_blob-anchor_ts-app_assets_modules_github_filter-sort_ts-app_assets_-6deafe-02c326c4f267.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/behaviors-05413c6898e0.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/behaviors-79b6bd709a75.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_delegated-events_dist_index_js-node_modules_github_catalyst_lib_index_js-06ff531-bf7e5a3732fd.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/notifications-global-957ece5a6535.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_mini-throttle_dist_index_js-node_modules_github_catalyst_lib_inde-dbbea9-e73b311a14f1.js"></script>
@@ -98,7 +98,7 @@
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_CheckboxGroup_CheckboxGroup_js-node_modules_primer_-5b5d36-827f5c85887c.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_react-core_create-browser-history_ts-ui_packages_safe-storage_safe-storage_ts-ui_-682c2c-77a6a66547d5.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_react-core_register-app_ts-ebeee98f1dc1.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_paths_index_ts-48462c0c04b7.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_paths_index_ts-4cf870624837.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_ref-selector_RefSelector_tsx-ea25a04b0016.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_commit-attribution_index_ts-ui_packages_commit-checks-status_index_ts-ui_packages-f45efb-bb5781427d25.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_code-view-shared_hooks_use-canonical-object_ts-ui_packages_code-view-shared_hooks-6c8816-e102a2880c2b.js"></script>
@@ -135,7 +135,7 @@
   <meta name="current-catalog-service-hash" content="f3abb0cc802f3d7b95fc8762b94bdcb13bf39634c40c357301c4aa1d67a256fb">
 
 
-  <meta name="request-id" content="2BC0:2D7A77:2A80C2:3B3A2D:66A2BBFB" data-pjax-transient="true"/><meta name="html-safe-nonce" content="7cb0daa33e99f6e8f5657719698ff5e0bdb833d15b6817bb000baaf098c9c073" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiIyQkMwOjJEN0E3NzoyQTgwQzI6M0IzQTJEOjY2QTJCQkZCIiwidmlzaXRvcl9pZCI6IjIyNTAzNDM0OTUwNzYzMzA0OTEiLCJyZWdpb25fZWRnZSI6ImlhZCIsInJlZ2lvbl9yZW5kZXIiOiJpYWQifQ==" data-pjax-transient="true"/><meta name="visitor-hmac" content="ecb3d7e85fdf6f2ba472c4a8e478fc6d263610c18eaae4877a1efa9de2c80508" data-pjax-transient="true"/>
+  <meta name="request-id" content="B098:1D423C:C1017D:1110629:66A3683D" data-pjax-transient="true"/><meta name="html-safe-nonce" content="c2508110cc2cfd27e44934c3cae112283569c394b3a88d88605212c4475015b4" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiJCMDk4OjFENDIzQzpDMTAxN0Q6MTExMDYyOTo2NkEzNjgzRCIsInZpc2l0b3JfaWQiOiIyNDgyMTE0Mjg0MTQ5MjM3ODIxIiwicmVnaW9uX2VkZ2UiOiJpYWQiLCJyZWdpb25fcmVuZGVyIjoiaWFkIn0=" data-pjax-transient="true"/><meta name="visitor-hmac" content="4855f47a07a76a1e6b631bde00451deb43fb7c9f7bd5719e8a95c4451078b751" data-pjax-transient="true"/>
 
 
     <meta name="hovercard-subject-tag" content="repository:801732680" data-turbo-transient>
@@ -174,8 +174,8 @@
     <meta property="fb:app_id" content="1401488693436528">
     <meta name="apple-itunes-app" content="app-id=1477376905, app-argument=https://github.com/HOPLAB-LBP/hoplab-wiki/blob/main/docs/assets/example_seminar_announcement.PNG" />
 
-      <meta name="twitter:image:src" content="https://opengraph.githubassets.com/e712550e222cc14e126f090aafd47dd2eeaae65a422a37179ee387d275a09b33/HOPLAB-LBP/hoplab-wiki" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="hoplab-wiki/docs/assets/example_seminar_announcement.PNG at main · HOPLAB-LBP/hoplab-wiki" /><meta name="twitter:description" content="This repository hosts the Hoplab lab wiki. This is a work in progress. - HOPLAB-LBP/hoplab-wiki" />
-  <meta property="og:image" content="https://opengraph.githubassets.com/e712550e222cc14e126f090aafd47dd2eeaae65a422a37179ee387d275a09b33/HOPLAB-LBP/hoplab-wiki" /><meta property="og:image:alt" content="This repository hosts the Hoplab lab wiki. This is a work in progress. - HOPLAB-LBP/hoplab-wiki" /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="600" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="hoplab-wiki/docs/assets/example_seminar_announcement.PNG at main · HOPLAB-LBP/hoplab-wiki" /><meta property="og:url" content="https://github.com/HOPLAB-LBP/hoplab-wiki/blob/main/docs/assets/example_seminar_announcement.PNG" /><meta property="og:description" content="This repository hosts the Hoplab lab wiki. This is a work in progress. - HOPLAB-LBP/hoplab-wiki" />
+      <meta name="twitter:image:src" content="https://opengraph.githubassets.com/542d7dc653bda00912911ffe04be3684f59e5cbdd0e08356c2de98abbdbab95a/HOPLAB-LBP/hoplab-wiki" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="hoplab-wiki/docs/assets/example_seminar_announcement.PNG at main · HOPLAB-LBP/hoplab-wiki" /><meta name="twitter:description" content="This repository hosts the Hoplab lab wiki. This is a work in progress. - HOPLAB-LBP/hoplab-wiki" />
+  <meta property="og:image" content="https://opengraph.githubassets.com/542d7dc653bda00912911ffe04be3684f59e5cbdd0e08356c2de98abbdbab95a/HOPLAB-LBP/hoplab-wiki" /><meta property="og:image:alt" content="This repository hosts the Hoplab lab wiki. This is a work in progress. - HOPLAB-LBP/hoplab-wiki" /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="600" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="hoplab-wiki/docs/assets/example_seminar_announcement.PNG at main · HOPLAB-LBP/hoplab-wiki" /><meta property="og:url" content="https://github.com/HOPLAB-LBP/hoplab-wiki/blob/main/docs/assets/example_seminar_announcement.PNG" /><meta property="og:description" content="This repository hosts the Hoplab lab wiki. This is a work in progress. - HOPLAB-LBP/hoplab-wiki" />
   
 
 
@@ -188,10 +188,10 @@
         <meta name="expected-hostname" content="github.com">
 
 
-  <meta http-equiv="x-pjax-version" content="630282852beadfb626cd2bd571b9072e4853172cf01df896767b416d89bbb63a" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-version" content="763b0d82c34fc6b5723557ef0518282ed4570f771eff1541261a42dc966d3e6f" data-turbo-track="reload">
   <meta http-equiv="x-pjax-csp-version" content="479d0e4f25e10adc648c4dd302ffd147aa5c2b606f0c5424f6f6f0f4511e5753" data-turbo-track="reload">
   <meta http-equiv="x-pjax-css-version" content="163e20a46a2244fead0e862c9379f4211a6f55a1babb9f0b78d00393e2938050" data-turbo-track="reload">
-  <meta http-equiv="x-pjax-js-version" content="03096ce90c292b5450d9afe5d94bfb09e78bab0438b38d7876942f9f6dfb7599" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-js-version" content="5dc55395966cf4ad50cab3b25403c219ac0af608ecdf3e63f3e0aac9d439615d" data-turbo-track="reload">
 
   <meta name="turbo-cache-control" content="no-preview" data-turbo-transient="">
 
@@ -794,7 +794,7 @@
                 
 
 
-<qbsearch-input class="search-input" data-scope="repo:HOPLAB-LBP/hoplab-wiki" data-custom-scopes-path="/search/custom_scopes" data-delete-custom-scopes-csrf="qRmj7ASXjsFxIBOkL0PF4UvPGstFhqO8SSK5IkhJcp5rm4qz_ls2wwOniL5Ty4KNgSoW4qZT9J0Scn255msrXQ" data-max-custom-scopes="10" data-header-redesign-enabled="false" data-initial-value="" data-blackbird-suggestions-path="/search/suggestions" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" data-current-repository="HOPLAB-LBP/hoplab-wiki" data-current-org="HOPLAB-LBP" data-current-owner="" data-logged-in="false" data-copilot-chat-enabled="false" data-nl-search-enabled="false">
+<qbsearch-input class="search-input" data-scope="repo:HOPLAB-LBP/hoplab-wiki" data-custom-scopes-path="/search/custom_scopes" data-delete-custom-scopes-csrf="UYBFJbBpgPw4esWooNdDZsh2pjQJOlLuieKTG3avjlOxOo1WHrvhTq5HKUWjJO_BiT6mHqz-AFIjYVm8zT6MLQ" data-max-custom-scopes="10" data-header-redesign-enabled="false" data-initial-value="" data-blackbird-suggestions-path="/search/suggestions" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" data-current-repository="HOPLAB-LBP/hoplab-wiki" data-current-org="HOPLAB-LBP" data-current-owner="" data-logged-in="false" data-copilot-chat-enabled="false" data-nl-search-enabled="false">
   <div
     class="search-input-container search-with-dialog position-relative d-flex flex-row flex-items-center mr-4 rounded"
     data-action="click:qbsearch-input#searchInputContainerClicked"
@@ -859,7 +859,7 @@
           ></div>
           <div class="QueryBuilder-InputWrapper">
             <div aria-hidden="true" class="QueryBuilder-Sizer" data-target="query-builder.sizer"></div>
-            <input id="query-builder-test" name="query-builder-test" value="" autocomplete="off" type="text" role="combobox" spellcheck="false" aria-expanded="false" aria-describedby="validation-5e6956b4-bb98-47fb-8832-4a4d35e3d30b" data-target="query-builder.input" data-action="
+            <input id="query-builder-test" name="query-builder-test" value="" autocomplete="off" type="text" role="combobox" spellcheck="false" aria-expanded="false" aria-describedby="validation-53220efb-4395-46a8-83d7-d4a976b01460" data-target="query-builder.input" data-action="
           input:query-builder#inputChange
           blur:query-builder#inputBlur
           keydown:query-builder#inputKeydown
@@ -1096,7 +1096,7 @@
                   id="query-builder-test-results"
                 ></ul>
         </div>
-      <div class="FormControl-inlineValidation" id="validation-5e6956b4-bb98-47fb-8832-4a4d35e3d30b" hidden="hidden">
+      <div class="FormControl-inlineValidation" id="validation-53220efb-4395-46a8-83d7-d4a976b01460" hidden="hidden">
         <span class="FormControl-inlineValidation--visual">
           <svg aria-hidden="true" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-alert-fill">
     <path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
@@ -1139,7 +1139,7 @@
   
 </div>
       <scrollable-region data-labelled-by="feedback-dialog-title">
-        <div data-view-component="true" class="Overlay-body">        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="code-search-feedback-form" data-turbo="false" action="/search/feedback" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="FtMGktUMewlHD9ArI0GuRJ/+hksOewQYLEnlUCQ3zyxQAcEcEIFWh803i+FhxwxHixRURNkncX2NTBLFXGYTQw==" />
+        <div data-view-component="true" class="Overlay-body">        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="code-search-feedback-form" data-turbo="false" action="/search/feedback" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="uVsC6/PyfGkA7iG5zCfe5gYfqXSrgSepNEq1B1S8t3ygJeLjAlBTp0YXL2Np4xcdIl+AD5HN8uZUgNfND+mQWw==" />
           <p>We read every piece of feedback, and take your input very seriously.</p>
           <textarea name="feedback" class="form-control width-full mb-2" style="height: 120px" id="feedback"></textarea>
           <input name="include_email" id="include_email" aria-label="Include my email address so I can be contacted" class="form-control mr-2" type="checkbox">
@@ -1177,7 +1177,7 @@
         <div data-view-component="true" class="Overlay-body">        <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
 
         <div hidden class="create-custom-scope-form" data-target="custom-scopes.createCustomScopeForm">
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="custom-scopes-dialog-form" data-turbo="false" action="/search/custom_scopes" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="1GdJIfzZzul5xwm9SGW82VN5zkQXjmolIhvpP9g+bdt/2GwMui4f4Ujgl5AOzyMTJzIvKYrQgN7RTOU5laveGQ==" />
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="custom-scopes-dialog-form" data-turbo="false" action="/search/custom_scopes" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="saW4M0pU5HOOoSrcbKrtPd3Y2U5ShtR84TH9anKcFfch46kWdvYXszx2dUGXWCGut9pKWJzpW5wu1+42XjD1kQ==" />
           <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
 
           <input type="hidden" id="custom_scope_id" name="custom_scope_id" data-target="custom-scopes.customScopesIdField">
@@ -1195,7 +1195,7 @@
                 placeholder="github-ruby"
                 required
                 maxlength="50">
-              <input type="hidden" data-csrf="true" value="QR1DTBL846FLc2kmFYZzMMNxvP+38mRtJvvjBHcMA2CU9DlsKypF6ufSZ2tByRl25hgcH0t1oVWhWubsqOVAAA==" />
+              <input type="hidden" data-csrf="true" value="GbDSQNHnywOsKzDYTCms0e+g0mQLIvB1XdwO9kQ3RhpPb0nGRVqjjLkNIFjDExldDIeOL4t/LnRQDXeUUFXqHg==" />
             </auto-check>
           </div>
 
@@ -1268,10 +1268,10 @@
         <span class="js-stale-session-flash-signed-out" hidden>You signed out in another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
         <span class="js-stale-session-flash-switched" hidden>You switched accounts on another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
 
-    <button id="icon-button-ce17ee39-326b-485f-9459-0fe6609d010f" aria-labelledby="tooltip-efb0d997-17be-40eb-b9b9-c4a81d175c8c" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium flash-close js-flash-close">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x Button-visual">
+    <button id="icon-button-af8b6229-9d60-40c6-8bd0-e3d2dec6fcf0" aria-labelledby="tooltip-fb5268d1-a7af-4ad3-b18f-c824c0d0b98a" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium flash-close js-flash-close">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x Button-visual">
     <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
 </svg>
-</button><tool-tip id="tooltip-efb0d997-17be-40eb-b9b9-c4a81d175c8c" for="icon-button-ce17ee39-326b-485f-9459-0fe6609d010f" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Dismiss alert</tool-tip>
+</button><tool-tip id="tooltip-fb5268d1-a7af-4ad3-b18f-c824c0d0b98a" for="icon-button-af8b6229-9d60-40c6-8bd0-e3d2dec6fcf0" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Dismiss alert</tool-tip>
 
 
   
@@ -1374,7 +1374,7 @@
             <a href="/login?return_to=%2FHOPLAB-LBP%2Fhoplab-wiki" rel="nofollow" id="repository-details-watch-button" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;notification subscription menu watch&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/HOPLAB-LBP/hoplab-wiki/blob/main/docs/assets/example_seminar_announcement.PNG&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="d773425d787585e40a15ec14f90fdd1a44ccf2c172a05261fe6f29c7903a779c" aria-label="You must be signed in to change notification settings" data-view-component="true" class="btn-sm btn">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bell mr-2">
     <path d="M8 16a2 2 0 0 0 1.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 0 0 8 16ZM3 5a5 5 0 0 1 10 0v2.947c0 .05.015.098.042.139l1.703 2.555A1.519 1.519 0 0 1 13.482 13H2.518a1.516 1.516 0 0 1-1.263-2.36l1.703-2.554A.255.255 0 0 0 3 7.947Zm5-3.5A3.5 3.5 0 0 0 4.5 5v2.947c0 .346-.102.683-.294.97l-1.703 2.556a.017.017 0 0 0-.003.01l.001.006c0 .002.002.004.004.006l.006.004.007.001h10.964l.007-.001.006-.004.004-.006.001-.007a.017.017 0 0 0-.003-.01l-1.703-2.554a1.745 1.745 0 0 1-.294-.97V5A3.5 3.5 0 0 0 8 1.5Z"></path>
 </svg>Notifications
-</a>    <tool-tip id="tooltip-868d7369-8b5b-4ee1-9ddd-f18054cdb834" for="repository-details-watch-button" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">You must be signed in to change notification settings</tool-tip>
+</a>    <tool-tip id="tooltip-cbb193db-821b-4e4c-8468-89e2216aa9a4" for="repository-details-watch-button" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">You must be signed in to change notification settings</tool-tip>
 
     </li>
 
@@ -1485,22 +1485,22 @@
 </ul>
     <div style="visibility:hidden;" data-view-component="true" class="UnderlineNav-actions js-responsive-underlinenav-overflow position-absolute pr-3 pr-md-4 pr-lg-5 right-0">      <action-menu data-select-variant="none" data-view-component="true">
   <focus-group direction="vertical" mnemonics retain>
-    <button id="action-menu-9db9e1b4-01fb-4cab-bc40-b444250a51cb-button" popovertarget="action-menu-9db9e1b4-01fb-4cab-bc40-b444250a51cb-overlay" aria-controls="action-menu-9db9e1b4-01fb-4cab-bc40-b444250a51cb-list" aria-haspopup="true" aria-labelledby="tooltip-62cac3df-b44b-45fb-9dda-4a7949ffee4d" type="button" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium UnderlineNav-item">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal Button-visual">
+    <button id="action-menu-185c04af-76d0-4146-a01e-a820310a3afb-button" popovertarget="action-menu-185c04af-76d0-4146-a01e-a820310a3afb-overlay" aria-controls="action-menu-185c04af-76d0-4146-a01e-a820310a3afb-list" aria-haspopup="true" aria-labelledby="tooltip-5cae7de3-0a63-4612-bb38-f42ba523d560" type="button" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium UnderlineNav-item">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal Button-visual">
     <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
 </svg>
-</button><tool-tip id="tooltip-62cac3df-b44b-45fb-9dda-4a7949ffee4d" for="action-menu-9db9e1b4-01fb-4cab-bc40-b444250a51cb-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Additional navigation options</tool-tip>
+</button><tool-tip id="tooltip-5cae7de3-0a63-4612-bb38-f42ba523d560" for="action-menu-185c04af-76d0-4146-a01e-a820310a3afb-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Additional navigation options</tool-tip>
 
 
-<anchored-position id="action-menu-9db9e1b4-01fb-4cab-bc40-b444250a51cb-overlay" anchor="action-menu-9db9e1b4-01fb-4cab-bc40-b444250a51cb-button" align="start" side="outside-bottom" anchor-offset="normal" popover="auto" data-view-component="true">
+<anchored-position id="action-menu-185c04af-76d0-4146-a01e-a820310a3afb-overlay" anchor="action-menu-185c04af-76d0-4146-a01e-a820310a3afb-button" align="start" side="outside-bottom" anchor-offset="normal" popover="auto" data-view-component="true">
   <div data-view-component="true" class="Overlay Overlay--size-auto">
     
       <div data-view-component="true" class="Overlay-body Overlay-body--paddingNone">          <action-list>
   <div data-view-component="true">
-    <ul aria-labelledby="action-menu-9db9e1b4-01fb-4cab-bc40-b444250a51cb-button" id="action-menu-9db9e1b4-01fb-4cab-bc40-b444250a51cb-list" role="menu" data-view-component="true" class="ActionListWrap--inset ActionListWrap">
+    <ul aria-labelledby="action-menu-185c04af-76d0-4146-a01e-a820310a3afb-button" id="action-menu-185c04af-76d0-4146-a01e-a820310a3afb-list" role="menu" data-view-component="true" class="ActionListWrap--inset ActionListWrap">
         <li hidden="hidden" data-menu-item="i0code-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
     
     
-    <a tabindex="-1" id="item-520abcca-0883-4bd1-a0a9-b16ff5b9ca36" href="/HOPLAB-LBP/hoplab-wiki" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+    <a tabindex="-1" id="item-451381c8-d9f0-4494-a885-be2a2c46eefb" href="/HOPLAB-LBP/hoplab-wiki" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
         <span class="ActionListItem-visual ActionListItem-visual--leading">
           <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code">
     <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
@@ -1515,7 +1515,7 @@
         <li hidden="hidden" data-menu-item="i1issues-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
     
     
-    <a tabindex="-1" id="item-1ef447bd-aa32-4590-a443-4ae32cf3d77c" href="/HOPLAB-LBP/hoplab-wiki/issues" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+    <a tabindex="-1" id="item-dc4391f9-d023-43ca-9228-91ed14921d86" href="/HOPLAB-LBP/hoplab-wiki/issues" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
         <span class="ActionListItem-visual ActionListItem-visual--leading">
           <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened">
     <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
@@ -1530,7 +1530,7 @@
         <li hidden="hidden" data-menu-item="i2pull-requests-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
     
     
-    <a tabindex="-1" id="item-d3a34f78-14ef-4712-b5d2-321f1d56877a" href="/HOPLAB-LBP/hoplab-wiki/pulls" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+    <a tabindex="-1" id="item-c5dbf03e-2c21-4f75-a725-f5b0d75ef467" href="/HOPLAB-LBP/hoplab-wiki/pulls" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
         <span class="ActionListItem-visual ActionListItem-visual--leading">
           <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request">
     <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path>
@@ -1545,7 +1545,7 @@
         <li hidden="hidden" data-menu-item="i3actions-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
     
     
-    <a tabindex="-1" id="item-565f4759-f4a5-4810-91e3-a51a27e7e689" href="/HOPLAB-LBP/hoplab-wiki/actions" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+    <a tabindex="-1" id="item-18dc1bbf-ecda-478f-8965-aee99214fe47" href="/HOPLAB-LBP/hoplab-wiki/actions" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
         <span class="ActionListItem-visual ActionListItem-visual--leading">
           <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-play">
     <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path>
@@ -1560,7 +1560,7 @@
         <li hidden="hidden" data-menu-item="i4security-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
     
     
-    <a tabindex="-1" id="item-1555349b-98ba-433b-a3d3-43d2382a82c2" href="/HOPLAB-LBP/hoplab-wiki/security" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+    <a tabindex="-1" id="item-1982c535-b13b-4912-9d63-602a166b41d8" href="/HOPLAB-LBP/hoplab-wiki/security" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
         <span class="ActionListItem-visual ActionListItem-visual--leading">
           <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-shield">
     <path d="M7.467.133a1.748 1.748 0 0 1 1.066 0l5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 0 1 1.217-1.667Zm.61 1.429a.25.25 0 0 0-.153 0l-5.25 1.68a.25.25 0 0 0-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.34 4.366 3.297a.196.196 0 0 0 .154 0c2.245-.956 3.582-2.104 4.366-3.298C13.225 9.666 13.5 8.36 13.5 7V3.48a.251.251 0 0 0-.174-.237l-5.25-1.68ZM8.75 4.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 1.5 0ZM9 10.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
@@ -1575,7 +1575,7 @@
         <li hidden="hidden" data-menu-item="i5insights-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
     
     
-    <a tabindex="-1" id="item-e5a401dc-8f7a-493f-8a94-8f47d5be7f83" href="/HOPLAB-LBP/hoplab-wiki/pulse" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+    <a tabindex="-1" id="item-0a80f7e9-0d44-4005-9b50-a1ba1f160f5f" href="/HOPLAB-LBP/hoplab-wiki/pulse" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
         <span class="ActionListItem-visual ActionListItem-visual--leading">
           <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-graph">
     <path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
@@ -1629,7 +1629,7 @@
   data-alternate="false"
 >
   
-  <script type="application/json" data-target="react-app.embeddedData">{"payload":{"allShortcutsEnabled":false,"fileTree":{"docs/assets":{"items":[{"name":"combined_brain_grid.png","path":"docs/assets/combined_brain_grid.png","contentType":"file"},{"name":"example_doctoralschoolpresentation_announcement.PNG","path":"docs/assets/example_doctoralschoolpresentation_announcement.PNG","contentType":"file"},{"name":"example_seminar_announcement.PNG","path":"docs/assets/example_seminar_announcement.PNG","contentType":"file"},{"name":"hoplab_favicon_white.ico","path":"docs/assets/hoplab_favicon_white.ico","contentType":"file"},{"name":"roomreservations.png","path":"docs/assets/roomreservations.png","contentType":"file"},{"name":"thicker_white_brain.svg","path":"docs/assets/thicker_white_brain.svg","contentType":"file"}],"totalCount":6},"docs":{"items":[{"name":"assets","path":"docs/assets","contentType":"directory"},{"name":"fmri","path":"docs/fmri","contentType":"directory"},{"name":"get-started","path":"docs/get-started","contentType":"directory"},{"name":"stylesheets","path":"docs/stylesheets","contentType":"directory"},{"name":"contribute.md","path":"docs/contribute.md","contentType":"file"},{"name":"index.md","path":"docs/index.md","contentType":"file"},{"name":"outreach.md","path":"docs/outreach.md","contentType":"file"}],"totalCount":7},"":{"items":[{"name":".github","path":".github","contentType":"directory"},{"name":"docs","path":"docs","contentType":"directory"},{"name":"site","path":"site","contentType":"directory"},{"name":".gitignore","path":".gitignore","contentType":"file"},{"name":"LICENSE","path":"LICENSE","contentType":"file"},{"name":"README.md","path":"README.md","contentType":"file"},{"name":"mkdocs.yml","path":"mkdocs.yml","contentType":"file"}],"totalCount":7}},"fileTreeProcessingTime":4.304388,"foldersToFetch":[],"repo":{"id":801732680,"defaultBranch":"main","name":"hoplab-wiki","ownerLogin":"HOPLAB-LBP","currentUserCanPush":false,"isFork":false,"isEmpty":false,"createdAt":"2024-05-16T20:06:16.000Z","ownerAvatar":"https://avatars.githubusercontent.com/u/116904811?v=4","public":true,"private":false,"isOrgOwned":true},"codeLineWrapEnabled":false,"symbolsExpanded":false,"treeExpanded":true,"refInfo":{"name":"main","listCacheKey":"v0:1721940958.0","canEdit":false,"refType":"branch","currentOid":"44743efe5ef1f7a6e58294d1f969606ea7fae8ea"},"path":"docs/assets/example_seminar_announcement.PNG","currentUser":null,"blob":{"rawLines":null,"stylingDirectives":null,"colorizedLines":null,"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/HOPLAB-LBP/hoplab-wiki/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null},"displayName":"example_seminar_announcement.PNG","displayUrl":"https://github.com/HOPLAB-LBP/hoplab-wiki/blob/main/docs/assets/example_seminar_announcement.PNG?raw=true","headerInfo":{"blobSize":"80.5 KB","deleteTooltip":"You must be signed in to make or propose changes","editTooltip":"You must be signed in to make or propose changes","ghDesktopPath":"https://desktop.github.com","isGitLfs":false,"onBranch":true,"shortPath":"c07ef8b","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2FHOPLAB-LBP%2Fhoplab-wiki%2Fblob%2Fmain%2Fdocs%2Fassets%2Fexample_seminar_announcement.PNG","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":null,"truncatedSloc":null},"mode":"file"},"image":true,"isCodeownersFile":null,"isPlain":false,"isValidLegacyIssueTemplate":false,"issueTemplate":null,"discussionTemplate":null,"language":null,"languageID":null,"large":false,"planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/HOPLAB-LBP/hoplab-wiki/blob/main/docs/assets/example_seminar_announcement.PNG","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","releasePath":"/HOPLAB-LBP/hoplab-wiki/releases/new?marketplace=true","showPublishActionBanner":false},"rawBlobUrl":"https://github.com/HOPLAB-LBP/hoplab-wiki/raw/main/docs/assets/example_seminar_announcement.PNG","renderImageOrRaw":true,"richText":null,"renderedFileInfo":null,"shortPath":null,"symbolsEnabled":true,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","actionsOnboardingTip":null},"truncated":false,"viewable":false,"workflowRedirectUrl":null,"symbols":null},"copilotInfo":null,"copilotAccessAllowed":false,"csrf_tokens":{"/HOPLAB-LBP/hoplab-wiki/branches":{"post":"HPhZj-qIXoVQjEsytmSJixTN3iIsy8gY2sZnlwmtTVCUreaUKq1F181efGX7wjsUEGyP0Ey6_u2SeHDv-xG9Jw"},"/repos/preferences":{"post":"xTQlh60AxATGm-nuOqiwMlfAi4Kc96ASc_n83bx_Pqr-0IJH498DApWrV_cvCYvMmaL7WB4MRPMTBMfllimU2g"}}},"title":"hoplab-wiki/docs/assets/example_seminar_announcement.PNG at main · HOPLAB-LBP/hoplab-wiki","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-1583894afd38.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-3a63a487027b.js","githubDevUrl":null,"enabled_features":{"code_nav_ui_events":false,"overview_shared_code_dropdown_button":false,"react_blob_overlay":false,"copilot_conversational_ux_embedding_update":false,"copilot_smell_icebreaker_ux":true,"copilot_workspace":false}}}</script>
+  <script type="application/json" data-target="react-app.embeddedData">{"payload":{"allShortcutsEnabled":false,"fileTree":{"docs/assets":{"items":[{"name":"combined_brain_grid.png","path":"docs/assets/combined_brain_grid.png","contentType":"file"},{"name":"example_doctoralschoolpresentation_announcement.PNG","path":"docs/assets/example_doctoralschoolpresentation_announcement.PNG","contentType":"file"},{"name":"example_seminar_announcement.PNG","path":"docs/assets/example_seminar_announcement.PNG","contentType":"file"},{"name":"hoplab_favicon_white.ico","path":"docs/assets/hoplab_favicon_white.ico","contentType":"file"},{"name":"roomreservations.png","path":"docs/assets/roomreservations.png","contentType":"file"},{"name":"thicker_white_brain.svg","path":"docs/assets/thicker_white_brain.svg","contentType":"file"}],"totalCount":6},"docs":{"items":[{"name":"assets","path":"docs/assets","contentType":"directory"},{"name":"fmri","path":"docs/fmri","contentType":"directory"},{"name":"get-started","path":"docs/get-started","contentType":"directory"},{"name":"stylesheets","path":"docs/stylesheets","contentType":"directory"},{"name":"contribute.md","path":"docs/contribute.md","contentType":"file"},{"name":"index.md","path":"docs/index.md","contentType":"file"},{"name":"outreach.md","path":"docs/outreach.md","contentType":"file"}],"totalCount":7},"":{"items":[{"name":".github","path":".github","contentType":"directory"},{"name":"docs","path":"docs","contentType":"directory"},{"name":"site","path":"site","contentType":"directory"},{"name":".gitignore","path":".gitignore","contentType":"file"},{"name":"LICENSE","path":"LICENSE","contentType":"file"},{"name":"README.md","path":"README.md","contentType":"file"},{"name":"mkdocs.yml","path":"mkdocs.yml","contentType":"file"}],"totalCount":7}},"fileTreeProcessingTime":17.191558,"foldersToFetch":[],"repo":{"id":801732680,"defaultBranch":"main","name":"hoplab-wiki","ownerLogin":"HOPLAB-LBP","currentUserCanPush":false,"isFork":false,"isEmpty":false,"createdAt":"2024-05-16T20:06:16.000Z","ownerAvatar":"https://avatars.githubusercontent.com/u/116904811?v=4","public":true,"private":false,"isOrgOwned":true},"codeLineWrapEnabled":false,"symbolsExpanded":false,"treeExpanded":true,"refInfo":{"name":"main","listCacheKey":"v0:1721940958.0","canEdit":false,"refType":"branch","currentOid":"ee4fbdd0f018eccff9ee339b04c73f60111b8d14"},"path":"docs/assets/example_seminar_announcement.PNG","currentUser":null,"blob":{"rawLines":null,"stylingDirectives":null,"colorizedLines":null,"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/HOPLAB-LBP/hoplab-wiki/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null},"displayName":"example_seminar_announcement.PNG","displayUrl":"https://github.com/HOPLAB-LBP/hoplab-wiki/blob/main/docs/assets/example_seminar_announcement.PNG?raw=true","headerInfo":{"blobSize":"80.5 KB","deleteTooltip":"You must be signed in to make or propose changes","editTooltip":"You must be signed in to make or propose changes","ghDesktopPath":"https://desktop.github.com","isGitLfs":false,"onBranch":true,"shortPath":"c07ef8b","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2FHOPLAB-LBP%2Fhoplab-wiki%2Fblob%2Fmain%2Fdocs%2Fassets%2Fexample_seminar_announcement.PNG","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":null,"truncatedSloc":null},"mode":"file"},"image":true,"isCodeownersFile":null,"isPlain":false,"isValidLegacyIssueTemplate":false,"issueTemplate":null,"discussionTemplate":null,"language":null,"languageID":null,"large":false,"planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/HOPLAB-LBP/hoplab-wiki/blob/main/docs/assets/example_seminar_announcement.PNG","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","releasePath":"/HOPLAB-LBP/hoplab-wiki/releases/new?marketplace=true","showPublishActionBanner":false},"rawBlobUrl":"https://github.com/HOPLAB-LBP/hoplab-wiki/raw/main/docs/assets/example_seminar_announcement.PNG","renderImageOrRaw":true,"richText":null,"renderedFileInfo":null,"shortPath":null,"symbolsEnabled":true,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","actionsOnboardingTip":null},"truncated":false,"viewable":false,"workflowRedirectUrl":null,"symbols":null},"copilotInfo":null,"copilotAccessAllowed":false,"csrf_tokens":{"/HOPLAB-LBP/hoplab-wiki/branches":{"post":"cHOCQYduY_JgnFG8vyzKYGETrj6eAShwstuR1tuPnIIpBZDDSjCFWU-mJabU9XKUNvsSjzDzvMm7Ve7sVP2uZA"},"/repos/preferences":{"post":"-DkIgIN6OOZXwObHU_lzTkkISEhIoyTurany8jqaNrG-ChZJEUin5XZD29-jk3ZXq-7Ic3OFDdl7nWnnd9XPSg"}}},"title":"hoplab-wiki/docs/assets/example_seminar_announcement.PNG at main · HOPLAB-LBP/hoplab-wiki","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-1583894afd38.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-3a63a487027b.js","githubDevUrl":null,"enabled_features":{"code_nav_ui_events":false,"overview_shared_code_dropdown_button":false,"react_blob_overlay":false,"copilot_conversational_ux_embedding_update":false,"copilot_smell_icebreaker_ux":true,"copilot_workspace":false}}}</script>
   <div data-target="react-app.reactRoot"><style data-styled="true" data-styled-version="5.3.6">.jUriTl{font-weight:600;font-size:32px;margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;font-size:14px;}/*!sc*/
 .cgQnMS{font-weight:600;font-size:32px;margin:0;}/*!sc*/
 .diwsLq{font-weight:600;font-size:32px;margin:0;font-weight:600;display:inline-block;max-width:100%;font-size:16px;}/*!sc*/
