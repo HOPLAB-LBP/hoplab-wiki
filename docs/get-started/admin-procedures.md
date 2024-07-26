@@ -113,10 +113,12 @@ We are very sad to see you leave! But since you do, make sure to tick the follow
 
 1. Return the following items to Ying Cai:
 
-	- Any pc material (laptop, mouse, keyboard, etc) (**check with Hans if this is correct or where this should go**)
+	- Any pc material (laptop, mouse, keyboard, etc.)
 	- Your external hard drive (and potential USB-key)
 	- Your key(card)
 	- Your Lync phone
+
+**TODO:** check with Hans if this is correct or where this should go
 
 2.	Make sure your data is organized and backed up correctly. That mostly means having back-ups in different locations and different ways. If you need advice on this, refer to the person in charge of data storage (as of December 2024, that is Klara).
 3.	For more information on what to do when you leave, check out [this link](https://ppw.kuleuven.be/ppw-dict/faq#autotoc-item-autotoc-63) for ICT-related info, [this link](https://admin.kuleuven.be/personeel/english/intranet/endofcontract-pension/practical-steps-leaving/practical-steps-leaving-employment) for HR-related info and [this link](https://www.kuleuven.be/english/life-at-ku-leuven/upon-leaving) if you are an international researcher leaving Belgium. 
