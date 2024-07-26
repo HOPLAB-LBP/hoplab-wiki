@@ -279,3 +279,14 @@ For further assistance, refer to the following resources:
 Or [ping](mailto:andreaivan.costantino@kuleuven.be) me.
 
 Thank you for contributing to the Hoplab Wiki!
+
+**TODO:** : add to the readme how to reference/link other sections, both locally and remotely (e.g., `[link](path/file.md)`)
+**TODO:** : explain how to hide navigation tab for pages with no children
+**TODO:** : change link colors
+**TODO:** : change the locale (timezone) in git plugin
+**TODO:** : make more explicit that you can edit pages just by clicking the icon in the wiki
+**TODO:** : make tree of the hoplab Gdrive and put it in teams
+**TODO:** : build empty pages with TODO for urgent info missing
+**TODO:** : build indexes (landing pages for parent sections, e.g., the "Getting started" page) + explain [how to](https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages)
+
+
