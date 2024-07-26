@@ -6,13 +6,57 @@ Luckily, you have found the most useful link of all, i.e., the link to this Wiki
     In the Wiki, we frequently will refer you to shared documents on Microsoft **X**, which you can find here [**PLACEHOLDER**].
 
 ## Getting started at KU Leuven
+<div class="grid cards" markdown>
 
-- Check out [this link](https://admin.kuleuven.be/personeel/english/international_staff/first_steps_upon_arrival) for information on the first administrative steps upon arrival for international students/staff
-- Check out [this link](https://www.kuleuven.be/english/stuvo/pangaea/orientation-days) for information on welcome activities (KU Leuven Orientation Days) specifically aimed for new international students/staff
-- Check out [**My KU Leuven**](https://admin.kuleuven.be/mykuleuven/en/mykuleuven) for accessing a wide range of university services and resources
-- Check out [**KU Loket**](https://www.kuleuven.be/kuloket) for all administrative tasks and more
-- Check out [**Toledo**](https://www.kuleuven.be/toledo) for all course-related things
-- Check out [**Filesender**](https://filesender.belnet.be/) for safely transferring large files
+-   :material-clock-fast:{ .lg .middle } __First Steps__
+
+    ---
+
+    For information on the first administrative steps upon arrival for international students/staff
+
+    [:octicons-arrow-right-24: Link](https://admin.kuleuven.be/personeel/english/international_staff/first_steps_upon_arrival)
+
+-   :material-sign-direction:{ .lg .middle } __Orientation Days__
+
+    ---
+
+    For information on welcome activities (KU Leuven Orientation Days) specifically aimed for new international students/staff
+
+    [:octicons-arrow-right-24: Link](https://www.kuleuven.be/english/stuvo/pangaea/orientation-days)
+
+-   :fontawesome-solid-user:{ .lg .middle } __My KU Leuven__
+
+    ---
+
+    For all administrative tasks and more
+
+    [:octicons-arrow-right-24: Link](https://admin.kuleuven.be/mykuleuven/en/mykuleuven)
+
+-   :material-room-service:{ .lg .middle } __KU Loket__
+
+    ---
+
+    For accessing a wide range of university services and resources
+
+    [:octicons-arrow-right-24: Link](https://www.kuleuven.be/kuloket)
+    
+-   :fontawesome-solid-user-graduate:{ .lg .middle } __Toledo__
+
+    ---
+
+    For all course-related things
+
+    [:octicons-arrow-right-24: Link](for all course-related things)
+    
+-   :material-file-send-outline:{ .lg .middle } __Filesender__
+
+    ---
+
+    For safely transferring large files
+
+    [:octicons-arrow-right-24: Link](https://filesender.belnet.be/)
+    
+</div>
 
 ## Getting started at Hoplab
 
