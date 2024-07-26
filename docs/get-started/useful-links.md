@@ -3,7 +3,7 @@
 Luckily, you have found the most useful link of all, i.e., the link to this Wiki! Besides this, there are some other links worth checking out. 
 
 !!! info
-    In the Wiki, we frequently will refer you to shared documents on Microsoft **X**, which you can find here (**Add link to OneDrive/Teams**).
+    In the Wiki, we frequently will refer you to shared documents on Microsoft **X**, which you can find here [**PLACEHOLDER**].
 
 ## Getting started at KU Leuven
 
