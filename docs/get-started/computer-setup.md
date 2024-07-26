@@ -16,14 +16,14 @@ Alternatively, if someone else is already administrator, ask them to add you (Wi
 ??? question "Where do I find the hostname of my pc?"
 	The hostname is usually printed on a sticker on the computer. If not, go to Start, right click on "This PC", choose properties, and check the "Device name" field.
 
-## Installing Matlab
+## Installing MATLAB
 
 The situation is different depending on whether you are a student or a new lab member.
 
 For **students**:
 
-- Follow the step-by-step plan provided [here](https://admin.kuleuven.be/icts/onderzoek/downloads/matlab/tah-student-install-2017-en.pdf).
-- Bachelor’s and master’s students of certain programs can register on the [Mathworks website](https://nl.mathworks.com/academia/tah-portal/ku-leuven-30919019.html) to use Matlab. Registration takes place using your KU Leuven student email address. After registering, you can download the software directly from the website.
+- Follow the step-by-step plan provided [here](https://admin.kuleuven.be/icts/onderzoek/downloads/MATLAB/tah-student-install-2017-en.pdf).
+- Bachelor’s and master’s students of certain programs can register on the [Mathworks website](https://nl.mathworks.com/academia/tah-portal/ku-leuven-30919019.html) to use MATLAB. Registration takes place using your KU Leuven student email address. After registering, you can download the software directly from the website.
 
 For **personnel**:
 
@@ -34,7 +34,7 @@ For **personnel**:
 	- Copy the IPv4 Address and send it to Ying
 	- Find your computer hostname (GHUM-...) and send it to Ying
 
-2.	Download the Matlab installation files directly from the ICTS License Tool [here](https://icts.kuleuven.be/apps/license/download/matlab/index.html)
+2.	Download the MATLAB installation files directly from the ICTS License Tool [here](https://icts.kuleuven.be/apps/license/download/MATLAB/index.html)
 
 3.	To change the computer name and IP address yourself: 
 
@@ -42,7 +42,7 @@ For **personnel**:
 	- Click the pencil under "register your PC" where you can change the hostname and IP address
 
 !!! info
-	MatLab can be used at home provided you use a VPN. The official VPN to use is SSL VPN Pulse Client (see below).
+	MATLAB can be used at home provided you use a VPN. The official VPN to use is SSL VPN Pulse Client (see below).
 
 ## Frequently used software
 
@@ -83,3 +83,5 @@ Find info on how to install printing services on your computer [here](https://pp
 If the installation doesn’t work, use a USB key to print on the black and white printer in room 02.28. You can also get permanent access by asking Ying to add you to the list of users.
 
 For mac users, follow the instructions on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration) to print from your personal computer. More generally, this manual tries to give an overview of most frequently asked questions concerning configuration and initial setup of a secure work environment on Mac OS X. 
+
+**NOTE**: we changed printer recently (few months ago), so let's make sure this procedure is still up-to-date (I think it may not be).
