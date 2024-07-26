@@ -103,6 +103,7 @@ plugins:
   - search
   - git-revision-date-localized:
       type: datetime
+      timezone: Europe/Brussels
   - task-collector:
       output_file: 'tasks-list.md'
       
