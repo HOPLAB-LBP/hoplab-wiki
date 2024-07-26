@@ -48,15 +48,17 @@ For **personnel**:
 
 Here are some software programs we frequently use in the lab, which you might find useful to download:
 
-- Google Calendar: Make sure you have (writing) access to the lab's Google calendar (ask the person in charge of this, for now, that is Tim/Klara/Silke).
-- TeamViewer: For remote access to a desktop pc, e.g. the fMRI desktop to run your analyses. Make sure to install the free **private** version ([installation link](https://www.teamviewer.com/en/download/windows/)). If, for some reason, TeamViewer is unaccessible, AnyDesk is a good alternative (again, make sure to install the free private version). **Add more details on the exact steps/tips**
-- Google Chrome: This is the preferred web browser. For example, the MR calendar is only compatible with this browser.
-- Slack: Slack is used for communication within the lab. Ask any lab member to add you to the relevant channels.
-- Skype for business and Microsoft Teams: The KU Leuven offers both [Skype for business](https://admin.kuleuven.be/icts/english/services/skype) and [MS Teams](https://admin.kuleuven.be/icts/english/teams/index) for communication purposes. See [this table](https://admin.kuleuven.be/icts/english/teams/comparison) for a comparison between the different platforms. Currently, MS Teams is the newer and preferred option, however, it only allows its users to reach other MS Teams users. With MS Teams, it is currently not possible to call (or be called by) telephone numbers (landline and mobile). You can use Skype for this.
-- SSL VPN Pulse Client: The VPN offered by the university. For more information, check out this [link](https://admin.kuleuven.be/icts/services/vpn/).
+- **Google Calendar**: Make sure you have (writing) access to the lab's Google calendar (ask the person in charge of this, for now, that is Tim/Klara/Silke).
+- **TeamViewer**: For remote access to a desktop pc, e.g. the fMRI desktop to run your analyses. Make sure to install the free **private** version ([installation link](https://www.teamviewer.com/en/download/windows/)). If, for some reason, TeamViewer is unaccessible, AnyDesk is a good alternative (again, make sure to install the free private version).
+- **Google Chrome**: This is the preferred web browser. For example, the MR calendar is only compatible with this browser.
+- **Slack**: Slack is used for communication within the lab. Ask any lab member to add you to the relevant channels.
+- **Skype for business** and **Microsoft Teams**: The KU Leuven offers both [Skype for business](https://admin.kuleuven.be/icts/english/services/skype) and [MS Teams](https://admin.kuleuven.be/icts/english/teams/index) for communication purposes. See [this table](https://admin.kuleuven.be/icts/english/teams/comparison) for a comparison between the different platforms. Currently, MS Teams is the newer and preferred option, however, it only allows its users to reach other MS Teams users. With MS Teams, it is currently not possible to call (or be called by) telephone numbers (landline and mobile). You can use Skype for this.
+- **SSL VPN Pulse Client**: The VPN offered by the university. For more information, check out this [link](https://admin.kuleuven.be/icts/services/vpn/).
+
+**TODO:** Add more details on the exact steps/tips for TeamViewer.
 
 !!! info
-	In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in C:\Workdir\MyApps\. Please contact the ICT helpdesk if problems persist.
+	In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in `C:\Workdir\MyApps\`. Please contact the ICT helpdesk if problems persist.
 
 ## Data storage
 
@@ -71,7 +73,6 @@ The same advice holds for **personnel**. Please make two copies of your document
 
 1. A portable hard drive (ask Ying for a hard drive from LBP)
 2. Your online OneDrive folder
-
 
 ## Printing
 
