@@ -2,7 +2,9 @@
 
 ## Keys
 
-Ask the LBP lab technician (As of August 2024, this is Ying Cai, **add link to KU Leuven who-is-who**), whom you can find in room 02.37, for the key to your new office.
+Ask the LBP lab technician (As of August 2024, this is Ying Cai), whom you can find in room 02.37, for the key to your new office.
+
+**TODO:** add link to KU Leuven who-is-who
 
 ## Staff card
 
@@ -14,4 +16,4 @@ If you need to call or be called by external numbers, Skype for business can be 
 
 ## Other
 
-For each new member, a laptop and other pc material (e.g., an external hard drive, computer screen, mouse, keyboard, etc.) will be ordered or be made available. If you are missing something, please contact **tbd** before ordering anything new. 
+For each new member, a laptop and other pc material (e.g., an external hard drive, computer screen, mouse, keyboard, etc.) will be ordered or be made available. If you are missing something, please contact [**PLACEHOLDER**] before ordering anything new. 
