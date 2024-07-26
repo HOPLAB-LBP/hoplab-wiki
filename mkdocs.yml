@@ -53,9 +53,11 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.top
-    - navigation.expand
+    # - navigation.expand
     - navigation.sections
-    #- toc.integrate # (1)!
+    # - toc.integrate # (1)!
+    - search.highlight
+    - navigation.indexes
 
 markdown_extensions:
   - toc:
