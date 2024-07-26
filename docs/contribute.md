@@ -288,5 +288,4 @@ Thank you for contributing to the Hoplab Wiki!
 **TODO:** : make tree of the hoplab Gdrive and put it in teams
 **TODO:** : build empty pages with TODO for urgent info missing
 **TODO:** : build indexes (landing pages for parent sections, e.g., the "Getting started" page) + explain [how to](https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages)
-
-
+**TODO:** : add more information about **coding practices**!! and how to properly create a conda environment, set up a project on Spyder, and sync with GH for version control and collaboration. We need to come up with a solid workflow and explanations on how to organize folders/scripts correctly.
