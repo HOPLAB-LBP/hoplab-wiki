@@ -6,4 +6,12 @@
   --md-primary-fg-color--dark:  #90030C;
 }
 
+/* Add these rules to set the link color within the main content */
+.md-typeset a {
+  color: blue;
+}
+
+.md-typeset a:hover, .md-typeset a:focus {
+  color: purple;
+}
 
