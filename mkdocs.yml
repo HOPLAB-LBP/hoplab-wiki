@@ -20,9 +20,15 @@ nav:
       - research/fmri/index.md
       - First steps: research/fmri/fmri-get-started.md
       - Hospital information: research/fmri/fmri-hospital.md
+      - General information: research/fmri/fmri-general.md
       - Analysis workflow: 
-          - General information: research/fmri/analysis/fmri-general.md
-          - fMRI analysis workflow: research/fmri/analysis/fmri-andrea-workflow.md
+          - 1. Set-up you environment: research/fmri/analysis/fmri-setup-env.md
+          - 2. BIDS conversion: research/fmri/analysis/fmri-bids-conversion.md
+          - 3. Pre-processing and QA: research/fmri/analysis/fmri-prepocessing-qa.md
+          - 4. First-level analysis: research/fmri/analysis/fmri-glm.md
+          - 5. Regions of interest: research/fmri/analysis/fmri-rois.md
+          - 6. Multi-variate analysis: research/fmri/analysis/fmri-mvpa.md
+          - fMRI workflow example: research/fmri/analysis/fmri-andrea-workflow.md
     - Behaviour:
       - research/behaviour/index.md
     - EEG:

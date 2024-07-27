@@ -6,9 +6,6 @@ The code to reproduce these analyses can be found [here](https://github.com/cost
 
 - **TODO:**  add links to folder structure and/or data
 
-## Before you start
-- **TODO:**  add info about tools we will use, how to install/configure and links to docs
-
 ## From raw data to BIDS
 
 ### Collect raw data
