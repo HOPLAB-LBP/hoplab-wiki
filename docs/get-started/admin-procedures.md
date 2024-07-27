@@ -65,21 +65,21 @@ Proceed as follows:
 
 For more information, check out [this page](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/absences_university_business). If you are using your own vehicle for the trip, please make sure it is registered for insurance reasons. To do so, follow the steps on [this page](https://admin.kuleuven.be/personeel/english/intranet/salary-benefits-insurances/workrelated-trips/reimbursement_workrelated_trip#section-2).
 
-## How to reserve a room for a meeting
+## Reserve a room for a meeting
 
 In order to book a room, contact [Ying Cay]([PLACEHOLDER]). You can check which rooms are available yourself through KU Loket:
 
 1. Go to KU Loket, navigate to the tab "**HSE & Spaces**" and click on "**Classroom reservations**" (Dutch only) 
-2. Click "**Selecteer lokalen**" and create the following selection to see all the rooms in the PSI: 
-
-	![Room reservations](https://github.com/HOPLAB-LBP/hoplab-wiki/blob/main/docs/assets/roomreservations.png)
+2. Click "**Selecteer lokalen**" and create the following selection to see all the rooms in the PSI:
+   
+![Room reservations](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/roomreservations.png)
 
 3. Select the rooms that fit your needs
 4. Click "**toon reservaties**" twice
 5. Browse to the date & time when you need the room
 6. Look for an available room and send this info to [Ying Cay]([PLACEHOLDER]) 
 
-## How to reserve equipment or a room for testing
+## Reserve equipment or a room for testing
 
 The standard booking tool for testing rooms and equipment (testing booths, EEG caps, etc.) since 2023 is [Clustermarket]([PLACEHOLDER]). You can log in to the website using your KU Leuven credentials. To do so, choose "**Log in via your organisation**" and type `KU Leuven`. You will be automatically redirected.
 
@@ -87,7 +87,7 @@ When you are logged in, click "**join lab**" on your dashboard and search for "*
 
 Make sure to use this website to book your testing time slots when you use common rooms or material. Request access to the items you don’t have permission to in case you need it.
 
-## How to order stuff
+## Order stuff
 
 Please contact [Ying Cay]([PLACEHOLDER]) for assistance with arranging and/or ordering and/or paying for the following things:
 
@@ -103,7 +103,7 @@ The IT department handles orders related to **computer supplies** (*ppw.dict@kul
 
 If you need **technical assistance** for your order (e.g., you want to order an EEG-cap), you can contact [Klara]([PLACEHOLDER]) or send an email to *neurospace@kuleuven.be* (general mailing address to reach the support staff of the Methusalem project).
 
-## How to arrange a parking spot for a visitor
+## Arrange a parking spot for a visitor
 
 - If you need to arrange parking for a visitor in the **city center**, you can do so by requesting a day code for the visitor to operate the barriers of the KU Leuven personnel parkings. For more information, check out [this page](https://admin.kuleuven.be/td/intranet/en/fd/bws/parking-policy#section-8). It is worth noting that the car park underneath the Herman Servotte Residence located on the Social Sciences campus (Parkstraat 39-53, 3000 Leuven) can be accessed outside of working hours and during holidays with your staff card.
 - Parking spots at the **university hospital** (UZ Leuven campus Gasthuisberg) can be refunded in the form of a parking ticket that visitors can use to pay their parking fee. We can buy these tickets (in batches) in advance, so make sure to check beforehand with Klara if we have tickets left or not. New tickets can be ordered by Ying.
