@@ -198,7 +198,7 @@ If the run finishes successfully (check the last line of your terminal output), 
   
 Check the sub-xx.hmtl report to make sure everything run smoothly. Specifically, check the registrations, and look for particularly high FD values in the functional runs -- they may be indicative of poor data. See [this page](https://fmriprep.org/en/stable/outputs.html#confounds) for a description of the confounds and [this video](https://www.youtube.com/watch?v=fQHEKSzFKDc&list=PLIQIswOrUH6_szyxn9Fy-2cxd3vjlklde&index=3) for more information on what to look for.
 
-### First-level analysis -- GLM 
+## First-level analysis -- GLM 
 
 Once we are done with preprocessing, it's time for GLM. Running the GLM and setting the contrasts is as easy as running script03. Remember to double-check the parameters at the top of the file. Specifically, you will need to adjust:
   - read/write folder, including the fmriprep folder in `fmriprepRoot`, your BIDS folder in `BIDSRoot`, the folder you want to save your GLM results to (it should ideally be in the derivatives folder, in a `fmriprep-spm` folder) in `outRoot`, and a directory to store your temporary files (e.g., uncompressed, since SPM can't read compressed gz files, and/or smoothed files) in `tempDir`.
@@ -225,7 +225,7 @@ If you want, you can visualize these activations on a volume of your subject (or
 
 Once we double-checked the results of the GLM, and we are sure we are happy with it, we'll need generate our ROI masks and perform the multi-variate analysis (MVPA and RSA). This will be done in [cosmomvpa](https://cosmomvpa.org/documentation.html). 
 
-### Generate and organize your Regions of Interest masks
+## Generate and organize your Regions of Interest masks
 
 ##### ROIs from localizers
 To run the MVPA you will need some Regions of Interest (ROIs) to select your voxels. One way to do this, is to perform a functional localizer task in the scanner, and run a GLM on the pre-processed and smoothed data for that task to select only voxels active in a given condition (e.g., Faces > Objects to get FFA). Another way could be using pre-defined anatomical masks, mapped in the same space as your subjects (usually, MNI). If you use an anatomical mask, make sure it is in the same space as your subjects, and it has the same resolution. If the resolution of your data (usually, 2*2*2) is different from the resolution of your parcel (1*1*1), you will need to resample/reslice the anatomical mask to match the resolution of your data. Thic can be done in ANTs, SPM, or many python libraries (e.g., nilearn/nibabel).
@@ -236,14 +236,14 @@ In my pipeline, I use the [Glasser2016 parcellation projected on fsaverage](http
 ##### Other parcels/atlases
 **TODO:** link a few other atlases
 
-### Multi-variate analysis
+## Multi-variate analysis
 
-#### Run decoding SVM
+### Run decoding SVM
 Once we produced and organized our ROIs, it's time for MVPA. Again, running the MVPA analysis is as easy as running a script. In my pipeline, script04 runs independent cross-validated SVM classification analysis on each subject and ROI, and returns the decoding accuracy for each roi of the HPC parcellation.
 
 The script produces a `BIDS/derivatives/mvpa` folder organized in a BIDS structure, with folders for each subject including a tsv file with the decoding accuracy results. 
 
-#### Plotting and reporting
+### Plotting and reporting
 The Glasser parcellation has percels at three levels, where each higher level groups several ROIs into a single ROI. In my pipeline, I run the analysis at the lowest level (180 parcels per hemisphere), and average the results of the ROIs within a bigger ROI to get the average accuracy of the bigger ROI. This can be done with the script06. This script prepares the average accuracies at each level by averaging the accuracies at the lowest level, compute the significance against chance for each decoding accuracy, and plots the significant accuracies on an inflated brain for each grouping level. For instance:
 
 ![Decoding Example](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/combined_brain_grid.png)
