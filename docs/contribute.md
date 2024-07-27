@@ -1,4 +1,4 @@
-# Hoplab Wiki 
+# Contribute to the Hoplab Wiki
 
 Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be). 
 
@@ -6,8 +6,8 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
 
 1. [Getting Started](#getting-started)
 2. [Editing the Wiki](#editing-the-wiki)
-3. [How to Contribute - Easy Workflow](#how-to-contribute---easy-workflow)
-4. [How to Contribute - Advanced Workflow](#how-to-contribute---advanced-workflow)
+3. [How to Contribute - Easy Workflow](#how-to-contribute-easy)
+4. [How to Contribute - Advanced Workflow](#how-to-contribute-advanced)
 5. [Reviewing and Accepting Pull Requests (for Admins)](#reviewing-and-accepting-pull-requests-for-admins)
 6. [Troubleshooting](#troubleshooting)
 
@@ -16,7 +16,7 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
 Before you begin, ensure you have the following:
 
 - A GitHub account.
-- Be part of the `HOPLAB-LBP` organization.
+- Be part of the [`HOPLAB-LBP`](https://github.com/orgs/HOPLAB-LBP/people) organization.
 - If you plan on following the [Advanced Workflow](#how-to-contribute-advanced-workflow) (encouraged for more complex changes), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html), and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or [GitHub Desktop](https://desktop.github.com/download/) (strongly encouraged) installed.
 
 ## Editing the Wiki
@@ -63,7 +63,7 @@ nav:
 
 For more information on Markdown formatting, refer to the [MkDocs Reference Guide](https://squidfunk.github.io/mkdocs-material/reference/) for more complex formatting syntax.
 
-## How to Contribute - Easy Workflow
+## How to Contribute (Easy)
 
 ??? tip "Edit directly from this page!"
     Existing pages can be edited directly through the Wiki! If you need to edit or add information to any page, look for the paper and pencil symbol :material-file-edit-outline: at the top-right of the page, next to the page title. This will make you edit the page and open a PR either by creating a new branch on the main repo (if you are part of the Hoplab organization on GitHub) or by forking your own copy of the repo (if you are an external contributor). Make sure to [submit a PR](#step-3-submit-a-pr-with-your-proposed-changes) after your changes are made.
@@ -106,9 +106,11 @@ You can then add/edit your content in Markdown format (see [Editing the Wiki](#e
    
 These steps above will create a new branch in the repository, that will be visible in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches), and a new PR visible in the [PRs list](https://github.com/HOPLAB-LBP/hoplab-wiki/pulls). Once the PR is approved by at least one reviewer and merged into the main branch, the newly created branch will be automatically deleted and the changes will go live.
          
-## How to Contribute - Advanced Workflow
+## How to Contribute (Advanced)
 
-The preferred way to contribute if you need to make significant/multiple changes, but it requires some familiarity with git, Python, and Conda environments. With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session. 
+The preferred way to contribute if you need to make **significant/multiple changes**, but it requires some familiarity with git, Python, and Conda environments. If you are not a Wiki mantainer, this workflow is probably on over-kill. 
+
+With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session. 
 
 !!! question "How should I organize my PR?"
     A [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (or PR) "*is a proposal to merge a set of changes from one branch into another*". Ideally, a PR should include all the commits **for a specific feature** or bugfix from end-to-end. Avoid making PRs that contain multiple unrelated changes. For instance, if you are working on a feature that requires modifications across multiple files, ensure all those changes are included in the same PR. Conversely, avoid combining changes for different features (e.g., adding unrelated updates to the fMRI workflow and the getting started section) in a single PR. Each PR should represent a cohesive unit of work.
