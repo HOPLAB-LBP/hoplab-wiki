@@ -21,3 +21,6 @@ If you just got started in the lab, you might want to make sure you're added on 
     1. The **visionlist** is the main community-wide newsletter for vision sciences. Any opening position, conference, summer school you might be interest in will be on there (more info [here](https://visionscience.com/mailman/listinfo/visionlist_visionscience.com)).
     2. The **CVnet mailing list** communicates about everything colour and vision-related. Conferences, positions, community news will be posted on there (more info [here](http://lawton.ewind.com/mailman/listinfo/cvnet)).
     3. If you're a PhD, the **Doctoral school mailing list** (*ppw.doctoraten@kuleuven.be*) can be useful to you. You can find it on the [KU Leuven mailing list server](http://ls.kuleuven.be/). 
+    
+    
+**TODO:** add link to each person/PI mentioned here. in **NeuroSPACE mailing list**, add links to the labs of the 4 PIs.

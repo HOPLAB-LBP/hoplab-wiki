@@ -4,7 +4,7 @@ On this page, we will specify the procedures for the most common administrative 
 
 **KU Loket** is the university portal through which many administrative things are done. You can access it [here](https://webwsp.aps.kuleuven.be/irj/portal). 
 
-## How to consult your personnel file
+## Consult your personnel file
 
 Log in to KU Loket and go to "Personnel", then click on "My details". 
 
@@ -16,11 +16,11 @@ Browse through the **other tabs** to find out and/or change information on commu
 
 Through your personnel file, you can also apply for a [bicycle allowance](https://admin.kuleuven.be/personeel/english/intranet/salary-benefits-insurances/commuting/bicycle-allowance) if you bike (part of) your home-work journey and/or apply for [teleworking allowances](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/allowances-and-registration/index) (for KU Leuven staff only). If you are financed by FWO, check out [this page](https://admin.kuleuven.be/mykuleuven/en/channel/mk108/index). If you are looking for information on the parking policy of KU Leuven, go [here](https://admin.kuleuven.be/td/en/mobility/parking-policy).
 
-## How to obtain reimbursement for professional expenses
+## Reimbursement for professional expenses
 
-1. Log in to KU Loket and go to "Finance & Purchasing"
-2. Click on "Professional expenses"
-3. Create a new form and give it an informative name (e.g., congres X)
+1. Log in to KU Loket and go to "**Finance & Purchasing**"
+2. Click on "**Professional expenses**"
+3. Create a **new form** and give it an informative name (e.g., congres X)
 4. Add all your expenses to the form (e.g., train tickets, dinner expenses, the registration fee)
 4. Link a digital proof to each expense
 5. Couple the appropriate financial antenna to your form (An Van Kets, u0057838)
@@ -28,39 +28,42 @@ Through your personnel file, you can also apply for a [bicycle allowance](https:
 
 For more information, check out the available [demo videos](https://icts.kuleuven.be/docs/at/lofi/aankoop/k/beroepskosten/BK/Begunstigde/demo) and/or read the [FAQ](https://icts.kuleuven.be/docs/at/lofi/aankoop/k/beroepskosten/BK/FAQ). If you have specific questions concerning this procedure, contact An (*an.vankets@kuleuven.be*) or go find her in office 02.80.
 
-## How to register personal leave
+## Register personal leave
 
-There are a couple of things we usually do in the lab when we take a **holiday**:
+There are a couple of things we usually do in the lab when we take a holiday:
 
-1. Notify Hans by sending an email with the subject "Holiday", to keep an official trace of your holiday request (that also helps him keep track of who’s on leave). 
-2. Note the days you’re off in the Google calendar, so everyone is aware of your absence. 
-3. Notify your employer, which can be different depending on your contract (the procedure below is for KU Leuven employees, for instance).
+1. **Notify Hans** by sending an email with the subject "Holiday", to keep an official trace of your holiday request (that also helps him keep track of who’s on leave). 
+2. Note the days you’re off in the Hoplab **Google calendar**, so everyone is aware of your absence. 
+3. **Notify your employer**, which can be different depending on your contract (the procedure below is for KU Leuven employees, for instance).
 
+#### Procedure for KU Leuven employees
 The procedure for KU Leuven employees is as follows (If you are financed by FWO, check out [this page](https://admin.kuleuven.be/mykuleuven/en/channel/mk108/index)). When you plan your holiday, you have to register this in KU Loket and get it approved. To do this, follow these steps:
 
-1. Log in to KU Loket and go to "Personnel"
-2. Navigate to "My Leave" and click on "Requesting leave"
+1. Log in to KU Loket and go to "**Personnel**"
+2. Navigate to "**My Leave**" and click on "**Requesting leave**"
 3. Click on a day and fill in the appropriate start and end date of your holiday period
 4. Click on the arrow, choose how many hours of each type of leave you are entitled to you want to use
 5. Submit your request to your approver
 
 To register **other kinds of personal leave** (e.g., [short-term or social leave](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/short-leave) or [sick leave](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/illness-accident/incapacity-to-work-illness)), check out the corresponding links. For further questions on this topic, browse to [this page](https://admin.kuleuven.be/mykuleuven/en/theme/hr-wellbeing/holidays-leaves-of-absence).
 
-## How to register professional leave
+## Register professional leave
 
 This has to be done (in advance) for absence in the context of **any work-related event** (national and international), such as a conference or the annual LBP retreat. This registration is needed in order to claim professional expenses made during this trip, to make sure you are correctly insured and to allow the KU Leuven to monitor the safety level of the trip.
 
 Proceed as follows:
 
-1. Log in to KU Loket and Go to "Personnel"
-2. Navigate to "Register missions" and click on "New request"
+1. Log in to KU Loket and Go to "**Personnel**"
+2. Navigate to "**Register missions**" and click on "**New request**"
 3. Fill out the required information on 
-	- When you will be absent
-	- Where you will be
-	- How you will get there
-	- Why you are going 
+	- *When* you will be absent
+	- *Where* you will be
+	- *How* you will get there
+	- *Why* you are going 
 4. Add the correct financial antenna to the form (An Van Kets, u0057838)
 5. Submit the form
+
+**TODO:** add link to an van kets page, or mailto.
 
 For more information, check out [this page](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/absences_university_business). If you are using your own vehicle for the trip, please make sure it is registered for insurance reasons. To do so, follow the steps on [this page](https://admin.kuleuven.be/personeel/english/intranet/salary-benefits-insurances/workrelated-trips/reimbursement_workrelated_trip#section-2).
 
