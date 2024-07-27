@@ -46,7 +46,7 @@ Luckily, you have found the most useful link of all, i.e., the link to this Wiki
 
     For all course-related things
 
-    [:octicons-arrow-right-24: Link](for all course-related things)
+    [:octicons-arrow-right-24: Link](https://toledo.kuleuven.be/english/)
     
 -   :material-file-send-outline:{ .lg .middle } __Filesender__
 

@@ -1,6 +1,6 @@
 # fMRI for Newbies @KUL
 
-## First Steps
+## Get started
 
 Kickstart your fMRI learning journey by engaging in the following key activities:
 
