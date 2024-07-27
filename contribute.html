@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hoplab-wiki" class="md-skip">
+        <a href="#contribute-to-the-hoplab-wiki" class="md-skip">
           Skip to content
         </a>
       
@@ -1254,18 +1254,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-contribute-easy-workflow" class="md-nav__link">
+  <a href="#how-to-contribute-easy" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Contribute - Easy Workflow
+      How to Contribute (Easy)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-contribute-advanced-workflow" class="md-nav__link">
+  <a href="#how-to-contribute-advanced" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Contribute - Advanced Workflow
+      How to Contribute (Advanced)
     </span>
   </a>
   
@@ -1331,14 +1331,14 @@
   
 
 
-<h1 id="hoplab-wiki">Hoplab Wiki<a class="headerlink" href="#hoplab-wiki" title="Permanent link">&para;</a></h1>
+<h1 id="contribute-to-the-hoplab-wiki">Contribute to the Hoplab Wiki<a class="headerlink" href="#contribute-to-the-hoplab-wiki" title="Permanent link">&para;</a></h1>
 <p>Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by <a href="https://github.com/costantinoai">@costantinoai</a> and <a href="https://github.com/kschevenels">@kschevenels</a>. For any questions, feel free to <a href="mailto:andreaivan.costantino@kuleuven.be">ping me</a>. </p>
 <p>This guide will help you set up, update, and maintain the Wiki both locally and online. Follow the instructions if you want to make changes to the wiki.</p>
 <ol>
 <li><a href="#getting-started">Getting Started</a></li>
 <li><a href="#editing-the-wiki">Editing the Wiki</a></li>
-<li><a href="#how-to-contribute---easy-workflow">How to Contribute - Easy Workflow</a></li>
-<li><a href="#how-to-contribute---advanced-workflow">How to Contribute - Advanced Workflow</a></li>
+<li><a href="#how-to-contribute-easy">How to Contribute - Easy Workflow</a></li>
+<li><a href="#how-to-contribute-advanced">How to Contribute - Advanced Workflow</a></li>
 <li><a href="#reviewing-and-accepting-pull-requests-for-admins">Reviewing and Accepting Pull Requests (for Admins)</a></li>
 <li><a href="#troubleshooting">Troubleshooting</a></li>
 </ol>
@@ -1346,7 +1346,7 @@
 <p>Before you begin, ensure you have the following:</p>
 <ul>
 <li>A GitHub account.</li>
-<li>Be part of the <code>HOPLAB-LBP</code> organization.</li>
+<li>Be part of the <a href="https://github.com/orgs/HOPLAB-LBP/people"><code>HOPLAB-LBP</code></a> organization.</li>
 <li>If you plan on following the <a href="#how-to-contribute-advanced-workflow">Advanced Workflow</a> (encouraged for more complex changes), also make sure that you have <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">Conda</a> or <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>, and <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a> or <a href="https://desktop.github.com/download/">GitHub Desktop</a> (strongly encouraged) installed.</li>
 </ul>
 <h2 id="editing-the-wiki">Editing the Wiki<a class="headerlink" href="#editing-the-wiki" title="Permanent link">&para;</a></h2>
@@ -1389,7 +1389,7 @@
 <li><strong>Images:</strong> <code>![Alt text](URL)</code></li>
 </ul>
 <p>For more information on Markdown formatting, refer to the <a href="https://squidfunk.github.io/mkdocs-material/reference/">MkDocs Reference Guide</a> for more complex formatting syntax.</p>
-<h2 id="how-to-contribute-easy-workflow">How to Contribute - Easy Workflow<a class="headerlink" href="#how-to-contribute-easy-workflow" title="Permanent link">&para;</a></h2>
+<h2 id="how-to-contribute-easy">How to Contribute (Easy)<a class="headerlink" href="#how-to-contribute-easy" title="Permanent link">&para;</a></h2>
 <details class="tip">
 <summary>Edit directly from this page!</summary>
 <p>Existing pages can be edited directly through the Wiki! If you need to edit or add information to any page, look for the paper and pencil symbol <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg></span> at the top-right of the page, next to the page title. This will make you edit the page and open a PR either by creating a new branch on the main repo (if you are part of the Hoplab organization on GitHub) or by forking your own copy of the repo (if you are an external contributor). Make sure to <a href="#step-3-submit-a-pr-with-your-proposed-changes">submit a PR</a> after your changes are made.</p>
@@ -1435,8 +1435,9 @@
 <p>If you want to make additional changes related to an already opened PR (e.g., you need to change info in two separate files, or make additional adjustments), you do not need to open a new PR. Just go in the main page of the branch your created (you can find the branch in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>) and <strong>keep editing your files in this branch</strong>. Every new commit you make in this branch will have the option to "Commit directly to the <name-of-new-branch> branch" or "Create a new branch for this commit and start a pull request". Make sure you select the first option to include your new commits to the original PR. Importantly, if you plan to add several commits to a PR this way, make sure you assign a reviewer <strong>only after your last commit</strong> to avoid merging PRs halfway in the process, or you can create a draft PR until unti all your changes are included.</p>
 </details>
 <p>These steps above will create a new branch in the repository, that will be visible in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>, and a new PR visible in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/pulls">PRs list</a>. Once the PR is approved by at least one reviewer and merged into the main branch, the newly created branch will be automatically deleted and the changes will go live.</p>
-<h2 id="how-to-contribute-advanced-workflow">How to Contribute - Advanced Workflow<a class="headerlink" href="#how-to-contribute-advanced-workflow" title="Permanent link">&para;</a></h2>
-<p>The preferred way to contribute if you need to make significant/multiple changes, but it requires some familiarity with git, Python, and Conda environments. With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session. </p>
+<h2 id="how-to-contribute-advanced">How to Contribute (Advanced)<a class="headerlink" href="#how-to-contribute-advanced" title="Permanent link">&para;</a></h2>
+<p>The preferred way to contribute if you need to make <strong>significant/multiple changes</strong>, but it requires some familiarity with git, Python, and Conda environments. If you are not a Wiki mantainer, this workflow is probably on over-kill. </p>
+<p>With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session. </p>
 <div class="admonition question">
 <p class="admonition-title">How should I organize my PR?</p>
 <p>A <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">Pull Request</a> (or PR) "<em>is a proposal to merge a set of changes from one branch into another</em>". Ideally, a PR should include all the commits <strong>for a specific feature</strong> or bugfix from end-to-end. Avoid making PRs that contain multiple unrelated changes. For instance, if you are working on a feature that requires modifications across multiple files, ensure all those changes are included in the same PR. Conversely, avoid combining changes for different features (e.g., adding unrelated updates to the fMRI workflow and the getting started section) in a single PR. Each PR should represent a cohesive unit of work.</p>
@@ -1670,7 +1671,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 26, 2024 17:00:49</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 27, 2024 14:16:00</span>
   </span>
 
     
