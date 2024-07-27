@@ -50,11 +50,11 @@ After a limited moderation period by PPW's communication department, your announ
 ### Example Announcements
 Below you can find an example announcement for a general seminar:
 
-![General Seminar Announcement](https://github.com/HOPLAB-LBP/hoplab-wiki/blob/main/docs/assets/example_seminar_announcement.PNG)
+![General Seminar Announcement](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/example_seminar_announcement.PNG)
 
 Below you can find an example announcement for a doctoral school presentation:
 
-![Doctoral School Presentation Announcement](https://github.com/HOPLAB-LBP/hoplab-wiki/blob/main/docs/assets/example_doctoralschoolpresentation_announcement.PNG)
+![Doctoral School Presentation Announcement](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/example_doctoralschoolpresentation_announcement.PNG)
 
 ## SciComm trainings and opportunities
 
