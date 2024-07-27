@@ -5,18 +5,32 @@ edit_uri: edit/main/docs/
 
 nav:
   - Home: index.md
-  - Getting started:
+  - Getting started: 
+    - get-started/index.md
     - Useful links: get-started/useful-links.md
     - Mailing lists: get-started/mailing-lists.md
     - Practical set-up: get-started/practical-setup.md
     - Computer set-up: get-started/computer-setup.md
     - Administrative procedures: get-started/admin-procedures.md
-  - fMRI:
-    - First steps: fmri/fmri-get-started.md
-    - Hospital information: fmri/fmri-hospital.md
-    - Analysis workflow: 
-        - General information: fmri/fmri-general.md
-        - fMRI analysis workflow: fmri/fmri-andrea-workflow.md
+  - Research:
+    - research/index.md
+    - Coding practices:
+      - research/coding/index.md
+    - fMRI:
+      - research/fmri/index.md
+      - First steps: research/fmri/fmri-get-started.md
+      - Hospital information: research/fmri/fmri-hospital.md
+      - Analysis workflow: 
+          - General information: research/fmri/analysis/fmri-general.md
+          - fMRI analysis workflow: research/fmri/analysis/fmri-andrea-workflow.md
+    - Behaviour:
+      - research/behaviour/index.md
+    - EEG:
+      - research/eeg/index.md
+    - Eye-tracking:
+      - research/eyetracking/index.md
+    - Neural Networks:
+      - research/dnn/index.md      
   - Science outreach: outreach.md
   - Contribute: contribute.md
   - Tasks List: tasks-list.md
@@ -53,15 +67,16 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.top
-    # - navigation.expand
+    - navigation.expand
     - navigation.sections
-    # - toc.integrate # (1)!
+    - toc.integrate # (1)!
     - search.highlight
     - navigation.indexes
 
 markdown_extensions:
   - toc:
       permalink: true
+      toc_depth: 2 # This controls how many sub-headers are included in the toc
   - attr_list
   - md_in_html
   - def_list
