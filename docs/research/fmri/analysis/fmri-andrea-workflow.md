@@ -53,7 +53,7 @@ at the hospital:
 
     Copy your `sub-01` folder from `dicom_converted` into the BIDS folder (make a new one if you don't have one).
 
-    ****NOTE:**** The pop-up only appeared with the first participant and then does it automatically. This is quite annoying as it never gets the participant number right so you have to manually go in and change it. It also only worked when providing it with (enhanced) DICOM files.
+**NOTE:** The pop-up only appeared with the first participant and then does it automatically. This is quite annoying as it never gets the participant number right so you have to manually go in and change it. It also only worked when providing it with (enhanced) DICOM files.
 
 3. **Validate the BIDS directory (and solve errors):**
     - [BIDS Validator](https://bids-standard.github.io/bids-validator/)
