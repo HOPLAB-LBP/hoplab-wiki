@@ -1,6 +1,6 @@
 # Admin 101
 
-On this page, we will specify the procedures for the most common administrative procedures you might need to follow. If something is missing, please contact us so we can add it and keep this page up to date (and your lifes easier). 
+On this page, we will specify the procedures for the most common administrative procedures you might need to follow. If something is missing, please contact us so we can add it and keep this page up to date (and your lives easier). 
 
 **KU Loket** is the university portal through which many administrative things are done. You can access it [here](https://webwsp.aps.kuleuven.be/irj/portal). 
 
