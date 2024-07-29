@@ -58,7 +58,7 @@ Here are some software programs we frequently use in the lab, which you might fi
 
 **TODO:** Add more details on the exact steps/tips for TeamViewer.
 
-!!! tip "Administrative privilidges on KU Leuven PCs"
+!!! tip "Administrative privileges on KU Leuven PCs"
 	In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in `C:\Workdir\MyApps\`. Please contact the ICT helpdesk if problems persist.
 
 ## Data storage
