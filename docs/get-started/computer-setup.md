@@ -43,7 +43,7 @@ For **personnel**:
 	- Click the pencil under "register your PC" where you can change the hostname and IP address
 
 !!! info
-	MATLAB can be used at home provided you use a VPN. The official VPN to use is SSL VPN Pulse Client (see below).
+	MATLAB can be used at home provided you use a VPN. The official VPN to use is SSL VPN Pulse Client (see below) / Ivanti Secure Access Client.
 
 ## Frequently used software
 
