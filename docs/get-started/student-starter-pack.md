@@ -11,10 +11,22 @@ The starter pack is divided into three sections. In no order of importance, you 
     _I'm not sure how to structure this? I thought we could have bullet points, with a bit of text explaining why each entry is important_
 
     #### Some reviews
+
+    Bracci & Op de Beeck 2023
+
+    Grill-Spector and Weiner 2014
+
+    DiCarlo et al 2012
     
     #### Classic papers
 
+    Felleman & Van Essen 1991
+
     #### fMRI studies we refer to
+
+    Bracci et al. 2016, 2017
+    
+    Kriegeskorte et al 2008 (maybe fits in a different category)
 
     #### DNN papers
 
