@@ -8,7 +8,7 @@ The starter pack is divided into three sections. In no order of importance, you 
 
     Here are some foundational papers to give you some background on the research going on in the lab.
 
-    _I'm not sure how to structure this? I thought we could have bullet points, with a bit of text explaining why each entry is important_
+    **NOTE:** TIM: 'm not sure how to structure this? I thought we could have bullet points, with a bit of text explaining why each entry is important. ANDREA: I think this is ok, but we should definitely add links and more info for each paper. Depending on how fancy we want to be and how the final result looks like, we could also make a [table](https://squidfunk.github.io/mkdocs-material/reference/data-tables/) or a [grid](https://squidfunk.github.io/mkdocs-material/reference/grids/)
 
     #### Some reviews
 
@@ -35,6 +35,8 @@ The starter pack is divided into three sections. In no order of importance, you 
 
 === "Some coding tutorials"
 
+    **TODO:** once it is populated, we should refer (or even move this content) to the Research --> Coding section
+
     Here are some places where you'll find tutorials to learn some Python skills.
 
     1. [Datacamp](https://www.datacamp.com/category/python) offers some nice interactive tutorials to get started.
@@ -48,7 +50,7 @@ The starter pack is divided into three sections. In no order of importance, you 
 
     If you're looking to understand the fundamentals of machine learning, and get a solid understanding of modeling, this [Coursera class](https://www.coursera.org/specializations/machine-learning-introduction) is a must. It offers free, very high-quality contents.
     
-    (add some data visualisation resources? I think Laura S had some nice websites)
+    **TODO:** add some data visualisation resources? I think Laura S had some nice websites
 
 
     
