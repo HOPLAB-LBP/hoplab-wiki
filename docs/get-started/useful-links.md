@@ -58,6 +58,8 @@ Luckily, you have found the most useful link of all, i.e., the link to this Wiki
     
 </div>
 
+**TODO:** also [here](https://github.com/helenahartmann/awesome-PhD) there are several links that may be useful.. perhaps worth checking if anything is to be added here?
+
 ## Getting started at Hoplab
 
 Apart from this Wiki, we try to keep the [**HopLab website**](https://www.hoplab.be/) up to date, and that includes new people. Send a picture of yourself and a short introductory text (see the [members](https://www.hoplab.be/people/) page for inspiration) to the person in charge of the Lab website (as of January 2022, this is Tim, as of December 2024, this will be Klara) along with useful links if wanted (ORCID, LinkedIn, Scholar, Twitter,…).
