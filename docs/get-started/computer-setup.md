@@ -86,4 +86,4 @@ If the installation doesn’t work, use a USB key to print on the black and whit
 
 For mac users, follow the instructions on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration) to print from your personal computer. More generally, this manual tries to give an overview of most frequently asked questions concerning configuration and initial setup of a secure work environment on Mac OS X. 
 
-**NOTE**: we changed printer recently (few months ago), so let's make sure this procedure is still up-to-date (I think it may not be).
+**NOTE**: we changed printer recently (few months ago), so let's make sure this procedure is still up-to-date (I think it may not be). Edit Klara: I checked (most of) the procedures before putting them in the wiki (I had to install the printer myself) and it still worked
