@@ -67,7 +67,7 @@ For more information, check out [this page](https://admin.kuleuven.be/personeel/
 
 ## Reserve a room for a meeting
 
-In order to book a room, contact [Ying Cay]([PLACEHOLDER]). You can check which rooms are available yourself through KU Loket:
+In order to book a room, contact [Ying Cai]([PLACEHOLDER]). You can check which rooms are available yourself through KU Loket:
 
 1. Go to KU Loket, navigate to the tab "**HSE & Spaces**" and click on "**Classroom reservations**" (Dutch only) 
 2. Click "**Selecteer lokalen**" and create the following selection to see all the rooms in the PSI:
