@@ -43,7 +43,7 @@ For **personnel**:
 	- Click the pencil under "register your PC" where you can change the hostname and IP address
 
 !!! info
-	MATLAB can be used at home provided you use a VPN. The official VPN to use is SSL VPN Pulse Client (see below).
+	MATLAB can be used at home provided you use a VPN. The official VPN to use is SSL VPN Pulse Client / Ivanti Secure Access Client (see below).
 
 ## Frequently used software
 
@@ -54,7 +54,7 @@ Here are some software programs we frequently use in the lab, which you might fi
 - **Google Chrome**: This is the preferred web browser. For example, the MR calendar is only compatible with this browser.
 - **Slack**: Slack is used for communication within the lab. Ask any lab member to add you to the relevant channels.
 - **Skype for business** and **Microsoft Teams**: The KU Leuven offers both [Skype for business](https://admin.kuleuven.be/icts/english/services/skype) and [MS Teams](https://admin.kuleuven.be/icts/english/teams/index) for communication purposes. See [this table](https://admin.kuleuven.be/icts/english/teams/comparison) for a comparison between the different platforms. Currently, MS Teams is the newer and preferred option, however, it only allows its users to reach other MS Teams users. With MS Teams, it is currently not possible to call (or be called by) telephone numbers (landline and mobile). You can use Skype for this.
-- **SSL VPN Pulse Client**: The VPN offered by the university. For more information, check out this [link](https://admin.kuleuven.be/icts/services/vpn/).
+- **SSL VPN Pulse Client / Ivanti Secure Access Client**: The VPN offered by the university. For more information, check out this [link](https://admin.kuleuven.be/icts/services/vpn/).
 
 **TODO:** Add more details on the exact steps/tips for TeamViewer.
 
