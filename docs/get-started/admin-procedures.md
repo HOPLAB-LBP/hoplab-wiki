@@ -67,17 +67,19 @@ For more information, check out [this page](https://admin.kuleuven.be/personeel/
 
 ## Reserve a room for a meeting
 
-In order to book a room, contact [Ying Cay]([PLACEHOLDER]). You can check which rooms are available yourself through KU Loket:
+In order to book a room, contact [Ying Cai]([PLACEHOLDER]). You can check which rooms are available yourself through KU Loket:
 
 1. Go to KU Loket, navigate to the tab "**HSE & Spaces**" and click on "**Classroom reservations**" (Dutch only) 
-2. Click "**Selecteer lokalen**" and create the following selection to see all the rooms in the PSI:
+2. Click "**Zoek op naam**" and enter "**PSI**" to find all the rooms in the building. 
+   Alternatively, Click "**Selecteer lokalen**" and create the following selection to see all the rooms in the PSI:
    
 ![Room reservations](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/roomreservations.png)
 
 3. Select the rooms that fit your needs
 4. Click "**toon reservaties**" twice
 5. Browse to the date & time when you need the room
-6. Look for an available room and send this info to [Ying Cay]([PLACEHOLDER]) 
+6. Look for an available room and send this info to [Ying Cai]([PLACEHOLDER]) 
+
 
 ## Reserve equipment or a room for testing
 
@@ -89,7 +91,7 @@ Make sure to use this website to book your testing time slots when you use commo
 
 ## Order stuff
 
-Please contact [Ying Cay]([PLACEHOLDER]) for assistance with arranging and/or ordering and/or paying for the following things:
+Please contact [Ying Cai]([PLACEHOLDER]) for assistance with arranging and/or ordering and/or paying for the following things:
 
 - Hotel reservations
 - Flight bookings
@@ -97,9 +99,9 @@ Please contact [Ying Cay]([PLACEHOLDER]) for assistance with arranging and/or or
 - Computer equipment
 - Physical mail and packages (post)
 
-**General orders** (e.g., milk, coffee, office material) are also handled by [Ying Cay]([PLACEHOLDER]). In case of bigger purchases, make sure to include the financial antenna ([An Van Kets]([PLACEHOLDER])) in the process. 
+**General orders** (e.g., milk, coffee, office material) are also handled by [Ying Cai]([PLACEHOLDER]). In case of bigger purchases, make sure to include the financial antenna ([An Van Kets]([PLACEHOLDER])) in the process. 
 
-The IT department handles orders related to **computer supplies** (*ppw.dict@kuleuven.be*). All [computer equipment](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/computer-accessories) needs to be bought through the [official university providers](https://admin.kuleuven.be/td/aankoop/intranet/english/discounts/ICT/computeraccessories) by the financial antenna [An Van Kets]([PLACEHOLDER]). Therefore, when computer supplies need to be bought, make sure to contact them both. It can also be useful to include [Ying Cay]([PLACEHOLDER]) in CC in that case. 
+The IT department handles orders related to **computer supplies** (*ppw.dict@kuleuven.be*). All [computer equipment](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/computer-accessories) needs to be bought through the [official university providers](https://admin.kuleuven.be/td/aankoop/intranet/english/discounts/ICT/computeraccessories) by the financial antenna [An Van Kets]([PLACEHOLDER]). Therefore, when computer supplies need to be bought, make sure to contact them both. It can also be useful to include [Ying Cai]([PLACEHOLDER]) in CC in that case. 
 
 If you need **technical assistance** for your order (e.g., you want to order an EEG-cap), you can contact [Klara]([PLACEHOLDER]) or send an email to *neurospace@kuleuven.be* (general mailing address to reach the support staff of the Methusalem project).
 
