@@ -15,6 +15,10 @@ nav:
     - Student starter pack: get-started/student-starter-pack.md
   - Research:
     - research/index.md
+    - Ethical approval:
+      - research/ethics/index.md
+      - EC onderzoek: research/ethics/MEC.md
+      - SMEC: research/ethics/SMEC.md
     - Coding practices:
       - research/coding/index.md
     - fMRI:
