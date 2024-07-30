@@ -101,6 +101,6 @@ If you can't wait to start engaging, check out the following **initiatives**:
 
 (It should be mentioned that all credits for this section go to Klara's former colleague [Simon Geirnaert](https://simongeirnaert.com/)!)
 
-**TODO** ideas Klara
-- Add info on the lab's social media, if that exists, and who manages it
-- Add info on where to find certain lab templates/logos (if they exist) e.g. for posters, presentations
+
+**TODO**: [Klara] Add info on the lab's social media, if that exists, and who manages it
+**TODO**: [Klara] Add info on where to find certain lab templates/logos (if they exist) e.g. for posters, presentations
