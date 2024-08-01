@@ -8,7 +8,7 @@ On this page, we will specify the procedures for the most common administrative 
 
 Log in to KU Loket and go to "Personnel", then click on "My details" (shown in red below):
 
-![Your personnel file](..\assets\KULoket_personnelfile.png)
+![Your personnel file](../assets/KULoket_personnelfile.png)
 
 At the very top of this page, you can find the name of your **HR advisor** (1). Your HR advisor offers you a listening ear, provides clarifying advice on HR-related matters and supports you with the administrative obligations that come along with employment at KU Leuven. 
 
@@ -25,10 +25,10 @@ Through your personnel file, you can also apply for [teleworking allowances](htt
 3. Click on "**Forms**", create a "**+ New form**" and give it an informative name (e.g., congres X)
 4. Add all your expenses to the form (e.g., train tickets, dinner expenses, the registration fee)
 4. Link a digital proof to each expense
-5. Couple the appropriate financial antenna to your form ([An Van Kets]([PLACEHOLDER]), u0057838)
+5. Couple the appropriate financial antenna to your form ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838), u0057838)
 6. Add information on which fund your expenses should be paid from (ask  your PI)
 
-![Reimbursement](..\assets\KULoket_reimbursement.png)
+![Reimbursement](../assets/KULoket_reimbursement.png)
 
 For more information, check out the available [demo videos](https://icts.kuleuven.be/docs/at/lofi/aankoop/k/beroepskosten/BK/Begunstigde/demo) and/or read the [FAQ](https://icts.kuleuven.be/docs/at/lofi/aankoop/k/beroepskosten/BK/FAQ). If you have specific questions concerning this procedure, contact An (*an.vankets@kuleuven.be*) or go find her in office 02.80.
 
@@ -50,7 +50,7 @@ The procedure for KU Leuven employees is as follows (If you are financed by FWO,
 4. Click on the arrow, choose how many hours of each type of leave you are entitled to you want to use
 5. Submit your request to your approver
 
-![Holiday](..\assets\KULoket_leave.png)
+![Holiday](../assets/KULoket_leave.png)
 
 To register **other kinds of personal leave** (e.g., [short-term or social leave](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/short-leave) or [sick leave](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/illness-accident/incapacity-to-work-illness)), check out the corresponding links. For further questions on this topic, browse to [this page](https://admin.kuleuven.be/mykuleuven/en/theme/hr-wellbeing/holidays-leaves-of-absence).
 
@@ -67,10 +67,10 @@ Proceed as follows:
 	- *Where* you will be
 	- *How* you will get there
 	- *Why* you are going 
-4. Add the correct financial antenna to the form ([An Van Kets]([PLACEHOLDER]), u0057838)
+4. Add the correct financial antenna to the form ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838), u0057838)
 5. Submit the form
 
-![Register missions](..\assets\KULoket_missions.png)
+![Register missions](../assets/KULoket_missions.png)
 
 For more information, check out [this page](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/absences_university_business). If you are using your own vehicle for the trip, please make sure it is registered for insurance reasons. To do so, follow the steps on [this page](https://admin.kuleuven.be/personeel/english/intranet/salary-benefits-insurances/workrelated-trips/reimbursement_workrelated_trip#section-2).
 
@@ -85,7 +85,7 @@ In order to book a room, contact [Ying](https://www.kuleuven.be/wieiswie/en/pers
 5. Browse to the date & time when you need the room
 6. Look for an available room and send this info to [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752)
 
-![Room reservation](..\assets\KULoket_roomreservation.png)
+![Room reservation](../assets/KULoket_roomreservation.png)
 
 ## Reserve equipment or a room for testing
 

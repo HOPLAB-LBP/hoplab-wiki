@@ -21,7 +21,7 @@ at the hospital:
 
 #### For your first subject:
 !!! info
-    This step should only be performed for the first subject in your dataset, and can be skipped if the anatomical and functional JSON templates are available in `code/misc/` (see [here](fmri-general.md#how-to-get-images-from-the-scanner) for more info on the template files)
+    This step should only be performed for the first subject in your dataset, and can be skipped if the anatomical and functional JSON templates are available in `code/misc/` (see [here](../fmri-general.md#how-to-get-images-from-the-scanner) for more info on the template files)
 
 1. **Convert DICOM to BIDS (NIfTI):**
     - **Prerequisites:**
@@ -60,7 +60,7 @@ at the hospital:
     
 #### After your first subject:
 
-This step assumes that your raw data is organized in a `sourcedata/sub-xx` folder, and that you already created the JSON templates in the `misc/` folder, as described in [here](fmri-general.md#how-to-store-raw-data). 
+This step assumes that your raw data is organized in a `sourcedata/sub-xx` folder, and that you already created the JSON templates in the `misc/` folder, as described in [here](../fmri-general.md#how-to-store-raw-data). 
 
 Now I have my source data folder. We need to.
   - anonymize/deface the images
@@ -73,7 +73,7 @@ Now I have my source data folder. We need to.
 
 Run the script02 to convert the behavioural mat data into events.tsv files following the BIDS specification. This will parse the trial data from the mat file, and create new tsv files into each sub-xx folder corresponding to each run. 
 
-The fMRI task script should give two files per run as output (see the folder structure [here](fmri-general.md#how-to-store-raw-data). Here is a description of the naming structure and file content:
+The fMRI task script should give two files per run as output (see the folder structure [here](../fmri-general.md#how-to-store-raw-data)). Here is a description of the naming structure and file content:
 
 1. `<timestamp>_log_<subID>-<run>-<buttonMapping>_<taskName>.tsv`: This is the human-readable log file produced by the task. Here is an extract from the file:
 
@@ -87,7 +87,7 @@ The fMRI task script should give two files per run as output (see the folder str
 
 2. `<timestamp>_log_<subID>_<run>_<taskName>.mat`: This MATLAB file contains all the parameters to reproduce the experimental run, and stores input parameters and results.
 
-If the behavioural data is stored in a `sourcedata/sub-xx/bh/` folder consistent to the one described [above](fmri-general.md#how-to-store-raw-data), you can run the `script02_behavioural-to-BIDS.m` script, after editing the parameters at the top of the script. This script iterates through subject-specific directories targeting behavioral .mat files, then processes and exports trial-related info into BIDS-compliant TSV event files in the BIDS folder provided as parameters.
+If the behavioural data is stored in a `sourcedata/sub-xx/bh/` folder consistent to the one described [above](../fmri-general.md#how-to-store-raw-data), you can run the `script02_behavioural-to-BIDS.m` script, after editing the parameters at the top of the script. This script iterates through subject-specific directories targeting behavioral .mat files, then processes and exports trial-related info into BIDS-compliant TSV event files in the BIDS folder provided as parameters.
 
 - **TODO:** above, we need to phrase better and add more info about what these parameters are, possibly with a screenshot of the code. Also, in the code make more clear where the parameters are.
 - **TODO:** perhaps wrap nifti and bh 2 BIDS in a single script that takes some input arguments? 
