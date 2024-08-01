@@ -1650,7 +1650,7 @@
 <h4 id="for-your-first-subject">For your first subject:<a class="headerlink" href="#for-your-first-subject" title="Permanent link">&para;</a></h4>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>This step should only be performed for the first subject in your dataset, and can be skipped if the anatomical and functional JSON templates are available in <code>code/misc/</code> (see <a href="fmri-general.md#how-to-get-images-from-the-scanner">here</a> for more info on the template files)</p>
+<p>This step should only be performed for the first subject in your dataset, and can be skipped if the anatomical and functional JSON templates are available in <code>code/misc/</code> (see <a href="../fmri-general.html#how-to-get-images-from-the-scanner">here</a> for more info on the template files)</p>
 </div>
 <ol>
 <li>
@@ -1692,7 +1692,7 @@
 </li>
 </ol>
 <h4 id="after-your-first-subject">After your first subject:<a class="headerlink" href="#after-your-first-subject" title="Permanent link">&para;</a></h4>
-<p>This step assumes that your raw data is organized in a <code>sourcedata/sub-xx</code> folder, and that you already created the JSON templates in the <code>misc/</code> folder, as described in <a href="fmri-general.md#how-to-store-raw-data">here</a>. </p>
+<p>This step assumes that your raw data is organized in a <code>sourcedata/sub-xx</code> folder, and that you already created the JSON templates in the <code>misc/</code> folder, as described in <a href="../fmri-general.html#how-to-store-raw-data">here</a>. </p>
 <p>Now I have my source data folder. We need to.
   - anonymize/deface the images
   - run the script01 to move and rename the raw files into the main BIDS folder. This will create a sub-xx folder for each raw sub data</p>
@@ -1702,7 +1702,7 @@
 <li><strong>TODO:</strong> add ref to fMRI task repo</li>
 </ul>
 <p>Run the script02 to convert the behavioural mat data into events.tsv files following the BIDS specification. This will parse the trial data from the mat file, and create new tsv files into each sub-xx folder corresponding to each run. </p>
-<p>The fMRI task script should give two files per run as output (see the folder structure <a href="fmri-general.md#how-to-store-raw-data">here</a>. Here is a description of the naming structure and file content:</p>
+<p>The fMRI task script should give two files per run as output (see the folder structure <a href="../fmri-general.html#how-to-store-raw-data">here</a>). Here is a description of the naming structure and file content:</p>
 <ol>
 <li><code>&lt;timestamp&gt;_log_&lt;subID&gt;-&lt;run&gt;-&lt;buttonMapping&gt;_&lt;taskName&gt;.tsv</code>: This is the human-readable log file produced by the task. Here is an extract from the file:</li>
 </ol>
@@ -1769,7 +1769,7 @@
 <ol>
 <li><code>&lt;timestamp&gt;_log_&lt;subID&gt;_&lt;run&gt;_&lt;taskName&gt;.mat</code>: This MATLAB file contains all the parameters to reproduce the experimental run, and stores input parameters and results.</li>
 </ol>
-<p>If the behavioural data is stored in a <code>sourcedata/sub-xx/bh/</code> folder consistent to the one described <a href="fmri-general.md#how-to-store-raw-data">above</a>, you can run the <code>script02_behavioural-to-BIDS.m</code> script, after editing the parameters at the top of the script. This script iterates through subject-specific directories targeting behavioral .mat files, then processes and exports trial-related info into BIDS-compliant TSV event files in the BIDS folder provided as parameters.</p>
+<p>If the behavioural data is stored in a <code>sourcedata/sub-xx/bh/</code> folder consistent to the one described <a href="../fmri-general.html#how-to-store-raw-data">above</a>, you can run the <code>script02_behavioural-to-BIDS.m</code> script, after editing the parameters at the top of the script. This script iterates through subject-specific directories targeting behavioral .mat files, then processes and exports trial-related info into BIDS-compliant TSV event files in the BIDS folder provided as parameters.</p>
 <ul>
 <li><strong>TODO:</strong> above, we need to phrase better and add more info about what these parameters are, possibly with a screenshot of the code. Also, in the code make more clear where the parameters are.</li>
 <li><strong>TODO:</strong> perhaps wrap nifti and bh 2 BIDS in a single script that takes some input arguments? </li>
@@ -1975,7 +1975,7 @@ The main steps we need to follow are: fmriprep, GLM. rois. mvpa</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 27, 2024 17:08:19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 1, 2024 10:52:06</span>
   </span>
 
     
