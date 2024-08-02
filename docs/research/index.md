@@ -23,5 +23,3 @@ This is the landing page for this section. Please populate it with appropriate i
 **TODO**: [Klara] Add context for the stuff on OSF and Github (touch on topics as open science, reproducibility)
 
 **TODO**: [Klara] Add (general) info on how to store your data (eg BIDS)
-
-**TODO**: [Klara] Add info on how to set-up an experiment, how to find study subjects, how to reimburse them, etc.
