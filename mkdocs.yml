@@ -127,8 +127,7 @@ markdown_extensions:
   
 plugins:
   - offline
-  - privacy:
-      enabled: !ENV [CI, false]
+  - privacy
   - search
   - git-revision-date-localized:
       type: datetime
