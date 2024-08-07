@@ -3,7 +3,7 @@
 Luckily, you have found the most useful link of all, i.e., the link to this Wiki! Besides this, there are some other links worth checking out. 
 
 !!! info
-    In the Wiki, we frequently will refer you to shared documents on the lab's MS Teams channel, which you can find here [**PLACEHOLDER**].
+    In the Wiki, we frequently will refer you to shared documents in the lab's MS Teams folder, which you can find [here](https://teams.microsoft.com/l/channel/19%3A9fcb4eb9c75049d4bad118cf8afcb9cb%40thread.tacv2/Hoplab?groupId=714187e1-4ec7-496a-9922-933eb237402f&tenantId=3973589b-9e40-4eb5-800e-b0b6383d1621&ngc=true).
 
 ## Getting started at KU Leuven
 <div class="grid cards" markdown>

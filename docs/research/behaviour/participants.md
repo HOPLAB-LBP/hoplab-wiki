@@ -2,7 +2,7 @@
 
 **TODO**: Check whether this info is still up to date today (info dates from 09/2022, I don't have a researcher account unfortunately)
 
-**TO DO**: Add info on how to recruit other types of participants (e.g., elderly, patients, children, experts, etc.)
+**TODO**: Add info on how to recruit other types of participants (e.g., elderly, patients, children, experts, etc.)
 
 Before starting participant recruitment, ensure your study is formally approved by the [ethical committee](https://research.kuleuven.be/en/integrity-ethics/ethics/committees) (if you didn't do this yet, check out [this page](../ethics/index.md)). Prepare this well in advance. All recruitment materials (e.g., flyers, posters) must include the study's end date as specified in the ethics application.
 
@@ -113,7 +113,6 @@ Generally, except for gender and age, personal information does not need to be r
 - Likewise, if a student wants to receive an update about the study results after the study is finished, they will need to provide their email address. 
 These personal data should be saved in a password-protected file that will be stored as long as the study is ongoing, but deleted after publication of the research data.
 
-
 **TODO**: add (more) guidelines on how to store/manage data (probably best in a separate section)
 
 ### Reimbursement
@@ -124,7 +123,7 @@ Reimbursement can take the following forms:
 - **Paid study**: The standard pay rate is up to 10 euros per hour, without additional incentives. Exceptions are possible for high-effort or aversive studies (e.g., fMRI, ESM).
 - **Mixed study**: Award 0 credits to those who receive payment. 
 
-**TODO:** Add info on how the procedure for money reimbursement works (via kostenformulier?)
+**TODO:** Add info on how the procedure for money reimbursement works, found info on [this link](https://ppw.kuleuven.be/intranet/en/finance/reimbursementtestsubjectsconcise) and [this link](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/experimental-subjects)
 
 Of course, all (psychology) students also benefit from participation by gathering insights into the common procedures of psychological research (wink). 
 
@@ -135,4 +134,4 @@ Please record participant presence ("show-ups") and assign credits or pay partic
 ### No shows
 
 - Participants should contact the researcher if they cannot attend the session, which qualifies as an **excused no-show**. 
-- **Unexcused no-shows** incur a penalty of -0.5 credit. If a participant has 5 or more no-shows, their account will be inactivated. The participant can ask for reactivation once.
+- **Unexcused no-shows** incur a penalty of -0.5 credit. If a participant has 5 or more no-shows, their account will be inactivated. 

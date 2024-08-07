@@ -89,11 +89,12 @@ In order to book a room, contact [Ying](https://www.kuleuven.be/wieiswie/en/pers
 
 ## Reserve equipment or a room for testing
 
-The standard booking tool for testing rooms and equipment (testing booths, EEG caps, etc.) since 2023 is [Clustermarket](https://clustermarket.com/). You can log in to the website using your KU Leuven credentials. To do so, on the home page, choose "**Log in via your organisation**" and type `KU Leuven`. You will be automatically redirected.
-
-When you are logged in, click "**join lab**" on your dashboard and search for "**HopLab**"/"**HOPLAB**" (**TODO:** check which one is correct once you have permission + add info on who is supposed to grant you permission + add screenshots)
-
-Make sure to use this website to book your testing time slots when you use common rooms or material. Request access to the items you don’t have permission to in case you need it.
+The standard booking tool for testing rooms and equipment (testing booths, EEG caps, etc.) in our faculty is [**Clustermarket**](https://clustermarket.com/). 
+ 
+- To access Clustermarket you need to make a user account using an invitation link. This link decides to which infrastructure you have access to and is different for every research unit/group. For our group (B&C Human), you can get the link by sending an email to [Christophe Bossens](https://www.kuleuven.be/wieiswie/en/person/00072088) (christophe.bossens@kuleuven.be). 
+- When you have access, choose the option to log in via your organization, so you can access it through the KU Leuven login tool.
+- Make sure to use Clustermarket to book your testing time slots when you use common rooms or material. Request access to the items you don’t have permission to in case you need it. You can find more information on how to use Clustermarket in [this presentation](https://ppw.kuleuven.be/intranet/research/files/infoclustermarket). 
+- The faculty also has their own MS Teams `GHUM PPW - Research rooms and equipment` where you can find more detailed information on the available research infrastructure as well as a manual on how to book infrastructure with Clustermarket (for more info, check out [this page](https://ppw.kuleuven.be/intranet/research/research-infrastructure-ppw)).
 
 ## Order stuff
 
