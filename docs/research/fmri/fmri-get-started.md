@@ -39,8 +39,6 @@ Follow the yellow section of the [flowchart](https://www.dropbox.com/sh/6hdu5z59
 4. **Follow the MR safety course**:          
    And become an authorized user of the MRI-scanner (see below).
 
-**NOTE**: I didn't include the flowchart here as it contains personal contact information and is not fully up to date (?).
-
 ### Attend the MR safety course
 
 - **Course dates**:  
@@ -64,14 +62,14 @@ Follow the yellow section of the [flowchart](https://www.dropbox.com/sh/6hdu5z59
     
     Ron should have emailed toegangsbeheer (toegangsbeheer@uzleuven.be) with his permission to activate your card. If everything works out, your card will be functional after 24 hours.
     
-**TODO**: the information above may be not accurate anymore. Make sure it is correct. Edit Klara: I updated what I know/could find (until "Gain access to MR facilities" I know it's correct, but after I am unsure). Laura S is currently taking these steps and I asked her, she would let us know when she knows more. 
+**TODO**: the information above may be not accurate anymore. Laura S should probably update this section, since she is the last doing this?
 
 ### Training and preparation
 
 Before you can become an Authorized Other User (AOU), you must undergo practical training and testing:
 
 1. **Observational training**:  
-  After reviewing all relevant documentation, observe scan procedures by joining sessions of your colleagues (other AOUs). Use the shared calendar to track and request to join upcoming sessions [here](http://teamup.com/ksd9dc6bd657d2b8bb/). **NOTE**: This calendar seems empty. Is it still in use?
+  After reviewing all relevant documentation, observe scan procedures by joining sessions of your colleagues. We have an internal slack channel to keep track of upcoming scans, so make sure you are invited to it if you want to be up to date.
 
 2. **Testing protocols**:  
    Before your pilot (f)MRI session with an actual participant, set up your sequences and test your experiment script. Book a phantom session by contacting Dr. Ron(ald) Peeters at [ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be). If needed, you can find specific info on the projector screen [here](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/Planning%20a%20scan%20session/MR8_screeninfo.docx?d=w68475dcf8e6f4182b4e682e343b22356&csf=1&web=1&e=qkMSkk).
