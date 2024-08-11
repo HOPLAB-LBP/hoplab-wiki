@@ -1562,6 +1562,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#getting-started" class="md-nav__link">
     <span class="md-ellipsis">
       Getting Started
@@ -1580,18 +1589,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-contribute-easy" class="md-nav__link">
+  <a href="#how-to-contribute" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Contribute (Easy)
+      How to Contribute
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-contribute-advanced" class="md-nav__link">
+  <a href="#advanced-workflow-for-extensive-changes" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Contribute (Advanced)
+      Advanced Workflow (for Extensive Changes)
     </span>
   </a>
   
@@ -1660,11 +1669,22 @@
 <h1 id="contribute-to-the-hoplab-wiki">Contribute to the Hoplab Wiki<a class="headerlink" href="#contribute-to-the-hoplab-wiki" title="Permanent link">&para;</a></h1>
 <p>Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by <a href="https://github.com/costantinoai">@costantinoai</a> and <a href="https://github.com/kschevenels">@kschevenels</a>. For any questions, feel free to <a href="mailto:andreaivan.costantino@kuleuven.be">ping me</a>. </p>
 <p>This guide will help you set up, update, and maintain the Wiki both locally and online. Follow the instructions if you want to make changes to the wiki.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="#getting-started">Getting Started</a></li>
-<li><a href="#editing-the-wiki">Editing the Wiki</a></li>
-<li><a href="#how-to-contribute-easy">How to Contribute - Easy Workflow</a></li>
-<li><a href="#how-to-contribute-advanced">How to Contribute - Advanced Workflow</a></li>
+<li><a href="#editing-the-wiki">Editing the Wiki</a><ul>
+<li><a href="#adding-a-new-page">Adding a New Page</a></li>
+<li><a href="#creating-child-pages">Creating Child Pages</a></li>
+<li><a href="#adding-note-todo-and-placeholder-tags">Adding Tags</a></li>
+<li><a href="#common-formatting-syntax">Common Formatting Syntax</a></li>
+<li><a href="#linking-and-referencing">Linking and Referencing</a></li>
+</ul>
+</li>
+<li><a href="#how-to-contribute">How to Contribute</a><ul>
+<li><a href="#easy-workflow-for-quick-changes">Easy Workflow (Quick Changes)</a></li>
+<li><a href="#advanced-workflow-for-extensive-changes">Advanced Workflow (Extensive Changes)</a></li>
+</ul>
+</li>
 <li><a href="#reviewing-and-accepting-pull-requests-for-admins">Reviewing and Accepting Pull Requests (for Admins)</a></li>
 <li><a href="#troubleshooting">Troubleshooting</a></li>
 </ol>
@@ -1673,10 +1693,10 @@
 <ul>
 <li>A GitHub account.</li>
 <li>Be part of the <a href="https://github.com/orgs/HOPLAB-LBP/people"><code>HOPLAB-LBP</code></a> organization.</li>
-<li>If you plan on following the <a href="#how-to-contribute-advanced">Advanced Workflow</a> (encouraged for more complex changes), also make sure that you have <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">Conda</a> or <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>, and <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a> or <a href="https://desktop.github.com/download/">GitHub Desktop</a> (strongly encouraged) installed.</li>
+<li>If you plan on following the <a href="#advanced-workflow-for-extensive-changes">Advanced Workflow</a> (encouraged for more complex changes), also make sure that you have <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">Conda</a> or <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>, and <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a> or <a href="https://desktop.github.com/">GitHub Desktop</a> (strongly encouraged) installed.</li>
 </ul>
 <h2 id="editing-the-wiki">Editing the Wiki<a class="headerlink" href="#editing-the-wiki" title="Permanent link">&para;</a></h2>
-<p>We welcome contributions from all members. All the content of the wiki is written in Markdown files located in the <code>docs</code> directory. You can edit these files in your browser (if you follow the <a href="#how-to-contribute-easy">Easy Workflow</a> or locally using any text editor or IDE (e.g., VSCode, Sublime Text) if you follow the <a href="#how-to-contribute-advanced">Advanced Workflow</a>.</p>
+<p>We welcome contributions from all members. All the content of the wiki is written in Markdown files located in the <code>docs</code> directory. You can edit these files in your browser (if you follow the <a href="#easy-workflow-for-quick-changes">Easy Workflow</a>) or locally using any text editor or IDE (e.g., VSCode, Sublime Text) if you follow the <a href="#advanced-workflow-for-extensive-changes">Advanced Workflow</a>.</p>
 <h3 id="adding-a-new-page">Adding a New Page<a class="headerlink" href="#adding-a-new-page" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Create a new Markdown file in the <code>docs</code> directory (e.g., <code>docs/new-page.md</code>).</li>
@@ -1708,28 +1728,70 @@
 <p class="admonition-title">Warning</p>
 <p>If you are following the Advanced Workflow, and therefore making changes locally, you should not directly edit the file <code>docs/tasks-list.md</code>, as this file is automatically generated during the Wiki build process -- which will overwrite your edited file if any change was made.</p>
 </div>
-<h3 id="common-formatting-syntax">Common formatting syntax<a class="headerlink" href="#common-formatting-syntax" title="Permanent link">&para;</a></h3>
+<h3 id="common-formatting-syntax">Common Formatting Syntax<a class="headerlink" href="#common-formatting-syntax" title="Permanent link">&para;</a></h3>
+<p>Here are some common Markdown elements:</p>
 <ul>
-<li>Use Markdown format to create or edit the files. Here are some common Markdown elements:</li>
 <li><strong>Headers:</strong> <code># Header 1</code>, <code>## Header 2</code>, <code>### Header 3</code>, etc.</li>
 <li><strong>Bold text:</strong> <code>**bold text**</code></li>
 <li><strong>Italic text:</strong> <code>*italic text*</code></li>
 <li><strong>Links:</strong> <code>[link text](URL)</code></li>
-<li><strong>Lists:</strong> <ul>
+<li><strong>Lists:</strong> </li>
 <li>Unordered list: <code>- Item 1</code></li>
 <li>Ordered list: <code>1. Item 1</code></li>
-</ul>
-</li>
 <li><strong>Images:</strong> <code>![Alt text](URL)</code></li>
 </ul>
-<p>For more information on Markdown formatting, refer to the <a href="https://squidfunk.github.io/mkdocs-material/reference/">MkDocs Reference Guide</a> for more complex formatting syntax.</p>
-<h2 id="how-to-contribute-easy">How to Contribute (Easy)<a class="headerlink" href="#how-to-contribute-easy" title="Permanent link">&para;</a></h2>
+<p>For more advanced formatting options, refer to the <a href="https://squidfunk.github.io/mkdocs-material/reference/">MkDocs Material Reference Guide</a>.</p>
+<h3 id="linking-and-referencing">Linking and Referencing<a class="headerlink" href="#linking-and-referencing" title="Permanent link">&para;</a></h3>
+<p>When creating or editing content, you may want to reference or link to other sections within the wiki or external resources. Here's how to do it:</p>
+<h4 id="internal-links-within-the-wiki">Internal Links (Within the Wiki)<a class="headerlink" href="#internal-links-within-the-wiki" title="Permanent link">&para;</a></h4>
+<p>Use relative paths for internal links. The general format is:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>[<span class="nt">Link Text</span>](<span class="na">path/to/file.md</span>)
+</span></code></pre></div>
+<p>Examples:</p>
+<ol>
+<li>
+<p>Linking to a page in the same directory:
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[<span class="nt">Getting Started</span>](<span class="na">getting-started.md</span>)
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Linking to a page in a subdirectory:
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[<span class="nt">fMRI Analysis</span>](<span class="na">research/fmri/fmri-analysis.md</span>)
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Linking to a specific section on another page:
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>[<span class="nt">Ethics Guidelines</span>](<span class="na">research/ethics/index.md#ethical-guidelines</span>)
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Linking to a parent directory:
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[<span class="nt">Back to Research</span>](<span class="na">../index.md</span>)
+</span></code></pre></div></p>
+</li>
+</ol>
+<h4 id="external-links-outside-the-wiki">External Links (Outside the Wiki)<a class="headerlink" href="#external-links-outside-the-wiki" title="Permanent link">&para;</a></h4>
+<p>For external links, use the full URL:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>)
+</span></code></pre></div>
+<h4 id="best-practices-for-linking">Best Practices for Linking<a class="headerlink" href="#best-practices-for-linking" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Use descriptive link text that gives users an idea of where the link will take them.</li>
+<li>Check your links after creating them to ensure they work correctly.</li>
+<li>For external links, consider whether they should open in a new tab by adding <code>{target="_blank"}</code> after the link:
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>){target=&quot;_blank&quot;}
+</span></code></pre></div></li>
+<li>When linking to specific sections within long documents, use anchor links to improve user experience.</li>
+</ol>
+<h2 id="how-to-contribute">How to Contribute<a class="headerlink" href="#how-to-contribute" title="Permanent link">&para;</a></h2>
+<p>We offer two workflows for contributing to the Hoplab Wiki: an Easy Workflow for quick changes to single files, and an Advanced Workflow for more extensive changes to multiple files.</p>
+<h3 id="easy-workflow-for-quick-changes">Easy Workflow (for Quick Changes)<a class="headerlink" href="#easy-workflow-for-quick-changes" title="Permanent link">&para;</a></h3>
+<p>This workflow is ideal for making small, quick changes to a single file. It can be done entirely through your web browser and doesn't require any local setup.</p>
 <details class="tip">
 <summary>Edit directly from this page!</summary>
 <p>Existing pages can be edited directly through the Wiki! If you need to edit or add information to any page, look for the paper and pencil symbol <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg></span> at the top-right of the page, next to the page title. This will make you edit the page and open a PR either by creating a new branch on the main repo (if you are part of the Hoplab organization on GitHub) or by forking your own copy of the repo (if you are an external contributor). Make sure to <a href="#step-3-submit-a-pr-with-your-proposed-changes">submit a PR</a> after your changes are made.</p>
 </details>
-<p>This is the suggested workflow for smaller changes to the Wiki. The easiest way to update the Wiki is to create or edit the Markdown files in a separate branch, and open a Pull Request (PR) to merge the changes into the main branch. This workflow does not require any knowledge of git, and can be performed end-to-end in your browser. Here’s how to do it:</p>
-<h3 id="step-1-make-your-changes">Step 1: Make your changes<a class="headerlink" href="#step-1-make-your-changes" title="Permanent link">&para;</a></h3>
+<h4 id="step-1-make-your-changes">Step 1: Make your changes<a class="headerlink" href="#step-1-make-your-changes" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p><strong>To edit an existing page:</strong></p>
@@ -1750,15 +1812,15 @@
 </ol>
 </li>
 </ol>
-<p>You can then add/edit your content in Markdown format (see <a href="#editing-the-wiki">Editing the Wiki</a> for more info), and click on "Preview" next to the "Edit" tab to see how your changes will look like. Once you are happy with the Preview of your changes, you can commit them to a temporary branch (see below).</p>
-<h3 id="step-2-commit-changes-to-a-temporary-branch">Step 2: Commit changes to a temporary branch<a class="headerlink" href="#step-2-commit-changes-to-a-temporary-branch" title="Permanent link">&para;</a></h3>
+<p>You can then add/edit your content in Markdown format (see <a href="#editing-the-wiki">Editing the Wiki</a> for more info), and click on "Preview" next to the "Edit" tab to see how your changes will look like.</p>
+<h4 id="step-2-commit-changes-to-a-temporary-branch">Step 2: Commit changes to a temporary branch<a class="headerlink" href="#step-2-commit-changes-to-a-temporary-branch" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Click on "Commit changes" after any necessary adjustments.</li>
-<li>In the pop-up window, and add a commit message and description for your changes.</li>
+<li>In the pop-up window, add a commit message and description for your changes.</li>
 <li>Select "Create a new branch for this commit and start a pull request".</li>
 <li>Click on "Propose changes".</li>
 </ol>
-<h3 id="step-3-submit-a-pr-with-your-proposed-changes">Step 3: Submit a PR with your proposed changes<a class="headerlink" href="#step-3-submit-a-pr-with-your-proposed-changes" title="Permanent link">&para;</a></h3>
+<h4 id="step-3-submit-a-pr-with-your-proposed-changes">Step 3: Submit a PR with your proposed changes<a class="headerlink" href="#step-3-submit-a-pr-with-your-proposed-changes" title="Permanent link">&para;</a></h4>
 <ol>
 <li>In the "Open a pull request page", add an informative title and a description of the changes in the PR.</li>
 <li>In the right panel, make sure to assign an admin (as of July 2024, <a href="https://github.com/costantinoai">@costantinoai</a>) to review your changes.</li>
@@ -1766,11 +1828,11 @@
 </ol>
 <details class="tip">
 <summary>Add multiple commits to a single PR</summary>
-<p>If you want to make additional changes related to an already opened PR (e.g., you need to change info in two separate files, or make additional adjustments), you do not need to open a new PR. Just go in the main page of the branch your created (you can find the branch in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>) and <strong>keep editing your files in this branch</strong>. Every new commit you make in this branch will have the option to "Commit directly to the <name-of-new-branch> branch" or "Create a new branch for this commit and start a pull request". Make sure you select the first option to include your new commits to the original PR. Importantly, if you plan to add several commits to a PR this way, make sure you assign a reviewer <strong>only after your last commit</strong> to avoid merging PRs halfway in the process, or you can create a draft PR until unti all your changes are included.</p>
+<p>If you want to make additional changes related to an already opened PR (e.g., you need to change info in two separate files, or make additional adjustments), you do not need to open a new PR. Just go in the main page of the branch your created (you can find the branch in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>) and <strong>keep editing your files in this branch</strong>. Every new commit you make in this branch will have the option to "Commit directly to the <name-of-new-branch> branch" or "Create a new branch for this commit and start a pull request". Make sure you select the first option to include your new commits to the original PR. Importantly, if you plan to add several commits to a PR this way, make sure you assign a reviewer <strong>only after your last commit</strong> to avoid merging PRs halfway in the process, or you can create a draft PR until all your changes are included.</p>
 </details>
 <p>These steps above will create a new branch in the repository, that will be visible in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>, and a new PR visible in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/pulls">PRs list</a>. Once the PR is approved by at least one reviewer and merged into the main branch, the newly created branch will be automatically deleted and the changes will go live.</p>
-<h2 id="how-to-contribute-advanced">How to Contribute (Advanced)<a class="headerlink" href="#how-to-contribute-advanced" title="Permanent link">&para;</a></h2>
-<p>The preferred way to contribute if you need to make <strong>significant/multiple changes</strong>, but it requires some familiarity with git, Python, and Conda environments. If you are not a Wiki mantainer, this workflow is probably on over-kill. </p>
+<h2 id="advanced-workflow-for-extensive-changes">Advanced Workflow (for Extensive Changes)<a class="headerlink" href="#advanced-workflow-for-extensive-changes" title="Permanent link">&para;</a></h2>
+<p>The preferred way to contribute if you need to make <strong>significant/multiple changes</strong>, but it requires some familiarity with git, Python, and Conda environments. If you are not a Wiki maintainer, this workflow is probably overkill. </p>
 <p>With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session. </p>
 <div class="admonition question">
 <p class="admonition-title">How should I organize my PR?</p>
@@ -1784,25 +1846,21 @@
 <ol>
 <li>
 <p><strong>Navigate to the Original Repository:</strong></p>
-<ol>
-<li>Open your web browser and go to the GitHub page for the <code>hoplab-wiki</code> repository located under the <code>HOPLAB-LBP</code> organization.</li>
-</ol>
+<p>Open your web browser and go to the GitHub page for the <code>hoplab-wiki</code> repository located under the <code>HOPLAB-LBP</code> organization.</p>
 </li>
 <li>
 <p><strong>Fork the Repository:</strong></p>
-<ol>
-<li>Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.</li>
-</ol>
+<p>Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.</p>
 </li>
 <li>
 <p><strong>Clone Your Fork:</strong></p>
 <ol>
 <li>Click the "Code" button on your forked repository page and copy the URL.</li>
 <li>Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux) and navigate to the directory where you want to store the project, then type:
- <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-username/hoplab-wiki.git
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-username/hoplab-wiki.git
 </span></code></pre></div></li>
 <li>Change into the directory of the cloned repository:
- <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>hoplab-wiki
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>hoplab-wiki
 </span></code></pre></div></li>
 </ol>
 </li>
@@ -1812,17 +1870,15 @@
 <ol>
 <li>
 <p><strong>Navigate to the Original Repository:</strong></p>
-<ol>
-<li>Open your web browser and go to the GitHub page for the <code>hoplab-wiki</code> repository located under the <code>HOPLAB-LBP</code> organization.</li>
-<li><strong>Fork the Repository:</strong></li>
-<li>Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.</li>
-</ol>
+<p>Open your web browser and go to the GitHub page for the <code>hoplab-wiki</code> repository located under the <code>HOPLAB-LBP</code> organization.</p>
+</li>
+<li>
+<p><strong>Fork the Repository:</strong></p>
+<p>Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.</p>
 </li>
 <li>
 <p><strong>Open GitHub Desktop:</strong></p>
-<ol>
-<li>If you do not have GitHub Desktop installed, download and install it from <a href="https://desktop.github.com/">GitHub Desktop's official website</a>.</li>
-</ol>
+<p>If you do not have GitHub Desktop installed, download and install it from <a href="https://desktop.github.com/">GitHub Desktop's official website</a>.</p>
 </li>
 <li>
 <p><strong>Clone Your Fork Using GitHub Desktop:</strong></p>
@@ -1842,81 +1898,56 @@
 <ol>
 <li>
 <p><strong>Install Conda:</strong></p>
-<ol>
-<li>If you don't have Conda installed, download and install it from <a href="https://docs.conda.io/en/latest/miniconda.html">Conda's official website</a>.</li>
-</ol>
+<p>If you don't have Conda installed, download and install it from <a href="https://docs.conda.io/en/latest/miniconda.html">Conda's official website</a>.</p>
 </li>
 <li>
 <p><strong>Create and Activate a Conda Environment:</strong></p>
-<ol>
-<li>To create a new environment specifically for this project, type:
- <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>hoplab-wiki<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
-</span></code></pre></div></li>
-<li>Activate the newly created environment by typing:
- <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>hoplab-wiki
-</span></code></pre></div></li>
-</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>hoplab-wiki<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>hoplab-wiki
+</span></code></pre></div>
 </li>
 <li>
 <p><strong>Install Necessary Packages:</strong></p>
-<ol>
-<li>With the Conda environment activated, install the required packages:
- <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material<span class="w"> </span>mkdocs-task-collector<span class="w"> </span>mkdocs-git-revision-date-localized-plugin
-</span></code></pre></div></li>
-</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material<span class="w"> </span>mkdocs-task-collector<span class="w"> </span>mkdocs-git-revision-date-localized-plugin
+</span></code></pre></div>
 </li>
 </ol>
 <h3 id="step-3-making-changes">Step 3: Making Changes<a class="headerlink" href="#step-3-making-changes" title="Permanent link">&para;</a></h3>
 <ol>
-<li>
-<p><strong>Edit Documentation:</strong></p>
-<ol>
-<li>You can now make changes to your local clone of the documentation. Use a text editor or an IDE to open and edit the Markdown files in the repository.</li>
-<li>If changes are extensive, consider splitting them into smaller, manageable commits that focus on specific pages or sections for clarity and ease of review.</li>
-</ol>
-</li>
+<li><strong>Edit Documentation:</strong>
+     You can now make changes to your local clone of the documentation. Use a text editor or an IDE to open and edit the Markdown files in the repository. If changes are extensive, consider splitting them into smaller, manageable commits that focus on specific pages or sections for clarity and ease of review.</li>
 </ol>
 <h3 id="step-4-testing-your-changes-locally">Step 4: Testing Your Changes Locally<a class="headerlink" href="#step-4-testing-your-changes-locally" title="Permanent link">&para;</a></h3>
 <ol>
-<li>
-<p><strong>Serve the Documentation Locally:</strong></p>
-<ol>
+<li><strong>Serve the Documentation Locally:</strong></li>
 <li>While in your project directory and with the Conda environment activated, launch the local server by typing:
- <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mkdocs<span class="w"> </span>serve
+      <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>mkdocs<span class="w"> </span>serve
 </span></code></pre></div></li>
 <li>Open a web browser and navigate to <code>http://127.0.0.1:8000/</code>. This allows you to see your changes as they would appear on the live site.</li>
 <li>Keep this server running as you make changes; refresh your browser to update the preview.</li>
 </ol>
-</li>
-</ol>
 <h3 id="step-5-closing-the-local-server">Step 5: Closing the Local Server<a class="headerlink" href="#step-5-closing-the-local-server" title="Permanent link">&para;</a></h3>
 <ol>
-<li>
-<p><strong>Stop the Server:</strong></p>
-<ol>
-<li>When you are done previewing and editing and you are done with the changes, go back to the terminal where your server is running and press <code>Ctrl+C</code> to stop the server.</li>
-</ol>
-</li>
+<li><strong>Stop the Server:</strong>
+    When you are done previewing and editing and you are done with the changes, go back to the terminal where your server is running and press <code>Ctrl+C</code> to stop the server.</li>
 </ol>
 <h3 id="step-6-committing-your-changes">Step 6: Committing Your Changes<a class="headerlink" href="#step-6-committing-your-changes" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="using-the-cli_1" name="__tabbed_2" type="radio" /><input id="using-github-desktop_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="using-the-cli_1">Using the CLI</label><label for="using-github-desktop_1">Using GitHub Desktop</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
-<li>
-<p><strong>Stage and Commit Your Changes:</strong></p>
-<ol>
+<li><strong>Stage and Commit Your Changes:</strong><ol>
 <li>From your terminal, add all modified files to your commit:
- <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
 </span></code></pre></div></li>
 <li>Commit the changes, including a clear message about what was modified and why:
- <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Detailed description of changes&quot;</span>
-</span></code></pre></div></li>
-<li>Push your commits to the forked repository on GitHub:
- <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Detailed description of changes&quot;</span>
 </span></code></pre></div></li>
 </ol>
 </li>
+<li>Push your commits to the forked repository on GitHub:
+      <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div></li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -1929,6 +1960,11 @@
 <li>Once you are ready to commit, write a summary of the changes in the "Summary" field at the bottom left.</li>
 <li>Add a more detailed description in the "Description" field if necessary.</li>
 <li>Click the "Commit to main" button.</li>
+</ol>
+</li>
+<li>
+<p><strong>Push Your Changes:</strong></p>
+<ol>
 <li>In GitHub Desktop, click on the <code>Push origin</code> button at the top to push your commits to GitHub.</li>
 </ol>
 </li>
@@ -1938,9 +1974,6 @@
 </div>
 <h3 id="step-7-creating-a-pull-request">Step 7: Creating a Pull Request<a class="headerlink" href="#step-7-creating-a-pull-request" title="Permanent link">&para;</a></h3>
 <ol>
-<li>
-<p><strong>Initiate a Pull Request:</strong></p>
-<ol>
 <li>Navigate to your forked repository on GitHub.</li>
 <li>Click on the "Pull requests" tab.</li>
 <li>Click on "New pull request".</li>
@@ -1949,11 +1982,9 @@
 <li>In the right panel, make sure to assign an admin (as of July 2024, <a href="https://github.com/costantinoai">@costantinoai</a>) to review your changes.</li>
 <li>Click on "Create pull request" to submit your changes.   </li>
 </ol>
-</li>
-</ol>
 <div class="admonition note">
 <p class="admonition-title">Automatic Deployment with GitHub Actions</p>
-<p>This repository is set up to use GitHub Actions for automatic deployment. This means that every time changes are merged into the <code>main</code> branch, the documentation will automatically be built and deployed to GitHub Pages. You do not need to manually run the <code>mkdocs gh-deploy</code> command each time you make changes. Simply push your changes to the <code>main</code> branch, and GitHub Actions will handle the deployment. </p>
+<p>This repository is set up to use GitHub Actions for automatic deployment. This means that every time changes are merged into the <code>main</code> branch, the documentation will automatically be built and deployed to GitHub Pages. You do not need to manually run the <code>mkdocs gh-deploy</code> command each time you make changes. Simply push your changes to the <code>main</code> branch, and GitHub Actions will handle the deployment.</p>
 </div>
 <h3 id="reviewing-and-accepting-pull-requests-for-admins">Reviewing and Accepting Pull Requests (for Admins)<a class="headerlink" href="#reviewing-and-accepting-pull-requests-for-admins" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1978,10 +2009,6 @@
 </ul>
 <p>Or <a href="mailto:andreaivan.costantino@kuleuven.be">ping</a> me.</p>
 <p>Thank you for contributing to the Hoplab Wiki!</p>
-<p><strong>TODO:</strong> : add to the readme how to reference/link other sections, both locally and remotely (e.g., <code>[link](path/file.md)</code>)
-<strong>TODO:</strong> : make tree of the hoplab Gdrive and put it in teams
-<strong>TODO:</strong> : build indexes (landing pages for parent sections, e.g., the "Getting started" page) + explain <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages">how to</a>
-<strong>TODO:</strong> : add more information about <strong>coding practices</strong>!! and how to properly create a conda environment, set up a project on Spyder, and sync with GH for version control and collaboration. We need to come up with a solid workflow and explanations on how to organize folders/scripts correctly.</p>
 
 
 
@@ -2002,7 +2029,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 1, 2024 17:41:05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 12, 2024 00:34:55</span>
   </span>
 
     
