@@ -3,7 +3,7 @@ hide:
   - navigation
 ---
 
-# Welcome to the Hoplab Wiki
+# Welcome to the Hoplab Wiki 
 
 Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab wisdom into a more user-friendly format. This process is currently managed by [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be).
 
