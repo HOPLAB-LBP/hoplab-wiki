@@ -4,8 +4,6 @@ This is the landing page for this section. Please populate it with appropriate i
 
 **TODO:** populate this landing page.
 
-**TODO:** do we need more explicit information about the ethical procedure? and should this page be in this research section, or admin precedures? I think there is going to be some overlap about these two sections, and we need to think better what is included here and why and what in the more general get started section --> edit Klara: should be covered now, let me know what you think!
-
 **TODO**: [Klara] Add more recommended software (e.g., Mendeley/Endnote, R, Text editors, Image editing software, Git, LaTeX, Pandoc, markdown, Python, Overleaf, RBA, BioSemi, PsychoPy, the lab’s own software?)
 
 **TODO**: [Klara] Add info on interesting conferences to attend, suggested reading (books, papers, websites), suggested courses (soft skills, programming, EEG/fMRI, version control, stats, science, etc.)
@@ -22,6 +20,6 @@ This is the landing page for this section. Please populate it with appropriate i
 
 **TODO**: [Klara] Add context for the stuff on OSF and Github (touch on topics as open science, reproducibility)
 
-**TODO**: [Klara] Add (general) info on how to store your data (eg BIDS)
+**TODO**: [Klara] Add (general) info on how to store your data (eg BIDS) --> this is in the fmri section for now. perhaps we can link it?
 
 **TODO**: [Klara] Refer to the resources for researchers on [this page](https://ppw.kuleuven.be/en/research/doing-research)

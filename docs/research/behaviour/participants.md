@@ -34,7 +34,8 @@ PPW-affiliated researchers (you!) can offer their (on-site as well as online) ex
 
 If you or your participants have any questions or problems related to the EMS, please check out these **Youtube tutorials** ([for participants](https://www.youtube.com/watch?v=_1OnT2ZU6QQ), [for researchers](https://www.youtube.com/watch?v=ec8S3xfO-a8)) and/or rely on peer support (fellow students/researchers) before addressing the system administrator at *ioco@kuleuven.be*.  
 
-**NOTE**: It is important to consider potential **recruitment biases** when using the EMS. Since the pool primarily draws from **university students**, particularly first-year psychology students, the sample may not be fully representative of the general population. Additionally, there is often a higher proportion of **female students** in our faculty, which can introduce gender bias into the research findings. You should take this into account when designing studies and interpreting results when drawing from this participant pool.
+!!!warning "Recruitment Bias"
+    It is important to consider potential **recruitment biases** when using the EMS. Since the pool primarily draws from **university students**, particularly first-year psychology students, the sample may not be fully representative of the general population. Additionally, there is often a higher proportion of **female students** in our faculty, which can introduce gender bias into the research findings. You should take this into account when designing studies and interpreting results when drawing from this participant pool.
 
 ### Create a new experiment on the platform
 
@@ -79,7 +80,8 @@ To add a new study, provide the following information (for more detailed explana
 Make sure to prepare your study carefully before asking for **EMS approval**, as some changes will require re-approval. To ask for approval, click the "asking approval" button. 
 You can start preparing your study in EMS before obtaining **ethics approval**, but you cannot request EMS approval until you obtain formal ethical approval. Once the latter is obtained, approval in EMS will take 10 days at the very most (usually less than a few days; sending a polite reminder after a few days is fine). 
 
-**NOTE**: The [Sona Mobile app](https://play.google.com/store/apps/details?id=com.sona_systems.mobile&hl=en_IE&pli=1) can be used to facilitate experiment scheduling (by adding/removing time slots as needed), but not to set up your study.
+!!!tip 
+    The [Sona Mobile app](https://play.google.com/store/apps/details?id=com.sona_systems.mobile&hl=en_IE&pli=1) can be used to facilitate experiment scheduling (by adding/removing time slots as needed), but not to set up your study.
 
 ### Collective testing sessions
 
@@ -129,7 +131,8 @@ Of course, all (psychology) students also benefit from participation by gatherin
 
 Please record participant presence ("show-ups") and assign credits or pay participants promptly (preferably the same day and always within 1 week). To do so, you will need to collect the student's EMS code. 
 
-**NOTE**: The [Sona Mobile app](https://play.google.com/store/apps/details?id=com.sona_systems.mobile&hl=en_IE&pli=1) can be used for quick credit granting by scanning the QR code in the reminder email to the participants.
+!!!tip
+    The [Sona Mobile app](https://play.google.com/store/apps/details?id=com.sona_systems.mobile&hl=en_IE&pli=1) can be used for quick credit granting by scanning the QR code in the reminder email to the participants.
 
 ### No shows
 

@@ -4,7 +4,6 @@ We are thrilled to have you join our team at HOPLAB, where we delve into the fas
 
 On this onboarding page, you'll find all the information you need to navigate the KU Leuven environment and adapt to our lab’s practices. We’ll guide you in setting up both your physical and digital workspaces, and offer step-by-step instructions for the most common administrative procedures at KU Leuven. Additionally, we’ve curated a selection of resources to give you a strong foundation as you start your journey with us. Dive in, and enjoy your new role!
 
-**TODO:** since this is the most important section for ppl with 0 knowledge on KUL admin and pages, we should probably add more pictures, screenshots and visuals to the children pages of this section. e.g., show where to click, how the page looks like, or any other relevant info. Edit Klara: Should be mainly covered now (mainly in the section on admin procedures, though).
 
 **TODO**: [Klara] Add information on the retreat (maybe add a page on social activities)
 **TODO**: [Klara] Add info on how to use a computer at Hoplab outside the lab
