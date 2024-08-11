@@ -7,7 +7,7 @@ Before you can start your study, you will need to apply for ethical approval - a
 - If your research is close to another study that has already been approved within UZ/KU Leuven, you can also cover the necessary ethical requirements by filing for an **amendment** to the existing approval (which is considerably less time-consuming). 
 
 It is important to know that in any case, your study cannot begin until it has been approved. If you are hesitating whether and/or where you should apply for ethical approval for your project, you can consult this [decision tree](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/beslissingsboom/DecisionTreeENG). 
-Examples of previous applications can be found in the lab's Teams channel (TODO: add link). 
+Examples of previous applications can be found in [this folder](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications?csf=1&web=1&e=cDpsg3) of the lab's Teams channel. 
 
 For more detailed info, please check out the following pages. 
 

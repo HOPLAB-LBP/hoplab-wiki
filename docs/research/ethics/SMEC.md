@@ -2,9 +2,9 @@
 
 SMEC evaluates research on human subjects that is not related to health science practices or includes medical or pharmacological procedures. 
 
-As of February 2020, the SMEC performs an **integrated ethics and privacy (GDPR) check** on all new applications through the [**PRET platform**](www.kuleuven.be/pret) (external applicants can download the application form [here](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/application-form)).
+As of February 2020, the SMEC performs an **integrated ethics and privacy (GDPR) check** on all new applications through the [**PRET platform**](https://www.kuleuven.be/pret) (external applicants can download the application form [here](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/application-form)).
 For assistance, please make use of the [manual](https://www.groupware.kuleuven.be/sites/pret/Pages/help.aspx) on how to use this platform and the [SMEC-review checklist](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/checklist-smec-review-eng.pdf) for an overview of the aspects that will be assessed during the ethical review.
-Also, there are ample examples of previous SMEC applications on the lab's MS Teams channel to get you started (TODO: add link).
+Also, there are ample examples of previous SMEC applications in [this folder](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/SMEC?csf=1&web=1&e=ZcVxJL) located on the lab's Teams channel to get you started.
 
 !!! info
 	Please note that there exists a shortened procedure for master's thesis studies in our faculty through [this form](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/aanvraagmasterproef-eng).
@@ -13,7 +13,7 @@ Also, there are ample examples of previous SMEC applications on the lab's MS Tea
 
 The SMEC puts a lot of emphasis on a well thought out **recruitment and informed consent procedure**, for which you can consult their **guidelines** [here](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/informed-consent-eng-07-23.pdf). In short: 
 	
-- Researchers should use an **information letter**, an **informed consent form** ([Dutch example template]((https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/icf-template.doc)), [English example template](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/icf-template-eng.doc)) and a **GDPR appendix** ([template](https://admin.kuleuven.be/privacy/en/intranet/doc/informatie-over-verwerking-persoonsgegevens-en.docx)) to provide potential participants with the necessary information about the study.  
+- Researchers should use an **information letter**, an **informed consent form** ([Dutch example template](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/icf-template.doc), [English example template](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/icf-template-eng.doc)) and a **GDPR appendix** ([template](https://admin.kuleuven.be/privacy/en/intranet/doc/informatie-over-verwerking-persoonsgegevens-en.docx)) to provide potential participants with the necessary information about the study.  
 - **Necessary information in the ICF as well as the information letter** includes the following:
 
 	- An invitation to participate in the study
