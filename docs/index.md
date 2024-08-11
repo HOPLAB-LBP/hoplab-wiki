@@ -15,7 +15,7 @@ Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an on
 
     Access guides and procedures for conducting research at Hoplab
 
-    [:octicons-arrow-right-24: Explore methods](research-tools-methods.md)
+    [:octicons-arrow-right-24: Explore methods](research/index.md)
 
 -   :material-rocket-launch:{ .lg .middle } __Get Started__
 
