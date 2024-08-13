@@ -326,7 +326,7 @@ fMRIPrep MNI: 0.0 seconds
 fMRIPrep T1w: 2.0 seconds
 ```
 
-In my case, MNI space has a wrong TR. I did not check why this happens, or whether this is the correct way of getting the MNI TR (why would it be different from T1w?), but this is how bidsmreye gets the TR info from the header. TR = 0 causes divisions by 0 errors, and therefore NaNs.
+In my case, MNI space has a wrong TR. I did not check why this happens, or whether this is the correct way of getting the MNI TR (why would it be different from T1w?), ~~but this is how bidsmreye gets the TR info from the header~~ (actually, bidsmreye uses `img.header.get_zooms()[3]` to get the TR, which in the MNI case is not available and so NaN). TR = 0 causes divisions by 0 errors, and therefore NaNs.
 
 !! THIS COULD ALSO BE THE REASON WHY MRIQC IS FAILING!
 
