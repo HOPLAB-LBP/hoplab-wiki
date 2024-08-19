@@ -48,6 +48,8 @@ The starter pack is divided into three sections. In no order of importance, you 
 
 === "Miscellaneous"
 
+    Learning how to write is a fundamental of academic training. If you're struggling to get started with writing, or don't know what should go in which section of your paper/thesis, you can refer to these [Ten simple rules for structuring papers](https://journals.plos.org/ploscompbiol/article%3Fid%3D10.1371/journal.pcbi.1005619).
+    
     If you're looking to understand the fundamentals of machine learning, and get a solid understanding of modeling, this [Coursera class](https://www.coursera.org/specializations/machine-learning-introduction) is a must. It offers free, very high-quality contents.
     
     **TODO:** add some data visualisation resources? I think Laura S had some nice websites
