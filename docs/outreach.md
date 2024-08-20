@@ -1,10 +1,47 @@
-# Do great science and present it somewhere
+# Do great science and show it to the world
 
 (We'll start small and go bigger)
 
 ## Lab meetings
 
-**TODO:** Add information (when, where, frequency, rotating system), guidelines and refer to previous presentations on Teams/OneDrive
+### lab meetings schedule
+Lab meetings usually happen once per week on Mondays, after lunch. On that day, we have lunch together in the meeting room and then move to the more science-y affairs. 
+The meeting room will be specified in a reminder email that is sent every Thursday before the lab meeting and can be seen in the meeting schedule.
+The schedule is made at the beginning of the academic year and consists of a mix of meetings with updates and others with more fixed topics.
+
+### Attendance
+You can attend the meetings in person or online, there will be always a link to a Teams call. If you will be online, or absent, let the lab meeting manager know. 
+
+### Who is presenting
+Each lab member is part of the standard rotation of presenters for the individual meetings. Additionally, they are assigned to one of the batches that will alternate in the quick updates. Interns are usually not part of the standard roations, but will be assigned to a batch. 
+
+The rotation of presenters is made by randomizing the order of the names, but can be adjusted based on anyone's availability. If you want / need to switch your slot, you can directly contact the person you would like to switch with and then let the lab meeting manager know about the change. If you would like to change with a slot assigned for a group meeting, ask the lab meeting manager directly.  
+
+### Types of lab meetings
+There are different types of lab meetings that happen throughout the academic year.
+
+- Individual meetings: on a rotation basis, each lab member is assigned with a slot and is in charge of the presentation. On this occasion, you can present an update on your research, an interesting / relevant paper for a Journal Club (JC), or other important topics (practicing an upcoming talk or interview, for example). 
+- Quick updates: once per month, lab memebers assigned to a specific batch will give a quick (1-2 slides, 15 minutes) update on the latest development in their work. This meeting is an occasion to ask for help if you are stuck on a particular step, method, analysis, or to just keep each other in the loop. If your individual meeting is scheduled for the week before or the week after your batch, you can skip the quick update for the longer one. 
+- Conference updates: after someone has been on a conference, this type of meeting is scheduled when someone goes on a conference. The idea is for that person (or those people) to give an overview of the conference and present studies of interest for the lab. This type of meeting does not have a regular frequency.
+- New papers: once every two months, we meet to discuss new papers that came out recently. This is an occasion to discuss new topics, new methods, or just interesting work that you might have seen around. There is no fixed presenter, we will go over the list of papers one by one and the person who added it will introduce it. At any time, if you see an intersting paper you can add it to the [reading list](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bb985e56f-b02f-437c-a511-05a10d8dfe68%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724147078370&web=1)
+
+### Presentations
+To keep the folders in order, there are some guidelines on how to store the lab meetings presentations. 
+
+- Make sure the name of the presentation follows the naming conventions ('YYYY-MM-DD_presenter_topic').
+- Before presenting them, put your slides for a quick update in 'Hoplab > Science outreach > Lab meetings > 1-slide updates'. This will make possible presenting all the updates from one computer.
+- After the lab meeting, store your presentation in 'Hoplab > Science outreach > Lab meetings > Past LM presentations'.
+- In case of a Journal Club, add the paper of interest to 'Hoplab > Science outreach > Lab meetings > Papers' so that lab members can check it before the lab meeting.
+
+### Useful links
+All these files refer to the organizational folders in the neuroSPACE / hoplab Team. To open these files, you will need access to the Team. 
+
+- For the specific and updated schedule, check [this file](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B80204729-ed31-45b2-b80e-99208701a7a3%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724072455092&web=1)
+- For the list of presenters and the batch division, check [this file](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B9794c03d-ff35-43e6-895f-3302b35b385f%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724156901971&web=1)
+- For the list of new papers to discuss, check [this file](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bb985e56f-b02f-437c-a511-05a10d8dfe68%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724156880810&web=1)
+  
+**TODO:** Check and complement information (when, where, frequency, rotating system), guidelines and refer to previous presentations on Teams/OneDrive
+
 
 ## Conference posters
 
