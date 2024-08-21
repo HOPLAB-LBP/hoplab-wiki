@@ -1188,6 +1188,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    2. BIDS conversion
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="fmri-bids-conversion.html" class="md-nav__link md-nav__link--active">
         
   
@@ -1197,6 +1208,61 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#event-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renaming-nii-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Renaming .nii files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-your-dicom-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing your DICOM files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extra-files-to-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extra files to create
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1607,9 +1673,41 @@
 
 
 <h1 id="convert-your-fmri-data-into-bids-format">Convert your fMRI data into BIDS format<a class="headerlink" href="#convert-your-fmri-data-into-bids-format" title="Permanent link">&para;</a></h1>
-<ul>
-<li><strong>TODO:</strong>  add info about BIDS format and how-to</li>
-</ul>
+<p><strong>TODO:</strong>  add info about BIDS format and how-to</p>
+<p><strong>TODO:</strong>  get feedback on the whole thing, and fill in the sections below</p>
+<p><strong>TODO:</strong>  add figures. <em>It would definitely be nice to show a full tree of an example repostitory, and how it changes at each step of the way.</em></p>
+<p><em>Tim's suggestion edits below</em></p>
+<p>After scanning participants, you will get data from the scanner and from the stimulus presentation computer, containing behavioural outputs (mainly <code>log</code> files and <code>.mat</code> files), functional and structural outputs (<code>.nii</code> files), alongside potential <code>dicom</code> and other files (e.g. eye tracking data). Your first step will be to sort out these files and arrange them in a <code>sourcedata</code> folder (follow the structure in <a href="../fmri-general.html#how-to-store-raw-data">How to store raw data</a>).</p>
+<p>Once your data is arranged in this way, you can proceed to convert it to BIDS format. Here is an overview of the steps to take to ensure your data is arranged in a BIDS-compatible way:</p>
+<ol>
+<li>Make one <code>events.tsv</code> file per functional run and add them to the <code>func</code> folder.</li>
+<li><em>Optional: make an <code>events.json</code> sidecar file to describe potential extra columns in the event files.</em></li>
+<li>Rename your functional <code>nifti</code> files to fit with a BIDS naming format <code>sub-&lt;label&gt;_task-&lt;label&gt;_run-&lt;label&gt;_bold.nii</code>.</li>
+<li>Rename your structural <code>nifti</code> files to fit with a BIDS naming format <code>sub-&lt;label&gt;_T1W.nii</code>.</li>
+<li>Anonymise the bold <code>dicom</code> files that you collected for your first participat by running <code>anonymize_dicm</code>.</li>
+<li>Convert the anonymized <code>dicom</code> files using <code>dicm2nii</code>, in order to get the <code>.json</code> sidecar file that will serve as a sidecar for the next step.</li>
+<li>Complete, in the the resulting sidecar file, the <code>PhaseEncodingDirection</code> and <code>SliceTiming</code> fields (see <a href="../fmri-general.html#missing-fields-in-json-files">Missing fields in JSON files</a> for more information).</li>
+<li>Duplicate and rename the aforementioned sidecar <code>.json</code> file to have one per run to accompany each <code>bold.nii</code> file.</li>
+<li>Create a <code>dataset_description.json</code> file.</li>
+<li>Create a <code>participants.tsv</code> and a <code>participants.json</code> files.</li>
+<li>Create a <code>task-&lt;taskname&gt;_bold.json</code> file.</li>
+<li>Create a <code>derivatives</code> folder, where future outputs will be placed.</li>
+<li><em>Optional: include a <code>.gitignore</code> file if needed, to exclude potential working files from the BIDS validator.</em></li>
+<li><strong>If all the step above are complete, test your folder with the <a href="https://bids-standard.github.io/bids-validator/">BIDS validator</a></strong>.</li>
+</ol>
+<h2 id="event-files">Event files<a class="headerlink" href="#event-files" title="Permanent link">&para;</a></h2>
+<p>Include information about event files. Mention how they should ideally be created directly by the behavioural task script. Add a link to the <a href="https://github.com/TimManiquet/fMRI-task-template">task template</a> to show how that can be done.</p>
+<p>Add information about making an <code>events.json</code> file and the advantages of it.</p>
+<h2 id="renaming-nii-files">Renaming <code>.nii</code> files<a class="headerlink" href="#renaming-nii-files" title="Permanent link">&para;</a></h2>
+<p>Give instructions on how to rename files, both functional and structural, including what happens in case of several scan sessions and the added <code>ses</code> label.</p>
+<h2 id="processing-your-dicom-files">Processing your DICOM files<a class="headerlink" href="#processing-your-dicom-files" title="Permanent link">&para;</a></h2>
+<p>Give information on how to use the anonymization and dicom to nifti scripts, and what the results should be like. Give links to the scripts.</p>
+<h3 id="completing-the-converted-dicom-sidecar-file">Completing the converted DICOM sidecar file<a class="headerlink" href="#completing-the-converted-dicom-sidecar-file" title="Permanent link">&para;</a></h3>
+<p>Explain how to get the two missing fields and why it's important. Link to the fmri-general section about it.</p>
+<h3 id="using-the-converted-dicom-sidecar-file">Using the converted DICOM sidecar file<a class="headerlink" href="#using-the-converted-dicom-sidecar-file" title="Permanent link">&para;</a></h3>
+<p>Explain how to duplicate and rename the sidecar file.</p>
+<h2 id="extra-files-to-create">Extra files to create<a class="headerlink" href="#extra-files-to-create" title="Permanent link">&para;</a></h2>
+<p>Give information on the files created in steps 9-13.</p>
 
 
 
@@ -1630,7 +1728,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 27, 2024 16:57:08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 21, 2024 17:24:45</span>
   </span>
 
     
