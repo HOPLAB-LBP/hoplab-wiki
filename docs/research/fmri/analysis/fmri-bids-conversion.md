@@ -1,13 +1,15 @@
 # Convert your fMRI data into BIDS format
 
 **TODO:**  add info about BIDS format and how-to
+
 **TODO:**  get feedback on the whole thing, and fill in the sections below
+
 **TODO:**  add figures. _It would definitely be nice to show a full tree of an example repostitory, and how it changes at each step of the way._
 
 
-_Tim's suggestion edits_
+_Tim's suggestion edits below_
 
-After scanning participants, you will get data from the scanner and from the stimulus presentation computer, containing behavioural outputs (mainly `log` files and `.mat` files), functional and structural outputs, along potential `dicom` and other files (e.g. eye tracking data). Your first step will be to sort out these files and arrange them in a `sourcedata` folder (follow the structure in [How to store raw data](../fmri-general.md#how-to-store-raw-data)).
+After scanning participants, you will get data from the scanner and from the stimulus presentation computer, containing behavioural outputs (mainly `log` files and `.mat` files), functional and structural outputs (`.nii` files), alongside potential `dicom` and other files (e.g. eye tracking data). Your first step will be to sort out these files and arrange them in a `sourcedata` folder (follow the structure in [How to store raw data](../fmri-general.md#how-to-store-raw-data)).
 
 Once your data is arranged in this way, you can proceed to convert it to BIDS format. Here is an overview of the steps to take to ensure your data is arranged in a BIDS-compatible way:
 
@@ -23,7 +25,7 @@ Once your data is arranged in this way, you can proceed to convert it to BIDS fo
 10. Create a `participants.tsv` and a `participants.json` files.
 11. Create a `task-<taskname>_bold.json` file.
 12. Create a `derivatives` folder, where future outputs will be placed.
-13. optional: include a `.gitignore` file if needed, to exclude potential working files from the BIDS validator
+13. _Optional: include a `.gitignore` file if needed, to exclude potential working files from the BIDS validator._
 14. **If all the step above are complete, test your folder with the [BIDS validator](https://bids-standard.github.io/bids-validator/)**.
 
 
