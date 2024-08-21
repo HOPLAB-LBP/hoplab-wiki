@@ -12,6 +12,10 @@ _Tim's suggestions:_
 
 ![fMRI data workflow](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/fMRI_data_workflow.png)
 
+_We could create such a plot with [mermaid](https://mermaid.js.org/)._
+
+ - I would add a mention of what to store the data on, ie get a hard drive and bring it to the hospital to take the output data.
+
 ## How to store raw data
 
 In order to avoid error while converting into BIDS format, the raw data (i.e., the data collected from the scanner, behavioural measure, eye-tracking) should be stored in a folder with the following structure:
