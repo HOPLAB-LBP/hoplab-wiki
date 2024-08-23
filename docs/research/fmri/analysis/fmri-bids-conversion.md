@@ -27,7 +27,7 @@ Once your data is arranged in this way, you can proceed to convert it to BIDS fo
 10. Create a `participants.tsv` and a `participants.json` files.
 11. Create a `task-<taskname>_bold.json` file.
 12. Create a `derivatives` folder, where future outputs will be placed.
-13. _Optional: include a `.gitignore` file if needed, to exclude potential working files from the BIDS validator._
+13. _Optional: include a `.bidsignore` file if needed, to exclude potential working files from the BIDS validator._
 14. **If all the step above are complete, test your folder with the [BIDS validator](https://bids-standard.github.io/bids-validator/)**.
 
 
