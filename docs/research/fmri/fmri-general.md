@@ -12,7 +12,7 @@ some interesting links: https://www.youtube.com/watch?v=J0npRWV2zTY
 
 ![fMRI data workflow](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/fMRI%20data%20workflow.png)
 
-NOTE:** [TIM] I would add a mention of what to store the data on, ie get a hard drive and bring it to the hospital to take the output data.
+**NOTE:** [TIM] I would add a mention of what to store the data on, ie get a hard drive and bring it to the hospital to take the output data.
 
 ## How to store raw data
 
