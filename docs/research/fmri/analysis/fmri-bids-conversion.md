@@ -6,6 +6,8 @@
 
 **TODO:**  add figures. _It would definitely be nice to show a full tree of an example repostitory, and how it changes at each step of the way._
 
+**NOTE:** [ANDREA] I have scripts to do some of the points below. For instance, the events files can and should (to avoid errors) be created from the mat files directly, the json files can be generated automatically, the nii files can be moved automatically.. etc. we should encourage people in using the scripts we already have to minimize issues in this first step
+
 
 _Tim's suggestion edits below_
 
