@@ -1691,48 +1691,124 @@
 <p>The hostname is usually printed on a sticker on the computer. If not, go to Start, right click on "This PC", choose properties, and check the "Device name" field.</p>
 </details>
 <h2 id="installing-matlab">Installing MATLAB<a class="headerlink" href="#installing-matlab" title="Permanent link">&para;</a></h2>
-<p>The situation is different depending on whether you are a student or a new lab member.</p>
-<p>For <strong>students</strong>:</p>
-<ul>
-<li>Follow the step-by-step plan provided <a href="https://admin.kuleuven.be/icts/onderzoek/downloads/MATLAB/tah-student-install-2017-en.pdf">here</a>.</li>
-<li>Bachelor’s and master’s students of certain programs can register on the <a href="https://nl.mathworks.com/academia/tah-portal/ku-leuven-30919019.html">Mathworks website</a> to use MATLAB. Registration takes place using your KU Leuven student email address. After registering, you can download the software directly from the website.</li>
-</ul>
-<p>For <strong>personnel</strong>:</p>
+<p>The installation process differs for students and personnel. Please follow the instructions in the appropriate tab below:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="students" name="__tabbed_1" type="radio" /><input id="personnel" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="students">Students</label><label for="personnel">Personnel</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Register on the <a href="https://nl.mathworks.com/academia/tah-portal/ku-leuven-30919019.html">Mathworks website</a> using your KU Leuven student email address.</li>
+<li>After registering, download the software directly from the Mathworks website.</li>
+<li>Follow the step-by-step installation guide provided <a href="https://admin.kuleuven.be/icts/onderzoek/downloads/MATLAB/tah-student-install-2017-en.pdf">here</a>.</li>
+</ol>
+</div>
+<div class="tabbed-block">
 <ol>
 <li>
-<p>Have <a href="https://www.kuleuven.be/wieiswie/en/person/00098752">Ying</a> add you to the license platform. To do so, she will need your computer name and IPv4 address. Here’s how to get these:</p>
-<ul>
+<p>Get added to the license platform:</p>
+<ol>
 <li>Open your command prompt (Start &gt; type <code>cmd</code>)</li>
-<li>Write <code>ipconfig</code> in the command prompt </li>
-<li>Copy the IPv4 Address and send it to <a href="https://www.kuleuven.be/wieiswie/en/person/00098752">Ying</a>, along with your computer hostname (GHUM-...)</li>
-</ul>
-</li>
-<li>
-<p>Download the MATLAB installation files directly from the ICTS License Tool <a href="https://icts.kuleuven.be/apps/license/download/MATLAB/index.html">here</a></p>
-</li>
-<li>
-<p>To change the computer name and IP address yourself: </p>
-<ul>
-<li>Browse to <a href="https://icts.kuleuven.be/apps/license">https://icts.kuleuven.be/apps/license</a></li>
-<li>Click the pencil under "register your PC" where you can change the hostname and IP address</li>
+<li>Type <code>ipconfig</code> in the command prompt</li>
+<li>Find and copy your IPv4 Address</li>
+<li>Send the following information to <a href="https://www.kuleuven.be/wieiswie/en/person/00098752">Ying</a>:<ul>
+<li>Your IPv4 Address</li>
+<li>Your computer hostname (GHUM-...)</li>
 </ul>
 </li>
 </ol>
+</li>
+<li>
+<p>Download MATLAB:</p>
+<ul>
+<li>Get the MATLAB installation files from the <a href="https://icts.kuleuven.be/apps/license/download/MATLAB/index.html">ICTS License Tool</a></li>
+</ul>
+</li>
+<li>
+<p>Install MATLAB following the installer's instructions.</p>
+</li>
+</ol>
+<details class="tip">
+<summary>Updating Your PC Registration</summary>
+<p>To change your registered computer name or IP address:</p>
+<ol>
+<li>Go to <a href="https://icts.kuleuven.be/apps/license">https://icts.kuleuven.be/apps/license</a></li>
+<li>Click the pencil icon under "register your PC"</li>
+<li>Update your hostname and IP address as needed</li>
+</ol>
+</details>
+</div>
+</div>
+</div>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>MATLAB can be used at home provided you use a VPN. The official VPN to use is SSL VPN Pulse Client / Ivanti Secure Access Client (see below).</p>
+<p class="admonition-title">Home Usage</p>
+<p>MATLAB can be used at home if you connect via VPN. Use the SSL VPN Pulse Client / Ivanti Secure Access Client provided by KU Leuven.</p>
 </div>
 <h2 id="frequently-used-software">Frequently used software<a class="headerlink" href="#frequently-used-software" title="Permanent link">&para;</a></h2>
 <p>Here are some software programs we frequently use in the lab, which you might find useful to download:</p>
 <ul>
-<li><strong>Google Calendar</strong>: Make sure you have writing access to the lab's Google calendar (ask the person in charge of this, for now, that is <a href="https://www.kuleuven.be/wieiswie/en/person/00149267">Tim</a>, from December 2024 on, this will be <a href="https://www.kuleuven.be/wieiswie/en/person/00116743">Klara</a> or Silke).</li>
-<li><strong>TeamViewer</strong>: For remote access to a desktop pc, e.g. the fMRI desktop to run your analyses. Make sure to <a href="https://www.teamviewer.com/en/download/windows/">install the free <strong>private</strong> version</a>. If, for some reason, TeamViewer is unaccessible, AnyDesk is a good alternative (again, make sure to install the free private version). It is advisable to install and configure both software to avoid being locked out if one of them is not accessible.</li>
-<li><strong>Google Chrome</strong>: This is the preferred web browser. For example, the MR calendar is only compatible with this browser.</li>
-<li><strong>Slack</strong>: Slack is used for communication within the lab. Ask any lab member to add you to the relevant channels.</li>
-<li><strong>Skype for business</strong> and <strong>Microsoft Teams</strong>: The KU Leuven offers both <a href="https://admin.kuleuven.be/icts/english/services/skype">Skype for business</a> and <a href="https://admin.kuleuven.be/icts/english/teams/index">MS Teams</a> for communication purposes. See <a href="https://admin.kuleuven.be/icts/english/teams/comparison">this table</a> for a comparison between the different platforms. Currently, MS Teams is the newer and preferred option, however, it only allows its users to reach other MS Teams users. With MS Teams, it is currently not possible to call (or be called by) telephone numbers (landline and mobile). You can use Skype for this.</li>
-<li><strong>SSL VPN Pulse Client / Ivanti Secure Access Client</strong>: The VPN offered by the university. For more information, check out this <a href="https://admin.kuleuven.be/icts/services/vpn/">link</a>.</li>
+<li>
+<p><strong>Google Calendar</strong>: Make sure you have writing access to the lab's Google calendar (ask the person in charge of this, for now, that is <a href="https://www.kuleuven.be/wieiswie/en/person/00149267">Tim</a>, from December 2024 on, this will be <a href="https://www.kuleuven.be/wieiswie/en/person/00116743">Klara</a> or Silke).</p>
+</li>
+<li>
+<p><strong>TeamViewer</strong>: For remote access to a desktop PC, e.g. the fMRI PC to run your analyses. </p>
+<details class="info">
+<summary>TeamViewer Setup Guide</summary>
+<ol>
+<li>Download the free <strong>private</strong> version from the <a href="https://www.teamviewer.com/en/download/windows/">official website</a>.</li>
+<li>Create an account:<ul>
+<li>Open TeamViewer and click "Sign Up".</li>
+<li>Enter your email, name, and a strong password.</li>
+<li>Verify your email address.</li>
 </ul>
-<p><strong>TODO:</strong> Add more details on the exact steps/tips for TeamViewer and add link to Silke's who-is-who page after she started.</p>
+</li>
+<li>Add a computer:<ul>
+<li>Sign in and go to "Computers &amp; Contacts".</li>
+<li>Click "Add Computer".</li>
+<li>Name the computer (e.g., "Lab Desktop").</li>
+<li>Click "Add" to save.</li>
+</ul>
+</li>
+<li>Connect:<ul>
+<li>Open TeamViewer and log in.</li>
+<li>Find the computer in your list.</li>
+<li>Double-click to connect.</li>
+<li>Enter the remote computer's password when prompted.</li>
+</ul>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p><strong>AnyDesk</strong>: A good alternative if TeamViewer is inaccessible. <a href="https://anydesk.com/en">Install the free private version</a>. It is advisable to install and configure both TeamViewer and AnyDesk to avoid being locked out if one of them is not accessible.</p>
+</li>
+<li>
+<p><strong>Google Chrome</strong>: This is the preferred web browser. For example, the MR calendar is only compatible with this browser.</p>
+</li>
+<li>
+<p><strong>Slack</strong>: Slack is used for communication within the lab. Ask any lab member to add you to the relevant channels.</p>
+</li>
+<li>
+<p><strong>Skype for business</strong> and <strong>Microsoft Teams</strong>: KU Leuven offers both <a href="https://admin.kuleuven.be/icts/english/services/skype">Skype for business</a> and <a href="https://admin.kuleuven.be/icts/english/teams/index">MS Teams</a> for communication purposes. See <a href="https://admin.kuleuven.be/icts/english/teams/comparison">this table</a> for a comparison between the different platforms. Currently, MS Teams is the newer and preferred option, however, it only allows its users to reach other MS Teams users. With MS Teams, it is currently not possible to call (or be called by) telephone numbers (landline and mobile). You can use Skype for this.</p>
+</li>
+<li>
+<p><strong>SSL VPN Pulse Client / Ivanti Secure Access Client</strong>: The VPN offered by the university. For more information, check out this <a href="https://admin.kuleuven.be/icts/services/vpn/">link</a>.</p>
+</li>
+<li>
+<p><strong>Overleaf</strong>: An online <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> editor for collaborative writing and publishing.</p>
+<details class="question">
+<summary>Why use Overleaf?</summary>
+<p>Overleaf is a powerful tool for academic writing, especially for scientific papers and theses. Here's why it's important:</p>
+<ol>
+<li><strong><span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>-based</strong>: Produces high-quality, professional-looking documents with complex equations and formatting.</li>
+<li><strong>Collaboration</strong>: Real-time collaboration with co-authors, similar to Google Docs.</li>
+<li><strong>Version control</strong>: Tracks changes and allows reverting to previous versions.</li>
+<li><strong>Journal templates</strong>: Many journals provide <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> templates that can be directly used in Overleaf, streamlining the submission process.</li>
+<li><strong>Integration</strong>: Works with reference managers like Mendeley and Zotero.</li>
+<li><strong>Accessibility</strong>: Web-based, so you can work from any computer without installing software.</li>
+</ol>
+<p>While <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> has a learning curve, investing time in learning it can significantly improve your academic writing workflow and the quality of your documents.</p>
+</details>
+</li>
+</ul>
 <div class="admonition tip">
 <p class="admonition-title">Administrative privileges on KU Leuven PCs</p>
 <p>In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in <code>C:\Workdir\MyApps\</code>. Please contact the ICT helpdesk if problems persist.</p>
@@ -1757,6 +1833,27 @@
 </ul>
 <p>If the installation doesn’t work, use a USB key to print on the black and white printer in room 02.28. You can also get permanent access by asking <a href="https://www.kuleuven.be/wieiswie/en/person/00098752">Ying</a> to add you to the list of users.</p>
 <p>For <strong>mac users</strong>, follow the instructions on <a href="https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration">this page</a> to print from your personal computer. More generally, this manual tries to give an overview of most frequently asked questions concerning configuration and initial setup of a secure work environment on Mac OS X. </p>
+<style>
+.latex {
+  font-family: "Computer Modern", serif;
+}
+.latex sup {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85em;
+  vertical-align: 0.15em;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+.latex sub {
+  text-transform: uppercase;
+  vertical-align: -0.5ex;
+  margin-left: -0.1667em;
+  margin-right: -0.125em;
+  font-size: 1em;
+}
+
+</style>
 
 
 
@@ -1777,7 +1874,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 31, 2024 18:01:48</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 24, 2024 18:01:27</span>
   </span>
 
     
