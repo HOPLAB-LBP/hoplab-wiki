@@ -72,6 +72,8 @@ Proceed as follows:
 
 ![Register missions](../assets/KULoket_missions.png)
 
+**TODO:** clarify how to link to images correctly. e.g., `![Register missions](../assets/KULoket_missions.png)` (or more .. in case we are in child page)
+
 For more information, check out [this page](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/absences_university_business). If you are using your own vehicle for the trip, please make sure it is registered for insurance reasons. To do so, follow the steps on [this page](https://admin.kuleuven.be/personeel/english/intranet/salary-benefits-insurances/workrelated-trips/reimbursement_workrelated_trip#section-2).
 
 ## Reserve a room for a meeting
