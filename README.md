@@ -1,4 +1,4 @@
-# Contribute to the Hoplab Wiki 
+# Contribute to the Hoplab Wiki
 
 Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be). 
 
@@ -77,15 +77,15 @@ Here are some common Markdown elements:
 - **Italic text:** `*italic text*`
 - **Links:** `[link text](URL)`
 - **Lists:** 
-  - Unordered list: `- Item 1`
-  - Ordered list: `1. Item 1`
-- **Images:** `![Alt text](URL)`
+    - Unordered list: `- Item 1`
+    - Ordered list: `1. Item 1`
+- **Images:** `![Alt text](path/to/image.png)` (see [this section](#adding-and-linking-images) for instructions on how to link images.)
 
 For more advanced formatting options, refer to the [MkDocs Material Reference Guide](https://squidfunk.github.io/mkdocs-material/reference/).
 
 ### Linking and Referencing
 
-When creating or editing content, you may want to reference or link to other sections within the wiki or external resources. Here's how to do it:
+When creating or editing content, you may want to reference or link to other sections within the wiki, external resources, or images. Here's how to do it:
 
 #### Internal Links (Within the Wiki)
 
@@ -125,15 +125,49 @@ For external links, use the full URL:
 [Hoplab Website](https://www.hoplab.be/)
 ```
 
+#### Adding and Linking Images
+
+When adding images to the Wiki:
+
+1. Store all images in the `docs/assets` folder.
+2. Use descriptive, lowercase names for images, separating words with hyphens (e.g., `fmri-analysis-workflow.png`).
+3. Use relative links to reference images. The path depends on the location of your Markdown file:
+
+    - If your Markdown file is in the main `docs` folder:
+     ```markdown
+     ![fMRI Analysis Workflow](../assets/fmri-analysis-workflow.png)
+     ```
+
+    - If your file is in a subdirectory of `docs` (e.g., `docs/research/`):
+     ```markdown
+     ![fMRI Analysis Workflow](../../assets/fmri-analysis-workflow.png)
+     ```
+
+    - If your file is in a sub-subdirectory (e.g., `docs/research/fmri/`):
+     ```markdown
+     ![fMRI Analysis Workflow](../../../assets/fmri-analysis-workflow.png)
+     ```
+
+4. Always include descriptive alt text for accessibility:
+   ```markdown
+   ![Diagram showing steps of fMRI analysis](../assets/fmri-analysis-workflow.png)
+   ```
+
+5. Optionally, specify image dimensions using HTML:
+   ```html
+   <img src="../assets/fmri-analysis-workflow.png" alt="fMRI Analysis Workflow" width="500">
+   ```
+
 #### Best Practices for Linking
 
 1. Use descriptive link text that gives users an idea of where the link will take them.
 2. Check your links after creating them to ensure they work correctly.
-3. For external links, consider whether they should open in a new tab by adding `{target="_blank"}` after the link:
+3. For external links, consider opening them in a new tab:
    ```markdown
    [Hoplab Website](https://www.hoplab.be/){target="_blank"}
    ```
 4. When linking to specific sections within long documents, use anchor links to improve user experience.
+5. For images, **always use relative links** and store images in the `docs/assets` folder to maintain a self-contained Wiki.
 
 ## How to Contribute
 
@@ -346,4 +380,3 @@ For further assistance, refer to the following resources:
 Or [ping](mailto:andreaivan.costantino@kuleuven.be) me.
 
 Thank you for contributing to the Hoplab Wiki!
-
