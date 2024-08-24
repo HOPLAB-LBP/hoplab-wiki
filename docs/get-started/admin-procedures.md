@@ -72,8 +72,6 @@ Proceed as follows:
 
 ![Register missions](../assets/KULoket_missions.png)
 
-**TODO:** clarify how to link to images correctly. e.g., `![Register missions](../assets/KULoket_missions.png)` (or more .. in case we are in child page)
-
 For more information, check out [this page](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/absences_university_business). If you are using your own vehicle for the trip, please make sure it is registered for insurance reasons. To do so, follow the steps on [this page](https://admin.kuleuven.be/personeel/english/intranet/salary-benefits-insurances/workrelated-trips/reimbursement_workrelated_trip#section-2).
 
 ## Reserve a room for a meeting
@@ -122,7 +120,6 @@ If you need **technical assistance** for your order (e.g., you want to order an 
 ## What to do when you leave
 
 We are very sad to see you leave! But since you do, make sure to tick the following boxes. 
-**TODO:** check with Hans if this is correct or where this should go
 
 1. Return the following items to [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752): 
 	- Any pc material (laptop, mouse, keyboard, etc.)
