@@ -1735,14 +1735,16 @@
 <li><strong>Bold text:</strong> <code>**bold text**</code></li>
 <li><strong>Italic text:</strong> <code>*italic text*</code></li>
 <li><strong>Links:</strong> <code>[link text](URL)</code></li>
-<li><strong>Lists:</strong> </li>
+<li><strong>Lists:</strong> <ul>
 <li>Unordered list: <code>- Item 1</code></li>
 <li>Ordered list: <code>1. Item 1</code></li>
-<li><strong>Images:</strong> <code>![Alt text](URL)</code></li>
+</ul>
+</li>
+<li><strong>Images:</strong> <code>![Alt text](path/to/image.png)</code> (see <a href="#adding-and-linking-images">this section</a> for instructions on how to link images.)</li>
 </ul>
 <p>For more advanced formatting options, refer to the <a href="https://squidfunk.github.io/mkdocs-material/reference/">MkDocs Material Reference Guide</a>.</p>
 <h3 id="linking-and-referencing">Linking and Referencing<a class="headerlink" href="#linking-and-referencing" title="Permanent link">&para;</a></h3>
-<p>When creating or editing content, you may want to reference or link to other sections within the wiki or external resources. Here's how to do it:</p>
+<p>When creating or editing content, you may want to reference or link to other sections within the wiki, external resources, or images. Here's how to do it:</p>
 <h4 id="internal-links-within-the-wiki">Internal Links (Within the Wiki)<a class="headerlink" href="#internal-links-within-the-wiki" title="Permanent link">&para;</a></h4>
 <p>Use relative paths for internal links. The general format is:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>[<span class="nt">Link Text</span>](<span class="na">path/to/file.md</span>)
@@ -1774,14 +1776,51 @@
 <p>For external links, use the full URL:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>)
 </span></code></pre></div>
+<h4 id="adding-and-linking-images">Adding and Linking Images<a class="headerlink" href="#adding-and-linking-images" title="Permanent link">&para;</a></h4>
+<p>When adding images to the Wiki:</p>
+<ol>
+<li>Store all images in the <code>docs/assets</code> folder.</li>
+<li>Use descriptive, lowercase names for images, separating words with hyphens (e.g., <code>fmri-analysis-workflow.png</code>).</li>
+<li>
+<p>Use relative links to reference images. The path depends on the location of your Markdown file:</p>
+<ul>
+<li>
+<p>If your Markdown file is in the main <code>docs</code> folder:
+ <div class="language-markdown highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
+</span></code></pre></div></p>
+</li>
+<li>
+<p>If your file is in a subdirectory of <code>docs</code> (e.g., <code>docs/research/</code>):
+ <div class="language-markdown highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../assets/fmri-analysis-workflow.png</span>)
+</span></code></pre></div></p>
+</li>
+<li>
+<p>If your file is in a sub-subdirectory (e.g., <code>docs/research/fmri/</code>):
+ <div class="language-markdown highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../../assets/fmri-analysis-workflow.png</span>)
+</span></code></pre></div></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Always include descriptive alt text for accessibility:
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>![<span class="nt">Diagram showing steps of fMRI analysis</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Optionally, specify image dimensions using HTML:
+   <div class="language-html highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../assets/fmri-analysis-workflow.png&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;fMRI Analysis Workflow&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;500&quot;</span><span class="p">&gt;</span>
+</span></code></pre></div></p>
+</li>
+</ol>
 <h4 id="best-practices-for-linking">Best Practices for Linking<a class="headerlink" href="#best-practices-for-linking" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Use descriptive link text that gives users an idea of where the link will take them.</li>
 <li>Check your links after creating them to ensure they work correctly.</li>
-<li>For external links, consider whether they should open in a new tab by adding <code>{target="_blank"}</code> after the link:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>){target=&quot;_blank&quot;}
+<li>For external links, consider opening them in a new tab:
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>){target=&quot;_blank&quot;}
 </span></code></pre></div></li>
 <li>When linking to specific sections within long documents, use anchor links to improve user experience.</li>
+<li>For images, <strong>always use relative links</strong> and store images in the <code>docs/assets</code> folder to maintain a self-contained Wiki.</li>
 </ol>
 <h2 id="how-to-contribute">How to Contribute<a class="headerlink" href="#how-to-contribute" title="Permanent link">&para;</a></h2>
 <p>We offer two workflows for contributing to the Hoplab Wiki: an Easy Workflow for quick changes to single files, and an Advanced Workflow for more extensive changes to multiple files.</p>
@@ -1857,10 +1896,10 @@
 <ol>
 <li>Click the "Code" button on your forked repository page and copy the URL.</li>
 <li>Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux) and navigate to the directory where you want to store the project, then type:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-username/hoplab-wiki.git
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-username/hoplab-wiki.git
 </span></code></pre></div></li>
 <li>Change into the directory of the cloned repository:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>hoplab-wiki
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">cd</span><span class="w"> </span>hoplab-wiki
 </span></code></pre></div></li>
 </ol>
 </li>
@@ -1902,13 +1941,13 @@
 </li>
 <li>
 <p><strong>Create and Activate a Conda Environment:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>hoplab-wiki<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>hoplab-wiki
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>hoplab-wiki<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>hoplab-wiki
 </span></code></pre></div>
 </li>
 <li>
 <p><strong>Install Necessary Packages:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material<span class="w"> </span>mkdocs-task-collector<span class="w"> </span>mkdocs-git-revision-date-localized-plugin
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material<span class="w"> </span>mkdocs-task-collector<span class="w"> </span>mkdocs-git-revision-date-localized-plugin
 </span></code></pre></div>
 </li>
 </ol>
@@ -1921,7 +1960,7 @@
 <ol>
 <li><strong>Serve the Documentation Locally:</strong></li>
 <li>While in your project directory and with the Conda environment activated, launch the local server by typing:
-      <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>mkdocs<span class="w"> </span>serve
+      <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>mkdocs<span class="w"> </span>serve
 </span></code></pre></div></li>
 <li>Open a web browser and navigate to <code>http://127.0.0.1:8000/</code>. This allows you to see your changes as they would appear on the live site.</li>
 <li>Keep this server running as you make changes; refresh your browser to update the preview.</li>
@@ -1938,15 +1977,15 @@
 <ol>
 <li><strong>Stage and Commit Your Changes:</strong><ol>
 <li>From your terminal, add all modified files to your commit:
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
 </span></code></pre></div></li>
 <li>Commit the changes, including a clear message about what was modified and why:
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Detailed description of changes&quot;</span>
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Detailed description of changes&quot;</span>
 </span></code></pre></div></li>
 </ol>
 </li>
 <li>Push your commits to the forked repository on GitHub:
-      <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+      <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
 </span></code></pre></div></li>
 </ol>
 </div>
@@ -2029,7 +2068,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 12, 2024 00:34:55</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 24, 2024 17:18:10</span>
   </span>
 
     
