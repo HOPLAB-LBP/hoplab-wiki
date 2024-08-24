@@ -2,59 +2,90 @@
 
 If you're a student newly starting in the lab, this page is made for you. It is packed with resources and knowledge that you will find useful during your time with us. Enjoy!
 
-The starter pack is divided into three sections. In no order of importance, you will find **important papers** from authors  we might refer to every once in a while, **coding tutorials** to get up to speed with Python and develop your programming skills, and **miscellaneous** resources that don't fit in these two categories but are still relevant.
+The starter pack is divided into three sections. In no order of importance, you will find **important papers** from authors we might refer to every once in a while, **coding tutorials** to get up to speed with Python and develop your programming skills, and **miscellaneous** resources that don't fit in these two categories but are still relevant.
 
-=== "Some essential papers"
+## Coding tutorials
 
-    Here are some foundational papers to give you some background on the research going on in the lab.
+Developing strong coding skills is crucial for success in our lab. Here are some excellent resources to help you improve your Python programming and data science skills:
 
-    **NOTE:** TIM: 'm not sure how to structure this? I thought we could have bullet points, with a bit of text explaining why each entry is important. ANDREA: I think this is ok, but we should definitely add links and more info for each paper. Depending on how fancy we want to be and how the final result looks like, we could also make a [table](https://squidfunk.github.io/mkdocs-material/reference/data-tables/) or a [grid](https://squidfunk.github.io/mkdocs-material/reference/grids/)
+1. :star: **[The Good Research Code Handbook](https://goodresearch.dev/)**: This is a must-read for anyone joining the lab. It covers essential knowledge on how to structure and write your code in research, suitable for both beginners and experienced researchers.
 
-    #### Some reviews
+2. [DataCamp Python Courses](https://www.datacamp.com/category/python): Interactive tutorials for beginners.
 
-    Bracci & Op de Beeck 2023
+3. [Codecademy Python Classes](https://www.codecademy.com/catalog/language/python): Free classes to get started with Python.
 
-    Grill-Spector and Weiner 2014
+4. [Software Carpentry Python Fundamentals](https://swcarpentry.github.io/python-novice-inflammation/): Basic Python concepts for beginners.
 
-    DiCarlo et al 2012
+5. [EdX: Using Python for Research](https://www.edx.org/learn/python/harvard-university-using-python-for-research): Free course on Python applications in research.
+
+6. [Scientific Python Lectures](https://lectures.scientific-python.org/): Advanced course for confident programmers.
+
+7. [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/): Comprehensive guide to data science with Python.
+
+## Miscellaneous
+
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-pencil:{ .lg .middle } __Academic Writing__
+
+    ---
+
+    Learning how to write is fundamental to academic training. If you're struggling with writing or structuring your papers, check out:
+
+    [:octicons-arrow-right-24: Ten Simple Rules for Structuring Papers](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619)
+
+-   :material-brain:{ .lg .middle } __Machine Learning Fundamentals__
+
+    ---
+
+    To understand the basics of machine learning and modeling, this Coursera class is a must:
+
+    [:octicons-arrow-right-24: Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction)
+
+-   :fontawesome-solid-graduation-cap:{ .lg .middle } __Awesome PhD Resources__
+
+    ---
+
+    A curated list of carefully selected tools and resources for both early career and senior researchers:
+
+    [:octicons-arrow-right-24: Awesome PhD GitHub Repository](https://github.com/helenahartmann/awesome-PhD)
     
-    #### Classic papers
+-   :material-chart-bar:{ .lg .middle } __Data Visualization Resources__
 
-    Felleman & Van Essen 1991
+    ---
 
-    #### fMRI studies we refer to
+    Effective data visualization is crucial for communicating your research. Resources coming soon!
 
-    Bracci et al. 2016, 2017
+    [:octicons-arrow-right-24: [PLACEHOLDER]]()
+
+</div>
     
-    Kriegeskorte et al 2008 (maybe fits in a different category)
+## Essential papers
 
-    #### DNN papers
+**TODO:** Expand this list with more papers, add brief explanations of why each paper is important, and consider including short abstracts for key papers.
 
-     - DNNs develop similar representations to the brain: Khaligh-Razavi and Kriegeskorte 2014, Yamins et al 2014
-     - DNNs are biased towards texture: Geirhos et al 2022
+Here are some foundational papers to give you some background on the research going on in the lab.
 
-=== "Some coding tutorials"
+#### Some reviews
 
-    **TODO:** once it is populated, we should refer (or even move this content) to the Research --> Coding section
+Bracci & Op de Beeck 2023
 
-    Here are some places where you'll find tutorials to learn some Python skills.
+Grill-Spector and Weiner 2014
 
-    1. [Datacamp](https://www.datacamp.com/category/python) offers some nice interactive tutorials to get started.
-    2. In a similar vein, [Code Academy](https://www.codecademy.com/catalog/language/python) has several free classes you can start from.
-    3. Some Python fundamentals can be found in the [Software Carpentry](https://swcarpentry.github.io/python-novice-inflammation/) website.
-    4. Check out this free [Edx](https://www.edx.org/learn/python/harvard-university-using-python-for-research) course on Python for research.
-    5. If you feel more confident, this [scientific Python](https://lectures.scientific-python.org/) course is for you.
-    6. A strong, large recap on data science with Python can be found in [this handbook](https://jakevdp.github.io/PythonDataScienceHandbook/).
+DiCarlo et al 2012
 
-=== "Miscellaneous"
+#### Classic papers
 
-    Learning how to write is a fundamental of academic training. If you're struggling to get started with writing, or don't know what should go in which section of your paper/thesis, you can refer to these [Ten simple rules for structuring papers](https://journals.plos.org/ploscompbiol/article%3Fid%3D10.1371/journal.pcbi.1005619).
-    
-    If you're looking to understand the fundamentals of machine learning, and get a solid understanding of modeling, this [Coursera class](https://www.coursera.org/specializations/machine-learning-introduction) is a must. It offers free, very high-quality contents.
-    
-    **TODO:** add some data visualisation resources? I think Laura S had some nice websites
+Felleman & Van Essen 1991
 
+#### fMRI studies we refer to
 
-    
-    
-**TODO:** format the paper list, add resources, ask members to contribute what they think is important for students starting in the lab.
+Bracci et al. 2016, 2017
+
+Kriegeskorte et al 2008 (maybe fits in a different category)
+
+#### DNN papers
+
+ - DNNs develop similar representations to the brain: Khaligh-Razavi and Kriegeskorte 2014, Yamins et al 2014
+ - DNNs are biased towards texture: Geirhos et al 2022    
+
