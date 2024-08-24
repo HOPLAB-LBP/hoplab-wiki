@@ -380,4 +380,3 @@ For further assistance, refer to the following resources:
 Or [ping](mailto:andreaivan.costantino@kuleuven.be) me.
 
 Thank you for contributing to the Hoplab Wiki!
-
