@@ -63,7 +63,8 @@ Despite these steps, some BIDS fields in the sidecar JSON files may remain empty
 - **SliceTiming**:
     - This field is used by fMRIPrep during slice timing correction.
     - It can be populated using the `/utils/get_philips_MB_slicetiming.py` script, assuming you have access to a DICOM file and know the multiband factor (default is 2, as used in our lab).
-    - **NOTE:** The script assumes an interleaved, foot-to-head acquisition, and will not work for other types of acquisitions.
+    !!! warning
+        The script assumes an interleaved, foot-to-head acquisition, and will not work for other types of acquisitions.
 
 - **PhaseEncodingDirection**:
     - This BIDS tag allows tools to undistort images.
