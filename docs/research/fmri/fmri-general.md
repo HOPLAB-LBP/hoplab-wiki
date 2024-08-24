@@ -10,7 +10,7 @@ some interesting links: https://www.youtube.com/watch?v=J0npRWV2zTY
 
 **NOTE:** [TIM] What about having a general diagram at the top that gives a general idea of what data should be where? When users land on this page, if we follow the logic from the pages before, they will just have acquired data and probably don't know what to do with it. I'm thinking of something like this image below. Without this kind of overview, one might not be sure where to store the raw data mentioned below, for instance.We could create such a plot with [mermaid](https://mermaid.js.org/).
 
-![fMRI data workflow](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/fMRI%20data%20workflow.png)
+![fMRI data workflow](../../assets/fMRI_data_workflow.png)
 
 **NOTE:** [TIM] I would add a mention of what to store the data on, ie get a hard drive and bring it to the hospital to take the output data.
 
