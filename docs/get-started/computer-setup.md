@@ -112,7 +112,7 @@ Here are some software programs we frequently use in the lab, which you might fi
 
 All KU Leuven staff and students have their own [OneDrive](https://admin.kuleuven.be/icts/services/onedrive) environment with 2 TB of online storage space to store personal work files. The files on OneDrive are synced to a folder on your local device (Windows Explorer), but can be accessed from various devices from any location. It is also possible to share documents with someone else and work together on the same document.
 
-!!! warning
+!!! warning "Back up your data twice"
     Keep your data in one main folder (folder name = your first name) if you are an intern, or on your PC if you are personnel, and back-up this data to:
 
 	1. A portable hard drive (shared between **interns**, or ask [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) if you are **personnel**). Don’t forget to give the external drives back to your supervisor when your role ends.
