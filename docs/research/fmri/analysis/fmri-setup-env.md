@@ -80,7 +80,7 @@ Project_Name/
 
     To create this folder structure, you can use the following bash script:
 
-    ``` bash linenums="1"
+    ``` bash title="create_fmri_structure.sh" linenums="1"
     # Create main project directory
     mkdir -p Project_Name
 
