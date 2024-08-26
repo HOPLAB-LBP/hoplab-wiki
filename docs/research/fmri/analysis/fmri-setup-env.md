@@ -165,6 +165,10 @@ docker pull deepmi/fastsurfer:latest
 
 ##### [DeepMReye](https://github.com/DeepMReye/DeepMReye)
 
+DeepMReye is a tool to perform eye-tracking data analysis when you have no eye-tracking data. It estimates eye-movements from the eyes position in your functional images. This will of course results in a (very) much lower temporal resolution than real eye-tracking data, but we found results to be good enough for some experimental paradigms.
+
+To get the Docker image:
+
 ```bash
 docker pull deepmreye/deepmreye
 ```
