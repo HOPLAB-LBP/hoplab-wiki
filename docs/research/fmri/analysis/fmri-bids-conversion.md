@@ -1,13 +1,6 @@
 # Convert your fMRI data into BIDS format
 
-**TODO:** [TIM] add info about BIDS format and how-to
-
 **TODO:** [TIM] add figures. It would definitely be nice to show a full tree of an example repostitory, and how it changes at each step of the way.
-
-**TODO:** [ANDREA] we need to add a step + script on how to anonymize even the filenames **at the hospital!** this is an important action point also highlighted in a recent email by  Hans. filenames of dicom/nift files must not have info (e.g., sub names) when they leave the hospital (i.e., when they are moved into hard  drives). Link the script I have to change these files. (we should do the same for DICOM/nifti headers and JSON if they carry any similar info).
-
-**NOTE:** [ANDREA] I have scripts to do some of the points below. For instance, the events files can and should (to avoid errors) be created from the mat files directly, the json files can be generated automatically, the nii files can be moved automatically.. etc. we should encourage people in using the scripts we already have to minimize issues in this first step
-
 
 ## BIDS standards
 
@@ -28,9 +21,11 @@ After scanning participants, you'll obtain data from two primary sources:
 1. The scanner: Functional and structural outputs (`.nii` files), alongside potential `dicom` files
 2. The stimulus presentation computer: Behavioural outputs (mainly `log` files and `.mat` files) and potentially eye-tracking data
 
-Your first step is to organize these files in a `sourcedata` folder. Follow the structure outlined in [How to store raw data](../fmri-general.md#how-to-store-raw-data). Once your data is properly arranged, you can proceed to convert it to BIDS format.
+Your first step is to organize these files in a `sourcedata` folder. Follow the structure outlined in [How to store raw data](../fmri-general.md#how-to-store-raw-data). Once your data is properly arranged, you can proceed to anonymize it and convert it to BIDS format.
 
 Here's a high-level overview of the steps involved in arranging your data in a BIDS-compatible way. While this provides a general understanding, most of these steps should be performed using the code provided in each sub-section to minimize errors.
+
+0. First and foremost, make sure your DICOM / nifti file names **do not contain** subject identificative information, such as the subject's name. This is particularly relevant for our pipeline, because that's exactly what our scanner does. You can either manually rename your files, or run the small Python utility (available [here](../../../assets/code/anon_nii_filename.py)) in your terminal. More information on how to use it can be found in the docstring inside the script and in the relevant section below.
 
 1. Create `events.tsv` files (more info on required and optional columns can be found [here](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html)):
 
@@ -43,8 +38,8 @@ Here's a high-level overview of the steps involved in arranging your data in a B
     ```
     └─ sub-01/
     └─ func/
-      ├─ sub-01_task-stopsignal_events.tsv 
-      └─ sub-01_task-stopsignal_events.json 
+      ├─ sub-01_task-exp_events.tsv 
+      └─ sub-01_task-exp_events.json 
     ```
 
 2. Rename functional `nifti` files:
@@ -95,6 +90,113 @@ Here we provide more detailed instructions to perform each of the steps mentione
     All the steps and scripts below assume a specific folder structure and file naming convention. They **will not work** otherwise. Ensure you strictly follow the instructions in the [How to store raw data](../fmri-general.md#how-to-store-raw-data) page.
 
     **TODO:** [ANDREA] in the how to store raw data page, create a folders tree that includes all the relevant folders and subfolder. The current tree is not complete.
+    
+### Anonymize raw scanner data
+
+#### Expected project structure
+
+[This small utility tool](../../../assets/code/anon_nii_filename.py) renames files within a BIDS-like directory structure, specifically targeting files containing `_WIP_` in their names.
+
+The script operates on the following project structure:
+
+```
+Project_Name/
+├── sourcedata/
+│   └── sub-xx/
+│       ├── dicom/
+│       ├── dicom_anon/
+│       ├── bh/
+│       ├── et/
+│       └── nifti/
+└── BIDS/
+    ├── derivatives/
+    └── sub-xx/
+        ├── anat/
+        └── func/
+```
+
+The script processes files within the 'sourcedata' directory.
+
+Execute the script from the 'sourcedata' directory:
+
+1. Open a terminal or command prompt.
+2. Navigate to the project's root:
+   ```bash
+   cd /path/to/Project_Name
+   ```
+3. Change to the 'sourcedata' directory:
+   ```bash
+   cd sourcedata
+   ```
+
+#### Command-line Arguments
+
+- `--level {group,participant}`: Process all subjects (`group`) or individual subjects (`participant`).
+- `--confirm {True,False}`: Ask for confirmation before renaming (default: True).
+- `--dry_run`: Preview changes without renaming.
+- `--sub [SUB ...]`: Specify subject IDs to process.
+
+#### Examples
+
+1. Dry run for all subjects:
+   ```bash
+   python /path/to/anon_nii_filename.py --level group --dry_run
+   ```
+
+2. Rename files for subjects 01 and 02 with confirmation:
+   ```bash
+   python /path/to/anon_nii_filename.py --level participant --sub 01 02 --confirm True
+   ```
+
+3. Rename files for all subjects without confirmation:
+   ```bash
+   python /path/to/anon_nii_filename.py --level group --confirm False
+   ```
+
+Output filename:
+```
+sub-01/nifti/sub-01_WIP_T1w_20240101141322.nii
+```
+
+!!! warning "Caution"
+    Always backup your data before running renaming operations.
+
+#### How It Works
+
+1. The script traverses the 'sourcedata' directory structure.
+2. It identifies files containing '_WIP_' in their names.
+3. New names are generated based on the subject ID and the part of the filename after '_WIP_'.
+4. Depending on the options, it either renames the files or shows the proposed changes.
+
+#### Important Notes
+
+- Only files containing '_WIP_' are processed. Others are ignored.
+- To process all files, modify the `rename_files_in_directory` function:
+  ```python
+  if '_WIP_' in file:
+  ```
+  to:
+  ```python
+  if True:  # Caution: processes all files
+  ```
+
+!!! caution "Modifying the Script"
+    Processing all files may lead to unintended renaming. Always use `--dry_run` first and review proposed changes carefully.
+
+#### Tips
+
+- Use `--dry_run` to preview changes before actual renaming.
+- Process subjects in smaller batches for large datasets.
+- Regularly check BIDS specifications for naming convention compliance.
+
+#### Troubleshooting
+
+If issues occur:
+
+1. Ensure you're in the 'sourcedata' directory.
+2. Check permissions for renaming files in 'sourcedata'.
+3. Verify all required Python dependencies are installed.
+4. For unprocessed files, check if they contain '_WIP_'.
 
 ### Creating Event Files
 
@@ -124,8 +226,6 @@ If you have DICOM files from the scanner:
 2. Use the `anonymize_dicm` script to anonymize the DICOM files.
 3. Use the `dicm2nii` script to convert the anonymized DICOM files to NIfTI.
 
-**TODO:** [ANDREA] Add scripts for automating DICOM anonymization and conversion.
-
 **TODO:** [TIM] Give information on how to use the anonymization and dicom to nifti scripts, and what the results should be like. Give links to the scripts.
 
 ### Creating JSON Sidecar Files
@@ -135,8 +235,6 @@ If you have DICOM files from the scanner:
 3. Copy the updated JSON files to accompany each NIfTI file in the BIDS folder.
 
 Each `nii` file must have a corresponding JSON sidecar file. If your fMRI protocol didn't change, you can reuse JSON files across subjects.
-
-**TODO:** [ANDREA] Add script for automatically updating and copying JSON sidecar files.
 
 **TODO:** [TIM] Explain how to get the two missing fields and why it's important. Link to the fmri-general section about it.
 
@@ -160,149 +258,9 @@ Each `nii` file must have a corresponding JSON sidecar file. If your fMRI protoc
 **TODO:** [TIM] Give instructions on how to rename files, both functional and structural, including what happens in case of several scan sessions and the added `ses` label.
 
 ??? tip "Rename and move automatically"
-    Here is a MATLAB script that can do this automatically (change the input and output folders, run names and subjects numbers according to your needs):
-
-    ```octave title="nii2BIDS.m" linenums="1"
-    % MATLAB script to convert fMRI data to BIDS format.
-    %
-    % This script processes a range of subject data stored in a given directory 
-    % structure and organizes them into the BIDS (Brain Imaging Data Structure) format.
-    % It uses a predefined mapping to rename functional data runs and then copies 
-    % the files to the appropriate BIDS directories, creating them if they don't exist.
-    % The script also matches JSON sidecar files from a specified directory to their 
-    % respective NIfTI images. The NIfTI files and JSON sidecar files are named according 
-    % to the BIDS naming convention.
-    %
-    % Input:
-    % - Raw NIfTI files and JSON files of the subjects.
-    % 
-    % Output:
-    % - Organized NIfTI files and associated JSON files in BIDS structure.
-    %
-    % Author: Andrea Costantino
-    % Created: January 7, 2021
-
-    clear all; % Clear all the variables from the workspace.
-    clc; % Clear the command window.
-
-    % Define the base directories
-    baseInputDir = "/data/projects/chess/data/sourcedata";
-    outdir = "/data/projects/chess/data/BIDS";
-    jsonDir = "data/project/chess/code/misc";
-    dirs = {'anat', 'func'}; % Define the BIDS modality directories.
-
-    % Define the mappings between run names and task names
-    runNameToTaskName = containers.Map({'Functional', 'Localizer1', 'Localizer2'}, {'exp', 'loc1', 'loc2'});
-
-    % Define the start and end subjects
-    startSub = 41;
-    endSub = 44;
-
-    % Handle the case for a single subject or a range of subjects.
-    if startSub == endSub
-        subjects = {sprintf('sub-%02d', startSub)};
-    else
-        subjects = arrayfun(@(x) sprintf('sub-%02d', x), startSub:endSub, 'UniformOutput', false);
-    end
-
-    % Loop through each subject to organize their data.
-    for subIndex = 1:numel(subjects)
-        subID = subjects{subIndex};
-        
-        fprintf('Processing %s...\n', subID); % Print status to command window.
-
-        % Define paths for current subject's raw NIfTI data.
-        % Check if directory is 'nifti' or 'nii' and define the path
-        if exist(fullfile(baseInputDir, subID, 'nifti'), 'dir')
-            dirname = fullfile(baseInputDir, subID, 'nifti');
-        elseif exist(fullfile(baseInputDir, subID, 'nii'), 'dir')
-            dirname = fullfile(baseInputDir, subID, 'nii');
-        else
-            error('Neither nifti nor nii directory exists for %s', subID);
-        end
-
-        dirPaths = containers.Map();
-
-        % Create BIDS directories for current subject if they don't exist.
-        for i = 1:length(dirs)
-            dirPath = fullfile(outdir, subID, dirs{i});
-            dirPaths(dirs{i}) = dirPath;
-
-            if ~exist(dirPath, 'dir')
-                mkdir(dirPath); 
-                fprintf('Created %s folder for %s successfully!\n', dirs{i}, subID);
-            else
-                fprintf('%s folder for %s already exists!\n', dirs{i}, subID);
-            end
-        end
-
-        % Extract BIDS directory paths for anatomical and functional data.
-        anatDir = dirPaths('anat');
-        funcDir = dirPaths('func');
-
-        % List all NIfTI and NIfTI.GZ files of the current subject.
-        fileList = [dir(fullfile(dirname, '*.nii')); dir(fullfile(dirname, '*.nii.gz'))];
-
-        % Process each NIfTI file to copy and rename it according to BIDS.
-        for i = 1:length(fileList)
-            currentFilename = fileList(i).name;
-            fprintf('Processing file: %s\n', currentFilename);
-
-            % Check if the file is compressed (.nii.gz)
-            if contains(currentFilename, '.nii.gz')
-                % Decompress the .nii.gz file to the output directory
-                decompressedFile = gunzip(fullfile(fileList(i).folder, currentFilename), dirPaths('func'));
-                currentFilename = decompressedFile{1}; % Update currentFilename to the decompressed filename
-            end
-
-            if contains(currentFilename, '3DTFE')
-                % Anatomical data processing
-                newAnatFilename = fullfile(anatDir, [subID, '_T1w.nii']);
-                if contains(currentFilename, '.gz')
-                    movefile(currentFilename, newAnatFilename);
-                else
-                    copyfile(fullfile(fileList(i).folder, currentFilename), newAnatFilename);
-                end
-                
-                % Look for the corresponding JSON sidecar file.
-                jsonFiles = dir(fullfile(jsonDir, 'sub-xx_T1w.json'));
-                if length(jsonFiles) > 1
-                    error('Multiple JSON files found for T1w data. Please ensure only one correct JSON exists.');
-                elseif isempty(jsonFiles)
-                    fprintf('Warning: JSON file for %s T1w not found.\n', subID);
-                else
-                    copyfile(fullfile(jsonFiles(1).folder, jsonFiles(1).name), fullfile(anatDir, [subID, '_T1w.json']));
-                end
-            else
-                % Functional data processing
-                splitStr = split(currentFilename, '_');
-                runName = splitStr{end-3};
-                runNumber = str2double(regexp(splitStr{end-2}, '\d+', 'match'));
-                taskName = runNameToTaskName(runName);
-
-                newFileName = sprintf('%s_task-%s_run-%d_bold', subID, taskName, runNumber);
-                newFuncFilename = fullfile(funcDir, [newFileName, '.nii']);
-                if contains(currentFilename, '.gz')
-                    movefile(currentFilename, newFuncFilename);
-                else
-                    copyfile(fullfile(fileList(i).folder, currentFilename), newFuncFilename);
-                end
-
-                % Look for the corresponding JSON sidecar file.
-                jsonFiles = dir(fullfile(jsonDir, sprintf('sub-xx_task-%s_run-x_bold.json', taskName)));
-                if length(jsonFiles) > 1
-                    error('Multiple JSON files found for %s, task %s, run %d. Please ensure only one correct JSON exists.', subID, taskName, runNumber);
-                elseif isempty(jsonFiles)
-                    fprintf('Warning: JSON file for %s task %s run %d not found.\n', subID, taskName, runNumber);
-                else
-                    copyfile(fullfile(jsonFiles(1).folder, jsonFiles(1).name), fullfile(funcDir, [newFileName, '.json']));
-                end 
-            end
-        end
-
-        fprintf('Finished processing %s.\n\n', subID); % Print status to command window.
-    end
-    ```
+    A MATLAB script that can do this automatically can be found [here](../../../assets/code/nii2BIDS.m). Remember to change the input and output folders, run names and subjects numbers at the top of the script according to your needs. The  script expects as input your nifti files, along with the JSON sidecar template files.
+    
+    **TODO:** [ANDREA] the script should first check whether the JSON files are already availabe in the folder and, if that's the case, it should choose these files over the  templates. Also, we need to add more info about these template files in this page!
 
 ### Creating Essential BIDS Files
 
@@ -322,7 +280,7 @@ Each `nii` file must have a corresponding JSON sidecar file. If your fMRI protoc
 1. Create a `derivatives/` folder in your `BIDS/` directory.
 2. If needed, create a `.bidsignore` file in your `BIDS/` root folder to exclude any non-BIDS compliant files.
 
-!!! question "Why should I use a .bidsignore file?"
+??? question "Why should I use a .bidsignore file?"
     A `.bidsignore' file is useful to communicate to the BIDS validator which files should not be indexed, because they are not part of the standard BIDS structure. More information can be found [here](https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/bids-validator.html#creating-a-bidsignore).
     
 
