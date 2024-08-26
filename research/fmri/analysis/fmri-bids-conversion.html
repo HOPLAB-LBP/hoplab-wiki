@@ -1687,10 +1687,7 @@
 
 
 <h1 id="convert-your-fmri-data-into-bids-format">Convert your fMRI data into BIDS format<a class="headerlink" href="#convert-your-fmri-data-into-bids-format" title="Permanent link">&para;</a></h1>
-<p><strong>TODO:</strong> [TIM] add info about BIDS format and how-to</p>
 <p><strong>TODO:</strong> [TIM] add figures. It would definitely be nice to show a full tree of an example repostitory, and how it changes at each step of the way.</p>
-<p><strong>TODO:</strong> [ANDREA] we need to add a step + script on how to anonymize even the filenames <strong>at the hospital!</strong> this is an important action point also highlighted in a recent email by  Hans. filenames of dicom/nift files must not have info (e.g., sub names) when they leave the hospital (i.e., when they are moved into hard  drives). Link the script I have to change these files. (we should do the same for DICOM/nifti headers and JSON if they carry any similar info).</p>
-<p><strong>NOTE:</strong> [ANDREA] I have scripts to do some of the points below. For instance, the events files can and should (to avoid errors) be created from the mat files directly, the json files can be generated automatically, the nii files can be moved automatically.. etc. we should encourage people in using the scripts we already have to minimize issues in this first step</p>
 <h2 id="bids-standards">BIDS standards<a class="headerlink" href="#bids-standards" title="Permanent link">&para;</a></h2>
 <p>To organize our fMRI dataset, we follow the <a href="https://bids-specification.readthedocs.io/en/stable/introduction.html">BIDS</a> Specification.</p>
 <p>If you are not familiar with the BIDS Specification, the <a href="https://bids-standard.github.io/bids-starter-kit/index.html">BIDS Starter Kit</a> provides all the information needed to get started, along with <a href="https://bids-standard.github.io/bids-starter-kit/dataset_examples.html">example BIDS datasets</a>, <a href="https://bids-standard.github.io/bids-starter-kit/talks.html">Talks and Slides</a>, and most importantly <a href="https://bids-standard.github.io/bids-starter-kit/tutorials/tutorials.html">Tutorials</a>.</p>
@@ -1703,9 +1700,12 @@
 <li>The scanner: Functional and structural outputs (<code>.nii</code> files), alongside potential <code>dicom</code> files</li>
 <li>The stimulus presentation computer: Behavioural outputs (mainly <code>log</code> files and <code>.mat</code> files) and potentially eye-tracking data</li>
 </ol>
-<p>Your first step is to organize these files in a <code>sourcedata</code> folder. Follow the structure outlined in <a href="../fmri-general.html#how-to-store-raw-data">How to store raw data</a>. Once your data is properly arranged, you can proceed to convert it to BIDS format.</p>
+<p>Your first step is to organize these files in a <code>sourcedata</code> folder. Follow the structure outlined in <a href="../fmri-general.html#how-to-store-raw-data">How to store raw data</a>. Once your data is properly arranged, you can proceed to anonymize it and convert it to BIDS format.</p>
 <p>Here's a high-level overview of the steps involved in arranging your data in a BIDS-compatible way. While this provides a general understanding, most of these steps should be performed using the code provided in each sub-section to minimize errors.</p>
 <ol>
+<li>
+<p>First and foremost, make sure your DICOM / nifti file names <strong>do not contain</strong> subject identificative information, such as the subject's name. This is particularly relevant for our pipeline, because that's exactly what our scanner does. You can either manually rename your files, or run the small Python utility (available <a href="../../../assets/code/anon_nii_filename.py">here</a>) in your terminal. More information on how to use it can be found in the docstring inside the script and in the relevant section below.</p>
+</li>
 <li>
 <p>Create <code>events.tsv</code> files (more info on required and optional columns can be found <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html">here</a>):</p>
 <ul>
@@ -1716,8 +1716,8 @@
 <p>Example:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>└─ sub-01/
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└─ func/
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  ├─ sub-01_task-stopsignal_events.tsv 
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  └─ sub-01_task-stopsignal_events.json 
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  ├─ sub-01_task-exp_events.tsv 
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  └─ sub-01_task-exp_events.json 
 </span></code></pre></div>
 </li>
 <li>
@@ -1782,6 +1782,102 @@
 <p>All the steps and scripts below assume a specific folder structure and file naming convention. They <strong>will not work</strong> otherwise. Ensure you strictly follow the instructions in the <a href="../fmri-general.html#how-to-store-raw-data">How to store raw data</a> page.</p>
 <p><strong>TODO:</strong> [ANDREA] in the how to store raw data page, create a folders tree that includes all the relevant folders and subfolder. The current tree is not complete.</p>
 </div>
+<h3 id="anonymize-raw-scanner-data">Anonymize raw scanner data<a class="headerlink" href="#anonymize-raw-scanner-data" title="Permanent link">&para;</a></h3>
+<h4 id="expected-project-structure">Expected project structure<a class="headerlink" href="#expected-project-structure" title="Permanent link">&para;</a></h4>
+<p><a href="../../../assets/code/anon_nii_filename.py">This small utility tool</a> renames files within a BIDS-like directory structure, specifically targeting files containing <code>_WIP_</code> in their names.</p>
+<p>The script operates on the following project structure:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Project_Name/
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── sourcedata/
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   └── sub-xx/
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│       ├── dicom/
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│       ├── dicom_anon/
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│       ├── bh/
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│       ├── et/
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│       └── nifti/
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>└── BIDS/
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    ├── derivatives/
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    └── sub-xx/
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        ├── anat/
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        └── func/
+</span></code></pre></div>
+<p>The script processes files within the 'sourcedata' directory.</p>
+<p>Execute the script from the 'sourcedata' directory:</p>
+<ol>
+<li>Open a terminal or command prompt.</li>
+<li>Navigate to the project's root:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>/path/to/Project_Name
+</span></code></pre></div></li>
+<li>Change to the 'sourcedata' directory:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>sourcedata
+</span></code></pre></div></li>
+</ol>
+<h4 id="command-line-arguments">Command-line Arguments<a class="headerlink" href="#command-line-arguments" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>--level {group,participant}</code>: Process all subjects (<code>group</code>) or individual subjects (<code>participant</code>).</li>
+<li><code>--confirm {True,False}</code>: Ask for confirmation before renaming (default: True).</li>
+<li><code>--dry_run</code>: Preview changes without renaming.</li>
+<li><code>--sub [SUB ...]</code>: Specify subject IDs to process.</li>
+</ul>
+<h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Dry run for all subjects:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>group<span class="w"> </span>--dry_run
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Rename files for subjects 01 and 02 with confirmation:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>participant<span class="w"> </span>--sub<span class="w"> </span><span class="m">01</span><span class="w"> </span><span class="m">02</span><span class="w"> </span>--confirm<span class="w"> </span>True
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Rename files for all subjects without confirmation:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>group<span class="w"> </span>--confirm<span class="w"> </span>False
+</span></code></pre></div></p>
+</li>
+</ol>
+<p>Output filename:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sub-01/nifti/sub-01_WIP_T1w_20240101141322.nii
+</span></code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Caution</p>
+<p>Always backup your data before running renaming operations.</p>
+</div>
+<h4 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h4>
+<ol>
+<li>The script traverses the 'sourcedata' directory structure.</li>
+<li>It identifies files containing '<em>WIP</em>' in their names.</li>
+<li>New names are generated based on the subject ID and the part of the filename after '<em>WIP</em>'.</li>
+<li>Depending on the options, it either renames the files or shows the proposed changes.</li>
+</ol>
+<h4 id="important-notes">Important Notes<a class="headerlink" href="#important-notes" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Only files containing '<em>WIP</em>' are processed. Others are ignored.</li>
+<li>To process all files, modify the <code>rename_files_in_directory</code> function:
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span> <span class="s1">&#39;_WIP_&#39;</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+</span></code></pre></div>
+  to:
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>  <span class="c1"># Caution: processes all files</span>
+</span></code></pre></div></li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Modifying the Script</p>
+<p>Processing all files may lead to unintended renaming. Always use <code>--dry_run</code> first and review proposed changes carefully.</p>
+</div>
+<h4 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Use <code>--dry_run</code> to preview changes before actual renaming.</li>
+<li>Process subjects in smaller batches for large datasets.</li>
+<li>Regularly check BIDS specifications for naming convention compliance.</li>
+</ul>
+<h4 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h4>
+<p>If issues occur:</p>
+<ol>
+<li>Ensure you're in the 'sourcedata' directory.</li>
+<li>Check permissions for renaming files in 'sourcedata'.</li>
+<li>Verify all required Python dependencies are installed.</li>
+<li>For unprocessed files, check if they contain '<em>WIP</em>'.</li>
+</ol>
 <h3 id="creating-event-files">Creating Event Files<a class="headerlink" href="#creating-event-files" title="Permanent link">&para;</a></h3>
 <p>Event files are crucial for analyzing fMRI data. They contain information about the timing and nature of stimuli or tasks during the scan. To create your event files manually:</p>
 <ol>
@@ -1802,7 +1898,6 @@
 <li>Use the <code>anonymize_dicm</code> script to anonymize the DICOM files.</li>
 <li>Use the <code>dicm2nii</code> script to convert the anonymized DICOM files to NIfTI.</li>
 </ol>
-<p><strong>TODO:</strong> [ANDREA] Add scripts for automating DICOM anonymization and conversion.</p>
 <p><strong>TODO:</strong> [TIM] Give information on how to use the anonymization and dicom to nifti scripts, and what the results should be like. Give links to the scripts.</p>
 <h3 id="creating-json-sidecar-files">Creating JSON Sidecar Files<a class="headerlink" href="#creating-json-sidecar-files" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1811,7 +1906,6 @@
 <li>Copy the updated JSON files to accompany each NIfTI file in the BIDS folder.</li>
 </ol>
 <p>Each <code>nii</code> file must have a corresponding JSON sidecar file. If your fMRI protocol didn't change, you can reuse JSON files across subjects.</p>
-<p><strong>TODO:</strong> [ANDREA] Add script for automatically updating and copying JSON sidecar files.</p>
 <p><strong>TODO:</strong> [TIM] Explain how to get the two missing fields and why it's important. Link to the fmri-general section about it.</p>
 <p><strong>TODO:</strong> [TIM] Explain how to duplicate and rename the sidecar file.</p>
 <p><strong>TODO:</strong> [ANDREA] fill this out with more in depth info about the JSON etc.</p>
@@ -1834,285 +1928,8 @@
 <p><strong>TODO:</strong> [TIM] Give instructions on how to rename files, both functional and structural, including what happens in case of several scan sessions and the added <code>ses</code> label.</p>
 <details class="tip">
 <summary>Rename and move automatically</summary>
-<p>Here is a MATLAB script that can do this automatically (change the input and output folders, run names and subjects numbers according to your needs):</p>
-<div class="language-octave highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">nii2BIDS.m</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">  1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">  2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">  3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">  4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">  5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">  6</a></span>
-<span class="normal"><a href="#__codelineno-1-7">  7</a></span>
-<span class="normal"><a href="#__codelineno-1-8">  8</a></span>
-<span class="normal"><a href="#__codelineno-1-9">  9</a></span>
-<span class="normal"><a href="#__codelineno-1-10"> 10</a></span>
-<span class="normal"><a href="#__codelineno-1-11"> 11</a></span>
-<span class="normal"><a href="#__codelineno-1-12"> 12</a></span>
-<span class="normal"><a href="#__codelineno-1-13"> 13</a></span>
-<span class="normal"><a href="#__codelineno-1-14"> 14</a></span>
-<span class="normal"><a href="#__codelineno-1-15"> 15</a></span>
-<span class="normal"><a href="#__codelineno-1-16"> 16</a></span>
-<span class="normal"><a href="#__codelineno-1-17"> 17</a></span>
-<span class="normal"><a href="#__codelineno-1-18"> 18</a></span>
-<span class="normal"><a href="#__codelineno-1-19"> 19</a></span>
-<span class="normal"><a href="#__codelineno-1-20"> 20</a></span>
-<span class="normal"><a href="#__codelineno-1-21"> 21</a></span>
-<span class="normal"><a href="#__codelineno-1-22"> 22</a></span>
-<span class="normal"><a href="#__codelineno-1-23"> 23</a></span>
-<span class="normal"><a href="#__codelineno-1-24"> 24</a></span>
-<span class="normal"><a href="#__codelineno-1-25"> 25</a></span>
-<span class="normal"><a href="#__codelineno-1-26"> 26</a></span>
-<span class="normal"><a href="#__codelineno-1-27"> 27</a></span>
-<span class="normal"><a href="#__codelineno-1-28"> 28</a></span>
-<span class="normal"><a href="#__codelineno-1-29"> 29</a></span>
-<span class="normal"><a href="#__codelineno-1-30"> 30</a></span>
-<span class="normal"><a href="#__codelineno-1-31"> 31</a></span>
-<span class="normal"><a href="#__codelineno-1-32"> 32</a></span>
-<span class="normal"><a href="#__codelineno-1-33"> 33</a></span>
-<span class="normal"><a href="#__codelineno-1-34"> 34</a></span>
-<span class="normal"><a href="#__codelineno-1-35"> 35</a></span>
-<span class="normal"><a href="#__codelineno-1-36"> 36</a></span>
-<span class="normal"><a href="#__codelineno-1-37"> 37</a></span>
-<span class="normal"><a href="#__codelineno-1-38"> 38</a></span>
-<span class="normal"><a href="#__codelineno-1-39"> 39</a></span>
-<span class="normal"><a href="#__codelineno-1-40"> 40</a></span>
-<span class="normal"><a href="#__codelineno-1-41"> 41</a></span>
-<span class="normal"><a href="#__codelineno-1-42"> 42</a></span>
-<span class="normal"><a href="#__codelineno-1-43"> 43</a></span>
-<span class="normal"><a href="#__codelineno-1-44"> 44</a></span>
-<span class="normal"><a href="#__codelineno-1-45"> 45</a></span>
-<span class="normal"><a href="#__codelineno-1-46"> 46</a></span>
-<span class="normal"><a href="#__codelineno-1-47"> 47</a></span>
-<span class="normal"><a href="#__codelineno-1-48"> 48</a></span>
-<span class="normal"><a href="#__codelineno-1-49"> 49</a></span>
-<span class="normal"><a href="#__codelineno-1-50"> 50</a></span>
-<span class="normal"><a href="#__codelineno-1-51"> 51</a></span>
-<span class="normal"><a href="#__codelineno-1-52"> 52</a></span>
-<span class="normal"><a href="#__codelineno-1-53"> 53</a></span>
-<span class="normal"><a href="#__codelineno-1-54"> 54</a></span>
-<span class="normal"><a href="#__codelineno-1-55"> 55</a></span>
-<span class="normal"><a href="#__codelineno-1-56"> 56</a></span>
-<span class="normal"><a href="#__codelineno-1-57"> 57</a></span>
-<span class="normal"><a href="#__codelineno-1-58"> 58</a></span>
-<span class="normal"><a href="#__codelineno-1-59"> 59</a></span>
-<span class="normal"><a href="#__codelineno-1-60"> 60</a></span>
-<span class="normal"><a href="#__codelineno-1-61"> 61</a></span>
-<span class="normal"><a href="#__codelineno-1-62"> 62</a></span>
-<span class="normal"><a href="#__codelineno-1-63"> 63</a></span>
-<span class="normal"><a href="#__codelineno-1-64"> 64</a></span>
-<span class="normal"><a href="#__codelineno-1-65"> 65</a></span>
-<span class="normal"><a href="#__codelineno-1-66"> 66</a></span>
-<span class="normal"><a href="#__codelineno-1-67"> 67</a></span>
-<span class="normal"><a href="#__codelineno-1-68"> 68</a></span>
-<span class="normal"><a href="#__codelineno-1-69"> 69</a></span>
-<span class="normal"><a href="#__codelineno-1-70"> 70</a></span>
-<span class="normal"><a href="#__codelineno-1-71"> 71</a></span>
-<span class="normal"><a href="#__codelineno-1-72"> 72</a></span>
-<span class="normal"><a href="#__codelineno-1-73"> 73</a></span>
-<span class="normal"><a href="#__codelineno-1-74"> 74</a></span>
-<span class="normal"><a href="#__codelineno-1-75"> 75</a></span>
-<span class="normal"><a href="#__codelineno-1-76"> 76</a></span>
-<span class="normal"><a href="#__codelineno-1-77"> 77</a></span>
-<span class="normal"><a href="#__codelineno-1-78"> 78</a></span>
-<span class="normal"><a href="#__codelineno-1-79"> 79</a></span>
-<span class="normal"><a href="#__codelineno-1-80"> 80</a></span>
-<span class="normal"><a href="#__codelineno-1-81"> 81</a></span>
-<span class="normal"><a href="#__codelineno-1-82"> 82</a></span>
-<span class="normal"><a href="#__codelineno-1-83"> 83</a></span>
-<span class="normal"><a href="#__codelineno-1-84"> 84</a></span>
-<span class="normal"><a href="#__codelineno-1-85"> 85</a></span>
-<span class="normal"><a href="#__codelineno-1-86"> 86</a></span>
-<span class="normal"><a href="#__codelineno-1-87"> 87</a></span>
-<span class="normal"><a href="#__codelineno-1-88"> 88</a></span>
-<span class="normal"><a href="#__codelineno-1-89"> 89</a></span>
-<span class="normal"><a href="#__codelineno-1-90"> 90</a></span>
-<span class="normal"><a href="#__codelineno-1-91"> 91</a></span>
-<span class="normal"><a href="#__codelineno-1-92"> 92</a></span>
-<span class="normal"><a href="#__codelineno-1-93"> 93</a></span>
-<span class="normal"><a href="#__codelineno-1-94"> 94</a></span>
-<span class="normal"><a href="#__codelineno-1-95"> 95</a></span>
-<span class="normal"><a href="#__codelineno-1-96"> 96</a></span>
-<span class="normal"><a href="#__codelineno-1-97"> 97</a></span>
-<span class="normal"><a href="#__codelineno-1-98"> 98</a></span>
-<span class="normal"><a href="#__codelineno-1-99"> 99</a></span>
-<span class="normal"><a href="#__codelineno-1-100">100</a></span>
-<span class="normal"><a href="#__codelineno-1-101">101</a></span>
-<span class="normal"><a href="#__codelineno-1-102">102</a></span>
-<span class="normal"><a href="#__codelineno-1-103">103</a></span>
-<span class="normal"><a href="#__codelineno-1-104">104</a></span>
-<span class="normal"><a href="#__codelineno-1-105">105</a></span>
-<span class="normal"><a href="#__codelineno-1-106">106</a></span>
-<span class="normal"><a href="#__codelineno-1-107">107</a></span>
-<span class="normal"><a href="#__codelineno-1-108">108</a></span>
-<span class="normal"><a href="#__codelineno-1-109">109</a></span>
-<span class="normal"><a href="#__codelineno-1-110">110</a></span>
-<span class="normal"><a href="#__codelineno-1-111">111</a></span>
-<span class="normal"><a href="#__codelineno-1-112">112</a></span>
-<span class="normal"><a href="#__codelineno-1-113">113</a></span>
-<span class="normal"><a href="#__codelineno-1-114">114</a></span>
-<span class="normal"><a href="#__codelineno-1-115">115</a></span>
-<span class="normal"><a href="#__codelineno-1-116">116</a></span>
-<span class="normal"><a href="#__codelineno-1-117">117</a></span>
-<span class="normal"><a href="#__codelineno-1-118">118</a></span>
-<span class="normal"><a href="#__codelineno-1-119">119</a></span>
-<span class="normal"><a href="#__codelineno-1-120">120</a></span>
-<span class="normal"><a href="#__codelineno-1-121">121</a></span>
-<span class="normal"><a href="#__codelineno-1-122">122</a></span>
-<span class="normal"><a href="#__codelineno-1-123">123</a></span>
-<span class="normal"><a href="#__codelineno-1-124">124</a></span>
-<span class="normal"><a href="#__codelineno-1-125">125</a></span>
-<span class="normal"><a href="#__codelineno-1-126">126</a></span>
-<span class="normal"><a href="#__codelineno-1-127">127</a></span>
-<span class="normal"><a href="#__codelineno-1-128">128</a></span>
-<span class="normal"><a href="#__codelineno-1-129">129</a></span>
-<span class="normal"><a href="#__codelineno-1-130">130</a></span>
-<span class="normal"><a href="#__codelineno-1-131">131</a></span>
-<span class="normal"><a href="#__codelineno-1-132">132</a></span>
-<span class="normal"><a href="#__codelineno-1-133">133</a></span>
-<span class="normal"><a href="#__codelineno-1-134">134</a></span>
-<span class="normal"><a href="#__codelineno-1-135">135</a></span>
-<span class="normal"><a href="#__codelineno-1-136">136</a></span>
-<span class="normal"><a href="#__codelineno-1-137">137</a></span>
-<span class="normal"><a href="#__codelineno-1-138">138</a></span>
-<span class="normal"><a href="#__codelineno-1-139">139</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c">% MATLAB script to convert fMRI data to BIDS format.</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c">%</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c">% This script processes a range of subject data stored in a given directory </span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="c">% structure and organizes them into the BIDS (Brain Imaging Data Structure) format.</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="c">% It uses a predefined mapping to rename functional data runs and then copies </span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="c">% the files to the appropriate BIDS directories, creating them if they don&#39;t exist.</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="c">% The script also matches JSON sidecar files from a specified directory to their </span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="c">% respective NIfTI images. The NIfTI files and JSON sidecar files are named according </span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="c">% to the BIDS naming convention.</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="c">%</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="c">% Input:</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="c">% - Raw NIfTI files and JSON files of the subjects.</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="c">% </span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="c">% Output:</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="c">% - Organized NIfTI files and associated JSON files in BIDS structure.</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="c">%</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="c">% Author: Andrea Costantino</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="c">% Created: January 7, 2021</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="n">clear</span> <span class="nb">all</span><span class="p">;</span> <span class="c">% Clear all the variables from the workspace.</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="nb">clc</span><span class="p">;</span> <span class="c">% Clear the command window.</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="c">% Define the base directories</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="n">baseInputDir</span> <span class="p">=</span> <span class="s">&quot;/data/projects/chess/data/sourcedata&quot;</span><span class="p">;</span>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="n">outdir</span> <span class="p">=</span> <span class="s">&quot;/data/projects/chess/data/BIDS&quot;</span><span class="p">;</span>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="n">jsonDir</span> <span class="p">=</span> <span class="s">&quot;data/project/chess/code/misc&quot;</span><span class="p">;</span>
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="n">dirs</span> <span class="p">=</span> <span class="p">{</span><span class="s">&#39;anat&#39;</span><span class="p">,</span> <span class="s">&#39;func&#39;</span><span class="p">};</span> <span class="c">% Define the BIDS modality directories.</span>
-</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28"></a>
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="c">% Define the mappings between run names and task names</span>
-</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="n">runNameToTaskName</span> <span class="p">=</span> <span class="n">containers</span><span class="p">.</span><span class="n">Map</span><span class="p">({</span><span class="s">&#39;Functional&#39;</span><span class="p">,</span> <span class="s">&#39;Localizer1&#39;</span><span class="p">,</span> <span class="s">&#39;Localizer2&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;exp&#39;</span><span class="p">,</span> <span class="s">&#39;loc1&#39;</span><span class="p">,</span> <span class="s">&#39;loc2&#39;</span><span class="p">});</span>
-</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31"></a>
-</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="c">% Define the start and end subjects</span>
-</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="n">startSub</span> <span class="p">=</span> <span class="mi">41</span><span class="p">;</span>
-</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="n">endSub</span> <span class="p">=</span> <span class="mi">44</span><span class="p">;</span>
-</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35"></a>
-</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="c">% Handle the case for a single subject or a range of subjects.</span>
-</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="k">if</span> <span class="n">startSub</span> <span class="o">==</span> <span class="n">endSub</span>
-</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38"></a>    <span class="n">subjects</span> <span class="p">=</span> <span class="p">{</span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;sub-%02d&#39;</span><span class="p">,</span> <span class="n">startSub</span><span class="p">)};</span>
-</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="k">else</span>
-</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40"></a>    <span class="n">subjects</span> <span class="p">=</span> <span class="nb">arrayfun</span><span class="p">(@(</span><span class="n">x</span><span class="p">)</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;sub-%02d&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">startSub</span><span class="p">:</span><span class="n">endSub</span><span class="p">,</span> <span class="s">&#39;UniformOutput&#39;</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
-</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="k">end</span>
-</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42"></a>
-</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="c">% Loop through each subject to organize their data.</span>
-</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="k">for</span> <span class="n">subIndex</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span>
-</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45"></a>    <span class="n">subID</span> <span class="p">=</span> <span class="n">subjects</span><span class="p">{</span><span class="n">subIndex</span><span class="p">};</span>
-</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46"></a>
-</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47"></a>    <span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Processing %s...\n&#39;</span><span class="p">,</span> <span class="n">subID</span><span class="p">);</span> <span class="c">% Print status to command window.</span>
-</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48"></a>
-</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49"></a>    <span class="c">% Define paths for current subject&#39;s raw NIfTI data.</span>
-</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50"></a>    <span class="c">% Check if directory is &#39;nifti&#39; or &#39;nii&#39; and define the path</span>
-</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51"></a>    <span class="k">if</span> <span class="nb">exist</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">baseInputDir</span><span class="p">,</span> <span class="n">subID</span><span class="p">,</span> <span class="s">&#39;nifti&#39;</span><span class="p">),</span> <span class="s">&#39;dir&#39;</span><span class="p">)</span>
-</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52"></a>        <span class="n">dirname</span> <span class="p">=</span> <span class="nb">fullfile</span><span class="p">(</span><span class="n">baseInputDir</span><span class="p">,</span> <span class="n">subID</span><span class="p">,</span> <span class="s">&#39;nifti&#39;</span><span class="p">);</span>
-</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53"></a>    <span class="k">elseif</span> <span class="nb">exist</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">baseInputDir</span><span class="p">,</span> <span class="n">subID</span><span class="p">,</span> <span class="s">&#39;nii&#39;</span><span class="p">),</span> <span class="s">&#39;dir&#39;</span><span class="p">)</span>
-</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54"></a>        <span class="n">dirname</span> <span class="p">=</span> <span class="nb">fullfile</span><span class="p">(</span><span class="n">baseInputDir</span><span class="p">,</span> <span class="n">subID</span><span class="p">,</span> <span class="s">&#39;nii&#39;</span><span class="p">);</span>
-</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55"></a>    <span class="k">else</span>
-</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56"></a>        <span class="nb">error</span><span class="p">(</span><span class="s">&#39;Neither nifti nor nii directory exists for %s&#39;</span><span class="p">,</span> <span class="n">subID</span><span class="p">);</span>
-</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57"></a>    <span class="k">end</span>
-</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58"></a>
-</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59"></a>    <span class="n">dirPaths</span> <span class="p">=</span> <span class="n">containers</span><span class="p">.</span><span class="n">Map</span><span class="p">();</span>
-</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60"></a>
-</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61"></a>    <span class="c">% Create BIDS directories for current subject if they don&#39;t exist.</span>
-</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62"></a>    <span class="k">for</span> <span class="n">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">dirs</span><span class="p">)</span>
-</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63"></a>        <span class="n">dirPath</span> <span class="p">=</span> <span class="nb">fullfile</span><span class="p">(</span><span class="n">outdir</span><span class="p">,</span> <span class="n">subID</span><span class="p">,</span> <span class="n">dirs</span><span class="p">{</span><span class="n">i</span><span class="p">});</span>
-</span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64"></a>        <span class="n">dirPaths</span><span class="p">(</span><span class="n">dirs</span><span class="p">{</span><span class="n">i</span><span class="p">})</span> <span class="p">=</span> <span class="n">dirPath</span><span class="p">;</span>
-</span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65"></a>
-</span><span id="__span-1-66"><a id="__codelineno-1-66" name="__codelineno-1-66"></a>        <span class="k">if</span> <span class="o">~</span><span class="nb">exist</span><span class="p">(</span><span class="n">dirPath</span><span class="p">,</span> <span class="s">&#39;dir&#39;</span><span class="p">)</span>
-</span><span id="__span-1-67"><a id="__codelineno-1-67" name="__codelineno-1-67"></a>            <span class="nb">mkdir</span><span class="p">(</span><span class="n">dirPath</span><span class="p">);</span> 
-</span><span id="__span-1-68"><a id="__codelineno-1-68" name="__codelineno-1-68"></a>            <span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Created %s folder for %s successfully!\n&#39;</span><span class="p">,</span> <span class="n">dirs</span><span class="p">{</span><span class="n">i</span><span class="p">},</span> <span class="n">subID</span><span class="p">);</span>
-</span><span id="__span-1-69"><a id="__codelineno-1-69" name="__codelineno-1-69"></a>        <span class="k">else</span>
-</span><span id="__span-1-70"><a id="__codelineno-1-70" name="__codelineno-1-70"></a>            <span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;%s folder for %s already exists!\n&#39;</span><span class="p">,</span> <span class="n">dirs</span><span class="p">{</span><span class="n">i</span><span class="p">},</span> <span class="n">subID</span><span class="p">);</span>
-</span><span id="__span-1-71"><a id="__codelineno-1-71" name="__codelineno-1-71"></a>        <span class="k">end</span>
-</span><span id="__span-1-72"><a id="__codelineno-1-72" name="__codelineno-1-72"></a>    <span class="k">end</span>
-</span><span id="__span-1-73"><a id="__codelineno-1-73" name="__codelineno-1-73"></a>
-</span><span id="__span-1-74"><a id="__codelineno-1-74" name="__codelineno-1-74"></a>    <span class="c">% Extract BIDS directory paths for anatomical and functional data.</span>
-</span><span id="__span-1-75"><a id="__codelineno-1-75" name="__codelineno-1-75"></a>    <span class="n">anatDir</span> <span class="p">=</span> <span class="n">dirPaths</span><span class="p">(</span><span class="s">&#39;anat&#39;</span><span class="p">);</span>
-</span><span id="__span-1-76"><a id="__codelineno-1-76" name="__codelineno-1-76"></a>    <span class="n">funcDir</span> <span class="p">=</span> <span class="n">dirPaths</span><span class="p">(</span><span class="s">&#39;func&#39;</span><span class="p">);</span>
-</span><span id="__span-1-77"><a id="__codelineno-1-77" name="__codelineno-1-77"></a>
-</span><span id="__span-1-78"><a id="__codelineno-1-78" name="__codelineno-1-78"></a>    <span class="c">% List all NIfTI and NIfTI.GZ files of the current subject.</span>
-</span><span id="__span-1-79"><a id="__codelineno-1-79" name="__codelineno-1-79"></a>    <span class="n">fileList</span> <span class="p">=</span> <span class="p">[</span><span class="nb">dir</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="s">&#39;*.nii&#39;</span><span class="p">));</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="s">&#39;*.nii.gz&#39;</span><span class="p">))];</span>
-</span><span id="__span-1-80"><a id="__codelineno-1-80" name="__codelineno-1-80"></a>
-</span><span id="__span-1-81"><a id="__codelineno-1-81" name="__codelineno-1-81"></a>    <span class="c">% Process each NIfTI file to copy and rename it according to BIDS.</span>
-</span><span id="__span-1-82"><a id="__codelineno-1-82" name="__codelineno-1-82"></a>    <span class="k">for</span> <span class="n">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">fileList</span><span class="p">)</span>
-</span><span id="__span-1-83"><a id="__codelineno-1-83" name="__codelineno-1-83"></a>        <span class="n">currentFilename</span> <span class="p">=</span> <span class="n">fileList</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">name</span><span class="p">;</span>
-</span><span id="__span-1-84"><a id="__codelineno-1-84" name="__codelineno-1-84"></a>        <span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Processing file: %s\n&#39;</span><span class="p">,</span> <span class="n">currentFilename</span><span class="p">);</span>
-</span><span id="__span-1-85"><a id="__codelineno-1-85" name="__codelineno-1-85"></a>
-</span><span id="__span-1-86"><a id="__codelineno-1-86" name="__codelineno-1-86"></a>        <span class="c">% Check if the file is compressed (.nii.gz)</span>
-</span><span id="__span-1-87"><a id="__codelineno-1-87" name="__codelineno-1-87"></a>        <span class="k">if</span> <span class="n">contains</span><span class="p">(</span><span class="n">currentFilename</span><span class="p">,</span> <span class="s">&#39;.nii.gz&#39;</span><span class="p">)</span>
-</span><span id="__span-1-88"><a id="__codelineno-1-88" name="__codelineno-1-88"></a>            <span class="c">% Decompress the .nii.gz file to the output directory</span>
-</span><span id="__span-1-89"><a id="__codelineno-1-89" name="__codelineno-1-89"></a>            <span class="n">decompressedFile</span> <span class="p">=</span> <span class="nb">gunzip</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">fileList</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">folder</span><span class="p">,</span> <span class="n">currentFilename</span><span class="p">),</span> <span class="n">dirPaths</span><span class="p">(</span><span class="s">&#39;func&#39;</span><span class="p">));</span>
-</span><span id="__span-1-90"><a id="__codelineno-1-90" name="__codelineno-1-90"></a>            <span class="n">currentFilename</span> <span class="p">=</span> <span class="n">decompressedFile</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span> <span class="c">% Update currentFilename to the decompressed filename</span>
-</span><span id="__span-1-91"><a id="__codelineno-1-91" name="__codelineno-1-91"></a>        <span class="k">end</span>
-</span><span id="__span-1-92"><a id="__codelineno-1-92" name="__codelineno-1-92"></a>
-</span><span id="__span-1-93"><a id="__codelineno-1-93" name="__codelineno-1-93"></a>        <span class="k">if</span> <span class="n">contains</span><span class="p">(</span><span class="n">currentFilename</span><span class="p">,</span> <span class="s">&#39;3DTFE&#39;</span><span class="p">)</span>
-</span><span id="__span-1-94"><a id="__codelineno-1-94" name="__codelineno-1-94"></a>            <span class="c">% Anatomical data processing</span>
-</span><span id="__span-1-95"><a id="__codelineno-1-95" name="__codelineno-1-95"></a>            <span class="n">newAnatFilename</span> <span class="p">=</span> <span class="nb">fullfile</span><span class="p">(</span><span class="n">anatDir</span><span class="p">,</span> <span class="p">[</span><span class="n">subID</span><span class="p">,</span> <span class="s">&#39;_T1w.nii&#39;</span><span class="p">]);</span>
-</span><span id="__span-1-96"><a id="__codelineno-1-96" name="__codelineno-1-96"></a>            <span class="k">if</span> <span class="n">contains</span><span class="p">(</span><span class="n">currentFilename</span><span class="p">,</span> <span class="s">&#39;.gz&#39;</span><span class="p">)</span>
-</span><span id="__span-1-97"><a id="__codelineno-1-97" name="__codelineno-1-97"></a>                <span class="nb">movefile</span><span class="p">(</span><span class="n">currentFilename</span><span class="p">,</span> <span class="n">newAnatFilename</span><span class="p">);</span>
-</span><span id="__span-1-98"><a id="__codelineno-1-98" name="__codelineno-1-98"></a>            <span class="k">else</span>
-</span><span id="__span-1-99"><a id="__codelineno-1-99" name="__codelineno-1-99"></a>                <span class="nb">copyfile</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">fileList</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">folder</span><span class="p">,</span> <span class="n">currentFilename</span><span class="p">),</span> <span class="n">newAnatFilename</span><span class="p">);</span>
-</span><span id="__span-1-100"><a id="__codelineno-1-100" name="__codelineno-1-100"></a>            <span class="k">end</span>
-</span><span id="__span-1-101"><a id="__codelineno-1-101" name="__codelineno-1-101"></a>
-</span><span id="__span-1-102"><a id="__codelineno-1-102" name="__codelineno-1-102"></a>            <span class="c">% Look for the corresponding JSON sidecar file.</span>
-</span><span id="__span-1-103"><a id="__codelineno-1-103" name="__codelineno-1-103"></a>            <span class="n">jsonFiles</span> <span class="p">=</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">jsonDir</span><span class="p">,</span> <span class="s">&#39;sub-xx_T1w.json&#39;</span><span class="p">));</span>
-</span><span id="__span-1-104"><a id="__codelineno-1-104" name="__codelineno-1-104"></a>            <span class="k">if</span> <span class="nb">length</span><span class="p">(</span><span class="n">jsonFiles</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
-</span><span id="__span-1-105"><a id="__codelineno-1-105" name="__codelineno-1-105"></a>                <span class="nb">error</span><span class="p">(</span><span class="s">&#39;Multiple JSON files found for T1w data. Please ensure only one correct JSON exists.&#39;</span><span class="p">);</span>
-</span><span id="__span-1-106"><a id="__codelineno-1-106" name="__codelineno-1-106"></a>            <span class="k">elseif</span> <span class="nb">isempty</span><span class="p">(</span><span class="n">jsonFiles</span><span class="p">)</span>
-</span><span id="__span-1-107"><a id="__codelineno-1-107" name="__codelineno-1-107"></a>                <span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Warning: JSON file for %s T1w not found.\n&#39;</span><span class="p">,</span> <span class="n">subID</span><span class="p">);</span>
-</span><span id="__span-1-108"><a id="__codelineno-1-108" name="__codelineno-1-108"></a>            <span class="k">else</span>
-</span><span id="__span-1-109"><a id="__codelineno-1-109" name="__codelineno-1-109"></a>                <span class="nb">copyfile</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">jsonFiles</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">folder</span><span class="p">,</span> <span class="n">jsonFiles</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">name</span><span class="p">),</span> <span class="nb">fullfile</span><span class="p">(</span><span class="n">anatDir</span><span class="p">,</span> <span class="p">[</span><span class="n">subID</span><span class="p">,</span> <span class="s">&#39;_T1w.json&#39;</span><span class="p">]));</span>
-</span><span id="__span-1-110"><a id="__codelineno-1-110" name="__codelineno-1-110"></a>            <span class="k">end</span>
-</span><span id="__span-1-111"><a id="__codelineno-1-111" name="__codelineno-1-111"></a>        <span class="k">else</span>
-</span><span id="__span-1-112"><a id="__codelineno-1-112" name="__codelineno-1-112"></a>            <span class="c">% Functional data processing</span>
-</span><span id="__span-1-113"><a id="__codelineno-1-113" name="__codelineno-1-113"></a>            <span class="n">splitStr</span> <span class="p">=</span> <span class="n">split</span><span class="p">(</span><span class="n">currentFilename</span><span class="p">,</span> <span class="s">&#39;_&#39;</span><span class="p">);</span>
-</span><span id="__span-1-114"><a id="__codelineno-1-114" name="__codelineno-1-114"></a>            <span class="n">runName</span> <span class="p">=</span> <span class="n">splitStr</span><span class="p">{</span><span class="k">end</span><span class="o">-</span><span class="mi">3</span><span class="p">};</span>
-</span><span id="__span-1-115"><a id="__codelineno-1-115" name="__codelineno-1-115"></a>            <span class="n">runNumber</span> <span class="p">=</span> <span class="n">str2double</span><span class="p">(</span><span class="nb">regexp</span><span class="p">(</span><span class="n">splitStr</span><span class="p">{</span><span class="k">end</span><span class="o">-</span><span class="mi">2</span><span class="p">},</span> <span class="s">&#39;\d+&#39;</span><span class="p">,</span> <span class="s">&#39;match&#39;</span><span class="p">));</span>
-</span><span id="__span-1-116"><a id="__codelineno-1-116" name="__codelineno-1-116"></a>            <span class="n">taskName</span> <span class="p">=</span> <span class="n">runNameToTaskName</span><span class="p">(</span><span class="n">runName</span><span class="p">);</span>
-</span><span id="__span-1-117"><a id="__codelineno-1-117" name="__codelineno-1-117"></a>
-</span><span id="__span-1-118"><a id="__codelineno-1-118" name="__codelineno-1-118"></a>            <span class="n">newFileName</span> <span class="p">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;%s_task-%s_run-%d_bold&#39;</span><span class="p">,</span> <span class="n">subID</span><span class="p">,</span> <span class="n">taskName</span><span class="p">,</span> <span class="n">runNumber</span><span class="p">);</span>
-</span><span id="__span-1-119"><a id="__codelineno-1-119" name="__codelineno-1-119"></a>            <span class="n">newFuncFilename</span> <span class="p">=</span> <span class="nb">fullfile</span><span class="p">(</span><span class="n">funcDir</span><span class="p">,</span> <span class="p">[</span><span class="n">newFileName</span><span class="p">,</span> <span class="s">&#39;.nii&#39;</span><span class="p">]);</span>
-</span><span id="__span-1-120"><a id="__codelineno-1-120" name="__codelineno-1-120"></a>            <span class="k">if</span> <span class="n">contains</span><span class="p">(</span><span class="n">currentFilename</span><span class="p">,</span> <span class="s">&#39;.gz&#39;</span><span class="p">)</span>
-</span><span id="__span-1-121"><a id="__codelineno-1-121" name="__codelineno-1-121"></a>                <span class="nb">movefile</span><span class="p">(</span><span class="n">currentFilename</span><span class="p">,</span> <span class="n">newFuncFilename</span><span class="p">);</span>
-</span><span id="__span-1-122"><a id="__codelineno-1-122" name="__codelineno-1-122"></a>            <span class="k">else</span>
-</span><span id="__span-1-123"><a id="__codelineno-1-123" name="__codelineno-1-123"></a>                <span class="nb">copyfile</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">fileList</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">folder</span><span class="p">,</span> <span class="n">currentFilename</span><span class="p">),</span> <span class="n">newFuncFilename</span><span class="p">);</span>
-</span><span id="__span-1-124"><a id="__codelineno-1-124" name="__codelineno-1-124"></a>            <span class="k">end</span>
-</span><span id="__span-1-125"><a id="__codelineno-1-125" name="__codelineno-1-125"></a>
-</span><span id="__span-1-126"><a id="__codelineno-1-126" name="__codelineno-1-126"></a>            <span class="c">% Look for the corresponding JSON sidecar file.</span>
-</span><span id="__span-1-127"><a id="__codelineno-1-127" name="__codelineno-1-127"></a>            <span class="n">jsonFiles</span> <span class="p">=</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">jsonDir</span><span class="p">,</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;sub-xx_task-%s_run-x_bold.json&#39;</span><span class="p">,</span> <span class="n">taskName</span><span class="p">)));</span>
-</span><span id="__span-1-128"><a id="__codelineno-1-128" name="__codelineno-1-128"></a>            <span class="k">if</span> <span class="nb">length</span><span class="p">(</span><span class="n">jsonFiles</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
-</span><span id="__span-1-129"><a id="__codelineno-1-129" name="__codelineno-1-129"></a>                <span class="nb">error</span><span class="p">(</span><span class="s">&#39;Multiple JSON files found for %s, task %s, run %d. Please ensure only one correct JSON exists.&#39;</span><span class="p">,</span> <span class="n">subID</span><span class="p">,</span> <span class="n">taskName</span><span class="p">,</span> <span class="n">runNumber</span><span class="p">);</span>
-</span><span id="__span-1-130"><a id="__codelineno-1-130" name="__codelineno-1-130"></a>            <span class="k">elseif</span> <span class="nb">isempty</span><span class="p">(</span><span class="n">jsonFiles</span><span class="p">)</span>
-</span><span id="__span-1-131"><a id="__codelineno-1-131" name="__codelineno-1-131"></a>                <span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Warning: JSON file for %s task %s run %d not found.\n&#39;</span><span class="p">,</span> <span class="n">subID</span><span class="p">,</span> <span class="n">taskName</span><span class="p">,</span> <span class="n">runNumber</span><span class="p">);</span>
-</span><span id="__span-1-132"><a id="__codelineno-1-132" name="__codelineno-1-132"></a>            <span class="k">else</span>
-</span><span id="__span-1-133"><a id="__codelineno-1-133" name="__codelineno-1-133"></a>                <span class="nb">copyfile</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">jsonFiles</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">folder</span><span class="p">,</span> <span class="n">jsonFiles</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">name</span><span class="p">),</span> <span class="nb">fullfile</span><span class="p">(</span><span class="n">funcDir</span><span class="p">,</span> <span class="p">[</span><span class="n">newFileName</span><span class="p">,</span> <span class="s">&#39;.json&#39;</span><span class="p">]));</span>
-</span><span id="__span-1-134"><a id="__codelineno-1-134" name="__codelineno-1-134"></a>            <span class="k">end</span> 
-</span><span id="__span-1-135"><a id="__codelineno-1-135" name="__codelineno-1-135"></a>        <span class="k">end</span>
-</span><span id="__span-1-136"><a id="__codelineno-1-136" name="__codelineno-1-136"></a>    <span class="k">end</span>
-</span><span id="__span-1-137"><a id="__codelineno-1-137" name="__codelineno-1-137"></a>
-</span><span id="__span-1-138"><a id="__codelineno-1-138" name="__codelineno-1-138"></a>    <span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Finished processing %s.\n\n&#39;</span><span class="p">,</span> <span class="n">subID</span><span class="p">);</span> <span class="c">% Print status to command window.</span>
-</span><span id="__span-1-139"><a id="__codelineno-1-139" name="__codelineno-1-139"></a><span class="k">end</span>
-</span></code></pre></div></td></tr></table></div>
+<p>A MATLAB script that can do this automatically can be found <a href="../../../assets/code/nii2BIDS.m">here</a>. Remember to change the input and output folders, run names and subjects numbers at the top of the script according to your needs. The  script expects as input your nifti files, along with the JSON sidecar template files.</p>
+<p><strong>TODO:</strong> [ANDREA] the script should first check whether the JSON files are already availabe in the folder and, if that's the case, it should choose these files over the  templates. Also, we need to add more info about these template files in this page!</p>
 </details>
 <h3 id="creating-essential-bids-files">Creating Essential BIDS Files<a class="headerlink" href="#creating-essential-bids-files" title="Permanent link">&para;</a></h3>
 <ol>
@@ -2138,10 +1955,10 @@
 <li>Create a <code>derivatives/</code> folder in your <code>BIDS/</code> directory.</li>
 <li>If needed, create a <code>.bidsignore</code> file in your <code>BIDS/</code> root folder to exclude any non-BIDS compliant files.</li>
 </ol>
-<div class="admonition question">
-<p class="admonition-title">Why should I use a .bidsignore file?</p>
+<details class="question">
+<summary>Why should I use a .bidsignore file?</summary>
 <p>A `.bidsignore' file is useful to communicate to the BIDS validator which files should not be indexed, because they are not part of the standard BIDS structure. More information can be found <a href="https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/bids-validator.html#creating-a-bidsignore">here</a>.</p>
-</div>
+</details>
 <h3 id="validating-your-bids-structure">Validating Your BIDS Structure<a class="headerlink" href="#validating-your-bids-structure" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Use the online <a href="https://bids-standard.github.io/bids-validator/">BIDS Validator</a> to check your BIDS structure.</li>
@@ -2169,7 +1986,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 13:33:51</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 17:10:03</span>
   </span>
 
     
