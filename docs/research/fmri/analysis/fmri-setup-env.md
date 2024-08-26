@@ -328,10 +328,13 @@ MarsBaR is a region of interest toolbox for SPM.
 1. Download [MarsBaR](https://marsbar-toolbox.github.io/download.html)
 2. Unzip to a location of your choice, such as `/home/myhome/marsbar-0.42/`
 3. Copy the MarsBaR distribution into the SPM directory with:
-   ```bash
-   mkdir /usr/local/spm/spm8/toolbox/marsbar
-   cp -r /home/myhome/marsbar-0.42/* /usr/local/spm/spm8/toolbox/marsbar
-   ```
+    ```bash
+    mkdir /path-to-spm/toolbox/marsbar
+    cp -r /home/myhome/marsbar-0.42/* /path-to-spm/toolbox/marsbar
+    ```
+   
+Change `/path-to-spm/` with your SPM path (e.g., `/usr/local/spm/spm12/`).
+
 The next time you start spm you should be able to start the toolbox by selecting ‘marsbar’ from the toolbox button on the SPM interface.  
 
 ## Installing Additional Tools
