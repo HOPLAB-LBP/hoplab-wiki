@@ -46,17 +46,17 @@ Project_Name/
 │   └── sub-xx/
 │       ├── dicom/
 │       ├── dicom_anon/
-│       ├── dicom_converted/
 │       ├── bh/
-│       └── et/
+│       ├── et/
+│       └── nifti/
 ├── BIDS/
 │   ├── derivatives/
 │   │   ├── deepmreye/
 │   │   ├── fastsurfer/
 │   │   ├── fmriprep/
+│   │   ├── fmriprep-mriqc/
 │   │   ├── fmriprep-spm/
 │   │   ├── fmriprep-spm-cosmomvpa/
-│   │   ├── mriqc/
 │   │   └── rois/
 │   └── sub-xx/
 │       ├── anat/
@@ -83,16 +83,23 @@ Project_Name/
     To create this folder structure, you can use the following bash script:
 
     ``` bash linenums="1"
-    #!/bin/bash
-
     # Create main project directory
     mkdir -p Project_Name
 
-    # Create subdirectories
+    # Navigate to the project directory
     cd Project_Name
-    mkdir -p sourcedata
-    mkdir -p BIDS/derivatives/{fastsurfer,fmriprep,fmriprep-spm,fmriprep-spm-cosmomvpa}
+
+    # Create sourcedata structure
+    mkdir -p sourcedata/sub-xx/{dicom,dicom_anon,nifti,bh,et}
+
+    # Create BIDS structure
+    mkdir -p BIDS/sub-xx/{anat,func}
+    mkdir -p BIDS/derivatives/{deepmreye,fastsurfer,fmriprep,fmriprep-spm,fmriprep-spm-cosmomvpa,fmriprep-mriqc,rois}
+
+    # Create code structure
     mkdir -p code/{misc,utils}
+
+    # Create temp structure
     mkdir -p temp/{temp_fmriprep,temp_spm,temp_deepmreye,temp_mriqc}
 
     echo "Folder structure created successfully!"
@@ -277,13 +284,13 @@ We use Conda to manage our Python environment.
 
 1. Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 2. Create and activate the environment:
-   ```bash
-   conda create -n fmri_env python=3.9 spyder numpy scipy matplotlib nibabel nilearn scikit-learn
-   ```
+    ```bash
+    conda create -n fmri_env python=3.9 spyder numpy scipy matplotlib nibabel nilearn scikit-learn
+    ```
 3. Activate the environment:
-   ```bash
-   conda activate fmri_env
-   ```
+    ```bash
+    conda activate fmri_env
+    ```
 
 !!! warning
     It's **crucial** to create a new conda environment for each new project you start. Installing new packages into the base conda environment it's a very bad practice that will eventually lead to a bloated, brittle environent with broken packages and compatibility issues. Uninstalling or re-installing Python on some machine can be a very painful (sometimes impossible) process!
@@ -291,10 +298,10 @@ We use Conda to manage our Python environment.
 #### Setting up Spyder IDE
 
 1. Launch Spyder:
-   ```bash
-   conda activate fmri_env
-   spyder
-   ```
+    ```bash
+    conda activate fmri_env
+    spyder
+    ```
 2. Create a new project:
     - Go to "Projects" > "New Project"
     - Choose "Existing directory"
@@ -314,12 +321,13 @@ SPM (Statistical Parametric Mapping) is used for GLM analysis.
 1. Download [SPM12](https://www.fil.ion.ucl.ac.uk/spm/software/download/)
 2. Unzip to a location of your choice
 3. Add SPM to MATLAB path:
-   ```matlab
-   addpath('path/to/spm12')
-   savepath
-   ```
+    ```matlab
+    addpath('path/to/spm12')
+    savepath
+    ```
 
-For mac users, potential installation issues can be tackled with the [instructions for mac](https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)) on the SPM wiki. Make sure **Xcode** is installed on your computer before installing SPM. 
+!!! warning "Mac installtion"
+    For mac users, potential installation issues can be tackled with the [instructions for mac](https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)) on the SPM wiki. Make sure **Xcode** is installed on your computer before installing SPM. 
 
 #### CoSMoMVPA
 
@@ -327,10 +335,10 @@ CoSMoMVPA is used for multivariate pattern analysis.
 
 1. Download from the [official website](http://www.cosmomvpa.org/download.html)
 2. Add to MATLAB path:
-   ```matlab
-   addpath(genpath('path/to/CoSMoMVPA'))
-   savepath
-   ```
+    ```matlab
+    addpath(genpath('path/to/CoSMoMVPA'))
+    savepath
+    ```
    
 #### MarsBaR
 
