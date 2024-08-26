@@ -1848,12 +1848,22 @@
 <p>For detailed installation and usage instructions, please refer to each tool's respective documentation. For examples of how to run these tools using Docker, refer to the usage notes in their respective documentation or check our <a href="fmri-andrea-workflow.html">fMRI workflow example</a> in this same folder. </p>
 <p>Below are the basic Docker pull commands for the main tools we use:</p>
 <h5 id="fmriprep"><a href="https://fmriprep.org/en/stable/">fMRIPrep</a><a class="headerlink" href="#fmriprep" title="Permanent link">&para;</a></h5>
+<p>fMRIPrep is a tool for minimal pre-processing of structural and anatomical MRI images. </p>
+<p>To get the Docker image:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>fmriprep-docker
 </span></code></pre></div>
 <h5 id="mriqc"><a href="https://mriqc.readthedocs.io/en/latest/">MRIQC</a><a class="headerlink" href="#mriqc" title="Permanent link">&para;</a></h5>
+<p>MRIQC is a tool to perform Quality Check on your raw and pre-processed MRI images. </p>
+<p>To get the Docker image:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>nipreps/mriqc:latest
 </span></code></pre></div>
 <h5 id="fastsurfer"><a href="https://github.com/Deep-MI/FastSurfer">FastSurfer</a><a class="headerlink" href="#fastsurfer" title="Permanent link">&para;</a></h5>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FastSurfer can save you time if you have a <strong><a href="https://developer.nvidia.com/cuda-gpus">CUDA-compatible GPU</a></strong>. In short, this means yoour machine should have a dedicated NVIDIA GPU with CUDA installed. You can check whether CUDA is correctly installed on you machine by typing <code>nvidia-smi</code> on your terminal. If this command does not return a list  of GPUs, you either need to install and configure CUDA, or you can avoid installing this tool and rely on the <code>recon-all</code> pipeline performed with the anatomical workflow of fMRIPrep.</p>
+</div>
+<p>FastSurfer is a self-contained, faster (it uses the NVIDIA GPU processing) alternative to FreeSurfer. It can save quite some time when performing surface processing pipelines (e.g., <code>recon-all</code>). </p>
+<p>To get the Docker image:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>deepmi/fastsurfer:latest
 </span></code></pre></div>
 <h5 id="deepmreye"><a href="https://github.com/DeepMReye/DeepMReye">DeepMReye</a><a class="headerlink" href="#deepmreye" title="Permanent link">&para;</a></h5>
@@ -2108,7 +2118,7 @@ The next time you start spm you should be able to start the toolbox by selecting
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 10:53:29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 11:03:17</span>
   </span>
 
     
