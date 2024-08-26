@@ -11,7 +11,9 @@
 
 _Tim's suggestion edits below_
 
-After scanning participants, you will get data from the scanner and from the stimulus presentation computer, containing behavioural outputs (mainly `log` files and `.mat` files), functional and structural outputs (`.nii` files), alongside potential `dicom` and other files (e.g. eye tracking data). Your first step will be to sort out these files and arrange them in a `sourcedata` folder (follow the structure in [How to store raw data](../fmri-general.md#how-to-store-raw-data)).
+
+
+After scanning participants, you will get data [from the scanner](../fmri-general.md#how-to-get-images-from-the-scanner) and from the stimulus presentation computer, containing behavioural outputs (mainly `log` files and `.mat` files), functional and structural outputs (`.nii` files), alongside potential `dicom` and other files (e.g. eye tracking data). Your first step will be to sort out these files and arrange them in a `sourcedata` folder (follow the structure in [How to store raw data](../fmri-general.md#how-to-store-raw-data)).
 
 Once your data is arranged in this way, you can proceed to convert it to BIDS format. Here is an overview of the steps to take to ensure your data is arranged in a BIDS-compatible way:
 
