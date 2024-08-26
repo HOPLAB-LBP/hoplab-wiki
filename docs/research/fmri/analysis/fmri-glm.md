@@ -10,19 +10,12 @@ You should land on this page after having collected your fMRI data, [converted i
 
 To this end, we use the [Statistical Parametric Mapping](https://www.fil.ion.ucl.ac.uk/spm/) (SPM) package. Here are the steps you will take in this section:
 
-1. Install SPM.
-2. ...
-3. 
+1. _[Here a recap of the steps to take]_
+2. 
 
 _Here, make a general recommendation about proceeding with this step: it might be best for beginners to go through the SPM GUI step by step, trying to understand what every step is doing, rather than adapt scripts straight away._
 
 _The idea might be to (1) learn about SPM in general, with sources like Hans' HBI course, Andy's brain blog, etc., (2) play around with the GUI and run the steps for one subject, (3) get into batch processing and save scripts from SPM, and finally (4) work at the script level, amending what SPM saved and merging nicely with other utility scripts._
-
-## Installing SPM
-
-_General instructions on how to install_.
-
-For mac users, potential installation issues can be tackled with the [instructions for mac](https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)) on the SPM wiki. Make sure **Xcode** is installed on your computer before installing SPM. 
 
 ## Pre-SPM steps
 
@@ -34,7 +27,7 @@ You will first need to decompress your fMRIPrep output using the _gunzip_ decomp
 
 #### Smoothing your files
 
-Smoothing is a pre-processing step that fMRIPrep does not take care of. We hence need to begin by smoothing our brain data. You can do this within SPM. Begin by opening the SPM GUI by running `spm fmri` in the command window of MatLab, and clicking `Smooth`.
+Smoothing is a pre-processing step that fMRIPrep does not take care of. We hence need to begin by smoothing our brain data. You can do this within SPM. After making sure you have [SPM installed](./fmri-setup-env.md/#spm), begin by opening the SPM GUI by running `spm fmri` in the command window of MatLab, and clicking `Smooth`.
 
 **TODO:**_Give more instructions on how to run the smoothing function, including which parameters to use_.
 
