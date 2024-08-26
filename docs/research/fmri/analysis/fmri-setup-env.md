@@ -132,17 +132,32 @@ Below are the basic Docker pull commands for the main tools we use:
 
 ##### [fMRIPrep](https://fmriprep.org/en/stable/)
 
+fMRIPrep is a tool for minimal pre-processing of structural and anatomical MRI images. 
+
+To get the Docker image:
+
 ```bash
 python -m pip install fmriprep-docker
 ```
 
 ##### [MRIQC](https://mriqc.readthedocs.io/en/latest/)
 
+MRIQC is a tool to perform Quality Check on your raw and pre-processed MRI images. 
+
+To get the Docker image:
+
 ```bash
 docker pull nipreps/mriqc:latest
 ```
 
 ##### [FastSurfer](https://github.com/Deep-MI/FastSurfer)
+
+!!! note
+    FastSurfer can save you time if you have a **[CUDA-compatible GPU](https://developer.nvidia.com/cuda-gpus)**. In short, this means yoour machine should have a dedicated NVIDIA GPU with CUDA installed. You can check whether CUDA is correctly installed on you machine by typing `nvidia-smi` on your terminal. If this command does not return a list  of GPUs, you either need to install and configure CUDA, or you can avoid installing this tool and rely on the `recon-all` pipeline performed with the anatomical workflow of fMRIPrep.
+
+FastSurfer is a self-contained, faster (it uses the NVIDIA GPU processing) alternative to FreeSurfer. It can save quite some time when performing surface processing pipelines (e.g., `recon-all`). 
+
+To get the Docker image:
 
 ```bash
 docker pull deepmi/fastsurfer:latest
