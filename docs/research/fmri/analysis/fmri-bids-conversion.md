@@ -38,6 +38,10 @@ Include information about event files. Mention how they should ideally be create
 
 Add information about making an `events.json` file and the advantages of it.
 
+Add information about using event files to make contrasts in the SPM step. Having a 'condition' + column for instance might be quite useful.
+
+Give information about which columns will be useful to include in such files, why, and at what + future step they will become important.
+
 ## Renaming `.nii` files
 
 Give instructions on how to rename files, both functional and structural, including what happens in case of several scan sessions and the added `ses` label.
