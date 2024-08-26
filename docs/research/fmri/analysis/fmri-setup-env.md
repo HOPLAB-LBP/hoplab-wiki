@@ -4,19 +4,28 @@ Welcome to the fMRI analysis environment setup guide. This walkthrough will help
 
 ## Table of Contents
 
-1. [System Requirements](#system-requirements)
-2. [Folder Structure](#folder-structure)
-3. [Installing Core Tools](#installing-core-tools)
-    - [Docker](#docker-desktop)
+- [Setting Up Your fMRI Analysis Environment](#setting-up-your-fmri-analysis-environment)
+  - [Table of Contents](#table-of-contents)
+  - [System Requirements](#system-requirements)
+  - [Folder Structure](#folder-structure)
+  - [Installing Core Tools](#installing-core-tools)
+    - [Docker Desktop](#docker-desktop)
+      - [Installing Docker Tools](#installing-docker-tools)
+        - [fMRIPrep](#fmriprep)
+        - [MRIQC](#mriqc)
+        - [FastSurfer](#fastsurfer)
+        - [DeepMReye](#deepmreye)
     - [dcm2niix](#dcm2niix)
     - [Python and Conda](#python-and-conda)
+      - [Setting up Spyder IDE](#setting-up-spyder-ide)
     - [MATLAB](#matlab)
-    - [SPM](#spm)
-4. [Installing Additional Tools](#installing-additional-tools)
+      - [SPM](#spm)
+      - [CoSMoMVPA](#cosmomvpa)
+      - [MarsBaR](#marsbar)
+  - [Installing Additional Tools](#installing-additional-tools)
     - [FreeSurfer](#freesurfer)
     - [ANTs](#ants)
-    - [CoSMoMVPA](#cosmomvpa)
-5. [Troubleshooting](#troubleshooting)
+  - [Troubleshooting](#troubleshooting)
 
 ## System Requirements
 
@@ -309,6 +318,8 @@ SPM (Statistical Parametric Mapping) is used for GLM analysis.
    addpath('path/to/spm12')
    savepath
    ```
+
+For mac users, potential installation issues can be tackled with the [instructions for mac](https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)) on the SPM wiki. Make sure **Xcode** is installed on your computer before installing SPM. 
 
 #### CoSMoMVPA
 
