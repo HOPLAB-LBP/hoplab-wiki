@@ -321,7 +321,9 @@ These tools are not mandatory -- they can be installed if needed.
 
 ### FreeSurfer
 
-FreeSurfer is used for cortical surface reconstruction. The main surface reconstruction pipeline of FreeSurfer (`recon-all`) is bundled in the fmriprep docker image, and it is performed during the fmriprep anatomical workflow. This means that this tool is not strictly necessary, unless you plan on running additional surface processing steps (e.g., additional surface projections, such as the Glasser volumetric projection from fsaverage that is performed in the [fMRI workflow example](fmri-andrea-workflow.md#hcp-glasser-parcellation)
+FreeSurfer is used for cortical surface reconstruction. The main surface reconstruction pipeline of FreeSurfer (`recon-all`) is bundled in the fmriprep docker image, and it is performed during the fmriprep anatomical workflow. This means that this tool is not strictly necessary, unless you plan on running additional surface processing steps (e.g., additional surface projections, such as the Glasser volumetric projection from fsaverage that is performed in the [fMRI workflow example](fmri-andrea-workflow.md#hcp-glasser-parcellation). 
+
+To install:
 
 1. Download from the [official website](https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall)
 2. Set up environment variables:
@@ -329,7 +331,29 @@ FreeSurfer is used for cortical surface reconstruction. The main surface reconst
    export FREESURFER_HOME=/path/to/freesurfer
    source $FREESURFER_HOME/SetUpFreeSurfer.sh
    ```
+??? warning "FreeSurfer on Windows"
+    FreeSurfer is not natively compatible with Windows. To use FreeSurfer on a Windows system, you have a few options:
 
+    1. Use Windows Subsystem for Linux (WSL):
+        - Install WSL 2 on your Windows machine
+        - Install a Linux distribution like Ubuntu through WSL
+        - Install FreeSurfer within the Linux environment
+    
+    2. Use a virtual machine:
+        - Install virtualization software like VirtualBox or VMware
+        - Set up a Linux virtual machine 
+        - Install FreeSurfer in the Linux VM
+    
+    3. Use a Docker container:
+        - Install Docker Desktop for Windows
+        - Pull and run a FreeSurfer Docker image
+    
+    4. Remote access:
+        - Use a remote Linux server or cluster with FreeSurfer installed
+        - Connect via SSH or remote desktop
+
+    The WSL or Docker options are generally recommended as they have less overhead than a full VM. Whichever method you choose, ensure you have adequate disk space and RAM allocated for FreeSurfer to run efficiently.
+    
 ### ANTs
 
 ANTs is used for image registration and normalization. As for FreeSurfer, this tool is not strictly necessary, unless you want to generate the Glasser volumetric projection from fsaverage described [here](fmri-andrea-workflow.md#hcp-glasser-parcellation)
