@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#set-up-your-environment" class="md-skip">
+        <a href="#setting-up-your-fmri-analysis-environment" class="md-skip">
           Skip to content
         </a>
       
@@ -1190,6 +1190,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1. Set-up you environment
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="fmri-setup-env.html" class="md-nav__link md-nav__link--active">
         
   
@@ -1199,6 +1210,79 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#folder-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Folder Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-core-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Core Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-additional-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Additional Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1629,15 +1713,344 @@
   
 
 
-<h1 id="set-up-your-environment">Set-up your environment<a class="headerlink" href="#set-up-your-environment" title="Permanent link">&para;</a></h1>
-<ul>
-<li>
-<p><strong>TODO:</strong>  add info about tools we will use, how to install/configure and links to docs</p>
-</li>
-<li>
-<p><strong>TODO:</strong>  add info about folders organization, conda envs etc.</p>
-</li>
+<h1 id="setting-up-your-fmri-analysis-environment">Setting Up Your fMRI Analysis Environment<a class="headerlink" href="#setting-up-your-fmri-analysis-environment" title="Permanent link">&para;</a></h1>
+<p>Welcome to the fMRI analysis environment setup guide. This walkthrough will help you install and configure all necessary tools for our fMRI analysis workflow across Windows, macOS, and Linux platforms.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#system-requirements">System Requirements</a></li>
+<li><a href="#folder-structure">Folder Structure</a></li>
+<li><a href="#installing-core-tools">Installing Core Tools</a><ul>
+<li><a href="#docker">Docker</a></li>
+<li><a href="#python-and-conda">Python and Conda</a></li>
+<li><a href="#matlab">MATLAB</a></li>
+<li><a href="#spm">SPM</a></li>
 </ul>
+</li>
+<li><a href="#installing-additional-tools">Installing Additional Tools</a><ul>
+<li><a href="#freesurfer">FreeSurfer</a></li>
+<li><a href="#ants">ANTs</a></li>
+<li><a href="#cosmomvpa">CoSMoMVPA</a></li>
+<li><a href="#dcm2niix">dcm2niix</a></li>
+</ul>
+</li>
+<li><a href="#environment-configuration">Environment Configuration</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ol>
+<h2 id="system-requirements">System Requirements<a class="headerlink" href="#system-requirements" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Suggested System Specifications</p>
+<ul>
+<li><strong>Operating System:</strong> Windows 10/11, macOS 10.14+, or Linux (Ubuntu 18.04+)</li>
+<li><strong>RAM:</strong> 16GB (32GB+ recommended)</li>
+<li><strong>Storage:</strong> 200GB+ free space (SSD preferred)</li>
+<li><strong>CPU:</strong> Multi-core processor (4+ cores)</li>
+<li><strong>GPU:</strong> NVIDIA GPU with CUDA support (optional, but beneficial)</li>
+</ul>
+</div>
+<h2 id="folder-structure">Folder Structure<a class="headerlink" href="#folder-structure" title="Permanent link">&para;</a></h2>
+<p>Our lab uses a specific folder structure for fMRI projects. Here's an overview:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Project_Name/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── sourcedata/
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   └── sub-xx/
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│       ├── dicom/
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│       ├── dicom_anon/
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│       ├── dicom_converted/
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│       ├── bh/
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│       └── et/
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>├── BIDS/
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   ├── derivatives/
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   │   ├── deepmreye/
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   │   ├── fastsurfer/
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   │   ├── fmriprep/
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   │   ├── fmriprep-spm/
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   │   ├── fmriprep-spm-cosmomvpa/
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   │   ├── mriqc/
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│   │   └── rois/
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│   └── sub-xx/
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│       ├── anat/
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│       └── func/
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>├── code/
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│   ├── misc/
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>│   └── utils/
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>└── temp/
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    ├── temp_fmriprep/
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    ├── temp_spm/
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    ├── temp_deepmreye/
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    └── temp_mriqc/
+</span></code></pre></div>
+<ul>
+<li><code>sourcedata/</code>: Contains raw data for each subject</li>
+<li><code>BIDS/</code>: Organized according to BIDS specification</li>
+<li><code>derivatives/</code>: Stores processed data</li>
+<li><code>code/</code>: Contains analysis scripts and utilities</li>
+<li><code>temp/</code>: Temporary directories for various processing steps</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Create the folder structure</p>
+<p>To create this folder structure, you can use the following bash script:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c1"># Create main project directory</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>Project_Name
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="c1"># Create subdirectories</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="nb">cd</span><span class="w"> </span>Project_Name
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>sourcedata
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>BIDS/derivatives/<span class="o">{</span>fastsurfer,fmriprep,fmriprep-spm,fmriprep-spm-cosmomvpa<span class="o">}</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>code/<span class="o">{</span>misc,utils<span class="o">}</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>temp/<span class="o">{</span>temp_fmriprep,temp_spm,temp_deepmreye,temp_mriqc<span class="o">}</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Folder structure created successfully!&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Save this script as <code>create_fmri_structure.sh</code> and run it using:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>bash<span class="w"> </span>create_fmri_structure.sh
+</span></code></pre></div>
+</div>
+<h2 id="installing-core-tools">Installing Core Tools<a class="headerlink" href="#installing-core-tools" title="Permanent link">&para;</a></h2>
+<h3 id="docker-desktop">Docker Desktop<a class="headerlink" href="#docker-desktop" title="Permanent link">&para;</a></h3>
+<p>Docker is crucial for running containerized applications like fMRIPrep. Althoug Docker can be installed as a command-line tool, we strongly advise installing the GUI version (Docker Desktop).</p>
+<p>For up-to-date installation info, please consult the Docker Desktop installation pages for <a href="https://docs.docker.com/desktop/install/mac-install/">Mac</a>, <a href="https://docs.docker.com/desktop/install/windows-install/">Windows</a> or <a href="https://docs.docker.com/desktop/install/linux-install/">Linux</a>.</p>
+<p>After installation, configure Docker resources:</p>
+<ol>
+<li>Open Docker Desktop settings</li>
+<li>Go to "Resources" section</li>
+<li>Allocate resources:<ul>
+<li>CPUs: Set to total CPUs - 2 (e.g., if you have 8 cores, set to 6)</li>
+<li>Memory: Set to 80% of total RAM (e.g., if you have 32GB, set to 25GB)</li>
+<li>Disk image size: Set to a reasonable amount (e.g., 100GB)</li>
+</ul>
+</li>
+<li>In the "File sharing" or "Resources &gt; File sharing" section, add your project folder (e.g., <code>~/fMRI_Projects</code>)</li>
+</ol>
+<h4 id="installing-docker-tools">Installing Docker Tools<a class="headerlink" href="#installing-docker-tools" title="Permanent link">&para;</a></h4>
+<p>We use several tools via Docker for our fMRI analysis pipeline. Docker installations are strongly encouraged over "bare metal" setups for several reasons:</p>
+<ol>
+<li>Docker containers come bundled with all necessary dependencies, ensuring compatibility across different systems.</li>
+<li>They provide a consistent environment, reducing "it works on my machine" issues.</li>
+<li>Docker simplifies the installation process and manages complex software interactions.</li>
+</ol>
+<p>Many of these tools are <a href="https://bids-apps.neuroimaging.io/apps/">BIDS-apps</a>, which are container images designed to work with BIDS-formatted datasets. BIDS (Brain Imaging Data Structure) is a standard for organizing and describing neuroimaging datasets. BIDS Apps have consistent command-line arguments, making them easy to run and integrate into automated platforms.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Before running any BIDS-app, ensure your input folder is correctly structured according to BIDS standards. Validate your BIDS dataset using the <a href="https://bids-standard.github.io/bids-validator/">BIDS Validator</a> to avoid potential issues.</p>
+</div>
+<p>For detailed installation and usage instructions, please refer to each tool's respective documentation. For examples of how to run these tools using Docker, refer to the usage notes in their respective documentation or check our <a href="fmri-andrea-workflow.html">fMRI workflow example</a> in this same folder. </p>
+<p>Below are the basic Docker pull commands for the main tools we use:</p>
+<h5 id="fmriprep"><a href="https://fmriprep.org/en/stable/">fMRIPrep</a><a class="headerlink" href="#fmriprep" title="Permanent link">&para;</a></h5>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>fmriprep-docker
+</span></code></pre></div>
+<h5 id="mriqc"><a href="https://mriqc.readthedocs.io/en/latest/">MRIQC</a><a class="headerlink" href="#mriqc" title="Permanent link">&para;</a></h5>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>nipreps/mriqc:latest
+</span></code></pre></div>
+<h5 id="fastsurfer"><a href="https://github.com/Deep-MI/FastSurfer">FastSurfer</a><a class="headerlink" href="#fastsurfer" title="Permanent link">&para;</a></h5>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>deepmi/fastsurfer:latest
+</span></code></pre></div>
+<h5 id="deepmreye"><a href="https://github.com/DeepMReye/DeepMReye">DeepMReye</a><a class="headerlink" href="#deepmreye" title="Permanent link">&para;</a></h5>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>deepmreye/deepmreye
+</span></code></pre></div>
+<h3 id="dcm2niix">dcm2niix<a class="headerlink" href="#dcm2niix" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.nitrc.org/plugins/mwiki/index.php/dcm2nii:MainPage">dcm2niix</a> is a powerful tool used for DICOM to NIfTI conversion. It can be used as a command-line tool or through a Graphical User Interface (GUI) when shipped with <a href="https://www.nitrc.org/projects/mricrogl/">MRIcroGL</a> (see <a href="https://www.nitrc.org/plugins/mwiki/index.php/dcm2nii:MainPage#Graphical_interface">this</a> for more information).</p>
+<p>There are several ways to install dcm2niix, depending on your operating system and preferences:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="windows" name="__tabbed_1" type="radio" /><input id="macos" name="__tabbed_1" type="radio" /><input id="linux" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="windows">Windows</label><label for="macos">macOS</label><label for="linux">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>
+<p><strong>Download pre-compiled executable:</strong>
+   <div class="language-powershell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">curl </span><span class="n">-fLO</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">rordenlab</span><span class="p">/</span><span class="n">dcm2niix</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">dcm2niix_win</span><span class="p">.</span><span class="n">zip</span>
+</span></code></pre></div>
+   Unzip the file and add the executable to your system PATH:
+   <div class="language-powershell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">$env:Path</span> <span class="p">+=</span> <span class="s2">&quot;;C:\path\to\dcm2niix&quot;</span>
+</span></code></pre></div>
+   Replace <code>C:\path\to\dcm2niix</code> with the actual path where you unzipped dcm2niix.</p>
+</li>
+<li>
+<p><strong>Install with Conda:</strong>
+   <div class="language-powershell highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">conda</span> <span class="n">install</span> <span class="n">-c</span> <span class="n">conda-forge</span> <span class="n">dcm2niix</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Install with pip:</strong>
+   <div class="language-powershell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">dcm2niix</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Download MRIcroGL:</strong>
+   <a href="https://github.com/rordenlab/MRIcroGL/releases">Download MRIcroGL</a> which includes dcm2niix with a GUI.</p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>
+<p><strong>Download pre-compiled package:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>curl<span class="w"> </span>-fLO<span class="w"> </span>https://github.com/rordenlab/dcm2niix/releases/latest/download/macos_dcm2niix.pkg
+</span></code></pre></div>
+   Open the downloaded package to install.</p>
+</li>
+<li>
+<p><strong>Install with Homebrew:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>brew<span class="w"> </span>install<span class="w"> </span>dcm2niix
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Install with MacPorts:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>dcm2niix
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Install with Conda:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>dcm2niix
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Install with pip:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>dcm2niix
+</span></code></pre></div></p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>
+<p><strong>Download pre-compiled executable:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>curl<span class="w"> </span>-fLO<span class="w"> </span>https://github.com/rordenlab/dcm2niix/releases/latest/download/dcm2niix_lnx.zip
+</span></code></pre></div>
+   Unzip the file and add the executable to your system PATH:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PATH=$PATH:/path/to/dcm2niix&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div>
+   Replace <code>/path/to/dcm2niix</code> with the actual path where you unzipped dcm2niix.</p>
+</li>
+<li>
+<p><strong>Install on Debian-based systems:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>dcm2niix
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Install with Conda:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>dcm2niix
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Install with pip:</strong>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>dcm2niix
+</span></code></pre></div></p>
+</li>
+</ol>
+<details class="warning">
+<summary>Older Linux versions compatibility</summary>
+<p>The pre-compiled Linux executable requires a recent version of Linux (e.g., Ubuntu 14.04 or later) with Glibc 2.19 (from 2014) or later. Users of older systems can compile their own copy of dcm2niix or download the compiled version included with MRIcroGL, which is compatible with Glibc 2.12 (from 2011).</p>
+</details>
+</div>
+</div>
+</div>
+<h3 id="python-and-conda">Python and Conda<a class="headerlink" href="#python-and-conda" title="Permanent link">&para;</a></h3>
+<p>We use Conda to manage our Python environment.</p>
+<ol>
+<li>Install <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a></li>
+<li>Create and activate the environment:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>fmri_env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9<span class="w"> </span>spyder<span class="w"> </span>numpy<span class="w"> </span>scipy<span class="w"> </span>matplotlib<span class="w"> </span>nibabel<span class="w"> </span>nilearn<span class="w"> </span>scikit-learn
+</span></code></pre></div></li>
+<li>Activate the environment:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>fmri_env
+</span></code></pre></div></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It's <strong>crucial</strong> to create a new conda environment for each new project you start. Installing new packages into the base conda environment it's a very bad practice that will eventually lead to a bloated, brittle environent with broken packages and compatibility issues. Uninstalling or re-installing Python on some machine can be a very painful (sometimes impossible) process!</p>
+</div>
+<h4 id="setting-up-spyder-ide">Setting up Spyder IDE<a class="headerlink" href="#setting-up-spyder-ide" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Launch Spyder:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>fmri_env
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>spyder
+</span></code></pre></div></li>
+<li>Create a new project:<ul>
+<li>Go to "Projects" &gt; "New Project"</li>
+<li>Choose "Existing directory"</li>
+<li>Select your project folder (e.g., <code>~/fMRI_Projects/Project_Name</code>)</li>
+<li>Name your project and click "Create"</li>
+</ul>
+</li>
+</ol>
+<h3 id="matlab">MATLAB<a class="headerlink" href="#matlab" title="Permanent link">&para;</a></h3>
+<p>For MATLAB installation and licensing, please refer to the <a href="../get-started/computer-setup.html#installing-matlab">Installing MATLAB</a> section in our computer setup guide.</p>
+<p>Install the following MATLAB toolboxes:</p>
+<h4 id="spm">SPM<a class="headerlink" href="#spm" title="Permanent link">&para;</a></h4>
+<p>SPM (Statistical Parametric Mapping) is used for GLM analysis.</p>
+<ol>
+<li>Download <a href="https://www.fil.ion.ucl.ac.uk/spm/software/download/">SPM12</a></li>
+<li>Unzip to a location of your choice</li>
+<li>Add SPM to MATLAB path:
+   <div class="language-matlab highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="s">&#39;path/to/spm12&#39;</span><span class="p">)</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nb">savepath</span>
+</span></code></pre></div></li>
+</ol>
+<h4 id="cosmomvpa">CoSMoMVPA<a class="headerlink" href="#cosmomvpa" title="Permanent link">&para;</a></h4>
+<p>CoSMoMVPA is used for multivariate pattern analysis.</p>
+<ol>
+<li>Download from the <a href="http://www.cosmomvpa.org/download.html">official website</a></li>
+<li>Add to MATLAB path:
+   <div class="language-matlab highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="nb">genpath</span><span class="p">(</span><span class="s">&#39;path/to/CoSMoMVPA&#39;</span><span class="p">))</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nb">savepath</span>
+</span></code></pre></div></li>
+</ol>
+<h4 id="marsbar">MarsBaR<a class="headerlink" href="#marsbar" title="Permanent link">&para;</a></h4>
+<p>MarsBaR is a region of interest toolbox for SPM.</p>
+<ol>
+<li>Download <a href="https://marsbar-toolbox.github.io/download.html">MarsBaR</a></li>
+<li>Unzip to a location of your choice, such as <code>/home/myhome/marsbar-0.42/</code></li>
+<li>Copy the MarsBaR distribution into the SPM directory with:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>mkdir<span class="w"> </span>/usr/local/spm/spm8/toolbox/marsbar
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>cp<span class="w"> </span>-r<span class="w"> </span>/home/myhome/marsbar-0.42/*<span class="w"> </span>/usr/local/spm/spm8/toolbox/marsbar
+</span></code></pre></div>
+The next time you start spm you should be able to start the toolbox by selecting ‘marsbar’ from the toolbox button on the SPM interface.  </li>
+</ol>
+<h2 id="installing-additional-tools">Installing Additional Tools<a class="headerlink" href="#installing-additional-tools" title="Permanent link">&para;</a></h2>
+<p>These tools are not mandatory -- they can be installed if needed. </p>
+<h3 id="freesurfer">FreeSurfer<a class="headerlink" href="#freesurfer" title="Permanent link">&para;</a></h3>
+<p>FreeSurfer is used for cortical surface reconstruction. The main surface reconstruction pipeline of FreeSurfer (<code>recon-all</code>) is bundled in the fmriprep docker image, and it is performed during the fmriprep anatomical workflow. This means that this tool is not strictly necessary, unless you plan on running additional surface processing steps (e.g., additional surface projections, such as the Glasser volumetric projection from fsaverage that is performed in the <a href="fmri-andrea-workflow.html#hcp-glasser-parcellation">fMRI workflow example</a></p>
+<ol>
+<li>Download from the <a href="https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall">official website</a></li>
+<li>Set up environment variables:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FREESURFER_HOME</span><span class="o">=</span>/path/to/freesurfer
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nb">source</span><span class="w"> </span><span class="nv">$FREESURFER_HOME</span>/SetUpFreeSurfer.sh
+</span></code></pre></div></li>
+</ol>
+<h3 id="ants">ANTs<a class="headerlink" href="#ants" title="Permanent link">&para;</a></h3>
+<p>ANTs is used for image registration and normalization. As for FreeSurfer, this tool is not strictly necessary, unless you want to generate the Glasser volumetric projection from fsaverage described <a href="fmri-andrea-workflow.html#hcp-glasser-parcellation">here</a></p>
+<ol>
+<li>Download from <a href="https://github.com/ANTsX/ANTs/releases">GitHub</a></li>
+<li>Add to system PATH:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ANTSPATH</span><span class="o">=</span>/path/to/ANTs/bin
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$ANTSPATH</span>:<span class="nv">$PATH</span>
+</span></code></pre></div></li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Common Issues</p>
+<ul>
+<li><strong>Docker errors:</strong> Check WSL2 configuration (Windows) or Docker service status (Linux)</li>
+<li><strong>MATLAB/SPM issues:</strong> Verify MATLAB is in system PATH and required toolboxes are installed</li>
+<li><strong>FreeSurfer license:</strong> Ensure license file is in the correct directory</li>
+<li><strong>Python conflicts:</strong> Use separate conda environments for different projects</li>
+</ul>
+</div>
+<p>For more specific issues, consult tool documentation or seek help on <a href="https://neurostars.org/">NeuroStars</a>.</p>
+<p>Remember, setting up an fMRI analysis environment can be complex. Take your time, and don't hesitate to ask for help when needed. Good luck with your research!</p>
 
 
 
@@ -1658,7 +2071,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 27, 2024 16:57:08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 10:39:53</span>
   </span>
 
     
