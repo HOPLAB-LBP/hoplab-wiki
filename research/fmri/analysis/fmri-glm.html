@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#general-linear-model-in-spm" class="md-skip">
           Skip to content
         </a>
       
@@ -1677,7 +1677,7 @@
   
 
 
-<h1 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="general-linear-model-in-spm">General Linear Model in SPM<a class="headerlink" href="#general-linear-model-in-spm" title="Permanent link">&para;</a></h1>
 <ul>
 <li><strong>TODO:</strong>  get some feedback on this page.</li>
 <li><strong>TODO:</strong>  add some illustrations.</li>
@@ -1687,25 +1687,31 @@
 <p>You should land on this page after having collected your fMRI data, <a href="fmri-bids-conversion.html">converted it to BIDS</a> and <a href="fmri-prepocessing-qa.html">preprocessed it</a>. Your goal now is to model the BOLD activity with a Generalised Linear Model (GLM), in order to obtain the beta values on which to apply further analyses.</p>
 <p>To this end, we use the <a href="https://www.fil.ion.ucl.ac.uk/spm/">Statistical Parametric Mapping</a> (SPM) package. Here are the steps you will take in this section:</p>
 <ol>
-<li><em>[Here a recap of the steps to take]</em></li>
-<li></li>
+<li><strong>PLACEHOLDER:</strong> [Add here a recap of the steps to take]</li>
 </ol>
-<p><em>Here, make a general recommendation about proceeding with this step: it might be best for beginners to go through the SPM GUI step by step, trying to understand what every step is doing, rather than adapt scripts straight away.</em></p>
-<p><em>The idea might be to (1) learn about SPM in general, with sources like Hans' HBI course, Andy's brain blog, etc., (2) play around with the GUI and run the steps for one subject, (3) get into batch processing and save scripts from SPM, and finally (4) work at the script level, amending what SPM saved and merging nicely with other utility scripts.</em></p>
+<p><strong>TODO:</strong> [TIM] make a general recommendation about proceeding with this step: it might be best for beginners to go through the SPM GUI step by step, trying to understand what every step is doing, rather than adapt scripts straight away. The idea might be to (1) learn about SPM in general, with sources like Hans' HBI course, Andy's brain blog, etc., (2) play around with the GUI and run the steps for one subject, (3) get into batch processing and save scripts from SPM, and finally (4) work at the script level, amending what SPM saved and merging nicely with other utility scripts.</p>
+<p><strong>NOTE:</strong> [ANDREA] I agree with the general idea of teaching how to think / use tools, but also we don't want to end up re-writing the SPM manual or Andy's brain blog. We should rather refer to these as learning resources, and just illustrate <strong>our</strong> steps in this document, with minimal explanations and links to resources where needed.</p>
 <h2 id="pre-spm-steps">Pre-SPM steps<a class="headerlink" href="#pre-spm-steps" title="Permanent link">&para;</a></h2>
-<p>Before running the GLM, we need to take steps to make our files ready. There are two steps that need to be taken to bring your <code>.nii</code> files from fMRIPrep output to SPM input: <strong>gunzipping</strong> and <strong>smoothing</strong>. The sugested way of proceeding is to create a <code>derivatives/pre-SPM</code> folder where to store a <code>gunzipped</code> output folder and a <code>smoothed</code> output folder.</p>
+<p>Before running the GLM, we need to take steps to make our files ready. There are two steps that need to be taken to bring your <code>.nii</code> files from fMRIPrep output to SPM input: <strong>gunzipping</strong> (de-compressing <code>.nii.gz</code> files, which SPM can't handle natively) and <strong>smoothing</strong> (mostly for localizer runs). The sugested way of proceeding is to create a <code>derivatives/pre-SPM</code> folder where to store a <code>gunzipped</code> output folder and a <code>smoothed</code> output folder.</p>
+<p><strong>NOTE:</strong> [ANDREA] note to self: my glm scripts take care of this. It's a good idea to explain these steps more explicitly here, but let's make sure to highlight that this step is performed automatically at some point. Also, the folder structure I use to store decompressed and smoothed data may be slightly different.</p>
 <h4 id="gunzipping-your-files">Gunzipping your files<a class="headerlink" href="#gunzipping-your-files" title="Permanent link">&para;</a></h4>
-<p>You will first need to decompress your fMRIPrep output using the <em>gunzip</em> decompression algorithm. <em>Link to the gunzipping function</em>.</p>
+<p>You will first need to decompress your fMRIPrep output using the <code>gunzip</code> decompression tool. </p>
+<p><strong>TODO:</strong> [TIM] Link to the gunzipping function.</p>
 <h4 id="smoothing-your-files">Smoothing your files<a class="headerlink" href="#smoothing-your-files" title="Permanent link">&para;</a></h4>
 <p>Smoothing is a pre-processing step that fMRIPrep does not take care of. We hence need to begin by smoothing our brain data. You can do this within SPM. After making sure you have <a href="fmri-setup-env.html#spm">SPM installed</a>, begin by opening the SPM GUI by running <code>spm fmri</code> in the command window of MatLab, and clicking <code>Smooth</code>.</p>
-<p><strong>TODO:</strong><em>Give more instructions on how to run the smoothing function, including which parameters to use</em>.</p>
+<p><strong>TODO:</strong> [TIM] Give more instructions on how to run the smoothing function, including which parameters to use.</p>
 <h2 id="creating-a-design-matrix">Creating a design matrix<a class="headerlink" href="#creating-a-design-matrix" title="Permanent link">&para;</a></h2>
 <p>The first step to running a GLM is to have a design matrix, which SPM will use to estimate the weights of the model. This design matrix is created in the GUI by specifying a 1<sup>st</sup>-level model. Although a simple experimental design with few conditions can easily be entered in the <code>Specify 1st level</code> interface of SPM, more complex design with many conditions are not adapted to this approach. If you have such a design, the best option is to externally create MatLab <strong>onset time</strong> files. These files contain information about event <em>types</em>, <em>onsets</em>, and <em>durations</em>. You should create one onset file per run per subject. The creation of this file is just one step away from your event files, and the conversion can be done using the <code>eventsBIDS2SPM.m</code> utility script.</p>
-<p><strong>TODO:</strong><em>Mention where the onset time files should be stored, with an example directory</em>.</p>
-<p><strong>TODO:</strong><em>Link to a utility script converting event files to onset files.</em></p>
-<p>You will also need to use your <strong>head motion regressors</strong> files, which should have been created by fMRIPrep. <em>These can be converted into SPM compatible format with the <code>fMRIprepConfounds2SPM.m</code> utility script</em>.</p>
-<p><strong>TODO:</strong><em>Link to a utility script converting confound files to SPM files.</em></p>
-<p>Once you have your onset times and head motion regressor files ready, open the <code>Specify 1st level</code> interface in SPM, and fill in the fields. You can enter your onset files using <em>multiple conditions</em>, and you head motion regressors using <em>...</em>. </p>
+<p><strong>TODO:</strong> [TIM] Mention where the onset time files should be stored, with an example directory.</p>
+<p><strong>TODO:</strong> [TIM] Link to a utility script converting event files to onset files.</p>
+<p>You will also need to use your <strong>head motion regressors</strong> files, which should have been created by fMRIPrep.</p>
+<div class="admonition tip">
+<p class="admonition-title">Get your confound regresors automatically</p>
+<p>These can be converted into SPM compatible format with the <code>fMRIprepConfounds2SPM.m</code> utility script.</p>
+<p><strong>TODO:</strong> [ANDREA] add more info here + links</p>
+</div>
+<p>Once you have your onset times and head motion regressor files ready, open the <code>Specify 1st level</code> interface in SPM, and fill in the fields. You can enter your onset files using <em>multiple conditions</em>, and you head motion regressors using [PLACEHOLDER]. </p>
+<p><strong>TODO:</strong> [ANDREA] add info on how to view / review (and perhaps save a figure of) your design matrix. </p>
 
 
 
@@ -1726,7 +1732,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 11:46:53</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 12:25:27</span>
   </span>
 
     
