@@ -2,9 +2,13 @@
 
 In this page we will have all the general info and FAQ about fMRI protocols.
 
-some interesting links: https://www.youtube.com/watch?v=J0npRWV2zTY  
+some interesting links: 
 
-[Andrea Jahn on fmriprep](https://www.youtube.com/@AndrewJahn)
+- https://www.youtube.com/watch?v=J0npRWV2zTY  
+- [Andrea Jahn on fmriprep](https://www.youtube.com/@AndrewJahn)
+- https://en.wikibooks.org/wiki/SPM/Programming_intro
+- https://nl.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image
+- https://github.com/rordenlab/spmScripts?tab=readme-ov-file
 
 **NOTE:** [TIM] Should this page be renamed? It seems like 'fMRI data' or 'Data' would be more appropriate
 
