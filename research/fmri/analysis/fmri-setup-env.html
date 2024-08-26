@@ -1764,17 +1764,17 @@
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   └── sub-xx/
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│       ├── dicom/
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│       ├── dicom_anon/
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│       ├── dicom_converted/
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│       ├── bh/
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│       └── et/
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│       ├── bh/
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│       ├── et/
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│       └── nifti/
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>├── BIDS/
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   ├── derivatives/
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   │   ├── deepmreye/
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   │   ├── fastsurfer/
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   │   ├── fmriprep/
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   │   ├── fmriprep-spm/
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   │   ├── fmriprep-spm-cosmomvpa/
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   │   ├── mriqc/
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   │   ├── fmriprep-mriqc/
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   │   ├── fmriprep-spm/
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   │   ├── fmriprep-spm-cosmomvpa/
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│   │   └── rois/
 </span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│   └── sub-xx/
 </span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│       ├── anat/
@@ -1810,19 +1810,33 @@
 <span class="normal"><a href="#__codelineno-1-10">10</a></span>
 <span class="normal"><a href="#__codelineno-1-11">11</a></span>
 <span class="normal"><a href="#__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#__codelineno-1-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c1"># Create main project directory</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>Project_Name
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="c1"># Create subdirectories</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="nb">cd</span><span class="w"> </span>Project_Name
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>sourcedata
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>BIDS/derivatives/<span class="o">{</span>fastsurfer,fmriprep,fmriprep-spm,fmriprep-spm-cosmomvpa<span class="o">}</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>code/<span class="o">{</span>misc,utils<span class="o">}</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>temp/<span class="o">{</span>temp_fmriprep,temp_spm,temp_deepmreye,temp_mriqc<span class="o">}</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Folder structure created successfully!&quot;</span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># Create main project directory</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>Project_Name
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="c1"># Navigate to the project directory</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="nb">cd</span><span class="w"> </span>Project_Name
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="c1"># Create sourcedata structure</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>sourcedata/sub-xx/<span class="o">{</span>dicom,dicom_anon,nifti,bh,et<span class="o">}</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="c1"># Create BIDS structure</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>BIDS/sub-xx/<span class="o">{</span>anat,func<span class="o">}</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>BIDS/derivatives/<span class="o">{</span>deepmreye,fastsurfer,fmriprep,fmriprep-spm,fmriprep-spm-cosmomvpa,fmriprep-mriqc,rois<span class="o">}</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="c1"># Create code structure</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>code/<span class="o">{</span>misc,utils<span class="o">}</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="c1"># Create temp structure</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>temp/<span class="o">{</span>temp_fmriprep,temp_spm,temp_deepmreye,temp_mriqc<span class="o">}</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Folder structure created successfully!&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Save this script as <code>create_fmri_structure.sh</code> and run it using:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>bash<span class="w"> </span>create_fmri_structure.sh
@@ -1984,10 +1998,10 @@
 <ol>
 <li>Install <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a></li>
 <li>Create and activate the environment:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>fmri_env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9<span class="w"> </span>spyder<span class="w"> </span>numpy<span class="w"> </span>scipy<span class="w"> </span>matplotlib<span class="w"> </span>nibabel<span class="w"> </span>nilearn<span class="w"> </span>scikit-learn
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>fmri_env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9<span class="w"> </span>spyder<span class="w"> </span>numpy<span class="w"> </span>scipy<span class="w"> </span>matplotlib<span class="w"> </span>nibabel<span class="w"> </span>nilearn<span class="w"> </span>scikit-learn
 </span></code></pre></div></li>
 <li>Activate the environment:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>fmri_env
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>fmri_env
 </span></code></pre></div></li>
 </ol>
 <div class="admonition warning">
@@ -1997,7 +2011,7 @@
 <h4 id="setting-up-spyder-ide">Setting up Spyder IDE<a class="headerlink" href="#setting-up-spyder-ide" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Launch Spyder:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>fmri_env
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>fmri_env
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>spyder
 </span></code></pre></div></li>
 <li>Create a new project:<ul>
@@ -2017,17 +2031,20 @@
 <li>Download <a href="https://www.fil.ion.ucl.ac.uk/spm/software/download/">SPM12</a></li>
 <li>Unzip to a location of your choice</li>
 <li>Add SPM to MATLAB path:
-   <div class="language-matlab highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="s">&#39;path/to/spm12&#39;</span><span class="p">)</span>
+    <div class="language-matlab highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="s">&#39;path/to/spm12&#39;</span><span class="p">)</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nb">savepath</span>
 </span></code></pre></div></li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Mac installtion</p>
 <p>For mac users, potential installation issues can be tackled with the <a href="https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)">instructions for mac</a> on the SPM wiki. Make sure <strong>Xcode</strong> is installed on your computer before installing SPM. </p>
+</div>
 <h4 id="cosmomvpa">CoSMoMVPA<a class="headerlink" href="#cosmomvpa" title="Permanent link">&para;</a></h4>
 <p>CoSMoMVPA is used for multivariate pattern analysis.</p>
 <ol>
 <li>Download from the <a href="http://www.cosmomvpa.org/download.html">official website</a></li>
 <li>Add to MATLAB path:
-   <div class="language-matlab highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="nb">genpath</span><span class="p">(</span><span class="s">&#39;path/to/CoSMoMVPA&#39;</span><span class="p">))</span>
+    <div class="language-matlab highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="nb">genpath</span><span class="p">(</span><span class="s">&#39;path/to/CoSMoMVPA&#39;</span><span class="p">))</span>
 </span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nb">savepath</span>
 </span></code></pre></div></li>
 </ol>
@@ -2133,7 +2150,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 11:56:04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 16:05:48</span>
   </span>
 
     
