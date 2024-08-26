@@ -4,11 +4,9 @@ Welcome to the fMRI analysis environment setup guide. This walkthrough will help
 
 ## Table of Contents
 
-- [Setting Up Your fMRI Analysis Environment](#setting-up-your-fmri-analysis-environment)
-  - [Table of Contents](#table-of-contents)
-  - [System Requirements](#system-requirements)
-  - [Folder Structure](#folder-structure)
-  - [Installing Core Tools](#installing-core-tools)
+- [System Requirements](#system-requirements)
+- [Folder Structure](#folder-structure)
+- [Installing Core Tools](#installing-core-tools)
     - [Docker Desktop](#docker-desktop)
       - [Installing Docker Tools](#installing-docker-tools)
         - [fMRIPrep](#fmriprep)
@@ -22,10 +20,10 @@ Welcome to the fMRI analysis environment setup guide. This walkthrough will help
       - [SPM](#spm)
       - [CoSMoMVPA](#cosmomvpa)
       - [MarsBaR](#marsbar)
-  - [Installing Additional Tools](#installing-additional-tools)
+- [Installing Additional Tools](#installing-additional-tools)
     - [FreeSurfer](#freesurfer)
     - [ANTs](#ants)
-  - [Troubleshooting](#troubleshooting)
+    - [Troubleshooting](#troubleshooting)
 
 ## System Requirements
 
@@ -169,7 +167,7 @@ docker pull nipreps/mriqc:latest
 ##### [FastSurfer](https://github.com/Deep-MI/FastSurfer)
 
 !!! note
-    FastSurfer can save you time if you have a **[CUDA-compatible GPU](https://developer.nvidia.com/cuda-gpus)**. In short, this means yoour machine should have a dedicated NVIDIA GPU with CUDA installed. You can check whether CUDA is correctly installed on you machine by typing `nvidia-smi` on your terminal. If this command does not return a list  of GPUs, you either need to install and configure CUDA, or you can avoid installing this tool and rely on the `recon-all` pipeline performed with the anatomical workflow of fMRIPrep.
+    FastSurfer can save you time if you have a **[CUDA-compatible GPU](https://developer.nvidia.com/cuda-gpus)**. In short, this means that your machine should have a dedicated NVIDIA GPU with CUDA installed. You can check whether CUDA is correctly installed on you machine by typing `nvidia-smi` on your terminal. If this command does not return a list of active GPUs, you either need to install and configure CUDA, or you can avoid installing this tool and rely on the `recon-all` pipeline performed with the anatomical workflow of fMRIPrep.
 
 FastSurfer is a self-contained, faster (it uses the NVIDIA GPU processing) alternative to FreeSurfer. It can save quite some time when performing surface processing pipelines (e.g., `recon-all`). 
 
