@@ -7,7 +7,8 @@ Welcome to the fMRI analysis environment setup guide. This walkthrough will help
 1. [System Requirements](#system-requirements)
 2. [Folder Structure](#folder-structure)
 3. [Installing Core Tools](#installing-core-tools)
-    - [Docker](#docker)
+    - [Docker](#docker-desktop)
+    - [dcm2niix](#dcm2niix)
     - [Python and Conda](#python-and-conda)
     - [MATLAB](#matlab)
     - [SPM](#spm)
@@ -15,9 +16,7 @@ Welcome to the fMRI analysis environment setup guide. This walkthrough will help
     - [FreeSurfer](#freesurfer)
     - [ANTs](#ants)
     - [CoSMoMVPA](#cosmomvpa)
-    - [dcm2niix](#dcm2niix)
-5. [Environment Configuration](#environment-configuration)
-6. [Troubleshooting](#troubleshooting)
+5. [Troubleshooting](#troubleshooting)
 
 ## System Requirements
 
@@ -276,7 +275,7 @@ We use Conda to manage our Python environment.
 
 ### MATLAB
 
-For MATLAB installation and licensing, please refer to the [Installing MATLAB](../get-started/computer-setup.html#installing-matlab) section in our computer setup guide.
+For MATLAB installation and licensing, please refer to the [Installing MATLAB](../../../get-started/computer-setup.md#installing-matlab) section in our computer setup guide.
 
 Install the following MATLAB toolboxes:
 
