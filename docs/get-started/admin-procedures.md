@@ -120,7 +120,6 @@ If you need **technical assistance** for your order (e.g., you want to order an 
 ## What to do when you leave
 
 We are very sad to see you leave! But since you do, make sure to tick the following boxes. 
-**TODO:** check with Hans if this is correct or where this should go
 
 1. Return the following items to [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752): 
 	- Any pc material (laptop, mouse, keyboard, etc.)

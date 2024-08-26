@@ -5,8 +5,7 @@ We are thrilled to have you join our team at HOPLAB, where we delve into the fas
 On this onboarding page, you'll find all the information you need to navigate the KU Leuven environment and adapt to our lab’s practices. We’ll guide you in setting up both your physical and digital workspaces, and offer step-by-step instructions for the most common administrative procedures at KU Leuven. Additionally, we’ve curated a selection of resources to give you a strong foundation as you start your journey with us. Dive in, and enjoy your new role!
 
 
-**TODO**: [Klara] Add information on the retreat (maybe add a page on social activities)
-**TODO**: [Klara] Add info on how to use a computer at Hoplab outside the lab
+
 **TODO**: [Klara] Add info on how/where to rent lab coats and how the laundry service works (e.g. for kitchen towels and EEG towels)
 **TODO**: [Klara] Add info on the remote work policy (of KU Leuven but also of the lab specifically)
 **TODO**: [Klara] Add info on how to find your phone number

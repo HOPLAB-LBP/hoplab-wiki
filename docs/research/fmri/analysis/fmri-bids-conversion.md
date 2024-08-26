@@ -6,6 +6,8 @@
 
 **TODO:**  add figures. _It would definitely be nice to show a full tree of an example repostitory, and how it changes at each step of the way._
 
+**NOTE:** [ANDREA] I have scripts to do some of the points below. For instance, the events files can and should (to avoid errors) be created from the mat files directly, the json files can be generated automatically, the nii files can be moved automatically.. etc. we should encourage people in using the scripts we already have to minimize issues in this first step
+
 
 _Tim's suggestion edits below_
 
@@ -25,7 +27,7 @@ Once your data is arranged in this way, you can proceed to convert it to BIDS fo
 10. Create a `participants.tsv` and a `participants.json` files.
 11. Create a `task-<taskname>_bold.json` file.
 12. Create a `derivatives` folder, where future outputs will be placed.
-13. _Optional: include a `.gitignore` file if needed, to exclude potential working files from the BIDS validator._
+13. _Optional: include a `.bidsignore` file if needed, to exclude potential working files from the BIDS validator._
 14. **If all the step above are complete, test your folder with the [BIDS validator](https://bids-standard.github.io/bids-validator/)**.
 
 
