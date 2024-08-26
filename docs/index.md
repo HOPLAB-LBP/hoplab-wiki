@@ -146,8 +146,9 @@ Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an on
 ## Quick Links
 
 - [:octicons-calendar-16: Lab Calendar](https://calendar.google.com/calendar/u/1/r?pli=1) (Requires permission)
+- [:octicons-organization-16: Hoplab Teams Directory](https://teams.microsoft.com/l/team/19%3A9fcb4eb9c75049d4bad118cf8afcb9cb%40thread.tacv2/conversations?groupId=714187e1-4ec7-496a-9922-933eb237402f&tenantId=3973589b-9e40-4eb5-800e-b0b6383d1621) (Requires permission)
 - [:octicons-home-16: Hoplab Website](https://www.hoplab.be/)
-- [:octicons-bookmark-16: Publication Repository](https://www.hoplab.be/publications/)
+- [:octicons-bookmark-16: Hoplab Publication](https://www.hoplab.be/publications/)
 
 ## Need Help?
 
