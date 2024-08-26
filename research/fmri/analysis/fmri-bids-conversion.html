@@ -1248,6 +1248,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#bids-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      BIDS standards
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-raw-data-to-bids" class="md-nav__link">
+    <span class="md-ellipsis">
+      From raw data to BIDS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#event-files" class="md-nav__link">
     <span class="md-ellipsis">
       Event files
@@ -1701,6 +1719,13 @@
 <p><strong>TODO:</strong>  add figures. <em>It would definitely be nice to show a full tree of an example repostitory, and how it changes at each step of the way.</em></p>
 <p><strong>NOTE:</strong> [ANDREA] I have scripts to do some of the points below. For instance, the events files can and should (to avoid errors) be created from the mat files directly, the json files can be generated automatically, the nii files can be moved automatically.. etc. we should encourage people in using the scripts we already have to minimize issues in this first step</p>
 <p><em>Tim's suggestion edits below</em></p>
+<h2 id="bids-standards">BIDS standards<a class="headerlink" href="#bids-standards" title="Permanent link">&para;</a></h2>
+<p>To organize our fMRI dataset, we follow the <a href="https://bids-specification.readthedocs.io/en/stable/introduction.html">BIDS</a> Specification.</p>
+<p>If you are not familiar with the BIDS Specification, the <a href="https://bids-standard.github.io/bids-starter-kit/index.html">BIDS Starter Kit</a> provides all the information needed to get started, along with <a href="https://bids-standard.github.io/bids-starter-kit/dataset_examples.html">example BIDS datasets</a>, <a href="https://bids-standard.github.io/bids-starter-kit/talks.html">Talks and Slides</a>, and most importantly <a href="https://bids-standard.github.io/bids-starter-kit/tutorials/tutorials.html">Tutorials</a>.</p>
+<p>It is crucial that you get familiar with BIDS folders/files naming convention and structure. Most, if not all, the tools we are going to use in the next steps are <a href="https://bids-apps.neuroimaging.io/apps/">BIDS Apps</a>, and they rely on data organized following the BIDS Specification. Following this structure will make it easier to use these tools, share your code and data, and communicate with other scientists.</p>
+<p>The BIDS Specification provides guidelines on how to organize all your data formats, including <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/magnetic-resonance-imaging-data.html">(f/d)MRI</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/electroencephalography.html">EEG</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/physiological-and-other-continuous-recordings.html">eye-tracking</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html">Task events</a> associated with Neuro-Imaging recordings or <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/behavioral-experiments.html">not</a>, and <a href="https://bids-specification.readthedocs.io/en/stable/derivatives/imaging.html">Derivatives</a> (e.g., pre-processed files, Regions Of Interest mask files, GLM files, etc.).</p>
+<p>At any moment, you can check your dataset for BIDS compliance. To do so, you can use the <a href="https://bids-standard.github.io/bids-validator/">BIDS dataset validator</a>. </p>
+<h2 id="from-raw-data-to-bids">From raw data to BIDS<a class="headerlink" href="#from-raw-data-to-bids" title="Permanent link">&para;</a></h2>
 <p>After scanning participants, you will get data <a href="../fmri-general.html#how-to-get-images-from-the-scanner">from the scanner</a> and from the stimulus presentation computer, containing behavioural outputs (mainly <code>log</code> files and <code>.mat</code> files), functional and structural outputs (<code>.nii</code> files), alongside potential <code>dicom</code> and other files (e.g. eye tracking data). Your first step will be to sort out these files and arrange them in a <code>sourcedata</code> folder (follow the structure in <a href="../fmri-general.html#how-to-store-raw-data">How to store raw data</a>).</p>
 <p>Once your data is arranged in this way, you can proceed to convert it to BIDS format. Here is an overview of the steps to take to ensure your data is arranged in a BIDS-compatible way:</p>
 <ol>
@@ -1754,7 +1779,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 11:54:52</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 11:58:21</span>
   </span>
 
     
