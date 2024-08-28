@@ -47,7 +47,7 @@ nav:
       - research/dnn/index.md      
   - Science outreach: outreach.md
   - Contribute: contribute.md
-  - Tasks List: tasks-list.md
+#  - Tasks List: tasks-list.md
 
 theme:
   name: material
@@ -133,8 +133,8 @@ plugins:
   - git-revision-date-localized:
       type: datetime
       timezone: Europe/Brussels
-#  - task-collector:
-#      output_file: 'tasks-list.md'
+  - task-collector:
+      output_file: 'tasks-list.md'
       
 extra_css:
   - stylesheets/extra.css
