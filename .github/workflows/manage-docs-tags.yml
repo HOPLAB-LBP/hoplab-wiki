@@ -1,0 +1,319 @@
+name: Manage Docs Tags and Issues
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to main branch
+  issue_comment:
+    types: [created]  # Trigger on new issue comment
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  manage-docs-tags:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Manage Docs Tags and Issues
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const fs = require('fs').promises;  // File system module with promises
+            const path = require('path');  // Path manipulation module
+
+            console.log('Starting the Manage Docs Tags and Issues workflow');
+
+            // Function to recursively walk through directories and find Markdown files
+            async function walkSync(dir) {
+              console.log(`Scanning directory: ${dir}`);
+              const files = await fs.readdir(dir);  // Read contents of the directory
+              const filelist = [];  // Initialize an array to store file paths
+              for (const file of files) {  // Loop through each file/directory
+                const filepath = path.join(dir, file);  // Create full file path
+                const stat = await fs.stat(filepath);  // Get file/directory information
+                if (stat.isDirectory()) {  // If it's a directory
+                  console.log(`Found subdirectory: ${filepath}`);
+                  filelist.push(...(await walkSync(filepath)));  // Recursively walk through it
+                } else if (path.extname(file) === '.md') {  // If it's a Markdown file
+                  console.log(`Found Markdown file: ${filepath}`);
+                  filelist.push(filepath);  // Add it to the list
+                }
+              }
+              console.log(`Total Markdown files found in ${dir}: ${filelist.length}`);
+              return filelist;  // Return the list of Markdown files
+            }
+
+            // Function to determine the label for an issue based on the file path
+            function getLabel(file) {
+              const parts = path.dirname(file).split(path.sep);  // Split the directory path
+              if (parts[0] === 'docs' && parts.length > 1) {  // If it's in a subdirectory of 'docs'
+                console.log(`Label for ${file}: ${parts[parts.length - 1]}`);
+                return parts[parts.length - 1];  // Use the subdirectory name as the label
+              }
+              console.log(`Label for ${file}: general`);
+              return 'general';  // Otherwise, use 'general' as the label
+            }
+
+            // Function to find an existing issue for a file
+            async function findExistingIssue(file) {
+              console.log(`Searching for existing issue for file: ${file}`);
+              const issues = await github.paginate(github.rest.issues.listForRepo, {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                labels: ['doc-tags'],
+                per_page: 100
+              });  // Get all open issues with the 'doc-tags' label
+              const existingIssue = issues.find(issue => issue.title === `Tags in ${file}`);  // Find an issue with matching title
+              if (existingIssue) {
+                console.log(`Found existing issue #${existingIssue.number} for ${file}`);
+              } else {
+                console.log(`No existing issue found for ${file}`);
+              }
+              return existingIssue;
+            }
+
+            // Function to parse tags from file content, capturing the entire line for each tag
+            function parseTags(content) {
+              console.log('Starting to parse tags from file content');
+              console.log('Content length:', content.length);
+              
+              // Updated regex to match entire lines containing tags
+              const tagRegex = /^.*?(TODO|PLACEHOLDER|NOTE).*$/gim;
+              
+              const tags = new Set(); // Use a Set to avoid duplicates
+              let match;
+              let matchCount = 0;
+
+              console.log('Regex pattern:', tagRegex.source);
+              
+              while ((match = tagRegex.exec(content)) !== null) {
+                matchCount++;
+                const fullLine = match[0].trim();
+                const tagType = match[1].toUpperCase();
+                
+                console.log(`Match ${matchCount}:`);
+                console.log(`  Full line: "${fullLine}"`);
+                console.log(`  Tag type: ${tagType}`);
+                
+                // Add the full line to the Set
+                tags.add(fullLine);
+                console.log(`  Added tag: ${fullLine}`);
+              }
+              
+              console.log(`Total matches found: ${matchCount}`);
+              console.log(`Unique tags added: ${tags.size}`);
+              
+              // Convert Set to array of objects
+              const tagsArray = Array.from(tags).map(line => {
+                const tagType = line.match(/(TODO|PLACEHOLDER|NOTE)/i)[0].toUpperCase();
+                return { type: tagType, content: line };
+              });
+              
+              tagsArray.forEach((tag, index) => console.log(`Tag ${index + 1}: ${tag.type}: ${tag.content}`));
+              
+              return tagsArray;
+            }
+
+
+            // Function to parse existing tasks from an issue body
+            function parseExistingTasks(body) {
+              console.log('Parsing existing tasks from issue body');
+              const taskRegex = /- \[([ x])\] (.*?)( --> (Added from comment #\d+|Added from file|Resolved from file|Manually marked as complete) <--)?$/gm;
+              const tasks = [];
+              let match;
+              while ((match = taskRegex.exec(body)) !== null) {  // Find all task matches
+                tasks.push({
+                  completed: match[1] === 'x',
+                  content: match[2].trim(),
+                  status: match[4] || null
+                });
+              }
+              console.log(`Found ${tasks.length} existing tasks`);
+              tasks.forEach(task => console.log(`- [${task.completed ? 'x' : ' '}] ${task.content}${task.status ? ` (${task.status})` : ''}`));
+              return tasks;
+            }
+
+            // Function to format tasks for display in the issue
+            function formatTasks(currentTags, existingTasks) {
+              console.log('Formatting tasks');
+              const allTasks = [...existingTasks];
+              const updatedTasks = [];
+
+              console.log('Processing existing tasks');
+              allTasks.forEach(task => {
+                if (task.status && task.status.startsWith('Added from comment')) {
+                  console.log(`Preserving comment task: ${task.content}`);
+                  updatedTasks.push(task);
+                } else if (currentTags.some(tag => tag.content === task.content)) {
+                  console.log(`Keeping open task: ${task.content}`);
+                  updatedTasks.push({...task, completed: false, status: 'Added from file'});
+                } else if (task.completed && task.status === 'Manually marked as complete') {
+                  console.log(`Preserving manually completed task: ${task.content}`);
+                  updatedTasks.push(task);
+                } else {
+                  console.log(`Marking task as resolved: ${task.content}`);
+                  updatedTasks.push({...task, completed: true, status: 'Resolved from file'});
+                }
+              });
+
+              console.log('Adding new tasks from current tags');
+              currentTags.forEach(tag => {
+                if (!allTasks.some(task => task.content === tag.content)) {
+                  console.log(`Adding new task: ${tag.content}`);
+                  updatedTasks.push({...tag, completed: false, status: 'Added from file'});
+                }
+              });
+
+              console.log('Formatting tasks as Markdown checklist items');
+              return updatedTasks.map(task => {
+                let taskString = `- [${task.completed ? 'x' : ' '}] ${task.content}`;
+                if (task.status) {
+                  taskString += ` --> ${task.status} <--`;
+                }
+                return taskString;
+              }).join('\n');
+            }
+
+            // Function to create or update an issue for a file
+            async function createOrUpdateIssue(file, currentTags) {
+              console.log(`Creating or updating issue for file: ${file}`);
+              const label = getLabel(file);
+              const title = `Tags in ${file}`;
+
+              const existingIssue = await findExistingIssue(file);
+              let issue;
+
+              if (existingIssue) {
+                console.log(`Updating existing issue #${existingIssue.number}`);
+                const existingTasks = parseExistingTasks(existingIssue.body);
+                const formattedTasks = formatTasks(currentTags, existingTasks);
+                const body = `File: [${file}](${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/blob/${context.sha}/${file})\n\nTasks:\n${formattedTasks}\n\nImportant: do not change the status of tasks tagged as "Added from file". These tasks depend on to-do tags in the original file. To change the status of these tasks, please edit the md file directly.`;
+
+                issue = await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: existingIssue.number,
+                  body: body,
+                  labels: ['doc-tags', label]
+                });
+                console.log(`Updated issue #${issue.data.number} for ${file}`);
+              } else if (currentTags.length > 0) {
+                console.log(`Creating new issue for ${file}`);
+                const formattedTasks = formatTasks(currentTags, []);
+                const body = `File: [${file}](${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/blob/${context.sha}/${file})\n\nTasks:\n${formattedTasks}\n\nImportant: do not change the status of tasks tagged as "Added from file". These tasks depend on to-do tags in the original file. To change the status of these tasks, please edit the md file directly.`;
+
+                issue = await github.rest.issues.create({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  title: title,
+                  body: body,
+                  labels: ['doc-tags', label]
+                });
+                console.log(`Created new issue #${issue.data.number} for ${file}`);
+              } else {
+                console.log(`Skipping ${file} - no open issue and no current tags`);
+                return null;
+              }
+
+              return issue;
+            }
+
+            // Function to process a single file
+            async function processFile(file) {
+              console.log(`\n--- Processing file: ${file} ---`);
+              const content = await fs.readFile(file, 'utf8');
+              console.log(`File content length: ${content.length} characters`);
+              console.log('First 200 characters of file content:');
+              console.log(content.substring(0, 200));
+              
+              console.log('\nParsing tags...');
+              const currentTags = parseTags(content);
+              
+              console.log(`\nTags found in ${file}:`);
+              currentTags.forEach((tag, index) => console.log(`${index + 1}. ${tag.type}: ${tag.content}`));
+
+              if (currentTags.length > 0 || await findExistingIssue(file)) {
+                const issue = await createOrUpdateIssue(file, currentTags);
+                if (issue) {
+                  console.log(`Processed ${file} - ${issue.data.state} issue #${issue.data.number}`);
+                } else {
+                  console.log(`Skipped ${file} - no open issue and no current tags`);
+                }
+              } else {
+                console.log(`Skipped ${file} - no tags found and no existing open issue`);
+              }
+              console.log(`--- Finished processing ${file} ---\n`);
+            }
+
+            // Function to handle new comments on issues
+            async function handleNewComment(issue, comment) {
+              console.log(`Handling new comment on issue #${issue.number}`);
+              console.log('Comment content:', comment.body);
+
+              // Use the same regex as in parseTags function
+              const tagRegex = /^.*?(TODO|PLACEHOLDER|NOTE).*$/gim;
+              
+              const newTasks = [];
+              let match;
+
+              while ((match = tagRegex.exec(comment.body)) !== null) {
+                const fullLine = match[0].trim();
+                const tagType = match[1].toUpperCase();
+                
+                console.log(`Found tag in comment: ${tagType}`);
+                console.log(`Full line: "${fullLine}"`);
+                
+                newTasks.push(`- [ ] ${fullLine} --> Added from comment #${comment.id} <--`);
+              }
+
+              if (newTasks.length > 0) {
+                const updatedBody = `${issue.body}\n${newTasks.join('\n')}`;
+
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: updatedBody
+                });
+                console.log(`Added ${newTasks.length} new task(s) from comment to issue #${issue.number}`);
+                newTasks.forEach(task => console.log(`Added task: ${task}`));
+              } else {
+                console.log('No tags found in comment');
+              }
+            }
+
+            // Main execution
+            if (context.eventName === 'issue_comment') {
+              console.log('Triggered by new issue comment');
+              const issue = context.payload.issue;
+              const comment = context.payload.comment;
+
+              if (issue.labels.some(label => label.name === 'doc-tags')) {
+                console.log(`Processing comment on doc-tags issue #${issue.number}`);
+                await handleNewComment(issue, comment);
+              } else {
+                console.log(`Skipping comment on issue #${issue.number} - not a doc-tags issue`);
+              }
+            } else {
+              console.log('Triggered by push or manual workflow dispatch');
+              try {
+                const files = await walkSync('docs');
+                console.log(`Found ${files.length} Markdown files to process`);
+                for (const file of files) {
+                  await processFile(file);
+                }
+                console.log('Finished processing all files');
+              } catch (error) {
+                console.error(`Workflow failed: ${error.message}`);
+              }
+            }
+
+            console.log('Manage Docs Tags and Issues workflow completed');
