@@ -59,7 +59,7 @@ nav:
 
 ### Adding `NOTE`, `TODO`, and `PLACEHOLDER` tags
 
-For ease of collaboration, we keep track of all the tags in our documentation in a single, structured, and automatically updated page called [Tasks list](https://hoplab-lbp.github.io/hoplab-wiki/tasks-list.html).
+For ease of collaboration, we keep track of all the tasks in our documentation in ~~a single, structured, and automatically updated page called [Tasks list](https://hoplab-lbp.github.io/hoplab-wiki/tasks-list.html)~~ (DEPRECATED) the [Issues](https://github.com/HOPLAB-LBP/hoplab-wiki/issues) page. Tasks are organized by file, and each file with tags will automatically be listed as Issue.
 
 To add a new task to this list, you just need to write `NOTE`, `TODO`, or `PLACEHOLDER` in any document in the `docs/` folder. This will automatically be added to the tasks list during the Wiki building process. This is achieved through the mkdocs plugin `mkdocs-task-collector`, and more information and usage examples can be found in the [plugin repository](https://github.com/costantinoai/mkdocs-task-collector).
 
