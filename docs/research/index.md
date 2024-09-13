@@ -4,6 +4,8 @@ This is the landing page for this section. Please populate it with appropriate i
 
 **TODO:** populate this landing page.
 
+**TODO**: [Klara?] Add information on room booking, in particular ClusterMarket.
+
 **TODO**: [Klara] Add more recommended software (e.g., Mendeley/Endnote, R, Text editors, Image editing software, Git, LaTeX, Pandoc, markdown, Python, Overleaf, RBA, BioSemi, PsychoPy, the lab’s own software?)
 
 **TODO**: [Klara] Add info on interesting conferences to attend, suggested reading (books, papers, websites), suggested courses (soft skills, programming, EEG/fMRI, version control, stats, science, etc.)
