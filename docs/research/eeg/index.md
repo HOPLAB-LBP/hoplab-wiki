@@ -1,5 +1,21 @@
-# Index
+# EEG (Electroencephalography)
 
-This is the landing page for this section. Please populate it with appropriate information.
+We have access to two EEG devices that fall under the NeuroSPACE consortium. 
 
-**TODO:** populate this landing page.
+The first one is a mobile EEG system, currently used mostly by the Neuropsychology Lab (C. Gillebert). 
+
+The second EEG apparatus is a high-resolution EEG system, used primarily by the Hoplab and the Desenderlab. This is a 128-channel system of BioSemi. 
+
+The 128-channel EEG is located in room PSI 02.52. It can be booked through the Clustermarket system (see general Research pages), where you can find it as "BioSemi EEG Lab 00.52".
+
+In the Hoplab we typically set up experiments for multivariate EEG ("Representational Dynamics"). Our standard analysis pipeline is described most in detail in Chen et al. (2023, Imaging Neuroscience), https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00006/116700/The-representational-dynamics-of-the-animal 
+
+This publication is accompanied by an OSF archive that contains the analysis code to do multivariate analysis with the help of Matlab and the CosmoMVPA toolbox. See https://osf.io/d5egu/  
+
+
+**TODO:** Clean up and add hyperlinks; 
+**TODO:** Add clustermarket info elsewhere; 
+**TODO:** Create sub-pages; 
+**TODO:** Add information on how to use the system and to acquire the data; 
+**TODO:** Add information on the analysis (OSF page of Chen et al has no readme!); 
+**TODO:** Also describe details of pre-processing (no pre-processing script on OSF);
