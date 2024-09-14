@@ -10,7 +10,7 @@ The 128-channel EEG is located in room PSI 02.52. It can be booked through the C
 
 In the Hoplab we typically set up experiments for multivariate EEG ("Representational Dynamics"). Our standard analysis pipeline is described most in detail in [Chen et al.](https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00006/116700/The-representational-dynamics-of-the-animal) (2023, Imaging Neuroscience). 
 
-This publication is accompanied by an OSF archive that contains the analysis code to do multivariate analysis with the help of Matlab and the CosmoMVPA toolbox. See https://osf.io/d5egu/  
+This publication is accompanied by an [OSF archive](https://osf.io/d5egu/) that contains the analysis code to do multivariate analysis with the help of Matlab and the CosmoMVPA toolbox.    
 
 
 **TODO:** Clean up and add hyperlinks; 
