@@ -23,8 +23,8 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
 
 Before you begin, ensure you have the following:
 
-- A GitHub account.
-- Be part of the [`HOPLAB-LBP`](https://github.com/orgs/HOPLAB-LBP/people) organization.
+- A GitHub account (click [here](https://github.com/signup) to sign up).
+- Be part of the [`HOPLAB-LBP`](https://github.com/orgs/HOPLAB-LBP/people) organization (contact [Andrea](mailto:andreaivan.costantino@kuleuven.be) if you need to be added).
 - If you plan on following the [Advanced Workflow](#advanced-workflow-for-extensive-changes) (encouraged for more complex changes), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html), and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or [GitHub Desktop](https://desktop.github.com/) (strongly encouraged) installed.
 
 ## Editing the Wiki
