@@ -37,7 +37,7 @@ For more information, check out the available [demo videos](https://icts.kuleuve
 There are a couple of things we usually do in the lab when we take a holiday:
 
 1. **Notify Hans** by sending an email with the subject "Holiday", to keep an official trace of your holiday request (that also helps him keep track of who’s on leave). 
-2. Note the days you’re off in the Hoplab **Google calendar**, so everyone is aware of your absence. 
+2. Mark the days you’re off in the Hoplab **Google calendar**, so everyone is aware of your absence. 
 3. **Notify your employer**, which can be different depending on your contract (the procedure below is for KU Leuven employees, for instance).
 
 ### Procedure for KU Leuven employees
