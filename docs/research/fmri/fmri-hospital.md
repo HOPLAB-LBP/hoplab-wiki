@@ -1,5 +1,7 @@
 # Practical scanning protocol
 
+[NOTE]: This page is too long (and incomplete). We should probably split the content into two pages: one to give info about what to do when we go to the hospital (parking, participant admission, reach the room, preparation, testing, clean and wrap up) and one to give detailed info about the instruments (scanner type, projector, filters, eye-tracking, distance eye to screen, button boxes) and possible failiures/troubleshoots.
+
 This page describes the procedures followed by our lab (LBP) to scan at MR8, including information specific to the hospital, bookings, rooms, contacting people, parking tickets, etc. Some general remarks:
 
 - MR8 is a Philips Ingenia scanner ([consult the manual](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Scanner%20info%20%26%20safety/Manual_Philips-MR8?csf=1&web=1&e=1Bh0eI)) with a 32-channel head coil located at MR suite E408 ([map and directions](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/Planning%20a%20scan%20session/Directions2MR8.docx?d=we6f6a1c73e5a42e3a01e98a8f0169e10&csf=1&web=1&e=GKJ4lb)). Note that this location is different from the other MR scanners in the hospital (MR suite E600).
