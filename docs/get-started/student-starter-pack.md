@@ -63,8 +63,6 @@ Developing strong coding skills is crucial for success in our lab. Here are some
     
 ## Papers & lectures
 
-**TODO:** Expand this list with more papers, add brief explanations of why each paper is important, and consider including short abstracts for key papers.
-
 This section contains some foundational papers to give you some background on the research going on in the lab, as well as interesting lectures if you can't find anything to watch on Netflix. This list might not always be up to date, but you can find our latest publications on the [lab website](https://www.hoplab.be/publications/).
 
 === "Some reviews"
