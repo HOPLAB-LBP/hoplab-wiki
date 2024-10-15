@@ -13,7 +13,7 @@ nav:
     - Computer set-up: get-started/computer-setup.md
     - Administrative procedures: get-started/admin-procedures.md
     - Student starter pack: get-started/student-starter-pack.md
-    - Social activities: get-started/social-activities.md
+    # - Social activities: get-started/social-activities.md
   - Research:
     - research/index.md
     - Ethical approval:
