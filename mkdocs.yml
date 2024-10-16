@@ -28,9 +28,9 @@ nav:
     - fMRI:
       - research/fmri/index.md
       - First steps: research/fmri/fmri-get-started.md
-      - General information: research/fmri/fmri-general.md
       - Scanning information: research/fmri/fmri-hospital.md
       - Analysis workflow: 
+          - 0. General information: research/fmri/fmri-general.md
           - 1. Set-up you environment: research/fmri/analysis/fmri-setup-env.md
           - 2. BIDS conversion: research/fmri/analysis/fmri-bids-conversion.md
           - 3. Pre-processing and QA: research/fmri/analysis/fmri-prepocessing-qa.md
