@@ -28,7 +28,7 @@ nav:
     - fMRI:
       - research/fmri/index.md
       - First steps: research/fmri/fmri-get-started.md
-      - Scanning information: research/fmri/fmri-hospital.md
+      - Scanning procedure and info: research/fmri/fmri-procedure.md
       - Analysis workflow: 
           - 0. General information: research/fmri/fmri-general.md
           - 1. Set-up you environment: research/fmri/analysis/fmri-setup-env.md

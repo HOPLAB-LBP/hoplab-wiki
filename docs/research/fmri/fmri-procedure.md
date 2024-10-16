@@ -6,7 +6,7 @@
 
 # Practical scanning protocol 
 
-This page outlines the procedures followed by our lab (LBP) at MR8. It includes information specific to the hospital, booking procedures, room access, contacting relevant personnel, and managing parking tickets.
+This page outlines the procedures followed by our lab at MR8. It includes information specific to the hospital, booking procedures, room access, contacting relevant personnel, and managing parking tickets.
 
 For a quick overview of all the steps on the day of a scanning section, please consult the [MRI checklist](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/What%20to%20do%20at%20the%20scanner/ChecklistMR8.docx?d=w195af25d58334931bee6a959e882c312&csf=1&web=1&e=Uj1dHz)
 
