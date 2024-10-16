@@ -2,29 +2,6 @@
 
 Welcome to the fMRI analysis environment setup guide. This walkthrough will help you install and configure all necessary tools for our fMRI analysis workflow across Windows, macOS, and Linux platforms.
 
-## Table of Contents
-
-- [System Requirements](#system-requirements)
-- [Folder Structure](#folder-structure)
-- [Installing Core Tools](#installing-core-tools)
-    - [Docker Desktop](#docker-desktop)
-      - [Installing Docker Tools](#installing-docker-tools)
-        - [fMRIPrep](#fmriprep)
-        - [MRIQC](#mriqc)
-        - [FastSurfer](#fastsurfer)
-        - [DeepMReye](#deepmreye)
-    - [dcm2niix](#dcm2niix)
-    - [Python and Conda](#python-and-conda)
-      - [Setting up Spyder IDE](#setting-up-spyder-ide)
-    - [MATLAB](#matlab)
-      - [SPM](#spm)
-      - [CoSMoMVPA](#cosmomvpa)
-      - [MarsBaR](#marsbar)
-- [Installing Additional Tools](#installing-additional-tools)
-    - [FreeSurfer](#freesurfer)
-    - [ANTs](#ants)
-    - [Troubleshooting](#troubleshooting)
-
 ## System Requirements
 
 !!! info "Suggested System Specifications"
