@@ -13,7 +13,6 @@ nav:
     - Computer set-up: get-started/computer-setup.md
     - Administrative procedures: get-started/admin-procedures.md
     - Student starter pack: get-started/student-starter-pack.md
-    # - Social activities: get-started/social-activities.md
   - Research:
     - research/index.md
     - Ethical approval:
@@ -29,8 +28,8 @@ nav:
     - fMRI:
       - research/fmri/index.md
       - First steps: research/fmri/fmri-get-started.md
-      - Hospital information: research/fmri/fmri-hospital.md
       - General information: research/fmri/fmri-general.md
+      - Scanning information: research/fmri/fmri-hospital.md
       - Analysis workflow: 
           - 1. Set-up you environment: research/fmri/analysis/fmri-setup-env.md
           - 2. BIDS conversion: research/fmri/analysis/fmri-bids-conversion.md
@@ -83,7 +82,7 @@ theme:
     - navigation.top
     - navigation.expand
     - navigation.sections
-    - toc.integrate # (1)!
+    # - toc.integrate # (1)!
     - search.highlight
     - navigation.indexes
 
