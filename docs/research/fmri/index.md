@@ -34,7 +34,7 @@ Welcome to the landing page for all things related to functional MRI (fMRI) in o
 
     You need to code your fMRI task and you don't know where to start? Check out this fMRI task template from the Hoplab Github repositories.
 
-    [:octicons-arrow-right-24: Watch tutorials](https://github.com/HOPLAB-LBP/fMRI-task-template)
+    [:octicons-arrow-right-24: See the repo](https://github.com/HOPLAB-LBP/fMRI-task-template)
 
 </div>
 
