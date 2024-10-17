@@ -1,6 +1,7 @@
 ---
 hide:
   - navigation
+  - toc
 ---
 
 # Welcome to the Hoplab Wiki 
