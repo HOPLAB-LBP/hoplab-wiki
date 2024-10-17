@@ -1,8 +1,78 @@
-# Index
+# Research at the Hoplab
 
-This is the landing page for this section. Please populate it with appropriate information.
+Welcome to the central hub for all research activities at the Hoplab. This page serves as your gateway to our research methodologies, data analysis procedures, and resources. Whether you're involved in behavioral studies, EEG, eye-tracking, or fMRI, you'll find the essential guidelines and workflows here.
 
-**TODO:** populate this landing page.
+<div class="grid cards" markdown>
+
+-   :octicons-person-24:{ .lg .middle } __Behavioral Research__
+
+    ---
+
+    Explore our experimental setups, participant management, and best practices for conducting behavioral research.
+
+    [:octicons-arrow-right-24: Learn more](behaviour/index.md)
+
+-   :octicons-code-24:{ .lg .middle } __Coding Resources__
+
+    ---
+
+    Access coding guides, scripts, and resources for various research tools, including fMRI and behavioral experiments.
+
+    [:octicons-arrow-right-24: View coding resources](coding/index.md)
+
+-   :material-robot-love-outline:{ .lg .middle } __Deep Neural Networks (DNN)__
+
+    ---
+
+    Dive into our research on deep neural networks and their application in cognitive and neuroscience research.
+
+    [:octicons-arrow-right-24: Explore DNN research](dnn/index.md)
+
+-   :material-wave:{ .lg .middle } __EEG Studies__
+
+    ---
+
+    Find protocols, analysis workflows, and tips for conducting and analyzing EEG studies in the lab.
+
+    [:octicons-arrow-right-24: Access EEG resources](eeg/index.md)
+
+-   :octicons-law-24:{ .lg .middle } __Ethics and Approvals__
+
+    ---
+
+    Get guidance on the ethical procedures and approval processes required for research in our lab.
+
+    [:octicons-arrow-right-24: Review ethical guidelines](ethics/index.md)
+
+-   :octicons-eye-24:{ .lg .middle } __Eye-tracking Research__
+
+    ---
+
+    Learn about our setup and analysis techniques for eye-tracking experiments, including equipment calibration and data processing.
+
+    [:octicons-arrow-right-24: Discover eye-tracking methods](eyetracking/index.md)
+
+-   :fontawesome-solid-brain:{ .lg .middle } __Functional MRI (fMRI)__
+
+    ---
+
+    Find everything from fMRI scan setup to data analysis workflows and coding resources.
+
+    [:octicons-arrow-right-24: fMRI resources](fmri/index.md)
+
+</div>
+
+## Quick Links to Resources
+
+Here are some additional links to key research resources, tutorials, and tools:
+
+- [SPM Software Guide](https://www.fil.ion.ucl.ac.uk/spm/software/)
+- [EEGLAB Documentation](https://eeglab.org/)
+- [Nilearn for Machine Learning in Neuroimaging](https://nilearn.github.io/)
+- [BIDS Specification for Neuroimaging](https://bids.neuroimaging.io/)
+- [MNE Python for EEG Analysis](https://mne.tools/stable/index.html)
+
+---
 
 **TODO**: [Klara?] Add information on room booking, in particular ClusterMarket.
 
