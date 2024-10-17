@@ -56,7 +56,7 @@ Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an on
 
     [:octicons-arrow-right-24: Learn more](research/coding/index.md)
 
--   :material-robot-outline:{ .lg .middle } __Deep Neural Networks__
+-   :material-robot-love-outline:{ .lg .middle } __Deep Neural Networks__
 
     ---
     
@@ -72,7 +72,7 @@ Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an on
 
     [:octicons-arrow-right-24: Learn more](research/eeg/index.md)
 
--   :material-eye:{ .lg .middle } __Eye Tracking__
+-   :octicons-eye-24:{ .lg .middle } __Eye Tracking__
 
     ---
     
