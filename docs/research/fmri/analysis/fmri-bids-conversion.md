@@ -21,7 +21,7 @@ After scanning participants, you'll obtain data from two primary sources:
 1. The scanner: Functional and structural outputs (`.nii` files), alongside potential `dicom` files
 2. The stimulus presentation computer: Behavioural outputs (mainly `log` files and `.mat` files) and potentially eye-tracking data
 
-Your first step is to organize these files in a `sourcedata` folder. Follow the structure outlined in [How to store raw data](../fmri-general.md#how-to-store-raw-data). Once your data is properly arranged, you can proceed to anonymize it and convert it to BIDS format.
+Your first step is to organize these files in a `sourcedata` folder. Follow the structure outlined in [How to store raw data](./fmri-general.md#how-to-store-raw-data). Once your data is properly arranged, you can proceed to anonymize it and convert it to BIDS format.
 
 Here's a high-level overview of the steps involved in arranging your data in a BIDS-compatible way. While this provides a general understanding, most of these steps should be performed using the code provided in each sub-section to minimize errors.
 
@@ -62,7 +62,7 @@ Here's a high-level overview of the steps involved in arranging your data in a B
 
 5. Update `.json` sidecar files:
 
-    - Complete the `PhaseEncodingDirection` and `SliceTiming` fields (see [Missing fields in JSON files](../fmri-general.md#missing-fields-in-json-files) for more information)
+    - Complete the `PhaseEncodingDirection` and `SliceTiming` fields (see [Missing fields in JSON files](./fmri-general.md#missing-fields-in-json-files) for more information)
     - Duplicate and rename sidecar files to accompany each `bold.nii` file
 
 6. Create essential [modality agnostic BIDS files](https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson):
@@ -87,7 +87,7 @@ By following these steps systematically, you'll ensure your data is properly org
 Here we provide more detailed instructions to perform each of the steps mentioned above. 
 
 !!! warning "Folder Structure"
-    All the steps and scripts below assume a specific folder structure and file naming convention. They **will not work** otherwise. Ensure you strictly follow the instructions in the [How to store raw data](../fmri-general.md#how-to-store-raw-data) page.
+    All the steps and scripts below assume a specific folder structure and file naming convention. They **will not work** otherwise. Ensure you strictly follow the instructions in the [How to store raw data](./fmri-general.md#how-to-store-raw-data) page.
 
     **TODO:** [ANDREA] in the how to store raw data page, create a folders tree that includes all the relevant folders and subfolder. The current tree is not complete.
     
