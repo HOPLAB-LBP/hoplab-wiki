@@ -34,7 +34,7 @@ Developing strong coding skills is crucial for success in our lab. Here are some
 
     [:octicons-arrow-right-24: Ten Simple Rules for Structuring Papers](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619)
 
--   :material-brain:{ .lg .middle } __Machine Learning Fundamentals__
+-   :material-robot-love:{ .lg .middle } __Machine Learning Fundamentals__
 
     ---
 
@@ -48,15 +48,15 @@ Developing strong coding skills is crucial for success in our lab. Here are some
 
     A curated list of carefully selected tools and resources for both early career and senior researchers:
 
-    [:octicons-arrow-right-24: Awesome PhD GitHub Repository](https://github.com/helenahartmann/awesome-PhD)
+    [:octicons-arrow-right-24: Awesome PhD Repository](https://github.com/helenahartmann/awesome-PhD)
     
--   :material-chart-bar:{ .lg .middle } __Data Visualization Resources__
+-   :material-brain:{ .lg .middle } __Awesome Neuroscience Resources__
 
     ---
 
-    Effective data visualization is crucial for communicating your research. Resources coming soon!
+    Curated list of awesome neuroscience libraries, software and any content related to the domain.
 
-    [:octicons-arrow-right-24: [PLACEHOLDER]]()
+    [:octicons-arrow-right-24: Awesome Neuroscience Repository](https://github.com/analyticalmonk/awesome-neuroscience)
 
 
 </div>
