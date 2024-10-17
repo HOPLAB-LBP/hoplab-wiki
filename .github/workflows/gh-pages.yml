@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-task-collector
+          pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-task-collector mkdocs-git-authors-plugin
 
       - name: Build the documentation
         run: |
