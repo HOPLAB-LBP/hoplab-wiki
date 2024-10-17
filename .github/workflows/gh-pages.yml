@@ -8,6 +8,8 @@ on:
   repository_dispatch:
     types: [start-gh-pages]
 
+  workflow_dispatch:  # Allow manual trigger
+
 concurrency:
   group: "gh-pages"
   cancel-in-progress: true
