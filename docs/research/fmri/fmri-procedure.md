@@ -1,12 +1,6 @@
-**NOTE**: shall we include here directions and emergency contact info? probably not. we should just refer to the original file in the Teams folder.
-
-**NOTE:**: We should probably split the content into two pages: one to give info about what to do when we go to the hospital (parking, participant admission, reach the room, preparation, testing, clean and wrap up) and one to give detailed info about the instruments (scanner type, projector, filters, eye-tracking, distance eye to screen, button boxes) and possible failiures/troubleshoots.
-
-**TODO:** Since the hospital signage changed recently, might be useful to include updated directions with pictures
-
 # Practical scanning protocol 
 
-This page outlines the procedures followed by our lab at MR8. It includes information specific to the hospital, booking procedures, room access, contacting relevant personnel, and managing parking tickets.
+This page outlines the procedures followed by our lab at MR8. 
 
 For a quick overview of all the steps on the day of a scanning section, please consult the [MRI checklist](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/What%20to%20do%20at%20the%20scanner/ChecklistMR8.docx?d=w195af25d58334931bee6a959e882c312&csf=1&web=1&e=Uj1dHz)
 
@@ -19,8 +13,7 @@ The MR8 suite houses a **Philips Ingenia** scanner with a 32-channel head coil, 
     - **After 6 pm and on weekends**, two certified MR users (MRRUs) are required to run a session. More details are available in the [Safety Rules & Procedures](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AAATYJes74w8KvI0OEOd1MmYa?e=5&preview=Safety+Rules++Procedures+Research+MRI+UZL-KUL+v3.2.pdf).
     - You can find relevant phone numbers to call for urgent questions as well as usernames and passwords of the PCs in the scan console room in [this file](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/Contact%20information,%20usernames%20and%20passwords.docx?d=w5f0acba0431d45eebb844daf31531222&csf=1&web=1&e=0dXkhV) in the Hoplab Teams folder.
     
----
-    
+ 
 ### MR8 Equipment
     
 | **Area/Equipment**                 | **Description**                                                                                                                                                    |
@@ -85,9 +78,9 @@ Participants must wait at the **main entrance at least 30 minutes before** their
 
 !!! danger "Controlled Areas Access"
     Access to the Controlled Areas (MRI suite) is restricted and requires a KU Leuven card. Participants are not permitted to enter these areas until the **MR Safety Checklist** and **Consent Form** are signed.
-
+    
 ---
-
+    
 ### At the Scanner Control Room
 
 Upon arriving in the scanner control room, follow these steps to ensure smooth preparation and transition to the scanning session:
@@ -178,6 +171,28 @@ The scanner sends a trigger "5" to the stimulus computer. Different setups are u
 
 ![Trigger box](../../assets/triggerbox.png) 
 
+#### Common Issues
+
+??? failure "Button Box Not Responding"
+    1. Restart **Matlab**.
+    2. Reset the button boxes in the **technical room** by unplugging and reconnecting the power cables.
+    3. If the problem persists, restart the **stimulus computer**.
+
+??? failure "Trigger Not Working"
+    1. Restart **Matlab** and check for responses from the button box.
+    2. Ensure the trigger passes through the **static stimuli box** (check if the boxes are responsive).
+    3. Verify that all cables are connected properly. The **response box** is on the table next to the desktop PC in the technical room.
+    
+    ??? danger "Restarting the Scanner"
+        Do not do this without the approval of Ron or Stefan. If the trigger still doesn’t work, you may need to restart the scanner:
+        
+        1. Ensure the volunteer is out of the scanner first.
+        2. Go to the **technical room** and locate the box with the **red stop** and **green start** buttons.
+        3. Press the **red button** to stop the scanner. Wait 10 seconds, then press the **green button** to restart it.
+        4. Log back into the scanner computer using **MRService** credentials.
+        5. Wait until all components are ready and restart the software.  
+           Confirm any errors, such as helium pressure alerts, by pressing **OK**.
+           
 ---
 
 ### Scanner Table Setup
@@ -240,7 +255,7 @@ You can combine filters to adjust the luminance.
 2. **Adjusting the Lens**:  
    If the lens is out of position, use the buttons next to the lens on the projector to adjust — **do not touch the lens directly**.
 
-3. **Troubleshooting**:  
+3. **Common Issues**:  
      If the screen is showing a blue window or incorrect display:
      - Check that the projector cable is properly connected to the stimulus computer.
      - Ensure the source is set to DisplayPort.  
@@ -248,7 +263,9 @@ You can combine filters to adjust the luminance.
 
 !!! tip "Viewing Projector Menu"
     To view the projector menu, you'll need to be inside the scanner room with the remote. Remove the filter, then use the remote inside the scanner to see the menu options on the projection screen.
-
+    
+---
+    
 ## Getting the Volunteer Ready for the Scanner
 
 ### Earplugs and Headphones
@@ -330,6 +347,15 @@ The **control panels** on the left and right of the scanner have identical funct
     !!! note 
         Place the mirror on top of the coil before sliding the volunteer into the scanner.
 
+#### Common Issues
+??? failure "Table Calibration Failed"
+    - If the table moves too far inside the scanner, calibration may have failed. Slide the table out of the scanner, recalibrate, and try again.
+    - If the scanner light remains on, use the control buttons to switch it off.
+    - For **fMRI studies**, maintain consistent lighting throughout the session by using the outer circle on the control panel to switch the light on or off.
+
+??? failure "Green Calibration Light Already On"
+    - If the green calibration light is already on before positioning the table correctly, move the table out of the scanner to reset the calibration. The light will turn off, allowing you to restart the calibration process.
+    
 ---
 
 ### Inserting the Volunteer into the Scanner
@@ -345,6 +371,21 @@ The **control panels** on the left and right of the scanner have identical funct
     - Make sure **no metal or wires** are touching the volunteer’s skin or the bore of the scanner.
     - No wires should be looped within the scanner bore.
 
+#### Common Issues
+
+??? failure "Mirror Doesn’t Fit in the Bore"
+    - Check if the **washcloths** are stuck between the edges of the coil, as this could lift the coil's top.
+    - Ensure the bottom part of the coil is properly slotted into the grooves on the table.
+
+??? failure "Table Doesn’t Move"
+    - The table might be disconnected. Press the button located at the **bottom right**, next to the red button (Button 2), to reconnect the table.
+
+??? failure "Table Moves Too Far Inside Scanner"
+    If the table moves too far inside the scanner, it indicates a calibration failure:
+    
+    1. **Slide the table out** of the scanner.
+    2. **Recalibrate** the patient’s position using the calibration laser.
+    
 ---
 
 ### Screen Visibility
@@ -356,22 +397,68 @@ Before leaving the room, check the following:
 
 ---
 
-### Troubleshooting Common Issues
+## Eyetracker Setup
 
-=== "Mirror Doesn’t Fit in the Bore"
-    - Check if the **washcloths** are stuck between the edges of the coil, as this could lift the coil's top.
-    - Ensure the bottom part of the coil is properly slotted into the grooves on the table.
+### Positioning the Participant
 
-=== "Table Doesn’t Move"
-    - The table might be disconnected. Press the button located at the **bottom right**, next to the red button (Button 2), to reconnect the table.
+1. Use the **square mirror** with front reflection.
+2. Position the participant’s head as high as possible in the coil (to reduce shadows on the face).
+3. Support the participant’s neck with **washcloths** to tilt the head back for better eye visibility.
+    
+---
 
-=== "Table Calibration Failed"
-    - If the table moves too far inside the scanner, calibration may have failed. Slide the table out of the scanner, recalibrate, and try again.
-    - If the scanner light remains on, use the control buttons to switch it off.
-    - For **fMRI studies**, maintain consistent lighting throughout the session by using the outer circle on the control panel to switch the light on or off.
+### Eyetracker Startup
 
-=== "Green Calibration Light Already On"
-    - If the green calibration light is already on before positioning the table correctly, move the table out of the scanner to reset the calibration. The light will turn off, allowing you to restart the calibration process.
+1. **Scanner area**:
+    - Connect the eyetracker plug to the **power supply** (marked with a white tag: “eyetracking”).
+    - Ensure the screen is aligned with the **EYE** line.
+    - Check if the eyetracker setup is aligned with the floor marks.
+
+2. **Control room - Eyetracker PC**:
+    - Boot the **Eyelink** software (default option in the Windows Boot Manager).
+    - If Eyelink doesn’t start, press `t` followed by **Enter** to launch it manually.
+
+3. **Control room - Stimulus PC**:
+    - Open the **track2popup** to view the eye on the screen and adjust the sharpness.
+    
+---
+
+### Eyelink Camera Setup
+
+1. Press `ENTER` to begin **Camera Setup**.
+2. Adjust the camera position by holding a finger in front of it to check where it’s pointing.
+3. Ensure both the **pupil** and **corneal reflex (CT)** are well-detected.
+4. Adjust the **pupil threshold** using the up/down arrows for the clearest possible image.
+    
+---
+
+### Calibration & Validation
+
+1. **Calibration**:
+    - Before starting **Smartbrain**, ensure the participant is in the optimal head position for calibration.
+    - Press `C` to start calibration, and guide the participant to focus on the dots.
+    - When the word "stable" appears, press `SPACEBAR` 9 times for each point.
+
+2. **Validation**:
+    - Press `V` to start validation, guiding the participant to focus on the dots.
+    - If successful, press **ACCEPT**. If validation fails, recalibrate if needed.
+
+3. **Recording**:
+    - Open a new file before each functional run and press **RECORD** at the start of the run.
+    - Stop recording by pressing **CLOSE FILE** at the end of the run.
+    
+!!! tip "Controlling EyeLink"
+    It is advisable to control the calibration, validation, recordings and data collection from the script you use for your fMRI task.
+
+#### Common Issues
+
+??? failure "CalPopUp2 Issues"
+    If **CalPopUp2** does not start properly (errors or failure to create a new file), restarting the **stimulus PC** should solve the issue.
+
+??? failure "Tracking Issues"
+    If the eye is not being tracked during camera setup:
+    - Ask the participant to adjust the mirror for better light.
+    - Add **washcloths** under their neck to tilt the head back for a clearer view.
 
 ---
 
@@ -381,13 +468,6 @@ Before leaving the room, check the following:
 
 - **Ask if they are OK** before starting.
 - **Test the response buttons**: Ask the volunteer to press each relevant button one by one, and check the responses on the screen.
-
-### Room Lighting
-
-!!! important "Lighting for fMRI Studies"
-    Keep the same light settings throughout the entire fMRI study.  
-    - The **center button** turns the light on or off.
-    - **Swipe around the center button** to dim the lights.
 
 ---
 
@@ -406,9 +486,14 @@ Before leaving the room, check the following:
 3. **Proceed**:
     - Click **Proceed** to start setting up the exam.
 
-!!! info "Important Lighting Change"
+!!! info "Lighting Change"
     Starting a new exam will automatically switch on the outer light circle of the scanner. You may want to switch it off manually.
 
+!!! important "Lighting for fMRI Studies"
+    Keep the same light settings throughout the entire fMRI study.  
+    - The **center button** turns the light on or off.
+    - **Swipe around the center button** to dim the lights.
+    
 ---
 
 ### Select Your Exam Card
@@ -427,6 +512,24 @@ Before leaving the room, check the following:
         - **fMRI protocol N=4** (use this to check slice position and timing)
         - **fMRI protocol N=X** (number of dynamic scans in the actual study)
 
+#### Common Issues
+        
+??? failure "Participant Can’t Be Found in CP"
+    1. Start a **new examination** by going to **Patients > New Examination**.
+    2. Update the patient list by clicking **RIS Configuration**, then **Proceed**.
+    3. Close the **New Examination** window and reopen it via **Patients > New Examination > RIS**.
+    
+    If no one is available to help, manually fill in the participant's details and send an email to **Ron** with the following information:
+    
+    | **Field**         | **Value**                       |
+    |-------------------|---------------------------------|
+    | **Patient Name**  | Participant's name              |
+    | **Registration ID** | Same as patient name           |
+    | **Birthday**      | 01-01-(year of birth)           |
+    | **Sex**           | Participant's sex               |
+    | **Exam Name**     | Same as patient name            |
+    | **Weight**        | Weight from MR Safety Checklist |
+    
 ---
 
 ### Start Scanning
@@ -448,9 +551,38 @@ Before leaving the room, check the following:
     - Always press **Proceed** before starting the scan. Any changes made in the tabs won’t take effect unless **Proceed** is clicked.
     - Ensure consistent **TR**, slices, and settings within and between participants.
     - Start the experiment on the **Stimulus PC** before proceeding on the scanner, to avoid missing the trigger.
+    
+#### Common Issues
 
+??? failure "Door Not Closed Properly"
+    Ensure both the **door to the technical room** and the **scanner door** are securely closed.  
+    Improperly closed doors will trigger error messages and prevent scanning from starting.
+    
+??? failure "Patient position on the table is unknown"
+    If you encounter the error message "Patient position on the table is unknown":
+    
+    - Return to the scanner room and **recalibrate** the patient’s position using the laser alignment system.
+    - Ensure that the calibration laser is correctly aligned and restart the scan.
+    
+??? failure "Scanner Light Still On"
+    If the scanner light remains on, adjust it using the control buttons. 
+     
+    For **fMRI studies**, ensure the lighting remains consistent throughout the session. Use the **outer circle** on the control panel to turn the light off or dim it as needed.    
+    
+??? failure "Pixelated Image After Reference Scan"
+    If the reference scan shows a pixelated image with only the skull contours visible, the top of the coil may not be properly mounted.
+
+    - Slide the volunteer out of the scanner.
+    - Ensure that the coil is securely closed before attempting to recalibrate.
+
+??? failure "Ventilation Too Low"
+    If the ventilation error appears during **Smartbrain**, the system requires a minimum ventilation setting of 3.
+
+    - You can either proceed without adjusting the setting or adjust ventilation via **Examination > Adjust Ventilation** in the scan console.
+    
 ---
-## Anatomical Scan
+
+### Anatomical Scan
 
 If you need to collect only an **anatomical scan**, you still must run the **standard scans** first (refer to the section above).
 
@@ -466,7 +598,7 @@ During the anatomical run, participants can:
 
 ---
 
-## Checking for Movement
+### Checking for Movement
 
 After an fMRI run finishes:
 
@@ -522,106 +654,15 @@ To monitor export progress, navigate to:
 To track export progress, navigate to:
 - **Patients > Administration > Manage Job Queue**
 
----
+#### Common Issues
 
-## Troubleshooting and Common Issues
-
-### Patient Issues
-
-=== "Participant Can’t Be Found in CP"
-    1. Start a **new examination** by going to **Patients > New Examination**.
-    2. Update the patient list by clicking **RIS Configuration**, then **Proceed**.
-    3. Close the **New Examination** window and reopen it via **Patients > New Examination > RIS**.
-    
-    If no one is available to help, manually fill in the participant's details and send an email to **Ron** with the following information:
-    
-    | **Field**         | **Value**                       |
-    |-------------------|---------------------------------|
-    | **Patient Name**  | Participant's name              |
-    | **Registration ID** | Same as patient name           |
-    | **Birthday**      | 01-01-(year of birth)           |
-    | **Sex**           | Participant's sex               |
-    | **Exam Name**     | Same as patient name            |
-    | **Weight**        | Weight from MR Safety Checklist |
-
----
-
-### Scanner Issues
-
-=== "Door Not Closed Properly"
-    Ensure both the **door to the technical room** and the **scanner door** are securely closed.  
-    Improperly closed doors will trigger error messages and prevent scanning from starting.
-
----
-
-### Calibration Problems
-
-=== "Calibration Not Registered"
-    If you encounter the error message "Patient position on the table is unknown":
-    
-    - Return to the scanner room and **recalibrate** the patient’s position using the laser alignment system.
-    - Ensure that the calibration laser is correctly aligned and restart the scan.
-
----
-
-### Table Movement Issues
-
-=== "Table Won’t Move"
-    If the table isn’t moving, it may be disconnected. Press the button located at the **bottom right**, next to the red button (Button 2), to reconnect the table.
-
-=== "Table Moves Too Far Inside Scanner"
-    If the table moves too far inside the scanner, it indicates a calibration failure:
-    
-    1. **Slide the table out** of the scanner.
-    2. **Recalibrate** the patient’s position using the calibration laser.
-    3. Restart the scan.
-
-=== "Scanner Light Still On"
-    If the scanner light remains on, adjust it using the control buttons. 
-     
-    For **fMRI studies**, ensure the lighting remains consistent throughout the session. Use the **outer circle** on the control panel to turn the light off or dim it as needed.
-
----
-
-### Button Box and Trigger Issues
-
-=== "Button Box Not Responding"
-    1. Restart **Matlab**.
-    2. Reset the button boxes in the **technical room** by unplugging and reconnecting the power cables.
-    3. If the problem persists, restart the **stimulus computer**.
-
-=== "Trigger Not Working"
-    1. Restart **Matlab** and check for responses from the button box.
-    2. Ensure the trigger passes through the **static stimuli box** (check if the boxes are responsive).
-    3. Verify that all cables are connected properly. The **response box** is on the table next to the desktop PC in the technical room.
-    
-    ??? danger "Restarting the Scanner"
-        Do not do this without the approval of Ron or Stefan. If the trigger still doesn’t work, you may need to restart the scanner:
-        
-        1. Ensure the volunteer is out of the scanner first.
-        2. Go to the **technical room** and locate the box with the **red stop** and **green start** buttons.
-        3. Press the **red button** to stop the scanner. Wait 10 seconds, then press the **green button** to restart it.
-        4. Log back into the scanner computer using **MRService** credentials.
-        5. Wait until all components are ready and restart the software.  
-           Confirm any errors, such as helium pressure alerts, by pressing **OK**.
-
----
-
-## Export and Storage Issues
-
-### Disk Space Problems
-
-=== "Not Enough Free Disk Space"
+??? failure "Not Enough Free Disk Space"
     If files do not export properly (e.g., incorrect sizes), it may indicate that the export drive has insufficient space.
     
     1. **Check the available disk space** by right-clicking the **Export drive** and selecting **Properties**.
     2. If the drive is full, delete old data such as **PAR-REC, Nifti, or DICOM** files. These files can be re-exported later, so no data will be permanently lost.
 
----
-
-### Database Full
-
-=== "Local Patient Database Near Full Capacity"
+??? failure "Local Patient Database Near Full Capacity"
     If the local patient database is nearly full (90-100% capacity), scanning may not proceed.
     
     1. Navigate to **Patients > Administration** in the scan program.
@@ -631,36 +672,13 @@ To track export progress, navigate to:
         - Delete previous participant data only after confirming that it has been exported and transferred without corruption.
         - Alternatively, ask for help from an MR technician to delete unnecessary data.
 
----
-
-### Image Quality Issues
-
-=== "Pixelated Image After Reference Scan"
-    If the reference scan shows a pixelated image with only the skull contours visible, the top of the coil may not be properly mounted.
-
-    - Slide the volunteer out of the scanner.
-    - Ensure that the coil is securely closed before attempting to recalibrate.
-
----
-
-### Ventilation Errors
-
-=== "Ventilation Too Low During Smartbrain"
-    If the ventilation error appears during **Smartbrain**, the system requires a minimum ventilation setting of 3.
-
-    - You can either proceed without adjusting the setting or adjust ventilation via **Examination > Adjust Ventilation** in the scan console.
-
----
-
-### Exporting and Device Issues
-
-=== "Missing Export Window"
+??? failure "Missing Export Window"
     If the export window doesn’t appear, press the **Windows** key to reveal the taskbar and locate the hidden export window.
 
-=== "Export Progress Stalled"
+??? failure "Export Progress Stalled"
     If DICOM exports seem to have stalled, navigate to **Manage Job Queue** and check that the dropdown menu is set to **Enabled**.
 
-=== "Safe Ejection of External Drives"
+??? failure "Safe Ejection of External Drives"
     If you are unable to safely eject your external drive:
     
     1. Log off the scanner computer to shut down the scanning software.
@@ -668,7 +686,7 @@ To track export progress, navigate to:
     3. Restart the scanning software and acknowledge any **helium pressure** alarms.
     4. Once done, you can safely eject the external drive.
 
-=== "External Drive Not Detected"
+??? failure "External Drive Not Detected"
     If the external drive is not detected in the **Devices and Drives** window:
     
     1. Log off and log back in using the **MRService** credentials.
@@ -752,9 +770,7 @@ Before leaving the department, complete the **check-out part** of the check-in/o
 
 ---
 
-## Scanning Particularities
-
-### Scanning of Children
+## Scanning of Children
 
 1. **Preparation**:
     - Bring **biscuits** and **drinks** for the child.
@@ -803,75 +819,17 @@ Before leaving the department, complete the **check-out part** of the check-in/o
 
 ---
 
-## Eyetracker Setup
-
-### Positioning the Participant
-
-1. Use the **square mirror** with front reflection.
-2. Position the participant’s head as high as possible in the coil (to reduce shadows on the face).
-3. Support the participant’s neck with **washcloths** to tilt the head back for better eye visibility.
-
-### Eyetracker Startup
-
-1. **Scanner area**:
-    - Connect the eyetracker plug to the **power supply** (marked with a white tag: “eyetracking”).
-    - Ensure the screen is aligned with the **EYE** line.
-    - Check if the eyetracker setup is aligned with the floor marks.
-
-2. **Control room - Eyetracker PC**:
-    - Boot the **Eyelink** software (default option in the Windows Boot Manager).
-    - If Eyelink doesn’t start, press `t` followed by **Enter** to launch it manually.
-
-3. **Control room - Stimulus PC**:
-    - Open the **track2popup** to view the eye on the screen and adjust the sharpness.
-
-### Eyelink Camera Setup
-
-1. Press `ENTER` to begin **Camera Setup**.
-2. Adjust the camera position by holding a finger in front of it to check where it’s pointing.
-3. Ensure both the **pupil** and **corneal reflex (CT)** are well-detected.
-4. Adjust the **pupil threshold** using the up/down arrows for the clearest possible image.
-
-### Calibration & Validation
-
-1. **Calibration**:
-    - Before starting **Smartbrain**, ensure the participant is in the optimal head position for calibration.
-    - Press `C` to start calibration, and guide the participant to focus on the dots.
-    - When the word "stable" appears, press `SPACEBAR` 9 times for each point.
-
-2. **Validation**:
-    - Press `V` to start validation, guiding the participant to focus on the dots.
-    - If successful, press **ACCEPT**. If validation fails, recalibrate if needed.
-
-3. **Recording**:
-    - Open a new file before each functional run and press **RECORD** at the start of the run.
-    - Stop recording by pressing **CLOSE FILE** at the end of the run.
-
----
-
-### Troubleshooting
-
-=== "CalPopUp2 Issues"
-    If **CalPopUp2** does not start properly (errors or failure to create a new file), restarting the **stimulus PC** should solve the issue.
-
-=== "Tracking Issues"
-    If the eye is not being tracked during camera setup:
-    - Ask the participant to adjust the mirror for better light.
-    - Add **washcloths** under their neck to tilt the head back for a clearer view.
-
----
-
 ## Auditory Stimuli
 
-### Setup
-
-#### Scanner Room - Yellow Headphones
+### Scanner Room - Yellow Headphones
 
 - The yellow headphones are stored on the left side of the storage space (against the wall).
 - The headphones will present sound at full level only when placed inside the scanner bore.
 - Disconnect the **white headphones** from the head coil and replace them with the yellow headphones.
 
-#### Control Room - Microphone
+---
+
+### Control Room - Microphone
 
 The microphone is always on, but goes into standby mode after a few seconds.
 
@@ -883,31 +841,23 @@ The microphone is always on, but goes into standby mode after a few seconds.
 
 Activate the **fMRI settings** by holding the **Menu button** and pressing **+** to navigate to the fMRI option.
 
-#### Control Room - Amplifier and Converter
+---
+
+### Control Room - Amplifier and Converter
 
 - Check that the **red and white plugs** (audio cables to the headphones) are connected to the converter.
 - Ensure the **power cable** is plugged in next to the red and white plugs.
 
----
+#### Common Issues
 
-### Troubleshooting
-
-#### Audio Not Working
-
-=== "Participant Can't Hear You"
+??? failure "Participant Can't Hear You"
     - Reboot the amplifier by unplugging the **power cable** underneath the desk.
     - Reboot the converter by unplugging its power cable.
 
-=== "Volume Imbalance (left/right)"
+??? failure "Volume Imbalance (left/right)"
     - Adjust the balance via the **Menu button**. Hold it and use **+/-** to adjust levels separately.
 
 ---
-
-### End of Session
-
-1. Reconnect the **white headphones** to the head coil.
-2. Return the **yellow headphones** to their storage location.
-3. Leave all other equipment as it is.
 
 ## In Case of Emergency
 
