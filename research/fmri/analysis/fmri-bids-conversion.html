@@ -1055,6 +1055,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -1085,16 +1089,24 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_3_5_4" id="__nav_3_5_4_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Analysis workflow
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5_4" id="__nav_3_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_5_4">
@@ -1104,13 +1116,15 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../fmri-general.html" class="md-nav__link">
+      <a href="fmri-general.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1677,7 +1691,7 @@
 <li>The scanner: Functional and structural outputs (<code>.nii</code> files), alongside potential <code>dicom</code> files</li>
 <li>The stimulus presentation computer: Behavioural outputs (mainly <code>log</code> files and <code>.mat</code> files) and potentially eye-tracking data</li>
 </ol>
-<p>Your first step is to organize these files in a <code>sourcedata</code> folder. Follow the structure outlined in <a href="../fmri-general.html#how-to-store-raw-data">How to store raw data</a>. Once your data is properly arranged, you can proceed to anonymize it and convert it to BIDS format.</p>
+<p>Your first step is to organize these files in a <code>sourcedata</code> folder. Follow the structure outlined in <a href="fmri-general.html#how-to-store-raw-data">How to store raw data</a>. Once your data is properly arranged, you can proceed to anonymize it and convert it to BIDS format.</p>
 <p>Here's a high-level overview of the steps involved in arranging your data in a BIDS-compatible way. While this provides a general understanding, most of these steps should be performed using the code provided in each sub-section to minimize errors.</p>
 <ol>
 <li>
@@ -1725,7 +1739,7 @@
 <li>
 <p>Update <code>.json</code> sidecar files:</p>
 <ul>
-<li>Complete the <code>PhaseEncodingDirection</code> and <code>SliceTiming</code> fields (see <a href="../fmri-general.html#missing-fields-in-json-files">Missing fields in JSON files</a> for more information)</li>
+<li>Complete the <code>PhaseEncodingDirection</code> and <code>SliceTiming</code> fields (see <a href="fmri-general.html#missing-fields-in-json-files">Missing fields in JSON files</a> for more information)</li>
 <li>Duplicate and rename sidecar files to accompany each <code>bold.nii</code> file</li>
 </ul>
 </li>
@@ -1756,7 +1770,7 @@
 <p>Here we provide more detailed instructions to perform each of the steps mentioned above. </p>
 <div class="admonition warning">
 <p class="admonition-title">Folder Structure</p>
-<p>All the steps and scripts below assume a specific folder structure and file naming convention. They <strong>will not work</strong> otherwise. Ensure you strictly follow the instructions in the <a href="../fmri-general.html#how-to-store-raw-data">How to store raw data</a> page.</p>
+<p>All the steps and scripts below assume a specific folder structure and file naming convention. They <strong>will not work</strong> otherwise. Ensure you strictly follow the instructions in the <a href="fmri-general.html#how-to-store-raw-data">How to store raw data</a> page.</p>
 <p><strong>TODO:</strong> [ANDREA] in the how to store raw data page, create a folders tree that includes all the relevant folders and subfolder. The current tree is not complete.</p>
 </div>
 <h3 id="anonymize-raw-scanner-data">Anonymize raw scanner data<a class="headerlink" href="#anonymize-raw-scanner-data" title="Permanent link">&para;</a></h3>
@@ -1963,7 +1977,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 17:10:03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 17, 2024 18:40:32</span>
   </span>
 
     
