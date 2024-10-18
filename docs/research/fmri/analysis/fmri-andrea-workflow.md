@@ -229,7 +229,7 @@ Check the `sub-xx.html` report to ensure everything ran smoothly. Pay particular
 - **Registrations**: Verify the alignment between functional and anatomical images.
 - **Framewise Displacement (FD) Values**: Look for runs with unusually high FD values, as these may indicate motion artifacts or poor data quality.
 
-For more details, refer to:
+For more details, refer to the general guidelines outlined [here](fmri-prepocessing-qa.html#interpreting-fmriprep-and-mriqc-reports), and to the following links:
 
 - [fMRIPrep Output Confounds](https://fmriprep.org/en/stable/outputs.html#confounds)
 - [Video on Reviewing fMRIPrep Outputs](https://www.youtube.com/watch?v=fQHEKSzFKDc&list=PLIQIswOrUH6_szyxn9Fy-2cxd3vjlklde&index=3)
