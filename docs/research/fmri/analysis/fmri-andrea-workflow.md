@@ -6,8 +6,9 @@ The code to reproduce these analyses can be found [here](https://github.com/cost
 
 !!! tip
     For information on how to set up the working environment, install, and configure the packages mentioned in this document, refer to:
-    - [docs/research/fmri/analysis/fmri-setup-env.md](../fmri-setup-env.md)
-    - [docs/research/coding/index.md](../../coding/index.md)
+    
+    - [Set-up your fMRI environment](../fmri-setup-env.md)
+    - [Coding practices](../../coding/index.md)
 
 ---
 
@@ -87,13 +88,13 @@ The fMRI task script should output two files per run:
 
 1. `<timestamp>_log_<subID>-<run>-<buttonMapping>_<taskName>.tsv` : This is the human-readable log file produced by the task. Here is an extract from the file:
 
-| EVENT_TYPE | EVENT_NAME | DATETIME                | EXP_ONSET | ACTUAL_ONSET | DELTA      | EVENT_ID |
-|------------|------------|-------------------------|-----------|--------------|------------|----------|
-| START      | -          | 2024-05-03 10:49:43.099 | -         | 0            | -          | -        |
-| FLIP       | Instr      | 2024-05-03 10:50:11.399 | -         | 28.300201    | -          | -        |
-| RESP       | KeyPress   | 2024-05-03 10:50:34.160 | -         | 51.063114    | -          | 51       |
-| FLIP       | TgrWait    | 2024-05-03 10:50:34.216 | -         | 51.117046    | -          | -        |
-| PULSE      | Trigger    | 2024-05-03 10:50:40.000 | -         | 56.904357    | -          | 53       |
+    | EVENT_TYPE | EVENT_NAME | DATETIME                | EXP_ONSET | ACTUAL_ONSET | DELTA      | EVENT_ID |
+    |------------|------------|-------------------------|-----------|--------------|------------|----------|
+    | START      | -          | 2024-05-03 10:49:43.099 | -         | 0            | -          | -        |
+    | FLIP       | Instr      | 2024-05-03 10:50:11.399 | -         | 28.300201    | -          | -        |
+    | RESP       | KeyPress   | 2024-05-03 10:50:34.160 | -         | 51.063114    | -          | 51       |
+    | FLIP       | TgrWait    | 2024-05-03 10:50:34.216 | -         | 51.117046    | -          | -        |
+    | PULSE      | Trigger    | 2024-05-03 10:50:40.000 | -         | 56.904357    | -          | 53       |
 
 
 2. `<timestamp>_log_<subID>_<run>_<taskName>.mat`: This MATLAB file contains all the parameters to reproduce the experimental run, and stores input parameters and results.
@@ -188,11 +189,32 @@ fmriprep-docker /data/projects/chess/data/BIDS /data/projects/chess/data/BIDS/de
     --notrack --participant-label 41
 ```
    
-!!! note
-    if you want to run analysis on surface data, you may want to consider getting CIFTI output images from fmriprep. I did not test this, but it should produce cortical BOLD series projected from the Glasser2016 template (the same parcellation I use for MVPA). In theory, SPM should be able to analyze .gii surface data, and bt getting the CIFTI outputs you should already have the parcellation projected to subject space for subsequent analyses. Or at least it should give a Glasser parcellation on subject/MNI space that is directly usable for MVPA, therefore skipping the quite time-sonsuming and complicate step to produce the HPC ROIs (see below)
+??? tip "Use CIFTI output for surface data"
+    If you plan to run analysis on **surface data**, consider using **CIFTI output images** from fMRIPrep. While this approach hasn't been directly tested here, CIFTI outputs can provide several advantages:
     
-!!! warning
-    this call is very resource and time intensive. It will take several hours (4-8, depending on your PC specs) at full capacity to preprocess a single subject. If you need to process many subjects, you may want to play with the ncpus and mem-mb parameters to be sure that you are using all the available resources. A good test of this is to open the task manager on windows, and check the CPU and RAM usage during a run. Ideally, we want the CPU to be always at max speed, and the RAM to be 10 GB below the maximum. If the RAM needed by the process is higher than the RAM available, you will get Out of Memory errors, or No more space on disk errors if you did not specify a work-dir folder. If this happens, lower the mem-mb and n-cpus until tyou find the right spot.
+    - **CIFTI images** include cortical BOLD time series projected onto the surface using templates like the **Glasser2016 parcellation** (which is also used for MVPA).
+    - This method allows for direct analysis of surface data in formats like `.gii`, which can be compatible with **SPM** for further analysis.
+    - Using CIFTI outputs could simplify the process of obtaining **surface-based parcellations** and make the data more directly usable in subject space, potentially eliminating the need for complex and time-consuming transformations.
+    - It may also provide a **more accurate representation of cortical activity** by avoiding interpolation errors that can occur when mapping from volume to surface space.
+
+    If you decide to explore this option, make sure to include the cifti falg in `--output-spaces` when running `fmriprep-docker`. This setup will produce CIFTI files (`.dtseries.nii`) along with standard volumetric outputs, giving you flexibility in how you proceed with your analysis.
+
+??? warning "Allocating resources to fMRIprep"
+    **Running fMRIPrep is resource and time intensive**, especially with high-resolution data. Here are some practical tips to optimize the process:
+
+    - **Time Estimate**: Processing a single subject can take between **4-8 hours** depending on your system's specifications (e.g., CPU, RAM). Plan accordingly if you have many subjects.
+    - **Optimize Resource Allocation**: Adjust the `--n-cpus` and `--mem-mb` arguments to make the best use of your available hardware:
+        - **n-cpus**: Allocate about 70-80% of your CPU cores to avoid system slowdowns (e.g., `--n-cpus 12` on a 16-core system).
+        - **mem-mb**: Use around **80-90% of your total RAM**, leaving some free for the operating system (e.g., `--mem-mb 32000` on a 40 GB system).
+
+    - **Monitor Resource Usage**: While running fMRIPrep, open a system monitor like **Task Manager** (Windows), **Activity Monitor** (Mac), or **htop** (Linux) to observe CPU and memory usage:
+        - Aim for **high CPU usage** (close to maximum) and **RAM usage** that is slightly below your system’s capacity.
+        - If memory usage exceeds available RAM, the process might crash due to **Out of Memory (OOM)** errors or cause **disk space issues** if using a `--work-dir` that fills up.
+
+    - **Adjust Settings if Necessary**: If you encounter OOM errors or the process is slower than expected:
+        - **Lower `--mem-mb`**: Decrease memory allocation incrementally (e.g., by 2-4 GB at a time).
+        - **Reduce `--n-cpus`**: Using fewer cores can help balance the load and prevent crashes.
+        - **Use a dedicated `--work-dir`**: Specify a work directory on a **high-speed SSD** or similar to reduce I/O bottlenecks and ensure there's enough disk space for temporary files.
     
 If the run finishes successfully (check the last line of your terminal output), you should have a new `BIDS/derivatives/fmriprep/sub-xx` folder. See [here](https://fmriprep.org/en/stable/outputs.html) for a complete list of outputs generated by fMRIPrep. Make sure that inside your `anat` and `func` folders you have all the scans (anatomical and functional for all runs) in the specified spaces. Since we specified `fsnative` as a space and did not use the `--no-recon-all` flag, fMRIPrep will also produce surface data in `BIDS/derivatives/fastsurfer/sub-xx`.
 
@@ -206,12 +228,13 @@ Check the `sub-xx.html` report to ensure everything ran smoothly. Pay particular
 - **Framewise Displacement (FD) Values**: Look for runs with unusually high FD values, as these may indicate motion artifacts or poor data quality.
 
 For more details, refer to:
+
 - [fMRIPrep Output Confounds](https://fmriprep.org/en/stable/outputs.html#confounds)
 - [Video on Reviewing fMRIPrep Outputs](https://www.youtube.com/watch?v=fQHEKSzFKDc&list=PLIQIswOrUH6_szyxn9Fy-2cxd3vjlklde&index=3)
 
 ---
 
-## Processing Eye-Tracking Data with bidsmreye
+## Processing Eye-Tracking Data with `bidsmreye`
 
 To process eye-tracking data using `bidsmreye`, run the following Docker command:
 
@@ -238,12 +261,12 @@ After preprocessing, proceed to the first-level analysis with the GLM. Running t
 - **Paths**:
     - `fmriprepRoot`: Path to the fMRIPrep folder.
     - `BIDSRoot`: Path to your BIDS folder.
-    - `outRoot`: Path to save GLM results (should ideally be in the derivatives folder, in a `fmriprep-spm` folder).
-    - `tempDir`: Path for temporary files, such as uncompressed or smoothed files.
+    - `outRoot`: Path to save GLM results (ideally in the derivatives folder, in a `fmriprep-spm` folder).
+    - `tempDir`: Directory for temporary files, such as uncompressed or smoothed files.
 
 - **Subject Selection**:
-    
-    Leave a new line before the list of subjects.
+
+    Leave a new line before listing subjects.
 
     - `selectedSubjectsList`: A list of integers like `[41, 42, 43, 44]` or use `'*'` to analyze all subjects.
     - `selectedRuns`: List of runs to analyze.
@@ -266,19 +289,19 @@ If everything is configured correctly, the script will generate new `sub-xx` fol
 It is advisable to verify that the design matrix is set up correctly:
 
 1. Open the SPM GUI by typing `spm fmri` in the MATLAB Command Window.
-2. Click on 'Results' and select the `SPM.mat` file located in your `BIDS/fmriprep-spm/{space}/sub-xx/{task_name}/` directory.
+2. Click on **Results** and select the `SPM.mat` file located in your `BIDS/fmriprep-spm/{space}/sub-xx/{task_name}/` directory.
 3. This will open the SPM Contrast Manager, showing the design matrix and assigned contrasts. Ensure the following:
     - No overlapping or unusually long conditions.
     - The correct number of runs.
     - Confound regressors are positioned at the end of each run.
     - Contrast weights are assigned correctly.
 
-4. Select your contrast and click 'Done'.
+4. Select your contrast and click **Done**.
 5. In the next window, set the following options:
     - **Apply masking**: None
     - **P-value adjustment**: None
-    - **Threshold**: 0.001
-    - **Extent threshold**: 0
+    - **Threshold**: `0.001`
+    - **Extent threshold**: `0`
 
 This will display the results of the contrast (thresholded t-map) on the top right, along with a list of significantly active clusters in the bottom right panel.
 
@@ -288,8 +311,8 @@ This will display the results of the contrast (thresholded t-map) on the top rig
 
 To visualize activations on a volume or surface:
 
-1. Click 'Display' -> 'overlays...' in the SPM GUI.
-2. Select 'sections' for volume plotting or `render` for surface plotting.
+1. Click **Display** -> **overlays...** in the SPM GUI.
+2. Select **sections** for volume plotting or **render** for surface plotting.
 3. Choose the subject's anatomical image from `BIDS/derivatives/fmriprep/sub-xx/anat`.
     - For volume plots, select the `.nii` file corresponding to the same space as your GLM (usually MNI).
     - For surface plots, select the pial or inflated brain image.
@@ -305,8 +328,8 @@ To visualize activations on a volume or surface:
 
 To run MVPA, you need Regions of Interest (ROIs) to select your voxels. You can obtain ROIs through:
 
-- **Functional Localizers**: Perform a localizer task in the scanner, then run a GLM on the preprocessed and smoothed data. For example, `Faces > Objects` to identify the FFA.
-- **Pre-defined Anatomical Masks**: Use anatomical masks in the same space as your subjects (e.g., MNI). Ensure the mask resolution matches the resolution of your data (e.g., resample/reslice if necessary using tools like ANTs, SPM, or Python libraries like `nilearn` or `nibabel`).
+- **Functional Localizers**: Perform a localizer task in the scanner, then run a GLM on the preprocessed and smoothed data. For example, `Faces > Objects` to identify the **FFA**.
+- **Pre-defined Anatomical Masks**: Use anatomical masks in the same space as your subjects (e.g., MNI). Ensure the mask resolution matches the resolution of your data (e.g., resample/reslice if necessary using tools like **ANTs**, **SPM**, or Python libraries like **nilearn** or **nibabel**).
 
 ---
 
