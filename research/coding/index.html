@@ -2522,7 +2522,8 @@ Spyder’s object inspection feature allows you to explore the attributes and me
 </div>
 <hr />
 <h2 id="version-control-with-git-and-github">Version Control with Git and GitHub<a class="headerlink" href="#version-control-with-git-and-github" title="Permanent link">&para;</a></h2>
-<p>Version control is crucial for collaborative coding and tracking changes in your projects. Here’s how to set up and use Git and GitHub:</p>
+<p>Version control is crucial for collaborative coding and tracking changes in your projects. Here’s how to set up and use Git and GitHub, including practical tips for effective collaboration.</p>
+<p>For a beginner-friendly guide, with explanation on main steps and terminology see <a href="https://github.blog/developer-skills/github/beginners-guide-to-github-adding-code-to-your-repository/">this page</a>.</p>
 <h3 id="1-install-git">1. Install Git<a class="headerlink" href="#1-install-git" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="windows_1" name="__tabbed_4" type="radio" /><input id="mac_1" name="__tabbed_4" type="radio" /><input id="ubuntu_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="windows_1">Windows</label><label for="mac_1">Mac</label><label for="ubuntu_1">Ubuntu</label></div>
 <div class="tabbed-content">
@@ -2535,22 +2536,22 @@ Spyder’s object inspection feature allows you to explore the attributes and me
 <div class="tabbed-block">
 <ul>
 <li>Install via Homebrew:
-    <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>brew<span class="w"> </span>install<span class="w"> </span>git
+    <div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>brew install git
 </span></code></pre></div></li>
 <li>Alternatively, download the <a href="https://git-scm.com/download/mac">Git installer</a>.</li>
 </ul>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git
+<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo apt-get update
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>sudo apt-get install git
 </span></code></pre></div>
 </div>
 </div>
 </div>
 <h3 id="2-configure-git">2. Configure Git<a class="headerlink" href="#2-configure-git" title="Permanent link">&para;</a></h3>
 <p>Set up your Git identity using the following commands:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;youremail@example.com&quot;</span>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>git config --global user.name &quot;Your Name&quot;
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>git config --global user.email &quot;youremail@example.com&quot;
 </span></code></pre></div></p>
 <h3 id="3-using-github">3. Using GitHub<a class="headerlink" href="#3-using-github" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="github-desktop-gui" name="__tabbed_5" type="radio" /><input id="command-line-cli" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="github-desktop-gui">GitHub Desktop (GUI)</label><label for="command-line-cli">Command Line (CLI)</label></div>
@@ -2576,20 +2577,199 @@ Spyder’s object inspection feature allows you to explore the attributes and me
 <div class="tabbed-block">
 <ol>
 <li><strong>Clone a Repository</strong>:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-username/repo-name.git
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nb">cd</span><span class="w"> </span>repo-name
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>git clone https://github.com/your-username/repo-name.git
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>cd repo-name
 </span></code></pre></div></li>
 <li><strong>Stage and Commit Changes</strong>:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Initial commit&quot;</span>
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>git add .
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>git commit -m &quot;Initial commit&quot;
 </span></code></pre></div></li>
 <li><strong>Push Changes</strong>:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>git push origin main
 </span></code></pre></div></li>
 </ol>
 </div>
 </div>
 </div>
+<h3 id="4-workflow-tips-for-effective-collaboration">4. Workflow Tips for Effective Collaboration<a class="headerlink" href="#4-workflow-tips-for-effective-collaboration" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Always Pull Before Making Changes</strong>: </p>
+<ul>
+<li>Before starting any work, ensure your local repository is up-to-date with the latest changes:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>git pull origin main
+</span></code></pre></div></li>
+<li>This prevents merge conflicts and keeps your local version in sync with the remote repository.</li>
+</ul>
+</li>
+<li>
+<p><strong>Typical Workflow</strong>:</p>
+<ul>
+<li><strong>Fetch Updates</strong>:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>git fetch
+</span></code></pre></div></li>
+<li><strong>Pull Latest Changes</strong>:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>git pull origin main
+</span></code></pre></div></li>
+<li><strong>Make Edits</strong>: Modify files as needed.</li>
+<li><strong>Stage Changes</strong>:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>git add .
+</span></code></pre></div></li>
+<li><strong>Commit Changes</strong> with a clear message:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>git commit -m &quot;Describe the changes made&quot;
+</span></code></pre></div></li>
+<li><strong>Push to Remote</strong>:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>git push origin main
+</span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Commit Often, but Meaningfully</strong>: </p>
+<ul>
+<li>Frequent commits help track your progress, but ensure each commit is meaningful and descriptive.</li>
+</ul>
+</li>
+</ol>
+<h4 id="common-git-issues">Common Git Issues<a class="headerlink" href="#common-git-issues" title="Permanent link">&para;</a></h4>
+<details class="failure">
+<summary>Merge Conflict</summary>
+<p><strong>Issue</strong>: This occurs when changes are made in the same part of a file in both the local and remote versions.</p>
+<p><strong>Solution</strong>:   <br />
+- Resolve the conflict manually in the affected file.
+- Stage the resolved file:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>git add &lt;file&gt;
+</span></code></pre></div>
+- Commit the resolution:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>git commit -m &quot;Resolved merge conflict in &lt;file&gt;&quot;
+</span></code></pre></div></p>
+</details>
+<details class="failure">
+<summary>Detached HEAD</summary>
+<p><strong>Issue</strong>: Happens when you are not on a branch but on a specific commit.</p>
+<p><strong>Solution</strong>: 
+- Switch back to your branch:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>git checkout main
+</span></code></pre></div></p>
+</details>
+<details class="failure">
+<summary>Push Rejected</summary>
+<p><strong>Issue</strong>: Your push was rejected because the remote has changes that you don't have locally.</p>
+<p><strong>Solution</strong>: 
+- Pull the latest changes, resolve any conflicts, and try pushing again:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>git pull origin main
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>git push origin main
+</span></code></pre></div></p>
+</details>
+<details class="failure">
+<summary>Failed to Push Some Refs</summary>
+<p><strong>Issue</strong>: Occurs when there are changes on the remote that need to be merged before pushing.</p>
+<p><strong>Solution</strong>:
+- Run:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>git pull --rebase origin main
+</span></code></pre></div>
+- This replays your changes on top of the pulled changes and then allows you to push again.</p>
+</details>
+<details class="failure">
+<summary>Changes Not Staged for Commit</summary>
+<p><strong>Issue</strong>: Files were modified but not added to the staging area.</p>
+<p><strong>Solution</strong>: 
+- Add the changes to the staging area:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>git add &lt;file&gt;
+</span></code></pre></div>
+- Or add all changes:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>git add .
+</span></code></pre></div></p>
+</details>
+<details class="failure">
+<summary>File Deleted Locally, But Not in Remote</summary>
+<p><strong>Issue</strong>: A file was deleted locally but still exists in the remote repository.</p>
+<p><strong>Solution</strong>: 
+- To stage the deletion:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>git rm &lt;file&gt;
+</span></code></pre></div>
+- Commit and push the change:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>git commit -m &quot;Deleted &lt;file&gt;&quot;
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>git push origin main
+</span></code></pre></div></p>
+</details>
+<details class="failure">
+<summary>Authentication Failed</summary>
+<p><strong>Issue</strong>: This happens if your credentials are incorrect or have expired.</p>
+<p><strong>Solution</strong>: 
+- Update your Git credentials:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>git config --global credential.helper store
+</span></code></pre></div>
+- Re-run the <code>git push</code> command, and enter your credentials when prompted.</p>
+</details>
+<details class="failure">
+<summary>Branch Not Found</summary>
+<p><strong>Issue</strong>: Occurs when you try to checkout a branch that doesn’t exist locally or remotely.</p>
+<p><strong>Solution</strong>: 
+- Create the branch:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>git checkout -b branch-name
+</span></code></pre></div>
+- Or fetch all remote branches:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>git fetch --all
+</span></code></pre></div></p>
+</details>
+<details class="failure">
+<summary>Untracked Files</summary>
+<p><strong>Issue</strong>: New files are created locally but not yet added to Git.</p>
+<p><strong>Solution</strong>: 
+- Stage the files:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>git add &lt;file&gt;
+</span></code></pre></div>
+- To ignore certain files, add them to <code>.gitignore</code>.</p>
+</details>
+<details class="failure">
+<summary>File Size Too Large</summary>
+<p><strong>Issue</strong>: Git prevents files larger than 100MB from being pushed.</p>
+<p><strong>Solution</strong>: 
+- Use <a href="https://git-lfs.github.com/">Git Large File Storage (LFS)</a> to manage large files:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>git lfs install
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>git lfs track &quot;&lt;file-pattern&gt;&quot;
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>git add &lt;large-file&gt;
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>git commit -m &quot;Add large file using Git LFS&quot;
+</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a>git push origin main
+</span></code></pre></div>
+- Alternatively, remove the large file and add it to <code>.gitignore</code>:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>git rm --cached &lt;large-file&gt;
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>echo &quot;&lt;large-file&gt;&quot; &gt;&gt; .gitignore
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>git commit -m &quot;Remove large file and update .gitignore&quot;
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a>git push origin main
+</span></code></pre></div></p>
+</details>
+<details class="failure">
+<summary>Repository Size Exceeds Limit</summary>
+<p><strong>Issue</strong>: GitHub imposes a repository size limit, typically 1GB for free accounts.</p>
+<p><strong>Solution</strong>: 
+- Clean up your repository by removing large files from history using <code>git filter-branch</code> or tools like <a href="https://rtyley.github.io/bfg-repo-cleaner/">BFG Repo-Cleaner</a>:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>bfg --delete-files &lt;large-file&gt;
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>git push --force
+</span></code></pre></div>
+- If large files are essential, consider hosting them elsewhere (e.g., cloud storage) and linking to them.</p>
+</details>
+<details class="failure">
+<summary>Packfile Too Large</summary>
+<p><strong>Issue</strong>: This error can occur when trying to push a repository with a large packfile.</p>
+<p><strong>Solution</strong>: 
+- Reduce the size of the packfile:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>git gc --aggressive --prune=now
+</span></code></pre></div>
+- If the repository is still too large, consider splitting it into smaller repositories.</p>
+</details>
+<details class="failure">
+<summary>History Contains Large Files</summary>
+<p><strong>Issue</strong>: Even if a large file has been deleted, it may still be present in the repository history.</p>
+<p><strong>Solution</strong>: 
+- Remove the file from history with:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>git filter-branch --tree-filter &#39;rm -f &lt;large-file&gt;&#39; HEAD
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>git push origin --force
+</span></code></pre></div>
+- Note: Use <code>git filter-branch</code> carefully as it rewrites history.</p>
+</details>
+<p>By following these practices, you can ensure smoother collaboration and minimize common issues when working with Git and GitHub.</p>
 <hr />
 <p>We hope this guide helps you establish a solid coding practice. Follow these steps to ensure your code is well-organized, collaborative, and reproducible!</p>
 
@@ -2612,7 +2792,7 @@ Spyder’s object inspection feature allows you to explore the attributes and me
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 16:29:57</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 16:47:25</span>
   </span>
 
     
