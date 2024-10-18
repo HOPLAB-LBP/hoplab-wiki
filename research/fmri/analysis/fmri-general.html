@@ -1182,7 +1182,7 @@
         <li class="md-nav__item">
   <a href="#how-to-store-raw-data" class="md-nav__link">
     <span class="md-ellipsis">
-      How to store raw data
+      How to Store Raw Data
     </span>
   </a>
   
@@ -1191,7 +1191,7 @@
         <li class="md-nav__item">
   <a href="#how-to-get-images-from-the-scanner" class="md-nav__link">
     <span class="md-ellipsis">
-      How to get images from the scanner
+      How to Get Images from the Scanner
     </span>
   </a>
   
@@ -1200,7 +1200,7 @@
         <li class="md-nav__item">
   <a href="#missing-fields-in-json-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Missing fields in JSON files
+      Missing Fields in JSON Files
     </span>
   </a>
   
@@ -1209,7 +1209,7 @@
         <li class="md-nav__item">
   <a href="#where-to-find-additional-info-on-the-fmri-sequence" class="md-nav__link">
     <span class="md-ellipsis">
-      Where to find additional info on the fMRI sequence
+      Where to Find Additional Info on the fMRI Sequence
     </span>
   </a>
   
@@ -1649,7 +1649,7 @@
         <li class="md-nav__item">
   <a href="#how-to-store-raw-data" class="md-nav__link">
     <span class="md-ellipsis">
-      How to store raw data
+      How to Store Raw Data
     </span>
   </a>
   
@@ -1658,7 +1658,7 @@
         <li class="md-nav__item">
   <a href="#how-to-get-images-from-the-scanner" class="md-nav__link">
     <span class="md-ellipsis">
-      How to get images from the scanner
+      How to Get Images from the Scanner
     </span>
   </a>
   
@@ -1667,7 +1667,7 @@
         <li class="md-nav__item">
   <a href="#missing-fields-in-json-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Missing fields in JSON files
+      Missing Fields in JSON Files
     </span>
   </a>
   
@@ -1676,7 +1676,7 @@
         <li class="md-nav__item">
   <a href="#where-to-find-additional-info-on-the-fmri-sequence" class="md-nav__link">
     <span class="md-ellipsis">
-      Where to find additional info on the fMRI sequence
+      Where to Find Additional Info on the fMRI Sequence
     </span>
   </a>
   
@@ -1706,25 +1706,27 @@
 
 
 <h1 id="general-notes">General Notes<a class="headerlink" href="#general-notes" title="Permanent link">&para;</a></h1>
-<p>In this page we will have all the general info and FAQ about fMRI protocols.</p>
-<p><strong>NOTE:</strong> [TIM] What about having a general diagram at the top that gives a general idea of what data should be where? When users land on this page, if we follow the logic from the pages before, they will just have acquired data and probably don't know what to do with it. I'm thinking of something like this image below. Without this kind of overview, one might not be sure where to store the raw data mentioned below, for instance.We could create such a plot with <a href="https://mermaid.js.org/">mermaid</a>.</p>
-<p><img alt="fMRI data workflow" src="../../../assets/fMRI_data_workflow.png" /></p>
-<p><strong>NOTE:</strong> [TIM] I would add a mention of what to store the data on, ie get a hard drive and bring it to the hospital to take the output data.</p>
-<h2 id="how-to-store-raw-data">How to store raw data<a class="headerlink" href="#how-to-store-raw-data" title="Permanent link">&para;</a></h2>
-<p>In order to avoid error while converting into BIDS format, the raw data (i.e., the data collected from the scanner, behavioural measure, eye-tracking) should be stored in a folder with the following structure:</p>
+<p>You should land on this page after collecting your fMRI data and <a href="fmri-bids-conversion.html">converting it to BIDS</a>. Here, you’ll find all the general information and FAQs about fMRI protocols.</p>
+<div class="admonition tip">
+<p class="admonition-title">Data Storage Suggestion</p>
+<p>Bring a <strong>dedicated hard drive</strong> to the hospital for storing the output data. This will ensure that you have a reliable medium to transfer and secure the raw data from the scanner.</p>
+</div>
+<hr />
+<h2 id="how-to-store-raw-data">How to Store Raw Data<a class="headerlink" href="#how-to-store-raw-data" title="Permanent link">&para;</a></h2>
+<p>To avoid errors during BIDS conversion, store the raw data (e.g., data collected from the scanner, behavioral measures, eye-tracking) with the following folder structure:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sourcedata
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└── sub-41
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ├── bh
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    │   ├── 20240503104938_log_41-1-2_exp.tsv
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    │   ├── 20240503105558_41_1_exp.mat
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    │   ├── 20240503105640_log_41-2-1_exp.tsv
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    │   ├── 20240503110226_41_2_exp.mat
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    │   ├── 20240503110241_log_41-3-2_exp.tsv
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    │   ├── 20240503110825_41_3_exp.mat
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    │   ├── 20240503110851_log_41-4-1_exp.tsv
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    │   ├── 20240503111433_41_4_exp.mat
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    │   ├── 20240503111450_log_41-5-2_exp.tsv
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    │   └── 20240503112032_41_5_exp.mat
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    │   ├── 20240503104938_log_41-1-2_exp.tsv
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    │   ├── 20240503105558_41_1_exp.mat
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    │   ├── 20240503105640_log_41-2-1_exp.tsv
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    │   ├── 20240503110226_41_2_exp.mat
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    │   ├── 20240503110241_log_41-3-2_exp.tsv
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    │   ├── 20240503110825_41_3_exp.mat
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    │   ├── 20240503110851_log_41-4-1_exp.tsv
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    │   ├── 20240503111433_41_4_exp.mat
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    │   ├── 20240503111450_log_41-5-2_exp.tsv
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    │   └── 20240503112032_41_5_exp.mat
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    └── nifti
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        ├── sub-41_WIP_CS_3DTFE_8_1.nii
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        ├── sub-41_WIP_Functional_run1_3_1.nii
@@ -1733,69 +1735,77 @@
 </span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        ├── sub-41_WIP_Functional_run4_6_1.nii
 </span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        └── sub-41_WIP_Functional_run5_7_1.nii
 </span></code></pre></div>
-<h2 id="how-to-get-images-from-the-scanner">How to get images from the scanner<a class="headerlink" href="#how-to-get-images-from-the-scanner" title="Permanent link">&para;</a></h2>
-<p>For optimal BIDS conversion of fMRI data, it is recommended to initially collect DICOM files (not NIfTI or PAR/REC) at the scanner. Although this adds an extra conversion step and takes longer, it ensures proper conversion into BIDS format. Here is the recommended process:</p>
+<div class="admonition tip">
+<p class="admonition-title">Folder Structure</p>
+<p>Ensure each subject’s data is organized as shown above to minimize errors during BIDS conversion. Store all behavioral and NIfTI files under <code>sourcedata</code>.</p>
+</div>
+<hr />
+<h2 id="how-to-get-images-from-the-scanner">How to Get Images from the Scanner<a class="headerlink" href="#how-to-get-images-from-the-scanner" title="Permanent link">&para;</a></h2>
+<p>For optimal BIDS conversion of fMRI data, it is recommended to initially collect <strong>DICOM files</strong> (not NIfTI or PAR/REC) at the scanner. Although this adds an extra conversion step, it ensures accurate conversion into BIDS format. Follow these steps:</p>
 <ol>
 <li>
 <p><strong>Initial DICOM Collection</strong>:</p>
 <ul>
 <li>Collect DICOM files for each modality (e.g., T1 and BOLD) for one subject.</li>
-<li>Convert these DICOM files to NIfTI format using <code>dcm2nii</code>, which will generate JSON sidecar files (refer to <a href="fmri-andrea-workflow.html#converting-fmri-data-to-bids">this section</a> for more info on the conversion process).</li>
+<li>Convert these DICOM files to NIfTI format using <code>dcm2nii</code>, which will generate JSON sidecar files. Refer to <a href="fmri-andrea-workflow.html#converting-fmri-data-to-bids">this section</a> for more details on the conversion process.</li>
 </ul>
 </li>
 <li>
 <p><strong>Template Creation</strong>:</p>
 <ul>
-<li>Rename the JSON files for T1 and BOLD image to <code>sub-xx_T1w.json</code> and <code>sub-xx_task-exp_run-x_bold.json</code></li>
-<li>Move the JSON files into <code>misc/</code>.</li>
+<li>Rename the JSON files for T1 and BOLD images to <code>sub-xx_T1w.json</code> and <code>sub-xx_task-exp_run-x_bold.json</code>.</li>
+<li>Move the JSON files into the <code>misc/</code> folder.</li>
 </ul>
 </li>
 <li>
 <p><strong>Subsequent Data Collection</strong>:</p>
 <ul>
-<li>After creating the template JSON files, collect future data in NIfTI format to save time. The <code>script01_nifti-to-BIDS.m</code> script will use the JSON templates to populate the BIDS folders, provided that the fMRI sequence remained unchaged (in that case you need to generate new templates from the DICOM files).</li>
+<li>After creating the template JSON files, collect future data directly in NIfTI format to save time. The <code>script01_nifti-to-BIDS.m</code> script will use the JSON templates to populate the BIDS folders, as long as the fMRI sequence remains unchanged. If the sequence changes, generate new templates from the DICOM files.</li>
 </ul>
 </li>
 </ol>
-<h2 id="missing-fields-in-json-files">Missing fields in JSON files<a class="headerlink" href="#missing-fields-in-json-files" title="Permanent link">&para;</a></h2>
-<p>Despite these steps, some BIDS fields in the sidecar JSON files may remain empty due to limitations of the Philips scanner, not the conversion tools. The most relevant fields that are left empty due to these limitations are <code>SliceTiming</code> and <a href="https://github.com/xiangruili/dicm2nii/issues/49"><code>PhaseEncodingDirection</code></a>.</p>
+<hr />
+<h2 id="missing-fields-in-json-files">Missing Fields in JSON Files<a class="headerlink" href="#missing-fields-in-json-files" title="Permanent link">&para;</a></h2>
+<p>Despite these steps, some BIDS fields in the sidecar JSON files may remain empty due to limitations of the Philips scanner. The most relevant fields that may be left empty are <code>SliceTiming</code> and <a href="https://github.com/xiangruili/dicm2nii/issues/49"><code>PhaseEncodingDirection</code></a>.</p>
 <ul>
 <li>
 <p><strong>SliceTiming</strong>:</p>
 <ul>
-<li>This field is used by fMRIPrep during slice timing correction.</li>
-<li>It can be populated using the <code>/utils/get_philips_MB_slicetiming.py</code> script, assuming you have access to a DICOM file and know the multiband factor (default is 2, as used in our lab).</li>
+<li>This field is required by fMRIPrep during slice timing correction.</li>
+<li>Populate it using the <code>get_philips_MB_slicetiming.py</code> script, assuming you have access to a DICOM file and know the multiband factor (default is 2, as used in our lab).</li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The script assumes an interleaved, foot-to-head acquisition, and will not work for other types of acquisitions.</p>
+<p>The script assumes an interleaved, foot-to-head acquisition and will not work for other acquisition types.</p>
 </div>
 </li>
 <li>
 <p><strong>PhaseEncodingDirection</strong>:</p>
 <ul>
-<li>This BIDS tag allows tools to undistort images.</li>
-<li>While the Philips DICOM header distinguishes the phase encoding axis (e.g., anterior-posterior vs. left-right), it does not encode the polarity (A-&gt;P vs. P-&gt;A).</li>
-<li>You will need to check at the scanner or consult with Ron whether the polarity is AP or PA, and correct the <code>?</code> in the JSON file to <code>+</code> or <code>-</code>.</li>
+<li>This BIDS tag helps tools undistort images.</li>
+<li>Philips DICOM headers specify the phase encoding axis (e.g., A-P or L-R) but not the polarity (A-&gt;P or P-&gt;A).</li>
+<li>Check the scanner settings or consult with Ron to determine whether the polarity is AP or PA, and update the <code>?</code> in the JSON file with <code>+</code> or <code>-</code>.</li>
 </ul>
 </li>
-<li>
-<p><strong>TODO:</strong> add info about NaNs in the JSON file (raw and fmriprep) and how to change them. NaNs will raise errors during the mriqc workflow. See <a href="https://groups.google.com/g/mriqc-users/c/0v170KRJoKk">this</a>, <a href="https://github.com/nipreps/mriqc/issues/1089">this</a> and <a href="https://neurostars.org/t/node-error-on-mriqc-wf-dwimriqc-computeiqms-datasink/29188">this</a>. </p>
-</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Handling NaNs in JSON Files</p>
+<p>NaN values in JSON files can cause errors during the MRIQC workflow. To address NaN values, see the discussions in <a href="https://groups.google.com/g/mriqc-users/c/0v170KRJoKk">this post</a>, <a href="https://github.com/nipreps/mriqc/issues/1089">this GitHub issue</a>, and <a href="https://neurostars.org/t/node-error-on-mriqc-wf-dwimriqc-computeiqms-datasink/29188">this NeuroStars thread</a>.</p>
+</div>
 <p>For more details on Philips DICOM conversion, refer to the following resources:</p>
 <ul>
 <li><a href="https://github.com/rordenlab/dcm2niix/tree/master/Philips#missing-information">Philips DICOM Missing Information - dcm2niix</a></li>
-<li><a href="https://github.com/rordenlab/dcm2niix/tree/master/PARREC">PARREC Conversion - dcm2niix</a></li>
+<li><a href="https://github.com/rordenlab/dcm2niix/tree/master/PARREC">PARREC Conversion - dcm2niix</a>    </li>
 </ul>
-<h2 id="where-to-find-additional-info-on-the-fmri-sequence">Where to find additional info on the fMRI sequence<a class="headerlink" href="#where-to-find-additional-info-on-the-fmri-sequence" title="Permanent link">&para;</a></h2>
-<p>Additional information on the sequence can be found at the scanner. Here's how:</p>
+<hr />
+<h2 id="where-to-find-additional-info-on-the-fmri-sequence">Where to Find Additional Info on the fMRI Sequence<a class="headerlink" href="#where-to-find-additional-info-on-the-fmri-sequence" title="Permanent link">&para;</a></h2>
+<p>Additional information on the fMRI sequence can be found directly at the scanner. Here’s a step-by-step guide:</p>
 <ol>
 <li>
-<p><strong>Start the Examination</strong></p>
+<p><strong>Start the Examination</strong>:</p>
 <ul>
-<li>Navigate to <strong>Patients</strong> -&gt; <strong>New Examination</strong> -&gt; <strong>RIS</strong>.</li>
-<li>Select your subject and fill out the form:<ul>
+<li>Go to <strong>Patients</strong> -&gt; <strong>New Examination</strong> -&gt; <strong>RIS</strong>.</li>
+<li>Select your subject and fill out the required fields:<ul>
 <li><strong>Weight:</strong> Enter the subject's weight.</li>
 <li><strong>Implants:</strong> Specify if the subject has any implants.</li>
 <li><strong>Pregnant:</strong> Indicate if the subject is pregnant.</li>
@@ -1804,48 +1814,49 @@
 </ul>
 </li>
 <li>
-<p><strong>Load the Scanning Sequence</strong></p>
+<p><strong>Load the Scanning Sequence</strong>:</p>
 <ul>
 <li>Drag and drop your scanning sequence from the bottom panel to the left panel.</li>
 </ul>
 </li>
 <li>
-<p><strong>Select a Run</strong></p>
+<p><strong>Select a Run</strong>:</p>
 <ul>
-<li>Click on either a functional or anatomical run from the list of available runs.</li>
+<li>Click on either a functional or anatomical run from the available list.</li>
 </ul>
 </li>
 <li>
-<p><strong>Expand the Tabs</strong></p>
+<p><strong>Expand the Tabs</strong>:</p>
 <ul>
-<li>Locate the <code>&gt;&gt;</code> symbol in the bottom panel, below the sagittal, coronal, and horizontal views.</li>
-<li>Click on this symbol to expand additional tabs.</li>
+<li>Click on the <code>&gt;&gt;</code> symbol in the bottom panel, below the sagittal, coronal, and horizontal views, to expand additional tabs.</li>
 </ul>
 </li>
 <li>
-<p><strong>Access Geometry Settings</strong></p>
+<p><strong>Access Geometry Settings</strong>:</p>
 <ul>
-<li>Click on the <strong>Geometry</strong> tab to access important scan parameters:<ul>
-<li><strong>MB factor:</strong> The Multi-band factor, which indicates how many slices are recorded simultaneously. This is used for slice timing correction.</li>
-<li><strong>Slices:</strong> The total number of horizontal slices.</li>
-<li><strong>Fold-over direction:</strong> Necessary information to correct the phase encoding direction in the BIDS field.</li>
-<li><strong>Slice scan order:</strong> Indicates the direction of slice acquisition, typically Foot to Head (FH), used for slice timing correction.</li>
+<li>Navigate to the <strong>Geometry</strong> tab to access important scan parameters:<ul>
+<li><strong>MB factor</strong>: Indicates the number of slices recorded simultaneously, used for slice timing correction.</li>
+<li><strong>Slices</strong>: Total number of horizontal slices.</li>
+<li><strong>Fold-over direction</strong>: Required for correcting the phase encoding direction in the BIDS field.</li>
+<li><strong>Slice scan order</strong>: Typically Foot to Head (FH), used for slice timing correction.</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>Check Additional Fields</strong></p>
+<p><strong>Check Additional Fields</strong>:</p>
 <ul>
-<li>Visit the <strong>Coils</strong> tab to obtain more details about the head coils used during the scan.</li>
-<li>In the <strong>Contrast</strong> tab, check the following fields:<ul>
-<li><strong>TE (Echo Time):</strong> Typically a single echo of 30 ms by default.</li>
-<li><strong>TR (Repetition Time):</strong> Generally set to 2000 ms by default.</li>
+<li>Visit the <strong>Coils</strong> tab for details about the head coils used during the scan.</li>
+<li>In the <strong>Contrast</strong> tab, note the following fields:<ul>
+<li><strong>TE (Echo Time)</strong>: Usually a single echo of 30 ms by default.</li>
+<li><strong>TR (Repetition Time)</strong>: Typically set to 2000 ms by default.</li>
 </ul>
 </li>
 </ul>
 </li>
 </ol>
+<hr />
+<p>Next Step &rarr; <a href="fmri-setup-env.html">Set-up your environment</a></p>
 
 
 
@@ -1866,7 +1877,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 19:48:39</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 20:16:34</span>
   </span>
 
     
