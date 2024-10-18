@@ -1,14 +1,10 @@
-# Functional MRI
+# fMRI workflow example
 
-This page is a work in progress and is based on my fMRI pipeline. This information may change once we agree on shared practices.
+This page is a work in progress and is based on my (Andrea) fMRI pipeline. This information may change once we agree on shared practices.
 
 The code to reproduce these analyses can be found [here](https://github.com/costantinoai/chess-expertise-2024).
 
-!!! tip
-    For information on how to set up the working environment, install, and configure the packages mentioned in this document, refer to:
-    
-    - [Set-up your fMRI environment](./fmri-setup-env.md)
-    - [Coding practices](../../coding/index.md)
+For information on how to set up the working environment, install, and configure the packages mentioned in this document, refer to [Set-up your fMRI environment](./fmri-setup-env.md) and [Coding practices](../../coding/index.md)
 
 ---
 
@@ -229,7 +225,7 @@ Check the `sub-xx.html` report to ensure everything ran smoothly. Pay particular
 - **Registrations**: Verify the alignment between functional and anatomical images.
 - **Framewise Displacement (FD) Values**: Look for runs with unusually high FD values, as these may indicate motion artifacts or poor data quality.
 
-For more details, refer to the general guidelines outlined [here](fmri-prepocessing-qa.html#interpreting-fmriprep-and-mriqc-reports), and to the following links:
+For more details, refer to the general guidelines outlined [here](fmri-prepocessing-qa.md#interpreting-fmriprep-and-mriqc-reports), and to the following links:
 
 - [fMRIPrep Output Confounds](https://fmriprep.org/en/stable/outputs.html#confounds)
 - [Video on Reviewing fMRIPrep Outputs](https://www.youtube.com/watch?v=fQHEKSzFKDc&list=PLIQIswOrUH6_szyxn9Fy-2cxd3vjlklde&index=3)
