@@ -291,3 +291,7 @@ Each `nii` file must have a corresponding JSON sidecar file. If your fMRI protoc
 3. Make necessary corrections based on the validator's output.
 
 By following these detailed steps, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration.
+
+---
+
+Now that you have your data in BIDS format, we can proceed to data pre-processing and quality assessment. See the next guide for instructions. [--> Pre-processing and QA](fmri-prepocessing-qa.md)

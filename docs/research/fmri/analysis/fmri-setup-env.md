@@ -392,3 +392,7 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
 For more specific issues, consult tool documentation or seek help on [NeuroStars](https://neurostars.org/).
 
 Remember, setting up an fMRI analysis environment can be complex. Take your time, and don't hesitate to ask for help when needed. Good luck with your research!
+
+---
+
+Now you’re ready to proceed **convert your data into BIDS format**. See the next guide for instructions on setting up your BIDS folder. [--> BIDS conversion](fmri-bids-conversion.md)

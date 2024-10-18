@@ -89,3 +89,7 @@ EXPERIMENTAL TASK (not "by hand" but via scripts)
 •	As output you will obtain three excel files. The first depicts a matrix on how well lda can classify between checkmate and non-checkmate on average per fold for each pairwise condition. It also 	provides some additional information like  amount of voxels included in the analysis (data_size) and also how well the classifier was at distinguishing between checkmate and non-checkmate stimuli.
 	The second Excel document depicts a matrix which shows the average distance between each pairwise compared conditions, using the ldc function which calculates the cross-validated distance along 	the linear discriminant (this is equivalent to the cross-validated mahalanobis distance.) The third excel file is the same but with the value rescaled to be between 0 and 1. 
 •	The script also permits you to make a heat map of the matrices.  -->
+
+---
+
+See the next guide for instructions on setting up your Regions of Interest to extract and analyze data from. [--> Regions of Interest](fmri-rois.md)

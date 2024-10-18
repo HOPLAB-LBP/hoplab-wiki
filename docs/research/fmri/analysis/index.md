@@ -7,7 +7,7 @@ This section of the wiki provides a comprehensive guide for analyzing fMRI data.
 ## Analysis Steps Overview
 
 <div class="grid cards" markdown="1">
-- :material-information: **[General Information](index.md)**  
+- :material-information: **[General Information](fmri-general.md)**  
   Overview of the pipeline, including key terminology and data structure. Start here to get a sense of the entire workflow.
 
 - :material-rocket: **[Setting Up the Environment](fmri-setup-env.md)**  
