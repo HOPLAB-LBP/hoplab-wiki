@@ -1,8 +1,12 @@
-**TODO**: [Andrea] Add 
+**TODO**: [Andrea] Add some general reccommendations on: how to name result folders with code examples; save the script that is generating the results, with code example (my functions); always save a log file with detailed results and run params.
 
 # Coding Practices
 
 Welcome to the Coding Practices section. Here, you'll find all the guidance you need to set up your coding environment, manage projects, collaborate using GitHub, and follow best practices for clean, maintainable code.
+
+Make sure you familiarize yourself with our suggested [Coding tutorials](../../get-started/student-starter-pack.html#coding-tutorials), particularly with **[The Good Research Code Handbook](https://goodresearch.dev/)**.
+
+Some extra information, specific to fMRI projects, can be found in the [Set-up your environment](../fmri/analysis/fmri-setup-env.html) page of the fMRI section.
 
 ## Setting Up a Conda Environment
 
@@ -441,14 +445,14 @@ A well-structured project helps in maintaining readability and collaboration. He
 
 Use a logical structure for your project files:
 
-     ```bash
-     my_project/
-     ├── data/              # Raw data files
-     ├── modules/           # Scripts to store your classes and functions
-     ├── results/           # Output results and figures
-     ├── environment.yml    # Conda environment file
-     └── README.md          # Project overview
-     ```
+ ```bash
+ my_project/
+ ├── data/              # Raw data files
+ ├── modules/           # Scripts to store your classes and functions
+ ├── results/           # Output results and figures
+ ├── environment.yml    # Conda environment file
+ └── README.md          # Project overview
+ ```
 
 ### 2. Naming Conventions
 
