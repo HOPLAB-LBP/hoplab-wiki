@@ -511,22 +511,6 @@ git config --global user.email "youremail@example.com"
        ```bash
        git push origin main
        ```
-
-### 4. Example Git Workflow
-
-- **Create Feature Branches** for new work:
-    ```bash
-    git checkout -b feature/my-feature
-    ```
-- **Commit Often** with meaningful messages:
-    - Example: `git commit -m "Add function for data cleaning"`
-- **Before Merging, Use**:
-    ```bash
-    git pull origin main
-    git merge feature/my-feature
-    ```
-- **Keep Branches Small**: Aim for focused changes that can be reviewed quickly.
-
 ---
 
 We hope this guide helps you establish a solid coding practice. Follow these steps to ensure your code is well-organized, collaborative, and reproducible!
