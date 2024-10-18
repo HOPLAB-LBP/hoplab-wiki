@@ -2,11 +2,107 @@
 
 # Coding Practices
 
-Welcome to the Coding Practices section. Here, you'll find all the guidance you need to set up your coding environment, manage projects, collaborate using GitHub, and follow best practices for clean, maintainable code.
+Welcome to the Coding Practices section! Here, you'll find essential guidance for setting up your coding environment, managing projects, collaborating using GitHub, and following best practices to write clean, maintainable code.
 
-Make sure you familiarize yourself with our suggested [Coding tutorials](../../get-started/student-starter-pack.html#coding-tutorials), particularly with **[The Good Research Code Handbook](https://goodresearch.dev/)**.
+<div class="grid cards" markdown="1">
+- :material-wrench-clock: **[Good coding practices](#best-practices-for-organizing-code-and-projects)**  
+  In the lab, we aim to build tools that are reproducible, reusable, and efficient. Learn more about our general approach to building and managing projects.
 
-Some extra information, specific to fMRI projects, can be found in the [Set-up your environment](../fmri/analysis/fmri-setup-env.html) page of the fMRI section.
+- :octicons-desktop-download-24: **[Setting Up Your Project](#setting-up-a-conda-environment)**  
+  Every new project starts with the right environment setup. Find out how to create a proper environment for your coding projects.
+
+- :material-bug: **[Understanding Your Code](#understanding-your-code)**  
+  Encountering inexplicable errors? Want to know what data are you plotting? Don't know how to use a misterious function? Learn how to effectively debug your code using Spyder’s powerful tools.
+
+- :material-source-branch: **[Using Version Control](#version-control-with-git-and-github)**  
+  Discover how to integrate Git and GitHub into your workflow to keep track of changes and collaborate with ease.
+
+</div>
+
+## Why Coding Practices Matter
+
+When you code for your research project, remember that you're not just coding for yourself today—you’re coding for:
+
+- **Your future self**: Six months from now, you might not remember the specifics of your current project.
+- **Other scientists**: Your code might be used or reviewed by researchers with varying coding skills and backgrounds. Writing clean and well-documented code ensures that your work can be understood and built upon by others.
+
+Keeping your code tidy, easy to understand, and maintainable is crucial for effective research collaboration and aligns with the principles of **Open Science**.
+
+## Recommended Resources
+
+Make sure to explore our suggested [Coding Tutorials](../../get-started/student-starter-pack.html#coding-tutorials). We especially recommend **[The Good Research Code Handbook](https://goodresearch.dev/)**, which provides valuable insights into writing robust research code. Key sections include [Writing Decoupled Code](https://goodresearch.dev/decoupled) and [Keeping Things Tidy](https://goodresearch.dev/tidy).
+
+By following these practices, you'll not only improve the quality of your research code but also make it easier to share your work with others, enhancing transparency and reproducibility. Invest time in reading and practicing. Developing good coding habits will pay off in the long run by making your work more efficient, easier to understand, and more valuable to the research community. Happy coding!
+
+!!! tip
+    If you're new to coding and many of the terms on this page seem unfamiliar, start by exploring some of the essential tools you’ll use. Check out tutorials on Python, Git, and the Unix Shell on the [Student Starter Pack](../../get-started/student-starter-pack.md) page.
+
+!!! question "What if I code in MATLAB?"
+    While the information in this page focuses on Python, the principles of writing clean, maintainable code are universal. Debugging, structuring code, and organizing projects apply just as much to MATLAB as they do to Python. Be sure to apply these practices regardless of the language you're using!
+
+## Special Note for fMRI Projects
+
+If you're working on fMRI projects, you’ll find specific information on setting up your environment in the [Set-up your Environment](../fmri/analysis/fmri-setup-env.html) page of the fMRI section. This guide includes additional tips for managing data and code in neuroimaging research.
+
+---
+
+## Best Practices for Organizing Code and Projects
+
+A well-structured project helps in maintaining readability and collaboration. Here are some recommendations:
+
+### 1. Folder Structure
+
+Use a logical structure for your project files:
+
+ ```bash
+ my_project/
+ ├── data/              # Raw data files
+ ├── modules/           # Scripts to store your classes and functions
+ ├── results/           # Output results and figures
+ ├── environment.yml    # Conda environment file
+ └── README.md          # Project overview
+ ```
+
+### 2. Naming Conventions
+
+- **Files**: Use lowercase letters with underscores (e.g., `data_processing.py`).
+- **Folders**: Use meaningful names that reflect their contents.
+- **Variables**: Use descriptive names (e.g., `participant_id` instead of `id`).
+
+### 3. General Coding Tips
+
+!!! tip
+    Write modular code by breaking down tasks into functions and classes. This approach enhances reusability and readability.
+
+- **Avoid "[Spaghetti Code](https://goodresearch.dev/decoupled.html?highlight=spaghetti#code-smells-and-spaghetti-code)"**: Keep functions short and focused.
+- **Use Docstrings** to document functions and classes:
+    ```python
+    def load_data(file_path):
+        """
+        Loads data from a specified file path.
+        
+        Args:
+            file_path (str): The path to the data file.
+        
+        Returns:
+            pandas.DataFrame: Loaded data as a DataFrame.
+        """
+    ```
+- **Follow PEP 8**: Use tools like `black` to ensure code style compliance.
+
+### 4. Saving Results
+
+Organize your results systematically:
+
+- **Create a dedicated `results` folder**: Use subfolders that include timestamps and parameter details.
+- **Save the executed script** in the results folder to ensure reproducibility.
+    - Example folder name: `results_2024-10-18_learning_rate-0.01/`
+    - Include a copy of the script:
+        ```bash
+        cp train_model.py results_2024-10-18_learning_rate-0.01/
+        ```
+
+---
 
 ## Setting Up a Conda Environment
 
@@ -149,7 +245,7 @@ Spyder is a powerful IDE for scientific programming in Python. Here’s how to s
 
 ---
 
-### 3. Using Spyder Effectively
+## Understanding your code
 
 Spyder offers powerful tools for debugging, understanding, and navigating your code. Here’s an in-depth guide on how to leverage these features, with examples to make each step clear and actionable.
 
@@ -272,17 +368,13 @@ These tools are crucial for identifying and fixing bugs in your scripts, whether
 
 ---
 
-### Navigating and Understanding Code
+### Understanding by Looking at Definitions
 
 Spyder makes it easy to navigate large codebases and understand how functions, classes, and variables are connected. Using features like "Go to Definition," "Find References," object inspection, and the Documentation Viewer, you can explore and manage complex projects more efficiently.
 
 !!! tip "Pro Tips for Code Navigation"
     - **Use "Go to Definition" to trace complex functions**: This helps you see the original implementation without scrolling through files.
     - **Use the Variable Explorer for quick checks**: It’s a faster way to spot-check variables rather than adding numerous print statements.
-
----
-
-### 1. Go to Definition
 
 **Overview**: 
 
@@ -324,7 +416,7 @@ The **Go to Definition** feature allows you to quickly jump to where a function,
 
 ---
 
-### 2. Inspecting Objects
+### Understanding by Inspecting
 
 **Overview**:
 Spyder’s object inspection feature allows you to explore the attributes and methods of objects directly within the editor. This is particularly useful when working with unfamiliar libraries or custom classes, as it enables you to see what functions or properties are available and how to use them. This feature can be a lifesaver when you encounter a function with unclear parameters or complex behavior.
@@ -434,64 +526,6 @@ git config --global user.email "youremail@example.com"
     git merge feature/my-feature
     ```
 - **Keep Branches Small**: Aim for focused changes that can be reviewed quickly.
-
----
-
-## Best Practices for Organizing Code and Projects
-
-A well-structured project helps in maintaining readability and collaboration. Here are some recommendations:
-
-### 1. Folder Structure
-
-Use a logical structure for your project files:
-
- ```bash
- my_project/
- ├── data/              # Raw data files
- ├── modules/           # Scripts to store your classes and functions
- ├── results/           # Output results and figures
- ├── environment.yml    # Conda environment file
- └── README.md          # Project overview
- ```
-
-### 2. Naming Conventions
-
-- **Files**: Use lowercase letters with underscores (e.g., `data_processing.py`).
-- **Folders**: Use meaningful names that reflect their contents.
-- **Variables**: Use descriptive names (e.g., `participant_id` instead of `id`).
-
-### 3. General Coding Tips
-
-!!! tip
-    Write modular code by breaking down tasks into functions and classes. This approach enhances reusability and readability.
-
-- **Avoid "Spaghetti Code"**: Keep functions short and focused.
-- **Use Docstrings** to document functions and classes:
-    ```python
-    def load_data(file_path):
-        """
-        Loads data from a specified file path.
-        
-        Args:
-            file_path (str): The path to the data file.
-        
-        Returns:
-            pandas.DataFrame: Loaded data as a DataFrame.
-        """
-    ```
-- **Follow PEP 8**: Use tools like `flake8` to ensure code style compliance.
-
-### 4. Saving Results
-
-Organize your results systematically:
-
-- **Create a dedicated `results` folder**: Use subfolders that include timestamps and parameter details.
-- **Save the executed script** in the results folder to ensure reproducibility.
-    - Example folder name: `results_2024-10-18_learning_rate-0.01/`
-    - Include a copy of the script:
-        ```bash
-        cp train_model.py results_2024-10-18_learning_rate-0.01/
-        ```
 
 ---
 
