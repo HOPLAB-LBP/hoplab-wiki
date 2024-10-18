@@ -1746,9 +1746,11 @@
 <p>The code to reproduce these analyses can be found <a href="https://github.com/costantinoai/chess-expertise-2024">here</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>For information on how to set up the working environment, install, and configure the packages mentioned in this document, refer to:
-- <a href="../fmri-setup-env.md">docs/research/fmri/analysis/fmri-setup-env.md</a>
-- <a href="../../coding/index.html">docs/research/coding/index.md</a></p>
+<p>For information on how to set up the working environment, install, and configure the packages mentioned in this document, refer to:</p>
+<ul>
+<li><a href="../fmri-setup-env.md">Set-up your fMRI environment</a></li>
+<li><a href="../../coding/index.html">Coding practices</a></li>
+</ul>
 </div>
 <hr />
 <h2 id="from-raw-data-to-bids">From Raw Data to BIDS<a class="headerlink" href="#from-raw-data-to-bids" title="Permanent link">&para;</a></h2>
@@ -1830,8 +1832,8 @@
 </ul>
 <p>The fMRI task script should output two files per run:</p>
 <ol>
-<li><code>&lt;timestamp&gt;_log_&lt;subID&gt;-&lt;run&gt;-&lt;buttonMapping&gt;_&lt;taskName&gt;.tsv</code> : This is the human-readable log file produced by the task. Here is an extract from the file:</li>
-</ol>
+<li>
+<p><code>&lt;timestamp&gt;_log_&lt;subID&gt;-&lt;run&gt;-&lt;buttonMapping&gt;_&lt;taskName&gt;.tsv</code> : This is the human-readable log file produced by the task. Here is an extract from the file:</p>
 <table>
 <thead>
 <tr>
@@ -1892,8 +1894,10 @@
 </tr>
 </tbody>
 </table>
-<ol>
-<li><code>&lt;timestamp&gt;_log_&lt;subID&gt;_&lt;run&gt;_&lt;taskName&gt;.mat</code>: This MATLAB file contains all the parameters to reproduce the experimental run, and stores input parameters and results.</li>
+</li>
+<li>
+<p><code>&lt;timestamp&gt;_log_&lt;subID&gt;_&lt;run&gt;_&lt;taskName&gt;.mat</code>: This MATLAB file contains all the parameters to reproduce the experimental run, and stores input parameters and results.</p>
+</li>
 </ol>
 <p>Ensure that each resulting TSV file has at least three columns: <code>onset</code>, <code>duration</code>, and <code>trial_type</code>.</p>
 <p>If the behavioural data is stored in a sourcedata/sub-xx/bh/ folder consistent to the one described <a href="fmri-general.html#how-to-store-raw-data">above</a>, you can run the script02_behavioural-to-BIDS.m script, after editing the parameters at the top of the script. This script iterates through subject-specific directories targeting behavioral .mat files, then processes and exports trial-related info into BIDS-compliant TSV event files in the BIDS folder provided as parameters.</p>
@@ -2011,14 +2015,46 @@
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span>--fs-subjects-dir<span class="w"> </span>/data/projects/chess/data/BIDS/derivatives/fastsurfer<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span>--notrack<span class="w"> </span>--participant-label<span class="w"> </span><span class="m">41</span>
 </span></code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>if you want to run analysis on surface data, you may want to consider getting CIFTI output images from fmriprep. I did not test this, but it should produce cortical BOLD series projected from the Glasser2016 template (the same parcellation I use for MVPA). In theory, SPM should be able to analyze .gii surface data, and bt getting the CIFTI outputs you should already have the parcellation projected to subject space for subsequent analyses. Or at least it should give a Glasser parcellation on subject/MNI space that is directly usable for MVPA, therefore skipping the quite time-sonsuming and complicate step to produce the HPC ROIs (see below)</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>this call is very resource and time intensive. It will take several hours (4-8, depending on your PC specs) at full capacity to preprocess a single subject. If you need to process many subjects, you may want to play with the ncpus and mem-mb parameters to be sure that you are using all the available resources. A good test of this is to open the task manager on windows, and check the CPU and RAM usage during a run. Ideally, we want the CPU to be always at max speed, and the RAM to be 10 GB below the maximum. If the RAM needed by the process is higher than the RAM available, you will get Out of Memory errors, or No more space on disk errors if you did not specify a work-dir folder. If this happens, lower the mem-mb and n-cpus until tyou find the right spot.</p>
-</div>
+<details class="tip">
+<summary>Use CIFTI output for surface data</summary>
+<p>If you plan to run analysis on <strong>surface data</strong>, consider using <strong>CIFTI output images</strong> from fMRIPrep. While this approach hasn't been directly tested here, CIFTI outputs can provide several advantages:</p>
+<ul>
+<li><strong>CIFTI images</strong> include cortical BOLD time series projected onto the surface using templates like the <strong>Glasser2016 parcellation</strong> (which is also used for MVPA).</li>
+<li>This method allows for direct analysis of surface data in formats like <code>.gii</code>, which can be compatible with <strong>SPM</strong> for further analysis.</li>
+<li>Using CIFTI outputs could simplify the process of obtaining <strong>surface-based parcellations</strong> and make the data more directly usable in subject space, potentially eliminating the need for complex and time-consuming transformations.</li>
+<li>It may also provide a <strong>more accurate representation of cortical activity</strong> by avoiding interpolation errors that can occur when mapping from volume to surface space.</li>
+</ul>
+<p>If you decide to explore this option, make sure to include the cifti falg in <code>--output-spaces</code> when running <code>fmriprep-docker</code>. This setup will produce CIFTI files (<code>.dtseries.nii</code>) along with standard volumetric outputs, giving you flexibility in how you proceed with your analysis.</p>
+</details>
+<details class="warning">
+<summary>Allocating resources to fMRIprep</summary>
+<p><strong>Running fMRIPrep is resource and time intensive</strong>, especially with high-resolution data. Here are some practical tips to optimize the process:</p>
+<ul>
+<li><strong>Time Estimate</strong>: Processing a single subject can take between <strong>4-8 hours</strong> depending on your system's specifications (e.g., CPU, RAM). Plan accordingly if you have many subjects.</li>
+<li>
+<p><strong>Optimize Resource Allocation</strong>: Adjust the <code>--n-cpus</code> and <code>--mem-mb</code> arguments to make the best use of your available hardware:</p>
+<ul>
+<li><strong>n-cpus</strong>: Allocate about 70-80% of your CPU cores to avoid system slowdowns (e.g., <code>--n-cpus 12</code> on a 16-core system).</li>
+<li><strong>mem-mb</strong>: Use around <strong>80-90% of your total RAM</strong>, leaving some free for the operating system (e.g., <code>--mem-mb 32000</code> on a 40 GB system).</li>
+</ul>
+</li>
+<li>
+<p><strong>Monitor Resource Usage</strong>: While running fMRIPrep, open a system monitor like <strong>Task Manager</strong> (Windows), <strong>Activity Monitor</strong> (Mac), or <strong>htop</strong> (Linux) to observe CPU and memory usage:</p>
+<ul>
+<li>Aim for <strong>high CPU usage</strong> (close to maximum) and <strong>RAM usage</strong> that is slightly below your system’s capacity.</li>
+<li>If memory usage exceeds available RAM, the process might crash due to <strong>Out of Memory (OOM)</strong> errors or cause <strong>disk space issues</strong> if using a <code>--work-dir</code> that fills up.</li>
+</ul>
+</li>
+<li>
+<p><strong>Adjust Settings if Necessary</strong>: If you encounter OOM errors or the process is slower than expected:</p>
+<ul>
+<li><strong>Lower <code>--mem-mb</code></strong>: Decrease memory allocation incrementally (e.g., by 2-4 GB at a time).</li>
+<li><strong>Reduce <code>--n-cpus</code></strong>: Using fewer cores can help balance the load and prevent crashes.</li>
+<li><strong>Use a dedicated <code>--work-dir</code></strong>: Specify a work directory on a <strong>high-speed SSD</strong> or similar to reduce I/O bottlenecks and ensure there's enough disk space for temporary files.</li>
+</ul>
+</li>
+</ul>
+</details>
 <p>If the run finishes successfully (check the last line of your terminal output), you should have a new <code>BIDS/derivatives/fmriprep/sub-xx</code> folder. See <a href="https://fmriprep.org/en/stable/outputs.html">here</a> for a complete list of outputs generated by fMRIPrep. Make sure that inside your <code>anat</code> and <code>func</code> folders you have all the scans (anatomical and functional for all runs) in the specified spaces. Since we specified <code>fsnative</code> as a space and did not use the <code>--no-recon-all</code> flag, fMRIPrep will also produce surface data in <code>BIDS/derivatives/fastsurfer/sub-xx</code>.</p>
 <hr />
 <h3 id="interpreting-fmriprep-visual-reports">Interpreting fMRIPrep Visual Reports<a class="headerlink" href="#interpreting-fmriprep-visual-reports" title="Permanent link">&para;</a></h3>
@@ -2027,11 +2063,13 @@
 <li><strong>Registrations</strong>: Verify the alignment between functional and anatomical images.</li>
 <li><strong>Framewise Displacement (FD) Values</strong>: Look for runs with unusually high FD values, as these may indicate motion artifacts or poor data quality.</li>
 </ul>
-<p>For more details, refer to:
-- <a href="https://fmriprep.org/en/stable/outputs.html#confounds">fMRIPrep Output Confounds</a>
-- <a href="https://www.youtube.com/watch?v=fQHEKSzFKDc&amp;list=PLIQIswOrUH6_szyxn9Fy-2cxd3vjlklde&amp;index=3">Video on Reviewing fMRIPrep Outputs</a></p>
+<p>For more details, refer to:</p>
+<ul>
+<li><a href="https://fmriprep.org/en/stable/outputs.html#confounds">fMRIPrep Output Confounds</a></li>
+<li><a href="https://www.youtube.com/watch?v=fQHEKSzFKDc&amp;list=PLIQIswOrUH6_szyxn9Fy-2cxd3vjlklde&amp;index=3">Video on Reviewing fMRIPrep Outputs</a></li>
+</ul>
 <hr />
-<h2 id="processing-eye-tracking-data-with-bidsmreye">Processing Eye-Tracking Data with bidsmreye<a class="headerlink" href="#processing-eye-tracking-data-with-bidsmreye" title="Permanent link">&para;</a></h2>
+<h2 id="processing-eye-tracking-data-with-bidsmreye">Processing Eye-Tracking Data with <code>bidsmreye</code><a class="headerlink" href="#processing-eye-tracking-data-with-bidsmreye" title="Permanent link">&para;</a></h2>
 <p>To process eye-tracking data using <code>bidsmreye</code>, run the following Docker command:</p>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>-v<span class="w"> </span>/data/projects/chess/data/BIDS/derivatives/fmriprep:/data<span class="w"> </span><span class="se">\</span>
@@ -2055,13 +2093,13 @@
 <ul>
 <li><code>fmriprepRoot</code>: Path to the fMRIPrep folder.</li>
 <li><code>BIDSRoot</code>: Path to your BIDS folder.</li>
-<li><code>outRoot</code>: Path to save GLM results (should ideally be in the derivatives folder, in a <code>fmriprep-spm</code> folder).</li>
-<li><code>tempDir</code>: Path for temporary files, such as uncompressed or smoothed files.</li>
+<li><code>outRoot</code>: Path to save GLM results (ideally in the derivatives folder, in a <code>fmriprep-spm</code> folder).</li>
+<li><code>tempDir</code>: Directory for temporary files, such as uncompressed or smoothed files.</li>
 </ul>
 </li>
 <li>
 <p><strong>Subject Selection</strong>:</p>
-<p>Leave a new line before the list of subjects.</p>
+<p>Leave a new line before listing subjects.</p>
 <ul>
 <li><code>selectedSubjectsList</code>: A list of integers like <code>[41, 42, 43, 44]</code> or use <code>'*'</code> to analyze all subjects.</li>
 <li><code>selectedRuns</code>: List of runs to analyze.</li>
@@ -2082,7 +2120,7 @@
 <p>It is advisable to verify that the design matrix is set up correctly:</p>
 <ol>
 <li>Open the SPM GUI by typing <code>spm fmri</code> in the MATLAB Command Window.</li>
-<li>Click on 'Results' and select the <code>SPM.mat</code> file located in your <code>BIDS/fmriprep-spm/{space}/sub-xx/{task_name}/</code> directory.</li>
+<li>Click on <strong>Results</strong> and select the <code>SPM.mat</code> file located in your <code>BIDS/fmriprep-spm/{space}/sub-xx/{task_name}/</code> directory.</li>
 <li>
 <p>This will open the SPM Contrast Manager, showing the design matrix and assigned contrasts. Ensure the following:</p>
 <ul>
@@ -2093,13 +2131,13 @@
 </ul>
 </li>
 <li>
-<p>Select your contrast and click 'Done'.</p>
+<p>Select your contrast and click <strong>Done</strong>.</p>
 </li>
 <li>In the next window, set the following options:<ul>
 <li><strong>Apply masking</strong>: None</li>
 <li><strong>P-value adjustment</strong>: None</li>
-<li><strong>Threshold</strong>: 0.001</li>
-<li><strong>Extent threshold</strong>: 0</li>
+<li><strong>Threshold</strong>: <code>0.001</code></li>
+<li><strong>Extent threshold</strong>: <code>0</code></li>
 </ul>
 </li>
 </ol>
@@ -2108,8 +2146,8 @@
 <h3 id="visualizing-activations">Visualizing Activations<a class="headerlink" href="#visualizing-activations" title="Permanent link">&para;</a></h3>
 <p>To visualize activations on a volume or surface:</p>
 <ol>
-<li>Click 'Display' -&gt; 'overlays...' in the SPM GUI.</li>
-<li>Select 'sections' for volume plotting or <code>render</code> for surface plotting.</li>
+<li>Click <strong>Display</strong> -&gt; <strong>overlays...</strong> in the SPM GUI.</li>
+<li>Select <strong>sections</strong> for volume plotting or <strong>render</strong> for surface plotting.</li>
 <li>Choose the subject's anatomical image from <code>BIDS/derivatives/fmriprep/sub-xx/anat</code>.<ul>
 <li>For volume plots, select the <code>.nii</code> file corresponding to the same space as your GLM (usually MNI).</li>
 <li>For surface plots, select the pial or inflated brain image.</li>
@@ -2125,8 +2163,8 @@
 <h3 id="rois-from-functional-localizers">ROIs from Functional Localizers<a class="headerlink" href="#rois-from-functional-localizers" title="Permanent link">&para;</a></h3>
 <p>To run MVPA, you need Regions of Interest (ROIs) to select your voxels. You can obtain ROIs through:</p>
 <ul>
-<li><strong>Functional Localizers</strong>: Perform a localizer task in the scanner, then run a GLM on the preprocessed and smoothed data. For example, <code>Faces &gt; Objects</code> to identify the FFA.</li>
-<li><strong>Pre-defined Anatomical Masks</strong>: Use anatomical masks in the same space as your subjects (e.g., MNI). Ensure the mask resolution matches the resolution of your data (e.g., resample/reslice if necessary using tools like ANTs, SPM, or Python libraries like <code>nilearn</code> or <code>nibabel</code>).</li>
+<li><strong>Functional Localizers</strong>: Perform a localizer task in the scanner, then run a GLM on the preprocessed and smoothed data. For example, <code>Faces &gt; Objects</code> to identify the <strong>FFA</strong>.</li>
+<li><strong>Pre-defined Anatomical Masks</strong>: Use anatomical masks in the same space as your subjects (e.g., MNI). Ensure the mask resolution matches the resolution of your data (e.g., resample/reslice if necessary using tools like <strong>ANTs</strong>, <strong>SPM</strong>, or Python libraries like <strong>nilearn</strong> or <strong>nibabel</strong>).</li>
 </ul>
 <hr />
 <h3 id="hcp-glasser-parcellation">HCP Glasser Parcellation<a class="headerlink" href="#hcp-glasser-parcellation" title="Permanent link">&para;</a></h3>
@@ -2179,7 +2217,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 17:20:37</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 18:07:38</span>
   </span>
 
     
