@@ -1,6 +1,6 @@
 # Eye-tracking
 
-For setting up the long-range eye-tracking system in the fMRI room (MR8), please consult [this](../fmri/fmri-procedure.html#eyetracker-setup) page.
+For setting up the long-range eye-tracking system in the fMRI room (MR8), please consult [this](../fmri/fmri-procedure.md#eyetracker-setup) page.
 
 If you want more information on the stand-alone eye-tracking system to run behavioural experiments, please consult [this](PLACEHOLDER) page instead.
 
