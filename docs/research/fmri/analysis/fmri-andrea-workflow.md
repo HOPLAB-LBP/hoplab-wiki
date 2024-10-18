@@ -191,7 +191,7 @@ fmriprep-docker /data/projects/chess/data/BIDS /data/projects/chess/data/BIDS/de
    
 ??? tip "Use CIFTI output for surface data"
 
-   If you plan to run analysis on **surface data**, consider using **CIFTI output images** from fMRIPrep. While this approach hasn't been directly tested here, CIFTI outputs can provide several advantages:
+    If you plan to run analysis on **surface data**, consider using **CIFTI output images** from fMRIPrep. While this approach hasn't been directly tested here, CIFTI outputs can provide several advantages:
     
     - **Surface analysis in SPM** (see [this](https://neurostars.org/t/analyzing-func-gii-files-with-spm12/852/2) conversation on Neurostars).
     - **CIFTI images** include cortical BOLD time series projected onto the surface using templates like the **Glasser2016 parcellation** (which is also used for MVPA).
