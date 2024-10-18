@@ -286,7 +286,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 3. **Install Necessary Packages:**
 
     ```bash
-    pip install mkdocs mkdocs-material mkdocs-task-collector mkdocs-git-revision-date-localized-plugin
+    pip install mkdocs mkdocs-material mkdocs-task-collector mkdocs-git-revision-date-localized-plugin mkdocs-git-authors-plugin
     ```
 
 ### Step 3: Making Changes
