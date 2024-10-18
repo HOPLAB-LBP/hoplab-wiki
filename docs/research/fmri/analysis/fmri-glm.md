@@ -29,7 +29,7 @@ You will first need to decompress your fMRIPrep output using the `gunzip` decomp
 
 #### Smoothing your files
 
-Smoothing is a pre-processing step that fMRIPrep does not take care of. We hence need to begin by smoothing our brain data. You can do this within SPM. After making sure you have [SPM installed](./fmri-setup-env.md/#spm), begin by opening the SPM GUI by running `spm fmri` in the command window of MatLab, and clicking `Smooth`.
+Smoothing is a pre-processing step that fMRIPrep does not take care of. We hence need to begin by smoothing our brain data. You can do this within SPM. After making sure you have [SPM installed](./fmri-setup-env.md), begin by opening the SPM GUI by running `spm fmri` in the command window of MatLab, and clicking `Smooth`.
 
 **TODO:** [TIM] Give more instructions on how to run the smoothing function, including which parameters to use.
 
