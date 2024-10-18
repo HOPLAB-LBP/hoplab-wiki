@@ -1595,6 +1595,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#best-practices-for-organizing-code-and-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices for Organizing Code and Projects
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1618,7 +1627,7 @@
   
 
 
-<p><strong>TODO:</strong> how to properly create a conda environment, set up a project on Spyder, and sync with GH for version control and collaboration. We need to come up with a solid workflow and explanations on how to organize folders/scripts correctly + general coding reccommendations and tools</p>
+<p><strong>TODO</strong>: [Andrea] Add </p>
 <h1 id="coding-practices">Coding Practices<a class="headerlink" href="#coding-practices" title="Permanent link">&para;</a></h1>
 <p>Welcome to the Coding Practices section. Here, you'll find all the guidance you need to set up your coding environment, manage projects, collaborate using GitHub, and follow best practices for clean, maintainable code.</p>
 <h2 id="setting-up-a-conda-environment">Setting Up a Conda Environment<a class="headerlink" href="#setting-up-a-conda-environment" title="Permanent link">&para;</a></h2>
@@ -1632,35 +1641,91 @@
 <li><strong>Anaconda</strong> comes with a full suite of pre-installed packages like <code>numpy</code>, <code>pandas</code>, <code>scipy</code>, and many others, and with a GUI to manage packages and environments.</li>
 </ul>
 </details>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="windows" name="__tabbed_1" type="radio" /><input id="mac" name="__tabbed_1" type="radio" /><input id="ubuntu" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="windows">Windows</label><label for="mac">Mac</label><label for="ubuntu">Ubuntu</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><strong>Download</strong> the installer from the <a href="https://www.anaconda.com/products/distribution#windows">Anaconda website</a>.</li>
+<li><strong>Run the Installer</strong>: Double-click the <code>.exe</code> file and follow the installation wizard.</li>
+<li><strong>Add Conda to PATH</strong>: During installation, check the box that says "Add Anaconda to my PATH environment variable" if you plan to use <code>conda</code> directly from the command prompt.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Adding Anaconda to PATH can sometimes cause conflicts with other software. Only do this if you are familiar with PATH management.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>Download</strong> the installer from the <a href="https://www.anaconda.com/products/distribution#macos">Anaconda website</a>.</li>
+<li><strong>Run the Installer</strong>: Open the downloaded <code>.pkg</code> file and follow the installation instructions.</li>
+<li><strong>Verify Installation</strong>:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>conda<span class="w"> </span>--version
+</span></code></pre></div></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you encounter issues with permissions, run the installer with <code>sudo</code>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>bash<span class="w"> </span>Anaconda3-&lt;version&gt;-MacOSX-x86_64.sh
+</span></code></pre></div></p>
+</div>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>
+<p><strong>Download</strong> the installer script from the terminal:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>wget<span class="w"> </span>https://repo.anaconda.com/archive/Anaconda3-&lt;version&gt;-Linux-x86_64.sh
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Run the Installer</strong>:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bash<span class="w"> </span>Anaconda3-&lt;version&gt;-Linux-x86_64.sh
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Follow the prompts</strong>: Accept the license terms, specify an installation path, and allow the installer to initialize <code>conda</code>.</p>
+</li>
+<li>
+<p><strong>Activate changes</strong>:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div></p>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Make sure to replace <code>&lt;version&gt;</code> with the correct version number of the Anaconda installer.</p>
+</div>
+</div>
+</div>
+</div>
 <h3 id="2-create-and-manage-a-conda-environment">2. Create and Manage a Conda Environment<a class="headerlink" href="#2-create-and-manage-a-conda-environment" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="cli" name="__tabbed_1" type="radio" /><input id="gui-anaconda-navigator" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="cli">CLI</label><label for="gui-anaconda-navigator">GUI (Anaconda Navigator)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="cli" name="__tabbed_2" type="radio" /><input id="gui-anaconda-navigator" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="cli">CLI</label><label for="gui-anaconda-navigator">GUI (Anaconda Navigator)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
 <li>
 <p><strong>Create a new environment</strong>:
    Use the following command to create a new environment. Replace <code>myenv</code> with the name of your environment:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
 </span></code></pre></div></p>
 </li>
 <li>
 <p><strong>Activate the environment</strong>:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>myenv
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>myenv
 </span></code></pre></div></p>
 </li>
 <li>
 <p><strong>Install packages</strong>:
    Install necessary packages, e.g., <code>numpy</code>, <code>pandas</code>, and <code>matplotlib</code>:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>matplotlib
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>matplotlib
 </span></code></pre></div></p>
 </li>
 <li>
 <p><strong>Export environment for reproducibility</strong>:
    Save your environment to a file:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml
 </span></code></pre></div>
    This allows others to recreate your environment with:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
 </span></code></pre></div></p>
 </li>
 </ol>
@@ -1686,63 +1751,6 @@
 </ul>
 </li>
 </ol>
-</div>
-</div>
-</div>
-<h3 id="3-installing-on-different-operating-systems">3. Installing on Different Operating Systems<a class="headerlink" href="#3-installing-on-different-operating-systems" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="windows" name="__tabbed_2" type="radio" /><input id="mac" name="__tabbed_2" type="radio" /><input id="ubuntu" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="windows">Windows</label><label for="mac">Mac</label><label for="ubuntu">Ubuntu</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<ul>
-<li><strong>Download</strong> the installer from the <a href="https://www.anaconda.com/products/distribution#windows">Anaconda website</a>.</li>
-<li><strong>Run the Installer</strong>: Double-click the <code>.exe</code> file and follow the installation wizard.</li>
-<li><strong>Add Conda to PATH</strong>: During installation, check the box that says "Add Anaconda to my PATH environment variable" if you plan to use <code>conda</code> directly from the command prompt.</li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Adding Anaconda to PATH can sometimes cause conflicts with other software. Only do this if you are familiar with PATH management.</p>
-</div>
-</div>
-<div class="tabbed-block">
-<ul>
-<li><strong>Download</strong> the installer from the <a href="https://www.anaconda.com/products/distribution#macos">Anaconda website</a>.</li>
-<li><strong>Run the Installer</strong>: Open the downloaded <code>.pkg</code> file and follow the installation instructions.</li>
-<li><strong>Verify Installation</strong>:
-    <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>conda<span class="w"> </span>--version
-</span></code></pre></div></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If you encounter issues with permissions, run the installer with <code>sudo</code>:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>bash<span class="w"> </span>Anaconda3-&lt;version&gt;-MacOSX-x86_64.sh
-</span></code></pre></div></p>
-</div>
-</div>
-<div class="tabbed-block">
-<ul>
-<li>
-<p><strong>Download</strong> the installer script from the terminal:
-    <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>wget<span class="w"> </span>https://repo.anaconda.com/archive/Anaconda3-&lt;version&gt;-Linux-x86_64.sh
-</span></code></pre></div></p>
-</li>
-<li>
-<p><strong>Run the Installer</strong>:
-    <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>bash<span class="w"> </span>Anaconda3-&lt;version&gt;-Linux-x86_64.sh
-</span></code></pre></div></p>
-</li>
-<li>
-<p><strong>Follow the prompts</strong>: Accept the license terms, specify an installation path, and allow the installer to initialize <code>conda</code>.</p>
-</li>
-<li>
-<p><strong>Activate changes</strong>:
-    <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</span></code></pre></div></p>
-</li>
-</ul>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Make sure to replace <code>&lt;version&gt;</code> with the correct version number of the Anaconda installer.</p>
-</div>
 </div>
 </div>
 </div>
@@ -1782,12 +1790,12 @@
 <p><strong>Organize Your Project</strong>:</p>
 <ul>
 <li>Use a structure like this:
- <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>my_project/
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>├── data/              # Raw data files
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>├── modules/           # Scripts to store your classes and functions
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>├── results/           # Output results and figures
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>├── environment.yml    # Conda environment file
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>└── README.md          # Project overview
+ <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>my_project/
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>├──<span class="w"> </span>data/<span class="w">              </span><span class="c1"># Raw data files</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>├──<span class="w"> </span>modules/<span class="w">           </span><span class="c1"># Scripts to store your classes and functions</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>├──<span class="w"> </span>results/<span class="w">           </span><span class="c1"># Output results and figures</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>├──<span class="w"> </span>environment.yml<span class="w">    </span><span class="c1"># Conda environment file</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>└──<span class="w"> </span>README.md<span class="w">          </span><span class="c1"># Project overview</span>
 </span></code></pre></div></li>
 </ul>
 </li>
@@ -1800,8 +1808,371 @@
 </li>
 </ol>
 <hr />
+<h3 id="3-using-spyder-effectively">3. Using Spyder Effectively<a class="headerlink" href="#3-using-spyder-effectively" title="Permanent link">&para;</a></h3>
+<p>Spyder offers powerful tools for debugging, understanding, and navigating your code. Here’s an in-depth guide on how to leverage these features, with examples to make each step clear and actionable.</p>
+<hr />
+<h3 id="viewing-all-panes-in-spyder">Viewing All Panes in Spyder<a class="headerlink" href="#viewing-all-panes-in-spyder" title="Permanent link">&para;</a></h3>
+<p>Before diving into debugging and navigation, it's important to set up your Spyder workspace for maximum efficiency. Spyder's default layout includes several panes that provide valuable insights into your code's execution and structure.</p>
+<ol>
+<li>
+<p><strong>Accessing the View Menu</strong>:</p>
+<ul>
+<li>Go to <code>View &gt; Panes</code> to see a list of available panes.</li>
+<li>The most useful panes include:</li>
+<li><strong>Editor</strong>: This is where you write your code.</li>
+<li><strong>IPython Console</strong>: Allows you to run commands interactively.</li>
+<li><strong>Variable Explorer</strong>: Displays all variables in your current environment.</li>
+<li><strong>Documentation</strong>: Shows documentation for selected functions and objects.</li>
+<li><strong>File Explorer</strong>: Browse files and folders in your working directory.</li>
+<li><strong>Breakpoints</strong>: Manage and navigate all breakpoints in your code.</li>
+</ul>
+</li>
+<li>
+<p><strong>Enable Recommended Panes</strong>:</p>
+<ul>
+<li>Ensure that the <strong>Variable Explorer</strong>, <strong>IPython Console</strong>, <strong>Breakpoints</strong>, and <strong>Documentation</strong> panes are enabled.</li>
+<li>This setup will help you keep track of variables, navigate breakpoints, and access function documentation easily.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="Spyder Panes" src="../../assets/spyder_panes.png" /></p>
+<hr />
+<h3 id="understanding-the-code-by-debugging">Understanding the Code by Debugging<a class="headerlink" href="#understanding-the-code-by-debugging" title="Permanent link">&para;</a></h3>
+<p>Using breakpoints and Spyder's debugging tools allows you to:</p>
+<ul>
+<li><strong>Pause code execution</strong> and inspect variables at critical points.</li>
+<li><strong>Step through code line-by-line</strong> to understand how each operation transforms the data.</li>
+<li><strong>Use the Variable Explorer</strong> for a visual overview of complex data structures.</li>
+<li><strong>Run quick checks</strong> in the IPython console for on-the-fly validation.</li>
+</ul>
+<p>These tools are crucial for identifying and fixing bugs in your scripts, whether you're working with simple calculations or more complex data processing tasks. By mastering them, you'll save time and gain deeper insights into your code's behavior.</p>
+<div class="admonition tip">
+<p class="admonition-title">Best Practices for Debugging</p>
+<ul>
+<li><strong>Use Breakpoints Strategically</strong>: Place breakpoints at critical points in your code to verify data at those stages.</li>
+<li><strong>Step Through Loops</strong>: Use "Step Over" and "Step Into" to see how data changes inside loops.</li>
+<li><strong>Log Important Values</strong>: If you’re debugging a specific issue, add print statements to log values at various points.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example Scenario: Debugging a Simple Calculation Script</p>
+<p>Let’s say you have a script that generates some random numbers, processes them by applying a mathematical operation, and then plots the result. You want to ensure that the numbers are correctly generated and processed before they are plotted. Here’s how you can use breakpoints to achieve this:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Generate random data</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># Process data: apply a mathematical operation</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="n">processed_data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="c1"># Plot data</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">processed_data</span><span class="p">)</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Processed Data&#39;</span><span class="p">)</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="1-adding-a-breakpoint">1. Adding a Breakpoint<a class="headerlink" href="#1-adding-a-breakpoint" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Set a breakpoint</strong> on the line where <code>processed_data</code> is calculated by clicking in the left margin next to the line or using:<ul>
+<li><strong>Windows/Linux</strong>: <code>Ctrl + B</code></li>
+<li><strong>Mac</strong>: <code>Cmd + B</code></li>
+</ul>
+</li>
+</ul>
+<p>The line will be highlighted in red, indicating that the breakpoint is active.</p>
+<p><strong>Why use this?</strong>: This breakpoint allows you to pause before <code>processed_data</code> is calculated, so you can inspect the <code>data</code> values and verify that the generated numbers look as expected before the transformation is applied.</p>
+<hr />
+<h3 id="2-running-code-in-debug-mode">2. Running Code in Debug Mode<a class="headerlink" href="#2-running-code-in-debug-mode" title="Permanent link">&para;</a></h3>
+<p><strong>Start debugging</strong> by clicking the "Debug" button (bug icon) in the Spyder toolbar or pressing <code>F5</code>.
+- The execution will pause when it reaches the breakpoint on <code>processed_data = data * 2 + 5</code>.</p>
+<ul>
+<li>Once paused, you can:<ul>
+<li><strong>Step into a function</strong> (<code>Ctrl + F11</code>): This allows you to step inside any function calls to see how they operate internally.</li>
+<li><strong>Step over</strong> (<code>Ctrl + F10</code>): This moves to the next line without diving into the details of function calls—ideal for quickly advancing through simpler lines.</li>
+<li><strong>Continue</strong> (<code>Ctrl + F12</code>): Resumes execution until the next breakpoint or the end of the script.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Why use this?</strong>: Step-by-step execution helps you isolate logical errors or verify how variables change through different stages, especially when debugging a transformation or complex calculation.</p>
+<hr />
+<h3 id="3-inspecting-variables-during-debugging">3. Inspecting Variables During Debugging<a class="headerlink" href="#3-inspecting-variables-during-debugging" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>With the code paused at the breakpoint, use the <strong>Variable Explorer</strong> to examine the contents of <code>data</code>:</p>
+<ul>
+<li>Look at the array of generated numbers to ensure they are within the expected range (0 to 1 since <code>np.random.rand()</code> generates random floats).</li>
+<li>After confirming the raw <code>data</code>, proceed with the next step to see how <code>processed_data</code> changes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Double-click</strong> on <code>data</code> in the Variable Explorer to open a detailed view, allowing you to see the entire array and verify its values.</p>
+</li>
+</ul>
+<p><strong>Why use this?</strong>: It allows you to visually inspect the contents of arrays, lists, or other data structures without needing to add print statements. This can be especially useful for quickly understanding the state of your data at different points.</p>
+<p><img alt="Spyder Breakpoints" src="../../assets/spyder_breakpoint.png" /></p>
+<hr />
+<h3 id="4-using-the-console-for-interactive-debugging">4. Using the Console for Interactive Debugging<a class="headerlink" href="#4-using-the-console-for-interactive-debugging" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>While debugging, you can interact with variables directly in the <strong>IPython console</strong> to verify specific values or perform calculations without modifying the script.</p>
+</li>
+<li>
+<p><strong>Example</strong>: To see the first few values of <code>data</code>, type:
+    <div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+</span></code></pre></div>
+    This will print the first 10 values of the <code>data</code> array in the console, allowing you to confirm that the random numbers are as expected.</p>
+</li>
+<li>
+<p><strong>Another Example</strong>: Check the shape of <code>data</code> to ensure it has the correct number of elements:
+    <div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+</span></code></pre></div></p>
+</li>
+</ul>
+<p><strong>Why use this?</strong>: This feature allows you to perform ad-hoc checks on variables or run quick tests without altering your script, which is useful for exploring potential issues during debugging.</p>
+</div>
+<hr />
+<h3 id="navigating-and-understanding-code">Navigating and Understanding Code<a class="headerlink" href="#navigating-and-understanding-code" title="Permanent link">&para;</a></h3>
+<p>Spyder makes it easy to navigate large codebases and understand how functions, classes, and variables are connected. Using features like "Go to Definition," "Find References," object inspection, and the Documentation Viewer, you can explore and manage complex projects more efficiently.</p>
+<div class="admonition tip">
+<p class="admonition-title">Pro Tips for Code Navigation</p>
+<ul>
+<li><strong>Use "Go to Definition" to trace complex functions</strong>: This helps you see the original implementation without scrolling through files.</li>
+<li><strong>Use the Variable Explorer for quick checks</strong>: It’s a faster way to spot-check variables rather than adding numerous print statements.</li>
+</ul>
+</div>
+<hr />
+<h3 id="1-go-to-definition">1. Go to Definition<a class="headerlink" href="#1-go-to-definition" title="Permanent link">&para;</a></h3>
+<p><strong>Overview</strong>: </p>
+<p>The <strong>Go to Definition</strong> feature allows you to quickly jump to where a function, class, or variable is defined. This is especially useful when working with large scripts or when using functions imported from other files or libraries. Instead of scrolling through the code to find a definition, you can directly jump to it.</p>
+<ul>
+<li>
+<p><strong>How to Use</strong>: Right-click on the function or class name and select "Go to Definition" or use the shortcut:</p>
+<ul>
+<li><strong>Windows/Linux</strong>: <code>Ctrl + G</code></li>
+<li><strong>Mac</strong>: <code>Cmd + G</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Why use this?</strong>: This feature saves time and makes it easier to understand how a function or class is implemented without losing context in your main script.</p>
+</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example Scenario: Navigating a Machine Learning Pipeline</p>
+<p>Suppose you have a script with multiple functions for data cleaning, feature extraction, model training, and evaluation. Using "Go to Definition," you can quickly jump between functions to understand the flow of your code.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">def</span> <span class="nf">clean_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="c1"># Data cleaning logic</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="k">return</span> <span class="n">df</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="k">def</span> <span class="nf">extract_features</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="c1"># Feature extraction logic</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="k">return</span> <span class="n">features</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">features</span><span class="p">):</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>    <span class="c1"># Model training logic</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>    <span class="k">return</span> <span class="n">model</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="c1"># Main script</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="n">data</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="n">features</span> <span class="o">=</span> <span class="n">extract_features</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="n">model</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li><strong>Scenario</strong>: You want to see the logic inside <code>clean_data</code> while working on the main script.<ul>
+<li>Right-click on <code>clean_data</code> and select "Go to Definition."</li>
+<li>Spyder will take you directly to where <code>clean_data</code> is defined, allowing you to review the function without scrolling.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Spyder Go To Definition" src="../../assets/spyder_definition.png" /></p>
+</div>
+<hr />
+<h3 id="2-inspecting-objects">2. Inspecting Objects<a class="headerlink" href="#2-inspecting-objects" title="Permanent link">&para;</a></h3>
+<p><strong>Overview</strong>:
+Spyder’s object inspection feature allows you to explore the attributes and methods of objects directly within the editor. This is particularly useful when working with unfamiliar libraries or custom classes, as it enables you to see what functions or properties are available and how to use them. This feature can be a lifesaver when you encounter a function with unclear parameters or complex behavior.</p>
+<ul>
+<li>
+<p><strong>How to Use</strong>: Select an object or function in the editor and press:</p>
+<ul>
+<li><strong>Windows/Linux</strong>: <code>Ctrl + I</code></li>
+<li><strong>Mac</strong>: <code>Cmd + I</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Why use this?</strong>: This feature provides a quick way to understand the capabilities and usage of an object or method without needing to look up documentation online. It can save time when learning new libraries or debugging issues with complex data structures.</p>
+</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example Scenario: Inspecting a NumPy Function</p>
+<p>Suppose you want to generate a set of random integers using the <code>np.random.randint</code> function, but you’re not sure about its input arguments and what it returns. You can use Spyder’s object inspection to quickly get this information without leaving the IDE.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># Generate random integers between 0 and 10</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">random_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li>
+<p><strong>Scenario</strong>: You want to know what arguments <code>np.random.randint</code> accepts and how to use it properly (e.g., what is <code>size</code>, and can you generate a 2D array?).</p>
+</li>
+<li>
+<p><strong>Step 1: Select the Function</strong>: Highlight <code>np.random.randint</code> in the editor.</p>
+</li>
+<li>
+<p><strong>Step 2: Press the Shortcut</strong>: Use <code>Ctrl + I</code> (Windows/Linux) or <code>Cmd + I</code> (Mac) to bring up the documentation in the <strong>Help pane</strong>.</p>
+</li>
+<li>
+<p><strong>What You See</strong>: The documentation for <code>np.random.randint</code> appears, showing:</p>
+<ul>
+<li><strong>Input Arguments</strong>: The range of integers (<code>low</code> and <code>high</code>), <code>size</code> for specifying the shape of the output array, and other optional parameters.</li>
+<li><strong>Description</strong>: An explanation of what the function does—generating random integers within a specified range.</li>
+<li><strong>Returns</strong>: Information on what the function outputs (an array of integers).</li>
+<li><strong>Examples</strong>: If available, code snippets showing how to use the function.</li>
+</ul>
+</li>
+<li>
+<p><strong>Why use this?</strong>: This allows you to quickly understand how to use <code>np.random.randint</code> without having to search online. You can verify if the function supports multi-dimensional arrays by checking the <code>size</code> parameter.</p>
+</li>
+</ul>
+</div>
+<hr />
 <h2 id="version-control-with-git-and-github">Version Control with Git and GitHub<a class="headerlink" href="#version-control-with-git-and-github" title="Permanent link">&para;</a></h2>
 <p>Version control is crucial for collaborative coding and tracking changes in your projects. Here’s how to set up and use Git and GitHub:</p>
+<h3 id="1-install-git">1. Install Git<a class="headerlink" href="#1-install-git" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="windows_1" name="__tabbed_4" type="radio" /><input id="mac_1" name="__tabbed_4" type="radio" /><input id="ubuntu_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="windows_1">Windows</label><label for="mac_1">Mac</label><label for="ubuntu_1">Ubuntu</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Download the installer from the <a href="https://git-scm.com/download/win">Git website</a>.</li>
+<li>Follow the installation wizard, using default options.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Install via Homebrew:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>brew<span class="w"> </span>install<span class="w"> </span>git
+</span></code></pre></div></li>
+<li>Alternatively, download the <a href="https://git-scm.com/download/mac">Git installer</a>.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="2-configure-git">2. Configure Git<a class="headerlink" href="#2-configure-git" title="Permanent link">&para;</a></h3>
+<p>Set up your Git identity using the following commands:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;youremail@example.com&quot;</span>
+</span></code></pre></div></p>
+<h3 id="3-using-github">3. Using GitHub<a class="headerlink" href="#3-using-github" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="github-desktop-gui" name="__tabbed_5" type="radio" /><input id="command-line-cli" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="github-desktop-gui">GitHub Desktop (GUI)</label><label for="command-line-cli">Command Line (CLI)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li><strong>Download</strong> <a href="https://desktop.github.com/">GitHub Desktop</a>.</li>
+<li><strong>Sign in</strong> with your GitHub account.</li>
+<li><strong>Clone a Repository</strong>:<ul>
+<li>Go to <code>File &gt; Clone Repository</code> and enter the repository URL.</li>
+</ul>
+</li>
+<li><strong>Commit Changes</strong>:<ul>
+<li>Make changes to files, then click <code>Commit</code> to save a snapshot of your changes.</li>
+</ul>
+</li>
+<li><strong>Push to GitHub</strong>:<ul>
+<li>After committing, click <code>Push</code> to sync changes with GitHub.</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li><strong>Clone a Repository</strong>:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-username/repo-name.git
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nb">cd</span><span class="w"> </span>repo-name
+</span></code></pre></div></li>
+<li><strong>Stage and Commit Changes</strong>:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Initial commit&quot;</span>
+</span></code></pre></div></li>
+<li><strong>Push Changes</strong>:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div></li>
+</ol>
+</div>
+</div>
+</div>
+<h3 id="4-example-git-workflow">4. Example Git Workflow<a class="headerlink" href="#4-example-git-workflow" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Create Feature Branches</strong> for new work:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/my-feature
+</span></code></pre></div></li>
+<li><strong>Commit Often</strong> with meaningful messages:<ul>
+<li>Example: <code>git commit -m "Add function for data cleaning"</code></li>
+</ul>
+</li>
+<li><strong>Before Merging, Use</strong>:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>git<span class="w"> </span>merge<span class="w"> </span>feature/my-feature
+</span></code></pre></div></li>
+<li><strong>Keep Branches Small</strong>: Aim for focused changes that can be reviewed quickly.</li>
+</ul>
+<hr />
+<h2 id="best-practices-for-organizing-code-and-projects">Best Practices for Organizing Code and Projects<a class="headerlink" href="#best-practices-for-organizing-code-and-projects" title="Permanent link">&para;</a></h2>
+<p>A well-structured project helps in maintaining readability and collaboration. Here are some recommendations:</p>
+<h3 id="1-folder-structure">1. Folder Structure<a class="headerlink" href="#1-folder-structure" title="Permanent link">&para;</a></h3>
+<p>Use a logical structure for your project files:</p>
+<div class="language-text highlight"><pre><span></span><code> ```bash
+ my_project/
+ ├── data/              # Raw data files
+ ├── modules/           # Scripts to store your classes and functions
+ ├── results/           # Output results and figures
+ ├── environment.yml    # Conda environment file
+ └── README.md          # Project overview
+ ```
+</code></pre></div>
+<h3 id="2-naming-conventions">2. Naming Conventions<a class="headerlink" href="#2-naming-conventions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Files</strong>: Use lowercase letters with underscores (e.g., <code>data_processing.py</code>).</li>
+<li><strong>Folders</strong>: Use meaningful names that reflect their contents.</li>
+<li><strong>Variables</strong>: Use descriptive names (e.g., <code>participant_id</code> instead of <code>id</code>).</li>
+</ul>
+<h3 id="3-general-coding-tips">3. General Coding Tips<a class="headerlink" href="#3-general-coding-tips" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Write modular code by breaking down tasks into functions and classes. This approach enhances reusability and readability.</p>
+</div>
+<ul>
+<li><strong>Avoid "Spaghetti Code"</strong>: Keep functions short and focused.</li>
+<li><strong>Use Docstrings</strong> to document functions and classes:
+    <div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="sd">    Loads data from a specified file path.</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="sd">    Args:</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="sd">        file_path (str): The path to the data file.</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="sd">    Returns:</span>
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="sd">        pandas.DataFrame: Loaded data as a DataFrame.</span>
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span></code></pre></div></li>
+<li><strong>Follow PEP 8</strong>: Use tools like <code>flake8</code> to ensure code style compliance.</li>
+</ul>
+<h3 id="4-saving-results">4. Saving Results<a class="headerlink" href="#4-saving-results" title="Permanent link">&para;</a></h3>
+<p>Organize your results systematically:</p>
+<ul>
+<li><strong>Create a dedicated <code>results</code> folder</strong>: Use subfolders that include timestamps and parameter details.</li>
+<li><strong>Save the executed script</strong> in the results folder to ensure reproducibility.<ul>
+<li>Example folder name: <code>results_2024-10-18_learning_rate-0.01/</code></li>
+<li>Include a copy of the script:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>cp<span class="w"> </span>train_model.py<span class="w"> </span>results_2024-10-18_learning_rate-0.01/
+</span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>We hope this guide helps you establish a solid coding practice. Follow these steps to ensure your code is well-organized, collaborative, and reproducible!</p>
 
 
 
@@ -1822,7 +2193,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 12:19:26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 13:58:32</span>
   </span>
 
     
