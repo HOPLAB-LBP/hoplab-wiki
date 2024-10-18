@@ -1748,7 +1748,7 @@
 <p class="admonition-title">Tip</p>
 <p>For information on how to set up the working environment, install, and configure the packages mentioned in this document, refer to:</p>
 <ul>
-<li><a href="../fmri-setup-env.md">Set-up your fMRI environment</a></li>
+<li><a href="fmri-setup-env.html">Set-up your fMRI environment</a></li>
 <li><a href="../../coding/index.html">Coding practices</a></li>
 </ul>
 </div>
@@ -2017,15 +2017,16 @@
 </span></code></pre></div>
 <details class="tip">
 <summary>Use CIFTI output for surface data</summary>
-<p>If you plan to run analysis on <strong>surface data</strong>, consider using <strong>CIFTI output images</strong> from fMRIPrep. While this approach hasn't been directly tested here, CIFTI outputs can provide several advantages:</p>
-<ul>
-<li><strong>CIFTI images</strong> include cortical BOLD time series projected onto the surface using templates like the <strong>Glasser2016 parcellation</strong> (which is also used for MVPA).</li>
-<li>This method allows for direct analysis of surface data in formats like <code>.gii</code>, which can be compatible with <strong>SPM</strong> for further analysis.</li>
-<li>Using CIFTI outputs could simplify the process of obtaining <strong>surface-based parcellations</strong> and make the data more directly usable in subject space, potentially eliminating the need for complex and time-consuming transformations.</li>
-<li>It may also provide a <strong>more accurate representation of cortical activity</strong> by avoiding interpolation errors that can occur when mapping from volume to surface space.</li>
-</ul>
-<p>If you decide to explore this option, make sure to include the cifti falg in <code>--output-spaces</code> when running <code>fmriprep-docker</code>. This setup will produce CIFTI files (<code>.dtseries.nii</code>) along with standard volumetric outputs, giving you flexibility in how you proceed with your analysis.</p>
 </details>
+<p>If you plan to run analysis on <strong>surface data</strong>, consider using <strong>CIFTI output images</strong> from fMRIPrep. While this approach hasn't been directly tested here, CIFTI outputs can provide several advantages:</p>
+<div class="language-text highlight"><pre><span></span><code>- **Surface analysis in SPM** (see [this](https://neurostars.org/t/analyzing-func-gii-files-with-spm12/852/2) conversation on Neurostars).
+- **CIFTI images** include cortical BOLD time series projected onto the surface using templates like the **Glasser2016 parcellation** (which is also used for MVPA).
+- This method allows for direct analysis of surface data in formats like `.gii`, which can be compatible with **SPM** for further analysis.
+- Using CIFTI outputs could simplify the process of obtaining **surface-based parcellations** and make the data more directly usable in subject space, potentially eliminating the need for complex and time-consuming transformations.
+- It may also provide a **more accurate representation of cortical activity** by avoiding interpolation errors that can occur when mapping from volume to surface space.
+
+If you decide to explore this option, make sure to include the cifti falg in `--output-spaces` when running `fmriprep-docker`. This setup will produce CIFTI files (`.dtseries.nii`) along with standard volumetric outputs, giving you flexibility in how you proceed with your analysis.
+</code></pre></div>
 <details class="warning">
 <summary>Allocating resources to fMRIprep</summary>
 <p><strong>Running fMRIPrep is resource and time intensive</strong>, especially with high-resolution data. Here are some practical tips to optimize the process:</p>
@@ -2217,7 +2218,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 18:07:38</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 19:48:39</span>
   </span>
 
     

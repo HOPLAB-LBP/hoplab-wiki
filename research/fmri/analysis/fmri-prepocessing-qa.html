@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#fmri-preprocessing-and-quality-assessment" class="md-skip">
           Skip to content
         </a>
       
@@ -1206,6 +1206,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3. Pre-processing and QA
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="fmri-prepocessing-qa.html" class="md-nav__link md-nav__link--active">
         
   
@@ -1215,6 +1226,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preprocessing-quality-assessment-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preprocessing &amp; Quality Assessment Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preprocessing-with-fmriprep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preprocessing with fMRIPrep
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-assessment-with-mriqc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Assessment with MRIQC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpreting-fmriprep-and-mriqc-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpreting fMRIPrep and MRIQC Reports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-issues-with-fmriprep-and-mriqc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues with fMRIPrep and MRIQC
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1574,6 +1649,59 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preprocessing-quality-assessment-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preprocessing &amp; Quality Assessment Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preprocessing-with-fmriprep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preprocessing with fMRIPrep
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-assessment-with-mriqc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Assessment with MRIQC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpreting-fmriprep-and-mriqc-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpreting fMRIPrep and MRIQC Reports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-issues-with-fmriprep-and-mriqc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues with fMRIPrep and MRIQC
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1595,11 +1723,357 @@
   
 
 
-<h1 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<ul>
-<li><strong>TODO:</strong>  populate this</li>
-</ul>
+<h1 id="fmri-preprocessing-and-quality-assessment">fMRI Preprocessing and Quality Assessment<a class="headerlink" href="#fmri-preprocessing-and-quality-assessment" title="Permanent link">&para;</a></h1>
 <p>You should land on this page after having collected your (f)MRI data and <a href="fmri-bids-conversion.html">converted it to BIDS</a>.</p>
+<h2 id="preprocessing-quality-assessment-overview">Preprocessing &amp; Quality Assessment Overview<a class="headerlink" href="#preprocessing-quality-assessment-overview" title="Permanent link">&para;</a></h2>
+<p>In this page, you will learn how to preprocess fMRI data using <a href="https://fmriprep.org/en/stable/">fMRIPrep</a> and perform quality assessment with <a href="https://mriqc.readthedocs.io/en/stable/">MRIQC</a>. We will cover:</p>
+<div class="grid cards">
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77 1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16-.05-.68.05-.69-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45-.74.44-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74-.03-.44.03-.44-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45.77-.44.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44 1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74.03.44z"/></svg></span> <strong><a href="#preprocessing-with-fmriprep">Running fMRIPrep</a></strong><br />
+  Step-by-step guide to run fMRIPrep, including the required command structure, key options, and output directory organization.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.96 11.31C10.82 8.1 11.5 6 13 6s2.18 2.1 3.04 5.31C17 14.92 18.1 19 22 19v-2c-2.2 0-3-2.46-4.03-6.2C17.08 7.46 16.15 4 13 4s-4.08 3.46-4.97 6.8C7.03 14.54 6.2 17 4 17V2H2v20h20v-2H4v-1c3.9 0 5-4.08 5.96-7.69"/></svg></span> <strong><a href="#quality-assessment-with-mriqc">Performing Quality Control with MRIQC</a></strong><br />
+  Use MRIQC to assess the quality of your MRI data. Identify potential artifacts and ensure data suitability for further analysis.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5m-7.86-1.75L8.85 19l.29-.74C10.43 15.06 13.5 13 17 13c1.05 0 2.06.21 3 .56V8l-6-6H6c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4.5c-.55-.66-1-1.42-1.36-2.25M13 3.5 18.5 9H13z"/></svg></span> <strong><a href="#fmriprep-html-report">Interpreting fMRIPrep Outputs</a></strong><br />
+  Understand the content of the fMRIPrep HTML report, including motion parameters, anatomical alignment, and other key quality checks.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 21H2V3h2v16h2v-9h4v9h2V6h4v13h2v-5h4z"/></svg></span> <strong><a href="#mriqc-html-report">Reviewing MRIQC Reports</a></strong><br />
+  Learn how to interpret MRIQC's visual reports and quality metrics, such as SNR and temporal SNR, to evaluate the data's integrity.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg></span> <strong><a href="#common-issues-with-fmriprep-and-mriqc">Troubleshooting Common Issues</a></strong><br />
+  Find solutions to common challenges with fMRIPrep and MRIQC, including memory management and output interpretation.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 10H3v2h11zm0-4H3v2h11zM3 16h7v-2H3zm18.5-4.5L23 13l-7 7-4.5-4.5L13 14l3 3z"/></svg></span> <strong><a href="fmri-glm.html">Next Steps: GLM Analysis</a></strong><br />
+  Once your data is preprocessed and quality-checked, move on to first-level analysis with the General Linear Model.</p>
+</li>
+</ul>
+</div>
+<h4 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong><a href="https://fmriprep.org/en/stable/">fMRIPrep Documentation</a></strong><br />
+  Get detailed insights into the preprocessing steps, output formats, and recommended practices.</p>
+</li>
+<li>
+<p><strong><a href="https://mriqc.readthedocs.io/en/stable/">MRIQC Documentation</a></strong><br />
+  Explore MRIQC's metrics and recommendations for improving MRI data quality.</p>
+</li>
+<li>
+<p><strong><a href="https://neurostars.org/tags/fmriprep">NeuroStars Community</a></strong><br />
+  A valuable resource for troubleshooting and community discussions related to fMRIPrep and MRIQC.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=fQHEKSzFKDc">YouTube: Reviewing fMRIPrep Outputs</a></strong></p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Before proceeding, ensure that your fMRI data is converted into <strong>BIDS format</strong>. Refer to the <a href="fmri-bids-conversion.html">BIDS Conversion Guide</a> for more details.</p>
+</div>
+<hr />
+<h2 id="preprocessing-with-fmriprep">Preprocessing with fMRIPrep<a class="headerlink" href="#preprocessing-with-fmriprep" title="Permanent link">&para;</a></h2>
+<h3 id="1-setting-up-fmriprep">1. Setting Up fMRIPrep<a class="headerlink" href="#1-setting-up-fmriprep" title="Permanent link">&para;</a></h3>
+<p>To use fMRIPrep, ensure that you have:
+- <strong>Docker</strong> (or <strong>Singularity</strong> for HPC environments).
+- Installed the <code>fmriprep-docker</code> wrapper for easier command-line usage:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>fmriprep-docker
+</span></code></pre></div>
+<ul>
+<li>A valid <strong>FreeSurfer license</strong> (<code>license.txt</code>) saved in a path accessible by fMRIPrep. This is needed for surface-based preprocessing.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">System Requirements</p>
+<p>fMRIPrep is resource-intensive. For optimal performance, allocate:</p>
+<ul>
+<li>At least <strong>16 GB RAM</strong> and <strong>4 CPUs</strong>.</li>
+<li>A <strong>high-speed SSD</strong> for the working directory to improve I/O performance.</li>
+</ul>
+</div>
+<p>For detailed instructions, visit the <a href="https://fmriprep.org/en/stable/installation.html">fMRIPrep Installation Guide</a>.</p>
+<hr />
+<h3 id="2-running-fmriprep">2. Running fMRIPrep<a class="headerlink" href="#2-running-fmriprep" title="Permanent link">&para;</a></h3>
+<p>Once your environment is ready, you can run fMRIPrep using the following command:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>fmriprep-docker<span class="w"> </span>/path/to/BIDS<span class="w"> </span>/path/to/derivatives/fmriprep<span class="w"> </span>participant<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>--work-dir<span class="w"> </span>/path/to/temp_fmriprep<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>--fs-license-file<span class="w"> </span>/path/to/.license<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span>--output-spaces<span class="w"> </span>MNI152NLin2009cAsym:res-2<span class="w"> </span>anat<span class="w"> </span>fsnative<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span>--participant-label<span class="w"> </span>&lt;SUBJECT_ID&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span>--n-cpus<span class="w"> </span><span class="m">8</span><span class="w"> </span>--mem-mb<span class="w"> </span><span class="m">16000</span><span class="w"> </span>--notrack
+</span></code></pre></div>
+<p>Replace:</p>
+<ul>
+<li><code>/path/to/BIDS</code> with the path to your BIDS directory.</li>
+<li><code>/path/to/derivatives/fmriprep</code> with where you want to store fMRIPrep outputs.</li>
+<li><code>&lt;SUBJECT_ID&gt;</code> with the ID of the subject being processed.</li>
+</ul>
+<details class="question">
+<summary>Why specify output spaces?</summary>
+<p><code>--output-spaces</code> defines the spaces in which your data will be resampled. Common options include:</p>
+<ul>
+<li><strong>MNI152NLin2009cAsym</strong>: Standard volumetric template.</li>
+<li><strong>anat</strong>: Subject’s native T1w space.</li>
+<li><strong>fsnative</strong>: FreeSurfer's subject-specific surface space.</li>
+</ul>
+</details>
+<h3 id="3-output-structure-and-files">3. Output Structure and Files<a class="headerlink" href="#3-output-structure-and-files" title="Permanent link">&para;</a></h3>
+<p>After running fMRIPrep, the output will be in the <code>derivatives/fmriprep</code> folder. This includes:</p>
+<ul>
+<li><strong>Preprocessed anatomical images</strong> (<code>T1w</code>, <code>T2w</code>).</li>
+<li><strong>Preprocessed functional images</strong> (BOLD series).</li>
+<li><strong>Confounds</strong>: <code>.tsv</code> files containing motion parameters and other potential noise regressors.</li>
+<li><strong>Reports</strong>: <code>sub-xx.html</code> files with a summary of the preprocessing.</li>
+</ul>
+<p>Refer to the <a href="https://fmriprep.org/en/stable/outputs.html">fMRIPrep Output Documentation</a> for more information.</p>
+<hr />
+<h2 id="quality-assessment-with-mriqc">Quality Assessment with MRIQC<a class="headerlink" href="#quality-assessment-with-mriqc" title="Permanent link">&para;</a></h2>
+<h3 id="1-running-mriqc">1. Running MRIQC<a class="headerlink" href="#1-running-mriqc" title="Permanent link">&para;</a></h3>
+<p>MRIQC helps identify potential issues in your data by generating quality metrics. Run MRIQC using Docker with the following command:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>-v<span class="w"> </span>/path/to/BIDS:/data:ro<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>-v<span class="w"> </span>/path/to/derivatives/mriqc:/out<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>nipreps/mriqc:latest<span class="w"> </span>/data<span class="w"> </span>/out<span class="w"> </span>participant<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>--participant-label<span class="w"> </span>&lt;SUBJECT_ID&gt;<span class="w"> </span>--nprocs<span class="w"> </span><span class="m">8</span><span class="w"> </span>--mem-gb<span class="w"> </span><span class="m">16</span><span class="w"> </span>--verbose-reports
+</span></code></pre></div>
+<p>This command will analyze individual subjects and save the results in the specified output directory. Replace the paths as appropriate.</p>
+<div class="admonition tip">
+<p class="admonition-title">Running Group-Level Analysis</p>
+<p>After processing individual subjects, you can run a group-level analysis to compare metrics across subjects:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>-v<span class="w"> </span>/path/to/BIDS:/data:ro<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>-v<span class="w"> </span>/path/to/derivatives/mriqc:/out<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span>nipreps/mriqc:latest<span class="w"> </span>/data<span class="w"> </span>/out<span class="w"> </span>group<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span>--nprocs<span class="w"> </span><span class="m">8</span><span class="w"> </span>--mem-gb<span class="w"> </span><span class="m">16</span><span class="w"> </span>--verbose-reports
+</span></code></pre></div>
+</div>
+<h3 id="2-understanding-mriqc-outputs">2. Understanding MRIQC Outputs<a class="headerlink" href="#2-understanding-mriqc-outputs" title="Permanent link">&para;</a></h3>
+<p>MRIQC generates:</p>
+<ul>
+<li><strong>Visual reports</strong> (<code>sub-xx.html</code>) for each subject.</li>
+<li><strong>CSV files</strong> with quality metrics.</li>
+<li><strong>Group-level metrics</strong> for overall dataset quality.</li>
+</ul>
+<p>Refer to the <a href="https://mriqc.readthedocs.io/en/stable/">MRIQC Documentation</a> for a detailed explanation of each metric.</p>
+<hr />
+<h2 id="interpreting-fmriprep-and-mriqc-reports">Interpreting fMRIPrep and MRIQC Reports<a class="headerlink" href="#interpreting-fmriprep-and-mriqc-reports" title="Permanent link">&para;</a></h2>
+<h3 id="fmriprep-html-report">fMRIPrep HTML Report<a class="headerlink" href="#fmriprep-html-report" title="Permanent link">&para;</a></h3>
+<p>After running fMRIPrep, the outputs will be stored in the <code>derivatives/fmriprep</code> directory, with each subject's data organized into subfolders like <code>sub-01</code>. These folders contain both the preprocessed functional and anatomical data, alongside JSON files with metadata.</p>
+<p>Each subject’s report (<code>sub-xx.html</code>) includes:</p>
+<ul>
+<li><strong>Registration Plots</strong>: Check the alignment of functional and anatomical images.</li>
+<li><strong>Field Map Corrections</strong>: Review the effect of susceptibility distortion corrections.</li>
+<li><strong>Motion Correction</strong>: Look for high motion frames using <strong>Framewise Displacement (FD)</strong> plots.</li>
+</ul>
+<details class="note">
+<summary>What is Framewise Displacement (FD)?</summary>
+<p>FD is a measure of head movement between frames. High FD values indicate potential motion artifacts. </p>
+</details>
+<p>Let’s walk through the key components of the output and how to interpret the HTML summary reports.</p>
+<h4 id="1-output-directory-structure">1. Output Directory Structure<a class="headerlink" href="#1-output-directory-structure" title="Permanent link">&para;</a></h4>
+<p>Within each subject's directory (<code>sub-01</code>):</p>
+<ul>
+<li><strong><code>anat/</code> folder</strong>: Contains anatomical images, including normalized versions (e.g., <code>MNI152</code> template) and images in native space.</li>
+<li><strong><code>func/</code> folder</strong>: Contains functional data for each run, including:</li>
+<li><strong>Confound Regressors</strong> (<code>.tsv</code>): Time series of noise estimates like white matter and cerebrospinal fluid (CSF).</li>
+<li><strong>Preprocessed Functional Images</strong>: Aligned to templates like <code>MNI152</code>.</li>
+<li><strong>Brain Masks</strong>: Estimated masks for the brain, used in further analyses.</li>
+</ul>
+<p>These files will be referenced in the HTML summary report, which provides an overview of the preprocessing steps and quality metrics.</p>
+<h4 id="2-opening-the-html-summary-report">2. Opening the HTML Summary Report<a class="headerlink" href="#2-opening-the-html-summary-report" title="Permanent link">&para;</a></h4>
+<p>To view the HTML report, navigate to <code>derivatives/fmriprep/sub-01/</code> and open <code>sub-01.html</code> by double-clicking it or using the terminal:</p>
+<p>The report contains the following sections: <strong>Summary</strong>, <strong>Anatomical</strong>, <strong>Functional</strong>, <strong>About</strong>, <strong>Methods</strong>, and <strong>Errors</strong>. Use the tabs at the top of the report to navigate these sections.</p>
+<h4 id="3-understanding-the-summary-section">3. Understanding the Summary Section<a class="headerlink" href="#3-understanding-the-summary-section" title="Permanent link">&para;</a></h4>
+<p>The <strong>Summary</strong> tab includes:</p>
+<ul>
+<li><strong>Number of Structural and Functional Images</strong>: Lists the number of anatomical and functional images processed.</li>
+<li><strong>Normalization Template</strong>: Shows the template used for alignment (e.g., <code>MNI152NLin2009cAsym</code>).</li>
+<li><strong>FreeSurfer</strong>: Indicates whether surface-based preprocessing was performed.</li>
+</ul>
+<p>Make sure these details match the parameters specified in your fMRIPrep command.</p>
+<h4 id="4-anatomical-quality-checks">4. Anatomical Quality Checks<a class="headerlink" href="#4-anatomical-quality-checks" title="Permanent link">&para;</a></h4>
+<p>The <strong>Anatomical</strong> section provides:</p>
+<ul>
+<li><strong>Brain Mask Overlay</strong>: Displays the brain mask (red outline), gray matter (magenta), and white matter boundaries (blue) overlaid on the anatomical image in sagittal, axial, and coronal views.</li>
+</ul>
+<p><img alt="Trigger box" src="../../../assets/fmriprep-report-brainmaskoverlay.png" /> </p>
+<ul>
+<li>
+<p><strong>Normalization Check</strong>: A GIF compares the subject’s anatomical image with the MNI template. Ensure that:</p>
+<ul>
+<li>The outlines of the brain and internal structures (e.g., ventricles) align well.</li>
+<li>Any misalignment could indicate poor normalization, which may need further inspection.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Trigger box" src="../../../assets/fmriprep-report-normalization.png" /> </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Hover over the GIF</strong> to see the back-and-forth comparison between the subject's brain and the template. Look closely at the alignment of internal brain structures.</p>
+</div>
+<ul>
+<li><strong>Surface Reconstruction</strong> if you ran the <code>recon-all</code> routine in fMRIprep</li>
+</ul>
+<p><img alt="Trigger box" src="../../../assets/fmriprep-report-surfacerecon.png" /> </p>
+<h4 id="5-functional-quality-checks">5. Functional Quality Checks<a class="headerlink" href="#5-functional-quality-checks" title="Permanent link">&para;</a></h4>
+<p>In the <strong>Functional</strong> section, you’ll find:</p>
+<ul>
+<li><strong>Functional-to-Anatomical Alignment</strong>: A GIF shows how well the preprocessed functional images align with the anatomical image.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Check for alignment</p>
+<p>Check for alignment between internal structures like ventricles in the functional and anatomical images. Open the image in a new tab (Right Click on the image -&gt; Open in a new tab) and hover to see the dynamic image.</p>
+</div>
+<p><img alt="Trigger box" src="../../../assets/fmriprep-report-coreg.svg" /> </p>
+<ul>
+<li><strong>CompCor Masks</strong>: Displays masks used for <strong>Anatomical Component Correction (aCompCor)</strong>:<ul>
+<li><strong>White Matter and CSF (Magenta)</strong>: Masks used to extract noise components.</li>
+<li><strong>High-Variance Voxels (Blue)</strong>: Used for <strong>Functional Component Correction (fCompCor)</strong>.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Assessing Alignment</p>
+<p>Good alignment between functional and anatomical images is crucial for accurate analysis. Pay special attention to lighter fluid-filled regions in the functional image, which should correspond with dark CSF areas in the anatomical image.</p>
+</div>
+<h4 id="6-bold-summary-and-carpet-plot">6. BOLD Summary and Carpet plot<a class="headerlink" href="#6-bold-summary-and-carpet-plot" title="Permanent link">&para;</a></h4>
+<p>The report includes <strong>time series plots</strong> for various confounds:</p>
+<ul>
+<li><strong>Global Signal (GS)</strong>: Measures signal fluctuations across the entire brain.</li>
+<li><strong>CSF Signal (GSCSF)</strong> and <strong>White Matter Signal</strong>: Represent fluctuations in specific tissue types.</li>
+<li><strong>Motion Metrics (DVARS, Framewise Displacement)</strong>:</li>
+<li><strong>DVARS</strong>: Shows changes in BOLD signal intensity from one time point to the next.</li>
+<li><strong>Framewise Displacement (FD)</strong>: Tracks the amount of head movement between frames.</li>
+<li><strong>Use DVARS and FD</strong> to identify frames with high motion that could affect data quality.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>High motion values often correlate with changes in global signal. Consider including these regressors in your GLM to account for motion-related noise.</p>
+</div>
+<p>The <strong>carpet plot</strong> displays time series of BOLD signals across different brain regions:</p>
+<ul>
+<li><strong>Cortex</strong> (blue), <strong>Subcortex</strong> (orange), <strong>Gray Matter</strong> (green), and <strong>White Matter/CSF</strong> (red).</li>
+<li>Look for <strong>sudden changes across a column</strong>, which may indicate motion artifacts affecting the entire brain at a particular time point.</li>
+</ul>
+<p><img alt="Trigger box" src="../../../assets/fmriprep-report-boldsummary.png" /> </p>
+<h4 id="7-correlation-matrix-of-confound-regressors">7. Correlation Matrix of Confound Regressors<a class="headerlink" href="#7-correlation-matrix-of-confound-regressors" title="Permanent link">&para;</a></h4>
+<p>The report also includes a <strong>correlation matrix</strong> showing relationships between confound regressors:</p>
+<ul>
+<li>High correlations between <strong>CSF</strong> and <strong>motion regressors</strong> may indicate that motion affects CSF signals.</li>
+<li>Use this matrix to decide which regressors to include in your GLM for better noise correction.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">High Correlations</p>
+<p>High correlation values may suggest redundancy among some regressors. Consider removing or combining them to avoid overfitting when building your GLM.</p>
+</div>
+<p><img alt="Trigger box" src="../../../assets/fmriprep-report-confoundscorr.png" /> </p>
+<h4 id="8-making-decisions-for-further-analysis">8. Making Decisions for Further Analysis<a class="headerlink" href="#8-making-decisions-for-further-analysis" title="Permanent link">&para;</a></h4>
+<p>After reviewing the report:</p>
+<ul>
+<li><strong>Identify Good Quality Runs</strong>: Look for well-aligned images and minimal motion artifacts.</li>
+<li><strong>Decide on Regressors</strong>: Choose confounds like <strong>DVARS</strong>, <strong>FD</strong>, and <strong>CompCor</strong> components to include in your GLM. </li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">What confound regressors should I use in my GLM?</p>
+<p>A common choice is to include at least the 6 Head Motion parameters, and optionally FD and Global Signal ad nuisance regressors in your GLM.  </p>
+<p>See <a href="https://neurostars.org/t/confounds-from-fmriprep-which-one-would-you-use-for-glm/326/45">this awesome NeuroStars conversation</a> with advice on choosing regressors and relevant resources.</p>
+</div>
+<p>For more details on interpreting fMRIPrep reports, see the <a href="https://fmriprep.org/en/stable/outputs.html">fMRIPrep Outputs Documentation</a> and discussions on <a href="https://neurostars.org/tags/fmriprep">NeuroStars</a>.</p>
+<hr />
+<h3 id="mriqc-html-report">MRIQC HTML Report<a class="headerlink" href="#mriqc-html-report" title="Permanent link">&para;</a></h3>
+<p>The MRIQC report highlights:</p>
+<ul>
+<li><strong>Summary Image</strong>: A visual overview of key metrics, including <strong>signal-to-noise ratio (SNR)</strong> and <strong>temporal SNR (tSNR)</strong>.</li>
+<li><strong>Detailed Metrics</strong>: Click through different tabs to examine metrics like <strong>Mean Framewise Displacement</strong>, <strong>EPI-to-T1w registration quality</strong>, and <strong>artifact presence</strong>.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Interpreting tSNR</p>
+<p>Higher <strong>temporal SNR (tSNR)</strong> values indicate better data quality. Typical values range from 30-60 for fMRI. Low tSNR may suggest issues like excessive noise or scanner artifacts. Review the group-level metrics to identify subjects with unusually high motion or low tSNR. </p>
+</div>
+<p>For more information on understanding these metrics, check out the <a href="https://neurostars.org/t/how-to-interpret-mriqc-metrics/">MRIQC interpretation guide on NeuroStars</a>.</p>
+<hr />
+<h2 id="common-issues-with-fmriprep-and-mriqc">Common Issues with fMRIPrep and MRIQC<a class="headerlink" href="#common-issues-with-fmriprep-and-mriqc" title="Permanent link">&para;</a></h2>
+<details class="failure">
+<summary>Memory Errors: Out of Memory (OOM) or Crash</summary>
+<ul>
+<li><strong>Problem</strong>: fMRIPrep crashes or terminates unexpectedly due to insufficient memory.</li>
+<li><strong>Solution</strong>: Reduce the <code>--mem-mb</code> parameter to allocate less memory or increase the swap space available on your system. This can help prevent OOM errors.</li>
+<li><strong>Tip</strong>: Monitor your memory usage during processing using tools like <code>htop</code> (Linux) or <strong>Activity Monitor</strong> (Mac). Aim to use around 80-90% of your available RAM without exceeding it.</li>
+</ul>
+</details>
+<details class="failure">
+<summary>Docker File Permissions Error</summary>
+<ul>
+<li><strong>Problem</strong>: fMRIPrep cannot access input or output directories due to file permissions.</li>
+<li><strong>Solution</strong>: Ensure that Docker has read and write permissions to the directories being mounted. Adjust permissions using:
+  <div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">755</span><span class="w"> </span>/path/to/BIDS<span class="w"> </span>/path/to/derivatives
+</span></code></pre></div></li>
+<li><strong>Tip</strong>: On Windows, ensure that <strong>Shared Drives</strong> are enabled in Docker Desktop settings.</li>
+</ul>
+</details>
+<details class="failure">
+<summary>Missing Fields in JSON Files</summary>
+<ul>
+<li><strong>Problem</strong>: fMRIPrep fails due to missing <code>SliceTiming</code> or <code>PhaseEncodingDirection</code> fields in the JSON sidecar files.</li>
+<li><strong>Solution</strong>: Verify that all required metadata fields are present using the <a href="https://bids-standard.github.io/bids-validator/">BIDS Validator</a>. For guidance on JSON sidecar fields, see the <a href="https://bids-specification.readthedocs.io/en/stable/">BIDS Specification</a>.</li>
+<li><strong>Tip</strong>: If using custom acquisition parameters, manually edit JSON files to include the missing fields.</li>
+</ul>
+</details>
+<details class="failure">
+<summary>RuntimeError: Fieldmap Issues</summary>
+<ul>
+<li><strong>Problem</strong>: fMRIPrep throws a <code>RuntimeError</code> related to fieldmaps, such as missing or improperly specified fieldmaps.</li>
+<li><strong>Solution</strong>: Ensure that fieldmaps are correctly specified in your BIDS dataset according to the <a href="https://bids-specification.readthedocs.io/en/stable/06-derivatives/03-field-maps.html">BIDS Fieldmap documentation</a>.</li>
+<li><strong>Tip</strong>: If your study does not require fieldmap correction, you can skip this step by specifying <code>--ignore fieldmaps</code> in your fMRIPrep command.</li>
+</ul>
+</details>
+<details class="failure">
+<summary>MRIQC: NaN Values in JSON Files</summary>
+<ul>
+<li><strong>Problem</strong>: MRIQC fails when encountering <code>NaN</code> values in JSON metadata files.</li>
+<li><strong>Solution</strong>: Use a script like <code>sanitize_json.py</code> to replace <code>NaN</code> values with valid placeholders before running MRIQC.</li>
+<li><strong>Tip</strong>: Validate your JSON files before running MRIQC to avoid processing interruptions.</li>
+</ul>
+</details>
+<details class="failure">
+<summary>Docker: Cannot Allocate Memory</summary>
+<ul>
+<li><strong>Problem</strong>: fMRIPrep crashes with the error <code>cannot allocate memory</code> when using Docker.</li>
+<li><strong>Solution</strong>: Restart the Docker service or allocate more memory and CPUs through the Docker Desktop settings under <strong>Resources</strong>.</li>
+<li><strong>Tip</strong>: Increase memory allocation gradually (e.g., 2-4 GB increments) until fMRIPrep runs smoothly.</li>
+</ul>
+</details>
+<details class="failure">
+<summary>Slow Processing: fMRIPrep Takes Too Long</summary>
+<ul>
+<li><strong>Problem</strong>: fMRIPrep runs slowly, taking an excessively long time for each subject.</li>
+<li><strong>Solution</strong>: Use a <strong>faster SSD</strong> for the <code>--work-dir</code> to improve read/write speeds and reduce processing time. Also, ensure <code>--n-cpus</code> is set to the majority of available cores, but not all, to avoid system slowdowns.</li>
+<li><strong>Tip</strong>: Consider running fMRIPrep on a <strong>high-performance computing (HPC)</strong> cluster if available.</li>
+</ul>
+</details>
+<details class="failure">
+<summary>Missing or Corrupted Output Files</summary>
+<ul>
+<li><strong>Problem</strong>: After running fMRIPrep or MRIQC, certain output files (e.g., <code>sub-xx.html</code> reports) are missing or corrupted.</li>
+<li><strong>Solution</strong>: Check for errors in the log files generated during the run. Often, disk space issues or interruptions during processing can cause missing files. Re-run the affected subjects with sufficient disk space.</li>
+<li><strong>Tip</strong>: Use a dedicated work directory and ensure it has at least <strong>100 GB</strong> of free space to accommodate intermediate files.</li>
+</ul>
+</details>
+<details class="failure">
+<summary>MRIQC: No Group Report Generated</summary>
+<ul>
+<li><strong>Problem</strong>: Group-level analysis in MRIQC does not produce a report.</li>
+<li><strong>Solution</strong>: Ensure that MRIQC was run in <strong>group mode</strong> using the correct <code>group</code> argument. Check if all individual reports are present in the output directory before running the group-level command.</li>
+<li><strong>Tip</strong>: Verify that the <code>derivatives/mriqc</code> directory has read and write access for Docker.</li>
+</ul>
+</details>
+<hr />
+<p>With these quality checks complete, you’re ready to proceed to the <strong>General Linear Model (GLM) analysis</strong>. See the next guide for instructions on setting up your GLM. <a href="fmri-glm.html">&rarr; Go to GLM</a></p>
 
 
 
@@ -1620,7 +2094,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 26, 2024 11:41:08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 19:48:14</span>
   </span>
 
     
@@ -1631,12 +2105,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
       
     </span>
     <nav>
       
-        <a href="mailto:61991543+timmaniquet@users.noreply.github.com">Tim Maniquet</a>, 
         <a href="mailto:59078281+costantinoai@users.noreply.github.com">costantinoai</a>
     </nav>
   </span>
