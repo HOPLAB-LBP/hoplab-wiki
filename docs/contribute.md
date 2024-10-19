@@ -63,7 +63,7 @@ For ease of collaboration, we keep track of all the tasks in our documentation i
 
 To add a new task to this list, you just need to write `NOTE`, `TODO`, or `PLACEHOLDER` in any document in the `docs/` folder. This will automatically be added to the Issue for that page during the Wiki building process. It is a good practice to write the name of the author in square brackets. Example:
 
-`**TODO**: [Andrea] fix hyperlinks`
+`TODO: [Andrea] fix hyperlinks`
 
 Please, remember to delete the source tag from the original file once the task is resolved. This will ensure that the Issue page includes only un-resolved tasks.
 
