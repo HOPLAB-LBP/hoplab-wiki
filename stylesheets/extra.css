@@ -68,3 +68,59 @@
 [data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active {
   color: var(--md-toc-link-hover-color);
 }
+
+/* Add a subtle shadow to all images */
+.md-content img {
+    box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
+    border-radius: 4px; /* Optional: adds rounded corners */
+    cursor: zoom-in;
+    transition: transform 0.2s ease-in-out, z-index 0.2s ease-in-out;
+    z-index: 1; /* Default z-index */
+    position: relative; /* Ensure it respects stacking order */
+}
+
+.md-content img:active {
+    transform: scale(2);
+    cursor: zoom-out;
+    z-index: 1000; /* Increase z-index when zoomed */
+}
+
+/* First level: circles */
+.md-content ul {
+    list-style-type: disc; /* Use circle for the first level */
+    margin: 0.5em 0; /* Reduce space before and after lists */
+    padding-left: 20px; /* Consistent padding for all list levels */
+    color: #444; /* Softer color for better readability */
+}
+
+/* Second level: hyphens */
+.md-content ul ul {
+    list-style-type: none; /* Remove default bullet */
+    margin: 0.25em 0; /* Tighter spacing for nested lists */
+}
+
+.md-content ul ul li::before {
+    content: "-";
+    color: #3498db; /* Customize color if needed */
+    margin-right: 8px; /* Add some space between the symbol and the text */
+    font-weight: bold; /* Optional: make the hyphen bold */
+}
+
+/* Third level: small arrows */
+.md-content ul ul ul {
+    list-style-type: none; /* Remove default bullet */
+    margin: 0.25em 0; /* Further reduced spacing */
+}
+
+.md-content ul ul ul li::before {
+    content: "→"; /* Small arrow symbol */
+    color: #1abc9c; /* Customize color if needed */
+    margin-right: 8px; /* Add space between the arrow and the text */
+    font-weight: bold; /* Optional: make the arrow bold */
+}
+
+/* General styling for list items */
+.md-content ul li {
+    margin-bottom: 0.3em; /* Less space between each list item */
+    line-height: 1.5; /* Improved line height for readability */
+}
