@@ -1,6 +1,6 @@
-# Practical scanning protocol 
+# Practical scanning protocol
 
-This page outlines the procedures followed by our lab at MR8. 
+This page outlines the procedures followed by our lab at MR8.
 
 For a quick overview of all the steps on the day of a scanning section, please consult the [MRI checklist](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/What%20to%20do%20at%20the%20scanner/ChecklistMR8.docx?d=w195af25d58334931bee6a959e882c312&csf=1&web=1&e=Uj1dHz)
 
@@ -12,10 +12,9 @@ The MR8 suite houses a **Philips Ingenia** scanner with a 32-channel head coil, 
     - There is no cell phone service inside the MR suite. Use the control room phone for external calls (dial `0` before the number).
     - **After 6 pm and on weekends**, two certified MR users (MRRUs) are required to run a session. More details are available in the [Safety Rules & Procedures](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AAATYJes74w8KvI0OEOd1MmYa?e=5&preview=Safety+Rules++Procedures+Research+MRI+UZL-KUL+v3.2.pdf).
     - You can find relevant phone numbers to call for urgent questions as well as usernames and passwords of the PCs in the scan console room in [this file](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/Contact%20information,%20usernames%20and%20passwords.docx?d=w5f0acba0431d45eebb844daf31531222&csf=1&web=1&e=0dXkhV) in the Hoplab Teams folder.
-    
- 
+
 ### MR8 Equipment
-    
+
 | **Area/Equipment**                 | **Description**                                                                                                                                                    |
 |------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Lockers**                        | Store white lab coats and personal belongings.                                                                                                                     |
@@ -41,11 +40,12 @@ The MR8 suite houses a **Philips Ingenia** scanner with a 32-channel head coil, 
 
 Before going to the hospital, ensure that you have the following forms ready:
 
-- **Consent Form**: Must be signed by both the participant and yourself before the session. Keep it safe post-session. 
+- **Consent Form**: Must be signed by both the participant and yourself before the session. Keep it safe post-session.
 
 - **MR Safety Checklist**: This form should be filled out by the participant prior to the session. You can send it in advance to avoid delays on the day of the scan. When the radiology desk is open, this form should be handed to the desk personnel, which will stamp it and confirm your scanning session. [Link](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=1&preview=MR+patient+Questionnaire+-+ENGELS.pdf)
 
 - **Check-In/Check-Out Form**: Fill this form when entering and leaving the MR suite. The timings you indicate on there will be used to record our usage of the scanner and the amount of hours to pay for. Leave this form on the dedicated tray, next to that of the screening questionnaires. [Link](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=2&preview=Checkinout_v3.0.pdf)
+
 ---
 
 ## Participant Arrival and Registration
@@ -77,9 +77,9 @@ Participants must wait at the **main entrance at least 30 minutes before** their
 
 !!! danger "Controlled Areas Access"
     Access to the Controlled Areas (MRI suite) is restricted and requires a KU Leuven card. Participants are not permitted to enter these areas until the **MR Safety Checklist** and **Consent Form** are signed.
-    
+
 ---
-    
+
 ### At the Scanner Control Room
 
 Upon arriving in the scanner control room, follow these steps to ensure smooth preparation and transition to the scanning session:
@@ -119,7 +119,7 @@ The stimulus computer's desktop is located in the **control room**. It is the se
 
 1. **Logging In**:
     - Use the provided username and password. Login details can be found [here](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/_layouts/15/Doc.aspx?sourcedoc=%7B5F0ACBA0-431D-45EE-BB84-4DAF31531222%7D&file=Contact%20information%2C%20usernames%20and%20passwords.docx&action=default&mobileredirect=true).
-   
+
     !!! tip "Password Not Accepted?"
         If the password is not accepted, check for a **qwerty-azerty** keyboard mismatch. Press `alt+shift` and ensure **EN** is selected on the login screen.
 
@@ -128,12 +128,12 @@ The stimulus computer's desktop is located in the **control room**. It is the se
      `C:\Research\Psychology\`  
      (Create your own folder within this directory.)
 
-4. **Installed Software**:
+3. **Installed Software**:
     - **Matlab 2011b, 2015a**, and **Psychtoolbox 3.0.123** are installed.
     !!! tip
         If Matlab freezes or shows a JAVA error, restarting Matlab should fix the issue.
 
-5. **Screen Resolution**:
+4. **Screen Resolution**:
     - The resolution is set to **1920 x 1080 (landscape)**.
     - To flip the screen, adjust the **projector settings**, not the computer.
     - **Screen Width**: 28.35 visual degrees
@@ -146,7 +146,7 @@ The scanner sends a trigger "5" to the stimulus computer. Different setups are u
 
 === "Static Stimuli"
     A single wire connects two button boxes, each with 2 buttons:
-    
+
       - **Box 1**: 
         - Blue button = Trigger 1
         - Yellow button = Trigger 2
@@ -156,7 +156,7 @@ The scanner sends a trigger "5" to the stimulus computer. Different setups are u
 
 === "Dynamic Stimuli (e.g., movies)"
     A response box with 4 buttons:
-        
+
       - Blue button = Trigger "b"
       - Yellow button = Trigger "y"
       - Green button = Trigger "g"
@@ -164,11 +164,11 @@ The scanner sends a trigger "5" to the stimulus computer. Different setups are u
 
 !!! warning "Check Trigger Outputs"
     Before starting the experiment, verify that the buttons provide the expected outputs on the stimulus PC screen. If no triggers are working:
-    
+
     - Restart Matlab and/or the stimulus computer.
     - Check if any cables have been left disconnected. The **response box** is on top of the stimulus desktop PC in the **control room**. Ensure both cables are properly connected.
 
-![Trigger box](../../assets/triggerbox.png) 
+![Trigger box](../../assets/triggerbox.png)
 
 #### Common Issues
 
@@ -181,7 +181,7 @@ The scanner sends a trigger "5" to the stimulus computer. Different setups are u
     1. Restart **Matlab** and check for responses from the button box.
     2. Ensure the trigger passes through the **static stimuli box** (check if the boxes are responsive).
     3. Verify that all cables are connected properly. The **response box** is on the table next to the desktop PC in the technical room.
-    
+
     ??? danger "Restarting the Scanner"
         Do not do this without the approval of Ron or Stefan. If the trigger still doesn’t work, you may need to restart the scanner:
         
@@ -231,7 +231,7 @@ The scanner sends a trigger "5" to the stimulus computer. Different setups are u
 Ensure that **filter 3NB** (1.34% light transmission) is placed in front of the projector tunnel for consistency across scan sessions.
 
 MR8 offers four filter options, each with different light transmission levels:
-   
+
    | **Filter**             | **Light Transmission** |
    |------------------------|------------------------|
    | 3NB                    | 1.34%                  |
@@ -254,17 +254,19 @@ You can combine filters to adjust the luminance.
 2. **Adjusting the Lens**:  
    If the lens is out of position, use the buttons next to the lens on the projector to adjust — **do not touch the lens directly**.
 
-3. **Common Issues**:  
-     If the screen is showing a blue window or incorrect display:
-     - Check that the projector cable is properly connected to the stimulus computer.
-     - Ensure the source is set to DisplayPort.  
+#### Common Issues  
+
+If the screen is showing a blue window or incorrect display:
+
+- Check that the projector cable is properly connected to the stimulus computer.
+- Ensure the source is set to DisplayPort.  
      Press the DisplayPort button on the remote to reset the projector to standard settings.
 
 !!! tip "Viewing Projector Menu"
     To view the projector menu, you'll need to be inside the scanner room with the remote. Remove the filter, then use the remote inside the scanner to see the menu options on the projection screen.
-    
+
 ---
-    
+
 ## Getting the Volunteer Ready for the Scanner
 
 ### Earplugs and Headphones
@@ -318,7 +320,7 @@ Volunteers **must** wear earplugs and white earphones. New white earpad covers c
 
 2. **Volunteer Adjustment**:
     - The volunteer can **adjust the mirror** themselves if needed by sliding it backward or forward to get a clear view of the screen.
-    
+
 ---
 
 ### Table calibration
@@ -343,10 +345,11 @@ The **control panels** on the left and right of the scanner have identical funct
 5. **Confirm Coil Position**:
     - Press the button below the light bulb button to confirm the coil's position (a green light will indicate confirmation).
     - The table will move automatically into the scanner when the button is held for a few seconds.
-    !!! note 
+    !!! note
         Place the mirror on top of the coil before sliding the volunteer into the scanner.
 
 #### Common Issues
+
 ??? failure "Table Calibration Failed"
     - If the table moves too far inside the scanner, calibration may have failed. Slide the table out of the scanner, recalibrate, and try again.
     - If the scanner light remains on, use the control buttons to switch it off.
@@ -354,7 +357,7 @@ The **control panels** on the left and right of the scanner have identical funct
 
 ??? failure "Green Calibration Light Already On"
     - If the green calibration light is already on before positioning the table correctly, move the table out of the scanner to reset the calibration. The light will turn off, allowing you to restart the calibration process.
-    
+
 ---
 
 ### Inserting the Volunteer into the Scanner
@@ -381,7 +384,7 @@ The **control panels** on the left and right of the scanner have identical funct
 
 ??? failure "Table Moves Too Far Inside Scanner"
     If the table moves too far inside the scanner, it indicates a calibration failure:
-    
+
     1. **Slide the table out** of the scanner.
     2. **Recalibrate** the patient’s position using the calibration laser.
     
@@ -403,7 +406,7 @@ Before leaving the room, check the following:
 1. Use the **square mirror** with front reflection.
 2. Position the participant’s head as high as possible in the coil (to reduce shadows on the face).
 3. Support the participant’s neck with **washcloths** to tilt the head back for better eye visibility.
-    
+
 ---
 
 ### Eyetracker Startup
@@ -419,7 +422,7 @@ Before leaving the room, check the following:
 
 3. **Control room - Stimulus PC**:
     - Open the **track2popup** to view the eye on the screen and adjust the sharpness.
-    
+
 ---
 
 ### Eyelink Camera Setup
@@ -428,7 +431,7 @@ Before leaving the room, check the following:
 2. Adjust the camera position by holding a finger in front of it to check where it’s pointing.
 3. Ensure both the **pupil** and **corneal reflex (CT)** are well-detected.
 4. Adjust the **pupil threshold** using the up/down arrows for the clearest possible image.
-    
+
 ---
 
 ### Calibration & Validation
@@ -445,7 +448,7 @@ Before leaving the room, check the following:
 3. **Recording**:
     - Open a new file before each functional run and press **RECORD** at the start of the run.
     - Stop recording by pressing **CLOSE FILE** at the end of the run.
-    
+
 !!! tip "Controlling EyeLink"
     It is advisable to control the calibration, validation, recordings and data collection from the script you use for your fMRI task.
 
@@ -492,7 +495,7 @@ Before leaving the room, check the following:
     Keep the same light settings throughout the entire fMRI study.  
     - The **center button** turns the light on or off.
     - **Swipe around the center button** to dim the lights.
-    
+
 ---
 
 ### Select Your Exam Card
@@ -512,12 +515,12 @@ Before leaving the room, check the following:
         - **fMRI protocol N=X** (number of dynamic scans in the actual study)
 
 #### Common Issues
-        
+
 ??? failure "Participant Can’t Be Found in CP"
     1. Start a **new examination** by going to **Patients > New Examination**.
     2. Update the patient list by clicking **RIS Configuration**, then **Proceed**.
     3. Close the **New Examination** window and reopen it via **Patients > New Examination > RIS**.
-    
+
     If no one is available to help, manually fill in the participant's details and send an email to **Ron** with the following information:
     
     | **Field**         | **Value**                       |
@@ -550,22 +553,22 @@ Before leaving the room, check the following:
     - Always press **Proceed** before starting the scan. Any changes made in the tabs won’t take effect unless **Proceed** is clicked.
     - Ensure consistent **TR**, slices, and settings within and between participants.
     - Start the experiment on the **Stimulus PC** before proceeding on the scanner, to avoid missing the trigger.
-    
+
 #### Common Issues
 
 ??? failure "Door Not Closed Properly"
     Ensure both the **door to the technical room** and the **scanner door** are securely closed.  
     Improperly closed doors will trigger error messages and prevent scanning from starting.
-    
+
 ??? failure "Patient position on the table is unknown"
     If you encounter the error message "Patient position on the table is unknown":
-    
+
     - Return to the scanner room and **recalibrate** the patient’s position using the laser alignment system.
     - Ensure that the calibration laser is correctly aligned and restart the scan.
     
 ??? failure "Scanner Light Still On"
-    If the scanner light remains on, adjust it using the control buttons. 
-     
+    If the scanner light remains on, adjust it using the control buttons.
+
     For **fMRI studies**, ensure the lighting remains consistent throughout the session. Use the **outer circle** on the control panel to turn the light off or dim it as needed.    
     
 ??? failure "Pixelated Image After Reference Scan"
@@ -628,10 +631,12 @@ You can export data using either **Nifti/PAR-REC** or **DICOM** formats. Choose 
 9. Verify the exported files in the **export folder** on the FTP drive. Double-check the file sizes to ensure all volumes were exported correctly.
 
 To monitor export progress, navigate to:
+
 - **Patients > Administration > Manage Job Queue**
 
 !!! warning "Avoid Exporting Incomplete Runs"
-    Never export data from a run that is still in progress. The export list will not refresh automatically. Press the **Refresh** button, or reopen the window after part of the data has been exported.
+    Never export data from a run that is still in progress. The export list will not refresh automatically. Press the **Refresh** button, or reopen the window after part of the data has been exported
+
 ---
 
 ### DICOM Export
@@ -646,24 +651,25 @@ To monitor export progress, navigate to:
 
 !!! info "Anonymization Option"
     For privacy reasons, it is recommended to anonymize the dataset by giving the exported data a code name (possibly the subject number in BIDS format, e.g., `sub-01`).
-    
+
 !!! tip "Handling Export Delays"
     It may take some time before the export starts. If you see a warning about exporting a large number of images, simply press **Proceed** to confirm.
 
 To track export progress, navigate to:
+
 - **Patients > Administration > Manage Job Queue**
 
 #### Common Issues
 
 ??? failure "Not Enough Free Disk Space"
     If files do not export properly (e.g., incorrect sizes), it may indicate that the export drive has insufficient space.
-    
+
     1. **Check the available disk space** by right-clicking the **Export drive** and selecting **Properties**.
     2. If the drive is full, delete old data such as **PAR-REC, Nifti, or DICOM** files. These files can be re-exported later, so no data will be permanently lost.
 
 ??? failure "Local Patient Database Near Full Capacity"
     If the local patient database is nearly full (90-100% capacity), scanning may not proceed.
-    
+
     1. Navigate to **Patients > Administration** in the scan program.
     2. Check the percentage of disk space used (displayed in the top-right corner).
 
@@ -679,7 +685,7 @@ To track export progress, navigate to:
 
 ??? failure "Safe Ejection of External Drives"
     If you are unable to safely eject your external drive:
-    
+
     1. Log off the scanner computer to shut down the scanning software.
     2. Log back in using **MRService** credentials.
     3. Restart the scanning software and acknowledge any **helium pressure** alarms.
@@ -687,7 +693,7 @@ To track export progress, navigate to:
 
 ??? failure "External Drive Not Detected"
     If the external drive is not detected in the **Devices and Drives** window:
-    
+
     1. Log off and log back in using the **MRService** credentials.
     2. Check again in the **Devices and Drives** window to see if the external drive appears.
 
@@ -789,7 +795,7 @@ Before leaving the department, complete the **check-out part** of the check-in/o
 4. **Communicating with the child**:
     - Explain that you will talk to them via the intercom.
     - Let them know they can speak when prompted and need to stay quiet otherwise.
-    - Use simple, reassuring language: 
+    - Use simple, reassuring language:
         - Call the coil a “helmet.”
         - Explain that the table movement is like being on a ride.
         - Tell them about the lights being off during scanning and that they need to stay very still.
@@ -878,17 +884,21 @@ If you detect a potential abnormality:
 In case of an emergency involving the MRI system or facility:
 
 #### Equipment Malfunction
+
 - If the use of facility equipment results in an accident, **immediately notify certified MR personnel** (MR technicians or radiologist) and the **MRI Safety Officer**.
 
 #### System Failure
+
 - If part of the system fails and poses a danger to the volunteer:
+  
   1. **Remove the volunteer** from the scanner.
   2. Seek help from **certified MR personnel**.
 
 #### Emergency Magnet Shutdown (Quenching)
+
 ??? danger "Magnet Quenching"
     Emergency shutdown of the magnet (quenching) **must only be performed by authorized personnel** in the following life-threatening situations:
-    
+
     - If the magnetic field poses an immediate danger to a person.
     - If emergency services need access to the **Inner Controlled Area** with ferromagnetic equipment.
 
@@ -911,5 +921,3 @@ In case of an emergency involving the MRI system or facility:
 
 1. **Seek immediate assistance** from the **ASU**.
 2. **Call emergency number 1000**. Clearly state the location: **"MRI Suite MR8"**.
-
-
