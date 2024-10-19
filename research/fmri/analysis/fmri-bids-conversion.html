@@ -1694,7 +1694,7 @@
 <p>If you are not familiar with the BIDS Specification, the <a href="https://bids-standard.github.io/bids-starter-kit/index.html">BIDS Starter Kit</a> provides all the information needed to get started, along with <a href="https://bids-standard.github.io/bids-starter-kit/dataset_examples.html">example BIDS datasets</a>, <a href="https://bids-standard.github.io/bids-starter-kit/talks.html">Talks and Slides</a>, and most importantly <a href="https://bids-standard.github.io/bids-starter-kit/tutorials/tutorials.html">Tutorials</a>.</p>
 <p>It is crucial that you get familiar with BIDS folders/files naming convention and structure. Most, if not all, the tools we are going to use in the next steps are <a href="https://bids-apps.neuroimaging.io/apps/">BIDS Apps</a>, and they rely on data organized following the BIDS Specification. Following this structure will make it easier to use these tools, share your code and data, and communicate with other scientists.</p>
 <p>The BIDS Specification provides guidelines on how to organize all your data formats, including <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/magnetic-resonance-imaging-data.html">(f/d)MRI</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/electroencephalography.html">EEG</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/physiological-and-other-continuous-recordings.html">eye-tracking</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html">Task events</a> associated with Neuro-Imaging recordings or <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/behavioral-experiments.html">not</a>, and <a href="https://bids-specification.readthedocs.io/en/stable/derivatives/imaging.html">Derivatives</a> (e.g., pre-processed files, Regions Of Interest mask files, GLM files, etc.).</p>
-<p>At any moment, you can check your dataset for BIDS compliance. To do so, you can use the <a href="https://bids-standard.github.io/bids-validator/">BIDS dataset validator</a>. </p>
+<p>At any moment, you can check your dataset for BIDS compliance. To do so, you can use the <a href="https://bids-standard.github.io/bids-validator/">BIDS dataset validator</a>.</p>
 <h2 id="bids-conversion-overview">BIDS Conversion Overview<a class="headerlink" href="#bids-conversion-overview" title="Permanent link">&para;</a></h2>
 <p>After scanning participants, you'll obtain data from two primary sources:</p>
 <ol>
@@ -1715,10 +1715,10 @@
 <li><em>Optional:</em> Create an <code>events.json</code> sidecar file to describe extra columns in event files</li>
 </ul>
 <p>Example:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>└─ sub-01/
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└─ func/
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  ├─ sub-01_task-exp_events.tsv 
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  └─ sub-01_task-exp_events.json 
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>└─<span class="w"> </span>sub-01/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└─<span class="w"> </span>func/
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>├─<span class="w"> </span>sub-01_task-exp_events.tsv<span class="w"> </span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>└─<span class="w"> </span>sub-01_task-exp_events.json<span class="w"> </span>
 </span></code></pre></div>
 </li>
 <li>
@@ -1777,7 +1777,7 @@
 </ol>
 <p>By following these steps systematically, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration.</p>
 <h2 id="step-by-step-instructions">Step-by-step instructions<a class="headerlink" href="#step-by-step-instructions" title="Permanent link">&para;</a></h2>
-<p>Here we provide more detailed instructions to perform each of the steps mentioned above. </p>
+<p>Here we provide more detailed instructions to perform each of the steps mentioned above.</p>
 <div class="admonition warning">
 <p class="admonition-title">Folder Structure</p>
 <p>All the steps and scripts below assume a specific folder structure and file naming convention. They <strong>will not work</strong> otherwise. Ensure you strictly follow the instructions in the <a href="fmri-general.html#how-to-store-raw-data">How to store raw data</a> page.</p>
@@ -1787,31 +1787,33 @@
 <h4 id="expected-project-structure">Expected project structure<a class="headerlink" href="#expected-project-structure" title="Permanent link">&para;</a></h4>
 <p><a href="../../../assets/code/anon_nii_filename.py">This small utility tool</a> renames files within a BIDS-like directory structure, specifically targeting files containing <code>_WIP_</code> in their names.</p>
 <p>The script operates on the following project structure:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Project_Name/
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── sourcedata/
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   └── sub-xx/
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│       ├── dicom/
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│       ├── dicom_anon/
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│       ├── bh/
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│       ├── et/
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│       └── nifti/
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>└── BIDS/
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    ├── derivatives/
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    └── sub-xx/
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        ├── anat/
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        └── func/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Project_Name/
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├──<span class="w"> </span>sourcedata/
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│<span class="w">   </span>└──<span class="w"> </span>sub-xx/
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│<span class="w">       </span>├──<span class="w"> </span>dicom/
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│<span class="w">       </span>├──<span class="w"> </span>dicom_anon/
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│<span class="w">       </span>├──<span class="w"> </span>bh/
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│<span class="w">       </span>├──<span class="w"> </span>et/
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│<span class="w">       </span>└──<span class="w"> </span>nifti/
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>└──<span class="w"> </span>BIDS/
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span>├──<span class="w"> </span>derivatives/
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span>└──<span class="w"> </span>sub-xx/
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span>├──<span class="w"> </span>anat/
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span>└──<span class="w"> </span>func/
 </span></code></pre></div>
 <p>The script processes files within the 'sourcedata' directory.</p>
 <p>Execute the script from the 'sourcedata' directory:</p>
 <ol>
 <li>Open a terminal or command prompt.</li>
-<li>Navigate to the project's root:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>/path/to/Project_Name
-</span></code></pre></div></li>
-<li>Change to the 'sourcedata' directory:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>sourcedata
-</span></code></pre></div></li>
+<li>Navigate to the project's root:</li>
 </ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>/path/to/Project_Name
+</span></code></pre></div>
+<ol>
+<li>Change to the 'sourcedata' directory:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>sourcedata
+</span></code></pre></div>
 <h4 id="command-line-arguments">Command-line Arguments<a class="headerlink" href="#command-line-arguments" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>--level {group,participant}</code>: Process all subjects (<code>group</code>) or individual subjects (<code>participant</code>).</li>
@@ -1821,25 +1823,23 @@
 </ul>
 <h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
 <ol>
-<li>
-<p>Dry run for all subjects:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>group<span class="w"> </span>--dry_run
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Rename files for subjects 01 and 02 with confirmation:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>participant<span class="w"> </span>--sub<span class="w"> </span><span class="m">01</span><span class="w"> </span><span class="m">02</span><span class="w"> </span>--confirm<span class="w"> </span>True
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Rename files for all subjects without confirmation:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>group<span class="w"> </span>--confirm<span class="w"> </span>False
-</span></code></pre></div></p>
-</li>
+<li>Dry run for all subjects:</li>
 </ol>
-<p>Output filename:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sub-01/nifti/sub-01_WIP_T1w_20240101141322.nii
-</span></code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>group<span class="w"> </span>--dry_run
+</span></code></pre></div>
+<ol>
+<li>Rename files for subjects 01 and 02 with confirmation:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>participant<span class="w"> </span>--sub<span class="w"> </span><span class="m">01</span><span class="w"> </span><span class="m">02</span><span class="w"> </span>--confirm<span class="w"> </span>True
+</span></code></pre></div>
+<ol>
+<li>Rename files for all subjects without confirmation:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>group<span class="w"> </span>--confirm<span class="w"> </span>False
+</span></code></pre></div>
+<p>Output filename:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sub-01/nifti/sub-01_WIP_T1w_20240101141322.nii
+</span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Caution</p>
 <p>Always backup your data before running renaming operations.</p>
@@ -1854,13 +1854,13 @@
 <h4 id="important-notes">Important Notes<a class="headerlink" href="#important-notes" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Only files containing '<em>WIP</em>' are processed. Others are ignored.</li>
-<li>To process all files, modify the <code>rename_files_in_directory</code> function:
-  <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span> <span class="s1">&#39;_WIP_&#39;</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
-</span></code></pre></div>
-  to:
-  <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>  <span class="c1"># Caution: processes all files</span>
-</span></code></pre></div></li>
+<li>To process all files, modify the <code>rename_files_in_directory</code> function:</li>
 </ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span> <span class="s1">&#39;_WIP_&#39;</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+</span></code></pre></div>
+<p>to:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>  <span class="c1"># Caution: processes all files</span>
+</span></code></pre></div>
 <div class="admonition caution">
 <p class="admonition-title">Modifying the Script</p>
 <p>Processing all files may lead to unintended renaming. Always use <code>--dry_run</code> first and review proposed changes carefully.</p>
@@ -1989,7 +1989,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 20:16:34</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 20, 2024 01:17:23</span>
   </span>
 
     

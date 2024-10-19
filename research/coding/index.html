@@ -1730,8 +1730,9 @@
 </div>
 <ul>
 <li><strong>Avoid "<a href="https://goodresearch.dev/decoupled.html?highlight=spaghetti#code-smells-and-spaghetti-code">Spaghetti Code</a>"</strong>: Keep functions short and focused.</li>
-<li><strong>Use Docstrings</strong> to document functions and classes:
-    <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<li>
+<p><strong>Use Docstrings</strong> to document functions and classes:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="sd">    Loads data from a specified file path.</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
@@ -1741,8 +1742,11 @@
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="sd">    Returns:</span>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="sd">        pandas.DataFrame: Loaded data as a DataFrame.</span>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="sd">    &quot;&quot;&quot;</span>
-</span></code></pre></div></li>
-<li><strong>Follow PEP 8</strong>: Use tools like <code>black</code> to ensure code style compliance.</li>
+</span></code></pre></div>
+</li>
+<li>
+<p><strong>Follow PEP 8</strong>: Use tools like <code>black</code> to ensure code style compliance.</p>
+</li>
 </ul>
 <h3 id="4-saving-results">4. Saving Results<a class="headerlink" href="#4-saving-results" title="Permanent link">&para;</a></h3>
 <p>Organizing your results properly is crucial for reproducibility, collaboration, and long-term maintainability of your research code. This section covers how to structure your results folders, save scripts and logs, and use utility functions to streamline these processes.</p>
@@ -2278,15 +2282,15 @@
 <li>
 <p><strong>Organize Your Project</strong>:</p>
 <ul>
-<li>Use a structure like this:
- <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>my_project/
+<li>Use a structure like this:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>my_project/
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>├──<span class="w"> </span>data/<span class="w">              </span><span class="c1"># Raw data files</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>├──<span class="w"> </span>modules/<span class="w">           </span><span class="c1"># Scripts to store your classes and functions</span>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>├──<span class="w"> </span>results/<span class="w">           </span><span class="c1"># Output results and figures</span>
 </span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>├──<span class="w"> </span>environment.yml<span class="w">    </span><span class="c1"># Conda environment file</span>
 </span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>└──<span class="w"> </span>README.md<span class="w">          </span><span class="c1"># Project overview</span>
-</span></code></pre></div></li>
-</ul>
+</span></code></pre></div>
 </li>
 <li>
 <p><strong>Activate Your Environment in Spyder</strong>:</p>
@@ -2429,15 +2433,13 @@
 <li><strong>Use the Variable Explorer for quick checks</strong>: It’s a faster way to spot-check variables rather than adding numerous print statements.</li>
 </ul>
 </div>
-<p><strong>Overview</strong>: </p>
+<p><strong>Overview</strong>:</p>
 <p>The <strong>Go to Definition</strong> feature allows you to quickly jump to where a function, class, or variable is defined. This is especially useful when working with large scripts or when using functions imported from other files or libraries. Instead of scrolling through the code to find a definition, you can directly jump to it.</p>
 <ul>
-<li>
-<p><strong>How to Use</strong>: Right-click on the function or class name and select "Go to Definition" or use the shortcut:</p>
-<ul>
+<li><strong>How to Use</strong>: Right-click on the function or class name and select "Go to Definition" or use the shortcut:</li>
 <li><strong>Windows/Linux</strong>: <code>Ctrl + G</code></li>
-<li><strong>Mac</strong>: <code>Cmd + G</code></li>
-</ul>
+<li>
+<p><strong>Mac</strong>: <code>Cmd + G</code></p>
 </li>
 <li>
 <p><strong>Why use this?</strong>: This feature saves time and makes it easier to understand how a function or class is implemented without losing context in your main script.</p>
@@ -2477,12 +2479,10 @@
 <p><strong>Overview</strong>:
 Spyder’s object inspection feature allows you to explore the attributes and methods of objects directly within the editor. This is particularly useful when working with unfamiliar libraries or custom classes, as it enables you to see what functions or properties are available and how to use them. This feature can be a lifesaver when you encounter a function with unclear parameters or complex behavior.</p>
 <ul>
-<li>
-<p><strong>How to Use</strong>: Select an object or function in the editor and press:</p>
-<ul>
+<li><strong>How to Use</strong>: Select an object or function in the editor and press:</li>
 <li><strong>Windows/Linux</strong>: <code>Ctrl + I</code></li>
-<li><strong>Mac</strong>: <code>Cmd + I</code></li>
-</ul>
+<li>
+<p><strong>Mac</strong>: <code>Cmd + I</code></p>
 </li>
 <li>
 <p><strong>Why use this?</strong>: This feature provides a quick way to understand the capabilities and usage of an object or method without needing to look up documentation online. It can save time when learning new libraries or debugging issues with complex data structures.</p>
@@ -2549,10 +2549,10 @@ Spyder’s object inspection feature allows you to explore the attributes and me
 </div>
 </div>
 <h3 id="2-configure-git">2. Configure Git<a class="headerlink" href="#2-configure-git" title="Permanent link">&para;</a></h3>
-<p>Set up your Git identity using the following commands:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>git config --global user.name &quot;Your Name&quot;
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>git config --global user.email &quot;youremail@example.com&quot;
-</span></code></pre></div></p>
+<p>Set up your Git identity using the following commands:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;youremail@example.com&quot;</span>
+</span></code></pre></div>
 <h3 id="3-using-github">3. Using GitHub<a class="headerlink" href="#3-using-github" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="github-desktop-gui" name="__tabbed_5" type="radio" /><input id="command-line-cli" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="github-desktop-gui">GitHub Desktop (GUI)</label><label for="command-line-cli">Command Line (CLI)</label></div>
 <div class="tabbed-content">
@@ -2594,37 +2594,47 @@ Spyder’s object inspection feature allows you to explore the attributes and me
 <h3 id="4-workflow-tips-for-effective-collaboration">4. Workflow Tips for Effective Collaboration<a class="headerlink" href="#4-workflow-tips-for-effective-collaboration" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p><strong>Always Pull Before Making Changes</strong>: </p>
+<p><strong>Always Pull Before Making Changes</strong>:</p>
 <ul>
-<li>Before starting any work, ensure your local repository is up-to-date with the latest changes:
-   <div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>git pull origin main
-</span></code></pre></div></li>
+<li>Before starting any work, ensure your local repository is up-to-date with the latest changes:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div>
+<ul>
 <li>This prevents merge conflicts and keeps your local version in sync with the remote repository.</li>
 </ul>
 </li>
 <li>
 <p><strong>Typical Workflow</strong>:</p>
 <ul>
-<li><strong>Fetch Updates</strong>:
-   <div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>git fetch
-</span></code></pre></div></li>
-<li><strong>Pull Latest Changes</strong>:
-   <div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>git pull origin main
-</span></code></pre></div></li>
-<li><strong>Make Edits</strong>: Modify files as needed.</li>
-<li><strong>Stage Changes</strong>:
-   <div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>git add .
-</span></code></pre></div></li>
-<li><strong>Commit Changes</strong> with a clear message:
-   <div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>git commit -m &quot;Describe the changes made&quot;
-</span></code></pre></div></li>
-<li><strong>Push to Remote</strong>:
-   <div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>git push origin main
-</span></code></pre></div></li>
+<li><strong>Fetch Updates</strong>:</li>
 </ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>git<span class="w"> </span>fetch
+</span></code></pre></div>
+<ul>
+<li><strong>Pull Latest Changes</strong>:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div>
+<ul>
+<li><strong>Make Edits</strong>: Modify files as needed.</li>
+<li><strong>Stage Changes</strong>:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span></code></pre></div>
+<ul>
+<li><strong>Commit Changes</strong> with a clear message:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Describe the changes made&quot;</span>
+</span></code></pre></div>
+<ul>
+<li><strong>Push to Remote</strong>:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div>
 </li>
 <li>
-<p><strong>Commit Often, but Meaningfully</strong>: </p>
+<p><strong>Commit Often, but Meaningfully</strong>:</p>
 <ul>
 <li>Frequent commits help track your progress, but ensure each commit is meaningful and descriptive.</li>
 </ul>
@@ -2792,7 +2802,7 @@ Spyder’s object inspection feature allows you to explore the attributes and me
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 16:47:25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 20, 2024 01:17:23</span>
   </span>
 
     

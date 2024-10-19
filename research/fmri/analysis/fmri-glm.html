@@ -1699,21 +1699,25 @@
 <h2 id="step-1-data-preparation">Step 1: Data Preparation<a class="headerlink" href="#step-1-data-preparation" title="Permanent link">&para;</a></h2>
 <p>Before running the GLM, we need to make sure the data is compatible with SPM. There are two steps that need to be taken to bring your <code>.nii</code> files from fMRIPrep output to SPM input:</p>
 <ol>
-<li><strong>gunzipping</strong> (de-compressing <code>.nii.gz</code> files, which SPM can't handle natively) </li>
-<li><strong>smoothing</strong> (mostly for localizer runs). </li>
+<li><strong>gunzipping</strong> (de-compressing <code>.nii.gz</code> files, which SPM can't handle natively)</li>
+<li><strong>smoothing</strong> (mostly for localizer runs).</li>
 </ol>
 <p>The sugested way of proceeding is to create a <code>derivatives/pre-SPM</code> folder where to store a <code>gunzipped</code> output folder and a <code>smoothed</code> output folder.</p>
 <h3 id="decompressing-nifti-files">Decompressing NIfTI Files<a class="headerlink" href="#decompressing-nifti-files" title="Permanent link">&para;</a></h3>
 <p>SPM cannot process <code>.nii.gz</code> files directly, so we first need to decompress them:</p>
 <ol>
-<li>Create a directory for pre-processed files:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>derivatives/pre-SPM
-</span></code></pre></div></li>
-<li>Decompress the files using <code>gunzip</code> in the terminal:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>gunzip<span class="w"> </span>path/to/your/files/*.nii.gz
-</span></code></pre></div></li>
-<li>Store the decompressed files in a subdirectory called <code>gunzipped</code> inside <code>derivatives/pre-SPM</code>.</li>
+<li>Create a directory for pre-processed files:</li>
 </ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>derivatives/pre-SPM
+</span></code></pre></div>
+<ol>
+<li>Decompress the files using <code>gunzip</code> in the terminal:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>gunzip<span class="w"> </span>path/to/your/files/*.nii.gz
+</span></code></pre></div>
+<ul>
+<li>Store the decompressed files in a subdirectory called <code>gunzipped</code> inside <code>derivatives/pre-SPM</code>.</li>
+</ul>
 <div class="admonition tip">
 <p class="admonition-title">Decompress with a right-click!</p>
 <p>Most Operating Systems will let you decompress the <code>nii.gz</code> files directly from the File Explorer. Right click on the files you want to decompress, and extract them like you would do with a compressed folder.</p>
@@ -1721,9 +1725,11 @@
 <h3 id="smoothing-functional-data">Smoothing Functional Data<a class="headerlink" href="#smoothing-functional-data" title="Permanent link">&para;</a></h3>
 <p>Smoothing is required to increase signal-to-noise ratio, especially for localizer runs. Follow these steps:</p>
 <ol>
-<li>Launch the SPM GUI with the command:
-   <div class="language-matlab highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">spm</span><span class="w"> </span><span class="s">fmri</span>
-</span></code></pre></div></li>
+<li>Launch the SPM GUI with the command:</li>
+</ol>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">spm</span><span class="w"> </span><span class="s">fmri</span>
+</span></code></pre></div>
+<ol>
 <li>In the GUI, click on <code>Smooth</code>.</li>
 <li>Select the decompressed <code>.nii</code> files.</li>
 <li>Set the <strong>FWHM</strong> (Full Width at Half Maximum) to <code>[4 4 4]</code> or <code>[6 6 6]</code> for moderate smoothing.</li>
@@ -1731,7 +1737,7 @@
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Automated Preprocessing</p>
-<p>You can integrate the decompression and smoothing steps into a script to streamline your workflow, avoiding manual steps (see the <a href="fmri-andrea-workflow.html">Analysis Workflow</a> for an example). </p>
+<p>You can integrate the decompression and smoothing steps into a script to streamline your workflow, avoiding manual steps (see the <a href="fmri-andrea-workflow.html">Analysis Workflow</a> for an example).</p>
 </div>
 <hr />
 <h2 id="step-2-design-matrix-setup">Step 2: Design Matrix Setup<a class="headerlink" href="#step-2-design-matrix-setup" title="Permanent link">&para;</a></h2>
@@ -1745,11 +1751,11 @@
 <ul>
 <li><code>BIDS/sub-xx/func/sub-xx_run-x_eventsspm.mat</code>.</li>
 </ul>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>BIDS/
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── sub-01/
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│   └── func/
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│       ├── sub-01_run-1_eventsspm.mat
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│       └── sub-01_run-2_eventsspm.mat
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>BIDS/
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├──<span class="w"> </span>sub-01/
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│<span class="w">   </span>└──<span class="w"> </span>func/
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│<span class="w">       </span>├──<span class="w"> </span>sub-01_run-1_eventsspm.mat
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│<span class="w">       </span>└──<span class="w"> </span>sub-01_run-2_eventsspm.mat
 </span></code></pre></div>
 </li>
 </ol>
@@ -1758,7 +1764,7 @@
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">function</span><span class="w"> </span>new_df<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">eventsBIDS2SPM</span><span class="p">(</span>tsv_file<span class="p">)</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="c">% eventsBIDS2SPM - Convert BIDS event files to SPM format</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="c">% This function reads a BIDS event file and converts it to the format required by SPM.</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="c">% It extracts the unique trial types and their onsets and durations and stores them in a </span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="c">% It extracts the unique trial types and their onsets and durations and stores them in a</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="c">% Matlab structure.</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="c">%</span>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="c">% Author: Andrea Costantino</span>
@@ -1771,14 +1777,14 @@
 </span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="c">%   tsv_file - string, path to the tsv file containing the events</span>
 </span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="c">%</span>
 </span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="c">% Outputs:</span>
-</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="c">%   mat_dict - struct, a Matlab structure containing the events in the format </span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="c">%   mat_dict - struct, a Matlab structure containing the events in the format</span>
 </span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="c">%              required by SPM. The structure contains three fields:</span>
 </span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="c">%                - &#39;names&#39;: cell array of string, the names of the trial types</span>
 </span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="c">%                - &#39;onsets&#39;: cell array of double, onset times of the trials</span>
 </span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="c">%                - &#39;durations&#39;: cell array of double, duration of the trials</span>
 </span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="c">%</span>
 </span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="c">% This function reads a BIDS event file and converts it to the format required by SPM.</span>
-</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">    </span><span class="c">% It extracts the unique trial types and their onsets and durations and stores them in a </span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">    </span><span class="c">% It extracts the unique trial types and their onsets and durations and stores them in a</span>
 </span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">    </span><span class="c">% Matlab structure</span>
 </span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
 </span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">    </span><span class="c">% read the tsv file</span>
@@ -2313,7 +2319,7 @@ This will print the regressor names directly in the MATLAB command window, helpi
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 19, 2024 23:13:44</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 20, 2024 01:17:23</span>
   </span>
 
     

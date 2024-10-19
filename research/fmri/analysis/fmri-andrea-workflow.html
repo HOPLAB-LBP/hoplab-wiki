@@ -2082,29 +2082,29 @@
 <h2 id="first-level-analysis-general-linear-model-glm">First-Level Analysis – General Linear Model (GLM)<a class="headerlink" href="#first-level-analysis-general-linear-model-glm" title="Permanent link">&para;</a></h2>
 <p>After preprocessing, proceed to the first-level analysis with the GLM. Running the GLM and setting contrasts is straightforward using <code>script03</code>. Make sure to adjust the following parameters:</p>
 <ul>
-<li>
-<p><strong>Paths</strong>:</p>
-<ul>
+<li><strong>Paths</strong>:</li>
 <li><code>fmriprepRoot</code>: Path to the fMRIPrep folder.</li>
 <li><code>BIDSRoot</code>: Path to your BIDS folder.</li>
 <li><code>outRoot</code>: Path to save GLM results (ideally in the derivatives folder, in a <code>fmriprep-spm</code> folder).</li>
-<li><code>tempDir</code>: Directory for temporary files, such as uncompressed or smoothed files.</li>
-</ul>
+<li>
+<p><code>tempDir</code>: Directory for temporary files, such as uncompressed or smoothed files.</p>
 </li>
 <li>
 <p><strong>Subject Selection</strong>:</p>
 <p>Leave a new line before listing subjects.</p>
-<ul>
-<li><code>selectedSubjectsList</code>: A list of integers like <code>[41, 42, 43, 44]</code> or use <code>'*'</code> to analyze all subjects.</li>
-<li><code>selectedRuns</code>: List of runs to analyze.</li>
-</ul>
+</li>
+<li>
+<p><code>selectedSubjectsList</code>: A list of integers like <code>[41, 42, 43, 44]</code> or use <code>'*'</code> to analyze all subjects.</p>
+</li>
+<li>
+<p><code>selectedRuns</code>: List of runs to analyze.</p>
 </li>
 <li>
 <p><strong>Contrasts Setup</strong>:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>selectedTasks(1).name = &#39;exp&#39;;  % The name of the task. Must match the task name in your BIDS filenames.
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>selectedTasks(1).contrasts = {&#39;Check &gt; No-Check&#39;};  % Name of the contrast.
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>selectedTasks(1).weights(1) = struct(&#39;C_WILDCARD___WILDCARD_&#39;, 1, &#39;NC_WILDCARD___WILDCARD_&#39;, -1);  % Weights for each regressor.
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>selectedTasks(1).smoothBool = false;  % Whether to smooth images before GLM. Useful for localizers.
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">selectedTasks</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;exp&#39;</span><span class="p">;</span><span class="w">  </span><span class="c">% The name of the task. Must match the task name in your BIDS filenames.</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">selectedTasks</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">contrasts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;Check &gt; No-Check&#39;</span><span class="p">};</span><span class="w">  </span><span class="c">% Name of the contrast.</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">selectedTasks</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">weights</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">struct</span><span class="p">(</span><span class="s">&#39;C_WILDCARD___WILDCARD_&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NC_WILDCARD___WILDCARD_&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c">% Weights for each regressor.</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">selectedTasks</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">smoothBool</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w">  </span><span class="c">% Whether to smooth images before GLM. Useful for localizers.</span>
 </span></code></pre></div>
 </li>
 </ul>
@@ -2211,7 +2211,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 18, 2024 20:52:19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 20, 2024 01:17:23</span>
   </span>
 
     
