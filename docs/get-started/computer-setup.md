@@ -28,12 +28,12 @@ The installation process differs for students and personnel. Please follow the i
 
 === "Students"
 
-    1. Register on the [MathWorks website](https://nl.mathworks.com/academia/tah-portal/ku-leuven-30919019.html) using your KU Leuven student email address.
-    2. After registering, download the software directly from the MathWorks website.
+    1. **Register** on the [MathWorks website](https://nl.mathworks.com/academia/tah-portal/ku-leuven-30919019.html) using your KU Leuven student email address.
+    2. After registering, **download** the software directly from the MathWorks website.
 
 === "Personnel"
 
-    1. Choose the appropriate MATLAB license:
+    1. **Choose the appropriate MATLAB license:**
         
         - **Individual License**: Recommended for most users. This license allows you to use MATLAB on multiple computers (up to 2 simultaneously) and includes access to MATLAB desktop software and online services (e.g., MATLAB Online, Add-Ons, and MATLAB online training). This option in suited for individual personnel.
         
@@ -42,19 +42,19 @@ The installation process differs for students and personnel. Please follow the i
         
         The license fee can be covered using individual professional funding sources (e.g., bench fees, grant money, etc.), depending on your contractual situation. For more details, please discuss with your PI.
 
-    ??? warning "Transition to ‘Individual License"
-        The old '5pack' license will no longer be available after October 31, 2024. To continue using MATLAB, users must switch to an 'Individual License' or 'Designated Computer License'. It is recommended to remove any older versions of MATLAB and install the most recent version as an 'Individual License' user. For newer versions (from R2023b onwards), you can easily switch licenses by placing a new license file. Detailed instructions are available [here](https://nl.mathworks.com/matlabcentral/answers/2099121-how-do-i-transition-matlab-installations-to-matlab-individual-and-the-campus-wide-license).
+        ??? warning "Transition to ‘Individual License"
+            The old '5pack' license will no longer be available after October 31, 2024. To continue using MATLAB, users must switch to an 'Individual License' or 'Designated Computer License'. It is recommended to remove any older versions of MATLAB and install the most recent version as an 'Individual License' user. For newer versions (from R2023b onwards), you can easily switch licenses by placing a new license file. Detailed instructions are available [here](https://nl.mathworks.com/matlabcentral/answers/2099121-how-do-i-transition-matlab-installations-to-matlab-individual-and-the-campus-wide-license).
 
-    2. Download MATLAB:
+    2. **Download MATLAB**:
         
-        - Get the MATLAB installation files from the [ICTS License Tool](https://icts.kuleuven.be/apps/license/download/MATLAB/index.html).
+        - Get the MATLAB installation files from the [ICTS License Catalogue](https://icts.kuleuven.be/apps/license/download/MATLAB/index.html).
         - Follow the instructions to download the installer for your operating system.
 
-    3. Install and activate MATLAB:
+    3. **Install and activate MATLAB**:
         
         - Run the MATLAB installer and follow the on-screen instructions.
         - During the activation process, select "Individual License" and log in with your MathWorks account.
-        - Input the license key provided through the ICTS License Tool when prompted.
+        - Input the license key provided through the ICTS License Catalogue when prompted.
 
     ??? tip "Updating Your PC Registration"
         To change your registered computer name or IP address:
@@ -66,7 +66,7 @@ The installation process differs for students and personnel. Please follow the i
 ## Frequently used software
 Here are some software programs we frequently use in the lab, which you might find useful to download:
 
-- **Google Calendar**: Make sure you have writing access to the lab's Google calendar (ask the person in charge of this, for now, that is [Tim](https://www.kuleuven.be/wieiswie/en/person/00149267), from December 2024 on, this will be [Klara](https://www.kuleuven.be/wieiswie/en/person/00116743) or Silke).
+- **Google Calendar**: Make sure you have writing access to the lab's Google calendar (ask the person in charge of this, as of today, that is [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046)).
 
 - **TeamViewer**: For remote access to a desktop PC, e.g. the fMRI PC to run your analyses. 
 
