@@ -41,12 +41,11 @@ The MR8 suite houses a **Philips Ingenia** scanner with a 32-channel head coil, 
 
 Before going to the hospital, ensure that you have the following forms ready:
 
-- **Consent Form**: Must be signed by both the participant and yourself before the session. Keep it safe post-session.  **TODO**: link an example
+- **Consent Form**: Must be signed by both the participant and yourself before the session. Keep it safe post-session. 
 
-- **MR Safety Checklist**: This form should be filled out by the participant prior to the session. You can send it in advance to avoid delays on the day of the scan. When the radiology desk is open, this form should be handed to the desk personnel, which will stamp it and confirm your scanning session. **TODO:** Link to questionnaire
+- **MR Safety Checklist**: This form should be filled out by the participant prior to the session. You can send it in advance to avoid delays on the day of the scan. When the radiology desk is open, this form should be handed to the desk personnel, which will stamp it and confirm your scanning session. [Link](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=1&preview=MR+patient+Questionnaire+-+ENGELS.pdf)
 
-- **Check-In/Check-Out Form**: Fill this form when entering and leaving the MR suite. The timings you indicate on there will be used to record our usage of the scanner and the amount of hours to pay for. Leave this form on the dedicated tray, next to that of the screening questionnaires. **TODO**: link to form
-
+- **Check-In/Check-Out Form**: Fill this form when entering and leaving the MR suite. The timings you indicate on there will be used to record our usage of the scanner and the amount of hours to pay for. Leave this form on the dedicated tray, next to that of the screening questionnaires. [Link](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=2&preview=Checkinout_v3.0.pdf)
 ---
 
 ## Participant Arrival and Registration
