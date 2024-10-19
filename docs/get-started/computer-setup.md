@@ -28,34 +28,40 @@ The installation process differs for students and personnel. Please follow the i
 
 === "Students"
 
-    1. Register on the [Mathworks website](https://nl.mathworks.com/academia/tah-portal/ku-leuven-30919019.html) using your KU Leuven student email address.
-    2. After registering, download the software directly from the Mathworks website.
-    3. Follow the step-by-step installation guide provided [here](https://admin.kuleuven.be/icts/onderzoek/downloads/MATLAB/tah-student-install-2017-en.pdf).
+    1. Register on the [MathWorks website](https://nl.mathworks.com/academia/tah-portal/ku-leuven-30919019.html) using your KU Leuven student email address.
+    2. After registering, download the software directly from the MathWorks website.
 
 === "Personnel"
 
-    1. Get added to the license platform:
-        1. Open your command prompt (Start > type `cmd`)
-        2. Type `ipconfig` in the command prompt
-        3. Find and copy your IPv4 Address
-        4. Send the following information to [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752):
-            - Your IPv4 Address
-            - Your computer hostname (GHUM-...)
-    
+    1. Choose the appropriate MATLAB license:
+        
+        - **Individual License**: Recommended for most users. This license allows you to use MATLAB on multiple computers (up to 2 simultaneously) and includes access to MATLAB desktop software and online services (e.g., MATLAB Online, Add-Ons, and MATLAB online training). This option in suited for individual personnel.
+        
+        - **Designated Computer License**: Use this license if MATLAB is to be installed on a computer that is permanently offline or where users cannot log in under their own account. It allows any number of users to access MATLAB on that specific computer, though not simultaneously. This option is generally suited for lab/shared computers.
+
+        
+        The license fee can be covered using individual professional funding sources (e.g., bench fees, grant money, etc.), depending on your contractual situation. For more details, please discuss with your PI.
+
+    ??? warning "Transition to ‘Individual License"
+        The old '5pack' license will no longer be available after October 31, 2024. To continue using MATLAB, users must switch to an 'Individual License' or 'Designated Computer License'. It is recommended to remove any older versions of MATLAB and install the most recent version as an 'Individual License' user. For newer versions (from R2023b onwards), you can easily switch licenses by placing a new license file. Detailed instructions are available [here](https://nl.mathworks.com/matlabcentral/answers/2099121-how-do-i-transition-matlab-installations-to-matlab-individual-and-the-campus-wide-license).
+
     2. Download MATLAB:
-        - Get the MATLAB installation files from the [ICTS License Tool](https://icts.kuleuven.be/apps/license/download/MATLAB/index.html)
-    
-    3. Install MATLAB following the installer's instructions.
+        
+        - Get the MATLAB installation files from the [ICTS License Tool](https://icts.kuleuven.be/apps/license/download/MATLAB/index.html).
+        - Follow the instructions to download the installer for your operating system.
+
+    3. Install and activate MATLAB:
+        
+        - Run the MATLAB installer and follow the on-screen instructions.
+        - During the activation process, select "Individual License" and log in with your MathWorks account.
+        - Input the license key provided through the ICTS License Tool when prompted.
 
     ??? tip "Updating Your PC Registration"
         To change your registered computer name or IP address:
-        
+
         1. Go to https://icts.kuleuven.be/apps/license
         2. Click the pencil icon under "register your PC"
         3. Update your hostname and IP address as needed
-
-!!! info "Home Usage"
-    MATLAB can be used at home if you connect via VPN. Use the SSL VPN Pulse Client / Ivanti Secure Access Client provided by KU Leuven.
 
 ## Frequently used software
 Here are some software programs we frequently use in the lab, which you might find useful to download:
