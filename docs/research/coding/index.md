@@ -457,12 +457,12 @@ Before diving into debugging and navigation, it's important to set up your Spyde
 1. **Accessing the View Menu**:
     - Go to `View > Panes` to see a list of available panes.
     - The most useful panes include:
-      - **Editor**: This is where you write your code.
-      - **IPython Console**: Allows you to run commands interactively.
-      - **Variable Explorer**: Displays all variables in your current environment.
-      - **Documentation**: Shows documentation for selected functions and objects.
-      - **File Explorer**: Browse files and folders in your working directory.
-      - **Breakpoints**: Manage and navigate all breakpoints in your code.
+        - **Editor**: This is where you write your code.
+        - **IPython Console**: Allows you to run commands interactively.
+        - **Variable Explorer**: Displays all variables in your current environment.
+        - **Documentation**: Shows documentation for selected functions and objects.
+        - **File Explorer**: Browse files and folders in your working directory.
+        - **Breakpoints**: Manage and navigate all breakpoints in your code.
 
 2. **Enable Recommended Panes**:
     - Ensure that the **Variable Explorer**, **IPython Console**, **Breakpoints**, and **Documentation** panes are enabled.
