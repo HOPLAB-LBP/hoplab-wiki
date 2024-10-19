@@ -7,20 +7,20 @@ Please read the [Welcome to ICT@PPW three-pager](https://ppw.kuleuven.be/ppw-dic
 Faculty issued computers can be recognized by their name starting with GHUM. To set you up, follow these steps:
 
 1. **Login**:
-	- You can log in to faculty issued computers with your intranet account.
-	- Use your u-number (or r-number in case you are a student) and the password of your e-mail address to do so.
+    - You can log in to faculty issued computers with your intranet account.
+    - Use your u-number (or r-number in case you are a student) and the password of your e-mail address to do so.
 2. **Internet access**:
-	- To access [the university's wireless network](https://admin.kuleuven.be/icts/english/services/wifi), look for *campusroam* in the list of available networks. This network offers the broadest access to faculty resources but only accepts u-numbers. When asked to authenticate, enter your u-number followed by *@kuleuven.be* and your intranet password. If you have an r-number, you can connect to the *eduroam* network, but this network does not allow access to PPW faculty file shares or printers. 
-	- To gain access to the wired network in the PPW-buildings, get your network outlet activated by completing [this form](https://ppw.kuleuven.be/home/ppw-dict/forms/activating-network-outlets) (in case it is not pre-activated).
+    - To access [the university's wireless network](https://admin.kuleuven.be/icts/english/services/wifi), look for *campusroam* in the list of available networks. This network offers the broadest access to faculty resources but only accepts u-numbers. When asked to authenticate, enter your u-number followed by *@kuleuven.be* and your intranet password. If you have an r-number, you can connect to the *eduroam* network, but this network does not allow access to PPW faculty file shares or printers.
+    - To gain access to the wired network in the PPW-buildings, get your network outlet activated by completing [this form](https://ppw.kuleuven.be/home/ppw-dict/forms/activating-network-outlets) (in case it is not pre-activated).
 3. **Administrator access**:
-	- If you are not already, contact dICT (*dict@ppw.kuleuven.be*) to make you administrator for the computer you are going to work on. You need to provide them the hostname of your pc (GHUM-…) and your u-number.
-	- Alternatively, if someone else is already administrator, ask them to add you (Windows control panel > Change account type > Add > Add a new LUNA account).
-4. **Multifactor authentication**: 
-	- To access KU Leuven intranet pages, you will need to log in with [KU Leuven Authenticator](https://admin.kuleuven.be/icts/english/mfa). You can register your device with a smartphone or tablet via the KU Leuven Authenticator App ([read the instructions](https://admin.kuleuven.be/icts/english/mfa/startwithmfa#smartphone)). 
-	- If you are having issues with MFA, check this [FAQ page](https://admin.kuleuven.be/icts/services/mfa/faq_en). 
+    - If you are not already, contact dICT (*<dict@ppw.kuleuven.be>*) to make you administrator for the computer you are going to work on. You need to provide them the hostname of your pc (GHUM-…) and your u-number.
+    - Alternatively, if someone else is already administrator, ask them to add you (Windows control panel > Change account type > Add > Add a new LUNA account).
+4. **Multifactor authentication**:
+    - To access KU Leuven intranet pages, you will need to log in with [KU Leuven Authenticator](https://admin.kuleuven.be/icts/english/mfa). You can register your device with a smartphone or tablet via the KU Leuven Authenticator App ([read the instructions](https://admin.kuleuven.be/icts/english/mfa/startwithmfa#smartphone)).
+    - If you are having issues with MFA, check this [FAQ page](https://admin.kuleuven.be/icts/services/mfa/faq_en).
 
 ??? question "Where do I find the hostname of my pc?"
-	The hostname is usually printed on a sticker on the computer. If not, go to Start, right click on "This PC", choose properties, and check the "Device name" field.
+ The hostname is usually printed on a sticker on the computer. If not, go to Start, right click on "This PC", choose properties, and check the "Device name" field.
 
 ## Installing MATLAB
 
@@ -64,11 +64,12 @@ The installation process differs for students and personnel. Please follow the i
         3. Update your hostname and IP address as needed
 
 ## Frequently used software
+
 Here are some software programs we frequently use in the lab, which you might find useful to download:
 
 - **Google Calendar**: Make sure you have writing access to the lab's Google calendar (ask the person in charge of this, as of today, that is [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046)).
 
-- **TeamViewer**: For remote access to a desktop PC, e.g. the fMRI PC to run your analyses. 
+- **TeamViewer**: For remote access to a desktop PC, e.g. the fMRI PC to run your analyses.
 
     ??? info "TeamViewer Setup Guide"
         1. Download the free **private** version from the [official website](https://www.teamviewer.com/en/download/windows/).
@@ -112,7 +113,7 @@ Here are some software programs we frequently use in the lab, which you might fi
         While <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> has a learning curve, investing time in learning it can significantly improve your academic writing workflow and the quality of your documents.
 
 !!! tip "Administrative privileges on KU Leuven PCs"
-	In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in `C:\Workdir\MyApps\`. Please contact the ICT helpdesk if problems persist.
+ In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in `C:\Workdir\MyApps\`. Please contact the ICT helpdesk if problems persist.
 
 ## Data storage
 
@@ -121,8 +122,8 @@ All KU Leuven staff and students have their own [OneDrive](https://admin.kuleuve
 !!! warning "Back up your data twice"
     Keep your data in one main folder (folder name = your first name) if you are an intern, or on your PC if you are personnel, and back-up this data to:
 
-	1. A portable hard drive (shared between **interns**, or ask [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) if you are **personnel**). Don’t forget to give the external drives back to your supervisor when your role ends.
-	2. Your online OneDrive folder. To get started with OneDrive, check out this [page](https://admin.kuleuven.be/icts/services/onedrive/vanstartonedrive). 
+ 1. A portable hard drive (shared between **interns**, or ask [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) if you are **personnel**). Don’t forget to give the external drives back to your supervisor when your role ends.
+ 2. Your online OneDrive folder. To get started with OneDrive, check out this [page](https://admin.kuleuven.be/icts/services/onedrive/vanstartonedrive).
 
 ## Printing
 
@@ -133,7 +134,7 @@ Find info on how to install printing services on your computer [here](https://pp
 
 If the installation doesn’t work, use a USB key to print on the black and white printer in room 02.28. You can also get permanent access by asking [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) to add you to the list of users.
 
-For **mac users**, follow the instructions on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration) to print from your personal computer. More generally, this manual tries to give an overview of most frequently asked questions concerning configuration and initial setup of a secure work environment on Mac OS X. 
+For **mac users**, follow the instructions on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration) to print from your personal computer. More generally, this manual tries to give an overview of most frequently asked questions concerning configuration and initial setup of a secure work environment on Mac OS X.
 
 <style>
 .latex {

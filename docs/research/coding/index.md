@@ -74,6 +74,7 @@ Use a logical structure for your project files:
 
 - **Avoid "[Spaghetti Code](https://goodresearch.dev/decoupled.html?highlight=spaghetti#code-smells-and-spaghetti-code)"**: Keep functions short and focused.
 - **Use Docstrings** to document functions and classes:
+
     ```python
     def load_data(file_path):
         """
@@ -86,6 +87,7 @@ Use a logical structure for your project files:
             pandas.DataFrame: Loaded data as a DataFrame.
         """
     ```
+
 - **Follow PEP 8**: Use tools like `black` to ensure code style compliance.
 
 ### 4. Saving Results
@@ -236,7 +238,6 @@ To keep your project organized, we’ve provided a **set of utility functions** 
 ??? example "Using the utility functions in a script"
     To use the functions defined in `utils.py`, import them in your script and follow the example below. This will ensure reproducibility and proper organization of your experimental results.
 
-
     ``` py title="main.py"  linenums="1"
     import os
     from modules.utils import (
@@ -283,7 +284,7 @@ To keep your project organized, we’ve provided a **set of utility functions** 
     ```
 !!! example "Example Results Folder Structure"
     After running the script, your results might be structured as follows:
-    
+
     ```
     results/
     ├── 20241018-153045_train-pair-temp-ws-softmax_proba-0.2_probb-0.2_probtest-0.6_tempa-0.1_tempb-5_lr-1e-5/
@@ -296,9 +297,8 @@ To keep your project organized, we’ve provided a **set of utility functions** 
     - **Reproducibility**: Ensures that each set of results corresponds to a specific code version and parameters.
     - **Comparison**: Makes it easier to compare results between different runs with varying parameters.
     - **Organization**: Keeps your project clean by preventing files from different experiments from mixing together.
-    
-With these functions, you can ensure a well-organized, reproducible workflow, making it easier to manage long-term research projects and collaborate with others.
 
+With these functions, you can ensure a well-organized, reproducible workflow, making it easier to manage long-term research projects and collaborate with others.
 
 ---
 
@@ -313,7 +313,7 @@ Download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 ??? info "What's the difference?"
     - **Miniconda** is a minimal version that includes only `conda` and Python, allowing you to install only the packages you need.
     - **Anaconda** comes with a full suite of pre-installed packages like `numpy`, `pandas`, `scipy`, and many others, and with a GUI to manage packages and environments.
-    
+
 === "Windows"
     - **Download** the installer from the [Anaconda website](https://www.anaconda.com/products/distribution#windows).
     - **Run the Installer**: Double-click the `.exe` file and follow the installation wizard.
@@ -428,6 +428,7 @@ Spyder is a powerful IDE for scientific programming in Python. Here’s how to s
 
 2. **Organize Your Project**:
     - Use a structure like this:
+
      ```bash
      my_project/
      ├── data/              # Raw data files
@@ -486,7 +487,7 @@ These tools are crucial for identifying and fixing bugs in your scripts, whether
     - **Use Breakpoints Strategically**: Place breakpoints at critical points in your code to verify data at those stages.
     - **Step Through Loops**: Use "Step Over" and "Step Into" to see how data changes inside loops.
     - **Log Important Values**: If you’re debugging a specific issue, add print statements to log values at various points.
-    
+
 !!! example "Example Scenario: Debugging a Simple Calculation Script"
 
     Let’s say you have a script that generates some random numbers, processes them by applying a mathematical operation, and then plots the result. You want to ensure that the numbers are correctly generated and processed before they are plotted. Here’s how you can use breakpoints to achieve this:
@@ -574,13 +575,13 @@ Spyder makes it easy to navigate large codebases and understand how functions, c
     - **Use "Go to Definition" to trace complex functions**: This helps you see the original implementation without scrolling through files.
     - **Use the Variable Explorer for quick checks**: It’s a faster way to spot-check variables rather than adding numerous print statements.
 
-**Overview**: 
+**Overview**:
 
 The **Go to Definition** feature allows you to quickly jump to where a function, class, or variable is defined. This is especially useful when working with large scripts or when using functions imported from other files or libraries. Instead of scrolling through the code to find a definition, you can directly jump to it.
 
 - **How to Use**: Right-click on the function or class name and select "Go to Definition" or use the shortcut:
-    - **Windows/Linux**: `Ctrl + G`
-    - **Mac**: `Cmd + G`
+  - **Windows/Linux**: `Ctrl + G`
+  - **Mac**: `Cmd + G`
 
 - **Why use this?**: This feature saves time and makes it easier to understand how a function or class is implemented without losing context in your main script.
 
@@ -620,8 +621,8 @@ The **Go to Definition** feature allows you to quickly jump to where a function,
 Spyder’s object inspection feature allows you to explore the attributes and methods of objects directly within the editor. This is particularly useful when working with unfamiliar libraries or custom classes, as it enables you to see what functions or properties are available and how to use them. This feature can be a lifesaver when you encounter a function with unclear parameters or complex behavior.
 
 - **How to Use**: Select an object or function in the editor and press:
-    - **Windows/Linux**: `Ctrl + I`
-    - **Mac**: `Cmd + I`
+  - **Windows/Linux**: `Ctrl + I`
+  - **Mac**: `Cmd + I`
 
 - **Why use this?**: This feature provides a quick way to understand the capabilities and usage of an object or method without needing to look up documentation online. It can save time when learning new libraries or debugging issues with complex data structures.
 
@@ -679,7 +680,8 @@ For a beginner-friendly guide, with explanation on main steps and terminology se
 ### 2. Configure Git
 
 Set up your Git identity using the following commands:
-```
+
+```bash
 git config --global user.name "Your Name"
 git config --global user.email "youremail@example.com"
 ```
@@ -714,44 +716,55 @@ git config --global user.email "youremail@example.com"
 
 ### 4. Workflow Tips for Effective Collaboration
 
-1. **Always Pull Before Making Changes**: 
+1. **Always Pull Before Making Changes**:
     - Before starting any work, ensure your local repository is up-to-date with the latest changes:
-       ```
+
+       ```bash
        git pull origin main
        ```
+
     - This prevents merge conflicts and keeps your local version in sync with the remote repository.
 
 2. **Typical Workflow**:
     - **Fetch Updates**:
-       ```
+
+       ```bash
        git fetch
        ```
+
     - **Pull Latest Changes**:
-       ```
+
+       ```bash
        git pull origin main
        ```
+
     - **Make Edits**: Modify files as needed.
     - **Stage Changes**:
-       ```
+
+       ```bash
        git add .
        ```
+
     - **Commit Changes** with a clear message:
-       ```
+
+       ```bash
        git commit -m "Describe the changes made"
        ```
+
     - **Push to Remote**:
-       ```
+
+       ```bash
        git push origin main
        ```
 
-3. **Commit Often, but Meaningfully**: 
+3. **Commit Often, but Meaningfully**:
     - Frequent commits help track your progress, but ensure each commit is meaningful and descriptive.
 
 #### Common Git Issues
 
 ??? failure "Merge Conflict"
     **Issue**: This occurs when changes are made in the same part of a file in both the local and remote versions.
-    
+
     **Solution**:     
     - Resolve the conflict manually in the affected file.
     - Stage the resolved file:
@@ -765,7 +778,7 @@ git config --global user.email "youremail@example.com"
 
 ??? failure "Detached HEAD"
     **Issue**: Happens when you are not on a branch but on a specific commit.
-    
+
     **Solution**: 
     - Switch back to your branch:
        ```
@@ -774,7 +787,7 @@ git config --global user.email "youremail@example.com"
 
 ??? failure "Push Rejected"
     **Issue**: Your push was rejected because the remote has changes that you don't have locally.
-    
+
     **Solution**: 
     - Pull the latest changes, resolve any conflicts, and try pushing again:
        ```
@@ -784,7 +797,7 @@ git config --global user.email "youremail@example.com"
 
 ??? failure "Failed to Push Some Refs"
     **Issue**: Occurs when there are changes on the remote that need to be merged before pushing.
-    
+
     **Solution**:
     - Run:
        ```
@@ -794,7 +807,7 @@ git config --global user.email "youremail@example.com"
 
 ??? failure "Changes Not Staged for Commit"
     **Issue**: Files were modified but not added to the staging area.
-    
+
     **Solution**: 
     - Add the changes to the staging area:
        ```
@@ -807,7 +820,7 @@ git config --global user.email "youremail@example.com"
 
 ??? failure "File Deleted Locally, But Not in Remote"
     **Issue**: A file was deleted locally but still exists in the remote repository.
-    
+
     **Solution**: 
     - To stage the deletion:
        ```
@@ -821,7 +834,7 @@ git config --global user.email "youremail@example.com"
 
 ??? failure "Authentication Failed"
     **Issue**: This happens if your credentials are incorrect or have expired.
-    
+
     **Solution**: 
     - Update your Git credentials:
        ```
@@ -831,7 +844,7 @@ git config --global user.email "youremail@example.com"
 
 ??? failure "Branch Not Found"
     **Issue**: Occurs when you try to checkout a branch that doesn’t exist locally or remotely.
-    
+
     **Solution**: 
     - Create the branch:
        ```
@@ -844,7 +857,7 @@ git config --global user.email "youremail@example.com"
 
 ??? failure "Untracked Files"
     **Issue**: New files are created locally but not yet added to Git.
-    
+
     **Solution**: 
     - Stage the files:
        ```
@@ -854,7 +867,7 @@ git config --global user.email "youremail@example.com"
     
 ??? failure "File Size Too Large"
     **Issue**: Git prevents files larger than 100MB from being pushed.
-    
+
     **Solution**: 
     - Use [Git Large File Storage (LFS)](https://git-lfs.github.com/) to manage large files:
        ```
@@ -874,7 +887,7 @@ git config --global user.email "youremail@example.com"
 
 ??? failure "Repository Size Exceeds Limit"
     **Issue**: GitHub imposes a repository size limit, typically 1GB for free accounts.
-    
+
     **Solution**: 
     - Clean up your repository by removing large files from history using `git filter-branch` or tools like [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/):
        ```
@@ -886,7 +899,7 @@ git config --global user.email "youremail@example.com"
 
 ??? failure "Packfile Too Large"
     **Issue**: This error can occur when trying to push a repository with a large packfile.
-    
+
     **Solution**: 
     - Reduce the size of the packfile:
        ```
@@ -896,7 +909,7 @@ git config --global user.email "youremail@example.com"
 
 ??? failure "History Contains Large Files"
     **Issue**: Even if a large file has been deleted, it may still be present in the repository history.
-    
+
     **Solution**: 
     - Remove the file from history with:
        ```
@@ -910,4 +923,3 @@ By following these practices, you can ensure smoother collaboration and minimize
 ---
 
 We hope this guide helps you establish a solid coding practice. Follow these steps to ensure your code is well-organized, collaborative, and reproducible!
-

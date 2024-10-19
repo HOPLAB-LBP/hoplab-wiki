@@ -14,8 +14,8 @@ In this section, we will use the [Statistical Parametric Mapping](https://www.fi
 
 Before running the GLM, we need to make sure the data is compatible with SPM. There are two steps that need to be taken to bring your `.nii` files from fMRIPrep output to SPM input:
 
-1. **gunzipping** (de-compressing `.nii.gz` files, which SPM can't handle natively) 
-2. **smoothing** (mostly for localizer runs). 
+1. **gunzipping** (de-compressing `.nii.gz` files, which SPM can't handle natively)
+2. **smoothing** (mostly for localizer runs).
 
 The sugested way of proceeding is to create a `derivatives/pre-SPM` folder where to store a `gunzipped` output folder and a `smoothed` output folder.
 
@@ -24,13 +24,17 @@ The sugested way of proceeding is to create a `derivatives/pre-SPM` folder where
 SPM cannot process `.nii.gz` files directly, so we first need to decompress them:
 
 1. Create a directory for pre-processed files:
+
    ```bash
    mkdir derivatives/pre-SPM
    ```
+
 2. Decompress the files using `gunzip` in the terminal:
+
    ```bash
    gunzip path/to/your/files/*.nii.gz
    ```
+
    - Store the decompressed files in a subdirectory called `gunzipped` inside `derivatives/pre-SPM`.
 
 !!! tip "Decompress with a right-click!"
@@ -41,17 +45,19 @@ SPM cannot process `.nii.gz` files directly, so we first need to decompress them
 Smoothing is required to increase signal-to-noise ratio, especially for localizer runs. Follow these steps:
 
 1. Launch the SPM GUI with the command:
+
    ```matlab
    spm fmri
    ```
+
 2. In the GUI, click on `Smooth`.
 3. Select the decompressed `.nii` files.
 4. Set the **FWHM** (Full Width at Half Maximum) to `[4 4 4]` or `[6 6 6]` for moderate smoothing.
 5. Save the smoothed output in `derivatives/pre-SPM/smoothed`.
 
 !!! tip "Automated Preprocessing"
-    You can integrate the decompression and smoothing steps into a script to streamline your workflow, avoiding manual steps (see the [Analysis Workflow](fmri-andrea-workflow.md) for an example). 
-    
+    You can integrate the decompression and smoothing steps into a script to streamline your workflow, avoiding manual steps (see the [Analysis Workflow](fmri-andrea-workflow.md) for an example).
+
 ---
 
 ## Step 2: Design Matrix Setup
@@ -66,20 +72,20 @@ For complex designs, you should create one onset file per run per subject, conta
 2. Store the onset files in the following structure:
     - `BIDS/sub-xx/func/sub-xx_run-x_eventsspm.mat`.
 
-    ```
+    ```bash
     BIDS/
     ├── sub-01/
     │   └── func/
     │       ├── sub-01_run-1_eventsspm.mat
     │       └── sub-01_run-2_eventsspm.mat
     ```
-    
+
 ??? example "eventsBIDS2SPM"
     ```matlab
     function new_df = eventsBIDS2SPM(tsv_file)
         % eventsBIDS2SPM - Convert BIDS event files to SPM format
         % This function reads a BIDS event file and converts it to the format required by SPM.
-        % It extracts the unique trial types and their onsets and durations and stores them in a 
+        % It extracts the unique trial types and their onsets and durations and stores them in a
         % Matlab structure.
         %
         % Author: Andrea Costantino
@@ -92,14 +98,14 @@ For complex designs, you should create one onset file per run per subject, conta
         %   tsv_file - string, path to the tsv file containing the events
         %
         % Outputs:
-        %   mat_dict - struct, a Matlab structure containing the events in the format 
+        %   mat_dict - struct, a Matlab structure containing the events in the format
         %              required by SPM. The structure contains three fields:
         %                - 'names': cell array of string, the names of the trial types
         %                - 'onsets': cell array of double, onset times of the trials
         %                - 'durations': cell array of double, duration of the trials
         %
         % This function reads a BIDS event file and converts it to the format required by SPM.
-        % It extracts the unique trial types and their onsets and durations and stores them in a 
+        % It extracts the unique trial types and their onsets and durations and stores them in a
         % Matlab structure
 
         % read the tsv file
@@ -128,7 +134,7 @@ Head motion and other confound regressors from fMRIPrep need to be formatted to 
 1. Use the `fMRIprepConfounds2SPM` function to convert confounds from fMRIPrep.
 2. Store the confounds files in the BIDS structure with SPM-compatible names:
     - `BIDS/sub-xx/func/sub-xx_run-x_confoundsspm.mat`.
-    
+
 ??? example "fMRIprepConfounds2SPM"
     ```matlab
     function confounds = fMRIprepConfounds2SPM(json_path, tsv_path, pipeline)
@@ -330,7 +336,7 @@ Head motion and other confound regressors from fMRIPrep need to be formatted to 
 
 !!! note "BIDS-Compliant Naming"
     Ensure the files are saved with names that include:
-    
+
     - `sub-xx`: subject identifier.
     - `run-x`: run identifier.
     - `confoundsspm` or `eventsspm` for confounds and timings, respectively.
@@ -370,7 +376,7 @@ Both `eventsBIDS2SPM` and `fMRIprepConfounds2SPM` are MATLAB functions that can 
 
     This script converts the timing and confounds information, then immediately feeds them into an SPM batch, making it suitable for automated batch jobs over multiple runs or subject.
 
-=== "Save SPM-Compatible Files" 
+=== "Save SPM-Compatible Files"
 
     If you want to save the converted files for later use, you can use the functions to write them into files with BIDS-compliant names. This is helpful if you need to inspect the files or share them with collaborators before running the GLM analysis:
 
@@ -405,7 +411,6 @@ Both `eventsBIDS2SPM` and `fMRIprepConfounds2SPM` are MATLAB functions that can 
 !!! tip "Automating Batch Processing"
     By integrating these functions into a script, you can automate the entire process of setting up the design matrix for multiple subjects and runs. This approach is particularly useful for large datasets, allowing you to focus on refining the analysis rather than manual data preparation.
 
-
 ### Specifying the 1st-Level Model in SPM
 
 Once you have your onset times and confound regressors files ready, you can set up the design matrix:
@@ -417,7 +422,7 @@ Once you have your onset times and confound regressors files ready, you can set 
     - **Interscan interval (TR)**: Use your fMRI acquisition’s TR value.
     - **Microtime resolution**: This should be the number of slices acquired per TR (e.g., `64` for a 64-slice scan).
 4. **Input Onset Files**:
-    - Use the _multiple conditions_ option to input onset time files (e.g., `sub-01_run-01_eventsspm.mat`).
+    - Use the *multiple conditions* option to input onset time files (e.g., `sub-01_run-01_eventsspm.mat`).
 5. **Include Confound Regressors**:
     - Select the confound regressors from the confound files (e.g., `sub-01_run-01_confoundsspm.mat`).
 
@@ -558,7 +563,6 @@ It’s crucial to confirm the order of regressors in the design matrix before sp
     - **Simplifies Troubleshooting**: If the results look unexpected, double-checking the regressor order is one of the first steps to identify potential issues in the GLM setup.
     - **Consistency Across Sessions**: If you’re analyzing multiple runs or sessions, verifying regressor order ensures consistency across sessions, which is crucial for second-level analyses.
 
-
 ### Visualizing and Saving Results
 
 1. **Viewing Results**: Use the SPM results viewer to explore significant clusters.
@@ -584,4 +588,3 @@ Continue to the next guide for instructions on setting up Regions of Interest (R
 - **[TODO]:** Include screenshots or illustrations for key steps (e.g., setting up the design matrix in SPM).
 - **[PLACEHOLDER]:** Add a screenshot of the SPM results interface to illustrate how to set thresholds.
 - **[TODO]:** Include instructions on visualizing and saving the design matrix in SPM for documentation.
-

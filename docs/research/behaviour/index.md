@@ -8,7 +8,7 @@ We hope this section helps you conduct your behavioural research with ease and p
 
 <div class="grid cards" markdown>
 
--   :fontawesome-solid-flask: **Experimental Setup**
+- :fontawesome-solid-flask: **Experimental Setup**
 
     ---
 
@@ -16,7 +16,7 @@ We hope this section helps you conduct your behavioural research with ease and p
 
     [:octicons-arrow-right-24: View Experimental Setup Guide](experimental-setup.md)
 
--   :fontawesome-solid-users: **Participant Recruitment**
+- :fontawesome-solid-users: **Participant Recruitment**
 
     ---
 
@@ -24,7 +24,7 @@ We hope this section helps you conduct your behavioural research with ease and p
 
     [:octicons-arrow-right-24: Participant Recruitment Guide](participants.md)
 
--   :fontawesome-solid-file-signature: **Ethics Approval**
+- :fontawesome-solid-file-signature: **Ethics Approval**
 
     ---
 
@@ -32,7 +32,7 @@ We hope this section helps you conduct your behavioural research with ease and p
 
     [:octicons-arrow-right-24: Ethics Guide](../ethics/index.md)
 
--   :fontawesome-solid-money-bill-wave: **Reimbursement & Compensation**
+- :fontawesome-solid-money-bill-wave: **Reimbursement & Compensation**
 
     ---
 
@@ -41,5 +41,3 @@ We hope this section helps you conduct your behavioural research with ease and p
     [:octicons-arrow-right-24: Reimbursements Guide](PLACEHOLDER)
 
 </div>
-
-

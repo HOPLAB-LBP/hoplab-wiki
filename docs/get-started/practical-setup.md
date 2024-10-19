@@ -10,9 +10,8 @@ The staff card (different from the student card if you’re an intern or a PhD r
 
 ## Office set-up
 
-For each new member, a laptop and other pc material (e.g., an external hard drive, computer screen, mouse, keyboard, etc.) will be ordered or be made available. If you are missing something or need something specific, please contact [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) before ordering anything new. 
+For each new member, a laptop and other pc material (e.g., an external hard drive, computer screen, mouse, keyboard, etc.) will be ordered or be made available. If you are missing something or need something specific, please contact [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) before ordering anything new.
 
 ## Phone
 
-If you need to call or be called by external numbers, Skype for business can be used and also has a voicemail system associated to it. For good quality calls, you can use a headset, forward the calls to your personal phone number or opt for an old-school stationary phone linked to your Skype for business account (e.g., if you need to make a lot of calls and you only want to be reachable from your desk). You can get a phone from [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752). If you do, make sure you submit the serial number [here](https://ppw.kuleuven.be/intranet/onlineform/lynctelefoon). 
-
+If you need to call or be called by external numbers, Skype for business can be used and also has a voicemail system associated to it. For good quality calls, you can use a headset, forward the calls to your personal phone number or opt for an old-school stationary phone linked to your Skype for business account (e.g., if you need to make a lot of calls and you only want to be reachable from your desk). You can get a phone from [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752). If you do, make sure you submit the serial number [here](https://ppw.kuleuven.be/intranet/onlineform/lynctelefoon).

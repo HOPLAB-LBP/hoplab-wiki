@@ -12,7 +12,7 @@ It is crucial that you get familiar with BIDS folders/files naming convention an
 
 The BIDS Specification provides guidelines on how to organize all your data formats, including [(f/d)MRI](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/magnetic-resonance-imaging-data.html), [EEG](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/electroencephalography.html), [eye-tracking](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/physiological-and-other-continuous-recordings.html), [Task events](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html) associated with Neuro-Imaging recordings or [not](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/behavioral-experiments.html), and [Derivatives](https://bids-specification.readthedocs.io/en/stable/derivatives/imaging.html) (e.g., pre-processed files, Regions Of Interest mask files, GLM files, etc.).
 
-At any moment, you can check your dataset for BIDS compliance. To do so, you can use the [BIDS dataset validator](https://bids-standard.github.io/bids-validator/). 
+At any moment, you can check your dataset for BIDS compliance. To do so, you can use the [BIDS dataset validator](https://bids-standard.github.io/bids-validator/).
 
 ## BIDS Conversion Overview
 
@@ -35,7 +35,7 @@ Here's a high-level overview of the steps involved in arranging your data in a B
 
     Example:
 
-    ```
+    ```bash
     └─ sub-01/
     └─ func/
       ├─ sub-01_task-exp_events.tsv 
@@ -56,7 +56,7 @@ Here's a high-level overview of the steps involved in arranging your data in a B
 
     - Anonymize bold `dicom` files for your first participant using `anonymize_dicm`
     - Convert anonymized `dicom` files using `dicm2nii` to get `.json` sidecar files for your anatomical or function scans.
-   
+
     !!! info "JSON files"
         Each `nii` file **must** have a sidecar JSON file. However, if your fMRI protocol did not change, all the important JSON fields are going to be the same across different scanning sessions, and therefore JSON files can be re-used across subjects. This will save you some time, since getting DICOM files from the scanner can be quite time-consuming.
 
@@ -84,7 +84,7 @@ By following these steps systematically, you'll ensure your data is properly org
 
 ## Step-by-step instructions
 
-Here we provide more detailed instructions to perform each of the steps mentioned above. 
+Here we provide more detailed instructions to perform each of the steps mentioned above.
 
 !!! warning "Folder Structure"
     All the steps and scripts below assume a specific folder structure and file naming convention. They **will not work** otherwise. Ensure you strictly follow the instructions in the [How to store raw data](./fmri-general.md#how-to-store-raw-data) page.
@@ -99,7 +99,7 @@ Here we provide more detailed instructions to perform each of the steps mentione
 
 The script operates on the following project structure:
 
-```
+```bash
 Project_Name/
 ├── sourcedata/
 │   └── sub-xx/
@@ -121,10 +121,13 @@ Execute the script from the 'sourcedata' directory:
 
 1. Open a terminal or command prompt.
 2. Navigate to the project's root:
+
    ```bash
    cd /path/to/Project_Name
    ```
+
 3. Change to the 'sourcedata' directory:
+
    ```bash
    cd sourcedata
    ```
@@ -139,22 +142,26 @@ Execute the script from the 'sourcedata' directory:
 #### Examples
 
 1. Dry run for all subjects:
+
    ```bash
    python /path/to/anon_nii_filename.py --level group --dry_run
    ```
 
 2. Rename files for subjects 01 and 02 with confirmation:
+
    ```bash
    python /path/to/anon_nii_filename.py --level participant --sub 01 02 --confirm True
    ```
 
 3. Rename files for all subjects without confirmation:
+
    ```bash
    python /path/to/anon_nii_filename.py --level group --confirm False
    ```
 
 Output filename:
-```
+
+```bash
 sub-01/nifti/sub-01_WIP_T1w_20240101141322.nii
 ```
 
@@ -164,18 +171,21 @@ sub-01/nifti/sub-01_WIP_T1w_20240101141322.nii
 #### How It Works
 
 1. The script traverses the 'sourcedata' directory structure.
-2. It identifies files containing '_WIP_' in their names.
-3. New names are generated based on the subject ID and the part of the filename after '_WIP_'.
+2. It identifies files containing '*WIP*' in their names.
+3. New names are generated based on the subject ID and the part of the filename after '*WIP*'.
 4. Depending on the options, it either renames the files or shows the proposed changes.
 
 #### Important Notes
 
-- Only files containing '_WIP_' are processed. Others are ignored.
+- Only files containing '*WIP*' are processed. Others are ignored.
 - To process all files, modify the `rename_files_in_directory` function:
+
   ```python
   if '_WIP_' in file:
   ```
+
   to:
+
   ```python
   if True:  # Caution: processes all files
   ```
@@ -196,7 +206,7 @@ If issues occur:
 1. Ensure you're in the 'sourcedata' directory.
 2. Check permissions for renaming files in 'sourcedata'.
 3. Verify all required Python dependencies are installed.
-4. For unprocessed files, check if they contain '_WIP_'.
+4. For unprocessed files, check if they contain '*WIP*'.
 
 ### Creating Event Files
 
@@ -259,7 +269,7 @@ Each `nii` file must have a corresponding JSON sidecar file. If your fMRI protoc
 
 ??? tip "Rename and move automatically"
     A MATLAB script that can do this automatically can be found [here](../../../assets/code/nii2BIDS.m). Remember to change the input and output folders, run names and subjects numbers at the top of the script according to your needs. The  script expects as input your nifti files, along with the JSON sidecar template files.
-    
+
     **TODO:** [ANDREA] the script should first check whether the JSON files are already availabe in the folder and, if that's the case, it should choose these files over the  templates. Also, we need to add more info about these template files in this page!
 
 ### Creating Essential BIDS Files
@@ -282,7 +292,6 @@ Each `nii` file must have a corresponding JSON sidecar file. If your fMRI protoc
 
 ??? question "Why should I use a .bidsignore file?"
     A `.bidsignore' file is useful to communicate to the BIDS validator which files should not be indexed, because they are not part of the standard BIDS structure. More information can be found [here](https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/bids-validator.html#creating-a-bidsignore).
-    
 
 ### Validating Your BIDS Structure
 

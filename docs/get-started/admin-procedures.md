@@ -1,8 +1,8 @@
 # Admin 101
 
-On this page, we will specify the procedures for the most common administrative procedures you might need to follow. If something is missing, please contact us so we can add it and keep this page up to date (and your lives easier). 
+On this page, we will specify the procedures for the most common administrative procedures you might need to follow. If something is missing, please contact us so we can add it and keep this page up to date (and your lives easier).
 
-**KU Loket** is the university portal through which many administrative things are done. You can access it [here](https://webwsp.aps.kuleuven.be/irj/portal). 
+**KU Loket** is the university portal through which many administrative things are done. You can access it [here](https://webwsp.aps.kuleuven.be/irj/portal).
 
 ## Consult your personnel file
 
@@ -10,7 +10,7 @@ Log in to KU Loket and go to "Personnel", then click on "My details" (shown in r
 
 ![Your personnel file](../assets/KULoket_personnelfile.png)
 
-At the very top of this page, you can find the name of your **HR advisor** (1). Your HR advisor offers you a listening ear, provides clarifying advice on HR-related matters and supports you with the administrative obligations that come along with employment at KU Leuven. 
+At the very top of this page, you can find the name of your **HR advisor** (1). Your HR advisor offers you a listening ear, provides clarifying advice on HR-related matters and supports you with the administrative obligations that come along with employment at KU Leuven.
 
 Below, you can **edit your personal details** (2), such as adding a new private address, updating your family situation, adding emergency contacts or adding a new bank account number by clicking on the pencil in the top right corner of the corresponding section.
 
@@ -20,24 +20,24 @@ Through your personnel file, you can also apply for [teleworking allowances](htt
 
 ## Reimbursement for professional expenses
 
-1. Log in to KU Loket and go to "**Finance & Purchasing**" 
+1. Log in to KU Loket and go to "**Finance & Purchasing**"
 2. Click on "**Professional expenses**" (shown in red below)
 3. Click on "**Forms**", create a "**+ New form**" and give it an informative name (e.g., congres X)
 4. Add all your expenses to the form (e.g., train tickets, dinner expenses, the registration fee)
-4. Link a digital proof to each expense
-5. Couple the appropriate financial antenna to your form ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838), u0057838)
-6. Add information on which fund your expenses should be paid from (ask  your PI)
+5. Link a digital proof to each expense
+6. Couple the appropriate financial antenna to your form ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838), u0057838)
+7. Add information on which fund your expenses should be paid from (ask  your PI)
 
 ![Reimbursement](../assets/KULoket_reimbursement.png)
 
-For more information, check out the available [demo videos](https://icts.kuleuven.be/docs/at/lofi/aankoop/k/beroepskosten/BK/Begunstigde/demo) and/or read the [FAQ](https://icts.kuleuven.be/docs/at/lofi/aankoop/k/beroepskosten/BK/FAQ). If you have specific questions concerning this procedure, contact An (*an.vankets@kuleuven.be*) or go find her in office 02.80.
+For more information, check out the available [demo videos](https://icts.kuleuven.be/docs/at/lofi/aankoop/k/beroepskosten/BK/Begunstigde/demo) and/or read the [FAQ](https://icts.kuleuven.be/docs/at/lofi/aankoop/k/beroepskosten/BK/FAQ). If you have specific questions concerning this procedure, contact An (*<an.vankets@kuleuven.be>*) or go find her in office 02.80.
 
 ## Register personal leave
 
 There are a couple of things we usually do in the lab when we take a holiday:
 
-1. **Notify Hans** by sending an email with the subject "Holiday", to keep an official trace of your holiday request (that also helps him keep track of who’s on leave). 
-2. Mark the days you’re off in the Hoplab **Google calendar**, so everyone is aware of your absence. 
+1. **Notify Hans** by sending an email with the subject "Holiday", to keep an official trace of your holiday request (that also helps him keep track of who’s on leave).
+2. Mark the days you’re off in the Hoplab **Google calendar**, so everyone is aware of your absence.
 3. **Notify your employer**, which can be different depending on your contract (the procedure below is for KU Leuven employees, for instance).
 
 ### Procedure for KU Leuven employees
@@ -62,11 +62,13 @@ Proceed as follows:
 
 1. Log in to KU Loket and Go to "**Personnel**"
 2. Navigate to "**Register missions**" and click on "**New request**"
-3. Fill out the required information on (amongst others) 
-	- *When* you will be absent
-	- *Where* you will be
-	- *How* you will get there
-	- *Why* you are going 
+3. Fill out the required information on (amongst others):
+
+    - *When* you will be absent
+    - *Where* you will be
+    - *How* you will get there
+    - *Why* you are going
+
 4. Add the correct financial antenna to the form ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838), u0057838)
 5. Submit the form
 
@@ -78,9 +80,9 @@ For more information, check out [this page](https://admin.kuleuven.be/personeel/
 
 In order to book a room, contact [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752). You can check which rooms are available yourself through KU Loket:
 
-1. Go to KU Loket, navigate to the tab "**HSE & Spaces**" and click on "**Classroom reservations**" (Dutch only) 
-2. Click "**Zoek op naam**" and enter `PSI` to find all the rooms in the building. 
-3. Select the rooms that fit your needs 
+1. Go to KU Loket, navigate to the tab "**HSE & Spaces**" and click on "**Classroom reservations**" (Dutch only)
+2. Click "**Zoek op naam**" and enter `PSI` to find all the rooms in the building.
+3. Select the rooms that fit your needs
 4. Click "**toon reservaties**"
 5. Browse to the date & time when you need the room
 6. Look for an available room and send this info to [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752)
@@ -89,11 +91,11 @@ In order to book a room, contact [Ying](https://www.kuleuven.be/wieiswie/en/pers
 
 ## Reserve equipment or a room for testing
 
-The standard booking tool for testing rooms and equipment (testing booths, EEG caps, etc.) in our faculty is [**Clustermarket**](https://clustermarket.com/). 
- 
-- To access Clustermarket you need to make a user account using an invitation link. This link decides to which infrastructure you have access to and is different for every research unit/group. For our group (B&C Human), you can get the link by sending an email to [Christophe Bossens](https://www.kuleuven.be/wieiswie/en/person/00072088) (christophe.bossens@kuleuven.be). 
+The standard booking tool for testing rooms and equipment (testing booths, EEG caps, etc.) in our faculty is [**Clustermarket**](https://clustermarket.com/).
+
+- To access Clustermarket you need to make a user account using an invitation link. This link decides to which infrastructure you have access to and is different for every research unit/group. For our group (B&C Human), you can get the link by sending an email to [Christophe Bossens](https://www.kuleuven.be/wieiswie/en/person/00072088) (<christophe.bossens@kuleuven.be>).
 - When you have access, choose the option to log in via your organization, so you can access it through the KU Leuven login tool.
-- Make sure to use Clustermarket to book your testing time slots when you use common rooms or material. Request access to the items you don’t have permission to in case you need it. You can find more information on how to use Clustermarket in [this presentation](https://ppw.kuleuven.be/intranet/research/files/infoclustermarket). 
+- Make sure to use Clustermarket to book your testing time slots when you use common rooms or material. Request access to the items you don’t have permission to in case you need it. You can find more information on how to use Clustermarket in [this presentation](https://ppw.kuleuven.be/intranet/research/files/infoclustermarket).
 - The faculty also has their own MS Teams `GHUM PPW - Research rooms and equipment` where you can find more detailed information on the available research infrastructure as well as a manual on how to book infrastructure with Clustermarket (for more info, check out [this page](https://ppw.kuleuven.be/intranet/research/research-infrastructure-ppw)).
 
 ## Order stuff
@@ -106,11 +108,11 @@ Please contact [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) for a
 - Computer equipment
 - Physical mail and packages (post)
 
-**General orders** (e.g., milk, coffee, office material) are also handled by [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752). In case of bigger purchases, make sure to include the financial antenna ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838)) in the process. 
+**General orders** (e.g., milk, coffee, office material) are also handled by [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752). In case of bigger purchases, make sure to include the financial antenna ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838)) in the process.
 
-The IT department handles orders related to **computer supplies** (*ppw.dict@kuleuven.be*). All [computer equipment](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/computer-accessories) needs to be bought through the [official university providers](https://admin.kuleuven.be/td/aankoop/intranet/english/discounts/ICT/computeraccessories) by the financial antenna [An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838)). Therefore, when computer supplies need to be bought, make sure to contact them both. It can also be useful to include [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) in CC in that case. 
+The IT department handles orders related to **computer supplies** (*<ppw.dict@kuleuven.be>*). All [computer equipment](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/computer-accessories) needs to be bought through the [official university providers](https://admin.kuleuven.be/td/aankoop/intranet/english/discounts/ICT/computeraccessories) by the financial antenna [An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838)). Therefore, when computer supplies need to be bought, make sure to contact them both. It can also be useful to include [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) in CC in that case.
 
-If you need **technical assistance** for your order (e.g., you want to order an EEG-cap), you can contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or send an email to *neurospace@kuleuven.be* (general mailing address to reach the support staff of the Methusalem project).
+If you need **technical assistance** for your order (e.g., you want to order an EEG-cap), you can contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or send an email to *<neurospace@kuleuven.be>* (general mailing address to reach the support staff of the Methusalem project).
 
 ## Arrange a parking spot for a visitor
 
@@ -119,13 +121,14 @@ If you need **technical assistance** for your order (e.g., you want to order an 
 
 ## What to do when you leave
 
-We are very sad to see you leave! But since you do, make sure to tick the following boxes. 
+We are very sad to see you leave! But since you do, make sure to tick the following boxes.
 
-1. Return the following items to [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752): 
-	- Any pc material (laptop, mouse, keyboard, etc.)
-	- Your external hard drive (and potential USB-key)
-	- Your key(card)
-	- Your Lync phone
+1. Return the following items to [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752):
 
-2.	Make sure your data is organized and backed up correctly. That mostly means having back-ups in different locations and different ways. If you need advice on this, refer to the person in charge of data storage (as of December 2024, that is [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743)).
-3.	For more information on what to do when you leave, check out [this link](https://ppw.kuleuven.be/ppw-dict/faq#autotoc-item-autotoc-63) for ICT-related info, [this link](https://admin.kuleuven.be/personeel/english/intranet/endofcontract-pension/practical-steps-leaving/practical-steps-leaving-employment) for HR-related info and [this link](https://www.kuleuven.be/english/life-at-ku-leuven/upon-leaving) if you are an international researcher leaving Belgium. 
+    - Any pc material (laptop, mouse, keyboard, etc.)
+    - Your external hard drive (and potential USB-key)
+    - Your key(card)
+    - Your Lync phone
+
+2. Make sure your data is organized and backed up correctly. That mostly means having back-ups in different locations and different ways. If you need advice on this, refer to the person in charge of data storage (as of December 2024, that is [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743)).
+3. For more information on what to do when you leave, check out [this link](https://ppw.kuleuven.be/ppw-dict/faq#autotoc-item-autotoc-63) for ICT-related info, [this link](https://admin.kuleuven.be/personeel/english/intranet/endofcontract-pension/practical-steps-leaving/practical-steps-leaving-employment) for HR-related info and [this link](https://www.kuleuven.be/english/life-at-ku-leuven/upon-leaving) if you are an international researcher leaving Belgium.

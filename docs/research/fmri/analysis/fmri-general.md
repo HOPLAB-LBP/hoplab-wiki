@@ -11,7 +11,7 @@ You should land on this page after collecting your fMRI data and [converting it 
 
 To avoid errors during BIDS conversion, store the raw data (e.g., data collected from the scanner, behavioral measures, eye-tracking) with the following folder structure:
 
-```
+```bash
 sourcedata
 └── sub-41
     ├── bh
@@ -61,23 +61,23 @@ For optimal BIDS conversion of fMRI data, it is recommended to initially collect
 Despite these steps, some BIDS fields in the sidecar JSON files may remain empty due to limitations of the Philips scanner. The most relevant fields that may be left empty are `SliceTiming` and [`PhaseEncodingDirection`](https://github.com/xiangruili/dicm2nii/issues/49).
 
 - **SliceTiming**:
-    - This field is required by fMRIPrep during slice timing correction.
-    - Populate it using the `get_philips_MB_slicetiming.py` script, assuming you have access to a DICOM file and know the multiband factor (default is 2, as used in our lab).
+  - This field is required by fMRIPrep during slice timing correction.
+  - Populate it using the `get_philips_MB_slicetiming.py` script, assuming you have access to a DICOM file and know the multiband factor (default is 2, as used in our lab).
     !!! warning
         The script assumes an interleaved, foot-to-head acquisition and will not work for other acquisition types.
 
 - **PhaseEncodingDirection**:
-    - This BIDS tag helps tools undistort images.
-    - Philips DICOM headers specify the phase encoding axis (e.g., A-P or L-R) but not the polarity (A->P or P->A).
-    - Check the scanner settings or consult with Ron to determine whether the polarity is AP or PA, and update the `?` in the JSON file with `+` or `-`.
+  - This BIDS tag helps tools undistort images.
+  - Philips DICOM headers specify the phase encoding axis (e.g., A-P or L-R) but not the polarity (A->P or P->A).
+  - Check the scanner settings or consult with Ron to determine whether the polarity is AP or PA, and update the `?` in the JSON file with `+` or `-`.
 
 !!! info "Handling NaNs in JSON Files"
     NaN values in JSON files can cause errors during the MRIQC workflow. To address NaN values, see the discussions in [this post](https://groups.google.com/g/mriqc-users/c/0v170KRJoKk), [this GitHub issue](https://github.com/nipreps/mriqc/issues/1089), and [this NeuroStars thread](https://neurostars.org/t/node-error-on-mriqc-wf-dwimriqc-computeiqms-datasink/29188).
-    
+
 For more details on Philips DICOM conversion, refer to the following resources:
 
 - [Philips DICOM Missing Information - dcm2niix](https://github.com/rordenlab/dcm2niix/tree/master/Philips#missing-information)
-- [PARREC Conversion - dcm2niix](https://github.com/rordenlab/dcm2niix/tree/master/PARREC)    
+- [PARREC Conversion - dcm2niix](https://github.com/rordenlab/dcm2niix/tree/master/PARREC)
 
 ---
 
@@ -117,4 +117,3 @@ Additional information on the fMRI sequence can be found directly at the scanner
 ---
 
 Next Step --> [Set-up your environment](fmri-setup-env.md)
-

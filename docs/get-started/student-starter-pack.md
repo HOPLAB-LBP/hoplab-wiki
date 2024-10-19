@@ -26,7 +26,7 @@ Developing strong coding skills is crucial for success in our lab. Here are some
 
 <div class="grid cards" markdown>
 
--   :fontawesome-solid-pencil:{ .lg .middle } __Academic Writing__
+- :fontawesome-solid-pencil:{ .lg .middle } **Academic Writing**
 
     ---
 
@@ -34,7 +34,7 @@ Developing strong coding skills is crucial for success in our lab. Here are some
 
     [:octicons-arrow-right-24: Ten Simple Rules for Structuring Papers](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619)
 
--   :material-robot-love:{ .lg .middle } __Machine Learning Fundamentals__
+- :material-robot-love:{ .lg .middle } **Machine Learning Fundamentals**
 
     ---
 
@@ -42,15 +42,15 @@ Developing strong coding skills is crucial for success in our lab. Here are some
 
     [:octicons-arrow-right-24: Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction)
 
--   :fontawesome-solid-graduation-cap:{ .lg .middle } __Awesome PhD Resources__
+- :fontawesome-solid-graduation-cap:{ .lg .middle } **Awesome PhD Resources**
 
     ---
 
     A curated list of carefully selected tools and resources for both early career and senior researchers:
 
     [:octicons-arrow-right-24: Awesome PhD Repository](https://github.com/helenahartmann/awesome-PhD)
-    
--   :material-brain:{ .lg .middle } __Awesome Neuroscience Resources__
+
+- :material-brain:{ .lg .middle } **Awesome Neuroscience Resources**
 
     ---
 
@@ -58,9 +58,8 @@ Developing strong coding skills is crucial for success in our lab. Here are some
 
     [:octicons-arrow-right-24: Awesome Neuroscience Repository](https://github.com/analyticalmonk/awesome-neuroscience)
 
-
 </div>
-    
+
 ## Papers & lectures
 
 This section contains some foundational papers to give you some background on the research going on in the lab, as well as interesting lectures if you can't find anything to watch on Netflix. This list might not always be up to date, but you can find our latest publications on the [lab website](https://www.hoplab.be/publications/).
@@ -104,7 +103,3 @@ This section contains some foundational papers to give you some background on th
 === "Lectures"
 
      - [A visual and intuitive understanding of deep learning](https://www.youtube.com/watch?v=Oqm9vsf_hvU&ab_channel=otaviogood) is a great lecture to begin with if you feel like convolutional neural networks are still obscure to you.
-
-
-
-

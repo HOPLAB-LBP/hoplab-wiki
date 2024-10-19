@@ -1,4 +1,4 @@
-# Welcome to HOPLAB!
+# Welcome to HOPLAB
 
 We are thrilled to have you join our team at HOPLAB, where we delve into the fascinating world of visual cognition and learning. Our lab is dedicated to exploring how the brain processes and interprets complex visual scenes, integrating insights from neuroscience, psychology, and computational science. As part of our team, you’ll contribute to cutting-edge research that bridges human cognition with artificial intelligence. We look forward to your contributions and to working together on exciting discoveries.
 
@@ -12,7 +12,7 @@ To help you get settled quickly, here are some essential resources:
 
 <div class="grid cards" markdown>
 
--   :fontawesome-solid-computer: **Setting Up Your Digital Workspace**
+- :fontawesome-solid-computer: **Setting Up Your Digital Workspace**
 
     ---
 
@@ -20,7 +20,7 @@ To help you get settled quickly, here are some essential resources:
 
     [:octicons-arrow-right-24: Computer Setup Guide](computer-setup.md)
 
--   :fontawesome-solid-door-open: **Setting Up Your Physical Workspace**
+- :fontawesome-solid-door-open: **Setting Up Your Physical Workspace**
 
     ---
 
@@ -28,7 +28,7 @@ To help you get settled quickly, here are some essential resources:
 
     [:octicons-arrow-right-24: Practical Setup Guide](practical-setup.md)
 
--   :fontawesome-solid-file-signature: **Administrative Procedures**
+- :fontawesome-solid-file-signature: **Administrative Procedures**
 
     ---
 
@@ -36,7 +36,7 @@ To help you get settled quickly, here are some essential resources:
 
     [:octicons-arrow-right-24: Admin Procedures](admin-procedures.md)
 
--   :fontawesome-solid-users: **Mailing Lists**
+- :fontawesome-solid-users: **Mailing Lists**
 
     ---
 
@@ -44,7 +44,7 @@ To help you get settled quickly, here are some essential resources:
 
     [:octicons-arrow-right-24: Mailing Lists Guide](mailing-lists.md)
 
--   :fontawesome-solid-toolbox: **Student Starter Pack**
+- :fontawesome-solid-toolbox: **Student Starter Pack**
 
     ---
 
@@ -52,7 +52,7 @@ To help you get settled quickly, here are some essential resources:
 
     [:octicons-arrow-right-24: View Starter Pack](student-starter-pack.md)
 
--   :fontawesome-solid-link: **Useful Links**
+- :fontawesome-solid-link: **Useful Links**
 
     ---
 
@@ -88,5 +88,3 @@ We hope this guide helps you settle into your new role. Dive in, and enjoy your 
 **TODO**: [Klara] Make a list of office spaces and who can be found where
 **TODO**: [Klara] Specify how to encrypt your (external) hard drive
 **TODO**: [Klara] Explain how you can forward emails from your student mailing address to your professional mailing address (for PhD'ers)
-
-

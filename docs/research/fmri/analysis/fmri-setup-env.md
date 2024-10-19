@@ -13,7 +13,7 @@ Welcome to the fMRI analysis environment setup guide. This walkthrough will help
 
 Our lab uses a specific folder structure for fMRI projects. Here's an overview:
 
-```
+```bash
 Project_Name/
 ├── sourcedata/
 │   └── sub-xx/
@@ -43,7 +43,6 @@ Project_Name/
     ├── temp_deepmreye/
     └── temp_mriqc/
 ```
-
 
 - `sourcedata/`: Contains raw data for each subject
 - `BIDS/`: Organized according to BIDS specification
@@ -91,7 +90,7 @@ Project_Name/
 ### Docker Desktop
 
 Docker is crucial for running containerized applications like fMRIPrep. Althoug Docker can be installed as a command-line tool, we strongly advise installing the GUI version (Docker Desktop).
-    
+
 For up-to-date installation info, please consult the Docker Desktop installation pages for [Mac](https://docs.docker.com/desktop/install/mac-install/), [Windows](https://docs.docker.com/desktop/install/windows-install/) or [Linux](https://docs.docker.com/desktop/install/linux-install/).
 
 After installation, configure Docker resources:
@@ -117,13 +116,13 @@ Many of these tools are [BIDS-apps](https://bids-apps.neuroimaging.io/apps/), wh
 !!! important
     Before running any BIDS-app, ensure your input folder is correctly structured according to BIDS standards. Validate your BIDS dataset using the [BIDS Validator](https://bids-standard.github.io/bids-validator/) to avoid potential issues.
 
-For detailed installation and usage instructions, please refer to each tool's respective documentation. For examples of how to run these tools using Docker, refer to the usage notes in their respective documentation or check our [fMRI workflow example](fmri-andrea-workflow.md) in this same folder. 
+For detailed installation and usage instructions, please refer to each tool's respective documentation. For examples of how to run these tools using Docker, refer to the usage notes in their respective documentation or check our [fMRI workflow example](fmri-andrea-workflow.md) in this same folder.
 
 Below are the basic Docker pull commands for the main tools we use:
 
 - **fMRIprep**:
 
-    [fMRIPrep](https://fmriprep.org/en/stable/) is a tool for minimal pre-processing of structural and anatomical MRI images. 
+    [fMRIPrep](https://fmriprep.org/en/stable/) is a tool for minimal pre-processing of structural and anatomical MRI images.
 
     To get the Docker image:
 
@@ -133,7 +132,7 @@ Below are the basic Docker pull commands for the main tools we use:
 
 - **MRIQC**:
 
-    [MRIQC](https://mriqc.readthedocs.io/en/latest/) is a tool to perform Quality Check on your raw and pre-processed MRI images. 
+    [MRIQC](https://mriqc.readthedocs.io/en/latest/) is a tool to perform Quality Check on your raw and pre-processed MRI images.
 
     To get the Docker image:
 
@@ -143,14 +142,14 @@ Below are the basic Docker pull commands for the main tools we use:
 
 - **FastSurfer**:
 
-    [FastSurfer](https://github.com/Deep-MI/FastSurfer) is a self-contained, faster (it uses the NVIDIA GPU processing) alternative to FreeSurfer. It can save quite some time when performing surface processing pipelines (e.g., `recon-all`). 
+    [FastSurfer](https://github.com/Deep-MI/FastSurfer) is a self-contained, faster (it uses the NVIDIA GPU processing) alternative to FreeSurfer. It can save quite some time when performing surface processing pipelines (e.g., `recon-all`).
 
     To get the Docker image:
 
     ```bash
     docker pull deepmi/fastsurfer:latest
     ```
-    
+
     !!! note
         FastSurfer can save you time if you have a **[CUDA-compatible GPU](https://developer.nvidia.com/cuda-gpus)**. In short, this means that your machine should have a dedicated NVIDIA GPU with CUDA installed. You can check whether CUDA is correctly installed on you machine by typing `nvidia-smi` on your terminal. If this command does not return a list of active GPUs, you either need to install and configure CUDA, or you can avoid installing this tool and rely on the `recon-all` pipeline performed with the anatomical workflow of fMRIPrep.
 
@@ -163,9 +162,9 @@ Below are the basic Docker pull commands for the main tools we use:
     ```bash
     docker pull deepmreye/deepmreye
     ```
-    
+
 ---
-    
+
 ### dcm2niix
 
 [dcm2niix](https://www.nitrc.org/plugins/mwiki/index.php/dcm2nii:MainPage) is a powerful tool used for DICOM to NIfTI conversion. It can be used as a command-line tool or through a Graphical User Interface (GUI) when shipped with [MRIcroGL](https://www.nitrc.org/projects/mricrogl/) (see [this](https://www.nitrc.org/plugins/mwiki/index.php/dcm2nii:MainPage#Graphical_interface) for more information).
@@ -264,24 +263,29 @@ We use Conda to manage our Python environment.
 
 1. Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 2. Create and activate the environment:
+
     ```bash
     conda create -n fmri_env python=3.9 spyder numpy scipy matplotlib nibabel nilearn scikit-learn
     ```
+
 3. Activate the environment:
+
     ```bash
     conda activate fmri_env
     ```
 
 !!! warning
     It's **crucial** to create a new conda environment for each new project you start. Installing new packages into the base conda environment it's a very bad practice that will eventually lead to a bloated, brittle environent with broken packages and compatibility issues. Uninstalling or re-installing Python on some machine can be a very painful (sometimes impossible) process!
-    
+
 #### Setting up Spyder IDE
 
 1. Launch Spyder:
+
     ```bash
     conda activate fmri_env
     spyder
     ```
+
 2. Create a new project:
     - Go to "Projects" > "New Project"
     - Choose "Existing directory"
@@ -303,25 +307,27 @@ Install the following MATLAB toolboxes:
     1. Download [SPM12](https://www.fil.ion.ucl.ac.uk/spm/software/download/)
     2. Unzip to a location of your choice
     3. Add SPM to MATLAB path:
+
     ```matlab
     addpath('path/to/spm12')
     savepath
     ```
 
     !!! warning "Mac installtion"
-        For mac users, potential installation issues can be tackled with the [instructions for mac](https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)) on the SPM wiki. Make sure **Xcode** is installed on your computer before installing SPM. 
+        For mac users, potential installation issues can be tackled with the [instructions for mac](https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)) on the SPM wiki. Make sure **Xcode** is installed on your computer before installing SPM.
 
 - **CoSMoMVPA**
 
     CoSMoMVPA is used for multivariate pattern analysis.
 
     1. Download from the [official website](http://www.cosmomvpa.org/download.html)
-    2. Add to MATLAB path:    
+    2. Add to MATLAB path:
+
     ```matlab
     addpath(genpath('path/to/CoSMoMVPA'))
     savepath
     ```
-   
+
 - **MarsBaR**:
 
     MarsBaR is a region of interest toolbox for SPM.
@@ -329,11 +335,12 @@ Install the following MATLAB toolboxes:
     1. Download [MarsBaR](https://marsbar-toolbox.github.io/download.html)
     2. Unzip to a location of your choice, such as `/home/myhome/marsbar-0.42/`
     3. Copy the MarsBaR distribution into the SPM directory with:
+
         ```bash
         mkdir /path-to-spm/toolbox/marsbar
         cp -r /home/myhome/marsbar-0.42/* /path-to-spm/toolbox/marsbar
         ```
-       
+
     Change `/path-to-spm/` with your SPM path (e.g., `/usr/local/spm/spm12/`).
 
     The next time you start spm you should be able to start the toolbox by selecting ‘marsbar’ from the toolbox button on the SPM interface.  
@@ -342,20 +349,22 @@ Install the following MATLAB toolboxes:
 
 ## Installing Additional Tools
 
-These tools are not mandatory -- they can be installed if needed. 
+These tools are not mandatory -- they can be installed if needed.
 
 ### FreeSurfer
 
-FreeSurfer is used for cortical surface reconstruction. The main surface reconstruction pipeline of FreeSurfer (`recon-all`) is bundled in the fmriprep docker image, and it is performed during the fmriprep anatomical workflow. This means that this tool is not strictly necessary, unless you plan on running additional surface processing steps (e.g., additional surface projections, such as the Glasser volumetric projection from fsaverage that is performed in the [fMRI workflow example](fmri-andrea-workflow.md#hcp-glasser-parcellation). 
+FreeSurfer is used for cortical surface reconstruction. The main surface reconstruction pipeline of FreeSurfer (`recon-all`) is bundled in the fmriprep docker image, and it is performed during the fmriprep anatomical workflow. This means that this tool is not strictly necessary, unless you plan on running additional surface processing steps (e.g., additional surface projections, such as the Glasser volumetric projection from fsaverage that is performed in the [fMRI workflow example](fmri-andrea-workflow.md#hcp-glasser-parcellation).
 
 To install:
 
 1. Download from the [official website](https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall)
 2. Set up environment variables:
+
    ```bash
    export FREESURFER_HOME=/path/to/freesurfer
    source $FREESURFER_HOME/SetUpFreeSurfer.sh
    ```
+
 ??? warning "FreeSurfer on Windows"
     FreeSurfer is not natively compatible with Windows. To use FreeSurfer on a Windows system, you have a few options:
 
@@ -379,14 +388,15 @@ To install:
 
     The WSL or Docker options are generally recommended as they have less overhead than a full VM. Whichever method you choose, ensure you have adequate disk space and RAM allocated for FreeSurfer to run efficiently.
     
----    
-    
+---
+
 ### ANTs
 
 ANTs is used for image registration and normalization. As for FreeSurfer, this tool is not strictly necessary, unless you want to generate the Glasser volumetric projection from fsaverage described [here](fmri-andrea-workflow.md#hcp-glasser-parcellation)
 
 1. Download from [GitHub](https://github.com/ANTsX/ANTs/releases)
 2. Add to system PATH:
+
    ```bash
    export ANTSPATH=/path/to/ANTs/bin
    export PATH=$ANTSPATH:$PATH
@@ -398,7 +408,7 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
 
 ??? failure "Docker: WSL2 Configuration Errors on Windows"
     **Problem**: Docker fails to start or displays errors related to WSL2.
-    
+
     **Solution**: Ensure WSL2 is properly installed and configured. Open Docker Desktop settings and verify that WSL2 is selected as the backend. Restart Docker Desktop after making changes. If issues persist, run the following command in PowerShell:
     ```powershell
     wsl --update
@@ -406,7 +416,7 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
 
 ??? failure "Docker: Service Issues on Linux"
     **Problem**: Docker service fails to start or stops unexpectedly on Linux systems.
-    
+
     **Solution**: Restart the Docker service and check the logs for more details:
     ```bash
     sudo systemctl restart docker
@@ -419,7 +429,7 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
 
 ??? failure "MATLAB: Not Recognized in PATH"
     **Problem**: MATLAB is not found in the system PATH, leading to command not found errors.
-    
+
     **Solution**: Add the MATLAB installation directory to your system PATH. For a temporary fix, run:
     ```bash
     export PATH=$PATH:/path/to/matlab/bin
@@ -428,7 +438,7 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
 
 ??? failure "SPM: Missing Toolboxes"
     **Problem**: Errors occur due to missing SPM toolboxes in MATLAB.
-    
+
     **Solution**: Ensure the required toolboxes (e.g., SPM, CoSMoMVPA, MarsBaR) are installed and added to the MATLAB path. Use the following in MATLAB:
     ```matlab
     addpath('path/to/spm12')
@@ -437,7 +447,7 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
 
 ??? failure "FreeSurfer: License Not Found"
     **Problem**: FreeSurfer cannot locate the `license.txt` file, leading to startup errors.
-    
+
     **Solution**: Place the `license.txt` file in the FreeSurfer home directory and set the path correctly:
     ```bash
     export FS_LICENSE=/path/to/license.txt
@@ -446,7 +456,7 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
 
 ??? failure "Python: Package Conflicts"
     **Problem**: Conflicting package versions cause Python environments to break.
-    
+
     **Solution**: Create a new conda environment for each project to avoid conflicts. Use:
     ```bash
     conda create -n new_env python=3.9
@@ -459,12 +469,11 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
 
 ??? failure "FreeSurfer: Incompatible with Native Windows"
     **Problem**: FreeSurfer is not compatible with Windows and cannot be installed directly.
-    
+
     **Solution**: Use one of these methods:
     - **WSL2**: Install WSL2 and a Linux distribution like Ubuntu, then install FreeSurfer in this environment.
     - **Virtual Machine**: Use VirtualBox or VMware to set up a Linux virtual machine, then install FreeSurfer.
     - **Docker**: Install Docker Desktop for Windows and run a FreeSurfer Docker image for compatibility.
-
 
 For more specific issues, consult tool documentation or seek help on [NeuroStars](https://neurostars.org/).
 

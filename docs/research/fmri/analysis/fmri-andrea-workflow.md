@@ -32,7 +32,7 @@ For information on how to set up the working environment, install, and configure
     This step should only be performed for the first subject in your dataset. It can be skipped if anatomical and functional JSON templates are already available in `code/misc/`. See [this guide](./fmri-general.md#how-to-get-images-from-the-scanner) for more info on the template files.
 
 1. **Convert DICOM to BIDS (NIfTI):**
-    
+
     1. **Prerequisites:**
         - `dcm2nii`
         - Raw data should be organized as: `/sourcedata/sub-<xx>/dicom`
@@ -91,7 +91,6 @@ The fMRI task script should output two files per run:
     | RESP       | KeyPress   | 2024-05-03 10:50:34.160 | -         | 51.063114    | -          | 51       |
     | FLIP       | TgrWait    | 2024-05-03 10:50:34.216 | -         | 51.117046    | -          | -        |
     | PULSE      | Trigger    | 2024-05-03 10:50:40.000 | -         | 56.904357    | -          | 53       |
-
 
 2. `<timestamp>_log_<subID>_<run>_<taskName>.mat`: This MATLAB file contains all the parameters to reproduce the experimental run, and stores input parameters and results.
 
@@ -184,11 +183,10 @@ fmriprep-docker /data/projects/chess/data/BIDS /data/projects/chess/data/BIDS/de
     --fs-subjects-dir /data/projects/chess/data/BIDS/derivatives/fastsurfer \
     --notrack --participant-label 41
 ```
-   
-??? tip "Use CIFTI output for surface data"
 
+??? tip "Use CIFTI output for surface data"
     If you plan to run analysis on **surface data**, consider using **CIFTI output images** from fMRIPrep. While this approach hasn't been directly tested here, CIFTI outputs can provide several advantages:
-    
+
     - **Surface analysis in SPM** (see [this](https://neurostars.org/t/analyzing-func-gii-files-with-spm12/852/2) conversation on Neurostars).
     - **CIFTI images** include cortical BOLD time series projected onto the surface using templates like the **Glasser2016 parcellation** (which is also used for MVPA).
     - This method allows for direct analysis of surface data in formats like `.gii`, which can be compatible with **SPM** for further analysis.
@@ -257,21 +255,21 @@ docker run -it --rm \
 After preprocessing, proceed to the first-level analysis with the GLM. Running the GLM and setting contrasts is straightforward using `script03`. Make sure to adjust the following parameters:
 
 - **Paths**:
-    - `fmriprepRoot`: Path to the fMRIPrep folder.
-    - `BIDSRoot`: Path to your BIDS folder.
-    - `outRoot`: Path to save GLM results (ideally in the derivatives folder, in a `fmriprep-spm` folder).
-    - `tempDir`: Directory for temporary files, such as uncompressed or smoothed files.
+  - `fmriprepRoot`: Path to the fMRIPrep folder.
+  - `BIDSRoot`: Path to your BIDS folder.
+  - `outRoot`: Path to save GLM results (ideally in the derivatives folder, in a `fmriprep-spm` folder).
+  - `tempDir`: Directory for temporary files, such as uncompressed or smoothed files.
 
 - **Subject Selection**:
 
     Leave a new line before listing subjects.
 
-    - `selectedSubjectsList`: A list of integers like `[41, 42, 43, 44]` or use `'*'` to analyze all subjects.
-    - `selectedRuns`: List of runs to analyze.
+  - `selectedSubjectsList`: A list of integers like `[41, 42, 43, 44]` or use `'*'` to analyze all subjects.
+  - `selectedRuns`: List of runs to analyze.
 
 - **Contrasts Setup**:
 
-    ```
+    ```matlab
     selectedTasks(1).name = 'exp';  % The name of the task. Must match the task name in your BIDS filenames.
     selectedTasks(1).contrasts = {'Check > No-Check'};  % Name of the contrast.
     selectedTasks(1).weights(1) = struct('C_WILDCARD___WILDCARD_', 1, 'NC_WILDCARD___WILDCARD_', -1);  % Weights for each regressor.
@@ -372,5 +370,3 @@ For example:
 **TODO:** Explain how to save and run the `mriqc` commands.
 **TODO:** Refine the phrasing and add more info on the parameters for GLM and contrasts setup.
 **TODO:** Possibly include screenshots for better clarity (e.g., code sections).
-
-

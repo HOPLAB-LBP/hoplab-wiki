@@ -25,9 +25,8 @@ In this page, you will learn how to preprocess fMRI data using [fMRIPrep](https:
 
 - :material-playlist-check: **[Next Steps: GLM Analysis](./fmri-glm.md)**  
   Once your data is preprocessed and quality-checked, move on to first-level analysis with the General Linear Model.
-</div>
 
-#### Additional Resources
+</div>
 
 - **[fMRIPrep Documentation](https://fmriprep.org/en/stable/)**  
   Get detailed insights into the preprocessing steps, output formats, and recommended practices.
@@ -50,6 +49,7 @@ In this page, you will learn how to preprocess fMRI data using [fMRIPrep](https:
 ### 1. Setting Up fMRIPrep
 
 To use fMRIPrep, ensure that you have:
+
 - **Docker** (or **Singularity** for HPC environments).
 - Installed the `fmriprep-docker` wrapper for easier command-line usage:
   
@@ -61,7 +61,7 @@ To use fMRIPrep, ensure that you have:
 
 !!! note "System Requirements"
     fMRIPrep is resource-intensive. For optimal performance, allocate:
-    
+
     - At least **16 GB RAM** and **4 CPUs**.
     - A **high-speed SSD** for the working directory to improve I/O performance.
 
@@ -90,7 +90,7 @@ Replace:
 
 ??? question "Why specify output spaces?"
     `--output-spaces` defines the spaces in which your data will be resampled. Common options include:
-    
+
     - **MNI152NLin2009cAsym**: Standard volumetric template.
     - **anat**: Subject’s native T1w space.
     - **fsnative**: FreeSurfer's subject-specific surface space.
@@ -160,8 +160,8 @@ After running fMRIPrep, the outputs will be stored in the `derivatives/fmriprep`
 - **Motion Correction**: Look for high motion frames using **Framewise Displacement (FD)** plots.
 
 ??? note "What is Framewise Displacement (FD)?"
-    FD is a measure of head movement between frames. High FD values indicate potential motion artifacts. 
-    
+    FD is a measure of head movement between frames. High FD values indicate potential motion artifacts.
+
 Let’s walk through the key components of the output and how to interpret the HTML summary reports.
 
 #### 1. Output Directory Structure
@@ -198,22 +198,22 @@ The **Anatomical** section provides:
 
 - **Brain Mask Overlay**: Displays the brain mask (red outline), gray matter (magenta), and white matter boundaries (blue) overlaid on the anatomical image in sagittal, axial, and coronal views.
 
-![Trigger box](../../../assets/fmriprep-report-brainmaskoverlay.png) 
+![Trigger box](../../../assets/fmriprep-report-brainmaskoverlay.png)
 
 - **Normalization Check**: A GIF compares the subject’s anatomical image with the MNI template. Ensure that:
 
-    - The outlines of the brain and internal structures (e.g., ventricles) align well.
-    - Any misalignment could indicate poor normalization, which may need further inspection.
+  - The outlines of the brain and internal structures (e.g., ventricles) align well.
+  - Any misalignment could indicate poor normalization, which may need further inspection.
   
-![Trigger box](../../../assets/fmriprep-report-normalization.png) 
-   
+![Trigger box](../../../assets/fmriprep-report-normalization.png)
+
 !!! tip
     **Hover over the GIF** to see the back-and-forth comparison between the subject's brain and the template. Look closely at the alignment of internal brain structures.
-    
+
 - **Surface Reconstruction** if you ran the `recon-all` routine in fMRIprep
 
-![Trigger box](../../../assets/fmriprep-report-surfacerecon.png) 
-    
+![Trigger box](../../../assets/fmriprep-report-surfacerecon.png)
+
 #### 5. Functional Quality Checks
 
 In the **Functional** section, you’ll find:
@@ -223,15 +223,15 @@ In the **Functional** section, you’ll find:
 !!! tip "Check for alignment"
     Check for alignment between internal structures like ventricles in the functional and anatomical images. Open the image in a new tab (Right Click on the image -> Open in a new tab) and hover to see the dynamic image.
 
-![Trigger box](../../../assets/fmriprep-report-coreg.svg) 
-    
+![Trigger box](../../../assets/fmriprep-report-coreg.svg)
+
 - **CompCor Masks**: Displays masks used for **Anatomical Component Correction (aCompCor)**:
-    - **White Matter and CSF (Magenta)**: Masks used to extract noise components.
-    - **High-Variance Voxels (Blue)**: Used for **Functional Component Correction (fCompCor)**.
+  - **White Matter and CSF (Magenta)**: Masks used to extract noise components.
+  - **High-Variance Voxels (Blue)**: Used for **Functional Component Correction (fCompCor)**.
 
 !!! note "Assessing Alignment"
     Good alignment between functional and anatomical images is crucial for accurate analysis. Pay special attention to lighter fluid-filled regions in the functional image, which should correspond with dark CSF areas in the anatomical image.
-    
+
 #### 6. BOLD Summary and Carpet plot
 
 The report includes **time series plots** for various confounds:
@@ -251,7 +251,7 @@ The **carpet plot** displays time series of BOLD signals across different brain 
 - **Cortex** (blue), **Subcortex** (orange), **Gray Matter** (green), and **White Matter/CSF** (red).
 - Look for **sudden changes across a column**, which may indicate motion artifacts affecting the entire brain at a particular time point.
 
-![Trigger box](../../../assets/fmriprep-report-boldsummary.png) 
+![Trigger box](../../../assets/fmriprep-report-boldsummary.png)
 
 #### 7. Correlation Matrix of Confound Regressors
 
@@ -262,19 +262,19 @@ The report also includes a **correlation matrix** showing relationships between 
 
 !!! note "High Correlations"
     High correlation values may suggest redundancy among some regressors. Consider removing or combining them to avoid overfitting when building your GLM.
-    
-![Trigger box](../../../assets/fmriprep-report-confoundscorr.png) 
+
+![Trigger box](../../../assets/fmriprep-report-confoundscorr.png)
 
 #### 8. Making Decisions for Further Analysis
 
 After reviewing the report:
 
 - **Identify Good Quality Runs**: Look for well-aligned images and minimal motion artifacts.
-- **Decide on Regressors**: Choose confounds like **DVARS**, **FD**, and **CompCor** components to include in your GLM. 
+- **Decide on Regressors**: Choose confounds like **DVARS**, **FD**, and **CompCor** components to include in your GLM.
 
 !!! question "What confound regressors should I use in my GLM?"
     A common choice is to include at least the 6 Head Motion parameters, and optionally FD and Global Signal ad nuisance regressors in your GLM.  
-    
+
     See [this awesome NeuroStars conversation](https://neurostars.org/t/confounds-from-fmriprep-which-one-would-you-use-for-glm/326/45) with advice on choosing regressors and relevant resources.
 
 For more details on interpreting fMRIPrep reports, see the [fMRIPrep Outputs Documentation](https://fmriprep.org/en/stable/outputs.html) and discussions on [NeuroStars](https://neurostars.org/tags/fmriprep).
@@ -289,7 +289,7 @@ The MRIQC report highlights:
 - **Detailed Metrics**: Click through different tabs to examine metrics like **Mean Framewise Displacement**, **EPI-to-T1w registration quality**, and **artifact presence**.
 
 !!! info "Interpreting tSNR"
-    Higher **temporal SNR (tSNR)** values indicate better data quality. Typical values range from 30-60 for fMRI. Low tSNR may suggest issues like excessive noise or scanner artifacts. Review the group-level metrics to identify subjects with unusually high motion or low tSNR. 
+    Higher **temporal SNR (tSNR)** values indicate better data quality. Typical values range from 30-60 for fMRI. Low tSNR may suggest issues like excessive noise or scanner artifacts. Review the group-level metrics to identify subjects with unusually high motion or low tSNR.
 
 For more information on understanding these metrics, check out the [MRIQC interpretation guide on NeuroStars](https://neurostars.org/t/how-to-interpret-mriqc-metrics/).
 
@@ -348,4 +348,3 @@ For more information on understanding these metrics, check out the [MRIQC interp
 ---
 
 With these quality checks complete, you’re ready to proceed to the **General Linear Model (GLM) analysis**. See the next guide for instructions on setting up your GLM. [--> Go to GLM](./fmri-glm.md)
-

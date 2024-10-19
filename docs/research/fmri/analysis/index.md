@@ -7,6 +7,7 @@ This section of the wiki provides a comprehensive guide for analyzing fMRI data.
 ## Analysis Steps Overview
 
 <div class="grid cards" markdown="1">
+
 - :material-information: **[General Information](fmri-general.md)**  
   Overview of the pipeline, including key terminology and data structure. Start here to get a sense of the entire workflow.
 
@@ -30,6 +31,7 @@ This section of the wiki provides a comprehensive guide for analyzing fMRI data.
 
 - :material-format-list-checks: **[Complete Workflow Example](fmri-andrea-workflow.md)**  
   An end-to-end guide that ties everything together, providing an example of a full fMRI analysis pipeline.
+
 </div>
 
 ---
@@ -44,4 +46,3 @@ This section of the wiki provides a comprehensive guide for analyzing fMRI data.
 
 - **[CoSMoMVPA Documentation](http://www.cosmomvpa.org/documentation.html)**  
   Explore multi-variate pattern analysis techniques with CoSMoMVPA.
-

@@ -4,7 +4,7 @@ Welcome to the central hub for all research activities at the Hoplab. This page 
 
 <div class="grid cards" markdown>
 
--   :octicons-person-24:{ .lg .middle } __Behavioral Research__
+- :octicons-person-24:{ .lg .middle } __Behavioral Research__
 
     ---
 
@@ -12,7 +12,7 @@ Welcome to the central hub for all research activities at the Hoplab. This page 
 
     [:octicons-arrow-right-24: Learn more](behaviour/index.md)
 
--   :octicons-code-24:{ .lg .middle } __Coding Resources__
+- :octicons-code-24:{ .lg .middle } __Coding Resources__
 
     ---
 
@@ -20,7 +20,7 @@ Welcome to the central hub for all research activities at the Hoplab. This page 
 
     [:octicons-arrow-right-24: View coding resources](coding/index.md)
 
--   :material-robot-love-outline:{ .lg .middle } __Deep Neural Networks (DNN)__
+- :material-robot-love-outline:{ .lg .middle } __Deep Neural Networks (DNN)__
 
     ---
 
@@ -28,7 +28,7 @@ Welcome to the central hub for all research activities at the Hoplab. This page 
 
     [:octicons-arrow-right-24: Explore DNN research](dnn/index.md)
 
--   :material-wave:{ .lg .middle } __EEG Studies__
+- :material-wave:{ .lg .middle } __EEG Studies__
 
     ---
 
@@ -36,7 +36,7 @@ Welcome to the central hub for all research activities at the Hoplab. This page 
 
     [:octicons-arrow-right-24: Access EEG resources](eeg/index.md)
 
--   :octicons-law-24:{ .lg .middle } __Ethics and Approvals__
+- :octicons-law-24:{ .lg .middle } __Ethics and Approvals__
 
     ---
 
@@ -44,7 +44,7 @@ Welcome to the central hub for all research activities at the Hoplab. This page 
 
     [:octicons-arrow-right-24: Review ethical guidelines](ethics/index.md)
 
--   :octicons-eye-24:{ .lg .middle } __Eye-tracking Research__
+- :octicons-eye-24:{ .lg .middle } __Eye-tracking Research__
 
     ---
 
@@ -52,7 +52,7 @@ Welcome to the central hub for all research activities at the Hoplab. This page 
 
     [:octicons-arrow-right-24: Discover eye-tracking methods](eyetracking/index.md)
 
--   :fontawesome-solid-brain:{ .lg .middle } __Functional MRI (fMRI)__
+- :fontawesome-solid-brain:{ .lg .middle } __Functional MRI (fMRI)__
 
     ---
 
@@ -74,24 +74,24 @@ Here are some additional links to key research resources, tutorials, and tools:
 
 ---
 
-**TODO**: [Klara?] Add information on room booking, in particular ClusterMarket.
+__TODO__: [Klara?] Add information on room booking, in particular ClusterMarket.
 
-**TODO**: [Klara] Add more recommended software (e.g., Mendeley/Endnote, R, Text editors, Image editing software, Git, LaTeX, Pandoc, markdown, Python, Overleaf, RBA, BioSemi, PsychoPy, the lab’s own software?)
+__TODO__: [Klara] Add more recommended software (e.g., Mendeley/Endnote, R, Text editors, Image editing software, Git, LaTeX, Pandoc, markdown, Python, Overleaf, RBA, BioSemi, PsychoPy, the lab’s own software?)
 
-**TODO**: [Klara] Add info on interesting conferences to attend, suggested reading (books, papers, websites), suggested courses (soft skills, programming, EEG/fMRI, version control, stats, science, etc.)
+__TODO__: [Klara] Add info on interesting conferences to attend, suggested reading (books, papers, websites), suggested courses (soft skills, programming, EEG/fMRI, version control, stats, science, etc.)
 
-**TODO**: [Klara] Add links to nice data visualisation tools and (AI) tools to find papers
+__TODO__: [Klara] Add links to nice data visualisation tools and (AI) tools to find papers
 
-**TODO**: [Klara] Add info on existing focus groups (e.g., EEG, MRI) which people can attend
+__TODO__: [Klara] Add info on existing focus groups (e.g., EEG, MRI) which people can attend
 
-**TODO**: [Klara] Make list of hardware available in/to the lab
+__TODO__: [Klara] Make list of hardware available in/to the lab
 
-**TODO**: [Klara] Explain how Lirias works/what it is used for
+__TODO__: [Klara] Explain how Lirias works/what it is used for
 
-**TODO**: [Klara] Explain how to download papers from home
+__TODO__: [Klara] Explain how to download papers from home
 
-**TODO**: [Klara] Add context for the stuff on OSF and Github (touch on topics as open science, reproducibility)
+__TODO__: [Klara] Add context for the stuff on OSF and Github (touch on topics as open science, reproducibility)
 
-**TODO**: [Klara] Add (general) info on how to store your data (eg BIDS) --> this is in the fmri section for now. perhaps we can link it?
+__TODO__: [Klara] Add (general) info on how to store your data (eg BIDS) --> this is in the fmri section for now. perhaps we can link it?
 
-**TODO**: [Klara] Refer to the resources for researchers on [this page](https://ppw.kuleuven.be/en/research/doing-research)
+__TODO__: [Klara] Refer to the resources for researchers on [this page](https://ppw.kuleuven.be/en/research/doing-research)

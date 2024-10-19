@@ -4,7 +4,7 @@ Welcome to the landing page for all things related to functional MRI (fMRI) in o
 
 <div class="grid cards" markdown>
 
--   :octicons-rocket-24:{ .lg .middle } __First steps__
+- :octicons-rocket-24:{ .lg .middle } __First steps__
 
     ---
 
@@ -12,7 +12,7 @@ Welcome to the landing page for all things related to functional MRI (fMRI) in o
 
     [:octicons-arrow-right-24: Get started](fmri-get-started.md)
 
--   :octicons-checklist-24:{ .lg .middle } __Scanning Procedure__
+- :octicons-checklist-24:{ .lg .middle } __Scanning Procedure__
 
     ---
 
@@ -20,7 +20,7 @@ Welcome to the landing page for all things related to functional MRI (fMRI) in o
 
     [:octicons-arrow-right-24: View procedures](fmri-procedure.md)
 
--   :octicons-tools-24:{ .lg .middle } __Data Analysis__
+- :octicons-tools-24:{ .lg .middle } __Data Analysis__
 
     ---
 
@@ -28,7 +28,7 @@ Welcome to the landing page for all things related to functional MRI (fMRI) in o
 
     [:octicons-arrow-right-24: Start analyzing](analysis/index.md)
 
--   :simple-github:{ .lg .middle } __fMRI Task__
+- :simple-github:{ .lg .middle } __fMRI Task__
 
     ---
 
@@ -45,6 +45,3 @@ Here are some helpful links to external resources for fMRI data analysis, tools,
 - [fMRI Prep and Analysis with Andrew Jahn](https://www.youtube.com/@AndrewJahn)
 - [SPM Programming Introduction](https://en.wikibooks.org/wiki/SPM/Programming_intro)
 - [SPM Scripts on GitHub](https://github.com/rordenlab/spmScripts?tab=readme-ov-file)
-
-
-
