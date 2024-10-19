@@ -86,7 +86,7 @@ jobs:
               console.log('Content length:', content.length);
               
               // Updated regex to match entire lines containing tags
-              const tagRegex = /^.*?(TODO|PLACEHOLDER|NOTE).*$/gm;
+              const tagRegex = /^.*?(?<!`)(TODO|PLACEHOLDER|NOTE)(?!`).*$/gm;
               
               const tags = new Set(); // Use a Set to avoid duplicates
               let match;
@@ -259,7 +259,7 @@ jobs:
               console.log('Comment content:', comment.body);
 
               // Use the same regex as in parseTags function
-              const tagRegex = /^.*?(TODO|PLACEHOLDER|NOTE).*$/gm;
+              const tagRegex = /^.*?(?<!`)(TODO|PLACEHOLDER|NOTE)(?!`).*$/gm;
               
               const newTasks = [];
               let match;
