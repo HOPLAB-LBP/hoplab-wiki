@@ -50,7 +50,7 @@ Smoothing is required to increase signal-to-noise ratio, especially for localize
 5. Save the smoothed output in `derivatives/pre-SPM/smoothed`.
 
 !!! tip "Automated Preprocessing"
-    You can integrate the decompression and smoothing steps into a script to streamline your workflow, avoiding manual steps (see the [Analysis Workflow](fmri-analysis-workflow.md) for an example). 
+    You can integrate the decompression and smoothing steps into a script to streamline your workflow, avoiding manual steps (see the [Analysis Workflow](fmri-andrea-workflow.md) for an example). 
     
 ---
 
