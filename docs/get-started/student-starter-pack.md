@@ -22,6 +22,8 @@ Developing strong coding skills is crucial for success in our lab. Here are some
 
 7. If you know nothing about it, take some time to learn the [**Unix Shell**](https://swcarpentry.github.io/shell-novice/) and the essentials of [**Git & GitHub**](https://swcarpentry.github.io/git-novice/).
 
+8. If you're going to use MatLab, you can check this [live script tutorial](https://github.com/VisCog/MatlabForTheBehavioralSciences/tree/main) to learn the fundamentals.
+
 ## Miscellaneous
 
 <div class="grid cards" markdown>
