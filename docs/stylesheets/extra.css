@@ -9,10 +9,10 @@
 [data-md-color-scheme="default"] {
   /* Main content link colors */
   --md-typeset-a-color: #0077BE; /* Vibrant Blue */
-  --md-typeset-a-hover-color: #6C4675; /* Muted Purple */
+  --md-typeset-a-hover-color: #ad3d8c; /* Muted Purple */
   
   /* Table of contents link colors */
-  --md-toc-link-hover-color: #6E4C5E; /* Deep Mauve */
+  --md-toc-link-hover-color: #ad3d8c; /* Deep Mauve */
 }
 
 /* Dark mode colors */
