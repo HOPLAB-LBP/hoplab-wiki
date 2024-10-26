@@ -2010,7 +2010,7 @@
 </span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">    </span>├──<span class="w"> </span>hemi-R_space-MNI152NLin2009cAsym_res-2_radius-5mm_label-SMG1.nii
 </span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">    </span>└──<span class="w"> </span>hemi-R_space-MNI152NLin2009cAsym_res-2_radius-5mm_label-TPJ.nii
 </span></code></pre></div></p>
-<p>With right (<code>hemi-R</code>), left (<code>hemi-L</code>) and bilateral (<code>hemi-B</code>) masks. </p>
+<p>With right (<code>hemi-R</code>), left (<code>hemi-L</code>) and bilateral (<code>hemi-B</code>) masks.</p>
 <p>The size of the ROIs is defined in millimeters, and is a list of <strong>radii</strong> such as <code>m.radii = [5, 10];</code> (see line 19 of the <code>makeROISpheres.m</code> script).</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2052,20 +2052,26 @@
 <li>Generate a new ROI that includes only the voxels both significantly active in the contrast and within the initial mask (e.g., sphere or anatomical region).</li>
 </ul>
 </li>
+<li>
+<p><strong>Extract beta values from selected voxels</strong>  </p>
+<ul>
+<li>We use the generated ROI to filter voxels in the beta images (the <code>beta_00*.nii</code> images in the SPM GLM output folder) for further MVPA.</li>
+</ul>
+</li>
 </ol>
 <p>This approach has two key benefits:</p>
 <ol>
 <li><strong>Selective Targeting of Relevant Voxels</strong>: It ensures that the ROI captures only the voxels relevant for the cognitive function of interest, maximizing information and minimizing potential noise from uninformative voxels.</li>
 <li><strong>Feature Reduction</strong>: Reducing the number of features (voxels) helps improve the classifier's performance by mitigating the <strong>Curse of Dimensionality</strong> (see this <a href="https://www.datacamp.com/blog/curse-of-dimensionality-machine-learning">article on dimensionality reduction</a> for more info).</li>
 </ol>
-<h3 id="example-intersecting-an-roi-with-activation-maps">Example: Intersecting an ROI with Activation Maps<a class="headerlink" href="#example-intersecting-an-roi-with-activation-maps" title="Permanent link">&para;</a></h3>
-<p>The following MATLAB script generates ROIs that include only the intersection of an initial mask (e.g., anatomical or spherical) with significant activation from an SPM contrast map. This is particularly useful for targeted analyses, such as MVPA.</p>
-<p>The script:</p>
+<h3 id="example-generating-refined-rois-by-intersecting-masks-with-activation-maps">Example: Generating Refined ROIs by Intersecting Masks with Activation Maps<a class="headerlink" href="#example-generating-refined-rois-by-intersecting-masks-with-activation-maps" title="Permanent link">&para;</a></h3>
+<p>The following MATLAB script refines ROIs by intersecting an initial mask (e.g., anatomical or spherical) with a subject-specific activation map from an SPM contrast. This approach is particularly valuable for targeted analyses, such as <strong>multivariate pattern analysis (MVPA)</strong>.</p>
+<h4 id="script-workflow">Script Workflow<a class="headerlink" href="#script-workflow" title="Permanent link">&para;</a></h4>
 <ol>
-<li>Applies a statistical threshold to the contrast map, identifying voxels with significant activation.</li>
-<li>Intersects these significant voxels with the ROI mask.</li>
-<li>Ensures a minimum number of significant voxels in the resulting ROI (default: 25). If the threshold does not yield enough voxels, the significance threshold is incrementally relaxed.</li>
-<li>Saves the final ROI in both NIfTI (.nii) and MATLAB (.mat) formats for further analysis.</li>
+<li><strong>Thresholding</strong>: Applies a statistical threshold to the contrast map, identifying only voxels with significant activation.</li>
+<li><strong>Intersection</strong>: Intersects these significant voxels with the ROI mask to focus on relevant areas within the predefined region.</li>
+<li><strong>Voxel Count Check</strong>: Ensures the resulting ROI contains a minimum number of significant voxels (default: 25). If the voxel count is too low, the significance threshold is incrementally relaxed until the minimum count is met.</li>
+<li><strong>Saving Results</strong>: Exports the final ROI in both NIfTI (<code>.nii</code>) and MATLAB (<code>.mat</code>) formats, making it ready for further analysis.</li>
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Finding Contrast Names in SPM</p>
@@ -3256,7 +3262,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 26, 2024 20:07:26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 26, 2024 20:12:18</span>
   </span>
 
     
