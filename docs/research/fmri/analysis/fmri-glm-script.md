@@ -804,7 +804,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     %       Example:
     %           [1, -1, 0, ...]
     %
-    % NOTE:
+    % Note:
     %   This function assumes that task-related regressors in the SPM design matrix end with "*bf(1)".
     %   Confound regressors (e.g., motion parameters) do not have this suffix.
 
