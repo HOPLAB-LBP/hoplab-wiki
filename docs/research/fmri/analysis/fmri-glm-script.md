@@ -4,21 +4,11 @@ SPM (Statistical Parametric Mapping) is a powerful tool for analyzing brain imag
 
 ---
 
-## Prerequisites
-
-- Basic familiarity with MATLAB.
-- Installed and configured SPM12 or a compatible version.
-- fMRI data processed with **fMRIPrep** and organized in **BIDS format**.
-
----
-
-## Beginner Guide to SPM Scripting
-
-### 1. Start with the SPM GUI
+## 1. Start with the SPM GUI
 
 SPM's GUI is a valuable resource for beginners. It allows you to set analysis parameters interactively and generate corresponding MATLAB code. This method helps you learn which settings are required for each analysis step and understand how they translate into code.
 
-#### **Steps in the GUI**
+### **Steps in the GUI**
 
 1. **Open SPM** by typing `spm fmri` in the MATLAB command window, then click `Batch`
 2. **Navigate through each analysis step** you want to script. For example, start with `fMRI Model Specification` under the `SPM` --> `Stats` menu.
@@ -72,11 +62,11 @@ Here’s an example of how to use the GUI to extract the respective code, here u
         matlabbatch{2}.spm.stats.fmri_est.method.Classical = 1; % Classical estimation
         ```
 
-### 2. Understand the Basics of `matlabbatch` Jobs
+## 2. Understand the Basics of `matlabbatch` Jobs
 
 The `matlabbatch` structure in SPM is a versatile container for storing all settings and steps for your analysis. Each field in `matlabbatch` corresponds to a parameter in the SPM GUI.
 
-#### **Key Concepts of `matlabbatch` Jobs**
+### **Key Concepts of `matlabbatch` Jobs**
 
 - **Jobs and Batches**: In SPM scripting, "job" refers to a specific processing step (e.g., model specification or estimation), while "batch" is a collection of jobs executed sequentially.
 - **Fields and Indexing**: Each field in `matlabbatch` corresponds to a specific setting. For example, `matlabbatch{1}.spm.stats.fmri_spec.timing.RT` sets the repetition time (TR).
@@ -89,7 +79,7 @@ The `matlabbatch` structure in SPM is a versatile container for storing all sett
     spm_jobman('run', matlabbatch);
     ```
 
-### 3. Assembling `matlabbatch` Jobs in MATLAB
+## 3. Assembling `matlabbatch` Jobs in MATLAB
 
 With the basics covered, let’s construct a full `matlabbatch` job in MATLAB. This example demonstrates setting up a simple fMRI model specification, estimation, and contrast definition.
 
@@ -129,7 +119,7 @@ With the basics covered, let’s construct a full `matlabbatch` job in MATLAB. T
 
 ---
 
-### 4. Executing the Job in MATLAB
+## 4. Executing the Job in MATLAB
 
 With all steps defined in `matlabbatch`, execute the entire analysis workflow:
 
@@ -145,13 +135,13 @@ spm_jobman('run', matlabbatch);
 
 ---
 
-### 5. Organizing Code in Functions
+## 5. Organizing Code in Functions
 
 Using functions in MATLAB effectively improves code readability, reduces redundancy, and simplifies maintenance.
 
 Here’s a breakdown of best practices for managing functions in MATLAB, including where to place them and how to add their directory to the MATLAB path.
 
-#### Where to Place Functions
+### Where to Place Functions
 
 === "**Reusable Functions**"
     If a function is intended for use across multiple scripts, it's best to save it as a separate `.m` file in a designated folder (e.g., `scripts/functions`). This keeps your code organized and ensures that changes to the function are applied consistently across all scripts.
@@ -187,7 +177,7 @@ Here’s a breakdown of best practices for managing functions in MATLAB, includi
     end
     ```
 
-#### Example: Creating a Reusable Function
+### Example: Creating a Reusable Function
 
 If `setup_variable` is a function you’ll use frequently, save it as a separate `.m` file in your `functions` directory. The function file `setup_variable.m` might look like this:
 
@@ -207,7 +197,7 @@ myVar = setup_variable(10, 5);
 
 ---
 
-## Full code example
+## 6. Full code example
 
 Once you have a general understanding of using the SPM GUI and `matlabbatch` scripting, you’re ready to try more advanced scripting techniques. This final section provides a complete example script that integrates everything covered so far. Specifically, the script below:
 
