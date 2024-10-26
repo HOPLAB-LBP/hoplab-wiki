@@ -781,7 +781,7 @@ The following MATLAB script refines ROIs by intersecting an initial mask (e.g., 
     % 2) To fetch all directories starting with 'sub-*':
     %    sub_paths = findSubjectsFolders('/path/to/fmriprepRoot', '*');
     %
-    % NOTE:
+    % note:
     % If a subject ID from the list does not match any directory, a warning is issued.
 
     % Start by fetching all directories with the 'sub-*' pattern.
