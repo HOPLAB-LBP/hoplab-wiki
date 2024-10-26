@@ -199,7 +199,7 @@ This script will output a folder as follow:
         └── hemi-R_space-MNI152NLin2009cAsym_res-2_radius-5mm_label-TPJ.nii
     ```
 
-With right (`hemi-R`), left (`hemi-L`) and bilateral (`hemi-B`) masks. 
+With right (`hemi-R`), left (`hemi-L`) and bilateral (`hemi-B`) masks.
 
 The size of the ROIs is defined in millimeters, and is a list of **radii** such as `m.radii = [5, 10];` (see line 19 of the `makeROISpheres.m` script).
 
@@ -230,21 +230,24 @@ For instance, suppose we want to perform an MVPA to determine if we can distingu
 4. **Intersect Masked and Activated Voxels**  
     - Generate a new ROI that includes only the voxels both significantly active in the contrast and within the initial mask (e.g., sphere or anatomical region).
 
+5. **Extract beta values from selected voxels**  
+    - We use the generated ROI to filter voxels in the beta images (the `beta_00*.nii` images in the SPM GLM output folder) for further MVPA.
+
 This approach has two key benefits:
 
 1. **Selective Targeting of Relevant Voxels**: It ensures that the ROI captures only the voxels relevant for the cognitive function of interest, maximizing information and minimizing potential noise from uninformative voxels.
 2. **Feature Reduction**: Reducing the number of features (voxels) helps improve the classifier's performance by mitigating the **Curse of Dimensionality** (see this [article on dimensionality reduction](https://www.datacamp.com/blog/curse-of-dimensionality-machine-learning) for more info).
 
-### Example: Intersecting an ROI with Activation Maps
+### Example: Generating Refined ROIs by Intersecting Masks with Activation Maps
 
-The following MATLAB script generates ROIs that include only the intersection of an initial mask (e.g., anatomical or spherical) with significant activation from an SPM contrast map. This is particularly useful for targeted analyses, such as MVPA.
+The following MATLAB script refines ROIs by intersecting an initial mask (e.g., anatomical or spherical) with a subject-specific activation map from an SPM contrast. This approach is particularly valuable for targeted analyses, such as **multivariate pattern analysis (MVPA)**.
 
-The script:
+#### Script Workflow
 
-1. Applies a statistical threshold to the contrast map, identifying voxels with significant activation.
-2. Intersects these significant voxels with the ROI mask.
-3. Ensures a minimum number of significant voxels in the resulting ROI (default: 25). If the threshold does not yield enough voxels, the significance threshold is incrementally relaxed.
-4. Saves the final ROI in both NIfTI (.nii) and MATLAB (.mat) formats for further analysis.
+1. **Thresholding**: Applies a statistical threshold to the contrast map, identifying only voxels with significant activation.
+2. **Intersection**: Intersects these significant voxels with the ROI mask to focus on relevant areas within the predefined region.
+3. **Voxel Count Check**: Ensures the resulting ROI contains a minimum number of significant voxels (default: 25). If the voxel count is too low, the significance threshold is incrementally relaxed until the minimum count is met.
+4. **Saving Results**: Exports the final ROI in both NIfTI (`.nii`) and MATLAB (`.mat`) formats, making it ready for further analysis.
 
 !!! tip "Finding Contrast Names in SPM"
     To find the exact names of contrasts in an SPM model, load the SPM.mat file and check `SPM.xCon.name`. This allows you to confirm the contrast names required for the `contrastName` field in `roisStruct`.
@@ -259,7 +262,7 @@ The script:
     %
     % Author: Andrea Costantino
     % Date: 7 July 2023
-    
+
     clc;
     clear;
     
