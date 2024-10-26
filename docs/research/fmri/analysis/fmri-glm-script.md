@@ -12,7 +12,7 @@ SPM (Statistical Parametric Mapping) is a powerful tool for analyzing brain imag
 
 ---
 
-## Step-by-Step Guide to SPM Scripting
+## Beginner Guide to SPM Scripting
 
 ### 1. Start with the SPM GUI
 
@@ -20,13 +20,30 @@ SPM's GUI is a valuable resource for beginners. It allows you to set analysis pa
 
 #### **Steps in the GUI**
 
-1. **Open SPM** by typing `spm fmri` in the MATLAB command window.
-2. **Navigate through each analysis step** you want to script. For example, start with **fMRI Model Specification** under the **Stats** menu.
+1. **Open SPM** by typing `spm fmri` in the MATLAB command window, then click `Batch`
+2. **Navigate through each analysis step** you want to script. For example, start with `fMRI Model Specification` under the `SPM` --> `Stats` menu.
 3. **Set parameters** such as:
     - Timing (e.g., Repetition Time, microtime resolution).
     - Session information (e.g., scans, conditions, and high-pass filter).
-4. **Save settings as a batch file** by selecting:
-    - **File > Save Batch and Script**. This option generates MATLAB code reflecting the settings you chose in the GUI.
+4. **See the code** by clicking on `View` --> `Show .m code`.
+
+    This should show something like this:
+
+    ```matlab
+    matlabbatch{1}.spm.stats.fmri_spec.dir = '<UNDEFINED>';
+    matlabbatch{1}.spm.stats.fmri_spec.timing.units = '<UNDEFINED>';
+    matlabbatch{1}.spm.stats.fmri_spec.timing.RT = '<UNDEFINED>';
+    matlabbatch{1}.spm.stats.fmri_spec.timing.fmri_t = 16;
+    matlabbatch{1}.spm.stats.fmri_spec.timing.fmri_t0 = 8;
+    matlabbatch{1}.spm.stats.fmri_spec.sess = struct('scans', {}, 'cond', {}, 'multi', {}, 'regress', {}, 'multi_reg', {}, 'hpf', {});
+    matlabbatch{1}.spm.stats.fmri_spec.fact = struct('name', {}, 'levels', {});
+    matlabbatch{1}.spm.stats.fmri_spec.bases.hrf.derivs = [0 0];
+    matlabbatch{1}.spm.stats.fmri_spec.volt = 1;
+    matlabbatch{1}.spm.stats.fmri_spec.global = 'None';
+    matlabbatch{1}.spm.stats.fmri_spec.mthresh = 0.8;
+    matlabbatch{1}.spm.stats.fmri_spec.mask = {''};
+    matlabbatch{1}.spm.stats.fmri_spec.cvi = 'AR(1)';
+    ```
 
 !!! tip
     To use this feature to learn scripting, save several batches with different parameters. Open the generated code to see how each parameter is defined in `matlabbatch`.
@@ -39,7 +56,8 @@ Here’s an example of how to use the GUI to extract the respective code, here u
     - Add conditions and high-pass filter settings.
     - Save the batch via **File > Save Batch and Script**.
     - Open the generated script and review settings like:
-        ```matlab  linenums="1"
+
+        ```matlab
         matlabbatch{1}.spm.stats.fmri_spec.dir = {'/path/to/output'};
         matlabbatch{1}.spm.stats.fmri_spec.timing.RT = 2;  % Repetition Time in seconds
         ```
@@ -48,7 +66,8 @@ Here’s an example of how to use the GUI to extract the respective code, here u
     - In the GUI, go to **Stats > Model Estimation**.
     - Select your `SPM.mat` file and save the settings.
     - Observe that model estimation is added as `matlabbatch{2}` in the saved script:
-        ```matlab  linenums="1"
+
+        ```matlab
         matlabbatch{2}.spm.stats.fmri_est.spmmat = {'/path/to/SPM.mat'};
         matlabbatch{2}.spm.stats.fmri_est.method.Classical = 1; % Classical estimation
         ```
@@ -69,6 +88,7 @@ The `matlabbatch` structure in SPM is a versatile container for storing all sett
     ```matlab  linenums="1"
     spm_jobman('run', matlabbatch);
     ```
+
 ### 3. Assembling `matlabbatch` Jobs in MATLAB
 
 With the basics covered, let’s construct a full `matlabbatch` job in MATLAB. This example demonstrates setting up a simple fMRI model specification, estimation, and contrast definition.
@@ -151,7 +171,7 @@ Here’s a breakdown of best practices for managing functions in MATLAB, includi
 
     By adding the folder to your path, the function is accessible across all scripts, ensuring consistency and reducing redundancy.
 
-=== "**Script-Specific Functions**" 
+=== "**Script-Specific Functions**"
     If a function is specifically tailored for a single script and not intended for reuse, include it at the end of that script. This keeps the function accessible only within the script, reducing dependencies on external files.
 
     Here’s an example of including a function at the end of a script.
