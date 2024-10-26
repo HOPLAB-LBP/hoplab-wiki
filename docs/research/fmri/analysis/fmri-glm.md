@@ -17,7 +17,7 @@ Before running the GLM, we need to make sure the data is compatible with SPM. Th
 1. **gunzipping** (de-compressing `.nii.gz` files, which SPM can't handle natively)
 2. **smoothing** (mostly for localizer runs).
 
-The sugested way of proceeding is to create a `derivatives/pre-SPM` folder where to store a `gunzipped` output folder and a `smoothed` output folder.
+The suggested way of proceeding is to create a `derivatives/pre-SPM` folder where to store a `gunzipped` output folder and a `smoothed` output folder.
 
 ### Decompressing NIfTI Files
 
@@ -81,7 +81,7 @@ For complex designs, you should create one onset file per run per subject, conta
     ```
 
 ??? example "eventsBIDS2SPM"
-    ```matlab
+    ```matlab  linenums="1"
     function new_df = eventsBIDS2SPM(tsv_file)
         % eventsBIDS2SPM - Convert BIDS event files to SPM format
         % This function reads a BIDS event file and converts it to the format required by SPM.
@@ -136,7 +136,7 @@ Head motion and other confound regressors from fMRIPrep need to be formatted to 
     - `BIDS/sub-xx/func/sub-xx_run-x_confoundsspm.mat`.
 
 ??? example "fMRIprepConfounds2SPM"
-    ```matlab
+    ```matlab  linenums="1"
     function confounds = fMRIprepConfounds2SPM(json_path, tsv_path, pipeline)
         % fMRIprepConfounds2SPM - Extracts and formats fMRI confounds for SPM analysis
         %
@@ -349,7 +349,7 @@ Both `eventsBIDS2SPM` and `fMRIprepConfounds2SPM` are MATLAB functions that can 
 
     You can use these functions within a MATLAB script to load onset times and confounds directly into an SPM batch job. This is useful when you want to process multiple subjects and runs in one go:
 
-    ```matlab
+    ```matlab  linenums="1"
     % Example script to use eventsBIDS2SPM and fMRIprepConfounds2SPM in batch jobs
     subject_id = 'sub-01';
     run_id = 'run-01';
@@ -380,7 +380,7 @@ Both `eventsBIDS2SPM` and `fMRIprepConfounds2SPM` are MATLAB functions that can 
 
     If you want to save the converted files for later use, you can use the functions to write them into files with BIDS-compliant names. This is helpful if you need to inspect the files or share them with collaborators before running the GLM analysis:
 
-    ```matlab
+    ```matlab  linenums="1"
     % Example script to convert and save files in SPM-compatible format
     subject_id = 'sub-01';
     run_id = 'run-01';
@@ -576,11 +576,6 @@ It’s crucial to confirm the order of regressors in the design matrix before sp
     To include figures in publications or reports:
     - Use `Export` in SPM to save figures as high-resolution images.
     - For 3D brain renderings, adjust the orientation and threshold for a clear presentation.
-
----
-
-Continue to the next guide for instructions on setting up Regions of Interest (ROIs) to extract and analyze data from specific brain regions:
-[--> Regions of Interest](fmri-rois.md)
 
 ---
 
