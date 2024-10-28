@@ -2,11 +2,16 @@
 
 You should land on this page after having collected your fMRI data, [converted it to BIDS](./fmri-bids-conversion.md) and [preprocessed it](./fmri-prepocessing-qa.md). Your goal now is to model the BOLD activity with a Generalised Linear Model (GLM), in order to obtain the beta values on which to apply further analyses.
 
+You should start here if you are not yet familiar with SPM and what it does. Before scripting your analysis pipeline, take your time to understand the different steps taken by SPM and what they do. Once you're confident with it, move ahead and write your analysis in code (see [First-level analysis - scripting](./fmri-glm-script.md)).
+
+
 In this section, we will use the [Statistical Parametric Mapping](https://www.fil.ion.ucl.ac.uk/spm/) (SPM) package to construct the GLM. Here’s an overview of the steps:
 
 1. **Data Preparation**: Get your files ready for SPM.
 2. **Design Matrix Setup**: Define the model for your analysis.
 3. **Model Estimation & Results**: Estimate your model and analyze contrasts.
+
+This page will accompany you through the steps and can be used as a guide to the input and output of each function of SPM. It is not a complete tutorial on SPM, however, and there are more extensive resources out there. It can be a good idea to cover the tutorials from [Andy Jahn](https://andysbrainbook.readthedocs.io/en/latest/index.html), for instance, as they go in depth into SPM and how it works. 
 
 ---
 
