@@ -1712,12 +1712,14 @@
 
 <h1 id="general-linear-model-in-spm">General Linear Model in SPM<a class="headerlink" href="#general-linear-model-in-spm" title="Permanent link">&para;</a></h1>
 <p>You should land on this page after having collected your fMRI data, <a href="fmri-bids-conversion.html">converted it to BIDS</a> and <a href="fmri-prepocessing-qa.html">preprocessed it</a>. Your goal now is to model the BOLD activity with a Generalised Linear Model (GLM), in order to obtain the beta values on which to apply further analyses.</p>
+<p>You should start here if you are not yet familiar with SPM and what it does. Before scripting your analysis pipeline, take your time to understand the different steps taken by SPM and what they do. Once you're confident with it, move ahead and write your analysis in code (see <a href="fmri-glm-script.html">First-level analysis - scripting</a>).</p>
 <p>In this section, we will use the <a href="https://www.fil.ion.ucl.ac.uk/spm/">Statistical Parametric Mapping</a> (SPM) package to construct the GLM. Here’s an overview of the steps:</p>
 <ol>
 <li><strong>Data Preparation</strong>: Get your files ready for SPM.</li>
 <li><strong>Design Matrix Setup</strong>: Define the model for your analysis.</li>
 <li><strong>Model Estimation &amp; Results</strong>: Estimate your model and analyze contrasts.</li>
 </ol>
+<p>This page will accompany you through the steps and can be used as a guide to the input and output of each function of SPM. It is not a complete tutorial on SPM, however, and there are more extensive resources out there. It can be a good idea to cover the tutorials from <a href="https://andysbrainbook.readthedocs.io/en/latest/index.html">Andy Jahn</a>, for instance, as they go in depth into SPM and how it works. </p>
 <hr />
 <h2 id="step-1-data-preparation">Step 1: Data Preparation<a class="headerlink" href="#step-1-data-preparation" title="Permanent link">&para;</a></h2>
 <p>Before running the GLM, we need to make sure the data is compatible with SPM. There are two steps that need to be taken to bring your <code>.nii</code> files from fMRIPrep output to SPM input:</p>
@@ -2618,7 +2620,7 @@ This will print the regressor names directly in the MATLAB command window, helpi
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 26, 2024 16:11:55</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 28, 2024 10:35:39</span>
   </span>
 
     
