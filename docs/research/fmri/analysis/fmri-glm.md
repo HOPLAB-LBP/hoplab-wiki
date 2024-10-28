@@ -70,7 +70,7 @@ For complex designs, you should create one onset file per run per subject, conta
 
 1. Use the `eventsBIDS2SPM` function to convert event files.
 2. Store the onset files in the following structure:
-    - `BIDS/sub-xx/func/sub-xx_run-x_eventsspm.mat`.
+    - `BIDS/sub-xx/func/sub-xx_run-xx_eventsspm.mat`.
 
     ```bash
     BIDS/
