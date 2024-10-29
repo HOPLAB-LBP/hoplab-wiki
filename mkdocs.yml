@@ -40,7 +40,7 @@ nav:
           - 5. Regions of interest: research/fmri/analysis/fmri-rois.md
           - 6. Multi-variate analysis: research/fmri/analysis/fmri-mvpa.md
           - fMRI workflow example: research/fmri/analysis/fmri-andrea-workflow.md
-      - Meta-analysis with NiMARE: research/fmri/analysis/fmri-nimare.md
+      - Meta-analysis with NiMARE: research/fmri/fmri-nimare.md
     - EEG:
       - research/eeg/index.md
     - Eye-tracking:
