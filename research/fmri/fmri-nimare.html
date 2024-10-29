@@ -1806,7 +1806,7 @@
 <h1 id="nimare-meta-analysis">NiMARE Meta-Analysis<a class="headerlink" href="#nimare-meta-analysis" title="Permanent link">&para;</a></h1>
 <p>This guide demonstrates how to <strong>download and process the Neurosynth database using NiMARE</strong>, a Python-based framework designed for neuroimaging meta-analyses.</p>
 <p>This step-by-step tutorial covers downloading the Neurosynth data, converting it into a NiMARE-compatible dataset, enriching it with article abstracts, filtering studies based on specific criteria, and performing custom meta-analyses.</p>
-<p>Before starting, ensure NiMARE and required dependencies are installed in your environment:</p>
+<p>Before starting, ensure NiMARE and required <strong>dependencies</strong> are installed in your environment:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>pprint<span class="w"> </span>scipy<span class="w"> </span>nimare<span class="w"> </span>biopython<span class="w"> </span>nibabel<span class="w"> </span>nilearn
 </span></code></pre></div>
 <div class="admonition tip">
@@ -1815,7 +1815,7 @@
 </div>
 <hr />
 <h2 id="1-importing-necessary-packages">1. Importing Necessary Packages<a class="headerlink" href="#1-importing-necessary-packages" title="Permanent link">&para;</a></h2>
-<p>Begin by importing all necessary libraries required throughout the script. These libraries are essential for downloading data, processing datasets, running analyses, and visualizing results.</p>
+<p>Begin by <strong>importing all necessary libraries</strong> required throughout the script. These libraries are essential for downloading data, processing datasets, running analyses, and visualizing results.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># --- Step 1: Import All Necessary Packages ---</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span> <span class="nn">os</span>
@@ -1837,9 +1837,10 @@
 <hr />
 <h2 id="2-downloading-the-neurosynth-database">2. Downloading the Neurosynth Database<a class="headerlink" href="#2-downloading-the-neurosynth-database" title="Permanent link">&para;</a></h2>
 <p>In this section, we’ll create an output directory where the downloaded Neurosynth data will be stored. The NiMARE function <code>fetch_neurosynth</code> is used to download the data.</p>
-<blockquote>
-<p><strong>Note</strong>: Ensure that you replace the path in <code>out_dir</code> with one that matches your own directory structure.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ensure that you replace the path in <code>out_dir</code> with one that matches your own directory structure.</p>
+</div>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># --- Step 2: Downloading the Neurosynth Database ---</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Set the output directory for storing downloaded Neurosynth data</span>
@@ -1919,7 +1920,7 @@
 </span></code></pre></div>
 <hr />
 <h2 id="4-creating-a-subset-of-data">4. Creating a Subset of Data<a class="headerlink" href="#4-creating-a-subset-of-data" title="Permanent link">&para;</a></h2>
-<p>The NiMARE dataset allows data manipulation to create subsets that meet specific requirements. This enables running custom meta-analyses on targeted data. You can, for instance, retrieve studies based on specific MNI coordinates, labels (included as features in the Neurosynth database), or search abstracts using specific keywords.</p>
+<p>The NiMARE dataset allows data manipulation to create subsets that meet specific requirements. This enables running <strong>custom meta-analyses on targeted data</strong>. You can, for instance, retrieve studies based on specific MNI coordinates, labels (included as features in the Neurosynth database), or search abstracts using specific keywords.</p>
 <p>The following code example demonstrates how to <strong>search for abstracts containing specific keywords</strong>.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># --- Step 4: Creating a Subset of Data ---</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
@@ -2017,7 +2018,7 @@
 </span></code></pre></div>
 <hr />
 <h2 id="6-extracting-peak-activation-coordinates">6. Extracting Peak Activation Coordinates<a class="headerlink" href="#6-extracting-peak-activation-coordinates" title="Permanent link">&para;</a></h2>
-<p>The results of the meta-analysis can now be used for further analysis and reporting, such as plotting and extracting the ROIs names at the clusters peak activations.</p>
+<p>The results of the meta-analysis can now be used for further analysis and reporting, such as <strong>plotting</strong> and extracting the <strong>ROIs names</strong> at the clusters peak activations.</p>
 <p>This can be done for the uncorrected z maps, or for the Montecarlo corrected ones.</p>
 <p>To plot the maps:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># --- Step 6: Plot Peak Activation Coordinates in MNI ---</span>
@@ -2659,7 +2660,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 29, 2024 20:38:55</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 29, 2024 21:27:04</span>
   </span>
 
     
