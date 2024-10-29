@@ -7,9 +7,7 @@ This step-by-step tutorial covers downloading the Neurosynth data, converting it
 Before starting, ensure NiMARE and required dependencies are installed in your environment:
 
 ```bash
-pip install nimare
-pip install biopython
-pip install pprint
+pip install numpy pandas pprint scipy nimare biopython nibabel nilearn
 ```
 
 !!! tip
