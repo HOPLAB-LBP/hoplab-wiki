@@ -4,7 +4,7 @@ This guide demonstrates how to **download and process the Neurosynth database us
 
 This step-by-step tutorial covers downloading the Neurosynth data, converting it into a NiMARE-compatible dataset, enriching it with article abstracts, filtering studies based on specific criteria, and performing custom meta-analyses.
 
-Before starting, ensure NiMARE and required dependencies are installed in your environment:
+Before starting, ensure NiMARE and required **dependencies** are installed in your environment:
 
 ```bash
 pip install numpy pandas pprint scipy nimare biopython nibabel nilearn
@@ -17,7 +17,7 @@ pip install numpy pandas pprint scipy nimare biopython nibabel nilearn
 
 ## 1. Importing Necessary Packages
 
-Begin by importing all necessary libraries required throughout the script. These libraries are essential for downloading data, processing datasets, running analyses, and visualizing results.
+Begin by **importing all necessary libraries** required throughout the script. These libraries are essential for downloading data, processing datasets, running analyses, and visualizing results.
 
 ```python
 # --- Step 1: Import All Necessary Packages ---
@@ -47,7 +47,8 @@ import nibabel as nib
 
 In this section, we’ll create an output directory where the downloaded Neurosynth data will be stored. The NiMARE function `fetch_neurosynth` is used to download the data.
 
-> **Note**: Ensure that you replace the path in `out_dir` with one that matches your own directory structure.
+!!! note
+    Ensure that you replace the path in `out_dir` with one that matches your own directory structure.
 
 ```python
 # --- Step 2: Downloading the Neurosynth Database ---
@@ -140,7 +141,7 @@ print(f"Number of abstracts: {len(neurosynth_dset.texts)}")
 
 ## 4. Creating a Subset of Data
 
-The NiMARE dataset allows data manipulation to create subsets that meet specific requirements. This enables running custom meta-analyses on targeted data. You can, for instance, retrieve studies based on specific MNI coordinates, labels (included as features in the Neurosynth database), or search abstracts using specific keywords.
+The NiMARE dataset allows data manipulation to create subsets that meet specific requirements. This enables running **custom meta-analyses on targeted data**. You can, for instance, retrieve studies based on specific MNI coordinates, labels (included as features in the Neurosynth database), or search abstracts using specific keywords.
 
 The following code example demonstrates how to **search for abstracts containing specific keywords**.
 
@@ -244,7 +245,7 @@ cres.save_maps("./nimare_data")  # Save results in the specified directory
 
 ## 6. Extracting Peak Activation Coordinates
 
-The results of the meta-analysis can now be used for further analysis and reporting, such as plotting and extracting the ROIs names at the clusters peak activations.
+The results of the meta-analysis can now be used for further analysis and reporting, such as **plotting** and extracting the **ROIs names** at the clusters peak activations.
 
 This can be done for the uncorrected z maps, or for the Montecarlo corrected ones.
 
