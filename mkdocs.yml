@@ -31,6 +31,7 @@ nav:
       - Scanning procedure and info: research/fmri/fmri-procedure.md
       - Analysis workflow: 
           - research/fmri/analysis/index.md
+          - Meta-analysis with NiMARE: research/fmri/analysis/fmri-nimare.md
           - 0. General information: research/fmri/analysis/fmri-general.md
           - 1. Set-up you environment: research/fmri/analysis/fmri-setup-env.md
           - 2. BIDS conversion: research/fmri/analysis/fmri-bids-conversion.md
