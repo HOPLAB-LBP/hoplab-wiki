@@ -8,6 +8,8 @@ hide:
 
 Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab wisdom into a more user-friendly format. This process is currently managed by [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be).
 
+The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuven.be/en/research-funding/support/if/methusalem) that in addition to Hoplab also includes the teams of Céline Gillebert, Kobe Desender, and Bert De Smedt. Much of the research information on the Hoplab wiki will also be very useful to members of these teams. Likewise, where appropriate, this Hoplab wiki contains links to online information provided by these other teams.
+
 <div class="grid cards" markdown>
 
 -   :fontawesome-solid-flask:{ .lg .middle } __Research Tools & Methods__
