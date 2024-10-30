@@ -75,6 +75,8 @@ This section contains some foundational papers to give you some background on th
     [DiCarlo et al 2012](https://linkinghub.elsevier.com/retrieve/pii/S089662731200092X)
 
     [Kravitz et al 2013](https://www.sciencedirect.com/science/article/pii/S1364661312002471)
+    
+    [Op de Beeck et al 2019](https://www.cell.com/trends/cognitive-sciences/abstract/S1364-6613(19)30158-5)
 
 === "Classic papers"
 
@@ -85,6 +87,8 @@ This section contains some foundational papers to give you some background on th
 === "fMRI studies we refer to"
 
      - The study by [Bracci et al. 2016](https://www.jneurosci.org/content/36/2/432) is a good illustration of how we use carefully crafted stimulus sets in combination with multivariate fMRI to answer questions about visual representations in the brain.
+
+     - More recent examples in the lab include [Ritchie et al. 2021](https://www.jneurosci.org/content/41/33/7103.abstract) and [Yargholi & Op de Beeck 2023](https://www.jneurosci.org/content/43/16/2960.abstract).
 
      - The foundational paper by [Kriegeskorte et al 2008](https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/neuro.06.004.2008/full) introduced the use of representational similarity analysis ([RSA](https://dartbrains.org/content/RSA.html)) to compare representations across brains, species, models and more.
      
@@ -98,9 +102,13 @@ This section contains some foundational papers to give you some background on th
 
      - The fundamental papers of [Yamins et al](https://www.pnas.org/doi/10.1073/pnas.1403112111) and [Khaligh-Razavi & Kriegeskorte](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003915) both published in 2014 showed for the first time that DNNs develop similar representations to the brain.
 
-     - Among the very often citer papers is the publication by [Geirhos et al 2022](https://arxiv.org/abs/1811.12231) which showed that DNNs are biased towards texture.
+     - In our lab, [Kubilius et al 2016](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004896) showed that the representations of shape in DNNs display some properties that had been seen before in the human brain and perception, and not in earlier artificial models.
+
+     - Among the very often citer papers is the publication by [Geirhos et al 2022](https://arxiv.org/abs/1811.12231) which showed that DNNs are biased towards texture, suggesting that their processing of shape is still not the same as in humans.
     
      - Opinions diverge on how to use modelling to further our understanding of the brain. This [2023 BBS paper](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/deep-problems-with-neural-network-models-of-human-vision/ABCE483EE95E80315058BB262DCA26A9) by Bowers et al surely started a serious discussion on that topic.
+
+     - The tradition in the lab to use carefully crafted stimulus set is a promising approach to understand the differences between human visual processing and DNNs, as for example illustrated by [Bracci et al 2019](https://www.jneurosci.org/content/39/33/6513.abstract).
 
 === "Lectures"
 
