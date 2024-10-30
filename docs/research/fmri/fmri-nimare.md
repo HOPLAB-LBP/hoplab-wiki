@@ -24,7 +24,6 @@ Begin by **importing all necessary libraries** required throughout the script. T
 
 import os
 import numpy as np
-import nibabel
 from scipy.stats import norm
 from nimare.dataset import Dataset
 from nimare.extract import download_abstracts, fetch_neurosynth
@@ -388,7 +387,6 @@ Created on Tue Oct 29 13:45:16 2024
 
 import os
 import numpy as np
-import nibabel
 from scipy.stats import norm
 from nimare.dataset import Dataset
 from nimare.extract import download_abstracts, fetch_neurosynth
