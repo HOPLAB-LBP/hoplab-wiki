@@ -23,6 +23,7 @@ Begin by **importing all necessary libraries** required throughout the script. T
 # --- Step 1: Import All Necessary Packages ---
 
 import os
+import shutil
 import numpy as np
 from scipy.stats import norm
 from nimare.dataset import Dataset
@@ -35,7 +36,6 @@ from nilearn.plotting import plot_stat_map
 from nilearn import datasets  # Neuroimaging datasets
 from nilearn.reporting import get_clusters_table
 import nibabel as nib
-
 ```
 
 ---
@@ -179,7 +179,6 @@ def search_abstracts(dataset, keywords):
 
     return keyword_ids
 
-
 # Define keywords to search for in the abstracts
 keywords = ["face recognition"]
 
@@ -197,7 +196,7 @@ pprint(dset_filtered_by_abstract.metadata)  # Verify metadata of the filtered da
 
 ---
 
-## 5. Running Neuroimaging Meta-Analyses
+## 5. Running Meta-Analysis
 
 With the filtered studies, we can now perform meta-analyses using algorithms available in NiMARE.
 
@@ -215,10 +214,14 @@ With the filtered studies, we can now perform meta-analyses using algorithms ava
 The following code exmple shows how to run an ALE meta-analysis with Monte Carlo correction
 
 ```python
-# --- Step 5: Running Neuroimaging Meta-Analyses ---
+# --- Step 5: Running Meta-Analysis ---
 
 # Create dir to store cache (useful for low memory)
 cache_dir = os.path.join(out_dir, "cache")
+
+if os.path.exists(cache_dir):
+    shutil.rmtree(cache_dir) # Delete the old cache folder if it exists
+
 os.makedirs(cache_dir, exist_ok=True)
 
 # Set up the ALE meta-analysis algorithm for activation likelihood estimation
@@ -294,12 +297,23 @@ Which should produce the following plots for the uncorrected z scores and Montec
 
 ![Z scores map corrected](../../assets/nimare-corr.png)
 
+!!! warning
+    The Monte Carlo algorithm may produce slightly different results, nd will be more precise with more iterations (10.000 iterations are reccommended for publication-level analyses).
+
 And for the region names:
 
 ```python
-# # --- Step 7: Extracting Peak Activation Region Names ---
+# --- Step 7: Extracting Peak Activation Region Names ---
 # Load the Harvard-Oxford atlas
-atlas = datasets.fetch_atlas_harvard_oxford("cort-maxprob-thr25-2mm")
+
+# All the Harvard-Oxford atlases can be visualized here:
+# https://neurovault.org/collections/262/
+# The nomenclature for these atlases follow this structure:
+# HarvardOxford <area> maxprob thr<threshold> <resolution>mm, where:
+# <area> can be "cort" for cortex, "sub" for sub-cortical
+# <threshold> is the probability threshold: 0 (bigger ROIs), 25, 50 (smaller ROIs)
+# <resolution> the resolution of the atlas. Can be 1 or 2 mm (same as your images).
+atlas = datasets.fetch_atlas_harvard_oxford("cort-maxprob-thr0-2mm")
 
 # Function to map MNI coordinates to the corresponding ROI name
 def get_region_name(x, y, z, atlas):
@@ -325,12 +339,9 @@ def get_region_name(x, y, z, atlas):
         else "Unknown"
     )
 
-
 # Retrieve the ROI name for each MNI coordinate
 cluster_table["Region"] = cluster_table.apply(
-    lambda row: get_region_name(
-        row["X"], row["Y"], row["Z"], atlas
-    ),
+    lambda row: get_region_name(row["X"], row["Y"], row["Z"], atlas),
     axis=1,
 )
 
@@ -338,7 +349,7 @@ cluster_table["Region"] = cluster_table.apply(
 print(cluster_table)
 
 cluster_table.to_csv(
-    "peak_activation_coordinates.csv", index=False
+    os.path.join(out_dir, "peak_activation_coordinates.csv"), index=False
 )  # Save CSV without row index
 print("Peak information saved to peak_activation_coordinates.csv")
 ```
@@ -346,13 +357,17 @@ print("Peak information saved to peak_activation_coordinates.csv")
 Which should output:
 
 ```bash
-   Cluster ID  ...                                    Region
-0           1  ...                  Occipital Fusiform Gyrus
-1           2  ...                                   Unknown
-2           3  ...                                   Unknown
-3           4  ...        Temporal Occipital Fusiform Cortex
-4           5  ...  Inferior Frontal Gyrus, pars opercularis
+  Cluster ID     X  ...  Cluster Size (mm3)                                    Region
+0          1 -36.0  ...                6840                  Occipital Fusiform Gyrus
+1         1a -38.0  ...                            Temporal Occipital Fusiform Cortex
+2          2 -18.0  ...                1016                                   Unknown
+3          3  20.0  ...                 784                                   Unknown
+4          4  42.0  ...                8264                  Occipital Fusiform Gyrus
+5          5  44.0  ...                 544  Inferior Frontal Gyrus, pars opercularis
 ```
+
+!!! note
+    In the table above, the "Unknown" labels are automatically assigned to un-labeled voxels -- i.e., voxels not belonging to any ROI in the atlas (sub-cortical, outside the brain, etc.). In this specific example, the "Unknown" ROIs are the two anterior small blobs, visible in the second plot at `z = -14`. These voxels are not part of any ROI in the Harvard-Oxford atlas, but seem to fall close to the inferior frontal gyrus.
 
 ## Full code example
 
@@ -386,6 +401,7 @@ Created on Tue Oct 29 13:45:16 2024
 # --- Step 1: Import All Necessary Packages ---
 
 import os
+import shutil
 import numpy as np
 from scipy.stats import norm
 from nimare.dataset import Dataset
@@ -468,7 +484,6 @@ print(f"Number of abstracts: {len(neurosynth_dset.texts)}")
 
 # --- Step 4: Creating a Subset of Data ---
 
-
 # Define a function to search abstracts for specific keywords, which helps create a filtered subset
 def search_abstracts(dataset, keywords):
     """
@@ -501,7 +516,6 @@ def search_abstracts(dataset, keywords):
 
     return keyword_ids
 
-
 # Define keywords to search for in the abstracts
 keywords = ["face recognition"]
 
@@ -516,10 +530,14 @@ dset_filtered_by_abstract = neurosynth_dset.slice(
 )  # Keep only selected studies
 pprint(dset_filtered_by_abstract.metadata)  # Verify metadata of the filtered dataset
 
-# --- Step 5: Running Neuroimaging Meta-Analyses ---
+# --- Step 5: Running Meta-Analysis ---
 
 # Create dir to store cache (useful for low memory)
 cache_dir = os.path.join(out_dir, "cache")
+
+if os.path.exists(cache_dir):
+    shutil.rmtree(cache_dir) # Delete the old cache folder if it exists
+
 os.makedirs(cache_dir, exist_ok=True)
 
 # Set up the ALE meta-analysis algorithm for activation likelihood estimation
@@ -576,9 +594,17 @@ cluster_table = get_clusters_table(
     z_corr_img, stat_threshold=stat_threshold, cluster_threshold=20
 )
 
-# # --- Step 7: Extracting Peak Activation Region Names ---
+# --- Step 7: Extracting Peak Activation Region Names ---
 # Load the Harvard-Oxford atlas
-atlas = datasets.fetch_atlas_harvard_oxford("cort-maxprob-thr25-2mm")
+
+# All the Harvard-Oxford atlases can be visualized here:
+# https://neurovault.org/collections/262/
+# The nomenclature for these atlases follow this structure:
+# HarvardOxford <area> maxprob thr<threshold> <resolution>mm, where:
+# <area> can be "cort" for cortex, "sub" for sub-cortical
+# <threshold> is the probability threshold: 0 (bigger ROIs), 25, 50 (smaller ROIs)
+# <resolution> the resolution of the atlas. Can be 1 or 2 mm (same as your images).
+atlas = datasets.fetch_atlas_harvard_oxford("cort-maxprob-thr0-2mm")
 
 # Function to map MNI coordinates to the corresponding ROI name
 def get_region_name(x, y, z, atlas):
@@ -604,12 +630,9 @@ def get_region_name(x, y, z, atlas):
         else "Unknown"
     )
 
-
 # Retrieve the ROI name for each MNI coordinate
 cluster_table["Region"] = cluster_table.apply(
-    lambda row: get_region_name(
-        row["X"], row["Y"], row["Z"], atlas
-    ),
+    lambda row: get_region_name(row["X"], row["Y"], row["Z"], atlas),
     axis=1,
 )
 
@@ -617,8 +640,7 @@ cluster_table["Region"] = cluster_table.apply(
 print(cluster_table)
 
 cluster_table.to_csv(
-    "peak_activation_coordinates.csv", index=False
+    os.path.join(out_dir, "peak_activation_coordinates.csv"), index=False
 )  # Save CSV without row index
 print("Peak information saved to peak_activation_coordinates.csv")
-
 ```
