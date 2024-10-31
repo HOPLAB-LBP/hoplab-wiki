@@ -522,7 +522,7 @@ These tools are crucial for identifying and fixing bugs in your scripts, whether
 
     ### 2. Running Code in Debug Mode
 
-    **Start debugging** by clicking the "Debug" button (bug icon) in the Spyder toolbar or pressing `F5`.
+    **Start debugging** by clicking the "Debug" button :material-play-pause: in the Spyder toolbar.
     - The execution will pause when it reaches the breakpoint on `processed_data = data * 2 + 5`.
 
     - Once paused, you can:
