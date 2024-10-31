@@ -4,7 +4,7 @@ hide:
   - toc
 ---
 
-# Welcome to the Hoplab Wiki 
+# Welcome to the Hoplab Wiki
 
 Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab wisdom into a more user-friendly format. This process is currently managed by [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be).
 
@@ -12,7 +12,7 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
 <div class="grid cards" markdown>
 
--   :fontawesome-solid-flask:{ .lg .middle } __Research Tools & Methods__
+- :fontawesome-solid-flask:{ .lg .middle } __Research Tools & Methods__
 
     ---
 
@@ -20,7 +20,7 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
     [:octicons-arrow-right-24: Explore methods](research/index.md)
 
--   :material-rocket-launch:{ .lg .middle } __Get Started__
+- :material-rocket-launch:{ .lg .middle } __Get Started__
 
     ---
 
@@ -28,7 +28,7 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
     [:octicons-arrow-right-24: Start here](get-started/index.md)
 
--   :material-hand-heart:{ .lg .middle } __Contribute__
+- :material-hand-heart:{ .lg .middle } __Contribute__
 
     ---
 
@@ -42,50 +42,50 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
 <div class="grid cards" markdown>
 
--   :material-brain:{ .lg .middle } __Behaviour__
+- :material-brain:{ .lg .middle } __Behaviour__
 
     ---
-    
+
     Methodologies for behavioral experiments
 
     [:octicons-arrow-right-24: Learn more](research/behaviour/index.md)
 
--   :octicons-code-24:{ .lg .middle } __Coding__
+- :octicons-code-24:{ .lg .middle } __Coding__
 
     ---
-    
+
     Best practices and resources for research coding
 
     [:octicons-arrow-right-24: Learn more](research/coding/index.md)
 
--   :material-robot-love-outline:{ .lg .middle } __Deep Neural Networks__
+- :material-robot-love-outline:{ .lg .middle } __Deep Neural Networks__
 
     ---
-    
+
     Guides for implementing and using DNNs in research
 
     [:octicons-arrow-right-24: Learn more](research/dnn/index.md)
 
--   :material-wave:{ .lg .middle } __EEG__
+- :material-wave:{ .lg .middle } __EEG__
 
     ---
-    
+
     Procedures for EEG data collection and analysis
 
     [:octicons-arrow-right-24: Learn more](research/eeg/index.md)
 
--   :octicons-eye-24:{ .lg .middle } __Eye Tracking__
+- :octicons-eye-24:{ .lg .middle } __Eye Tracking__
 
     ---
-    
+
     Protocols for eye-tracking experiments
 
     [:octicons-arrow-right-24: Learn more](research/eyetracking/index.md)
 
--   :fontawesome-solid-brain:{ .lg .middle } __fMRI__
+- :fontawesome-solid-brain:{ .lg .middle } __fMRI__
 
     ---
-    
+
     Guidelines for fMRI studies and data analysis
 
     [:octicons-arrow-right-24: Learn more](research/fmri/index.md)
@@ -96,7 +96,7 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
 <div class="grid cards" markdown>
 
--   :octicons-mortar-board-24:{ .lg .middle } __Student Starter Pack__
+- :octicons-mortar-board-24:{ .lg .middle } __Student Starter Pack__
 
     ---
 
@@ -104,7 +104,7 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
     [:octicons-arrow-right-24: Get started](get-started/student-starter-pack.md)
 
--   :octicons-desktop-download-24:{ .lg .middle } __Computer Setup__
+- :octicons-desktop-download-24:{ .lg .middle } __Computer Setup__
 
     ---
 
@@ -112,7 +112,7 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
     [:octicons-arrow-right-24: Set up](get-started/computer-setup.md)
 
--   :octicons-checklist-24:{ .lg .middle } __Practical Setup__
+- :octicons-checklist-24:{ .lg .middle } __Practical Setup__
 
     ---
 
@@ -120,7 +120,7 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
     [:octicons-arrow-right-24: Learn more](get-started/practical-setup.md)
 
--   :octicons-mail-24:{ .lg .middle } __Mailing Lists__
+- :octicons-mail-24:{ .lg .middle } __Mailing Lists__
 
     ---
 
@@ -128,7 +128,7 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
     [:octicons-arrow-right-24: Subscribe](get-started/mailing-lists.md)
 
--   :octicons-book-24:{ .lg .middle } __Research Ethics__
+- :octicons-book-24:{ .lg .middle } __Research Ethics__
 
     ---
 
@@ -136,7 +136,7 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
     [:octicons-arrow-right-24: Learn more](research/ethics/index.md)
 
--   :octicons-megaphone-24:{ .lg .middle } __Outreach__
+- :octicons-megaphone-24:{ .lg .middle } __Outreach__
 
     ---
 
@@ -157,5 +157,5 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
 Can't find what you're looking for? Have questions or suggestions? Don't hesitate to reach out:
 
-- **Wiki Managers:** [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels)
-- **Contact:** [Andrea Costantino](mailto:andreaivan.costantino@kuleuven.be)
+- __Wiki Managers:__ [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels)
+- __Contact:__ [Andrea Costantino](mailto:andreaivan.costantino@kuleuven.be)

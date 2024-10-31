@@ -21,15 +21,18 @@ There are different types of lab meetings that happen throughout the academic ye
     Once every two months, we meet to discuss new papers that came out recently. This is an occasion to discuss new topics, new methods, or just interesting work that you might have seen around. There is no fixed presenter, we will go over the list of papers one by one and the person who added it will introduce it. At any time, if you see an intersting paper you can add it to the [reading list](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bb985e56f-b02f-437c-a511-05a10d8dfe68%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724147078370&web=1).
 
 ### Schedule
-Lab meetings usually happen once per week on Mondays, after lunch. On that day, we have lunch together in the meeting room and then move to the more science-y affairs. 
+
+Lab meetings usually happen once per week on Mondays, after lunch. On that day, we have lunch together in the meeting room and then move to the more science-y affairs.
 The meeting room will be specified in a reminder email that is sent every Thursday before the lab meeting and can be seen in the [meeting schedule](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Science%20outreach/Lab%20meetings/HOPLAB%20meeting%20schedule.xlsx?d=w80204729ed3145b2b80e99208701a7a3&csf=1&web=1&e=ANkp44).
 The schedule is made at the beginning of the academic year and consists of a mix of meetings with updates and others with more fixed topics.
 
 ### Attendance
-You can attend the meetings in person or online, there will be always a link to a Teams call. If you will be online, or absent, let the lab meeting manager know (as of August 2024, [Filippo Cerpelloni](mailto:filippo.cerpelloni@kuleuven.be)). 
+
+You can attend the meetings in person or online, there will be always a link to a Teams call. If you will be online, or absent, let the lab meeting manager know (as of August 2024, [Filippo Cerpelloni](mailto:filippo.cerpelloni@kuleuven.be)).
 
 ### Who is presenting
-Each lab member is part of the standard rotation of presenters for the individual meetings. Additionally, they are assigned to one of the batches that will alternate in the [quick updates](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Science%20outreach/Lab%20meetings/HOPLAB%201-slide%20update%20batches.xlsx?d=w9794c03dff3543e6895f3302b35b385f&csf=1&web=1&e=ATFVt1). Interns are usually not part of the standard roations, but will be assigned to a batch. 
+
+Each lab member is part of the standard rotation of presenters for the individual meetings. Additionally, they are assigned to one of the batches that will alternate in the [quick updates](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Science%20outreach/Lab%20meetings/HOPLAB%201-slide%20update%20batches.xlsx?d=w9794c03dff3543e6895f3302b35b385f&csf=1&web=1&e=ATFVt1). Interns are usually not part of the standard roations, but will be assigned to a batch.
 
 The rotation of presenters is made by randomizing the order of the names, but can be adjusted based on anyone's availability. If you want / need to switch your slot, you can directly contact the person you would like to switch with and then let the lab meeting manager know about the change. If you would like to change with a slot assigned for a group meeting, ask the lab meeting manager directly.  
 
@@ -39,19 +42,19 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
 !!! info "Naming Convention for Individual Lab Meetings"
     Use the format: `YYYY-MM-DD_presenter_topic.pdf`
-    
+
     Example: `2024-08-24_andrea_dnns-in-vision.pdf`
 
 #### Storage Instructions
 
 === "1-Slide Updates"
-    - **Before the meeting**: 
+    - **Before the meeting**:
       Store your slides in:
       ```
       Hoplab > Science outreach > Lab meetings > 1-slide updates
       ```
       This allows all updates to be presented from one computer.
-    
+
     - **After the meeting**:
       Move your presentation to:
       ```
@@ -77,7 +80,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
 <div class="grid cards" markdown>
 
--   :calendar:{ .lg .middle } __Meeting Schedule__
+- :calendar:{ .lg .middle } **Meeting Schedule**
 
     ---
 
@@ -85,7 +88,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     [:octicons-arrow-right-24: Open Schedule](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B80204729-ed31-45b2-b80e-99208701a7a3%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724072455092&web=1)
 
--   :busts_in_silhouette:{ .lg .middle } __Presenters and Batches__
+- :busts_in_silhouette:{ .lg .middle } **Presenters and Batches**
 
     ---
 
@@ -93,7 +96,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     [:octicons-arrow-right-24: View List](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B9794c03d-ff35-43e6-895f-3302b35b385f%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724156901971&web=1)
 
--   :books:{ .lg .middle } __New Papers List__
+- :books:{ .lg .middle } **New Papers List**
 
     ---
 
@@ -105,14 +108,14 @@ To keep our lab meeting presentations organized, please follow these guidelines:
   
 !!! note "Access Required"
     These files are located in the NeuroSPACE / Hoplab Team organizational folders. You need access to the Teams group to view them.
-     
+
 ## Conference Posters
 
 ### Useful Resources
 
 <div class="grid cards" markdown>
 
--   :art:{ .lg .middle } __Design Guidelines__
+- :art:{ .lg .middle } **Design Guidelines**
 
     ---
 
@@ -120,7 +123,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     [:octicons-arrow-right-24: View Guidelines](https://admin.kuleuven.be/icts/english/research/dissemination/sciposter/acadposter)
 
--   :printer:{ .lg .middle } __Printing Services__
+- :printer:{ .lg .middle } **Printing Services**
 
     ---
 
@@ -129,7 +132,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
     [:octicons-arrow-right-24: Printing Services](https://icts.kuleuven.be/sc/english/education/plotter)
     [:octicons-arrow-right-24: Additional Info](https://admin.kuleuven.be/icts/english/services/plotter/plotter)
 
--   :frame_with_picture:{ .lg .middle } __KU Leuven Templates__
+- :frame_with_picture:{ .lg .middle } **KU Leuven Templates**
 
     ---
 
@@ -137,7 +140,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     [:octicons-arrow-right-24: Browse Templates](https://admin.kuleuven.be/mykuleuven/en/theme/ict-communication-events/communication-guidelines-tools/layout-and-printed-materials/poster-templates)
 
--   :page_facing_up:{ .lg .middle } __Printing Request Form__
+- :page_facing_up:{ .lg .middle } **Printing Request Form**
 
     ---
 
@@ -145,7 +148,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     [:octicons-arrow-right-24: Open Form](https://www.groupware.kuleuven.be/sites/lio2/gebruikerslab/Paginas/FormulierPosters.aspx)
 
--   :bulb:{ .lg .middle } __Tips and Tricks__
+- :bulb:{ .lg .middle } **Tips and Tricks**
 
     ---
 
@@ -178,12 +181,11 @@ To print your poster, submit a "Large-format printing request" using [this form]
     - Ask for an invoice
     - Use An Van Kets' u-number (`u0057838`) when finalizing your request.
 
-
 ## Present your work (and announce it)
 
 ### Presentation Templates
 
-You can find KU Leuven PowerPoint and <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> templates for presentations [here](https://admin.kuleuven.be/mykuleuven/en/theme/ict-communication-events/communication-guidelines-tools/layout-and-printed-materials/templates-for-presentations). 
+You can find KU Leuven PowerPoint and <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> templates for presentations [here](https://admin.kuleuven.be/mykuleuven/en/theme/ict-communication-events/communication-guidelines-tools/layout-and-printed-materials/templates-for-presentations).
 
 Please consult [this page](https://admin.kuleuven.be/icts/opleidingen/englishwebsite/powerpoint-templates#install) to correctly use the official KU Leuven brand templates.
 
@@ -205,7 +207,7 @@ If you are active on :simple-x::
 
 ### PPW Faculty calendar
 
-It's good practice to announce your PPW presentations in the faculty calendar. 
+It's good practice to announce your PPW presentations in the faculty calendar.
 
 Typically, [Kirsten Blommaerts](https://www.kuleuven.be/wieiswie/en/person/00127342) coordinates B&C level announcements. If she's unavailable, follow these steps:
 
@@ -213,7 +215,7 @@ Typically, [Kirsten Blommaerts](https://www.kuleuven.be/wieiswie/en/person/00127
 2. Log in with your KU Leuven credentials
 3. Click "Add new items (Dutch)"
 4. Select the year of your presentation
-5. Click "+ Nieuw" > "Agenda-item" 
+5. Click "+ Nieuw" > "Agenda-item"
 6. Add your presentation details (title, abstract, time, location)
 7. Save your changes
 
@@ -223,6 +225,7 @@ Typically, [Kirsten Blommaerts](https://www.kuleuven.be/wieiswie/en/person/00127
 Having issues? Check [the manual](https://ppw.kuleuven.be/agenda/handleiding-agenda-20200204.pdf) for help.
 
 ### Example announcements
+
 Below you can find an example announcement for a general seminar:
 
 ![General Seminar Announcement](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/example_seminar_announcement.PNG)
@@ -234,24 +237,27 @@ Below you can find an example announcement for a doctoral school presentation:
 ## Science communication (SciComm)
 
 ### Reasons to start engaging in SciComm
+
 If you are already interested in science communication, that's great! If you need some more convincing, here are some good **reasons to start engaging**:
 
 - It allows you to connect with other researchers and stakeholders, which can boost your motivation and lead to new collaborations.
-- It helps you to develop skills relevant to your future career, such as public speaking, explaining complex concepts, writing and networking. 
+- It helps you to develop skills relevant to your future career, such as public speaking, explaining complex concepts, writing and networking.
 - Funders (like the KU Leuven, FWO and ERC) value SciComm efforts.
 - You are funded by society, so it's crucial for the public to know about your research.
 - Despite the fact that it can be stressful, it is also enjoyable and very rewarding!
 
 ### Straightforward ideas for SciComm participation
-The easiest and **most straightforward ideas** to start participating in SciComm yourself are: 
+
+The easiest and **most straightforward ideas** to start participating in SciComm yourself are:
 
 - Being active on social media (e.g., on X)
 - Creating video abstracts for your paper and starting a Youtube channel
-- Writing a press release if you have done newsworthy research (ask the [KU Leuven press office](https://nieuws.kuleuven.be/en/press-office/press-office-and-policy-communications) for help) 
+- Writing a press release if you have done newsworthy research (ask the [KU Leuven press office](https://nieuws.kuleuven.be/en/press-office/press-office-and-policy-communications) for help)
 - Writing and publishing a blog post about your research (e.g., on [EOS blogs](https://www.eoswetenschap.eu/eosblogs), see for example [Klara's blog](https://www.eoswetenschap.eu/psyche-brein/wat-als-je-je-taal-verliest-na-een-beroerte))
 - Making a podcast about your research
 
 ### Training and opportunities
+
 Check out the following sources if you want to train yourself:
 
 - **Visuals and slide design:** [Principiae](https://www.principiae.be/X0101.php). Jean-Luc Doumont is a great speaker and frequently gives workshops at KU Leuven on how to create effective slides, posters, presentations, etc.
@@ -263,6 +269,7 @@ Check out the following sources if you want to train yourself:
 - **Science videos:** [Amazink](https://amazink.nl/). Company of Rob Zink (PhD in biomedical signal processing), who offers a variety of freelance visualization services.
 
 ### Engaging initiatives
+
 If you can't wait to start engaging, check out the following **initiatives**:
 
 - [Science Figured Out](https://www.sciencefiguredout.be/) (SciMingo) is a project in which you are coached to record a 3-minute pitch about your research. A professionally edited video is afterwards published on several social media channels. For example, check out Klara's video [here](http://www.sciencefiguredout.be/language-recovery-after-stroke).
