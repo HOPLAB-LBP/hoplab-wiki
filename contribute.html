@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
@@ -1756,7 +1756,7 @@
 
 
 <h1 id="contribute-to-the-hoplab-wiki">Contribute to the Hoplab Wiki<a class="headerlink" href="#contribute-to-the-hoplab-wiki" title="Permanent link">&para;</a></h1>
-<p>Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by <a href="https://github.com/costantinoai">@costantinoai</a> and <a href="https://github.com/kschevenels">@kschevenels</a>. For any questions, feel free to <a href="mailto:andreaivan.costantino@kuleuven.be">ping me</a>. </p>
+<p>Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by <a href="https://github.com/costantinoai">@costantinoai</a> and <a href="https://github.com/kschevenels">@kschevenels</a>. For any questions, feel free to <a href="mailto:andreaivan.costantino@kuleuven.be">ping me</a>.</p>
 <p>This guide will help you set up, update, and maintain the Wiki both locally and online. Follow the instructions if you want to make changes to the wiki.</p>
 <h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
 <ol>
@@ -1789,26 +1789,26 @@
 <h3 id="adding-a-new-page">Adding a New Page<a class="headerlink" href="#adding-a-new-page" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Create a new Markdown file in the <code>docs</code> directory (e.g., <code>docs/new-page.md</code>).</li>
-<li>Add the new page to the <code>nav</code> section of <code>mkdocs.yml</code>: <br />
+<li>Add the new page to the <code>nav</code> section of <code>mkdocs.yml</code>:</li>
+</ol>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">nav</span><span class="p">:</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Guide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">guide.md</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">New Page</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">new-page.md</span>
-</span></code></pre></div></li>
-</ol>
+</span></code></pre></div>
 <h3 id="creating-child-pages">Creating Child Pages<a class="headerlink" href="#creating-child-pages" title="Permanent link">&para;</a></h3>
 <p>To create a child page, place the Markdown file in a subdirectory and update the <code>nav</code> section in <code>mkdocs.yml</code> accordingly:</p>
 <ol>
 <li>Create a new subdirectory in the <code>docs</code> directory (e.g., <code>docs/subdir</code>).</li>
 <li>Create a new Markdown file in the subdirectory (e.g., <code>docs/subdir/child-page.md</code>).</li>
-<li>Update the <code>nav</code> section in <code>mkdocs.yml</code>: <br />
+<li>Update the <code>nav</code> section in <code>mkdocs.yml</code>:</li>
+</ol>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">nav</span><span class="p">:</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Guide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">guide.md</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Subdir</span><span class="p">:</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Child Page</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subdir/child-page.md</span>
-</span></code></pre></div></li>
-</ol>
+</span></code></pre></div>
 <h3 id="adding-note-todo-and-placeholder-tags">Adding <code>NOTE</code>, <code>TODO</code>, and <code>PLACEHOLDER</code> tags<a class="headerlink" href="#adding-note-todo-and-placeholder-tags" title="Permanent link">&para;</a></h3>
 <p>For ease of collaboration, we keep track of all the tasks in our documentation in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/issues">Issues</a> page. Tasks are organized by file, and each file with tags will automatically be listed as Issue.</p>
 <p>To add a new task to this list, you just need to write <code>NOTE</code>, <code>TODO</code>, or <code>PLACEHOLDER</code> in any document in the <code>docs/</code> folder. This will automatically be added to the Issue for that page during the Wiki building process. It is a good practice to write the name of the author in square brackets. Example:</p>
@@ -1821,11 +1821,9 @@
 <li><strong>Bold text:</strong> <code>**bold text**</code></li>
 <li><strong>Italic text:</strong> <code>*italic text*</code></li>
 <li><strong>Links:</strong> <code>[link text](URL)</code></li>
-<li><strong>Lists:</strong> <ul>
+<li><strong>Lists:</strong></li>
 <li>Unordered list: <code>- Item 1</code></li>
 <li>Ordered list: <code>1. Item 1</code></li>
-</ul>
-</li>
 <li><strong>Images:</strong> <code>![Alt text](path/to/image.png)</code> (see <a href="#adding-and-linking-images">this section</a> for instructions on how to link images.)</li>
 </ul>
 <p>For more advanced formatting options, refer to the <a href="https://squidfunk.github.io/mkdocs-material/reference/">MkDocs Material Reference Guide</a>.</p>
@@ -1837,27 +1835,25 @@
 </span></code></pre></div>
 <p>Examples:</p>
 <ol>
-<li>
-<p>Linking to a page in the same directory:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[<span class="nt">Getting Started</span>](<span class="na">getting-started.md</span>)
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Linking to a page in a subdirectory:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[<span class="nt">fMRI Analysis</span>](<span class="na">research/fmri/fmri-analysis.md</span>)
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Linking to a specific section on another page:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>[<span class="nt">Ethics Guidelines</span>](<span class="na">research/ethics/index.md#ethical-guidelines</span>)
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Linking to a parent directory:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[<span class="nt">Back to Research</span>](<span class="na">../index.md</span>)
-</span></code></pre></div></p>
-</li>
+<li>Linking to a page in the same directory:</li>
 </ol>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[<span class="nt">Getting Started</span>](<span class="na">getting-started.md</span>)
+</span></code></pre></div>
+<ol>
+<li>Linking to a page in a subdirectory:</li>
+</ol>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[<span class="nt">fMRI Analysis</span>](<span class="na">research/fmri/fmri-analysis.md</span>)
+</span></code></pre></div>
+<ol>
+<li>Linking to a specific section on another page:</li>
+</ol>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>[<span class="nt">Ethics Guidelines</span>](<span class="na">research/ethics/index.md#ethical-guidelines</span>)
+</span></code></pre></div>
+<ol>
+<li>Linking to a parent directory:</li>
+</ol>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[<span class="nt">Back to Research</span>](<span class="na">../index.md</span>)
+</span></code></pre></div>
 <h4 id="external-links-outside-the-wiki">External Links (Outside the Wiki)<a class="headerlink" href="#external-links-outside-the-wiki" title="Permanent link">&para;</a></h4>
 <p>For external links, use the full URL:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>)
@@ -1870,41 +1866,41 @@
 <li>
 <p>Use relative links to reference images. The path depends on the location of your Markdown file:</p>
 <ul>
-<li>
-<p>If your Markdown file is in the main <code>docs</code> folder:
- <div class="language-markdown highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
-</span></code></pre></div></p>
-</li>
-<li>
-<p>If your file is in a subdirectory of <code>docs</code> (e.g., <code>docs/research/</code>):
- <div class="language-markdown highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../assets/fmri-analysis-workflow.png</span>)
-</span></code></pre></div></p>
-</li>
-<li>
-<p>If your file is in a sub-subdirectory (e.g., <code>docs/research/fmri/</code>):
- <div class="language-markdown highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../../assets/fmri-analysis-workflow.png</span>)
-</span></code></pre></div></p>
-</li>
+<li>If your Markdown file is in the main <code>docs</code> folder:</li>
 </ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
+</span></code></pre></div>
+<ul>
+<li>If your file is in a subdirectory of <code>docs</code> (e.g., <code>docs/research/</code>):</li>
+</ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../assets/fmri-analysis-workflow.png</span>)
+</span></code></pre></div>
+<ul>
+<li>If your file is in a sub-subdirectory (e.g., <code>docs/research/fmri/</code>):</li>
+</ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../../assets/fmri-analysis-workflow.png</span>)
+</span></code></pre></div>
 </li>
 <li>
-<p>Always include descriptive alt text for accessibility:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>![<span class="nt">Diagram showing steps of fMRI analysis</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
-</span></code></pre></div></p>
-</li>
-<li>
-<p>Optionally, specify image dimensions using HTML:
-   <div class="language-html highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../assets/fmri-analysis-workflow.png&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;fMRI Analysis Workflow&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;500&quot;</span><span class="p">&gt;</span>
-</span></code></pre></div></p>
+<p>Always include descriptive alt text for accessibility:</p>
 </li>
 </ol>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>![<span class="nt">Diagram showing steps of fMRI analysis</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
+</span></code></pre></div>
+<ol>
+<li>Optionally, specify image dimensions using HTML:</li>
+</ol>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../assets/fmri-analysis-workflow.png&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;fMRI Analysis Workflow&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;500&quot;</span><span class="p">&gt;</span>
+</span></code></pre></div>
 <h4 id="best-practices-for-linking">Best Practices for Linking<a class="headerlink" href="#best-practices-for-linking" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Use descriptive link text that gives users an idea of where the link will take them.</li>
 <li>Check your links after creating them to ensure they work correctly.</li>
-<li>For external links, consider opening them in a new tab:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>){target=&quot;_blank&quot;}
-</span></code></pre></div></li>
+<li>For external links, consider opening them in a new tab:</li>
+</ol>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>){target=&quot;_blank&quot;}
+</span></code></pre></div>
+<ol>
 <li>When linking to specific sections within long documents, use anchor links to improve user experience.</li>
 <li>For images, <strong>always use relative links</strong> and store images in the <code>docs/assets</code> folder to maintain a self-contained Wiki.</li>
 </ol>
@@ -1912,53 +1908,98 @@
 <p>We offer two workflows for contributing to the Hoplab Wiki: an Easy Workflow for quick changes to single files, and an Advanced Workflow for more extensive changes to multiple files.</p>
 <h3 id="easy-workflow-for-quick-changes">Easy Workflow (for Quick Changes)<a class="headerlink" href="#easy-workflow-for-quick-changes" title="Permanent link">&para;</a></h3>
 <p>This workflow is ideal for making small, quick changes to a single file. It can be done entirely through your web browser and doesn't require any local setup.</p>
-<details class="tip">
-<summary>Edit directly from this page!</summary>
-<p>Existing pages can be edited directly through the Wiki! If you need to edit or add information to any page, look for the paper and pencil symbol <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg></span> at the top-right of the page, next to the page title. This will make you edit the page and open a PR either by creating a new branch on the main repo (if you are part of the Hoplab organization on GitHub) or by forking your own copy of the repo (if you are an external contributor). Make sure to <a href="#step-3-submit-a-pr-with-your-proposed-changes">submit a PR</a> after your changes are made.</p>
-</details>
-<h4 id="step-1-make-your-changes">Step 1: Make your changes<a class="headerlink" href="#step-1-make-your-changes" title="Permanent link">&para;</a></h4>
+<p>In short, all you need to do is to navigate to the page you want to edit, <strong>click the paper and pencil symbol</strong> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg></span> at the top-right corner of the page, commit your changes and just follow the prompts. All the process is pretty much automated, and your changes will be merged when an admin approves them. For more information, see the box below and the rest of this section.</p>
+<div class="admonition tip">
+<p class="admonition-title">Edit directly from this page!</p>
+<p>Existing pages can be edited directly through the Wiki! If you need to edit or add information to any page, look for the paper and pencil symbol <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg></span> at the top-right of the page, next to the page title. This will make you edit the page and open a PR either by creating a new branch on the main repo (if you are part of the Hoplab organization on GitHub) or by forking your own copy of the repo (if you are an external contributor). Make sure to <a href="#step-3-submit-a-pull-request-pr-with-your-proposed-changes">submit a PR</a> after your changes are made.</p>
+</div>
+<h4 id="step-1-make-your-changes">Step 1: Make Your Changes<a class="headerlink" href="#step-1-make-your-changes" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
-<p><strong>To edit an existing page:</strong></p>
-<ol>
+<p><strong>Editing an Existing Page:</strong></p>
+<ul>
 <li>Navigate to the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki"><code>HOPLAB-LBP/hoplab-wiki</code></a> repository.</li>
-<li>Click on the file you want to edit (usually, in <code>docs/</code>).</li>
-<li>Click on the pencil icon (✏️) at the top right to edit the file.</li>
-</ol>
+<li>Click on the file you want to edit (usually found under the <code>docs/</code> directory).</li>
+<li>Select the <strong>pencil icon (✏️)</strong> at the top right to begin editing the file.</li>
+</ul>
 </li>
 <li>
-<p><strong>To create a new page:</strong>  </p>
+<p><strong>Creating a New Page:</strong></p>
 <ol>
-<li>Navigate to the <code>mkdocs.yml</code> file.</li>
-<li>Click on the pencil icon (✏️) at the top right to edit the file.</li>
-<li>Add the new page (e.g., <code>docs/new-page.md</code>) to the <code>nav</code> section and commit (follow the steps in the section 2 below).</li>
-<li>In the <code>docs</code> folder, click on "Add file" &gt; "Create new file".</li>
-<li>Enter a name for your file in the <code>docs</code> directory (the same you used before, e.g., <code>docs/new-page.md</code>).</li>
+<li>
+<p><strong>Reference the page in <code>mkdocs.yml</code>:</strong></p>
+<ul>
+<li>Go to the <code>mkdocs.yml</code> file in the repository.</li>
+<li>Click on the <strong>pencil icon (✏️)</strong> to edit the file.</li>
+<li>Add the new page (e.g., <code>docs/new-page.md</code>) to the <code>nav</code> section in <code>mkdocs.yml</code> to make it visible in the site navigation.</li>
+<li>After editing <code>mkdocs.yml</code>, follow the steps in <strong><a href="#step-2-commit-changes-to-a-temporary-branch">Step 2</a></strong> below to commit and create a new branch.</li>
+</ul>
+</li>
+<li>
+<p><strong>Creating the New File:</strong></p>
+<ul>
+<li>Once your new branch is created (see <a href="#step-2-commit-changes-to-a-temporary-branch">Step 2</a>), navigate to the <code>docs/</code> folder in this branch.</li>
+<li>Select <strong>Add file</strong> &gt; <strong>Create new file</strong>.</li>
+<li>Name the file according to the path you specified in <code>mkdocs.yml</code> (e.g., <code>docs/new-page.md</code>).</li>
+</ul>
+</li>
 </ol>
 </li>
 </ol>
-<p>You can then add/edit your content in Markdown format (see <a href="#editing-the-wiki">Editing the Wiki</a> for more info), and click on "Preview" next to the "Edit" tab to see how your changes will look like.</p>
-<h4 id="step-2-commit-changes-to-a-temporary-branch">Step 2: Commit changes to a temporary branch<a class="headerlink" href="#step-2-commit-changes-to-a-temporary-branch" title="Permanent link">&para;</a></h4>
+<p>After creating or editing the page, you can add content in Markdown format. To preview your changes, click <strong>Preview</strong> next to the <strong>Edit</strong> tab.</p>
+<p><img alt="" src="assets/contribute-commit.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some features -- like admonition boxes (such as this one), tabs, and cards -- are specific to <a href="https://squidfunk.github.io/mkdocs-material/reference/">mkdocs material</a> and will not be rendered correctly in the GitHub preview. You can preview your changes in your browser locally (before committing) only by following the <a href="#advanced-workflow-for-extensive-changes">Advanced Workflow</a></p>
+</div>
+<h4 id="step-2-commit-changes-to-a-temporary-branch">Step 2: Commit Changes to a Temporary Branch<a class="headerlink" href="#step-2-commit-changes-to-a-temporary-branch" title="Permanent link">&para;</a></h4>
 <ol>
-<li>Click on "Commit changes" after any necessary adjustments.</li>
-<li>In the pop-up window, add a commit message and description for your changes.</li>
-<li>Select "Create a new branch for this commit and start a pull request".</li>
-<li>Click on "Propose changes".</li>
+<li>Once edits are complete, click <strong>Commit changes</strong>.</li>
+<li>In the pop-up window, enter a <strong>commit message</strong> and a short <strong>description</strong> of your changes.</li>
+<li>Select <strong>Create a new branch for this commit and start a pull request</strong>.</li>
+<li>Click <strong>Propose changes</strong>.</li>
 </ol>
-<h4 id="step-3-submit-a-pr-with-your-proposed-changes">Step 3: Submit a PR with your proposed changes<a class="headerlink" href="#step-3-submit-a-pr-with-your-proposed-changes" title="Permanent link">&para;</a></h4>
-<ol>
-<li>In the "Open a pull request page", add an informative title and a description of the changes in the PR.</li>
-<li>In the right panel, make sure to assign an admin (as of July 2024, <a href="https://github.com/costantinoai">@costantinoai</a>) to review your changes.</li>
-<li>Click on "Create pull request" to submit your changes.</li>
-</ol>
-<details class="tip">
-<summary>Add multiple commits to a single PR</summary>
-<p>If you want to make additional changes related to an already opened PR (e.g., you need to change info in two separate files, or make additional adjustments), you do not need to open a new PR. Just go in the main page of the branch your created (you can find the branch in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>) and <strong>keep editing your files in this branch</strong>. Every new commit you make in this branch will have the option to "Commit directly to the <name-of-new-branch> branch" or "Create a new branch for this commit and start a pull request". Make sure you select the first option to include your new commits to the original PR. Importantly, if you plan to add several commits to a PR this way, make sure you assign a reviewer <strong>only after your last commit</strong> to avoid merging PRs halfway in the process, or you can create a draft PR until all your changes are included.</p>
+<p><img alt="" src="assets/contribute-propose.png" /></p>
+<p>This process creates a <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">new branch</a> that includes your changes. The branch name will typically be named something like <code>yourname-patch-1</code>.</p>
+<div class="admonition question">
+<p class="admonition-title">Why Use a Separate Branch?</p>
+<p>Using a separate branch for your edits allows you to:</p>
+<ul>
+<li><strong>Review and refine</strong> changes before they are applied to the main repository.</li>
+<li><strong>Collaborate with others</strong>, requesting feedback or further edits.</li>
+<li><strong>Organize related edits</strong> to multiple files as part of one update.</li>
+</ul>
+</div>
+<p>Upon creating a branch in our repository, a <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/pulls">pull request (PR)</a> will automatically open (see <a href="#step-3-submit-a-pull-request-pr-with-your-proposed-changes">Step 3</a> for more on PRs). The PR will contain all commits in the branch.</p>
+<p>If you need to make additional edits related to the same update (e.g., creating a new page and updating <code>mkdocs.yml</code> to reference it), commit these changes to the same branch. This approach ensures that all related edits are grouped under a single PR, making it organized and easy to review.</p>
+<details class="question">
+<summary>Where do I find my new branch?</summary>
+<p>You can find your branch in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>.</p>
+<p><img alt="Branches list" src="assets/contribute-branches.png" /></p>
 </details>
-<p>These steps above will create a new branch in the repository, that will be visible in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>, and a new PR visible in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/pulls">PRs list</a>. Once the PR is approved by at least one reviewer and merged into the main branch, the newly created branch will be automatically deleted and the changes will go live.</p>
+<div class="admonition note">
+<p class="admonition-title">Adding Multiple Commits to a Single PR</p>
+<p>Any commits you make to <code>yourname-patch-1</code> will automatically be included in the same pull request linked to this branch, which keeps all related changes in one place for easy review.</p>
+</div>
+<h4 id="step-3-submit-a-pull-request-pr-with-your-proposed-changes">Step 3: Submit a Pull Request (PR) with Your Proposed Changes<a class="headerlink" href="#step-3-submit-a-pull-request-pr-with-your-proposed-changes" title="Permanent link">&para;</a></h4>
+<ol>
+<li>In the "Open a pull request" page, add a <strong>descriptive title</strong> and a <strong>summary</strong> of your changes.</li>
+<li>On the right side, assign an admin reviewer (currently <a href="https://github.com/costantinoai">@costantinoai</a>).</li>
+<li>Click <strong>Create pull request</strong> to submit your changes.</li>
+</ol>
+<p><img alt="" src="assets/contribute-open-pr.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Adding More Changes to an Open PR</p>
+<p>If additional changes are needed for an already open PR, there’s no need to open a new one. Simply go to the branch created for your PR (available in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>) and continue editing your files within this branch.</p>
+<ul>
+<li>Choose <strong>Commit directly to the <code>&lt;branch-name&gt;</code> branch</strong> instead of creating a new branch for these edits.</li>
+<li>If planning to add multiple commits to a PR, wait to assign a reviewer until all changes are complete, or <strong>use a draft PR</strong> until your updates are finalized. This prevents accidental early merges.</li>
+</ul>
+</div>
+<p>Following these steps will add a new branch to the repository, visible in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>, and a corresponding PR in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/pulls">pull requests list</a>. Once approved by at least one reviewer and merged into the main branch, the branch will be automatically deleted, and your changes will be live.</p>
 <h2 id="advanced-workflow-for-extensive-changes">Advanced Workflow (for Extensive Changes)<a class="headerlink" href="#advanced-workflow-for-extensive-changes" title="Permanent link">&para;</a></h2>
-<p>The preferred way to contribute if you need to make <strong>significant/multiple changes</strong>, but it requires some familiarity with git, Python, and Conda environments. If you are not a Wiki maintainer, this workflow is probably overkill. </p>
-<p>With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session. </p>
+<p>The preferred way to contribute if you need to make <strong>significant/multiple changes</strong>, but it requires some familiarity with git, Python, and Conda environments. If you are not a Wiki maintainer, this workflow is probably overkill.</p>
+<p>With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session.</p>
 <div class="admonition question">
 <p class="admonition-title">How should I organize my PR?</p>
 <p>A <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">Pull Request</a> (or PR) "<em>is a proposal to merge a set of changes from one branch into another</em>". Ideally, a PR should include all the commits <strong>for a specific feature</strong> or bugfix from end-to-end. Avoid making PRs that contain multiple unrelated changes. For instance, if you are working on a feature that requires modifications across multiple files, ensure all those changes are included in the same PR. Conversely, avoid combining changes for different features (e.g., adding unrelated updates to the fMRI workflow and the getting started section) in a single PR. Each PR should represent a cohesive unit of work.</p>
@@ -2033,7 +2074,7 @@
 </li>
 <li>
 <p><strong>Install Necessary Packages:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material<span class="w"> </span>mkdocs-task-collector<span class="w"> </span>mkdocs-git-revision-date-localized-plugin<span class="w"> </span>mkdocs-git-authors-plugin
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material<span class="w"> </span>mkdocs-git-revision-date-localized-plugin<span class="w"> </span>mkdocs-git-authors-plugin
 </span></code></pre></div>
 </li>
 </ol>
@@ -2045,10 +2086,14 @@
 <h3 id="step-4-testing-your-changes-locally">Step 4: Testing Your Changes Locally<a class="headerlink" href="#step-4-testing-your-changes-locally" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Serve the Documentation Locally:</strong></li>
-<li>While in your project directory and with the Conda environment activated, launch the local server by typing:
-      <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>mkdocs<span class="w"> </span>serve
-</span></code></pre></div></li>
-<li>Open a web browser and navigate to <code>http://127.0.0.1:8000/</code>. This allows you to see your changes as they would appear on the live site.</li>
+<li>
+<p>While in your project directory and with the Conda environment activated, launch the local server by typing:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>mkdocs<span class="w"> </span>serve
+</span></code></pre></div>
+</li>
+<li>
+<p>Open a web browser and navigate to <code>http://127.0.0.1:8000/</code>. This allows you to see your changes as they would appear on the live site.</p>
+</li>
 <li>Keep this server running as you make changes; refresh your browser to update the preview.</li>
 </ol>
 <h3 id="step-5-closing-the-local-server">Step 5: Closing the Local Server<a class="headerlink" href="#step-5-closing-the-local-server" title="Permanent link">&para;</a></h3>
@@ -2062,7 +2107,8 @@
 <div class="tabbed-block">
 <ol>
 <li><strong>Stage and Commit Your Changes:</strong><ol>
-<li>From your terminal, add all modified files to your commit:
+<li>From your terminal, navigate to the main folder of the repo <code>cd hoplab-wiki</code></li>
+<li>Add all modified files to your commit:
   <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
 </span></code></pre></div></li>
 <li>Commit the changes, including a clear message about what was modified and why:
@@ -2105,7 +2151,7 @@
 <li>Choose the original repository's <code>main</code> branch as the base, and your fork's <code>main</code> branch as the compare.</li>
 <li>Fill out the form to describe the changes.</li>
 <li>In the right panel, make sure to assign an admin (as of July 2024, <a href="https://github.com/costantinoai">@costantinoai</a>) to review your changes.</li>
-<li>Click on "Create pull request" to submit your changes.   </li>
+<li>Click on "Create pull request" to submit your changes.</li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Automatic Deployment with GitHub Actions</p>
@@ -2154,7 +2200,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 19, 2024 23:41:58</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 31, 2024 22:29:59</span>
   </span>
 
     
