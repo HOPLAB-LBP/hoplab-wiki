@@ -185,7 +185,7 @@ When adding images to the Wiki:
 
 We offer two workflows for contributing to the Hoplab Wiki: an Easy Workflow for quick changes to single files, and an Advanced Workflow for more extensive changes to multiple files.
 
-### Easy Workflow (for Quick Changes)
+## Easy Workflow (for Quick Changes)
 
 This workflow is ideal for making small, quick changes to a single file. It can be done entirely through your web browser and doesn't require any local setup.
 
@@ -194,7 +194,7 @@ In short, all you need to do is to navigate to the page you want to edit, **clic
 !!! tip "Edit directly from this page!"
     Existing pages can be edited directly through the Wiki! If you need to edit or add information to any page, look for the paper and pencil symbol :material-file-edit-outline: at the top-right of the page, next to the page title. This will make you edit the page and open a PR either by creating a new branch on the main repo (if you are part of the Hoplab organization on GitHub) or by forking your own copy of the repo (if you are an external contributor). Make sure to [submit a PR](#step-3-submit-a-pull-request-pr-with-your-proposed-changes) after your changes are made.
 
-#### Step 1: Make Your Changes
+### Step 1: Make Your Changes
 
 1. **Editing an Existing Page:**
 
@@ -224,7 +224,7 @@ After creating or editing the page, you can add content in Markdown format. To p
 !!! warning
     Some features -- like admonition boxes (such as this one), tabs, and cards -- are specific to [mkdocs material](https://squidfunk.github.io/mkdocs-material/reference/) and will not be rendered correctly in the GitHub preview. You can preview your changes in your browser locally (before committing) only by following the [Advanced Workflow](#advanced-workflow-for-extensive-changes)
 
-#### Step 2: Commit Changes to a Temporary Branch
+### Step 2: Commit Changes to a Temporary Branch
 
 1. Once edits are complete, click **Commit changes**.
 2. In the pop-up window, enter a **commit message** and a short **description** of your changes.
@@ -254,7 +254,7 @@ If you need to make additional edits related to the same update (e.g., creating 
 !!! note "Adding Multiple Commits to a Single PR"
     Any commits you make to `yourname-patch-1` will automatically be included in the same pull request linked to this branch, which keeps all related changes in one place for easy review.
 
-#### Step 3: Submit a Pull Request (PR) with Your Proposed Changes
+### Step 3: Submit a Pull Request (PR) with Your Proposed Changes
 
 1. In the "Open a pull request" page, add a **descriptive title** and a **summary** of your changes.
 2. On the right side, assign an admin reviewer (currently [@costantinoai](https://github.com/costantinoai)).
