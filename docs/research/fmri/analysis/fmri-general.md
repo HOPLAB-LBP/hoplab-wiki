@@ -7,6 +7,18 @@ You should land on this page after collecting your fMRI data and [converting it 
 
 ---
 
+## Quick Links to Resources
+
+These resources provide essential information and tutorials that can be consulted before or during your journey into SPM and fMRI analysis:
+
+- [SPM Online Documentation - fMRI Tutorials](https://www.fil.ion.ucl.ac.uk/spm/docs/tutorials/fmri/): A very nice set of tutorials for functional MRI analysis using Statistical Parametric Mapping (SPM).
+- [fMRI Prep and Analysis with Andrew Jahn](https://www.youtube.com/@AndrewJahn): A ( _The_) YouTube channel offering tutorials on fMRI preprocessing and analysis, covering various aspects of neuroimaging.
+- [SPM Programming Introduction](https://en.wikibooks.org/wiki/SPM/Programming_intro): An introduction to programming with SPM.
+- [SPM Manual](https://www.fil.ion.ucl.ac.uk/spm/doc/manual.pdf): The official SPM manual, providing in-depth information on all aspects of SPM, from installation to advanced analysis techniques.
+- [Introduction to SPM by Karl Friston](https://www.fil.ion.ucl.ac.uk/spm/doc/intro/): A brief guide to statistical parametric mapping, adapted from K. Friston’s 2003 introductory notes.
+
+---
+
 ## How to Store Raw Data
 
 To avoid errors during BIDS conversion, store the raw data (e.g., data collected from the scanner, behavioral measures, eye-tracking) with the following folder structure:
