@@ -42,6 +42,7 @@ Welcome to the landing page for all things related to functional MRI (fMRI) in o
 
 Here are some helpful links to external resources for fMRI data analysis, tools, and tutorials:
 
+- [SPM online documentation - fMRI tutorials](https://www.fil.ion.ucl.ac.uk/spm/docs/tutorials/fmri/)
 - [fMRI Prep and Analysis with Andrew Jahn](https://www.youtube.com/@AndrewJahn)
 - [Nilearn](https://nilearn.github.io/) for neuroimaging in Python
 - [SPM Programming Introduction](https://en.wikibooks.org/wiki/SPM/Programming_intro)
