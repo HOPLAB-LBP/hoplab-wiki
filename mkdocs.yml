@@ -46,7 +46,8 @@ nav:
     - Eye-tracking:
       - research/eyetracking/index.md
     - Neural Networks:
-      - research/dnn/index.md      
+      - research/dnn/index.md
+      - research/dnn/test.md
   - Science outreach: outreach.md
   - Contribute: contribute.md
 #  - Tasks List: tasks-list.md
