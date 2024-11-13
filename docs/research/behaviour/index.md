@@ -14,7 +14,7 @@ We hope this section helps you conduct your behavioural research with ease and p
 
     Learn how to prepare your experimental environment, including online and in-person setups.
 
-    [:octicons-arrow-right-24: View Experimental Setup Guide](experimental-setup.md)
+    [:octicons-arrow-right-24: View Experimental Setup Guide](experimental-setup/index.md)
 
 - :fontawesome-solid-users: **Participant Recruitment**
 
@@ -22,7 +22,7 @@ We hope this section helps you conduct your behavioural research with ease and p
 
     Find detailed information on recruiting participants, using the EMS system, and managing consent.
 
-    [:octicons-arrow-right-24: Participant Recruitment Guide](participants.md)
+    [:octicons-arrow-right-24: Participant Recruitment Guide](bh-participants.md)
 
 - :fontawesome-solid-file-signature: **Ethics Approval**
 
