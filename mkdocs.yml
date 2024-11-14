@@ -23,11 +23,13 @@ nav:
       - research/coding/index.md
     - Behaviour:
       - research/behaviour/index.md
-      - Find participants: research/behaviour/participants.md
-      - Set up your experiment: research/behaviour/experimental-setup.md
+      - Find participants: research/behaviour/bh-participants.md
+      - Set up your experiment: 
+        - research/behaviour/experimental-setup/index.md
+        - Online Experiments (Pavlovia): research/behaviour/experimental-setup/pavlovia.md
       - Behavioural tasks: 
-          - research/behaviour/task-scripts.md
-          - MDS task script: research/behaviour/task-scripts/MDS-task-script.md
+        - research/behaviour/bh-tasks/index.md
+        - MDS task: research/behaviour/bh-tasks/MDS-task-script.md
     - fMRI:
       - research/fmri/index.md
       - First steps: research/fmri/fmri-get-started.md
