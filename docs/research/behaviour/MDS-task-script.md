@@ -1,1 +1,0 @@
-Here you can find a link to our Teams channel. You can find original scripts, as well as functions and stimuli to run a visual similarity multi arrangement.

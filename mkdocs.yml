@@ -29,7 +29,7 @@ nav:
         - Online Experiments (Pavlovia): research/behaviour/experimental-setup/pavlovia.md
       - Behavioural tasks: 
         - research/behaviour/bh-tasks/index.md
-        - MDS task: research/behaviour/bh-tasks/MDS-task-script.md
+        - MDS task: research/behaviour/bh-tasks/mds-task.md
     - fMRI:
       - research/fmri/index.md
       - First steps: research/fmri/fmri-get-started.md

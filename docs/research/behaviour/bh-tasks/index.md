@@ -10,4 +10,12 @@ On this page, you can find the instructions of various task scripts that can be 
 
     Here you can find an inverse MDS task script to run a visual similarity multi arrangement.
 
-    [:octicons-arrow-right-24: View Inverse MDS task script](MDS-task-script.md)
+    [:octicons-arrow-right-24: View Inverse MDS task script](mds-task.md)
+
+- :fontawesome-solid-flask: **PLACEHOLDER**
+
+    ---
+
+    Coming soon!
+
+    [:octicons-arrow-right-24: [PLACEHOLDER]]()
