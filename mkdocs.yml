@@ -27,7 +27,7 @@ nav:
       - Set up your experiment: research/behaviour/experimental-setup.md
       - Behavioural tasks:
       - research/behaviour/task-scripts.md
-        - MDS task script: research/behaviour/task-scripts/MDS-task-script.md
+          - research/behaviour/task-scripts/MDS-task-script.md
     - fMRI:
       - research/fmri/index.md
       - First steps: research/fmri/fmri-get-started.md
