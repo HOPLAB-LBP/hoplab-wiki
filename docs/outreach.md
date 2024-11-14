@@ -1,4 +1,4 @@
-# Do great science and show it to the world 
+# Do great science and show it to the world
 
 (We'll start small and go bigger)
 
