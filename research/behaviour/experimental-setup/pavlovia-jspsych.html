@@ -938,6 +938,8 @@
       
         
       
+        
+      
     
     
       
@@ -1034,18 +1036,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-an-ideal-workflow" class="md-nav__link">
+  <a href="#learning-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      1. An ideal workflow
+      Learning resources
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-building-your-experiment" class="md-nav__link">
+  <a href="#the-ideal-workflow" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Building your experiment
+      The ideal workflow
     </span>
   </a>
   
@@ -1081,72 +1083,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_4" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../bh-tasks/index.html" class="md-nav__link ">
-              
-  
-  <span class="md-ellipsis">
-    Behavioural tasks
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_4_4" id="__nav_3_4_4_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            Behavioural tasks
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
               
                 
   
@@ -1154,11 +1090,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../bh-tasks/mds-task.html" class="md-nav__link">
+      <a href="bh-onsite.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    MDS task
+    On-site Experiments
   </span>
   
 
@@ -1171,6 +1107,27 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bh-tasks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Behavioural tasks
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1853,18 +1810,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-an-ideal-workflow" class="md-nav__link">
+  <a href="#learning-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      1. An ideal workflow
+      Learning resources
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-building-your-experiment" class="md-nav__link">
+  <a href="#the-ideal-workflow" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Building your experiment
+      The ideal workflow
     </span>
   </a>
   
@@ -1895,8 +1852,14 @@
 
 <h1 id="online-experiments-with-jspsych">Online experiments with jsPsych<a class="headerlink" href="#online-experiments-with-jspsych" title="Permanent link">&para;</a></h1>
 <p>This page guides you through setting up, managing, and troubleshooting experiments on Pavlovia using the <strong>jsPsych</strong> framework. Follow these steps and best practices to streamline your experiment creation and minimize errors.</p>
+<p>For ready-to-use example, please refer to the <a href="../bh-tasks.html">Behavioural Tasks</a> page.</p>
 <hr />
-<h2 id="1-an-ideal-workflow">1. An ideal workflow<a class="headerlink" href="#1-an-ideal-workflow" title="Permanent link">&para;</a></h2>
+<h2 id="learning-resources">Learning resources<a class="headerlink" href="#learning-resources" title="Permanent link">&para;</a></h2>
+<p>If you're unfamiliar with jsPsych, it's a good idea to start by learning some basics. </p>
+<p>There is plenty of documentation on the <a href="https://www.jspsych.org/v7/">main jsPsych page</a>. In particular, go through the <em>tutorial</em> section, which contains some very accessible, step-by-step instructions on how to build your script. </p>
+<p>You can also check out the content from Christophe Bossens' workshop on <a href="https://kuleuven.sharepoint.com/:p:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Behaviour/Experiment%20building/jspsych_workshop_christophe.pptx?d=w7d8cb68a430746bcb4b9bcb6ceddaf23&amp;csf=1&amp;web=1&amp;e=L9FXng">online experiments with jsPsych</a>.</p>
+<hr />
+<h2 id="the-ideal-workflow">The ideal workflow<a class="headerlink" href="#the-ideal-workflow" title="Permanent link">&para;</a></h2>
 <p>JsPsych offers a framework to write your experiment in javascript. While this might sound like extra complexity, as compared to using the Psychopy builder or to scripting your experiment in Python, it offers the significant advantage of being directly readable by any browser. The code for your experiment will be written in the <code>&lt;script&gt;</code> part of a regular <code>html</code> document, which can then be opened like any other webpage.</p>
 <p>A basic workflow that you might want to adopt when scripting your experiment is the following:</p>
 <ol>
@@ -1925,13 +1888,6 @@
 </div>
 </li>
 </ol>
-<h2 id="2-building-your-experiment">2. Building your experiment<a class="headerlink" href="#2-building-your-experiment" title="Permanent link">&para;</a></h2>
-<p>If you're still unfamiliar with jsPsych, it's a good idea to start by learning some basics. There is plenty of documentation on the <a href="https://www.jspsych.org/v7/">main jsPsych page</a>. In particular, go through the <em>tutorial</em> section, which contains some very accessible, step-by-step instructions on how to build your script. You can also check out the content from Christophe Bossens' workshop on <a href="https://kuleuven.sharepoint.com/:p:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Behaviour/Experiment%20building/jspsych_workshop_christophe.pptx?d=w7d8cb68a430746bcb4b9bcb6ceddaf23&amp;csf=1&amp;web=1&amp;e=L9FXng">online experiments with jsPsych</a>.</p>
-<p>Once you know your way around jsPsych, you can kick-start your coding by using another project as a template. Here are some ideas to begin from:</p>
-<ul>
-<li><a href="https://github.com/TimManiquet/mouse_tracker_template">Mouse tracker template</a>: with an advanced structure and template instructions, it's a good place to start for any project.</li>
-<li><a href="https://github.com/TimManiquet/jspsych-classification-task-template">Classification task template</a>: same layout, more basic task. A good starting point for categorisation tasks in particular.</li>
-</ul>
 
 
 
@@ -1952,7 +1908,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 15, 2024 11:24:23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 15, 2024 12:49:49</span>
   </span>
 
     
