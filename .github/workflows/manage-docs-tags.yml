@@ -311,6 +311,43 @@ jobs:
                   await processFile(file);
                 }
                 console.log('Finished processing all files');
+
+                // ***** New code starts here *****
+                console.log('Checking for issues with files that no longer exist');
+                const existingIssues = await github.paginate(github.rest.issues.listForRepo, {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  state: 'open',
+                  labels: ['doc-tags'],
+                  per_page: 100
+                });
+
+                // Create a Set of existing file paths for quick lookup
+                const existingFilesSet = new Set(files);
+
+                for (const issue of existingIssues) {
+                  // Extract the file path from the issue title "Tags in <file>"
+                  const fileMatch = issue.title.match(/^Tags in (.+)$/);
+                  if (fileMatch) {
+                    const filePath = fileMatch[1];
+                    if (!existingFilesSet.has(filePath)) {
+                      // File does not exist, close the issue
+                      console.log(`File ${filePath} does not exist. Closing issue #${issue.number}`);
+                      await github.rest.issues.update({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        issue_number: issue.number,
+                        state: 'closed'
+                      });
+                    } else {
+                      console.log(`File ${filePath} exists. Issue #${issue.number} remains open`);
+                    }
+                  } else {
+                    console.log(`Could not extract file path from issue title: ${issue.title}`);
+                  }
+                }
+                // ***** New code ends here *****
+
               } catch (error) {
                 console.error(`Workflow failed: ${error.message}`);
               }
