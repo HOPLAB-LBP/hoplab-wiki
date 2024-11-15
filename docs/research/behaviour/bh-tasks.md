@@ -13,15 +13,15 @@ Templates are organized into two sections:
 
 <div class="grid cards" markdown>
 
-- :fontawesome-solid-flask: **Inverse MDS Task**  
+- :fontawesome-solid-flask: **Inverse MDS Task**
   
     ---
 
     Visual similarity multi-arrangement task, using inverse MDS.
 
-    See [Bracci et al., ??](PLACEHOLDER)
+    See [Bracci et al., 2015](https://www.jneurosci.org/content/35/38/12977)
 
-    [:octicons-arrow-right-24: [PLACEHOLDER]](#)
+    [:octicons-arrow-right-24: Learn more](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Behaviour/Inverse%20MDS?csf=1&web=1&e=pBDTz3)
 
 - :material-mouse:{ .lg .middle } **Mouse Tracker Task (on-site)**  
 
@@ -60,3 +60,5 @@ Templates are organized into two sections:
     [:octicons-arrow-right-24: Learn more](https://github.com/HOPLAB-LBP/jspsych-classification-task-template)
 
 </div>
+
+**TODO**: we should probably make a nice and clean repo with the inverse MDS code, rather than linking the Teams folder
