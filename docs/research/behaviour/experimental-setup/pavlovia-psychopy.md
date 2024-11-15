@@ -4,7 +4,7 @@ This page guides you through setting up, managing, and troubleshooting experimen
 
 ---
 
-## 1. Uploading to Pavlovia
+## Uploading to Pavlovia
 
 Follow the steps below to successfully upload your experiment to Pavlovia.
 
@@ -30,7 +30,7 @@ More information can be found on the PsychoPy website on [this page](https://www
 
 ---
 
-## 2. Avoiding Errors in Pavlovia
+## Avoiding Errors in Pavlovia
 
 Here are some common pitfalls and best practices to prevent errors when setting up experiments.
 
@@ -132,7 +132,7 @@ Array.prototype.count = function(value) {
 
 ---
 
-## 3. Using Movie Stimuli
+## Using Movie Stimuli
 
 Pavlovia supports standard video formats, such as **.mp4**. If your videos are in a different format, convert them using free software like **Handbrake**.
 
@@ -146,13 +146,13 @@ Pavlovia supports standard video formats, such as **.mp4**. If your videos are i
 
 ---
 
-## 4. Rest Trials
+## Rest Trials
 
 To introduce rest trials or breaks, add a code snippet under **Each Frame**. For specific approaches, refer to [this guide](https://discourse.psychopy.org/t/pause-trial-does-not-work-online-pavlovia/13379/5) and [this](https://discourse.psychopy.org/t/take-a-break-works-locally-but-not-online/11785/22).
 
 ---
 
-## 5. Text Stimuli
+## Text Stimuli
 
 ### Adjusting Text for Screen Display
 
@@ -166,13 +166,13 @@ To introduce rest trials or breaks, add a code snippet under **Each Frame**. For
 
 ---
 
-## 6. Informed Consent
+## Informed Consent
 
 For setting up informed consent forms for online experiments, refer to [this guide on informed consent](https://www.psychopy.org/online/informed-consent.html).
 
 ---
 
-## 7. Images
+## Images
 
 Make sure all image files are in the **html > Resources** directory. Missing files will cause a resource error on Pavlovia.
 
@@ -180,7 +180,7 @@ To ensure consistent display sizes across different screens, follow these [image
 
 ---
 
-## 8. Language Selection and Conditional Loops
+## Language Selection and Conditional Loops
 
 ### Implementing Language Selection
 
@@ -198,7 +198,7 @@ To ensure consistent display sizes across different screens, follow these [image
 
 ---
 
-## 9. Cellphone Detection
+## Cellphone Detection
 
 To prevent participants from accessing the experiment on mobile devices, use this **JS-only** code snippet at the start of the experiment:
 
