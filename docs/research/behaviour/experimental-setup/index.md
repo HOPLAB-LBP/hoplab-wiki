@@ -25,10 +25,7 @@ Here, you'll find resources and instructions for designing and conducting both o
     ---
 
     Information on conducting in-person behavioral studies, from setting up equipment to managing participants and data collection.  
-    _Coming soon!_
 
-    [:octicons-arrow-right-24: [PLACEHOLDER]](#)
+    [:octicons-arrow-right-24: [PLACEHOLDER]](bh-onsite.md)
 
 </div>
-
-TODO: we need to add more info and quick links to resources.
