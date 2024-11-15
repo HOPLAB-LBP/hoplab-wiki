@@ -28,9 +28,8 @@ nav:
         - research/behaviour/experimental-setup/index.md
         - Online Experiments (jsPsych): research/behaviour/experimental-setup/pavlovia-jspsych.md
         - Online Experiments (PsychoPy): research/behaviour/experimental-setup/pavlovia-psychopy.md
-      - Behavioural tasks: 
-        - research/behaviour/bh-tasks/index.md
-        - MDS task: research/behaviour/bh-tasks/mds-task.md
+        - On-site Experiments: research/behaviour/experimental-setup/bh-onsite.md
+      - Behavioural tasks: research/behaviour/bh-tasks.md
     - fMRI:
       - research/fmri/index.md
       - First steps: research/fmri/fmri-get-started.md
