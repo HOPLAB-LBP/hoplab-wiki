@@ -1,4 +1,4 @@
-# Pavlovia Experiment Guide
+# Online experiments with Psychopy
 
 This page guides you through setting up, managing, and troubleshooting experiments on Pavlovia using the **Psychopy Builder**. Follow these steps and best practices to streamline your experiment creation and minimize errors.
 

@@ -4,13 +4,22 @@ Here, you'll find resources and instructions for designing and conducting both o
 
 <div class="grid cards" markdown>
 
-- :material-web:{ .lg .middle } __Online Experiments with Pavlovia__
+- :material-web:{ .lg .middle } __Online Experiments with Psychopy__
 
     ---
 
-    Instructions for designing and deploying online behavioral experiments on Pavlovia, including steps for setup, participant interaction, and data management.
+    Instructions for designing and deploying online behavioral experiments designed with **Psychopy** on Pavlovia, including steps for setup, participant interaction, and data management.
 
-    [:octicons-arrow-right-24: View Pavlovia guide](pavlovia.md)
+    [:octicons-arrow-right-24: View Psychopy guide](pavlovia-psychopy.md)
+
+
+- :material-code-tags:{ .lg .middle } __Online Experiments with jsPsych__
+
+    ---
+
+    Instructions for designing and deploying online behavioral experiments designed with **jsPsych** on Pavlovia. Optimal workflow, testing and publishing, including links to relevant resources.
+
+    [:octicons-arrow-right-24: View jsPsych guide](pavlovia-jspsych.md)
 
 - :material-account-group:{ .lg .middle } __In-Person Experiments__
 
