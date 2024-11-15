@@ -26,7 +26,8 @@ nav:
       - Find participants: research/behaviour/bh-participants.md
       - Set up your experiment: 
         - research/behaviour/experimental-setup/index.md
-        - Online Experiments (Pavlovia): research/behaviour/experimental-setup/pavlovia.md
+        - Online Experiments (jsPsych): research/behaviour/experimental-setup/pavlovia-jspsych.md
+        - Online Experiments (PsychoPy): research/behaviour/experimental-setup/pavlovia-psychopy.md
       - Behavioural tasks: 
         - research/behaviour/bh-tasks/index.md
         - MDS task: research/behaviour/bh-tasks/mds-task.md
