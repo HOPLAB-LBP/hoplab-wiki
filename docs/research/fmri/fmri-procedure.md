@@ -9,7 +9,7 @@ For a quick overview of all the steps on the day of a scanning section, please c
 The MR8 suite houses a **Philips Ingenia** scanner with a 32-channel head coil, located in MR suite E408 ([map](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/Planning%20a%20scan%20session/Directions2MR8.docx?d=we6f6a1c73e5a42e3a01e98a8f0169e10&csf=1&web=1&e=GKJ4lb)). Detailed scanner specifications can be found in the [manual](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Scanner%20info%20%26%20safety/Manual_Philips-MR8?csf=1&web=1&e=1Bh0eI).
 
 !!! info "Important Notes"
-    - There is no cell phone service inside the MR suite. Use the control room phone for external calls (dial `0` before the number).
+    - There is no cell phone service inside the MR suite. Use the control room phone for external calls (pick up the phone, dial `0` and wait a bit, then write the full number).
     - **After 6 pm and on weekends**, two certified MR users (MRRUs) are required to run a session. More details are available in the [Safety Rules & Procedures](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AAATYJes74w8KvI0OEOd1MmYa?e=5&preview=Safety+Rules++Procedures+Research+MRI+UZL-KUL+v3.2.pdf).
     - You can find relevant phone numbers to call for urgent questions as well as usernames and passwords of the PCs in the scan console room in [this file](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/Contact%20information,%20usernames%20and%20passwords.docx?d=w5f0acba0431d45eebb844daf31531222&csf=1&web=1&e=0dXkhV) in the Hoplab Teams folder.
 
