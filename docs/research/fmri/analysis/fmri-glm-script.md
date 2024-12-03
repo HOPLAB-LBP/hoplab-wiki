@@ -602,6 +602,13 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
                 error('SPM.mat file not found in the specified output directory.');
             end
 
+
+            %% Save Boxcar plot and design matrix of estimated model
+            SPMstruct = load(spmMatPath);
+
+            plotBoxcarAndHRFResponses(SPMstruct, outPath)
+            saveSPMDesignMatrix(SPMstruct, outPath)
+
             %% RUN BATCH 3 (CONTRASTS)
 
             % Define the path to the SPM.mat file in the batch structure for contrast estimation.
@@ -622,6 +629,34 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     fprintf('Setting contrasts...\n');
     spm_jobman('run', matlabbatch(3));
     fprintf('DONE!\n');
+
+    %% Save Contrast Plots
+    % Thresholds for statistical analysis
+    thresholds = {
+        0.001, ...
+        0.01, ...
+        0.05 ...
+        };
+
+    % Iterate over contrasts to generate plots
+    for constrastIdx = 1:length(selectedTasks(taskIndex).contrasts)
+
+        % Iterate over thresholds to generate plots
+        for thresholdIndex = 1:length(thresholds)
+
+            % Generate and Save Contrast Overlay Images
+
+            % Set crosshair coordinates (modify if needed)
+            crossCoords = [40, -52, -18]; % FFA. Change as needed.
+
+            % Set the index of the contrast to display (modify if needed)
+            spmContrastIndex = constrastIdx;
+
+            % Call the function to generate and save contrast overlay images
+            generateContrastOverlayImages(spmMatPath, outPath, fmriprepRoot, subjectName, pipelineStr, thresholds{thresholdIndex}, spmContrastIndex, crossCoords);
+
+        end
+    end
     end
     %% SAVE SCRIPT
 
@@ -630,6 +665,375 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     script_outdir = fullfile(outPath,'spmGLMautoContrast.m'); % Set destination path for script copy.
     currentfile = strcat(FileNameAndLocation, '.m'); % Get filename with extension.
     copyfile(currentfile, script_outdir); % Copy script to output directory.
+    end
+    ```
+
+??? example "generateContrastOverlayImages.m"
+    ```matlab linenums="1"
+    function generateContrastOverlayImages(spmMatPath, outputPath, fmriprepRoot, subjectName, pipelineStr, thresholdValue, spmContrastIndex, crossCoords)
+    % GENERATECONTRASTOVERLAYIMAGES Generates and saves contrast overlay images for specified thresholds
+    %
+    % This function loads the SPM.mat file, sets up the xSPM structure for the specified contrast,
+    % and generates overlay images on the anatomical image. The overlay images are saved to the output directory.
+    %
+    % Inputs:
+    %   spmMatPath        - String, path to the SPM.mat file
+    %   outputPath        - String, output directory where images will be saved
+    %   fmriprepRoot      - String, root directory of fmriprep outputs
+    %   subjectName       - String, subject identifier (e.g., 'sub-01')
+    %   pipelineStr       - String, representation of the denoising pipeline
+    %   thresholdValue         - Numeric threshold to use for generating images
+    %   spmContrastIndex  - Integer, index of the contrast in SPM.xCon to use (default is 1)
+    %   crossCoords       - Vector [x, y, z], coordinates to set the crosshair (default is [40, -52, -18])
+    %
+    % Outputs:
+    %   None (overlay images are saved to the output directory)
+    %
+    % Usage:
+    %   generateContrastOverlayImages(spmMatPath, outputPath, fmriprepRoot, subjectName, pipelineStr, thresholds);
+    %
+    % Notes:
+    %   - The function assumes that SPM and SPM12 toolboxes are properly set up.
+    %   - The function handles any errors during the generation of xSPM and provides informative messages.
+    %
+    % Example:
+    %   generateContrastOverlayImages('/path/to/SPM.mat', '/output/dir', '/fmriprep/root', 'sub-01', 'GS-1_HMP-6', {0.001, 0.01}, 1, [40, -52, -18]);
+
+    if nargin < 8
+        crossCoords = [40, -52, -18]; % Default crosshair coordinates
+    end
+    if nargin < 7
+        spmContrastIndex = 1; % Default contrast index
+    end
+
+    % Load SPM.mat to access contrast data
+    fprintf('Loading SPM.mat from %s to process contrasts...\n', spmMatPath);
+    load(spmMatPath, 'SPM');
+
+    % Verify the contrast index is valid
+    if spmContrastIndex > numel(SPM.xCon)
+        error('Invalid contrast index. Ensure the index is within the range of defined contrasts.');
+    end
+
+    % Get the contrast name from SPM.xCon
+    contrastNameSPM = SPM.xCon(spmContrastIndex).name;
+
+    % Iterate over thresholds to generate and save images
+    % Prepare xSPM structure for results
+    contrastName = sprintf('%s_%s_%g_%s', subjectName, pipelineStr, thresholdValue, contrastNameSPM);
+    xSPM = struct();
+    xSPM.swd = outputPath; % Directory where SPM.mat is saved
+    xSPM.title = contrastName;
+    xSPM.Ic = spmContrastIndex; % Contrast index
+    xSPM.Im = []; % Mask (empty means no mask)
+    xSPM.pm = []; % P-value masking
+    xSPM.Ex = []; % Mask exclusion
+    xSPM.u = thresholdValue; % Threshold (uncorrected p-value)
+    xSPM.k = 0; % Extent threshold (number of voxels)
+    xSPM.STAT = 'T'; % Use T-statistics
+    xSPM.thresDesc = 'none'; % No threshold description
+
+    % Generate results without GUI
+    [SPM, xSPM] = spm_getSPM(xSPM);
+
+    xSPM.thresDesc = 'none'; % No threshold description
+
+    % Display results
+    [hReg, xSPM] = spm_results_ui('setup', xSPM);
+
+    % Set crosshair coordinates
+    spm_results_ui('SetCoords', crossCoords);
+
+    % Overlay activations on anatomical image
+    sectionImgPath = fullfile(fmriprepRoot, subjectName, 'anat', [subjectName, '_space-MNIPediatricAsym_cohort-1_res-2_desc-preproc_T1w.nii']);
+    if exist(sectionImgPath, 'file')
+        fprintf('Overlaying activations for threshold %g...\n', thresholdValue);
+        spm_sections(xSPM, hReg, sectionImgPath);
+
+        % Save the overlay image
+        overlayImgPath = fullfile(outputPath, sprintf('%s.png', contrastName));
+        spm_figure('GetWin', 'Graphics');
+        print('-dpng', overlayImgPath);
+        fprintf('Overlay saved as %s\n', overlayImgPath);
+    else
+        warning('Anatomical image not found at %s. Skipping overlay.', sectionImgPath);
+    end
+
+    % Close graphics window
+    spm_figure('Close', 'Graphics');
+    end
+    ```
+
+??? example "plotBoxcarAndHRFResponses.m"
+    ```matlab  linenums="1"
+    function plotBoxcarAndHRFResponses(SPMstruct, outDir)
+    % plotBoxcarAndHRFResponses Visualize boxcar functions and convolved HRF responses per condition and session.
+    %
+    % This function generates a comprehensive visualization of the boxcar functions
+    % and their corresponding convolved hemodynamic response functions (HRFs) for
+    % each condition across all sessions, as defined in the SPM.mat structure.
+    %
+    % Usage:
+    %   plotBoxcarAndHRFResponses(SPM);
+    %   plotBoxcarAndHRFResponses(SPM, outDir);
+    %
+    % Inputs:
+    %   - SPM: A struct loaded from an SPM.mat file containing experimental design
+    %          and statistical model parameters.
+    %   - outDir: (Optional) A string specifying the directory to save the plot. If
+    %             provided, the plot is saved as a PNG file in the specified directory.
+    %
+    % Output:
+    %   - A figure is displayed with subplots representing each condition (row)
+    %     and session (column). Each subplot contains the boxcar function and the
+    %     convolved HRF for the corresponding condition and session.
+    %
+    % Example:
+    %   % Load the SPM.mat file
+    %   load('SPM.mat');
+    %
+    %   % Call the function to visualize
+    %   plotBoxcarAndHRFResponses(SPM);
+    %
+    %   % Save the plot to a directory
+    %   plotBoxcarAndHRFResponses(SPM, 'output_directory/');
+    %
+    % Notes:
+    %   - This function assumes that the SPM structure contains the following:
+    %     * SPM.Sess: Session-specific condition information.
+    %     * SPM.xY.RT: Repetition time (TR) in seconds.
+    %     * SPM.nscan: Number of scans per session.
+    %     * SPM.xX.X: Design matrix containing the convolved regressors.
+    %     * SPM.xX.name: Names of the columns in the design matrix.
+    %   - Ensure that the SPM.mat file corresponds to your specific fMRI data analysis.
+    %
+
+    % Get the number of sessions
+    SPM = SPMstruct.SPM;
+    num_sessions = length(SPM.Sess);
+
+    % Get the repetition time (TR)
+    TR = SPM.xY.RT;
+
+    % Get the number of scans per session
+    nscans = SPM.nscan;
+
+    % Calculate the cumulative number of scans to determine session boundaries
+    session_boundaries = [0 cumsum(nscans)];
+
+    % Determine the maximum number of conditions across all sessions
+    max_num_conditions = max(arrayfun(@(x) length(x.U), SPM.Sess));
+
+    % Create a new figure for plotting
+    figure;
+
+    % Adjust the figure size for better visibility
+    set(gcf, 'Position', [100, 100, 1400, 800]);
+
+    % Initialize subplot index
+    subplot_idx = 1;
+
+    % Define line styles and colors for boxcar and convolved HRF
+    boxcar_line_style = '-';
+    boxcar_line_color = [0, 0.4470, 0.7410]; % MATLAB default blue
+    boxcar_line_width = 1.5;
+
+    hrf_line_style = '-';
+    hrf_line_color = [0.8500, 0.3250, 0.0980]; % MATLAB default red
+    hrf_line_width = 1.5;
+
+    % Loop over each condition (regressor)
+    for cond_idx = 1:max_num_conditions
+        % Loop over each session
+        for sess_idx = 1:num_sessions
+            % Create a subplot for the current condition and session
+            subplot(max_num_conditions, num_sessions, subplot_idx);
+
+            % Check if the current session has the current condition
+            if length(SPM.Sess(sess_idx).U) >= cond_idx
+                % Extract the condition structure
+                U = SPM.Sess(sess_idx).U(cond_idx);
+
+                % Get the condition name
+                condition_name = U.name{1};
+
+                % Get the onsets and durations of the events
+                onsets = U.ons;
+                durations = U.dur;
+
+                % Get the number of scans (time points) in the current session
+                num_scans = nscans(sess_idx);
+
+                % Create the time vector for the current session
+                time_vector = (0:num_scans - 1) * TR;
+
+                % Initialize the boxcar function for the current session
+                boxcar = zeros(1, num_scans);
+
+                % Build the boxcar function based on onsets and durations
+                for i = 1:length(onsets)
+                    onset_idx = floor(onsets(i) / TR) + 1;
+                    offset_idx = ceil((onsets(i) + durations(i)) / TR);
+                    onset_idx = max(onset_idx, 1);
+                    offset_idx = min(offset_idx, num_scans);
+                    boxcar(onset_idx:offset_idx) = 1;
+                end
+
+                % Find the rows corresponding to the current session in the design matrix
+                session_row_start = session_boundaries(sess_idx) + 1;
+                session_row_end = session_boundaries(sess_idx + 1);
+                session_rows = session_row_start:session_row_end;
+
+                % Find the columns in the design matrix corresponding to the current condition
+                prefix = sprintf('Sn(%d) %s', sess_idx, condition_name);
+                column_indices = find(strncmp(SPM.xX.name, prefix, length(prefix)));
+
+                % Extract the convolved regressor(s) for the current condition and session
+                convolved_regressor = sum(SPM.xX.X(session_rows, column_indices), 2);
+
+                % Plot the boxcar function
+                plot(time_vector, boxcar, 'LineStyle', boxcar_line_style, 'Color', boxcar_line_color, 'LineWidth', boxcar_line_width);
+                hold on;
+
+                % Plot the convolved HRF response
+                plot(time_vector, convolved_regressor, 'LineStyle', hrf_line_style, 'Color', hrf_line_color, 'LineWidth', hrf_line_width);
+                hold off;
+
+                % Improve the appearance of the plot
+                grid on;
+                xlim([0, max(time_vector)]);
+                ylim_min = min(min(boxcar), min(convolved_regressor)) - 0.1;
+                ylim_max = max(max(boxcar), max(convolved_regressor)) + 0.1;
+                ylim([ylim_min, ylim_max]);
+                set(gca, 'FontSize', 8);
+
+                % Add condition names as y-labels on the first column
+                if sess_idx == 1
+                    ylabel(condition_name, 'FontSize', 10, 'Interpreter', 'none');
+                else
+                    set(gca, 'YTick', []);
+                    set(gca, 'YTickLabel', []);
+                end
+
+                % Add x-labels on the bottom row
+                if cond_idx == max_num_conditions
+                    xlabel('Time (s)', 'FontSize', 10);
+                else
+                    set(gca, 'XTick', []);
+                    set(gca, 'XTickLabel', []);
+                end
+
+                % Add session titles on the first row
+                if cond_idx == 1
+                    title(sprintf('Session %d', sess_idx), 'FontSize', 12);
+                end
+            else
+                % If the condition is not present in the session
+                axis off;
+                text(0.5, 0.5, 'Not Present', 'HorizontalAlignment', 'center', 'FontSize', 12);
+
+                % Add condition names as y-labels on the first column
+                if sess_idx == 1
+                    ylabel(['Condition: ' num2str(cond_idx)], 'FontSize', 10, 'Interpreter', 'none');
+                end
+
+                % Add session titles on the first row
+                if cond_idx == 1
+                    title(sprintf('Session %d', sess_idx), 'FontSize', 12);
+                end
+            end
+
+            % Increment the subplot index
+            subplot_idx = subplot_idx + 1;
+        end
+    end
+
+    % Add an overall title for the figure
+    sgtitle('Boxcar and Convolved HRF Responses per Condition and Session', 'FontSize', 16);
+
+    % Save the plot as PNG if outDir is specified
+    if nargin > 1 && ~isempty(outDir)
+        if ~isfolder(outDir)
+            mkdir(outDir); % Create the directory if it doesn't exist
+        end
+        % Create a file name based on the current date and time
+        timestamp = datestr(now, 'yyyy-mm-dd_HH-MM-SS');
+        file_name = fullfile(outDir, ['BoxcarHRFResponses_' timestamp '.png']);
+        saveas(gcf, file_name);
+        fprintf('Figure saved to: %s\n', file_name);
+    end
+    close(gcf);
+
+    end
+    ```
+
+??? example "saveSPMDesignMatrix.m"
+    ```matlab  linenums="1"
+    function saveSPMDesignMatrix(SPMstruct, outDir)
+    % saveSPMDesignMatrix Visualize and optionally save the design matrix from SPM.
+    %
+    % This function uses SPM's internal `spm_DesRep` function to display the design
+    % matrix and optionally saves the resulting figure as a PNG file.
+    %
+    % Usage:
+    %   saveSPMDesignMatrix(SPMstruct);
+    %   saveSPMDesignMatrix(SPMstruct, outDir);
+    %
+    % Inputs:
+    %   - SPMstruct: A struct loaded from an SPM.mat file containing experimental
+    %                design and statistical model parameters.
+    %   - outDir: (Optional) A string specifying the directory to save the figure.
+    %             If provided, the design matrix is saved as a PNG file in the specified
+    %             directory.
+    %
+    % Output:
+    %   - A figure is displayed showing the design matrix as produced by SPM.
+    %   - If `outDir` is provided, the design matrix is saved as a PNG file in the
+    %     specified directory.
+    %
+    % Example:
+    %   % Load the SPM.mat file
+    %   load('SPM.mat');
+    %
+    %   % Display the design matrix
+    %   saveSPMDesignMatrix(SPMstruct);
+    %
+    %   % Save the design matrix to a directory
+    %   saveSPMDesignMatrix(SPMstruct, 'output_directory/');
+    %
+    % Notes:
+    %   - Ensure that the SPM.mat file corresponds to your specific fMRI data analysis.
+    %   - This function depends on the SPM toolbox being properly set up and initialized.
+    %
+
+    SPM = SPMstruct.SPM;
+
+    % Check if the design matrix exists
+    if ~isfield(SPM, 'xX') || ~isfield(SPM.xX, 'X') || isempty(SPM.xX.X)
+        error('The SPM structure does not contain a valid design matrix.');
+    end
+
+    % Use SPM's spm_DesRep function to display the design matrix
+    spm_DesRep('DesMtx', SPM.xX);
+
+    % Get the current figure handle (SPM's design matrix figure)
+    figHandle = gcf;
+
+    % Save the figure as a PNG if outDir is specified
+    if nargin > 1 && ~isempty(outDir)
+        if ~isfolder(outDir)
+            mkdir(outDir); % Create the directory if it doesn't exist
+        end
+        % Create a file name based on the current date and time
+        timestamp = datestr(now, 'yyyy-mm-dd_HH-MM-SS');
+        file_name = fullfile(outDir, ['SPMDesignMatrix_' timestamp '.png']);
+        saveas(figHandle, file_name);
+        fprintf('Design matrix saved to: %s\n', file_name);
+    end
+
+    % Close the figure after saving
+    close(figHandle);
+
     end
     ```
 
