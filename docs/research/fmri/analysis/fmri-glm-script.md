@@ -2,7 +2,6 @@
 
 You should land on this page after having collected your fMRI data, [converted it to BIDS](./fmri-bids-conversion.md) and [preprocessed it](./fmri-prepocessing-qa.md). Your goal now is to model the BOLD activity with a Generalised Linear Model (GLM), in order to obtain the beta values on which to apply further analyses. Here, we do so using SPM (Statistical Parametric Mapping), and by **scripting** the steps taken by SPM. While the SPM GUI makes analysis accessible, scripting with `matlabbatch` in MATLAB provides a reproducible, automated workflow. This guide introduces you to SPM scripting, from using the GUI to generate code snippets to creating a full multi-step `matlabbatch` job for SPM.
 
-
 You should start here if you are familiar with SPM and what it does. If you feel like the analysis steps are still unclear to you, take some time to learn them by using the GUI first. Check out [First-level analysis - GUI](./fmri-glm.md).
 
 ---
@@ -800,10 +799,10 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     %
     % Notes:
     %   - This function assumes that the SPM structure contains the following:
-    %     * SPM.Sess: Session-specific condition information.
-    %     * SPM.xY.RT: Repetition time (TR) in seconds.
-    %     * SPM.nscan: Number of scans per session.
-    %     * SPM.xX.X: Design matrix containing the convolved regressors.
+    %     *SPM.Sess: Session-specific condition information.
+    %* SPM.xY.RT: Repetition time (TR) in seconds.
+    %     *SPM.nscan: Number of scans per session.
+    %* SPM.xX.X: Design matrix containing the convolved regressors.
     %     * SPM.xX.name: Names of the columns in the design matrix.
     %   - Ensure that the SPM.mat file corresponds to your specific fMRI data analysis.
     %
