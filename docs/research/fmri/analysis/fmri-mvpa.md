@@ -5,7 +5,10 @@
 This page shows how to use **CoSMoMVPA for Multivariate Pattern Analysis (MVPA) and Representational Similarity Analysis (RSA)** in fMRI research. It assumes that you understand basic fMRI concepts and want to
 learn how to go from raw data to advanced analyses that reveal the [structure of neural representations](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGV4dWl5cmRhaGdycGN1dWlhMDhwdjhtZWRodHI5eWtuc3U2Y2hwbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lXu72d4iKwqek/giphy.gif).
 
-The full code example, along with all the needed files to run this script, can be found in [this repository](https://github.com/costantinoai/cosmomvpa_tutorial) (click on the `<>Code button` --> `Download ZIP`). The only pre-requisite is that you have **MATLAB installed on your system**. Some of the code used here (e.g., for plotting or clustering data) are not shipped with CoSMoMVPA, and can be found in the `utils` folder of the repository.
+!!! tip "Download full code example"
+    The full code example, along with all the needed files to run this script, can be found in [this repository](https://github.com/costantinoai/cosmomvpa_tutorial) (click on the `<>Code button` --> `Download ZIP`). The only pre-requisite is that you have **MATLAB installed on your system**.
+
+    Some of the code used here (e.g., for plotting or clustering data) is **not shipped with CoSMoMVPA**, and can be found in the `utils` folder of the repository.
 
 ---
 
@@ -232,7 +235,7 @@ plot_rdm_full(rdms(3).dsm, labelNames, rdms(3).description);
 
 We now fit a linear model that predicts the data RDM from these model RDMs.
 
-The regression coefficients indicate how strongly each model explains the observed data’s representational geometry.
+The regression coefficients indicate how strongly each model explains the observed data's representational geometry.
 
 ```matlab
 % Set up RSA regression
@@ -258,7 +261,7 @@ plot_rdms_and_coefficients(dataRdm, rdms, labels, result.samples, roiName, outDi
 
 ## Full Code Example: Comparison with V1
 
-Now that we have the full picture, let's re-run our full code, but this time we only see the main results for the other synthetic ROI: V1.
+Now that we have the full picture, let's re-run our full code, but this time we only see the main results for **the other synthetic ROI: V1**.
 
 ```matlab linenums="1"
 %% Setup
@@ -373,6 +376,6 @@ And the results:
 
 **What we learned**:
 
-- How to structure and preprocess fMRI data (BIDS, fMRIPrep, SPM) for MVPA and RSA.
-- How to decode category information using MVPA.
-- How to apply RSA to compare observed brain patterns to theoretical representational models.
+- How to **structure and preprocess fMRI data** (BIDS, fMRIPrep, SPM) for MVPA and RSA.
+- How to decode category information using **MVPA**.
+- How to **apply RSA** to compare observed brain patterns to theoretical representational models.
