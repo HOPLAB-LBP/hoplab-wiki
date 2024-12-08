@@ -2,7 +2,8 @@
 
 ## Overview
 
-This page shows how to use **CoSMoMVPA for Multivariate Pattern Analysis (MVPA) and Representational Similarity Analysis (RSA)** in fMRI research.
+This page shows how to use **CoSMoMVPA for Multivariate Pattern Analysis (MVPA) and Representational Similarity Analysis (RSA)** in fMRI research. It assumes that you understand basic fMRI concepts and want to
+learn how to go from raw data to advanced analyses that reveal the [structure of neural representations](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGV4dWl5cmRhaGdycGN1dWlhMDhwdjhtZWRodHI5eWtuc3U2Y2hwbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lXu72d4iKwqek/giphy.gif).
 
 The full code example, along with all the needed files to run this script, can be found in [this repository](https://github.com/costantinoai/cosmomvpa_tutorial) (click on the `<>Code button` --> `Download ZIP`). The only pre-requisite is that you have **MATLAB installed on your system**. Some of the code used here (e.g., for plotting or clustering data) are not shipped with CoSMoMVPA, and can be found in the `utils` folder of the repository.
 
