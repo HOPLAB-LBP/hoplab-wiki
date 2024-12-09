@@ -6,7 +6,7 @@ This page shows how to use **CoSMoMVPA for Multivariate Pattern Analysis (MVPA) 
 learn how to go from raw data to advanced analyses that reveal the [structure of neural representations](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGV4dWl5cmRhaGdycGN1dWlhMDhwdjhtZWRodHI5eWtuc3U2Y2hwbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lXu72d4iKwqek/giphy.gif).
 
 !!! tip "Download full code example"
-    The full code example, along with all the needed files to run this script, can be found in [this repository](https://github.com/costantinoai/cosmomvpa_tutorial) (click on `<>Code` --> `Download ZIP`). The only pre-requisite is that you have **MATLAB installed on your system**.
+    The full code example, along with all the needed files to run this script, can be found in [this repository](https://github.com/costantinoai/cosmomvpa_tutorial) (click on `<>Code` --> `Download ZIP`). The only pre-requisite is that you have **MATLAB and CoSMoMVPA installed on your system**.
 
     Some of the code used here (e.g., for plotting or clustering data) is **not shipped with CoSMoMVPA**, and can be found in the `utils` folder of the repository.
 
