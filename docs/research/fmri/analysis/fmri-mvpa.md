@@ -46,7 +46,7 @@ The goal is to investigate the **representational geometry** of two ROIs, V1 and
 - **Runs**: 10 runs/subject
 - **Categories** (8 total): Human face, Human body, Animal face, Animal body, Natural round object, Natural spiky object, Artificial round object, Artificial spiky object
 
-![flowchart](../../../assets/fmri_mvpa_data_flowchart.png)
+![flowchart](../../../assets/fmri_mvpa_categories_pretty.png)
 
 ---
 
@@ -137,7 +137,7 @@ disp(table(ds.sa.targets, ds.sa.labels));
 plot_activation_heatmap(ds, labelNames, roiName, outDir);
 ```
 
-![activation heatmap](../../../assets/fmri_mvpa_categories_pretty.png)
+![activation heatmap](../../../assets/fmri_mvpa_IT_Activation_Heatmap.png)
 
 ---
 
