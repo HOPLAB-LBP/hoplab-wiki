@@ -137,7 +137,7 @@ disp(table(ds.sa.targets, ds.sa.labels));
 plot_activation_heatmap(ds, labelNames, roiName, outDir);
 ```
 
-![activation heatmap](../../../assets/fmri_mvpa_IT_Activation_Heatmap.png)
+![activation heatmap](../../../assets/fmri_mvpa_categories_pretty.png)
 
 ---
 
