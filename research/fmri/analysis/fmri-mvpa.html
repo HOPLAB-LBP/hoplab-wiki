@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#multi-variate-analysis-mvparsa" class="md-skip">
+        <a href="#multi-variate-analysis-mvparsa-with-cosmomvpa" class="md-skip">
           Skip to content
         </a>
       
@@ -1429,6 +1429,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6. Multi-variate analysis
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="fmri-mvpa.html" class="md-nav__link md-nav__link--active">
         
   
@@ -1438,6 +1449,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-of-this-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose of This Tutorial
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-code-example-comparison-with-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Code Example: Comparison with V1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1755,6 +1830,59 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-of-this-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose of This Tutorial
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-code-example-comparison-with-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Code Example: Comparison with V1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1776,11 +1904,418 @@
   
 
 
-<h1 id="multi-variate-analysis-mvparsa">Multi-variate analysis (MVPA/RSA)<a class="headerlink" href="#multi-variate-analysis-mvparsa" title="Permanent link">&para;</a></h1>
+<h1 id="multi-variate-analysis-mvparsa-with-cosmomvpa">Multi-variate analysis (MVPA/RSA) with CoSMoMVPA<a class="headerlink" href="#multi-variate-analysis-mvparsa-with-cosmomvpa" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This page shows how to use <strong>CoSMoMVPA for Multivariate Pattern Analysis (MVPA) and Representational Similarity Analysis (RSA)</strong> in fMRI research. It assumes that you understand basic fMRI concepts and want to
+learn how to go from raw data to advanced analyses that reveal the <a href="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGV4dWl5cmRhaGdycGN1dWlhMDhwdjhtZWRodHI5eWtuc3U2Y2hwbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lXu72d4iKwqek/giphy.gif">structure of neural representations</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Download full code example</p>
+<p>The full code example, along with all the needed files to run this script, can be found in <a href="https://github.com/costantinoai/cosmomvpa_tutorial">this repository</a> (click on <code>&lt;&gt;Code</code> &rarr; <code>Download ZIP</code>). The only pre-requisite is that you have <strong>MATLAB installed on your system</strong>.</p>
+<p>Some of the code used here (e.g., for plotting or clustering data) is <strong>not shipped with CoSMoMVPA</strong>, and can be found in the <code>utils</code> folder of the repository.</p>
+</div>
+<hr />
+<h3 id="typical-pipeline-for-real-fmri-data">Typical Pipeline for Real fMRI Data<a class="headerlink" href="#typical-pipeline-for-real-fmri-data" title="Permanent link">&para;</a></h3>
+<p><img alt="pipeline_flowchart" src="../../../assets/fmri_mvpa_data_flowchart.png" /></p>
+<ol>
+<li><strong>Data Acquisition</strong>: Collect fMRI data as participants perform tasks or view stimuli from different categories.</li>
+<li><strong>BIDS Conversion</strong>: Convert raw data into the Brain Imaging Data Structure (BIDS) format. This standardization makes subsequent preprocessing and analysis much easier.</li>
+<li><strong>Preprocessing (fMRIPrep)</strong>: Use minimal preprocessing to preserve fine-grained voxel-level patterns. fMRIPrep performs standardized alignment and normalization without over-smoothing or aggressive denoising, both of which can destroy subtle patterns critical for MVPA.</li>
+<li><strong>GLM Estimation (SPM)</strong>:<ul>
+<li><strong>Beta images</strong>: One per condition (category) and run.</li>
+<li><strong>SPM.mat</strong>: Contains the experiment design and regression coefficients.</li>
+</ul>
+</li>
+<li><strong>Defining Regions of Interest (ROIs)</strong>:<ul>
+<li>Use anatomical or functional Regions of Interest (ROI) masks to focus on specific brain regions.</li>
+<li>Linear classifiers struggle with high-dimensional data — particularly when the number of features (voxels) are significantly higher than the number of observations (beta images), which is often the case with fMRI data. Therefore, restricting MVPA analyses to smaller ROIs is generally a good practice.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="purpose-of-this-tutorial">Purpose of This Tutorial<a class="headerlink" href="#purpose-of-this-tutorial" title="Permanent link">&para;</a></h2>
+<p>In this example, we will investigate the representational structure of <strong>simulated synthetic data</strong>. We will illustrate the (few) steps required to perform a multi-variate analysis on post GLM data (i.e., beta images produces by SPM).</p>
+<p>The goal is to investigate the <strong>representational geometry</strong> of two ROIs, V1 and IT, to determine what properties of the stimuli are represented in these areas.</p>
+<h3 id="what-we-will-do">What We Will Do<a class="headerlink" href="#what-we-will-do" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Generate synthetic fMRI-like data simulating responses in IT or V1.</li>
+<li>Perform <strong>MVPA (decoding)</strong> to see if the ROI can distinguish between multiple categories above chance.</li>
+<li>Conduct <strong>RSA</strong> to compare the observed representational geometry with theoretical model RDMs, revealing whether perceptual or categorical features dominate the neural patterns.</li>
+</ol>
+<h3 id="data-structure-synthetic">Data Structure (Synthetic)<a class="headerlink" href="#data-structure-synthetic" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>TODO:</strong>  populate this</li>
+<li><strong>Subject(s)</strong>: 1</li>
+<li><strong>Runs</strong>: 10 runs/subject</li>
+<li><strong>Categories</strong> (8 total): Human face, Human body, Animal face, Animal body, Natural round object, Natural spiky object, Artificial round object, Artificial spiky object</li>
+</ul>
+<p><img alt="flowchart" src="../../../assets/fmri_mvpa_data_flowchart.png" /></p>
+<hr />
+<h3 id="hypothesis">Hypothesis<a class="headerlink" href="#hypothesis" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>V1</strong>: Similarities are based on low-level perceptual features (e.g., round vs. spiky).</li>
+<li><strong>IT</strong>: Similarities are based on higher-level conceptual distinctions (e.g., human vs. animal, animate vs. inanimate, natural vs. artificial).</li>
 </ul>
 <hr />
+<h2 id="code">Code<a class="headerlink" href="#code" title="Permanent link">&para;</a></h2>
+<h3 id="1-setup">1. Setup<a class="headerlink" href="#1-setup" title="Permanent link">&para;</a></h3>
+<p>We set up the MATLAB environment, ensuring reproducibility and proper paths.</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c">% Clear workspace, close figures, and reset command window</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">clear</span><span class="w"> </span><span class="nb">all</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">close</span><span class="w"> </span><span class="s">all</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">clc</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c">% Set random seed for reproducibility</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">seed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">rng</span><span class="p">(</span><span class="n">seed</span><span class="p">);</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c">% Add paths to required functions</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">addpath</span><span class="p">(</span><span class="s">&quot;functions/&quot;</span><span class="p">);</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">outDir</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fullfile</span><span class="p">(</span><span class="nb">pwd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;results&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<hr />
+<h3 id="2-optional-loading-real-data-from-spm">2. (Optional) Loading Real Data from SPM<a class="headerlink" href="#2-optional-loading-real-data-from-spm" title="Permanent link">&para;</a></h3>
+<p>If we had real data, after preprocessing and GLM estimation, we could load it like this:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c">% Example (not run here):</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">spm_path</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;path_to_SPM.mat&#39;</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">mask_path</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;path_to_ROI_mask.nii&#39;</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">ds</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cosmo_fmri_dataset</span><span class="p">(</span><span class="n">spm_path</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;mask&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">mask_path</span><span class="p">);</span>
+</span></code></pre></div>
+<p>For this tutorial, we are skipping this step because we use synthetic data.</p>
+<hr />
+<h3 id="3-synthetic-data-generation">3. Synthetic Data Generation<a class="headerlink" href="#3-synthetic-data-generation" title="Permanent link">&para;</a></h3>
+<p>We generate synthetic data that mimics patterns in IT or V1. You can switch <code>roiName</code> between <code>"V1"</code> and <code>"IT"</code>.</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c">% Parameters for synthetic data generation</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">numCategories</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">numRuns</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">numSubjects</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">numRepetitions</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nb">size</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;normal&quot;</span><span class="p">;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c">% Choose ROI</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">roiName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;IT&quot;</span><span class="p">;</span><span class="w">  </span><span class="c">% For abstract, categorical representations</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c">% roiName = &quot;V1&quot;; % For low-level, perceptual representations</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">sigma</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.6</span><span class="p">;</span><span class="w"> </span><span class="c">% Data variability</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="c">% Generate synthetic dataset</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">ds</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">generate_clustered_dataset</span><span class="p">(</span><span class="n">numCategories</span><span class="p">,</span><span class="w"> </span><span class="n">numSubjects</span><span class="p">,</span><span class="w"> </span><span class="n">numRuns</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="n">numRepetitions</span><span class="p">,</span><span class="w"> </span><span class="n">sigma</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="nb">size</span><span class="p">);</span>
+</span></code></pre></div>
+<hr />
+<h3 id="4-inspecting-the-data">4. Inspecting the Data<a class="headerlink" href="#4-inspecting-the-data" title="Permanent link">&para;</a></h3>
+<p>Before proceeding, inspect the generated dataset:</p>
+<ul>
+<li><strong>Target-to-Label Mapping</strong>: Understand which category corresponds to which integer label.</li>
+<li><strong>Activation Heatmap</strong>: Visualize category-specific activity patterns.</li>
+</ul>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c">% Extract and display unique labels</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">labelNames</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">unique</span><span class="p">(</span><span class="n">ds</span><span class="p">.</span><span class="n">sa</span><span class="p">.</span><span class="n">labels</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;stable&#39;</span><span class="p">);</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Target to Label Mapping:&#39;</span><span class="p">);</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">disp</span><span class="p">(</span><span class="nb">table</span><span class="p">(</span><span class="n">ds</span><span class="p">.</span><span class="n">sa</span><span class="p">.</span><span class="n">targets</span><span class="p">,</span><span class="w"> </span><span class="n">ds</span><span class="p">.</span><span class="n">sa</span><span class="p">.</span><span class="n">labels</span><span class="p">));</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c">% Plot activation patterns</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">plot_activation_heatmap</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
+</span></code></pre></div>
+<p><img alt="activation heatmap" src="../../../assets/fmri_mvpa_IT_Activation_Heatmap.png" /></p>
+<hr />
+<h3 id="5-mvpa-classification-analysis">5. MVPA: Classification Analysis<a class="headerlink" href="#5-mvpa-classification-analysis" title="Permanent link">&para;</a></h3>
+<p>We use a simple Linear Discriminant Analysis (<strong>LDA</strong>) classifier with cross-validation to decode category information.</p>
+<p>The central idea is that <strong>if differences between categories are present, the classifier will be able to pick that signal up</strong>. When we use an MVPA classifier to brain data, we are testing whether the neural patterns (represented as voxel activity) for different categories contain distinct, systematic differences. If the brain region being analyzed encodes information about the categories in its activity patterns, the classifier will achieve accuracy above chance.</p>
+<p><img alt="brain pattern svm" src="../../../assets/fmri_mvpa_brain_patterns_svm.png" /></p>
+<p>In other words, the classifier looks at the activity from multiple voxels and tries to <strong>find consistent differences between patterns</strong> for different categories (e.g., cats vs. dogs). If those patterns are different enough, the classifier can "learn" to predict the category based on the brain activity by identifying separable representations in a high-dimensional space of neural activity.</p>
+<p>This works because the brain encodes information about what we see in these patterns—like a unique "signature" for each category. If the classifier succeeds, it shows that the brain region we're analyzing contains information relevant to distinguishing those categories.</p>
+<h4 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Partitioning</strong>: Divide the data into folds based on runs (e.g., leave-one-run-out).</li>
+<li><strong>Training &amp; Testing</strong>: Train on some runs, test on another run.</li>
+<li><strong>Evaluate Accuracy</strong>: Compare accuracy to chance (&#8539; = 12.5%).</li>
+</ol>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c">% Define the classifier</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">classifier</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@</span><span class="n">cosmo_classify_lda</span><span class="p">;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c">% Set up cross-validation partitions</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">partitions</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cosmo_nfold_partitioner</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c">% Perform cross-validation decoding</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">[</span><span class="n">predictedLabels</span><span class="p">,</span><span class="w"> </span><span class="n">accuracy</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cosmo_crossvalidate</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">classifier</span><span class="p">,</span><span class="w"> </span><span class="n">partitions</span><span class="p">);</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c">% Compute chance level</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">chanceLevel</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">numCategories</span><span class="p">;</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="c">% Display the decoding results</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Classification accuracy: %.2f%% (chance level: %.2f%%)\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="n">accuracy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">chanceLevel</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="c">% Plot confusion matrix</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">ds</span><span class="p">.</span><span class="n">sa</span><span class="p">.</span><span class="n">targets</span><span class="p">,</span><span class="w"> </span><span class="n">predictedLabels</span><span class="p">,</span><span class="w"> </span><span class="n">numCategories</span><span class="p">,</span><span class="w"> </span><span class="n">accuracy</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
+</span></code></pre></div>
+<p>A confusion matrix helps identify which categories are easily distinguishable and which are often confounded.</p>
+<p><img alt="confusion matrix" src="../../../assets/fmri_mvpa_IT_Confusion_Matrix.png" /></p>
+<hr />
+<h3 id="6-representational-dissimilarity-matrices-rdms">6. Representational Dissimilarity Matrices (RDMs)<a class="headerlink" href="#6-representational-dissimilarity-matrices-rdms" title="Permanent link">&para;</a></h3>
+<p><img alt="correlation matrix" src="../../../assets/fmri_mvpa_correlation_matrix.png" /></p>
+<p>RSA involves comparing the RDMs from brain data to RDM for our theoretical models. We do this by computing RDMs:</p>
+<ol>
+<li><strong>Mean Patterns</strong>: Average the data across runs for each category.</li>
+<li><strong>Compute Distances</strong>: Calculate pairwise distances (1-Correlation) between categories to form an RDM.</li>
+<li><strong>Compare to Models</strong>: Generate theoretical RDMs and see which best fits the data.</li>
+</ol>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c">% Compute mean dataset across runs per category</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">dsMean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cosmo_fx</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="p">@(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;targets&#39;</span><span class="p">);</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c">% Visualize categories in a 2D space using MDS</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">plot_mds</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
+</span></code></pre></div>
+<p><img alt="mds plot" src="../../../assets/fmri_mvpa_IT_MDS_Plot_.png" /></p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c">% Compute the data RDM</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">measureDsm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@</span><span class="n">cosmo_dissimilarity_matrix_measure</span><span class="p">;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">argsDsm</span><span class="p">.</span><span class="n">metric</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;correlation&#39;</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">argsDsm</span><span class="p">.</span><span class="n">center_data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">dataDsm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">measureDsm</span><span class="p">(</span><span class="n">dsMean</span><span class="p">,</span><span class="w"> </span><span class="n">argsDsm</span><span class="p">);</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">dataRdm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">squareform</span><span class="p">(</span><span class="n">dataDsm</span><span class="p">.</span><span class="n">samples</span><span class="p">);</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c">% Generate model RDMs (theoretical structures)</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">rdms</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">generate_model_rdms</span><span class="p">(</span><span class="n">numCategories</span><span class="p">);</span>
+</span></code></pre></div>
+<p>To visualize the RDMs:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">plot_rdm_full</span><span class="p">(</span><span class="n">dataRdm</span><span class="p">,</span><span class="w"> </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Brain RDM&#39;</span><span class="p">);</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">plot_rdm_full</span><span class="p">(</span><span class="n">rdms</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">dsm</span><span class="p">,</span><span class="w"> </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">rdms</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">description</span><span class="p">);</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">plot_rdm_full</span><span class="p">(</span><span class="n">rdms</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">dsm</span><span class="p">,</span><span class="w"> </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">rdms</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">description</span><span class="p">);</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">plot_rdm_full</span><span class="p">(</span><span class="n">rdms</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="n">dsm</span><span class="p">,</span><span class="w"> </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">rdms</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="n">description</span><span class="p">);</span>
+</span></code></pre></div>
+<hr />
+<h3 id="7-rsa-regression">7. RSA Regression<a class="headerlink" href="#7-rsa-regression" title="Permanent link">&para;</a></h3>
+<p>We now fit a linear model that predicts the data RDM from these model RDMs.</p>
+<p>The regression coefficients indicate how strongly each model explains the observed data's representational geometry.</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c">% Set up RSA regression</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">measure</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@</span><span class="n">cosmo_target_dsm_corr_measure</span><span class="p">;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">measureArgs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">struct</span><span class="p">();</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">measureArgs</span><span class="p">.</span><span class="n">center_data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c">% Prepare model RDM regressors</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">regressorRDMs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cellfun</span><span class="p">(@(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">squareform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">rdms</span><span class="p">.</span><span class="n">dsm</span><span class="p">},</span><span class="w"> </span><span class="s">&#39;UniformOutput&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="n">measureArgs</span><span class="p">.</span><span class="n">glm_dsm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">regressorRDMs</span><span class="p">;</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c">% Run RSA regression</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">result</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">measure</span><span class="p">(</span><span class="n">dsMean</span><span class="p">,</span><span class="w"> </span><span class="n">measureArgs</span><span class="p">);</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="c">% Extract category labels</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="n">labels</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">dsMean</span><span class="p">.</span><span class="n">sa</span><span class="p">.</span><span class="n">labels</span><span class="p">;</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="c">% Plot results: observed RDM, model RDMs, and regression coefficients</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="n">plot_rdms_and_coefficients</span><span class="p">(</span><span class="n">dataRdm</span><span class="p">,</span><span class="w"> </span><span class="n">rdms</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
+</span></code></pre></div>
+<p><img alt="regression result" src="../../../assets/fmri_mvpa_IT_RSA_regression.png" /></p>
+<h2 id="full-code-example-comparison-with-v1">Full Code Example: Comparison with V1<a class="headerlink" href="#full-code-example-comparison-with-v1" title="Permanent link">&para;</a></h2>
+<p>Now that we have the full picture, let's re-run our full code, but this time we only see the main results for <strong>the other synthetic ROI: V1</strong>.</p>
+<div class="language-matlab highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span>
+<span class="normal"><a href="#__codelineno-9-20">20</a></span>
+<span class="normal"><a href="#__codelineno-9-21">21</a></span>
+<span class="normal"><a href="#__codelineno-9-22">22</a></span>
+<span class="normal"><a href="#__codelineno-9-23">23</a></span>
+<span class="normal"><a href="#__codelineno-9-24">24</a></span>
+<span class="normal"><a href="#__codelineno-9-25">25</a></span>
+<span class="normal"><a href="#__codelineno-9-26">26</a></span>
+<span class="normal"><a href="#__codelineno-9-27">27</a></span>
+<span class="normal"><a href="#__codelineno-9-28">28</a></span>
+<span class="normal"><a href="#__codelineno-9-29">29</a></span>
+<span class="normal"><a href="#__codelineno-9-30">30</a></span>
+<span class="normal"><a href="#__codelineno-9-31">31</a></span>
+<span class="normal"><a href="#__codelineno-9-32">32</a></span>
+<span class="normal"><a href="#__codelineno-9-33">33</a></span>
+<span class="normal"><a href="#__codelineno-9-34">34</a></span>
+<span class="normal"><a href="#__codelineno-9-35">35</a></span>
+<span class="normal"><a href="#__codelineno-9-36">36</a></span>
+<span class="normal"><a href="#__codelineno-9-37">37</a></span>
+<span class="normal"><a href="#__codelineno-9-38">38</a></span>
+<span class="normal"><a href="#__codelineno-9-39">39</a></span>
+<span class="normal"><a href="#__codelineno-9-40">40</a></span>
+<span class="normal"><a href="#__codelineno-9-41">41</a></span>
+<span class="normal"><a href="#__codelineno-9-42">42</a></span>
+<span class="normal"><a href="#__codelineno-9-43">43</a></span>
+<span class="normal"><a href="#__codelineno-9-44">44</a></span>
+<span class="normal"><a href="#__codelineno-9-45">45</a></span>
+<span class="normal"><a href="#__codelineno-9-46">46</a></span>
+<span class="normal"><a href="#__codelineno-9-47">47</a></span>
+<span class="normal"><a href="#__codelineno-9-48">48</a></span>
+<span class="normal"><a href="#__codelineno-9-49">49</a></span>
+<span class="normal"><a href="#__codelineno-9-50">50</a></span>
+<span class="normal"><a href="#__codelineno-9-51">51</a></span>
+<span class="normal"><a href="#__codelineno-9-52">52</a></span>
+<span class="normal"><a href="#__codelineno-9-53">53</a></span>
+<span class="normal"><a href="#__codelineno-9-54">54</a></span>
+<span class="normal"><a href="#__codelineno-9-55">55</a></span>
+<span class="normal"><a href="#__codelineno-9-56">56</a></span>
+<span class="normal"><a href="#__codelineno-9-57">57</a></span>
+<span class="normal"><a href="#__codelineno-9-58">58</a></span>
+<span class="normal"><a href="#__codelineno-9-59">59</a></span>
+<span class="normal"><a href="#__codelineno-9-60">60</a></span>
+<span class="normal"><a href="#__codelineno-9-61">61</a></span>
+<span class="normal"><a href="#__codelineno-9-62">62</a></span>
+<span class="normal"><a href="#__codelineno-9-63">63</a></span>
+<span class="normal"><a href="#__codelineno-9-64">64</a></span>
+<span class="normal"><a href="#__codelineno-9-65">65</a></span>
+<span class="normal"><a href="#__codelineno-9-66">66</a></span>
+<span class="normal"><a href="#__codelineno-9-67">67</a></span>
+<span class="normal"><a href="#__codelineno-9-68">68</a></span>
+<span class="normal"><a href="#__codelineno-9-69">69</a></span>
+<span class="normal"><a href="#__codelineno-9-70">70</a></span>
+<span class="normal"><a href="#__codelineno-9-71">71</a></span>
+<span class="normal"><a href="#__codelineno-9-72">72</a></span>
+<span class="normal"><a href="#__codelineno-9-73">73</a></span>
+<span class="normal"><a href="#__codelineno-9-74">74</a></span>
+<span class="normal"><a href="#__codelineno-9-75">75</a></span>
+<span class="normal"><a href="#__codelineno-9-76">76</a></span>
+<span class="normal"><a href="#__codelineno-9-77">77</a></span>
+<span class="normal"><a href="#__codelineno-9-78">78</a></span>
+<span class="normal"><a href="#__codelineno-9-79">79</a></span>
+<span class="normal"><a href="#__codelineno-9-80">80</a></span>
+<span class="normal"><a href="#__codelineno-9-81">81</a></span>
+<span class="normal"><a href="#__codelineno-9-82">82</a></span>
+<span class="normal"><a href="#__codelineno-9-83">83</a></span>
+<span class="normal"><a href="#__codelineno-9-84">84</a></span>
+<span class="normal"><a href="#__codelineno-9-85">85</a></span>
+<span class="normal"><a href="#__codelineno-9-86">86</a></span>
+<span class="normal"><a href="#__codelineno-9-87">87</a></span>
+<span class="normal"><a href="#__codelineno-9-88">88</a></span>
+<span class="normal"><a href="#__codelineno-9-89">89</a></span>
+<span class="normal"><a href="#__codelineno-9-90">90</a></span>
+<span class="normal"><a href="#__codelineno-9-91">91</a></span>
+<span class="normal"><a href="#__codelineno-9-92">92</a></span>
+<span class="normal"><a href="#__codelineno-9-93">93</a></span>
+<span class="normal"><a href="#__codelineno-9-94">94</a></span>
+<span class="normal"><a href="#__codelineno-9-95">95</a></span>
+<span class="normal"><a href="#__codelineno-9-96">96</a></span>
+<span class="normal"><a href="#__codelineno-9-97">97</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c">%% Setup</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="c">% Clear workspace, close figures, and reset command window</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="nb">clear</span><span class="w"> </span><span class="nb">all</span><span class="p">;</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="n">close</span><span class="w"> </span><span class="s">all</span><span class="p">;</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="nb">clc</span><span class="p">;</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="c">% Set random seed for reproducibility</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="n">seed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="nb">rng</span><span class="p">(</span><span class="n">seed</span><span class="p">);</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="c">% Add paths to required functions</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="nb">addpath</span><span class="p">(</span><span class="s">&quot;functions/&quot;</span><span class="p">);</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="n">outDir</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fullfile</span><span class="p">(</span><span class="nb">pwd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;results&quot;</span><span class="p">);</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="c">%% Synthetic data generation</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="c">% Parameters for synthetic data generation</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="n">numCategories</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18"></a><span class="n">numRuns</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19"></a><span class="n">numSubjects</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20"></a><span class="n">numRepetitions</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21"></a><span class="nb">size</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;normal&quot;</span><span class="p">;</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22"></a>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23"></a><span class="c">% Choose ROI</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24"></a><span class="n">roiName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;V1&quot;</span><span class="p">;</span><span class="w"> </span><span class="c">% For low-level, perceptual representations</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25"></a>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26"></a><span class="n">sigma</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.6</span><span class="p">;</span><span class="w"> </span><span class="c">% Data variability</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27"></a>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28"></a><span class="c">% Generate synthetic dataset</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29"></a><span class="n">ds</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">generate_clustered_dataset</span><span class="p">(</span><span class="n">numCategories</span><span class="p">,</span><span class="w"> </span><span class="n">numSubjects</span><span class="p">,</span><span class="w"> </span><span class="n">numRuns</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30"></a><span class="w">    </span><span class="n">numRepetitions</span><span class="p">,</span><span class="w"> </span><span class="n">sigma</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="nb">size</span><span class="p">);</span>
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31"></a>
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32"></a><span class="c">%% Inspecting the data</span>
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33"></a><span class="c">% Extract and display unique labels</span>
+</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34"></a><span class="n">labelNames</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">unique</span><span class="p">(</span><span class="n">ds</span><span class="p">.</span><span class="n">sa</span><span class="p">.</span><span class="n">labels</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;stable&#39;</span><span class="p">);</span>
+</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35"></a><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Target to Label Mapping:&#39;</span><span class="p">);</span>
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36"></a><span class="nb">disp</span><span class="p">(</span><span class="nb">table</span><span class="p">(</span><span class="n">ds</span><span class="p">.</span><span class="n">sa</span><span class="p">.</span><span class="n">targets</span><span class="p">,</span><span class="w"> </span><span class="n">ds</span><span class="p">.</span><span class="n">sa</span><span class="p">.</span><span class="n">labels</span><span class="p">));</span>
+</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37"></a>
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38"></a><span class="c">% Plot activation patterns</span>
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39"></a><span class="n">plot_activation_heatmap</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
+</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40"></a>
+</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41"></a><span class="c">%% MVPA: Classification Analysis</span>
+</span><span id="__span-9-42"><a id="__codelineno-9-42" name="__codelineno-9-42"></a><span class="c">% Define the classifier</span>
+</span><span id="__span-9-43"><a id="__codelineno-9-43" name="__codelineno-9-43"></a><span class="n">classifier</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@</span><span class="n">cosmo_classify_lda</span><span class="p">;</span>
+</span><span id="__span-9-44"><a id="__codelineno-9-44" name="__codelineno-9-44"></a>
+</span><span id="__span-9-45"><a id="__codelineno-9-45" name="__codelineno-9-45"></a><span class="c">% Set up cross-validation partitions</span>
+</span><span id="__span-9-46"><a id="__codelineno-9-46" name="__codelineno-9-46"></a><span class="n">partitions</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cosmo_nfold_partitioner</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+</span><span id="__span-9-47"><a id="__codelineno-9-47" name="__codelineno-9-47"></a>
+</span><span id="__span-9-48"><a id="__codelineno-9-48" name="__codelineno-9-48"></a><span class="c">% Perform cross-validation decoding</span>
+</span><span id="__span-9-49"><a id="__codelineno-9-49" name="__codelineno-9-49"></a><span class="p">[</span><span class="n">predictedLabels</span><span class="p">,</span><span class="w"> </span><span class="n">accuracy</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cosmo_crossvalidate</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">classifier</span><span class="p">,</span><span class="w"> </span><span class="n">partitions</span><span class="p">);</span>
+</span><span id="__span-9-50"><a id="__codelineno-9-50" name="__codelineno-9-50"></a>
+</span><span id="__span-9-51"><a id="__codelineno-9-51" name="__codelineno-9-51"></a><span class="c">% Compute chance level</span>
+</span><span id="__span-9-52"><a id="__codelineno-9-52" name="__codelineno-9-52"></a><span class="n">chanceLevel</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">numCategories</span><span class="p">;</span>
+</span><span id="__span-9-53"><a id="__codelineno-9-53" name="__codelineno-9-53"></a>
+</span><span id="__span-9-54"><a id="__codelineno-9-54" name="__codelineno-9-54"></a><span class="c">% Display the decoding results</span>
+</span><span id="__span-9-55"><a id="__codelineno-9-55" name="__codelineno-9-55"></a><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Classification accuracy: %.2f%% (chance level: %.2f%%)\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-9-56"><a id="__codelineno-9-56" name="__codelineno-9-56"></a><span class="w">    </span><span class="n">accuracy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">chanceLevel</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+</span><span id="__span-9-57"><a id="__codelineno-9-57" name="__codelineno-9-57"></a>
+</span><span id="__span-9-58"><a id="__codelineno-9-58" name="__codelineno-9-58"></a><span class="c">% Plot confusion matrix</span>
+</span><span id="__span-9-59"><a id="__codelineno-9-59" name="__codelineno-9-59"></a><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">ds</span><span class="p">.</span><span class="n">sa</span><span class="p">.</span><span class="n">targets</span><span class="p">,</span><span class="w"> </span><span class="n">predictedLabels</span><span class="p">,</span><span class="w"> </span><span class="n">numCategories</span><span class="p">,</span><span class="w"> </span><span class="n">accuracy</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+</span><span id="__span-9-60"><a id="__codelineno-9-60" name="__codelineno-9-60"></a><span class="w">    </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
+</span><span id="__span-9-61"><a id="__codelineno-9-61" name="__codelineno-9-61"></a>
+</span><span id="__span-9-62"><a id="__codelineno-9-62" name="__codelineno-9-62"></a><span class="c">%% Representational Dissimilarity Matrices (RDMs)</span>
+</span><span id="__span-9-63"><a id="__codelineno-9-63" name="__codelineno-9-63"></a><span class="c">% Compute mean dataset across runs per category</span>
+</span><span id="__span-9-64"><a id="__codelineno-9-64" name="__codelineno-9-64"></a><span class="n">dsMean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cosmo_fx</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="p">@(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;targets&#39;</span><span class="p">);</span>
+</span><span id="__span-9-65"><a id="__codelineno-9-65" name="__codelineno-9-65"></a>
+</span><span id="__span-9-66"><a id="__codelineno-9-66" name="__codelineno-9-66"></a><span class="c">% Visualize categories in a 2D space using MDS</span>
+</span><span id="__span-9-67"><a id="__codelineno-9-67" name="__codelineno-9-67"></a><span class="n">plot_mds</span><span class="p">(</span><span class="n">dsMean</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
+</span><span id="__span-9-68"><a id="__codelineno-9-68" name="__codelineno-9-68"></a>
+</span><span id="__span-9-69"><a id="__codelineno-9-69" name="__codelineno-9-69"></a><span class="c">% Compute the data RDM</span>
+</span><span id="__span-9-70"><a id="__codelineno-9-70" name="__codelineno-9-70"></a><span class="n">measureDsm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@</span><span class="n">cosmo_dissimilarity_matrix_measure</span><span class="p">;</span>
+</span><span id="__span-9-71"><a id="__codelineno-9-71" name="__codelineno-9-71"></a><span class="n">argsDsm</span><span class="p">.</span><span class="n">metric</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;correlation&#39;</span><span class="p">;</span>
+</span><span id="__span-9-72"><a id="__codelineno-9-72" name="__codelineno-9-72"></a><span class="n">argsDsm</span><span class="p">.</span><span class="n">center_data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-9-73"><a id="__codelineno-9-73" name="__codelineno-9-73"></a>
+</span><span id="__span-9-74"><a id="__codelineno-9-74" name="__codelineno-9-74"></a><span class="n">dataDsm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">measureDsm</span><span class="p">(</span><span class="n">dsMean</span><span class="p">,</span><span class="w"> </span><span class="n">argsDsm</span><span class="p">);</span>
+</span><span id="__span-9-75"><a id="__codelineno-9-75" name="__codelineno-9-75"></a><span class="n">dataRdm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">squareform</span><span class="p">(</span><span class="n">dataDsm</span><span class="p">.</span><span class="n">samples</span><span class="p">);</span>
+</span><span id="__span-9-76"><a id="__codelineno-9-76" name="__codelineno-9-76"></a>
+</span><span id="__span-9-77"><a id="__codelineno-9-77" name="__codelineno-9-77"></a><span class="c">% Generate model RDMs (theoretical structures)</span>
+</span><span id="__span-9-78"><a id="__codelineno-9-78" name="__codelineno-9-78"></a><span class="n">rdms</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">generate_model_rdms</span><span class="p">(</span><span class="n">numCategories</span><span class="p">);</span>
+</span><span id="__span-9-79"><a id="__codelineno-9-79" name="__codelineno-9-79"></a>
+</span><span id="__span-9-80"><a id="__codelineno-9-80" name="__codelineno-9-80"></a><span class="c">%% RSA Regression</span>
+</span><span id="__span-9-81"><a id="__codelineno-9-81" name="__codelineno-9-81"></a><span class="c">% Set up RSA regression</span>
+</span><span id="__span-9-82"><a id="__codelineno-9-82" name="__codelineno-9-82"></a><span class="n">measure</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@</span><span class="n">cosmo_target_dsm_corr_measure</span><span class="p">;</span>
+</span><span id="__span-9-83"><a id="__codelineno-9-83" name="__codelineno-9-83"></a><span class="n">measureArgs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">struct</span><span class="p">();</span>
+</span><span id="__span-9-84"><a id="__codelineno-9-84" name="__codelineno-9-84"></a><span class="n">measureArgs</span><span class="p">.</span><span class="n">center_data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-9-85"><a id="__codelineno-9-85" name="__codelineno-9-85"></a>
+</span><span id="__span-9-86"><a id="__codelineno-9-86" name="__codelineno-9-86"></a><span class="c">% Prepare model RDM regressors</span>
+</span><span id="__span-9-87"><a id="__codelineno-9-87" name="__codelineno-9-87"></a><span class="n">regressorRDMs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cellfun</span><span class="p">(@(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">squareform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">rdms</span><span class="p">.</span><span class="n">dsm</span><span class="p">},</span><span class="w"> </span><span class="s">&#39;UniformOutput&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+</span><span id="__span-9-88"><a id="__codelineno-9-88" name="__codelineno-9-88"></a><span class="n">measureArgs</span><span class="p">.</span><span class="n">glm_dsm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">regressorRDMs</span><span class="p">;</span>
+</span><span id="__span-9-89"><a id="__codelineno-9-89" name="__codelineno-9-89"></a>
+</span><span id="__span-9-90"><a id="__codelineno-9-90" name="__codelineno-9-90"></a><span class="c">% Run RSA regression</span>
+</span><span id="__span-9-91"><a id="__codelineno-9-91" name="__codelineno-9-91"></a><span class="n">result</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">measure</span><span class="p">(</span><span class="n">dsMean</span><span class="p">,</span><span class="w"> </span><span class="n">measureArgs</span><span class="p">);</span>
+</span><span id="__span-9-92"><a id="__codelineno-9-92" name="__codelineno-9-92"></a>
+</span><span id="__span-9-93"><a id="__codelineno-9-93" name="__codelineno-9-93"></a><span class="c">% Extract category labels</span>
+</span><span id="__span-9-94"><a id="__codelineno-9-94" name="__codelineno-9-94"></a><span class="n">labels</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">dsMean</span><span class="p">.</span><span class="n">sa</span><span class="p">.</span><span class="n">labels</span><span class="p">;</span>
+</span><span id="__span-9-95"><a id="__codelineno-9-95" name="__codelineno-9-95"></a>
+</span><span id="__span-9-96"><a id="__codelineno-9-96" name="__codelineno-9-96"></a><span class="c">% Plot results: observed RDM, model RDMs, and regression coefficients</span>
+</span><span id="__span-9-97"><a id="__codelineno-9-97" name="__codelineno-9-97"></a><span class="n">plot_rdms_and_coefficients</span><span class="p">(</span><span class="n">dataRdm</span><span class="p">,</span><span class="w"> </span><span class="n">rdms</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">o</span>
+</span></code></pre></div></td></tr></table></div>
+<p>And the results:</p>
+<p><img alt="V1 activations" src="../../../assets/fmri_mvpa_V1_Activation_Heatmap.png" />
+<img alt="V1 confusion matrix" src="../../../assets/fmri_mvpa_V1_Confusion_Matrix.png" />
+<img alt="V1 MDS plot" src="../../../assets/fmri_mvpa_V1_MDS_Plot_.png" />
+<img alt="V1 RSA results" src="../../../assets/fmri_mvpa_V1_RSA_regression.png" /></p>
+<hr />
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p><strong>What we learned</strong>:</p>
+<ul>
+<li>How to <strong>structure and preprocess fMRI data</strong> (BIDS, fMRIPrep, SPM) for MVPA and RSA.</li>
+<li>How to decode category information using <strong>MVPA</strong>.</li>
+<li>How to <strong>apply RSA</strong> to compare observed brain patterns to theoretical representational models.</li>
+</ul>
 
 
 
@@ -1801,7 +2336,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 20, 2024 01:17:23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">December 9, 2024 13:00:01</span>
   </span>
 
     
