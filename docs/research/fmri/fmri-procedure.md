@@ -921,3 +921,7 @@ In case of an emergency involving the MRI system or facility:
 
 1. **Seek immediate assistance** from the **ASU**.
 2. **Call emergency number 1000**. Clearly state the location: **"MRI Suite MR8"**.
+
+---
+
+**TODO**: add additional info on DICOM (no enhanced, missing values, etc.). see also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Phillips DICOMS, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.
