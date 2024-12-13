@@ -61,4 +61,3 @@ Templates are organized into two sections:
 
 </div>
 
-**TODO**: we should probably make a nice and clean repo with the inverse MDS code, rather than linking the Teams folder
