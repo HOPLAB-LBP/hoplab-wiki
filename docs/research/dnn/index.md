@@ -1,5 +1,4 @@
-# Index
+# Neural Networks
 
-This is the landing page for this section. Please populate it with appropriate information.
-
-**TODO:** populate this landing page.
+**Page under development**
+<iframe src="https://giphy.com/embed/6sYpWTFAKPBXLIhFyb" width="480" height="480" style="" frameBorder="0" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/timrobinson-space-aliens-tim-robinson-6sYpWTFAKPBXLIhFyb">via GIPHY</a></p>
