@@ -2,6 +2,8 @@
 
 **TODO:** [TIM] add figures. It would definitely be nice to show a full tree of an example repostitory, and how it changes at each step of the way.
 
+**TODO:** [ANDREA] this page is unnecessary complex. I think we should make it simpler by giving the standard steps from DICOM to BIDS, which is in iny case safer than the nift + json editing.
+
 ## BIDS standards
 
 To organize our fMRI dataset, we follow the [BIDS](https://bids-specification.readthedocs.io/en/stable/introduction.html) Specification.
@@ -235,6 +237,8 @@ If you have DICOM files from the scanner:
 1. Navigate to your `sourcedata/sub-xx/dicom/` folder.
 2. Use the `anonymize_dicm` script to anonymize the DICOM files.
 3. Use the `dicm2nii` script to convert the anonymized DICOM files to NIfTI.
+
+**TODO:** [ANDREA] add info about 1) example dcm2nii call, 2) why dcm2nii rather than dcm2nii**x**, 3) add additional info on DICOM (no enhanced, missing values, etc.). see also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Phillips DICOMS, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.
 
 **TODO:** [TIM] Give information on how to use the anonymization and dicom to nifti scripts, and what the results should be like. Give links to the scripts.
 
