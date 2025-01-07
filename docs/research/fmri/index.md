@@ -47,3 +47,9 @@ Here are some helpful links to external resources for fMRI data analysis, tools,
 - [Nilearn](https://nilearn.github.io/) for neuroimaging in Python
 - [SPM Programming Introduction](https://en.wikibooks.org/wiki/SPM/Programming_intro)
 - [SPM Scripts on GitHub](https://github.com/rordenlab/spmScripts?tab=readme-ov-file)
+
+---
+
+**TODO**: [ANDREA] it would be nice to add some info on how to perform analysis and plotting using nilearn and nibabel, as they are overall more flexible than current tools we use (e.g., handle both volumes and surfaces, can be used easily to perform GLM and extract signal from ROIs, easy to import masks, etc.)
+**TODO**: [ANDREA] add info on where to find atlases and standard templates (e.g., https://osf.io/4mw3a/)
+**TODO**: [ANDREA] it would be nice to have some info on surface space signal extraction, analysis and plotting + what are common FreeSurfer output geometries (pial, inflated, etc.)
