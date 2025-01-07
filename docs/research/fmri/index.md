@@ -50,6 +50,6 @@ Here are some helpful links to external resources for fMRI data analysis, tools,
 
 ---
 
-**TODO**: [ANDREA] it would be nice to add some info on how to perform analysis and plotting using nilearn and nibabel, as they are overall more flexible than current tools we use (e.g., handle both volumes and surfaces, can be used easily to perform GLM and extract signal from ROIs, easy to import masks, etc.)
-**TODO**: [ANDREA] add info on where to find atlases and standard templates (e.g., https://osf.io/4mw3a/)
+**TODO**: [ANDREA] it would be nice to add some info on how to perform analysis and plotting using nilearn and nibabel (also see [neuromaps](https://netneurolab.github.io/neuromaps/index.html) for converting between spaces and surf<->volume, and [surfplot](https://surfplot.readthedocs.io/en/latest/index.html#) for surface plotting from volume/surf), as they are overall more flexible than current tools we use (e.g., handle both volumes and surfaces, can be used easily to perform GLM and extract signal from ROIs, easy to import masks, etc.)
+**TODO**: [ANDREA] add info on where to find atlases and standard templates (e.g., https://osf.io/4mw3a/  https://netneurolab.github.io/neuromaps/index.html)
 **TODO**: [ANDREA] it would be nice to have some info on surface space signal extraction, analysis and plotting + what are common FreeSurfer output geometries (pial, inflated, etc.)
