@@ -191,7 +191,6 @@ The scanner sends a trigger "5" to the stimulus computer. Different setups are u
         4. Log back into the scanner computer using **MRService** credentials.
         5. Wait until all components are ready and restart the software.  
            Confirm any errors, such as helium pressure alerts, by pressing **OK**.
-           
 ---
 
 ### Scanner Table Setup
@@ -581,6 +580,18 @@ Before leaving the room, check the following:
     If the ventilation error appears during **Smartbrain**, the system requires a minimum ventilation setting of 3.
 
     - You can either proceed without adjusting the setting or adjust ventilation via **Examination > Adjust Ventilation** in the scan console.
+
+??? failure "Participant leaving the scanner during the task"
+    It might happen that your participant feels uncomfortable during the scanning, and has to get out of the scanner to strech their legs, go to the toilet or so. If time allows it and they are ok with it, you can consider re-starting the scanning session where it was left off. 
+
+    To do so, follow these steps to adapt your sequence at the MRI control computer:
+    - Right-click and duplicate both _Smartbrain_ and _Check_fMRI_ in your sequence.
+    - If necessary, duplicate any run you left interrupted that you would want to re-do.
+    - Re-order the events of your sequence so that _Smartbrain_ and _Check_fMRI_ are followed by any runs you wish to complete.
+    
+    Once they are ready, place your participant in the scanner as you did to begin the scanning, and re-start the sequence from the events you just created.
+
+
     
 ---
 
