@@ -2929,6 +2929,14 @@ Improperly closed doors will trigger error messages and prevent scanning from st
 - Re-order the events of your sequence so that <em>Smartbrain</em> and <em>Check_fMRI</em> are followed by any runs you wish to complete.</p>
 <p>Once they are ready, place your participant in the scanner as you did to begin the scanning, and re-start the sequence from the events you just created.</p>
 </details>
+<details class="failure">
+<summary>No key press seems to be recorded</summary>
+<p>The good practice is always to have someone press the button boxes you're going to use <em>before</em> the participant enters the scanner. That allows to see if the button boxes are connected &amp; all the buttons functional. If you're not sure the key presses of your participant actually send a key press to the computer and you're in the middle of a run, the first thing to do is to have a look at the logging coming into the MatLab console after the run. You can also ask your participant to press the response buttons during the break, with the cursor in the console, and see what comes out.</p>
+<p>In any case, if no key press is being recorded, try the following steps:
+- Check in the projector room if the transmitter box connected to the cables of the button boxes you are using is connected to the stimulus computer.
+- Check if the transmittor box connected to the cables of the button boxes you are using is <em>turned on</em>. Some boxes require a to be switched on to actually transmit signals.</p>
+<p><strong>Tip</strong>: A good way to make sure participants can send key presses from the button boxes they are using is to have an instruction screen that requires a key press to continue. Assuming that screen contains information relevant to the participant, they will be able to read and press whenever they are ready. Such a screen can allow to ensure the stimulus computer receives <em>at least</em> some kind of key press.</p>
+</details>
 <hr />
 <h3 id="anatomical-scan">Anatomical Scan<a class="headerlink" href="#anatomical-scan" title="Permanent link">&para;</a></h3>
 <p>If you need to collect only an <strong>anatomical scan</strong>, you still must run the <strong>standard scans</strong> first (refer to the section above).</p>
@@ -3357,7 +3365,7 @@ Improperly closed doors will trigger error messages and prevent scanning from st
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">February 7, 2025 16:50:17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">February 7, 2025 17:09:41</span>
   </span>
 
     
