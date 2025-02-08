@@ -591,6 +591,14 @@ Before leaving the room, check the following:
     
     Once they are ready, place your participant in the scanner as you did to begin the scanning, and re-start the sequence from the events you just created.
 
+??? failure "No key press seems to be recorded"
+    The good practice is always to have someone press the button boxes you're going to use _before_ the participant enters the scanner. That allows to see if the button boxes are connected & all the buttons functional. If you're not sure the key presses of your participant actually send a key press to the computer and you're in the middle of a run, the first thing to do is to have a look at the logging coming into the MatLab console after the run. You can also ask your participant to press the response buttons during the break, with the cursor in the console, and see what comes out.
+
+    In any case, if no key press is being recorded, try the following steps:
+    - Check in the projector room if the transmitter box connected to the cables of the button boxes you are using is connected to the stimulus computer.
+    - Check if the transmittor box connected to the cables of the button boxes you are using is _turned on_. Some boxes require a to be switched on to actually transmit signals.
+    
+    **Tip**: A good way to make sure participants can send key presses from the button boxes they are using is to have an instruction screen that requires a key press to continue. Assuming that screen contains information relevant to the participant, they will be able to read and press whenever they are ready. Such a screen can allow to ensure the stimulus computer receives _at least_ some kind of key press.
 
     
 ---
