@@ -75,7 +75,7 @@ Before you can become an Authorized Other User (AOU), you must undergo practical
    Before your pilot (f)MRI session with an actual participant, set up your sequences and test your experiment script. Book a phantom session by contacting Dr. Ron(ald) Peeters at [ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be). If needed, you can find specific info on the projector screen [here](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/Planning%20a%20scan%20session/MR8_screeninfo.docx?d=w68475dcf8e6f4182b4e682e343b22356&csf=1&web=1&e=qkMSkk).
 
 !!! warning "Independent scanning"
-    You are allowed to conduct scans independently after attending approximately **10 sessions** with experienced personnel (e.g., more senior colleagues). This will help you learn how to control the scanner effectively. After 2 sessions, you should know how to controle the scanner and you are allowed to be the second researcher during a scan session outside office hours.
+    You are allowed to conduct scans independently after attending approximately **10 sessions** with experienced personnel (e.g., more senior colleagues). This will help you learn how to control the scanner effectively. After 2 sessions, you should know how to control the scanner and you are allowed to be the second researcher during a scan session outside office hours.
 
 ## During your experiment
 
