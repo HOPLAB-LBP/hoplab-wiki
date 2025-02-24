@@ -45,12 +45,18 @@ The installation process differs for students and personnel. Please follow the i
         ??? warning "Transition to ‘Individual License"
             The old '5pack' license will no longer be available after October 31, 2024. To continue using MATLAB, users must switch to an 'Individual License' or 'Designated Computer License'. It is recommended to remove any older versions of MATLAB and install the most recent version as an 'Individual License' user. For newer versions (from R2023b onwards), you can easily switch licenses by placing a new license file. Detailed instructions are available [here](https://nl.mathworks.com/matlabcentral/answers/2099121-how-do-i-transition-matlab-installations-to-matlab-individual-and-the-campus-wide-license).
 
-    2. **Download MATLAB**:
+    2. **Request access from ICTS**
+       - The information  for Matlab (and request form for staff members that needs to be filled out) can be found here: https://icts.kuleuven.be/sc/english/software/matlab. To fill out request form, go to https://www.groupware.kuleuven.be/sites/klantencentrum/Paginas/AanvraagformulierMatlab.aspx. 
+       - The u-number workflowreceiver is u0057838 (An van Kets) 
+       - The number for the organizational unit is 53197848 (Brain and Cognition). 
+       - The "credit" section can be left blank. You can write KULC if your research funding code does not begin ZL…. If it begins with ZL, then then you can fill in with LRD. 
+       
+    3. **Download MATLAB**:
         
-        - Get the MATLAB installation files from the [ICTS License Catalogue](https://icts.kuleuven.be/apps/license/download/MATLAB/index.html).
+        - Once approved, get the MATLAB installation files from the KU Leuven portal: https://www.mathworks.com/academia/tah-portal/ku-leuven-30919019.html. You will receive an email once approved with this link.
         - Follow the instructions to download the installer for your operating system.
 
-    3. **Install and activate MATLAB**:
+    4. **Install and activate MATLAB**:
         
         - Run the MATLAB installer and follow the on-screen instructions.
         - During the activation process, select "Individual License" and log in with your MathWorks account.
@@ -127,12 +133,13 @@ All KU Leuven staff and students have their own [OneDrive](https://admin.kuleuve
 
 ## Printing
 
-Find info on how to install printing services on your computer [here](https://ppw.kuleuven.be/home/ppw-dict/dictservicedesk/netwerkprinter). The printer names are:
+
+Find info on how to install printing services on your desktop or laptop connected to the KU Leuven or faculty network [here](https://ppw.kuleuven.be/home/ppw-dict/dictservicedesk/netwerkprinter). The printer names are:
 
 - PRLBP (Black & White printer)
 - PRLBP2 (Color printer)
 
-If the installation doesn’t work, use a USB key to print on the black and white printer in room 02.28. You can also get permanent access by asking [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) to add you to the list of users.
+If the installation doesn’t work, or you are using a windows desktop or laptop not connected to the KU Leuven or faculty network, use a USB key to print on the black and white printer in room 02.28. You can also get permanent access by asking [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) to add you to the list of users.
 
 For **mac users**, follow the instructions on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration) to print from your personal computer. More generally, this manual tries to give an overview of most frequently asked questions concerning configuration and initial setup of a secure work environment on Mac OS X.
 
