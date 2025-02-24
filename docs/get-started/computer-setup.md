@@ -45,11 +45,12 @@ The installation process differs for students and personnel. Please follow the i
         ??? warning "Transition to ‘Individual License"
             The old '5pack' license will no longer be available after October 31, 2024. To continue using MATLAB, users must switch to an 'Individual License' or 'Designated Computer License'. It is recommended to remove any older versions of MATLAB and install the most recent version as an 'Individual License' user. For newer versions (from R2023b onwards), you can easily switch licenses by placing a new license file. Detailed instructions are available [here](https://nl.mathworks.com/matlabcentral/answers/2099121-how-do-i-transition-matlab-installations-to-matlab-individual-and-the-campus-wide-license).
 
-    2. **Request access from ICTS**
-       - The information for Matlab can be found [here](https://icts.kuleuven.be/sc/english/software/matlab). The **request form** can be found at [this link](https://www.groupware.kuleuven.be/sites/klantencentrum/Paginas/AanvraagformulierMatlab.aspx). 
-       - The u-number workflowreceiver is `u0057838` (An van Kets) 
-       - The number for the organizational unit is `53197848` (Brain and Cognition). 
-       - The "credit" section can be left blank. You can write KULC if your research funding code does not begin ZL…. If it begins with ZL, then then you can fill in with LRD. 
+    2. **Request access from ICTS**:
+    
+        - The information for Matlab can be found [here](https://icts.kuleuven.be/sc/english/software/matlab). The **request form** can be found at [this link](https://www.groupware.kuleuven.be/sites/klantencentrum/Paginas/AanvraagformulierMatlab.aspx). 
+        - The u-number workflowreceiver is `u0057838` (An van Kets) 
+        - The number for the organizational unit is `53197848` (Brain and Cognition). 
+        - The "credit" section can be left blank. You can write KULC if your research funding code does not begin ZL…. If it begins with ZL, then then you can fill in with LRD. 
        
     3. **Download MATLAB**:
         
