@@ -129,11 +129,10 @@ All KU Leuven staff and students have their own [OneDrive](https://admin.kuleuve
 !!! warning "Back up your data twice"
     Keep your data in one main folder (folder name = your first name) if you are an intern, or on your PC if you are personnel, and back-up this data to:
 
-        1. A portable hard drive (shared between **interns**, or ask [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) if you are **personnel**). Don’t forget to give the external drives back to your supervisor when your role ends.
-        2. Your online OneDrive folder. To get started with OneDrive, check out this [page](https://admin.kuleuven.be/icts/services/onedrive/vanstartonedrive).
+    1. A portable **hard drive** (shared between interns, or ask [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) if you are personnel). Don’t forget to give the external drives back to your supervisor when your role ends.
+    2. Your online **OneDrive folder**. To get started with OneDrive, check out this [page](https://admin.kuleuven.be/icts/services/onedrive/vanstartonedrive).
 
 ## Printing
-
 
 Find info on how to install printing services on your desktop or laptop connected to the KU Leuven or faculty network [here](https://ppw.kuleuven.be/home/ppw-dict/dictservicedesk/netwerkprinter). The printer names are:
 
