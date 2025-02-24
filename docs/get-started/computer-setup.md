@@ -46,14 +46,14 @@ The installation process differs for students and personnel. Please follow the i
             The old '5pack' license will no longer be available after October 31, 2024. To continue using MATLAB, users must switch to an 'Individual License' or 'Designated Computer License'. It is recommended to remove any older versions of MATLAB and install the most recent version as an 'Individual License' user. For newer versions (from R2023b onwards), you can easily switch licenses by placing a new license file. Detailed instructions are available [here](https://nl.mathworks.com/matlabcentral/answers/2099121-how-do-i-transition-matlab-installations-to-matlab-individual-and-the-campus-wide-license).
 
     2. **Request access from ICTS**
-       - The information  for Matlab (and request form for staff members that needs to be filled out) can be found here: https://icts.kuleuven.be/sc/english/software/matlab. To fill out request form, go to https://www.groupware.kuleuven.be/sites/klantencentrum/Paginas/AanvraagformulierMatlab.aspx. 
-       - The u-number workflowreceiver is u0057838 (An van Kets) 
-       - The number for the organizational unit is 53197848 (Brain and Cognition). 
+       - The information for Matlab can be found [here](https://icts.kuleuven.be/sc/english/software/matlab). The **request form** can be found at [this link](https://www.groupware.kuleuven.be/sites/klantencentrum/Paginas/AanvraagformulierMatlab.aspx). 
+       - The u-number workflowreceiver is `u0057838` (An van Kets) 
+       - The number for the organizational unit is `53197848` (Brain and Cognition). 
        - The "credit" section can be left blank. You can write KULC if your research funding code does not begin ZL…. If it begins with ZL, then then you can fill in with LRD. 
        
     3. **Download MATLAB**:
         
-        - Once approved, get the MATLAB installation files from the KU Leuven portal: https://www.mathworks.com/academia/tah-portal/ku-leuven-30919019.html. You will receive an email once approved with this link.
+        - Once approved, get the MATLAB installation files from the [KU Leuven portal](https://www.mathworks.com/academia/tah-portal/ku-leuven-30919019.html). You will receive an email once approved with this link.
         - Follow the instructions to download the installer for your operating system.
 
     4. **Install and activate MATLAB**:
