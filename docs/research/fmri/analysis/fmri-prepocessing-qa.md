@@ -345,6 +345,51 @@ For more information on understanding these metrics, check out the [MRIQC interp
     - **Solution**: Ensure that MRIQC was run in **group mode** using the correct `group` argument. Check if all individual reports are present in the output directory before running the group-level command.
     - **Tip**: Verify that the `derivatives/mriqc` directory has read and write access for Docker.
 
+??? failure "fMRIPrep output: empty surf files"
+    - **Problem**: Some files in `derivatives/fmriprep/sourcedata/freesurfer/sub-xx/surf` are empty, namely `*h.fsaverage.sphere.reg`, `*h.pial`, `*h.white.H` and `*h.white.K`. These files are supposed to be link files pointing to other outputs in the folder. If you did the preprocessing on Windows, this is likely due to the way it handles such files.
+    - **Solution**: If you need these files, you can either consider re-running your preprocessing on another machine, or running a post-hoc quick fix. For instance, below is a short utility Bash script that will re-create the `lh.pial` link file.
+    ```
+    #!/bin/bash
+
+    # Check if at least 2 arguments are given (dataset path + at least one subject)
+    if [[ $# -lt 2 ]]; then
+        echo "Usage: $0 <BIDS_dataset_path> <sub-xx> [sub-yy ...]"
+        exit 1
+    fi
+
+    # First argument: BIDS dataset path
+    BIDS_PATH="$1"
+    shift  # Shift arguments to access subjects
+
+    # Loop over subject arguments
+    for SUBJ in "$@"; do
+        SURF_PATH="${BIDS_PATH}/derivatives/fmriprep/sourcedata/freesurfer/${SUBJ}/surf"
+
+        # Define file pairs
+        for HEMI in lh rh; do
+            PIAL="${SURF_PATH}/${HEMI}.pial"
+            PIAL_T1="${SURF_PATH}/${HEMI}.pial.T1"
+
+            # Check if the pial file exists and is 0 KB
+            if [[ -e "$PIAL" && ! -s "$PIAL" ]]; then
+                echo "Fixing empty ${HEMI}.pial for $SUBJ..."
+                
+                # Check if corresponding .T1 file exists before creating the link
+                if [[ -e "$PIAL_T1" ]]; then
+                    ln -sf "$PIAL_T1" "$PIAL"
+                    echo "✔ Created symbolic link: ${HEMI}.pial → ${HEMI}.pial.T1"
+                else
+                    echo "⚠️ Warning: ${HEMI}.pial.T1 not found for $SUBJ. Cannot create link."
+                fi
+            else
+                echo "✅ ${HEMI}.pial for $SUBJ is fine. No action needed."
+            fi
+        done
+    done
+
+    echo "✅ Done."
+    ```
+
 ---
 
 With these quality checks complete, you’re ready to proceed to the **General Linear Model (GLM) analysis**. See the next guide for instructions on setting up your GLM. [--> Go to GLM](./fmri-glm.md)
