@@ -347,7 +347,7 @@ For more information on understanding these metrics, check out the [MRIQC interp
 
 ??? failure "fMRIPrep output: empty surf files"
     - **Problem**: Some files in `derivatives/fmriprep/sourcedata/freesurfer/sub-xx/surf` are empty, namely `*h.fsaverage.sphere.reg`, `*h.pial`, `*h.white.H` and `*h.white.K`. These files are supposed to be link files pointing to other outputs in the folder. If you did the preprocessing on Windows, this is likely due to the way it handles such files.
-    - **Solution**: If you need these files, you can either consider re-running your preprocessing on another machine, or running a post-hoc quick fix. For instance, below is a short utility Bash script that will re-create the `lh.pial` link file.
+    - **Solution**: If you need these files, you can either consider re-running your preprocessing on another machine, or running a post-hoc quick fix. For instance, below is a short utility Bash script that will re-create the `*h.pial` link files.
     ```
     #!/bin/bash
 
