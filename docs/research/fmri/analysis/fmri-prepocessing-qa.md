@@ -346,50 +346,125 @@ For more information on understanding these metrics, check out the [MRIQC interp
     - **Tip**: Verify that the `derivatives/mriqc` directory has read and write access for Docker.
 
 ??? failure "fMRIPrep output: empty surf files"
-    - **Problem**: Some files in `derivatives/fmriprep/sourcedata/freesurfer/sub-xx/surf` are empty, namely `*h.fsaverage.sphere.reg`, `*h.pial`, `*h.white.H` and `*h.white.K`. These files are supposed to be link files pointing to other outputs in the folder. If you did the preprocessing on Windows, this is likely due to the way it handles such files.
-    - **Solution**: If you need these files, you can either consider re-running your preprocessing on another machine, or running a post-hoc quick fix. For instance, below is a short utility Bash script that will re-create the `*h.pial` link files.
-    ```
-    #!/bin/bash
+    - **Problem**: Some files in `freesurfer/sub-xx/surf` are empty (0 KB), namely:  
+        - `*h.fsaverage.sphere.reg`
+        - `*h.pial`
+        - `*h.white.H`
+        - `*h.white.K`
 
-    # Check if at least 2 arguments are given (dataset path + at least one subject)
-    if [[ $# -lt 2 ]]; then
-        echo "Usage: $0 <BIDS_dataset_path> <sub-xx> [sub-yy ...]"
-        exit 1
-    fi
+    These files are supposed to be symbolic links pointing to other outputs in the folder. A 0 KB size indicates that the link is broken. This often happens if preprocessing was done on Windows, since Windows does not fully preserve these link-type files.
 
-    # First argument: BIDS dataset path
-    BIDS_PATH="$1"
-    shift  # Shift arguments to access subjects
+    Even if the symbolic link is broken, the files to which the links originally pointed are likely still present in your `surf/` folder, so you **do not need to re-run** `recon-all` or `fmriprep`. 
 
-    # Loop over subject arguments
-    for SUBJ in "$@"; do
-        SURF_PATH="${BIDS_PATH}/derivatives/fmriprep/sourcedata/freesurfer/${SUBJ}/surf"
+    - **Solution**: If you need any of these files, you can either use the corresponding “original” file directly, or recreate the symbolic link (or a duplicate file) so external tools can see it under the expected filename. Below are the relevant file mappings:
+  
+        | Broken (link) file            | Original (target) file         |
+        |-------------------------------|--------------------------------|
+        | `*h.fsaverage.sphere.reg`     | `*h.sphere.reg`                |
+        | `*h.pial`                     | `*h.pial.T1`                   |
+        | `*h.white.K`                  | `*h.white.preaparc.K`          |
+        | `*h.white.H`                  | `*h.white.preaparc.H`          |
 
-        # Define file pairs
-        for HEMI in lh rh; do
-            PIAL="${SURF_PATH}/${HEMI}.pial"
-            PIAL_T1="${SURF_PATH}/${HEMI}.pial.T1"
+      For instance, if you need `lh.pial` and it’s empty, you can create it by copying or linking `lh.pial.T1`:
+      ```bash
+      cp lh.pial.T1 lh.pial
+      ```
+      or
+      ```bash
+      ln -sf lh.pial.T1 lh.pial
+      ```
 
-            # Check if the pial file exists and is 0 KB
-            if [[ -e "$PIAL" && ! -s "$PIAL" ]]; then
-                echo "Fixing empty ${HEMI}.pial for $SUBJ..."
-                
-                # Check if corresponding .T1 file exists before creating the link
-                if [[ -e "$PIAL_T1" ]]; then
-                    ln -sf "$PIAL_T1" "$PIAL"
-                    echo "✔ Created symbolic link: ${HEMI}.pial → ${HEMI}.pial.T1"
-                else
-                    echo "⚠️ Warning: ${HEMI}.pial.T1 not found for $SUBJ. Cannot create link."
-                fi
-            else
-                echo "✅ ${HEMI}.pial for $SUBJ is fine. No action needed."
-            fi
-        done
-    done
+      To fix these links automatically across multiple subjects, you can use the following Bash script:
+      ```bash
+      #!/bin/bash
 
-    echo "✅ Done."
-    ```
+      # Check if at least 2 arguments are given (dataset path + at least one subject)
+      if [[ $# -lt 2 ]]; then
+          echo "Usage: $0 <BIDS_dataset_path> <sub-xx> [sub-yy ...]"
+          exit 1
+      fi
 
+      BIDS_PATH="$1"
+      shift  # Shift arguments to access subjects
+
+      # Loop over subject arguments
+      for SUBJ in "$@"; do
+          SURF_PATH="${BIDS_PATH}/derivatives/fmriprep/sourcedata/freesurfer/${SUBJ}/surf"
+
+          echo "=== Checking subject: $SUBJ ==="
+          for HEMI in lh rh; do
+              ####################
+              # fsaverage.sphere.reg
+              ####################
+              SPHERE_LINK="${SURF_PATH}/${HEMI}.fsaverage.sphere.reg"
+              SPHERE_TARGET="${SURF_PATH}/${HEMI}.sphere.reg"
+              if [[ -e "$SPHERE_LINK" && ! -s "$SPHERE_LINK" ]]; then
+                  echo "Fixing empty ${HEMI}.fsaverage.sphere.reg for $SUBJ..."
+                  if [[ -e "$SPHERE_TARGET" ]]; then
+                      ln -sf "$SPHERE_TARGET" "$SPHERE_LINK"
+                      echo "✔ Created symbolic link: ${HEMI}.fsaverage.sphere.reg → ${HEMI}.sphere.reg"
+                  else
+                      echo "⚠️ Warning: ${HEMI}.sphere.reg not found for $SUBJ. Cannot create link."
+                  fi
+              else
+                  echo "✅ ${HEMI}.fsaverage.sphere.reg for $SUBJ is fine. No action needed."
+              fi
+
+              ####################
+              # pial
+              ####################
+              PIAL_LINK="${SURF_PATH}/${HEMI}.pial"
+              PIAL_TARGET="${SURF_PATH}/${HEMI}.pial.T1"
+              if [[ -e "$PIAL_LINK" && ! -s "$PIAL_LINK" ]]; then
+                  echo "Fixing empty ${HEMI}.pial for $SUBJ..."
+                  if [[ -e "$PIAL_TARGET" ]]; then
+                      ln -sf "$PIAL_TARGET" "$PIAL_LINK"
+                      echo "✔ Created symbolic link: ${HEMI}.pial → ${HEMI}.pial.T1"
+                  else
+                      echo "⚠️ Warning: ${HEMI}.pial.T1 not found for $SUBJ. Cannot create link."
+                  fi
+              else
+                  echo "✅ ${HEMI}.pial for $SUBJ is fine. No action needed."
+              fi
+
+              ####################
+              # white.K
+              ####################
+              WHITE_K_LINK="${SURF_PATH}/${HEMI}.white.K"
+              WHITE_K_TARGET="${SURF_PATH}/${HEMI}.white.preaparc.K"
+              if [[ -e "$WHITE_K_LINK" && ! -s "$WHITE_K_LINK" ]]; then
+                  echo "Fixing empty ${HEMI}.white.K for $SUBJ..."
+                  if [[ -e "$WHITE_K_TARGET" ]]; then
+                      ln -sf "$WHITE_K_TARGET" "$WHITE_K_LINK"
+                      echo "✔ Created symbolic link: ${HEMI}.white.K → ${HEMI}.white.preaparc.K"
+                  else
+                      echo "⚠️ Warning: ${HEMI}.white.preaparc.K not found for $SUBJ. Cannot create link."
+                  fi
+              else
+                  echo "✅ ${HEMI}.white.K for $SUBJ is fine. No action needed."
+              fi
+
+              ####################
+              # white.H
+              ####################
+              WHITE_H_LINK="${SURF_PATH}/${HEMI}.white.H"
+              WHITE_H_TARGET="${SURF_PATH}/${HEMI}.white.preaparc.H"
+              if [[ -e "$WHITE_H_LINK" && ! -s "$WHITE_H_LINK" ]]; then
+                  echo "Fixing empty ${HEMI}.white.H for $SUBJ..."
+                  if [[ -e "$WHITE_H_TARGET" ]]; then
+                      ln -sf "$WHITE_H_TARGET" "$WHITE_H_LINK"
+                      echo "✔ Created symbolic link: ${HEMI}.white.H → ${HEMI}.white.preaparc.H"
+                  else
+                      echo "⚠️ Warning: ${HEMI}.white.preaparc.H not found for $SUBJ. Cannot create link."
+                  fi
+              else
+                  echo "✅ ${HEMI}.white.H for $SUBJ is fine. No action needed."
+              fi
+          done
+      done
+
+      echo "✅ Done."
+      ```
 ---
 
 With these quality checks complete, you’re ready to proceed to the **General Linear Model (GLM) analysis**. See the next guide for instructions on setting up your GLM. [--> Go to GLM](./fmri-glm.md)
