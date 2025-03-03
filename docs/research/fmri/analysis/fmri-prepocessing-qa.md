@@ -378,92 +378,69 @@ For more information on understanding these metrics, check out the [MRIQC interp
       ```bash
       #!/bin/bash
 
-      # Check if at least 2 arguments are given (dataset path + at least one subject)
-      if [[ $# -lt 2 ]]; then
-          echo "Usage: $0 <BIDS_dataset_path> <sub-xx> [sub-yy ...]"
-          exit 1
-      fi
+    # ==============================================================================
+    # Fix Empty Pial Files in FreeSurfer Directories
+    #
+    # This script checks if the lh.pial and rh.pial files are empty (0 KB) in a 
+    # FreeSurfer directory. If an empty file is found, it creates a symbolic link 
+    # to the corresponding lh.pial.T1 or rh.pial.T1 file.
+    #
+    # Usage:
+    #   ./fix_pial_links.sh         # Process all subjects in $FREESURFER_PATH
+    #   ./fix_pial_links.sh sub-01  # Process only the given subject(s)
+    #
+    # Requirements:
+    #   - The environment variable $FREESURFER_PATH must be set and point to the 
+    #     directory containing the subject folders.
+    #   - FreeSurfer outputs (e.g., lh.pial.T1) must exist for the fix to work.
+    # ==============================================================================
 
-      BIDS_PATH="$1"
-      shift  # Shift arguments to access subjects
+    # Check if FREESURFER_PATH is set
+    if [[ -z "$FREESURFER_PATH" ]]; then
+        echo "❌ Error: FREESURFER_PATH is not set. Please export FREESURFER_PATH first."
+        exit 1
+    fi
 
-      # Loop over subject arguments
-      for SUBJ in "$@"; do
-          SURF_PATH="${BIDS_PATH}/derivatives/fmriprep/sourcedata/freesurfer/${SUBJ}/surf"
+    # If no subject is provided, process all subjects in the FreeSurfer directory
+    if [[ $# -eq 0 ]]; then
+        SUBJS=($(ls "$FREESURFER_PATH"))  # Get all subjects in the directory
+    else
+        SUBJS=("$@")  # Use provided subjects
+    fi
 
-          echo "=== Checking subject: $SUBJ ==="
-          for HEMI in lh rh; do
-              ####################
-              # fsaverage.sphere.reg
-              ####################
-              SPHERE_LINK="${SURF_PATH}/${HEMI}.fsaverage.sphere.reg"
-              SPHERE_TARGET="${SURF_PATH}/${HEMI}.sphere.reg"
-              if [[ -e "$SPHERE_LINK" && ! -s "$SPHERE_LINK" ]]; then
-                  echo "Fixing empty ${HEMI}.fsaverage.sphere.reg for $SUBJ..."
-                  if [[ -e "$SPHERE_TARGET" ]]; then
-                      ln -sf "$SPHERE_TARGET" "$SPHERE_LINK"
-                      echo "✔ Created symbolic link: ${HEMI}.fsaverage.sphere.reg → ${HEMI}.sphere.reg"
-                  else
-                      echo "⚠️ Warning: ${HEMI}.sphere.reg not found for $SUBJ. Cannot create link."
-                  fi
-              else
-                  echo "✅ ${HEMI}.fsaverage.sphere.reg for $SUBJ is fine. No action needed."
-              fi
+    # Loop over subjects
+    for SUBJ in "${SUBJS[@]}"; do
+        SURF_PATH="${FREESURFER_PATH}/${SUBJ}/surf"
 
-              ####################
-              # pial
-              ####################
-              PIAL_LINK="${SURF_PATH}/${HEMI}.pial"
-              PIAL_TARGET="${SURF_PATH}/${HEMI}.pial.T1"
-              if [[ -e "$PIAL_LINK" && ! -s "$PIAL_LINK" ]]; then
-                  echo "Fixing empty ${HEMI}.pial for $SUBJ..."
-                  if [[ -e "$PIAL_TARGET" ]]; then
-                      ln -sf "$PIAL_TARGET" "$PIAL_LINK"
-                      echo "✔ Created symbolic link: ${HEMI}.pial → ${HEMI}.pial.T1"
-                  else
-                      echo "⚠️ Warning: ${HEMI}.pial.T1 not found for $SUBJ. Cannot create link."
-                  fi
-              else
-                  echo "✅ ${HEMI}.pial for $SUBJ is fine. No action needed."
-              fi
+        # Check if the subject directory exists
+        if [[ ! -d "$SURF_PATH" ]]; then
+            echo "⚠️ Warning: Subject directory not found for $SUBJ. Skipping..."
+            continue
+        fi
 
-              ####################
-              # white.K
-              ####################
-              WHITE_K_LINK="${SURF_PATH}/${HEMI}.white.K"
-              WHITE_K_TARGET="${SURF_PATH}/${HEMI}.white.preaparc.K"
-              if [[ -e "$WHITE_K_LINK" && ! -s "$WHITE_K_LINK" ]]; then
-                  echo "Fixing empty ${HEMI}.white.K for $SUBJ..."
-                  if [[ -e "$WHITE_K_TARGET" ]]; then
-                      ln -sf "$WHITE_K_TARGET" "$WHITE_K_LINK"
-                      echo "✔ Created symbolic link: ${HEMI}.white.K → ${HEMI}.white.preaparc.K"
-                  else
-                      echo "⚠️ Warning: ${HEMI}.white.preaparc.K not found for $SUBJ. Cannot create link."
-                  fi
-              else
-                  echo "✅ ${HEMI}.white.K for $SUBJ is fine. No action needed."
-              fi
+        # Process both hemispheres (left: lh, right: rh)
+        for HEMI in lh rh; do
+            PIAL="${SURF_PATH}/${HEMI}.pial"
+            PIAL_T1="${SURF_PATH}/${HEMI}.pial.T1"
 
-              ####################
-              # white.H
-              ####################
-              WHITE_H_LINK="${SURF_PATH}/${HEMI}.white.H"
-              WHITE_H_TARGET="${SURF_PATH}/${HEMI}.white.preaparc.H"
-              if [[ -e "$WHITE_H_LINK" && ! -s "$WHITE_H_LINK" ]]; then
-                  echo "Fixing empty ${HEMI}.white.H for $SUBJ..."
-                  if [[ -e "$WHITE_H_TARGET" ]]; then
-                      ln -sf "$WHITE_H_TARGET" "$WHITE_H_LINK"
-                      echo "✔ Created symbolic link: ${HEMI}.white.H → ${HEMI}.white.preaparc.H"
-                  else
-                      echo "⚠️ Warning: ${HEMI}.white.preaparc.H not found for $SUBJ. Cannot create link."
-                  fi
-              else
-                  echo "✅ ${HEMI}.white.H for $SUBJ is fine. No action needed."
-              fi
-          done
-      done
+            # Check if the pial file exists and is 0 KB
+            if [[ -e "$PIAL" && ! -s "$PIAL" ]]; then
+                echo "🛠 Fixing empty ${HEMI}.pial for $SUBJ..."
+                
+                # Check if the corresponding .T1 file exists before creating the link
+                if [[ -e "$PIAL_T1" ]]; then
+                    ln -sf "$PIAL_T1" "$PIAL"
+                    echo "✔ Created symbolic link: ${HEMI}.pial → ${HEMI}.pial.T1"
+                else
+                    echo "⚠️ Warning: ${HEMI}.pial.T1 not found for $SUBJ. Cannot create link."
+                fi
+            else
+                echo "✅ ${HEMI}.pial for $SUBJ is fine. No action needed."
+            fi
+        done
+    done
 
-      echo "✅ Done."
+    echo "✅ Done."
       ```
 ---
 
