@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
     
     
       
@@ -35,7 +35,7 @@
     
     
       
-        <script src="https://unpkg.com/iframe-worker/shim"></script>
+        <script src="../../../assets/external/unpkg.com/iframe-worker/shim.js"></script>
       
     
     
@@ -43,7 +43,7 @@
         
         
         
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -2293,6 +2293,136 @@
 <li><strong>Tip</strong>: Verify that the <code>derivatives/mriqc</code> directory has read and write access for Docker.</li>
 </ul>
 </details>
+<details class="failure">
+<summary>fMRIPrep output: empty surf files</summary>
+<ul>
+<li><strong>Problem</strong>: Some files in <code>freesurfer/sub-xx/surf</code> are empty (0 KB), namely:  <ul>
+<li><code>*h.fsaverage.sphere.reg</code></li>
+<li><code>*h.pial</code></li>
+<li><code>*h.white.H</code></li>
+<li><code>*h.white.K</code></li>
+</ul>
+</li>
+</ul>
+<p>These files are supposed to be symbolic links pointing to other outputs in the folder. A 0 KB size indicates that the link is broken. This often happens if preprocessing was done on Windows, since Windows does not fully preserve these link-type files.</p>
+<p>Even if the symbolic link is broken, the files to which the links originally pointed are likely still present in your <code>surf/</code> folder, so you <strong>do not need to re-run</strong> <code>recon-all</code> or <code>fmriprep</code>. </p>
+<ul>
+<li>
+<p><strong>Solution</strong>: If you need any of these files, you can either use the corresponding “original” file directly, or recreate the symbolic link (or a duplicate file) so external tools can see it under the expected filename. Below are the relevant file mappings:</p>
+<table>
+<thead>
+<tr>
+<th>Broken (link) file</th>
+<th>Original (target) file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*h.fsaverage.sphere.reg</code></td>
+<td><code>*h.sphere.reg</code></td>
+</tr>
+<tr>
+<td><code>*h.pial</code></td>
+<td><code>*h.pial.T1</code></td>
+</tr>
+<tr>
+<td><code>*h.white.K</code></td>
+<td><code>*h.white.preaparc.K</code></td>
+</tr>
+<tr>
+<td><code>*h.white.H</code></td>
+<td><code>*h.white.preaparc.H</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p>For instance, if you need <code>lh.pial</code> and it’s empty, you can create it by copying or linking <code>lh.pial.T1</code>:
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cp<span class="w"> </span>lh.pial.T1<span class="w"> </span>lh.pial
+</span></code></pre></div>
+  or
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ln<span class="w"> </span>-sf<span class="w"> </span>lh.pial.T1<span class="w"> </span>lh.pial
+</span></code></pre></div></p>
+<p>To fix these links automatically across multiple subjects, you can use the following Bash script:
+  ```bash
+  #!/bin/bash</p>
+<h1 id="_1">==============================================================================<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="fix-broken-files-in-freesurfer-directories">Fix Broken Files in FreeSurfer Directories<a class="headerlink" href="#fix-broken-files-in-freesurfer-directories" title="Permanent link">&para;</a></h1>
+<h1 id="_2"><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<h1 id="this-script-checks-for-specific-broken-or-empty-files-in-a-freesurfer-directory">This script checks for specific broken or empty files in a FreeSurfer directory.<a class="headerlink" href="#this-script-checks-for-specific-broken-or-empty-files-in-a-freesurfer-directory" title="Permanent link">&para;</a></h1>
+<h1 id="if-a-broken-file-is-found-it-creates-a-symbolic-link-to-its-corresponding">If a broken file is found, it creates a symbolic link to its corresponding<a class="headerlink" href="#if-a-broken-file-is-found-it-creates-a-symbolic-link-to-its-corresponding" title="Permanent link">&para;</a></h1>
+<h1 id="original-file">original file.<a class="headerlink" href="#original-file" title="Permanent link">&para;</a></h1>
+<h1 id="_3"><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<h1 id="usage">Usage:<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h1>
+<h1 id="fix_freesurfer_linkssh-process-all-subjects-in-freesurfer_path">./fix_freesurfer_links.sh         # Process all subjects in $FREESURFER_PATH<a class="headerlink" href="#fix_freesurfer_linkssh-process-all-subjects-in-freesurfer_path" title="Permanent link">&para;</a></h1>
+<h1 id="fix_freesurfer_linkssh-sub-01-process-only-the-given-subjects">./fix_freesurfer_links.sh sub-01  # Process only the given subject(s)<a class="headerlink" href="#fix_freesurfer_linkssh-sub-01-process-only-the-given-subjects" title="Permanent link">&para;</a></h1>
+<h1 id="_4"><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<h1 id="requirements">Requirements:<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h1>
+<h1 id="-the-environment-variable-freesurfer_path-must-be-set-and-point-to-the">- The environment variable $FREESURFER_PATH must be set and point to the<a class="headerlink" href="#-the-environment-variable-freesurfer_path-must-be-set-and-point-to-the" title="Permanent link">&para;</a></h1>
+<h1 id="directory-containing-the-subject-folders">directory containing the subject folders.<a class="headerlink" href="#directory-containing-the-subject-folders" title="Permanent link">&para;</a></h1>
+<h1 id="-freesurfer-outputs-must-exist-for-the-fix-to-work">- FreeSurfer outputs must exist for the fix to work.<a class="headerlink" href="#-freesurfer-outputs-must-exist-for-the-fix-to-work" title="Permanent link">&para;</a></h1>
+<h1 id="_5">==============================================================================<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
+<h1 id="check-if-freesurfer_path-is-set">Check if FREESURFER_PATH is set<a class="headerlink" href="#check-if-freesurfer_path-is-set" title="Permanent link">&para;</a></h1>
+<p>if [[ -z "$FREESURFER_PATH" ]]; then
+    echo "❌ Error: FREESURFER_PATH is not set. Please export FREESURFER_PATH first."
+    exit 1
+fi</p>
+<h1 id="if-no-subject-is-provided-process-all-subjects-in-the-freesurfer-directory">If no subject is provided, process all subjects in the FreeSurfer directory<a class="headerlink" href="#if-no-subject-is-provided-process-all-subjects-in-the-freesurfer-directory" title="Permanent link">&para;</a></h1>
+<p>if [[ <span class="arithmatex"><span class="MathJax_Preview"># -eq 0 ]]; then
+    SUBJS=(</span><script type="math/tex"># -eq 0 ]]; then
+    SUBJS=(</script></span>(ls "<span class="arithmatex"><span class="MathJax_Preview">FREESURFER_PATH"))  # Get all subjects in the directory
+else
+    SUBJS=("</span><script type="math/tex">FREESURFER_PATH"))  # Get all subjects in the directory
+else
+    SUBJS=("</script></span>@")  # Use provided subjects
+fi</p>
+<h1 id="define-file-mappings-broken-file-target-file">Define file mappings: (broken file → target file)<a class="headerlink" href="#define-file-mappings-broken-file-target-file" title="Permanent link">&para;</a></h1>
+<p>declare -A FILE_MAP=(
+    ["lh.fsaverage.sphere.reg"]="lh.sphere.reg"
+    ["rh.fsaverage.sphere.reg"]="rh.sphere.reg"
+    ["lh.pial"]="lh.pial.T1"
+    ["rh.pial"]="rh.pial.T1"
+    ["lh.white.K"]="lh.white.preaparc.K"
+    ["rh.white.K"]="rh.white.preaparc.K"
+    ["lh.white.H"]="lh.white.preaparc.H"
+    ["rh.white.H"]="rh.white.preaparc.H"
+)</p>
+<h1 id="loop-over-subjects">Loop over subjects<a class="headerlink" href="#loop-over-subjects" title="Permanent link">&para;</a></h1>
+<p>for SUBJ in "<span FREESURFER_PATH="FREESURFER_PATH" class="arithmatex"><span class="MathJax_Preview">{SUBJS[@]}"; do
+    SURF_PATH="</span><script type="math/tex">{SUBJS[@]}"; do
+    SURF_PATH="</script></span>/surf"}/${SUBJ</p>
+<div class="language-text highlight"><pre><span></span><code># Check if the subject directory exists
+if [[ ! -d &quot;$SURF_PATH&quot; ]]; then
+    echo &quot;⚠️ Warning: Subject directory not found for $SUBJ. Skipping...&quot;
+    continue
+fi
+
+# Loop over each broken file type
+for BROKEN_FILE in &quot;${!FILE_MAP[@]}&quot;; do
+    TARGET_FILE=&quot;${FILE_MAP[$BROKEN_FILE]}&quot;
+    BROKEN_PATH=&quot;${SURF_PATH}/${BROKEN_FILE}&quot;
+    TARGET_PATH=&quot;${SURF_PATH}/${TARGET_FILE}&quot;
+
+    # Check if the broken file exists and is empty
+    if [[ -e &quot;$BROKEN_PATH&quot; &amp;&amp; ! -s &quot;$BROKEN_PATH&quot; ]]; then
+        echo &quot;🛠 Fixing $BROKEN_FILE for $SUBJ...&quot;
+
+        # Check if the corresponding target file exists before creating the link
+        if [[ -e &quot;$TARGET_PATH&quot; ]]; then
+            ln -sf &quot;$TARGET_PATH&quot; &quot;$BROKEN_PATH&quot;
+            echo &quot;✔ Created symbolic link: $BROKEN_FILE → $TARGET_FILE&quot;
+        else
+            echo &quot;⚠️ Warning: $TARGET_FILE not found for $SUBJ. Cannot create link.&quot;
+        fi
+    else
+        echo &quot;✅ $BROKEN_FILE for $SUBJ is fine. No action needed.&quot;
+    fi
+done
+</code></pre></div>
+<p>done</p>
+<p>echo "✅ Done."</p>
+<p>```</p>
+</details>
 <hr />
 <p>With these quality checks complete, you’re ready to proceed to the <strong>General Linear Model (GLM) analysis</strong>. See the next guide for instructions on setting up your GLM. <a href="fmri-glm.html">&rarr; Go to GLM</a></p>
 
@@ -2315,7 +2445,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 20, 2024 01:17:23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 4, 2025 10:21:48</span>
   </span>
 
     
@@ -2326,11 +2456,12 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
       
+        <a href="mailto:61991543+timmaniquet@users.noreply.github.com">Tim Maniquet</a>, 
         <a href="mailto:59078281+costantinoai@users.noreply.github.com">costantinoai</a>
     </nav>
   </span>
@@ -2510,7 +2641,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.tabs.link", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.sections", "search.highlight", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="../../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
