@@ -372,7 +372,7 @@ For more information on understanding these metrics, check out the [MRIQC interp
         cp lh.pial.T1 lh.pial
         ```
 
-        To **fix these links automatically** across multiple subjects (on Windows, use the WLS terminal, **not** in the native PowerShell / Windows terminal)):
+        To **fix these links automatically** across multiple subjects (on Windows, use the WSL terminal, **not** in the native PowerShell / Windows terminal)):
           
           1. Set your `FREESURFER_PATH` (the folder containing your pre-existing `recon-all` or output): 
             ```bash
