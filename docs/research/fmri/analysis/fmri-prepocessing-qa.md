@@ -347,14 +347,15 @@ For more information on understanding these metrics, check out the [MRIQC interp
 
 ??? failure "fMRIPrep output: empty surf files"
     - **Problem**: Some files in `freesurfer/sub-xx/surf` are empty (0 KB), namely:  
+  
         - `*h.fsaverage.sphere.reg`
         - `*h.pial`
         - `*h.white.H`
         - `*h.white.K`
 
-    These files are supposed to be symbolic links pointing to other outputs in the folder. A 0 KB size indicates that the link is broken. This often happens if preprocessing was done on Windows, since Windows does not fully preserve these link-type files.
+        These files are supposed to be symbolic links pointing to other outputs in the folder. A 0 KB size indicates that the link is broken. This often happens if preprocessing was done on Windows, since Windows does not fully preserve these link-type files.
 
-    Even if the symbolic link is broken, the files to which the links originally pointed are likely still present in your `surf/` folder, so you **do not need to re-run** `recon-all` or `fmriprep`. 
+        Even if the symbolic link is broken, the files to which the links originally pointed are likely still present in your `surf/` folder, so you **do not need to re-run** `recon-all` or `fmriprep`. 
 
     - **Solution**: If you need any of these files, you can either use the corresponding “original” file directly, or recreate the symbolic link (or a duplicate file) so external tools can see it under the expected filename. Below are the relevant file mappings:
   
@@ -365,98 +366,107 @@ For more information on understanding these metrics, check out the [MRIQC interp
         | `*h.white.K`                  | `*h.white.preaparc.K`          |
         | `*h.white.H`                  | `*h.white.preaparc.H`          |
 
-      For instance, if you need `lh.pial` and it’s empty, you can create it by copying or linking `lh.pial.T1`:
-      ```bash
-      cp lh.pial.T1 lh.pial
-      ```
-      or
-      ```bash
-      ln -sf lh.pial.T1 lh.pial
-      ```
+        For instance, if you need `lh.pial` and it’s empty, you can create it by copying `lh.pial.T1` with the following command:
 
-      To fix these links automatically across multiple subjects, you can use the following Bash script:
-      ```bash
-      #!/bin/bash
+        ```bash
+        cp lh.pial.T1 lh.pial
+        ```
 
-    # ==============================================================================
-    # Fix Broken Files in FreeSurfer Directories
-    #
-    # This script checks for specific broken or empty files in a FreeSurfer directory.
-    # If a broken file is found, it creates a symbolic link to its corresponding
-    # original file.
-    #
-    # Usage:
-    #   ./fix_freesurfer_links.sh         # Process all subjects in $FREESURFER_PATH
-    #   ./fix_freesurfer_links.sh sub-01  # Process only the given subject(s)
-    #
-    # Requirements:
-    #   - The environment variable $FREESURFER_PATH must be set and point to the 
-    #     directory containing the subject folders.
-    #   - FreeSurfer outputs must exist for the fix to work.
-    # ==============================================================================
+        To **fix these links automatically** across multiple subjects (on Windows, use the WLS terminal, **not** in the native PowerShell / Windows terminal)):
+          
+          1. Set your `FREESURFER_PATH` (the folder containing your pre-existing `recon-all` or output): 
+            ```bash
+            export FREESURFER_PATH=/BIDE/derivatives/freesurfer
+            ```
+          2. Copy and paste the script below into an empty file and save it as **`fix_surf_files.sh`**.  
+          3. Open a terminal and navigate to the folder where you saved the file (e.g., `cd ~/Documents`).
+          4. Make the script executable: `chmod +x fix_surf_files.sh`
+          5. Run the script: `./fix_surf_files.sh`
+        
+        Here is the full script:
 
-    # Check if FREESURFER_PATH is set
-    if [[ -z "$FREESURFER_PATH" ]]; then
-        echo "❌ Error: FREESURFER_PATH is not set. Please export FREESURFER_PATH first."
-        exit 1
-    fi
+        ```{.bash linenums="1"}
+        #!/bin/bash
 
-    # If no subject is provided, process all subjects in the FreeSurfer directory
-    if [[ $# -eq 0 ]]; then
-        SUBJS=($(ls "$FREESURFER_PATH"))  # Get all subjects in the directory
-    else
-        SUBJS=("$@")  # Use provided subjects
-    fi
+        # ==============================================================================
+        # Fix Broken Files in FreeSurfer Directories
+        #
+        # This script checks for specific broken or empty files in a FreeSurfer directory.
+        # If a broken file is found, it creates a symbolic link to its corresponding
+        # original file.
+        #
+        # Usage:
+        #   ./fix_freesurfer_links.sh         # Process all subjects in $FREESURFER_PATH
+        #   ./fix_freesurfer_links.sh sub-01  # Process only the given subject(s)
+        #
+        # Requirements:
+        #   - The environment variable $FREESURFER_PATH must be set and point to the 
+        #     directory containing the subject folders.
+        #   - FreeSurfer outputs must exist for the fix to work.
+        # ==============================================================================
 
-    # Define file mappings: (broken file → target file)
-    declare -A FILE_MAP=(
-        ["lh.fsaverage.sphere.reg"]="lh.sphere.reg"
-        ["rh.fsaverage.sphere.reg"]="rh.sphere.reg"
-        ["lh.pial"]="lh.pial.T1"
-        ["rh.pial"]="rh.pial.T1"
-        ["lh.white.K"]="lh.white.preaparc.K"
-        ["rh.white.K"]="rh.white.preaparc.K"
-        ["lh.white.H"]="lh.white.preaparc.H"
-        ["rh.white.H"]="rh.white.preaparc.H"
-    )
-
-    # Loop over subjects
-    for SUBJ in "${SUBJS[@]}"; do
-        SURF_PATH="${FREESURFER_PATH}/${SUBJ}/surf"
-
-        # Check if the subject directory exists
-        if [[ ! -d "$SURF_PATH" ]]; then
-            echo "⚠️ Warning: Subject directory not found for $SUBJ. Skipping..."
-            continue
+        # Check if FREESURFER_PATH is set
+        if [[ -z "$FREESURFER_PATH" ]]; then
+            echo "❌ Error: FREESURFER_PATH is not set. Please export FREESURFER_PATH first."
+            exit 1
         fi
 
-        # Loop over each broken file type
-        for BROKEN_FILE in "${!FILE_MAP[@]}"; do
-            TARGET_FILE="${FILE_MAP[$BROKEN_FILE]}"
-            BROKEN_PATH="${SURF_PATH}/${BROKEN_FILE}"
-            TARGET_PATH="${SURF_PATH}/${TARGET_FILE}"
+        # If no subject is provided, process all subjects in the FreeSurfer directory
+        if [[ $# -eq 0 ]]; then
+            SUBJS=($(ls "$FREESURFER_PATH"))  # Get all subjects in the directory
+        else
+            SUBJS=("$@")  # Use provided subjects
+        fi
 
-            # Check if the broken file exists and is empty
-            if [[ -e "$BROKEN_PATH" && ! -s "$BROKEN_PATH" ]]; then
-                echo "🛠 Fixing $BROKEN_FILE for $SUBJ..."
-                
-                # Check if the corresponding target file exists before creating the link
-                if [[ -e "$TARGET_PATH" ]]; then
-                    ln -sf "$TARGET_PATH" "$BROKEN_PATH"
-                    echo "✔ Created symbolic link: $BROKEN_FILE → $TARGET_FILE"
-                else
-                    echo "⚠️ Warning: $TARGET_FILE not found for $SUBJ. Cannot create link."
-                fi
-            else
-                echo "✅ $BROKEN_FILE for $SUBJ is fine. No action needed."
+        # Define file mappings: (broken file → target file)
+        declare -A FILE_MAP=(
+            ["lh.fsaverage.sphere.reg"]="lh.sphere.reg"
+            ["rh.fsaverage.sphere.reg"]="rh.sphere.reg"
+            ["lh.pial"]="lh.pial.T1"
+            ["rh.pial"]="rh.pial.T1"
+            ["lh.white.K"]="lh.white.preaparc.K"
+            ["rh.white.K"]="rh.white.preaparc.K"
+            ["lh.white.H"]="lh.white.preaparc.H"
+            ["rh.white.H"]="rh.white.preaparc.H"
+        )
+
+        # Loop over subjects
+        for SUBJ in "${SUBJS[@]}"; do
+            SURF_PATH="${FREESURFER_PATH}/${SUBJ}/surf"
+
+            # Check if the subject directory exists
+            if [[ ! -d "$SURF_PATH" ]]; then
+                echo "⚠️ Warning: Subject directory not found for $SUBJ. Skipping..."
+                continue
             fi
+
+            # Loop over each broken file type
+            for BROKEN_FILE in "${!FILE_MAP[@]}"; do
+                TARGET_FILE="${FILE_MAP[$BROKEN_FILE]}"
+                BROKEN_PATH="${SURF_PATH}/${BROKEN_FILE}"
+                TARGET_PATH="${SURF_PATH}/${TARGET_FILE}"
+
+                # Check if the broken file exists and is empty
+                if [[ -e "$BROKEN_PATH" && ! -s "$BROKEN_PATH" ]]; then
+                    echo "🛠 Fixing $BROKEN_FILE for $SUBJ..."
+                    
+                    # Check if the corresponding target file exists before creating the link
+                    if [[ -e "$TARGET_PATH" ]]; then
+                        ln -sf "$TARGET_PATH" "$BROKEN_PATH"
+                        echo "✔ Created symbolic link: $BROKEN_FILE → $TARGET_FILE"
+                    else
+                        echo "⚠️ Warning: $TARGET_FILE not found for $SUBJ. Cannot create link."
+                    fi
+                else
+                    echo "✅ $BROKEN_FILE for $SUBJ is fine. No action needed."
+                fi
+            done
+
         done
 
-    done
+        echo "✅ Done."
 
-    echo "✅ Done."
-
-      ```
+        ```
 ---
 
-With these quality checks complete, you’re ready to proceed to the **General Linear Model (GLM) analysis**. See the next guide for instructions on setting up your GLM. [--> Go to GLM](./fmri-glm.md)
+With these quality checks complete, you're ready to proceed to the **General Linear Model (GLM) analysis**. See the next guide for instructions on setting up your GLM. [--> Go to GLM](./fmri-glm.md)
