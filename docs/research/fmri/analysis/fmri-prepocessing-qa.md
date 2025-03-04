@@ -379,20 +379,20 @@ For more information on understanding these metrics, check out the [MRIQC interp
       #!/bin/bash
 
     # ==============================================================================
-    # Fix Empty Pial Files in FreeSurfer Directories
+    # Fix Broken Files in FreeSurfer Directories
     #
-    # This script checks if the lh.pial and rh.pial files are empty (0 KB) in a 
-    # FreeSurfer directory. If an empty file is found, it creates a symbolic link 
-    # to the corresponding lh.pial.T1 or rh.pial.T1 file.
+    # This script checks for specific broken or empty files in a FreeSurfer directory.
+    # If a broken file is found, it creates a symbolic link to its corresponding
+    # original file.
     #
     # Usage:
-    #   ./fix_pial_links.sh         # Process all subjects in $FREESURFER_PATH
-    #   ./fix_pial_links.sh sub-01  # Process only the given subject(s)
+    #   ./fix_freesurfer_links.sh         # Process all subjects in $FREESURFER_PATH
+    #   ./fix_freesurfer_links.sh sub-01  # Process only the given subject(s)
     #
     # Requirements:
     #   - The environment variable $FREESURFER_PATH must be set and point to the 
     #     directory containing the subject folders.
-    #   - FreeSurfer outputs (e.g., lh.pial.T1) must exist for the fix to work.
+    #   - FreeSurfer outputs must exist for the fix to work.
     # ==============================================================================
 
     # Check if FREESURFER_PATH is set
@@ -408,6 +408,18 @@ For more information on understanding these metrics, check out the [MRIQC interp
         SUBJS=("$@")  # Use provided subjects
     fi
 
+    # Define file mappings: (broken file → target file)
+    declare -A FILE_MAP=(
+        ["lh.fsaverage.sphere.reg"]="lh.sphere.reg"
+        ["rh.fsaverage.sphere.reg"]="rh.sphere.reg"
+        ["lh.pial"]="lh.pial.T1"
+        ["rh.pial"]="rh.pial.T1"
+        ["lh.white.K"]="lh.white.preaparc.K"
+        ["rh.white.K"]="rh.white.preaparc.K"
+        ["lh.white.H"]="lh.white.preaparc.H"
+        ["rh.white.H"]="rh.white.preaparc.H"
+    )
+
     # Loop over subjects
     for SUBJ in "${SUBJS[@]}"; do
         SURF_PATH="${FREESURFER_PATH}/${SUBJ}/surf"
@@ -418,29 +430,32 @@ For more information on understanding these metrics, check out the [MRIQC interp
             continue
         fi
 
-        # Process both hemispheres (left: lh, right: rh)
-        for HEMI in lh rh; do
-            PIAL="${SURF_PATH}/${HEMI}.pial"
-            PIAL_T1="${SURF_PATH}/${HEMI}.pial.T1"
+        # Loop over each broken file type
+        for BROKEN_FILE in "${!FILE_MAP[@]}"; do
+            TARGET_FILE="${FILE_MAP[$BROKEN_FILE]}"
+            BROKEN_PATH="${SURF_PATH}/${BROKEN_FILE}"
+            TARGET_PATH="${SURF_PATH}/${TARGET_FILE}"
 
-            # Check if the pial file exists and is 0 KB
-            if [[ -e "$PIAL" && ! -s "$PIAL" ]]; then
-                echo "🛠 Fixing empty ${HEMI}.pial for $SUBJ..."
+            # Check if the broken file exists and is empty
+            if [[ -e "$BROKEN_PATH" && ! -s "$BROKEN_PATH" ]]; then
+                echo "🛠 Fixing $BROKEN_FILE for $SUBJ..."
                 
-                # Check if the corresponding .T1 file exists before creating the link
-                if [[ -e "$PIAL_T1" ]]; then
-                    ln -sf "$PIAL_T1" "$PIAL"
-                    echo "✔ Created symbolic link: ${HEMI}.pial → ${HEMI}.pial.T1"
+                # Check if the corresponding target file exists before creating the link
+                if [[ -e "$TARGET_PATH" ]]; then
+                    ln -sf "$TARGET_PATH" "$BROKEN_PATH"
+                    echo "✔ Created symbolic link: $BROKEN_FILE → $TARGET_FILE"
                 else
-                    echo "⚠️ Warning: ${HEMI}.pial.T1 not found for $SUBJ. Cannot create link."
+                    echo "⚠️ Warning: $TARGET_FILE not found for $SUBJ. Cannot create link."
                 fi
             else
-                echo "✅ ${HEMI}.pial for $SUBJ is fine. No action needed."
+                echo "✅ $BROKEN_FILE for $SUBJ is fine. No action needed."
             fi
         done
+
     done
 
     echo "✅ Done."
+
       ```
 ---
 
