@@ -1,6 +1,6 @@
 # Welcome to HOPLAB
 
-We are thrilled to have you join our team at HOPLAB, where we delve into the fascinating world of visual cognition and learning. Our lab is dedicated to exploring how the brain processes and interprets complex visual scenes, integrating insights from neuroscience, psychology, and computational science. As part of our team, you’ll contribute to cutting-edge research that bridges human cognition with artificial intelligence. We look forward to your contributions and to working together on exciting discoveries.
+We are thrilled to have you join our team at HOPLAB. Our lab is dedicated to exploring how the brain processes and interprets complex visual scenes, integrating insights from neuroscience, psychology, and computational science. As part of our team, you’ll contribute to cutting-edge research that bridges human cognition with artificial intelligence. We look forward to your contributions and to working together on exciting discoveries.
 
 ## Getting Started at HOPLAB
 
