@@ -1,7 +1,5 @@
 # Convert your fMRI data into BIDS format
 
-**TODO:** [TIM] add figures. It would definitely be nice to show a full tree of an example repostitory, and how it changes at each step of the way.
-
 **TODO:** [ANDREA] this page is unnecessary complex. I think we should make it simpler by giving the standard steps from DICOM to BIDS, which is in iny case safer than the nift + json editing.
 
 ## BIDS standards
