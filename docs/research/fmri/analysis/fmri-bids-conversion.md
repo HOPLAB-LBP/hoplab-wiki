@@ -388,26 +388,38 @@ Each `events.tsv` file should contain at least three columns: `onset`, `duration
 
 ### Converting DICOM files (Optional)
 
-If you have DICOM files from the scanner:
+If you have collected DICOM files from the scanner, you need to 1. **anonymise**, and 2. **convert** them so that you can use them properly. There are several tools available that can take care of this. The [dicm2nii](https://github.com/xiangruili/dicm2nii/tree/master) GitHub repository is one such example. To use it, clone the repository, open MatLab, and follow these steps:
 
-1. Navigate to your `sourcedata/sub-xx/dicom/` folder.
-2. Use the `anonymize_dicm` script to anonymize the DICOM files.
-3. Use the `dicm2nii` script to convert the anonymized DICOM files to NIfTI.
+1. Navigate to your `sourcedata` folder.
+2. Add the cloned `dicm2nii` folder to your path.
+3. Use the `anonymize_dicm` script to anonymize the DICOM files. The command will look something like this:
+```MatLab
+anonymize_dicm('sub-xx/dicom', 'sub-xx/dicom_anon', 'sub-xx')
+```
+4. Use the `dicm2nii` script to convert the anonymized DICOM files to NIfTI.
+```MatLab
+dicm2nii('sub-xx/dicom_anon', 'sub-xx/dicom_converted', 'nii.gz')
+```
+
+These commands will have populated the `dicom_anon` and `dicom_converted` folders (see the folder trees in [BIDS Conversion Overview](./fmri-bids-conversion.md#bids-conversion-overview) for an example). The content of the latter can in turn be used to create json side car files (see [Creating JSON Sidecar Files](./fmri-bids-conversion.md#creating-json-sidecar-files)).
 
 **TODO:** [ANDREA] add info about 1) example dcm2nii call, 2) why dcm2nii rather than dcm2nii**x**, 3) add additional info on DICOM (no enhanced, missing values, etc.). see also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Phillips DICOMS, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.
 
-**TODO:** [TIM] Give information on how to use the anonymization and dicom to nifti scripts, and what the results should be like. Give links to the scripts.
+**TODO:** [TIM] Give information on how to use the anonymization and DICOM to nifti scripts, and what the results should be like. Give links to the scripts.
 
 ### Creating JSON Sidecar Files
 
 Each `nii` file **must** have a sidecar JSON file. However, if your fMRI protocol did not change, all the important JSON fields are going to be the same across different scanning sessions, and therefore JSON files can be re-used across subjects. This will save you some time, since getting DICOM files from the scanner can be quite time-consuming.
 
-1. Locate the JSON sidecar files in `sourcedata/sub-xx/dicom_converted/`.
-2. Open each JSON file and update the `PhaseEncodingDirection` and `SliceTiming` fields.
-3. Copy the updated JSON files to accompany each NIfTI file in the BIDS folder.
+- **If you collected DICOM files** for your participant, make sure you [anonymised and converted your DICOM files](./fmri-bids-conversion.md#converting-dicom-files-optional) and go through the following steps:
 
+    1. Locate the JSON sidecar files in `sourcedata/sub-xx/dicom_converted/`.
+    2. Open each JSON file and Complete the `PhaseEncodingDirection` and `SliceTiming` fields (see [Missing fields in JSON files](./fmri-general.md#missing-fields-in-json-files) for more information).
+    3. Copy-paste the updated JSON files to accompany each NIfTI file in the `BIDS/sub-xx/func` folder: each run should have its accompanying `sub-xx_task-taskname_run-xx_bold.json` sidecar file.
 
-Complete the `PhaseEncodingDirection` and `SliceTiming` fields (see [Missing fields in JSON files](./fmri-general.md#missing-fields-in-json-files) for more information)
+- **If you did not collect DICOM files** for your participant, but collected DICOM files for a previous participant _and_ your fMRI protocol did not change in the meantime:
+  
+    1. Copy-paste all `.json` sidecar files from the `BIDS/sub-xx/func` folder of the participant you have DICOM files for, to the `BIDS/sub-xx/func` folder of new participant you only collect nifti files for. Rename each file with the correct `sub` value, ensuring there is one `.json` file per participant, per run, with the correct name.
 
 **TODO:** [TIM] Explain how to get the two missing fields and why it's important. Link to the fmri-general section about it.
 
