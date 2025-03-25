@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -1919,67 +1919,218 @@
 <p>The BIDS Specification provides guidelines on how to organize all your data formats, including <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/magnetic-resonance-imaging-data.html">(f/d)MRI</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/electroencephalography.html">EEG</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/physiological-and-other-continuous-recordings.html">eye-tracking</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html">Task events</a> associated with Neuro-Imaging recordings or <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/behavioral-experiments.html">not</a>, and <a href="https://bids-specification.readthedocs.io/en/stable/derivatives/imaging.html">Derivatives</a> (e.g., pre-processed files, Regions Of Interest mask files, GLM files, etc.).</p>
 <p>At any moment, you can check your dataset for BIDS compliance. To do so, you can use the <a href="https://bids-standard.github.io/bids-validator/">BIDS dataset validator</a>.</p>
 <h2 id="bids-conversion-overview">BIDS Conversion Overview<a class="headerlink" href="#bids-conversion-overview" title="Permanent link">&para;</a></h2>
-<p>After scanning participants, you'll obtain data from two primary sources:</p>
+<p>Here's a high-level overview of the steps involved in arranging your data in a BIDS-compatible way. While this provides a general understanding, most of these steps should be performed using the code provided in each sub-section to minimize errors. After scanning participants, you'll obtain data from two primary sources:</p>
 <ol>
-<li>The scanner: Functional and structural outputs (<code>.nii</code> files), alongside potential <code>dicom</code> files</li>
-<li>The stimulus presentation computer: Behavioural outputs (mainly <code>log</code> files and <code>.mat</code> files) and potentially eye-tracking data</li>
+<li>The scanner: <strong>functional</strong> and <strong>structural</strong> outputs (<code>.nii</code> files), alongside potential <code>dicom</code> files</li>
+<li>The stimulus presentation computer: <strong>behavioural</strong> outputs (mainly <code>log</code> files and <code>.mat</code> files) and potentially eye-tracking data</li>
 </ol>
-<p>Your first step is to organize these files in a <code>sourcedata</code> folder. Follow the structure outlined in <a href="fmri-general.html#how-to-store-raw-data">How to store raw data</a>. Once your data is properly arranged, you can proceed to anonymize it and convert it to BIDS format.</p>
-<p>Here's a high-level overview of the steps involved in arranging your data in a BIDS-compatible way. While this provides a general understanding, most of these steps should be performed using the code provided in each sub-section to minimize errors.</p>
+<p>As you turn your raw data into a BIDS-compatible format, your project directory will change considerably. The folder trees below show you how each steps will affect your working directory, with changing folders and file in <strong>bold</strong> for each step.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:9"><input checked="checked" id="step1" name="__tabbed_1" type="radio" /><input id="step-2" name="__tabbed_1" type="radio" /><input id="step-3" name="__tabbed_1" type="radio" /><input id="step-4" name="__tabbed_1" type="radio" /><input id="step-5" name="__tabbed_1" type="radio" /><input id="step-6" name="__tabbed_1" type="radio" /><input id="step-7" name="__tabbed_1" type="radio" /><input id="step-8" name="__tabbed_1" type="radio" /><input id="step-9" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="step1">Step1</label><label for="step-2">Step 2</label><label for="step-3">Step 3</label><label for="step-4">Step 4</label><label for="step-5">Step 5</label><label for="step-6">Step 6</label><label for="step-7">Step 7</label><label for="step-8">Step 8</label><label for="step-9">Step 9</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><pre><code>
+<b>myproject</b>
+└── <b>sourcedata</b>
+</code></pre></p>
+</div>
+<div class="tabbed-block">
+<p><pre><code>
+myproject
+└── sourcedata
+    └── <b>sub-01</b>
+        ├── <b>bh</b>
+        ├── <b>dicom</b>
+        └── <b>nifti</b>
+</code></pre></p>
+</div>
+<div class="tabbed-block">
+<p><pre><code>
+myproject
+└── sourcedata
+    └── sub-01
+        ├── bh
+        │   ├── <b>yyyy-mm-dd-sub-01_run-01_task-taskname_log.tsv</b>
+        │   ├── <b>yyyy-mm-dd-sub-01_run-01_task-taskname.mat</b>
+        │   ├── ...
+        │   ├── <b>yyyy-mm-dd-sub-01_run-xx_task-taskname_log.tsv</b>
+        │   └── <b>yyyy-mm-dd-sub-01_run-xx_task-taskname.mat</b>
+        ├── dicom
+        │   ├── <b>IM_0001</b>
+        │   ├── <b>IM_0005</b>
+        │   ├── <b>PS_0002</b>
+        │   ├── <b>PS_0006</b>
+        │   ├── <b>XX_0003</b>
+        │   ├── <b>XX_0004</b>
+        │   └── <b>XX_0007</b>
+        └── nifti
+            ├── <b>run-01.nii</b>
+            ├── ...
+            ├── <b>run-xx.nii</b>
+            └── <b>sub-01_struct.nii</b>
+</code></pre></p>
+</div>
+<div class="tabbed-block">
+<p><pre><code>
+myproject
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── <b>dicom_anon</b>
+        │   ├── <b>IM_0001</b>
+        │   ├── <b>IM_0005</b>
+        │   ├── <b>PS_0002</b>
+        │   ├── <b>PS_0006</b>
+        │   ├── <b>XX_0003</b>
+        │   ├── <b>XX_0004</b>
+        │   └── <b>XX_0007</b>
+        ├── <b>dicom_converted</b>
+        │   ├── <b>dcmHeaders.mat</b>
+        │   ├── <b>sub-01_run-01.json</b>
+        │   ├── <b>sub-01_run-01.nii.gz</b>
+        │   ├── <b>sub-01_struct.json</b>
+        │   └── <b>sub-01_struct.nii.gz</b>
+        └── nifti
+</code></pre></p>
+</div>
+<div class="tabbed-block">
+<p><pre><code>
+myproject
+├── <b>BIDS</b>
+│   └── <b>sub-01</b>
+│       ├── <b>anat</b>
+│       │   └── <b>sub-01_T1w.nii</b>
+│       └── <b>func</b>
+│           ├── <b>sub-01_task-taskname_run-01_bold.nii</b>
+│           ├── ...
+│           └── <b>sub-01_task-taskname_run-xx_bold.nii</b>
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── dicom_anon
+        ├── dicom_converted
+        └── nifti
+</code></pre></p>
+</div>
+<div class="tabbed-block">
+<p><pre><code>
+myproject
+├── BIDS
+│   └── sub-01
+│       ├── anat
+│       └── func
+│           ├── <b>sub-01_task-taskname_run-01_bold.json</b>
+│           ├── sub-01_task-taskname_run-01_bold.nii
+│           ├── ...
+│           ├── <b>sub-01_task-taskname_run-xx_bold.json</b>
+│           └── sub-01_task-taskname_run-xx_bold.nii
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── dicom_anon
+        ├── dicom_converted
+        └── nifti
+</code></pre></p>
+</div>
+<div class="tabbed-block">
+<p><pre><code>
+myproject
+├── BIDS
+│   └── sub-01
+│       ├── anat
+│       └── func
+│           ├── sub-01_task-taskname_run-01_bold.json
+│           ├── sub-01_task-taskname_run-01_bold.nii
+│           ├── <b>sub-01_task-taskname_run-01_events.tsv</b>
+│           ├── ...
+│           ├── sub-01_task-taskname_run-xx_bold.json
+│           ├── sub-01_task-taskname_run-xx_bold.nii
+│           └── <b>sub-01_task-taskname_run-xx_events.tsv</b>
+├── code
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── dicom_anon
+        ├── dicom_converted
+        └── nifti
+</code></pre></p>
+</div>
+<div class="tabbed-block">
+<p><pre><code>
+myproject
+├── BIDS
+│   ├── <b>dataset_description.json</b>
+│   ├── <b>events.json</b>
+│   ├── <b>participants.json</b>
+│   ├── <b>participants.tsv</b>
+│   ├── sub-01
+│   │   ├── anat
+│   │   └── func
+│   └── <b>task-taskname_bold.json</b>
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── dicom_anon
+        ├── dicom_converted
+        └── nifti
+</code></pre></p>
+</div>
+<div class="tabbed-block">
+<p><pre><code>
+myproject
+├── BIDS
+│   ├── <b>.bidsignore</b>
+│   ├── dataset_description.json
+│   ├── <b>derivatives</b>
+│   ├── events.json
+│   ├── participants.json
+│   ├── participants.tsv
+│   ├── sub-01
+│   │   ├── anat
+│   │   └── func
+│   └── task-taskname_bold.json
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── dicom_anon
+        ├── dicom_converted
+        └── nifti
+</code></pre></p>
+</div>
+</div>
+</div>
 <ol>
 <li>
-<p>First and foremost, make sure your DICOM / nifti file names <strong>do not contain</strong> subject identificative information, such as the subject's name. This is particularly relevant for our pipeline, because that's exactly what our scanner does. You can either manually rename your files, or run the small Python utility (available <a href="../../../assets/code/anon_nii_filename.py">here</a>) in your terminal. More information on how to use it can be found in the docstring inside the script and in the relevant section below.</p>
+<p>Your first step is to organize your files in a <code>sourcedata</code> folder. Follow the structure outlined in <a href="fmri-general.html#how-to-store-raw-data">How to store raw data</a>: have one main project folder (e.g. <code>myproject</code>), and a <code>sourcedata</code> folder in it.</p>
 </li>
 <li>
-<p>Create <code>events.tsv</code> files (more info on required and optional columns can be found <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html">here</a>):</p>
-<ul>
-<li>Make one file per functional run</li>
-<li>Add them to the <code>./BIDS/sub-xx/func</code> folder</li>
-<li><em>Optional:</em> Create an <code>events.json</code> sidecar file to describe extra columns in event files</li>
-</ul>
-<p>Example:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>└─<span class="w"> </span>sub-01/
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└─<span class="w"> </span>func/
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>├─<span class="w"> </span>sub-01_task-exp_events.tsv<span class="w"> </span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>└─<span class="w"> </span>sub-01_task-exp_events.json<span class="w"> </span>
-</span></code></pre></div>
+<p>Create the relevant sub-folders within the <code>sourcedata</code> folder: for each participant you collected data from, create a <code>sub-xx</code> folder (e.g. <code>sub-01</code>). Within the folder of each participant, create a <code>bh</code> (behaviour) and <code>nifti</code> (i.e. nifti, the format of the files collected from the scanner) folder. Also create a <code>dicom</code> folder if you collected dicom files for your participant.</p>
 </li>
 <li>
-<p>Rename functional <code>nifti</code> files:</p>
-<ul>
-<li>Follow BIDS naming format: <code>sub-&lt;label&gt;_task-&lt;label&gt;_run-&lt;label&gt;_bold.nii</code></li>
-<li>Add them to the <code>./BIDS/sub-xx/func</code> folder</li>
-</ul>
+<p>Place the files you collected in this <code>sourcedata</code> structure: data collected from your experimental task goes into <code>bh</code> (e.g. <code>.mat</code> files and log files if you used the <a href="https://github.com/HOPLAB-LBP/fMRI-task-template">fMRI task template</a>), data collected from the scanner itself goes in <code>nifti</code> or in <code>dicom</code> based on its format.</p>
 </li>
 <li>
-<p>Rename structural <code>nifti</code> files:</p>
-<ul>
-<li>Follow BIDS naming format: <code>sub-&lt;label&gt;_T1W.nii</code></li>
-<li>Add them to the <code>./BIDS/sub-xx/func</code> folder</li>
-</ul>
+<p>If you collected them, proceed to <strong>anonymise</strong> and <strong>convert</strong> your DICOM files. Create a <code>dicom_anon</code> and a <code>dicom_converted</code> folder. See below for more details on <a href="fmri-bids-conversion.html#converting-dicom-files-optional">how to anonimise and convert your dicom files</a>.</p>
 </li>
 <li>
-<p><em>Optional:</em> Process <code>dicom</code> files (if you got DICOM files from the scanner):</p>
-<ul>
-<li>Anonymize bold <code>dicom</code> files for your first participant using <code>anonymize_dicm</code></li>
-<li>Convert anonymized <code>dicom</code> files using <code>dicm2nii</code> to get <code>.json</code> sidecar files for your anatomical or function scans.</li>
-</ul>
-<div class="admonition info">
-<p class="admonition-title">JSON files</p>
-<p>Each <code>nii</code> file <strong>must</strong> have a sidecar JSON file. However, if your fMRI protocol did not change, all the important JSON fields are going to be the same across different scanning sessions, and therefore JSON files can be re-used across subjects. This will save you some time, since getting DICOM files from the scanner can be quite time-consuming.</p>
-</div>
+<p>Create a <code>BIDS</code> folder in your main project directory, alongside the <code>sourcedata</code> folder. For each participant, create a sub folder (e.g. <code>BIDS/sub-01</code>). In the BIDS folder of each participant, place a <code>func</code> folder for functional files and a <code>anat</code> folder for anatomical files. Copy-paste your functional <code>.nii</code> files from <code>sourcedata</code> to their corresponding <code>func</code> folder, renaming them if necessary to follow BIDS format (e.g. <code>sub-01_task-taskname_run-01_bold.nii</code>), and similarly copy-paste your structural <code>.nii</code> files to the <code>anat</code> folder, renaming them if necessary (e.g. <code>sub-01_T1w.nii</code>). See below for more details on <a href="fmri-bids-conversion.html#renaming-and-moving-nifti-files">how to rename and move nifti files</a>.</p>
 </li>
 <li>
-<p>Update <code>.json</code> sidecar files:</p>
-<ul>
-<li>Complete the <code>PhaseEncodingDirection</code> and <code>SliceTiming</code> fields (see <a href="fmri-general.html#missing-fields-in-json-files">Missing fields in JSON files</a> for more information)</li>
-<li>Duplicate and rename sidecar files to accompany each <code>bold.nii</code> file</li>
-</ul>
+<p>Create <code>.json</code> sidecar files for each functional run <code>.nii</code> file, using the output from the dicom conversion step. If your scanner sequence was the same, your can re-use the same sidecar files across participants (see <a href="fmri-bids-conversion.html#creating-json-sidecar-files">Creating JSON Sidecar Files</a> below).</p>
+</li>
+<li>
+<p>Create one <code>events.tsv</code> file for each function run <code>.nii</code> file, using the output from your experimental task. If you used the <a href="https://github.com/HOPLAB-LBP/fMRI-task-template">fMRI task template</a>), output log files can be used to create event files quite easily. More info on events files can be found <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html">here</a>:</p>
 </li>
 <li>
 <p>Create essential <a href="https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson">modality agnostic BIDS files</a>:</p>
 <ul>
 <li><code>dataset_description.json</code></li>
+<li><code>events.json</code></li>
 <li><code>participants.tsv</code> and <code>participants.json</code></li>
 <li><code>task-&lt;taskname&gt;_bold.json</code></li>
 </ul>
@@ -1987,18 +2138,12 @@
 <li>
 <p>Set up additional components:</p>
 <ul>
-<li>Create a <code>derivatives</code> folder for future outputs</li>
+<li>Create a <code>derivatives</code> folder for future outputs (e.g. <code>fmriprep</code> output)</li>
 <li><em>Optional</em>: Include a <code>.bidsignore</code> file if needed</li>
 </ul>
 </li>
-<li>
-<p>Validate your BIDS structure:</p>
-<ul>
-<li>Use the <a href="https://bids-standard.github.io/bids-validator/">BIDS validator</a></li>
-</ul>
-</li>
 </ol>
-<p>By following these steps systematically, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration.</p>
+<p>By following these steps systematically, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration. Make sure all the steps have been followed successfully by validating your BIDS folder. To do so, use the <strong><a href="https://bids-standard.github.io/bids-validator/">BIDS validator</a></strong>.</p>
 <h2 id="step-by-step-instructions">Step-by-step instructions<a class="headerlink" href="#step-by-step-instructions" title="Permanent link">&para;</a></h2>
 <p>Here we provide more detailed instructions to perform each of the steps mentioned above.</p>
 <div class="admonition warning">
@@ -2008,21 +2153,21 @@
 </div>
 <h3 id="anonymize-raw-scanner-data">Anonymize raw scanner data<a class="headerlink" href="#anonymize-raw-scanner-data" title="Permanent link">&para;</a></h3>
 <h4 id="expected-project-structure">Expected project structure<a class="headerlink" href="#expected-project-structure" title="Permanent link">&para;</a></h4>
-<p><a href="../../../assets/code/anon_nii_filename.py">This small utility tool</a> renames files within a BIDS-like directory structure, specifically targeting files containing <code>_WIP_</code> in their names.</p>
+<p>You need to make sure your DICOM / nifti file names <strong>do not contain</strong> subject identificative information, such as the subject's name. This is particularly relevant for our pipeline, because that's exactly what our scanner does. At the hospital, it is best to manually name your files when exporting them. You can also use <a href="../../../assets/code/anon_nii_filename.py">this small utility tool</a>, which renames files within a BIDS-like directory structure, specifically targeting files containing <code>_WIP_</code> in their names.</p>
 <p>The script operates on the following project structure:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Project_Name/
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├──<span class="w"> </span>sourcedata/
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│<span class="w">   </span>└──<span class="w"> </span>sub-xx/
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│<span class="w">       </span>├──<span class="w"> </span>dicom/
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│<span class="w">       </span>├──<span class="w"> </span>dicom_anon/
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│<span class="w">       </span>├──<span class="w"> </span>bh/
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│<span class="w">       </span>├──<span class="w"> </span>et/
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│<span class="w">       </span>└──<span class="w"> </span>nifti/
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>└──<span class="w"> </span>BIDS/
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span>├──<span class="w"> </span>derivatives/
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span>└──<span class="w"> </span>sub-xx/
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span>├──<span class="w"> </span>anat/
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span>└──<span class="w"> </span>func/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Project_Name/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├──<span class="w"> </span>sourcedata/
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│<span class="w">   </span>└──<span class="w"> </span>sub-xx/
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│<span class="w">       </span>├──<span class="w"> </span>dicom/
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│<span class="w">       </span>├──<span class="w"> </span>dicom_anon/
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│<span class="w">       </span>├──<span class="w"> </span>bh/
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│<span class="w">       </span>├──<span class="w"> </span>et/
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│<span class="w">       </span>└──<span class="w"> </span>nifti/
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>└──<span class="w"> </span>BIDS/
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>├──<span class="w"> </span>derivatives/
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span>└──<span class="w"> </span>sub-xx/
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span>├──<span class="w"> </span>anat/
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span>└──<span class="w"> </span>func/
 </span></code></pre></div>
 <p>The script processes files within the 'sourcedata' directory.</p>
 <p>Execute the script from the 'sourcedata' directory:</p>
@@ -2030,12 +2175,12 @@
 <li>Open a terminal or command prompt.</li>
 <li>Navigate to the project's root:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>/path/to/Project_Name
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>/path/to/Project_Name
 </span></code></pre></div>
 <ol>
 <li>Change to the 'sourcedata' directory:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>sourcedata
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>sourcedata
 </span></code></pre></div>
 <h4 id="command-line-arguments">Command-line Arguments<a class="headerlink" href="#command-line-arguments" title="Permanent link">&para;</a></h4>
 <ul>
@@ -2048,20 +2193,20 @@
 <ol>
 <li>Dry run for all subjects:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>group<span class="w"> </span>--dry_run
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>group<span class="w"> </span>--dry_run
 </span></code></pre></div>
 <ol>
 <li>Rename files for subjects 01 and 02 with confirmation:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>participant<span class="w"> </span>--sub<span class="w"> </span><span class="m">01</span><span class="w"> </span><span class="m">02</span><span class="w"> </span>--confirm<span class="w"> </span>True
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>participant<span class="w"> </span>--sub<span class="w"> </span><span class="m">01</span><span class="w"> </span><span class="m">02</span><span class="w"> </span>--confirm<span class="w"> </span>True
 </span></code></pre></div>
 <ol>
 <li>Rename files for all subjects without confirmation:</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>group<span class="w"> </span>--confirm<span class="w"> </span>False
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>group<span class="w"> </span>--confirm<span class="w"> </span>False
 </span></code></pre></div>
 <p>Output filename:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sub-01/nifti/sub-01_WIP_T1w_20240101141322.nii
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sub-01/nifti/sub-01_WIP_T1w_20240101141322.nii
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Caution</p>
@@ -2079,10 +2224,10 @@
 <li>Only files containing '<em>WIP</em>' are processed. Others are ignored.</li>
 <li>To process all files, modify the <code>rename_files_in_directory</code> function:</li>
 </ul>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span> <span class="s1">&#39;_WIP_&#39;</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">if</span> <span class="s1">&#39;_WIP_&#39;</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
 </span></code></pre></div>
 <p>to:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>  <span class="c1"># Caution: processes all files</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>  <span class="c1"># Caution: processes all files</span>
 </span></code></pre></div>
 <div class="admonition caution">
 <p class="admonition-title">Modifying the Script</p>
@@ -2116,21 +2261,38 @@
 <p><strong>TODO:</strong> [TIM] Add information about using event files to make contrasts in the SPM step. Having a 'condition' + column for instance might be quite useful.</p>
 <p><strong>TODO:</strong> [TIM] Give information about which columns will be useful to include in such files, why, and at what + future step they will become important.</p>
 <h3 id="converting-dicom-files-optional">Converting DICOM files (Optional)<a class="headerlink" href="#converting-dicom-files-optional" title="Permanent link">&para;</a></h3>
-<p>If you have DICOM files from the scanner:</p>
+<p>If you have collected DICOM files from the scanner, you need to 1. <strong>anonymise</strong>, and 2. <strong>convert</strong> them so that you can use them properly. There are several tools available that can take care of this. The <a href="https://github.com/xiangruili/dicm2nii/tree/master">dicm2nii</a> GitHub repository is one such example. To use it, clone the repository, open MatLab, and follow these steps:</p>
 <ol>
-<li>Navigate to your <code>sourcedata/sub-xx/dicom/</code> folder.</li>
-<li>Use the <code>anonymize_dicm</code> script to anonymize the DICOM files.</li>
-<li>Use the <code>dicm2nii</code> script to convert the anonymized DICOM files to NIfTI.</li>
+<li>Navigate to your <code>sourcedata</code> folder.</li>
+<li>Add the cloned <code>dicm2nii</code> folder to your path.</li>
+<li>Use the <code>anonymize_dicm</code> script to anonymize the DICOM files. The command will look something like this:
+<div class="language-MatLab highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">anonymize_dicm</span><span class="p">(</span><span class="s">&#39;sub-xx/dicom&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-xx/dicom_anon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-xx&#39;</span><span class="p">)</span>
+</span></code></pre></div></li>
+<li>Use the <code>dicm2nii</code> script to convert the anonymized DICOM files to NIfTI.
+<div class="language-MatLab highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">dicm2nii</span><span class="p">(</span><span class="s">&#39;sub-xx/dicom_anon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-xx/dicom_converted&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;nii.gz&#39;</span><span class="p">)</span>
+</span></code></pre></div></li>
 </ol>
+<p>These commands will have populated the <code>dicom_anon</code> and <code>dicom_converted</code> folders (see the folder trees in <a href="fmri-bids-conversion.html#bids-conversion-overview">BIDS Conversion Overview</a> for an example). The content of the latter can in turn be used to create json side car files (see <a href="fmri-bids-conversion.html#creating-json-sidecar-files">Creating JSON Sidecar Files</a>).</p>
 <p><strong>TODO:</strong> [ANDREA] add info about 1) example dcm2nii call, 2) why dcm2nii rather than dcm2nii<strong>x</strong>, 3) add additional info on DICOM (no enhanced, missing values, etc.). see also <a href="https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips">this</a> where Chris Rorden explains some practical issues with Phillips DICOMS, particularly the section on missing info (which we should probably link somewhere), and <a href="https://www.nitrc.org/forum/forum.php?thread_id=15186&amp;forum_id=4703">this thread</a>, which explains issues with the enhanced DICOMs.</p>
-<p><strong>TODO:</strong> [TIM] Give information on how to use the anonymization and dicom to nifti scripts, and what the results should be like. Give links to the scripts.</p>
+<p><strong>TODO:</strong> [TIM] Give information on how to use the anonymization and DICOM to nifti scripts, and what the results should be like. Give links to the scripts.</p>
 <h3 id="creating-json-sidecar-files">Creating JSON Sidecar Files<a class="headerlink" href="#creating-json-sidecar-files" title="Permanent link">&para;</a></h3>
+<p>Each <code>nii</code> file <strong>must</strong> have a sidecar JSON file. However, if your fMRI protocol did not change, all the important JSON fields are going to be the same across different scanning sessions, and therefore JSON files can be re-used across subjects. This will save you some time, since getting DICOM files from the scanner can be quite time-consuming.</p>
+<ul>
+<li>
+<p><strong>If you collected DICOM files</strong> for your participant, make sure you <a href="fmri-bids-conversion.html#converting-dicom-files-optional">anonymised and converted your DICOM files</a> and go through the following steps:</p>
 <ol>
 <li>Locate the JSON sidecar files in <code>sourcedata/sub-xx/dicom_converted/</code>.</li>
-<li>Open each JSON file and update the <code>PhaseEncodingDirection</code> and <code>SliceTiming</code> fields.</li>
-<li>Copy the updated JSON files to accompany each NIfTI file in the BIDS folder.</li>
+<li>Open each JSON file and Complete the <code>PhaseEncodingDirection</code> and <code>SliceTiming</code> fields (see <a href="fmri-general.html#missing-fields-in-json-files">Missing fields in JSON files</a> for more information).</li>
+<li>Copy-paste the updated JSON files to accompany each NIfTI file in the <code>BIDS/sub-xx/func</code> folder: each run should have its accompanying <code>sub-xx_task-taskname_run-xx_bold.json</code> sidecar file.</li>
 </ol>
-<p>Each <code>nii</code> file must have a corresponding JSON sidecar file. If your fMRI protocol didn't change, you can reuse JSON files across subjects.</p>
+</li>
+<li>
+<p><strong>If you did not collect DICOM files</strong> for your participant, but collected DICOM files for a previous participant <em>and</em> your fMRI protocol did not change in the meantime:</p>
+<ol>
+<li>Copy-paste all <code>.json</code> sidecar files from the <code>BIDS/sub-xx/func</code> folder of the participant you have DICOM files for, to the <code>BIDS/sub-xx/func</code> folder of new participant you only collect nifti files for. Rename each file with the correct <code>sub</code> value, ensuring there is one <code>.json</code> file per participant, per run, with the correct name.</li>
+</ol>
+</li>
+</ul>
 <p><strong>TODO:</strong> [TIM] Explain how to get the two missing fields and why it's important. Link to the fmri-general section about it.</p>
 <p><strong>TODO:</strong> [TIM] Explain how to duplicate and rename the sidecar file.</p>
 <p><strong>TODO:</strong> [ANDREA] fill this out with more in depth info about the JSON etc.</p>
@@ -2213,7 +2375,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="December 18, 2024 16:21:27">December 18, 2024 16:21:27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="March 25, 2025 11:25:09">March 25, 2025 11:25:09</span>
   </span>
 
     
