@@ -93,6 +93,7 @@ theme:
     # - toc.integrate # (1)!
     - search.highlight
     - navigation.indexes
+    - navigation.footer
 
 markdown_extensions:
   - toc:

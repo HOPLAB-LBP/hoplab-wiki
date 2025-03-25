@@ -15,6 +15,39 @@ The MR8 suite houses a **Philips Ingenia** scanner with a 32-channel head coil, 
 
 ### MR8 Equipment
 
+![MR8 Equipment Diagram](../../assets/mr8_diagram.png)
+
+The diagram above provides a (non-exhaustive) overview of the MR8 suite's equipment that we normally use and how instruments are connected, which we hope will help in understanding the setup and troubleshooting various issues. A more thorough description of the equipment is available in the [manual](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Scanner%20info%20%26%20safety/Manual_Philips-MR8?csf=1&web=1&e=1Bh0eI).
+
+Systems are color-coded, and can be read as follow:
+
+- <span style="color:rgb(150, 0, 0)">**Red**</span> lines and boxes indicate connections from the scanner:
+    - **TTL Pulse** a.k.a. the "trigger", which is used among other things to synchronize the fMRI task with the scan.
+    - **Data** connections from the scanner to the PC.
+- <span style="color:rgb(65, 115, 185)">**Blue**</span> lines and boxes indicate button boxes, and double lines represent optical fiber connections. Specifically:
+    - **Nata** box, 5 buttons. Important: if you use this box, make sure your code can differentiate between the `5` button code and the `5` trigger code. This can be done programmatically, and it is addressed in recent versions of our scripts. An alternative workaround would be to relay the trigger thorugh the diamond box, which sends the `T` trigger code instead of the usual `5`. If you need to do this, **make sure you switch back to the original set-up** at the end of your scanning session.
+    - **Diamond** box, 4 buttons. This box is marked with a red tape. When the trigger box is connected to this box (which *should not* be the case), this box relays the trigger `T` to the stim PC.
+    - **2-buttons** box. When the trigger box is connected to this box (which is the expected and usual set-up), this box relays the trigger `5` from the scanner to the Stim PC.
+- <span style="color:rgb(103, 166, 90)">**Green**</span> lines and boxes indicate Eye-tracking instruments and connections
+    - **Eyelink 1000 long range** system, including the camera and infrared light source
+    - **ET box** to convert analog input from the EL-1000 to digital.
+    - **ET PC** to run the Eyelink software and control recordings and settings.
+    - Power for the ET system is located in the back room.
+- <span style="color:rgb(123, 82, 123)">**Purple**</span> lines and boxes connect the MRI control PC (old system, which we use)
+- <span style="color:rgb(204, 146, 39)">**Gold**</span> lines and boxes connect the MRI control PC (new system, which we DO NOT use)
+- **Dotted** lines mostly relay audio/video 
+- **Dashed** lines are power lines.
+
+**TODO:** add info about the codes sent by each box.
+
+Other instruments we use are:
+
+- the **3NB light filter**, which should be placed between the projector and the **MRI compatible screen** at  the back of the scanner.
+- the **Headphones**, which are used as a safety measure for the participant, and to deliver audio when needed. These headphones are MRI compatible and work using the magnetic field produced by the scanner. That means that they **will not work outside of the scanner**, and the sounds will get increasingly strong as you move inside the scanner. The sound for these (yellow) headphones is sent from the stim PC through the **Lindy** box, passes through the **amplifier** located next to the stim PC, and it finally reaches the HP. Volume can be controlled through the amplifier or the stim PC general volume level.
+
+
+
+<!--
 | **Area/Equipment**                 | **Description**                                                                                                                                                    |
 |------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Lockers**                        | Store white lab coats and personal belongings.                                                                                                                     |
@@ -33,6 +66,9 @@ The MR8 suite houses a **Philips Ingenia** scanner with a 32-channel head coil, 
 | **Light Switches for Technical Room** | Located near the equipment area for controlling lighting.                                                                                                         |
 | **Scanner Room Key**               | Used to lock and unlock the scanner room.                                                                                                                          |
 | **Headphones - Auditory System**   | Headphones for delivering auditory stimuli.                                                                                                                        |
+
+Note from Andrea: This detailed equipment list doesn't seem very useful.
+-->
 
 ---
 
@@ -138,6 +174,8 @@ The stimulus computer's desktop is located in the **control room**. It is the se
     - To flip the screen, adjust the **projector settings**, not the computer.
     - **Screen Width**: 28.35 visual degrees
 
+**TODO:** MATLAB and PTB have been updated to newer version!
+**TODO:** the strcture of these sections is a bit confusing. We list the instruments in the section above, then we explain what to do at the scanner room, then we go back to describing instruments.. perhaps we should streamline this? or probably just make two different pages, one for instrument, one for general step-by-step procedure, and one for frequent errors and solutions/workarounds?
 ---
 
 ### Trigger Boxes
@@ -169,6 +207,8 @@ The scanner sends a trigger "5" to the stimulus computer. Different setups are u
     - Check if any cables have been left disconnected. The **response box** is on top of the stimulus desktop PC in the **control room**. Ensure both cables are properly connected.
 
 ![Trigger box](../../assets/triggerbox.png)
+
+**TODO:** update pics. They do not seem to be up-to-date anymore.
 
 #### Common Issues
 
