@@ -15,7 +15,7 @@ Faculty issued computers can be recognized by their name starting with GHUM. To 
 3. **Administrator access**:
     - If you are not already, contact dICT (*<dict@ppw.kuleuven.be>*) to make you administrator for the computer you are going to work on. You need to provide them the hostname of your pc (GHUM-…) and your u-number.
     - Alternatively, if someone else is already administrator, ask them to add you (Windows control panel > Change account type > Add > Add a new LUNA account).
-4. **Multifactor authentication**:
+4. **Multi-factor authentication**:
     - To access KU Leuven intranet pages, you will need to log in with [KU Leuven Authenticator](https://admin.kuleuven.be/icts/english/mfa). You can register your device with a smartphone or tablet via the KU Leuven Authenticator App ([read the instructions](https://admin.kuleuven.be/icts/english/mfa/startwithmfa#smartphone)).
     - If you are having issues with MFA, check this [FAQ page](https://admin.kuleuven.be/icts/services/mfa/faq_en).
 
@@ -120,7 +120,7 @@ Here are some software programs we frequently use in the lab, which you might fi
         While <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> has a learning curve, investing time in learning it can significantly improve your academic writing workflow and the quality of your documents.
 
 !!! tip "Administrative privileges on KU Leuven PCs"
-    In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in `C:\Workdir\MyApps\`. Please contact the ICT helpdesk if problems persist.
+    In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in `C:\Workdir\MyApps\`. Please contact the ICT help-desk if problems persist.
 
 ## Data storage
 
