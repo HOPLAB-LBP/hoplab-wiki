@@ -2083,80 +2083,39 @@
 </ul>
 </div>
 <h3 id="mr8-equipment">MR8 Equipment<a class="headerlink" href="#mr8-equipment" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th><strong>Area/Equipment</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Lockers</strong></td>
-<td>Store white lab coats and personal belongings.</td>
-</tr>
-<tr>
-<td><strong>Scan Console Screen</strong></td>
-<td>Includes USB slots for data export.</td>
-</tr>
-<tr>
-<td><strong>Stimulus PC &amp; Screen</strong></td>
-<td>Main stimulus computer setup.</td>
-</tr>
-<tr>
-<td><strong>Eyetracker Setup</strong></td>
-<td>Screen and PC for eye-tracking experiments.</td>
-</tr>
-<tr>
-<td><strong>Volunteer Monitoring Screen</strong></td>
-<td>Displays a camera feed focused on the volunteer’s legs to monitor movements.</td>
-</tr>
-<tr>
-<td><strong>Light Switches</strong></td>
-<td>Control the lights in the scanner room. Press 0 or 1 to switch off/on, and use the surrounding circle to gradually adjust brightness.</td>
-</tr>
-<tr>
-<td><strong>Storage</strong></td>
-<td>Contains earplugs, washcloths, padding for headphones (top right drawer), filters (top left drawer), etc.</td>
-</tr>
-<tr>
-<td><strong>Projection Screen</strong></td>
-<td>Always ensure the projection screen is aligned with the black marks in the scanner. <strong>Do not touch the screen directly</strong>.</td>
-</tr>
-<tr>
-<td><strong>Filter</strong></td>
-<td>Use the default filter (3NB).</td>
-</tr>
-<tr>
-<td><strong>Eyetracker</strong></td>
-<td>Complete setup for eye-tracking experiments.</td>
-</tr>
-<tr>
-<td><strong>Projector</strong></td>
-<td>Controlled from the technical room using a remote.</td>
-</tr>
-<tr>
-<td><strong>Stimulus Desktop PC</strong></td>
-<td>The main system for running visual stimuli.</td>
-</tr>
-<tr>
-<td><strong>Power Supply</strong></td>
-<td>Power for the eyetracker.</td>
-</tr>
-<tr>
-<td><strong>Light Switches for Technical Room</strong></td>
-<td>Located near the equipment area for controlling lighting.</td>
-</tr>
-<tr>
-<td><strong>Scanner Room Key</strong></td>
-<td>Used to lock and unlock the scanner room.</td>
-</tr>
-<tr>
-<td><strong>Headphones - Auditory System</strong></td>
-<td>Headphones for delivering auditory stimuli.</td>
-</tr>
-</tbody>
-</table>
+<p><img alt="MR8 Equipment Diagram" src="../../assets/mr8_diagram.png" /></p>
+<p>The diagram above provides a (non-exhaustive) overview of the MR8 suite's equipment that we normally use and how instruments are connected, which we hope will help in understanding the setup and troubleshooting various issues. A more thorough description of the equipment is available in the <a href="https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Scanner%20info%20%26%20safety/Manual_Philips-MR8?csf=1&amp;web=1&amp;e=1Bh0eI">manual</a>.</p>
+<p>Systems are color-coded, and can be read as follow:</p>
+<ul>
+<li><span style="color:rgb(150, 0, 0)"><strong>Red</strong></span> lines and boxes indicate connections from the scanner:<ul>
+<li><strong>TTL Pulse</strong> a.k.a. the "trigger", which is used among other things to synchronize the fMRI task with the scan.</li>
+<li><strong>Data</strong> connections from the scanner to the PC.</li>
+</ul>
+</li>
+<li><span style="color:rgb(65, 115, 185)"><strong>Blue</strong></span> lines and boxes indicate button boxes, and double lines represent optical fiber connections. Specifically:<ul>
+<li><strong>Nata</strong> box, 5 buttons. Important: if you use this box, make sure your code can differentiate between the <code>5</code> button code and the <code>5</code> trigger code. This can be done programmatically, and it is addressed in recent versions of our scripts. An alternative workaround would be to relay the trigger thorugh the diamond box, which sends the <code>T</code> trigger code instead of the usual <code>5</code>. If you need to do this, <strong>make sure you switch back to the original set-up</strong> at the end of your scanning session.</li>
+<li><strong>Diamond</strong> box, 4 buttons. This box is marked with a red tape. When the trigger box is connected to this box (which <em>should not</em> be the case), this box relays the trigger <code>T</code> to the stim PC.</li>
+<li><strong>2-buttons</strong> box. When the trigger box is connected to this box (which is the expected and usual set-up), this box relays the trigger <code>5</code> from the scanner to the Stim PC.</li>
+</ul>
+</li>
+<li><span style="color:rgb(103, 166, 90)"><strong>Green</strong></span> lines and boxes indicate Eye-tracking instruments and connections<ul>
+<li><strong>Eyelink 1000 long range</strong> system, including the camera and infrared light source</li>
+<li><strong>ET box</strong> to convert analog input from the EL-1000 to digital.</li>
+<li><strong>ET PC</strong> to run the Eyelink software and control recordings and settings.</li>
+<li>Power for the ET system is located in the back room.</li>
+</ul>
+</li>
+<li><span style="color:rgb(123, 82, 123)"><strong>Purple</strong></span> lines and boxes connect the MRI control PC (old system, which we use)</li>
+<li><span style="color:rgb(204, 146, 39)"><strong>Gold</strong></span> lines and boxes connect the MRI control PC (new system, which we DO NOT use)</li>
+<li><strong>Dotted</strong> lines mostly relay audio/video </li>
+<li><strong>Dashed</strong> lines are power lines.</li>
+</ul>
+<p><strong>TODO:</strong> add info about the codes sent by each box.</p>
+<p>Other instruments we use are:</p>
+<ul>
+<li>the <strong>3NB light filter</strong>, which should be placed between the projector and the <strong>MRI compatible screen</strong> at  the back of the scanner.</li>
+<li>the <strong>Headphones</strong>, which are used as a safety measure for the participant, and to deliver audio when needed. These headphones are MRI compatible and work using the magnetic field produced by the scanner. That means that they <strong>will not work outside of the scanner</strong>, and the sounds will get increasingly strong as you move inside the scanner. The sound for these (yellow) headphones is sent from the stim PC through the <strong>Lindy</strong> box, passes through the <strong>amplifier</strong> located next to the stim PC, and it finally reaches the HP. Volume can be controlled through the amplifier or the stim PC general volume level.</li>
+</ul>
 <hr />
 <h2 id="required-forms">Required Forms<a class="headerlink" href="#required-forms" title="Permanent link">&para;</a></h2>
 <p>Before going to the hospital, ensure that you have the following forms ready:</p>
@@ -2299,6 +2258,8 @@
 </ul>
 </li>
 </ol>
+<p><strong>TODO:</strong> MATLAB and PTB have been updated to newer version!
+<strong>TODO:</strong> the strcture of these sections is a bit confusing. We list the instruments in the section above, then we explain what to do at the scanner room, then we go back to describing instruments.. perhaps we should streamline this? or probably just make two different pages, one for instrument, one for general step-by-step procedure, and one for frequent errors and solutions/workarounds?</p>
 <hr />
 <h3 id="trigger-boxes">Trigger Boxes<a class="headerlink" href="#trigger-boxes" title="Permanent link">&para;</a></h3>
 <p>The scanner sends a trigger "5" to the stimulus computer. Different setups are used for static and dynamic stimuli:</p>
@@ -2339,6 +2300,7 @@
 </ul>
 </div>
 <p><img alt="Trigger box" src="../../assets/triggerbox.png" /></p>
+<p><strong>TODO:</strong> update pics. They do not seem to be up-to-date anymore.</p>
 <h4 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h4>
 <details class="failure">
 <summary>Button Box Not Responding</summary>
@@ -3365,7 +3327,7 @@ Improperly closed doors will trigger error messages and prevent scanning from st
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="February 7, 2025 17:09:41">February 7, 2025 17:09:41</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="March 25, 2025 17:00:29">March 25, 2025 17:00:29</span>
   </span>
 
     
@@ -3456,6 +3418,46 @@ Improperly closed doors will trigger error messages and prevent scanning from st
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="fmri-get-started.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: First steps">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                First steps
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="analysis/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: fMRI Analysis Overview">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                fMRI Analysis Overview
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3559,7 +3561,7 @@ Improperly closed doors will trigger error messages and prevent scanning from st
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.sections", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.sections", "search.highlight", "navigation.indexes", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
