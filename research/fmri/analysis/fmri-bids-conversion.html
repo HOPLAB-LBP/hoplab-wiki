@@ -2254,21 +2254,81 @@ myproject
 <li>Create a corresponding <code>events.tsv</code> file for each run in the <code>BIDS/sub-xx/func/</code> folder.</li>
 </ol>
 <p>Each <code>events.tsv</code> file should contain at least three columns: <code>onset</code>, <code>duration</code>, and <code>trial_type</code>. Additional columns can be included as needed for your specific analysis.</p>
+<p>If you use the <a href="https://github.com/TimManiquet/fMRI-task-template">fMRI task template</a>, the log files you get as output contain all the information needed to build event files in a few steps. Below is a quick overview of the steps to take to make event files from log files. Note that it might not apply perfectly to all cases, and that other approaches can be more practical to you. It can be a good idea to create your own utility script to create event files from your behavioural results.</p>
+<p>To <strong>create event files from log files</strong>, here is what you need to do (see the example below for an example transformation):</p>
+<ul>
+<li>Create the <code>onset</code> column from the onset values in the log files: in the latter, onset times (usually stored in a column called <code>ACTUAL_ONSET</code>) are aligned to the start of the run. In BIDS event files, events need to be aligned to the start of the scanning. To obtain correct onset values, one can simply shift the onset of each line from a log file so that the onset <code>0.0</code> corresponds to the first TR trigger.</li>
+<li>Create the <code>duration</code> column from the <code>onset</code> values. Log files typically don't record the exact duration of events, as that would put some extra calculation load onto MatLab (which struggles enough already as it is). A good approach is to calculate these post-hoc from the onset values, by simply taking the difference in between successive event onsets.</li>
+<li>Create the <code>trial_type</code> column with the condition names. Fill this column by extracting the information that is relevant for your experimental design. In the example below, we extract the conditio names <code>face</code> and <code>building</code> from the <code>EVENT_ID</code> column, as these are the conditions we're interested in. We also indicate <code>fixation</code> where relevant, as we want to be able to model fixations in our GLM.</li>
+<li>Add or keep any column you might need. In the example below, we keep the <code>event_type</code>, <code>event_name</code> and <code>event_id</code> columns as it might still be useful later on in the pipeline. Note that you should make a reference to these extra column in your <code>events.json</code> file.</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="example-log-file" name="__tabbed_2" type="radio" /><input id="example-event-file" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="example-log-file">Example log file</label><label for="example-event-file">Example event file</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>EVENT_TYPE   EVENT_NAME  DATETIME                EXP_ONSET     ACTUAL_ONSET  DELTA       EVENT_ID
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>START        -           yyyy-mm-dd-hh-mm-ss     -               0.000000    -           -
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>FLIP         Instr       yyyy-mm-dd-hh-mm-ss     -               0.099950    -           -
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>RESP         KeyPress    yyyy-mm-dd-hh-mm-ss     -               7.663277    -           7
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>FLIP         TgrWait     yyyy-mm-dd-hh-mm-ss     -               7.697805    -           -
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>PULSE        Trigger     yyyy-mm-dd-hh-mm-ss     -              12.483778    -           5
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>PULSE        Trigger     yyyy-mm-dd-hh-mm-ss     -              24.452093    -           5
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>FLIP         Pre-fix     yyyy-mm-dd-hh-mm-ss     -              24.462263    -           -
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>PULSE        Trigger     yyyy-mm-dd-hh-mm-ss     -              26.452395    -           5
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>PULSE        Trigger     yyyy-mm-dd-hh-mm-ss     -              28.452362    -           5
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>PULSE        Trigger     yyyy-mm-dd-hh-mm-ss     -              30.451807    -           5
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>PULSE        Trigger     yyyy-mm-dd-hh-mm-ss     -              32.451339    -           5
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>PULSE        Trigger     yyyy-mm-dd-hh-mm-ss     -              34.451376    -           5
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>FLIP         Stim        yyyy-mm-dd-hh-mm-ss     34.462263      34.474302    0.012039    building_image.png
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>RESP         KeyPress    yyyy-mm-dd-hh-mm-ss     -              35.566808    -           9
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>FLIP         Fix         yyyy-mm-dd-hh-mm-ss     -              34.521628    -           -
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>PULSE        Trigger     yyyy-mm-dd-hh-mm-ss     -              36.451615    -           5
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>FLIP         Stim        yyyy-mm-dd-hh-mm-ss     37.462263      37.524439    0.062177    face_image.png
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>FLIP         Fix         yyyy-mm-dd-hh-mm-ss     -              37.572648    -           -
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>PULSE        Trigger     yyyy-mm-dd-hh-mm-ss     -              38.453535    -           5
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>RESP         KeyPress    yyyy-mm-dd-hh-mm-ss     -              38.806193    -           1
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>PULSE        Trigger     yyyy-mm-dd-hh-mm-ss     -              40.451415    -           5
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>...
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>onset            duration       event_type   event_name  event_id               trial_type
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>-24.452093       n/a            START        -           -                      n/a
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>-24.352143       7.597855       FLIP         Instr       -                      n/a
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>-16.788816       n/a            RESP         KeyPress    7                      n/a
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>-16.75428800     7.697805       FLIP         TgrWait     -                      n/a
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>-11.96831500     n/a            PULSE        Trigger     5                      n/a
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>0.0              n/a            PULSE        Trigger     5                      n/a
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>0.0101699999     10             FLIP         Pre-fix     -                      fixation
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>2.0003019999     n/a            PULSE        Trigger     5                      n/a
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>4.0002689999     n/a            PULSE        Trigger     5                      n/a
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>5.9997139999     n/a            PULSE        Trigger     5                      n/a
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>7.9992459999     n/a            PULSE        Trigger     5                      n/a
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>9.9992830000     n/a            PULSE        Trigger     5                      n/a
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>10.022209        0.0473259      FLIP         Stim        building_image.png     building
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>10.069534999     3.0028110      FLIP         Fix         -                      fixation
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>11.114715        n/a            RESP         KeyPress    9                      n/a
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>11.999521999     n/a            PULSE        Trigger     5                      n/a
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>13.072346        0.0482089      FLIP         Stim        face_image.png         face
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>13.120555        2.9033829      FLIP         Fix         -                      fixation
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>14.001442        n/a            PULSE        Trigger     5                      n/a
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>14.354099999     n/a            RESP         KeyPress    1                      n/a
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>15.999321999     n/a            PULSE        Trigger     5                      n/a
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>...
+</span></code></pre></div>
+</div>
+</div>
+</div>
 <p><strong>TODO:</strong> [ANDREA] Add script for automatically converting behavioral data to BIDS-compliant event files.</p>
-<p><strong>TODO:</strong> [TIM] Include information about event files. Mention how they should ideally be created directly by the behavioural task script. Add a link to the <a href="https://github.com/TimManiquet/fMRI-task-template">task template</a> to show how that can be done.</p>
-<p><strong>TODO:</strong> [TIM] Add information about making an <code>events.json</code> file and the advantages of it.</p>
-<p><strong>TODO:</strong> [TIM] Add information about using event files to make contrasts in the SPM step. Having a 'condition' + column for instance might be quite useful.</p>
-<p><strong>TODO:</strong> [TIM] Give information about which columns will be useful to include in such files, why, and at what + future step they will become important.</p>
 <h3 id="converting-dicom-files-optional">Converting DICOM files (Optional)<a class="headerlink" href="#converting-dicom-files-optional" title="Permanent link">&para;</a></h3>
 <p>If you have collected DICOM files from the scanner, you need to 1. <strong>anonymise</strong>, and 2. <strong>convert</strong> them so that you can use them properly. There are several tools available that can take care of this. The <a href="https://github.com/xiangruili/dicm2nii/tree/master">dicm2nii</a> GitHub repository is one such example. To use it, clone the repository, open MatLab, and follow these steps:</p>
 <ol>
 <li>Navigate to your <code>sourcedata</code> folder.</li>
 <li>Add the cloned <code>dicm2nii</code> folder to your path.</li>
 <li>Use the <code>anonymize_dicm</code> script to anonymize the DICOM files. The command will look something like this:
-<div class="language-MatLab highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">anonymize_dicm</span><span class="p">(</span><span class="s">&#39;sub-xx/dicom&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-xx/dicom_anon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-xx&#39;</span><span class="p">)</span>
+<div class="language-MatLab highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">anonymize_dicm</span><span class="p">(</span><span class="s">&#39;sub-xx/dicom&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-xx/dicom_anon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-xx&#39;</span><span class="p">)</span>
 </span></code></pre></div></li>
 <li>Use the <code>dicm2nii</code> script to convert the anonymized DICOM files to NIfTI.
-<div class="language-MatLab highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">dicm2nii</span><span class="p">(</span><span class="s">&#39;sub-xx/dicom_anon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-xx/dicom_converted&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;nii.gz&#39;</span><span class="p">)</span>
+<div class="language-MatLab highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">dicm2nii</span><span class="p">(</span><span class="s">&#39;sub-xx/dicom_anon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-xx/dicom_converted&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;nii.gz&#39;</span><span class="p">)</span>
 </span></code></pre></div></li>
 </ol>
 <p>These commands will have populated the <code>dicom_anon</code> and <code>dicom_converted</code> folders (see the folder trees in <a href="fmri-bids-conversion.html#bids-conversion-overview">BIDS Conversion Overview</a> for an example). The content of the latter can in turn be used to create json side car files (see <a href="fmri-bids-conversion.html#creating-json-sidecar-files">Creating JSON Sidecar Files</a>).</p>
@@ -2374,7 +2434,7 @@ myproject
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="March 25, 2025 16:58:48">March 25, 2025 16:58:48</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="March 26, 2025 10:22:06">March 26, 2025 10:22:06</span>
   </span>
 
     
