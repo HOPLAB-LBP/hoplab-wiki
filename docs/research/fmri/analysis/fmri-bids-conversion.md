@@ -441,14 +441,6 @@ To **create event files from log files**, here is what you need to do (see the e
 
 **TODO:** [ANDREA] Add script for automatically converting behavioral data to BIDS-compliant event files.
 
-**TODO:** [TIM] Include information about event files. Mention how they should ideally be created directly by the behavioural task script. Add a link to the [task template](https://github.com/TimManiquet/fMRI-task-template) to show how that can be done.
-
-**TODO:** [TIM] Add information about making an `events.json` file and the advantages of it.
-
-**TODO:** [TIM] Add information about using event files to make contrasts in the SPM step. Having a 'condition' + column for instance might be quite useful.
-
-**TODO:** [TIM] Give information about which columns will be useful to include in such files, why, and at what + future step they will become important.
-
 ### Converting DICOM files (Optional)
 
 If you have collected DICOM files from the scanner, you need to 1. **anonymise**, and 2. **convert** them so that you can use them properly. There are several tools available that can take care of this. The [dicm2nii](https://github.com/xiangruili/dicm2nii/tree/master) GitHub repository is one such example. To use it, clone the repository, open MatLab, and follow these steps:
