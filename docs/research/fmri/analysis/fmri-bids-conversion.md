@@ -374,6 +374,71 @@ Event files are crucial for analyzing fMRI data. They contain information about 
 
 Each `events.tsv` file should contain at least three columns: `onset`, `duration`, and `trial_type`. Additional columns can be included as needed for your specific analysis.
 
+If you use the [fMRI task template](https://github.com/TimManiquet/fMRI-task-template), the log files you get as output contain all the information needed to build event files in a few steps. Below is a quick overview of the steps to take to make event files from log files. Note that it might not apply perfectly to all cases, and that other approaches can be more practical to you. It can be a good idea to create your own utility script to create event files from your behavioural results.
+
+To **create event files from log files**, here is what you need to do (see the example below for an example transformation):
+
+- Create the `onset` column from the onset values in the log files: in the latter, onset times (usually stored in a column called `ACTUAL_ONSET`) are aligned to the start of the run. In BIDS event files, events need to be aligned to the start of the scanning. To obtain correct onset values, one can simply shift the onset of each line from a log file so that the onset `0.0` corresponds to the first TR trigger.
+- Create the `duration` column from the `onset` values. Log files typically don't record the exact duration of events, as that would put some extra calculation load onto MatLab (which struggles enough already as it is). A good approach is to calculate these post-hoc from the onset values, by simply taking the difference in between successive event onsets.
+- Create the `trial_type` column with the condition names. Fill this column by extracting the information that is relevant for your experimental design. In the example below, we extract the conditio names `face` and `building` from the `EVENT_ID` column, as these are the conditions we're interested in. We also indicate `fixation` where relevant, as we want to be able to model fixations in our GLM.
+- Add or keep any column you might need. In the example below, we keep the `event_type`, `event_name` and `event_id` columns as it might still be useful later on in the pipeline. Note that you should make a reference to these extra column in your `events.json` file.
+
+
+=== "Example log file"
+
+    ```
+    EVENT_TYPE	 EVENT_NAME	 DATETIME                EXP_ONSET 	   ACTUAL_ONSET	 DELTA   	 EVENT_ID
+    START     	 -         	 yyyy-mm-dd-hh-mm-ss	 -         	     0.000000	 -       	 -
+    FLIP      	 Instr     	 yyyy-mm-dd-hh-mm-ss	 -         	     0.099950	 -       	 -
+    RESP      	 KeyPress  	 yyyy-mm-dd-hh-mm-ss	 -         	     7.663277	 -       	 7
+    FLIP      	 TgrWait   	 yyyy-mm-dd-hh-mm-ss	 -         	     7.697805	 -       	 -
+    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    12.483778	 -       	 5
+    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    24.452093	 -       	 5
+    FLIP      	 Pre-fix   	 yyyy-mm-dd-hh-mm-ss	 -         	    24.462263	 -       	 -
+    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    26.452395	 -       	 5
+    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    28.452362	 -       	 5
+    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    30.451807	 -       	 5
+    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    32.451339	 -       	 5
+    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    34.451376	 -       	 5
+    FLIP      	 Stim      	 yyyy-mm-dd-hh-mm-ss	 34.462263 	    34.474302	 0.012039	 building_image.png
+    RESP      	 KeyPress  	 yyyy-mm-dd-hh-mm-ss	 -         	    35.566808	 -       	 9
+    FLIP      	 Fix       	 yyyy-mm-dd-hh-mm-ss	 -         	    34.521628	 -       	 -
+    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    36.451615	 -       	 5
+    FLIP      	 Stim      	 yyyy-mm-dd-hh-mm-ss	 37.462263 	    37.524439	 0.062177	 face_image.png
+    FLIP      	 Fix       	 yyyy-mm-dd-hh-mm-ss	 -         	    37.572648	 -       	 -
+    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    38.453535	 -       	 5
+    RESP      	 KeyPress  	 yyyy-mm-dd-hh-mm-ss	 -         	    38.806193	 -       	 1
+    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    40.451415	 -       	 5
+    ...
+    ```
+=== "Example event file"
+
+    ```
+    onset            duration       event_type	 event_name	 event_id               trial_type
+    -24.452093       n/a            START     	 -         	 -                      n/a
+    -24.352143       7.597855       FLIP      	 Instr     	 -                      n/a
+    -16.788816       n/a            RESP      	 KeyPress  	 7                      n/a
+    -16.75428800     7.697805       FLIP      	 TgrWait   	 -                      n/a
+    -11.96831500     n/a            PULSE     	 Trigger   	 5                      n/a
+    0.0              n/a            PULSE     	 Trigger   	 5                      n/a
+    0.0101699999     10             FLIP      	 Pre-fix   	 -                      fixation
+    2.0003019999     n/a            PULSE     	 Trigger   	 5                      n/a
+    4.0002689999     n/a            PULSE     	 Trigger   	 5                      n/a
+    5.9997139999     n/a            PULSE     	 Trigger   	 5                      n/a
+    7.9992459999     n/a            PULSE     	 Trigger   	 5                      n/a
+    9.9992830000     n/a            PULSE     	 Trigger   	 5                      n/a
+    10.022209        0.0473259      FLIP      	 Stim      	 building_image.png     building
+    10.069534999     3.0028110      FLIP      	 Fix       	 -                      fixation
+    11.114715        n/a            RESP      	 KeyPress  	 9                      n/a
+    11.999521999     n/a            PULSE     	 Trigger   	 5                      n/a
+    13.072346        0.0482089	    FLIP      	 Stim      	 face_image.png         face
+    13.120555        2.9033829      FLIP      	 Fix       	 -                      fixation
+    14.001442        n/a            PULSE     	 Trigger   	 5                      n/a
+    14.354099999     n/a            RESP      	 KeyPress  	 1                      n/a
+    15.999321999     n/a            PULSE     	 Trigger   	 5                      n/a
+    ...
+    ```
+
 **TODO:** [ANDREA] Add script for automatically converting behavioral data to BIDS-compliant event files.
 
 **TODO:** [TIM] Include information about event files. Mention how they should ideally be created directly by the behavioural task script. Add a link to the [task template](https://github.com/TimManiquet/fMRI-task-template) to show how that can be done.
