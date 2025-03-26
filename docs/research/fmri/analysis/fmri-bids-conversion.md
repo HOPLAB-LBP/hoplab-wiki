@@ -476,10 +476,6 @@ Each `nii` file **must** have a sidecar JSON file. However, if your fMRI protoco
   
     1. Copy-paste all `.json` sidecar files from the `BIDS/sub-xx/func` folder of the participant you have DICOM files for, to the `BIDS/sub-xx/func` folder of new participant you only collect nifti files for. Rename each file with the correct `sub` value, ensuring there is one `.json` file per participant, per run, with the correct name.
 
-**TODO:** [TIM] Explain how to get the two missing fields and why it's important. Link to the fmri-general section about it.
-
-**TODO:** [TIM] Explain how to duplicate and rename the sidecar file.
-
 **TODO:** [ANDREA] fill this out with more in depth info about the JSON etc.
 
 ### Renaming and Moving NIfTI Files
