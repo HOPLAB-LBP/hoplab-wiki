@@ -223,6 +223,8 @@ singularity run --cleanenv \
   --mem-mb 50000 \
   --clean-workdir
 ```
+!!! tip
+    From a first test on the call above (which includes the FreeSurfer workflow), assignign 32 cores and 50GB of RAM end up in a runtime of `03:41:05` on a subjects with one anatomical image and two functional scans.
 
 then press `CTRL+X` to exit and `Y` to save. Check whether your file was saved correctly:
 
