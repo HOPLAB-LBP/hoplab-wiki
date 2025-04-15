@@ -155,13 +155,17 @@ Make sure you replace `/local/path/BIDS` with your local BIDS folder, and `vsc12
 ## 5. Building an `fMRIPrep` Singularity Container
 
 1. **Move to `VSC_DATA`:**
+
    ```
    cd $VSC_DATA
    ```
+
 2. **Build the Container:**
+
    ```
    singularity build fmriprep-25.0.0.sif docker://nipreps/fmriprep:25.0.0
    ```
+
 This fetches the Docker image and converts it to a Singularity `.sif` image.
 
 !!! warning

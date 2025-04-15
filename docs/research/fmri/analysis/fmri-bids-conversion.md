@@ -30,9 +30,8 @@ As you turn your raw data into a BIDS-compatible format, your project directory 
     └── <b>sourcedata</b>
     </code></pre>
 
-
 === "Step 2"
-    
+
     <pre><code>
     myproject
     └── sourcedata
@@ -208,7 +207,6 @@ As you turn your raw data into a BIDS-compatible format, your project directory 
             └── nifti
     </code></pre>
 
-
 1. Your first step is to organize your files in a `sourcedata` folder. Follow the structure outlined in [How to store raw data](./fmri-general.md#how-to-store-raw-data): have one main project folder (e.g. `myproject`), and a `sourcedata` folder in it.
 
 2. Create the relevant sub-folders within the `sourcedata` folder: for each participant you collected data from, create a `sub-xx` folder (e.g. `sub-01`). Within the folder of each participant, create a `bh` (behaviour) and `nifti` (i.e. nifti, the format of the files collected from the scanner) folder. Also create a `dicom` folder if you collected dicom files for your participant.
@@ -223,7 +221,7 @@ As you turn your raw data into a BIDS-compatible format, your project directory 
 
 7. Create one `events.tsv` file for each function run `.nii` file, using the output from your experimental task. If you used the [fMRI task template](https://github.com/HOPLAB-LBP/fMRI-task-template)), output log files can be used to create event files quite easily. More info on events files can be found [here](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html):
 
-8.  Create essential [modality agnostic BIDS files](https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson):
+8. Create essential [modality agnostic BIDS files](https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson):
 
     - `dataset_description.json`
     - `events.json`
@@ -236,7 +234,6 @@ As you turn your raw data into a BIDS-compatible format, your project directory 
     - *Optional*: Include a `.bidsignore` file if needed
 
 By following these steps systematically, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration. Make sure all the steps have been followed successfully by validating your BIDS folder. To do so, use the **[BIDS validator](https://bids-standard.github.io/bids-validator/)**.
-
 
 ## Step-by-step instructions
 
@@ -383,59 +380,58 @@ To **create event files from log files**, here is what you need to do (see the e
 - Create the `trial_type` column with the condition names. Fill this column by extracting the information that is relevant for your experimental design. In the example below, we extract the conditio names `face` and `building` from the `EVENT_ID` column, as these are the conditions we're interested in. We also indicate `fixation` where relevant, as we want to be able to model fixations in our GLM.
 - Add or keep any column you might need. In the example below, we keep the `event_type`, `event_name` and `event_id` columns as it might still be useful later on in the pipeline. Note that you should make a reference to these extra column in your `events.json` file.
 
-
 === "Example log file"
 
     ```
-    EVENT_TYPE	 EVENT_NAME	 DATETIME                EXP_ONSET 	   ACTUAL_ONSET	 DELTA   	 EVENT_ID
-    START     	 -         	 yyyy-mm-dd-hh-mm-ss	 -         	     0.000000	 -       	 -
-    FLIP      	 Instr     	 yyyy-mm-dd-hh-mm-ss	 -         	     0.099950	 -       	 -
-    RESP      	 KeyPress  	 yyyy-mm-dd-hh-mm-ss	 -         	     7.663277	 -       	 7
-    FLIP      	 TgrWait   	 yyyy-mm-dd-hh-mm-ss	 -         	     7.697805	 -       	 -
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    12.483778	 -       	 5
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    24.452093	 -       	 5
-    FLIP      	 Pre-fix   	 yyyy-mm-dd-hh-mm-ss	 -         	    24.462263	 -       	 -
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    26.452395	 -       	 5
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    28.452362	 -       	 5
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    30.451807	 -       	 5
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    32.451339	 -       	 5
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    34.451376	 -       	 5
-    FLIP      	 Stim      	 yyyy-mm-dd-hh-mm-ss	 34.462263 	    34.474302	 0.012039	 building_image.png
-    RESP      	 KeyPress  	 yyyy-mm-dd-hh-mm-ss	 -         	    35.566808	 -       	 9
-    FLIP      	 Fix       	 yyyy-mm-dd-hh-mm-ss	 -         	    34.521628	 -       	 -
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    36.451615	 -       	 5
-    FLIP      	 Stim      	 yyyy-mm-dd-hh-mm-ss	 37.462263 	    37.524439	 0.062177	 face_image.png
-    FLIP      	 Fix       	 yyyy-mm-dd-hh-mm-ss	 -         	    37.572648	 -       	 -
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    38.453535	 -       	 5
-    RESP      	 KeyPress  	 yyyy-mm-dd-hh-mm-ss	 -         	    38.806193	 -       	 1
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    40.451415	 -       	 5
+    EVENT_TYPE  EVENT_NAME  DATETIME                EXP_ONSET     ACTUAL_ONSET  DELTA     EVENT_ID
+    START       -           yyyy-mm-dd-hh-mm-ss  -               0.000000  -         -
+    FLIP        Instr       yyyy-mm-dd-hh-mm-ss  -               0.099950  -         -
+    RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -               7.663277  -         7
+    FLIP        TgrWait     yyyy-mm-dd-hh-mm-ss  -               7.697805  -         -
+    PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              12.483778  -         5
+    PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              24.452093  -         5
+    FLIP        Pre-fix     yyyy-mm-dd-hh-mm-ss  -              24.462263  -         -
+    PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              26.452395  -         5
+    PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              28.452362  -         5
+    PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              30.451807  -         5
+    PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              32.451339  -         5
+    PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              34.451376  -         5
+    FLIP        Stim        yyyy-mm-dd-hh-mm-ss  34.462263      34.474302  0.012039  building_image.png
+    RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -              35.566808  -         9
+    FLIP        Fix         yyyy-mm-dd-hh-mm-ss  -              34.521628  -         -
+    PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              36.451615  -         5
+    FLIP        Stim        yyyy-mm-dd-hh-mm-ss  37.462263      37.524439  0.062177  face_image.png
+    FLIP        Fix         yyyy-mm-dd-hh-mm-ss  -              37.572648  -         -
+    PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              38.453535  -         5
+    RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -              38.806193  -         1
+    PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              40.451415  -         5
     ...
     ```
 === "Example event file"
 
     ```
-    onset            duration       event_type	 event_name	 event_id               trial_type
-    -24.452093       n/a            START     	 -         	 -                      n/a
-    -24.352143       7.597855       FLIP      	 Instr     	 -                      n/a
-    -16.788816       n/a            RESP      	 KeyPress  	 7                      n/a
-    -16.75428800     7.697805       FLIP      	 TgrWait   	 -                      n/a
-    -11.96831500     n/a            PULSE     	 Trigger   	 5                      n/a
-    0.0              n/a            PULSE     	 Trigger   	 5                      n/a
-    0.0101699999     10             FLIP      	 Pre-fix   	 -                      fixation
-    2.0003019999     n/a            PULSE     	 Trigger   	 5                      n/a
-    4.0002689999     n/a            PULSE     	 Trigger   	 5                      n/a
-    5.9997139999     n/a            PULSE     	 Trigger   	 5                      n/a
-    7.9992459999     n/a            PULSE     	 Trigger   	 5                      n/a
-    9.9992830000     n/a            PULSE     	 Trigger   	 5                      n/a
-    10.022209        0.0473259      FLIP      	 Stim      	 building_image.png     building
-    10.069534999     3.0028110      FLIP      	 Fix       	 -                      fixation
-    11.114715        n/a            RESP      	 KeyPress  	 9                      n/a
-    11.999521999     n/a            PULSE     	 Trigger   	 5                      n/a
-    13.072346        0.0482089	    FLIP      	 Stim      	 face_image.png         face
-    13.120555        2.9033829      FLIP      	 Fix       	 -                      fixation
-    14.001442        n/a            PULSE     	 Trigger   	 5                      n/a
-    14.354099999     n/a            RESP      	 KeyPress  	 1                      n/a
-    15.999321999     n/a            PULSE     	 Trigger   	 5                      n/a
+    onset            duration       event_type  event_name  event_id               trial_type
+    -24.452093       n/a            START       -           -                      n/a
+    -24.352143       7.597855       FLIP        Instr       -                      n/a
+    -16.788816       n/a            RESP        KeyPress    7                      n/a
+    -16.75428800     7.697805       FLIP        TgrWait     -                      n/a
+    -11.96831500     n/a            PULSE       Trigger     5                      n/a
+    0.0              n/a            PULSE       Trigger     5                      n/a
+    0.0101699999     10             FLIP        Pre-fix     -                      fixation
+    2.0003019999     n/a            PULSE       Trigger     5                      n/a
+    4.0002689999     n/a            PULSE       Trigger     5                      n/a
+    5.9997139999     n/a            PULSE       Trigger     5                      n/a
+    7.9992459999     n/a            PULSE       Trigger     5                      n/a
+    9.9992830000     n/a            PULSE       Trigger     5                      n/a
+    10.022209        0.0473259      FLIP        Stim        building_image.png     building
+    10.069534999     3.0028110      FLIP        Fix         -                      fixation
+    11.114715        n/a            RESP        KeyPress    9                      n/a
+    11.999521999     n/a            PULSE       Trigger     5                      n/a
+    13.072346        0.0482089     FLIP        Stim        face_image.png         face
+    13.120555        2.9033829      FLIP        Fix         -                      fixation
+    14.001442        n/a            PULSE       Trigger     5                      n/a
+    14.354099999     n/a            RESP        KeyPress    1                      n/a
+    15.999321999     n/a            PULSE       Trigger     5                      n/a
     ...
     ```
 
@@ -448,10 +444,13 @@ If you have collected DICOM files from the scanner, you need to 1. **anonymise**
 1. Navigate to your `sourcedata` folder.
 2. Add the cloned `dicm2nii` folder to your path.
 3. Use the `anonymize_dicm` script to anonymize the DICOM files. The command will look something like this:
+
 ```MatLab
 anonymize_dicm('sub-xx/dicom', 'sub-xx/dicom_anon', 'sub-xx')
 ```
+
 4. Use the `dicm2nii` script to convert the anonymized DICOM files to NIfTI.
+
 ```MatLab
 dicm2nii('sub-xx/dicom_anon', 'sub-xx/dicom_converted', 'nii.gz')
 ```
@@ -472,7 +471,7 @@ Each `nii` file **must** have a sidecar JSON file. However, if your fMRI protoco
     2. Open each JSON file and Complete the `PhaseEncodingDirection` and `SliceTiming` fields (see [Missing fields in JSON files](./fmri-general.md#missing-fields-in-json-files) for more information).
     3. Copy-paste the updated JSON files to accompany each NIfTI file in the `BIDS/sub-xx/func` folder: each run should have its accompanying `sub-xx_task-taskname_run-xx_bold.json` sidecar file.
 
-- **If you did not collect DICOM files** for your participant, but collected DICOM files for a previous participant _and_ your fMRI protocol did not change in the meantime:
+- **If you did not collect DICOM files** for your participant, but collected DICOM files for a previous participant *and* your fMRI protocol did not change in the meantime:
   
     1. Copy-paste all `.json` sidecar files from the `BIDS/sub-xx/func` folder of the participant you have DICOM files for, to the `BIDS/sub-xx/func` folder of new participant you only collect nifti files for. Rename each file with the correct `sub` value, ensuring there is one `.json` file per participant, per run, with the correct name.
 
