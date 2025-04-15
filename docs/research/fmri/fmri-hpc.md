@@ -104,7 +104,7 @@ VSC_DATA                    # Persistent storage
 
 ---
 
-## 4. Transferring Data
+## 4. Transferring Data to the HPC
 
 Once connected to the cluster, you’ll need to transfer your BIDS dataset, FreeSurfer license, and other relevant files to your `VSC_DATA` directory on the HPC system.
 
@@ -177,7 +177,7 @@ This fetches the Docker image and converts it to a Singularity `.sif` image.
 
 ### 6.1. Creating a SLURM Script
 
-To submit our job to the compute node, we will need to create a SLURM script. this script will define  the job's resources, dependencies, and other settings, and then submit it to the cluster using the `sbatch` command.It is basically a wrapper around the real singularity fmriprep command that we need to run.
+To submit our job to the compute node, we will need to create a SLURM script. this script will define  the job`s resources, dependencies, and other settings, and then submit it to the cluster using the `sbatch` command.It is basically a wrapper around the real singularity fmriprep command that we need to run.
 
 To create such file, type in your ssh session:
 
@@ -373,11 +373,198 @@ scancel --user=$USER
 
 ---
 
-## 9. Advanced: Monitoring Resource Usage
+## 9. After the Job Completes
+
+Once your job finishes, you will receive an email from the SLURM scheduler. This email tells you whether the job **completed**, **failed**, or was **cancelled**.
+
+### 9.1 Example Email Messages
+
+- ✅ **Successful run:**
+  ```
+  Slurm Job_id=58070026 Name=fmriprep_sub-42 Ended, Run time 03:41:05, COMPLETED, ExitCode 0
+  ```
+
+- ❌ **Cancelled manually or by the system:**
+  ```
+  Slurm Job_id=58069757 Name=fmriprep_sub-42 Ended, Run time 00:00:00, CANCELLED, ExitCode 0
+  ```
+
+- ⚠️ **Job failed with error:**
+  ```
+  Slurm Job_id=58069624 Name=fmriprep_sub-42 Failed, Run time 00:00:20, FAILED, ExitCode 255
+  ```
+
+---
+
+### 9.2 Inspecting Failed Jobs
+
+If your job failed, the first thing to do is inspect the `.out` and `.err` files written by SLURM. These contain the full log and error output from `fMRIPrep`.
+
+1. Go to the correct folder (usually `$VSC_DATA`):
+
+    ```bash
+    cd $VSC_DATA
+    ```
+
+2. Open the output file:
+
+    ```bash
+    nano slurm-58070026.out
+    ```
+
+    - Use the arrow keys to scroll.
+    - The error is usually toward the **end** of the file.
+    - Press `Ctrl+X` to exit `nano`.
+
+3. Also open the error file:
+
+    ```bash
+    nano slurm-58070026.err
+    ```
+
+    - This might contain Python tracebacks or messages from Singularity.
+
+Make sure to check **both files**, as the error could appear in either.
+
+---
+
+### 9.3 Verifying Successful Runs
+
+If the job completed successfully, it`s time to check the output files.
+
+In our SLURM script, the `--output` directory is bound to:
+
+```
+-B $VSC_DATA/data/BIDS/derivatives:/out
+```
+
+So the results will be saved under:
+
+```
+$VSC_DATA/data/BIDS/derivatives/fmriprep
+```
+
+To inspect the results:
+
+```bash
+cd $VSC_DATA/data/BIDS/derivatives/fmriprep
+ls
+```
+
+You should see something like this:
+
+```
+dataset_description.json  logs  sourcedata  sub-42  sub-42.html
+```
+
+Use the `tree` command to get a visual overview of the folder structure:
+
+```bash
+tree -L 2 .
+```
+
+Expected output:
+
+```
+fmriprep/
+├── dataset_description.json
+├── logs/
+│   ├── CITATION.bib
+│   ├── CITATION.html
+│   ├── CITATION.md
+│   └── CITATION.tex
+├── sourcedata/
+│   └── freesurfer/
+│       ├── fsaverage/
+│       └── sub-42/         # FreeSurfer recon-all output
+├── sub-42/
+│   ├── anat/
+│   │   ├── sub-42_desc-preproc_T1w.nii.gz
+│   │   ├── sub-42_dseg.nii.gz
+│   │   ├── sub-42_space-MNI152NLin2009cAsym_res-2_desc-preproc_T1w.nii.gz
+│   │   └── ...
+│   ├── func/
+│   │   ├── sub-42_task-*_desc-preproc_bold.nii.gz
+│   │   ├── sub-42_task-*_desc-confounds_timeseries.tsv
+│   │   ├── sub-42_task-*_space-MNI152NLin2009cAsym_res-2_desc-brain_mask.nii.gz
+│   │   └── ...
+│   ├── figures/
+│   │   ├── sub-42_desc-summary_T1w.html
+│   │   ├── sub-42_task-*_desc-summary_bold.html
+│   │   └── ...
+│   └── log/
+│       └── <timestamped-folder>/
+│           └── fmriprep.toml
+├── sub-42.html              # Subject-level report
+
+```
+
+This confirms that `fMRIPrep` completed for subject 42 and produced its derivatives, QC figures, and logs.
+
+---
+
+### 9.4 Downloading the Results (Derivatives) to Your Local Machine
+
+After fMRIPrep completes successfully, you might want to retrieve the `derivatives/fmriprep` folder from the HPC back to your local computer for further analysis. The steps differ slightly depending on your operating system.
+
+=== "Windows (WinSCP)"
+
+      1. **Log in via the Firewall**  
+        Go to [https://firewall.vscentrum.be/auth/login](https://firewall.vscentrum.be/auth/login) and enter your VSC credentials.
+
+      2. **Open WinSCP:**
+
+         - Host Name: `login.hpc.kuleuven.be`
+         - User Name: `vsc12345`
+         - (Optional) Load your private key if needed.
+
+      3. **Navigate & Download:**
+
+         - In WinSCP, navigate on the remote side to:
+          ```
+          /data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep
+          ```
+          (Replace `vsc12345` with your actual VSC username.)
+         - On your local machine side, open (or create) a destination folder where you want to save the files.
+         - **Drag and drop** the `fmriprep` folder (or individual files) from the remote window to your local folder.
+         - Alternatively, right-click and select **Download** or **Download To...**.
+
+      This will copy the `fmriprep` output directory (and its subfolders) to your local Windows computer.
+
+=== "macOS / Linux"
+
+      1. **Confirm Firewall Access**  
+         Visit [https://firewall.vscentrum.be/auth/login](https://firewall.vscentrum.be/auth/login) if your connection is blocked by the HPC firewall.
+
+      2. **Use `scp` or `rsync`:**
+
+         - **Basic `scp` example**:
+           ```bash
+           scp -r vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep /local/path/
+           ```
+           - The `-r` flag copies directories recursively.
+           - Replace `vsc12345` and `123` with your own account details.
+           - `/local/path/` is the folder on your Mac/Linux machine where you want the data.
+
+         - **`rsync` (recommended for large data)**:
+           ```bash
+           rsync -av --progress \
+             vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep \
+             /local/path/
+           ```
+           - `-a` preserves file attributes.
+           - `-v` is verbose output.
+           - `--progress` shows real-time progress info (optional).
+
+      This will download the entire `fmriprep` output folder to your Mac or Linux machine for further analysis.
+
+---
+
+## 10. Advanced: Monitoring Resource Usage
 
 Sometimes you want to inspect your job in real-time to check whether it is using the resources (CPU, memory) you requested.
 
-### 9.1 Identify the Compute Node
+### 10.1 Identify the Compute Node
 
 First, determine which compute node your job is running on by checking the job queue:
 
@@ -393,11 +580,11 @@ CLUSTER: genius
           58070026     batch fmriprep vsc12345  R      40:46      1 r27i27n19
 ```
 
-Look at the **NODELIST** column — in this case, your job is running on node `'r27i27n19'`.
+Look at the **NODELIST** column — in this case, your job is running on node ``r27i27n19``.
 
-If NODELIST shows `(Priority)`, it means your job is still waiting in the queue and hasn't started yet.
+If NODELIST shows `(Priority)`, it means your job is still waiting in the queue and hasn`t started yet.
 
-### 9.2: SSH into the Compute Node
+### 10.2: SSH into the Compute Node
 
 To access the compute node where your job is running:
 
@@ -411,11 +598,11 @@ You should see a message like:
 Joining job 58070026
 ```
 
-Also, the prompt will change from the login node (e.g., `'tier2-p-login-2'`) to the compute node (e.g., `'r27i27n19'`), indicating you are now inside the job environment on the actual node.
+Also, the prompt will change from the login node (e.g., ``tier2-p-login-2``) to the compute node (e.g., ``r27i27n19``), indicating you are now inside the job environment on the actual node.
 
 ---
 
-### 9.3: Run 'htop' to Monitor Resource Usage
+### 10.3: Run `htop` to Monitor Resource Usage
 
 Once inside the compute node, run:
 
@@ -440,7 +627,7 @@ To exit `htop`, press **F10** or **q**
 
 ---
 
-## 10. References and Links
+## 11. References and Links
 
 - [VSC Documentation](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/index.html)  
 - [KU Leuven HPC Info](https://icts.kuleuven.be/sc/onderzoeksgegevens/hpc)  
