@@ -46,6 +46,7 @@ nav:
           - 6. Multi-variate analysis: research/fmri/analysis/fmri-mvpa.md
           - fMRI workflow example: research/fmri/analysis/fmri-andrea-workflow.md
       - Meta-analysis with NiMARE: research/fmri/fmri-nimare.md
+      - fMRIprep on HPC: research/fmri/fmri-hpc.md
     - EEG:
       - research/eeg/index.md
     - Eye-tracking:
