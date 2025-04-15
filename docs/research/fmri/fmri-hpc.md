@@ -419,7 +419,11 @@ Once inside the compute node, run:
 htop -u $USER
 ```
 
-This opens a live system monitor that shows:
+This opens a live system monitor like this one:
+
+![fmri-htop](../../assets/fmri-hpc-htop.png)
+
+Which shows:
 
 - All processes currently running under your username
 - CPU usage per core
@@ -432,7 +436,7 @@ To exit `htop`, press **F10** or **q**
 
 ---
 
-## 12. References and Links
+## 10. References and Links
 
 - [VSC Documentation](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/index.html)  
 - [KU Leuven HPC Info](https://icts.kuleuven.be/sc/onderzoeksgegevens/hpc)  
