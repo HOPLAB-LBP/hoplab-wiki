@@ -558,6 +558,18 @@ After fMRIPrep completes successfully, you might want to retrieve the `derivativ
            - `-v` is verbose output.
            - `--progress` shows real-time progress info (optional).
 
+         - Or, if you only want to **quickly download reports** and related files (for quick results check):
+           ```
+           rsync -av --progress \
+           --include='*/' \
+           --include='*.html' \
+           --include='*.svg' \
+           --include='*.png' \
+           --exclude='*' \
+           vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep/ \
+           /local/path/fmriprep_reports/
+           ```
+
       This will download the entire `fmriprep` output folder to your Mac or Linux machine for further analysis.
 
 ---
