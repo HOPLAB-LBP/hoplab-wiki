@@ -5,63 +5,39 @@ This guide describes how to connect to the KU Leuven/VSC HPC cluster, manage you
 ---
 
 !!! warning "Login Node"  
-    When you connect via SSH, you land on a *login node*. Do *not* run compute-intensive tasks here. Submit jobs to *compute* or *GPU* nodes via SLURM.
+    When you connect via SSH, you land on a *login node*. Do *not* run compute-intensive tasks here, because login nodes are shared among tens of users. Submit jobs to the *compute* (*CPU* or *GPU*) nodes via Slurm.
 
-!!! tip "Change directory after login"  
-    Due to the small quota on the login node (see section 3 below), it`s recommended to always change the working directory after login:
+!!! tip "Change directory after login"
+    After a login, you land on your home directory `$VSC_HOME` which has only 3GB quota (by design).
+    This small volume is easy to fill up by mistake; hence, it is recommended to always change the working directory after login
+    to your `$VSC_DATA` (75 GB) or to your `$VSC_SCRATCH` (500 GB) upon login, e.g.:
 
     ```bash
     cd $VSC_DATA
     ```
 
-    This ensures you work in a directory with persistent memory (your files are not deleted) and sufficient disk space.
+    This ensures you work in a directory with persistent storage (your files are not deleted) and sufficient disk space.
+    Beware that any files in your scratch folder which is not accessed for 30 days will be automatically deleted, and scratch
+    folder (as the name proposes) has no backup.
 
 ---
+
+VSC offers a [full documentation](https://docs.vscentrum.be/) of all the services, but in case of question of problems, you 
+may contact the [local support team at KU Leuven](https://docs.vscentrum.be/contact_vsc.html).
 
 ## 1. Prerequisites
 
 1. You have a valid VSC account (e.g., `vsc12345`). Request one [here](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/index.html).
-2. You have set up SSH keys in your VSC account.
-3. You have installed PuTTY and WinSCP (Windows) or SSH (Mac/Linux).
-4. You have logged into the [HPC firewall](https://firewall.vscentrum.be/auth/login) before attempting SSH.
-
+2. For Windows users, install MobaXterm (SSH client) and FileZilla or WinSCP for file transfer;
+   for Mac/Linux users, it is sufficient to use the terminal (has built-in SSH) and FileZilla for file transfer.
+3. You have logged into the [HPC firewall](https://firewall.vscentrum.be/auth/login) before attempting SSH.
+4. You have requested introductory credits (2 million credits for 6 months) via [this form](https://admin.kuleuven.be/icts/onderzoek/hpc/request-introduction-credits).
 ---
 
 ## 2. Connecting to the Cluster
 
-Once your account is active and your SSH keys are configured, you can connect to the login node. Always log in through the VSC firewall before attempting a connection.
-
-=== "Windows (PuTTY + WinSCP)"
-
-      1. **Allow Firewall:**  
-         Go to [https://firewall.vscentrum.be/auth/login](https://firewall.vscentrum.be/auth/login) and log in using your VSC credentials.
-
-      2. **Open PuTTY:**
-         - Host Name: `login.hpc.kuleuven.be`
-         - (Optional) Go to `Connection → SSH → Auth` and load your **private key**.
-         - Click **Open**.
-
-      3. **Login via SSH:**
-         When prompted, type:
-         ```
-         ssh -A vsc12345@login.hpc.kuleuven.be
-         ```
-         Replace `vsc12345` with your own VSC username.
-
-=== "macOS / Linux"
-
-      1. **Allow Firewall:**  
-         Go to [https://firewall.vscentrum.be/auth/login](https://firewall.vscentrum.be/auth/login) and log in.
-
-      2. **Open Terminal**
-
-      3. **Login via SSH:**
-         ```
-         ssh -A vsc12345@login.hpc.kuleuven.be
-         ```
-         Replace `vsc12345` with your actual VSC username.
-
-After login, you will see something like:
+Once your account is active, you may follow [these steps](https://docs.vscentrum.be/accounts/mfa_login.html) to login depending on your choice of OS.
+After a successful login, you will see something like:
 
 ![VSC Login](../../assets/fmri-hpc-login.png)
 
@@ -71,7 +47,8 @@ Look at the last line:
 ✔ [Apr/15 15:13] vsc12345@tier2-p-login-1 ~ $ 
 ```
 
-which suggests we are connected to the login node `tier2-p-login-1` as `vsc12345` (your VSC username). From now on, what we type in the terminal will be executed on the login node.
+which suggests we are connected to the login node `tier2-p-login-1` as `vsc12345` (your VSC username). From now on, what we type in the terminal will be executed on the login node. Note that the login nodes are only meant to move your data around, submit and monitor your jobs, and write/edit your scripts. For all other purposes (actual computation, pre-/post-processing and software installation), you have to start an 
+[interactive or batch job using Slurm](https://docs.vscentrum.be/compute/jobs/running_jobs.html).
 
 To exit the ssh session and go back to your local terminal, type `exit`.
 
@@ -81,9 +58,12 @@ To exit the ssh session and go back to your local terminal, type `exit`.
 
 **Folder Structure:**
 
-- `HOME`: Small quota, do *not* store big data here.
-- `VSC_DATA`: Persistent, large capacity. Store big data, installed packages (e.g., Miniforge/Miniconda), and your project files.
-- `VSC_SCRATCH`: Temporary storage. Files here will be deleted regularly. Do not store your project data here!
+- `VSC_HOME`: Small quota, do *not* use it at all.
+- `VSC_DATA`: Persistent but slow, larger capacity. Store big data, installed packages (e.g., Miniforge/Miniconda), and your project files.
+  All files and folders in your data directory are snapshoted, so you can recover them if you delete them by mistake.
+  For that purpose, look inside the `.snapshot` directory inside any folder in your data directory for available snapshot timestamps.
+- `VSC_SCRATCH`: Temporary storage but fast I/O. Files here will be deleted if not accessed after 30 days. Do not store your project data here!
+- `VSC_SCRATCH_NODE`: Temporary storage available on the compute node which can be only used when your job is running on a compute node.
 
 A typical approach is to keep a dedicated subdirectory in `VSC_DATA` for each project. For example:
 
@@ -169,15 +149,15 @@ Make sure you replace `/local/path/BIDS` with your local BIDS folder, and `vsc12
 This fetches the Docker image and converts it to a Singularity `.sif` image.
 
 !!! warning
-    Ensure you have enough quota and that you are not attempting this in `HOME`!
+    Ensure you have enough quota and that you are not attempting this in `VSC_HOME`!
 
 ---
 
-## 6. Submitting and Running an `fMRIPrep` Job with SLURM
+## 6. Submitting and Running an `fMRIPrep` Job with Slurm
 
-### 6.1. Creating a SLURM Script
+### 6.1. Creating a Slurm Jobscript
 
-To submit our job to the compute node, we will need to create a SLURM script. this script will define  the job`s resources, dependencies, and other settings, and then submit it to the cluster using the `sbatch` command.It is basically a wrapper around the real singularity fmriprep command that we need to run.
+To submit our job to the compute node, we will need to create a Slurm script. this script will define the job resources, dependencies, and all the steps needed to complete the workflow. Then, submit the jobscript to the cluster using the `sbatch` command. Your batch job will run remotely on a compute node, and `fmriprep` will be executed from within a container.
 
 To create such file, type in your ssh session:
 
@@ -186,22 +166,22 @@ cd $VSC_DATA
 nano run_fmriprep_job.slurm
 ```
 
-This will open a text editor. Paste the following content into the file:
+This will open a text editor. Use the following template as a guideline, but change relevant fields (such as job name, account name etc) accordingly:
 
 ```
 #!/bin/bash -l
-#SBATCH --job-name=fmriprep_sub-42
-#SBATCH --time=08:00:00
+#SBATCH --account=intro_vsc12345
+#SBATCH --cluster=genius
+#SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
 #SBATCH --mem=50G
+#SBATCH --time=08:00:00
+#SBATCH --job-name=fmriprep_sub-42
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=your.email@kuleuven.be
-#SBATCH --account=intro_vsc12345
-#SBATCH --partition=batch
-#SBATCH --cluster=genius
 
 # Move to the data directory
 cd $VSC_DATA/data
@@ -223,10 +203,7 @@ singularity run --cleanenv \
   --mem-mb 50000 \
   --clean-workdir
 ```
-!!! tip
-    From a first test on the call above (which includes the FreeSurfer workflow), assignign 32 cores and 50GB of RAM end up in a runtime of `03:41:05` on a subjects with one anatomical image and two functional scans.
-
-then press `CTRL+X` to exit and `Y` to save. Check whether your file was saved correctly:
+Then press `CTRL+X` to exit and `Y` to save. Check whether your file was saved correctly:
 
 ```bash
 ls $VSC_DATA
@@ -258,7 +235,7 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
     Submitted batch job 58070026
     ```
 
-   *where `58070026` is your job ID.*
+   *where `58070026` is your job ID* (but it will be different in your case).
 
 4. Check the status of your job:
 
@@ -275,11 +252,15 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
 
 Congrats! Your job is now being executed on the cluster.
 
+!!! tip
+    Your runtime depends critically on various factors, such as the choice of hardware, the number of threads used, the amount of memory used, and your I/O pattern. You may choose one of the `batch_*` partitions from either of Genius or wICE clusters to find the most performant hardware for your workflow. Detailed information about avaialble hardware can be found on [Ku Leuven Tier-2 specifications](https://docs.vscentrum.be/leuven/tier2_hardware.html). From a first test on the call above (which includes the FreeSurfer workflow), assignign 32 cores and 50GB of RAM end up in a runtime of `03:41:05` on a subjects with one anatomical image and two functional scans, but take this figure as a rough estimate.
+
 ### 6.3 SLURM Basics you will need
 
-- `sbatch`: Submits a job script to the cluster.
-- `squeue`: Shows your jobs.
-- `scancel`: Cancels a job.
+- `sbatch`: Submits a jobscript to the cluster.
+- `srun`: Start an interactive session on a compute node.
+- `squeue -M genius,wice`: Shows your jobs on both clusters.
+- `scancel -M <cluster> <jobID>`: Cancels a job with the `<jobID>` running on `<cluster>`.
 - `sstat`: Real-time CPU/memory info on running jobs.
 - `sacct`: Shows CPU time, wall time, memory usage, and exit codes for *finished* jobs.
 
@@ -312,7 +293,7 @@ CLUSTER: wice
 
 ### 7.2 Checking Logs
 
-When you submit a SLURM job, two log files are automatically generated in the directory where you ran `sbatch`:
+When you submit a Slurm job, two log files are automatically generated in the directory where you ran `sbatch`:
 
 - `slurm-<jobid>.out`: captures **standard output (stdout)** — the regular printed output from your script.
 - `slurm-<jobid>.err`: captures **standard error (stderr)** — any warnings or errors encountered during the job.
@@ -331,7 +312,7 @@ You should see something like:
 fmriprep-25.0.0.sif  data  run_fmriprep_job.slurm  slurm-58070026.out  slurm-58070026.err
 ```
 
-#### Open and Read Logs
+#### Open and Read the Logs
 
 To open the full output log (static view):
 
@@ -361,7 +342,7 @@ To exit the `watch` session Press `Ctrl+Z`.
 
 ## 8 Canceling a Job
 
-If you want to stop a running or pending job:
+If you want to stop a running or pending job you need to provide the cluster name (defaults to Genius), and the unique `<jobID>`, e.g.:
 
 ```bash
 scancel 58070026
@@ -395,6 +376,9 @@ Once your job finishes, you will receive an email from the SLURM scheduler. This
   ```
   Slurm Job_id=58069624 Name=fmriprep_sub-42 Failed, Run time 00:00:20, FAILED, ExitCode 255
   ```
+
+!!! tip
+    If you submit too many jobs, it is best not to enable email notifications.
 
 ---
 
@@ -596,7 +580,7 @@ CLUSTER: genius
 
 Look at the **NODELIST** column — in this case, your job is running on node ``r27i27n19``.
 
-If NODELIST shows `(Priority)`, it means your job is still waiting in the queue and hasn`t started yet.
+If NODELIST shows `(Priority)` with state `PD` (for pending), it means your job is still waiting in the queue and hasn`t started yet.
 
 ### 10.2: SSH into the Compute Node
 
@@ -643,11 +627,10 @@ To exit `htop`, press **F10** or **q**
 
 ## 11. References and Links
 
-- [VSC Documentation](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/index.html)  
-- [KU Leuven HPC Info](https://icts.kuleuven.be/sc/onderzoeksgegevens/hpc)  
-- [Firewall Access](https://firewall.vscentrum.be/auth/login)  
-- [SSH Key Setup (PuTTYgen)](https://docs.vscentrum.be/access/generating_keys_with_putty.html#create-a-public-private-key-pair)  
-- [SSH Access via PuTTY](https://docs.vscentrum.be/access/text_mode_access_using_putty.html)  
+- [VSC Documentation](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/index.html)
+- [KU Leuven HPC Info](https://icts.kuleuven.be/sc/onderzoeksgegevens/hpc)
+- [Firewall Access](https://firewall.vscentrum.be/auth/login)
+- [SSH Access via MobaXterm](https://docs.vscentrum.be/compute/terminal/mobaxterm_access.html)
 - [Singularity Docs](https://docs.sylabs.io/)  
 - [fMRIPrep Docs](https://fmriprep.org/en/stable/)  
 
