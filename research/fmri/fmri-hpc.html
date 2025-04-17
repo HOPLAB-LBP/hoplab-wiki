@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -2278,8 +2278,8 @@ After a successful login, you will see something like:</p>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>#SBATCH --cluster=genius
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>#SBATCH --partition=batch
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>#SBATCH --ntasks=1
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>#SBATCH --cpus-per-task=32
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>#SBATCH --mem=50G
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>#SBATCH --cpus-per-task=16
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>#SBATCH --mem=20G
 </span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>#SBATCH --time=08:00:00
 </span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>#SBATCH --job-name=fmriprep_sub-42
 </span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>#SBATCH --output=slurm-%j.out
@@ -2303,8 +2303,8 @@ After a successful login, you will see something like:</p>
 </span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>  --output-spaces MNI152NLin2009cAsym:res-2 fsaverage \
 </span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>  --work-dir /scratch \
 </span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>  --bold2anat-dof 9 \
-</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>  --nthreads 32 --omp-nthreads 32 \
-</span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>  --mem-mb 50000 \
+</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>  --nthreads 16 --omp-nthreads 16 \
+</span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>  --mem-mb 20000 \
 </span><span id="__span-8-33"><a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a>  --clean-workdir
 </span></code></pre></div>
 Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether your file was saved correctly:</p>
@@ -2343,8 +2343,13 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 </ol>
 <p>Congrats! Your job is now being executed on the cluster.</p>
 <div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Your runtime depends critically on various factors, such as the choice of hardware, the number of threads used, the amount of memory used, and your I/O pattern. You may choose one of the <code>batch_*</code> partitions from either of Genius or wICE clusters to find the most performant hardware for your workflow. Detailed information about avaialble hardware can be found on <a href="https://docs.vscentrum.be/leuven/tier2_hardware.html">Ku Leuven Tier-2 specifications</a>. From a first test on the call above (which includes the FreeSurfer workflow), assignign 32 cores and 50GB of RAM end up in a runtime of <code>03:41:05</code> on a subjects with one anatomical image and two functional scans, but take this figure as a rough estimate.</p>
+<p class="admonition-title">Runtime</p>
+<p>Your runtime depends critically on various factors, such as the choice of hardware, the number of threads used, the amount of memory used, and your I/O pattern. You may choose one of the <code>batch_*</code> partitions from either of Genius or wICE clusters to find the most performant hardware for your workflow. Detailed information about avaialble hardware can be found on <a href="https://docs.vscentrum.be/leuven/tier2_hardware.html">Ku Leuven Tier-2 specifications</a>.</p>
+<p>From a first test on the call above (which includes the FreeSurfer workflow) on a subjects with one anatomical image and two functional scans:</p>
+<ul>
+<li><strong>32 cores</strong> and <strong>50GB of RAM</strong> end up in a runtime of <code>03:41:05</code> </li>
+<li><strong>16 cores</strong> and <strong>20GB of RAM</strong> end up in a runtime of <code>03:59:27</code> on the same subjects</li>
+</ul>
 </div>
 <h3 id="63-slurm-basics-you-will-need">6.3 SLURM Basics you will need<a class="headerlink" href="#63-slurm-basics-you-will-need" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2665,7 +2670,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="April 16, 2025 09:47:46">April 16, 2025 09:47:46</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="April 17, 2025 12:40:37">April 17, 2025 12:40:37</span>
   </span>
 
     
