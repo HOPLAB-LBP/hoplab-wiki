@@ -174,8 +174,8 @@ This will open a text editor. Use the following template as a guideline, but cha
 #SBATCH --cluster=genius
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32
-#SBATCH --mem=50G
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=20G
 #SBATCH --time=08:00:00
 #SBATCH --job-name=fmriprep_sub-42
 #SBATCH --output=slurm-%j.out
@@ -199,8 +199,8 @@ singularity run --cleanenv \
   --output-spaces MNI152NLin2009cAsym:res-2 fsaverage \
   --work-dir /scratch \
   --bold2anat-dof 9 \
-  --nthreads 32 --omp-nthreads 32 \
-  --mem-mb 50000 \
+  --nthreads 16 --omp-nthreads 16 \
+  --mem-mb 20000 \
   --clean-workdir
 ```
 Then press `CTRL+X` to exit and `Y` to save. Check whether your file was saved correctly:
@@ -252,8 +252,13 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
 
 Congrats! Your job is now being executed on the cluster.
 
-!!! tip
-    Your runtime depends critically on various factors, such as the choice of hardware, the number of threads used, the amount of memory used, and your I/O pattern. You may choose one of the `batch_*` partitions from either of Genius or wICE clusters to find the most performant hardware for your workflow. Detailed information about avaialble hardware can be found on [Ku Leuven Tier-2 specifications](https://docs.vscentrum.be/leuven/tier2_hardware.html). From a first test on the call above (which includes the FreeSurfer workflow), assignign 32 cores and 50GB of RAM end up in a runtime of `03:41:05` on a subjects with one anatomical image and two functional scans, but take this figure as a rough estimate.
+!!! tip "Runtime"
+    Your runtime depends critically on various factors, such as the choice of hardware, the number of threads used, the amount of memory used, and your I/O pattern. You may choose one of the `batch_*` partitions from either of Genius or wICE clusters to find the most performant hardware for your workflow. Detailed information about avaialble hardware can be found on [Ku Leuven Tier-2 specifications](https://docs.vscentrum.be/leuven/tier2_hardware.html).
+
+    From a first test on the call above (which includes the FreeSurfer workflow) on a subjects with one anatomical image and two functional scans:
+    
+    - **32 cores** and **50GB of RAM** end up in a runtime of `03:41:05` 
+    - **16 cores** and **20GB of RAM** end up in a runtime of `03:59:27` on the same subjects
 
 ### 6.3 SLURM Basics you will need
 
