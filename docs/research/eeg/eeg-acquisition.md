@@ -20,8 +20,8 @@ These are the first things to do upon arriving in the EEG lab:
 2. Swith on the general power strip and the A/D-box in the EEG booth using the on/off switch (see **Figure 1**).
 3. Check on the A/D-box whether its battery is charged. If the battery is low, a red light will turn on (see **Figure 1**). In that case, take out the battery by opening the black clips at the sides and replace it with the spare battery that can be found in the left corner of the desk with the stimulus computer. Make sure that one battery is always charging (see **Figure 2**). At a later stage you can also check the battery status in ActiView (see **Figure 10**).
 
-![A/D-box](../../../assets/eeg-acquisition-fig1.png)
-![A/D-box battery](../../../assets/eeg-acquisition-fig2.png)
+![A/D-box](../../assets/eeg-acquisition-fig1.png)
+![A/D-box battery](../../assets/eeg-acquisition-fig2.png)
 
 ## Before the participant arrives
 
@@ -35,8 +35,8 @@ You can find all necessary materials in the EEG closet in the room. Make sure th
     - 1x medium (head circumference of 54-58 cm)
     - 2x medium-large (head circumference of 56-60 cm)
 
-![Syringe filling](../../../assets/eeg-acquisition-fig3.png)
-![Syringe cleaning](../../../assets/eeg-acquisition-fig4.png)
+![Syringe filling](../../assets/eeg-acquisition-fig3.png)
+![Syringe cleaning](../../assets/eeg-acquisition-fig4.png)
 
 ## Upon participant arrival 
 
@@ -48,12 +48,12 @@ It is probably the first time for your participant to participate in an EEG-expe
 4. In case the participant wears glasses, it is easiest to remove them for the application of the EEG-cap and the electrodes. Right before the start of the experiment, the participant can put their glasses back on. If possible, ask the participant to wear glasses rather than contact lenses to decrease the blinking frequency during the experiment.
 5. Measure the participant's head circumference from nasion to inion to determine the correct cap size (see **Figure 5**). The sizes can be found on the label in the back of the cap (e.g., if you measure 54 cm, then take the small-medium sized head cap with range 52-56 cm).
 
-    ![Measuring head circumference](../../../assets/eeg-acquisition-fig5.png)
+    ![Measuring head circumference](../../assets/eeg-acquisition-fig5.png)
 
 6. Place the cap on the participant's head: Spread both of your hands in the cap and ask the participant to hold the front part. Make sure both the ears and the label on the back stick out of the cap.
 7. Make sure the cap is properly centered by measuring whether A1 (Vertex) is in the center, i.e., halfway between the ears and halfway between the nasion and inion (see **Figure 6**). Adjust if necessary.
 
-    ![Centering the electrode cap](../../../assets/eeg-acquisition-fig6.png)
+    ![Centering the electrode cap](../../assets/eeg-acquisition-fig6.png)
 
 8. Close the cap with the velcro straps under the chin. To avoid itching from the velcro, you can add a gauze pad underneath. Make sure that the participant is comfortable.
 9. Fill all electrode gaps with superconducting gel (see **Figure 7a**) in the following way:
@@ -74,11 +74,11 @@ It is probably the first time for your participant to participate in an EEG-expe
     !!! tip "Tip"
         Per set, individual electrodes are numbered. Place the electrodes in ascending order to avoid tangling the wires. Start at the base of the skull and work your way up towards the forehead. Make sure the wires end up in the participant's neck.
 
-    ![Applying gel and electrodes](../../../assets/eeg-acquisition-fig7.png)
+    ![Applying gel and electrodes](../../assets/eeg-acquisition-fig7.png)
 
 11.	Go into the EEG booth, let the participant take place in the right position for the experiment, take of the protective caps from the electrode sets and connect them to the A/D-box (see **Figure 8**). Make sure the participant sits comfortably to avoid them moving too much during the experiment. 
 
-    ![Connecting the electrodes](../../../assets/eeg-acquisition-fig8.png)
+    ![Connecting the electrodes](../../assets/eeg-acquisition-fig8.png)
     
 12.	In case the participant wears glasses, you can put them back on now.
 13. Turn the lights low (the light switch is near the door) and make sure the lightning is consistent across all your participants. Do not lower the lights too much as a high contrast between the room and monitor increases the blinking frequency. During breaks, you might want to turn the lights up (to increase alertness) and ask the participant if they would like to drink some water (to decrease swallowing). 
@@ -89,7 +89,7 @@ Go to the acquisition computer, and take care of the following steps:
 
 1. Start up ActiView. 
 
-    ![ActiView settings](../../../assets/eeg-acquisition-fig9.png)
+    ![ActiView settings](../../assets/eeg-acquisition-fig9.png)
 
 2. In the right top corner you can check the battery status of the A/D-box (see **Figure 9**). ActiView will give a warning if the battery status is below 20%. 
 3. Go to the `about actiview` tab and click `set up configuration file`. Choose the 128-channel configuration file.   
@@ -99,7 +99,7 @@ Go to the acquisition computer, and take care of the following steps:
     - The impedance of each electrode must be between -20 µV and 20 µV. Adjust the electrodes that are not within these values (e.g., Fz in **Figure 10**) by adding or removing some gel, moving the hair below the electrode with the tip of the syringe and/or by wiggling the electrode a bit. 
     - If the electrode impedance stays far outside the [-20 20 µV] range, the electrode might be broken and needs to be replaced. In case this electrode is not crucial for your study, you can write down the code of the electrode and later contact the EEG lab manager for the back-up electrode set.  
 
-    ![Electrode offsets](../../../assets/eeg-acquisition-fig10.png)
+    ![Electrode offsets](../../assets/eeg-acquisition-fig10.png)
 
     !!! tip "Tip"
         You can mirror the screen of the acquisition pc with the electrode offsets in the EEG booth, so that you don't have to run back and forth when adjusting the electrodes to get the impedance right. Don't forget to turn off the screen when you are done.
@@ -110,8 +110,8 @@ Go to the acquisition computer, and take care of the following steps:
     - If all electrodes are connected correctly, Actiview should look like **Figure 12**. 
     - Show the subject what happens when they blink, cough, swallow, etc. Instruct the participant to minimize these movements during the measurement phase. 
 
-    ![distorted EEG signal](../../../assets/eeg-acquisition-fig11.png)
-    ![good EEG signal](../../../assets/eeg-acquisition-fig12.png)
+    ![distorted EEG signal](../../assets/eeg-acquisition-fig11.png)
+    ![good EEG signal](../../assets/eeg-acquisition-fig12.png)
 
 ## Recording EEG-data
 
