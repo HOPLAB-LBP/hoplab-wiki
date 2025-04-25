@@ -6,7 +6,7 @@ The first one is a mobile EEG system, currently used mostly by the [Neuropsychol
 
 The second EEG apparatus is a high-resolution EEG system, used primarily by the [Hoplab](https://www.hoplab.be/) and the [Desenderlab](https://desenderlab.com/). This is a 128-channel system of BioSemi.
 
-The 128-channel EEG is located in room PSI 02.52. It can be booked through the Clustermarket system (see general Research pages), where you can find it as "BioSemi EEG Lab 00.52".
+The 128-channel EEG is located in room PSI 00.52. It can be booked through the Clustermarket system (see general Research pages), where you can find it as "BioSemi EEG Lab 00.52".
 
 In the Hoplab we typically set up experiments for multivariate EEG ("Representational Dynamics"). Our standard analysis pipeline is described most in detail in [Chen et al.](https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00006/116700/The-representational-dynamics-of-the-animal) (2023, Imaging Neuroscience).
 

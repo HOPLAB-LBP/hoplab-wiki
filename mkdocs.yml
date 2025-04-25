@@ -49,6 +49,7 @@ nav:
       - fMRIprep on HPC: research/fmri/fmri-hpc.md
     - EEG:
       - research/eeg/index.md
+      - Data acquisition: research/eeg/eeg-acquisition.md
     - Eye-tracking:
       - research/eyetracking/index.md
     - Neural Networks:
