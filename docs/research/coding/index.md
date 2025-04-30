@@ -422,7 +422,7 @@ Spyder is a powerful IDE for scientific programming in Python. Here’s how to s
     Using a project allows Spyder to set the root folder for your scripts. This means that all imports and file paths are relative to this root, simplifying package management and file organization.
 
 1. **Create a New Project**:
-    - Go to `File > New Project` in Spyder.
+    - Go to `Projects > New Project` in Spyder.
     - Select a directory to store your project files.
     - Spyder will set this folder as the root for relative imports.
 
@@ -439,7 +439,7 @@ Spyder is a powerful IDE for scientific programming in Python. Here’s how to s
      ```
 
 3. **Activate Your Environment in Spyder**:
-    - Go to `Preferences > Python Interpreter`.
+    - Go to `Tools > Preferences > Python Interpreter`.
     - Select the interpreter from your `conda` environment.
 
 ---
@@ -462,7 +462,6 @@ Before diving into debugging and navigation, it's important to set up your Spyde
         - **Variable Explorer**: Displays all variables in your current environment.
         - **Documentation**: Shows documentation for selected functions and objects.
         - **File Explorer**: Browse files and folders in your working directory.
-        - **Breakpoints**: Manage and navigate all breakpoints in your code.
 
 2. **Enable Recommended Panes**:
     - Ensure that the **Variable Explorer**, **IPython Console**, **Breakpoints**, and **Documentation** panes are enabled.
@@ -579,7 +578,7 @@ Spyder makes it easy to navigate large codebases and understand how functions, c
 
 The **Go to Definition** feature allows you to quickly jump to where a function, class, or variable is defined. This is especially useful when working with large scripts or when using functions imported from other files or libraries. Instead of scrolling through the code to find a definition, you can directly jump to it.
 
-- **How to Use**: Right-click on the function or class name and select "Go to Definition" or use the shortcut:
+- **How to Use**: Highlight and right-click on the function or class name and select "Go to Definition" or use the shortcut:
   - **Windows/Linux**: `Ctrl + G`
   - **Mac**: `Cmd + G`
 
@@ -608,7 +607,7 @@ The **Go to Definition** feature allows you to quickly jump to where a function,
     ```
 
     - **Scenario**: You want to see the logic inside `clean_data` while working on the main script.
-        - Right-click on `clean_data` and select "Go to Definition."
+        - Highlight and right-click on `clean_data` and select "Go to Definition."
         - Spyder will take you directly to where `clean_data` is defined, allowing you to review the function without scrolling.
     
     ![Spyder Go To Definition](../../assets/spyder_definition.png)
@@ -627,7 +626,7 @@ Spyder’s object inspection feature allows you to explore the attributes and me
 - **Why use this?**: This feature provides a quick way to understand the capabilities and usage of an object or method without needing to look up documentation online. It can save time when learning new libraries or debugging issues with complex data structures.
 
 !!! example "Example Scenario: Inspecting a NumPy Function"
-    Suppose you want to generate a set of random integers using the `np.random.randint` function, but you’re not sure about its input arguments and what it returns. You can use Spyder’s object inspection to quickly get this information without leaving the IDE.
+    Suppose you want to generate a set of random integers using the `np.random.randint` function, but you’re not sure about its input arguments/parameters and what it returns. You can use Spyder’s object inspection to quickly get this information without leaving the IDE.
 
     ```python
     import numpy as np
@@ -643,7 +642,7 @@ Spyder’s object inspection feature allows you to explore the attributes and me
     - **Step 2: Press the Shortcut**: Use `Ctrl + I` (Windows/Linux) or `Cmd + I` (Mac) to bring up the documentation in the **Help pane**.
     
     - **What You See**: The documentation for `np.random.randint` appears, showing:
-        - **Input Arguments**: The range of integers (`low` and `high`), `size` for specifying the shape of the output array, and other optional parameters.
+        - **Input Arguments/Parameters**: The range of integers (`low` and `high`), `size` for specifying the shape of the output array, and other optional parameters.
         - **Description**: An explanation of what the function does—generating random integers within a specified range.
         - **Returns**: Information on what the function outputs (an array of integers).
         - **Examples**: If available, code snippets showing how to use the function.
