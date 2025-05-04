@@ -6,7 +6,7 @@ Kickstart your (f)MRI learning journey by engaging in the following key activiti
 
 === "Subscribe to the MR mailing list"
     - **How to subscribe**:  
-      Join the MR mailing list by visiting [this link](http://listserv.cc.kuleuven.ac.be/archives/mri.html). Make sure you are logged in and click on "Subscribe or Unsubscribe" in the menu on the top right. Provide your first and last name and hit the subscribe button. A confirmation request will be sent to your email address. Your subscription will be completed if you respond to this request within 48h.
+      Join the MR mailing list by visiting [this link](https://ls.kuleuven.be/cgi-bin/wa?A0=MRI). Make sure you are logged in and click on "Subscribe or Unsubscribe" in the menu on the top right. Provide your first and last name and hit the subscribe button. A confirmation request will be sent to your email address. Your subscription will be completed if you respond to this request within 48h.
     - **Purpose of the list**:  
       This mailing list is used by the MR Safety Officer to report on the status of the MRI equipment and announce upcoming MR safety courses. It also allows MRI researchers to ask each other questions about MRI practices and possible issues.  
 
