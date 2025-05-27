@@ -13,7 +13,7 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 !!! info "Leave a feedback"
     The wiki is **our collective knowledge base** - your feedback and contributions help keep it accurate, complete, and useful for everyone in the lab.
 
-    Use the feedback buttons (:material-emoticon-sad-outline: :material-emoticon-happy-outline:) at the bottom of each page to help improve the wiki. 
+    For small updates to the Wiki, click on the :pencil: icon at the top right of each page. Use the feedback buttons (:material-emoticon-sad-outline: :material-emoticon-happy-outline:) at the bottom of each page to help improve the wiki. 
 
 !!! tip "Use the search bar"
     The search bar is your friend! Just type in a keyword and you will be presented with a list of relevant pages.
