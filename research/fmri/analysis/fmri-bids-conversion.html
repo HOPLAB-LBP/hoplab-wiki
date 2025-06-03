@@ -1432,9 +1432,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#bids-standards" class="md-nav__link">
+  <a href="#table-of-contents" class="md-nav__link">
     <span class="md-ellipsis">
-      BIDS standards
+      Table of Contents
     </span>
   </a>
   
@@ -1444,15 +1444,6 @@
   <a href="#bids-conversion-overview" class="md-nav__link">
     <span class="md-ellipsis">
       BIDS Conversion Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-by-step-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step-by-step instructions
     </span>
   </a>
   
@@ -1967,9 +1958,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#bids-standards" class="md-nav__link">
+  <a href="#table-of-contents" class="md-nav__link">
     <span class="md-ellipsis">
-      BIDS standards
+      Table of Contents
     </span>
   </a>
   
@@ -1979,15 +1970,6 @@
   <a href="#bids-conversion-overview" class="md-nav__link">
     <span class="md-ellipsis">
       BIDS Conversion Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-by-step-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step-by-step instructions
     </span>
   </a>
   
@@ -2018,49 +2000,79 @@
 
 
 <h1 id="convert-your-fmri-data-into-bids-format">Convert your fMRI data into BIDS format<a class="headerlink" href="#convert-your-fmri-data-into-bids-format" title="Permanent link">&para;</a></h1>
-<p><strong>TODO:</strong> [ANDREA] this page is unnecessary complex. I think we should make it simpler by giving the standard steps from DICOM to BIDS, which is in iny case safer than the nift + json editing.</p>
-<h2 id="bids-standards">BIDS standards<a class="headerlink" href="#bids-standards" title="Permanent link">&para;</a></h2>
 <p>To organize our fMRI dataset, we follow the <a href="https://bids-specification.readthedocs.io/en/stable/introduction.html">BIDS</a> Specification.</p>
 <p>If you are not familiar with the BIDS Specification, the <a href="https://bids-standard.github.io/bids-starter-kit/index.html">BIDS Starter Kit</a> provides all the information needed to get started, along with <a href="https://bids-standard.github.io/bids-starter-kit/dataset_examples.html">example BIDS datasets</a>, <a href="https://bids-standard.github.io/bids-starter-kit/talks.html">Talks and Slides</a>, and most importantly <a href="https://bids-standard.github.io/bids-starter-kit/tutorials/tutorials.html">Tutorials</a>.</p>
 <p>It is crucial that you get familiar with BIDS folders/files naming convention and structure. Most, if not all, the tools we are going to use in the next steps are <a href="https://bids-apps.neuroimaging.io/apps/">BIDS Apps</a>, and they rely on data organized following the BIDS Specification. Following this structure will make it easier to use these tools, share your code and data, and communicate with other scientists.</p>
 <p>The BIDS Specification provides guidelines on how to organize all your data formats, including <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/magnetic-resonance-imaging-data.html">(f/d)MRI</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/electroencephalography.html">EEG</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/physiological-and-other-continuous-recordings.html">eye-tracking</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html">Task events</a> associated with Neuro-Imaging recordings or <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/behavioral-experiments.html">not</a>, and <a href="https://bids-specification.readthedocs.io/en/stable/derivatives/imaging.html">Derivatives</a> (e.g., pre-processed files, Regions Of Interest mask files, GLM files, etc.).</p>
 <p>At any moment, you can check your dataset for BIDS compliance. To do so, you can use the <a href="https://bids-standard.github.io/bids-validator/">BIDS dataset validator</a>.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#convert-your-fmri-data-into-bids-format">Convert your fMRI data into BIDS format</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#bids-conversion-overview">BIDS Conversion Overview</a><ul>
+<li><a href="#1-create-the-raw-data-directory">1. Create the raw data directory</a></li>
+<li><a href="#2-create-the-subjects-directory">2. Create the subject's directory</a></li>
+<li><a href="#3-organize-your-source-files">3. Organize your source files</a></li>
+<li><a href="#4-convert-dicom-files">4. Convert DICOM files</a></li>
+<li><a href="#5-create-the-bids-directory">5. Create the BIDS directory</a></li>
+<li><a href="#6-organise-the-bids-directory">6. Organise the BIDS directory</a></li>
+<li><a href="#7-create-json-sidecar-files">7. Create JSON sidecar files</a></li>
+<li><a href="#8-create-event-files">8. Create event files</a></li>
+<li><a href="#9-create-additional-bids-files">9. Create additional BIDS files</a></li>
+<li><a href="#10-validating-your-bids-structure">10. Validating Your BIDS Structure</a></li>
+</ul>
+</li>
+</ul>
 <h2 id="bids-conversion-overview">BIDS Conversion Overview<a class="headerlink" href="#bids-conversion-overview" title="Permanent link">&para;</a></h2>
 <p>Here's a high-level overview of the steps involved in arranging your data in a BIDS-compatible way. While this provides a general understanding, most of these steps should be performed using the code provided in each sub-section to minimize errors. After scanning participants, you'll obtain data from two primary sources:</p>
 <ol>
-<li>The scanner: <strong>functional</strong> and <strong>structural</strong> outputs (<code>.nii</code> files), alongside potential <code>dicom</code> files</li>
-<li>The stimulus presentation computer: <strong>behavioural</strong> outputs (mainly <code>log</code> files and <code>.mat</code> files) and potentially eye-tracking data</li>
+<li>The scanner: <strong>functional</strong> and <strong>structural</strong> outputs (<code>DICOM</code> files).</li>
+<li>The stimulus presentation computer: <strong>behavioural</strong> outputs (mainly <code>log</code> files and <code>mat</code> files) and potentially eye-tracking data (<code>edf</code> files or <code>tsv</code> files).</li>
 </ol>
 <p>As you turn your raw data into a BIDS-compatible format, your project directory will change considerably. The folder trees below show you how each steps will affect your working directory, with changing folders and file in <strong>bold</strong> for each step.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:9"><input checked="checked" id="step1" name="__tabbed_1" type="radio" /><input id="step-2" name="__tabbed_1" type="radio" /><input id="step-3" name="__tabbed_1" type="radio" /><input id="step-4" name="__tabbed_1" type="radio" /><input id="step-5" name="__tabbed_1" type="radio" /><input id="step-6" name="__tabbed_1" type="radio" /><input id="step-7" name="__tabbed_1" type="radio" /><input id="step-8" name="__tabbed_1" type="radio" /><input id="step-9" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="step1">Step1</label><label for="step-2">Step 2</label><label for="step-3">Step 3</label><label for="step-4">Step 4</label><label for="step-5">Step 5</label><label for="step-6">Step 6</label><label for="step-7">Step 7</label><label for="step-8">Step 8</label><label for="step-9">Step 9</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><pre><code>
+<hr />
+<h3 id="1-create-the-raw-data-directory">1. Create the raw data directory<a class="headerlink" href="#1-create-the-raw-data-directory" title="Permanent link">&para;</a></h3>
+<pre><code>
 <b>myproject</b>
 └── <b>sourcedata</b>
-</code></pre></p>
-</div>
-<div class="tabbed-block">
-<p><pre><code>
+</code></pre>
+
+<p>Your first step is to organize your files in a <code>sourcedata</code> folder. Follow the structure outlined in <a href="fmri-general.html#how-to-store-raw-data">How to store raw data</a>: have one main project folder (e.g. <code>myproject</code>), and a <code>sourcedata</code> folder in it.</p>
+<hr />
+<h3 id="2-create-the-subjects-directory">2. Create the subject's directory<a class="headerlink" href="#2-create-the-subjects-directory" title="Permanent link">&para;</a></h3>
+<pre><code>
 myproject
 └── sourcedata
     └── <b>sub-01</b>
         ├── <b>bh</b>
         ├── <b>dicom</b>
+        ├── <b>eye</b>
+        ├── <b>dicom_anon</b>
         └── <b>nifti</b>
-</code></pre></p>
-</div>
-<div class="tabbed-block">
-<p><pre><code>
+</code></pre>
+
+<p>Create the relevant sub-folders within the <code>sourcedata</code> folder: for each participant you collected data from, create a <code>sub-xx</code> folder (e.g. <code>sub-01</code>). Within the folder of each participant, create a <code>bh</code> (behaviour), <code>eye</code> (i.e. eye-tracking data), <code>dicom</code> (i.e. dicom files collected from the scanner), <code>dicom_anon</code> (i.e. anonymized dicom files collected from the scanner), and <code>nifti</code> (i.e. nifti, the format of the files after the DICOM conversion).</p>
+<p>To create these folders, open your terminal (or PowerShell if you are on Windows) and type:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cd /path/to/myproject/sourcedata
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mkdir sub-01
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>mkdir sub-01/bh
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>mkdir sub-01/eye
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>mkdir sub-01/dicom
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>mkdir sub-01/dicom_anon
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>mkdir sub-01/nifti
+</span></code></pre></div>
+<hr />
+<h3 id="3-organize-your-source-files">3. Organize your source files<a class="headerlink" href="#3-organize-your-source-files" title="Permanent link">&para;</a></h3>
+<pre><code>
 myproject
 └── sourcedata
     └── sub-01
         ├── bh
-        │   ├── <b>yyyy-mm-dd-sub-01_run-01_task-taskname_log.tsv</b>
-        │   ├── <b>yyyy-mm-dd-sub-01_run-01_task-taskname.mat</b>
+        │   ├── <b>yyyy-mm-dd-sub-01_run-01_task-{taskname}_log.tsv</b>
+        │   ├── <b>yyyy-mm-dd-sub-01_run-01_task-{taskname}.mat</b>
         │   ├── ...
-        │   ├── <b>yyyy-mm-dd-sub-01_run-xx_task-taskname_log.tsv</b>
-        │   └── <b>yyyy-mm-dd-sub-01_run-xx_task-taskname.mat</b>
+        │   ├── <b>yyyy-mm-dd-sub-01_run-{runnumber}_task-{taskname}_log.tsv</b>
+        │   └── <b>yyyy-mm-dd-sub-01_run-{runnumber}_task-{taskname}.mat</b>
         ├── dicom
         │   ├── <b>IM_0001</b>
         │   ├── <b>IM_0005</b>
@@ -2069,15 +2081,16 @@ myproject
         │   ├── <b>XX_0003</b>
         │   ├── <b>XX_0004</b>
         │   └── <b>XX_0007</b>
-        └── nifti
-            ├── <b>run-01.nii</b>
-            ├── ...
-            ├── <b>run-xx.nii</b>
-            └── <b>sub-01_struct.nii</b>
-</code></pre></p>
-</div>
-<div class="tabbed-block">
-<p><pre><code>
+        ├── dicom_anon
+        ├── nifti
+        └── eye
+
+</code></pre>
+
+<p>Place the files you collected in this <code>sourcedata</code> structure: data collected from your experimental task goes into <code>bh</code> (e.g. <code>.mat</code> files and log files if you used the <a href="https://github.com/HOPLAB-LBP/fMRI-task-template">fMRI task template</a>), data collected from the scanner itself (DICOM) goes in <code>dicom</code>, eye-tracking data (generally, EDF or csv files) goes in <code>eye</code>.</p>
+<hr />
+<h3 id="4-convert-dicom-files">4. Convert DICOM files<a class="headerlink" href="#4-convert-dicom-files" title="Permanent link">&para;</a></h3>
+<pre><code>
 myproject
 └── sourcedata
     └── sub-01
@@ -2091,82 +2104,238 @@ myproject
         │   ├── <b>XX_0003</b>
         │   ├── <b>XX_0004</b>
         │   └── <b>XX_0007</b>
-        ├── <b>dicom_converted</b>
+        ├── <b>nifti</b>
         │   ├── <b>dcmHeaders.mat</b>
         │   ├── <b>sub-01_run-01.json</b>
         │   ├── <b>sub-01_run-01.nii.gz</b>
         │   ├── <b>sub-01_struct.json</b>
         │   └── <b>sub-01_struct.nii.gz</b>
-        └── nifti
-</code></pre></p>
+        ├── dicom_anon
+        ├── nifti
+        └── eye
+</code></pre>
+
+<p>If you have collected DICOM files from the scanner, you need to <strong>anonymise</strong> and <strong>convert</strong> them so that you can use them properly. There are several tools available that can help with this. One recommended option is <a href="https://github.com/xiangruili/dicm2nii"><code>dicm2nii</code></a>, a lightweight and flexible toolbox for handling DICOM-to-NIfTI conversion.</p>
+<div class="admonition question">
+<p class="admonition-title">Why <code>dicm2nii</code> and not <code>dcm2niix</code>?</p>
+<p>Although <a href="https://github.com/rordenlab/dcm2niix"><code>dcm2niix</code></a> is widely used and robust, especially for modern enhanced DICOMs and vendor-specific edge cases (like Philips), <code>dicm2nii</code> is often suggested.</p>
+<p>For data acquired with Philips scanners, or if your DICOMs have missing metadata (e.g., <code>PhaseEncodingDirection</code>), see <a href="https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips">this Rorden Lab guide</a> and this <a href="https://www.nitrc.org/forum/forum.php?thread_id=15186&amp;forum_id=4703">NITRC forum thread</a> See also <a href="fmri-general.html#missing-fields-in-json-files">Missing fields in JSON files</a> for more information.</p>
 </div>
-<div class="tabbed-block">
-<p><pre><code>
+<p>To convert your data:</p>
+<ol>
+<li>
+<p>Navigate to your sourcedata folder</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>/path/to/myproject/sourcedata
+</span></code></pre></div>
+</li>
+<li>
+<p><a href="https://github.com/xiangruili/dicm2nii">Clone the repository</a> from GitHub:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/xiangruili/dicm2nii.git
+</span></code></pre></div>
+</li>
+<li>
+<p>Add the <code>dicm2nii</code> folder to your MATLAB path:
+    In <strong>MATLAB</strong>, run:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="s">&#39;/path/to/dicm2nii&#39;</span><span class="p">)</span><span class="w">  </span><span class="c">% Adjust this to the actual folder path</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can also use <code>uigetdir</code> to interactively select the folder:</p>
+</div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="nb">uigetdir</span><span class="p">)</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Anonymize your DICOM files</p>
+<p>Use the <code>anonymize_dicm</code> function. This removes identifying fields and creates a safe copy for conversion:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">anonymize_dicm</span><span class="p">(</span><span class="s">&#39;sub-01/dicom&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-01/dicom_anon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-01&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li>First argument = path to <strong>raw DICOM</strong> folder</li>
+<li>Second argument = path to output <strong>anonymized DICOM</strong> folder</li>
+<li>Third argument = subject ID string used in metadata fields (optional but recommended)</li>
+</ul>
+<p>This will create <code>dicom_anon</code> and log any changes made.</p>
+</li>
+<li>
+<p>Convert anonymized DICOMs to NIfTI</p>
+<p>Now convert the anonymized files:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">dicm2nii</span><span class="p">(</span><span class="s">&#39;sub-01/dicom_anon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-01/nifti&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;nii.gz&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li>First argument = path to anonymized DICOMs</li>
+<li>Second argument = output directory</li>
+<li>Third argument = output format (<code>nii</code>, <code>nii.gz</code>)</li>
+</ul>
+<p>This will:</p>
+<ul>
+<li>Generate one <code>.nii.gz</code> file per series</li>
+<li>Produce accompanying <code>.json</code> metadata files</li>
+<li>Create a <code>dcmHeaders.mat</code> with all parsed metadata</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="5-create-the-bids-directory">5. Create the BIDS directory<a class="headerlink" href="#5-create-the-bids-directory" title="Permanent link">&para;</a></h3>
+<pre><code>
 myproject
 ├── <b>BIDS</b>
 │   └── <b>sub-01</b>
 │       ├── <b>anat</b>
 │       │   └── <b>sub-01_T1w.nii</b>
 │       └── <b>func</b>
-│           ├── <b>sub-01_task-taskname_run-01_bold.nii</b>
+│           ├── <b>sub-01_task-{taskname}_run-01_bold.nii</b>
 │           ├── ...
-│           └── <b>sub-01_task-taskname_run-xx_bold.nii</b>
+│           └── <b>sub-01_task-{taskname}_run-{runnumber}_bold.nii</b>
 └── sourcedata
     └── sub-01
         ├── bh
         ├── dicom
         ├── dicom_anon
-        ├── dicom_converted
         └── nifti
-</code></pre></p>
-</div>
-<div class="tabbed-block">
-<p><pre><code>
+</code></pre>
+
+<p>Create a <code>BIDS</code> folder in your main project directory, alongside the <code>sourcedata</code> folder. For each participant, create a sub folder (e.g. <code>BIDS/sub-01</code>). In the BIDS folder of each participant, place a <code>func</code> folder for functional files and a <code>anat</code> folder for anatomical files. Copy-paste your functional <code>.nii</code> files from <code>sourcedata</code> to their corresponding <code>func</code> folder, renaming them if necessary to follow BIDS format (e.g. <code>sub-01_task-{taskname}_run-01_bold.nii</code>), and similarly copy-paste your structural <code>.nii</code> files to the <code>anat</code> folder, renaming them if necessary (e.g. <code>sub-01_T1w.nii</code>). See below for more details on <a href="fmri-bids-conversion.html#renaming-and-moving-nifti-files">how to rename and move nifti files</a>.</p>
+<hr />
+<h3 id="6-organise-the-bids-directory">6. Organise the BIDS directory<a class="headerlink" href="#6-organise-the-bids-directory" title="Permanent link">&para;</a></h3>
+<pre><code>
 myproject
 ├── BIDS
 │   └── sub-01
 │       ├── anat
+│       │   └── <b>sub-01_T1w.nii</b>
 │       └── func
-│           ├── <b>sub-01_task-taskname_run-01_bold.json</b>
-│           ├── sub-01_task-taskname_run-01_bold.nii
+│           ├── <b>sub-01_task-{taskname}_run-01_bold.nii</b>
 │           ├── ...
-│           ├── <b>sub-01_task-taskname_run-xx_bold.json</b>
-│           └── sub-01_task-taskname_run-xx_bold.nii
+│           └── <b>sub-01_task-{taskname}_run-{runnumber}_bold.nii</b>
 └── sourcedata
     └── sub-01
         ├── bh
         ├── dicom
         ├── dicom_anon
-        ├── dicom_converted
         └── nifti
-</code></pre></p>
-</div>
-<div class="tabbed-block">
-<p><pre><code>
+</code></pre>
+
+<ol>
+<li>Navigate to your <code>sourcedata/sub-xx/nifti/</code> folder.</li>
+<li>Identify the functional and structural NIfTI files.</li>
+<li>Rename the files following BIDS conventions:<ul>
+<li>Functional: <code>sub-&lt;label&gt;_task-&lt;label&gt;_run-&lt;label&gt;_bold.nii</code></li>
+<li>Structural: <code>sub-&lt;label&gt;_T1w.nii</code></li>
+</ul>
+</li>
+<li>Move the renamed files to their respective folders in <code>BIDS/sub-xx/</code>:<ul>
+<li>Functional files go to <code>BIDS/sub-xx/func/</code></li>
+<li>Structural files go to <code>BIDS/sub-xx/anat/</code></li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="7-create-json-sidecar-files">7. Create JSON sidecar files<a class="headerlink" href="#7-create-json-sidecar-files" title="Permanent link">&para;</a></h3>
+<pre><code>
 myproject
 ├── BIDS
 │   └── sub-01
 │       ├── anat
+│       │   ├──sub-01_T1w.nii
+│       │   └── <b>sub-01_T1w.json</b>
 │       └── func
-│           ├── sub-01_task-taskname_run-01_bold.json
-│           ├── sub-01_task-taskname_run-01_bold.nii
-│           ├── <b>sub-01_task-taskname_run-01_events.tsv</b>
+│           ├── <b>sub-01_task-{taskname}_run-01_bold.json</b>
+│           ├── sub-01_task-{taskname}_run-01_bold.nii
 │           ├── ...
-│           ├── sub-01_task-taskname_run-xx_bold.json
-│           ├── sub-01_task-taskname_run-xx_bold.nii
-│           └── <b>sub-01_task-taskname_run-xx_events.tsv</b>
+│           ├── <b>sub-01_task-{taskname}_run-{runnumber}_bold.json</b>
+│           └── sub-01_task-{taskname}_run-{runnumber}_bold.nii
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── dicom_anon
+        └── nifti
+</code></pre>
+
+<p>Create <code>.json</code> sidecar files for each functional run <code>.nii</code> file, using the output from the dicom conversion step.</p>
+<p>Each <code>nii</code> file <strong>must</strong> have a sidecar JSON file. Make sure you <a href="fmri-bids-conversion.html#4-convert-dicom-files">anonymised and converted your DICOM files</a> and go through the following steps:</p>
+<ol>
+<li>Locate the JSON sidecar files in <code>sourcedata/sub-xx/nifti/</code>.</li>
+<li>Open each JSON file and Complete the <code>PhaseEncodingDirection</code> and <code>SliceTiming</code> fields (see <a href="fmri-general.html#missing-fields-in-json-files">Missing fields in JSON files</a> for more information).</li>
+<li>Copy-paste the updated JSON files to accompany each NIfTI file in the <code>BIDS/sub-xx/func</code> folder: each run should have its accompanying <code>sub-xx_task-{taskname}_run-{runnumber}_bold.json</code> sidecar file.</li>
+</ol>
+<hr />
+<h3 id="8-create-event-files">8. Create event files<a class="headerlink" href="#8-create-event-files" title="Permanent link">&para;</a></h3>
+<pre><code>
+myproject
+├── BIDS
+│   └── sub-01
+│       ├── anat
+│       │   ├──sub-01_T1w.nii
+│       │   └── <b>sub-01_T1w.json</b>
+│       └── func
+│           ├── sub-01_task-{taskname}_run-01_bold.json
+│           ├── sub-01_task-{taskname}_run-01_bold.nii
+│           ├── <b>sub-01_task-{taskname}_run-01_events.tsv</b>
+│           ├── ...
+│           ├── sub-01_task-{taskname}_run-{runnumber}_bold.json
+│           ├── sub-01_task-{taskname}_run-{runnumber}_bold.nii
+│           └── <b>sub-01_task-{taskname}_run-{runnumber}_events.tsv</b>
 ├── code
 └── sourcedata
     └── sub-01
         ├── bh
         ├── dicom
         ├── dicom_anon
-        ├── dicom_converted
+        ├── eye
         └── nifti
-</code></pre></p>
-</div>
-<div class="tabbed-block">
-<p><pre><code>
+</code></pre>
+
+<p>Create one <code>events.tsv</code> file for each function run <code>.nii</code> file, using the output from your experimental task. If you used the <a href="https://github.com/HOPLAB-LBP/fMRI-task-template">fMRI task template</a>), output log files can be used to create event files quite easily. More info on events files can be found <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html">here</a>.</p>
+<p>Event files are crucial for analyzing fMRI data. They contain information about the timing and nature of stimuli or tasks during the scan. To create your event files manually:</p>
+<ol>
+<li>Navigate to your <code>sourcedata/sub-xx/bh/</code> folder.</li>
+<li>Locate the behavioral output files (<code>.mat</code> or <code>.log</code>) for each run.</li>
+<li>Create a corresponding <code>events.tsv</code> file for each run in the <code>BIDS/sub-xx/func/</code> folder.</li>
+</ol>
+<p>Each <code>events.tsv</code> file <strong>must</strong> contain at least three columns: <code>onset</code>, <code>duration</code>, and <code>trial_type</code>, and <strong>can</strong> include additional as needed for your specific analysis. It also <strong>must</strong> contain one row per trial (stimulus) in your experiment.</p>
+<p>If you use the <a href="https://github.com/TimManiquet/fMRI-task-template">fMRI task template</a>, the log files you get as output contain all the information needed to build event files in a few steps. Below is a quick overview of the steps to take to make event files from log files. Note that it might not apply perfectly to all cases, and that other approaches can be more practical to you. It can be a good idea to create your own utility script to create event files from your behavioural results.</p>
+<p>To <strong>create event files from log files</strong>, here is what you need to do (see the example below for an example transformation):</p>
+<ul>
+<li>Create the <code>onset</code> column from the onset values in the log files: in the latter, onset times (usually stored in a column called <code>ACTUAL_ONSET</code>) are aligned to the start of the run. In BIDS event files, events need to be aligned to the start of the scanning. To obtain correct onset values, one can simply shift the onset of each line from a log file so that the onset <code>0.0</code> corresponds to the first TR trigger.</li>
+<li>Create the <code>duration</code> column from the <code>onset</code> values. Log files typically don't record the exact duration of events, as that would put some extra calculation load onto MatLab (which struggles enough already as it is). A good approach is to calculate these post-hoc from the onset values, by simply taking the difference in between successive event onsets.</li>
+<li>Create the <code>trial_type</code> column with the condition names. Fill this column by extracting the information that is relevant for your experimental design. In the example below, we extract the condition names <code>face</code> and <code>building</code> from the <code>EVENT_ID</code> column, as these are the conditions we're interested in.</li>
+<li>Add or keep any extra column you might need. In the example below, we keep the <code>event_id</code> columns as it might still be useful later on in the pipeline. Note that you should make a reference to these extra column in your <code>events.json</code> file.</li>
+</ul>
+<p>For example, this is what a log file looks like:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>EVENT_TYPE  EVENT_NAME  DATETIME                EXP_ONSET     ACTUAL_ONSET  DELTA     EVENT_ID
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>START       -           yyyy-mm-dd-hh-mm-ss  -               0.000000  -         -
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>FLIP        Instr       yyyy-mm-dd-hh-mm-ss  -               0.099950  -         -
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -               7.663277  -         7
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>FLIP        TgrWait     yyyy-mm-dd-hh-mm-ss  -               7.697805  -         -
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              12.483778  -         5
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              24.452093  -         5
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>FLIP        Pre-fix     yyyy-mm-dd-hh-mm-ss  -              24.462263  -         -
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              26.452395  -         5
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              28.452362  -         5
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              30.451807  -         5
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              32.451339  -         5
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              34.451376  -         5
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>FLIP        Stim        yyyy-mm-dd-hh-mm-ss  34.462263      34.474302  0.012039  building_image.png
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -              35.566808  -         9
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>FLIP        Fix         yyyy-mm-dd-hh-mm-ss  -              34.521628  -         -
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              36.451615  -         5
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>FLIP        Stim        yyyy-mm-dd-hh-mm-ss  37.462263      37.524439  0.062177  face_image.png
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>FLIP        Fix         yyyy-mm-dd-hh-mm-ss  -              37.572648  -         -
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              38.453535  -         5
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -              38.806193  -         1
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              40.451415  -         5
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>...
+</span></code></pre></div>
+<p>This is what the corresponding event file should look like:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>onset           duration        trial_type     event_id
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>10.022209       0.0473259       building       building_image.png
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>13.072346       0.0482089       face           face_image.png
+</span></code></pre></div>
+<hr />
+<h3 id="9-create-additional-bids-files">9. Create additional BIDS files<a class="headerlink" href="#9-create-additional-bids-files" title="Permanent link">&para;</a></h3>
+<pre><code>
 myproject
 ├── BIDS
 │   ├── <b>dataset_description.json</b>
@@ -2182,315 +2351,13 @@ myproject
         ├── bh
         ├── dicom
         ├── dicom_anon
-        ├── dicom_converted
+        ├── eye
         └── nifti
-</code></pre></p>
-</div>
-<div class="tabbed-block">
-<p><pre><code>
-myproject
-├── BIDS
-│   ├── <b>.bidsignore</b>
-│   ├── dataset_description.json
-│   ├── <b>derivatives</b>
-│   ├── events.json
-│   ├── participants.json
-│   ├── participants.tsv
-│   ├── sub-01
-│   │   ├── anat
-│   │   └── func
-│   └── task-taskname_bold.json
-└── sourcedata
-    └── sub-01
-        ├── bh
-        ├── dicom
-        ├── dicom_anon
-        ├── dicom_converted
-        └── nifti
-</code></pre></p>
-</div>
-</div>
-</div>
+</code></pre>
+
 <ol>
 <li>
-<p>Your first step is to organize your files in a <code>sourcedata</code> folder. Follow the structure outlined in <a href="fmri-general.html#how-to-store-raw-data">How to store raw data</a>: have one main project folder (e.g. <code>myproject</code>), and a <code>sourcedata</code> folder in it.</p>
-</li>
-<li>
-<p>Create the relevant sub-folders within the <code>sourcedata</code> folder: for each participant you collected data from, create a <code>sub-xx</code> folder (e.g. <code>sub-01</code>). Within the folder of each participant, create a <code>bh</code> (behaviour) and <code>nifti</code> (i.e. nifti, the format of the files collected from the scanner) folder. Also create a <code>dicom</code> folder if you collected dicom files for your participant.</p>
-</li>
-<li>
-<p>Place the files you collected in this <code>sourcedata</code> structure: data collected from your experimental task goes into <code>bh</code> (e.g. <code>.mat</code> files and log files if you used the <a href="https://github.com/HOPLAB-LBP/fMRI-task-template">fMRI task template</a>), data collected from the scanner itself goes in <code>nifti</code> or in <code>dicom</code> based on its format.</p>
-</li>
-<li>
-<p>If you collected them, proceed to <strong>anonymise</strong> and <strong>convert</strong> your DICOM files. Create a <code>dicom_anon</code> and a <code>dicom_converted</code> folder. See below for more details on <a href="fmri-bids-conversion.html#converting-dicom-files-optional">how to anonimise and convert your dicom files</a>.</p>
-</li>
-<li>
-<p>Create a <code>BIDS</code> folder in your main project directory, alongside the <code>sourcedata</code> folder. For each participant, create a sub folder (e.g. <code>BIDS/sub-01</code>). In the BIDS folder of each participant, place a <code>func</code> folder for functional files and a <code>anat</code> folder for anatomical files. Copy-paste your functional <code>.nii</code> files from <code>sourcedata</code> to their corresponding <code>func</code> folder, renaming them if necessary to follow BIDS format (e.g. <code>sub-01_task-taskname_run-01_bold.nii</code>), and similarly copy-paste your structural <code>.nii</code> files to the <code>anat</code> folder, renaming them if necessary (e.g. <code>sub-01_T1w.nii</code>). See below for more details on <a href="fmri-bids-conversion.html#renaming-and-moving-nifti-files">how to rename and move nifti files</a>.</p>
-</li>
-<li>
-<p>Create <code>.json</code> sidecar files for each functional run <code>.nii</code> file, using the output from the dicom conversion step. If your scanner sequence was the same, your can re-use the same sidecar files across participants (see <a href="fmri-bids-conversion.html#creating-json-sidecar-files">Creating JSON Sidecar Files</a> below).</p>
-</li>
-<li>
-<p>Create one <code>events.tsv</code> file for each function run <code>.nii</code> file, using the output from your experimental task. If you used the <a href="https://github.com/HOPLAB-LBP/fMRI-task-template">fMRI task template</a>), output log files can be used to create event files quite easily. More info on events files can be found <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html">here</a>:</p>
-</li>
-<li>
-<p>Create essential <a href="https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson">modality agnostic BIDS files</a>:</p>
-<ul>
-<li><code>dataset_description.json</code></li>
-<li><code>events.json</code></li>
-<li><code>participants.tsv</code> and <code>participants.json</code></li>
-<li><code>task-&lt;taskname&gt;_bold.json</code></li>
-</ul>
-</li>
-<li>
-<p>Set up additional components:</p>
-<ul>
-<li>Create a <code>derivatives</code> folder for future outputs (e.g. <code>fmriprep</code> output)</li>
-<li><em>Optional</em>: Include a <code>.bidsignore</code> file if needed</li>
-</ul>
-</li>
-</ol>
-<p>By following these steps systematically, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration. Make sure all the steps have been followed successfully by validating your BIDS folder. To do so, use the <strong><a href="https://bids-standard.github.io/bids-validator/">BIDS validator</a></strong>.</p>
-<h2 id="step-by-step-instructions">Step-by-step instructions<a class="headerlink" href="#step-by-step-instructions" title="Permanent link">&para;</a></h2>
-<p>Here we provide more detailed instructions to perform each of the steps mentioned above.</p>
-<div class="admonition warning">
-<p class="admonition-title">Folder Structure</p>
-<p>All the steps and scripts below assume a specific folder structure and file naming convention. They <strong>will not work</strong> otherwise. Ensure you strictly follow the instructions in the <a href="fmri-general.html#how-to-store-raw-data">How to store raw data</a> page.</p>
-<p><strong>TODO:</strong> [ANDREA] in the how to store raw data page, create a folders tree that includes all the relevant folders and subfolder. The current tree is not complete.</p>
-</div>
-<h3 id="anonymize-raw-scanner-data">Anonymize raw scanner data<a class="headerlink" href="#anonymize-raw-scanner-data" title="Permanent link">&para;</a></h3>
-<h4 id="expected-project-structure">Expected project structure<a class="headerlink" href="#expected-project-structure" title="Permanent link">&para;</a></h4>
-<p>You need to make sure your DICOM / nifti file names <strong>do not contain</strong> subject identificative information, such as the subject's name. This is particularly relevant for our pipeline, because that's exactly what our scanner does. At the hospital, it is best to manually name your files when exporting them. You can also use <a href="../../../assets/code/anon_nii_filename.py">this small utility tool</a>, which renames files within a BIDS-like directory structure, specifically targeting files containing <code>_WIP_</code> in their names.</p>
-<p>The script operates on the following project structure:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Project_Name/
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├──<span class="w"> </span>sourcedata/
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│<span class="w">   </span>└──<span class="w"> </span>sub-xx/
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│<span class="w">       </span>├──<span class="w"> </span>dicom/
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│<span class="w">       </span>├──<span class="w"> </span>dicom_anon/
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│<span class="w">       </span>├──<span class="w"> </span>bh/
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│<span class="w">       </span>├──<span class="w"> </span>et/
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│<span class="w">       </span>└──<span class="w"> </span>nifti/
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>└──<span class="w"> </span>BIDS/
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>├──<span class="w"> </span>derivatives/
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span>└──<span class="w"> </span>sub-xx/
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span>├──<span class="w"> </span>anat/
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span>└──<span class="w"> </span>func/
-</span></code></pre></div>
-<p>The script processes files within the 'sourcedata' directory.</p>
-<p>Execute the script from the 'sourcedata' directory:</p>
-<ol>
-<li>Open a terminal or command prompt.</li>
-<li>Navigate to the project's root:</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>/path/to/Project_Name
-</span></code></pre></div>
-<ol>
-<li>Change to the 'sourcedata' directory:</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>sourcedata
-</span></code></pre></div>
-<h4 id="command-line-arguments">Command-line Arguments<a class="headerlink" href="#command-line-arguments" title="Permanent link">&para;</a></h4>
-<ul>
-<li><code>--level {group,participant}</code>: Process all subjects (<code>group</code>) or individual subjects (<code>participant</code>).</li>
-<li><code>--confirm {True,False}</code>: Ask for confirmation before renaming (default: True).</li>
-<li><code>--dry_run</code>: Preview changes without renaming.</li>
-<li><code>--sub [SUB ...]</code>: Specify subject IDs to process.</li>
-</ul>
-<h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
-<ol>
-<li>Dry run for all subjects:</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>group<span class="w"> </span>--dry_run
-</span></code></pre></div>
-<ol>
-<li>Rename files for subjects 01 and 02 with confirmation:</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>participant<span class="w"> </span>--sub<span class="w"> </span><span class="m">01</span><span class="w"> </span><span class="m">02</span><span class="w"> </span>--confirm<span class="w"> </span>True
-</span></code></pre></div>
-<ol>
-<li>Rename files for all subjects without confirmation:</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>/path/to/anon_nii_filename.py<span class="w"> </span>--level<span class="w"> </span>group<span class="w"> </span>--confirm<span class="w"> </span>False
-</span></code></pre></div>
-<p>Output filename:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sub-01/nifti/sub-01_WIP_T1w_20240101141322.nii
-</span></code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Caution</p>
-<p>Always backup your data before running renaming operations.</p>
-</div>
-<h4 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h4>
-<ol>
-<li>The script traverses the 'sourcedata' directory structure.</li>
-<li>It identifies files containing '<em>WIP</em>' in their names.</li>
-<li>New names are generated based on the subject ID and the part of the filename after '<em>WIP</em>'.</li>
-<li>Depending on the options, it either renames the files or shows the proposed changes.</li>
-</ol>
-<h4 id="important-notes">Important Notes<a class="headerlink" href="#important-notes" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Only files containing '<em>WIP</em>' are processed. Others are ignored.</li>
-<li>To process all files, modify the <code>rename_files_in_directory</code> function:</li>
-</ul>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">if</span> <span class="s1">&#39;_WIP_&#39;</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
-</span></code></pre></div>
-<p>to:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>  <span class="c1"># Caution: processes all files</span>
-</span></code></pre></div>
-<div class="admonition caution">
-<p class="admonition-title">Modifying the Script</p>
-<p>Processing all files may lead to unintended renaming. Always use <code>--dry_run</code> first and review proposed changes carefully.</p>
-</div>
-<h4 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Use <code>--dry_run</code> to preview changes before actual renaming.</li>
-<li>Process subjects in smaller batches for large datasets.</li>
-<li>Regularly check BIDS specifications for naming convention compliance.</li>
-</ul>
-<h4 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h4>
-<p>If issues occur:</p>
-<ol>
-<li>Ensure you're in the 'sourcedata' directory.</li>
-<li>Check permissions for renaming files in 'sourcedata'.</li>
-<li>Verify all required Python dependencies are installed.</li>
-<li>For unprocessed files, check if they contain '<em>WIP</em>'.</li>
-</ol>
-<h3 id="creating-event-files">Creating Event Files<a class="headerlink" href="#creating-event-files" title="Permanent link">&para;</a></h3>
-<p>Event files are crucial for analyzing fMRI data. They contain information about the timing and nature of stimuli or tasks during the scan. To create your event files manually:</p>
-<ol>
-<li>Navigate to your <code>sourcedata/sub-xx/bh/</code> folder.</li>
-<li>Locate the behavioral output files (<code>.mat</code> or <code>.log</code>) for each run.</li>
-<li>Create a corresponding <code>events.tsv</code> file for each run in the <code>BIDS/sub-xx/func/</code> folder.</li>
-</ol>
-<p>Each <code>events.tsv</code> file should contain at least three columns: <code>onset</code>, <code>duration</code>, and <code>trial_type</code>. Additional columns can be included as needed for your specific analysis.</p>
-<p>If you use the <a href="https://github.com/TimManiquet/fMRI-task-template">fMRI task template</a>, the log files you get as output contain all the information needed to build event files in a few steps. Below is a quick overview of the steps to take to make event files from log files. Note that it might not apply perfectly to all cases, and that other approaches can be more practical to you. It can be a good idea to create your own utility script to create event files from your behavioural results.</p>
-<p>To <strong>create event files from log files</strong>, here is what you need to do (see the example below for an example transformation):</p>
-<ul>
-<li>Create the <code>onset</code> column from the onset values in the log files: in the latter, onset times (usually stored in a column called <code>ACTUAL_ONSET</code>) are aligned to the start of the run. In BIDS event files, events need to be aligned to the start of the scanning. To obtain correct onset values, one can simply shift the onset of each line from a log file so that the onset <code>0.0</code> corresponds to the first TR trigger.</li>
-<li>Create the <code>duration</code> column from the <code>onset</code> values. Log files typically don't record the exact duration of events, as that would put some extra calculation load onto MatLab (which struggles enough already as it is). A good approach is to calculate these post-hoc from the onset values, by simply taking the difference in between successive event onsets.</li>
-<li>Create the <code>trial_type</code> column with the condition names. Fill this column by extracting the information that is relevant for your experimental design. In the example below, we extract the conditio names <code>face</code> and <code>building</code> from the <code>EVENT_ID</code> column, as these are the conditions we're interested in. We also indicate <code>fixation</code> where relevant, as we want to be able to model fixations in our GLM.</li>
-<li>Add or keep any column you might need. In the example below, we keep the <code>event_type</code>, <code>event_name</code> and <code>event_id</code> columns as it might still be useful later on in the pipeline. Note that you should make a reference to these extra column in your <code>events.json</code> file.</li>
-</ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="example-log-file" name="__tabbed_2" type="radio" /><input id="example-event-file" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="example-log-file">Example log file</label><label for="example-event-file">Example event file</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>EVENT_TYPE  EVENT_NAME  DATETIME                EXP_ONSET     ACTUAL_ONSET  DELTA     EVENT_ID
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>START       -           yyyy-mm-dd-hh-mm-ss  -               0.000000  -         -
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>FLIP        Instr       yyyy-mm-dd-hh-mm-ss  -               0.099950  -         -
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -               7.663277  -         7
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>FLIP        TgrWait     yyyy-mm-dd-hh-mm-ss  -               7.697805  -         -
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              12.483778  -         5
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              24.452093  -         5
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>FLIP        Pre-fix     yyyy-mm-dd-hh-mm-ss  -              24.462263  -         -
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              26.452395  -         5
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              28.452362  -         5
-</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              30.451807  -         5
-</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              32.451339  -         5
-</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              34.451376  -         5
-</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>FLIP        Stim        yyyy-mm-dd-hh-mm-ss  34.462263      34.474302  0.012039  building_image.png
-</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -              35.566808  -         9
-</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>FLIP        Fix         yyyy-mm-dd-hh-mm-ss  -              34.521628  -         -
-</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              36.451615  -         5
-</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>FLIP        Stim        yyyy-mm-dd-hh-mm-ss  37.462263      37.524439  0.062177  face_image.png
-</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>FLIP        Fix         yyyy-mm-dd-hh-mm-ss  -              37.572648  -         -
-</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              38.453535  -         5
-</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -              38.806193  -         1
-</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              40.451415  -         5
-</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>...
-</span></code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>onset            duration       event_type  event_name  event_id               trial_type
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>-24.452093       n/a            START       -           -                      n/a
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>-24.352143       7.597855       FLIP        Instr       -                      n/a
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>-16.788816       n/a            RESP        KeyPress    7                      n/a
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>-16.75428800     7.697805       FLIP        TgrWait     -                      n/a
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>-11.96831500     n/a            PULSE       Trigger     5                      n/a
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>0.0              n/a            PULSE       Trigger     5                      n/a
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>0.0101699999     10             FLIP        Pre-fix     -                      fixation
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>2.0003019999     n/a            PULSE       Trigger     5                      n/a
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>4.0002689999     n/a            PULSE       Trigger     5                      n/a
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>5.9997139999     n/a            PULSE       Trigger     5                      n/a
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>7.9992459999     n/a            PULSE       Trigger     5                      n/a
-</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>9.9992830000     n/a            PULSE       Trigger     5                      n/a
-</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>10.022209        0.0473259      FLIP        Stim        building_image.png     building
-</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>10.069534999     3.0028110      FLIP        Fix         -                      fixation
-</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>11.114715        n/a            RESP        KeyPress    9                      n/a
-</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>11.999521999     n/a            PULSE       Trigger     5                      n/a
-</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>13.072346        0.0482089     FLIP        Stim        face_image.png         face
-</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>13.120555        2.9033829      FLIP        Fix         -                      fixation
-</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>14.001442        n/a            PULSE       Trigger     5                      n/a
-</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>14.354099999     n/a            RESP        KeyPress    1                      n/a
-</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>15.999321999     n/a            PULSE       Trigger     5                      n/a
-</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>...
-</span></code></pre></div>
-</div>
-</div>
-</div>
-<p><strong>TODO:</strong> [ANDREA] Add script for automatically converting behavioral data to BIDS-compliant event files.</p>
-<h3 id="converting-dicom-files-optional">Converting DICOM files (Optional)<a class="headerlink" href="#converting-dicom-files-optional" title="Permanent link">&para;</a></h3>
-<p>If you have collected DICOM files from the scanner, you need to 1. <strong>anonymise</strong>, and 2. <strong>convert</strong> them so that you can use them properly. There are several tools available that can take care of this. The <a href="https://github.com/xiangruili/dicm2nii/tree/master">dicm2nii</a> GitHub repository is one such example. To use it, clone the repository, open MatLab, and follow these steps:</p>
-<ol>
-<li>Navigate to your <code>sourcedata</code> folder.</li>
-<li>Add the cloned <code>dicm2nii</code> folder to your path.</li>
-<li>Use the <code>anonymize_dicm</code> script to anonymize the DICOM files. The command will look something like this:</li>
-</ol>
-<div class="language-MatLab highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">anonymize_dicm</span><span class="p">(</span><span class="s">&#39;sub-xx/dicom&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-xx/dicom_anon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-xx&#39;</span><span class="p">)</span>
-</span></code></pre></div>
-<ol>
-<li>Use the <code>dicm2nii</code> script to convert the anonymized DICOM files to NIfTI.</li>
-</ol>
-<div class="language-MatLab highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">dicm2nii</span><span class="p">(</span><span class="s">&#39;sub-xx/dicom_anon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sub-xx/dicom_converted&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;nii.gz&#39;</span><span class="p">)</span>
-</span></code></pre></div>
-<p>These commands will have populated the <code>dicom_anon</code> and <code>dicom_converted</code> folders (see the folder trees in <a href="fmri-bids-conversion.html#bids-conversion-overview">BIDS Conversion Overview</a> for an example). The content of the latter can in turn be used to create json side car files (see <a href="fmri-bids-conversion.html#creating-json-sidecar-files">Creating JSON Sidecar Files</a>).</p>
-<p><strong>TODO:</strong> [ANDREA] add info about 1) example dcm2nii call, 2) why dcm2nii rather than dcm2nii<strong>x</strong>, 3) add additional info on DICOM (no enhanced, missing values, etc.). see also <a href="https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips">this</a> where Chris Rorden explains some practical issues with Phillips DICOMS, particularly the section on missing info (which we should probably link somewhere), and <a href="https://www.nitrc.org/forum/forum.php?thread_id=15186&amp;forum_id=4703">this thread</a>, which explains issues with the enhanced DICOMs.</p>
-<p><strong>TODO:</strong> [TIM] Give information on how to use the anonymization and DICOM to nifti scripts, and what the results should be like. Give links to the scripts.</p>
-<h3 id="creating-json-sidecar-files">Creating JSON Sidecar Files<a class="headerlink" href="#creating-json-sidecar-files" title="Permanent link">&para;</a></h3>
-<p>Each <code>nii</code> file <strong>must</strong> have a sidecar JSON file. However, if your fMRI protocol did not change, all the important JSON fields are going to be the same across different scanning sessions, and therefore JSON files can be re-used across subjects. This will save you some time, since getting DICOM files from the scanner can be quite time-consuming.</p>
-<ul>
-<li>
-<p><strong>If you collected DICOM files</strong> for your participant, make sure you <a href="fmri-bids-conversion.html#converting-dicom-files-optional">anonymised and converted your DICOM files</a> and go through the following steps:</p>
-<ol>
-<li>Locate the JSON sidecar files in <code>sourcedata/sub-xx/dicom_converted/</code>.</li>
-<li>Open each JSON file and Complete the <code>PhaseEncodingDirection</code> and <code>SliceTiming</code> fields (see <a href="fmri-general.html#missing-fields-in-json-files">Missing fields in JSON files</a> for more information).</li>
-<li>Copy-paste the updated JSON files to accompany each NIfTI file in the <code>BIDS/sub-xx/func</code> folder: each run should have its accompanying <code>sub-xx_task-taskname_run-xx_bold.json</code> sidecar file.</li>
-</ol>
-</li>
-<li>
-<p><strong>If you did not collect DICOM files</strong> for your participant, but collected DICOM files for a previous participant <em>and</em> your fMRI protocol did not change in the meantime:</p>
-<ol>
-<li>Copy-paste all <code>.json</code> sidecar files from the <code>BIDS/sub-xx/func</code> folder of the participant you have DICOM files for, to the <code>BIDS/sub-xx/func</code> folder of new participant you only collect nifti files for. Rename each file with the correct <code>sub</code> value, ensuring there is one <code>.json</code> file per participant, per run, with the correct name.</li>
-</ol>
-</li>
-</ul>
-<p><strong>TODO:</strong> [TIM] Explain how to get the two missing fields and why it's important. Link to the fmri-general section about it.</p>
-<p><strong>TODO:</strong> [TIM] Explain how to duplicate and rename the sidecar file.</p>
-<p><strong>TODO:</strong> [ANDREA] fill this out with more in depth info about the JSON etc.</p>
-<h3 id="renaming-and-moving-nifti-files">Renaming and Moving NIfTI Files<a class="headerlink" href="#renaming-and-moving-nifti-files" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Navigate to your <code>sourcedata/sub-xx/dicom_converted/</code> folder.</li>
-<li>Identify the functional and structural NIfTI files.</li>
-<li>Rename the files following BIDS conventions:<ul>
-<li>Functional: <code>sub-&lt;label&gt;_task-&lt;label&gt;_run-&lt;label&gt;_bold.nii</code></li>
-<li>Structural: <code>sub-&lt;label&gt;_T1w.nii</code></li>
-</ul>
-</li>
-<li>Move the renamed files to their respective folders in <code>BIDS/sub-xx/</code>:<ul>
-<li>Functional files go to <code>BIDS/sub-xx/func/</code></li>
-<li>Structural files go to <code>BIDS/sub-xx/anat/</code></li>
-</ul>
-</li>
-</ol>
-<p><strong>TODO:</strong> [ANDREA] is dicom converted and nii the same folder? from which folder should we get the final nifti files to move? this folder needs to be consistent across different workflows (e.g., dicom conversion or just nifti files)</p>
-<p><strong>TODO:</strong> [TIM] Give instructions on how to rename files, both functional and structural, including what happens in case of several scan sessions and the added <code>ses</code> label.</p>
-<details class="tip">
-<summary>Rename and move automatically</summary>
-<p>A MATLAB script that can do this automatically can be found <a href="../../../assets/code/nii2BIDS.m">here</a>. Remember to change the input and output folders, run names and subjects numbers at the top of the script according to your needs. The  script expects as input your nifti files, along with the JSON sidecar template files.</p>
-<p><strong>TODO:</strong> [ANDREA] the script should first check whether the JSON files are already availabe in the folder and, if that's the case, it should choose these files over the  templates. Also, we need to add more info about these template files in this page!</p>
-</details>
-<h3 id="creating-essential-bids-files">Creating Essential BIDS Files<a class="headerlink" href="#creating-essential-bids-files" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>Create the following <a href="https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson">modality agnostic BIDS files</a> files in your <code>BIDS/</code> root folder:</p>
+<p>Create the following <a href="https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson">modality agnostic BIDS files</a> files in your <code>BIDS/</code> folder:</p>
 <ul>
 <li><code>dataset_description.json</code></li>
 <li><code>participants.tsv</code></li>
@@ -2502,11 +2369,7 @@ myproject
 <p>Fill in the required information for each file according to the BIDS specification.</p>
 </li>
 </ol>
-<div class="admonition tip">
-<p class="admonition-title">Modality agnostic templates</p>
-<p>In the <a href="https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson">modality agnostic BIDS files</a> page, you can find templates and examples.</p>
-</div>
-<h3 id="setting-up-additional-components">Setting Up Additional Components<a class="headerlink" href="#setting-up-additional-components" title="Permanent link">&para;</a></h3>
+<p>And set up additional components:</p>
 <ol>
 <li>Create a <code>derivatives/</code> folder in your <code>BIDS/</code> directory.</li>
 <li>If needed, create a <code>.bidsignore</code> file in your <code>BIDS/</code> root folder to exclude any non-BIDS compliant files.</li>
@@ -2515,7 +2378,10 @@ myproject
 <summary>Why should I use a .bidsignore file?</summary>
 <p>A `.bidsignore' file is useful to communicate to the BIDS validator which files should not be indexed, because they are not part of the standard BIDS structure. More information can be found <a href="https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/bids-validator.html#creating-a-bidsignore">here</a>.</p>
 </details>
-<h3 id="validating-your-bids-structure">Validating Your BIDS Structure<a class="headerlink" href="#validating-your-bids-structure" title="Permanent link">&para;</a></h3>
+<hr />
+<h3 id="10-validating-your-bids-structure">10. Validating Your BIDS Structure<a class="headerlink" href="#10-validating-your-bids-structure" title="Permanent link">&para;</a></h3>
+<p>By following these steps systematically, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration.</p>
+<p>Make sure all the steps have been followed successfully by validating your BIDS folder. To do so, use the <strong><a href="https://bids-standard.github.io/bids-validator/">BIDS validator</a></strong>.</p>
 <ol>
 <li>Use the online <a href="https://bids-standard.github.io/bids-validator/">BIDS Validator</a> to check your BIDS structure.</li>
 <li>Upload your entire <code>BIDS/</code> folder and review any errors or warnings.</li>
@@ -2544,7 +2410,7 @@ myproject
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="April 15, 2025 16:37:34 CEST">April 15, 2025 16:37:34</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="June 3, 2025 23:04:08 CEST">June 3, 2025 23:04:08</span>
   </span>
 
     
