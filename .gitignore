@@ -9,3 +9,4 @@ local/
 # on GH pages, the tasks page gets automatically generated during build so
 # the md file is not needed in the repository. 
 **/tasks-list.md
+/.vscode
