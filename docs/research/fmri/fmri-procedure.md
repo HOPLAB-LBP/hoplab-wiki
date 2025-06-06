@@ -677,6 +677,9 @@ You can export data using either **Nifti/PAR-REC** or **DICOM** formats. Choose 
 !!! tip "Faster Export Method"
     For faster and more reliable data transfer, insert your USB key or hard drive into the **computer in the technical room**, rather than the scan console.
 
+!!! warning "Pseudonymization required"
+    To comply with the GDPR and related data protection regulations, your dataset must be **pseudonymized** by assigning a code name to the exported data — for example, using a subject identifier in BIDS format such as `sub-01`.
+
 ### Nifti or PAR-REC Export
 
 1. Go to **Patients > Administration** in the scan program.
@@ -684,7 +687,7 @@ You can export data using either **Nifti/PAR-REC** or **DICOM** formats. Choose 
 3. Double-click the name and select the runs to export.
 4. Click **Disk Files**.
 5. Navigate to the **Non-Dicom Export** tab.
-6. Choose an export file name and format.
+6. Choose an export file name and format. Please make sure you have checked the box that omits all identifying information from the exported files!
 7. (Optional) Check the **Sort** box, but ensure consistency (either always check it or never).
 8. Press **Proceed** to start the export.
 9. Verify the exported files in the **export folder** on the FTP drive. Double-check the file sizes to ensure all volumes were exported correctly.
@@ -706,10 +709,7 @@ To monitor export progress, navigate to:
 4. Click **Disk Files**.
 5. Select a directory to save the data.
 6. Choose between **Nifti**, **Enhanced (4D DICOM)** or **Classic (2D DICOM)** format (each slice saved as a separate file).
-7. Press **Proceed** to start the export.
-
-!!! info "Anonymization Option"
-    For privacy reasons, it is recommended to anonymize the dataset by giving the exported data a code name (possibly the subject number in BIDS format, e.g., `sub-01`).
+7. Press **Proceed** to start the export. Please make sure you have checked the box that omits all identifying information from the exported files!
 
 !!! tip "Handling Export Delays"
     It may take some time before the export starts. If you see a warning about exporting a large number of images, simply press **Proceed** to confirm.
