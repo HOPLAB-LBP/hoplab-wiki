@@ -1210,7 +1210,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     %       Example:
     %           [1, -1, 0, ...]
     %
-    % Note:
+    % Notes:
     %   This function assumes that task-related regressors in the SPM design matrix end with "*bf(1)".
     %   Confound regressors (e.g., motion parameters) do not have this suffix.
 
@@ -1326,7 +1326,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     % 2) To fetch all directories starting with 'sub-*':
     %    sub_paths = findSubjectsFolders('/path/to/fmriprepRoot', '*');
     %
-    % NOTE:
+    % Notes:
     % If a subject ID from the list does not match any directory, a warning is issued.
 
     % Start by fetching all directories with the 'sub-*' pattern.
