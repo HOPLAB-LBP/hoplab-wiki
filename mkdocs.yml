@@ -138,7 +138,7 @@ markdown_extensions:
   
 plugins:
   - offline
-  - privacy
+#  - privacy
   - search
   - git-authors
   - git-revision-date-localized:

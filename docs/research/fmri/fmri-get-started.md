@@ -48,22 +48,34 @@ Follow the yellow section of the [flowchart](https://www.dropbox.com/sh/6hdu5z59
 
 ### Gain access to MR facilities
 
-- **Document submission**:  
-   After obtaining ethical approval, send the completed [MR Access file](https://www.dropbox.com/s/hh0l3swkjnx96vb/MR_Access.xlsx?e=1&dl=0) and the approved ICF to [ilse.roebben@uzleuven.be](mailto:ilse.roebben@uzleuven.be) and [silvia.kovacs@uzleuven.be](mailto:silvia.kovacs@uzleuven.be).
+1. **Document submission**  
+    - After obtaining ethical approval, send the completed [MR Access file](https://www.dropbox.com/s/hh0l3swkjnx96vb/MR_Access.xlsx?e=1&dl=0) and the approved ICF to [ilse.roebben@uzleuven.be](mailto:ilse.roebben@uzleuven.be) and [silvia.kovacs@uzleuven.be](mailto:silvia.kovacs@uzleuven.be).  
+    - Before entering the Controlled Area for the first time, complete the following:  
+        - [MRI Safety Checklist](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=1&preview=MR+patient+Questionnaire+-+ENGELS.pdf)  
+        - [Appendix](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=1&preview=Appendix1A_v1.2.pdf) confirming you completed the MR safety course  
+        - [Key and badge access form](https://docs.google.com/document/d/143GdWPMCy9pAAmRcEm8toCgNDZ-5E7Vn/edit)  
 
-- **Safety checklist**:  
-   Before entering the Controlled Area for the first time, complete the [MRI Safety Checklist](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=1&preview=MR+patient+Questionnaire+-+ENGELS.pdf) and sign [this Appendix](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=1&preview=Appendix1A_v1.2.pdf) that states you followed the MR safety course, read the necessary documentation and pledge to follow the local rules of operation. Send both files to [ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be) along with your details (name, U-number, e-mail address) and the S-number of your study.
+          Send all three documents to [ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be), along with the S-number of your study and the following details:
 
-??? info "Card activation for MR suite access"
-    Depending on your current card type:
+          | Field                     | Value (to be filled in)           |
+          |---------------------------|----------------------------------|
+          | First name                |                                  |
+          | Last name                 |                                  |
+          | Place of birth            |                                  |
+          | Date of birth             |                                  |
+          | Start date                |                                  |
+          | Expiry date               |                                  |
+          | Purpose                   | Scanning on research scanner MR (MR8) |
+          | Educational institution   | KU Leuven                        |
+          | National register number  |                                  |
+          | KU Leuven u-number        |                                  |
+          | Email address             |                                  |
+          | Extranet required         | No                               |
+          | Phone number              |                                  |
 
-    - **Old KU Leuven Card (dark blue, "Katholieke Universiteit Leuven")**: Visit the technical services department "Toegangsbeheer" at UZ Leuven (green street, poort 5, level -1) between 8.00 and 16.15 on weekdays for activation of your card.
-    - **New KU Leuven Card (light blue, "KU Leuven")**: Obtain a new card at the same location to get access. A deposit is required, refundable upon card return.
+2. **Card activation for MR suite access**:   
+  After you have completed all the steps above, Ron will arrange everything and you will automatically gain access to MR8 with your KU Leuven staff/student card.
     
-    Ron should have emailed toegangsbeheer (toegangsbeheer@uzleuven.be) with his permission to activate your card. If everything works out, your card will be functional after 24 hours.
-    
-**TODO**: the information above may be not accurate anymore. Laura S should probably update this section, since she is the last doing this?
-
 ### Training and preparation
 
 Before you can become an Authorized Other User (AOU), you must undergo practical training and testing:
@@ -94,16 +106,13 @@ All referenced documents are regularly updated and available in the [Hoplab Team
 ### Managing scan data and invoicing
 
 - **Tracking sessions**:  
-  Keep detailed records of all scan sessions, noting which sessions provided useful data. Regular reports should be made to your Principal Investigator (PI).
+  Keep detailed records of all scan sessions, noting which sessions provided useful data and/or when you experienced technical issues. Regular reports should be made to your Principal Investigator (PI). In case of technical issues, it is useful to also include what kind of issues you had as well as an estimation of the amount of time lost due to the issues.
 
 - **Quarterly reports**:  
-  Every three months, your PI will receive an Excel sheet listing all scan sessions conducted during that period.
+  Every four months, your PI will receive an Excel sheet listing all scan sessions conducted during that period. This file will be forwarded to all researchers who have scanned in the corresponding period.
 
 - **Documenting experiments**:  
-  Complete the Excel sheet with the experiment name for each session and note down comments for any session that did not yield useful for various reasons (e.g., participant cancellation, no-shows, artifacts, technical issues).
+  Complete the Excel sheet with the experiment name for each session and clearly note down comments for any session that did not yield useful data for various reasons (e.g., participant cancellation, no-shows, artifacts, technical issues) and send it back.
 
 - **Financial management**:  
-  Include the name of your SAP antenne (i.e., An Van Kets) below the total invoice amount. Additionally, adjust the total on the invoice to reflect the actual scan hours and amount due based on successful data collection sessions ("corrected total").
-
-!!! tip "Invoicing details"
-    Add columns in your invoicing reports to specify the funding source for each session, and mark any sessions that should not be charged due to issues like cancellations or technical problems.
+  Support staff (currently Klara) will further process the file by including the name of the SAP antenna (i.e., An Van Kets), specifying the funding source for each researcher, and by adjusting the total invoice amount on the invoice to reflect the actual scan hours based on successful data collection sessions ("corrected total").
