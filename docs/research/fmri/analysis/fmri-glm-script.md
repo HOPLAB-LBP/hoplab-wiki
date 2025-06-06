@@ -275,7 +275,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     % Requirements:
     % - SPM12 (or a compatible version) must be installed and added to the MATLAB path.
     %
-    % Note: This script automates the process typically done in the SPM GUI.
+    % This script automates the process typically done in the SPM GUI.
 
     % Parameters:
     % - selectedSubjectsList: List of subject IDs to include in the analysis. Can be a list of integers or '*' to include all subjects.
@@ -1720,6 +1720,4 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
 Continue to the next guide for instructions on setting up Regions of Interest (ROIs) to extract and analyze data from specific brain regions:
 [--> Regions of Interest](fmri-rois.md)
 
----
 
-- **[TODO]:** Include screenshots for GUI steps
