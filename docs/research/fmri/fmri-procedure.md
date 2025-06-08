@@ -175,7 +175,7 @@ The stimulus computer's desktop is located in the **control room**. It is the se
     - **Screen Width**: 28.35 visual degrees
 
 **TODO:** MATLAB and PTB have been updated to newer version!
-**TODO:** the strcture of these sections is a bit confusing. We list the instruments in the section above, then we explain what to do at the scanner room, then we go back to describing instruments.. perhaps we should streamline this? or probably just make two different pages, one for instrument, one for general step-by-step procedure, and one for frequent errors and solutions/workarounds?
+**TODO:** the structure of these sections is a bit confusing. We list the instruments in the section above, then we explain what to do at the scanner room, then we go back to describing instruments.. perhaps we should streamline this? Or probably just make two different pages, one for instruments, one for a general step-by-step procedure, and one for frequent errors and solutions/workarounds?
 ---
 
 ### Trigger Boxes
@@ -983,4 +983,4 @@ In case of an emergency involving the MRI system or facility:
 
 ---
 
-**TODO**: add additional info on DICOM (no enhanced, missing values, etc.). see also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Phillips DICOMS, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.
+**TODO**: add additional info on DICOM (no enhanced, missing values, etc.). See also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Philips DICOMs, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.
