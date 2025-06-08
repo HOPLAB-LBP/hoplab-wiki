@@ -421,7 +421,7 @@ Make sure to check **both files**, as the error could appear in either.
 
 ### 9.3 Verifying Successful Runs
 
-If the job completed successfully, it`s time to check the output files.
+If the job completed successfully, it's time to check the output files.
 
 In our SLURM script, the `--output` directory is bound to:
 
