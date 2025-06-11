@@ -1227,7 +1227,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
         % If the field contains a wildcard, handle it
         if contains(field, '_WILDCARD_')
             % Convert the wildcard pattern to a regular expression pattern
-            pattern = ['Sn\(.\) ' strrep(field, '_WILDCARD_', '.*')];
+            pattern = ['Sn\(\d{1,2}\) ' strrep(field, '_WILDCARD_', '.*')];
             
             % Find indices of matching regressors using the regular expression pattern
             idx = find(~cellfun('isempty', regexp(regressor_names, pattern)));
@@ -1236,7 +1236,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
             weight_vector(idx) = contrastWeights.(field);
         else
             % No need to extract the condition name, just append *bf(1) to match the SPM regressor pattern
-            pattern = ['Sn\(.\) ' field];
+            pattern = ['Sn\(\d{1,2}\) ' field];
 
             idx = find(~cellfun('isempty', regexp(regressor_names, pattern)));
 
