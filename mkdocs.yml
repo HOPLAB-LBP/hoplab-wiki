@@ -50,8 +50,8 @@ nav:
     - EEG:
       - research/eeg/index.md
       - Data acquisition: research/eeg/eeg-acquisition.md
-    - Eye-tracking:
-      - research/eyetracking/index.md
+#    - Eye-tracking:
+#      - research/eyetracking/index.md
     - Neural Networks:
       - research/dnn/index.md      
   - Science outreach: outreach.md
