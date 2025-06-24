@@ -36,7 +36,11 @@ may contact the [local support team at KU Leuven](https://docs.vscentrum.be/cont
 
 ## 2. Connecting to the Cluster
 
-Once your account is active, you may follow [these steps](https://docs.vscentrum.be/accounts/mfa_login.html) to login depending on your choice of OS.
+Once your account is active, you may follow [these steps](https://docs.vscentrum.be/accounts/mfa_login.html) to login through Multi-Factor Authentication (MFA) depending on your choice of OS. The two main options are:
+
+- **KU Leuven OnDemand**: a browser-based graphical interface. Follow the instructions in *Login to Open OnDemande*. Once logged in, you will see a dashboard with options to launch interactive sessions, submit jobs, and manage files. Navigate to the terminal interface by clicking the *Login Server Shell Access* button.
+- **SSH-based login**: a terminal-based interface. Follow the instructions in *Connecting with an SSH agent*. Here, you connect to the cluster by directly opening the terminal interface on your local machine, using the Terminal, Powershell or whichever shell program.
+
 After a successful login, you will see something like:
 
 ![VSC Login](../../assets/fmri-hpc-login.png)
@@ -55,6 +59,8 @@ To exit the ssh session and go back to your local terminal, type `exit`.
 ---
 
 ## 3. Data Management on the HPC
+
+Your VSC account comes equipped with several folders, each with different characteristics. When logging in, you automatically land in your home directory, which is located at `/user/leuven/123/vsc12345`. This path is stored in the variable `VSC_HOME`, which you check by typing `echo $VSC_HOME` in the terminal. Likewise, other important directories are stored in variables names. To navigate quickly to any of these directories, you can use the `cd` command followed by the variable name, e.g., `cd $VSC_DATA` to move to your data directory.
 
 **Folder Structure:**
 
@@ -157,7 +163,7 @@ This fetches the Docker image and converts it to a Singularity `.sif` image.
 
 ### 6.1. Creating a Slurm Jobscript
 
-To submit our job to the compute node, we will need to create a Slurm script. this script will define the job resources, dependencies, and all the steps needed to complete the workflow. Then, submit the jobscript to the cluster using the `sbatch` command. Your batch job will run remotely on a compute node, and `fmriprep` will be executed from within a container.
+To submit our job to the compute node, we will need to create a Slurm script. This script will define the job resources, dependencies, and all the steps needed to complete the workflow. Then, submit the jobscript to the cluster using the `sbatch` command. Your batch job will run remotely on a compute node, and `fmriprep` will be executed from within a container.
 
 To create such file, type in your ssh session:
 
@@ -237,7 +243,9 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
 
    *where `58070026` is your job ID* (but it will be different in your case).
 
-4. Check the status of your job:
+3. Check the status of your job:
+
+    Through the **terminal**, you can check the status of your job by running:
 
     ```bash
     squeue -j 58070026
@@ -249,6 +257,8 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
     58070026 batch     fmriprep vsc12345  R       0:00      1 (Priority)
     ```
+    Through the KU Leuven **OnDemand** interface, you can also check the status of your job by clicking on the *Active jobs* tab in the dashboard.
+
 
 Congrats! Your job is now being executed on the cluster.
 
