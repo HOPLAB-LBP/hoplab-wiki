@@ -38,7 +38,7 @@ may contact the [local support team at KU Leuven](https://docs.vscentrum.be/cont
 
 Once your account is active, you may follow [these steps](https://docs.vscentrum.be/accounts/mfa_login.html) to login through Multi-Factor Authentication (MFA) depending on your choice of OS. The two main options are:
 
-- **KU Leuven OnDemand**: a browser-based graphical interface. Follow the instructions in *Login to Open OnDemande*. Once logged in, you will see a dashboard with options to launch interactive sessions, submit jobs, and manage files. Navigate to the terminal interface by clicking the *Login Server Shell Access* button.
+- **KU Leuven OnDemand**: a browser-based graphical interface. Follow the instructions in *Login to Open OnDemand*. Once logged in, you will see a dashboard with options to launch interactive sessions, submit jobs, and manage files. Navigate to the terminal interface by clicking the *Login Server Shell Access* button.
 - **SSH-based login**: a terminal-based interface. Follow the instructions in *Connecting with an SSH agent*. Here, you connect to the cluster by directly opening the terminal interface on your local machine, using the Terminal, Powershell or whichever shell program.
 
 After a successful login, you will see something like:
