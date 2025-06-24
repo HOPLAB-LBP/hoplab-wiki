@@ -2190,8 +2190,12 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 </ol>
 <hr />
 <h2 id="2-connecting-to-the-cluster">2. Connecting to the Cluster<a class="headerlink" href="#2-connecting-to-the-cluster" title="Permanent link">&para;</a></h2>
-<p>Once your account is active, you may follow <a href="https://docs.vscentrum.be/accounts/mfa_login.html">these steps</a> to login depending on your choice of OS.
-After a successful login, you will see something like:</p>
+<p>Once your account is active, you may follow <a href="https://docs.vscentrum.be/accounts/mfa_login.html">these steps</a> to login through Multi-Factor Authentication (MFA) depending on your choice of OS. The two main options are:</p>
+<ul>
+<li><strong>KU Leuven OnDemand</strong>: a browser-based graphical interface. Follow the instructions in <em>Login to Open OnDemand</em>. Once logged in, you will see a dashboard with options to launch interactive sessions, submit jobs, and manage files. Navigate to the terminal interface by clicking the <em>Login Server Shell Access</em> button.</li>
+<li><strong>SSH-based login</strong>: a terminal-based interface. Follow the instructions in <em>Connecting with an SSH agent</em>. Here, you connect to the cluster by directly opening the terminal interface on your local machine, using the Terminal, Powershell or whichever shell program.</li>
+</ul>
+<p>After a successful login, you will see something like:</p>
 <p><img alt="VSC Login" src="../../assets/fmri-hpc-login.png" /></p>
 <p>Look at the last line:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>✔<span class="w"> </span><span class="o">[</span>Apr/15<span class="w"> </span><span class="m">15</span>:13<span class="o">]</span><span class="w"> </span>vsc12345@tier2-p-login-1<span class="w"> </span>~<span class="w"> </span>$<span class="w"> </span>
@@ -2201,6 +2205,7 @@ After a successful login, you will see something like:</p>
 <p>To exit the ssh session and go back to your local terminal, type <code>exit</code>.</p>
 <hr />
 <h2 id="3-data-management-on-the-hpc">3. Data Management on the HPC<a class="headerlink" href="#3-data-management-on-the-hpc" title="Permanent link">&para;</a></h2>
+<p>Your VSC account comes equipped with several folders, each with different characteristics. When logging in, you automatically land in your home directory, which is located at <code>/user/leuven/123/vsc12345</code>. This path is stored in the variable <code>VSC_HOME</code>, which you check by typing <code>echo $VSC_HOME</code> in the terminal. Likewise, other important directories are stored in variables names. To navigate quickly to any of these directories, you can use the <code>cd</code> command followed by the variable name, e.g., <code>cd $VSC_DATA</code> to move to your data directory.</p>
 <p><strong>Folder Structure:</strong></p>
 <ul>
 <li><code>VSC_HOME</code>: Small quota, do <em>not</em> use it at all.</li>
@@ -2297,7 +2302,7 @@ After a successful login, you will see something like:</p>
 <hr />
 <h2 id="6-submitting-and-running-an-fmriprep-job-with-slurm">6. Submitting and Running an <code>fMRIPrep</code> Job with Slurm<a class="headerlink" href="#6-submitting-and-running-an-fmriprep-job-with-slurm" title="Permanent link">&para;</a></h2>
 <h3 id="61-creating-a-slurm-jobscript">6.1. Creating a Slurm Jobscript<a class="headerlink" href="#61-creating-a-slurm-jobscript" title="Permanent link">&para;</a></h3>
-<p>To submit our job to the compute node, we will need to create a Slurm script. this script will define the job resources, dependencies, and all the steps needed to complete the workflow. Then, submit the jobscript to the cluster using the <code>sbatch</code> command. Your batch job will run remotely on a compute node, and <code>fmriprep</code> will be executed from within a container.</p>
+<p>To submit our job to the compute node, we will need to create a Slurm script. This script will define the job resources, dependencies, and all the steps needed to complete the workflow. Then, submit the jobscript to the cluster using the <code>sbatch</code> command. Your batch job will run remotely on a compute node, and <code>fmriprep</code> will be executed from within a container.</p>
 <p>To create such file, type in your ssh session:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$VSC_DATA</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>nano<span class="w"> </span>run_fmriprep_job.slurm
@@ -2363,12 +2368,14 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 <ol>
 <li>
 <p>Check the status of your job:</p>
+<p>Through the <strong>terminal</strong>, you can check the status of your job by running:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>squeue<span class="w"> </span>-j<span class="w"> </span><span class="m">58070026</span>
 </span></code></pre></div>
 <p>Which returns:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="m">58070026</span><span class="w"> </span>batch<span class="w">     </span>fmriprep<span class="w"> </span>vsc12345<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:00<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>Priority<span class="o">)</span>
 </span></code></pre></div>
+Through the KU Leuven <strong>OnDemand</strong> interface, you can also check the status of your job by clicking on the <em>Active jobs</em> tab in the dashboard.</p>
 </li>
 </ol>
 <p>Congrats! Your job is now being executed on the cluster.</p>
@@ -2700,7 +2707,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="June 8, 2025 12:05:16 CEST">June 8, 2025 12:05:16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="June 24, 2025 13:50:53 CEST">June 24, 2025 13:50:53</span>
   </span>
 
     
@@ -2717,6 +2724,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
     <nav>
       
         <a href="mailto:e.moravveji@gmail.com">Ehsan Moravveji</a>, 
+        <a href="mailto:61991543+timmaniquet@users.noreply.github.com">Tim Maniquet</a>, 
         <a href="mailto:59078281+costantinoai@users.noreply.github.com">costantinoai</a>
     </nav>
   </span>
