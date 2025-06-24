@@ -86,14 +86,6 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
     ---
 
-    Protocols for eye-tracking experiments
-
-    [:octicons-arrow-right-24: Learn more](research/eyetracking/index.md)
-
-- :fontawesome-solid-brain:{ .lg .middle } __fMRI__
-
-    ---
-
     Guidelines for fMRI studies and data analysis
 
     [:octicons-arrow-right-24: Learn more](research/fmri/index.md)
