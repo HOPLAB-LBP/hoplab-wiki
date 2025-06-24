@@ -1,9 +1,5 @@
 # Convert your fMRI data into BIDS format
 
-**TODO:** [ANDREA] this page is unnecessary complex. I think we should make it simpler by giving the standard steps from DICOM to BIDS, which is in iny case safer than the nift + json editing.
-
-## BIDS standards
-
 To organize our fMRI dataset, we follow the [BIDS](https://bids-specification.readthedocs.io/en/stable/introduction.html) Specification.
 
 If you are not familiar with the BIDS Specification, the [BIDS Starter Kit](https://bids-standard.github.io/bids-starter-kit/index.html) provides all the information needed to get started, along with [example BIDS datasets](https://bids-standard.github.io/bids-starter-kit/dataset_examples.html), [Talks and Slides](https://bids-standard.github.io/bids-starter-kit/talks.html), and most importantly [Tutorials](https://bids-standard.github.io/bids-starter-kit/tutorials/tutorials.html).
@@ -14,473 +10,244 @@ The BIDS Specification provides guidelines on how to organize all your data form
 
 At any moment, you can check your dataset for BIDS compliance. To do so, you can use the [BIDS dataset validator](https://bids-standard.github.io/bids-validator/).
 
+## Table of Contents
+
+- [Convert your fMRI data into BIDS format](#convert-your-fmri-data-into-bids-format)
+  - [Table of Contents](#table-of-contents)
+  - [BIDS Conversion Overview](#bids-conversion-overview)
+    - [1. Create the raw data directory](#1-create-the-raw-data-directory)
+    - [2. Create the subject's directory](#2-create-the-subjects-directory)
+    - [3. Organize your source files](#3-organize-your-source-files)
+    - [4. Convert DICOM files](#4-convert-dicom-files)
+    - [5. Create the BIDS directory](#5-create-the-bids-directory)
+    - [6. Organise the BIDS directory](#6-organise-the-bids-directory)
+    - [7. Create JSON sidecar files](#7-create-json-sidecar-files)
+    - [8. Create event files](#8-create-event-files)
+    - [9. Create additional BIDS files](#9-create-additional-bids-files)
+    - [10. Validating Your BIDS Structure](#10-validating-your-bids-structure)
+
 ## BIDS Conversion Overview
 
 Here's a high-level overview of the steps involved in arranging your data in a BIDS-compatible way. While this provides a general understanding, most of these steps should be performed using the code provided in each sub-section to minimize errors. After scanning participants, you'll obtain data from two primary sources:
 
-1. The scanner: **functional** and **structural** outputs (`.nii` files), alongside potential `dicom` files
-2. The stimulus presentation computer: **behavioural** outputs (mainly `log` files and `.mat` files) and potentially eye-tracking data
+1. The scanner: **functional** and **structural** outputs (`DICOM` files).
+2. The stimulus presentation computer: **behavioural** outputs (mainly `log` files and `mat` files) and potentially eye-tracking data (`edf` files or `tsv` files).
 
 As you turn your raw data into a BIDS-compatible format, your project directory will change considerably. The folder trees below show you how each steps will affect your working directory, with changing folders and file in **bold** for each step.
 
-=== "Step1"
+---
 
-    <pre><code>
-    <b>myproject</b>
-    └── <b>sourcedata</b>
-    </code></pre>
+### 1. Create the raw data directory
 
+<pre><code>
+<b>myproject</b>
+└── <b>sourcedata</b>
+</code></pre>
 
-=== "Step 2"
-    
-    <pre><code>
-    myproject
-    └── sourcedata
-        └── <b>sub-01</b>
-            ├── <b>bh</b>
-            ├── <b>dicom</b>
-            └── <b>nifti</b>
-    </code></pre>
+Your first step is to organize your files in a `sourcedata` folder. Follow the structure outlined in [How to store raw data](./fmri-general.md#how-to-store-raw-data): have one main project folder (e.g. `myproject`), and a `sourcedata` folder in it.
 
-=== "Step 3"
+---
 
-    <pre><code>
-    myproject
-    └── sourcedata
-        └── sub-01
-            ├── bh
-            │   ├── <b>yyyy-mm-dd-sub-01_run-01_task-taskname_log.tsv</b>
-            │   ├── <b>yyyy-mm-dd-sub-01_run-01_task-taskname.mat</b>
-            │   ├── ...
-            │   ├── <b>yyyy-mm-dd-sub-01_run-xx_task-taskname_log.tsv</b>
-            │   └── <b>yyyy-mm-dd-sub-01_run-xx_task-taskname.mat</b>
-            ├── dicom
-            │   ├── <b>IM_0001</b>
-            │   ├── <b>IM_0005</b>
-            │   ├── <b>PS_0002</b>
-            │   ├── <b>PS_0006</b>
-            │   ├── <b>XX_0003</b>
-            │   ├── <b>XX_0004</b>
-            │   └── <b>XX_0007</b>
-            └── nifti
-                ├── <b>run-01.nii</b>
-                ├── ...
-                ├── <b>run-xx.nii</b>
-                └── <b>sub-01_struct.nii</b>
-    </code></pre>
+### 2. Create the subject's directory
 
-=== "Step 4"
+<pre><code>
+myproject
+└── sourcedata
+    └── <b>sub-01</b>
+        ├── <b>bh</b>
+        ├── <b>dicom</b>
+        ├── <b>eye</b>
+        ├── <b>dicom_anon</b>
+        └── <b>nifti</b>
+</code></pre>
 
-    <pre><code>
-    myproject
-    └── sourcedata
-        └── sub-01
-            ├── bh
-            ├── dicom
-            ├── <b>dicom_anon</b>
-            │   ├── <b>IM_0001</b>
-            │   ├── <b>IM_0005</b>
-            │   ├── <b>PS_0002</b>
-            │   ├── <b>PS_0006</b>
-            │   ├── <b>XX_0003</b>
-            │   ├── <b>XX_0004</b>
-            │   └── <b>XX_0007</b>
-            ├── <b>dicom_converted</b>
-            │   ├── <b>dcmHeaders.mat</b>
-            │   ├── <b>sub-01_run-01.json</b>
-            │   ├── <b>sub-01_run-01.nii.gz</b>
-            │   ├── <b>sub-01_struct.json</b>
-            │   └── <b>sub-01_struct.nii.gz</b>
-            └── nifti
-    </code></pre>
+Create the relevant sub-folders within the `sourcedata` folder: for each participant you collected data from, create a `sub-xx` folder (e.g. `sub-01`). Within the folder of each participant, create a `bh` (behaviour), `eye` (i.e. eye-tracking data), `dicom` (i.e. dicom files collected from the scanner), `dicom_anon` (i.e. anonymized dicom files collected from the scanner), and `nifti` (i.e. nifti, the format of the files after the DICOM conversion).
 
-=== "Step 5"
+To create these folders, open your terminal (or PowerShell if you are on Windows) and type:
 
-    <pre><code>
-    myproject
-    ├── <b>BIDS</b>
-    │   └── <b>sub-01</b>
-    │       ├── <b>anat</b>
-    │       │   └── <b>sub-01_T1w.nii</b>
-    │       └── <b>func</b>
-    │           ├── <b>sub-01_task-taskname_run-01_bold.nii</b>
-    │           ├── ...
-    │           └── <b>sub-01_task-taskname_run-xx_bold.nii</b>
-    └── sourcedata
-        └── sub-01
-            ├── bh
-            ├── dicom
-            ├── dicom_anon
-            ├── dicom_converted
-            └── nifti
-    </code></pre>
-
-=== "Step 6"
-
-    <pre><code>
-    myproject
-    ├── BIDS
-    │   └── sub-01
-    │       ├── anat
-    │       └── func
-    │           ├── <b>sub-01_task-taskname_run-01_bold.json</b>
-    │           ├── sub-01_task-taskname_run-01_bold.nii
-    │           ├── ...
-    │           ├── <b>sub-01_task-taskname_run-xx_bold.json</b>
-    │           └── sub-01_task-taskname_run-xx_bold.nii
-    └── sourcedata
-        └── sub-01
-            ├── bh
-            ├── dicom
-            ├── dicom_anon
-            ├── dicom_converted
-            └── nifti
-    </code></pre>
-
-=== "Step 7"
-
-    <pre><code>
-    myproject
-    ├── BIDS
-    │   └── sub-01
-    │       ├── anat
-    │       └── func
-    │           ├── sub-01_task-taskname_run-01_bold.json
-    │           ├── sub-01_task-taskname_run-01_bold.nii
-    │           ├── <b>sub-01_task-taskname_run-01_events.tsv</b>
-    │           ├── ...
-    │           ├── sub-01_task-taskname_run-xx_bold.json
-    │           ├── sub-01_task-taskname_run-xx_bold.nii
-    │           └── <b>sub-01_task-taskname_run-xx_events.tsv</b>
-    ├── code
-    └── sourcedata
-        └── sub-01
-            ├── bh
-            ├── dicom
-            ├── dicom_anon
-            ├── dicom_converted
-            └── nifti
-    </code></pre>
-
-=== "Step 8"
-
-    <pre><code>
-    myproject
-    ├── BIDS
-    │   ├── <b>dataset_description.json</b>
-    │   ├── <b>events.json</b>
-    │   ├── <b>participants.json</b>
-    │   ├── <b>participants.tsv</b>
-    │   ├── sub-01
-    │   │   ├── anat
-    │   │   └── func
-    │   └── <b>task-taskname_bold.json</b>
-    └── sourcedata
-        └── sub-01
-            ├── bh
-            ├── dicom
-            ├── dicom_anon
-            ├── dicom_converted
-            └── nifti
-    </code></pre>
-
-=== "Step 9"
-
-    <pre><code>
-    myproject
-    ├── BIDS
-    │   ├── <b>.bidsignore</b>
-    │   ├── dataset_description.json
-    │   ├── <b>derivatives</b>
-    │   ├── events.json
-    │   ├── participants.json
-    │   ├── participants.tsv
-    │   ├── sub-01
-    │   │   ├── anat
-    │   │   └── func
-    │   └── task-taskname_bold.json
-    └── sourcedata
-        └── sub-01
-            ├── bh
-            ├── dicom
-            ├── dicom_anon
-            ├── dicom_converted
-            └── nifti
-    </code></pre>
-
-
-1. Your first step is to organize your files in a `sourcedata` folder. Follow the structure outlined in [How to store raw data](./fmri-general.md#how-to-store-raw-data): have one main project folder (e.g. `myproject`), and a `sourcedata` folder in it.
-
-2. Create the relevant sub-folders within the `sourcedata` folder: for each participant you collected data from, create a `sub-xx` folder (e.g. `sub-01`). Within the folder of each participant, create a `bh` (behaviour) and `nifti` (i.e. nifti, the format of the files collected from the scanner) folder. Also create a `dicom` folder if you collected dicom files for your participant.
-
-3. Place the files you collected in this `sourcedata` structure: data collected from your experimental task goes into `bh` (e.g. `.mat` files and log files if you used the [fMRI task template](https://github.com/HOPLAB-LBP/fMRI-task-template)), data collected from the scanner itself goes in `nifti` or in `dicom` based on its format.
-
-4. If you collected them, proceed to **anonymise** and **convert** your DICOM files. Create a `dicom_anon` and a `dicom_converted` folder. See below for more details on [how to anonimise and convert your dicom files](./fmri-bids-conversion.md#converting-dicom-files-optional).
-
-5. Create a `BIDS` folder in your main project directory, alongside the `sourcedata` folder. For each participant, create a sub folder (e.g. `BIDS/sub-01`). In the BIDS folder of each participant, place a `func` folder for functional files and a `anat` folder for anatomical files. Copy-paste your functional `.nii` files from `sourcedata` to their corresponding `func` folder, renaming them if necessary to follow BIDS format (e.g. `sub-01_task-taskname_run-01_bold.nii`), and similarly copy-paste your structural `.nii` files to the `anat` folder, renaming them if necessary (e.g. `sub-01_T1w.nii`). See below for more details on [how to rename and move nifti files](./fmri-bids-conversion.md#renaming-and-moving-nifti-files).
-
-6. Create `.json` sidecar files for each functional run `.nii` file, using the output from the dicom conversion step. If your scanner sequence was the same, your can re-use the same sidecar files across participants (see [Creating JSON Sidecar Files](./fmri-bids-conversion.md#creating-json-sidecar-files) below).
-
-7. Create one `events.tsv` file for each function run `.nii` file, using the output from your experimental task. If you used the [fMRI task template](https://github.com/HOPLAB-LBP/fMRI-task-template)), output log files can be used to create event files quite easily. More info on events files can be found [here](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html):
-
-8.  Create essential [modality agnostic BIDS files](https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson):
-
-    - `dataset_description.json`
-    - `events.json`
-    - `participants.tsv` and `participants.json`
-    - `task-<taskname>_bold.json`
-
-9. Set up additional components:
-
-    - Create a `derivatives` folder for future outputs (e.g. `fmriprep` output)
-    - *Optional*: Include a `.bidsignore` file if needed
-
-By following these steps systematically, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration. Make sure all the steps have been followed successfully by validating your BIDS folder. To do so, use the **[BIDS validator](https://bids-standard.github.io/bids-validator/)**.
-
-
-## Step-by-step instructions
-
-Here we provide more detailed instructions to perform each of the steps mentioned above.
-
-!!! warning "Folder Structure"
-    All the steps and scripts below assume a specific folder structure and file naming convention. They **will not work** otherwise. Ensure you strictly follow the instructions in the [How to store raw data](./fmri-general.md#how-to-store-raw-data) page.
-
-    **TODO:** [ANDREA] in the how to store raw data page, create a folders tree that includes all the relevant folders and subfolder. The current tree is not complete.
-    
-### Anonymize raw scanner data
-
-#### Expected project structure
-
-You need to make sure your DICOM / nifti file names **do not contain** subject identificative information, such as the subject's name. This is particularly relevant for our pipeline, because that's exactly what our scanner does. At the hospital, it is best to manually name your files when exporting them. You can also use [this small utility tool](../../../assets/code/anon_nii_filename.py), which renames files within a BIDS-like directory structure, specifically targeting files containing `_WIP_` in their names.
-
-The script operates on the following project structure:
-
-```bash
-Project_Name/
-├── sourcedata/
-│   └── sub-xx/
-│       ├── dicom/
-│       ├── dicom_anon/
-│       ├── bh/
-│       ├── et/
-│       └── nifti/
-└── BIDS/
-    ├── derivatives/
-    └── sub-xx/
-        ├── anat/
-        └── func/
+```base
+cd /path/to/myproject/sourcedata
+mkdir sub-01
+mkdir sub-01/bh
+mkdir sub-01/eye
+mkdir sub-01/dicom
+mkdir sub-01/dicom_anon
+mkdir sub-01/nifti
 ```
 
-The script processes files within the 'sourcedata' directory.
+---
 
-Execute the script from the 'sourcedata' directory:
+### 3. Organize your source files
 
-1. Open a terminal or command prompt.
-2. Navigate to the project's root:
+<pre><code>
+myproject
+└── sourcedata
+    └── sub-01
+        ├── bh
+        │   ├── <b>yyyy-mm-dd-sub-01_run-01_task-{taskname}_log.tsv</b>
+        │   ├── <b>yyyy-mm-dd-sub-01_run-01_task-{taskname}.mat</b>
+        │   ├── ...
+        │   ├── <b>yyyy-mm-dd-sub-01_run-{runnumber}_task-{taskname}_log.tsv</b>
+        │   └── <b>yyyy-mm-dd-sub-01_run-{runnumber}_task-{taskname}.mat</b>
+        ├── dicom
+        │   ├── <b>IM_0001</b>
+        │   ├── <b>IM_0005</b>
+        │   ├── <b>PS_0002</b>
+        │   ├── <b>PS_0006</b>
+        │   ├── <b>XX_0003</b>
+        │   ├── <b>XX_0004</b>
+        │   └── <b>XX_0007</b>
+        ├── dicom_anon
+        ├── nifti
+        └── eye
 
-   ```bash
-   cd /path/to/Project_Name
-   ```
+</code></pre>
 
-3. Change to the 'sourcedata' directory:
+Place the files you collected in this `sourcedata` structure: data collected from your experimental task goes into `bh` (e.g. `.mat` files and log files if you used the [fMRI task template](https://github.com/HOPLAB-LBP/fMRI-task-template)), data collected from the scanner itself (DICOM) goes in `dicom`, eye-tracking data (generally, EDF or csv files) goes in `eye`.
 
-   ```bash
-   cd sourcedata
-   ```
+---
 
-#### Command-line Arguments
+### 4. Convert DICOM files
 
-- `--level {group,participant}`: Process all subjects (`group`) or individual subjects (`participant`).
-- `--confirm {True,False}`: Ask for confirmation before renaming (default: True).
-- `--dry_run`: Preview changes without renaming.
-- `--sub [SUB ...]`: Specify subject IDs to process.
+<pre><code>
+myproject
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── <b>dicom_anon</b>
+        │   ├── <b>IM_0001</b>
+        │   ├── <b>IM_0005</b>
+        │   ├── <b>PS_0002</b>
+        │   ├── <b>PS_0006</b>
+        │   ├── <b>XX_0003</b>
+        │   ├── <b>XX_0004</b>
+        │   └── <b>XX_0007</b>
+        ├── <b>nifti</b>
+        │   ├── <b>dcmHeaders.mat</b>
+        │   ├── <b>sub-01_run-01.json</b>
+        │   ├── <b>sub-01_run-01.nii.gz</b>
+        │   ├── <b>sub-01_struct.json</b>
+        │   └── <b>sub-01_struct.nii.gz</b>
+        ├── dicom_anon
+        ├── nifti
+        └── eye
+</code></pre>
 
-#### Examples
+If you have collected DICOM files from the scanner, you need to **anonymise** and **convert** them so that you can use them properly. There are several tools available that can help with this. One recommended option is [`dicm2nii`](https://github.com/xiangruili/dicm2nii), a lightweight and flexible toolbox for handling DICOM-to-NIfTI conversion.
 
-1. Dry run for all subjects:
+!!! question "Why `dicm2nii` and not `dcm2niix`?"
+    Although [`dcm2niix`](https://github.com/rordenlab/dcm2niix) is widely used and robust, especially for modern enhanced DICOMs and vendor-specific edge cases (like Philips), `dicm2nii` is often suggested.
 
-   ```bash
-   python /path/to/anon_nii_filename.py --level group --dry_run
-   ```
+    For data acquired with Philips scanners, or if your DICOMs have missing metadata (e.g., `PhaseEncodingDirection`), see [this Rorden Lab guide](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) and this [NITRC forum thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703) See also [Missing fields in JSON files](./fmri-general.md#missing-fields-in-json-files) for more information.
 
-2. Rename files for subjects 01 and 02 with confirmation:
+To convert your data:
 
-   ```bash
-   python /path/to/anon_nii_filename.py --level participant --sub 01 02 --confirm True
-   ```
+1. Navigate to your sourcedata folder
 
-3. Rename files for all subjects without confirmation:
-
-   ```bash
-   python /path/to/anon_nii_filename.py --level group --confirm False
-   ```
-
-Output filename:
-
-```bash
-sub-01/nifti/sub-01_WIP_T1w_20240101141322.nii
-```
-
-!!! warning "Caution"
-    Always backup your data before running renaming operations.
-
-#### How It Works
-
-1. The script traverses the 'sourcedata' directory structure.
-2. It identifies files containing '*WIP*' in their names.
-3. New names are generated based on the subject ID and the part of the filename after '*WIP*'.
-4. Depending on the options, it either renames the files or shows the proposed changes.
-
-#### Important Notes
-
-- Only files containing '*WIP*' are processed. Others are ignored.
-- To process all files, modify the `rename_files_in_directory` function:
-
-  ```python
-  if '_WIP_' in file:
-  ```
-
-  to:
-
-  ```python
-  if True:  # Caution: processes all files
-  ```
-
-!!! caution "Modifying the Script"
-    Processing all files may lead to unintended renaming. Always use `--dry_run` first and review proposed changes carefully.
-
-#### Tips
-
-- Use `--dry_run` to preview changes before actual renaming.
-- Process subjects in smaller batches for large datasets.
-- Regularly check BIDS specifications for naming convention compliance.
-
-#### Troubleshooting
-
-If issues occur:
-
-1. Ensure you're in the 'sourcedata' directory.
-2. Check permissions for renaming files in 'sourcedata'.
-3. Verify all required Python dependencies are installed.
-4. For unprocessed files, check if they contain '*WIP*'.
-
-### Creating Event Files
-
-Event files are crucial for analyzing fMRI data. They contain information about the timing and nature of stimuli or tasks during the scan. To create your event files manually:
-
-1. Navigate to your `sourcedata/sub-xx/bh/` folder.
-2. Locate the behavioral output files (`.mat` or `.log`) for each run.
-3. Create a corresponding `events.tsv` file for each run in the `BIDS/sub-xx/func/` folder.
-
-Each `events.tsv` file should contain at least three columns: `onset`, `duration`, and `trial_type`. Additional columns can be included as needed for your specific analysis.
-
-If you use the [fMRI task template](https://github.com/TimManiquet/fMRI-task-template), the log files you get as output contain all the information needed to build event files in a few steps. Below is a quick overview of the steps to take to make event files from log files. Note that it might not apply perfectly to all cases, and that other approaches can be more practical to you. It can be a good idea to create your own utility script to create event files from your behavioural results.
-
-To **create event files from log files**, here is what you need to do (see the example below for an example transformation):
-
-- Create the `onset` column from the onset values in the log files: in the latter, onset times (usually stored in a column called `ACTUAL_ONSET`) are aligned to the start of the run. In BIDS event files, events need to be aligned to the start of the scanning. To obtain correct onset values, one can simply shift the onset of each line from a log file so that the onset `0.0` corresponds to the first TR trigger.
-- Create the `duration` column from the `onset` values. Log files typically don't record the exact duration of events, as that would put some extra calculation load onto MatLab (which struggles enough already as it is). A good approach is to calculate these post-hoc from the onset values, by simply taking the difference in between successive event onsets.
-- Create the `trial_type` column with the condition names. Fill this column by extracting the information that is relevant for your experimental design. In the example below, we extract the conditio names `face` and `building` from the `EVENT_ID` column, as these are the conditions we're interested in. We also indicate `fixation` where relevant, as we want to be able to model fixations in our GLM.
-- Add or keep any column you might need. In the example below, we keep the `event_type`, `event_name` and `event_id` columns as it might still be useful later on in the pipeline. Note that you should make a reference to these extra column in your `events.json` file.
-
-
-=== "Example log file"
-
-    ```
-    EVENT_TYPE	 EVENT_NAME	 DATETIME                EXP_ONSET 	   ACTUAL_ONSET	 DELTA   	 EVENT_ID
-    START     	 -         	 yyyy-mm-dd-hh-mm-ss	 -         	     0.000000	 -       	 -
-    FLIP      	 Instr     	 yyyy-mm-dd-hh-mm-ss	 -         	     0.099950	 -       	 -
-    RESP      	 KeyPress  	 yyyy-mm-dd-hh-mm-ss	 -         	     7.663277	 -       	 7
-    FLIP      	 TgrWait   	 yyyy-mm-dd-hh-mm-ss	 -         	     7.697805	 -       	 -
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    12.483778	 -       	 5
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    24.452093	 -       	 5
-    FLIP      	 Pre-fix   	 yyyy-mm-dd-hh-mm-ss	 -         	    24.462263	 -       	 -
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    26.452395	 -       	 5
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    28.452362	 -       	 5
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    30.451807	 -       	 5
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    32.451339	 -       	 5
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    34.451376	 -       	 5
-    FLIP      	 Stim      	 yyyy-mm-dd-hh-mm-ss	 34.462263 	    34.474302	 0.012039	 building_image.png
-    RESP      	 KeyPress  	 yyyy-mm-dd-hh-mm-ss	 -         	    35.566808	 -       	 9
-    FLIP      	 Fix       	 yyyy-mm-dd-hh-mm-ss	 -         	    34.521628	 -       	 -
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    36.451615	 -       	 5
-    FLIP      	 Stim      	 yyyy-mm-dd-hh-mm-ss	 37.462263 	    37.524439	 0.062177	 face_image.png
-    FLIP      	 Fix       	 yyyy-mm-dd-hh-mm-ss	 -         	    37.572648	 -       	 -
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    38.453535	 -       	 5
-    RESP      	 KeyPress  	 yyyy-mm-dd-hh-mm-ss	 -         	    38.806193	 -       	 1
-    PULSE     	 Trigger   	 yyyy-mm-dd-hh-mm-ss	 -         	    40.451415	 -       	 5
-    ...
-    ```
-=== "Example event file"
-
-    ```
-    onset            duration       event_type	 event_name	 event_id               trial_type
-    -24.452093       n/a            START     	 -         	 -                      n/a
-    -24.352143       7.597855       FLIP      	 Instr     	 -                      n/a
-    -16.788816       n/a            RESP      	 KeyPress  	 7                      n/a
-    -16.75428800     7.697805       FLIP      	 TgrWait   	 -                      n/a
-    -11.96831500     n/a            PULSE     	 Trigger   	 5                      n/a
-    0.0              n/a            PULSE     	 Trigger   	 5                      n/a
-    0.0101699999     10             FLIP      	 Pre-fix   	 -                      fixation
-    2.0003019999     n/a            PULSE     	 Trigger   	 5                      n/a
-    4.0002689999     n/a            PULSE     	 Trigger   	 5                      n/a
-    5.9997139999     n/a            PULSE     	 Trigger   	 5                      n/a
-    7.9992459999     n/a            PULSE     	 Trigger   	 5                      n/a
-    9.9992830000     n/a            PULSE     	 Trigger   	 5                      n/a
-    10.022209        0.0473259      FLIP      	 Stim      	 building_image.png     building
-    10.069534999     3.0028110      FLIP      	 Fix       	 -                      fixation
-    11.114715        n/a            RESP      	 KeyPress  	 9                      n/a
-    11.999521999     n/a            PULSE     	 Trigger   	 5                      n/a
-    13.072346        0.0482089	    FLIP      	 Stim      	 face_image.png         face
-    13.120555        2.9033829      FLIP      	 Fix       	 -                      fixation
-    14.001442        n/a            PULSE     	 Trigger   	 5                      n/a
-    14.354099999     n/a            RESP      	 KeyPress  	 1                      n/a
-    15.999321999     n/a            PULSE     	 Trigger   	 5                      n/a
-    ...
+    ```bash
+    cd /path/to/myproject/sourcedata
     ```
 
-**TODO:** [ANDREA] Add script for automatically converting behavioral data to BIDS-compliant event files.
+2. [Clone the repository](https://github.com/xiangruili/dicm2nii) from GitHub:
 
-### Converting DICOM files (Optional)
+    ```bash
+    git clone https://github.com/xiangruili/dicm2nii.git
+    ```
 
-If you have collected DICOM files from the scanner, you need to 1. **anonymise**, and 2. **convert** them so that you can use them properly. There are several tools available that can take care of this. The [dicm2nii](https://github.com/xiangruili/dicm2nii/tree/master) GitHub repository is one such example. To use it, clone the repository, open MatLab, and follow these steps:
+3. Add the `dicm2nii` folder to your MATLAB path:
+    In **MATLAB**, run:
 
-1. Navigate to your `sourcedata` folder.
-2. Add the cloned `dicm2nii` folder to your path.
-3. Use the `anonymize_dicm` script to anonymize the DICOM files. The command will look something like this:
-```MatLab
-anonymize_dicm('sub-xx/dicom', 'sub-xx/dicom_anon', 'sub-xx')
-```
-4. Use the `dicm2nii` script to convert the anonymized DICOM files to NIfTI.
-```MatLab
-dicm2nii('sub-xx/dicom_anon', 'sub-xx/dicom_converted', 'nii.gz')
-```
+    ```matlab
+    addpath('/path/to/dicm2nii')  % Adjust this to the actual folder path
+    ```
 
-These commands will have populated the `dicom_anon` and `dicom_converted` folders (see the folder trees in [BIDS Conversion Overview](./fmri-bids-conversion.md#bids-conversion-overview) for an example). The content of the latter can in turn be used to create json side car files (see [Creating JSON Sidecar Files](./fmri-bids-conversion.md#creating-json-sidecar-files)).
+    !!! tip
+        You can also use `uigetdir` to interactively select the folder:
 
-**TODO:** [ANDREA] add info about 1) example dcm2nii call, 2) why dcm2nii rather than dcm2nii**x**, 3) add additional info on DICOM (no enhanced, missing values, etc.). see also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Phillips DICOMS, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.
+    ```matlab
+    addpath(uigetdir)
+    ```
 
-**TODO:** [TIM] Give information on how to use the anonymization and DICOM to nifti scripts, and what the results should be like. Give links to the scripts.
+4. Anonymize your DICOM files
 
-### Creating JSON Sidecar Files
+    Use the `anonymize_dicm` function. This removes identifying fields and creates a safe copy for conversion:
 
-Each `nii` file **must** have a sidecar JSON file. However, if your fMRI protocol did not change, all the important JSON fields are going to be the same across different scanning sessions, and therefore JSON files can be re-used across subjects. This will save you some time, since getting DICOM files from the scanner can be quite time-consuming.
+    ```matlab
+    anonymize_dicm('sub-01/dicom', 'sub-01/dicom_anon', 'sub-01')
+    ```
 
-- **If you collected DICOM files** for your participant, make sure you [anonymised and converted your DICOM files](./fmri-bids-conversion.md#converting-dicom-files-optional) and go through the following steps:
+    - First argument = path to **raw DICOM** folder
+    - Second argument = path to output **anonymized DICOM** folder
+    - Third argument = subject ID string used in metadata fields (optional but recommended)
 
-    1. Locate the JSON sidecar files in `sourcedata/sub-xx/dicom_converted/`.
-    2. Open each JSON file and Complete the `PhaseEncodingDirection` and `SliceTiming` fields (see [Missing fields in JSON files](./fmri-general.md#missing-fields-in-json-files) for more information).
-    3. Copy-paste the updated JSON files to accompany each NIfTI file in the `BIDS/sub-xx/func` folder: each run should have its accompanying `sub-xx_task-taskname_run-xx_bold.json` sidecar file.
+    This will create `dicom_anon` and log any changes made.
 
-- **If you did not collect DICOM files** for your participant, but collected DICOM files for a previous participant _and_ your fMRI protocol did not change in the meantime:
-  
-    1. Copy-paste all `.json` sidecar files from the `BIDS/sub-xx/func` folder of the participant you have DICOM files for, to the `BIDS/sub-xx/func` folder of new participant you only collect nifti files for. Rename each file with the correct `sub` value, ensuring there is one `.json` file per participant, per run, with the correct name.
+5. Convert anonymized DICOMs to NIfTI
 
-**TODO:** [ANDREA] fill this out with more in depth info about the JSON etc.
+    Now convert the anonymized files:
 
-### Renaming and Moving NIfTI Files
+    ```matlab
+    dicm2nii('sub-01/dicom_anon', 'sub-01/nifti', 'nii.gz')
+    ```
 
-1. Navigate to your `sourcedata/sub-xx/dicom_converted/` folder.
+    - First argument = path to anonymized DICOMs
+    - Second argument = output directory
+    - Third argument = output format (`nii`, `nii.gz`)
+
+    This will:
+
+    - Generate one `.nii.gz` file per series
+    - Produce accompanying `.json` metadata files
+    - Create a `dcmHeaders.mat` with all parsed metadata
+
+---
+
+### 5. Create the BIDS directory
+
+<pre><code>
+myproject
+├── <b>BIDS</b>
+│   └── <b>sub-01</b>
+│       ├── <b>anat</b>
+│       │   └── <b>sub-01_T1w.nii</b>
+│       └── <b>func</b>
+│           ├── <b>sub-01_task-{taskname}_run-01_bold.nii</b>
+│           ├── ...
+│           └── <b>sub-01_task-{taskname}_run-{runnumber}_bold.nii</b>
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── dicom_anon
+        └── nifti
+</code></pre>
+
+Create a `BIDS` folder in your main project directory, alongside the `sourcedata` folder. For each participant, create a sub folder (e.g. `BIDS/sub-01`). In the BIDS folder of each participant, place a `func` folder for functional files and a `anat` folder for anatomical files. Copy-paste your functional `.nii` files from `sourcedata` to their corresponding `func` folder, renaming them if necessary to follow BIDS format (e.g. `sub-01_task-{taskname}_run-01_bold.nii`), and similarly copy-paste your structural `.nii` files to the `anat` folder, renaming them if necessary (e.g. `sub-01_T1w.nii`). See below for more details on [how to rename and move nifti files](./fmri-bids-conversion.md#renaming-and-moving-nifti-files).
+
+---
+
+### 6. Organise the BIDS directory
+
+<pre><code>
+myproject
+├── BIDS
+│   └── sub-01
+│       ├── anat
+│       │   └── <b>sub-01_T1w.nii</b>
+│       └── func
+│           ├── <b>sub-01_task-{taskname}_run-01_bold.nii</b>
+│           ├── ...
+│           └── <b>sub-01_task-{taskname}_run-{runnumber}_bold.nii</b>
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── dicom_anon
+        └── nifti
+</code></pre>
+
+1. Navigate to your `sourcedata/sub-xx/nifti/` folder.
 2. Identify the functional and structural NIfTI files.
 3. Rename the files following BIDS conventions:
     - Functional: `sub-<label>_task-<label>_run-<label>_bold.nii`
@@ -489,18 +256,148 @@ Each `nii` file **must** have a sidecar JSON file. However, if your fMRI protoco
     - Functional files go to `BIDS/sub-xx/func/`
     - Structural files go to `BIDS/sub-xx/anat/`
 
-**TODO:** [ANDREA] is dicom converted and nii the same folder? from which folder should we get the final nifti files to move? this folder needs to be consistent across different workflows (e.g., dicom conversion or just nifti files)
+---
 
-**TODO:** [TIM] Give instructions on how to rename files, both functional and structural, including what happens in case of several scan sessions and the added `ses` label.
+### 7. Create JSON sidecar files
 
-??? tip "Rename and move automatically"
-    A MATLAB script that can do this automatically can be found [here](../../../assets/code/nii2BIDS.m). Remember to change the input and output folders, run names and subjects numbers at the top of the script according to your needs. The  script expects as input your nifti files, along with the JSON sidecar template files.
+<pre><code>
+myproject
+├── BIDS
+│   └── sub-01
+│       ├── anat
+│       │   ├──sub-01_T1w.nii
+│       │   └── <b>sub-01_T1w.json</b>
+│       └── func
+│           ├── <b>sub-01_task-{taskname}_run-01_bold.json</b>
+│           ├── sub-01_task-{taskname}_run-01_bold.nii
+│           ├── ...
+│           ├── <b>sub-01_task-{taskname}_run-{runnumber}_bold.json</b>
+│           └── sub-01_task-{taskname}_run-{runnumber}_bold.nii
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── dicom_anon
+        └── nifti
+</code></pre>
 
-    **TODO:** [ANDREA] the script should first check whether the JSON files are already availabe in the folder and, if that's the case, it should choose these files over the  templates. Also, we need to add more info about these template files in this page!
+Create `.json` sidecar files for each functional run `.nii` file, using the output from the dicom conversion step.
 
-### Creating Essential BIDS Files
+Each `nii` file **must** have a sidecar JSON file. Make sure you [anonymised and converted your DICOM files](./fmri-bids-conversion.md#4-convert-dicom-files) and go through the following steps:
 
-1. Create the following [modality agnostic BIDS files](https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson) files in your `BIDS/` root folder:
+  1. Locate the JSON sidecar files in `sourcedata/sub-xx/nifti/`.
+  2. Open each JSON file and Complete the `PhaseEncodingDirection` and `SliceTiming` fields (see [Missing fields in JSON files](./fmri-general.md#missing-fields-in-json-files) for more information).
+  3. Copy-paste the updated JSON files to accompany each NIfTI file in the `BIDS/sub-xx/func` folder: each run should have its accompanying `sub-xx_task-{taskname}_run-{runnumber}_bold.json` sidecar file.
+
+---
+
+### 8. Create event files
+
+<pre><code>
+myproject
+├── BIDS
+│   └── sub-01
+│       ├── anat
+│       │   ├──sub-01_T1w.nii
+│       │   └── <b>sub-01_T1w.json</b>
+│       └── func
+│           ├── sub-01_task-{taskname}_run-01_bold.json
+│           ├── sub-01_task-{taskname}_run-01_bold.nii
+│           ├── <b>sub-01_task-{taskname}_run-01_events.tsv</b>
+│           ├── ...
+│           ├── sub-01_task-{taskname}_run-{runnumber}_bold.json
+│           ├── sub-01_task-{taskname}_run-{runnumber}_bold.nii
+│           └── <b>sub-01_task-{taskname}_run-{runnumber}_events.tsv</b>
+├── code
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── dicom_anon
+        ├── eye
+        └── nifti
+</code></pre>
+
+Create one `events.tsv` file for each function run `.nii` file, using the output from your experimental task. If you used the [fMRI task template](https://github.com/HOPLAB-LBP/fMRI-task-template)), output log files can be used to create event files quite easily. More info on events files can be found [here](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html).
+
+Event files are crucial for analyzing fMRI data. They contain information about the timing and nature of stimuli or tasks during the scan. To create your event files manually:
+
+1. Navigate to your `sourcedata/sub-xx/bh/` folder.
+2. Locate the behavioral output files (`.mat` or `.log`) for each run.
+3. Create a corresponding `events.tsv` file for each run in the `BIDS/sub-xx/func/` folder.
+
+Each `events.tsv` file **must** contain at least three columns: `onset`, `duration`, and `trial_type`, and **can** include additional as needed for your specific analysis. It also **must** contain one row per trial (stimulus) in your experiment.
+
+If you use the [fMRI task template](https://github.com/TimManiquet/fMRI-task-template), the log files you get as output contain all the information needed to build event files in a few steps. Below is a quick overview of the steps to take to make event files from log files. Note that it might not apply perfectly to all cases, and that other approaches can be more practical to you. It can be a good idea to create your own utility script to create event files from your behavioural results.
+
+To **create event files from log files**, here is what you need to do (see the example below for an example transformation):
+
+- Create the `onset` column from the onset values in the log files: in the latter, onset times (usually stored in a column called `ACTUAL_ONSET`) are aligned to the start of the run. In BIDS event files, events need to be aligned to the start of the scanning. To obtain correct onset values, one can simply shift the onset of each line from a log file so that the onset `0.0` corresponds to the first TR trigger.
+- Create the `duration` column from the `onset` values. Log files typically don't record the exact duration of events, as that would put some extra calculation load onto MatLab (which struggles enough already as it is). A good approach is to calculate these post-hoc from the onset values, by simply taking the difference in between successive event onsets.
+- Create the `trial_type` column with the condition names. Fill this column by extracting the information that is relevant for your experimental design. In the example below, we extract the condition names `face` and `building` from the `EVENT_ID` column, as these are the conditions we're interested in.
+- Add or keep any extra column you might need. In the example below, we keep the `event_id` columns as it might still be useful later on in the pipeline. Note that you should make a reference to these extra column in your `events.json` file.
+
+For example, this is what a log file looks like:
+
+```
+EVENT_TYPE  EVENT_NAME  DATETIME                EXP_ONSET     ACTUAL_ONSET  DELTA     EVENT_ID
+START       -           yyyy-mm-dd-hh-mm-ss  -               0.000000  -         -
+FLIP        Instr       yyyy-mm-dd-hh-mm-ss  -               0.099950  -         -
+RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -               7.663277  -         7
+FLIP        TgrWait     yyyy-mm-dd-hh-mm-ss  -               7.697805  -         -
+PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              12.483778  -         5
+PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              24.452093  -         5
+FLIP        Pre-fix     yyyy-mm-dd-hh-mm-ss  -              24.462263  -         -
+PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              26.452395  -         5
+PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              28.452362  -         5
+PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              30.451807  -         5
+PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              32.451339  -         5
+PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              34.451376  -         5
+FLIP        Stim        yyyy-mm-dd-hh-mm-ss  34.462263      34.474302  0.012039  building_image.png
+RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -              35.566808  -         9
+FLIP        Fix         yyyy-mm-dd-hh-mm-ss  -              34.521628  -         -
+PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              36.451615  -         5
+FLIP        Stim        yyyy-mm-dd-hh-mm-ss  37.462263      37.524439  0.062177  face_image.png
+FLIP        Fix         yyyy-mm-dd-hh-mm-ss  -              37.572648  -         -
+PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              38.453535  -         5
+RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -              38.806193  -         1
+PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              40.451415  -         5
+...
+```
+
+This is what the corresponding event file should look like:
+
+```
+onset           duration        trial_type     event_id
+10.022209       0.0473259       building       building_image.png
+13.072346       0.0482089       face           face_image.png
+```
+
+---
+
+### 9. Create additional BIDS files
+
+<pre><code>
+myproject
+├── BIDS
+│   ├── <b>dataset_description.json</b>
+│   ├── <b>events.json</b>
+│   ├── <b>participants.json</b>
+│   ├── <b>participants.tsv</b>
+│   ├── sub-01
+│   │   ├── anat
+│   │   └── func
+│   └── <b>task-taskname_bold.json</b>
+└── sourcedata
+    └── sub-01
+        ├── bh
+        ├── dicom
+        ├── dicom_anon
+        ├── eye
+        └── nifti
+</code></pre>
+
+1. Create the following [modality agnostic BIDS files](https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson) files in your `BIDS/` folder:
     - `dataset_description.json`
     - `participants.tsv`
     - `participants.json`
@@ -508,18 +405,21 @@ Each `nii` file **must** have a sidecar JSON file. However, if your fMRI protoco
 
 2. Fill in the required information for each file according to the BIDS specification.
 
-!!! tip "Modality agnostic templates"
-    In the [modality agnostic BIDS files](https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson) page, you can find templates and examples.
-
-### Setting Up Additional Components
+And set up additional components:
 
 1. Create a `derivatives/` folder in your `BIDS/` directory.
-2. If needed, create a `.bidsignore` file in your `BIDS/` root folder to exclude any non-BIDS compliant files.
+1. If needed, create a `.bidsignore` file in your `BIDS/` root folder to exclude any non-BIDS compliant files.
 
 ??? question "Why should I use a .bidsignore file?"
     A `.bidsignore' file is useful to communicate to the BIDS validator which files should not be indexed, because they are not part of the standard BIDS structure. More information can be found [here](https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/bids-validator.html#creating-a-bidsignore).
 
-### Validating Your BIDS Structure
+---
+
+### 10. Validating Your BIDS Structure
+
+By following these steps systematically, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration.
+
+Make sure all the steps have been followed successfully by validating your BIDS folder. To do so, use the **[BIDS validator](https://bids-standard.github.io/bids-validator/)**.
 
 1. Use the online [BIDS Validator](https://bids-standard.github.io/bids-validator/) to check your BIDS structure.
 2. Upload your entire `BIDS/` folder and review any errors or warnings.

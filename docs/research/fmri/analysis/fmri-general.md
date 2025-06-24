@@ -73,16 +73,16 @@ For optimal BIDS conversion of fMRI data, it is recommended to initially collect
 Despite these steps, some BIDS fields in the sidecar JSON files may remain empty due to limitations of the Philips scanner. The most relevant fields that may be left empty are `SliceTiming` and [`PhaseEncodingDirection`](https://github.com/xiangruili/dicm2nii/issues/49).
 
 - **SliceTiming**:
-    - This field is required by fMRIPrep during slice timing correction.
-    - Populate it using the [`get_philips_MB_slicetiming.py` script](https://github.com/costantinoai/chess-expertise-2024/blob/2a9d6183997b1fa3ac57f3556a064a1ee57569e0/code/utils/get_philips_MB_slicetiming.py#L4), assuming you have access to a DICOM file and know the multiband factor (default is 2, as used in our lab).
+  - This field is required by fMRIPrep during slice timing correction.
+  - Populate it using the [`get_philips_MB_slicetiming.py` script](../../../assets/code/get_philips_MB_slicetiming.py), assuming you have access to a DICOM file and know the multiband factor (default is 2, as used in our lab).
     !!! warning
         The script assumes an interleaved, foot-to-head acquisition and will not work for other acquisition types.
 
 - **PhaseEncodingDirection**:
-    - This BIDS tag helps tools undistort images.
-    - Philips DICOM headers specify the phase encoding axis (e.g., A-P or L-R) but not the polarity (A --> P or P --> A).
-    - Check the scanner settings or consult with Ron to determine whether the polarity is A --> P or P --> A, and update the `?` in the JSON file with `j` (P --> A) or `j-` (A --> P).
-    - More info [here](https://community.mrtrix.org/t/phase-encoding-direction-from-philips-achieva/3578/6) and [here](https://neurostars.org/t/determining-phase-encoding-direction-and-total-read-out-time-from-philips-scans/25402/4)
+  - This BIDS tag helps tools undistort images.
+  - Philips DICOM headers specify the phase encoding axis (e.g., A-P or L-R) but not the polarity (A --> P or P --> A).
+  - Check the scanner settings or consult with Ron to determine whether the polarity is A --> P or P --> A, and update the `?` in the JSON file with `j` (P --> A) or `j-` (A --> P).
+  - More info [here](https://community.mrtrix.org/t/phase-encoding-direction-from-philips-achieva/3578/6) and [here](https://neurostars.org/t/determining-phase-encoding-direction-and-total-read-out-time-from-philips-scans/25402/4)
 
 !!! info "Handling NaNs in JSON Files"
     NaN values in JSON files can cause errors during the MRIQC workflow. To address NaN values, see the discussions in [this post](https://groups.google.com/g/mriqc-users/c/0v170KRJoKk), [this GitHub issue](https://github.com/nipreps/mriqc/issues/1089), and [this NeuroStars thread](https://neurostars.org/t/node-error-on-mriqc-wf-dwimriqc-computeiqms-datasink/29188).

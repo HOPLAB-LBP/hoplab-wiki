@@ -70,6 +70,16 @@ If you have any questions or run into issues while getting set up, the following
 - **HR Advisor**: Find your HR advisor's details in your [KU Loket profile](https://www.kuleuven.be/kuloket).
 - **Lab Contact**: For questions specific to lab operations, reach out to [Ying Cai](https://www.kuleuven.be/wieiswie/en/person/00098752) for assistance with equipment and orders.
 
+## Unit of Confidence
+
+💬 Need someone to talk to?
+
+At Hoplab, we care deeply about creating a **safe** and **respectful** environment for everyone involved. If you ever experience or witness inappropriate behavior, or if something doesn’t feel right, know that you are not alone.
+
+KU Leuven’s Unit of Confidence offers a confidential and supportive space to talk things through. Whether you are unsure about a situation or need advice, they are here to help.
+
+🔗 Visit the website [here](https://admin.kuleuven.be/thema/socialeveiligheid/en/who/unit-confidence)
+
 ## Get Involved
 
 - **Visit the [HopLab Website](https://www.hoplab.be)** for information on our research projects, team members, and recent publications.

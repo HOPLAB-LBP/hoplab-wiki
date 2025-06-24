@@ -46,8 +46,10 @@ nav:
           - 6. Multi-variate analysis: research/fmri/analysis/fmri-mvpa.md
           - fMRI workflow example: research/fmri/analysis/fmri-andrea-workflow.md
       - Meta-analysis with NiMARE: research/fmri/fmri-nimare.md
+      - fMRIprep on HPC: research/fmri/fmri-hpc.md
     - EEG:
       - research/eeg/index.md
+      - Data acquisition: research/eeg/eeg-acquisition.md
     - Eye-tracking:
       - research/eyetracking/index.md
     - Neural Networks:
@@ -136,7 +138,7 @@ markdown_extensions:
   
 plugins:
   - offline
-  - privacy
+#  - privacy
   - search
   - git-authors
   - git-revision-date-localized:

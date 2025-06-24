@@ -175,7 +175,7 @@ The stimulus computer's desktop is located in the **control room**. It is the se
     - **Screen Width**: 28.35 visual degrees
 
 **TODO:** MATLAB and PTB have been updated to newer version!
-**TODO:** the strcture of these sections is a bit confusing. We list the instruments in the section above, then we explain what to do at the scanner room, then we go back to describing instruments.. perhaps we should streamline this? or probably just make two different pages, one for instrument, one for general step-by-step procedure, and one for frequent errors and solutions/workarounds?
+**TODO:** the structure of these sections is a bit confusing. We list the instruments in the section above, then we explain what to do at the scanner room, then we go back to describing instruments.. perhaps we should streamline this? Or probably just make two different pages, one for instruments, one for a general step-by-step procedure, and one for frequent errors and solutions/workarounds?
 ---
 
 ### Trigger Boxes
@@ -677,6 +677,9 @@ You can export data using either **Nifti/PAR-REC** or **DICOM** formats. Choose 
 !!! tip "Faster Export Method"
     For faster and more reliable data transfer, insert your USB key or hard drive into the **computer in the technical room**, rather than the scan console.
 
+!!! warning "Pseudonymization required"
+    To comply with the GDPR and related data protection regulations, your dataset must be **pseudonymized** by assigning a code name to the exported data — for example, using a subject identifier in BIDS format such as `sub-01`.
+
 ### Nifti or PAR-REC Export
 
 1. Go to **Patients > Administration** in the scan program.
@@ -684,7 +687,7 @@ You can export data using either **Nifti/PAR-REC** or **DICOM** formats. Choose 
 3. Double-click the name and select the runs to export.
 4. Click **Disk Files**.
 5. Navigate to the **Non-Dicom Export** tab.
-6. Choose an export file name and format.
+6. Choose an export file name and format. Please make sure you have checked the box that omits all identifying information from the exported files!
 7. (Optional) Check the **Sort** box, but ensure consistency (either always check it or never).
 8. Press **Proceed** to start the export.
 9. Verify the exported files in the **export folder** on the FTP drive. Double-check the file sizes to ensure all volumes were exported correctly.
@@ -706,10 +709,7 @@ To monitor export progress, navigate to:
 4. Click **Disk Files**.
 5. Select a directory to save the data.
 6. Choose between **Nifti**, **Enhanced (4D DICOM)** or **Classic (2D DICOM)** format (each slice saved as a separate file).
-7. Press **Proceed** to start the export.
-
-!!! info "Anonymization Option"
-    For privacy reasons, it is recommended to anonymize the dataset by giving the exported data a code name (possibly the subject number in BIDS format, e.g., `sub-01`).
+7. Press **Proceed** to start the export. Please make sure you have checked the box that omits all identifying information from the exported files!
 
 !!! tip "Handling Export Delays"
     It may take some time before the export starts. If you see a warning about exporting a large number of images, simply press **Proceed** to confirm.
@@ -983,4 +983,4 @@ In case of an emergency involving the MRI system or facility:
 
 ---
 
-**TODO**: add additional info on DICOM (no enhanced, missing values, etc.). see also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Phillips DICOMS, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.
+**TODO**: add additional info on DICOM (no enhanced, missing values, etc.). See also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Philips DICOMs, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.

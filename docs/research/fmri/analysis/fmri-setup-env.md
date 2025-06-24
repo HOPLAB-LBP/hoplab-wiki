@@ -275,7 +275,7 @@ We use Conda to manage our Python environment.
     ```
 
 !!! warning
-    It's **crucial** to create a new conda environment for each new project you start. Installing new packages into the base conda environment it's a very bad practice that will eventually lead to a bloated, brittle environent with broken packages and compatibility issues. Uninstalling or re-installing Python on some machine can be a very painful (sometimes impossible) process!
+    It's **crucial** to create a new conda environment for each new project you start. Installing new packages into the base conda environment is a very bad practice that will eventually lead to a bloated, brittle environment with broken packages and compatibility issues. Uninstalling or re-installing Python on some machines can be a very painful (sometimes impossible) process!
 
 #### Setting up Spyder IDE
 
