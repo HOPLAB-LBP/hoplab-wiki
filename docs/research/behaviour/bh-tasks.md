@@ -29,8 +29,6 @@ Templates are organized into two sections:
 
     An example of on-site mouse tracker coded with Psychopy.
 
-    See [PLACEHOLDER](#)
-
     [:octicons-arrow-right-24: Learn more](https://github.com/TimManiquet/live-motor-task/tree/main)
 
 </div>
@@ -54,8 +52,6 @@ Templates are organized into two sections:
     ---
 
     A template for online categorization tasks using jsPsych, featuring an animacy task example.
-
-    See [PLACEHOLDER](#)
 
     [:octicons-arrow-right-24: Learn more](https://github.com/HOPLAB-LBP/jspsych-classification-task-template)
 
