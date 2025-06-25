@@ -27,11 +27,11 @@ Templates are organized into two sections:
 
     ---
 
-    A structured template for designing an in-person mouse tracker experiment.
+    An example of on-site mouse tracker coded with Psychopy.
 
     See [PLACEHOLDER](#)
 
-    [:octicons-arrow-right-24: PLACEHOLDER](#)
+    [:octicons-arrow-right-24: PLACEHOLDER](https://github.com/TimManiquet/live-motor-task/tree/main)
 
 </div>
 
