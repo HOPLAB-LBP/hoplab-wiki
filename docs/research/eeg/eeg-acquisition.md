@@ -152,3 +152,4 @@ Hooray, you are now ready to start acquiring EEG-data! To do so, follow these st
 **TODO:** [Klara] Fix the small figure labels (fig 9-12);
 
 **TODO:** [Klara] Add info on how to (quickly) check the triggers, how to (quickly) check bridging and what to do in case of the "could not open port 'COM2'" error message (reconnect cables connecting the trigger box with either stimulus or acquisition pc and/or restart both pcs).
+
