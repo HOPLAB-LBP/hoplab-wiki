@@ -82,7 +82,7 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
 
     [:octicons-arrow-right-24: Learn more](research/eeg/index.md)
 
-- :octicons-eye-24:{ .lg .middle } __Eye Tracking__
+- :fontawesome-solid-brain:{ .lg .middle } __fMRI__
 
     ---
 
