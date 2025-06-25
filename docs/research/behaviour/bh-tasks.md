@@ -31,7 +31,7 @@ Templates are organized into two sections:
 
     See [PLACEHOLDER](#)
 
-    [:octicons-arrow-right-24: PLACEHOLDER](https://github.com/TimManiquet/live-motor-task/tree/main)
+    [:octicons-arrow-right-24: Learn more](https://github.com/TimManiquet/live-motor-task/tree/main)
 
 </div>
 
@@ -45,7 +45,7 @@ Templates are organized into two sections:
 
     A structured template for designing mouse tracker experiments using jsPsych.
 
-    See [Koenig-Robert et al., 2024]([#](https://www.nature.com/articles/s41598-024-62135-7))
+    See [Koenig-Robert et al., 2024](https://www.nature.com/articles/s41598-024-62135-7)
 
     [:octicons-arrow-right-24: Learn more](https://github.com/HOPLAB-LBP/mouse_tracker_template)
 
