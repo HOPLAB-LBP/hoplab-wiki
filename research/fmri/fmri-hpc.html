@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -2085,7 +2085,7 @@
 
 
   
-    <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/edit/main/docs/research/fmri/fmri-hpc.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/edit/main/docs/research/fmri/fmri-hpc.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2139,6 +2139,7 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 <p>To exit the ssh session and go back to your local terminal, type <code>exit</code>.</p>
 <hr />
 <h2 id="3-data-management-on-the-hpc">3. Data Management on the HPC<a class="headerlink" href="#3-data-management-on-the-hpc" title="Permanent link">&para;</a></h2>
+<h3 id="31-structuring-your-data">3.1. Structuring your data<a class="headerlink" href="#31-structuring-your-data" title="Permanent link">&para;</a></h3>
 <p>Your VSC account comes equipped with several folders, each with different characteristics. When logging in, you automatically land in your home directory, which is located at <code>/user/leuven/123/vsc12345</code>. This path is stored in the variable <code>VSC_HOME</code>, which you check by typing <code>echo $VSC_HOME</code> in the terminal. Likewise, other important directories are stored in variables names. To navigate quickly to any of these directories, you can use the <code>cd</code> command followed by the variable name, e.g., <code>cd $VSC_DATA</code> to move to your data directory.</p>
 <p><strong>Folder Structure:</strong></p>
 <ul>
@@ -2151,18 +2152,34 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 </ul>
 <p>A typical approach is to keep a dedicated subdirectory in <code>VSC_DATA</code> for each project. For example:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>VSC_DATA<span class="w">                    </span><span class="c1"># Persistent storage</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├──<span class="w"> </span>data<span class="w">                    </span><span class="c1"># Project data</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│<span class="w">   </span>├──<span class="w"> </span>BIDS<span class="w">                </span><span class="c1"># BIDS dataset</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>derivatives<span class="w">     </span><span class="c1"># Derivatives</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>sub-01<span class="w">          </span><span class="c1"># Subject data</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│<span class="w">   </span>│<span class="w">       </span>├──<span class="w"> </span>anat<span class="w">  </span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>func<span class="w">  </span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│<span class="w">   </span>├──<span class="w"> </span>license.txt<span class="w">         </span><span class="c1"># FreeSurfer license file  </span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│<span class="w">   </span>└──<span class="w"> </span>sourcedata<span class="w">          </span><span class="c1"># Raw data</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>│<span class="w">       </span>└──<span class="w"> </span>DICOM<span class="w">           </span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>│<span class="w">           </span>└──<span class="w"> </span>sub-01<span class="w">      </span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>└──<span class="w"> </span>fmriprep-25.0.0.sif<span class="w">     </span><span class="c1"># Singularity container</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├──<span class="w"> </span>fmri<span class="w">                    </span><span class="c1"># Place to store fMRI data</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>├──<span class="w"> </span>myproject<span class="w">           </span><span class="c1"># project-specific folder</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>BIDS<span class="w">                </span><span class="c1"># BIDS dataset</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>derivatives<span class="w">     </span><span class="c1"># Derivatives</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>sub-01<span class="w">          </span><span class="c1"># Subject data</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span>│<span class="w">   </span>│<span class="w">       </span>├──<span class="w"> </span>anat<span class="w">  </span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span>│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>func<span class="w">  </span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>license.txt<span class="w">         </span><span class="c1"># FreeSurfer license file  </span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>sourcedata<span class="w">          </span><span class="c1"># Raw data</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>DICOM<span class="w">           </span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span>│<span class="w">           </span>└──<span class="w"> </span>sub-01<span class="w">      </span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span>└──<span class="w"> </span>fmriprep-25.0.0.sif<span class="w">     </span><span class="c1"># Singularity container</span>
 </span></code></pre></div>
+<h3 id="32-managing-storage-usage">3.2. Managing storage usage<a class="headerlink" href="#32-managing-storage-usage" title="Permanent link">&para;</a></h3>
+<p>Operations like fMRIPrep can generate large amounts of data, so it is important to manage your data effectively. You can find some general advice on the <a href="https://docs.vscentrum.be/data/managing_storage_usage.html">VSC documentation</a>.</p>
+<p>If your HPC storage is full, you might encounter this type of error when sending data to the compute node:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>rsync:<span class="w"> </span>writefd_unbuffered<span class="w"> </span>failed<span class="w"> </span>to<span class="w"> </span>write<span class="w"> </span><span class="m">32768</span><span class="w"> </span>bytes<span class="w"> </span><span class="o">[</span>sender<span class="o">]</span>:<span class="w"> </span>Broken<span class="w"> </span>pipe<span class="w"> </span><span class="o">(</span>...<span class="o">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>rsync:<span class="w"> </span>connection<span class="w"> </span>unexpectedly<span class="w"> </span>closed<span class="w"> </span><span class="o">(</span>...<span class="w"> </span>bytes<span class="w"> </span>received<span class="w"> </span>so<span class="w"> </span>far<span class="o">)</span><span class="w"> </span><span class="o">[</span>sender<span class="o">]</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>rsync<span class="w"> </span>error:<span class="w"> </span>error<span class="w"> </span><span class="k">in</span><span class="w"> </span>rsync<span class="w"> </span>protocol<span class="w"> </span>data<span class="w"> </span>stream<span class="w"> </span><span class="o">(</span>code<span class="w"> </span><span class="m">12</span><span class="o">)</span><span class="w"> </span>at<span class="w"> </span>...
+</span></code></pre></div>
+<p>When encountering this or other similar errors, you should check your storage usage. Use the following command:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>myquota
+</span></code></pre></div>
+<p>To see, directory by directory, how much space you are using. This command will also show you which directories might be exceeding their quota. You can also check the size of a specific directory, for example, your data directory:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>du<span class="w"> </span>-h<span class="w"> </span><span class="nv">$VSC_DATA</span>
+</span></code></pre></div>
+<p>Where <code>-h</code> means "human-readable" (e.g., in GB or MB, add <code>-s</code> - "summary" for the total size).</p>
+<p>If you find your storage full, it is a good idea to <strong>clean up</strong> the files you won't need anymore, as well as the data you've already downloaded locally. In general, it is best not to consider the HPC as a long-term storage solution.</p>
 <hr />
 <h2 id="4-transferring-data-to-the-hpc">4. Transferring Data to the HPC<a class="headerlink" href="#4-transferring-data-to-the-hpc" title="Permanent link">&para;</a></h2>
 <p>Once connected to the cluster, you’ll need to transfer your BIDS dataset, FreeSurfer license, and other relevant files to your <code>VSC_DATA</code> directory on the HPC system.</p>
@@ -2196,16 +2213,16 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 <li><a href="https://firewall.vscentrum.be/auth/login"><strong>Login</strong></a> through the firewall.</li>
 </ol>
 <p>2a. Basic <code>scp</code> (secure copy):
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>scp<span class="w"> </span>-r<span class="w"> </span>/local/path/BIDS<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>scp<span class="w"> </span>-r<span class="w"> </span>/local/path/BIDS<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS
 </span></code></pre></div></p>
 <ul>
 <li><code>-r</code> copies directories recursively.</li>
 </ul>
 <p>2b. Merging folders with <code>rsync</code> (recommended):</p>
 <p>Use <code>rsync</code> to avoid overwriting existing files:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>rsync<span class="w"> </span>-av<span class="w"> </span>--ignore-existing<span class="w"> </span>/local/path/BIDS<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>rsync<span class="w"> </span>-av<span class="w"> </span>--ignore-existing<span class="w"> </span>/local/path/BIDS<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/
 </span></code></pre></div>
 <ul>
 <li><code>-a</code> preserves file attributes.</li>
@@ -2221,12 +2238,12 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 <ol>
 <li><strong>Move to <code>VSC_DATA</code>:</strong></li>
 </ol>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cd $VSC_DATA
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cd $VSC_DATA
 </span></code></pre></div>
 <ol>
 <li><strong>Build the Container:</strong></li>
 </ol>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>singularity build fmriprep-25.0.0.sif docker://nipreps/fmriprep:25.0.0
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>singularity build fmriprep-25.0.0.sif docker://nipreps/fmriprep:25.0.0
 </span></code></pre></div>
 <p>This fetches the Docker image and converts it to a Singularity <code>.sif</code> image.</p>
 <div class="admonition warning">
@@ -2238,63 +2255,63 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 <h3 id="61-creating-a-slurm-jobscript">6.1. Creating a Slurm Jobscript<a class="headerlink" href="#61-creating-a-slurm-jobscript" title="Permanent link">&para;</a></h3>
 <p>To submit our job to the compute node, we will need to create a Slurm script. This script will define the job resources, dependencies, and all the steps needed to complete the workflow. Then, submit the jobscript to the cluster using the <code>sbatch</code> command. Your batch job will run remotely on a compute node, and <code>fmriprep</code> will be executed from within a container.</p>
 <p>To create such file, type in your ssh session:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$VSC_DATA</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>nano<span class="w"> </span>run_fmriprep_job.slurm
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$VSC_DATA</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>nano<span class="w"> </span>run_fmriprep_job.slurm
 </span></code></pre></div>
 <p>This will open a text editor. Use the following template as a guideline, but change relevant fields (such as job name, account name etc) accordingly:</p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>#!/bin/bash -l
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>#SBATCH --account=intro_vsc12345
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>#SBATCH --cluster=genius
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>#SBATCH --partition=batch
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>#SBATCH --ntasks=1
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>#SBATCH --cpus-per-task=16
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>#SBATCH --mem=20G
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>#SBATCH --time=08:00:00
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>#SBATCH --job-name=fmriprep_sub-42
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>#SBATCH --output=slurm-%j.out
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>#SBATCH --error=slurm-%j.err
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>#SBATCH --mail-type=END,FAIL
-</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>#SBATCH --mail-user=your.email@kuleuven.be
-</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
-</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a># Move to the data directory
-</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>cd $VSC_DATA/data
-</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>
-</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a># Run fMRIPrep with Singularity
-</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>singularity run --cleanenv \
-</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>  -B $VSC_DATA/data/BIDS:/data:ro \
-</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>  -B $VSC_DATA/data/BIDS/derivatives:/out \
-</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>  -B $VSC_SCRATCH/fmriprep_tmp:/scratch \
-</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>  -B $VSC_DATA/data/license.txt:/opt/freesurfer/license.txt \
-</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>  $VSC_DATA/fmriprep-25.0.0.sif \
-</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>  /data /out/fmriprep participant \
-</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>  --participant-label 42 \
-</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>  --skip-bids-validation \
-</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>  --output-spaces MNI152NLin2009cAsym:res-2 fsaverage \
-</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>  --work-dir /scratch \
-</span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>  --bold2anat-dof 9 \
-</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>  --nthreads 16 --omp-nthreads 16 \
-</span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>  --mem-mb 20000 \
-</span><span id="__span-8-33"><a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a>  --clean-workdir
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>#!/bin/bash -l
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>#SBATCH --account=intro_vsc12345
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>#SBATCH --cluster=genius
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>#SBATCH --partition=batch
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>#SBATCH --ntasks=1
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>#SBATCH --cpus-per-task=16
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>#SBATCH --mem=20G
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>#SBATCH --time=08:00:00
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>#SBATCH --job-name=fmriprep_sub-42
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>#SBATCH --output=slurm-%j.out
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>#SBATCH --error=slurm-%j.err
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>#SBATCH --mail-type=END,FAIL
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>#SBATCH --mail-user=your.email@kuleuven.be
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a># Move to the data directory
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>cd $VSC_DATA/data
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a># Run fMRIPrep with Singularity
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>singularity run --cleanenv \
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>  -B $VSC_DATA/data/BIDS:/data:ro \
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>  -B $VSC_DATA/data/BIDS/derivatives:/out \
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>  -B $VSC_SCRATCH/fmriprep_tmp:/scratch \
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>  -B $VSC_DATA/data/license.txt:/opt/freesurfer/license.txt \
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>  $VSC_DATA/fmriprep-25.0.0.sif \
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>  /data /out/fmriprep participant \
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>  --participant-label 42 \
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>  --skip-bids-validation \
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>  --output-spaces MNI152NLin2009cAsym:res-2 fsaverage \
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>  --work-dir /scratch \
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>  --bold2anat-dof 9 \
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>  --nthreads 16 --omp-nthreads 16 \
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>  --mem-mb 20000 \
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a>  --clean-workdir
 </span></code></pre></div>
 Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether your file was saved correctly:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ls<span class="w"> </span><span class="nv">$VSC_DATA</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ls<span class="w"> </span><span class="nv">$VSC_DATA</span>
 </span></code></pre></div>
 <p>which should return:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
 </span></code></pre></div>
 <h3 id="62-submitting-the-job">6.2 Submitting the Job<a class="headerlink" href="#62-submitting-the-job" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Navigate to the same directory as your script (or specify the full path):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$VSC_DATA</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$VSC_DATA</span>
 </span></code></pre></div>
 </li>
 <li>
 <p>Submit:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sbatch<span class="w"> </span>run_fmriprep_job.slurm
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sbatch<span class="w"> </span>run_fmriprep_job.slurm
 </span></code></pre></div>
 <p>A message appears:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">58070026</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">58070026</span>
 </span></code></pre></div>
 </li>
 </ol>
@@ -2303,11 +2320,11 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 <li>
 <p>Check the status of your job:</p>
 <p>Through the <strong>terminal</strong>, you can check the status of your job by running:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>squeue<span class="w"> </span>-j<span class="w"> </span><span class="m">58070026</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>squeue<span class="w"> </span>-j<span class="w"> </span><span class="m">58070026</span>
 </span></code></pre></div>
 <p>Which returns:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="m">58070026</span><span class="w"> </span>batch<span class="w">     </span>fmriprep<span class="w"> </span>vsc12345<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:00<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>Priority<span class="o">)</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="m">58070026</span><span class="w"> </span>batch<span class="w">     </span>fmriprep<span class="w"> </span>vsc12345<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:00<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>Priority<span class="o">)</span>
 </span></code></pre></div>
 Through the KU Leuven <strong>OnDemand</strong> interface, you can also check the status of your job by clicking on the <em>Active jobs</em> tab in the dashboard.</p>
 </li>
@@ -2335,16 +2352,16 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 <h2 id="7-monitoring-your-job">7. Monitoring Your Job<a class="headerlink" href="#7-monitoring-your-job" title="Permanent link">&para;</a></h2>
 <h3 id="71-job-queue">7.1 Job Queue<a class="headerlink" href="#71-job-queue" title="Permanent link">&para;</a></h3>
 <p>Check the status of your running or pending jobs:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>squeue<span class="w"> </span>-M<span class="w"> </span>genius,wice<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>squeue<span class="w"> </span>-M<span class="w"> </span>genius,wice<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
 </span></code></pre></div>
 <p>which returns:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>$<span class="w"> </span>squeue<span class="w"> </span>-M<span class="w"> </span>genius,wice<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>CLUSTER:<span class="w"> </span>genius
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">             </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">          </span><span class="m">58070026</span><span class="w">     </span>batch<span class="w"> </span>fmriprep<span class="w"> </span>vsc12345<span class="w">  </span>R<span class="w">    </span><span class="m">2</span>:25:57<span class="w">      </span><span class="m">1</span><span class="w"> </span>r27i27n19
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>CLUSTER:<span class="w"> </span>wice
-</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">             </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>$<span class="w"> </span>squeue<span class="w"> </span>-M<span class="w"> </span>genius,wice<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>CLUSTER:<span class="w"> </span>genius
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">             </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">          </span><span class="m">58070026</span><span class="w">     </span>batch<span class="w"> </span>fmriprep<span class="w"> </span>vsc12345<span class="w">  </span>R<span class="w">    </span><span class="m">2</span>:25:57<span class="w">      </span><span class="m">1</span><span class="w"> </span>r27i27n19
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>CLUSTER:<span class="w"> </span>wice
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">             </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
 </span></code></pre></div>
 <ul>
 <li><code>R</code> means running, <code>PD</code> means pending.  </li>
@@ -2358,31 +2375,31 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 </ul>
 <h4 id="check-available-files">Check Available Files<a class="headerlink" href="#check-available-files" title="Permanent link">&para;</a></h4>
 <p>To see the files in your current directory:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>ls
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ls
 </span></code></pre></div>
 <p>You should see something like:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>fmriprep-25.0.0.sif  data  run_fmriprep_job.slurm  slurm-58070026.out  slurm-58070026.err
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>fmriprep-25.0.0.sif  data  run_fmriprep_job.slurm  slurm-58070026.out  slurm-58070026.err
 </span></code></pre></div>
 <h4 id="open-and-read-the-logs">Open and Read the Logs<a class="headerlink" href="#open-and-read-the-logs" title="Permanent link">&para;</a></h4>
 <p>To open the full output log (static view):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>nano<span class="w"> </span>slurm-58070026.out
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>nano<span class="w"> </span>slurm-58070026.out
 </span></code></pre></div>
 <p>To close <code>nano</code>, press <code>Ctrl+X</code> → then <code>N</code> if prompted to save changes.</p>
 <p>To view just the last few lines of the file:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">30</span><span class="w"> </span>slurm-58070026.out
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">30</span><span class="w"> </span>slurm-58070026.out
 </span></code></pre></div>
 <p>This prints the last 30 lines of the file — useful to check progress without opening the full log.</p>
 <p>To <strong>continuously monitor</strong> the last lines in real time (refreshes every 1 second):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">30</span><span class="w"> </span>slurm-58070026.out
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">30</span><span class="w"> </span>slurm-58070026.out
 </span></code></pre></div>
 <p>This will auto-refresh every second and is very helpful to track live progress.</p>
 <p>To exit the <code>watch</code> session Press <code>Ctrl+Z</code>.</p>
 <h2 id="8-canceling-a-job">8 Canceling a Job<a class="headerlink" href="#8-canceling-a-job" title="Permanent link">&para;</a></h2>
 <p>If you want to stop a running or pending job you need to provide the cluster name (defaults to Genius), and the unique <code>&lt;jobID&gt;</code>, e.g.:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>scancel<span class="w"> </span><span class="m">58070026</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>scancel<span class="w"> </span><span class="m">58070026</span>
 </span></code></pre></div>
 <p>Or:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>scancel<span class="w"> </span>--user<span class="o">=</span><span class="nv">$USER</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>scancel<span class="w"> </span>--user<span class="o">=</span><span class="nv">$USER</span>
 </span></code></pre></div>
 <hr />
 <h2 id="9-after-the-job-completes">9. After the Job Completes<a class="headerlink" href="#9-after-the-job-completes" title="Permanent link">&para;</a></h2>
@@ -2391,17 +2408,17 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 <ul>
 <li>
 <p>✅ <strong>Successful run:</strong>
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>Slurm Job_id=58070026 Name=fmriprep_sub-42 Ended, Run time 03:41:05, COMPLETED, ExitCode 0
+  <div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Slurm Job_id=58070026 Name=fmriprep_sub-42 Ended, Run time 03:41:05, COMPLETED, ExitCode 0
 </span></code></pre></div></p>
 </li>
 <li>
 <p>❌ <strong>Cancelled manually or by the system:</strong>
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Slurm Job_id=58069757 Name=fmriprep_sub-42 Ended, Run time 00:00:00, CANCELLED, ExitCode 0
+  <div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Slurm Job_id=58069757 Name=fmriprep_sub-42 Ended, Run time 00:00:00, CANCELLED, ExitCode 0
 </span></code></pre></div></p>
 </li>
 <li>
 <p>⚠️ <strong>Job failed with error:</strong>
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Slurm Job_id=58069624 Name=fmriprep_sub-42 Failed, Run time 00:00:20, FAILED, ExitCode 255
+  <div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>Slurm Job_id=58069624 Name=fmriprep_sub-42 Failed, Run time 00:00:20, FAILED, ExitCode 255
 </span></code></pre></div></p>
 </li>
 </ul>
@@ -2415,12 +2432,12 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 <ol>
 <li>
 <p>Go to the correct folder (usually <code>$VSC_DATA</code>):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$VSC_DATA</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$VSC_DATA</span>
 </span></code></pre></div>
 </li>
 <li>
 <p>Open the output file:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>nano<span class="w"> </span>slurm-58070026.out
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>nano<span class="w"> </span>slurm-58070026.out
 </span></code></pre></div>
 <ul>
 <li>Use the arrow keys to scroll.</li>
@@ -2430,7 +2447,7 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 </li>
 <li>
 <p>Also open the error file:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>nano<span class="w"> </span>slurm-58070026.err
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>nano<span class="w"> </span>slurm-58070026.err
 </span></code></pre></div>
 <ul>
 <li>This might contain Python tracebacks or messages from Singularity.</li>
@@ -2442,52 +2459,52 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 <h3 id="93-verifying-successful-runs">9.3 Verifying Successful Runs<a class="headerlink" href="#93-verifying-successful-runs" title="Permanent link">&para;</a></h3>
 <p>If the job completed successfully, it's time to check the output files.</p>
 <p>In our SLURM script, the <code>--output</code> directory is bound to:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>-B $VSC_DATA/data/BIDS/derivatives:/out
+<div class="language-text highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>-B $VSC_DATA/data/BIDS/derivatives:/out
 </span></code></pre></div>
 <p>So the results will be saved under:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>$VSC_DATA/data/BIDS/derivatives/fmriprep
+<div class="language-text highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>$VSC_DATA/data/BIDS/derivatives/fmriprep
 </span></code></pre></div>
 <p>To inspect the results:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$VSC_DATA</span>/data/BIDS/derivatives/fmriprep
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>ls
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$VSC_DATA</span>/data/BIDS/derivatives/fmriprep
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>ls
 </span></code></pre></div>
 <p>You should see something like this:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>dataset_description.json  logs  sourcedata  sub-42  sub-42.html
+<div class="language-text highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>dataset_description.json  logs  sourcedata  sub-42  sub-42.html
 </span></code></pre></div>
 <p>Use the <code>tree</code> command to get a visual overview of the folder structure:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>tree<span class="w"> </span>-L<span class="w"> </span><span class="m">2</span><span class="w"> </span>.
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>tree<span class="w"> </span>-L<span class="w"> </span><span class="m">2</span><span class="w"> </span>.
 </span></code></pre></div>
 <p>Expected output:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>fmriprep/
-</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>├── dataset_description.json
-</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>├── logs/
-</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>│   ├── CITATION.bib
-</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>│   ├── CITATION.html
-</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>│   ├── CITATION.md
-</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>│   └── CITATION.tex
-</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>├── sourcedata/
-</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>│   └── freesurfer/
-</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>│       ├── fsaverage/
-</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>│       └── sub-42/         # FreeSurfer recon-all output
-</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>├── sub-42/
-</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>│   ├── anat/
-</span><span id="__span-36-14"><a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a>│   │   ├── sub-42_desc-preproc_T1w.nii.gz
-</span><span id="__span-36-15"><a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a>│   │   ├── sub-42_dseg.nii.gz
-</span><span id="__span-36-16"><a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a>│   │   ├── sub-42_space-MNI152NLin2009cAsym_res-2_desc-preproc_T1w.nii.gz
-</span><span id="__span-36-17"><a id="__codelineno-36-17" name="__codelineno-36-17" href="#__codelineno-36-17"></a>│   │   └── ...
-</span><span id="__span-36-18"><a id="__codelineno-36-18" name="__codelineno-36-18" href="#__codelineno-36-18"></a>│   ├── func/
-</span><span id="__span-36-19"><a id="__codelineno-36-19" name="__codelineno-36-19" href="#__codelineno-36-19"></a>│   │   ├── sub-42_task-*_desc-preproc_bold.nii.gz
-</span><span id="__span-36-20"><a id="__codelineno-36-20" name="__codelineno-36-20" href="#__codelineno-36-20"></a>│   │   ├── sub-42_task-*_desc-confounds_timeseries.tsv
-</span><span id="__span-36-21"><a id="__codelineno-36-21" name="__codelineno-36-21" href="#__codelineno-36-21"></a>│   │   ├── sub-42_task-*_space-MNI152NLin2009cAsym_res-2_desc-brain_mask.nii.gz
-</span><span id="__span-36-22"><a id="__codelineno-36-22" name="__codelineno-36-22" href="#__codelineno-36-22"></a>│   │   └── ...
-</span><span id="__span-36-23"><a id="__codelineno-36-23" name="__codelineno-36-23" href="#__codelineno-36-23"></a>│   ├── figures/
-</span><span id="__span-36-24"><a id="__codelineno-36-24" name="__codelineno-36-24" href="#__codelineno-36-24"></a>│   │   ├── sub-42_desc-summary_T1w.html
-</span><span id="__span-36-25"><a id="__codelineno-36-25" name="__codelineno-36-25" href="#__codelineno-36-25"></a>│   │   ├── sub-42_task-*_desc-summary_bold.html
-</span><span id="__span-36-26"><a id="__codelineno-36-26" name="__codelineno-36-26" href="#__codelineno-36-26"></a>│   │   └── ...
-</span><span id="__span-36-27"><a id="__codelineno-36-27" name="__codelineno-36-27" href="#__codelineno-36-27"></a>│   └── log/
-</span><span id="__span-36-28"><a id="__codelineno-36-28" name="__codelineno-36-28" href="#__codelineno-36-28"></a>│       └── &lt;timestamped-folder&gt;/
-</span><span id="__span-36-29"><a id="__codelineno-36-29" name="__codelineno-36-29" href="#__codelineno-36-29"></a>│           └── fmriprep.toml
-</span><span id="__span-36-30"><a id="__codelineno-36-30" name="__codelineno-36-30" href="#__codelineno-36-30"></a>├── sub-42.html              # Subject-level report
+<div class="language-text highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>fmriprep/
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>├── dataset_description.json
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>├── logs/
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>│   ├── CITATION.bib
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>│   ├── CITATION.html
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>│   ├── CITATION.md
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>│   └── CITATION.tex
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>├── sourcedata/
+</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>│   └── freesurfer/
+</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>│       ├── fsaverage/
+</span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a>│       └── sub-42/         # FreeSurfer recon-all output
+</span><span id="__span-39-12"><a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a>├── sub-42/
+</span><span id="__span-39-13"><a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a>│   ├── anat/
+</span><span id="__span-39-14"><a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a>│   │   ├── sub-42_desc-preproc_T1w.nii.gz
+</span><span id="__span-39-15"><a id="__codelineno-39-15" name="__codelineno-39-15" href="#__codelineno-39-15"></a>│   │   ├── sub-42_dseg.nii.gz
+</span><span id="__span-39-16"><a id="__codelineno-39-16" name="__codelineno-39-16" href="#__codelineno-39-16"></a>│   │   ├── sub-42_space-MNI152NLin2009cAsym_res-2_desc-preproc_T1w.nii.gz
+</span><span id="__span-39-17"><a id="__codelineno-39-17" name="__codelineno-39-17" href="#__codelineno-39-17"></a>│   │   └── ...
+</span><span id="__span-39-18"><a id="__codelineno-39-18" name="__codelineno-39-18" href="#__codelineno-39-18"></a>│   ├── func/
+</span><span id="__span-39-19"><a id="__codelineno-39-19" name="__codelineno-39-19" href="#__codelineno-39-19"></a>│   │   ├── sub-42_task-*_desc-preproc_bold.nii.gz
+</span><span id="__span-39-20"><a id="__codelineno-39-20" name="__codelineno-39-20" href="#__codelineno-39-20"></a>│   │   ├── sub-42_task-*_desc-confounds_timeseries.tsv
+</span><span id="__span-39-21"><a id="__codelineno-39-21" name="__codelineno-39-21" href="#__codelineno-39-21"></a>│   │   ├── sub-42_task-*_space-MNI152NLin2009cAsym_res-2_desc-brain_mask.nii.gz
+</span><span id="__span-39-22"><a id="__codelineno-39-22" name="__codelineno-39-22" href="#__codelineno-39-22"></a>│   │   └── ...
+</span><span id="__span-39-23"><a id="__codelineno-39-23" name="__codelineno-39-23" href="#__codelineno-39-23"></a>│   ├── figures/
+</span><span id="__span-39-24"><a id="__codelineno-39-24" name="__codelineno-39-24" href="#__codelineno-39-24"></a>│   │   ├── sub-42_desc-summary_T1w.html
+</span><span id="__span-39-25"><a id="__codelineno-39-25" name="__codelineno-39-25" href="#__codelineno-39-25"></a>│   │   ├── sub-42_task-*_desc-summary_bold.html
+</span><span id="__span-39-26"><a id="__codelineno-39-26" name="__codelineno-39-26" href="#__codelineno-39-26"></a>│   │   └── ...
+</span><span id="__span-39-27"><a id="__codelineno-39-27" name="__codelineno-39-27" href="#__codelineno-39-27"></a>│   └── log/
+</span><span id="__span-39-28"><a id="__codelineno-39-28" name="__codelineno-39-28" href="#__codelineno-39-28"></a>│       └── &lt;timestamped-folder&gt;/
+</span><span id="__span-39-29"><a id="__codelineno-39-29" name="__codelineno-39-29" href="#__codelineno-39-29"></a>│           └── fmriprep.toml
+</span><span id="__span-39-30"><a id="__codelineno-39-30" name="__codelineno-39-30" href="#__codelineno-39-30"></a>├── sub-42.html              # Subject-level report
 </span></code></pre></div>
 <p>This confirms that <code>fMRIPrep</code> completed for subject 42 and produced its derivatives, QC figures, and logs.</p>
 <hr />
@@ -2513,7 +2530,7 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 <p><strong>Navigate &amp; Download:</strong></p>
 <ul>
 <li>In WinSCP, navigate on the remote side to:
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep
+  <div class="language-text highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep
 </span></code></pre></div>
   (Replace <code>vsc12345</code> with your actual VSC username.)</li>
 <li>On your local machine side, open (or create) a destination folder where you want to save the files.</li>
@@ -2534,7 +2551,7 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 <p><strong>Use <code>scp</code> or <code>rsync</code>:</strong></p>
 <ul>
 <li><strong>Basic <code>scp</code> example</strong>:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>scp<span class="w"> </span>-r<span class="w"> </span>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep<span class="w"> </span>/local/path/
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>scp<span class="w"> </span>-r<span class="w"> </span>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep<span class="w"> </span>/local/path/
 </span></code></pre></div></li>
 <li>The <code>-r</code> flag copies directories recursively.</li>
 <li>Replace <code>vsc12345</code> and <code>123</code> with your own account details.</li>
@@ -2543,9 +2560,9 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 </li>
 <li>
 <p><strong><code>rsync</code> (recommended for large data)</strong>:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>rsync<span class="w"> </span>-av<span class="w"> </span>--progress<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">  </span>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="w">  </span>/local/path/
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>rsync<span class="w"> </span>-av<span class="w"> </span>--progress<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="w">  </span>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="w">  </span>/local/path/
 </span></code></pre></div></p>
 </li>
 <li><code>-a</code> preserves file attributes.</li>
@@ -2555,14 +2572,14 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 </li>
 <li>
 <p>Or, if you only want to <strong>quickly download reports</strong> and related files (for quick results check):
-   <div class="language-text highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>rsync -av --progress \
-</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>--include=&#39;*/&#39; \
-</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>--include=&#39;*.html&#39; \
-</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>--include=&#39;*.svg&#39; \
-</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>--include=&#39;*.png&#39; \
-</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>--exclude=&#39;*&#39; \
-</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep/ \
-</span><span id="__span-40-8"><a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>/local/path/fmriprep_reports/
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>rsync -av --progress \
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>--include=&#39;*/&#39; \
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>--include=&#39;*.html&#39; \
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>--include=&#39;*.svg&#39; \
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a>--include=&#39;*.png&#39; \
+</span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a>--exclude=&#39;*&#39; \
+</span><span id="__span-43-7"><a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep/ \
+</span><span id="__span-43-8"><a id="__codelineno-43-8" name="__codelineno-43-8" href="#__codelineno-43-8"></a>/local/path/fmriprep_reports/
 </span></code></pre></div></p>
 </li>
 </ul>
@@ -2577,27 +2594,27 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 <p>Sometimes you want to inspect your job in real-time to check whether it is using the resources (CPU, memory) you requested.</p>
 <h3 id="101-identify-the-compute-node">10.1 Identify the Compute Node<a class="headerlink" href="#101-identify-the-compute-node" title="Permanent link">&para;</a></h3>
 <p>First, determine which compute node your job is running on by checking the job queue:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>squeue<span class="w"> </span>-M<span class="w"> </span>genius,wice<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>squeue<span class="w"> </span>-M<span class="w"> </span>genius,wice<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
 </span></code></pre></div>
 <p>Example output:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>CLUSTER: genius
-</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>          58070026     batch fmriprep vsc12345  R      40:46      1 r27i27n19
+<div class="language-text highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>CLUSTER: genius
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>          58070026     batch fmriprep vsc12345  R      40:46      1 r27i27n19
 </span></code></pre></div>
 <p>Look at the <strong>NODELIST</strong> column — in this case, your job is running on node <code>r27i27n19</code>.</p>
 <p>If NODELIST shows <code>(Priority)</code> with state <code>PD</code> (for pending), it means your job is still waiting in the queue and hasn`t started yet.</p>
 <h3 id="102-ssh-into-the-compute-node">10.2: SSH into the Compute Node<a class="headerlink" href="#102-ssh-into-the-compute-node" title="Permanent link">&para;</a></h3>
 <p>To access the compute node where your job is running:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>ssh<span class="w"> </span>r27i27n19
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>ssh<span class="w"> </span>r27i27n19
 </span></code></pre></div>
 <p>You should see a message like:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>Joining job 58070026
+<div class="language-text highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>Joining job 58070026
 </span></code></pre></div>
 <p>Also, the prompt will change from the login node (e.g., <code>tier2-p-login-2</code>) to the compute node (e.g., <code>r27i27n19</code>), indicating you are now inside the job environment on the actual node.</p>
 <hr />
 <h3 id="103-run-htop-to-monitor-resource-usage">10.3: Run <code>htop</code> to Monitor Resource Usage<a class="headerlink" href="#103-run-htop-to-monitor-resource-usage" title="Permanent link">&para;</a></h3>
 <p>Once inside the compute node, run:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>htop<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>htop<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
 </span></code></pre></div>
 <p>This opens a live system monitor like this one:</p>
 <p><img alt="fmri-htop" src="../../assets/fmri-hpc-htop.png" /></p>
@@ -2641,7 +2658,7 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="June 24, 2025 13:50:53 CEST">June 24, 2025 13:50:53</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="July 9, 2025 13:46:26 CEST">July 9, 2025 13:46:26</span>
   </span>
 
     
@@ -2891,7 +2908,7 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
       <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.sections", "search.highlight", "navigation.indexes", "navigation.footer"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>
