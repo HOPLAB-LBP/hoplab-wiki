@@ -77,17 +77,18 @@ A typical approach is to keep a dedicated subdirectory in `VSC_DATA` for each pr
 
 ```bash
 VSC_DATA                    # Persistent storage
-├── data                    # Project data
-│   ├── BIDS                # BIDS dataset
-│   │   ├── derivatives     # Derivatives
-│   │   └── sub-01          # Subject data
-│   │       ├── anat  
-│   │       └── func  
-│   ├── license.txt         # FreeSurfer license file  
-│   └── sourcedata          # Raw data
-│       └── DICOM           
-│           └── sub-01      
-└── fmriprep-25.0.0.sif     # Singularity container
+├── fmri                    # Place to store fMRI data
+    ├── myproject           # project-specific folder
+    │   ├── BIDS                # BIDS dataset
+    │   │   ├── derivatives     # Derivatives
+    │   │   └── sub-01          # Subject data
+    │   │       ├── anat  
+    │   │       └── func  
+    │   ├── license.txt         # FreeSurfer license file  
+    │   └── sourcedata          # Raw data
+    │       └── DICOM           
+    │           └── sub-01      
+    └── fmriprep-25.0.0.sif     # Singularity container
 ```
 
 ### 3.2. Managing storage usage
