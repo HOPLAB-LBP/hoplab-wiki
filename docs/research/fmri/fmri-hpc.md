@@ -60,6 +60,8 @@ To exit the ssh session and go back to your local terminal, type `exit`.
 
 ## 3. Data Management on the HPC
 
+### 3.1. Structuring your data
+
 Your VSC account comes equipped with several folders, each with different characteristics. When logging in, you automatically land in your home directory, which is located at `/user/leuven/123/vsc12345`. This path is stored in the variable `VSC_HOME`, which you check by typing `echo $VSC_HOME` in the terminal. Likewise, other important directories are stored in variables names. To navigate quickly to any of these directories, you can use the `cd` command followed by the variable name, e.g., `cd $VSC_DATA` to move to your data directory.
 
 **Folder Structure:**
@@ -87,6 +89,34 @@ VSC_DATA                    # Persistent storage
 │           └── sub-01      
 └── fmriprep-25.0.0.sif     # Singularity container
 ```
+
+### 3.2. Managing storage usage
+
+Operations like fMRIPrep can generate large amounts of data, so it is important to manage your data effectively. You can find some general advice on the [VSC documentation](https://docs.vscentrum.be/data/managing_storage_usage.html).
+
+If your HPC storage is full, you might encounter this type of error when sending data to the compute node:
+
+```bash
+rsync: writefd_unbuffered failed to write 32768 bytes [sender]: Broken pipe (...)
+rsync: connection unexpectedly closed (... bytes received so far) [sender]
+rsync error: error in rsync protocol data stream (code 12) at ...
+```
+
+When encountering this or other similar errors, you should check your storage usage. Use the following command:
+
+```bash
+myquota
+```
+
+To see, directory by directory, how much space you are using. This command will also show you which directories might be exceeding their quota. You can also check the size of a specific directory, for example, your data directory:
+
+```bash
+du -h $VSC_DATA
+```
+
+Where `-h` means "human-readable" (e.g., in GB or MB, add `-s` - "summary" for the total size).
+
+If you find your storage full, it is a good idea to **clean up** the files you won't need anymore, as well as the data you've already downloaded locally. In general, it is best not to consider the HPC as a long-term storage solution.
 
 ---
 
@@ -573,39 +603,11 @@ After fMRIPrep completes successfully, you might want to retrieve the `derivativ
 
 ---
 
-## 10. Managing data
-
-Operations like fMRIPrep can generate large amounts of data, so it is important to manage your data effectively. You can find some general advice on the [VSC documentation](https://docs.vscentrum.be/data/managing_storage_usage.html).
-
-If your HPC storage is full, you might encounter this type of error when sending data to the compute node:
-
-```bash
-rsync: writefd_unbuffered failed to write 32768 bytes [sender]: Broken pipe (...)
-rsync: connection unexpectedly closed (... bytes received so far) [sender]
-rsync error: error in rsync protocol data stream (code 12) at ...
-```
-
-When encountering this or other similar errors, you should check your storage usage. Use the following command:
-
-```bash
-myquota
-```
-
-To see, directory by directory, how much space you are using. This command will also show you which directories might be exceeding their quota. You can also check the size of a specific directory, for example, your data directory:
-
-```bash
-du -h $VSC_DATA
-```
-
-Where `-h` means "human-readable" (e.g., in GB or MB, add `-s` - "summary" for the total size).
-
-If you find your storage full, it is a good idea to **clean up** the files you won't need anymore, as well as the data you've already downloaded locally. In general, it is best not to consider the HPC as a long-term storage solution.
-
-## 11. Advanced: Monitoring Resource Usage
+## 10. Advanced: Monitoring Resource Usage
 
 Sometimes you want to inspect your job in real-time to check whether it is using the resources (CPU, memory) you requested.
 
-### 11.1 Identify the Compute Node
+### 10.1 Identify the Compute Node
 
 First, determine which compute node your job is running on by checking the job queue:
 
@@ -625,7 +627,7 @@ Look at the **NODELIST** column — in this case, your job is running on node ``
 
 If NODELIST shows `(Priority)` with state `PD` (for pending), it means your job is still waiting in the queue and hasn`t started yet.
 
-### 11.2: SSH into the Compute Node
+### 10.2: SSH into the Compute Node
 
 To access the compute node where your job is running:
 
@@ -643,7 +645,7 @@ Also, the prompt will change from the login node (e.g., ``tier2-p-login-2``) to 
 
 ---
 
-### 11.3: Run `htop` to Monitor Resource Usage
+### 10.3: Run `htop` to Monitor Resource Usage
 
 Once inside the compute node, run:
 
@@ -668,7 +670,7 @@ To exit `htop`, press **F10** or **q**
 
 ---
 
-## 12. References and Links
+## 11. References and Links
 
 - [VSC Documentation](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/index.html)
 - [KU Leuven HPC Info](https://icts.kuleuven.be/sc/onderzoeksgegevens/hpc)
