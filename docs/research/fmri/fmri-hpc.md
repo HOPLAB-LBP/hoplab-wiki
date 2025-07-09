@@ -60,6 +60,8 @@ To exit the ssh session and go back to your local terminal, type `exit`.
 
 ## 3. Data Management on the HPC
 
+### 3.1. Structuring your data
+
 Your VSC account comes equipped with several folders, each with different characteristics. When logging in, you automatically land in your home directory, which is located at `/user/leuven/123/vsc12345`. This path is stored in the variable `VSC_HOME`, which you check by typing `echo $VSC_HOME` in the terminal. Likewise, other important directories are stored in variables names. To navigate quickly to any of these directories, you can use the `cd` command followed by the variable name, e.g., `cd $VSC_DATA` to move to your data directory.
 
 **Folder Structure:**
@@ -75,18 +77,47 @@ A typical approach is to keep a dedicated subdirectory in `VSC_DATA` for each pr
 
 ```bash
 VSC_DATA                    # Persistent storage
-├── data                    # Project data
-│   ├── BIDS                # BIDS dataset
-│   │   ├── derivatives     # Derivatives
-│   │   └── sub-01          # Subject data
-│   │       ├── anat  
-│   │       └── func  
-│   ├── license.txt         # FreeSurfer license file  
-│   └── sourcedata          # Raw data
-│       └── DICOM           
-│           └── sub-01      
-└── fmriprep-25.0.0.sif     # Singularity container
+├── fmri                    # Place to store fMRI data
+    ├── myproject           # project-specific folder
+    │   ├── BIDS                # BIDS dataset
+    │   │   ├── derivatives     # Derivatives
+    │   │   └── sub-01          # Subject data
+    │   │       ├── anat  
+    │   │       └── func  
+    │   ├── license.txt         # FreeSurfer license file  
+    │   └── sourcedata          # Raw data
+    │       └── DICOM           
+    │           └── sub-01      
+    └── fmriprep-25.0.0.sif     # Singularity container
 ```
+
+### 3.2. Managing storage usage
+
+Operations like fMRIPrep can generate large amounts of data, so it is important to manage your data effectively. You can find some general advice on the [VSC documentation](https://docs.vscentrum.be/data/managing_storage_usage.html).
+
+If your HPC storage is full, you might encounter this type of error when sending data to the compute node:
+
+```bash
+rsync: writefd_unbuffered failed to write 32768 bytes [sender]: Broken pipe (...)
+rsync: connection unexpectedly closed (... bytes received so far) [sender]
+rsync error: error in rsync protocol data stream (code 12) at ...
+```
+
+When encountering this or other similar errors, you should check your storage usage. Use the following command:
+
+```bash
+myquota
+```
+
+To see, directory by directory, how much space you are using. This command will also show you which directories might be exceeding their quota. You can also check the size of a specific directory, for example, your data directory:
+
+```bash
+du -h $VSC_DATA
+```
+
+Where `-h` means "human-readable" (e.g., in GB or MB, add `-s` - "summary" for the total size).
+
+If you find your storage full, it is a good idea to **clean up** the files you won't need anymore, as well as the data you've already downloaded locally. In general, it is best not to consider the HPC as a long-term storage solution.
 
 ---
 
