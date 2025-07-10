@@ -77,7 +77,7 @@ A typical approach is to keep a dedicated subdirectory in `VSC_DATA` for each pr
 
 ```bash
 VSC_DATA                    # Persistent storage
-├── fmri                    # Place to store fMRI data
+└── fmri                    # Place to store fMRI data
     ├── myproject           # project-specific folder
     │   ├── BIDS                # BIDS dataset
     │   │   ├── derivatives     # Derivatives
@@ -386,7 +386,7 @@ This will auto-refresh every second and is very helpful to track live progress.
 
 To exit the `watch` session Press `Ctrl+Z`.
 
-## 8 Canceling a Job
+## 8. Canceling a Job
 
 If you want to stop a running or pending job you need to provide the cluster name (defaults to Genius), and the unique `<jobID>`, e.g.:
 
@@ -669,7 +669,7 @@ To exit `htop`, press **F10** or **q**
 
 ---
 
-## 11 Checking Credit Usage
+## 11. Checking Credit Usage
 
 Each VSC account is allocated a fixed number of compute **credits**, which are consumed depending on the number of CPUs, memory, and time your jobs require. If your jobs are not running or are failing, it's useful to check how many credits you have **left**, and how many you’ve already **used**.
 
