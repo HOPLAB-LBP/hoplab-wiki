@@ -1685,7 +1685,7 @@
         <li class="md-nav__item">
   <a href="#8-canceling-a-job" class="md-nav__link">
     <span class="md-ellipsis">
-      8 Canceling a Job
+      8. Canceling a Job
     </span>
   </a>
   
@@ -1712,7 +1712,7 @@
         <li class="md-nav__item">
   <a href="#11-checking-credit-usage" class="md-nav__link">
     <span class="md-ellipsis">
-      11 Checking Credit Usage
+      11. Checking Credit Usage
     </span>
   </a>
   
@@ -2045,7 +2045,7 @@
         <li class="md-nav__item">
   <a href="#8-canceling-a-job" class="md-nav__link">
     <span class="md-ellipsis">
-      8 Canceling a Job
+      8. Canceling a Job
     </span>
   </a>
   
@@ -2072,7 +2072,7 @@
         <li class="md-nav__item">
   <a href="#11-checking-credit-usage" class="md-nav__link">
     <span class="md-ellipsis">
-      11 Checking Credit Usage
+      11. Checking Credit Usage
     </span>
   </a>
   
@@ -2170,7 +2170,7 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 </ul>
 <p>A typical approach is to keep a dedicated subdirectory in <code>VSC_DATA</code> for each project. For example:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>VSC_DATA<span class="w">                    </span><span class="c1"># Persistent storage</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├──<span class="w"> </span>fmri<span class="w">                    </span><span class="c1"># Place to store fMRI data</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>└──<span class="w"> </span>fmri<span class="w">                    </span><span class="c1"># Place to store fMRI data</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>├──<span class="w"> </span>myproject<span class="w">           </span><span class="c1"># project-specific folder</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>BIDS<span class="w">                </span><span class="c1"># BIDS dataset</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>derivatives<span class="w">     </span><span class="c1"># Derivatives</span>
@@ -2412,7 +2412,7 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 </span></code></pre></div>
 <p>This will auto-refresh every second and is very helpful to track live progress.</p>
 <p>To exit the <code>watch</code> session Press <code>Ctrl+Z</code>.</p>
-<h2 id="8-canceling-a-job">8 Canceling a Job<a class="headerlink" href="#8-canceling-a-job" title="Permanent link">&para;</a></h2>
+<h2 id="8-canceling-a-job">8. Canceling a Job<a class="headerlink" href="#8-canceling-a-job" title="Permanent link">&para;</a></h2>
 <p>If you want to stop a running or pending job you need to provide the cluster name (defaults to Genius), and the unique <code>&lt;jobID&gt;</code>, e.g.:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>scancel<span class="w"> </span><span class="m">58070026</span>
 </span></code></pre></div>
@@ -2645,7 +2645,7 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 <p>You should see multiple processes associated with <code>fmriprep</code>. Ideally, if you requested 32 cores, you should see all 32 cores utilized — especially during parallelizable tasks. However, some parts of <code>fmriprep</code> can only run serially. During these phases, only 1–2 cores may be active, which is normal.</p>
 <p>To exit <code>htop</code>, press <strong>F10</strong> or <strong>q</strong></p>
 <hr />
-<h2 id="11-checking-credit-usage">11 Checking Credit Usage<a class="headerlink" href="#11-checking-credit-usage" title="Permanent link">&para;</a></h2>
+<h2 id="11-checking-credit-usage">11. Checking Credit Usage<a class="headerlink" href="#11-checking-credit-usage" title="Permanent link">&para;</a></h2>
 <p>Each VSC account is allocated a fixed number of compute <strong>credits</strong>, which are consumed depending on the number of CPUs, memory, and time your jobs require. If your jobs are not running or are failing, it's useful to check how many credits you have <strong>left</strong>, and how many you’ve already <strong>used</strong>.</p>
 <h3 id="111-check-your-current-credit-balance">11.1 Check your current credit balance<a class="headerlink" href="#111-check-your-current-credit-balance" title="Permanent link">&para;</a></h3>
 <p>You can check the total number of credits <strong>deposited</strong>, <strong>used</strong>, and <strong>refunded</strong> using:</p>
@@ -2727,7 +2727,7 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="July 10, 2025 12:13:08 CEST">July 10, 2025 12:13:08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="July 10, 2025 12:20:42 CEST">July 10, 2025 12:20:42</span>
   </span>
 
     
