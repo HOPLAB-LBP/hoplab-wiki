@@ -644,8 +644,6 @@ Joining job 58070026
 
 Also, the prompt will change from the login node (e.g., ``tier2-p-login-2``) to the compute node (e.g., ``r27i27n19``), indicating you are now inside the job environment on the actual node.
 
----
-
 ### 10.3: Run `htop` to Monitor Resource Usage
 
 Once inside the compute node, run:
@@ -671,7 +669,84 @@ To exit `htop`, press **F10** or **q**
 
 ---
 
-## 11. References and Links
+## 11 Checking Credit Usage
+
+Each VSC account is allocated a fixed number of compute **credits**, which are consumed depending on the number of CPUs, memory, and time your jobs require. If your jobs are not running or are failing, it's useful to check how many credits you have **left**, and how many you’ve already **used**.
+
+### 11.1 Check your current credit balance
+
+You can check the total number of credits **deposited**, **used**, and **refunded** using:
+
+```bash
+sam-balance
+```
+
+You’ll see an output like this:
+
+```
+✘ [Jul/10 12:06] vsc12345@tier2-p-login-2 /data/leuven/123/vsc12345 $  sam-balance
+ID       Name                   Balance         Reserved        Available      
+======== ====================== =============== =============== ===============
+99270    intro_vsc12345         1937378         0               1937378
+```
+
+or, alternatively:
+
+```
+sam-statement --account=intro_vsc12345
+```
+
+(where `--account` is your credits account name, and *not* your username) which returns:
+
+```
+###############################################################################
+#
+# Includes Account=intro_vsc12345
+# Generated on Thu Jul 10 11:39:45 2025.
+# Reporting fund activity from 2022-01-01 to NOW
+#
+###############################################################################
+
+============================================================ ==================
+Credits deposited in the given period:                                  2000000
+Credits refunded in the given period (all clusters):                          0
+Credits consumed in the given period (all clusters):                     405153
+============================================================ ==================
+
+JobID      Cluster  Account                User     Partition   Credits
+========== ======== ====================== ======== =========== ===============
+58233013   genius   intro_vsc12345         vsc12345 batch       11
+58233014   genius   intro_vsc12345         vsc12345 batch       9
+58233068   genius   intro_vsc12345         vsc12345 batch       35545
+58233069   genius   intro_vsc12345         vsc12345 batch       17439
+58233295   genius   intro_vsc12345         vsc12345 batch       14745
+58234300   genius   intro_vsc12345         vsc12345 batch       82
+58234301   genius   intro_vsc12345         vsc12345 batch       21461
+```
+
+### 11.2 Check how many credits each job used
+
+To see how many credits were used **per job**, use either the `sam-statement` command from the section above, or:
+
+```bash
+sam-list-usagerecords --start=2025-01-01 --end=2025-07-01
+```
+
+You can adjust the `--start` and `--end` dates to fit the period you want to investigate.
+
+This returns a table like:
+
+```
+JobID      Cluster  Account         State      User      Credits     Start              End
+========== ======== ==============  ========== ========= ==========  ================== ===================
+58270696   genius   intro_vsc12345  COMPLETED  vsc12345   23348       2025-07-08T12:45   2025-07-08T17:15
+```
+
+This helps you estimate how much a typical run (e.g. an `fMRIPrep` job) costs. In our experience, a **successful fMRIPrep** run with 16 cores and 20 GB RAM costs ~20,000–25,000 credits.
+
+---
+
+## 12. References and Links
 
 - [VSC Documentation](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/index.html)
 - [KU Leuven HPC Info](https://icts.kuleuven.be/sc/onderzoeksgegevens/hpc)
