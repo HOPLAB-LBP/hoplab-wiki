@@ -39,6 +39,8 @@ Follow the yellow section of the [flowchart](https://www.dropbox.com/sh/6hdu5z59
 4. **Follow the MR safety course**:
    And become an authorized user of the MRI-scanner (see below).
 
+Note that for most fMRI studies (including healthy adult participants), ethical approval has already been obtained and will fall under application nr. S62131 (until end of December 2025) or S70813 (from January 2026 onwards, hopefully). 
+
 ### Attend the MR safety course
 
 - **Course dates**:  
