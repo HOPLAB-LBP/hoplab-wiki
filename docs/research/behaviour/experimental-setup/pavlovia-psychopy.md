@@ -8,8 +8,6 @@ This page guides you through setting up, managing, and troubleshooting experimen
 
 Follow the steps below to successfully upload your experiment to Pavlovia.
 
-### Steps to Upload
-
 1. Create the experiment in **Psychopy Builder**.
 2. Create a **Pavlovia account** and log in.
 3. Link your account to the Builder via this button ![](../../../assets/bh-pavlovia-builder-button.png)
@@ -23,20 +21,16 @@ Follow the steps below to successfully upload your experiment to Pavlovia.
 !!! tip
     If the experiment doesn’t run, click **view code**. If the repository is empty, retry the sync from the Builder.
 
-!!! info "Running Experiments with Lab Credits"
+!!! info "Running experiments with lab credits"
     To run experiments beyond piloting, you may need credits. We have a Hoplab account for this purpose. Ask Klara or Silke how to get access to it.
 
-More information can be found on the PsychoPy website on [this page](https://www.psychopy.org/online/usingPavlovia.html) and [this page](https://www.psychopy.org/online/fromBuilder.html)
-
----
+More information can be found on the PsychoPy website on [this page](https://www.psychopy.org/online/usingPavlovia.html) and [this page](https://www.psychopy.org/online/fromBuilder.html).
 
 ## Avoiding Errors in Pavlovia
 
 Here are some common pitfalls and best practices to prevent errors when setting up experiments.
 
----
-
-### Excel Files
+### Excel files
 
 To ensure compatibility, follow these conventions:
 
@@ -45,9 +39,7 @@ To ensure compatibility, follow these conventions:
 - **Avoid special characters** in the text fields.
 - **Save as CSV**: Convert your Excel files to CSV format before using them in Pavlovia.
 
----
-
-### Writing Custom Code
+### Writing custom code
 
 Add custom code through the **Components > Custom > Code** tab in the Builder, and **do not add code directly in Coder**.
 
@@ -57,7 +49,7 @@ Ensure that **Python code** is entered in the box on the left and **JavaScript c
 
 Consult the [Psychopy Python-to-JavaScript crib sheet](https://discourse.psychopy.org/t/psychopy-python-to-javascript-crib-sheet/14601) for additional guidance.
 
-#### Manual Translation from Python to JavaScript
+#### Manual translation from Python to JavaScript
 
 Some Python code does not automatically translate to JavaScript. Generally, **automatic translation to JS works well if you configure everything in the Builder’s GUI**. However, directly coding or modifying code snippets can sometimes lead to translation failures, particularly if you need to:
 
@@ -72,7 +64,7 @@ You may need to edit translations manually by setting the top-right `Code Type` 
 
 This setting allows you to modify both the left (Python) and right (JavaScript) code boxes independently, without affecting the other.
 
-#### Examples: Tracking Trials and Commands for Translation
+#### Examples: Tracking trials and commands for translation
 
 If you want to track a fixed number of trials, you can create a list and remove the oldest trial entry once the list length exceeds your desired count. For instance, to track responses for the last 20 trials, create a list of responses and use a different method in each language:
 
@@ -85,7 +77,7 @@ To stop a loop, JavaScript does not recognize specific loop names. For instance,
 
 ![](../../../assets/bh-pavlovia2.png)
 
-#### Define Common Commands at the Start of the Experiment
+#### Define common commands at the start of the experiment
 
 For Python commands that do not exist in JavaScript, define them at the beginning of the experiment in a JS-only code chunk to simplify translation. Note that some of these commands may still need manual translation per code chunk.
 
@@ -130,47 +122,37 @@ Array.prototype.count = function(value) {
 };
 ```
 
----
-
-## Using Movie Stimuli
+## Using movie stimuli
 
 Pavlovia supports standard video formats, such as **.mp4**. If your videos are in a different format, convert them using free software like **Handbrake**.
 
-### Setting Up Videos in Psychopy Builder
+### Setting up videos in Psychopy Builder
 
 - Set the video to play **every repeat** in the Builder. If videos need to repeat, Pavlovia will only display the last frame unless reset.
 - To reset the video between trials, use a code snippet. For details, check the [Psychopy community guide](https://discourse.psychopy.org/t/videos-are-not-played-multiple-times-in-pavlovia/11284/14) and [this link](https://discourse.psychopy.org/t/video-is-not-played-but-stays-static-in-pavlovia/13331).
 
-!!! tip "Video Troubleshooting"
+!!! tip "Video troubleshooting"
     If your videos don’t display, try adjusting the **Units** setting to `pix` or another compatible format.
 
----
+## Rest trials
 
-## Rest Trials
+To introduce rest trials or breaks, add a code snippet under **Each Frame**. For specific approaches, refer to [this guide](https://discourse.psychopy.org/t/pause-trial-does-not-work-online-pavlovia/13379/5) and [this page](https://discourse.psychopy.org/t/take-a-break-works-locally-but-not-online/11785/22).
 
-To introduce rest trials or breaks, add a code snippet under **Each Frame**. For specific approaches, refer to [this guide](https://discourse.psychopy.org/t/pause-trial-does-not-work-online-pavlovia/13379/5) and [this](https://discourse.psychopy.org/t/take-a-break-works-locally-but-not-online/11785/22).
+## Text stimuli
 
----
-
-## Text Stimuli
-
-### Adjusting Text for Screen Display
+### Adjusting text for screen display
 
 - **WrapWidth**: If the text doesn’t fit on the screen, increase the **WrapWidth** under the Advanced tab. WrapWidth defines the maximum width at which text wraps to a new line.
-- **Centering Text**: To center text, add the following JavaScript code snippet in a JS-only code chunk:
+- **Centering text**: To center text, add the following JavaScript code snippet in a JS-only code chunk:
   
-    '''javascript
+    ```javascript
     name_text.setAlignHoriz('center');
-    '''
+    ```
     This will center the text online; however, offline functionality may be impacted if the code isn’t set to JS-only.
 
----
+## Informed consent
 
-## Informed Consent
-
-For setting up informed consent forms for online experiments, refer to [this guide on informed consent](https://www.psychopy.org/online/informed-consent.html).
-
----
+For setting up informed consent forms for online experiments, refer to [this guide on informed consent](https://www.psychopy.org/online/informed-consent.html). 
 
 ## Images
 
@@ -178,11 +160,9 @@ Make sure all image files are in the **html > Resources** directory. Missing fil
 
 To ensure consistent display sizes across different screens, follow these [image guidelines](https://discourse.psychopy.org/t/consistent-image-size-across-screens/12517).
 
----
+## Language selection and conditional loops
 
-## Language Selection and Conditional Loops
-
-### Implementing Language Selection
+### Implementing language selection
 
 1. Place the **code component** in a separate routine from the key press defining the selection.
 2. To create conditional loops based on key press selection, refer to [this guide](https://discourse.psychopy.org/t/conditional-loop-not-working-in-pavlovia/11749/6).
@@ -196,9 +176,7 @@ To ensure consistent display sizes across different screens, follow these [image
 ![](../../../assets/bh-pavlovia6.png)
 ![](../../../assets/bh-pavlovia7.png)
 
----
-
-## Cellphone Detection
+## Cellphone detection
 
 To prevent participants from accessing the experiment on mobile devices, use this **JS-only** code snippet at the start of the experiment:
 
@@ -207,3 +185,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     quitPsychoJS('Mobile device detected. Goodbye!', false);
 }
 ```
+
+__TODO__: [Klara] Refer to the workshop material in the series on online experimentation given by Christophe Bossens (Klara has access and can probably put them on Teams somewhere)
+__TODO__: [Klara] Fix broken link in Informed Consent section
+__TODO__: [Klara] Structure this page a bit better? It seems a bit "here and there" to me 

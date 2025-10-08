@@ -1,16 +1,12 @@
 # Participant recruitment
 
-**TODO**: Check whether this info is still up to date today (info dates from 09/2022, I don't have a researcher account unfortunately)
-
-**TODO**: Add info on how to recruit other types of participants (e.g., elderly, patients, children, experts, etc.)
-
 Before starting participant recruitment, ensure your study is formally approved by the [ethical committee](https://research.kuleuven.be/en/integrity-ethics/ethics/committees) (if you didn't do this yet, check out [this page](../ethics/index.md)). Prepare this well in advance. All recruitment materials (e.g., flyers, posters) must include the study's end date as specified in the ethics application.
 
-(Healthy young-adult) participants can be recruited in different ways:
+(Healthy young adult) participants can be recruited in different ways:
 
 1. Through the laboratory's participant database:
 
-    - Including previous participants and individuals who have expressed interest in participating through word-of-mouth referrals **TODO**: check whether this formally exists and if yes, where
+    - Including previous participants and individuals who have expressed interest in participating through word-of-mouth referrals 
 
 2. Through social connections of the researchers involved and/or by sharing your announcement via social media:
 
@@ -121,8 +117,6 @@ Generally, except for gender and age, personal information does not need to be r
 - Likewise, if a student wants to receive an update about the study results after the study is finished, they will need to provide their email address.
 These personal data should be saved in a password-protected file that will be stored as long as the study is ongoing, but deleted after publication of the research data.
 
-**TODO**: add (more) guidelines on how to store/manage data (probably best in a separate section)
-
 ### Reimbursement
 
 Reimbursement can take the following forms:
@@ -131,7 +125,6 @@ Reimbursement can take the following forms:
 - **Paid study**: The standard pay rate is up to 10 euros per hour, without additional incentives. Exceptions are possible for high-effort or aversive studies (e.g., fMRI, ESM).
 - **Mixed study**: Award 0 credits to those who receive payment.
 
-**TODO:** Add info on how the procedure for money reimbursement works, found info on [this link](https://ppw.kuleuven.be/intranet/en/finance/reimbursementtestsubjectsconcise) and [this link](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/experimental-subjects)
 
 Of course, all (psychology) students also benefit from participation by gathering insights into the common procedures of psychological research (wink).
 
@@ -144,3 +137,14 @@ Please record participant presence ("show-ups") and assign credits or pay partic
 
 - Participants should contact the researcher if they cannot attend the session, which qualifies as an **excused no-show**.
 - **Unexcused no-shows** incur a penalty of -0.5 credit. If a participant has 5 or more no-shows, their account will be inactivated.
+
+__TODO__: [Klara] Check whether EMS info is still up to date (info dates from 09/2022). Update with info to be found [here](https://admin.kuleuven.be/mykuleuven/en/channel/50000339/research/research-support) and make it shorter/more to the point?
+
+__TODO__: [Klara] Add info on how to recruit other types of participants (e.g., elderly, patients, children, experts, etc.) including how to get access to KWS if needed. 
+
+__TODO__: [Klara] Add the lab's participant database info
+
+__TODO__: [Klara] Add (more) guidelines on how to store/manage data (probably best in a separate section)
+
+__TODO__: [Klara] Add info on how the procedure for money reimbursement works, found info on [this link](https://ppw.kuleuven.be/intranet/en/finance/reimbursementtestsubjectsconcise) and [this link](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/experimental-subjects) and update with the newest ethical applications (€15/h for behavioural studies/EEG and €30/h for fMRI)
+

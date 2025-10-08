@@ -8,19 +8,19 @@ The starter pack is divided into three sections. In no order of importance, you 
 
 Developing strong coding skills is crucial for success in our lab. Here are some excellent resources to help you improve your Python programming and data science skills:
 
-1. :star: **[The Good Research Code Handbook](https://goodresearch.dev/)**: This is a must-read for anyone joining the lab. It covers essential knowledge on how to structure and write your code in research, suitable for both beginners and experienced researchers.
+1. :star: **[The good research code handbook](https://goodresearch.dev/)**: This is a must-read for anyone joining the lab. It covers essential knowledge on how to structure and write your code in research, suitable for both beginners and experienced researchers.
 
 2. You can find some fun and interactive Python tutorials on [DataCamp](https://www.datacamp.com/category/python) and [Codecademy](https://www.codecademy.com/catalog/language/python).
 
-3. [Software Carpentry Python Fundamentals](https://swcarpentry.github.io/python-novice-inflammation/): Basic Python concepts for beginners.
+3. [Software carpentry Python fundamentals](https://swcarpentry.github.io/python-novice-inflammation/): Basic Python concepts for beginners.
 
-4. [EdX: Using Python for Research](https://www.edx.org/learn/python/harvard-university-using-python-for-research): Free course on Python applications in research.
+4. [EdX: Using Python for research](https://www.edx.org/learn/python/harvard-university-using-python-for-research): Free course on Python applications in research.
 
-5. [Scientific Python Lectures](https://lectures.scientific-python.org/): Advanced course for confident programmers.
+5. [Scientific Python lectures](https://lectures.scientific-python.org/): Advanced course for confident programmers.
 
-6. [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/): Comprehensive guide to data science with Python.
+6. [Python data science handbook](https://jakevdp.github.io/PythonDataScienceHandbook/): Comprehensive guide to data science with Python.
 
-7. If you know nothing about it, take some time to learn the [**Unix Shell**](https://swcarpentry.github.io/shell-novice/) and the essentials of [**Git & GitHub**](https://swcarpentry.github.io/git-novice/).
+7. If you know nothing about it, take some time to learn the [**Unix shell**](https://swcarpentry.github.io/shell-novice/) and the essentials of [**Git & GitHub**](https://swcarpentry.github.io/git-novice/).
 
 8. If you're going to use MatLab, you can check this [live script tutorial](https://github.com/VisCog/MatlabForTheBehavioralSciences/tree/main) to learn the fundamentals.
 
@@ -28,37 +28,37 @@ Developing strong coding skills is crucial for success in our lab. Here are some
 
 <div class="grid cards" markdown>
 
-- :fontawesome-solid-pencil:{ .lg .middle } **Academic Writing**
+- :fontawesome-solid-pencil:{ .lg .middle } **Academic writing**
 
     ---
 
     Learning how to write is fundamental to academic training. If you're struggling with writing or structuring your papers, check out:
 
-    [:octicons-arrow-right-24: Ten Simple Rules for Structuring Papers](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619)
+    [:octicons-arrow-right-24: Ten simple rules for structuring papers](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619)
 
-- :material-robot-love:{ .lg .middle } **Machine Learning Fundamentals**
+- :material-robot-love:{ .lg .middle } **Machine learning fundamentals**
 
     ---
 
     To understand the basics of machine learning and modeling, this Coursera class is a must:
 
-    [:octicons-arrow-right-24: Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction)
+    [:octicons-arrow-right-24: Machine learning specialization](https://www.coursera.org/specializations/machine-learning-introduction)
 
-- :fontawesome-solid-graduation-cap:{ .lg .middle } **Awesome PhD Resources**
+- :fontawesome-solid-graduation-cap:{ .lg .middle } **Awesome PhD resources**
 
     ---
 
     A curated list of carefully selected tools and resources for both early career and senior researchers:
 
-    [:octicons-arrow-right-24: Awesome PhD Repository](https://github.com/helenahartmann/awesome-PhD)
+    [:octicons-arrow-right-24: Awesome PhD repository](https://github.com/helenahartmann/awesome-PhD)
 
-- :material-brain:{ .lg .middle } **Awesome Neuroscience Resources**
+- :material-brain:{ .lg .middle } **Awesome neuroscience resources**
 
     ---
 
     Curated list of awesome neuroscience libraries, software and any content related to the domain.
 
-    [:octicons-arrow-right-24: Awesome Neuroscience Repository](https://github.com/analyticalmonk/awesome-neuroscience)
+    [:octicons-arrow-right-24: Awesome neuroscience repository](https://github.com/analyticalmonk/awesome-neuroscience)
 
 </div>
 
@@ -104,7 +104,7 @@ This section contains some foundational papers to give you some background on th
 
      - In our lab, [Kubilius et al 2016](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004896) showed that the representations of shape in DNNs display some properties that had been seen before in the human brain and perception, and not in earlier artificial models.
 
-     - Among the very often citer papers is the publication by [Geirhos et al 2022](https://arxiv.org/abs/1811.12231) which showed that DNNs are biased towards texture, suggesting that their processing of shape is still not the same as in humans.
+     - Among the very often cited papers is the publication by [Geirhos et al 2022](https://arxiv.org/abs/1811.12231) which showed that DNNs are biased towards texture, suggesting that their processing of shape is still not the same as in humans.
     
      - Opinions diverge on how to use modelling to further our understanding of the brain. This [2023 BBS paper](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/deep-problems-with-neural-network-models-of-human-vision/ABCE483EE95E80315058BB262DCA26A9) by Bowers et al surely started a serious discussion on that topic.
 
@@ -113,3 +113,7 @@ This section contains some foundational papers to give you some background on th
 === "Lectures"
 
      - [A visual and intuitive understanding of deep learning](https://www.youtube.com/watch?v=Oqm9vsf_hvU&ab_channel=otaviogood) is a great lecture to begin with if you feel like convolutional neural networks are still obscure to you.
+
+
+__TODO__: [Klara] Add info on interesting internal & external trainings (soft skills, career choices, programming, academic writing, presenting your research, stats, HPC etc.) for PhDs/postdocs/ATP
+__TODO__: [Klara] Expand list of papers & lectures 

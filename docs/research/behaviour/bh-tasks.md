@@ -1,19 +1,19 @@
-# Behavioural Task Scripts
+# Behavioural task scripts
 
-This page provides links to external resources and repositories for scripts and templates to design and run behavioural experiments. These templates serve as starting points for developing tasks used in the HOPLAB.
+This page provides links to external resources and repositories for scripts and templates to design and run behavioural experiments. These templates serve as starting points for developing tasks used in Hoplab.
 
 Templates are organized into two sections:  
 
-- **On-Site Experiments**: Designed for in-person, [on site testing](experimental-setup/bh-onsite.md). Can be adapted for online platforms if needed.  
-- **Online Experiments**: Optimized for deployment on platforms like Pavlovia, using [jsPsych](experimental-setup/pavlovia-jspsych.md) or [PsychoPy](experimental-setup/pavlovia-jspsych.md).
+- **On-site experiments**: Designed for in-person, [on-site testing](experimental-setup/bh-onsite.md). Can be adapted for online platforms if needed.  
+- **Online experiments**: Optimized for deployment on platforms like Pavlovia, using [jsPsych](experimental-setup/pavlovia-jspsych.md) or [PsychoPy](experimental-setup/pavlovia-jspsych.md).
 
 ---
 
-## On-Site Experiments
+## On-site experiments
 
 <div class="grid cards" markdown>
 
-- :fontawesome-solid-flask: **Inverse MDS Task**
+- :fontawesome-solid-flask: **Inverse MDS task**
   
     ---
 
@@ -23,7 +23,7 @@ Templates are organized into two sections:
 
     [:octicons-arrow-right-24: Learn more](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Behaviour/Inverse%20MDS?csf=1&web=1&e=pBDTz3)
 
-- :material-mouse:{ .lg .middle } **Mouse Tracker Task (on-site)**  
+- :material-mouse:{ .lg .middle } **Mouse tracker task**  
 
     ---
 
@@ -35,11 +35,11 @@ Templates are organized into two sections:
 
 </div>
 
-## Online Experiments
+## Online experiments
 
 <div class="grid cards" markdown>
 
-- :material-mouse:{ .lg .middle } **Mouse Tracker Task (online)**  
+- :material-mouse:{ .lg .middle } **Mouse tracker task**  
 
     ---
 
@@ -49,7 +49,7 @@ Templates are organized into two sections:
 
     [:octicons-arrow-right-24: Learn more](https://github.com/HOPLAB-LBP/mouse_tracker_template)
 
-- :material-cube-outline:{ .lg .middle } **Classification Task**  
+- :material-cube-outline:{ .lg .middle } **Classification task**  
 
     ---
 
@@ -61,3 +61,4 @@ Templates are organized into two sections:
 
 </div>
 
+__TODO__: Add inverse MDS info Emily

@@ -2,7 +2,7 @@
 
 ## Step 1: Register your study at the UZ Leuven Clinical Trial Center (CTC)
 
-1. **Fill in [this online form](https://www.uzleuven.be/en/register-clinical-study-clinical)** in order to register your study in the UZ/KU Leuven central clinical research database.
+1. **Fill in [this online form](https://www.uzleuven.be/en/register-a-study)** in order to register your study in the UZ/KU Leuven central clinical research database.
 You can find a user guide on how to do this [here](https://gbiomed.kuleuven.be/english/ctc/cr-gen-ug-001_user-guide-for-registering-a-study-in-the-uz-ku-leuven-central-clinical-research-database).
 At the minimum, you will need to indicate the study type and upload your research protocol.
 
@@ -88,4 +88,6 @@ Once you have written all the necessary documents, you can file your application
 
 ---
 
-TODO: Check whether this still applies --> "If the medical ethical committee has an issue with the principal investigator not being connected with UZ Leuven (e.g. in case the PI is a professor at the Faculty of Psychology and Educational Sciences); report this to Prof. Dr. Pol Ghesquière."
+__TODO__: [Klara] Check whether this still applies --> "If the medical ethical committee has an issue with the principal investigator not being connected with UZ Leuven (e.g. in case the PI is a professor at the Faculty of Psychology and Educational Sciences); report this to Prof. Dr. Pol Ghesquière."
+__TODO__: [Klara] Update this page and make a bit more to the point
+

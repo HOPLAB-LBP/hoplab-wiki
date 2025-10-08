@@ -1,4 +1,4 @@
-# Coding Practices
+# Coding practices
 
 Welcome to the Coding Practices section! Here, you'll find essential guidance for setting up your coding environment, managing projects, collaborating using GitHub, and following best practices to write clean, maintainable code.
 
@@ -6,18 +6,18 @@ Welcome to the Coding Practices section! Here, you'll find essential guidance fo
 - :material-wrench-clock: **[Good coding practices](#best-practices-for-organizing-code-and-projects)**  
   In the lab, we aim to build tools that are reproducible, reusable, and efficient. Learn more about our general approach to building and managing projects.
 
-- :octicons-desktop-download-24: **[Setting Up Your Project](#setting-up-a-conda-environment)**  
+- :octicons-desktop-download-24: **[Setting up your project](#setting-up-a-conda-environment)**  
   Every new project starts with the right environment setup. Find out how to create a proper environment for your coding projects.
 
-- :material-bug: **[Understanding Your Code](#understanding-your-code)**  
+- :material-bug: **[Understanding your code](#understanding-your-code)**  
   Encountering inexplicable errors? Want to know what data are you plotting? Don't know how to use a misterious function? Learn how to effectively debug your code using Spyder’s powerful tools.
 
-- :material-source-branch: **[Using Version Control](#version-control-with-git-and-github)**  
+- :material-source-branch: **[Using version control](#version-control-with-git-and-github)**  
   Discover how to integrate Git and GitHub into your workflow to keep track of changes and collaborate with ease.
 
 </div>
 
-## Why Coding Practices Matter
+## Why coding practices matter
 
 When you code for your research project, remember that you're not just coding for yourself today—you’re coding for:
 
@@ -26,29 +26,27 @@ When you code for your research project, remember that you're not just coding fo
 
 Keeping your code tidy, easy to understand, and maintainable is crucial for effective research collaboration and aligns with the principles of **Open Science**.
 
-## Recommended Resources
+## Recommended resources
 
-Make sure to explore our suggested [Coding Tutorials](../../get-started/student-starter-pack.md#coding-tutorials). We especially recommend **[The Good Research Code Handbook](https://goodresearch.dev/)**, which provides valuable insights into writing robust research code. Key sections include [Writing Decoupled Code](https://goodresearch.dev/decoupled) and [Keeping Things Tidy](https://goodresearch.dev/tidy).
+Make sure to explore our suggested [Coding tutorials](../../get-started/student-starter-pack.md#coding-tutorials). We especially recommend **[The good research code handbook](https://goodresearch.dev/)**, which provides valuable insights into writing robust research code. Key sections include [Writing decoupled code](https://goodresearch.dev/decoupled) and [Keeping things tidy](https://goodresearch.dev/tidy).
 
 By following these practices, you'll not only improve the quality of your research code but also make it easier to share your work with others, enhancing transparency and reproducibility. Invest time in reading and practicing. Developing good coding habits will pay off in the long run by making your work more efficient, easier to understand, and more valuable to the research community. Happy coding!
 
 !!! tip
-    If you're new to coding and many of the terms on this page seem unfamiliar, start by exploring some of the essential tools you’ll use. Check out tutorials on Python, Git, and the Unix Shell on the [Student Starter Pack](../../get-started/student-starter-pack.md) page.
+    If you're new to coding and many of the terms on this page seem unfamiliar, start by exploring some of the essential tools you’ll use. Check out tutorials on Python, Git, and the Unix Shell on the [Student starter pack](../../get-started/student-starter-pack.md) page.
 
 !!! question "What if I code in MATLAB?"
     While the information in this page focuses on Python, the principles of writing clean, maintainable code are universal. Debugging, structuring code, and organizing projects apply just as much to MATLAB as they do to Python. Be sure to apply these practices regardless of the language you're using!
 
-## Special Note for fMRI Projects
+## Special note for fMRI projects
 
-If you're working on fMRI projects, you’ll find specific information on setting up your environment in the [Set-up your Environment](../fmri/analysis/fmri-setup-env.md) page of the fMRI section. This guide includes additional tips for managing data and code in neuroimaging research.
+If you're working on fMRI projects, you’ll find specific information on setting up your environment in the [Set-up your environment](../fmri/analysis/fmri-setup-env.md) page of the fMRI section. This guide includes additional tips for managing data and code in neuroimaging research.
 
----
-
-## Best Practices for Organizing Code and Projects
+## Best practices for organizing code and projects
 
 A well-structured project helps in maintaining readability and collaboration. Here are some recommendations:
 
-### 1. Folder Structure
+### 1. Folder structure
 
 Use a logical structure for your project files:
 
@@ -61,18 +59,18 @@ Use a logical structure for your project files:
  └── README.md          # Project overview
  ```
 
-### 2. Naming Conventions
+### 2. Naming conventions
 
 - **Files**: Use lowercase letters with underscores (e.g., `data_processing.py`).
 - **Folders**: Use meaningful names that reflect their contents.
 - **Variables**: Use descriptive names (e.g., `participant_id` instead of `id`).
 
-### 3. General Coding Tips
+### 3. General coding tips
 
 !!! tip
     Write modular code by breaking down tasks into functions and classes. This approach enhances reusability and readability.
 
-- **Avoid "[Spaghetti Code](https://goodresearch.dev/decoupled.html?highlight=spaghetti#code-smells-and-spaghetti-code)"**: Keep functions short and focused.
+- **Avoid "[spaghetti code](https://goodresearch.dev/decoupled.html?highlight=spaghetti#code-smells-and-spaghetti-code)"**: Keep functions short and focused.
 - **Use Docstrings** to document functions and classes:
 
     ```python
@@ -90,13 +88,13 @@ Use a logical structure for your project files:
 
 - **Follow PEP 8**: Use tools like `black` to ensure code style compliance.
 
-### 4. Saving Results
+### 4. Saving results
 
 Organizing your results properly is crucial for reproducibility, collaboration, and long-term maintainability of your research code. This section covers how to structure your results folders, save scripts and logs, and use utility functions to streamline these processes.
 
 To keep your project organized, we’ve provided a **set of utility functions** that automate common tasks like setting random seeds, creating unique output directories, saving scripts, and configuring logging. These functions should be defined in a separate file called `utils.py` located in the `modules/` directory of your project.
 
-??? example "Utility Functions in modules/utils.py"
+??? example "Utility functions in modules/utils.py"
 
     The following functions are defined in `modules/utils.py` (see the box below for the definitions):
 
@@ -282,7 +280,7 @@ To keep your project organized, we’ve provided a **set of utility functions** 
 
     # ... Your training or analysis code here ...
     ```
-!!! example "Example Results Folder Structure"
+!!! example "Example results folder structure"
     After running the script, your results might be structured as follows:
 
     ```
@@ -293,16 +291,14 @@ To keep your project organized, we’ve provided a **set of utility functions** 
     │   ├── output_data.csv       # Output data generated by the run
     │   └── model_weights.pth     # Saved model weights
     ```
-!!! question "Why Create a `results` Folder for Each Run?"
+!!! question "Why create a `results` folder for each run?"
     - **Reproducibility**: Ensures that each set of results corresponds to a specific code version and parameters.
     - **Comparison**: Makes it easier to compare results between different runs with varying parameters.
     - **Organization**: Keeps your project clean by preventing files from different experiments from mixing together.
 
 With these functions, you can ensure a well-organized, reproducible workflow, making it easier to manage long-term research projects and collaborate with others.
 
----
-
-## Setting Up a Conda Environment
+## Setting up a Conda environment
 
 Using isolated `conda` environments ensures that each project has the specific dependencies it needs without conflicts. Follow the steps below to create and manage your environments.
 
@@ -357,7 +353,7 @@ Download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
     !!! info
         Make sure to replace `<version>` with the correct version number of the Anaconda installer.
 
-### 2. Create and Manage a Conda Environment
+### 2. Create and manage a Conda environment
 
 === "CLI"
     1. **Create a new environment**:
@@ -399,9 +395,7 @@ Download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
         - With your environment selected, click on "Not installed" to view available packages.
         - Search for the packages (e.g., `numpy`, `pandas`) and install them by checking the boxes and clicking "Apply".
 
----
-
-## Setting Up Spyder for Python Projects
+## Setting up Spyder for Python projects
 
 Spyder is a powerful IDE for scientific programming in Python. Here’s how to set it up:
 
@@ -416,17 +410,17 @@ Spyder is a powerful IDE for scientific programming in Python. Here’s how to s
     - Open Anaconda Navigator.
     - Find Spyder in the "Home" tab and click "Install".
 
-### 2. Create a Project in Spyder
+### 2. Create a project in Spyder
 
 ??? question "Why use Spyder projects?"
     Using a project allows Spyder to set the root folder for your scripts. This means that all imports and file paths are relative to this root, simplifying package management and file organization.
 
-1. **Create a New Project**:
+1. **Create a new project**:
     - Go to `File > New Project` in Spyder.
     - Select a directory to store your project files.
     - Spyder will set this folder as the root for relative imports.
 
-2. **Organize Your Project**:
+2. **Organize your project**:
     - Use a structure like this:
 
      ```bash
@@ -438,23 +432,19 @@ Spyder is a powerful IDE for scientific programming in Python. Here’s how to s
      └── README.md          # Project overview
      ```
 
-3. **Activate Your Environment in Spyder**:
+3. **Activate your environment in Spyder**:
     - Go to `Preferences > Python Interpreter`.
     - Select the interpreter from your `conda` environment.
-
----
 
 ## Understanding your code
 
 Spyder offers powerful tools for debugging, understanding, and navigating your code. Here’s an in-depth guide on how to leverage these features, with examples to make each step clear and actionable.
 
----
-
-### Viewing All Panes in Spyder
+### Viewing all panes in Spyder
 
 Before diving into debugging and navigation, it's important to set up your Spyder workspace for maximum efficiency. Spyder's default layout includes several panes that provide valuable insights into your code's execution and structure.
 
-1. **Accessing the View Menu**:
+1. **Accessing the view menu**:
     - Go to `View > Panes` to see a list of available panes.
     - The most useful panes include:
         - **Editor**: This is where you write your code.
@@ -464,15 +454,13 @@ Before diving into debugging and navigation, it's important to set up your Spyde
         - **File Explorer**: Browse files and folders in your working directory.
         - **Breakpoints**: Manage and navigate all breakpoints in your code.
 
-2. **Enable Recommended Panes**:
+2. **Enable recommended panes**:
     - Ensure that the **Variable Explorer**, **IPython Console**, **Breakpoints**, and **Documentation** panes are enabled.
     - This setup will help you keep track of variables, navigate breakpoints, and access function documentation easily.
 
 ![Spyder Panes](../../assets/spyder_panes.png)
 
----
-
-### Understanding the Code by Debugging
+### Understanding the code by debugging
 
 Using breakpoints and Spyder's debugging tools allows you to:
 
@@ -483,12 +471,12 @@ Using breakpoints and Spyder's debugging tools allows you to:
 
 These tools are crucial for identifying and fixing bugs in your scripts, whether you're working with simple calculations or more complex data processing tasks. By mastering them, you'll save time and gain deeper insights into your code's behavior.
 
-!!! tip "Best Practices for Debugging"
-    - **Use Breakpoints Strategically**: Place breakpoints at critical points in your code to verify data at those stages.
-    - **Step Through Loops**: Use "Step Over" and "Step Into" to see how data changes inside loops.
-    - **Log Important Values**: If you’re debugging a specific issue, add print statements to log values at various points.
+!!! tip "Best practices for debugging"
+    - **Use breakpoints strategically**: Place breakpoints at critical points in your code to verify data at those stages.
+    - **Step through loops**: Use "Step Over" and "Step Into" to see how data changes inside loops.
+    - **Log important values**: If you’re debugging a specific issue, add print statements to log values at various points.
 
-!!! example "Example Scenario: Debugging a Simple Calculation Script"
+!!! example "Example scenario: Debugging a simple calculation script"
 
     Let’s say you have a script that generates some random numbers, processes them by applying a mathematical operation, and then plots the result. You want to ensure that the numbers are correctly generated and processed before they are plotted. Here’s how you can use breakpoints to achieve this:
 
@@ -508,7 +496,7 @@ These tools are crucial for identifying and fixing bugs in your scripts, whether
     plt.show()
     ```
 
-    ### 1. Adding a Breakpoint
+    ### 1. Adding a breakpoint
 
     - **Set a breakpoint** on the line where `processed_data` is calculated by clicking in the left margin next to the line or using:
         - **Windows/Linux**: `Ctrl + B`
@@ -520,7 +508,7 @@ These tools are crucial for identifying and fixing bugs in your scripts, whether
 
     ---
 
-    ### 2. Running Code in Debug Mode
+    ### 2. Running code in debug mode
 
     **Start debugging** by clicking the "Debug" button :material-play-pause: in the Spyder toolbar.
     - The execution will pause when it reaches the breakpoint on `processed_data = data * 2 + 5`.
@@ -534,7 +522,7 @@ These tools are crucial for identifying and fixing bugs in your scripts, whether
 
     ---
 
-    ### 3. Inspecting Variables During Debugging
+    ### 3. Inspecting variables during debugging
 
     - With the code paused at the breakpoint, use the **Variable Explorer** to examine the contents of `data`:
         - Look at the array of generated numbers to ensure they are within the expected range (0 to 1 since `np.random.rand()` generates random floats).
@@ -548,7 +536,7 @@ These tools are crucial for identifying and fixing bugs in your scripts, whether
 
     ---
 
-    ### 4. Using the Console for Interactive Debugging
+    ### 4. Using the console for interactive debugging
 
     - While debugging, you can interact with variables directly in the **IPython console** to verify specific values or perform calculations without modifying the script.
 
@@ -565,27 +553,25 @@ These tools are crucial for identifying and fixing bugs in your scripts, whether
 
     **Why use this?**: This feature allows you to perform ad-hoc checks on variables or run quick tests without altering your script, which is useful for exploring potential issues during debugging.
 
----
+### Understanding by looking at definitions
 
-### Understanding by Looking at Definitions
+Spyder makes it easy to navigate large codebases and understand how functions, classes, and variables are connected. Using features like "Go to definition," "Find references", object inspection, and the Documentation Viewer, you can explore and manage complex projects more efficiently.
 
-Spyder makes it easy to navigate large codebases and understand how functions, classes, and variables are connected. Using features like "Go to Definition," "Find References," object inspection, and the Documentation Viewer, you can explore and manage complex projects more efficiently.
-
-!!! tip "Pro Tips for Code Navigation"
-    - **Use "Go to Definition" to trace complex functions**: This helps you see the original implementation without scrolling through files.
+!!! tip "Pro tips for code navigation"
+    - **Use "Go to definition" to trace complex functions**: This helps you see the original implementation without scrolling through files.
     - **Use the Variable Explorer for quick checks**: It’s a faster way to spot-check variables rather than adding numerous print statements.
 
 **Overview**:
 
-The **Go to Definition** feature allows you to quickly jump to where a function, class, or variable is defined. This is especially useful when working with large scripts or when using functions imported from other files or libraries. Instead of scrolling through the code to find a definition, you can directly jump to it.
+The **Go to definition** feature allows you to quickly jump to where a function, class, or variable is defined. This is especially useful when working with large scripts or when using functions imported from other files or libraries. Instead of scrolling through the code to find a definition, you can directly jump to it.
 
-- **How to Use**: Right-click on the function or class name and select "Go to Definition" or use the shortcut:
+- **How to use**: Right-click on the function or class name and select "Go to Definition" or use the shortcut:
   - **Windows/Linux**: `Ctrl + G`
   - **Mac**: `Cmd + G`
 
 - **Why use this?**: This feature saves time and makes it easier to understand how a function or class is implemented without losing context in your main script.
 
-!!! example "Example Scenario: Navigating a Machine Learning Pipeline"
+!!! example "Example scenario: Navigating a machine learning pipeline"
     Suppose you have a script with multiple functions for data cleaning, feature extraction, model training, and evaluation. Using "Go to Definition," you can quickly jump between functions to understand the flow of your code.
 
     ```python
@@ -613,20 +599,18 @@ The **Go to Definition** feature allows you to quickly jump to where a function,
     
     ![Spyder Go To Definition](../../assets/spyder_definition.png)
 
----
-
-### Understanding by Inspecting
+### Understanding by inspecting
 
 **Overview**:
 Spyder’s object inspection feature allows you to explore the attributes and methods of objects directly within the editor. This is particularly useful when working with unfamiliar libraries or custom classes, as it enables you to see what functions or properties are available and how to use them. This feature can be a lifesaver when you encounter a function with unclear parameters or complex behavior.
 
-- **How to Use**: Select an object or function in the editor and press:
+- **How to use**: Select an object or function in the editor and press:
   - **Windows/Linux**: `Ctrl + I`
   - **Mac**: `Cmd + I`
 
 - **Why use this?**: This feature provides a quick way to understand the capabilities and usage of an object or method without needing to look up documentation online. It can save time when learning new libraries or debugging issues with complex data structures.
 
-!!! example "Example Scenario: Inspecting a NumPy Function"
+!!! example "Example scenario: Inspecting a NumPy function"
     Suppose you want to generate a set of random integers using the `np.random.randint` function, but you’re not sure about its input arguments and what it returns. You can use Spyder’s object inspection to quickly get this information without leaving the IDE.
 
     ```python
@@ -650,9 +634,7 @@ Spyder’s object inspection feature allows you to explore the attributes and me
 
     - **Why use this?**: This allows you to quickly understand how to use `np.random.randint` without having to search online. You can verify if the function supports multi-dimensional arrays by checking the `size` parameter.
 
----
-
-## Version Control with Git and GitHub
+## Version control with Git and GitHub
 
 Version control is crucial for collaborative coding and tracking changes in your projects. Here’s how to set up and use Git and GitHub, including practical tips for effective collaboration.
 
@@ -714,9 +696,9 @@ git config --global user.email "youremail@example.com"
        git push origin main
        ```
 
-### 4. Workflow Tips for Effective Collaboration
+### 4. Workflow tips for effective collaboration
 
-1. **Always Pull Before Making Changes**:
+1. **Always pull before making changes**:
     - Before starting any work, ensure your local repository is up-to-date with the latest changes:
 
        ```bash
@@ -725,44 +707,44 @@ git config --global user.email "youremail@example.com"
 
     - This prevents merge conflicts and keeps your local version in sync with the remote repository.
 
-2. **Typical Workflow**:
-    - **Fetch Updates**:
+2. **Typical workflow**:
+    - **Fetch updates**:
 
        ```bash
        git fetch
        ```
 
-    - **Pull Latest Changes**:
+    - **Pull latest changes**:
 
        ```bash
        git pull origin main
        ```
 
-    - **Make Edits**: Modify files as needed.
-    - **Stage Changes**:
+    - **Make edits**: Modify files as needed.
+    - **Stage changes**:
 
        ```bash
        git add .
        ```
 
-    - **Commit Changes** with a clear message:
+    - **Commit changes** with a clear message:
 
        ```bash
        git commit -m "Describe the changes made"
        ```
 
-    - **Push to Remote**:
+    - **Push to remote**:
 
        ```bash
        git push origin main
        ```
 
-3. **Commit Often, but Meaningfully**:
+3. **Commit often, but meaningfully**:
     - Frequent commits help track your progress, but ensure each commit is meaningful and descriptive.
 
-#### Common Git Issues
+#### Common Git issues
 
-??? failure "Merge Conflict"
+??? failure "Merge conflict"
     **Issue**: This occurs when changes are made in the same part of a file in both the local and remote versions.
 
     **Solution**:     
@@ -785,7 +767,7 @@ git config --global user.email "youremail@example.com"
        git checkout main
        ```
 
-??? failure "Push Rejected"
+??? failure "Push rejected"
     **Issue**: Your push was rejected because the remote has changes that you don't have locally.
 
     **Solution**: 
@@ -795,7 +777,7 @@ git config --global user.email "youremail@example.com"
        git push origin main
        ```
 
-??? failure "Failed to Push Some Refs"
+??? failure "Failed to push Some refs"
     **Issue**: Occurs when there are changes on the remote that need to be merged before pushing.
 
     **Solution**:
@@ -805,7 +787,7 @@ git config --global user.email "youremail@example.com"
        ```
     - This replays your changes on top of the pulled changes and then allows you to push again.
 
-??? failure "Changes Not Staged for Commit"
+??? failure "Changes not staged for commit"
     **Issue**: Files were modified but not added to the staging area.
 
     **Solution**: 
@@ -818,7 +800,7 @@ git config --global user.email "youremail@example.com"
        git add .
        ```
 
-??? failure "File Deleted Locally, But Not in Remote"
+??? failure "File deleted locally, but not in remote"
     **Issue**: A file was deleted locally but still exists in the remote repository.
 
     **Solution**: 
@@ -832,7 +814,7 @@ git config --global user.email "youremail@example.com"
        git push origin main
        ```
 
-??? failure "Authentication Failed"
+??? failure "Authentication failed"
     **Issue**: This happens if your credentials are incorrect or have expired.
 
     **Solution**: 
@@ -842,7 +824,7 @@ git config --global user.email "youremail@example.com"
        ```
     - Re-run the `git push` command, and enter your credentials when prompted.
 
-??? failure "Branch Not Found"
+??? failure "Branch not found"
     **Issue**: Occurs when you try to checkout a branch that doesn’t exist locally or remotely.
 
     **Solution**: 
@@ -855,7 +837,7 @@ git config --global user.email "youremail@example.com"
        git fetch --all
        ```
 
-??? failure "Untracked Files"
+??? failure "Untracked files"
     **Issue**: New files are created locally but not yet added to Git.
 
     **Solution**: 
@@ -865,7 +847,7 @@ git config --global user.email "youremail@example.com"
        ```
     - To ignore certain files, add them to `.gitignore`.
     
-??? failure "File Size Too Large"
+??? failure "File size too large"
     **Issue**: Git prevents files larger than 100MB from being pushed.
 
     **Solution**: 
@@ -885,7 +867,7 @@ git config --global user.email "youremail@example.com"
        git push origin main
        ```
 
-??? failure "Repository Size Exceeds Limit"
+??? failure "Repository size exceeds limit"
     **Issue**: GitHub imposes a repository size limit, typically 1GB for free accounts.
 
     **Solution**: 
@@ -897,7 +879,7 @@ git config --global user.email "youremail@example.com"
        ```
     - If large files are essential, consider hosting them elsewhere (e.g., cloud storage) and linking to them.
 
-??? failure "Packfile Too Large"
+??? failure "Packfile too large"
     **Issue**: This error can occur when trying to push a repository with a large packfile.
 
     **Solution**: 
@@ -907,7 +889,7 @@ git config --global user.email "youremail@example.com"
        ```
     - If the repository is still too large, consider splitting it into smaller repositories.
 
-??? failure "History Contains Large Files"
+??? failure "History contains large files"
     **Issue**: Even if a large file has been deleted, it may still be present in the repository history.
 
     **Solution**: 
