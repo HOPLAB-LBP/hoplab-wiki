@@ -123,7 +123,7 @@ jobs:
               const candidates = issues.filter(isDocTagsIssue).filter(issue => {
                 const f = extractFileFromIssue(issue);
                 return f && normalizePath(f) === target;
-              });
+              }).sort((a,b) => b.number - a.number); // pick most recent
               const closedIssue = candidates[0] || null;
               if (closedIssue) {
                 console.log(`Found closed issue #${closedIssue.number} for ${file}`);
@@ -137,41 +137,39 @@ jobs:
             function parseTags(content) {
               console.log('Starting to parse tags from file content');
               console.log('Content length:', content.length);
-              
-              // Updated regex to match entire lines containing tags
-              const tagRegex = /^.*?(?<!`)(TODO|PLACEHOLDER|NOTE)(?!`).*$/gm;
-              
-              const tags = new Set(); // Use a Set to avoid duplicates
+
+              // Strip fenced code blocks and inline code spans to avoid false positives
+              function stripCode(inp) {
+                const lines = inp.split(/\r?\n/);
+                let inFence = false;
+                const out = [];
+                for (let line of lines) {
+                  if (/^```/.test(line.trim())) { inFence = !inFence; out.push(''); continue; }
+                  if (inFence) { out.push(''); continue; }
+                  // Remove inline code spans
+                  out.push(line.replace(/`[^`]*`/g, ''));
+                }
+                return out.join('\n');
+              }
+
+              const cleaned = stripCode(content);
+              const tagRegex = /^(.*\b(TODO|PLACEHOLDER|NOTE)\b.*)$/gim;
+
+              const tags = new Set();
               let match;
               let matchCount = 0;
-
-              console.log('Regex pattern:', tagRegex.source);
-              
-              while ((match = tagRegex.exec(content)) !== null) {
+              while ((match = tagRegex.exec(cleaned)) !== null) {
                 matchCount++;
-                const fullLine = match[0].trim();
-                const tagType = match[1].toUpperCase();
-                
-                console.log(`Match ${matchCount}:`);
-                console.log(`  Full line: "${fullLine}"`);
-                console.log(`  Tag type: ${tagType}`);
-                
-                // Add the full line to the Set
+                const fullLine = (match[1] || match[0]).trim();
                 tags.add(fullLine);
-                console.log(`  Added tag: ${fullLine}`);
               }
-              
-              console.log(`Total matches found: ${matchCount}`);
-              console.log(`Unique tags added: ${tags.size}`);
-              
-              // Convert Set to array of objects
+              console.log(`Total tag lines matched (deduped): ${tags.size} (raw matches: ${matchCount})`);
+
               const tagsArray = Array.from(tags).map(line => {
-                const tagType = line.match(/(TODO|PLACEHOLDER|NOTE)/i)[0].toUpperCase();
+                const m = /(TODO|PLACEHOLDER|NOTE)/i.exec(line) || [];
+                const tagType = (m[1] || 'TODO').toUpperCase();
                 return { type: tagType, content: line };
               });
-              
-              tagsArray.forEach((tag, index) => console.log(`Tag ${index + 1}: ${tag.type}: ${tag.content}`));
-              
               return tagsArray;
             }
 
@@ -270,36 +268,16 @@ jobs:
                 const totalCount = updatedTasks.length;
                 const title = `(${openCount}/${totalCount} open) Tags in ${file}`;
                 const body = `File: [${file}](${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/blob/${context.sha}/${file})\n\nTasks:\n${formattedTasks}\n\nImportant: do not change the status of tasks tagged as "Added from file". These tasks depend on to-do tags in the original file. To change the status of these tasks, please edit the md file directly.`;
-                // Attempt to reopen a matching closed issue if one exists
-                const closedIssue = await findClosedIssue(file);
-                if (closedIssue) {
-                  console.log(`Reopening closed issue #${closedIssue.number} for ${file}`);
-                  issue = await github.rest.issues.update({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    issue_number: closedIssue.number,
-                    state: 'open',
-                    title: title,
-                    body: body,
-                    labels: ['doc-tags', label]
-                  });
-                  await github.rest.issues.createComment({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    issue_number: closedIssue.number,
-                    body: 'New tags detected in source file. Reopening this issue. 🔄'
-                  });
-                  console.log(`Reopened issue #${closedIssue.number} for ${file}`);
-                  return issue;
-                }
-
+                // Preserve existing labels and ensure required ones
+                const currentLabels = (existingIssue.labels || []).map(l => l.name);
+                const nextLabels = Array.from(new Set([...currentLabels, 'doc-tags', label]));
                 issue = await github.rest.issues.update({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: existingIssue.number,
                   title: title,
                   body: body,
-                  labels: ['doc-tags', label]
+                  labels: nextLabels
                 });
                 console.log(`Updated issue #${issue.data.number} for ${file}`);
                 // Auto-close when no open tasks remain
@@ -326,15 +304,36 @@ jobs:
                 const totalCount = updatedTasks.length;
                 const title = `(${openCount}/${totalCount} open) Tags in ${file}`;
                 const body = `File: [${file}](${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/blob/${context.sha}/${file})\n\nTasks:\n${formattedTasks}\n\nImportant: do not change the status of tasks tagged as "Added from file". These tasks depend on to-do tags in the original file. To change the status of these tasks, please edit the md file directly.`;
-
-                issue = await github.rest.issues.create({
+                // Attempt to reopen a matching closed issue if one exists
+                const closedIssue = await findClosedIssue(file);
+                if (closedIssue) {
+                  console.log(`Reopening closed issue #${closedIssue.number} for ${file}`);
+                  issue = await github.rest.issues.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: closedIssue.number,
+                    state: 'open',
+                    title: title,
+                    body: body,
+                    labels: ['doc-tags', label]
+                  });
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: closedIssue.number,
+                    body: 'New tags detected in source file. Reopening this issue. 🔄'
+                  });
+                  console.log(`Reopened issue #${closedIssue.number} for ${file}`);
+                } else {
+                  issue = await github.rest.issues.create({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   title: title,
                   body: body,
                   labels: ['doc-tags', label]
-                });
-                console.log(`Created new issue #${issue.data.number} for ${file}`);
+                  });
+                  console.log(`Created new issue #${issue.data.number} for ${file}`);
+                }
               } else {
                 console.log(`Skipping ${file} - no open issue and no current tags`);
                 return null;
@@ -449,14 +448,14 @@ jobs:
                 });
 
                 // Create a Set of existing file paths for quick lookup
-                const existingFilesSet = new Set(files);
+                const existingFilesSet = new Set(files.map(normalizePath));
 
                 for (const issue of existingIssues) {
                   // Extract the file path from the issue title either "(x/y open) Tags in <file>" or "Tags in <file> (x/y open)"
                   const fileMatch = issue.title.match(/^\(\d+\/\d+ open\)\s+Tags in (.+)$|^Tags in (.+?)(?: \(|$)/);
                   if (fileMatch) {
                     const filePath = fileMatch[1] || fileMatch[2];
-                    if (!existingFilesSet.has(filePath)) {
+                    if (!existingFilesSet.has(normalizePath(filePath))) {
                       // File does not exist, close the issue
                       console.log(`File ${filePath} does not exist. Closing issue #${issue.number}`);
                       await github.rest.issues.update({
@@ -536,7 +535,10 @@ jobs:
                       } else {
                         // Prefer manually completed over comment task if conflict
                         const isMan = (x) => x.completed === true && x.status === 'Manually marked as complete';
+                        const isCompletedComment = (x) => (x.status || '').startsWith('Added from comment') && x.completed === true;
                         if (isMan(t) && !isMan(existing)) {
+                          map.set(t.content, t);
+                        } else if (isCompletedComment(t) && !isCompletedComment(existing)) {
                           map.set(t.content, t);
                         }
                       }
@@ -554,16 +556,17 @@ jobs:
                     mergedExisting = mergeTasksUnique(mergedExisting, dupExisting);
                   }
 
-                  // Rebuild the primary issue body using current tags + merged existing tasks
-                  let currentTags = [];
-                  try {
-                    if (files.includes(fp)) {
-                      const content = await fs.readFile(fp, 'utf8');
-                      currentTags = parseTags(content);
-                    } else {
-                      console.log(`File ${fp} not found when rebuilding primary. Using no current tags.`);
-                    }
-                  } catch (e) {
+                // Rebuild the primary issue body using current tags + merged existing tasks
+                let currentTags = [];
+                try {
+                  const filesSetNorm = new Set(files.map(normalizePath));
+                  if (filesSetNorm.has(normalizePath(fp))) {
+                    const content = await fs.readFile(normalizePath(fp), 'utf8');
+                    currentTags = parseTags(content);
+                  } else {
+                    console.log(`File ${fp} not found when rebuilding primary. Using no current tags.`);
+                  }
+                } catch (e) {
                     console.log(`Error reading ${fp} when rebuilding primary: ${e.message}`);
                   }
 
