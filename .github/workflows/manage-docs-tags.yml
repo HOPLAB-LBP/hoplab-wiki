@@ -474,7 +474,7 @@ jobs:
                 }
                 // ***** New code ends here *****
 
-                // ***** De-duplicate open issues per file *****
+                // ***** De-duplicate open issues per file (merge tasks safely) *****
                 console.log('Checking for duplicate open issues per file');
                 const openIssues = await github.paginate(github.rest.issues.listForRepo, {
                   owner: context.repo.owner,
@@ -506,6 +506,81 @@ jobs:
                       labels: ['doc-tags']
                     });
                   }
+
+                  // Merge comment-added and manually-completed tasks from duplicates into primary, without duplicates
+                  async function getIssueBody(number) {
+                    const res = await github.rest.issues.get({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: number
+                    });
+                    return res.data.body || '';
+                  }
+
+                  function keepForMerge(task) {
+                    return Boolean(task) && (
+                      (task.status && task.status.startsWith('Added from comment')) ||
+                      (task.completed === true && task.status === 'Manually marked as complete')
+                    );
+                  }
+
+                  function mergeTasksUnique(baseTasks, extraTasks) {
+                    const map = new Map(); // key: content -> task
+                    for (const t of baseTasks) {
+                      map.set(t.content, t);
+                    }
+                    for (const t of extraTasks) {
+                      const existing = map.get(t.content);
+                      if (!existing) {
+                        map.set(t.content, t);
+                      } else {
+                        // Prefer manually completed over comment task if conflict
+                        const isMan = (x) => x.completed === true && x.status === 'Manually marked as complete';
+                        if (isMan(t) && !isMan(existing)) {
+                          map.set(t.content, t);
+                        }
+                      }
+                    }
+                    return Array.from(map.values());
+                  }
+
+                  const primaryBody = await getIssueBody(primary.number);
+                  const primaryExisting = parseExistingTasks(primaryBody).filter(keepForMerge);
+
+                  let mergedExisting = primaryExisting;
+                  for (const dup of issuesForFile.slice(1)) {
+                    const dupBody = await getIssueBody(dup.number);
+                    const dupExisting = parseExistingTasks(dupBody).filter(keepForMerge);
+                    mergedExisting = mergeTasksUnique(mergedExisting, dupExisting);
+                  }
+
+                  // Rebuild the primary issue body using current tags + merged existing tasks
+                  let currentTags = [];
+                  try {
+                    if (files.includes(fp)) {
+                      const content = await fs.readFile(fp, 'utf8');
+                      currentTags = parseTags(content);
+                    } else {
+                      console.log(`File ${fp} not found when rebuilding primary. Using no current tags.`);
+                    }
+                  } catch (e) {
+                    console.log(`Error reading ${fp} when rebuilding primary: ${e.message}`);
+                  }
+
+                  const rebuilt = formatTasks(currentTags, mergedExisting);
+                  const openCount = rebuilt.tasks.filter(t => !t.completed).length;
+                  const totalCount = rebuilt.tasks.length;
+                  const newTitle = `(${openCount}/${totalCount} open) Tags in ${fp}`;
+                  const newBody = `File: [${fp}](${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/blob/${context.sha}/${fp})\n\nTasks:\n${rebuilt.text}\n\nImportant: do not change the status of tasks tagged as "Added from file". These tasks depend on to-do tags in the original file. To change the status of these tasks, please edit the md file directly.`;
+
+                  await github.rest.issues.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: primary.number,
+                    title: newTitle,
+                    body: newBody
+                  });
+
                   for (const dup of issuesForFile.slice(1)) {
                     await github.rest.issues.createComment({
                       owner: context.repo.owner,
