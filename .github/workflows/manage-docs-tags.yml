@@ -38,6 +38,8 @@ jobs:
             const path = require('path');       // Cross-platform path utilities
 
             console.log('Starting the Manage Docs Tags and Issues workflow');
+            // Track issues we close during this run to avoid reprocessing them in later phases
+            const closedThisRun = new Set();
 
             // Recursively walk the docs tree and collect Markdown files.
             // This is used for push/dispatch sweeps; for PR/diff-optimized workflows,
@@ -337,12 +339,16 @@ jobs:
                     issue_number: existingIssue.number,
                     body: 'No valid TODO/NOTE/PLACEHOLDER items remain in the source file. Closing this empty issue. ✅'
                   });
-                  await github.rest.issues.update({
+                  const closeRes = await github.rest.issues.update({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
                     issue_number: existingIssue.number,
-                    state: 'closed'
+                    state: 'closed',
+                    labels: ['doc-tags', label, 'doc-tags-complete']
                   });
+                  closedThisRun.add(existingIssue.number);
+                  // Reflect closed state in our local variable for accurate logging
+                  issue = { data: { state: 'closed', number: existingIssue.number } };
                 } else if (openCount === 0) {
                   console.log(`All tasks complete for ${file}; closing issue #${existingIssue.number}`);
                   await github.rest.issues.createComment({
@@ -351,13 +357,15 @@ jobs:
                     issue_number: existingIssue.number,
                     body: 'All tasks are complete. Closing this issue. ✅'
                   });
-                  await github.rest.issues.update({
+                  const closeRes = await github.rest.issues.update({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
                     issue_number: existingIssue.number,
                     state: 'closed',
                     labels: ['doc-tags', label, 'doc-tags-complete']
                   });
+                  closedThisRun.add(existingIssue.number);
+                  issue = { data: { state: 'closed', number: existingIssue.number } };
                 }
               } else if (currentTags.length > 0) {
                 console.log(`Creating new issue for ${file}`);
@@ -519,6 +527,10 @@ jobs:
                 const existingFilesSet = new Set(files.map(normalizePath));
 
                 for (const issue of existingIssues) {
+                  if (closedThisRun.has(issue.number)) {
+                    console.log(`Skipping issue #${issue.number} in orphan cleanup (closed earlier in this run)`);
+                    continue;
+                  }
                   // Extract the file path from the issue title either "(x/y open) Tags in <file>" or "Tags in <file> (x/y open)"
                   const fileMatch = issue.title.match(/^\(\d+\/\d+ open\)\s+Tags in (.+)$|^Tags in (.+?)(?: \(|$)/);
                   if (fileMatch) {
@@ -549,7 +561,9 @@ jobs:
                   state: 'open',
                   per_page: 100
                 });
-                const docIssues = openIssues.filter(isDocTagsIssue);
+                const docIssues = openIssues
+                  .filter(iss => !closedThisRun.has(iss.number))
+                  .filter(isDocTagsIssue);
                 const byFile = new Map();
                 for (const iss of docIssues) {
                   const fp = extractFileFromIssue(iss);
