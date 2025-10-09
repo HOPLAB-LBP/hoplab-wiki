@@ -1,9 +1,0 @@
-{
-  // Markdownlint rules: keep readable and flexible for docs
-  "default": true,
-  "MD013": false, // line length
-  "MD033": false, // inline HTML allowed (MkDocs + Material snippets)
-  "MD041": false, // allow no H1 at top when pages start with front-matter
-  "MD024": { "siblings_only": true },
-  "MD025": { "front_matter_title": "" }
-}
