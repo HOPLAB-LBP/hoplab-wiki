@@ -84,6 +84,6 @@ __TODO__: [Klara] Add context for the stuff on OSF and Github (touch on topics a
 
 __TODO__: [Klara] Add (general) info on how to store your data (eg BIDS) --> this is in the fmri section for now. perhaps we can link it? --> would wait until the end of the BADM consult process, perhaps we can make a page dedicated to RDM 
 
-__TODO__: [Klara] Refer to the resources for researchers on [this page](https://ppw.kuleuven.be/en/research/doing-research)
+__TODO__: [Klara] Refer to the resources for researchers on the [PPW Research page](https://ppw.kuleuven.be/en/research)
 
 __TODO__: [Klara] Make list of events throughout the year e.g. conferences, scicomm activities, days to remember (e.g., stroke day)
