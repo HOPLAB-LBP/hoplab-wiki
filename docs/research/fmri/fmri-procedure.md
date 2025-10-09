@@ -38,7 +38,7 @@ Systems are color-coded, and can be read as follow:
 - **Dotted** lines mostly relay audio/video 
 - **Dashed** lines are power lines.
 
-**TODO:** add info about the codes sent by each box.
+ 
 
 Other instruments we use are:
 
@@ -174,8 +174,7 @@ The stimulus computer's desktop is located in the **control room**. It is the se
     - To flip the screen, adjust the **projector settings**, not the computer.
     - **Screen Width**: 28.35 visual degrees
 
-**TODO:** MATLAB and PTB have been updated to newer version!
-**TODO:** the structure of these sections is a bit confusing. We list the instruments in the section above, then we explain what to do at the scanner room, then we go back to describing instruments.. perhaps we should streamline this? Or probably just make two different pages, one for instruments, one for a general step-by-step procedure, and one for frequent errors and solutions/workarounds?
+ 
 ---
 
 ### Trigger Boxes
@@ -208,7 +207,7 @@ The scanner sends a trigger "5" to the stimulus computer. Different setups are u
 
 ![Trigger box](../../assets/triggerbox.png)
 
-**TODO:** update pics. They do not seem to be up-to-date anymore.
+ 
 
 #### Common Issues
 
@@ -981,6 +980,12 @@ In case of an emergency involving the MRI system or facility:
 1. **Seek immediate assistance** from the **ASU**.
 2. **Call emergency number 1000**. Clearly state the location: **"MRI Suite MR8"**.
 
----
-
+<!--
+**TODO:** add info about the codes sent by each box.
+**TODO:** MATLAB and PTB have been updated to newer version!
+**TODO:** the structure of these sections is a bit confusing. We list the instruments in the section above, then we explain what to do at the scanner room, then we go back to describing instruments.. perhaps we should streamline this? Or probably just make two different pages, one for instruments, one for a general step-by-step procedure, and one for frequent errors and solutions/workarounds?
+**TODO:** update pics. They do not seem to be up-to-date anymore.
 __TODO__: add additional info on DICOM (no enhanced, missing values, etc.). See also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Philips DICOMs, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.
+-->
+
+ 

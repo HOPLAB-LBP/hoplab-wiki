@@ -361,6 +361,7 @@ For example:
 
 ---
 
+<!--
 **TODO:** Add links to folder structure and/or data.
 **TODO:** Add information about defacing/anonymizing raw data (including filenames) using my script.
 **TODO:** Improve and add details for the parameters required in the `script02_behavioural-to-BIDS.m`.
@@ -370,3 +371,6 @@ For example:
 **TODO:** Explain how to save and run the `mriqc` commands.
 **TODO:** Refine the phrasing and add more info on the parameters for GLM and contrasts setup.
 **TODO:** Possibly include screenshots for better clarity (e.g., code sections).
+-->
+
+ 

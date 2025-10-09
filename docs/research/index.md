@@ -66,6 +66,7 @@ Here are some additional links to key research resources, tutorials, and tools:
 
 ---
 
+<!--
 __TODO__: [Klara] Add more recommended software (e.g., Mendeley/Endnote, R, Text editors, Image editing software, Git, LaTeX, Pandoc, Markdown, Python, Overleaf, RBA, BioSemi, PsychoPy, Pavlovia).
 
 __TODO__: [Klara] Add info on interesting conferences to attend, suggested reading (books, papers, websites), suggested courses (soft skills, programming, EEG/fMRI, version control, stats, science, etc.). Part of this is already covered in the "Student Starter Pack" page.
@@ -87,3 +88,4 @@ __TODO__: [Klara] Add (general) info on how to store your data (eg BIDS) --> thi
 __TODO__: [Klara] Refer to the resources for researchers on the [PPW Research page](https://ppw.kuleuven.be/en/research)
 
 __TODO__: [Klara] Make list of events throughout the year e.g. conferences, scicomm activities, days to remember (e.g., stroke day)
+-->

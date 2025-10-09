@@ -34,4 +34,6 @@ A basic workflow that you might want to adopt when scripting your experiment is 
     !!! tip
         It can sometimes be cumbersome to go through the complete _local change > commit > test_ loop just to test out a minor code change. An elegant alternative is to use **flags** in your code that will activate or de-activate the Pavlovia components. The latter are just two: a `init` and a `finish` event. Set these behind an `if` statement, and you'll be able to switch from online to local with one flag, so that you can go back to trying your code locally before syncing your changes (see an example [here](https://github.com/TimManiquet/mouse_tracker_template)).
 
+<!--
 __TODO__: [Klara] Make sure the workshop material from Christophe Bossens is updated to the latest version
+-->

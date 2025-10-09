@@ -42,5 +42,7 @@ We hope this section helps you conduct your behavioural research with ease and p
 
 </div>
 
+<!--
 __TODO__: [Klara] Add info on how/where to rent lab coats (mandatory when testing in the hospital)
 __TODO__: [Klara]: Add info on shredding paper with sensitive information
+-->

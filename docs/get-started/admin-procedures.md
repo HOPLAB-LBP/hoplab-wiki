@@ -133,9 +133,11 @@ We are very sad to see you leave! But since you do, make sure to tick the follow
 2. Make sure your data is organized and backed up correctly. That mostly means having back-ups in different locations and different ways. If you need advice on this, refer to the person in charge of data storage (as of December 2024, that is [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743)).
 3. For more information on what to do when you leave, check out [this link](https://ppw.kuleuven.be/ppw-dict/faq#autotoc-item-autotoc-63) for ICT-related info, [this link](https://admin.kuleuven.be/personeel/english/intranet/endofcontract-pension/practical-steps-leaving/practical-steps-leaving-employment) for HR-related info and [this link](https://www.kuleuven.be/english/life-at-ku-leuven/upon-leaving) if you are an international researcher leaving Belgium.
 
+<!--
 __TODO__: [Klara] Check whether everything is still up to date (KU Loket has renewed some tools such as the one for booking rooms; Clustermarket is now Calira and the responsible is now Klara instead of Christophe)
 __TODO__: [Klara] Add most recent info from Jasmine's presentation to LBP on 08/10/2025 (e.g., booking flights with Omnia has changed to Diversity Travel). She has also agreed to review this page once it's updated. 
 __TODO__: [Klara] Calira is not the only tool for booking research infrastructure in the faculty. Add the other info as well in an overview of research infrastructure available at PPW.
 __TODO__: [Klara] Edit info in last section after BADM consultation has ended and we have researcher's onboarding and offboarding checklist. Then, we can also add a section on RDM (e.g., data storage and so on).
 __TODO__: [Klara] Add info on how to plan your PhD defense/PhD book (see checklist Klara - adapted by Filippo for this faculty)
 __TODO__: [Klara] Add info on youth holiday [(https://www.rva.be/burgers/verlof/hebt-u-recht-op-de-jeugdvakantie)](https://admin.kuleuven.be/personeel/intranet/verlof-afwezigheden/verlof/jeugdvakantie.html), see email Emily to Klara
+-->

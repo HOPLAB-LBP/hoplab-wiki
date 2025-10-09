@@ -165,10 +165,11 @@ For **mac users**, follow the instructions on [this page](https://ppw.kuleuven.b
 
 </style>
 
+<!--
 __TODO__: [Klara] Explain how you can forward emails from your student mailing address to your professional mailing address (for PhD'ers)
 __TODO__: [Klara] Specify how to encrypt your (external) hard drive --> I think it happens automatically at least for Windows 
 __TODO__: [Klara] Delete all Skype info as it will be deprecated
 __TODO__: [Klara] Make it clearer that all software has to be installed in Workdir!!
 __TODO__: [Klara] Edit info on data storage after BADM consultation has ended (e.g., OneDrive info is outdated and not recommended any longer by KU Leuven)
 __TODO__: [Klara] Add info on how to print downstairs
-
+-->

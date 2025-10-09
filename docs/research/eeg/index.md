@@ -10,6 +10,7 @@ In Hoplab we typically set up experiments for multivariate EEG ("Representationa
 
 This publication is accompanied by an [OSF archive](https://osf.io/d5egu/) that contains the analysis code to do multivariate analysis with the help of Matlab and the [CosmoMVPA](https://www.cosmomvpa.org/) toolbox.
 
+<!--
 __TODO__: Refer to Calira info elsewhere
 
 __TODO__: Create subpages
@@ -23,7 +24,4 @@ __TODO__: Add EEG default lab setup info (e.g. photocell setup, correct PsychoPy
 __TODO__: Add PsychoPy script template
 
 __TODO__: Add Eyetracking info
-
-
-
-
+-->

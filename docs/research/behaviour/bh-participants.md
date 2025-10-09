@@ -138,6 +138,7 @@ Please record participant presence ("show-ups") and assign credits or pay partic
 - Participants should contact the researcher if they cannot attend the session, which qualifies as an **excused no-show**.
 - **Unexcused no-shows** incur a penalty of -0.5 credit. If a participant has 5 or more no-shows, their account will be inactivated.
 
+<!--
 __TODO__: [Klara] Check whether EMS info is still up to date (info dates from 09/2022). Update with info to be found [here](https://admin.kuleuven.be/mykuleuven/en/channel/50000339/research/research-support) and make it shorter/more to the point?
 
 __TODO__: [Klara] Add info on how to recruit other types of participants (e.g., elderly, patients, children, experts, etc.) including how to get access to KWS if needed. 
@@ -147,4 +148,4 @@ __TODO__: [Klara] Add the lab's participant database info
 __TODO__: [Klara] Add (more) guidelines on how to store/manage data (probably best in a separate section)
 
 __TODO__: [Klara] Add info on how the procedure for money reimbursement works, found info on [this link](https://ppw.kuleuven.be/intranet/en/finance/reimbursementtestsubjectsconcise) and [this link](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/experimental-subjects) and update with the newest ethical applications (€15/h for behavioural studies/EEG and €30/h for fMRI)
-
+-->

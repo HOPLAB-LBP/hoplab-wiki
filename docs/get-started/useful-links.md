@@ -66,4 +66,6 @@ Apart from this Wiki, we try to keep the [__HopLab website__](https://www.hoplab
 ??? question "What is ORCID?"
     ORCID is a unique digital identifier system for researchers, used by most journals during paper submission. To create your ORCID ID, go [*here*](https://orcid.org/), select "Sign In/Register", choose "Access through your institution" and select "KU Leuven Association".
 
+<!--
 __TODO__: [Klara]: Merge this info on the "getting started" index page?
+-->

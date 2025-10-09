@@ -11,4 +11,6 @@ Examples of previous applications can be found in [this folder](https://kuleuven
 
 For more detailed info, please check out the following pages.
 
+<!--
 __TODO__: [Klara] Add page on amendments?
+-->

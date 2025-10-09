@@ -85,9 +85,10 @@ We hope this guide helps you settle into your new role. Dive in, and enjoy your 
 
 ---
 
+<!--
 __TODO__: [Klara] Add info on the remote work policy (of KU Leuven but also of the lab specifically)
 __TODO__: [Klara] Add HSE orientation info [brochure](https://admin.kuleuven.be/sab/vgm/en/doc/hse-organisation/intranet/general-hse-info-brochure-en), including contact info (HSE person, occupational physician (Idewe), HSE network coordinator, members of first Intervention Team and First Aid Team), emergency procedures and nr, first aid info, what to do when you have a work accident, how to report HSE problems, pregnancy-related procedures, ergonomics, waste, psychosocial aspects, and HSE training.
 __TODO__: [Klara] Add info on technical services/CLD on how to report technical defects (KU Loket/HSE & Spaces/Reporting technical defects/New notification)
 __TODO__: [Klara] Add or refer to PhD-related info from the doctoral schools
 __TODO__: [Klara] Add a page with info for visitors (e.g. such as https://fys.kuleuven.be/ster/visitors)
-
+-->

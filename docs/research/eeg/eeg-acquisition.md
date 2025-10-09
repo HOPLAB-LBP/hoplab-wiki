@@ -149,6 +149,7 @@ Hooray, you are now ready to start acquiring EEG-data! To do so, follow these st
 4.	Fill the tub with clean lukewarm water and add a bit of the 70% alcohol solution to it. Soak the electrodes, the head cap and the syringes in it for a few seconds to disinfect them. 
 5.	Rinse everything again with lukewarm water and let the caps and syringes dry on the round table. Put the electrode sets back on the rack (make sure they are stable and don't fall on the floor).
 
+<!--
 __TODO__: [Klara] Fix the small figure labels (fig 9-12);
 
 __TODO__: [Klara] Add info on how to (quickly) check the triggers, how to (quickly) check bridging and what to do in case of the "could not open port 'COM2'" error message (reconnect cables connecting the trigger box with either stimulus or acquisition pc and/or restart both pcs).
@@ -158,6 +159,6 @@ __TODO__: [Klara] Update new things since pc switch (password, config file, prog
 __TODO__: [Klara] Update new cleaning protocol (without toothbrush, see BioSemi manual)
 
 __TODO__: [Klara] Add lab logistics info (paper to count towels + overview of materials + info on how to wash towels and ordering stuff e.g gel, paper towels, Kruidvat names of the cleaning materials)
-
+-->
 
 

@@ -186,6 +186,8 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 ```
 
+<!--
 __TODO__: [Klara] Refer to the workshop material in the series on online experimentation given by Christophe Bossens (Klara has access and can probably put them on Teams somewhere)
 __TODO__: [Klara] Fix broken link in Informed Consent section
 __TODO__: [Klara] Structure this page a bit better? It seems a bit "here and there" to me 
+-->

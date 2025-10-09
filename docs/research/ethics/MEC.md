@@ -88,6 +88,7 @@ Once you have written all the necessary documents, you can file your application
 
 ---
 
+<!--
 __TODO__: [Klara] Check whether this still applies --> "If the medical ethical committee has an issue with the principal investigator not being connected with UZ Leuven (e.g. in case the PI is a professor at the Faculty of Psychology and Educational Sciences); report this to Prof. Dr. Pol Ghesquière."
 __TODO__: [Klara] Update this page and make a bit more to the point
-
+-->

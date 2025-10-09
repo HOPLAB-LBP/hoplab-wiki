@@ -14,7 +14,7 @@ The following types of ROIs are commonly used in fMRI research:
 
 ### Example: Creating Spherical ROIs with the GUI
 
-__TODO__: add info and screenshots on how to do this using marsbar GUI
+ 
   
 ### Example: Creating Spherical ROIs with a Script
 
@@ -840,8 +840,13 @@ Now that you have your beta images (from the GLM) and your ROIs, you have everyt
 
 ---
 
-- **TODO:**  mention the roi stuff Filippo did, and perhaps ask him to write something about it?
+ 
 
 <https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/atlases.html#id4>
 <https://neurosynth.org/>
 <https://openneuro.org/>
+
+<!--
+__TODO__: add info and screenshots on how to do this using marsbar GUI
+- **TODO:**  mention the roi stuff Filippo did, and perhaps ask him to write something about it?
+-->
