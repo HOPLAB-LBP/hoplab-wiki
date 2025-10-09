@@ -136,3 +136,216 @@
   display: block;
   font-family: monospace;
 }
+
+/* =========================
+   Layout & Navigation polish
+   ========================= */
+
+/* Slightly wider content for comfortable reading */
+.md-grid { max-width: 1140px; }
+
+/* Active link accent in primary nav */
+.md-nav__link--active,
+.md-nav__item .md-nav__link--active {
+  font-weight: 600;
+  border-left: 3px solid var(--md-primary-fg-color);
+  padding-left: calc(var(--md-spacing) - 3px);
+}
+
+/* Sticky secondary sidebar (Table of Contents) */
+.md-sidebar--secondary {
+  position: sticky;
+  top: 5.5rem;
+  height: calc(100vh - 5.5rem);
+}
+
+/* Breadcrumbs subtle style */
+.md-breadcrumbs__link { color: var(--md-default-fg-color--light); }
+.md-breadcrumbs__link:hover { color: var(--md-default-fg-color); }
+
+/* Search input focus accent */
+.md-search__input:focus {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--md-primary-fg-color) 35%, transparent);
+}
+
+/* Footer subtle background and links */
+.md-footer { box-shadow: 0 -2px 8px rgb(0 0 0 / 5%); }
+.md-footer a { text-decoration: none; }
+.md-footer a:hover { text-decoration: underline; }
+
+/* =========================
+   Headings & Typography
+   ========================= */
+
+.md-typeset { line-height: 1.65; }
+
+.md-typeset h2 {
+  margin-top: 2rem;
+  padding-bottom: .25rem;
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+}
+[data-md-color-scheme="slate"] .md-typeset h2 {
+  border-bottom-color: rgb(255 255 255 / 12%);
+}
+.md-typeset h3 { margin-top: 1.5rem; }
+
+/* Optional: add subtle gradient to the first H1 on a page */
+.md-content__inner > h1:first-child {
+  background: linear-gradient(90deg, var(--md-primary-fg-color), #7e57c2);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================
+   Cards & Callouts
+   ========================= */
+
+/* Grid cards polish */
+.md-typeset .grid.cards > ul > li {
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 6%);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
+}
+.md-typeset .grid.cards > ul > li > a { padding: 0.9rem 1rem; }
+.md-typeset .grid.cards svg,
+.md-typeset .grid.cards .twemoji {
+  font-size: 1.6rem;
+  color: var(--md-primary-fg-color);
+}
+
+/* Admonition polish */
+.md-typeset .admonition,
+.md-typeset details {
+  border-left-width: 4px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 5%);
+  border-radius: 6px;
+}
+
+/* =========================
+   Tables & Code blocks
+   ========================= */
+
+/* Table stripes and sticky header */
+.md-typeset table:not(.highlighttable) th {
+  position: sticky; top: 0; z-index: 1;
+  background: var(--md-default-bg-color);
+}
+.md-typeset table:not(.highlighttable) tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--md-default-bg-color) 92%, black);
+}
+[data-md-color-scheme="slate"] .md-typeset table:not(.highlighttable) tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--md-default-bg-color) 92%, white);
+}
+
+/* Code blocks styling */
+.md-typeset pre {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
+}
+.md-typeset pre > code { background: inherit; }
+
+/* =========================
+   Buttons, Chips, Labels
+   ========================= */
+
+/* Primary button: use in Markdown as: [Label](url){ .md-button .md-button--primary } */
+.md-typeset .md-button {
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+}
+.md-typeset .md-button--primary {
+  background: var(--md-primary-fg-color);
+  border-color: var(--md-primary-fg-color);
+  color: white;
+}
+
+/* Chips: {: .chip } or {: .chip .chip--green } */
+.chip {
+  display: inline-flex; align-items: center; gap: .4rem;
+  height: 1.6rem; padding: 0 .6rem;
+  border-radius: 999px; font-size: .8rem; font-weight: 500;
+  background: color-mix(in srgb, var(--md-primary-fg-color) 12%, transparent);
+  color: var(--md-primary-fg-color);
+  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 30%, transparent);
+}
+.chip--green { color: #2e7d32; background: #2e7d321A; border-color: #2e7d3236; }
+.chip--red   { color: #c62828; background: #c628281A; border-color: #c6282836; }
+.chip--blue  { color: #1565c0; background: #1565c01A; border-color: #1565c036; }
+
+/* Inline label: {: .label } */
+.label {
+  display: inline-block; padding: .15rem .4rem; border-radius: .35rem;
+  background: color-mix(in srgb, var(--md-primary-fg-color) 10%, transparent);
+  color: var(--md-default-fg-color);
+  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 25%, transparent);
+  font-size: .78rem; vertical-align: middle;
+}
+
+/* =========================
+   Media & Figures
+   ========================= */
+
+/* Figure captions */
+.md-typeset figure { margin: 1rem 0; }
+.md-typeset figcaption {
+  margin-top: .4rem; text-align: center;
+  color: var(--md-default-fg-color--light); font-size: .9rem;
+}
+
+/* Bordered images helper: ![alt](src){ .img-border } */
+.img-border { border: 1px solid rgb(0 0 0 / 10%); border-radius: 6px; }
+[data-md-color-scheme="slate"] .img-border { border-color: rgb(255 255 255 / 12%); }
+
+/* Improve current zoom effect bounds */
+.md-content img:active {
+  transform: scale(1.8);
+  transform-origin: center top;
+}
+
+/* =========================
+   Utilities & Components
+   ========================= */
+
+/* Responsive grid helpers: wrap content in <div class="grid-2">...</div> */
+.grid-2, .grid-3, .grid-4 {
+  display: grid; gap: 1rem; align-items: start;
+}
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 960px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* Timeline component: simple UL with class .timeline */
+.timeline { position: relative; list-style: none; padding-left: 1.25rem; }
+.timeline::before {
+  content: ""; position: absolute; left: .4rem; top: 0; bottom: 0;
+  width: 2px; background: color-mix(in srgb, var(--md-primary-fg-color) 25%, transparent);
+}
+.timeline > li { position: relative; margin: 0 0 1rem 0; }
+.timeline > li::before {
+  content: ""; position: absolute; left: -.1rem; top: .25rem;
+  width: .7rem; height: .7rem; border-radius: 50%;
+  background: var(--md-default-bg-color);
+  border: 2px solid color-mix(in srgb, var(--md-primary-fg-color) 60%, transparent);
+}
+.timeline > li > .timeline-card {
+  margin-left: .75rem; padding: .6rem .8rem; border-radius: .5rem;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 6%);
+  border-left: 3px solid var(--md-primary-fg-color);
+}
+
+/* Task list checkboxes: more visible */
+.task-list-control input[type="checkbox"] {
+  width: 1rem; height: 1rem; border-radius: .2rem;
+  border: 1px solid color-mix(in srgb, var(--md-default-fg-color) 30%, transparent);
+}
+.task-list-control input[type="checkbox"]:checked {
+  background: var(--md-primary-fg-color); border-color: var(--md-primary-fg-color);
+}
