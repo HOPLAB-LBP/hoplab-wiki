@@ -1,4 +1,5 @@
 ---
+description: Hoplab Wiki home — start here for research methods, onboarding, and lab resources.
 hide:
   - navigation
   - toc

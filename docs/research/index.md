@@ -87,3 +87,6 @@ __TODO__: [Klara] Add (general) info on how to store your data (eg BIDS) --> thi
 __TODO__: [Klara] Refer to the resources for researchers on [this page](https://ppw.kuleuven.be/en/research/doing-research)
 
 __TODO__: [Klara] Make list of events throughout the year e.g. conferences, scicomm activities, days to remember (e.g., stroke day)
+---
+description: Central hub for Hoplab research — behaviour, EEG, fMRI, coding resources, and ethics.
+---

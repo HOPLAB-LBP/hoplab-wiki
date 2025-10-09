@@ -904,3 +904,6 @@ By following these practices, you can ensure smoother collaboration and minimize
 ---
 
 We hope this guide helps you establish a solid coding practice. Follow these steps to ensure your code is well-organized, collaborative, and reproducible!
+---
+description: Coding practices for Hoplab — environments, project structure, debugging, and Git/GitHub.
+---

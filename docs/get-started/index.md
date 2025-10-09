@@ -90,4 +90,7 @@ __TODO__: [Klara] Add HSE orientation info [brochure](https://admin.kuleuven.be/
 __TODO__: [Klara] Add info on technical services/CLD on how to report technical defects (KU Loket/HSE & Spaces/Reporting technical defects/New notification)
 __TODO__: [Klara] Add or refer to PhD-related info from the doctoral schools
 __TODO__: [Klara] Add a page with info for visitors (e.g. such as https://fys.kuleuven.be/ster/visitors)
+---
+description: Onboarding hub for HOPLAB — computer setup, practical info, admin procedures, and mailing lists.
+---
 
