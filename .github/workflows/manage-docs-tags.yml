@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # Trigger on push to main branch
+      - feature/todo-issue-counters-and-style-fixes  # TEMP: trigger on feature branch for testing
   issue_comment:
     types: [created]  # Trigger on new issue comment
   workflow_dispatch:  # Allow manual trigger
@@ -83,6 +84,29 @@ jobs:
                 console.log(`No existing issue found for ${file}`);
               }
               return existingIssue;
+            }
+
+            // Function to find an existing CLOSED issue for a file (to potentially reopen)
+            async function findClosedIssue(file) {
+              console.log(`Searching for closed issue for file: ${file}`);
+              const issues = await github.paginate(github.rest.issues.listForRepo, {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'closed',
+                labels: ['doc-tags'],
+                per_page: 100
+              });
+              const closedIssue = issues.find(issue => {
+                return issue.title === `Tags in ${file}`
+                  || issue.title.endsWith(`Tags in ${file}`)
+                  || issue.title.includes(` Tags in ${file}`);
+              });
+              if (closedIssue) {
+                console.log(`Found closed issue #${closedIssue.number} for ${file}`);
+              } else {
+                console.log(`No closed issue found for ${file}`);
+              }
+              return closedIssue;
             }
 
             // Function to parse tags from file content, capturing the entire line for each tag
@@ -222,6 +246,28 @@ jobs:
                 const totalCount = updatedTasks.length;
                 const title = `(${openCount}/${totalCount} open) Tags in ${file}`;
                 const body = `File: [${file}](${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/blob/${context.sha}/${file})\n\nTasks:\n${formattedTasks}\n\nImportant: do not change the status of tasks tagged as "Added from file". These tasks depend on to-do tags in the original file. To change the status of these tasks, please edit the md file directly.`;
+                // Attempt to reopen a matching closed issue if one exists
+                const closedIssue = await findClosedIssue(file);
+                if (closedIssue) {
+                  console.log(`Reopening closed issue #${closedIssue.number} for ${file}`);
+                  issue = await github.rest.issues.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: closedIssue.number,
+                    state: 'open',
+                    title: title,
+                    body: body,
+                    labels: ['doc-tags', label]
+                  });
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: closedIssue.number,
+                    body: 'New tags detected in source file. Reopening this issue. 🔄'
+                  });
+                  console.log(`Reopened issue #${closedIssue.number} for ${file}`);
+                  return issue;
+                }
 
                 issue = await github.rest.issues.update({
                   owner: context.repo.owner,
