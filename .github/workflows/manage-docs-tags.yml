@@ -183,24 +183,40 @@ jobs:
 
               const cleaned = stripCode(content);
 
-              // Skip admonition declarations like `!!! note`/`??? tip`/`:::` and only match STRICT uppercase tags.
+              // Skip admonition declarations like `!!! note`/`??? tip`/`:::`.
               function isAdmonitionLine(line) {
                 const s = line.trim();
                 return s.startsWith('!!!') || s.startsWith('???') || s.startsWith(':::');
               }
 
-              // Strict pattern (uppercase only), but flexible on Markdown decorations:
-              // - Optional blockquote prefix: > or >> ...
-              // - Optional list marker: -, *, +, or numbered list (e.g., 1.)
-              // - Optional GitHub checklist marker: [ ] / [x] / [X]
-              // - Then TAG token (TODO|PLACEHOLDER|NOTE), followed by ':' or whitespace and some text
-              const tagLine = /^\s*(?:>+\s*)?(?:(?:[-*+]\s+|\d+\.\s+))?(?:\[[ xX]\]\s+)?(TODO|PLACEHOLDER|NOTE)\b(?::|\s).+$/;
+              // Normalize a line by stripping common Markdown decorations so that
+              // '**[TODO]:**', '**TODO**:', '- [ ] TODO: ...', '> TODO ...' all reduce to 'TODO: ...'.
+              function normalizeForMatch(line) {
+                let s = line;
+                // Blockquote prefixes
+                s = s.replace(/^\s*>+\s*/, '');
+                // List markers
+                s = s.replace(/^\s*(?:[-*+]\s+|\d+\.\s+)/, '');
+                // GitHub checkbox
+                s = s.replace(/^\s*\[(?: |x|X)\]\s+/, '');
+                // Collapse [TAG] -> TAG
+                s = s.replace(/\[(TODO|PLACEHOLDER|NOTE)\]/g, '$1');
+                // Remove emphasis markers around tokens
+                s = s.replace(/\*{1,3}/g, '').replace(/_{1,3}/g, '');
+                // Ensure colon placement normalized (e.g., '**TODO:**' -> 'TODO:')
+                s = s.replace(/\b(TODO|PLACEHOLDER|NOTE)\s*:\s*/g, '$1: ');
+                return s.trim();
+              }
+
+              // Simple strict matcher after normalization (uppercase-only tags)
+              const strictTag = /^(TODO|PLACEHOLDER|NOTE)\b(?::|\s).+/;
 
               const tags = new Set();
               let matchCount = 0;
               for (const line of cleaned.split(/\r?\n/)) {
                 if (isAdmonitionLine(line)) continue;
-                if (tagLine.test(line)) {
+                const norm = normalizeForMatch(line);
+                if (strictTag.test(norm)) {
                   matchCount++;
                   tags.add(line.trim());
                 }
@@ -454,8 +470,8 @@ jobs:
               console.log(`Handling new comment on issue #${issue.number}`);
               console.log('Comment content:', comment.body);
 
-              // Strict uppercase-only tags; flexible Markdown decorations (blockquote, lists, checkboxes)
-              const tagRegex = /^\s*(?:>+\s*)?(?:(?:[-*+]\s+|\d+\.\s+))?(?:\[[ xX]\]\s+)?(TODO|PLACEHOLDER|NOTE)\b(?::|\s).+$/gm;
+              // For comments we normalize less aggressively, but allow common prefixes.
+              const tagRegex = /^\s*(?:>+\s*)?(?:(?:[-*+]\s+|\d+\.\s+))?(?:\[[ xX]\]\s+)?(?:\*\*|__|\*|_)?\[?(TODO|PLACEHOLDER|NOTE)\]?\b(?::|\s).+?(?:\*\*|__|\*|_)?$/gm;
               
               const newTasks = [];
               let match;
