@@ -189,8 +189,12 @@ jobs:
                 return s.startsWith('!!!') || s.startsWith('???') || s.startsWith(':::');
               }
 
-              // Strict pattern: optional bullet, then an UPPERCASE tag token, followed by ':' or space, then text.
-              const tagLine = /^\s*(?:[-*]\s+)?(TODO|PLACEHOLDER|NOTE)\b(?::|\s).+$/;
+              // Strict pattern (uppercase only), but flexible on Markdown decorations:
+              // - Optional blockquote prefix: > or >> ...
+              // - Optional list marker: -, *, +, or numbered list (e.g., 1.)
+              // - Optional GitHub checklist marker: [ ] / [x] / [X]
+              // - Then TAG token (TODO|PLACEHOLDER|NOTE), followed by ':' or whitespace and some text
+              const tagLine = /^\s*(?:>+\s*)?(?:(?:[-*+]\s+|\d+\.\s+))?(?:\[[ xX]\]\s+)?(TODO|PLACEHOLDER|NOTE)\b(?::|\s).+$/;
 
               const tags = new Set();
               let matchCount = 0;
@@ -450,8 +454,8 @@ jobs:
               console.log(`Handling new comment on issue #${issue.number}`);
               console.log('Comment content:', comment.body);
 
-              // Strict uppercase-only tags; allow optional bullet prefix and colon or space after tag
-              const tagRegex = /^\s*(?:[-*]\s+)?(TODO|PLACEHOLDER|NOTE)\b(?::|\s).+$/gm;
+              // Strict uppercase-only tags; flexible Markdown decorations (blockquote, lists, checkboxes)
+              const tagRegex = /^\s*(?:>+\s*)?(?:(?:[-*+]\s+|\d+\.\s+))?(?:\[[ xX]\]\s+)?(TODO|PLACEHOLDER|NOTE)\b(?::|\s).+$/gm;
               
               const newTasks = [];
               let match;
