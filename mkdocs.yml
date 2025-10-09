@@ -1,4 +1,8 @@
 site_name: Hoplab Wiki
+site_url: https://hoplab-lbp.github.io/hoplab-wiki/
+site_description: >-
+  Hoplab Wiki – onboarding, research methods, procedures, and resources for
+  members of the Hoplab and related teams.
 repo_url: https://github.com/HOPLAB-LBP/hoplab-wiki/
 repo_name: HOPLAB-LBP/hoplab-wiki
 edit_uri: edit/main/docs/
@@ -94,6 +98,8 @@ theme:
     - navigation.sections
     # - toc.integrate # (1)!
     - search.highlight
+    - search.suggest
+    - search.share
     - navigation.indexes
     - navigation.footer
 
