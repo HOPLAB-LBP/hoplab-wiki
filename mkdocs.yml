@@ -11,6 +11,18 @@ nav:
   - Home: index.md
   - Getting started: 
     - get-started/index.md
+    - Start by role:
+      - get-started/roles/index.md
+      - New MSc student: get-started/roles/new-msc-student.md
+      - New PhD: get-started/roles/new-phd.md
+      - Research Assistant (RA): get-started/roles/research-assistant.md
+      - Visitor: get-started/roles/visitor.md
+    - Start by task:
+      - get-started/actions/index.md
+      - Start a coding project: get-started/actions/start-coding-project.md
+      - Run an fMRI analysis: get-started/actions/run-fmri-analysis.md
+      - Set up a behavioural experiment: get-started/actions/setup-behaviour-experiment.md
+      - Request ethics approval: get-started/actions/request-ethics-approval.md
     - Useful links: get-started/useful-links.md
     - Mailing lists: get-started/mailing-lists.md
     - Practical set-up: get-started/practical-setup.md
