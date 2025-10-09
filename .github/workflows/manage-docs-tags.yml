@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4  # v4 is fast, supports shallow clone, Node20 runtime
+        with:
+          fetch-depth: 1
 
       - name: Manage Docs Tags and Issues
         uses: actions/github-script@v7  # Node20 runtime; modern Octokit
