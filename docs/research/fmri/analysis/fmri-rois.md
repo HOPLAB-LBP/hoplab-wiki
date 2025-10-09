@@ -14,7 +14,7 @@ The following types of ROIs are commonly used in fMRI research:
 
 ### Example: Creating Spherical ROIs with the GUI
 
-**TODO**: add info and screenshots on how to do this using marsbar GUI
+__TODO__: add info and screenshots on how to do this using marsbar GUI
   
 ### Example: Creating Spherical ROIs with a Script
 

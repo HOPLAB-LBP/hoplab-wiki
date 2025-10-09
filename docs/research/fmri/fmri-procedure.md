@@ -983,4 +983,4 @@ In case of an emergency involving the MRI system or facility:
 
 ---
 
-**TODO**: add additional info on DICOM (no enhanced, missing values, etc.). See also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Philips DICOMs, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.
+__TODO__: add additional info on DICOM (no enhanced, missing values, etc.). See also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Philips DICOMs, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.

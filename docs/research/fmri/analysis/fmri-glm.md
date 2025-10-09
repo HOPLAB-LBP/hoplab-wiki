@@ -584,7 +584,7 @@ It’s crucial to confirm the order of regressors in the design matrix before sp
 
 ---
 
-- **[TODO]:** Add example directories showing how files are organized before and after preprocessing.
-- **[TODO]:** Include screenshots or illustrations for key steps (e.g., setting up the design matrix in SPM).
-- **[PLACEHOLDER]:** Add a screenshot of the SPM results interface to illustrate how to set thresholds.
-- **[TODO]:** Include instructions on visualizing and saving the design matrix in SPM for documentation.
+- __[TODO]:__ Add example directories showing how files are organized before and after preprocessing.
+- __[TODO]:__ Include screenshots or illustrations for key steps (e.g., setting up the design matrix in SPM).
+- __[PLACEHOLDER]:__ Add a screenshot of the SPM results interface to illustrate how to set thresholds.
+- __[TODO]:__ Include instructions on visualizing and saving the design matrix in SPM for documentation.
