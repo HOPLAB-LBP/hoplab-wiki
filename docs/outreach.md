@@ -158,7 +158,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
 </div>
 
-### Poster Printing Request
+### Poster printing request
 
 To print your poster, submit a "Large-format printing request" using [this form](https://www.groupware.kuleuven.be/sites/lio2/gebruikerslab/Paginas/FormulierPosters.aspx). Follow these steps:
 

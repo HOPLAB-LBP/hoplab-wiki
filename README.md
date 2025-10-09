@@ -45,7 +45,7 @@ nav:
   - New Page: new-page.md
 ```
 
-### Creating Child Pages
+### Creating child pages
 
 To create a child page, place the Markdown file in a subdirectory and update the `nav` section in `mkdocs.yml` accordingly:
 
@@ -62,15 +62,22 @@ nav:
 
 ### Adding `NOTE`, `TODO`, and `PLACEHOLDER` tags
 
-For ease of collaboration, we keep track of all the tasks in our documentation in the [Issues](https://github.com/HOPLAB-LBP/hoplab-wiki/issues) page. Tasks are organized by file, and each file with tags will automatically be listed as Issue.
+For ease of collaboration, we keep track of all the tasks in our documentation in the [Issues](https://github.com/HOPLAB-LBP/hoplab-wiki/issues) page. Tasks are organized by file, and each file with tags will automatically be listed as an Issue.
 
-To add a new task to this list, you just need to write `NOTE`, `TODO`, or `PLACEHOLDER` in any document in the `docs/` folder. This will automatically be added to the Issue for that page during the Wiki building process. It is a good practice to write the name of the author in square brackets. Example:
+To add a new task to this list, write `NOTE`, `TODO`, or `PLACEHOLDER` in any document in the `docs/` folder. This will be added to the Issue for that page during the workflow run. It is a good practice to write the name of the author in square brackets. Example:
 
 `TODO: [Andrea] fix hyperlinks`
 
-Please, remember to delete the source tag from the original file once the task is resolved. This will ensure that the Issue page includes only un-resolved tasks.
+Please remember to delete the source tag from the original file once the task is resolved. This ensures that the Issue page includes only unresolved tasks.
 
-### Common Formatting Syntax
+#### How task counters in titles work
+
+- Each Issue aggregates tasks for a single file and shows a counter in the title: `(open/total open) Tags in <file>`.
+- Example: `(3/12 open) Tags in docs/get-started/index.md`.
+- Tasks created from file tags are marked “Added from file”. If a tag is removed from the file, the corresponding task is automatically marked complete as “Resolved from file”.
+- Tasks added via comments on the Issue body are preserved and counted; the title counter is updated automatically.
+
+### Common formatting syntax
 
 Here are some common Markdown elements:
 
@@ -180,7 +187,7 @@ We offer two workflows for contributing to the Hoplab Wiki: an Easy Workflow for
 This workflow is ideal for making small, quick changes to a single file. It can be done entirely through your web browser and doesn't require any local setup.
 
 ??? tip "Edit directly from this page!"
-    Existing pages can be edited directly through the Wiki! If you need to edit or add information to any page, look for the paper and pencil symbol :material-file-edit-outline: at the top-right of the page, next to the page title. This will make you edit the page and open a PR either by creating a new branch on the main repo (if you are part of the Hoplab organization on GitHub) or by forking your own copy of the repo (if you are an external contributor). Make sure to [submit a PR](#step-3-submit-a-pr-with-your-proposed-changes) after your changes are made.
+    Existing pages can be edited directly through the Wiki! If you need to edit or add information to any page, look for the paper and pencil symbol :material-file-edit-outline: at the top-right of the page, next to the page title. This will let you edit the page and open a PR either by creating a new branch on the main repo (if you are part of the Hoplab organization on GitHub) or by forking your own copy of the repo (if you are an external contributor). Make sure to [submit a PR](#step-3-submit-a-pr-with-your-proposed-changes) after your changes are made.
 
 #### Step 1: Make your changes 
 
@@ -214,7 +221,7 @@ You can then add/edit your content in Markdown format (see [Editing the Wiki](#e
 3. Click on "Create pull request" to submit your changes.
 
 ??? tip "Add multiple commits to a single PR"
-    If you want to make additional changes related to an already opened PR (e.g., you need to change info in two separate files, or make additional adjustments), you do not need to open a new PR. Just go in the main page of the branch your created (you can find the branch in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches)) and **keep editing your files in this branch**. Every new commit you make in this branch will have the option to "Commit directly to the <name-of-new-branch> branch" or "Create a new branch for this commit and start a pull request". Make sure you select the first option to include your new commits to the original PR. Importantly, if you plan to add several commits to a PR this way, make sure you assign a reviewer **only after your last commit** to avoid merging PRs halfway in the process, or you can create a draft PR until all your changes are included.
+    If you want to make additional changes related to an already opened PR (e.g., you need to change info in two separate files, or make additional adjustments), you do not need to open a new PR. Just go to the main page of the branch you created (you can find the branch in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches)) and **keep editing your files in this branch**. Every new commit you make in this branch will have the option to "Commit directly to the <name-of-new-branch> branch" or "Create a new branch for this commit and start a pull request". Make sure you select the first option to include your new commits to the original PR. Importantly, if you plan to add several commits to a PR this way, make sure you assign a reviewer **only after your last commit** to avoid merging PRs halfway in the process, or you can create a draft PR until all your changes are included.
    
 These steps above will create a new branch in the repository, that will be visible in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches), and a new PR visible in the [PRs list](https://github.com/HOPLAB-LBP/hoplab-wiki/pulls). Once the PR is approved by at least one reviewer and merged into the main branch, the newly created branch will be automatically deleted and the changes will go live.
          
@@ -233,11 +240,11 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
 === "Using the CLI"
 
-    1. **Navigate to the Original Repository:**
+    1. **Navigate to the original repository:**
         
         Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
     
-    2. **Fork the Repository:**
+    2. **Fork the repository:**
         
         Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
     
@@ -266,40 +273,40 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
     
         If you do not have GitHub Desktop installed, download and install it from [GitHub Desktop's official website](https://desktop.github.com/).
 
-    3. **Clone Your Fork Using GitHub Desktop:**
+    3. **Clone your fork using GitHub Desktop:**
         1. Open GitHub Desktop.
         2. In the top menu, click on `File > Clone Repository`.
         3. In the "URL" tab, paste the URL of your forked repository from your GitHub account into the "Repository URL" field.
         4. Choose the local path where you want to store the repository on your computer.
         5. Click "Clone".
 
-### Step 2: Setting Up Your Local Environment
+### Step 2: Setting up your local environment
 
 1. **Install Conda:**
 
     If you don't have Conda installed, download and install it from [Conda's official website](https://docs.conda.io/en/latest/miniconda.html).
 
-2. **Create and Activate a Conda Environment:**
+2. **Create and activate a Conda environment:**
 
     ```bash
     conda create --name hoplab-wiki python=3.9
     conda activate hoplab-wiki
     ```
 
-3. **Install Necessary Packages:**
+3. **Install necessary packages:**
 
     ```bash
     pip install mkdocs mkdocs-material mkdocs-task-collector mkdocs-git-revision-date-localized-plugin mkdocs-git-authors-plugin
     ```
 
-### Step 3: Making Changes
+### Step 3: Making changes
 
-1. **Edit Documentation:**
+1. **Edit documentation:**
      You can now make changes to your local clone of the documentation. Use a text editor or an IDE to open and edit the Markdown files in the repository. If changes are extensive, consider splitting them into smaller, manageable commits that focus on specific pages or sections for clarity and ease of review.
 
-### Step 4: Testing Your Changes Locally
+### Step 4: Testing your changes locally
 
-1. **Serve the Documentation Locally:**
+1. **Serve the documentation locally:**
    1. While in your project directory and with the Conda environment activated, launch the local server by typing:
       ```bash
       mkdocs serve
@@ -307,16 +314,16 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
    2. Open a web browser and navigate to `http://127.0.0.1:8000/`. This allows you to see your changes as they would appear on the live site.
    3. Keep this server running as you make changes; refresh your browser to update the preview.
 
-### Step 5: Closing the Local Server
+### Step 5: Closing the local server
 
-1. **Stop the Server:**
+1. **Stop the server:**
     When you are done previewing and editing and you are done with the changes, go back to the terminal where your server is running and press `Ctrl+C` to stop the server.
 
 ### Step 6: Committing Your Changes
 
 === "Using the CLI"
     
-    1. **Stage and Commit Your Changes:**
+    1. **Stage and commit your changes:**
         1. From your terminal, add all modified files to your commit:
           ```bash
           git add .
@@ -332,14 +339,14 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
 === "Using GitHub Desktop"
 
-    1. **Stage and Commit Your Changes:**
+    1. **Stage and commit your changes:**
         1. In GitHub Desktop, you should see the list of changed files in the left sidebar.
         2. Review the changes by clicking on each file.
         3. Once you are ready to commit, write a summary of the changes in the "Summary" field at the bottom left.
         4. Add a more detailed description in the "Description" field if necessary.
         5. Click the "Commit to main" button.
         
-    2. **Push Your Changes:**
+    2. **Push your changes:**
         1. In GitHub Desktop, click on the `Push origin` button at the top to push your commits to GitHub.
    
 ### Step 7: Creating a Pull Request

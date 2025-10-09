@@ -37,13 +37,13 @@ nav:
       - Analysis workflow: 
           - research/fmri/analysis/index.md
           - 0. General information: research/fmri/analysis/fmri-general.md
-          - 1. Set-up you environment: research/fmri/analysis/fmri-setup-env.md
+          - 1. Set up your environment: research/fmri/analysis/fmri-setup-env.md
           - 2. BIDS conversion: research/fmri/analysis/fmri-bids-conversion.md
           - 3. Pre-processing and QA: research/fmri/analysis/fmri-prepocessing-qa.md
           - 4a. First-level analysis - GUI: research/fmri/analysis/fmri-glm.md
           - 4b. First-level analysis - Scripting: research/fmri/analysis/fmri-glm-script.md
           - 5. Regions of interest: research/fmri/analysis/fmri-rois.md
-          - 6. Multi-variate analysis: research/fmri/analysis/fmri-mvpa.md
+          - 6. Multivariate analysis: research/fmri/analysis/fmri-mvpa.md
           - fMRI workflow example: research/fmri/analysis/fmri-andrea-workflow.md
       - Meta-analysis with NiMARE: research/fmri/fmri-nimare.md
       - fMRIprep on HPC: research/fmri/fmri-hpc.md

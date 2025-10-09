@@ -8,9 +8,9 @@ For information on how to set up the working environment, install, and configure
 
 ---
 
-## From Raw Data to BIDS
+## From raw data to BIDS
 
-### Collecting Raw Data
+### Collecting raw data
 
 !!! note
     It is essential to ensure that no personal identifiers are present in any of the files that leave the hospital. Use my script for anonymizing filenames and data.
@@ -76,7 +76,7 @@ If the raw data is organized in a `sourcedata/sub-xx` folder, and JSON templates
 
 ---
 
-### Converting Behavioral Data to BIDS
+### Converting behavioral data to BIDS
 
 - Run `script02` to convert behavioral `.mat` data into `events.tsv` files following the BIDS specification. This will parse the trial data from the `.mat` file and create new `.tsv` files for each subject and run.
 

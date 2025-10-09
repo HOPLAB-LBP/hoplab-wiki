@@ -10,13 +10,13 @@ Follow the steps below to successfully upload your experiment to Pavlovia.
 
 1. Create the experiment in **Psychopy Builder**.
 2. Create a **Pavlovia account** and log in.
-3. Link your account to the Builder via this button ![](../../../assets/bh-pavlovia-builder-button.png)
+3. Link your account to the Builder via this button ![Pavlovia login button in PsychoPy Builder](../../../assets/bh-pavlovia-builder-button.png)
 4. Place all files for the experiment in a **single directory**.
-5. Click the **Syncing Globe** ![](../../../assets/bh-pavlovia-sync-button.png) in the Builder, enter a project name, and upload. The icon will turn green when the upload is complete.
+5. Click the **Syncing Globe** ![Pavlovia sync globe button in PsychoPy Builder](../../../assets/bh-pavlovia-sync-button.png) in the Builder, enter a project name, and upload. The icon will turn green when the upload is complete.
 6. Access your experiment on Pavlovia by navigating to **Dashboard > Experiments** in your account.
 7. To test the project, change the status to **piloting** and click **pilot**.
 
-![](../../../assets/bh-psychopy-builder1.png)
+![PsychoPy Builder main window screenshot](../../../assets/bh-psychopy-builder1.png)
 
 !!! tip
     If the experiment doesn’t run, click **view code**. If the repository is empty, retry the sync from the Builder.
@@ -75,7 +75,7 @@ To stop a loop, JavaScript does not recognize specific loop names. For instance,
 
 - **Stopping Nested Loops**: `trials.finished` only stops the inner loop. To stop an outer loop (e.g., `PreparationBlock`), you may need a different solution, as stopping nested loops is limited in Pavlovia.
 
-![](../../../assets/bh-pavlovia2.png)
+![Pavlovia dashboard screenshot](../../../assets/bh-pavlovia2.png)
 
 #### Define common commands at the start of the experiment
 
@@ -172,9 +172,9 @@ To ensure consistent display sizes across different screens, follow these [image
 - Store the chosen key in a variable.
 - Add a code component, set `nReps` to a variable based on the selection, and configure the loop accordingly.
 
-![](../../../assets/bh-pavlovia5.png)
-![](../../../assets/bh-pavlovia6.png)
-![](../../../assets/bh-pavlovia7.png)
+![Pavlovia configuration screenshot 1](../../../assets/bh-pavlovia5.png)
+![Pavlovia configuration screenshot 2](../../../assets/bh-pavlovia6.png)
+![Pavlovia configuration screenshot 3](../../../assets/bh-pavlovia7.png)
 
 ## Cellphone detection
 

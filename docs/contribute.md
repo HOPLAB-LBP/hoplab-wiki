@@ -46,7 +46,7 @@ nav:
   - New Page: new-page.md
 ```
 
-### Creating Child Pages
+### Creating child pages
 
 To create a child page, place the Markdown file in a subdirectory and update the `nav` section in `mkdocs.yml` accordingly:
 
@@ -72,7 +72,7 @@ To add a new task to this list, you just need to write `NOTE`, `TODO`, or `PLACE
 
 Please, remember to delete the source tag from the original file once the task is resolved. This will ensure that the Issue page includes only un-resolved tasks.
 
-### Common Formatting Syntax
+### Common formatting syntax
 
 Here are some common Markdown elements:
 
@@ -199,13 +199,13 @@ In short, all you need to do is to navigate to the page you want to edit, **clic
 
 ### Step 1: Make Your Changes
 
-1. **Editing an Existing Page:**
+1. **Editing an existing page:**
 
     - Navigate to the [`HOPLAB-LBP/hoplab-wiki`](https://github.com/HOPLAB-LBP/hoplab-wiki) repository.
     - Click on the file you want to edit (usually found under the `docs/` directory).
     - Select the **pencil icon (✏️)** at the top right to begin editing the file.
 
-2. **Creating a New Page:**
+2. **Creating a new page:**
 
     1. **Reference the page in `mkdocs.yml`:**
 
@@ -214,7 +214,7 @@ In short, all you need to do is to navigate to the page you want to edit, **clic
         - Add the new page (e.g., `docs/new-page.md`) to the `nav` section in `mkdocs.yml` to make it visible in the site navigation.
         - After editing `mkdocs.yml`, follow the steps in **[Step 2](#step-2-commit-changes-to-a-temporary-branch)** below to commit and create a new branch.
 
-    2. **Creating the New File:**
+    2. **Creating the new file:**
 
         - Once your new branch is created (see [Step 2](#step-2-commit-changes-to-a-temporary-branch)), navigate to the `docs/` folder in this branch.
         - Select **Add file** > **Create new file**.
@@ -222,7 +222,7 @@ In short, all you need to do is to navigate to the page you want to edit, **clic
 
 After creating or editing the page, you can add content in Markdown format. To preview your changes, click **Preview** next to the **Edit** tab.
 
-![](assets/contribute-commit.png)
+![Screenshot: Commit changes UI](assets/contribute-commit.png)
 
 !!! warning
     Some features -- like admonition boxes (such as this one), tabs, and cards -- are specific to [mkdocs material](https://squidfunk.github.io/mkdocs-material/reference/) and will not be rendered correctly in the GitHub preview. You can preview your changes in your browser locally (before committing) only by following the [Advanced Workflow](#advanced-workflow-for-extensive-changes)
@@ -234,7 +234,7 @@ After creating or editing the page, you can add content in Markdown format. To p
 3. Select **Create a new branch for this commit and start a pull request**.
 4. Click **Propose changes**.
 
-![](assets/contribute-propose.png)
+![Screenshot: Propose changes UI](assets/contribute-propose.png)
 
 This process creates a [new branch](https://github.com/HOPLAB-LBP/hoplab-wiki/branches) that includes your changes. The branch name will typically be named something like `yourname-patch-1`.
 
@@ -263,7 +263,7 @@ If you need to make additional edits related to the same update (e.g., creating 
 2. On the right side, assign an admin reviewer (currently [@costantinoai](https://github.com/costantinoai)).
 3. Click **Create pull request** to submit your changes.
 
-![](assets/contribute-open-pr.png)
+![Screenshot: Open pull request UI](assets/contribute-open-pr.png)
 
 !!! tip "Adding More Changes to an Open PR"
     If additional changes are needed for an already open PR, there’s no need to open a new one. Simply go to the branch created for your PR (available in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches)) and continue editing your files within this branch.
@@ -288,15 +288,15 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
 === "Using the CLI"
 
-    1. **Navigate to the Original Repository:**
+    1. **Navigate to the original repository:**
         
         Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
     
-    2. **Fork the Repository:**
+    2. **Fork the repository:**
         
         Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
     
-    3. **Clone Your Fork:**
+    3. **Clone your fork:**
         1. Click the "Code" button on your forked repository page and copy the URL.
         2. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux) and navigate to the directory where you want to store the project, then type:
            ```bash
@@ -309,11 +309,11 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
 === "Using GitHub Desktop"
 
-    1. **Navigate to the Original Repository:**
+    1. **Navigate to the original repository:**
     
         Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
         
-    2. **Fork the Repository:**
+    2. **Fork the repository:**
     
         Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
 
@@ -321,40 +321,40 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
     
         If you do not have GitHub Desktop installed, download and install it from [GitHub Desktop's official website](https://desktop.github.com/).
 
-    3. **Clone Your Fork Using GitHub Desktop:**
+    3. **Clone your fork using GitHub Desktop:**
         1. Open GitHub Desktop.
         2. In the top menu, click on `File > Clone Repository`.
         3. In the "URL" tab, paste the URL of your forked repository from your GitHub account into the "Repository URL" field.
         4. Choose the local path where you want to store the repository on your computer.
         5. Click "Clone".
 
-### Step 2: Setting Up Your Local Environment
+### Step 2: Setting up your local environment
 
 1. **Install Conda:**
 
     If you don't have Conda installed, download and install it from [Conda's official website](https://docs.conda.io/en/latest/miniconda.html).
 
-2. **Create and Activate a Conda Environment:**
+2. **Create and activate a Conda environment:**
 
     ```bash
     conda create --name hoplab-wiki python=3.9
     conda activate hoplab-wiki
     ```
 
-3. **Install Necessary Packages:**
+3. **Install necessary packages:**
 
     ```bash
     pip install mkdocs mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-git-authors-plugin
     ```
 
-### Step 3: Making Changes
+### Step 3: Making changes
 
-1. **Edit Documentation:**
+1. **Edit documentation:**
      You can now make changes to your local clone of the documentation. Use a text editor or an IDE to open and edit the Markdown files in the repository. If changes are extensive, consider splitting them into smaller, manageable commits that focus on specific pages or sections for clarity and ease of review.
 
-### Step 4: Testing Your Changes Locally
+### Step 4: Testing your changes locally
 
-1. **Serve the Documentation Locally:**
+1. **Serve the documentation locally:**
    1. While in your project directory and with the Conda environment activated, launch the local server by typing:
 
       ```bash
@@ -364,16 +364,16 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
    2. Open a web browser and navigate to `http://127.0.0.1:8000/`. This allows you to see your changes as they would appear on the live site.
    3. Keep this server running as you make changes; refresh your browser to update the preview.
 
-### Step 5: Closing the Local Server
+### Step 5: Closing the local server
 
-1. **Stop the Server:**
+1. **Stop the server:**
     When you are done previewing and editing and you are done with the changes, go back to the terminal where your server is running and press `Ctrl+C` to stop the server.
 
 ### Step 6: Committing Your Changes
 
 === "Using the CLI"
 
-    1. **Stage and Commit Your Changes:**
+    1. **Stage and commit your changes:**
         1. From your terminal, navigate to the main folder of the repo `cd hoplab-wiki`
         2. Add all modified files to your commit:
           ```bash
@@ -390,14 +390,14 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
 === "Using GitHub Desktop"
 
-    1. **Stage and Commit Your Changes:**
+    1. **Stage and commit your changes:**
         1. In GitHub Desktop, you should see the list of changed files in the left sidebar.
         2. Review the changes by clicking on each file.
         3. Once you are ready to commit, write a summary of the changes in the "Summary" field at the bottom left.
         4. Add a more detailed description in the "Description" field if necessary.
         5. Click the "Commit to main" button.
         
-    2. **Push Your Changes:**
+    2. **Push your changes:**
         1. In GitHub Desktop, click on the `Push origin` button at the top to push your commits to GitHub.
 
 ### Step 7: Creating a Pull Request
