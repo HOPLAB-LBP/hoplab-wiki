@@ -193,14 +193,7 @@
   box-shadow: 0 2px 10px rgb(0 0 0 / 6%);
   transition: transform .15s ease, box-shadow .15s ease;
 }
-.md-typeset .grid.cards > ul {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-@media (max-width: 960px) {
-  .md-typeset .grid.cards > ul { grid-template-columns: 1fr; }
-}
+/* Let Material's default grid.cards layout adapt responsively (no fixed columns) */
 .md-typeset .grid.cards > ul > li:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
