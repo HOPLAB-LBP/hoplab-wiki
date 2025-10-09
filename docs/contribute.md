@@ -5,7 +5,7 @@ Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an on
 This guide will help you set up, update, and maintain the Wiki both locally and online. Follow the instructions if you want to make changes to the wiki.
 
 !!! tip "Suggest or make quick changes" 
-    For most cases, if you want to suggest some changes you can do so by opening a new Issue. If you want to make quick changes to any page, you can do so by clicking on the pencil icon (✏️) at the top right of the page to begin editing the file.
+    For most cases, if you want to suggest some changes you can do so by opening a [new Issue](https://github.com/HOPLAB-LBP/wiki/issues/new). If you want to make quick changes to any page, you can do so by clicking on the pencil icon (✏️) at the top right of the page to begin editing the file.
 
 ## Table of Contents
 
