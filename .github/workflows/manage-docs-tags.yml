@@ -61,45 +61,67 @@ jobs:
               return 'general';  // Otherwise, use 'general' as the label
             }
 
-            // Function to find an existing issue for a file
+            // Normalize file path for consistent comparisons (force forward slashes)
+            function normalizePath(p) {
+              return (p || '').replace(/\\/g, '/').replace(/^\/+/, '');
+            }
+
+            function isDocTagsIssue(issue) {
+              const hasLabel = (issue.labels || []).some(l => l.name === 'doc-tags');
+              const looksLikeTitle = /Tags in\s+.+/.test(issue.title || '');
+              return hasLabel || looksLikeTitle;
+            }
+
+            function extractFileFromIssue(issue) {
+              // Try title patterns: "(x/y open) Tags in <file>" OR "Tags in <file> (x/y open)" OR "Tags in <file>"
+              const title = issue.title || '';
+              let m = title.match(/^\(\d+\/\d+ open\)\s+Tags in (.+)$/) || title.match(/^Tags in (.+?)(?: \(|$)/);
+              if (m) return normalizePath(m[1] || m[0]);
+              // Fallback: look for the File: [path] line in body
+              const body = issue.body || '';
+              const bm = body.match(/^File: \[(.+?)\]/m);
+              if (bm) return normalizePath(bm[1]);
+              return null;
+            }
+
+            // Function to find an existing issue for a file (robust: ignores labels and tolerates title variations)
             async function findExistingIssue(file) {
-              console.log(`Searching for existing issue for file: ${file}`);
+              const target = normalizePath(file);
+              console.log(`Searching for existing open issue for file: ${target}`);
               const issues = await github.paginate(github.rest.issues.listForRepo, {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 state: 'open',
-                labels: ['doc-tags'],
                 per_page: 100
-              });  // Get all open issues with the 'doc-tags' label
-              // Titles may include dynamic counters, and may start with counters now.
-              const existingIssue = issues.find(issue => {
-                return issue.title === `Tags in ${file}`
-                  || issue.title.endsWith(`Tags in ${file}`)
-                  || issue.title.includes(` Tags in ${file}`);
               });
+              const candidates = issues.filter(isDocTagsIssue).filter(issue => {
+                const f = extractFileFromIssue(issue);
+                return f && normalizePath(f) === target;
+              });
+              const existingIssue = candidates[0] || null;
               if (existingIssue) {
-                console.log(`Found existing issue #${existingIssue.number} for ${file}`);
+                console.log(`Found existing open issue #${existingIssue.number} for ${file}`);
               } else {
-                console.log(`No existing issue found for ${file}`);
+                console.log(`No existing open issue found for ${file}`);
               }
               return existingIssue;
             }
 
             // Function to find an existing CLOSED issue for a file (to potentially reopen)
             async function findClosedIssue(file) {
-              console.log(`Searching for closed issue for file: ${file}`);
+              const target = normalizePath(file);
+              console.log(`Searching for closed issue for file: ${target}`);
               const issues = await github.paginate(github.rest.issues.listForRepo, {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 state: 'closed',
-                labels: ['doc-tags'],
                 per_page: 100
               });
-              const closedIssue = issues.find(issue => {
-                return issue.title === `Tags in ${file}`
-                  || issue.title.endsWith(`Tags in ${file}`)
-                  || issue.title.includes(` Tags in ${file}`);
+              const candidates = issues.filter(isDocTagsIssue).filter(issue => {
+                const f = extractFileFromIssue(issue);
+                return f && normalizePath(f) === target;
               });
+              const closedIssue = candidates[0] || null;
               if (closedIssue) {
                 console.log(`Found closed issue #${closedIssue.number} for ${file}`);
               } else {
@@ -448,6 +470,64 @@ jobs:
                   }
                 }
                 // ***** New code ends here *****
+
+                // ***** De-duplicate open issues per file *****
+                console.log('Checking for duplicate open issues per file');
+                const openIssues = await github.paginate(github.rest.issues.listForRepo, {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  state: 'open',
+                  per_page: 100
+                });
+                const docIssues = openIssues.filter(isDocTagsIssue);
+                const byFile = new Map();
+                for (const iss of docIssues) {
+                  const fp = extractFileFromIssue(iss);
+                  if (!fp) continue;
+                  const key = normalizePath(fp);
+                  if (!byFile.has(key)) byFile.set(key, []);
+                  byFile.get(key).push(iss);
+                }
+                for (const [fp, issuesForFile] of byFile.entries()) {
+                  if (issuesForFile.length <= 1) continue;
+                  issuesForFile.sort((a,b) => a.number - b.number); // keep oldest open
+                  const primary = issuesForFile[0];
+                  console.log(`Found ${issuesForFile.length} open issues for ${fp}. Keeping #${primary.number}, closing duplicates.`);
+                  // Ensure primary has 'doc-tags' label
+                  const primaryLabels = (primary.labels || []).map(l => l.name);
+                  if (!primaryLabels.includes('doc-tags')) {
+                    await github.rest.issues.addLabels({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: primary.number,
+                      labels: ['doc-tags']
+                    });
+                  }
+                  for (const dup of issuesForFile.slice(1)) {
+                    await github.rest.issues.createComment({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: dup.number,
+                      body: `Duplicate of #${primary.number}. Consolidating into a single tracking issue for ${fp}. Closing this one.`
+                    });
+                    try {
+                      await github.rest.issues.addLabels({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        issue_number: dup.number,
+                        labels: ['duplicate']
+                      });
+                    } catch (e) {
+                      console.log(`Could not add 'duplicate' label to #${dup.number}: ${e.message}`);
+                    }
+                    await github.rest.issues.update({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: dup.number,
+                      state: 'closed'
+                    });
+                  }
+                }
 
               } catch (error) {
                 console.error(`Workflow failed: ${error.message}`);
