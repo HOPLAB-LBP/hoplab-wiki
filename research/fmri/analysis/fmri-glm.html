@@ -1362,7 +1362,7 @@
   
   
   <span class="md-ellipsis">
-    1. Set-up you environment
+    1. Set up your environment
     
   </span>
   
@@ -1569,7 +1569,7 @@
   
   
   <span class="md-ellipsis">
-    6. Multi-variate analysis
+    6. Multivariate analysis
     
   </span>
   
@@ -1951,7 +1951,7 @@
   
 
 
-<h1 id="general-linear-model-in-spm">General Linear Model in SPM<a class="headerlink" href="#general-linear-model-in-spm" title="Permanent link">&para;</a></h1>
+<h1 id="general-linear-model-in-spm">General linear model in SPM<a class="headerlink" href="#general-linear-model-in-spm" title="Permanent link">&para;</a></h1>
 <p>You should land on this page after having collected your fMRI data, <a href="fmri-bids-conversion.html">converted it to BIDS</a> and <a href="fmri-prepocessing-qa.html">preprocessed it</a>. Your goal now is to model the BOLD activity with a Generalised Linear Model (GLM), in order to obtain the beta values on which to apply further analyses.</p>
 <p>You should start here if you are not yet familiar with SPM and what it does. Before scripting your analysis pipeline, take your time to understand the different steps taken by SPM and what they do. Once you're confident with it, move ahead and write your analysis in code (see <a href="fmri-glm-script.html">First-level analysis - scripting</a>).</p>
 <p>In this section, we will use the <a href="https://www.fil.ion.ucl.ac.uk/spm/">Statistical Parametric Mapping</a> (SPM) package to construct the GLM. Here’s an overview of the steps:</p>
@@ -1988,7 +1988,7 @@
 <p class="admonition-title">Decompress with a right-click!</p>
 <p>Most Operating Systems will let you decompress the <code>nii.gz</code> files directly from the File Explorer. Right click on the files you want to decompress, and extract them like you would do with a compressed folder.</p>
 </div>
-<h3 id="smoothing-functional-data">Smoothing Functional Data<a class="headerlink" href="#smoothing-functional-data" title="Permanent link">&para;</a></h3>
+<h3 id="smoothing-functional-data">Smoothing functional data<a class="headerlink" href="#smoothing-functional-data" title="Permanent link">&para;</a></h3>
 <p>Smoothing is required to increase signal-to-noise ratio, especially for localizer runs. Follow these steps:</p>
 <ol>
 <li>Launch the SPM GUI with the command:</li>
@@ -2008,7 +2008,7 @@
 <hr />
 <h2 id="step-2-design-matrix-setup">Step 2: Design Matrix Setup<a class="headerlink" href="#step-2-design-matrix-setup" title="Permanent link">&para;</a></h2>
 <p>To run a GLM, you need to create a design matrix that links the timing of experimental conditions to the observed BOLD response. The design matrix is specified in SPM’s <code>Specify 1st level</code> interface. While this can be done manually for simpler designs, for complex designs with many conditions, it’s more efficient to use externally generated <strong>onset time</strong> and <strong>confounds</strong> files.</p>
-<h3 id="creating-onset-files">Creating Onset Files<a class="headerlink" href="#creating-onset-files" title="Permanent link">&para;</a></h3>
+<h3 id="creating-onset-files">Creating onset files<a class="headerlink" href="#creating-onset-files" title="Permanent link">&para;</a></h3>
 <p>For complex designs, you should create one onset file per run per subject, containing information about event <em>types</em>, <em>onsets</em>, and <em>durations</em>. The <code>eventsBIDS2SPM</code> function can help convert BIDS-formatted event files into the onset files that SPM requires.</p>
 <ol>
 <li>Use the <code>eventsBIDS2SPM</code> function to convert event files.</li>
@@ -2114,7 +2114,7 @@
 </span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43"></a><span class="k">end</span>
 </span></code></pre></div></td></tr></table></div>
 </details>
-<h3 id="creating-confounds-files">Creating Confounds Files<a class="headerlink" href="#creating-confounds-files" title="Permanent link">&para;</a></h3>
+<h3 id="creating-confounds-files">Creating confounds files<a class="headerlink" href="#creating-confounds-files" title="Permanent link">&para;</a></h3>
 <p>Head motion and other confound regressors from fMRIPrep need to be formatted to be compatible with SPM. The <code>fMRIprepConfounds2SPM</code> function can convert these files into the format required by SPM.</p>
 <ol>
 <li>Use the <code>fMRIprepConfounds2SPM</code> function to convert confounds from fMRIPrep.</li>
@@ -2720,16 +2720,16 @@
 </li>
 </ol>
 <div class="admonition example">
-<p class="admonition-title">Example Contrast</p>
+<p class="admonition-title">Example contrast</p>
 <p>For a comparison between two conditions (e.g., <code>Faces</code> vs. <code>Objects</code>), use:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[1 -1]
 </span></code></pre></div>
 This weights <code>Faces</code> positively and <code>Objects</code> negatively, highlighting brain regions more active during the <code>Faces</code> condition.</p>
 </div>
 <hr />
-<h3 id="verifying-the-order-of-regressors">Verifying the Order of Regressors<a class="headerlink" href="#verifying-the-order-of-regressors" title="Permanent link">&para;</a></h3>
+<h3 id="verifying-the-order-of-regressors">Verifying the order of regressors<a class="headerlink" href="#verifying-the-order-of-regressors" title="Permanent link">&para;</a></h3>
 <p>It’s crucial to confirm the order of regressors in the design matrix before specifying contrasts to ensure that your weights align correctly with the conditions. Here’s how to verify this using both the SPM GUI and by inspecting the <code>SPM.mat</code> file directly.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="option-1-checking-regressor-order-using-the-spm-gui" name="__tabbed_2" type="radio" /><input id="option-2-inspecting-the-spmmat-file-directly" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="option-1-checking-regressor-order-using-the-spm-gui">Option 1: Checking Regressor Order Using the SPM GUI</label><label for="option-2-inspecting-the-spmmat-file-directly">Option 2: Inspecting the <code>SPM.mat</code> File Directly</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="option-1-checking-regressor-order-using-the-spm-gui" name="__tabbed_2" type="radio" /><input id="option-2-inspecting-the-spmmat-file-directly" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="option-1-checking-regressor-order-using-the-spm-gui">Option 1: Checking regressor order using the SPM GUI</label><label for="option-2-inspecting-the-spmmat-file-directly">Option 2: Inspecting the <code>SPM.mat</code> File Directly</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -2751,7 +2751,7 @@ This weights <code>Faces</code> positively and <code>Objects</code> negatively, 
 </li>
 </ol>
 <div class="admonition tip">
-<p class="admonition-title">Use the Design Matrix Visualization</p>
+<p class="admonition-title">Use the design matrix visualization</p>
 <p>The design matrix visualization provides a graphical representation of each regressor. Patterns in the design matrix (e.g., boxcar shapes for task conditions) can help you verify the expected structure.</p>
 </div>
 </div>
@@ -2808,7 +2808,7 @@ This will print the regressor names directly in the MATLAB command window, helpi
 </div>
 </div>
 <div class="admonition question">
-<p class="admonition-title">Why Checking Regressor Order Matters?</p>
+<p class="admonition-title">Why checking regressor order matters?</p>
 <ul>
 <li><strong>Ensures Correct Contrast Specification</strong>: Mismatched contrasts can lead to incorrect interpretations of your data, as they might test unintended comparisons.</li>
 <li><strong>Simplifies Troubleshooting</strong>: If the results look unexpected, double-checking the regressor order is one of the first steps to identify potential issues in the GLM setup.</li>
@@ -2861,7 +2861,7 @@ This will print the regressor names directly in the MATLAB command window, helpi
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="October 28, 2024 10:35:39 CET">October 28, 2024 10:35:39</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="October 9, 2025 16:33:55 CEST">October 9, 2025 16:33:55</span>
   </span>
 
     
