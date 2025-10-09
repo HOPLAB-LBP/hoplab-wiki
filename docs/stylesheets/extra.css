@@ -247,16 +247,29 @@
 }
 
 /* Fix: non-primary buttons in light mode should not turn purple on hover */
-[data-md-color-scheme="default"] .md-typeset .md-button {
+[data-md-color-scheme="default"] .md-typeset .md-button:not(.md-button--primary) {
   color: var(--md-primary-fg-color);
   border-color: var(--md-primary-fg-color);
   background-color: color-mix(in srgb, var(--md-primary-fg-color) 8%, white);
 }
-[data-md-color-scheme="default"] .md-typeset .md-button:hover,
-[data-md-color-scheme="default"] .md-typeset .md-button:focus {
+[data-md-color-scheme="default"] .md-typeset .md-button:not(.md-button--primary):hover,
+[data-md-color-scheme="default"] .md-typeset .md-button:not(.md-button--primary):focus {
   color: var(--md-primary-fg-color);
   border-color: color-mix(in srgb, var(--md-primary-fg-color) 90%, black);
   background-color: color-mix(in srgb, var(--md-primary-fg-color) 16%, white);
+}
+
+/* Dark mode: non-primary buttons adopt link color with subtle tints */
+[data-md-color-scheme="slate"] .md-typeset .md-button:not(.md-button--primary) {
+  color: var(--md-typeset-a-color);
+  border-color: color-mix(in srgb, var(--md-typeset-a-color) 70%, transparent);
+  background-color: color-mix(in srgb, var(--md-typeset-a-color) 12%, black);
+}
+[data-md-color-scheme="slate"] .md-typeset .md-button:not(.md-button--primary):hover,
+[data-md-color-scheme="slate"] .md-typeset .md-button:not(.md-button--primary):focus {
+  color: var(--md-typeset-a-color);
+  border-color: color-mix(in srgb, var(--md-typeset-a-color) 90%, black);
+  background-color: color-mix(in srgb, var(--md-typeset-a-color) 18%, black);
 }
 .md-typeset .md-button--primary {
   background: var(--md-primary-fg-color);
