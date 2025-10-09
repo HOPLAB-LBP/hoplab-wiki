@@ -326,8 +326,24 @@ jobs:
                   labels: nextLabels
                 });
                 console.log(`Updated issue #${issue.data.number} for ${file}`);
-                // Auto-close when no open tasks remain
-                if (totalCount > 0 && openCount === 0) {
+                // Auto-close policies:
+                // - If there are NO tasks at all (totalCount === 0): close as empty (no valid tags remain)
+                // - Else if there are tasks but none are open: close as complete
+                if (totalCount === 0) {
+                  console.log(`No tasks remain for ${file}; closing empty issue #${existingIssue.number}`);
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: existingIssue.number,
+                    body: 'No valid TODO/NOTE/PLACEHOLDER items remain in the source file. Closing this empty issue. ✅'
+                  });
+                  await github.rest.issues.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: existingIssue.number,
+                    state: 'closed'
+                  });
+                } else if (openCount === 0) {
                   console.log(`All tasks complete for ${file}; closing issue #${existingIssue.number}`);
                   await github.rest.issues.createComment({
                     owner: context.repo.owner,
