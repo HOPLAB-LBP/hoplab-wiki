@@ -180,23 +180,30 @@ jobs:
               }
 
               const cleaned = stripCode(content);
-              // Match any line that contains TODO/PLACEHOLDER/NOTE (case-insensitive);
-              // anchors use m-flag so ^/$ apply per line after stripping code regions.
-              const tagRegex = /^(.*\b(TODO|PLACEHOLDER|NOTE)\b.*)$/gim;
+
+              // Skip admonition declarations like `!!! note`/`??? tip`/`:::` and only match STRICT uppercase tags.
+              function isAdmonitionLine(line) {
+                const s = line.trim();
+                return s.startsWith('!!!') || s.startsWith('???') || s.startsWith(':::');
+              }
+
+              // Strict pattern: optional bullet, then an UPPERCASE tag token, followed by ':' or space, then text.
+              const tagLine = /^\s*(?:[-*]\s+)?(TODO|PLACEHOLDER|NOTE)\b(?::|\s).+$/;
 
               const tags = new Set();
-              let match;
               let matchCount = 0;
-              while ((match = tagRegex.exec(cleaned)) !== null) {
-                matchCount++;
-                const fullLine = (match[1] || match[0]).trim();
-                tags.add(fullLine);
+              for (const line of cleaned.split(/\r?\n/)) {
+                if (isAdmonitionLine(line)) continue;
+                if (tagLine.test(line)) {
+                  matchCount++;
+                  tags.add(line.trim());
+                }
               }
               console.log(`Total tag lines matched (deduped): ${tags.size} (raw matches: ${matchCount})`);
 
               const tagsArray = Array.from(tags).map(line => {
-                const m = /(TODO|PLACEHOLDER|NOTE)/i.exec(line) || [];
-                const tagType = (m[1] || 'TODO').toUpperCase();
+                const m = /(TODO|PLACEHOLDER|NOTE)/.exec(line) || [];
+                const tagType = (m[1] || 'TODO');
                 return { type: tagType, content: line };
               });
               return tagsArray;
@@ -419,15 +426,15 @@ jobs:
               console.log(`Handling new comment on issue #${issue.number}`);
               console.log('Comment content:', comment.body);
 
-              // Use the same regex as in parseTags function
-              const tagRegex = /^.*?(?<!`)(TODO|PLACEHOLDER|NOTE)(?!`).*$/gm;
+              // Strict uppercase-only tags; allow optional bullet prefix and colon or space after tag
+              const tagRegex = /^\s*(?:[-*]\s+)?(TODO|PLACEHOLDER|NOTE)\b(?::|\s).+$/gm;
               
               const newTasks = [];
               let match;
 
               while ((match = tagRegex.exec(comment.body)) !== null) {
                 const fullLine = match[0].trim();
-                const tagType = match[1].toUpperCase();
+                const tagType = match[1];
                 
                 console.log(`Found tag in comment: ${tagType}`);
                 console.log(`Full line: "${fullLine}"`);
