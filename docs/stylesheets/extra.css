@@ -130,7 +130,7 @@
 }
 
 /* Styling for code blocks in pre elements, useful to display directory trees */
-pre code {
+.pre code {
   background-color: #f5f5f5;
   padding: 10px;
   display: block;
