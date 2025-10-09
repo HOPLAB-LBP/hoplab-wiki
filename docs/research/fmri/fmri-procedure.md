@@ -233,7 +233,7 @@ The scanner sends a trigger "5" to the stimulus computer. Different setups are u
            Confirm any errors, such as helium pressure alerts, by pressing **OK**.
 ---
 
-### Scanner Table Setup
+### Scanner table setup
 
 1. **Cover Cushions**:  
      Always cover the cushions with paper towels before use.
@@ -389,12 +389,12 @@ The **control panels** on the left and right of the scanner have identical funct
 
 #### Common Issues
 
-??? failure "Table Calibration Failed"
+??? failure "Table calibration failed"
     - If the table moves too far inside the scanner, calibration may have failed. Slide the table out of the scanner, recalibrate, and try again.
     - If the scanner light remains on, use the control buttons to switch it off.
     - For **fMRI studies**, maintain consistent lighting throughout the session by using the outer circle on the control panel to switch the light on or off.
 
-??? failure "Green Calibration Light Already On"
+??? failure "Green calibration light already on"
     - If the green calibration light is already on before positioning the table correctly, move the table out of the scanner to reset the calibration. The light will turn off, allowing you to restart the calibration process.
 
 ---
@@ -414,11 +414,11 @@ The **control panels** on the left and right of the scanner have identical funct
 
 #### Common Issues
 
-??? failure "Mirror Doesn’t Fit in the Bore"
+??? failure "Mirror doesn’t fit in the bore"
     - Check if the **washcloths** are stuck between the edges of the coil, as this could lift the coil's top.
     - Ensure the bottom part of the coil is properly slotted into the grooves on the table.
 
-??? failure "Table Doesn’t Move"
+??? failure "Table doesn’t move"
     - The table might be disconnected. Press the button located at the **bottom right**, next to the red button (Button 2), to reconnect the table.
 
 ??? failure "Table Moves Too Far Inside Scanner"
@@ -464,7 +464,7 @@ Before leaving the room, check the following:
 
 ---
 
-### Eyelink Camera Setup
+### Eyelink camera setup
 
 1. Press `ENTER` to begin **Camera Setup**.
 2. Adjust the camera position by holding a finger in front of it to check where it’s pointing.
@@ -537,7 +537,7 @@ Before leaving the room, check the following:
 
 ---
 
-### Select Your Exam Card
+### Select your exam card
 
 1. **Loading the Exam Card**:
     - To set up an exam card, contact **Ron Peeters**.
@@ -605,18 +605,18 @@ Before leaving the room, check the following:
     - Return to the scanner room and **recalibrate** the patient’s position using the laser alignment system.
     - Ensure that the calibration laser is correctly aligned and restart the scan.
     
-??? failure "Scanner Light Still On"
+??? failure "Scanner light still on"
     If the scanner light remains on, adjust it using the control buttons.
 
     For **fMRI studies**, ensure the lighting remains consistent throughout the session. Use the **outer circle** on the control panel to turn the light off or dim it as needed.    
     
-??? failure "Pixelated Image After Reference Scan"
+??? failure "Pixelated image after reference scan"
     If the reference scan shows a pixelated image with only the skull contours visible, the top of the coil may not be properly mounted.
 
     - Slide the volunteer out of the scanner.
     - Ensure that the coil is securely closed before attempting to recalibrate.
 
-??? failure "Ventilation Too Low"
+??? failure "Ventilation too low"
     If the ventilation error appears during **Smartbrain**, the system requires a minimum ventilation setting of 3.
 
     - You can either proceed without adjusting the setting or adjust ventilation via **Examination > Adjust Ventilation** in the scan console.
@@ -720,13 +720,13 @@ To track export progress, navigate to:
 
 #### Common Issues
 
-??? failure "Not Enough Free Disk Space"
+??? failure "Not enough free disk space"
     If files do not export properly (e.g., incorrect sizes), it may indicate that the export drive has insufficient space.
 
     1. **Check the available disk space** by right-clicking the **Export drive** and selecting **Properties**.
     2. If the drive is full, delete old data such as **PAR-REC, Nifti, or DICOM** files. These files can be re-exported later, so no data will be permanently lost.
 
-??? failure "Local Patient Database Near Full Capacity"
+??? failure "Local patient database near full capacity"
     If the local patient database is nearly full (90-100% capacity), scanning may not proceed.
 
     1. Navigate to **Patients > Administration** in the scan program.
@@ -736,7 +736,7 @@ To track export progress, navigate to:
         - Delete previous participant data only after confirming that it has been exported and transferred without corruption.
         - Alternatively, ask for help from an MR technician to delete unnecessary data.
 
-??? failure "Missing Export Window"
+??? failure "Missing export window"
     If the export window doesn’t appear, press the **Windows** key to reveal the taskbar and locate the hidden export window.
 
 ??? failure "Export Progress Stalled"
@@ -819,7 +819,7 @@ Before leaving the department, complete the **check-out part** of the check-in/o
 
 ---
 
-### If You Are the Last Person Scanning Experiments That Day
+### If you are the last person scanning experiments that day
 
 #### Scanner Area
 
@@ -953,7 +953,7 @@ In case of an emergency involving the MRI system or facility:
   1. **Remove the volunteer** from the scanner.
   2. Seek help from **certified MR personnel**.
 
-#### Emergency Magnet Shutdown (Quenching)
+#### Emergency magnet shutdown (quenching)
 
 ??? danger "Magnet Quenching"
     Emergency shutdown of the magnet (quenching) **must only be performed by authorized personnel** in the following life-threatening situations:
@@ -983,4 +983,4 @@ In case of an emergency involving the MRI system or facility:
 
 ---
 
-**TODO**: add additional info on DICOM (no enhanced, missing values, etc.). See also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Philips DICOMs, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.
+__TODO__: add additional info on DICOM (no enhanced, missing values, etc.). See also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Philips DICOMs, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.

@@ -4,7 +4,7 @@ This section of the wiki provides a comprehensive guide for analyzing fMRI data.
 
 ---
 
-## Analysis Steps Overview
+## Analysis steps overview
 
 <div class="grid cards" markdown="1">
 

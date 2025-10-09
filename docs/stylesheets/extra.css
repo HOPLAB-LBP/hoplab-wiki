@@ -10,6 +10,8 @@
   /* Main content link colors */
   --md-typeset-a-color: #0077BE; /* Vibrant Blue */
   --md-typeset-a-hover-color: #ad3d8c; /* Muted Purple */
+  /* Table of contents link base color */
+  --md-toc-link-color: #44546A; /* Matches primary for consistency */
   
   /* Table of contents link colors */
   --md-toc-link-hover-color: #ad3d8c; /* Deep Mauve */
@@ -20,6 +22,8 @@
   /* Main content link colors */
   --md-typeset-a-color: #40E0D0; /* Turquoise */
   --md-typeset-a-hover-color: #CCAADD; /* Soft Lilac */
+  /* Table of contents link base color */
+  --md-toc-link-color: #B0C4DE; /* Light Steel Blue for dark mode */
   
   /* Table of contents link colors */
   --md-toc-link-hover-color: #EEBB99; /* Peach */

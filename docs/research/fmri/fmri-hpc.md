@@ -344,7 +344,7 @@ When you submit a Slurm job, two log files are automatically generated in the di
 - `slurm-<jobid>.out`: captures **standard output (stdout)** — the regular printed output from your script.
 - `slurm-<jobid>.err`: captures **standard error (stderr)** — any warnings or errors encountered during the job.
 
-#### Check Available Files
+#### Check available files
 
 To see the files in your current directory:
 

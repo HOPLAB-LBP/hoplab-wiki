@@ -1,4 +1,4 @@
-# General Linear Model in SPM
+# General linear model in SPM
 
 You should land on this page after having collected your fMRI data, [converted it to BIDS](./fmri-bids-conversion.md) and [preprocessed it](./fmri-prepocessing-qa.md). Your goal now is to model the BOLD activity with a Generalised Linear Model (GLM), in order to obtain the beta values on which to apply further analyses.
 
@@ -45,7 +45,7 @@ SPM cannot process `.nii.gz` files directly, so we first need to decompress them
 !!! tip "Decompress with a right-click!"
     Most Operating Systems will let you decompress the `nii.gz` files directly from the File Explorer. Right click on the files you want to decompress, and extract them like you would do with a compressed folder.
 
-### Smoothing Functional Data
+### Smoothing functional data
 
 Smoothing is required to increase signal-to-noise ratio, especially for localizer runs. Follow these steps:
 
@@ -69,7 +69,7 @@ Smoothing is required to increase signal-to-noise ratio, especially for localize
 
 To run a GLM, you need to create a design matrix that links the timing of experimental conditions to the observed BOLD response. The design matrix is specified in SPM’s `Specify 1st level` interface. While this can be done manually for simpler designs, for complex designs with many conditions, it’s more efficient to use externally generated **onset time** and **confounds** files.
 
-### Creating Onset Files
+### Creating onset files
 
 For complex designs, you should create one onset file per run per subject, containing information about event *types*, *onsets*, and *durations*. The `eventsBIDS2SPM` function can help convert BIDS-formatted event files into the onset files that SPM requires.
 
@@ -132,7 +132,7 @@ For complex designs, you should create one onset file per run per subject, conta
     end
     ```
 
-### Creating Confounds Files
+### Creating confounds files
 
 Head motion and other confound regressors from fMRIPrep need to be formatted to be compatible with SPM. The `fMRIprepConfounds2SPM` function can convert these files into the format required by SPM.
 
@@ -481,7 +481,7 @@ Contrasts allow you to test specific hypotheses about the brain's response to di
     - After defining contrasts, set the desired threshold (e.g., `p < 0.001`) and click `Run` to see the results.
     - Review the statistical maps for significant clusters or activations.
 
-!!! example "Example Contrast"
+!!! example "Example contrast"
     For a comparison between two conditions (e.g., `Faces` vs. `Objects`), use:
     ```
     [1 -1]
@@ -490,11 +490,11 @@ Contrasts allow you to test specific hypotheses about the brain's response to di
 
 ---
 
-### Verifying the Order of Regressors
+### Verifying the order of regressors
 
 It’s crucial to confirm the order of regressors in the design matrix before specifying contrasts to ensure that your weights align correctly with the conditions. Here’s how to verify this using both the SPM GUI and by inspecting the `SPM.mat` file directly.
 
-=== "Option 1: Checking Regressor Order Using the SPM GUI"
+=== "Option 1: Checking regressor order using the SPM GUI"
 
     1. **Review the Design Matrix**:
     
@@ -508,7 +508,7 @@ It’s crucial to confirm the order of regressors in the design matrix before sp
         - Typically, the first set of columns corresponds to your experimental conditions (e.g., `Faces`, `Objects`), followed by any nuisance regressors (e.g., motion parameters).
         - Make a note of the order so that you can set your contrast weights accurately.
 
-    !!! tip "Use the Design Matrix Visualization"
+    !!! tip "Use the design matrix visualization"
         The design matrix visualization provides a graphical representation of each regressor. Patterns in the design matrix (e.g., boxcar shapes for task conditions) can help you verify the expected structure.
 
 === "Option 2: Inspecting the `SPM.mat` File Directly"
@@ -562,7 +562,7 @@ It’s crucial to confirm the order of regressors in the design matrix before sp
         ```
         This will print the regressor names directly in the MATLAB command window, helping you confirm the correct order before specifying your contrasts.
 
-!!! question "Why Checking Regressor Order Matters?"
+!!! question "Why checking regressor order matters?"
 
     - **Ensures Correct Contrast Specification**: Mismatched contrasts can lead to incorrect interpretations of your data, as they might test unintended comparisons.
     - **Simplifies Troubleshooting**: If the results look unexpected, double-checking the regressor order is one of the first steps to identify potential issues in the GLM setup.
@@ -584,7 +584,7 @@ It’s crucial to confirm the order of regressors in the design matrix before sp
 
 ---
 
-- **[TODO]:** Add example directories showing how files are organized before and after preprocessing.
-- **[TODO]:** Include screenshots or illustrations for key steps (e.g., setting up the design matrix in SPM).
-- **[PLACEHOLDER]:** Add a screenshot of the SPM results interface to illustrate how to set thresholds.
-- **[TODO]:** Include instructions on visualizing and saving the design matrix in SPM for documentation.
+- __[TODO]:__ Add example directories showing how files are organized before and after preprocessing.
+- __[TODO]:__ Include screenshots or illustrations for key steps (e.g., setting up the design matrix in SPM).
+- __[PLACEHOLDER]:__ Add a screenshot of the SPM results interface to illustrate how to set thresholds.
+- __[TODO]:__ Include instructions on visualizing and saving the design matrix in SPM for documentation.

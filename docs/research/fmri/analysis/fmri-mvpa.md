@@ -34,7 +34,7 @@ In this example, we will investigate the representational structure of **simulat
 
 The goal is to investigate the **representational geometry** of two ROIs, V1 and IT, to determine what properties of the stimuli are represented in these areas.
 
-### What We Will Do
+### What we will do
 
 1. Generate synthetic fMRI-like data simulating responses in IT or V1.
 2. Perform **MVPA (decoding)** to see if the ROI can distinguish between multiple categories above chance.
@@ -259,7 +259,7 @@ plot_rdms_and_coefficients(dataRdm, rdms, labels, result.samples, roiName, outDi
 
 ![regression result](../../../assets/fmri_mvpa_IT_RSA_regression.png)
 
-## Full Code Example: Comparison with V1
+## Full code example: comparison with V1
 
 Now that we have the full picture, let's re-run our full code, but this time we only see the main results for **the other synthetic ROI: V1**.
 

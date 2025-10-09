@@ -1,4 +1,4 @@
-# Setting Up Your fMRI Analysis Environment
+# Setting up your fMRI analysis environment
 
 Welcome to the fMRI analysis environment setup guide. This walkthrough will help you install and configure all necessary tools for our fMRI analysis workflow across Windows, macOS, and Linux platforms.
 
@@ -85,7 +85,7 @@ Project_Name/
 
 ---
 
-## Installing Core Tools
+## Installing core tools
 
 ### Docker Desktop
 
@@ -103,7 +103,7 @@ After installation, configure Docker resources:
     - Disk image size: Set to a reasonable amount (e.g., 100GB)
 4. In the "File sharing" or "Resources > File sharing" section, add your project folder (e.g., `~/fMRI_Projects`)
 
-#### Installing Docker Tools
+#### Installing Docker tools
 
 We use several tools via Docker for our fMRI analysis pipeline. Docker installations are strongly encouraged over "bare metal" setups for several reasons:
 
@@ -347,7 +347,7 @@ Install the following MATLAB toolboxes:
 
 ---
 
-## Installing Additional Tools
+## Installing additional tools
 
 These tools are not mandatory -- they can be installed if needed.
 

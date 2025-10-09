@@ -223,7 +223,7 @@ myproject
         └── nifti
 </code></pre>
 
-Create a `BIDS` folder in your main project directory, alongside the `sourcedata` folder. For each participant, create a sub folder (e.g. `BIDS/sub-01`). In the BIDS folder of each participant, place a `func` folder for functional files and a `anat` folder for anatomical files. Copy-paste your functional `.nii` files from `sourcedata` to their corresponding `func` folder, renaming them if necessary to follow BIDS format (e.g. `sub-01_task-{taskname}_run-01_bold.nii`), and similarly copy-paste your structural `.nii` files to the `anat` folder, renaming them if necessary (e.g. `sub-01_T1w.nii`). See below for more details on [how to rename and move nifti files](./fmri-bids-conversion.md#renaming-and-moving-nifti-files).
+Create a `BIDS` folder in your main project directory, alongside the `sourcedata` folder. For each participant, create a sub folder (e.g. `BIDS/sub-01`). In the BIDS folder of each participant, place a `func` folder for functional files and a `anat` folder for anatomical files. Copy-paste your functional `.nii` files from `sourcedata` to their corresponding `func` folder, renaming them if necessary to follow BIDS format (e.g. `sub-01_task-{taskname}_run-01_bold.nii`), and similarly copy-paste your structural `.nii` files to the `anat` folder, renaming them if necessary (e.g. `sub-01_T1w.nii`). 
 
 ---
 

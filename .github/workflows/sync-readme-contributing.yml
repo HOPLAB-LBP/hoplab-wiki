@@ -9,21 +9,27 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository content
+      - name: Checkout repository content (branch)
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          # Check out the PR head branch (not a detached commit) so we can push back to it
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Copy README.md to contribute.md
         run: |
           cp README.md docs/contribute.md
 
-      - name: Commit and push changes
+      - name: Commit and push changes (if any)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/contribute.md
-          git commit -m "Auto Sync README.md to docs/contribute.md"
-          git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          # Only commit/push when there are changes; otherwise exit gracefully
+          if ! git diff --cached --quiet -- docs/contribute.md; then
+            git commit -m "Auto Sync README.md to docs/contribute.md"
+            git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          else
+            echo "No changes to commit; skipping push."
+          fi

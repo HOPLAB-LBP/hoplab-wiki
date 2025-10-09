@@ -44,14 +44,6 @@ Welcome to the central hub for all research activities at Hoplab. This page serv
 
     [:octicons-arrow-right-24: Review ethical guidelines](ethics/index.md)
 
-- :octicons-eye-24:{ .lg .middle } __Eye-tracking research__
-
-    ---
-
-    Learn about our setup and analysis techniques for eye-tracking experiments, including equipment calibration and data processing.
-
-    [:octicons-arrow-right-24: Discover eye-tracking methods](eyetracking/index.md)
-
 - :fontawesome-solid-brain:{ .lg .middle } __Functional MRI (fMRI)__
 
     ---
