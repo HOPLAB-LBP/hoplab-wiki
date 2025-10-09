@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # Trigger on push to main branch
+      - feature/todo-issue-counters-and-style-fixes  # TEMP: trigger on feature branch to run dedup
   issue_comment:
     types: [created]  # Trigger on new issue comment
   workflow_dispatch:  # Allow manual trigger
@@ -73,14 +74,17 @@ jobs:
             }
 
             function extractFileFromIssue(issue) {
-              // Try title patterns: "(x/y open) Tags in <file>" OR "Tags in <file> (x/y open)" OR "Tags in <file>"
               const title = issue.title || '';
-              let m = title.match(/^\(\d+\/\d+ open\)\s+Tags in (.+)$/) || title.match(/^Tags in (.+?)(?: \(|$)/);
-              if (m) return normalizePath(m[1] || m[0]);
+              // Robust: find "Tags in <file>" anywhere in title, ignore counters/prefix/suffix
+              const tm = title.match(/Tags in\s+(.+?)(?:\s*\(|$)/);
+              if (tm && tm[1]) return normalizePath(tm[1]);
+              // Fallback: try explicit counter-first pattern
+              const cm = title.match(/^\(\d+\/\d+ open\)\s+Tags in\s+(.+)$/);
+              if (cm && cm[1]) return normalizePath(cm[1]);
               // Fallback: look for the File: [path] line in body
               const body = issue.body || '';
               const bm = body.match(/^File: \[(.+?)\]/m);
-              if (bm) return normalizePath(bm[1]);
+              if (bm && bm[1]) return normalizePath(bm[1]);
               return null;
             }
 
