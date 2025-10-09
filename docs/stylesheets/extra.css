@@ -144,24 +144,11 @@
 /* Slightly wider content for comfortable reading */
 .md-grid { max-width: 1140px; }
 
-/* Active link accent in primary nav */
-.md-nav__link--active,
-.md-nav__item .md-nav__link--active {
-  font-weight: 600;
-  border-left: 3px solid var(--md-primary-fg-color);
-  padding-left: calc(var(--md-spacing) - 3px);
-}
+/* Active link accent in primary nav (reverted to theme default) */
 
-/* Sticky secondary sidebar (Table of Contents) */
-.md-sidebar--secondary {
-  position: sticky;
-  top: 5.5rem;
-  height: calc(100vh - 5.5rem);
-}
+/* Sticky secondary sidebar (reverted to theme default) */
 
-/* Breadcrumbs subtle style */
-.md-breadcrumbs__link { color: var(--md-default-fg-color--light); }
-.md-breadcrumbs__link:hover { color: var(--md-default-fg-color); }
+/* Breadcrumbs subtle style (reverted) */
 
 /* Search input focus accent */
 .md-search__input:focus {
@@ -213,7 +200,7 @@
 .md-typeset .grid.cards > ul > li > a { padding: 0.9rem 1rem; }
 .md-typeset .grid.cards svg,
 .md-typeset .grid.cards .twemoji {
-  font-size: 1.6rem;
+  /* Use theme default icon size; keep brand color */
   color: var(--md-primary-fg-color);
 }
 
@@ -246,7 +233,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
 }
-.md-typeset pre > code { background: inherit; }
+/* Keep default theme background for code blocks */
 
 /* =========================
    Buttons, Chips, Labels
@@ -262,6 +249,25 @@
   background: var(--md-primary-fg-color);
   border-color: var(--md-primary-fg-color);
   color: white;
+}
+
+/* Improve primary button hover colors for light/dark */
+.md-typeset .md-button--primary:hover,
+.md-typeset .md-button--primary:focus {
+  background: color-mix(in srgb, var(--md-primary-fg-color) 85%, white);
+  border-color: color-mix(in srgb, var(--md-primary-fg-color) 85%, white);
+  color: #fff;
+}
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary:hover,
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary:focus {
+  background: color-mix(in srgb, var(--md-primary-fg-color) 80%, black);
+  border-color: color-mix(in srgb, var(--md-primary-fg-color) 80%, black);
+  color: #fff;
+}
+
+.md-typeset .md-button--primary:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--md-primary-fg-color) 40%, white);
+  outline-offset: 2px;
 }
 
 /* Chips: {: .chip } or {: .chip .chip--green } */
