@@ -283,6 +283,8 @@ If you can't wait to start engaging, check out the following **initiatives**:
 
 (It should be mentioned that all credits for this section go to Klara's former colleague [Simon Geirnaert](https://simongeirnaert.com/)!)
 
+__TODO__: [Andrea] perhaps add links to new NeuroSPACE Linkedin and other socials at the top of the page (and remove the LBP?)
+
 <style>
 .latex {
   font-family: "Computer Modern", serif;
