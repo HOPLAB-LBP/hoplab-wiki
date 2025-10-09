@@ -245,6 +245,19 @@
   padding: 0.45rem 0.9rem;
   box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
 }
+
+/* Fix: non-primary buttons in light mode should not turn purple on hover */
+[data-md-color-scheme="default"] .md-typeset .md-button {
+  color: var(--md-primary-fg-color);
+  border-color: var(--md-primary-fg-color);
+  background-color: color-mix(in srgb, var(--md-primary-fg-color) 8%, white);
+}
+[data-md-color-scheme="default"] .md-typeset .md-button:hover,
+[data-md-color-scheme="default"] .md-typeset .md-button:focus {
+  color: var(--md-primary-fg-color);
+  border-color: color-mix(in srgb, var(--md-primary-fg-color) 90%, black);
+  background-color: color-mix(in srgb, var(--md-primary-fg-color) 16%, white);
+}
 .md-typeset .md-button--primary {
   background: var(--md-primary-fg-color);
   border-color: var(--md-primary-fg-color);
@@ -252,22 +265,30 @@
 }
 
 /* Improve primary button hover colors for light/dark */
-.md-typeset .md-button--primary:hover,
-.md-typeset .md-button--primary:focus {
-  background: color-mix(in srgb, var(--md-primary-fg-color) 85%, white);
-  border-color: color-mix(in srgb, var(--md-primary-fg-color) 85%, white);
+/* Light mode: darken primary on hover for better contrast */
+[data-md-color-scheme="default"] .md-typeset .md-button--primary:hover,
+[data-md-color-scheme="default"] .md-typeset .md-button--primary:focus {
+  background: color-mix(in srgb, var(--md-primary-fg-color) 88%, black);
+  border-color: color-mix(in srgb, var(--md-primary-fg-color) 88%, black);
   color: #fff;
 }
 [data-md-color-scheme="slate"] .md-typeset .md-button--primary:hover,
 [data-md-color-scheme="slate"] .md-typeset .md-button--primary:focus {
-  background: color-mix(in srgb, var(--md-primary-fg-color) 80%, black);
-  border-color: color-mix(in srgb, var(--md-primary-fg-color) 80%, black);
+  background: color-mix(in srgb, var(--md-primary-fg-color) 82%, black);
+  border-color: color-mix(in srgb, var(--md-primary-fg-color) 82%, black);
   color: #fff;
 }
 
 .md-typeset .md-button--primary:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--md-primary-fg-color) 40%, white);
   outline-offset: 2px;
+}
+
+/* Smooth hover transitions */
+.md-typeset .md-button,
+.md-typeset .md-button--primary {
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease,
+              box-shadow .15s ease, transform .05s ease;
 }
 
 /* Chips: {: .chip } or {: .chip .chip--green } */
