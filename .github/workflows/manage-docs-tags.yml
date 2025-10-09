@@ -12,7 +12,6 @@ on:
   push:
     branches:
       - main  # Trigger on push to main branch
-      - feature/todo-issue-counters-and-style-fixes  # TEMP: run sweep to validate tag normalization
   issue_comment:
     types: [created]  # Trigger on new issue comment
   workflow_dispatch:  # Allow manual trigger for full repo sweep
