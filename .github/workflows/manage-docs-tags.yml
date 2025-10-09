@@ -1,12 +1,20 @@
 name: Manage Docs Tags and Issues
 
+# This workflow scans Markdown files for TODO/PLACEHOLDER/NOTE lines and tracks them in GitHub Issues.
+# Design goals:
+# - Exactly one open tracking issue per Markdown file.
+# - Update counters and checklist deterministically from source files.
+# - Preserve human-added tasks from comments and manually-completed tasks.
+# - Never reopen a previously "completed" issue when new tags reappear; create a new issue instead
+#   to avoid carrying large lists of historical completed tasks.
+
 on:
   push:
     branches:
       - main  # Trigger on push to main branch
   issue_comment:
     types: [created]  # Trigger on new issue comment
-  workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch:  # Allow manual trigger for full repo sweep
 
 permissions:
   contents: write
@@ -18,19 +26,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4  # v4 is fast, supports shallow clone, Node20 runtime
 
       - name: Manage Docs Tags and Issues
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7  # Node20 runtime; modern Octokit
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const fs = require('fs').promises;  // File system module with promises
-            const path = require('path');  // Path manipulation module
+            // Core dependencies
+            const fs = require('fs').promises;  // Promise-based filesystem operations
+            const path = require('path');       // Cross-platform path utilities
 
             console.log('Starting the Manage Docs Tags and Issues workflow');
 
-            // Function to recursively walk through directories and find Markdown files
+            // Recursively walk the docs tree and collect Markdown files.
+            // This is used for push/dispatch sweeps; for PR/diff-optimized workflows,
+            // we could scope to changed files to reduce work.
             async function walkSync(dir) {
               console.log(`Scanning directory: ${dir}`);
               const files = await fs.readdir(dir);  // Read contents of the directory
@@ -50,7 +61,7 @@ jobs:
               return filelist;  // Return the list of Markdown files
             }
 
-            // Function to determine the label for an issue based on the file path
+            // Determine a stable directory label for the tracking issue based on file path.
             function getLabel(file) {
               const parts = path.dirname(file).split(path.sep);  // Split the directory path
               if (parts[0] === 'docs' && parts.length > 1) {  // If it's in a subdirectory of 'docs'
@@ -61,9 +72,20 @@ jobs:
               return 'general';  // Otherwise, use 'general' as the label
             }
 
-            // Normalize file path for consistent comparisons (force forward slashes)
+            // Normalize file path for consistent comparisons (force forward slashes, trim leading slashes)
             function normalizePath(p) {
               return (p || '').replace(/\\/g, '/').replace(/^\/+/, '');
+            }
+
+            // Utility: test if an issue has a given label.
+            function hasLabel(issue, name) {
+              return (issue.labels || []).some(l => l.name === name);
+            }
+
+            // Decide if a closed issue is an auto-completed one (i.e., we should NOT reopen it).
+            // We tag auto-closed issues with 'doc-tags-complete'.
+            function wasAutoCompleted(issue) {
+              return hasLabel(issue, 'doc-tags-complete');
             }
 
             function isDocTagsIssue(issue) {
@@ -72,22 +94,24 @@ jobs:
               return hasLabel || looksLikeTitle;
             }
 
+            // Extract the file path referenced by a tracking issue.
+            // The title may have counters in front or after; we always look for the "Tags in <file>" part.
             function extractFileFromIssue(issue) {
               const title = issue.title || '';
-              // Robust: find "Tags in <file>" anywhere in title, ignore counters/prefix/suffix
+              // Find "Tags in <file>" anywhere in the title, ignoring counters and suffixes.
               const tm = title.match(/Tags in\s+(.+?)(?:\s*\(|$)/);
               if (tm && tm[1]) return normalizePath(tm[1]);
-              // Fallback: try explicit counter-first pattern
+              // Fallback: some older titles may only have counters-first pattern.
               const cm = title.match(/^\(\d+\/\d+ open\)\s+Tags in\s+(.+)$/);
               if (cm && cm[1]) return normalizePath(cm[1]);
-              // Fallback: look for the File: [path] line in body
+              // Last resort: parse the first "File: [path]" entry in the body.
               const body = issue.body || '';
               const bm = body.match(/^File: \[(.+?)\]/m);
               if (bm && bm[1]) return normalizePath(bm[1]);
               return null;
             }
 
-            // Function to find an existing issue for a file (robust: ignores labels and tolerates title variations)
+            // Find an existing OPEN tracking issue for a file (robust, label-agnostic, tolerant of title variations).
             async function findExistingIssue(file) {
               const target = normalizePath(file);
               console.log(`Searching for existing open issue for file: ${target}`);
@@ -110,7 +134,8 @@ jobs:
               return existingIssue;
             }
 
-            // Function to find an existing CLOSED issue for a file (to potentially reopen)
+            // Find an existing CLOSED tracking issue for a file (to potentially reopen).
+            // Note: We DO NOT reopen issues that were auto-closed as complete (label 'doc-tags-complete').
             async function findClosedIssue(file) {
               const target = normalizePath(file);
               console.log(`Searching for closed issue for file: ${target}`);
@@ -122,7 +147,8 @@ jobs:
               });
               const candidates = issues.filter(isDocTagsIssue).filter(issue => {
                 const f = extractFileFromIssue(issue);
-                return f && normalizePath(f) === target;
+                // Only consider closed issues for this file that were NOT auto-completed; those should be replaced by fresh issues
+                return f && normalizePath(f) === target && !wasAutoCompleted(issue);
               }).sort((a,b) => b.number - a.number); // pick most recent
               const closedIssue = candidates[0] || null;
               if (closedIssue) {
@@ -133,7 +159,8 @@ jobs:
               return closedIssue;
             }
 
-            // Function to parse tags from file content, capturing the entire line for each tag
+            // Parse tags from Markdown content, capturing the entire line for each tag.
+            // We intentionally ignore fenced code blocks and inline code spans to avoid false positives.
             function parseTags(content) {
               console.log('Starting to parse tags from file content');
               console.log('Content length:', content.length);
@@ -153,6 +180,8 @@ jobs:
               }
 
               const cleaned = stripCode(content);
+              // Match any line that contains TODO/PLACEHOLDER/NOTE (case-insensitive);
+              // anchors use m-flag so ^/$ apply per line after stripping code regions.
               const tagRegex = /^(.*\b(TODO|PLACEHOLDER|NOTE)\b.*)$/gim;
 
               const tags = new Set();
@@ -192,7 +221,11 @@ jobs:
               return tasks;
             }
 
-            // Function to format tasks for display in the issue and return structured data
+            // Format tasks to the canonical checklist representation and compute stable order.
+            // Rules:
+            // - Open items first, then by type (TODO, PLACEHOLDER, NOTE), then alphabetical by content.
+            // - Preserve 'Added from comment #' entries as-is (never auto-close them).
+            // - When matching file-derived items, we set status 'Added from file' or 'Resolved from file'.
             function formatTasks(currentTags, existingTasks) {
               console.log('Formatting tasks');
               const allTasks = [...existingTasks];
@@ -251,7 +284,13 @@ jobs:
               return { text, tasks: updatedTasks };
             }
 
-            // Function to create or update an issue for a file
+            // Create or update a tracking issue for a file.
+            // Behavior overview:
+            // - If an open issue exists: update it with recomputed tasks and counters; preserve labels.
+            // - If no open issue and tags exist:
+            //     * If there is a closed issue for the file that was NOT auto-completed, reopen it (to resume context).
+            //     * If the closed issue was auto-completed (label 'doc-tags-complete'), DO NOT reopen; create a fresh issue.
+            // - If no tags and no open issue: noop.
             async function createOrUpdateIssue(file, currentTags) {
               console.log(`Creating or updating issue for file: ${file}`);
               const label = getLabel(file);
@@ -304,10 +343,14 @@ jobs:
                 const totalCount = updatedTasks.length;
                 const title = `(${openCount}/${totalCount} open) Tags in ${file}`;
                 const body = `File: [${file}](${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/blob/${context.sha}/${file})\n\nTasks:\n${formattedTasks}\n\nImportant: do not change the status of tasks tagged as "Added from file". These tasks depend on to-do tags in the original file. To change the status of these tasks, please edit the md file directly.`;
-                // Attempt to reopen a matching closed issue if one exists
+                // Decide whether to reopen a closed issue or create a fresh one.
+                // We NEVER reopen auto-completed issues (label 'doc-tags-complete') to avoid long histories of resolved tasks.
                 const closedIssue = await findClosedIssue(file);
                 if (closedIssue) {
-                  console.log(`Reopening closed issue #${closedIssue.number} for ${file}`);
+                  console.log(`Reopening closed issue #${closedIssue.number} for ${file} (was not auto-completed)`);
+                  // Keep any existing labels and ensure required ones
+                  const currentLabels = (closedIssue.labels || []).map(l => l.name);
+                  const nextLabels = Array.from(new Set([...currentLabels, 'doc-tags', label]));
                   issue = await github.rest.issues.update({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
@@ -315,7 +358,7 @@ jobs:
                     state: 'open',
                     title: title,
                     body: body,
-                    labels: ['doc-tags', label]
+                    labels: nextLabels
                   });
                   await github.rest.issues.createComment({
                     owner: context.repo.owner,
@@ -326,11 +369,11 @@ jobs:
                   console.log(`Reopened issue #${closedIssue.number} for ${file}`);
                 } else {
                   issue = await github.rest.issues.create({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  title: title,
-                  body: body,
-                  labels: ['doc-tags', label]
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    title: title,
+                    body: body,
+                    labels: ['doc-tags', label]
                   });
                   console.log(`Created new issue #${issue.data.number} for ${file}`);
                 }
@@ -369,7 +412,9 @@ jobs:
               console.log(`--- Finished processing ${file} ---\n`);
             }
 
-            // Function to handle new comments on issues
+            // Handle new comments on issues.
+            // Any lines in the comment that look like TODO/PLACEHOLDER/NOTE become open checklist items
+            // labeled "Added from comment #<comment id>". Title counters are recomputed.
             async function handleNewComment(issue, comment) {
               console.log(`Handling new comment on issue #${issue.number}`);
               console.log('Comment content:', comment.body);
@@ -437,7 +482,7 @@ jobs:
                 }
                 console.log('Finished processing all files');
 
-                // ***** New code starts here *****
+                // After processing all files, proactively close orphan issues whose files no longer exist.
                 console.log('Checking for issues with files that no longer exist');
                 const existingIssues = await github.paginate(github.rest.issues.listForRepo, {
                   owner: context.repo.owner,
@@ -447,7 +492,7 @@ jobs:
                   per_page: 100
                 });
 
-                // Create a Set of existing file paths for quick lookup
+                // Fast lookup of scanned files (normalized)
                 const existingFilesSet = new Set(files.map(normalizePath));
 
                 for (const issue of existingIssues) {
@@ -456,7 +501,7 @@ jobs:
                   if (fileMatch) {
                     const filePath = fileMatch[1] || fileMatch[2];
                     if (!existingFilesSet.has(normalizePath(filePath))) {
-                      // File does not exist, close the issue
+                      // The source file no longer exists; close the orphaned issue.
                       console.log(`File ${filePath} does not exist. Closing issue #${issue.number}`);
                       await github.rest.issues.update({
                         owner: context.repo.owner,
@@ -471,9 +516,9 @@ jobs:
                     console.log(`Could not extract file path from issue title: ${issue.title}`);
                   }
                 }
-                // ***** New code ends here *****
+                // End orphan cleanup
 
-                // ***** De-duplicate open issues per file (merge tasks safely) *****
+                // De-duplicate open issues per file (merge human-only entries safely, then close duplicates)
                 console.log('Checking for duplicate open issues per file');
                 const openIssues = await github.paginate(github.rest.issues.listForRepo, {
                   owner: context.repo.owner,
@@ -506,7 +551,8 @@ jobs:
                     });
                   }
 
-                  // Merge comment-added and manually-completed tasks from duplicates into primary, without duplicates
+                  // Merge only human-sourced data (comment-added items and manually-completed items) from duplicates into primary.
+                  // We do NOT merge file-derived entries; they are recomputed from source and can cause duplication/noise.
                   async function getIssueBody(number) {
                     const res = await github.rest.issues.get({
                       owner: context.repo.owner,
@@ -556,17 +602,17 @@ jobs:
                     mergedExisting = mergeTasksUnique(mergedExisting, dupExisting);
                   }
 
-                // Rebuild the primary issue body using current tags + merged existing tasks
-                let currentTags = [];
-                try {
-                  const filesSetNorm = new Set(files.map(normalizePath));
-                  if (filesSetNorm.has(normalizePath(fp))) {
-                    const content = await fs.readFile(normalizePath(fp), 'utf8');
-                    currentTags = parseTags(content);
-                  } else {
-                    console.log(`File ${fp} not found when rebuilding primary. Using no current tags.`);
-                  }
-                } catch (e) {
+                  // Rebuild the primary issue body using current tags + merged existing tasks
+                  let currentTags = [];
+                  try {
+                    const filesSetNorm = new Set(files.map(normalizePath));
+                    if (filesSetNorm.has(normalizePath(fp))) {
+                      const content = await fs.readFile(normalizePath(fp), 'utf8');
+                      currentTags = parseTags(content);
+                    } else {
+                      console.log(`File ${fp} not found when rebuilding primary. Using no current tags.`);
+                    }
+                  } catch (e) {
                     console.log(`Error reading ${fp} when rebuilding primary: ${e.message}`);
                   }
 
