@@ -8,7 +8,15 @@ hide:
 
 Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab wisdom into a more user-friendly format. This process is currently managed by [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be).
 
-The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuven.be/en/research-funding/support/if/methusalem) that in addition to Hoplab also includes the teams of Céline Gillebert, Kobe Desender, and Bert De Smedt. Much of the research information on the Hoplab wiki will also be very useful to members of these teams. Likewise, where appropriate, this Hoplab wiki contains links to online information provided by these other teams.
+The Hoplab is part of the larger [NeuroSPACE consortium](https://ppw.kuleuven.be/neurospace) funded by the [Methusalem Program](https://research.kuleuven.be/en/research-funding/support/if/methusalem) that in addition to Hoplab also includes the teams of Céline Gillebert, Kobe Desender, and Bert De Smedt. Much of the research information on the Hoplab wiki will also be very useful to members of these teams. Likewise, where appropriate, this Hoplab wiki contains links to online information provided by these other teams.
+
+!!! info "Leave a feedback"
+    The wiki is **our collective knowledge base** - your feedback and contributions help keep it accurate, complete, and useful for everyone in the lab.
+
+    For small updates to the Wiki, click on the :pencil: icon at the top right of each page. Use the feedback buttons (:material-emoticon-sad-outline: :material-emoticon-happy-outline:) at the bottom of each page to help improve the wiki. 
+
+!!! tip "Use the search bar"
+    The search bar is your friend! Just type in a keyword and you will be presented with a list of relevant pages.
 
 <div class="grid cards" markdown>
 
@@ -73,14 +81,6 @@ The Hoplab is part of the larger [Methusalem consortium](https://research.kuleuv
     Procedures for EEG data collection and analysis
 
     [:octicons-arrow-right-24: Learn more](research/eeg/index.md)
-
-- :octicons-eye-24:{ .lg .middle } __Eye Tracking__
-
-    ---
-
-    Protocols for eye-tracking experiments
-
-    [:octicons-arrow-right-24: Learn more](research/eyetracking/index.md)
 
 - :fontawesome-solid-brain:{ .lg .middle } __fMRI__
 

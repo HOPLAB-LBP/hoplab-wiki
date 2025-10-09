@@ -8,7 +8,7 @@ The starter pack is divided into three sections. In no order of importance, you 
 
 Developing strong coding skills is crucial for success in our lab. Here are some excellent resources to help you improve your Python programming and data science skills:
 
-1. :star: **[The good research code handbook](https://goodresearch.dev/)**: This is a must-read for anyone joining the lab. It covers essential knowledge on how to structure and write your code in research, suitable for both beginners and experienced researchers.
+1. :star: **[The Good Research Code Handbook](https://goodresearch.dev/)**: This is a must-read for anyone joining the lab. It covers essential knowledge on how to structure and write your code in research, suitable for both beginners and experienced researchers. Good coding practices are also summarised in [this paper](https://www.nature.com/articles/s44271-025-00236-3).
 
 2. You can find some fun and interactive Python tutorials on [DataCamp](https://www.datacamp.com/category/python) and [Codecademy](https://www.codecademy.com/catalog/language/python).
 

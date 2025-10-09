@@ -27,11 +27,9 @@ Templates are organized into two sections:
 
     ---
 
-    A structured template for designing an in-person mouse tracker experiment.
+    An example of on-site mouse tracker coded with Psychopy.
 
-    See [PLACEHOLDER](#)
-
-    [:octicons-arrow-right-24: PLACEHOLDER](#)
+    [:octicons-arrow-right-24: Learn more](https://github.com/TimManiquet/live-motor-task/tree/main)
 
 </div>
 
@@ -45,7 +43,7 @@ Templates are organized into two sections:
 
     A structured template for designing mouse tracker experiments using jsPsych.
 
-    See [PLACEHOLDER](#)
+    See [Koenig-Robert et al., 2024](https://www.nature.com/articles/s41598-024-62135-7)
 
     [:octicons-arrow-right-24: Learn more](https://github.com/HOPLAB-LBP/mouse_tracker_template)
 
@@ -54,8 +52,6 @@ Templates are organized into two sections:
     ---
 
     A template for online categorization tasks using jsPsych, featuring an animacy task example.
-
-    See [PLACEHOLDER](#)
 
     [:octicons-arrow-right-24: Learn more](https://github.com/HOPLAB-LBP/jspsych-classification-task-template)
 

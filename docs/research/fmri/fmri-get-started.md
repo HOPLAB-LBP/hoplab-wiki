@@ -6,7 +6,7 @@ Kickstart your (f)MRI learning journey by engaging in the following key activiti
 
 === "Subscribe to the MR mailing list"
     - **How to subscribe**:  
-      Join the MR mailing list by visiting [this link](http://listserv.cc.kuleuven.ac.be/archives/mri.html). Make sure you are logged in and click on "Subscribe or Unsubscribe" in the menu on the top right. Provide your first and last name and hit the subscribe button. A confirmation request will be sent to your email address. Your subscription will be completed if you respond to this request within 48h.
+      Join the MR mailing list by visiting [this link](https://ls.kuleuven.be/cgi-bin/wa?A0=MRI). Make sure you are logged in and click on "Subscribe or Unsubscribe" in the menu on the top right. Provide your first and last name and hit the subscribe button. A confirmation request will be sent to your email address. Your subscription will be completed if you respond to this request within 48h.
     - **Purpose of the list**:  
       This mailing list is used by the MR Safety Officer to report on the status of the MRI equipment and announce upcoming MR safety courses. It also allows MRI researchers to ask each other questions about MRI practices and possible issues.  
 
@@ -38,6 +38,8 @@ Follow the yellow section of the [flowchart](https://www.dropbox.com/sh/6hdu5z59
    For more info, we refer you to [this page](../ethics/MEC.md#step-2-apply-for-ec-approval).
 4. **Follow the MR safety course**:
    And become an authorized user of the MRI-scanner (see below).
+
+Note that for most fMRI studies (including healthy adult participants), ethical approval has already been obtained and will fall under application nr. S62131 (until end of December 2025) or S70813 (from January 2026 onwards, hopefully). 
 
 ### Attend the MR safety course
 
@@ -101,7 +103,7 @@ All referenced documents are regularly updated and available in the [Hoplab Team
   Once you completed all steps above, you can book the scanner via the [MRI scientific planning agenda](https://www.kuleuven.be/radiology/Research/Agenda/researchAgendas.html). Details on how to do this can be found in the [instructions for use](https://www.kuleuven.be/radiology/Research/Agenda/importantInformation.html) on the planner webiste, the [`MRI Planning Agenda`](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/Planning%20a%20scan%20session/MRI%20Planning%20Agenda.docx?d=wc7edb06d379b4a04b16cfe3fcb0002c0&csf=1&web=1&e=sEPgnG) located in the Hoplab Teams folder and in [`Safety notes, rules & procedures`](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AAATYJes74w8KvI0OEOd1MmYa?e=5&preview=Safety+Rules++Procedures+Research+MRI+UZL-KUL+v3.2.pdf) (pages 8-11) located in the MRI dropbox folder. Note that some periods are booked for users from our faculty. Time slots named _Reserved for core user psychology_ on the calendar are for any researcher from our faculty to use.
 
 - **Using the Scanner**:  
-  Operational guidelines for the MR scanner are outlined in the [`fMRI protocol_MR8_October2019`](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/What%20to%20do%20at%20the%20scanner/fMRI%20protocol_MR8_October2019.docx?d=wa122d4476efc4dd4b1b0e43bc892bb7e&csf=1&web=1&e=eZmJ0U) document, available in the Hoplab Teams folder. There, you can also find a useful [checklist](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/Planning%20a%20scan%20session/ChecklistMR8.docx?d=w195af25d58334931bee6a959e882c312&csf=1&web=1&e=fP4qHE) that you can use as a reminder during scanning. **NOTE**: refer to the page with hospital information once all the info from the fMRI_protocol_MR8_October2019 file has been moved
+  Operational guidelines for the MR scanner are outlined in the [`fMRI protocol_MR8_October2019`](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/What%20to%20do%20at%20the%20scanner/fMRI%20protocol_MR8_October2019.docx?d=wa122d4476efc4dd4b1b0e43bc892bb7e&csf=1&web=1&e=eZmJ0U) document, available in the Hoplab Teams folder. There, you can also find a useful [checklist](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies/Planning%20a%20scan%20session/ChecklistMR8.docx?d=w195af25d58334931bee6a959e882c312&csf=1&web=1&e=fP4qHE) that you can use as a reminder during scanning. For detailed information on what to do before, during and after a scan, please refer to the ]Scanning procedure](fmri-scanning-procedure.md) page.
 
 ### Managing scan data and invoicing
 

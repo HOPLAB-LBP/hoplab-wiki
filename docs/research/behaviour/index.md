@@ -38,7 +38,7 @@ We hope this section helps you conduct your behavioural research with ease and p
 
     Guidance on compensating participants, including credit and payment processes.
 
-    [:octicons-arrow-right-24: Reimbursements guide](PLACEHOLDER)
+    [:octicons-arrow-right-24: Reimbursements Guide](bh-participants.md#reimbursement)
 
 </div>
 

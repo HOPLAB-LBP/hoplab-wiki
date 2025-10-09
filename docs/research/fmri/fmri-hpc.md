@@ -36,7 +36,11 @@ may contact the [local support team at KU Leuven](https://docs.vscentrum.be/cont
 
 ## 2. Connecting to the Cluster
 
-Once your account is active, you may follow [these steps](https://docs.vscentrum.be/accounts/mfa_login.html) to login depending on your choice of OS.
+Once your account is active, you may follow [these steps](https://docs.vscentrum.be/accounts/mfa_login.html) to login through Multi-Factor Authentication (MFA) depending on your choice of OS. The two main options are:
+
+- **KU Leuven OnDemand**: a browser-based graphical interface. Follow the instructions in *Login to Open OnDemand*. Once logged in, you will see a dashboard with options to launch interactive sessions, submit jobs, and manage files. Navigate to the terminal interface by clicking the *Login Server Shell Access* button.
+- **SSH-based login**: a terminal-based interface. Follow the instructions in *Connecting with an SSH agent*. Here, you connect to the cluster by directly opening the terminal interface on your local machine, using the Terminal, Powershell or whichever shell program.
+
 After a successful login, you will see something like:
 
 ![VSC Login](../../assets/fmri-hpc-login.png)
@@ -56,6 +60,10 @@ To exit the ssh session and go back to your local terminal, type `exit`.
 
 ## 3. Data Management on the HPC
 
+### 3.1. Structuring your data
+
+Your VSC account comes equipped with several folders, each with different characteristics. When logging in, you automatically land in your home directory, which is located at `/user/leuven/123/vsc12345`. This path is stored in the variable `VSC_HOME`, which you check by typing `echo $VSC_HOME` in the terminal. Likewise, other important directories are stored in variables names. To navigate quickly to any of these directories, you can use the `cd` command followed by the variable name, e.g., `cd $VSC_DATA` to move to your data directory.
+
 **Folder Structure:**
 
 - `VSC_HOME`: Small quota, do *not* use it at all.
@@ -69,18 +77,47 @@ A typical approach is to keep a dedicated subdirectory in `VSC_DATA` for each pr
 
 ```bash
 VSC_DATA                    # Persistent storage
-├── data                    # Project data
-│   ├── BIDS                # BIDS dataset
-│   │   ├── derivatives     # Derivatives
-│   │   └── sub-01          # Subject data
-│   │       ├── anat  
-│   │       └── func  
-│   ├── license.txt         # FreeSurfer license file  
-│   └── sourcedata          # Raw data
-│       └── DICOM           
-│           └── sub-01      
-└── fmriprep-25.0.0.sif     # Singularity container
+└── fmri                    # Place to store fMRI data
+    ├── myproject           # project-specific folder
+    │   ├── BIDS                # BIDS dataset
+    │   │   ├── derivatives     # Derivatives
+    │   │   └── sub-01          # Subject data
+    │   │       ├── anat  
+    │   │       └── func  
+    │   ├── license.txt         # FreeSurfer license file  
+    │   └── sourcedata          # Raw data
+    │       └── DICOM           
+    │           └── sub-01      
+    └── fmriprep-25.0.0.sif     # Singularity container
 ```
+
+### 3.2. Managing storage usage
+
+Operations like fMRIPrep can generate large amounts of data, so it is important to manage your data effectively. You can find some general advice on the [VSC documentation](https://docs.vscentrum.be/data/managing_storage_usage.html).
+
+If your HPC storage is full, you might encounter this type of error when sending data to the compute node:
+
+```bash
+rsync: writefd_unbuffered failed to write 32768 bytes [sender]: Broken pipe (...)
+rsync: connection unexpectedly closed (... bytes received so far) [sender]
+rsync error: error in rsync protocol data stream (code 12) at ...
+```
+
+When encountering this or other similar errors, you should check your storage usage. Use the following command:
+
+```bash
+myquota
+```
+
+To see, directory by directory, how much space you are using. This command will also show you which directories might be exceeding their quota. You can also check the size of a specific directory, for example, your data directory:
+
+```bash
+du -h $VSC_DATA
+```
+
+Where `-h` means "human-readable" (e.g., in GB or MB, add `-s` - "summary" for the total size).
+
+If you find your storage full, it is a good idea to **clean up** the files you won't need anymore, as well as the data you've already downloaded locally. In general, it is best not to consider the HPC as a long-term storage solution.
 
 ---
 
@@ -157,7 +194,7 @@ This fetches the Docker image and converts it to a Singularity `.sif` image.
 
 ### 6.1. Creating a Slurm Jobscript
 
-To submit our job to the compute node, we will need to create a Slurm script. this script will define the job resources, dependencies, and all the steps needed to complete the workflow. Then, submit the jobscript to the cluster using the `sbatch` command. Your batch job will run remotely on a compute node, and `fmriprep` will be executed from within a container.
+To submit our job to the compute node, we will need to create a Slurm script. This script will define the job resources, dependencies, and all the steps needed to complete the workflow. Then, submit the jobscript to the cluster using the `sbatch` command. Your batch job will run remotely on a compute node, and `fmriprep` will be executed from within a container.
 
 To create such file, type in your ssh session:
 
@@ -237,7 +274,9 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
 
    *where `58070026` is your job ID* (but it will be different in your case).
 
-4. Check the status of your job:
+3. Check the status of your job:
+
+    Through the **terminal**, you can check the status of your job by running:
 
     ```bash
     squeue -j 58070026
@@ -249,6 +288,8 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
     58070026 batch     fmriprep vsc12345  R       0:00      1 (Priority)
     ```
+    Through the KU Leuven **OnDemand** interface, you can also check the status of your job by clicking on the *Active jobs* tab in the dashboard.
+
 
 Congrats! Your job is now being executed on the cluster.
 
@@ -345,7 +386,7 @@ This will auto-refresh every second and is very helpful to track live progress.
 
 To exit the `watch` session Press `Ctrl+Z`.
 
-## 8 Canceling a Job
+## 8. Canceling a Job
 
 If you want to stop a running or pending job you need to provide the cluster name (defaults to Genius), and the unique `<jobID>`, e.g.:
 
@@ -421,7 +462,7 @@ Make sure to check **both files**, as the error could appear in either.
 
 ### 9.3 Verifying Successful Runs
 
-If the job completed successfully, it`s time to check the output files.
+If the job completed successfully, it's time to check the output files.
 
 In our SLURM script, the `--output` directory is bound to:
 
@@ -603,8 +644,6 @@ Joining job 58070026
 
 Also, the prompt will change from the login node (e.g., ``tier2-p-login-2``) to the compute node (e.g., ``r27i27n19``), indicating you are now inside the job environment on the actual node.
 
----
-
 ### 10.3: Run `htop` to Monitor Resource Usage
 
 Once inside the compute node, run:
@@ -630,7 +669,84 @@ To exit `htop`, press **F10** or **q**
 
 ---
 
-## 11. References and Links
+## 11. Checking Credit Usage
+
+Each VSC account is allocated a fixed number of compute **credits**, which are consumed depending on the number of CPUs, memory, and time your jobs require. If your jobs are not running or are failing, it's useful to check how many credits you have **left**, and how many you’ve already **used**.
+
+### 11.1 Check your current credit balance
+
+You can check the total number of credits **deposited**, **used**, and **refunded** using:
+
+```bash
+sam-balance
+```
+
+You’ll see an output like this:
+
+```
+✘ [Jul/10 12:06] vsc12345@tier2-p-login-2 /data/leuven/123/vsc12345 $  sam-balance
+ID       Name                   Balance         Reserved        Available      
+======== ====================== =============== =============== ===============
+99270    intro_vsc12345         1937378         0               1937378
+```
+
+or, alternatively:
+
+```
+sam-statement --account=intro_vsc12345
+```
+
+(where `--account` is your credits account name, and *not* your username) which returns:
+
+```
+###############################################################################
+#
+# Includes Account=intro_vsc12345
+# Generated on Thu Jul 10 11:39:45 2025.
+# Reporting fund activity from 2022-01-01 to NOW
+#
+###############################################################################
+
+============================================================ ==================
+Credits deposited in the given period:                                  2000000
+Credits refunded in the given period (all clusters):                          0
+Credits consumed in the given period (all clusters):                     405153
+============================================================ ==================
+
+JobID      Cluster  Account                User     Partition   Credits
+========== ======== ====================== ======== =========== ===============
+58233013   genius   intro_vsc12345         vsc12345 batch       11
+58233014   genius   intro_vsc12345         vsc12345 batch       9
+58233068   genius   intro_vsc12345         vsc12345 batch       35545
+58233069   genius   intro_vsc12345         vsc12345 batch       17439
+58233295   genius   intro_vsc12345         vsc12345 batch       14745
+58234300   genius   intro_vsc12345         vsc12345 batch       82
+58234301   genius   intro_vsc12345         vsc12345 batch       21461
+```
+
+### 11.2 Check how many credits each job used
+
+To see how many credits were used **per job**, use either the `sam-statement` command from the section above, or:
+
+```bash
+sam-list-usagerecords --start=2025-01-01 --end=2025-07-01
+```
+
+You can adjust the `--start` and `--end` dates to fit the period you want to investigate.
+
+This returns a table like:
+
+```
+JobID      Cluster  Account         State      User      Credits     Start              End
+========== ======== ==============  ========== ========= ==========  ================== ===================
+58270696   genius   intro_vsc12345  COMPLETED  vsc12345   23348       2025-07-08T12:45   2025-07-08T17:15
+```
+
+This helps you estimate how much a typical run (e.g. an `fMRIPrep` job) costs. In our experience, a **successful fMRIPrep** run with 16 cores and 20 GB RAM costs ~20,000–25,000 credits.
+
+---
+
+## 12. References and Links
 
 - [VSC Documentation](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/index.html)
 - [KU Leuven HPC Info](https://icts.kuleuven.be/sc/onderzoeksgegevens/hpc)

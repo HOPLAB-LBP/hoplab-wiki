@@ -275,7 +275,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     % Requirements:
     % - SPM12 (or a compatible version) must be installed and added to the MATLAB path.
     %
-    % Note: This script automates the process typically done in the SPM GUI.
+    % This script automates the process typically done in the SPM GUI.
 
     % Parameters:
     % - selectedSubjectsList: List of subject IDs to include in the analysis. Can be a list of integers or '*' to include all subjects.
@@ -1210,7 +1210,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     %       Example:
     %           [1, -1, 0, ...]
     %
-    % Note:
+    % Notes:
     %   This function assumes that task-related regressors in the SPM design matrix end with "*bf(1)".
     %   Confound regressors (e.g., motion parameters) do not have this suffix.
 
@@ -1227,7 +1227,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
         % If the field contains a wildcard, handle it
         if contains(field, '_WILDCARD_')
             % Convert the wildcard pattern to a regular expression pattern
-            pattern = ['Sn\(.\) ' strrep(field, '_WILDCARD_', '.*')];
+            pattern = ['Sn\(\d{1,2}\) ' strrep(field, '_WILDCARD_', '.*')];
             
             % Find indices of matching regressors using the regular expression pattern
             idx = find(~cellfun('isempty', regexp(regressor_names, pattern)));
@@ -1236,7 +1236,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
             weight_vector(idx) = contrastWeights.(field);
         else
             % No need to extract the condition name, just append *bf(1) to match the SPM regressor pattern
-            pattern = ['Sn\(.\) ' field];
+            pattern = ['Sn\(\d{1,2}\) ' field];
 
             idx = find(~cellfun('isempty', regexp(regressor_names, pattern)));
 
@@ -1326,7 +1326,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     % 2) To fetch all directories starting with 'sub-*':
     %    sub_paths = findSubjectsFolders('/path/to/fmriprepRoot', '*');
     %
-    % NOTE:
+    % Notes:
     % If a subject ID from the list does not match any directory, a warning is issued.
 
     % Start by fetching all directories with the 'sub-*' pattern.
@@ -1720,6 +1720,4 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
 Continue to the next guide for instructions on setting up Regions of Interest (ROIs) to extract and analyze data from specific brain regions:
 [--> Regions of Interest](fmri-rois.md)
 
----
 
-- **[TODO]:** Include screenshots for GUI steps

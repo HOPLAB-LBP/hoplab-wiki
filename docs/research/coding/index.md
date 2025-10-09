@@ -415,8 +415,8 @@ Spyder is a powerful IDE for scientific programming in Python. Here’s how to s
 ??? question "Why use Spyder projects?"
     Using a project allows Spyder to set the root folder for your scripts. This means that all imports and file paths are relative to this root, simplifying package management and file organization.
 
-1. **Create a new project**:
-    - Go to `File > New Project` in Spyder.
+1. **Create a New Project**:
+    - Go to `Projects > New Project` in Spyder.
     - Select a directory to store your project files.
     - Spyder will set this folder as the root for relative imports.
 
@@ -432,8 +432,8 @@ Spyder is a powerful IDE for scientific programming in Python. Here’s how to s
      └── README.md          # Project overview
      ```
 
-3. **Activate your environment in Spyder**:
-    - Go to `Preferences > Python Interpreter`.
+3. **Activate Your Environment in Spyder**:
+    - Go to `Tools > Preferences > Python Interpreter`.
     - Select the interpreter from your `conda` environment.
 
 ## Understanding your code
@@ -452,7 +452,6 @@ Before diving into debugging and navigation, it's important to set up your Spyde
         - **Variable Explorer**: Displays all variables in your current environment.
         - **Documentation**: Shows documentation for selected functions and objects.
         - **File Explorer**: Browse files and folders in your working directory.
-        - **Breakpoints**: Manage and navigate all breakpoints in your code.
 
 2. **Enable recommended panes**:
     - Ensure that the **Variable Explorer**, **IPython Console**, **Breakpoints**, and **Documentation** panes are enabled.
@@ -594,7 +593,7 @@ The **Go to definition** feature allows you to quickly jump to where a function,
     ```
 
     - **Scenario**: You want to see the logic inside `clean_data` while working on the main script.
-        - Right-click on `clean_data` and select "Go to Definition."
+        - Highlight and right-click on `clean_data` and select "Go to Definition."
         - Spyder will take you directly to where `clean_data` is defined, allowing you to review the function without scrolling.
     
     ![Spyder Go To Definition](../../assets/spyder_definition.png)
@@ -627,7 +626,7 @@ Spyder’s object inspection feature allows you to explore the attributes and me
     - **Step 2: Press the Shortcut**: Use `Ctrl + I` (Windows/Linux) or `Cmd + I` (Mac) to bring up the documentation in the **Help pane**.
     
     - **What You See**: The documentation for `np.random.randint` appears, showing:
-        - **Input Arguments**: The range of integers (`low` and `high`), `size` for specifying the shape of the output array, and other optional parameters.
+        - **Input Arguments/Parameters**: The range of integers (`low` and `high`), `size` for specifying the shape of the output array, and other optional parameters.
         - **Description**: An explanation of what the function does—generating random integers within a specified range.
         - **Returns**: Information on what the function outputs (an array of integers).
         - **Examples**: If available, code snippets showing how to use the function.
