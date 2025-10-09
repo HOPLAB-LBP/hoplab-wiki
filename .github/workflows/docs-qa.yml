@@ -11,8 +11,10 @@ jobs:
   docs-qa:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout (full history to satisfy git plugins)
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -32,4 +34,3 @@ jobs:
         run: |
           chmod +x scripts/docs_ci_check.sh
           scripts/docs_ci_check.sh
-
