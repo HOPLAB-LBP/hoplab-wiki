@@ -1,10 +1,10 @@
-# Experimental Setup for Behavioural Studies
+# Experimental setup for behavioural studies
 
 Here, you'll find resources and instructions for designing and conducting both online and in-person behavioral experiments. Whether you're setting up a study on Pavlovia or preparing an in-person session, you'll find useful information to get started.
 
 <div class="grid cards" markdown>
 
-- :material-web:{ .lg .middle } __Online Experiments with Psychopy__
+- :material-web:{ .lg .middle } __Online experiments with Psychopy__
 
     ---
 
@@ -12,7 +12,7 @@ Here, you'll find resources and instructions for designing and conducting both o
 
     [:octicons-arrow-right-24: View Psychopy guide](pavlovia-psychopy.md)
 
-- :material-code-tags:{ .lg .middle } __Online Experiments with jsPsych__
+- :material-code-tags:{ .lg .middle } __Online experiments with jsPsych__
 
     ---
 
@@ -20,7 +20,7 @@ Here, you'll find resources and instructions for designing and conducting both o
 
     [:octicons-arrow-right-24: View jsPsych guide](pavlovia-jspsych.md)
 
-- :material-account-group:{ .lg .middle } __In-Person Experiments__
+- :material-account-group:{ .lg .middle } __In-person experiments__
 
     ---
 

@@ -9,7 +9,7 @@ Luckily, you have found the most useful link of all, i.e., the link to this Wiki
 
 <div class="grid cards" markdown>
 
-- :material-clock-fast:{ .lg .middle } __First Steps__
+- :material-clock-fast:{ .lg .middle } __First steps__
 
     ---
 
@@ -17,7 +17,7 @@ Luckily, you have found the most useful link of all, i.e., the link to this Wiki
 
     [:octicons-arrow-right-24: Link](https://admin.kuleuven.be/personeel/english/international_staff/first_steps_upon_arrival)
 
-- :material-sign-direction:{ .lg .middle } __Orientation Days__
+- :material-sign-direction:{ .lg .middle } __Orientation days__
 
     ---
 
@@ -61,7 +61,9 @@ Luckily, you have found the most useful link of all, i.e., the link to this Wiki
 
 ## Getting started at Hoplab
 
-Apart from this Wiki, we try to keep the [__HopLab website__](https://www.hoplab.be/) up to date, and that includes new people. Send a picture of yourself and a short introductory text (see the [members](https://www.hoplab.be/people/) page for inspiration) to the person in charge of the Lab website (as of January 2022, this is [Tim](https://www.kuleuven.be/wieiswie/en/person/00149267), from December 2024 on, this will be [Klara](https://www.kuleuven.be/wieiswie/en/person/00116743)) along with useful links if wanted (ORCID, LinkedIn, Scholar, Twitter,…).
+Apart from this Wiki, we try to keep the [__HopLab website__](https://www.hoplab.be/) up to date, and that includes new people. Send a picture of yourself and a short introductory text (see the [members](https://www.hoplab.be/people/) page for inspiration) to the person in charge of the Lab website ([Klara](https://www.kuleuven.be/wieiswie/en/person/00116743)) along with useful links if wanted (ORCID, LinkedIn, Scholar, BlueSky,…).
 
 ??? question "What is ORCID?"
     ORCID is a unique digital identifier system for researchers, used by most journals during paper submission. To create your ORCID ID, go [*here*](https://orcid.org/), select "Sign In/Register", choose "Access through your institution" and select "KU Leuven Association". Follow the site's instructions. For assistance, check out their [*support page*](https://support.orcid.org/hc/en-us/articles/360006897454-How-do-I-register-for-an-ORCID-ID).
+
+__TODO__: [Klara]: Merge this info on the "getting started" index page?

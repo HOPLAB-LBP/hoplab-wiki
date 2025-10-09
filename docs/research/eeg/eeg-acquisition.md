@@ -9,8 +9,8 @@ This manual is based on the BioSemi EEG manual from the Cognitive Control in Con
     - **Avoid using hot air for drying.** If you need to speed-dry a wet cap, you may use a blow dryer—but only with cold air.
     - **Report low supplies or broken equipment.** Immediately inform the lab manager (currently [Klara Schevenels](https://www.kuleuven.be/wieiswie/nl/person/00116743)) if something appears broken or stock is running low (e.g., towels, Signa gel, shampoo, adhesive tape, interdental brushes, etc.). The equipment is costly, so handle electrodes and other items with great care.
     - **Do not change any hardware or permanent software settings** (e.g., monitor refresh rate) without approval from the EEG lab manager.
-    - **Reserve your slots via Clustermarket.** Make sure all your lab sessions are properly scheduled. If you don’t yet have an account, contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473).
-    - If you are planning to use the EEG lab for your experiment, ask Klara to add you to the **EEG channel on Slack**, where all EEG lab-related communications take place..
+    - **Reserve your slots via Calira.** Make sure all your lab sessions are properly scheduled. If you don’t yet have an account, contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473).
+    - If you are planning to use the EEG lab for your experiment, ask Klara to add you to the **EEG channel on the NeuroSPACE Slack** through which everything related to the EEG lab is communicated.
     - **Transfer your data after each session.** For example, make sure to copy your data at the end of the day. The computers are regularly cleaned, and it’s your own responsibility to avoid data loss.
     - **Always return the key of the EEG lab to the locker** when you’re not in the lab. You can find the key in the keybox next to the coffee machine on the ground floor. You can ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) for the code.
 
@@ -143,13 +143,21 @@ Hooray, you are now ready to start acquiring EEG-data! To do so, follow these st
 
 ## Cleaning
 
-1. Put the leftover gel in the syringes back in the tube.
-2. Use the shower head to rinse the syringes, head cap and electrodes (not the connectors!) in the plastic tub with lukewarm water.
-3. Carefully brush the gel off of each electrode with a soft toothbrush. Use a plastic toothpick to remove the gel from all the gaps in the head cap.
-4. Fill the tub with clean lukewarm water and add a small amount of the 70% alcohol solution to it. Soak the electrodes, the head cap and the syringes in it for a few seconds to disinfect them.
-5. Rinse everything again with lukewarm water and let the caps and syringes dry on the round table. Put the electrode sets back on the rack (make sure they are stable and don't fall on the floor).
+1. Put the leftover gel in the syringes back in the tube. 
+2. Soak the syringes, head cap and electrode sets (not the connectors!) in the plastic tub filled with lukewarm water. Use the shower head to rinse the material.
+3.	If after soaking and rinsing the electrodes there is still gel left around the electrode tips, carefully brush the gel off with a soft toothbrush. Do this only if really necessary. Use a plastic toothpick to remove the gel from all the gaps in the head cap.
+4.	Fill the tub with clean lukewarm water and add a bit of the 70% alcohol solution to it. Soak the electrodes, the head cap and the syringes in it for a few seconds to disinfect them. 
+5.	Rinse everything again with lukewarm water and let the caps and syringes dry on the round table. Put the electrode sets back on the rack (make sure they are stable and don't fall on the floor).
 
-**TODO:** [Klara] Fix the small figure labels (fig 9-12);
+__TODO__: [Klara] Fix the small figure labels (fig 9-12);
 
-**TODO:** [Klara] Add info on how to (quickly) check the triggers, how to (quickly) check bridging and what to do in case of the "could not open port 'COM2'" error message (reconnect cables connecting the trigger box with either stimulus or acquisition pc and/or restart both pcs).
+__TODO__: [Klara] Add info on how to (quickly) check the triggers, how to (quickly) check bridging and what to do in case of the "could not open port 'COM2'" error message (reconnect cables connecting the trigger box with either stimulus or acquisition pc and/or restart both pcs).
+
+__TODO__: [Klara] Update new things since pc switch (password, config file, program for screen res, line in script to get correct com port)
+
+__TODO__: [Klara] Update new cleaning protocol (without toothbrush, see BioSemi manual)
+
+__TODO__: [Klara] Add lab logistics info (paper to count towels + overview of materials + info on how to wash towels and ordering stuff e.g gel, paper towels, Kruidvat names of the cleaning materials)
+
+
 

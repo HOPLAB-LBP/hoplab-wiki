@@ -1,4 +1,4 @@
-# Behavioural Research
+# Behavioural research
 
 Our lab focuses on understanding human behaviour through controlled experiments, from recruitment and experimental setup to data collection and analysis. This section will guide you through the key aspects of running behavioural studies in our lab, offering resources and step-by-step guides to ensure your research is carried out smoothly.
 
@@ -8,31 +8,31 @@ We hope this section helps you conduct your behavioural research with ease and p
 
 <div class="grid cards" markdown>
 
-- :fontawesome-solid-flask: **Experimental Setup**
+- :fontawesome-solid-flask: **Experimental setup**
 
     ---
 
     Learn how to prepare your experimental environment, including online and in-person setups.
 
-    [:octicons-arrow-right-24: View Experimental Setup Guide](experimental-setup/index.md)
+    [:octicons-arrow-right-24: View experimental setup guide](experimental-setup/index.md)
 
-- :fontawesome-solid-users: **Participant Recruitment**
+- :fontawesome-solid-users: **Participant recruitment**
 
     ---
 
     Find detailed information on recruiting participants, using the EMS system, and managing consent.
 
-    [:octicons-arrow-right-24: Participant Recruitment Guide](bh-participants.md)
+    [:octicons-arrow-right-24: Participant recruitment guide](bh-participants.md)
 
-- :fontawesome-solid-file-signature: **Ethics Approval**
+- :fontawesome-solid-file-signature: **Ethics approval**
 
     ---
 
-    Ensure your study complies with KU Leuven's ethical standards and obtain necessary approvals.
+    Ensure your study complies with KU Leuven's ethical standards and obtain the necessary approvals.
 
-    [:octicons-arrow-right-24: Ethics Guide](../ethics/index.md)
+    [:octicons-arrow-right-24: Ethics guide](../ethics/index.md)
 
-- :fontawesome-solid-money-bill-wave: **Reimbursement & Compensation**
+- :fontawesome-solid-money-bill-wave: **Reimbursement & compensation**
 
     ---
 
@@ -41,3 +41,6 @@ We hope this section helps you conduct your behavioural research with ease and p
     [:octicons-arrow-right-24: Reimbursements Guide](bh-participants.md#reimbursement)
 
 </div>
+
+__TODO__: [Klara] Add info on how/where to rent lab coats (mandatory when testing in the hospital)
+__TODO__: [Klara]: Add info on shredding paper with sensitive information

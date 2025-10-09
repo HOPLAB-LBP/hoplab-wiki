@@ -91,12 +91,12 @@ In order to book a room, contact [Ying](https://www.kuleuven.be/wieiswie/en/pers
 
 ## Reserve equipment or a room for testing
 
-The standard booking tool for testing rooms and equipment (testing booths, EEG caps, etc.) in our faculty is [**Clustermarket**](https://clustermarket.com/).
+The standard booking tool for testing rooms and equipment (testing booths, EEG caps, etc.) in our faculty is [**Calira**](https://app.clustermarket.com/).
 
-- To access Clustermarket you need to make a user account using an invitation link. This link decides to which infrastructure you have access to and is different for every research unit/group. For our group (B&C Human), you can get the link by sending an email to [Christophe Bossens](https://www.kuleuven.be/wieiswie/en/person/00072088) (<christophe.bossens@kuleuven.be>).
+- To access Calira, you need to make a user account using an invitation link. This link decides to which infrastructure you have access to and is different for every research unit/group. For our group (B&C Human), you can get the link by sending an email to [Klara Schevenels](https://www.kuleuven.be/wieiswie/nl/person/00116743) (<klara.schevenels@kuleuven.be>).
 - When you have access, choose the option to log in via your organization, so you can access it through the KU Leuven login tool.
-- Make sure to use Clustermarket to book your testing time slots when you use common rooms or material. Request access to the items you don’t have permission to in case you need it. You can find more information on how to use Clustermarket in [this presentation](https://ppw.kuleuven.be/intranet/research/files/infoclustermarket).
-- The faculty also has their own MS Teams `GHUM PPW - Research rooms and equipment` where you can find more detailed information on the available research infrastructure as well as a manual on how to book infrastructure with Clustermarket (for more info, check out [this page](https://ppw.kuleuven.be/intranet/research/research-infrastructure-ppw)).
+- Make sure to use Calira to book your testing time slots when you use common rooms or material. Request access to the items you don’t have permission to in case you need it. You can find more information on how to use Calira in [this presentation](https://ppw.kuleuven.be/intranet/research/files/infoclustermarket).
+- The faculty also has their own MS Teams `GHUM PPW - Research rooms and equipment` where you can find more detailed information on the available research infrastructure as well as a manual on how to book infrastructure with Calira (for more info, check out [this page](https://ppw.kuleuven.be/intranet/research/research-infrastructure-ppw)).
 
 ## Order stuff
 
@@ -110,25 +110,32 @@ Please contact [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) for a
 
 **General orders** (e.g., milk, coffee, office material) are also handled by [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752). In case of bigger purchases, make sure to include the financial antenna ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838)) in the process.
 
-The IT department handles orders related to **computer supplies** (*<ppw.dict@kuleuven.be>*). All [computer equipment](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/computer-accessories) needs to be bought through the [official university providers](https://admin.kuleuven.be/td/aankoop/intranet/english/discounts/ICT/computeraccessories) by the financial antenna [An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838)). Therefore, when computer supplies need to be bought, make sure to contact them both. It can also be useful to include [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) in CC in that case.
+The IT department handles orders related to **computer supplies** (<ppw.dict@kuleuven.be>). All [computer equipment](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/computer-accessories) needs to be bought through the [official university providers](https://admin.kuleuven.be/td/aankoop/intranet/english/discounts/ICT/computeraccessories) by the financial antenna ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838)). Therefore, when computer supplies need to be bought, make sure to contact them both. It can also be useful to include [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) in CC in that case.
 
-If you need **technical assistance** for your order (e.g., you want to order an EEG-cap), you can contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or send an email to *<neurospace@kuleuven.be>* (general mailing address to reach the support staff of the Methusalem project).
+If you need **technical assistance** for your order (e.g., you want to order an EEG-cap), you can contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or send an email to <neurospace@kuleuven.be> (general mailing address to reach the NeuroSPACE support staff).
 
 ## Arrange a parking spot for a visitor
 
-- If you need to arrange parking for a visitor in the **city center**, you can do so by requesting a day code for the visitor to operate the barriers of the KU Leuven personnel parkings. For more information, check out [this page](https://admin.kuleuven.be/td/intranet/en/fd/bws/parking-policy#section-8). It is worth noting that the car park underneath the Herman Servotte Residence located on the Social Sciences campus (Parkstraat 39-53, 3000 Leuven) can be accessed outside of working hours (18h-24h) and during holidays with your staff card.
-- Parking spots at the **university hospital** (UZ Leuven campus Gasthuisberg) can be refunded in the form of a parking ticket that visitors can use to pay their parking fee. We can buy these tickets (in batches) in advance, so make sure to check beforehand with [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) (from December 2024 on, if you need them beforehand, ask [Andrea](https://www.kuleuven.be/wieiswie/nl/person/00152046)/[Joan](https://www.kuleuven.be/wieiswie/nl/person/00159576)) if we have tickets left or not. New tickets can be ordered by [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752).
+If you need to arrange parking for a visitor in the **city center**, you can do so by requesting a day code for the visitor to operate the barriers of the KU Leuven personnel parkings. For more information, check out [this page](https://admin.kuleuven.be/td/intranet/en/fd/bws/parking-policy#section-8). It is worth noting that the car park underneath the Herman Servotte Residence located on the Social Sciences campus (Parkstraat 39-53, 3000 Leuven) can be accessed outside of working hours (18h-24h) and during holidays with your staff card.
+
+Parking spots at the **university hospital** (UZ Leuven campus Gasthuisberg) can be refunded in the form of a parking ticket that visitors can use to pay their parking fee. We can buy these tickets (in batches) in advance, so make sure to check beforehand with [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) if we have tickets left or not. New tickets can be ordered by [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752).
 
 ## What to do when you leave
 
 We are very sad to see you leave! But since you do, make sure to tick the following boxes.
 
-1. Return the following items to [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752):
+1. Return the following items:
 
     - Any pc material (laptop, mouse, keyboard, etc.)
     - Your external hard drive (and potential USB-key)
-    - Your key(card)
-    - Your Lync phone
+    - Your office key(s)
 
 2. Make sure your data is organized and backed up correctly. That mostly means having back-ups in different locations and different ways. If you need advice on this, refer to the person in charge of data storage (as of December 2024, that is [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743)).
 3. For more information on what to do when you leave, check out [this link](https://ppw.kuleuven.be/ppw-dict/faq#autotoc-item-autotoc-63) for ICT-related info, [this link](https://admin.kuleuven.be/personeel/english/intranet/endofcontract-pension/practical-steps-leaving/practical-steps-leaving-employment) for HR-related info and [this link](https://www.kuleuven.be/english/life-at-ku-leuven/upon-leaving) if you are an international researcher leaving Belgium.
+
+__TODO__: [Klara] Check whether everything is still up to date (KU Loket has renewed some tools such as the one for booking rooms; Clustermarket is now Calira and the responsible is now Klara instead of Christophe)
+__TODO__: [Klara] Add most recent info from Jasmine's presentation to LBP on 08/10/2025 (e.g., booking flights with Omnia has changed to Diversity Travel). She has also agreed to review this page once it's updated. 
+__TODO__: [Klara] Calira is not the only tool for booking research infrastructure in the faculty. Add the other info as well in an overview of research infrastructure available at PPW.
+__TODO__: [Klara] Edit info in last section after BADM consultation has ended and we have researcher's onboarding and offboarding checklist. Then, we can also add a section on RDM (e.g., data storage and so on).
+__TODO__: [Klara] Add info on how to plan your PhD defense/PhD book (see checklist Klara - adapted by Filippo for this faculty)
+__TODO__: [Klara] Add info on youth holiday [(https://www.rva.be/burgers/verlof/hebt-u-recht-op-de-jeugdvakantie)](https://admin.kuleuven.be/personeel/intranet/verlof-afwezigheden/verlof/jeugdvakantie.html), see email Emily to Klara

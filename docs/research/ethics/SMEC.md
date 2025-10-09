@@ -54,3 +54,5 @@ After the review, you will be informed of the outcome via an automated email fro
 3. Major revisions: Resubmission is required (within 6 months), after which the dossier will be re-reviewed by the SMEC panel.
 
 A flowchart visualising the ethical review process (and its timing) can be consulted [here](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/time-flow-smec-zonder-amd.pdf).
+
+__TODO__: [Klara] Update this page and add some explanation about the new SMEC templates

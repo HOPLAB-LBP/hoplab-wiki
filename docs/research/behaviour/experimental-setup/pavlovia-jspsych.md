@@ -2,9 +2,7 @@
 
 This page guides you through setting up, managing, and troubleshooting experiments on Pavlovia using the **jsPsych** framework. Follow these steps and best practices to streamline your experiment creation and minimize errors.
 
-For ready-to-use example, please refer to the [Behavioural Tasks](../bh-tasks.md) page.
-
----
+For ready-to-use example, please refer to the [Behavioural tasks](../bh-tasks.md) page.
 
 ## Learning resources
 
@@ -13,8 +11,6 @@ If you're unfamiliar with jsPsych, it's a good idea to start by learning some ba
 There is plenty of documentation on the [main jsPsych page](https://www.jspsych.org/v7/). In particular, go through the _tutorial_ section, which contains some very accessible, step-by-step instructions on how to build your script. 
 
 You can also check out the content from Christophe Bossens' workshop on [online experiments with jsPsych](https://kuleuven.sharepoint.com/:p:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Behaviour/Experiment%20building/jspsych_workshop_christophe.pptx?d=w7d8cb68a430746bcb4b9bcb6ceddaf23&csf=1&web=1&e=L9FXng).
-
----
 
 ## The ideal workflow
 
@@ -37,3 +33,5 @@ A basic workflow that you might want to adopt when scripting your experiment is 
 
     !!! tip
         It can sometimes be cumbersome to go through the complete _local change > commit > test_ loop just to test out a minor code change. An elegant alternative is to use **flags** in your code that will activate or de-activate the Pavlovia components. The latter are just two: a `init` and a `finish` event. Set these behind an `if` statement, and you'll be able to switch from online to local with one flag, so that you can go back to trying your code locally before syncing your changes (see an example [here](https://github.com/TimManiquet/mouse_tracker_template)).
+
+__TODO__: [Klara] Make sure the workshop material from Christophe Bossens is updated to the latest version

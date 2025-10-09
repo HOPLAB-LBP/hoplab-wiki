@@ -20,7 +20,7 @@ Faculty issued computers can be recognized by their name starting with GHUM. To 
     - If you are having issues with MFA, check this [FAQ page](https://admin.kuleuven.be/icts/services/mfa/faq_en).
 
 ??? question "Where do I find the hostname of my pc?"
- The hostname is usually printed on a sticker on the computer. If not, go to Start, right click on "This PC", choose properties, and check the "Device name" field.
+    The hostname is usually printed on a sticker on the computer. If not, go to Start, right click on "This PC", choose properties, and check the "Device name" field.
 
 ## Installing MATLAB
 
@@ -42,7 +42,7 @@ The installation process differs for students and personnel. Please follow the i
         
         The license fee can be covered using individual professional funding sources (e.g., bench fees, grant money, etc.), depending on your contractual situation. For more details, please discuss with your PI.
 
-        ??? warning "Transition to ‘Individual License"
+        ??? warning "Transition to "Individual License""
             The old '5pack' license will no longer be available after October 31, 2024. To continue using MATLAB, users must switch to an 'Individual License' or 'Designated Computer License'. It is recommended to remove any older versions of MATLAB and install the most recent version as an 'Individual License' user. For newer versions (from R2023b onwards), you can easily switch licenses by placing a new license file. Detailed instructions are available [here](https://nl.mathworks.com/matlabcentral/answers/2099121-how-do-i-transition-matlab-installations-to-matlab-individual-and-the-campus-wide-license).
 
     2. **Request access from ICTS**:
@@ -63,7 +63,7 @@ The installation process differs for students and personnel. Please follow the i
         - During the activation process, select "Individual License" and log in with your MathWorks account.
         - Input the license key provided through the ICTS License Catalogue when prompted.
 
-    ??? tip "Updating Your PC Registration"
+    ??? tip "Updating your PC registration"
         To change your registered computer name or IP address:
 
         1. Go to https://icts.kuleuven.be/apps/license
@@ -72,9 +72,9 @@ The installation process differs for students and personnel. Please follow the i
 
 ## Frequently used software
 
-Here are some software programs we frequently use in the lab, which you might find useful to download:
+Here are some programs we frequently use in the lab, which you might find useful to download:
 
-- **Google Calendar**: Make sure you have writing access to the lab's Google calendar (ask the person in charge of this, as of today, that is [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046)).
+- **Google Calendar**: Make sure you have writing access to the lab's Google calendar (ask [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046) or [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743)).
 
 - **TeamViewer**: For remote access to a desktop PC, e.g. the fMRI PC to run your analyses.
 
@@ -120,7 +120,7 @@ Here are some software programs we frequently use in the lab, which you might fi
         While <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> has a learning curve, investing time in learning it can significantly improve your academic writing workflow and the quality of your documents.
 
 !!! tip "Administrative privileges on KU Leuven PCs"
-    In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in `C:\Workdir\MyApps\`. Please contact the ICT help-desk if problems persist.
+    In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in `C:\Workdir\MyApps\`. Please contact the ICT helpdesk if problems persist.
 
 ## Data storage
 
@@ -164,3 +164,11 @@ For **mac users**, follow the instructions on [this page](https://ppw.kuleuven.b
 }
 
 </style>
+
+__TODO__: [Klara] Explain how you can forward emails from your student mailing address to your professional mailing address (for PhD'ers)
+__TODO__: [Klara] Specify how to encrypt your (external) hard drive --> I think it happens automatically at least for Windows 
+__TODO__: [Klara] Delete all Skype info as it will be deprecated
+__TODO__: [Klara] Make it clearer that all software has to be installed in Workdir!!
+__TODO__: [Klara] Edit info on data storage after BADM consultation has ended (e.g., OneDrive info is outdated and not recommended any longer by KU Leuven)
+__TODO__: [Klara] Add info on how to print downstairs
+
