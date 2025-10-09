@@ -198,21 +198,21 @@ The **Anatomical** section provides:
 
 - **Brain Mask Overlay**: Displays the brain mask (red outline), gray matter (magenta), and white matter boundaries (blue) overlaid on the anatomical image in sagittal, axial, and coronal views.
 
-![Trigger box](../../../assets/fmriprep-report-brainmaskoverlay.png)
+![fMRIPrep brain mask overlay showing GM/WM boundaries](../../../assets/fmriprep-report-brainmaskoverlay.png)
 
 - **Normalization Check**: A GIF compares the subject’s anatomical image with the MNI template. Ensure that:
 
   - The outlines of the brain and internal structures (e.g., ventricles) align well.
   - Any misalignment could indicate poor normalization, which may need further inspection.
   
-![Trigger box](../../../assets/fmriprep-report-normalization.png)
+![fMRIPrep normalization check GIF comparing T1 to MNI template](../../../assets/fmriprep-report-normalization.png)
 
 !!! tip
     **Hover over the GIF** to see the back-and-forth comparison between the subject's brain and the template. Look closely at the alignment of internal brain structures.
 
 - **Surface Reconstruction** if you ran the `recon-all` routine in fMRIprep
 
-![Trigger box](../../../assets/fmriprep-report-surfacerecon.png)
+![fMRIPrep surface reconstruction outputs from FreeSurfer recon-all](../../../assets/fmriprep-report-surfacerecon.png)
 
 #### 5. Functional Quality Checks
 
@@ -223,7 +223,7 @@ In the **Functional** section, you’ll find:
 !!! tip "Check for alignment"
     Check for alignment between internal structures like ventricles in the functional and anatomical images. Open the image in a new tab (Right Click on the image -> Open in a new tab) and hover to see the dynamic image.
 
-![Trigger box](../../../assets/fmriprep-report-coreg.svg)
+![Functional-to-anatomical coregistration overlay (fMRIPrep)](../../../assets/fmriprep-report-coreg.svg)
 
 - **CompCor Masks**: Displays masks used for **Anatomical Component Correction (aCompCor)**:
   - **White Matter and CSF (Magenta)**: Masks used to extract noise components.
@@ -251,7 +251,7 @@ The **carpet plot** displays time series of BOLD signals across different brain 
 - **Cortex** (blue), **Subcortex** (orange), **Gray Matter** (green), and **White Matter/CSF** (red).
 - Look for **sudden changes across a column**, which may indicate motion artifacts affecting the entire brain at a particular time point.
 
-![Trigger box](../../../assets/fmriprep-report-boldsummary.png)
+![BOLD confound time series and carpet plot summary](../../../assets/fmriprep-report-boldsummary.png)
 
 #### 7. Correlation Matrix of Confound Regressors
 
@@ -263,7 +263,7 @@ The report also includes a **correlation matrix** showing relationships between 
 !!! note "High Correlations"
     High correlation values may suggest redundancy among some regressors. Consider removing or combining them to avoid overfitting when building your GLM.
 
-![Trigger box](../../../assets/fmriprep-report-confoundscorr.png)
+![Correlation matrix of confound regressors from fMRIPrep outputs](../../../assets/fmriprep-report-confoundscorr.png)
 
 #### 8. Making Decisions for Further Analysis
 
