@@ -8,7 +8,7 @@ Before starting, ensure NiMARE and required **dependencies** are installed in yo
 
 ```bash
 pip install numpy pandas pprint scipy nimare biopython nibabel nilearn
-```
+```bash
 
 !!! tip
     Before starting a new project, make sure you set up your environment correctly. Each project should have its own dedicated environment. Please, follow the instructions provided in [this](analysis/fmri-setup-env.md#python-and-conda) and [this](../coding/index.md#setting-up-a-conda-environment) section.
@@ -36,7 +36,7 @@ from nilearn.plotting import plot_stat_map
 from nilearn import datasets  # Neuroimaging datasets
 from nilearn.reporting import get_clusters_table
 import nibabel as nib
-```
+```markdown
 
 ---
 
@@ -70,7 +70,7 @@ files = files[0]
 
 # Print details of the downloaded files to understand the data structure
 pprint(files)
-```
+```text
 
 The `pprint` command should output something like this:
 
@@ -82,7 +82,7 @@ pprint(files)  # Display information about the downloaded files
                'vocabulary': './nimare_data/neurosynth/data-neurosynth_version-7_vocab-terms_vocabulary.txt'}],
  'metadata': './nimare_data/neurosynth/data-neurosynth_version-7_metadata.tsv.gz'}
   
-```
+```markdown
 
 ---
 
@@ -134,7 +134,7 @@ else:
 # Verify dataset by printing a sample of the abstracts and counting entries
 pprint(neurosynth_dset.texts.head())  # Display the first few entries of abstracts
 print(f"Number of abstracts: {len(neurosynth_dset.texts)}")
-```
+```bash
 
 ---
 
@@ -192,7 +192,7 @@ dset_filtered_by_abstract = neurosynth_dset.slice(
     matching_ids
 )  # Keep only selected studies
 pprint(dset_filtered_by_abstract.metadata)  # Verify metadata of the filtered dataset
-```
+```markdown
 
 ---
 
@@ -241,7 +241,7 @@ cres = corr.transform(ale_results)  # Apply correction
 
 # Save corrected maps, such as z-scores and p-values, to the output directory
 cres.save_maps("./nimare_data")  # Save results in the specified directory
-```
+```markdown
 
 ---
 
@@ -289,7 +289,7 @@ plot_stat_map(
 cluster_table = get_clusters_table(
     z_corr_img, stat_threshold=stat_threshold, cluster_threshold=20
 )
-```
+```markdown
 
 Which should produce the following plots for the uncorrected z scores and Montecarlo corrected scores:
 
@@ -352,7 +352,7 @@ cluster_table.to_csv(
     os.path.join(out_dir, "peak_activation_coordinates.csv"), index=False
 )  # Save CSV without row index
 print("Peak information saved to peak_activation_coordinates.csv")
-```
+```text
 
 Which should output:
 
@@ -364,7 +364,7 @@ Which should output:
 3          3  20.0  ...                 784                                   Unknown
 4          4  42.0  ...                8264                  Occipital Fusiform Gyrus
 5          5  44.0  ...                 544  Inferior Frontal Gyrus, pars opercularis
-```
+```bash
 
 !!! note
     In the table above, the "Unknown" labels are automatically assigned to un-labeled voxels -- i.e., voxels not belonging to any ROI in the atlas (sub-cortical, outside the brain, etc.). In this specific example, the "Unknown" ROIs are the two anterior small blobs, visible in the second plot at `z = -14`. These voxels are not part of any ROI in the Harvard-Oxford atlas, but seem to fall close to the inferior frontal gyrus.
@@ -643,4 +643,4 @@ cluster_table.to_csv(
     os.path.join(out_dir, "peak_activation_coordinates.csv"), index=False
 )  # Save CSV without row index
 print("Peak information saved to peak_activation_coordinates.csv")
-```
+```text

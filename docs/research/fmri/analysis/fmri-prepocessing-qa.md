@@ -55,7 +55,7 @@ To use fMRIPrep, ensure that you have:
   
   ```sh
   pip install fmriprep-docker
-  ```
+```text
 
 - A valid **FreeSurfer license** (`license.txt`) saved in a path accessible by fMRIPrep. This is needed for surface-based preprocessing.
 
@@ -80,7 +80,7 @@ fmriprep-docker /path/to/BIDS /path/to/derivatives/fmriprep participant \
     --output-spaces MNI152NLin2009cAsym:res-2 anat fsnative \
     --participant-label <SUBJECT_ID> \
     --n-cpus 8 --mem-mb 16000 --notrack
-```
+```text
 
 Replace:
 
@@ -120,7 +120,7 @@ docker run -it --rm \
     -v /path/to/derivatives/mriqc:/out \
     nipreps/mriqc:latest /data /out participant \
     --participant-label <SUBJECT_ID> --nprocs 8 --mem-gb 16 --verbose-reports
-```
+```text
 
 This command will analyze individual subjects and save the results in the specified output directory. Replace the paths as appropriate.
 
@@ -133,7 +133,7 @@ This command will analyze individual subjects and save the results in the specif
         -v /path/to/derivatives/mriqc:/out \
         nipreps/mriqc:latest /data /out group \
         --nprocs 8 --mem-gb 16 --verbose-reports
-    ```
+```markdown
 
 ### 2. Understanding MRIQC Outputs
 
@@ -307,7 +307,7 @@ For more information on understanding these metrics, check out the [MRIQC interp
     - **Solution**: Ensure that Docker has read and write permissions to the directories being mounted. Adjust permissions using:
       ```sh
       chmod -R 755 /path/to/BIDS /path/to/derivatives
-      ```
+```bash
     - **Tip**: On Windows, ensure that **Shared Drives** are enabled in Docker Desktop settings.
 
 ??? failure "Missing Fields in JSON Files"
@@ -370,14 +370,14 @@ For more information on understanding these metrics, check out the [MRIQC interp
 
         ```bash
         cp lh.pial.T1 lh.pial
-        ```
+```text
 
         To **fix these links automatically** across multiple subjects (on Windows, use the WSL terminal, **not** in the native PowerShell / Windows terminal)):
           
           1. Set your `FREESURFER_PATH` (the folder containing your pre-existing `recon-all` or output): 
             ```bash
             export FREESURFER_PATH=/BIDE/derivatives/freesurfer
-            ```
+```bash
           2. Copy and paste the script below into an empty file and save it as **`fix_surf_files.sh`**.  
           3. Open a terminal and navigate to the folder where you saved the file (e.g., `cd ~/Documents`).
           4. Make the script executable: `chmod +x fix_surf_files.sh`
@@ -466,7 +466,7 @@ For more information on understanding these metrics, check out the [MRIQC interp
 
         echo "✅ Done."
 
-        ```
+```markdown
 ---
 
 With these quality checks complete, you're ready to proceed to the **General Linear Model (GLM) analysis**. See the next guide for instructions on setting up your GLM. [--> Go to GLM](./fmri-glm.md)

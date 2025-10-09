@@ -76,7 +76,7 @@ rng(seed);
 % Add paths to required functions
 addpath("functions/");
 outDir = fullfile(pwd, "results");
-```
+```markdown
 
 ---
 
@@ -89,7 +89,7 @@ If we had real data, after preprocessing and GLM estimation, we could load it li
 spm_path = 'path_to_SPM.mat';
 mask_path = 'path_to_ROI_mask.nii';
 ds = cosmo_fmri_dataset(spm_path, 'mask', mask_path);
-```
+```markdown
 
 For this tutorial, we are skipping this step because we use synthetic data.
 
@@ -116,7 +116,7 @@ sigma = 0.6; % Data variability
 % Generate synthetic dataset
 ds = generate_clustered_dataset(numCategories, numSubjects, numRuns, ...
     numRepetitions, sigma, seed, roiName, size);
-```
+```markdown
 
 ---
 
@@ -135,7 +135,7 @@ disp(table(ds.sa.targets, ds.sa.labels));
 
 % Plot activation patterns
 plot_activation_heatmap(ds, labelNames, roiName, outDir);
-```
+```markdown
 
 ![activation heatmap](../../../assets/fmri_mvpa_IT_Activation_Heatmap.png)
 
@@ -179,7 +179,7 @@ fprintf('Classification accuracy: %.2f%% (chance level: %.2f%%)\n', ...
 % Plot confusion matrix
 plot_confusion_matrix(ds.sa.targets, predictedLabels, numCategories, accuracy, ...
     labelNames, roiName, outDir);
-```
+```markdown
 
 A confusion matrix helps identify which categories are easily distinguishable and which are often confounded.
 
@@ -203,7 +203,7 @@ dsMean = cosmo_fx(ds, @(x) mean(x, 1), 'targets');
 
 % Visualize categories in a 2D space using MDS
 plot_mds(ds, roiName, outDir);
-```
+```markdown
 
 ![mds plot](../../../assets/fmri_mvpa_IT_MDS_Plot_.png)
 
@@ -218,7 +218,7 @@ dataRdm = squareform(dataDsm.samples);
 
 % Generate model RDMs (theoretical structures)
 rdms = generate_model_rdms(numCategories);
-```
+```text
 
 To visualize the RDMs:
 
@@ -227,7 +227,7 @@ plot_rdm_full(dataRdm, labelNames, 'Brain RDM');
 plot_rdm_full(rdms(1).dsm, labelNames, rdms(1).description);
 plot_rdm_full(rdms(2).dsm, labelNames, rdms(2).description);
 plot_rdm_full(rdms(3).dsm, labelNames, rdms(3).description);
-```
+```markdown
 
 ---
 
@@ -255,7 +255,7 @@ labels = dsMean.sa.labels;
 
 % Plot results: observed RDM, model RDMs, and regression coefficients
 plot_rdms_and_coefficients(dataRdm, rdms, labels, result.samples, roiName, outDir);
-```
+```markdown
 
 ![regression result](../../../assets/fmri_mvpa_IT_RSA_regression.png)
 
@@ -361,7 +361,7 @@ labels = dsMean.sa.labels;
 
 % Plot results: observed RDM, model RDMs, and regression coefficients
 plot_rdms_and_coefficients(dataRdm, rdms, labels, result.samples, roiName, o
-```
+```markdown
 
 And the results:
 

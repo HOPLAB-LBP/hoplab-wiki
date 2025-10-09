@@ -35,7 +35,7 @@ SPM's GUI is a valuable resource for beginners. It allows you to set analysis pa
     matlabbatch{1}.spm.stats.fmri_spec.mthresh = 0.8;
     matlabbatch{1}.spm.stats.fmri_spec.mask = {''};
     matlabbatch{1}.spm.stats.fmri_spec.cvi = 'AR(1)';
-    ```
+```text
 
 !!! tip
     To use this feature to learn scripting, save several batches with different parameters. Open the generated code to see how each parameter is defined in `matlabbatch`.
@@ -52,7 +52,7 @@ Here’s an example of how to use the GUI to extract the respective code, here u
         ```matlab
         matlabbatch{1}.spm.stats.fmri_spec.dir = {'/path/to/output'};
         matlabbatch{1}.spm.stats.fmri_spec.timing.RT = 2;  % Repetition Time in seconds
-        ```
+```text
 
 2. **Model Estimation**:
     - In the GUI, go to **Stats > Model Estimation**.
@@ -62,7 +62,7 @@ Here’s an example of how to use the GUI to extract the respective code, here u
         ```matlab
         matlabbatch{2}.spm.stats.fmri_est.spmmat = {'/path/to/SPM.mat'};
         matlabbatch{2}.spm.stats.fmri_est.method.Classical = 1; % Classical estimation
-        ```
+```markdown
 
 ## 2. Understand the Basics of `matlabbatch` Jobs
 
@@ -79,7 +79,7 @@ The `matlabbatch` structure in SPM is a versatile container for storing all sett
 
     ```matlab  linenums="1"
     spm_jobman('run', matlabbatch);
-    ```
+```markdown
 
 ## 3. Assembling `matlabbatch` Jobs in MATLAB
 
@@ -109,7 +109,7 @@ With the basics covered, let’s construct a full `matlabbatch` job in MATLAB. T
     matlabbatch{3}.spm.stats.con.consess{1}.tcon.name = 'Condition A > Baseline';
     matlabbatch{3}.spm.stats.con.consess{1}.tcon.weights = 1;
     matlabbatch{3}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
-    ```
+```text
 
     Each block in `matlabbatch` represents one step in the analysis, identical to configuring them in the GUI.
 
@@ -129,7 +129,7 @@ With all steps defined in `matlabbatch`, execute the entire analysis workflow:
 spm('defaults', 'fmri');
 spm_jobman('initcfg');
 spm_jobman('run', matlabbatch);
-```
+```text
 
 - `spm('defaults', 'fmri');`: Initializes SPM with fMRI defaults.
 - `spm_jobman('initcfg');`: Prepares the job manager for execution.
@@ -154,7 +154,7 @@ Here’s a breakdown of best practices for managing functions in MATLAB, includi
 
         ```matlab
         addpath('/path/to/scripts/functions');
-        ```
+```text
 
     2. **Using the MATLAB GUI**:
         - Go to **Home > Set Path**.
@@ -177,7 +177,7 @@ Here’s a breakdown of best practices for managing functions in MATLAB, includi
         % This function takes two numbers and multiplies them
         result = a * b;
     end
-    ```
+```markdown
 
 ### Example: Creating a Reusable Function
 
@@ -188,14 +188,14 @@ function result = setup_variable(a, b)
     % This function takes two numbers and multiplies them
     result = a * b;
 end
-```
+```text
 
 Then, in your main script, you can call the function after adding the functions folder to the path. For example:
 
 ```matlab
 addpath('/path/to/functions');
 myVar = setup_variable(10, 5);
-```
+```markdown
 
 ---
 
@@ -665,7 +665,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     currentfile = strcat(FileNameAndLocation, '.m'); % Get filename with extension.
     copyfile(currentfile, script_outdir); % Copy script to output directory.
     end
-    ```
+```text
 
 ??? example "generateContrastOverlayImages.m"
     ```matlab linenums="1"
@@ -761,7 +761,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     % Close graphics window
     spm_figure('Close', 'Graphics');
     end
-    ```
+```text
 
 ??? example "plotBoxcarAndHRFResponses.m"
     ```matlab  linenums="1"
@@ -964,7 +964,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     close(gcf);
 
     end
-    ```
+```text
 
 ??? example "saveSPMDesignMatrix.m"
     ```matlab  linenums="1"
@@ -1034,7 +1034,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     close(figHandle);
 
     end
-    ```
+```text
 
 ??? example "findRunSubstring.m"
     ```matlab  linenums="1"
@@ -1060,7 +1060,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
         runSubstring = '';
     end
     end
-    ```
+```text
 
 ??? example "filterRowsBySubstring.m"
     ```matlab  linenums="1"
@@ -1085,7 +1085,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
         end
     end
     end
-    ```
+```text
 
 ??? example "adjust_contrasts.m"
     ```matlab  linenums="1"
@@ -1176,7 +1176,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     % 
     % hold off;
     end
-    ```
+```text
 
 ??? example "generate_weight_vector_from_spm.m"
     ```matlab  linenums="1"
@@ -1247,7 +1247,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
         end
     end
     end
-    ```
+```text
 
 ??? example "eventsBIDS2SPM.m"
     ```matlab  linenums="1"
@@ -1294,7 +1294,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
         end
         new_df = sortrows(new_df, 'names');
     end
-    ```
+```text
 
 ??? example "findSubjectsFolders.m"
     ```matlab  linenums="1"
@@ -1375,7 +1375,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
         filteredFolderStructure = sub_paths;
     end
     end
-    ```
+```text
 
 ??? example "fMRIprepConfounds2SPM.m"
     ```matlab  linenums="1"
@@ -1575,7 +1575,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
         confounds = fillmissing(confounds_table, 'constant', 0);
     end
     end
-    ```
+```text
 
 ??? example "gunzipNiftiFile.m"
     ```matlab  linenums="1"
@@ -1637,7 +1637,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
             end
         end
     end
-    ```
+```text
 
 ??? example "smoothNiftiFile.m"
     ```matlab  linenums="1"
@@ -1713,7 +1713,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
             end
         end
     end
-    ```
+```markdown
 
 ---
 

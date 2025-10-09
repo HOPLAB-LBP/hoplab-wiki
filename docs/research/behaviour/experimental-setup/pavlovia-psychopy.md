@@ -120,7 +120,7 @@ Array.prototype.count = function(value) {
     });
     return count;
 };
-```
+```markdown
 
 ## Using movie stimuli
 
@@ -147,7 +147,7 @@ To introduce rest trials or breaks, add a code snippet under **Each Frame**. For
   
     ```javascript
     name_text.setAlignHoriz('center');
-    ```
+```markdown
     This will center the text online; however, offline functionality may be impacted if the code isn’t set to JS-only.
 
 ## Informed consent
@@ -184,7 +184,7 @@ To prevent participants from accessing the experiment on mobile devices, use thi
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     quitPsychoJS('Mobile device detected. Goodbye!', false);
 }
-```
+```markdown
 
 __TODO__: [Klara] Refer to the workshop material in the series on online experimentation given by Christophe Bossens (Klara has access and can probably put them on Teams somewhere)
 __TODO__: [Klara] Fix broken link in Informed Consent section

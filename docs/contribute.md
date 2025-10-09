@@ -43,7 +43,7 @@ nav:
   - Home: index.md
   - Guide: guide.md
   - New Page: new-page.md
-```
+```bash
 
 ### Creating child pages
 
@@ -58,7 +58,7 @@ nav:
   - Guide: guide.md
   - Subdir:
       - Child Page: subdir/child-page.md
-```
+```bash
 
 ### Adding `NOTE`, `TODO`, and `PLACEHOLDER` tags
 
@@ -102,29 +102,29 @@ Use relative paths for internal links. The general format is:
 
 ```markdown
 [Link Text](path/to/file.md)
-```
+```text
 
 Examples:
 
 1. Linking to a page in the same directory:
    ```markdown
    [Getting Started](getting-started.md)
-   ```
+```text
 
 2. Linking to a page in a subdirectory:
    ```markdown
    [fMRI Analysis](research/fmri/fmri-analysis.md)
-   ```
+```text
 
 3. Linking to a specific section on another page:
    ```markdown
    [Ethics Guidelines](research/ethics/index.md#ethical-guidelines)
-   ```
+```text
 
 4. Linking to a parent directory:
    ```markdown
    [Back to Research](../index.md)
-   ```
+```markdown
 
 #### External Links (Outside the Wiki)
 
@@ -132,7 +132,7 @@ For external links, use the full URL:
 
 ```markdown
 [Hoplab Website](https://www.hoplab.be/)
-```
+```markdown
 
 #### Adding and Linking Images
 
@@ -145,27 +145,27 @@ When adding images to the Wiki:
     - If your Markdown file is in the main `docs` folder:
      ```markdown
      ![fMRI Analysis Workflow](../assets/fmri-analysis-workflow.png)
-     ```
+```text
 
     - If your file is in a subdirectory of `docs` (e.g., `docs/research/`):
      ```markdown
      ![fMRI Analysis Workflow](../../assets/fmri-analysis-workflow.png)
-     ```
+```text
 
     - If your file is in a sub-subdirectory (e.g., `docs/research/fmri/`):
      ```markdown
      ![fMRI Analysis Workflow](../../../assets/fmri-analysis-workflow.png)
-     ```
+```text
 
 4. Always include descriptive alt text for accessibility:
    ```markdown
    ![Diagram showing steps of fMRI analysis](../assets/fmri-analysis-workflow.png)
-   ```
+```text
 
 5. Optionally, specify image dimensions using HTML:
    ```html
    <img src="../assets/fmri-analysis-workflow.png" alt="fMRI Analysis Workflow" width="500">
-   ```
+```markdown
 
 #### Best Practices for Linking
 
@@ -174,7 +174,7 @@ When adding images to the Wiki:
 3. For external links, consider opening them in a new tab:
    ```markdown
    [Hoplab Website](https://www.hoplab.be/){target="_blank"}
-   ```
+```markdown
 4. When linking to specific sections within long documents, use anchor links to improve user experience.
 5. For images, **always use relative links** and store images in the `docs/assets` folder to maintain a self-contained Wiki.
 
@@ -253,11 +253,11 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
         2. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux) and navigate to the directory where you want to store the project, then type:
            ```bash
            git clone https://github.com/your-username/hoplab-wiki.git
-           ```
+```text
         3. Change into the directory of the cloned repository:
            ```bash
            cd hoplab-wiki
-           ```
+```bash
 
 === "Using GitHub Desktop"
     
@@ -291,13 +291,13 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
     ```bash
     conda create --name hoplab-wiki python=3.9
     conda activate hoplab-wiki
-    ```
+```text
 
 3. **Install necessary packages:**
 
     ```bash
     pip install mkdocs mkdocs-material mkdocs-task-collector mkdocs-git-revision-date-localized-plugin mkdocs-git-authors-plugin
-    ```
+```markdown
 
 ### Step 3: Making changes
 
@@ -310,7 +310,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
    1. While in your project directory and with the Conda environment activated, launch the local server by typing:
       ```bash
       mkdocs serve
-      ```
+```markdown
    2. Open a web browser and navigate to `http://127.0.0.1:8000/`. This allows you to see your changes as they would appear on the live site.
    3. Keep this server running as you make changes; refresh your browser to update the preview.
 
@@ -327,15 +327,15 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
         1. From your terminal, add all modified files to your commit:
           ```bash
           git add .
-          ```
+```text
         2. Commit the changes, including a clear message about what was modified and why:
           ```bash
           git commit -m "Detailed description of changes"
-          ```
+```bash
     2. Push your commits to the forked repository on GitHub:
           ```bash
           git push origin main
-          ```
+```bash
 
 === "Using GitHub Desktop"
 

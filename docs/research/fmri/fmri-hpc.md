@@ -14,7 +14,7 @@ This guide describes how to connect to the KU Leuven/VSC HPC cluster, manage you
 
     ```bash
     cd $VSC_DATA
-    ```
+```text
 
     This ensures you work in a directory with persistent storage (your files are not deleted) and sufficient disk space.
     Beware that any files in your scratch folder which is not accessed for 30 days will be automatically deleted, and scratch
@@ -49,7 +49,7 @@ Look at the last line:
 
 ```bash
 ✔ [Apr/15 15:13] vsc12345@tier2-p-login-1 ~ $ 
-```
+```markdown
 
 which suggests we are connected to the login node `tier2-p-login-1` as `vsc12345` (your VSC username). From now on, what we type in the terminal will be executed on the login node. Note that the login nodes are only meant to move your data around, submit and monitor your jobs, and write/edit your scripts. For all other purposes (actual computation, pre-/post-processing and software installation), you have to start an 
 [interactive or batch job using Slurm](https://docs.vscentrum.be/compute/jobs/running_jobs.html).
@@ -89,7 +89,7 @@ VSC_DATA                    # Persistent storage
     │       └── DICOM           
     │           └── sub-01      
     └── fmriprep-25.0.0.sif     # Singularity container
-```
+```markdown
 
 ### 3.2. Managing storage usage
 
@@ -101,19 +101,19 @@ If your HPC storage is full, you might encounter this type of error when sending
 rsync: writefd_unbuffered failed to write 32768 bytes [sender]: Broken pipe (...)
 rsync: connection unexpectedly closed (... bytes received so far) [sender]
 rsync error: error in rsync protocol data stream (code 12) at ...
-```
+```text
 
 When encountering this or other similar errors, you should check your storage usage. Use the following command:
 
 ```bash
 myquota
-```
+```text
 
 To see, directory by directory, how much space you are using. This command will also show you which directories might be exceeding their quota. You can also check the size of a specific directory, for example, your data directory:
 
 ```bash
 du -h $VSC_DATA
-```
+```text
 
 Where `-h` means "human-readable" (e.g., in GB or MB, add `-s` - "summary" for the total size).
 
@@ -147,7 +147,7 @@ Once connected to the cluster, you’ll need to transfer your BIDS dataset, Free
     ```bash
     scp -r /local/path/BIDS \
     vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS
-    ```
+```text
 
     - `-r` copies directories recursively.
 
@@ -159,7 +159,7 @@ Once connected to the cluster, you’ll need to transfer your BIDS dataset, Free
     ```bash
     rsync -av --ignore-existing /local/path/BIDS \
     vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/
-    ```
+```bash
 
     - `-a` preserves file attributes.
     - `-v` enables verbose output.
@@ -175,13 +175,13 @@ Make sure you replace `/local/path/BIDS` with your local BIDS folder, and `vsc12
 
    ```
    cd $VSC_DATA
-   ```
+```text
 
 2. **Build the Container:**
 
    ```
    singularity build fmriprep-25.0.0.sif docker://nipreps/fmriprep:25.0.0
-   ```
+```text
 
 This fetches the Docker image and converts it to a Singularity `.sif` image.
 
@@ -201,7 +201,7 @@ To create such file, type in your ssh session:
 ```bash
 cd $VSC_DATA
 nano run_fmriprep_job.slurm
-```
+```text
 
 This will open a text editor. Use the following template as a guideline, but change relevant fields (such as job name, account name etc) accordingly:
 
@@ -239,18 +239,18 @@ singularity run --cleanenv \
   --nthreads 16 --omp-nthreads 16 \
   --mem-mb 20000 \
   --clean-workdir
-```
+```text
 Then press `CTRL+X` to exit and `Y` to save. Check whether your file was saved correctly:
 
 ```bash
 ls $VSC_DATA
-```
+```text
 
 which should return:
 
 ```
 fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
-```
+```markdown
 
 ### 6.2 Submitting the Job
 
@@ -258,19 +258,19 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
 
     ```bash
     cd $VSC_DATA
-    ```
+```text
 
 2. Submit:
 
     ```bash
     sbatch run_fmriprep_job.slurm
-    ```
+```text
 
     A message appears:
 
     ```bash
     Submitted batch job 58070026
-    ```
+```text
 
    *where `58070026` is your job ID* (but it will be different in your case).
 
@@ -280,14 +280,14 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
 
     ```bash
     squeue -j 58070026
-    ```
+```text
 
     Which returns:
 
     ```bash
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
     58070026 batch     fmriprep vsc12345  R       0:00      1 (Priority)
-    ```
+```text
     Through the KU Leuven **OnDemand** interface, you can also check the status of your job by clicking on the *Active jobs* tab in the dashboard.
 
 
@@ -320,7 +320,7 @@ Check the status of your running or pending jobs:
 
 ```bash
 squeue -M genius,wice -u $USER
-```
+```text
 
 which returns:
 
@@ -332,7 +332,7 @@ CLUSTER: genius
 
 CLUSTER: wice
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-```
+```markdown
 
 - `R` means running, `PD` means pending.  
 - `NODELIST` shows the node(s) assigned. If it shows `(Priority)`, you`re still waiting.
@@ -350,13 +350,13 @@ To see the files in your current directory:
 
 ```bash
 ls
-```
+```text
 
 You should see something like:
 
 ```
 fmriprep-25.0.0.sif  data  run_fmriprep_job.slurm  slurm-58070026.out  slurm-58070026.err
-```
+```markdown
 
 #### Open and Read the Logs
 
@@ -364,7 +364,7 @@ To open the full output log (static view):
 
 ```bash
 nano slurm-58070026.out
-```
+```text
 
 To close `nano`, press `Ctrl+X` → then `N` if prompted to save changes.
 
@@ -372,7 +372,7 @@ To view just the last few lines of the file:
 
 ```bash
 tail -n 30 slurm-58070026.out
-```
+```text
 
 This prints the last 30 lines of the file — useful to check progress without opening the full log.
 
@@ -380,7 +380,7 @@ To **continuously monitor** the last lines in real time (refreshes every 1 secon
 
 ```bash
 watch -n 1 tail -n 30 slurm-58070026.out
-```
+```markdown
 
 This will auto-refresh every second and is very helpful to track live progress.
 
@@ -392,13 +392,13 @@ If you want to stop a running or pending job you need to provide the cluster nam
 
 ```bash
 scancel 58070026
-```
+```text
 
 Or:
 
 ```bash
 scancel --user=$USER
-```
+```bash
 
 ---
 
@@ -411,17 +411,17 @@ Once your job finishes, you will receive an email from the SLURM scheduler. This
 - ✅ **Successful run:**
   ```
   Slurm Job_id=58070026 Name=fmriprep_sub-42 Ended, Run time 03:41:05, COMPLETED, ExitCode 0
-  ```
+```text
 
 - ❌ **Cancelled manually or by the system:**
   ```
   Slurm Job_id=58069757 Name=fmriprep_sub-42 Ended, Run time 00:00:00, CANCELLED, ExitCode 0
-  ```
+```text
 
 - ⚠️ **Job failed with error:**
   ```
   Slurm Job_id=58069624 Name=fmriprep_sub-42 Failed, Run time 00:00:20, FAILED, ExitCode 255
-  ```
+```text
 
 !!! tip
     If you submit too many jobs, it is best not to enable email notifications.
@@ -436,13 +436,13 @@ If your job failed, the first thing to do is inspect the `.out` and `.err` files
 
     ```bash
     cd $VSC_DATA
-    ```
+```text
 
 2. Open the output file:
 
     ```bash
     nano slurm-58070026.out
-    ```
+```text
 
     - Use the arrow keys to scroll.
     - The error is usually toward the **end** of the file.
@@ -452,7 +452,7 @@ If your job failed, the first thing to do is inspect the `.out` and `.err` files
 
     ```bash
     nano slurm-58070026.err
-    ```
+```text
 
     - This might contain Python tracebacks or messages from Singularity.
 
@@ -468,32 +468,32 @@ In our SLURM script, the `--output` directory is bound to:
 
 ```
 -B $VSC_DATA/data/BIDS/derivatives:/out
-```
+```text
 
 So the results will be saved under:
 
 ```
 $VSC_DATA/data/BIDS/derivatives/fmriprep
-```
+```text
 
 To inspect the results:
 
 ```bash
 cd $VSC_DATA/data/BIDS/derivatives/fmriprep
 ls
-```
+```text
 
 You should see something like this:
 
 ```
 dataset_description.json  logs  sourcedata  sub-42  sub-42.html
-```
+```text
 
 Use the `tree` command to get a visual overview of the folder structure:
 
 ```bash
 tree -L 2 .
-```
+```text
 
 Expected output:
 
@@ -529,7 +529,7 @@ fmriprep/
 │           └── fmriprep.toml
 ├── sub-42.html              # Subject-level report
 
-```
+```markdown
 
 This confirms that `fMRIPrep` completed for subject 42 and produced its derivatives, QC figures, and logs.
 
@@ -555,7 +555,7 @@ After fMRIPrep completes successfully, you might want to retrieve the `derivativ
          - In WinSCP, navigate on the remote side to:
           ```
           /data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep
-          ```
+```text
           (Replace `vsc12345` with your actual VSC username.)
          - On your local machine side, open (or create) a destination folder where you want to save the files.
          - **Drag and drop** the `fmriprep` folder (or individual files) from the remote window to your local folder.
@@ -573,7 +573,7 @@ After fMRIPrep completes successfully, you might want to retrieve the `derivativ
          - **Basic `scp` example**:
            ```bash
            scp -r vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep /local/path/
-           ```
+```text
            - The `-r` flag copies directories recursively.
            - Replace `vsc12345` and `123` with your own account details.
            - `/local/path/` is the folder on your Mac/Linux machine where you want the data.
@@ -583,7 +583,7 @@ After fMRIPrep completes successfully, you might want to retrieve the `derivativ
            rsync -av --progress \
              vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep \
              /local/path/
-           ```
+```text
            - `-a` preserves file attributes.
            - `-v` is verbose output.
            - `--progress` shows real-time progress info (optional).
@@ -598,7 +598,7 @@ After fMRIPrep completes successfully, you might want to retrieve the `derivativ
            --exclude='*' \
            vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep/ \
            /local/path/fmriprep_reports/
-           ```
+```markdown
 
       This will download the entire `fmriprep` output folder to your Mac or Linux machine for further analysis.
 
@@ -614,7 +614,7 @@ First, determine which compute node your job is running on by checking the job q
 
 ```bash
 squeue -M genius,wice -u $USER
-```
+```text
 
 Example output:
 
@@ -622,7 +622,7 @@ Example output:
 CLUSTER: genius
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
           58070026     batch fmriprep vsc12345  R      40:46      1 r27i27n19
-```
+```markdown
 
 Look at the **NODELIST** column — in this case, your job is running on node ``r27i27n19``.
 
@@ -634,13 +634,13 @@ To access the compute node where your job is running:
 
 ```bash
 ssh r27i27n19
-```
+```text
 
 You should see a message like:
 
 ```
 Joining job 58070026
-```
+```markdown
 
 Also, the prompt will change from the login node (e.g., ``tier2-p-login-2``) to the compute node (e.g., ``r27i27n19``), indicating you are now inside the job environment on the actual node.
 
@@ -650,7 +650,7 @@ Once inside the compute node, run:
 
 ```bash
 htop -u $USER
-```
+```markdown
 
 This opens a live system monitor like this one:
 
@@ -679,7 +679,7 @@ You can check the total number of credits **deposited**, **used**, and **refunde
 
 ```bash
 sam-balance
-```
+```text
 
 You’ll see an output like this:
 
@@ -688,13 +688,13 @@ You’ll see an output like this:
 ID       Name                   Balance         Reserved        Available      
 ======== ====================== =============== =============== ===============
 99270    intro_vsc12345         1937378         0               1937378
-```
+```text
 
 or, alternatively:
 
 ```
 sam-statement --account=intro_vsc12345
-```
+```text
 
 (where `--account` is your credits account name, and *not* your username) which returns:
 
@@ -722,7 +722,7 @@ JobID      Cluster  Account                User     Partition   Credits
 58233295   genius   intro_vsc12345         vsc12345 batch       14745
 58234300   genius   intro_vsc12345         vsc12345 batch       82
 58234301   genius   intro_vsc12345         vsc12345 batch       21461
-```
+```markdown
 
 ### 11.2 Check how many credits each job used
 
@@ -730,7 +730,7 @@ To see how many credits were used **per job**, use either the `sam-statement` co
 
 ```bash
 sam-list-usagerecords --start=2025-01-01 --end=2025-07-01
-```
+```text
 
 You can adjust the `--start` and `--end` dates to fit the period you want to investigate.
 
@@ -740,7 +740,7 @@ This returns a table like:
 JobID      Cluster  Account         State      User      Credits     Start              End
 ========== ======== ==============  ========== ========= ==========  ================== ===================
 58270696   genius   intro_vsc12345  COMPLETED  vsc12345   23348       2025-07-08T12:45   2025-07-08T17:15
-```
+```markdown
 
 This helps you estimate how much a typical run (e.g. an `fMRIPrep` job) costs. In our experience, a **successful fMRIPrep** run with 16 cores and 20 GB RAM costs ~20,000–25,000 credits.
 

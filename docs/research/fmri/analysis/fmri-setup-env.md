@@ -42,7 +42,7 @@ Project_Name/
     ├── temp_spm/
     ├── temp_deepmreye/
     └── temp_mriqc/
-```
+```text
 
 - `sourcedata/`: Contains raw data for each subject
 - `BIDS/`: Organized according to BIDS specification
@@ -75,13 +75,13 @@ Project_Name/
     mkdir -p temp/{temp_fmriprep,temp_spm,temp_deepmreye,temp_mriqc}
 
     echo "Folder structure created successfully!"
-    ```
+```text
 
     Save this script as `create_fmri_structure.sh` and run it using:
 
     ```bash
     bash create_fmri_structure.sh
-    ```
+```markdown
 
 ---
 
@@ -128,7 +128,7 @@ Below are the basic Docker pull commands for the main tools we use:
 
     ```bash
     python -m pip install fmriprep-docker
-    ```
+```markdown
 
 - **MRIQC**:
 
@@ -138,7 +138,7 @@ Below are the basic Docker pull commands for the main tools we use:
 
     ```bash
     docker pull nipreps/mriqc:latest
-    ```
+```bash
 
 - **FastSurfer**:
 
@@ -148,7 +148,7 @@ Below are the basic Docker pull commands for the main tools we use:
 
     ```bash
     docker pull deepmi/fastsurfer:latest
-    ```
+```bash
 
     !!! note
         FastSurfer can save you time if you have a **[CUDA-compatible GPU](https://developer.nvidia.com/cuda-gpus)**. In short, this means that your machine should have a dedicated NVIDIA GPU with CUDA installed. You can check whether CUDA is correctly installed on you machine by typing `nvidia-smi` on your terminal. If this command does not return a list of active GPUs, you either need to install and configure CUDA, or you can avoid installing this tool and rely on the `recon-all` pipeline performed with the anatomical workflow of fMRIPrep.
@@ -161,7 +161,7 @@ Below are the basic Docker pull commands for the main tools we use:
 
     ```bash
     docker pull deepmreye/deepmreye
-    ```
+```markdown
 
 ---
 
@@ -176,22 +176,22 @@ There are several ways to install dcm2niix, depending on your operating system a
     1. **Download pre-compiled executable:**
        ```powershell
        curl -fLO https://github.com/rordenlab/dcm2niix/releases/latest/download/dcm2niix_win.zip
-       ```       
+```text
        Unzip the file and add the executable to your system PATH:
        ```powershell
        $env:Path += ";C:\path\to\dcm2niix"
-       ```
+```bash
        Replace `C:\path\to\dcm2niix` with the actual path where you unzipped dcm2niix.
 
     2. **Install with Conda:**
        ```powershell
        conda install -c conda-forge dcm2niix
-       ```
+```bash
 
     3. **Install with pip:**
        ```powershell
        python -m pip install dcm2niix
-       ```
+```bash
 
     4. **Download MRIcroGL:**
        [Download MRIcroGL](https://github.com/rordenlab/MRIcroGL/releases) which includes dcm2niix with a GUI.
@@ -201,56 +201,56 @@ There are several ways to install dcm2niix, depending on your operating system a
     1. **Download pre-compiled package:**
        ```bash
        curl -fLO https://github.com/rordenlab/dcm2niix/releases/latest/download/macos_dcm2niix.pkg
-       ```
+```text
        Open the downloaded package to install.
 
     2. **Install with Homebrew:**
        ```bash
        brew install dcm2niix
-       ```
+```text
 
     3. **Install with MacPorts:**
        ```bash
        sudo port install dcm2niix
-       ```
+```bash
 
     4. **Install with Conda:**
        ```bash
        conda install -c conda-forge dcm2niix
-       ```
+```bash
 
     5. **Install with pip:**
        ```bash
        python -m pip install dcm2niix
-       ```
+```text
 
 === "Linux"
 
     1. **Download pre-compiled executable:**
        ```bash
        curl -fLO https://github.com/rordenlab/dcm2niix/releases/latest/download/dcm2niix_lnx.zip
-       ```       
+```text
        Unzip the file and add the executable to your system PATH:
        ```bash
        echo 'export PATH=$PATH:/path/to/dcm2niix' >> ~/.bashrc
        source ~/.bashrc
-       ```
+```text
        Replace `/path/to/dcm2niix` with the actual path where you unzipped dcm2niix.
 
     2. **Install on Debian-based systems:**
        ```bash
        sudo apt-get install dcm2niix
-       ```
+```bash
 
     3. **Install with Conda:**
        ```bash
        conda install -c conda-forge dcm2niix
-       ```
+```bash
 
     4. **Install with pip:**
        ```bash
        python -m pip install dcm2niix
-       ```
+```text
        
     ??? warning "Older Linux versions compatibility"
         The pre-compiled Linux executable requires a recent version of Linux (e.g., Ubuntu 14.04 or later) with Glibc 2.19 (from 2014) or later. Users of older systems can compile their own copy of dcm2niix or download the compiled version included with MRIcroGL, which is compatible with Glibc 2.12 (from 2011).
@@ -266,13 +266,13 @@ We use Conda to manage our Python environment.
 
     ```bash
     conda create -n fmri_env python=3.9 spyder numpy scipy matplotlib nibabel nilearn scikit-learn
-    ```
+```text
 
 3. Activate the environment:
 
     ```bash
     conda activate fmri_env
-    ```
+```bash
 
 !!! warning
     It's **crucial** to create a new conda environment for each new project you start. Installing new packages into the base conda environment is a very bad practice that will eventually lead to a bloated, brittle environment with broken packages and compatibility issues. Uninstalling or re-installing Python on some machines can be a very painful (sometimes impossible) process!
@@ -284,7 +284,7 @@ We use Conda to manage our Python environment.
     ```bash
     conda activate fmri_env
     spyder
-    ```
+```text
 
 2. Create a new project:
     - Go to "Projects" > "New Project"
@@ -311,7 +311,7 @@ Install the following MATLAB toolboxes:
     ```matlab
     addpath('path/to/spm12')
     savepath
-    ```
+```markdown
 
     !!! warning "Mac installtion"
         For mac users, potential installation issues can be tackled with the [instructions for mac](https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)) on the SPM wiki. Make sure **Xcode** is installed on your computer before installing SPM.
@@ -326,7 +326,7 @@ Install the following MATLAB toolboxes:
     ```matlab
     addpath(genpath('path/to/CoSMoMVPA'))
     savepath
-    ```
+```bash
 
 - **MarsBaR**:
 
@@ -339,7 +339,7 @@ Install the following MATLAB toolboxes:
         ```bash
         mkdir /path-to-spm/toolbox/marsbar
         cp -r /home/myhome/marsbar-0.42/* /path-to-spm/toolbox/marsbar
-        ```
+```text
 
     Change `/path-to-spm/` with your SPM path (e.g., `/usr/local/spm/spm12/`).
 
@@ -363,7 +363,7 @@ To install:
    ```bash
    export FREESURFER_HOME=/path/to/freesurfer
    source $FREESURFER_HOME/SetUpFreeSurfer.sh
-   ```
+```text
 
 ??? warning "FreeSurfer on Windows"
     FreeSurfer is not natively compatible with Windows. To use FreeSurfer on a Windows system, you have a few options:
@@ -400,7 +400,7 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
    ```bash
    export ANTSPATH=/path/to/ANTs/bin
    export PATH=$ANTSPATH:$PATH
-   ```
+```markdown
 
 ---
 
@@ -412,7 +412,7 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
     **Solution**: Ensure WSL2 is properly installed and configured. Open Docker Desktop settings and verify that WSL2 is selected as the backend. Restart Docker Desktop after making changes. If issues persist, run the following command in PowerShell:
     ```powershell
     wsl --update
-    ```
+```bash
 
 ??? failure "Docker: Service Issues on Linux"
     **Problem**: Docker service fails to start or stops unexpectedly on Linux systems.
@@ -421,11 +421,11 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
     ```bash
     sudo systemctl restart docker
     sudo journalctl -u docker.service
-    ```
+```text
     Ensure Docker is set to start on boot using:
     ```bash
     sudo systemctl enable docker
-    ```
+```text
 
 ??? failure "MATLAB: Not Recognized in PATH"
     **Problem**: MATLAB is not found in the system PATH, leading to command not found errors.
@@ -433,7 +433,7 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
     **Solution**: Add the MATLAB installation directory to your system PATH. For a temporary fix, run:
     ```bash
     export PATH=$PATH:/path/to/matlab/bin
-    ```
+```text
     To make this change permanent, add the above line to your `~/.bashrc` or `~/.zshrc` file and restart the terminal.
 
 ??? failure "SPM: Missing Toolboxes"
@@ -443,7 +443,7 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
     ```matlab
     addpath('path/to/spm12')
     savepath
-    ```
+```text
 
 ??? failure "FreeSurfer: License Not Found"
     **Problem**: FreeSurfer cannot locate the `license.txt` file, leading to startup errors.
@@ -451,7 +451,7 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
     **Solution**: Place the `license.txt` file in the FreeSurfer home directory and set the path correctly:
     ```bash
     export FS_LICENSE=/path/to/license.txt
-    ```
+```text
     Add this line to your `~/.bashrc` or `~/.zshrc` file to ensure the license path is set on each terminal start.
 
 ??? failure "Python: Package Conflicts"
@@ -461,11 +461,11 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
     ```bash
     conda create -n new_env python=3.9
     conda activate new_env
-    ```
+```text
     For existing environments, try resolving conflicts by specifying package versions during installation:
     ```bash
     conda install package_name=version
-    ```
+```text
 
 ??? failure "FreeSurfer: Incompatible with Native Windows"
     **Problem**: FreeSurfer is not compatible with Windows and cannot be installed directly.

@@ -73,7 +73,7 @@ mkdir sub-01/eye
 mkdir sub-01/dicom
 mkdir sub-01/dicom_anon
 mkdir sub-01/nifti
-```
+```markdown
 
 ---
 
@@ -147,27 +147,27 @@ To convert your data:
 
     ```bash
     cd /path/to/myproject/sourcedata
-    ```
+```bash
 
 2. [Clone the repository](https://github.com/xiangruili/dicm2nii) from GitHub:
 
     ```bash
     git clone https://github.com/xiangruili/dicm2nii.git
-    ```
+```text
 
 3. Add the `dicm2nii` folder to your MATLAB path:
     In **MATLAB**, run:
 
     ```matlab
     addpath('/path/to/dicm2nii')  % Adjust this to the actual folder path
-    ```
+```text
 
     !!! tip
         You can also use `uigetdir` to interactively select the folder:
 
     ```matlab
     addpath(uigetdir)
-    ```
+```text
 
 4. Anonymize your DICOM files
 
@@ -175,7 +175,7 @@ To convert your data:
 
     ```matlab
     anonymize_dicm('sub-01/dicom', 'sub-01/dicom_anon', 'sub-01')
-    ```
+```text
 
     - First argument = path to **raw DICOM** folder
     - Second argument = path to output **anonymized DICOM** folder
@@ -189,7 +189,7 @@ To convert your data:
 
     ```matlab
     dicm2nii('sub-01/dicom_anon', 'sub-01/nifti', 'nii.gz')
-    ```
+```text
 
     - First argument = path to anonymized DICOMs
     - Second argument = output directory
@@ -363,7 +363,7 @@ PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              38.453535  -        
 RESP        KeyPress    yyyy-mm-dd-hh-mm-ss  -              38.806193  -         1
 PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              40.451415  -         5
 ...
-```
+```text
 
 This is what the corresponding event file should look like:
 
@@ -371,7 +371,7 @@ This is what the corresponding event file should look like:
 onset           duration        trial_type     event_id
 10.022209       0.0473259       building       building_image.png
 13.072346       0.0482089       face           face_image.png
-```
+```markdown
 
 ---
 

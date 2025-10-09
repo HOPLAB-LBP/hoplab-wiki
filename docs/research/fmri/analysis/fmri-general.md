@@ -44,7 +44,7 @@ sourcedata
         ├── sub-41_WIP_Functional_run3_5_1.nii
         ├── sub-41_WIP_Functional_run4_6_1.nii
         └── sub-41_WIP_Functional_run5_7_1.nii
-```
+```text
 
 !!! tip "Folder Structure"
     Ensure each subject’s data is organized as shown above to minimize errors during BIDS conversion. Store all behavioral and NIfTI files under `sourcedata`.

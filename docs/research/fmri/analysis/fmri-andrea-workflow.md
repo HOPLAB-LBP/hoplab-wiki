@@ -57,7 +57,7 @@ For information on how to set up the working environment, install, and configure
     │   │   └── sub-01_task-exp_run-1_bold.nii.gz
     │   └── dcmHeaders.mat
     └── participants.tsv
-    ```
+```bash
 
     - Copy the `sub-01` folder from `dicom_converted` into the BIDS folder.
 
@@ -157,7 +157,7 @@ docker run \
     -v /data/BIDS/derivatives/mriqc:/resdir \
     -w /scratch --entrypoint=mriqc_clf poldracklab/mriqc:latest \
     --load-classifier -X /resdir/group_T1w.tsv
-```
+```text
 
 !!! warning
     JSON files may include `NaN` values that are incompatible with MRIQC. Use `./utils/sanitize_json.py` to fix this issue before running MRIQC.
@@ -182,7 +182,7 @@ fmriprep-docker /data/projects/chess/data/BIDS /data/projects/chess/data/BIDS/de
     --bold2t1w-dof 9 --task exp --dummy-scans 0 \
     --fs-subjects-dir /data/projects/chess/data/BIDS/derivatives/fastsurfer \
     --notrack --participant-label 41
-```
+```markdown
 
 ??? tip "Use CIFTI output for surface data"
     If you plan to run analysis on **surface data**, consider using **CIFTI output images** from fMRIPrep. While this approach hasn't been directly tested here, CIFTI outputs can provide several advantages:
@@ -243,7 +243,7 @@ docker run -it --rm \
     --space T1w \
     --reset_database \
     --verbose
-```
+```text
 
 !!! note
     In my experience, `bidsmreye` worked only when using the `T1w` fMRIPrep output space.
@@ -274,7 +274,7 @@ After preprocessing, proceed to the first-level analysis with the GLM. Running t
     selectedTasks(1).contrasts = {'Check > No-Check'};  % Name of the contrast.
     selectedTasks(1).weights(1) = struct('C_WILDCARD___WILDCARD_', 1, 'NC_WILDCARD___WILDCARD_', -1);  % Weights for each regressor.
     selectedTasks(1).smoothBool = false;  % Whether to smooth images before GLM. Useful for localizers.
-    ```
+```markdown
 
 If everything is configured correctly, the script will generate new `sub-xx` folders in your output directory. These folders will contain subdirectories for each analysis task, with `beta_000x.nii` files for each regressor (including confounds and conditions).
 
