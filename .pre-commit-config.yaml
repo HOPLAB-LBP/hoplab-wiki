@@ -8,7 +8,6 @@ repos:
     rev: v0.41.0
     hooks:
       - id: markdownlint
-        args: ["--config", ".markdownlint.jsonc"]
         files: \.(md|markdown)$
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.35.1
