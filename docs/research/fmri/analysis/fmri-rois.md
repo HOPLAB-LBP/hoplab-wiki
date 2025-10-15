@@ -847,6 +847,5 @@ Now that you have your beta images (from the GLM) and your ROIs, you have everyt
 <https://openneuro.org/>
 
 <!--
-__TODO__: add info and screenshots on how to do this using marsbar GUI
-- **TODO:**  mention the roi stuff Filippo did, and perhaps ask him to write something about it?
+__TODO__: link resources on how to do this using marsbar GUI.
 -->
