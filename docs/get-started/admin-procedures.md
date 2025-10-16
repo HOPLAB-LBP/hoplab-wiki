@@ -139,5 +139,5 @@ __TODO__: [Klara] Add most recent info from Jasmine's presentation to LBP on 08/
 __TODO__: [Klara] Calira is not the only tool for booking research infrastructure in the faculty. Add the other info as well in an overview of research infrastructure available at PPW.
 __TODO__: [Klara] Edit info in last section after BADM consultation has ended and we have researcher's onboarding and offboarding checklist. Then, we can also add a section on RDM (e.g., data storage and so on).
 __TODO__: [Klara] Add info on how to plan your PhD defense/PhD book (see checklist Klara - adapted by Filippo for this faculty)
-__TODO__: [Klara] Add info on youth holiday [(https://www.rva.be/burgers/verlof/hebt-u-recht-op-de-jeugdvakantie)](https://admin.kuleuven.be/personeel/intranet/verlof-afwezigheden/verlof/jeugdvakantie.html), see email Emily to Klara
+__TODO__: [Klara] Add info on youth holiday https://admin.kuleuven.be/personeel/intranet/verlof-afwezigheden/verlof/jeugdvakantie.html, see email Emily to Klara
 -->
