@@ -8,8 +8,6 @@ This page describes the steps necessary to prepare your EEG experiment. Follow t
 
 Note that these things are all implemented in the (upcoming) EEG task template (link to GitHub task template repo).
 
-__TODO__: [Andrea,Tim] Create the template and link it here.
-
 ## Sending triggers
 
 In order to be able to map psychophysical events from your task to the EEG data, you will need to send triggers from the task computer to the EEG computer. These triggers will then appear in a separate channels alongside your other EEG channels, allowing you to know precisely when e.g. an image was shown with respect to your brain signal. 
@@ -104,3 +102,8 @@ win.callOnFlip(log_event, 'stimulus_presented') # assuming you have a 'log_event
 # flip the window to present the frame
 win.flip()
 ```
+
+<!-- 
+__TODO__: [Andrea,Tim] Create the template and link it here.
+-->
+
