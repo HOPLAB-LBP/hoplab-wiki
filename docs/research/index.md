@@ -83,9 +83,12 @@ __TODO__: [Klara] Explain how to download papers from home
 
 __TODO__: [Klara] Add context for the stuff on OSF and Github (touch on topics as open science, reproducibility)
 
-__TODO__: [Klara] Add (general) info on how to store your data (eg BIDS) --> this is in the fmri section for now. perhaps we can link it? --> would wait until the end of the BADM consult process, perhaps we can make a page dedicated to RDM 
+__TODO__: [Klara] Add (general) info on how to store your data (eg BIDS) (this is in the fmri section for now. perhaps we can link it?) -- would wait until the end of the BADM consult process, perhaps we can make a page dedicated to RDM 
 
 __TODO__: [Klara] Refer to the resources for researchers on the [PPW Research page](https://ppw.kuleuven.be/en/research)
 
 __TODO__: [Klara] Make list of events throughout the year e.g. conferences, scicomm activities, days to remember (e.g., stroke day)
+
+**TODO**: [Klara] Make list of hardware available in/to the lab --> Added from file <-- licenses are here: https://admin.kuleuven.be/icts/english/services/software; https://teams.microsoft.com/v2/?tenantId=3973589b-9e40-4eb5-800e-b0b6383d1621#/l/channel/19:5b7757aa9d98480a9c2915a7c9c9b613@thread.tacv2/PPW%20research%20infrastructure?groupId=72910d2a-8121-481d-a927-ab011cec6340&tenantId=3973589b-9e40-4eb5-800e-b0b6383d1621&deeplinkId=e2029347-b8e5-4181-b59b-542d5f33e51d; Make list of software available, but link to the 2 pages to access. hardware: we can add an inventory page under the main research 
+
 -->
