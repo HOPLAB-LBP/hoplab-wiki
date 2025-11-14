@@ -159,3 +159,8 @@ Can't find what you're looking for? Have questions or suggestions? Don't hesitat
 
 - __Wiki Managers:__ [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels)
 - __Contact:__ [Andrea Costantino](mailto:andreaivan.costantino@kuleuven.be)
+
+<!--
+TODO: general info on how to store data: data management section with ref to BIDS logics and docs + refs to modality-specific BIDS pages + Open Science (templates, data sharing etc.)
+TODO: add link to hoplab/resources (finished papers + OSF)
+-->
