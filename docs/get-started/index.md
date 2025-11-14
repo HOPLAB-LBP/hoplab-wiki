@@ -86,9 +86,14 @@ We hope this guide helps you settle into your new role. Dive in, and enjoy your 
 ---
 
 <!--
+**TODO**: [Klara] Add info on interesting conferences to attend, suggested reading (books, papers, websites), suggested courses (soft skills, programming, EEG/fMRI, version control, stats, science, etc.). Part of this is already covered in the "Student Starter Pack" page. (Starter pack)
+**TODO**: [Klara] Add info on existing focus groups (e.g., EEG, MRI) which people can attend (e.g., within LBI)
 __TODO__: [Klara] Add info on the remote work policy (of KU Leuven but also of the lab specifically)
 __TODO__: [Klara] Add HSE orientation info [brochure](https://admin.kuleuven.be/sab/vgm/en/doc/hse-organisation/intranet/general-hse-info-brochure-en), including contact info (HSE person, occupational physician (Idewe), HSE network coordinator, members of first Intervention Team and First Aid Team), emergency procedures and nr, first aid info, what to do when you have a work accident, how to report HSE problems, pregnancy-related procedures, ergonomics, waste, psychosocial aspects, and HSE training.
 __TODO__: [Klara] Add info on technical services/CLD on how to report technical defects (KU Loket/HSE & Spaces/Reporting technical defects/New notification)
 __TODO__: [Klara] Add or refer to PhD-related info from the doctoral schools
 __TODO__: [Klara] Add a page with info for visitors (e.g. such as https://fys.kuleuven.be/ster/visitors)
+**TODO**: [Klara] Add more recommended software (e.g., Mendeley/Endnote, R, Text editors, Image editing software, Git, LaTeX, Pandoc, Markdown, Python, Overleaf, RBA, BioSemi, PsychoPy, Pavlovia). (AI) tools to find papers (move to computer set-up)
+**TODO**: [Klara] Explain how Lirias works/what it is used for (one sentence in getting started + section in outreach)
+**TODO**: [Klara] Refer to the resources for researchers on the PPW Research page --> Added from file <-- https://ppw.kuleuven.be/en/research (to getting started)
 -->
