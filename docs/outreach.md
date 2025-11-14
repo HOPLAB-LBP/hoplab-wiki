@@ -285,6 +285,12 @@ If you can't wait to start engaging, check out the following **initiatives**:
 
 <!--
 __TODO__: [Andrea] perhaps add links to new NeuroSPACE Linkedin and other socials at the top of the page (and remove the LBP?)
+
+**TODO**: [Klara] Add links to nice data visualisation tools (science outreach / useful resources)
+	 
+**TODO**: [Klara] Explain how Lirias works/what it is used for (one sentence in getting started + section in outreach)
+	 
+**TODO**: [Klara] Make list of events throughout the year e.g. conferences, scicomm activities, days to remember (e.g., stroke day) (add a new page to science outreach, add calendar widget (connected to hoplab calendar?) + important dates/conferences)	 
 -->
 
 <style>
