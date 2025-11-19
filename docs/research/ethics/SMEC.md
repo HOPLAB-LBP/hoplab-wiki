@@ -57,6 +57,14 @@ After the review, you will be informed of the outcome via an automated email fro
 
 A flowchart visualising the ethical review process (and its timing) can be consulted [here](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/time-flow-smec-zonder-amd.pdf).
 
+## Amendments at [SMEC](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/STAFFWhere-and-how-to-apply)
+
+1. Access the PRET platform
+2. Open a previously approved application dossier and make a copy to begin your amendment
+3. Make any necessary changes to the dossier, giving a clear explanation of changes on the communication page prior to submission. **NOTE: Amendments can only be submitted for **small modifications or extensions**, and only for dossiers that are less than 4 years old.
+4. To amend documents, use track changes and re-upload documents to the dossier.
+5. Save and submit the new dossier 
+
 <!--
 __TODO__: [Klara] Update this page and add some explanation about the new SMEC templates
 -->
