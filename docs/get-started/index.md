@@ -78,7 +78,7 @@ For **people working in the lab**, [Zsuzsanna](https://www.kuleuven.be/wieiswie/
 
 In the context of the welfare legislation, KU Leuven is required to keep a record of the risks per employee to which they are exposed when performing activities and the preventative measures provided for these risks. This information is registered centrally and digitally in KU Loket in the form of the HSE-file, for both staff and students. If you are new in Hoplab and you haven't been contacted by Zsuzsa, make sure she (and/or Ying) has been informed about your start, including where your office is and what your activities entail.
 
-Finally, at Hoplab, we care deeply about creating a safe and respectful environment for everyone. If you ever experience or witness inappropriate behavior, or if something doesn’t feel right, know that you are not alone and there is always someone to talk to. KU Leuven’s Unit of Confidence offers a confidential and supportive space to talk things through. Whether you are unsure about a situation or need advice, they are here to help. Visit the website [here](https://admin.kuleuven.be/thema/socialeveiligheid/en/who/unit-confidence).
+Finally, at Hoplab, we care deeply about creating a safe and respectful environment for everyone. If you ever experience or witness inappropriate behaviour, or if something doesn’t feel right, know that you are not alone and there is always someone to talk to. KU Leuven offers various support contacts that will listen to you, handle your concerns confidentially, and take further action only if you explicitly request it. Visit the website [here](https://admin.kuleuven.be/mykuleuven/en/channel/50000339/hr-wellbeing/social-safety).
 
 ## Get involved
 
@@ -94,8 +94,6 @@ We hope this guide helps you settle into your new role. Dive in, and enjoy your 
 **TODO**: [Klara] Add info on existing focus groups (e.g., EEG, MRI) which people can attend (e.g., within LBI)
 __TODO__: [Klara] Add info on the remote work policy (of KU Leuven but also of the lab specifically)
 __TODO__: [Klara] Add info on technical services/CLD on how to report technical defects (KU Loket/HSE & Spaces/Reporting technical defects/New notification)
-__TODO__: [Klara] Add or refer to PhD-related info from the doctoral schools
 **TODO**: [Klara] Add more recommended software (e.g., Mendeley/Endnote, R, Text editors, Image editing software, Git, LaTeX, Pandoc, Markdown, Python, Overleaf, RBA, BioSemi, PsychoPy, Pavlovia). (AI) tools to find papers (move to computer set-up)
-**TODO**: [Klara] Explain how Lirias works/what it is used for (one sentence in getting started + section in outreach)
 **TODO**: [Klara] Refer to the resources for researchers on the PPW Research page --> Added from file <-- https://ppw.kuleuven.be/en/research (to getting started)
 -->
