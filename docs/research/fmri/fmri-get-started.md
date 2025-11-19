@@ -28,6 +28,8 @@ Before diving into your (f)MRI study, make sure you're prepared by following the
 
 ### Get formal ethical approval
 
+Note that for most fMRI studies (including healthy adult participants), ethical approval has already been obtained and will fall under application nr. S62131 (until end of December 2025) or S70813 (from January 2026 onwards, hopefully). 
+
 Follow the yellow section of the [flowchart](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AAATYJes74w8KvI0OEOd1MmYa?e=4&preview=Flowchart_MR8_scanning.pdf) to make sure everything is in order for you to start scanning.
 
 1. **Register your study at the CTC**:
@@ -39,7 +41,6 @@ Follow the yellow section of the [flowchart](https://www.dropbox.com/sh/6hdu5z59
 4. **Follow the MR safety course**:
    And become an authorized user of the MRI-scanner (see below).
 
-Note that for most fMRI studies (including healthy adult participants), ethical approval has already been obtained and will fall under application nr. S62131 (until end of December 2025) or S70813 (from January 2026 onwards, hopefully). 
 
 ### Attend the MR safety course
 
