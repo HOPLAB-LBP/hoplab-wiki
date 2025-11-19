@@ -6,9 +6,7 @@ We have access to two EEG devices that fall under the NeuroSPACE consortium.
 
 - The second EEG apparatus is a high-resolution EEG system, used primarily by the [Hoplab](https://www.hoplab.be/) and the [Desenderlab](https://desenderlab.com/). This is a 128-channel system of BioSemi. The 128-channel EEG is located in room PSI 00.52. It can be booked through the Calira system (see general Research pages), where you can find it as "BioSemi EEG Lab 00.52".
 
-In Hoplab we typically set up experiments for multivariate EEG ("Representational Dynamics"). Our standard analysis pipeline is described most in detail in [Chen et al.](https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00006/116700/The-representational-dynamics-of-the-animal) (2023, Imaging Neuroscience).
-
-This publication is accompanied by an [OSF archive](https://osf.io/d5egu/) that contains the analysis code to do multivariate analysis with the help of Matlab and the [CosmoMVPA](https://www.cosmomvpa.org/) toolbox.
+In Hoplab we typically set up experiments for multivariate EEG ("Representational Dynamics"). Our standard analysis pipeline is described most in detail in [Leys et al.](https://jov.arvojournals.org/article.aspx?articleid=2811037) (2025, JoV) and [Chen et al.](https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00006/116700/The-representational-dynamics-of-the-animal) (2023, Imaging Neuroscience). The latter is accompanied by an [OSF archive](https://osf.io/d5egu/) that contains the analysis code to do multivariate analysis with the help of Matlab and the [CosmoMVPA](https://www.cosmomvpa.org/) toolbox.
 
 <!--
 __TODO__: Refer to Calira info elsewhere
