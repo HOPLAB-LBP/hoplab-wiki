@@ -515,6 +515,7 @@ Before leaving the room, check the following:
 1. **New Examination**:
     - Select **"Patient – New Examination"**.
     - Choose **RIS** to load the volunteer's details. Their data (name, ID, birthdate, sex, and exam) will be automatically filled in.
+    - NOTE: if you are running a pilot (and booked through Ron), then you need to create a new subject. You can generate a random ID. 
 
 2. **Volunteer Information**:
     - Enter the volunteer’s weight (from the **MR Safety Checklist**).
