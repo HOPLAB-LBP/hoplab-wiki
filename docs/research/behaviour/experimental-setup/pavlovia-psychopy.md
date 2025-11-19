@@ -2,6 +2,16 @@
 
 This page guides you through setting up, managing, and troubleshooting experiments on Pavlovia using the **Psychopy Builder**. Follow these steps and best practices to streamline your experiment creation and minimize errors.
 
+For more information on this Christophe Bossens also organizes a [Workshop on PsychoPy Builder](https://ppw.kuleuven.be/agenda/2026/psychopy) once a year. 
+
+---
+## Installing Psychopy Builder
+
+To design a [Psychopy](https://www.psychopy.org/) task in the Psychopy Builder the first step will be to install the (free) Psychopy Desktop application. Installation instructions can be found [here](https://www.psychopy.org/download.html). 
+After installation you will automatically have three psychopy applications/interfaces: the [Builder](https://www.psychopy.org/builder/), the Coder and the Runner. Here we will mostly work in the Builder, however you can test the experiment offline using eg the Runner interface. 
+
+Also check the [Psychopy Builder](https://www.psychopy.org/builder/) website by psychopy.org for an expelenation on how to build an experiment in the Builder GUI and all available components! 
+
 ---
 
 ## Uploading to Pavlovia
@@ -9,7 +19,7 @@ This page guides you through setting up, managing, and troubleshooting experimen
 Follow the steps below to successfully upload your experiment to Pavlovia.
 
 1. Create the experiment in **Psychopy Builder**.
-2. Create a **Pavlovia account** and log in.
+2. Create a [**Pavlovia account**](https://gitlab.pavlovia.org/users/sign_in) and log in.
 3. Link your account to the Builder via this button ![Pavlovia login button in PsychoPy Builder](../../../assets/bh-pavlovia-builder-button.png)
 4. Place all files for the experiment in a **single directory**.
 5. Click the **Syncing Globe** ![Pavlovia sync globe button in PsychoPy Builder](../../../assets/bh-pavlovia-sync-button.png) in the Builder, enter a project name, and upload. The icon will turn green when the upload is complete.
