@@ -171,7 +171,7 @@ The stimulus computer's desktop is located in the **control room**. It is the se
 
 4. **Screen Information**:
     - To flip the screen, adjust the **projector settings**, not the computer.
-#![Screen information](../../assets/fmri_mr8_screen_information.png)
+![Screen information](../../assets/mr8_screenInformation.png)
 
  
 ---
