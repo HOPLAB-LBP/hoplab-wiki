@@ -37,7 +37,7 @@ When planning your sessions, make sure to allocate enough time for setting up th
 
 These are the first things to do upon arriving in the EEG lab:
 
-1. Switch on the stimulus presentation computer and the EEG acquisition computer. For both PCs, the log-in password is the same as the username on the screen.
+1. Switch on the stimulus presentation computer and the EEG acquisition computer. If you don't know the credentials of the computers check [this document](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/eeg-computer-info.docx?d=wccddd39191864b9891c0f51cfb6fdf6f&csf=1&web=1&e=AUEUtv) (**access required**).
 2. Swith on the general power strip and the A/D-box in the EEG booth using the on/off switch (see **Figure 1**).
 3. Check on the A/D-box whether its battery is charged. If the battery is low, a red light will turn on (see **Figure 1**). In that case, take out the battery by opening the black clips at the sides and replace it with the spare battery that can be found in the left corner of the desk with the stimulus computer. Make sure that one battery is always charging (see **Figure 2**). At a later stage you can also check the battery status in ActiView (see **Figure 10**).
 
