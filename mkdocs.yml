@@ -58,7 +58,17 @@ nav:
 #    - Eye-tracking:
 #      - research/eyetracking/index.md
     - Neural Networks:
-      - research/dnn/index.md      
+      - research/dnn/index.md
+      - Analysis Workflow:
+          - research/dnn/analysis/index.md
+          - 1. Set up your environment: research/dnn/analysis/dnn-setup-env.md
+          - 2. Data preparation: research/dnn/analysis/dnn-data-preparation.md
+          - 3. Model training: research/dnn/analysis/dnn-model-training.md
+          - 4. Model evaluation: research/dnn/analysis/dnn-model-evaluation.md
+          - 5. Extract representations: research/dnn/analysis/dnn-extract-representations.md
+          - 6a. Compare with brain data (RSA): research/dnn/analysis/dnn-compare-brain-data-rsa.md
+          - 6b. Compare with brain data (Decoding): research/dnn/analysis/dnn-compare-brain-data-decoding.md
+          - 6c. Compare with brain data (Linear Mapping): research/dnn/analysis/dnn-compare-brain-data-linear.md
   - Science outreach: outreach.md
   - Contribute: contribute.md
 #  - Tasks List: tasks-list.md

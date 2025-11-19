@@ -1,6 +1,6 @@
-# Neural networks
+# Title
 
-This will be a very general overview of deep neural networks. Mostly links to the other pages in this section (see the fmri and EEG index pages for examples).
+This page will host an overview of the steps and link to the child pages for in-depth analysis. Some examples could be: Extract activations (how? from what layers? how to organize data? etc.); build RDMs + RSA; decoding (e.g. SVM/LDA); linear predictions (e.e.g., ridge).
 
 Here an example of some cards, remembers to edit links and icons (emoticons codes can be searched [here](https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/)):
 
