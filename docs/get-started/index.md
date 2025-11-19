@@ -95,7 +95,6 @@ We hope this guide helps you settle into your new role. Dive in, and enjoy your 
 __TODO__: [Klara] Add info on the remote work policy (of KU Leuven but also of the lab specifically)
 __TODO__: [Klara] Add info on technical services/CLD on how to report technical defects (KU Loket/HSE & Spaces/Reporting technical defects/New notification)
 __TODO__: [Klara] Add or refer to PhD-related info from the doctoral schools
-__TODO__: [Klara] Add a page with info for visitors (e.g. such as https://fys.kuleuven.be/ster/visitors)
 **TODO**: [Klara] Add more recommended software (e.g., Mendeley/Endnote, R, Text editors, Image editing software, Git, LaTeX, Pandoc, Markdown, Python, Overleaf, RBA, BioSemi, PsychoPy, Pavlovia). (AI) tools to find papers (move to computer set-up)
 **TODO**: [Klara] Explain how Lirias works/what it is used for (one sentence in getting started + section in outreach)
 **TODO**: [Klara] Refer to the resources for researchers on the PPW Research page --> Added from file <-- https://ppw.kuleuven.be/en/research (to getting started)
