@@ -91,8 +91,7 @@ Go to the acquisition computer, and take care of the following steps:
 
 1. Start up ActiView.
 
-    ![ActiView settings](../../assets/eeg-acquisition-fig9.png)
-
+    ![ActiView settings](../../assets/eeg-acquisition-fig9.png) Figure 9. Setting up your datafile in ActiView.
 2. In the right top corner you can check the battery status of the A/D-box (see **Figure 9**). ActiView will give a warning if the battery status is below 20%.
 3. Go to the `about actiview` tab and click `set up configuration file`. Choose the 128-channel configuration file. You can find the one that was previously used by Elahe' and Chiu-Yueh in the desktop folder named `KS`. You can load this one, but please do check whether the specifications match your experiment needs.  
 4. Click `start` and then `start file` (see **Figure 10**). Browse to your personal folder where you want to save the data, create a participant folder (e.g., `sub-001`) and choose a name for your data file, preferably in BIDS-format (e.g., `sub-<participant_id>_task-<task_name><mapping>_run-<run_number>_eeg.bdf`). To save each run in a different file, you will have to redo this step for each run.
@@ -101,21 +100,22 @@ Go to the acquisition computer, and take care of the following steps:
     - The impedance of each electrode must be between -20 µV and 20 µV (note that this measure is actually an electrode offset value with the CMS electrode as a reference, so negative values are not actually negative). Adjust the electrodes that are not within these values (e.g., Fz in **Figure 10**) by adding or removing some gel, moving the hair below the electrode with the tip of the syringe and/or by wiggling the electrode a bit.
     - If the electrode impedance stays far outside the [-20 20 µV] range, the electrode might be broken and needs to be replaced. In case this electrode is not crucial for your study, you can write down the code of the electrode and later contact the EEG lab manager for the back-up electrode set.  
 
-    ![Electrode offsets](../../assets/eeg-acquisition-fig10.png)
+    ![Electrode offsets](../../assets/eeg-acquisition-fig10.png) Figure 10. Checking impedence in the electrode offset tap.
 
-    !!! tip "Tip"
-        You can mirror the screen of the acquisition pc with the electrode offsets in the EEG booth, so that you don't have to run back and forth when adjusting the electrodes to get the impedance right. Don't forget to turn off the screen when you are done.
+!!! Tip
+    You can mirror the screen of the acquisition pc with the electrode offsets in the EEG booth, so that you don't have to run back and forth when adjusting the electrodes to get the impedance right. Don't        forget to turn off the screen when you are done.
 
-7. Go back to the `monopolar display` tab and check the signal:
+8. Go back to the `monopolar display` tab and check the signal:
     - **Bridges** would appear in the signal as a set of neighbouring electrodes giving exactly the same or a unusual signal, along with very similar impedance values in adjacent electrodes. You would for example notice that fixing the impedance in one channel also affects its neighbour(s). Note that eyeblinks also can create sudden similar changes in multiple (frontal) channels, this is not bridging.
     - A bad connection of the reference electrode results in a bad signal for all electrodes (see **Figure 11a**). Check whether the DRL and CMS electrodes are placed correctly and give a good signal.
     - If the cap label is not sticking out, this results in a typical signal distortion. (see **Figure 11b**)
     - If all electrodes are connected correctly, Actiview should look like **Figure 12**.
     - Show the participant what happens when they blink, cough, swallow, etc. Instruct the participant to minimize these movements during the measurement phase.
 
-    ![distorted EEG signal](../../assets/eeg-acquisition-fig11.png)
-    ![good EEG signal](../../assets/eeg-acquisition-fig12.png)
-
+    ![distorted EEG signal](../../assets/eeg-acquisition-fig11.png) Figure 11. (A) This pattern typically results from a bad connection of the DRL or CMS electrodes; (B) This pattern typically results from the cap label not sticking out of the cap.
+   
+    ![good EEG signal](../../assets/eeg-acquisition-fig12.png)<br> Figure 12. Ideally, your signal should look something like this when everything is properly connected.
+   
 ## Recording EEG-data
 
 Hooray, you are now ready to start acquiring EEG-data! To do so, follow these steps on the acquisition pc:
