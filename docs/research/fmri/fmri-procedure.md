@@ -169,10 +169,9 @@ The stimulus computer's desktop is located in the **control room**. It is the se
     !!! tip
         If Matlab freezes or shows a JAVA error, restarting Matlab should fix the issue.
 
-4. **Screen Resolution**:
-    - The resolution is set to **1920 x 1080 (landscape)**.
+4. **Screen Information**:
     - To flip the screen, adjust the **projector settings**, not the computer.
-    - **Screen Width**: 28.35 visual degrees
+![Screen information](../../assets/mr8_screenInformation.png)
 
  
 ---
@@ -432,8 +431,9 @@ The **control panels** on the left and right of the scanner have identical funct
 
 Before leaving the room, check the following:
 
-- **Ask the volunteer** if the screen is fully visible and centered.
+- **Ask the volunteer** if the screen is fully visible and centered, using the "reading-test" located in Desktop>RESEARCH>psychology>ReadingTest. They should be able to read down to 2nd to last line. 
 - **Check the screen yourself** to ensure it is aligned with the black marks on the scanner table.
+
 
 ---
 
@@ -516,6 +516,7 @@ Before leaving the room, check the following:
 1. **New Examination**:
     - Select **"Patient – New Examination"**.
     - Choose **RIS** to load the volunteer's details. Their data (name, ID, birthdate, sex, and exam) will be automatically filled in.
+    - NOTE: if you are running a pilot (and booked through Ron), then you need to create a new subject. You can generate a random ID. 
 
 2. **Volunteer Information**:
     - Enter the volunteer’s weight (from the **MR Safety Checklist**).
