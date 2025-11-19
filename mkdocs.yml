@@ -55,6 +55,7 @@ nav:
       - research/eeg/index.md
       - Data acquisition: research/eeg/eeg-acquisition.md
       - Creating EEG tasks: research/eeg/eeg-task.md
+      - EEG data analysis: research/eeg/eeg-analysis.md
 #    - Eye-tracking:
 #      - research/eyetracking/index.md
     - Neural Networks:

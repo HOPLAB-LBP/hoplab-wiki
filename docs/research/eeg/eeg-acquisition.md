@@ -14,18 +14,35 @@ This manual is based on the BioSemi EEG manual from the Cognitive Control in Con
     - **Transfer your data after each session.** For example, make sure to copy your data at the end of the day. The computers are regularly cleaned, and it’s your own responsibility to avoid data loss.
     - **Always return the key of the EEG lab to the locker** when you’re not in the lab. You can find the key in the keybox next to the coffee machine on the ground floor. You can ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) for the code.
 
-## First things to do
+## Before the day: planning participants
+
+Before collecting data you will need to recruit particpants and plan their visit to the lab. Here are a few things to have in mind for that. 
+
+### Recruiting participants
+
+To find participants, you can follow the instructions on the [behavioural recruitment page](../behaviour/bh-participants.md). Make sure to follow the latest guidelines on participant credit and reimbursement (see the latest details from the relevant [ethical applications](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications?csf=1&web=1&e=s7CEuL) - *access required*).
+
+Make sure to mention the specifics of going through an EEG experiment in your recruitment text: the duration, receiving gel in the hair, ... (in general, it is best to make sure participants know what they are registering for to avoid drop-outs). Also mention that **wearing glasses** is preferred to wearing contact lenses (to minimise blinking).
+
+If you are collecting data over the summer, mind that the EEG room can get warm. Look up the forecast and try to avoid testing on very hot days if possible.
+
+### Planning your time slot
+
+To ensure correct use of the EEG testing room, we use a booking system via **[Calira](https://app.clustermarket.com/login)**. Make sure to book your time slots well in advance. If you don’t yet have an account, contact [Klara Schevenels](https://www.kuleuven.be/wieiswie/nl/person/00116743) to get access.
+
+When planning your sessions, make sure to allocate enough time for setting up the EEG cap and electrodes (up to 45-60 minutes, depending on your experience and the participant's hair type). Also, allocate some time at the end of the session for removing the cap and cleaning up (probably around 20-30 minutes).
+
+
+## On the day: before the participant arrives
 
 These are the first things to do upon arriving in the EEG lab:
 
-1. Switch on the stimulus presentation computer and the EEG acquisition computer. For both PCs, the log-in password is the same as the username on the screen.
+1. Switch on the stimulus presentation computer and the EEG acquisition computer. If you don't know the credentials of the computers check [this document](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/eeg-computer-info.docx?d=wccddd39191864b9891c0f51cfb6fdf6f&csf=1&web=1&e=AUEUtv) (**access required**).
 2. Swith on the general power strip and the A/D-box in the EEG booth using the on/off switch (see **Figure 1**).
 3. Check on the A/D-box whether its battery is charged. If the battery is low, a red light will turn on (see **Figure 1**). In that case, take out the battery by opening the black clips at the sides and replace it with the spare battery that can be found in the left corner of the desk with the stimulus computer. Make sure that one battery is always charging (see **Figure 2**). At a later stage you can also check the battery status in ActiView (see **Figure 10**).
 
 ![A/D-box](../../assets/eeg-acquisition-fig1.png)
 ![A/D-box battery](../../assets/eeg-acquisition-fig2.png)
-
-## Before the participant arrives
 
 You can find all necessary materials in the EEG closet in the room. Make sure that everything is within reach. It is easiest to prepare all the following items on the round table next to the closet, away from the computers:
 
@@ -91,7 +108,11 @@ Go to the acquisition computer, and take care of the following steps:
 
 1. Start up ActiView.
 
-    ![ActiView settings](../../assets/eeg-acquisition-fig9.png) Figure 9. Setting up your datafile in ActiView.
+    <figure markdown="span">
+    ![ActiView settings](../../assets/eeg-acquisition-fig9.png)
+    <figcaption>Figure 9. Setting up your datafile in ActiView.</figcaption>
+    </figure>
+
 2. In the right top corner you can check the battery status of the A/D-box (see **Figure 9**). ActiView will give a warning if the battery status is below 20%.
 3. Go to the `about actiview` tab and click `set up configuration file`. Choose the 128-channel configuration file. You can find the one that was previously used by Elahe' and Chiu-Yueh in the desktop folder named `KS`. You can load this one, but please do check whether the specifications match your experiment needs.  
 4. Click `start` and then `start file` (see **Figure 10**). Browse to your personal folder where you want to save the data, create a participant folder (e.g., `sub-001`) and choose a name for your data file, preferably in BIDS-format (e.g., `sub-<participant_id>_task-<task_name><mapping>_run-<run_number>_eeg.bdf`). To save each run in a different file, you will have to redo this step for each run.
@@ -100,21 +121,31 @@ Go to the acquisition computer, and take care of the following steps:
     - The impedance of each electrode must be between -20 µV and 20 µV (note that this measure is actually an electrode offset value with the CMS electrode as a reference, so negative values are not actually negative). Adjust the electrodes that are not within these values (e.g., Fz in **Figure 10**) by adding or removing some gel, moving the hair below the electrode with the tip of the syringe and/or by wiggling the electrode a bit.
     - If the electrode impedance stays far outside the [-20 20 µV] range, the electrode might be broken and needs to be replaced. In case this electrode is not crucial for your study, you can write down the code of the electrode and later contact the EEG lab manager for the back-up electrode set.  
 
-    ![Electrode offsets](../../assets/eeg-acquisition-fig10.png) Figure 10. Checking impedence in the electrode offset tap.
+    <figure markdown="span">
+    ![Electrode offsets](../../assets/eeg-acquisition-fig10.png)
+    <figcaption>Figure 10. Checking impedence in the electrode offset tap.</figcaption>
+    </figure>
 
-!!! Tip
-    You can mirror the screen of the acquisition pc with the electrode offsets in the EEG booth, so that you don't have to run back and forth when adjusting the electrodes to get the impedance right. Don't        forget to turn off the screen when you are done.
+    !!! Tip
+        You can mirror the screen of the acquisition pc with the electrode offsets in the EEG booth, so that you don't have to run back and forth when adjusting the electrodes to get the impedance right. Don't forget to turn off the screen when you are done.
 
-8. Go back to the `monopolar display` tab and check the signal:
+7. Go back to the `monopolar display` tab and check the signal:
     - **Bridges** would appear in the signal as a set of neighbouring electrodes giving exactly the same or a unusual signal, along with very similar impedance values in adjacent electrodes. You would for example notice that fixing the impedance in one channel also affects its neighbour(s). Note that eyeblinks also can create sudden similar changes in multiple (frontal) channels, this is not bridging.
     - A bad connection of the reference electrode results in a bad signal for all electrodes (see **Figure 11a**). Check whether the DRL and CMS electrodes are placed correctly and give a good signal.
     - If the cap label is not sticking out, this results in a typical signal distortion. (see **Figure 11b**)
     - If all electrodes are connected correctly, Actiview should look like **Figure 12**.
     - Show the participant what happens when they blink, cough, swallow, etc. Instruct the participant to minimize these movements during the measurement phase.
 
-    ![distorted EEG signal](../../assets/eeg-acquisition-fig11.png) Figure 11. (A) This pattern typically results from a bad connection of the DRL or CMS electrodes; (B) This pattern typically results from the cap label not sticking out of the cap.
-   
-    ![good EEG signal](../../assets/eeg-acquisition-fig12.png)<br> Figure 12. Ideally, your signal should look something like this when everything is properly connected.
+    <figure markdown="span">
+    ![distorted EEG signal](../../assets/eeg-acquisition-fig11.png) 
+    <figcaption>Figure 11. (A) This pattern typically results from a bad connection of the DRL or CMS electrodes; (B) This pattern typically results from the cap label not sticking out of the cap.</figcaption>
+    </figure>
+
+
+    <figure markdown="span">
+    ![good EEG signal](../../assets/eeg-acquisition-fig12.png)
+    <figcaption>Figure 12. Ideally, your signal should look something like this when everything is properly connected.</figcaption>
+    </figure>
    
 ## Recording EEG-data
 
@@ -151,13 +182,9 @@ Hooray, you are now ready to start acquiring EEG-data! To do so, follow these st
 
 <!--
 
-**TODO:** there is an issue with the figures and figure captions (see e.g., Fig. 10-11)
-
-__TODO__: [Klara] Fix the small figure labels (fig 9-12);
-
 __TODO__: [Klara] Add info on how to (quickly) check the triggers, how to (quickly) check bridging and what to do in case of the "could not open port 'COM2'" error message (reconnect cables connecting the trigger box with either stimulus or acquisition pc and/or restart both pcs).
 
-__TODO__: [Klara] Update new things since pc switch (password, config file, program for screen res, line in script to get correct com port)
+__TODO__: [Klara] Update new things since pc switch (config file, program for screen res, line in script to get correct com port)
 
 __TODO__: [Klara] Update new cleaning protocol (without toothbrush, see BioSemi manual)
 
