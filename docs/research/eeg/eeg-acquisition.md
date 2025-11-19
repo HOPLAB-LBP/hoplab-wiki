@@ -145,7 +145,7 @@ Hooray, you are now ready to start acquiring EEG-data! To do so, follow these st
 
 1. Put the leftover gel in the syringes back in the tube. 
 2. Soak the syringes, head cap and electrode sets (not the connectors!) in the plastic tub filled with lukewarm water. Use the shower head to rinse the material.
-3.	If after soaking and rinsing the electrodes there is still gel left around the electrode tips, carefully brush the gel off with a soft toothbrush. Do this only if really necessary. Use a plastic toothpick to remove the gel from all the gaps in the head cap.
+3.	Use a plastic toothpick to remove the gel from all the gaps in the head cap.
 4.	Fill the tub with clean lukewarm water and add a bit of the 70% alcohol solution to it. Soak the electrodes, the head cap and the syringes in it for a few seconds to disinfect them. 
 5.	Rinse everything again with lukewarm water and let the caps and syringes dry on the round table. Put the electrode sets back on the rack (make sure they are stable and don't fall on the floor).
 
