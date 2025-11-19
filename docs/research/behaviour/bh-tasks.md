@@ -5,7 +5,7 @@ This page provides links to external resources and repositories for scripts and 
 Templates are organized into two sections:  
 
 - **On-site experiments**: Designed for in-person, [on-site testing](experimental-setup/bh-onsite.md). Can be adapted for online platforms if needed.  
-- **Online experiments**: Optimized for deployment on platforms like Pavlovia, using [jsPsych](experimental-setup/pavlovia-jspsych.md) or [PsychoPy](experimental-setup/pavlovia-jspsych.md).
+- **Online experiments**: Optimized for deployment on platforms like Pavlovia, using [jsPsych](experimental-setup/pavlovia-jspsych.md) or [PsychoPy](experimental-setup/pavlovia-psychopy.md).
 
 ---
 
@@ -16,10 +16,12 @@ Templates are organized into two sections:
 - :fontawesome-solid-flask: **Inverse MDS task**
   
     ---
+  
+    Visual similarity multi-arrangement task, using inverse MDS, based upon [Kriegeskorte & Mur (2012)](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2012.00245/full). 
+  
+    This paradigm can be implemented online, through the [Meadows research platform](https://meadows-research.com/). This platform asks a small fee per participant.
 
-    Visual similarity multi-arrangement task, using inverse MDS.
-
-    See [Bracci et al., 2015](https://www.jneurosci.org/content/35/38/12977)
+    This paradigm can also be implemented on-site. The link below refers to a Teams repository with a manual and code written in Matlab for on-site experiments. This code was for example used by [Bracci et al. (2015)](https://www.jneurosci.org/content/35/38/12977).
 
     [:octicons-arrow-right-24: Learn more](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Behaviour/Inverse%20MDS?csf=1&web=1&e=pBDTz3)
 
