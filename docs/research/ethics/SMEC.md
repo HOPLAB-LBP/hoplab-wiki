@@ -26,6 +26,8 @@ The SMEC puts a lot of emphasis on a well thought out **recruitment and informed
   - If applicable, clarification that the study is not set within the hospital context
   - Contact details of the researchers
   - Ethics committee contact information
+ 
+  - **Include version number and dates on all documents, preferably in a footer or header. Update when making amendments**
 
 - In some cases, it may be justifiable to use a **brief consent form** (e.g., a short online questionnaire that is likely to be completed on a small screen). A full consent form might be intimidating in this case or considered a barrier that might limit response rates. A concise consent form should include at least the following elements:
   
