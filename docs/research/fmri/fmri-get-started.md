@@ -118,4 +118,4 @@ All referenced documents are regularly updated and available in the [Hoplab Team
   Complete the Excel sheet with the experiment name for each session and clearly note down comments for any session that did not yield useful data for various reasons (e.g., participant cancellation, no-shows, artifacts, technical issues) and send it back.
 
 - **Financial management**:  
-  Support staff (currently Klara) will further process the file by including the name of the SAP antenna (i.e., An Van Kets), specifying the funding source for each researcher, and by adjusting the total invoice amount on the invoice to reflect the actual scan hours based on successful data collection sessions ("corrected total").
+  Support staff (currently Klara) will further process the file by including the name of the SAP antenna (i.e., Agna Marien), specifying the funding source for each researcher, and by adjusting the total invoice amount on the invoice to reflect the actual scan hours based on successful data collection sessions ("corrected total").
