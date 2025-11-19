@@ -96,7 +96,7 @@ For up-to-date installation info, please consult the Docker Desktop installation
 After installation, one need to configure Docker resources.
 
 For operating sustems using a WSL2 backend as its default backend for the Windows Subsystem for Linux (e.g., Windows 11 home), resource configurations must be done in a .wslconfig file. 
-1. Download (and potentially configure) a .wslconfig file here [Download .wslconfig](../../../docs/assets/.wslconfig), or  create a new .wslconfig file in unix format (e.g., use notpad++ and select unix format before saving)
+1. Download (and potentially configure) a .wslconfig file here [Download .wslconfig](../../../../docs/assets/.wslconfig), or  create a new .wslconfig file in unix format (e.g., use notpad++ and select unix format before saving)
 2. Store the .wslconfig file in Users/<username>
 3. Shut down and restart WSL (in powershell: wsl --shutdown)
 
