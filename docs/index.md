@@ -8,7 +8,7 @@ hide:
 
 Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab wisdom into a more user-friendly format. This process is currently managed by [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be).
 
-The Hoplab is part of the larger [NeuroSPACE consortium](https://ppw.kuleuven.be/neurospace) funded by the [Methusalem Program](https://research.kuleuven.be/en/research-funding/support/if/methusalem) that in addition to Hoplab also includes the teams of Céline Gillebert, Kobe Desender, and Bert De Smedt. Much of the research information on the Hoplab wiki will also be very useful to members of these teams. Likewise, where appropriate, this Hoplab wiki contains links to online information provided by these other teams.
+The [Hoplab](https://www.hoplab.be/) is part of the larger [NeuroSPACE consortium](https://ppw.kuleuven.be/neurospace) funded by the [Methusalem Program](https://research.kuleuven.be/en/research-funding/support/if/methusalem) that in addition to Hoplab also includes the teams of [Céline Gillebert](https://www.neuropsychologylab.be/), [Kobe Desender](https://desenderlab.com/aboutme/), and [Bert De Smedt](https://ppw.kuleuven.be/pserg/psergstaff/00040938). Much of the research information on the Hoplab wiki will also be very useful to members of these teams. Likewise, where appropriate, this Hoplab wiki contains links to online information provided by these other teams.
 
 !!! info "Leave a feedback"
     The wiki is **our collective knowledge base** - your feedback and contributions help keep it accurate, complete, and useful for everyone in the lab.
