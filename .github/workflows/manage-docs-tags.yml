@@ -65,15 +65,18 @@ jobs:
               return filelist;  // Return the list of Markdown files
             }
 
-            // Determine a stable directory label for the tracking issue based on file path.
+            // Determine stable directory labels for the tracking issue based on file path.
+            // Returns an array of labels to support nested directory structures (e.g., dnn/analysis -> ['dnn', 'analysis'])
             function getLabel(file) {
               const parts = path.dirname(file).split(path.sep);  // Split the directory path
               if (parts[0] === 'docs' && parts.length > 1) {  // If it's in a subdirectory of 'docs'
-                console.log(`Label for ${file}: ${parts[parts.length - 1]}`);
-                return parts[parts.length - 1];  // Use the subdirectory name as the label
+                // Extract all directory parts after 'docs' (e.g., research/dnn/analysis -> ['dnn', 'analysis'])
+                const labels = parts.slice(1).filter(p => p !== 'research');  // Skip 'research' as it's not meaningful
+                console.log(`Labels for ${file}: ${labels.join(', ')}`);
+                return labels.length > 0 ? labels : ['general'];  // Use directory names as labels
               }
               console.log(`Label for ${file}: general`);
-              return 'general';  // Otherwise, use 'general' as the label
+              return ['general'];  // Otherwise, use 'general' as the label
             }
 
             // Normalize file path for consistent comparisons (force forward slashes, trim leading slashes)
@@ -324,7 +327,7 @@ jobs:
             // - If no tags and no open issue: noop.
             async function createOrUpdateIssue(file, currentTags) {
               console.log(`Creating or updating issue for file: ${file}`);
-              const label = getLabel(file);
+              const labels = getLabel(file);  // Now returns an array of labels
               const title = `Tags in ${file}`;
 
               const existingIssue = await findExistingIssue(file);
@@ -340,7 +343,7 @@ jobs:
                 const body = `File: [${file}](${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/blob/${context.sha}/${file})\n\nTasks:\n${formattedTasks}\n\nImportant: do not change the status of tasks tagged as "Added from file". These tasks depend on to-do tags in the original file. To change the status of these tasks, please edit the md file directly.`;
                 // Preserve existing labels and ensure required ones
                 const currentLabels = (existingIssue.labels || []).map(l => l.name);
-                const nextLabels = Array.from(new Set([...currentLabels, 'doc-tags', label]));
+                const nextLabels = Array.from(new Set([...currentLabels, 'doc-tags', ...labels]));
                 issue = await github.rest.issues.update({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
@@ -366,7 +369,7 @@ jobs:
                     repo: context.repo.repo,
                     issue_number: existingIssue.number,
                     state: 'closed',
-                    labels: ['doc-tags', label, 'doc-tags-complete']
+                    labels: ['doc-tags', ...labels, 'doc-tags-complete']
                   });
                   closedThisRun.add(existingIssue.number);
                   // Reflect closed state in our local variable for accurate logging
@@ -384,7 +387,7 @@ jobs:
                     repo: context.repo.repo,
                     issue_number: existingIssue.number,
                     state: 'closed',
-                    labels: ['doc-tags', label, 'doc-tags-complete']
+                    labels: ['doc-tags', ...labels, 'doc-tags-complete']
                   });
                   closedThisRun.add(existingIssue.number);
                   issue = { data: { state: 'closed', number: existingIssue.number } };
@@ -403,7 +406,7 @@ jobs:
                   console.log(`Reopening closed issue #${closedIssue.number} for ${file} (was not auto-completed)`);
                   // Keep any existing labels and ensure required ones
                   const currentLabels = (closedIssue.labels || []).map(l => l.name);
-                  const nextLabels = Array.from(new Set([...currentLabels, 'doc-tags', label]));
+                  const nextLabels = Array.from(new Set([...currentLabels, 'doc-tags', ...labels]));
                   issue = await github.rest.issues.update({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
@@ -426,7 +429,7 @@ jobs:
                     repo: context.repo.repo,
                     title: title,
                     body: body,
-                    labels: ['doc-tags', label]
+                    labels: ['doc-tags', ...labels]
                   });
                   console.log(`Created new issue #${issue.data.number} for ${file}`);
                 }
