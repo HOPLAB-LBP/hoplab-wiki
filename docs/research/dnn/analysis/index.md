@@ -40,3 +40,7 @@ Here an example of some cards, remembers to edit links and icons (emoticons code
     [:octicons-arrow-right-24: Access EEG resources](index.md)
 
 </div>
+
+<!--
+**TODO**: fill in this page and resolve placeholders
+-->
