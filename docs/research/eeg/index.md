@@ -49,10 +49,6 @@ n Hoplab we typically set up experiments for multivariate EEG ("Representational
 
 
 <!--
-__TODO__: Refer to Calira info elsewhere
-
-__TODO__: Create subpages
-
 __TODO__: Add information on the analysis (OSF page of Chen et al has no readme!)
 
 __TODO__: Also describe details of pre-processing (no pre-processing script on OSF)
