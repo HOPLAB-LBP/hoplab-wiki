@@ -92,6 +92,34 @@ Once you have written all the necessary documents, you can file your application
 
 ---
 
+# Filing an amendment with Ethical Committee UZ/KU Leuven
+For UZ/KU Leuven there are two types of amendment. Detailed information which option to choose can be found [here](https://www.uzleuven.be/en/ethics-committee-research/supplement-approved-study-ec-research/submitting-amendments-ec-research): 
+- Substantial amendments
+- Amendments for participation of additional centres in a previously approved study 
+
+**Substantial amendments**
+
+Requirements for submission (for detailed information, see [here](https://www.uzleuven.be/en/ethics-committee-research/experiment/submitting-amendments-ec-research-experiment/substantial-amendments): 
+- Cover letter of the PI
+- Amended documents with changes marked via track changes (**must have updated version numbers and dates**)
+- **IF** changes to ICF are needed, it is recommended to use an **ICF Addendum for ongoing participants** The ICF addendum includes only the changes or new information, making it more clear for the participant than a revised ICF with marked changes.
+- When submitting provide the name, telephone and email address of contact within UZ Leuven/KU Leuven (other than the investigator) for follow-up of the file.
+- **Submission to be made by electronic submission via Eudralink, via Liquidfiles or by email (ecstaf@uzleuven.be)** 
+
+**Amendments for participation of additional centres in a previously approved study**
+Requirements for submission (for detailed information, see [here](https://www.uzleuven.be/en/ethics-committee-research/experiment/submitting-amendments-ec-research-experiment/participation-additional-centres-previously-approved-research) 
+
+- Cover letter of the PI
+- Written confirmation of the sponsor that the file was simultaneously submitted at all new centres
+- Details of the added local ethics committees (name of contact, address, telephone, fax, email address)
+- The name of the local principal investigator(s) for whom the local ethics committee issues an opinion
+- Contracts of all added centres. In the event that the contracts are identical for all centres, it is sufficient to submit one model contract with written declaration from the client that all contracts are identical for all centres, including compensations.
+- Concise CV(s) of the investigator(s) of the added centres
+- Name and address (preferably in Belgium) of a contact at the company to whom the invoice can be sent
+- Name, tel/fax, email of contact at UZ Leuven/KU Leuven (other than the investigator) for follow-up of the file
+- **Submission to be made by electronic submission via Eudralink, via Liquidfiles or by email (ecstaf@uzleuven.be)** 
+---
+
 <!--
 __TODO__: [Klara] Check whether this still applies --> "If the medical ethical committee has an issue with the principal investigator not being connected with UZ Leuven (e.g. in case the PI is a professor at the Faculty of Psychology and Educational Sciences); report this to Prof. Dr. Pol Ghesquière."
 __TODO__: [Klara] Update this page and make a bit more to the point
