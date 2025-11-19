@@ -6,7 +6,7 @@ This page describes the steps necessary to prepare your EEG experiment. Follow t
 - **Using the photocell**: to ensure that the timing of our triggers is accurate with regards to what actually shows on the screen, we use a photo sensitive diode (aka a *photocell*), taped to the screen, that can detect changes in screen luminance with high temporal precision. Since this photocell is taped to the bottom left of the screen (to avoid obstructing the participant's view), we add a small square to the bottom left of our screen that changes luminance at the same time as we send a trigger.
 - **Timing**: in most tasks you will need to follow some timing rules to ensure your brain signal is clean and interpretable.
 
-Note that these things are all implemented in the (upcoming) EEG task template (link to GitHub task template repo).
+Note that these things are all implemented in the (upcoming) EEG task template ([link to GitHub task template repo](https://github.com/HOPLAB-LBP)).
 
 ## Sending triggers
 
