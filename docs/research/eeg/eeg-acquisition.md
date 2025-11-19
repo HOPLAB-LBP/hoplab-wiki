@@ -14,7 +14,26 @@ This manual is based on the BioSemi EEG manual from the Cognitive Control in Con
     - **Transfer your data after each session.** For example, make sure to copy your data at the end of the day. The computers are regularly cleaned, and it’s your own responsibility to avoid data loss.
     - **Always return the key of the EEG lab to the locker** when you’re not in the lab. You can find the key in the keybox next to the coffee machine on the ground floor. You can ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) for the code.
 
-## First things to do
+## Before the day: planning participants
+
+Before collecting data you will need to recruit particpants and plan their visit to the lab. Here are a few things to have in mind for that. 
+
+### Recruiting participants
+
+To find participants, you can follow the instructions on the [behavioural recruitment page](../behaviour/bh-participants.md). Make sure to follow the latest guidelines on participant credit and reimbursement (see the latest details from the relevant [ethical applications](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications?csf=1&web=1&e=s7CEuL) - *access required*).
+
+Make sure to mention the specifics of going through an EEG experiment in your recruitment text: the duration, receiving gel in the hair, ... (in general, it is best to make sure participants know what they are registering for to avoid drop-outs). Also mention that **wearing glasses** is preferred to wearing contact lenses (to minimise blinking).
+
+If you are collecting data over the summer, mind that the EEG room can get warm. Look up the forecast and try to avoid testing on very hot days if possible.
+
+### Planning your time slot
+
+To ensure correct use of the EEG testing room, we use a booking system via **[Calira](https://app.clustermarket.com/login)**. Make sure to book your time slots well in advance. If you don’t yet have an account, contact [Klara Schevenels](https://www.kuleuven.be/wieiswie/nl/person/00116743) to get access.
+
+When planning your sessions, make sure to allocate enough time for setting up the EEG cap and electrodes (up to 45-60 minutes, depending on your experience and the participant's hair type). Also, allocate some time at the end of the session for removing the cap and cleaning up (probably around 20-30 minutes).
+
+
+## On the day: before the participant arrives
 
 These are the first things to do upon arriving in the EEG lab:
 
@@ -24,8 +43,6 @@ These are the first things to do upon arriving in the EEG lab:
 
 ![A/D-box](../../assets/eeg-acquisition-fig1.png)
 ![A/D-box battery](../../assets/eeg-acquisition-fig2.png)
-
-## Before the participant arrives
 
 You can find all necessary materials in the EEG closet in the room. Make sure that everything is within reach. It is easiest to prepare all the following items on the round table next to the closet, away from the computers:
 
