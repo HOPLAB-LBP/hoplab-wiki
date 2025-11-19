@@ -150,6 +150,9 @@ Hooray, you are now ready to start acquiring EEG-data! To do so, follow these st
 5.	Rinse everything again with lukewarm water and let the caps and syringes dry on the round table. Put the electrode sets back on the rack (make sure they are stable and don't fall on the floor).
 
 <!--
+
+**TODO:** there is an issue with the figures and figure captions (see e.g., Fig. 10-11)
+
 __TODO__: [Klara] Fix the small figure labels (fig 9-12);
 
 __TODO__: [Klara] Add info on how to (quickly) check the triggers, how to (quickly) check bridging and what to do in case of the "could not open port 'COM2'" error message (reconnect cables connecting the trigger box with either stimulus or acquisition pc and/or restart both pcs).
