@@ -93,8 +93,14 @@ Docker is crucial for running containerized applications like fMRIPrep. Althoug 
 
 For up-to-date installation info, please consult the Docker Desktop installation pages for [Mac](https://docs.docker.com/desktop/install/mac-install/), [Windows](https://docs.docker.com/desktop/install/windows-install/) or [Linux](https://docs.docker.com/desktop/install/linux-install/).
 
-After installation, configure Docker resources:
+After installation, one need to configure Docker resources.
 
+For operating sustems using a WSL2 backend as its default backend for the Windows Subsystem for Linux (e.g., Windows 11 home), resource configurations must be done in a .wslconfig file. 
+1. Download (and potentially configure) a .wslconfig file here [Download .wslconfig](docs/assets/.wslconfig), or  create a new .wslconfig file in unix format (e.g., use notpad++ and select unix format before saving)
+2. Store the .wslconfig file in Users/<username>
+3. Shut down and restart WSL (in powershell: wsl --shutdown)
+
+For other operation systems that do not use WSL2 backend:
 1. Open Docker Desktop settings
 2. Go to "Resources" section
 3. Allocate resources:
