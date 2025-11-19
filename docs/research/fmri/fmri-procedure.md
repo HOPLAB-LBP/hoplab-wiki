@@ -169,10 +169,9 @@ The stimulus computer's desktop is located in the **control room**. It is the se
     !!! tip
         If Matlab freezes or shows a JAVA error, restarting Matlab should fix the issue.
 
-4. **Screen Resolution**:
-    - The resolution is set to **1920 x 1080 (landscape)**.
+4. **Screen Information**:
     - To flip the screen, adjust the **projector settings**, not the computer.
-    - **Screen Width**: 28.35 visual degrees
+#![Screen information](../../assets/fmri_mr8_screen_information.png)
 
  
 ---
