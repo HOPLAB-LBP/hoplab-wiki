@@ -431,8 +431,9 @@ The **control panels** on the left and right of the scanner have identical funct
 
 Before leaving the room, check the following:
 
-- **Ask the volunteer** if the screen is fully visible and centered.
+- **Ask the volunteer** if the screen is fully visible and centered, using the "reading-test" located in Desktop>RESEARCH>psychology>ReadingTest. They should be able to read down to 2nd to last line. 
 - **Check the screen yourself** to ensure it is aligned with the black marks on the scanner table.
+
 
 ---
 
