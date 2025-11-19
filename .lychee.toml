@@ -1,6 +1,7 @@
 # Lychee configuration for link checking
 exclude = [
   "mailto:",
+  "https://kuleuven.sharepoint.com/.*",
 ]
 max_redirects = 10
 retry_wait_time = 2
