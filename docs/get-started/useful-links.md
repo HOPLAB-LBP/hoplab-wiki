@@ -57,6 +57,22 @@ Luckily, you have found the most useful link of all, i.e., the link to this Wiki
 
     [:octicons-arrow-right-24: Link](https://filesender.belnet.be/)
 
+- :material-library-shelves:{ .lg .middle } __Lirias__
+
+    ---
+
+    The institutional repository of KU Leuven Association
+
+    [:octicons-arrow-right-24: Link](https://kuleuven.limo.libis.be/)
+
+- :material-school:{ .lg .middle } __Doctoral school__
+
+    ---
+
+    Everything you need to know about your doctoral programme
+
+    [:octicons-arrow-right-24: Link](https://ppw.kuleuven.be/en/research/doctoral-programme/)
+
 </div>
 
 ## Getting started at Hoplab
@@ -65,7 +81,3 @@ Apart from this Wiki, we try to keep the [__HopLab website__](https://www.hoplab
 
 ??? question "What is ORCID?"
     ORCID is a unique digital identifier system for researchers, used by most journals during paper submission. To create your ORCID ID, go [*here*](https://orcid.org/), select "Sign In/Register", choose "Access through your institution" and select "KU Leuven Association".
-
-<!--
-__TODO__: [Klara]: Merge this info on the "getting started" index page?
--->
