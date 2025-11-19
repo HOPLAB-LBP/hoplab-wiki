@@ -75,7 +75,10 @@ photocell_rectangle = visual.Rect(
 
 The advantage of the photocell is not only that it allows you to know exactly *when* you stimuli appeared on the screen, but also *how long* they were on the screen for. To record duration as well as onset, you can keep the rectangle on the screen stable for the duration of each event you record. Below is an example of this strategy:
 
-![photocell_design_example](../../assets/eeg-task-fig1.png)
+<figure markdown="span">
+  ![photocell_design_example](../../assets/eeg-task-fig1.png)
+  <figcaption>Photocell colour switch logic.</figcaption>
+</figure>
 
 
 ## Inter-trial interval and jitter
