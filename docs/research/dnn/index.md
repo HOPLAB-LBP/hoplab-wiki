@@ -13,7 +13,7 @@ Here an example of some cards, remembers to edit links and icons (emoticons code
 
     Example text for the first card.
 
-    [:octicons-arrow-right-24: Learn more](PLACEHOLDER)
+    [:octicons-arrow-right-24: Learn more](index.md)
 
 - :octicons-code-24:{ .lg .middle } __[PLACEHOLDER]__
 
@@ -21,7 +21,7 @@ Here an example of some cards, remembers to edit links and icons (emoticons code
 
     Example text for the second card.
 
-    [:octicons-arrow-right-24: View coding resources](PLACEHOLDER)
+    [:octicons-arrow-right-24: View coding resources](index.md)
 
 - :material-robot-love-outline:{ .lg .middle } __[PLACEHOLDER]__
 
@@ -29,7 +29,7 @@ Here an example of some cards, remembers to edit links and icons (emoticons code
 
     Dive into example text for the third card.
 
-    [:octicons-arrow-right-24: Explore DNN research](PLACEHOLDER)
+    [:octicons-arrow-right-24: Explore DNN research](index.md)
 
 - :material-wave:{ .lg .middle } __[PLACEHOLDER]__
 
@@ -37,6 +37,6 @@ Here an example of some cards, remembers to edit links and icons (emoticons code
 
     Example text for the forth card.
 
-    [:octicons-arrow-right-24: Access EEG resources](PLACEHOLDER)
+    [:octicons-arrow-right-24: Access EEG resources](index.md)
 
 </div>
