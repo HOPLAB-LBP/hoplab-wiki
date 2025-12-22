@@ -2324,14 +2324,14 @@
 <ol>
 <li>Switch on the stimulus presentation computer and the EEG acquisition computer. If you don't know the credentials of the computers check <a href="https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/eeg-computer-info.docx?d=wccddd39191864b9891c0f51cfb6fdf6f&amp;csf=1&amp;web=1&amp;e=AUEUtv">this document</a> (<strong>access required</strong>).</li>
 <li>Swith on the general power strip and the A/D-box in the EEG booth using the on/off switch (see <strong>Figure 1</strong>).</li>
-<li>Check on the A/D-box whether its battery is charged. If the battery is low, a red light will turn on (see <strong>Figure 1</strong>). In that case, take out the battery by opening the black clips at the sides and replace it with the spare battery that can be found in the left corner of the desk with the stimulus computer. Make sure that one battery is always charging (see <strong>Figure 2</strong>). At a later stage you can also check the battery status in ActiView (see <strong>Figure 10</strong>).</li>
+<li>Check on the A/D-box whether its battery is charged. If the battery is low, a red light will turn on (see <strong>Figure 1</strong>). In that case, take out the battery by opening the black clips at the sides and replace it with the spare battery that can be found in the left corner of the desk with the stimulus computer. Make sure that one battery is always charging (see <strong>Figure 2</strong>). At a later stage you can also check the battery status in ActiView (see <strong>Figure 9</strong>).</li>
 </ol>
 <p><img alt="A/D-box" src="../../assets/eeg-acquisition-fig1.png" />
 <img alt="A/D-box battery" src="../../assets/eeg-acquisition-fig2.png" /></p>
 <p>You can find all necessary materials in the EEG closet in the room. Make sure that everything is within reach. It is easiest to prepare all the following items on the round table next to the closet, away from the computers:</p>
 <ol>
 <li>Fill two syringes with Signa gel. Do not fill them completely to the rim (see <strong>Figure 3</strong>). Make sure to clean gel remainders off the tip of the tube before and after filling the syringes to prevent old gel from blocking them (see <strong>Figure 4</strong>).</li>
-<li>Order and untie the electrodes. If you use the external electrodes, make sure the electrodes and the cleaning scrub to disinfect the participants' face before applying the electrodes are within reach.</li>
+<li>Order and untie the electrodes. If using the external electrodes, make sure the 1) electrodes, and the 2) cleaning scrub to disinfect the participants' face before applying the electrodes, are within reach.</li>
 <li>Place the measuring tape and adhesive tape within reach.</li>
 <li>Make sure the head cap you need is dry. You can speed-dry it with the hair dryer, but use <strong>cold air only</strong> to not damage the cap. We have the following caps:<ul>
 <li>2x small-medium (head circumference of 52-56 cm)</li>
@@ -2386,18 +2386,18 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Per set, individual electrodes are numbered. Place the electrodes in ascending order to avoid tangling the wires. Start at the base of the skull and work your way up towards the forehead. Make sure the wires end up in the participant's neck.</p>
+<p>Per set, individual electrodes are numbered. Place the electrodes in ascending order to avoid tangling the wires. Start at the base of the skull and work your way up towards the forehead. Make sure all electrode wires are routed toward a single point at the back of the head and toward the A/D box. This reduces cable strain when connecting the electrodes.</p>
 </div>
 <p><img alt="Applying gel and electrodes" src="../../assets/eeg-acquisition-fig7.png" /></p>
 </li>
 <li>
-<p>Go into the EEG booth, let the participant take place in the right position for the experiment, take off the protective caps from the electrode sets and carefully connect them to the A/D-box (see <strong>Figure 8</strong>). Make sure the participant sits comfortably to avoid them moving too much during the experiment. You can adjust the height of the chair and the chin rest if needed.</p>
+<p>Go into the EEG booth and let the participant sit in the right position for the experiment. Take off the protective caps from the electrode sets and carefully connect them to the A/D-box (see <strong>Figure 8</strong>). Make sure the participant sits comfortably to avoid them moving too much during the experiment. You can adjust the height of the chair and the chin rest if needed.</p>
 <p><img alt="Connecting the electrodes" src="../../assets/eeg-acquisition-fig8.png" /></p>
 </li>
 <li>
 <p>In case the participant wears glasses, you can put them back on now.</p>
 </li>
-<li>Turn the lights low (the light switch is near the door) and make sure the lightning is consistent across all your participants. Do not lower the lights too much as a high contrast between the room and monitor increases the blinking frequency. During breaks, you might want to turn the lights up (to increase alertness) and ask the participant if they would like to drink some water (to decrease swallowing).</li>
+<li>Turn the lights low (the light switch is near the door) and make sure the lightning is consistent across all of your participants. Do not lower the lights too much as a high contrast between the room and monitor increases the blinking frequency. During breaks, you might want to turn the lights up (to increase alertness) and ask the participant if they would like to drink some water (to decrease swallowing).</li>
 </ol>
 <h2 id="setting-up-the-datafile">Setting-up the datafile<a class="headerlink" href="#setting-up-the-datafile" title="Permanent link">&para;</a></h2>
 <p>Go to the acquisition computer, and take care of the following steps:</p>
@@ -2413,8 +2413,8 @@
 <p>In the right top corner you can check the battery status of the A/D-box (see <strong>Figure 9</strong>). ActiView will give a warning if the battery status is below 20%.</p>
 </li>
 <li>Go to the <code>about actiview</code> tab and click <code>set up configuration file</code>. Choose the 128-channel configuration file. You can find the one that was previously used by Elahe' and Chiu-Yueh in the desktop folder named <code>KS</code>. You can load this one, but please do check whether the specifications match your experiment needs.  </li>
-<li>Click <code>start</code> and then <code>start file</code> (see <strong>Figure 10</strong>). Browse to your personal folder where you want to save the data, create a participant folder (e.g., <code>sub-001</code>) and choose a name for your data file, preferably in BIDS-format (e.g., <code>sub-&lt;participant_id&gt;_task-&lt;task_name&gt;&lt;mapping&gt;_run-&lt;run_number&gt;_eeg.bdf</code>). To save each run in a different file, you will have to redo this step for each run.</li>
-<li>Change the decimation according to your needs (see <strong>Figure 9</strong>), e.g., to ¼ (gives you a 512 Hz sampling rate; those are fractions of 2048 Hz).  </li>
+<li>Click <code>start</code> and then <code>start file</code> (see <strong>Figure 9</strong>). Browse to your personal folder where you want to save the data, create a participant folder (e.g., <code>sub-001</code>) and choose a name for your data file, preferably in BIDS-format (e.g., <code>sub-&lt;participant_id&gt;_task-&lt;task_name&gt;&lt;mapping&gt;_run-&lt;run_number&gt;_eeg.bdf</code>). To save each run in a different file, you will have to redo this step for each run.</li>
+<li>Change the decimation according to your needs (see <strong>Figure 9</strong>), e.g., to ¼ (gives you a 512 Hz sampling rate; these are fractions of 2048 Hz).  </li>
 <li>
 <p>Go to the <code>electrode offset</code> tab to check the electrode impedances and change the displayed range scale to 50 µV (see <strong>Figure 10</strong>):</p>
 <ul>
@@ -2433,7 +2433,7 @@
 <li>
 <p>Go back to the <code>monopolar display</code> tab and check the signal:</p>
 <ul>
-<li><strong>Bridges</strong> would appear in the signal as a set of neighbouring electrodes giving exactly the same or a unusual signal, along with very similar impedance values in adjacent electrodes. You would for example notice that fixing the impedance in one channel also affects its neighbour(s). Note that eyeblinks also can create sudden similar changes in multiple (frontal) channels, this is not bridging.</li>
+<li><strong>Bridges</strong> would appear in the signal as a set of neighbouring electrodes giving exactly the same or a unusual signal, along with very similar impedance values in adjacent electrodes. You would for example notice that fixing the impedance in one channel also affects its neighbour(s). Note that eyeblinks also can create sudden similar changes in multiple (frontal) channels - this is not bridging.</li>
 <li>A bad connection of the reference electrode results in a bad signal for all electrodes (see <strong>Figure 11a</strong>). Check whether the DRL and CMS electrodes are placed correctly and give a good signal.</li>
 <li>If the cap label is not sticking out, this results in a typical signal distortion. (see <strong>Figure 11b</strong>)</li>
 <li>If all electrodes are connected correctly, Actiview should look like <strong>Figure 12</strong>.</li>
@@ -2454,33 +2454,32 @@
 <ol>
 <li>Start recording (= saving data to file) by clicking the <code>paused</code> button in ActiView on the bottom right. When recording, it switches to <code>saving</code> and turns green (see <strong>Figure 12</strong>). <strong>Do not forget this</strong> (you wouldn't be the first)!</li>
 <li>Give your participant the last instructions (a little bit of shouting is necessary) and start the experiment on the stimulus pc.</li>
+<li>Once the run has started, quickly ensure that triggers from your experiment are sending and being recorded. Do this by changing "Trigger Format" from Analog to Digital (see Figure 13) and checking that the numbers correspond to your task and stimuli. </li>
 <li>When an experiment run is finished, click on <code>pause save</code> below the green <code>saving</code> button and then on <code>stop</code> on the top left of the screen.</li>
 <li>Continue to record another run with a different filename by clicking <code>start</code>, <code>start file</code> and entering your new filename in BIDS (see earlier). Do not forget to restart the recording by clicking the <code>paused</code> button again so that it switches to <code>saving</code> and turns green. If you want all your data to be saved in one file, you can skip this step. However, in that case the file size can become inconveniently large.</li>
-<li>The data is saved in the folder you selected earlier. Make sure to copy the data from the acquisition computer to your personal drive at the end of your experiment. Occasionally, the EEG computer will be cleaned and your data might be lost if it is not backed-up.</li>
-<li>
-<p>When you are done, turn off the A/D-box, the general power strip and the lights in the EEG booth.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Make sure to write down the "bad channels" (i.e., with impedances below or above 20 mV) on your Case Report Form (you can find an example <a href="https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/log_EEG_participants.xlsx?d=wa29320cdb14c4e989a3c5eed41b4c61a&amp;csf=1&amp;web=1&amp;e=R982GF">here</a>) for each run separately (the impedances can change throughout the experiment), such that you can take this into account in your analysis (e.g., interpolation).</p>
-</div>
-</li>
+<li>The data is saved in the folder you selected earlier. Make sure to copy the data from the acquisition computer to your personal drive at the end of your experiment. Occasionally, the EEG computer drive will be cleaned and your data might be lost if it is not backed-up.</li>
+<li>When you are done, turn off the A/D-box, the general power strip and the lights in the EEG booth.</li>
 </ol>
+<p><img alt="Connecting the electrodes" src="../../assets/eeg-acquisition-fig13.png" /></p>
+<div class="language-text highlight"><pre><span></span><code>!!! tip &quot;Tip&quot;
+    Make sure to write down the &quot;bad channels&quot; (i.e., with impedances outside of the  -20 to 20 mV range) on your Case Report Form (you can find an example [here](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/log_EEG_participants.xlsx?d=wa29320cdb14c4e989a3c5eed41b4c61a&amp;csf=1&amp;web=1&amp;e=R982GF)) for each run separately (the impedances can change throughout the experiment). You can then take this into account in your analysis (e.g., interpolation).
+</code></pre></div>
 <h2 id="after-the-experiment">After the experiment<a class="headerlink" href="#after-the-experiment" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Unplug the electrode sets from the A/D-box (4 sets + mini-set with DRL and CMS electrodes).</li>
-<li>Put the protective caps back on the connectors, put the connectors in a waterproof plastic bag and use an elastic band to close the bag. <strong>The connectors are very sensitive and should not get wet!</strong></li>
+<li>Put the protective caps back on the connectors. Put the connectors in a waterproof plastic bag and use an elastic band to close the bag. <strong>The connectors are very sensitive and should not get wet!</strong></li>
 <li>Escort the participant out of the EEG booth to the preparation room and put a towel on the participant's shoulders to prevent gel leaking on their clothes.</li>
-<li>Remove the electrodes from the cap <strong>one-by-one</strong>. Do not pull on the wires but on the electrode itself, to avoid damage to the wires.</li>
-<li><strong>Make sure the electrodes never touch metal</strong>, this is especially a risk if the chair of the participant contains a lot of metal.  </li>
+<li>Remove the electrodes from the cap <strong>one-by-one</strong>. Do not pull on the wires but on the electrode itself to avoid damage to the wires.</li>
+<li><strong>Make sure the electrodes never touch metal</strong>. This is especially a risk if the participant's chair contains a lot of metal.  </li>
 <li>Once all electrodes are removed, place them in the plastic tub (not directly in the metal sink!). Remove the head cap from the participant's head and place it in the tub as well.  </li>
-<li>Let the participant wash the gel out off their hair in the sink. Below the sink we have shampoo caps they can use.</li>
-<li>Have the participant sign the reward list if they participate for a monetary reward.  </li>
+<li>Let the participant wash the gel out off their hair in the sink. Below the sink we have shampoo they can use.</li>
+<li>Have the participant sign the reward list if they participated for a monetary reward.  </li>
 </ol>
 <h2 id="cleaning">Cleaning<a class="headerlink" href="#cleaning" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Put the leftover gel in the syringes back in the tube. </li>
 <li>Soak the syringes, head cap and electrode sets (not the connectors!) in the plastic tub filled with lukewarm water. Use the shower head to rinse the material.</li>
-<li>If after soaking and rinsing the electrodes there is still gel left around the electrode tips, carefully brush the gel off with a soft toothbrush. Do this only if really necessary. Use a plastic toothpick to remove the gel from all the gaps in the head cap.</li>
+<li>Use a plastic toothpick to remove the gel from all the gaps in the head cap.</li>
 <li>Fill the tub with clean lukewarm water and add a bit of the 70% alcohol solution to it. Soak the electrodes, the head cap and the syringes in it for a few seconds to disinfect them. </li>
 <li>Rinse everything again with lukewarm water and let the caps and syringes dry on the round table. Put the electrode sets back on the rack (make sure they are stable and don't fall on the floor).</li>
 </ol>
@@ -2522,6 +2521,7 @@
       
         <a href="mailto:joshmaria.beem@student.kuleuven.be">JoshBe</a>, 
         <a href="mailto:61991543+timmaniquet@users.noreply.github.com">Tim Maniquet</a>, 
+        <a href="mailto:107524850+brentpitchford@users.noreply.github.com">brentpitchford</a>, 
         <a href="mailto:59078281+costantinoai@users.noreply.github.com">costantinoai</a>, 
         <a href="mailto:klara.schevenels@outlook.com">kschevenels</a>, 
         <a href="mailto:110229499+kschevenels@users.noreply.github.com">kschevenels</a>
