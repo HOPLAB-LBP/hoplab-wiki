@@ -2,6 +2,7 @@
 exclude = [
   "mailto:",
   "https://kuleuven.sharepoint.com/.*",
+  "https://anydesk.com/.*",
 ]
 max_redirects = 10
 retry_wait_time = 2
