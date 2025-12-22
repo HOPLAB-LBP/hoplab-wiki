@@ -26,6 +26,8 @@ The SMEC puts a lot of emphasis on a well thought out **recruitment and informed
   - If applicable, clarification that the study is not set within the hospital context
   - Contact details of the researchers
   - Ethics committee contact information
+ 
+  - **Include version number and dates on all documents, preferably in a footer or header. Update when making amendments**
 
 - In some cases, it may be justifiable to use a **brief consent form** (e.g., a short online questionnaire that is likely to be completed on a small screen). A full consent form might be intimidating in this case or considered a barrier that might limit response rates. A concise consent form should include at least the following elements:
   
@@ -54,6 +56,14 @@ After the review, you will be informed of the outcome via an automated email fro
 3. Major revisions: Resubmission is required (within 6 months), after which the dossier will be re-reviewed by the SMEC panel.
 
 A flowchart visualising the ethical review process (and its timing) can be consulted [here](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/time-flow-smec-zonder-amd.pdf).
+
+## Amendments at [SMEC](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/STAFFWhere-and-how-to-apply)
+
+1. Access the PRET platform
+2. Open a previously approved application dossier and make a copy to begin your amendment
+3. Make any necessary changes to the dossier, giving a clear explanation of changes on the communication page prior to submission. **NOTE: Amendments can only be submitted for **small modifications or extensions**, and only for dossiers that are less than 4 years old.
+4. To amend documents, use track changes and re-upload documents to the dossier.
+5. Save and submit the new dossier 
 
 <!--
 __TODO__: [Klara] Update this page and add some explanation about the new SMEC templates

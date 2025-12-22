@@ -28,7 +28,7 @@ For a valid application, you are required to upload the following components:
 
 1. **Accompanying letter signed by the PI**
 
-    - Ask for approval (specify the study type) and add a short description of the (goals of the) project
+    - Ask for approval (specify the study type) and add a short description of the goals of the project
     - Specify where (national/international) and by whom the study will be conducted (your affiliation)
     - Describe the participant group, the recruitment and reimbursement procedure
     - Specify that the informed consent forms will be signed prior to participation
@@ -54,16 +54,18 @@ For a valid application, you are required to upload the following components:
     - Method of data processing
     - Publication policy
     - References
+    - Each page of the protocol should be numbered ("page X"), with a footer recording the version      number and date. 
 
 3. **Participant recruitment**
 
-    - Describe the procedure that will be used to contact and recruit the study population described in the protocol: where, how, by whom.
-    - Make sure to include a justification for the potential recruitment of participants who are unable to give their consent. This info should be provided in a separate document.
+    - Provide a recruitment summary that describes the procedure that will be used to contact and recruit the study population described in the protocol: where, how, by whom.
+    - Make sure to include a justification for the potential recruitment of participants who are unable to give their consent. This info should be provided in the recruitment summary. 
     - If recruitment materials (posters, brochures, advertisements, website, etc.) are used, they also have to be submitted under this section. You can read the guidelines on advertising/recruting [here](https://www.uzleuven.be/nl/ethische-commissie-onderzoek/templates-en-interne-richtlijnen-bij-starten-van-dossier-bij-ec-onderzoek/adverterenrekruteren-voor-klinische-studies-richtlijnen-ec-onderzoek).
+    - Each piece of recruitment material should clearly state the version number and date.
 
 4. **Informed consent forms (ICFs)** (in English and in Dutch)
 
-    - The EC provides some ICF templates which already include information regarding the legal basis for data processing chosen by UZ/KU Leuven (i.e., "public interest", cf. Article 6 of the GDPR), include the necessary contact details of the insurance company, etc. You can find them [here](https://www.uzleuven.be/nl/ethische-commissie-onderzoek/templates-en-interne-richtlijnen-bij-starten-van-dossier-bij-ec-onderzoek/informed-consent-formulier-icf-opstellen-voor-ec-onderzoek) (navigate to "niet-EudraCT studies").
+    - The EC requires the use of ICF templates which already include information regarding the legal basis for data processing chosen by UZ/KU Leuven (i.e., "public interest", cf. Article 6 of the GDPR), include the necessary contact details of the insurance company, etc. You can find them [here](https://www.uzleuven.be/nl/ethische-commissie-onderzoek/templates-en-interne-richtlijnen-bij-starten-van-dossier-bij-ec-onderzoek/informed-consent-formulier-icf-opstellen-voor-ec-onderzoek) (navigate to "niet-EudraCT studies").
     - The ICF should be written in clear and understandable language and consist of the following subsections (in a single document):
 
         1. Essential information to make the decision to participate, such as a clear description of the study project (context, objectives, methodology and procedure), a brief but clear explanation of the participant's rights (voluntary participation, confidentiality, safety precautions, insurance, etc.) and a description of the risks and benefits. Make sure to also include contact details of the PI such that the candidate has a contact point for further questions.
@@ -80,12 +82,42 @@ For a valid application, you are required to upload the following components:
 
 6. A pdf-version of the completed [**UZ Leuven GDPR questionnaire**](https://www.uzleuven.be/en/ctc-gdpr-questionnaire) or the accepted [**KU Leuven PRET questionnaire**](https://www.groupware.kuleuven.be/sites/pret/Pages/default.aspx)
 
-7. [**Proof of "no fault" insurance**](https://admin.kuleuven.be/sab/vz/en/public-liability#section-4), which you can request by sending an email to *<liability@kuleuven.be>*
+7. [**Proof of "no fault" insurance**](https://admin.kuleuven.be/sab/vz/en/public-liability#section-4), which you can request by sending an email to *<liability@kuleuven.be>* or if UZ/KU Leuven is the sponsor of the study, you can find insurance certificates [here](https://www.uzleuven.be/en/ethics-committee-research/explanatory-notes/proof-no-fault-insurance-ec-research)
+8. **Good clinical practice certificates**
+   - Good Clinical Practice (GCP) certificates are required for each of the researchers to be involved in data collection, prior to data collection beginning. GCP certificates are required for PIs when submitting an ethics application. You can find information and registration for training [here](https://gbiomed.kuleuven.be/english/ctc/intern/ctc-academy/ich-gcp-e6-r2-training-certification)
 
-8. **Suitability/agreement of the relevant supporting UZ Leuven departments**
+9. **Suitability/agreement of the relevant supporting UZ Leuven departments**
 
-Once you have written all the necessary documents, you can file your application [here](https://www.uzleuven.be/nl/ethische-commissie-onderzoek/aanvraagformulier-voor-studie-bij-ec-onderzoek) by uploading all necessary information. Please not that only 1 (zip)file per component is allowed.
+Once you have written all the necessary documents, you can file your application [here](https://www.uzleuven.be/nl/ethische-commissie-onderzoek/aanvraagformulier-voor-studie-bij-ec-onderzoek) by uploading all necessary information. Please note that only 1 (zip)file per component is allowed.
 
+---
+
+# Filing an amendment with Ethical Committee UZ/KU Leuven
+For UZ/KU Leuven there are two types of amendment. Detailed information which option to choose can be found [here](https://www.uzleuven.be/en/ethics-committee-research/supplement-approved-study-ec-research/submitting-amendments-ec-research): 
+- Substantial amendments
+- Amendments for participation of additional centres in a previously approved study 
+
+**Substantial amendments**
+
+Requirements for submission (for detailed information, see [here](https://www.uzleuven.be/en/ethics-committee-research/experiment/submitting-amendments-ec-research-experiment/substantial-amendments): 
+- Cover letter of the PI
+- Amended documents with changes marked via track changes (**must have updated version numbers and dates**)
+- **IF** changes to ICF are needed, it is recommended to use an **ICF Addendum for ongoing participants** The ICF addendum includes only the changes or new information, making it more clear for the participant than a revised ICF with marked changes.
+- When submitting provide the name, telephone and email address of contact within UZ Leuven/KU Leuven (other than the investigator) for follow-up of the file.
+- **Submission to be made by electronic submission via Eudralink, via Liquidfiles or by email (ecstaf@uzleuven.be)** 
+
+**Amendments for participation of additional centres in a previously approved study**
+Requirements for submission (for detailed information, see [here](https://www.uzleuven.be/en/ethics-committee-research/experiment/submitting-amendments-ec-research-experiment/participation-additional-centres-previously-approved-research) 
+
+- Cover letter of the PI
+- Written confirmation of the sponsor that the file was simultaneously submitted at all new centres
+- Details of the added local ethics committees (name of contact, address, telephone, fax, email address)
+- The name of the local principal investigator(s) for whom the local ethics committee issues an opinion
+- Contracts of all added centres. In the event that the contracts are identical for all centres, it is sufficient to submit one model contract with written declaration from the client that all contracts are identical for all centres, including compensations.
+- Concise CV(s) of the investigator(s) of the added centres
+- Name and address (preferably in Belgium) of a contact at the company to whom the invoice can be sent
+- Name, tel/fax, email of contact at UZ Leuven/KU Leuven (other than the investigator) for follow-up of the file
+- **Submission to be made by electronic submission via Eudralink, via Liquidfiles or by email (ecstaf@uzleuven.be)** 
 ---
 
 <!--

@@ -18,6 +18,11 @@ Faculty issued computers can be recognized by their name starting with GHUM. To 
 4. **Multi-factor authentication**:
     - To access KU Leuven intranet pages, you will need to log in with [KU Leuven Authenticator](https://admin.kuleuven.be/icts/english/mfa). You can register your device with a smartphone or tablet via the KU Leuven Authenticator App ([read the instructions](https://admin.kuleuven.be/icts/english/mfa/startwithmfa#smartphone)).
     - If you are having issues with MFA, check this [FAQ page](https://admin.kuleuven.be/icts/services/mfa/faq_en).
+5. **Downloading software**:
+    - Before downloading software, make sure you acquired administrator access. You can request administrator rights by double clicking the "Make Me Admin" icon on your Windows, providing ICT with a short reason on why you need this access. Follow the further instructions to get temporary administrator rights on your computer. 
+    - Software should always be installed in 'C:\Workdir\MyApps\'. If software is installed elsewhere, the system will block these programs from running. Please contact the [ICT helpdesk](https://ppw.kuleuven.be/ppw-dict) if a problem occurs.
+
+
 
 ??? question "Where do I find the hostname of my pc?"
     The hostname is usually printed on a sticker on the computer. If not, go to Start, right click on "This PC", choose properties, and check the "Device name" field.
@@ -101,8 +106,8 @@ Here are some programs we frequently use in the lab, which you might find useful
 
 - **Slack**: Slack is used for communication within the lab. Ask any lab member to add you to the relevant channels.
 
-- **Skype for business** and **Microsoft Teams**: KU Leuven offers both [Skype for business](https://admin.kuleuven.be/icts/english/services/skype) and [MS Teams](https://admin.kuleuven.be/icts/english/teams/index) for communication purposes. See [this table](https://admin.kuleuven.be/icts/english/teams/comparison) for a comparison between the different platforms. Currently, MS Teams is the newer and preferred option, however, it only allows its users to reach other MS Teams users. With MS Teams, it is currently not possible to call (or be called by) telephone numbers (landline and mobile). You can use Skype for this.
-
+- **Microsoft Teams**: KU Leuven offers [MS Teams](https://admin.kuleuven.be/icts/english/teams/index) for communication purposes. MS Teams is the newer and preferred option, however, it only allows its users to reach other MS Teams users. With MS Teams, it is currently not possible to call (or be called by) telephone numbers (landline and mobile).
+  
 - **SSL VPN Pulse Client / Ivanti Secure Access Client**: The VPN offered by the university. For more information, check out this [link](https://admin.kuleuven.be/icts/services/vpn/).
 
 - **Overleaf**: An online <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> editor for collaborative writing and publishing.
@@ -134,10 +139,15 @@ All KU Leuven staff and students have their own [OneDrive](https://admin.kuleuve
 
 ## Printing
 
-Find info on how to install printing services on your desktop or laptop connected to the KU Leuven or faculty network [here](https://ppw.kuleuven.be/home/ppw-dict/dictservicedesk/netwerkprinter). The printer names are:
+Find info on how to install printing services on your desktop or laptop connected to the KU Leuven or faculty network [here](https://ppw.kuleuven.be/home/ppw-dict/dictservicedesk/netwerkprinter).
 
+On the second floor, the printer names are:
 - PRLBP (Black & White printer)
 - PRLBP2 (Color printer)
+
+Downstairs on the ground floor, the printer names are:
+- PRLEB1 (Black & White printer)
+- PRLEB3 (Color printer)
 
 If the installation doesn’t work, or you are using a windows desktop or laptop not connected to the KU Leuven or faculty network, use a USB key to print on the black and white printer in room 02.28. You can also get permanent access by asking [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) to add you to the list of users.
 
@@ -168,8 +178,5 @@ For **mac users**, follow the instructions on [this page](https://ppw.kuleuven.b
 <!--
 __TODO__: [Klara] Explain how you can forward emails from your student mailing address to your professional mailing address (for PhD'ers)
 __TODO__: [Klara] Specify how to encrypt your (external) hard drive --> I think it happens automatically at least for Windows 
-__TODO__: [Klara] Delete all Skype info as it will be deprecated
-__TODO__: [Klara] Make it clearer that all software has to be installed in Workdir!!
 __TODO__: [Klara] Edit info on data storage after BADM consultation has ended (e.g., OneDrive info is outdated and not recommended any longer by KU Leuven)
-__TODO__: [Klara] Add info on how to print downstairs
 -->

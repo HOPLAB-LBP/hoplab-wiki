@@ -744,7 +744,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
     spm_results_ui('SetCoords', crossCoords);
 
     % Overlay activations on anatomical image
-    sectionImgPath = fullfile(fmriprepRoot, subjectName, 'anat', [subjectName, '_space-MNIPediatricAsym_cohort-1_res-2_desc-preproc_T1w.nii']);
+    sectionImgPath = fullfile(fmriprepRoot, subjectName, 'anat', [subjectName, '_space-MNI152NLin2009cAsym_res-2_desc-preproc_T1w.nii']);
     if exist(sectionImgPath, 'file')
         fprintf('Overlaying activations for threshold %g...\n', thresholdValue);
         spm_sections(xSPM, hReg, sectionImgPath);

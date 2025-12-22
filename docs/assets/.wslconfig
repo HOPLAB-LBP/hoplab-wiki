@@ -1,0 +1,10 @@
+[wsl2]
+
+# Specify memory - 80% of total RAM
+memory=51GB 
+
+# Number of cores: max - 2
+processors=10
+
+# Swap storage space: 25% of available RAM
+swap=16GB

@@ -2,7 +2,7 @@
 
 On this page, we will specify the procedures for the most common administrative procedures you might need to follow. If something is missing, please contact us so we can add it and keep this page up to date (and your lives easier).
 
-**KU Loket** is the university portal through which many administrative things are done. You can access it [here](https://webwsp.aps.kuleuven.be/irj/portal).
+**KU Loket** is the university portal through which many administrative things are done. You can access it [here](https://www.kuleuven.be/sapredir/kuloket).
 
 ## Consult your personnel file
 
@@ -25,7 +25,7 @@ Through your personnel file, you can also apply for [teleworking allowances](htt
 3. Click on "**Forms**", create a "**+ New form**" and give it an informative name (e.g., congres X)
 4. Add all your expenses to the form (e.g., train tickets, dinner expenses, the registration fee)
 5. Link a digital proof to each expense
-6. Couple the appropriate financial antenna to your form ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838), u0057838)
+6. Couple the appropriate financial antenna to your form ([Agna Marien](https://www.kuleuven.be/wieiswie/en/person/00088446), u0088446)
 7. Add information on which fund your expenses should be paid from (ask  your PI)
 
 ![Reimbursement](../assets/KULoket_reimbursement.png)
@@ -69,7 +69,7 @@ Proceed as follows:
     - *How* you will get there
     - *Why* you are going
 
-4. Add the correct financial antenna to the form ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838), u0057838)
+4. Add the correct financial antenna to the form ([Agna Marien](https://www.kuleuven.be/wieiswie/en/person/00088446), u0088446)
 5. Submit the form
 
 ![Register missions](../assets/KULoket_missions.png)
@@ -108,9 +108,9 @@ Please contact [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) for a
 - Computer equipment
 - Physical mail and packages (post)
 
-**General orders** (e.g., milk, coffee, office material) are also handled by [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752). In case of bigger purchases, make sure to include the financial antenna ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838)) in the process.
+**General orders** (e.g., milk, coffee, office material) are also handled by [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752). In case of bigger purchases, make sure to include the financial antenna ([Agna Marien](https://www.kuleuven.be/wieiswie/en/person/00088446) in the process.
 
-The IT department handles orders related to **computer supplies** (<ppw.dict@kuleuven.be>). All [computer equipment](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/computer-accessories) needs to be bought through the [official university providers](https://admin.kuleuven.be/td/aankoop/intranet/english/discounts/ICT/computeraccessories) by the financial antenna ([An Van Kets](https://www.kuleuven.be/wieiswie/nl/person/00057838)). Therefore, when computer supplies need to be bought, make sure to contact them both. It can also be useful to include [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) in CC in that case.
+The IT department handles orders related to **computer supplies** (<ppw.dict@kuleuven.be>). All [computer equipment](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/computer-accessories) needs to be bought through the [official university providers](https://admin.kuleuven.be/td/aankoop/intranet/english/discounts/ICT/computeraccessories) by the financial antenna ([Agna Marien](https://www.kuleuven.be/wieiswie/en/person/00088446)). Therefore, when computer supplies need to be bought, make sure to contact them both. It can also be useful to include [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) in CC in that case.
 
 If you need **technical assistance** for your order (e.g., you want to order an EEG-cap), you can contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or send an email to <neurospace@kuleuven.be> (general mailing address to reach the NeuroSPACE support staff).
 
