@@ -14,7 +14,7 @@ If you just got started in the lab, you might want to make sure you're added on 
 
     1. The **LBI newsletter** (register through [this website](https://www.kuleuven.be/brain-institute/join-lbi/newsflash/form)) communicates any event the Leuven Brain Institute organises. This is mostly important to stay updated on things like the annual LBI scientific meeting, but also interesting science communication events.
     2. The **BAPS newsletter** (register on [their main page](https://www.baps.be/)) can be of relevance for Belgium-wise psychological science events & news. For instance, the yearly BAPS meeting will be shared through this channel.
-    3. The **MRI mailing list** (*MRI@LS.KULEUVEN.BE*) will report any news concerning the MR8 scanner at the hospital. If you scan or plan on scanning, this is a must. It will tell you if the scanner breaks down, if there are any new guidelines to follow, or more commonly, if any booked timeslot is cancelled. This is a KU Leuven-based mailing list, which you can register to [on this website](http://ls.kuleuven.be/).
+    3. The **MRI mailing list** (*MRI@LS.KULEUVEN.BE*) will report any news concerning the MR8 scanner at the hospital. If you scan or plan on scanning, this is a must. It will tell you if the scanner breaks down, if there are any new guidelines to follow, or more commonly, if any booked timeslot is cancelled. This is a KU Leuven-based mailing list, which you can register to [on this website](https://ls.kuleuven.be/cgi-bin/wa?SUBED1=MRI).
 
 === "The optional"
 
