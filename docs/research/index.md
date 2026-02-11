@@ -20,6 +20,14 @@ Welcome to the central hub for all research activities at Hoplab. This page serv
 
     [:octicons-arrow-right-24: View coding resources](coding/index.md)
 
+- :material-robot-love-outline:{ .lg .middle } __Deep Neural Networks (DNN)__
+
+    ---
+
+    Dive into our research on deep neural networks and their application in cognitive and neuroscience research.
+
+    [:octicons-arrow-right-24: Explore DNN research](dnn/index.md)
+
 - :material-wave:{ .lg .middle } __EEG studies__
 
     ---
