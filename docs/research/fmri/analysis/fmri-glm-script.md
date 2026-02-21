@@ -434,9 +434,9 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
                 tsv_confounds_files = dir(fullfile(funcPathSub, strcat(subName, '_task-', selectedTask, '_run-*_desc-confounds_timeseries.tsv')));
             else
                 % Include only the specific runs listed in `selectedRuns`.
-                eventsTsvFiles = arrayfun(@(x) dir(fullfile(bidsPathSub, strcat(subName, '_task-', selectedTask, '_run-', sprintf('%01d', x), '_events.tsv'))), selectedRuns, 'UniformOutput', true);
-                json_confounds_files = arrayfun(@(x) dir(fullfile(funcPathSub, strcat(subName, '_task-', selectedTask, '_run-', sprintf('%01d', x), '_events.json'))), selectedRuns, 'UniformOutput', true);
-                tsv_confounds_files = arrayfun(@(x) dir(fullfile(funcPathSub, strcat(subName, '_task-', selectedTask, '_run-', sprintf('%01d', x), '_events.tsv'))), selectedRuns, 'UniformOutput', true);
+                eventsTsvFiles = arrayfun(@(x) dir(fullfile(bidsPathSub, strcat(subName, '_task-', selectedTask, '_run-', sprintf('%02d', x), '_events.tsv'))), selectedRuns, 'UniformOutput', true);
+                json_confounds_files = arrayfun(@(x) dir(fullfile(funcPathSub, strcat(subName, '_task-', selectedTask, '_run-', sprintf('%02d', x), '_desc-confounds_timeseries.json'))), selectedRuns, 'UniformOutput', true);
+                tsv_confounds_files = arrayfun(@(x) dir(fullfile(funcPathSub, strcat(subName, '_task-', selectedTask, '_run-', sprintf('%02d', x), '_desc-confounds_timeseries.tsv'))), selectedRuns, 'UniformOutput', true);
             end
 
             % Sort the retrieved files alphabetically by name for consistent ordering.
