@@ -19,6 +19,15 @@ nav:
     - Student starter pack: get-started/student-starter-pack.md
   - Research:
     - research/index.md
+    - Research data management:
+      - research/rdm/index.md
+      - Temporary guidelines: research/rdm/current.md
+      - Onboarding checklist: research/rdm/onboarding.md
+      - Workflows per research modality: research/rdm/SOPs.md
+      - ManGO for active research data: research/rdm/mango_active.md
+      - FriGO for archiving: research/rdm/frigo_archive.md
+      - RDR for data sharing: research/rdm/RDR_sharing.md
+      - Offboarding checklist: research/rdm/offboarding.md
     - Ethical approval:
       - research/ethics/index.md
       - EC onderzoek: research/ethics/MEC.md
@@ -156,12 +165,12 @@ markdown_extensions:
   
 plugins:
   - offline
-  - privacy
+#  - privacy
   - search
   - git-authors
-  - git-revision-date-localized:
-      type: datetime
-      timezone: Europe/Brussels
+#  - git-revision-date-localized:
+#      type: datetime
+#      timezone: Europe/Brussels
       
 extra_css:
   - stylesheets/extra.css
