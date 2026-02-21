@@ -25,7 +25,7 @@ Next, we have to make sure you are logged in to ManGO and your irods_environment
 pip install mango_auth
 ```
 
-Then, go to the "How to connect" page in [the ManGO portal]((https://mango.kuleuven.be/)) to get your irods_user_name, irods_zone_name and irods_host information. Execute the command below with your own information in your terminal:
+Then, go to the "How to connect" page in [the ManGO portal](https://mango.kuleuven.be/) to get your irods_user_name, irods_zone_name and irods_host information. Execute the command below with your own information in your terminal:
 
 ```python
 mango_auth <irods_user_name> <irods_zone_name> <irods_host>
