@@ -1,14 +1,13 @@
 # Temporary RDM Guidelines (transition period)
 
-    !!! warning "Work in progress"
-        These guidelines reflect the **currently recommended practices** while we are setting up the full Research Data Management workflows (ManGO, RDR, FriGO, SOPs). They may evolve over time. When in doubt, ask.
-
+!!! warning "Work in progress"
+    These guidelines reflect the **currently recommended practices** while we are setting up the full Research Data Management workflows (ManGO, RDR, FriGO, SOPs). They may evolve over time. When in doubt, ask.
 
 ## The big picture 
 
 The decision tree below shows the intended direction of storage across the research lifecycle depending on researcher stage:
 
-    ![Decision tree](../../assets/rdm_decision_tree_18122025.png)
+![Decision tree](../../assets/rdm_decision_tree_18122025.png)
 
 If you are an early-stage researcher and/or start a new project: 
 
@@ -85,7 +84,6 @@ These guidelines reflect the **current working procedures** and may be updated a
 
 Please check this page regularly if you are starting a new project.
 
-
-    !!! tip "Questions welcome"
-        We know this transition phase can feel unclear. If something is confusing, send concrete questions, report unclear cases, or suggest examples we should document. This helps us build better permanent guidelines.
+!!! tip "Questions welcome"
+    We know this transition phase can feel unclear. If something is confusing, send concrete questions, report unclear cases, or suggest examples we should document. This helps us build better permanent guidelines.
 
