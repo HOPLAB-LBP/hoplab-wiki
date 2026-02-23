@@ -8,40 +8,40 @@ General documentation on ManGO can be found [here](https://rdm-docs.icts.kuleuve
 
 Using a virtual environment keeps things clean and avoids breaking other Python setups. To do so, open a terminal in your project folder and activate it. To avoid issues with KU Leuven policy restrictions, we use Conda for this. If you don't have Conda installed, download and install it from [Conda's official website](https://www.anaconda.com/docs/getting-started/miniconda/main).
 
-```python
-conda create -n mango_env 
+```bash
+conda create -n mango_env   
 conda activate mango_env
 ```
 You should see (mango_env) in your terminal. Now, we can install the Python-iRODSClient and check the installation:
 
-```python
+```bash
 pip install python-irodsclient
 pip show python-irodsclient
 ```
 
 Next, we have to make sure you are logged in to ManGO and your irods_environment.json is configured correctly. The Python client needs an environment file that tells it which server to connect to, your username, SSL settings and authentification method. To do so, we have to install the required authentication package:
 
-```python   
+```bash   
 pip install mango_auth
 ```
 
 Then, go to the "How to connect" page in [the ManGO portal](https://mango.kuleuven.be/) to get your irods_user_name, irods_zone_name and irods_host information. Execute the command below with your own information in your terminal:
 
-```python
+```bash
 mango_auth <irods_user_name> <irods_zone_name> <irods_host>
 ```
 
-    !!! Tip
-        To authenticate in a Python shell or within a script file, run the following snippet:
+!!! Tip
+    To authenticate in a Python shell or within a script file, run the following snippet:
 
-            ```python
-            from mango_auth import iinit
-            iinit("user_name", "zone_name", "host")
+    ```python
+    from mango_auth import iinit
+    iinit("user_name", "zone_name", "host")
 
-            env_file = os.path.expanduser('~/.irods/irods_environment.json')
-            with iRODSSession(irods_env_file=env_file) as session:
-            (...)
-            ```
+    env_file = os.path.expanduser('~/.irods/irods_environment.json')
+    with iRODSSession(irods_env_file=env_file) as session:
+    (...)
+    ```
             
 
 You will be redirected to your terminal, where you have to click the displayed authentication link. After successful login, an environment file is created at `~/.irods/irods_environment.json`. You now have a connection with the default password duration of 60 hours. However, it is also possible to log in with a password of long duration (7 days) if you have a Linux client environment with iCommands installed (see [this page](https://rdm-docs.icts.kuleuven.be/mango/clients/icommands.html)). 
@@ -319,27 +319,27 @@ We'll guide you through the setup, but if you want more information, here are a 
 
 2. Open a command prompt and navigate
 
-```
+```bash
 cd C:\Workdir\MyApps\mango-ingest-development
 ```
 
 3. Create an activate a virtual environment
 
-```
+```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
 4. Install mango-ingest and check packages
 
-```
+```bash
 venv\Scripts\python -m pip install -e mango-ingest-development
 venv\Scripts\python -m pip list
 ```
 
 5. If you haven't yet, install the Python-iRODSClient (PRC) and authentication tools, and log in to iRODS
 
-```
+```bash
 pip install python-irodsclient
 pip install mango_auth
 mango_auth <your_username> ghum ghum.irods.icts.kuleuven.be
@@ -347,7 +347,7 @@ mango_auth <your_username> ghum ghum.irods.icts.kuleuven.be
 
 6. Start ingest for a local folder
 
-```
+```bash
 venv\Scripts\python -m mango_ingest -d /ghum/home/Hoplab/[collection]/[sub-collection] -p "path_to_data_to_upload" -nw -r --verify-checksum
 ```
 
@@ -390,25 +390,25 @@ Retries failed uploads from a previous run using its JSON log file.
 
 Upload only matching files:
 
-```
+```bash
 --glob "*.edf"  # for EEG files only
 ```
 
 or
 
-```
+```bash
 --regex PATTERN
 ```
 
 Ignore specific files:
 
-```
+```bash
 --ignore-glob "*.tmp" # to ignore temporary files
 ```
 
 or
 
-```
+```bash
 --ignore PATTERN
 ```
 
@@ -429,7 +429,7 @@ For advanced metadata examples, see [`doc/examples/extract_metadata.py`](https:/
 
 Use:
 
-```
+```bash
 -nw -r --verify-checksum
 ```
 
