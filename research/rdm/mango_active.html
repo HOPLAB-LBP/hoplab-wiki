@@ -2522,31 +2522,30 @@
 <p>General documentation on ManGO can be found <a href="https://rdm-docs.icts.kuleuven.be/mango/index.html">here</a>. This page will focus on the setup and use of Python to interact with ManGO and is mainly based on the instructions on <a href="https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html">this page</a>. Note that there exist other clients to connect to ManGO (e.g., the ManGO portal in the browser, iron CLI Client, iCommands and several SFTP clients), which we won't cover here but you are of course welcome to explore.</p>
 <h2 id="installing-and-setting-up-the-python-irodsclient-prc">Installing and setting up the Python-iRODSClient (PRC)<a class="headerlink" href="#installing-and-setting-up-the-python-irodsclient-prc" title="Permanent link">&para;</a></h2>
 <p>Using a virtual environment keeps things clean and avoids breaking other Python setups. To do so, open a terminal in your project folder and activate it. To avoid issues with KU Leuven policy restrictions, we use Conda for this. If you don't have Conda installed, download and install it from <a href="https://www.anaconda.com/docs/getting-started/miniconda/main">Conda's official website</a>.</p>
-<p><div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">mango_env</span> 
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">conda</span> <span class="n">activate</span> <span class="n">mango_env</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>mango_env<span class="w">   </span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>mango_env
 </span></code></pre></div>
 You should see (mango_env) in your terminal. Now, we can install the Python-iRODSClient and check the installation:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">irodsclient</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">pip</span> <span class="n">show</span> <span class="n">python</span><span class="o">-</span><span class="n">irodsclient</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>python-irodsclient
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>pip<span class="w"> </span>show<span class="w"> </span>python-irodsclient
 </span></code></pre></div>
 <p>Next, we have to make sure you are logged in to ManGO and your irods_environment.json is configured correctly. The Python client needs an environment file that tells it which server to connect to, your username, SSL settings and authentification method. To do so, we have to install the required authentication package:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">mango_auth</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mango_auth
 </span></code></pre></div>
 <p>Then, go to the "How to connect" page in <a href="https://mango.kuleuven.be/">the ManGO portal</a> to get your irods_user_name, irods_zone_name and irods_host information. Execute the command below with your own information in your terminal:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">mango_auth</span> <span class="o">&lt;</span><span class="n">irods_user_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">irods_zone_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">irods_host</span><span class="o">&gt;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mango_auth<span class="w"> </span>&lt;irods_user_name&gt;<span class="w"> </span>&lt;irods_zone_name&gt;<span class="w"> </span>&lt;irods_host&gt;
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code>!!! Tip
-    To authenticate in a Python shell or within a script file, run the following snippet:
-
-        ```python
-        from mango_auth import iinit
-        iinit(&quot;user_name&quot;, &quot;zone_name&quot;, &quot;host&quot;)
-
-        env_file = os.path.expanduser(&#39;~/.irods/irods_environment.json&#39;)
-        with iRODSSession(irods_env_file=env_file) as session:
-        (...)
-        ```
-</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To authenticate in a Python shell or within a script file, run the following snippet:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">mango_auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">iinit</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">iinit</span><span class="p">(</span><span class="s2">&quot;user_name&quot;</span><span class="p">,</span> <span class="s2">&quot;zone_name&quot;</span><span class="p">,</span> <span class="s2">&quot;host&quot;</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">env_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/.irods/irods_environment.json&#39;</span><span class="p">)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">with</span> <span class="n">iRODSSession</span><span class="p">(</span><span class="n">irods_env_file</span><span class="o">=</span><span class="n">env_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
 <p>You will be redirected to your terminal, where you have to click the displayed authentication link. After successful login, an environment file is created at <code>~/.irods/irods_environment.json</code>. You now have a connection with the default password duration of 60 hours. However, it is also possible to log in with a password of long duration (7 days) if you have a Linux client environment with iCommands installed (see <a href="https://rdm-docs.icts.kuleuven.be/mango/clients/icommands.html">this page</a>). </p>
 <h2 id="creating-a-mango-session-and-uploading-files-to-irods-python">Creating a ManGO session and uploading files to iRODS (Python)<a class="headerlink" href="#creating-a-mango-session-and-uploading-files-to-irods-python" title="Permanent link">&para;</a></h2>
 <p>This section contains a script to create a ManGO (iRODS) session using your environment file and upload files from a local directory to an iRODS collection. It supports both single files and full folders (including subfolders) and recreates the folder structure in iRODS. Optionally, it also sets read permissions.</p>
@@ -2826,31 +2825,31 @@ You should see (mango_env) in your terminal. Now, we can install the Python-iROD
 <p>Open a command prompt and navigate</p>
 </li>
 </ol>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cd C:\Workdir\MyApps\mango-ingest-development
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span>C:<span class="se">\W</span>orkdir<span class="se">\M</span>yApps<span class="se">\m</span>ango-ingest-development
 </span></code></pre></div>
 <ol>
 <li>Create an activate a virtual environment</li>
 </ol>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python -m venv venv
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>venv\Scripts\activate
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </span></code></pre></div>
 <ol>
 <li>Install mango-ingest and check packages</li>
 </ol>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>venv\Scripts\python -m pip install -e mango-ingest-development
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>venv\Scripts\python -m pip list
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>venv<span class="se">\S</span>cripts<span class="se">\p</span>ython<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>mango-ingest-development
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>venv<span class="se">\S</span>cripts<span class="se">\p</span>ython<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>list
 </span></code></pre></div>
 <ol>
 <li>If you haven't yet, install the Python-iRODSClient (PRC) and authentication tools, and log in to iRODS</li>
 </ol>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>pip install python-irodsclient
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>pip install mango_auth
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>mango_auth &lt;your_username&gt; ghum ghum.irods.icts.kuleuven.be
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>pip<span class="w"> </span>install<span class="w"> </span>python-irodsclient
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>pip<span class="w"> </span>install<span class="w"> </span>mango_auth
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>mango_auth<span class="w"> </span>&lt;your_username&gt;<span class="w"> </span>ghum<span class="w"> </span>ghum.irods.icts.kuleuven.be
 </span></code></pre></div>
 <ol>
 <li>Start ingest for a local folder</li>
 </ol>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>venv\Scripts\python -m mango_ingest -d /ghum/home/Hoplab/[collection]/[sub-collection] -p &quot;path_to_data_to_upload&quot; -nw -r --verify-checksum
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>venv<span class="se">\S</span>cripts<span class="se">\p</span>ython<span class="w"> </span>-m<span class="w"> </span>mango_ingest<span class="w"> </span>-d<span class="w"> </span>/ghum/home/Hoplab/<span class="o">[</span>collection<span class="o">]</span>/<span class="o">[</span>sub-collection<span class="o">]</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;path_to_data_to_upload&quot;</span><span class="w"> </span>-nw<span class="w"> </span>-r<span class="w"> </span>--verify-checksum
 </span></code></pre></div>
 <h3 id="command-options-explained">Command options explained<a class="headerlink" href="#command-options-explained" title="Permanent link">&para;</a></h3>
 <h4 id="core-paths">Core paths<a class="headerlink" href="#core-paths" title="Permanent link">&para;</a></h4>
@@ -2878,16 +2877,16 @@ This protects against silent corruption during transfer.</p>
 Retries failed uploads from a previous run using its JSON log file.</p>
 <h4 id="file-selection-optional-filtering">File selection (optional filtering)<a class="headerlink" href="#file-selection-optional-filtering" title="Permanent link">&para;</a></h4>
 <p>Upload only matching files:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>--glob &quot;*.edf&quot;  # for EEG files only
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>--glob<span class="w"> </span><span class="s2">&quot;*.edf&quot;</span><span class="w">  </span><span class="c1"># for EEG files only</span>
 </span></code></pre></div>
 <p>or</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>--regex PATTERN
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>--regex<span class="w"> </span>PATTERN
 </span></code></pre></div>
 <p>Ignore specific files:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>--ignore-glob &quot;*.tmp&quot; # to ignore temporary files
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>--ignore-glob<span class="w"> </span><span class="s2">&quot;*.tmp&quot;</span><span class="w"> </span><span class="c1"># to ignore temporary files</span>
 </span></code></pre></div>
 <p>or</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>--ignore PATTERN
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>--ignore<span class="w"> </span>PATTERN
 </span></code></pre></div>
 <h3 id="remarks-practical-tips">Remarks &amp; practical tips<a class="headerlink" href="#remarks-practical-tips" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2905,7 +2904,7 @@ Retries failed uploads from a previous run using its JSON log file.</p>
 <p>For advanced metadata examples, see <a href="https://github.com/kuleuven/mango-ingest/blob/development/doc/examples/extract_metadata.py"><code>doc/examples/extract_metadata.py</code></a>.</p>
 <h3 id="quick-rule-of-thumb">Quick rule of thumb<a class="headerlink" href="#quick-rule-of-thumb" title="Permanent link">&para;</a></h3>
 <p>Use:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>-nw -r --verify-checksum
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>-nw<span class="w"> </span>-r<span class="w"> </span>--verify-checksum
 </span></code></pre></div>
 <p>when you want a <strong>safe one-time upload of a full dataset</strong>.</p>
 <p>Omit <code>-nw</code> when you want <strong>continuous automatic syncing</strong> during ongoing data collection.</p>
