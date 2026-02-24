@@ -448,10 +448,10 @@ jobs:
               console.log(`File content length: ${content.length} characters`);
               console.log('First 200 characters of file content:');
               console.log(content.substring(0, 200));
-              
+
               console.log('\nParsing tags...');
               const currentTags = parseTags(content);
-              
+
               console.log(`\nTags found in ${file}:`);
               currentTags.forEach((tag, index) => console.log(`${index + 1}. ${tag.type}: ${tag.content}`));
 
@@ -477,17 +477,17 @@ jobs:
 
               // For comments we normalize less aggressively, but allow common prefixes.
               const tagRegex = /^\s*(?:>+\s*)?(?:(?:[-*+]\s+|\d+\.\s+))?(?:\[[ xX]\]\s+)?(?:\*\*|__|\*|_)?\[?(TODO|PLACEHOLDER|NOTE)\]?\b(?::|\s).+?(?:\*\*|__|\*|_)?$/gm;
-              
+
               const newTasks = [];
               let match;
 
               while ((match = tagRegex.exec(comment.body)) !== null) {
                 const fullLine = match[0].trim();
                 const tagType = match[1];
-                
+
                 console.log(`Found tag in comment: ${tagType}`);
                 console.log(`Full line: "${fullLine}"`);
-                
+
                 newTasks.push(`- [ ] ${fullLine} --> Added from comment #${comment.id} <--`);
               }
 

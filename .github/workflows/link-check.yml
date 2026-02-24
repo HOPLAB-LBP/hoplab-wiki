@@ -17,4 +17,3 @@ jobs:
           args: --config .lychee.toml README.md docs/**/*.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-

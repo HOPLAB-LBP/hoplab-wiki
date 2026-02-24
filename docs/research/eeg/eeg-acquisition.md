@@ -164,7 +164,7 @@ Hooray, you are now ready to start acquiring EEG data! To do so, follow these st
 6. Remove the head cap from the participant's head and place it in another tub with lukewarm water and some mild detergent. 
 7. Let the participant wash the gel out off their hair in the sink. Below the sink we have shampoo they can use.
 8. Do not forget to note the necessary payment details in case the participated should receive a monetary compensation. Save this personal information in a password-protected file in a secure environment and separately from the research data. 
-9. When they are dry, add all of your used towels and/or wash cloths to the laundry bag and indicate this on the paper taped to the cupboard (check one box per towel/hand cloth added). When all boxes are checked, the laundry bag is ful. Notify [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) to have them washed.
+9. When they are dry, add all of your used towels and/or wash cloths to the laundry bag and indicate this on the paper taped to the cupboard (check one box per towel/hand cloth added). When all boxes are checked, the laundry bag is full. Notify [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) to have them washed.
 10. Check whether any material is close to running out of stock (e.g., SignaGel, shampoo, adhesive tape, interdental brushes, cotton swabs, etc.) and notify [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) if this is the case. Please take into account that refilling stock might take several weeks.
 11. Take the signed ICF with you (do not leave it in the EEG room) and safely store it in a locked cabinet in your office.
 
