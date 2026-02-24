@@ -117,13 +117,42 @@ Generally, except for gender and age, personal information does not need to be r
 - Likewise, if a student wants to receive an update about the study results after the study is finished, they will need to provide their email address.
 These personal data should be saved in a password-protected file that will be stored as long as the study is ongoing, but deleted after publication of the research data.
 
-### Reimbursement
+---
 
+### Reimbursement
 Reimbursement can take the following forms:
 
 - **Credit study**: Research participation credits must be assigned in multiples of 0.25, i.e., 0.25 credit per 15 minutes, such that 1h equals 1 credit. Credits cannot be transferred between academic years.
-- **Paid study**: The standard pay rate is up to 10 euros per hour, without additional incentives. Exceptions are possible for high-effort or aversive studies (e.g., fMRI, ESM).
+- **Paid study**: The standard pay rate for EEG is currently 15 euros per hour, and 30 per hour for fMRI studies, without additional incentives. Exceptions are possible for high-effort or aversive studies (e.g., fMRI, ESM). (Last updated: Feb 2026 - check your informed consent to be 100% sure you are using the correct values).
 - **Mixed study**: Award 0 credits to those who receive payment.
+
+- For **more information** for instance, also for payment of [third parties](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/experimental-subjects). Use this when paying e.g., guest speakers’ travel expenses.
+
+=== “Participant Monetary Payment”
+    The following information applies not only to behavioral participants but also to all other forms of study.
+    If the participant has to be paid from grant money, you will need to fill out a payment Excel and mail it to your financial Antenna (in our case, most likely [Agna](mailto:agna.marien@kuleuven.be)).
+    It is advised not to do this for each participant separately but batch them together to ensure efficiency.
+
+    - Information you will need:
+        - Participant Name and Surname
+        - Participant Address
+        - Participant’s IBAN (and BIC if international IBAN)
+        - Payment amount
+        - Study Number (Ethics)
+        - Grant number
+
+    - Depending on whether the participant has a Belgian IBAN or not fill out the appropriate form: [Belgian Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20belgian%20account%20numbers.xlsx?d=w90debbbdd86e4ebab4c32c42d02ec9e4&csf=1&web=1&e=VfcP7g), [International Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20foreign%20account%20numbers.xlsx?d=w1555b214f88b4114a9378d483aef71d4&csf=1&web=1&e=fCtsMe). You will notice that in the file ‘Copy of Voorbeeld buitenlandse leveranciers.xlsx’ two columns are added: BIC and landcode. This information is very important for the Financial Department.
+    - In the file at “mededeling” the Financial Department needs “*surname participant_number ethical approval study_ initials of the researcher*”.
+    - Please do NOT CHANGE nor ADD columns to these Excel files
+    - It is also important that the participant’s *address* is filled in. In case the participant refuses to give you his/her/its private address, you may use the KU Leuven address.
+    - You forward the filled in file(s) to Agna together with this information:
+        Title study and number of the ethical approval
+        Name(s) of researcher (s)
+        How is the amount calculated: e.g., participants receive 10 EUR/hour.
+    - Please mention in the *subject of your e-mail* your name and a number/month. This helps us to find a specific payment and the original e-mail.
+
+=== “Credit Assignment”
+    To assign participants their credits: surf to EMS sona > login > uncredited timeslots > and mark the participant as ‘completed’ > click save.
 
 Of course, all (psychology) students also benefit from participation by gathering insights into the common procedures of psychological research (wink).
 
@@ -132,6 +161,7 @@ Please record participant presence ("show-ups") and assign credits or pay partic
 !!!tip
     The [Sona Mobile app](https://play.google.com/store/apps/details?id=com.sona_systems.mobile&hl=en_IE&pli=1) can be used for quick credit granting by scanning the QR code in the reminder email to the participants.
 
+---
 ### No shows
 
 - Participants should contact the researcher if they cannot attend the session, which qualifies as an **excused no-show**.
@@ -146,5 +176,4 @@ __TODO__: [Klara] Add the lab's participant database info
 
 __TODO__: [Klara] Add (more) guidelines on how to store/manage data (probably best in a separate section)
 
-__TODO__: [Klara] Add info on how the procedure for money reimbursement works, found info on [this link](https://ppw.kuleuven.be/intranet/en/finance/reimbursementtestsubjectsconcise) and [this link](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/experimental-subjects) and update with the newest ethical applications (€15/h for behavioural studies/EEG and €30/h for fMRI)
 -->
