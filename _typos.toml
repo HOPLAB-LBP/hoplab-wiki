@@ -84,5 +84,6 @@ extend-exclude = [
   "*.svg",
   "*.ico",
   "*.js",
+  "*.sh",
   "site/",
 ]
