@@ -80,20 +80,25 @@ jobs:
         run: mkdir -p /tmp/pr-checks
 
       # ── Check 1: Spell check ─────────────────────────────
-      - name: Install typos
-        run: |
-          curl -sL https://github.com/crate-ci/typos/releases/latest/download/typos-x86_64-unknown-linux-musl.tar.gz | tar xz -C /usr/local/bin/
-
       - name: Spell check
         id: spellcheck
         continue-on-error: true
-        run: |
-          typos --config ./_typos.toml docs/ 2>&1 | tee /tmp/pr-checks/spellcheck-output
-          echo "passed" > /tmp/pr-checks/spellcheck-status
+        uses: crate-ci/typos@v1
+        with:
+          config: ./_typos.toml
 
       - name: Mark spell check status
-        if: always() && steps.spellcheck.outcome == 'failure'
-        run: echo "failed" > /tmp/pr-checks/spellcheck-status
+        if: always()
+        run: |
+          if [ "$SPELLCHECK_OUTCOME" = "failure" ]; then
+            echo "failed" > /tmp/pr-checks/spellcheck-status
+            echo "See the **Spell check** step in the [workflow run]($RUN_URL) for the list of flagged words." > /tmp/pr-checks/spellcheck-output
+          else
+            echo "passed" > /tmp/pr-checks/spellcheck-status
+          fi
+        env:
+          SPELLCHECK_OUTCOME: ${{ steps.spellcheck.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
       # ── Check 2: Markdown lint ───────────────────────────
       - name: Markdown lint
@@ -198,18 +203,11 @@ jobs:
 
           ### Spell check — issues found
 
-          The spell checker flagged some words in your changes:
+          The spell checker flagged some words in your changes.
 
-          <details>
-          <summary>View flagged words</summary>
-
-          ```
           EOF
-            cat /tmp/pr-checks/spellcheck-output >> "$REPORT" 2>/dev/null || echo "(output not captured)" >> "$REPORT"
+            cat /tmp/pr-checks/spellcheck-output >> "$REPORT" 2>/dev/null || echo "(output not available)" >> "$REPORT"
             cat >> "$REPORT" << 'EOF'
-          ```
-
-          </details>
 
           **How to fix:**
           - **If it's a real typo:** correct the spelling in your file.
