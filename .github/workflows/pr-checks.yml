@@ -160,6 +160,8 @@ jobs:
       # ── Assemble and post the report ─────────────────────
       - name: Build report
         if: always()
+        env:
+          EDIT_BASE: ${{ github.server_url }}/${{ github.repository }}/edit/${{ github.head_ref }}
         run: |
           REPORT="/tmp/pr-checks/report.md"
 
@@ -171,6 +173,20 @@ jobs:
           YAML=$(cat /tmp/pr-checks/yamllint-status 2>/dev/null || echo "skipped")
           LINKS=$(cat /tmp/pr-checks/linkcheck-status 2>/dev/null || echo "skipped")
           BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "skipped")
+
+          # Helper: clickable edit link for a file at a line number
+          # Usage: edit_link "path/to/file" "42" → markdown link to GitHub edit view
+          edit_link() {
+            local filepath="$1"
+            local lineno="$2"
+            # Strip leading ./ if present
+            filepath="${filepath#./}"
+            if [ -n "$lineno" ]; then
+              echo "[\`$filepath\` (line $lineno)]($EDIT_BASE/$filepath#L$lineno)"
+            else
+              echo "[\`$filepath\`]($EDIT_BASE/$filepath)"
+            fi
+          }
 
           # Helper: status emoji
           emoji() {
@@ -234,8 +250,8 @@ jobs:
 
           The spell checker found words that look misspelled. Here's exactly what was flagged:
 
-          | File | Line | Found | Suggested fix |
-          |------|------|-------|---------------|
+          | Location | Found | Suggested fix |
+          |----------|-------|---------------|
           EOF
 
             # Parse typos brief format: "file:line:col: error: `typo` should be `fix`"
@@ -247,19 +263,19 @@ jobs:
                   lineno=$(echo "$line" | cut -d: -f2)
                   typo=$(echo "$line" | grep -oP '`\K[^`]+' | head -1)
                   fix=$(echo "$line" | grep -oP '`\K[^`]+' | tail -1)
-                  echo "| \`$file\` | $lineno | \`$typo\` | \`$fix\` |" >> "$REPORT"
+                  echo "| $(edit_link "$file" "$lineno") | \`$typo\` | \`$fix\` |" >> "$REPORT"
                 # Match without correction: filepath:line:col: error: `word`
                 elif echo "$line" | grep -qP '.*:\d+:\d+:.*`.*`'; then
                   file=$(echo "$line" | cut -d: -f1)
                   lineno=$(echo "$line" | cut -d: -f2)
                   typo=$(echo "$line" | grep -oP '`\K[^`]+' | head -1)
-                  echo "| \`$file\` | $lineno | \`$typo\` | *(check manually)* |" >> "$REPORT"
+                  echo "| $(edit_link "$file" "$lineno") | \`$typo\` | *(check manually)* |" >> "$REPORT"
                 fi
               done < /tmp/pr-checks/spellcheck-raw
             fi
 
             # Fallback: if no table rows were generated, show raw output
-            if ! grep -q '| `' "$REPORT" 2>/dev/null; then
+            if ! grep -q '(line ' "$REPORT" 2>/dev/null; then
               echo "" >> "$REPORT"
               echo '```' >> "$REPORT"
               cat /tmp/pr-checks/spellcheck-raw >> "$REPORT" 2>/dev/null || echo "(output not available)" >> "$REPORT"
@@ -296,14 +312,13 @@ jobs:
             # Parse markdownlint output into a readable table
             # Format: "file:line rule/name description"
             if [ -f /tmp/pr-checks/markdownlint-output ]; then
-              echo "| File | Line | Issue |" >> "$REPORT"
-              echo "|------|------|-------|" >> "$REPORT"
+              echo "| Location | Issue |" >> "$REPORT"
+              echo "|----------|-------|" >> "$REPORT"
               grep -E '^docs/.*:[0-9]+' /tmp/pr-checks/markdownlint-output | head -30 | while IFS= read -r line; do
                 file=$(echo "$line" | cut -d: -f1)
                 lineno=$(echo "$line" | cut -d: -f2)
-                # Everything after "file:line " is the issue description
                 issue=$(echo "$line" | sed 's/^[^:]*:[0-9]* *//')
-                echo "| \`$file\` | $lineno | $issue |" >> "$REPORT"
+                echo "| $(edit_link "$file" "$lineno") | $issue |" >> "$REPORT"
               done
             fi
 
@@ -345,13 +360,13 @@ jobs:
 
             # Parse yamllint parsable output: "file:line:col: [level] message"
             if [ -f /tmp/pr-checks/yamllint-output ]; then
-              echo "| File | Line | Problem |" >> "$REPORT"
-              echo "|------|------|---------|" >> "$REPORT"
+              echo "| Location | Problem |" >> "$REPORT"
+              echo "|----------|---------|" >> "$REPORT"
               while IFS= read -r line; do
                 file=$(echo "$line" | cut -d: -f1)
                 lineno=$(echo "$line" | cut -d: -f2)
                 msg=$(echo "$line" | sed 's/^[^:]*:[0-9]*:[0-9]* *//')
-                echo "| \`$file\` | $lineno | $msg |" >> "$REPORT"
+                echo "| $(edit_link "$file" "$lineno") | $msg |" >> "$REPORT"
               done < /tmp/pr-checks/yamllint-output
             fi
 
@@ -449,10 +464,9 @@ jobs:
                 echo '| File | Broken link |' >> "$REPORT"
                 echo '|------|-------------|' >> "$REPORT"
                 grep 'unrecognized relative link' /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
-                  # Extract file and link from the warning
                   file=$(echo "$line" | grep -oP "Doc '\\K[^']+")
                   link=$(echo "$line" | grep -oP "relative link '\\K[^']+")
-                  echo "| \`$file\` | \`$link\` |" >> "$REPORT"
+                  echo "| $(edit_link "$file") | \`$link\` |" >> "$REPORT"
                 done
                 echo '' >> "$REPORT"
                 echo 'To fix this, check that the linked file exists and the path is spelled correctly.' >> "$REPORT"
@@ -468,7 +482,7 @@ jobs:
                 grep 'no such anchor' /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
                   file=$(echo "$line" | grep -oP "Doc '\\K[^']+")
                   anchor=$(echo "$line" | grep -oP "'#[^']+'" | head -1 | tr -d "'")
-                  echo "| \`$file\` | \`$anchor\` |" >> "$REPORT"
+                  echo "| $(edit_link "$file") | \`$anchor\` |" >> "$REPORT"
                 done
                 echo '' >> "$REPORT"
                 echo 'To fix this, update the `#anchor` in the link to match an actual heading on the target page.' >> "$REPORT"
