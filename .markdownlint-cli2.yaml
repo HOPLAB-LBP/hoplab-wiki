@@ -3,37 +3,93 @@ config:
   MD003:
     style: "atx"
 
+  # MD007: unordered list indentation
+  # Disabled: MkDocs Material requires 4-space indentation for content inside
+  # tabs (=== "Tab"), admonitions (!!!), and nested lists.
+  MD007: false
+
   # MD013: line length - disabled for documentation prose
   MD013: false
+
+  # MD022: blanks around headings
+  # Disabled: headings inside MkDocs admonitions/tabs may not have blank lines
+  # in the expected positions.
+  MD022: false
 
   # MD024: duplicate headings - allow siblings with same name
   MD024:
     siblings_only: true
 
+  # MD025: single top-level heading
+  # Disabled: some pages legitimately use multiple H1 headings.
+  MD025: false
+
+  # MD029: ordered list item prefix
+  # Disabled: docs use explicit numbering (1, 2, 3) which MkDocs renders correctly.
+  MD029: false
+
+  # MD031: blanks around fences
+  # Disabled: MkDocs Material admonitions (!!!) and tabs (===) require fenced
+  # code blocks to be indented inside the container without surrounding blanks.
+  MD031: false
+
+  # MD032: blanks around lists
+  # Disabled: lists inside MkDocs admonitions and tabs often lack surrounding
+  # blank lines by design.
+  MD032: false
+
   # MD033: inline HTML - allowlist elements used by mkdocs-material
   MD033:
     allowed_elements:
+      - "a"
+      - "b"
+      - "br"
+      - "code"
       - "div"
       - "figure"
       - "figcaption"
-      - "img"
-      - "a"
-      - "br"
-      - "p"
-      - "span"
-      - "video"
-      - "source"
       - "iframe"
-      - "sup"
+      - "img"
+      - "p"
+      - "pre"
+      - "span"
+      - "style"
       - "sub"
+      - "sup"
+      - "source"
+      - "video"
+
+  # MD036: emphasis as heading
+  # Disabled: some docs use **bold** as visual separators, which is intentional.
+  MD036: false
+
+  # MD040: fenced code language
+  # Disabled: many code blocks (terminal output, plain text) intentionally
+  # have no language specified.
+  MD040: false
 
   # MD041: first line h1 - disabled, pages may start with front matter or admonitions
   MD041: false
 
-  # MD046: code block style - fenced (supports attributes like title=, linenums=)
-  MD046:
-    style: "fenced"
+  # MD046: code block style
+  # Disabled: MkDocs Material tabs (=== "Tab") require indented code blocks
+  # inside the tab container.
+  MD046: false
 
   # MD048: code fence style - backticks
   MD048:
     style: "backtick"
+
+  # MD050: strong style
+  # Disabled: docs use both ** and __ for emphasis, which is valid.
+  MD050: false
+
+  # MD059: descriptive link text
+  # Disabled: "[here]" and similar link text is common in documentation
+  # and this rule is too opinionated for a multi-author wiki.
+  MD059: false
+
+  # MD060: link fragments valid
+  # Disabled: MkDocs Material generates different anchor IDs than standard
+  # markdown (e.g., tab anchors, admonition anchors).
+  MD060: false
