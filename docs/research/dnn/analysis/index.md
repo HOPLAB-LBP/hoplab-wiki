@@ -4,7 +4,6 @@ This page will host an overview of the steps and link to the child pages for in-
 
 Here an example of some cards, remembers to edit links and icons (emoticons codes can be searched [here](https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/)):
 
-
 <div class="grid cards" markdown>
 
 - :octicons-person-24:{ .lg .middle } __[PLACEHOLDER]__

@@ -4,7 +4,6 @@ This will be a very general overview of deep neural networks. Mostly links to th
 
 Here an example of some cards, remembers to edit links and icons (emoticons codes can be searched [here](https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/)):
 
-
 <div class="grid cards" markdown>
 
 - :octicons-person-24:{ .lg .middle } __[PLACEHOLDER]__
