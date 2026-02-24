@@ -90,14 +90,13 @@ jobs:
       - name: Spell check
         id: spellcheck
         if: always()
-        continue-on-error: true
         run: |
-          typos --config ./_typos.toml --format brief 2>&1 | tee /tmp/pr-checks/spellcheck-raw
-          echo "passed" > /tmp/pr-checks/spellcheck-status
-
-      - name: Mark spell check status
-        if: always() && steps.spellcheck.outcome == 'failure'
-        run: echo "failed" > /tmp/pr-checks/spellcheck-status
+          set -o pipefail
+          if typos --config ./_typos.toml --format brief 2>&1 | tee /tmp/pr-checks/spellcheck-raw; then
+            echo "passed" > /tmp/pr-checks/spellcheck-status
+          else
+            echo "failed" > /tmp/pr-checks/spellcheck-status
+          fi
 
       # ── Check 2: Markdown lint ───────────────────────────
       - name: Markdown lint
