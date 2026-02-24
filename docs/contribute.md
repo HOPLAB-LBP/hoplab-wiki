@@ -1,10 +1,10 @@
 # Contribute to the Hoplab Wiki
 
-Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be). 
+Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels). For any questions, feel free to [ping me](mailto:andreaivan.costantino@kuleuven.be).
 
 This guide will help you set up, update, and maintain the Wiki both locally and online. Follow the instructions if you want to make changes to the wiki.
 
-!!! tip "Suggest or make quick changes" 
+!!! tip "Suggest or make quick changes"
     For most cases, if you want to suggest some changes you can do so by opening a new Issue. If you want to make quick changes to any page, you can do so by clicking on the pencil icon (✏️) at the top right of the page to begin editing the file.
 
 ## Table of Contents
@@ -13,7 +13,7 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
 2. [Editing the Wiki](#editing-the-wiki)
     - [Adding a New Page](#adding-a-new-page)
     - [Creating Child Pages](#creating-child-pages)
-    - [Adding Tags](#adding-note-todo-and-placeholder-tags)
+    - [Adding tags](#adding-todo-note-and-placeholder-tags)
     - [Common Formatting Syntax](#common-formatting-syntax)
     - [Linking and Referencing](#linking-and-referencing)
 3. [How to Contribute](#how-to-contribute)
@@ -37,7 +37,7 @@ We welcome contributions from all members. All the content of the wiki is writte
 ### Adding a New Page
 
 1. Create a new Markdown file in the `docs` directory (e.g., `docs/new-page.md`).
-2. Add the new page to the `nav` section of `mkdocs.yml`:   
+2. Add the new page to the `nav` section of `mkdocs.yml`:
 ```yaml
 nav:
   - Home: index.md
@@ -51,7 +51,7 @@ To create a child page, place the Markdown file in a subdirectory and update the
 
 1. Create a new subdirectory in the `docs` directory (e.g., `docs/subdir`).
 2. Create a new Markdown file in the subdirectory (e.g., `docs/subdir/child-page.md`).
-3. Update the `nav` section in `mkdocs.yml`:   
+3. Update the `nav` section in `mkdocs.yml`:
 ```yaml
 nav:
   - Home: index.md
@@ -60,22 +60,48 @@ nav:
       - Child Page: subdir/child-page.md
 ```
 
-### Adding `NOTE`, `TODO`, and `PLACEHOLDER` tags
+### Adding `TODO`, `NOTE`, and `PLACEHOLDER` tags
 
-For ease of collaboration, we keep track of all the tasks in our documentation in the [Issues](https://github.com/HOPLAB-LBP/hoplab-wiki/issues) page. Tasks are organized by file, and each file with tags will automatically be listed as an Issue.
+We track documentation tasks using **tags** inside Markdown files. A [GitHub Action](https://github.com/HOPLAB-LBP/hoplab-wiki/actions/workflows/manage-docs-tags.yml) automatically scans for these tags and creates one [Issue](https://github.com/HOPLAB-LBP/hoplab-wiki/issues?q=is%3Aissue+label%3Adoc-tags) per file to track them.
 
-To add a new task to this list, write `NOTE`, `TODO`, or `PLACEHOLDER` in any document in the `docs/` folder. This will be added to the Issue for that page during the workflow run. It is a good practice to write the name of the author in square brackets. Example:
+#### How to add a tag
 
-`TODO: [Andrea] fix hyperlinks`
+Write the tag as a **standalone bullet point** with the keyword in ALL CAPS, followed by a colon. It is a good practice to include your name in square brackets:
 
-Please remember to delete the source tag from the original file once the task is resolved. This ensures that the Issue page includes only unresolved tasks.
+```markdown
+- TODO: [Andrea] Fix hyperlinks to the fMRI section
+- PLACEHOLDER: [Klara] Add info about the new ethics procedure
+- NOTE: [Tim] The scanner booking system changed in 2025
+```
 
-#### How task counters in titles work
+Tags can be placed anywhere in the file, but we prefer grouping them **at the bottom**. The three recognized keywords are:
 
-- Each Issue aggregates tasks for a single file and shows a counter in the title: `(open/total open) Tags in <file>`.
-- Example: `(3/12 open) Tags in docs/get-started/index.md`.
-- Tasks created from file tags are marked “Added from file”. If a tag is removed from the file, the corresponding task is automatically marked complete as “Resolved from file”.
-- Tasks added via comments on the Issue body are preserved and counted; the title counter is updated automatically.
+- `TODO` — something that needs to be done
+- `PLACEHOLDER` — content that needs to be written
+- `NOTE` — an important remark or reminder
+
+!!! warning “Tags must be ALL CAPS”
+    Only `TODO`, `PLACEHOLDER`, and `NOTE` in uppercase are detected. `Todo`, `note`, or `placeholder` will be ignored.
+
+#### How to resolve a tag
+
+**Delete the tag line** from the source file and commit. On the next push to `main`, the workflow will automatically remove the task from the Issue. If all tasks in a file are resolved, the Issue is closed automatically.
+
+#### Adding tasks via issue comments
+
+You can also add tasks by commenting on an existing doc-tags Issue. Write a tag line in your comment (e.g., `TODO: check the references`) and the workflow will detect it, add it to the task list, and reply with instructions on how to resolve it.
+
+To resolve a comment-added task, react with 🚀 on the comment that created the task. The workflow will pick this up on the next run and remove the task.
+
+#### How the Issues look
+
+Each tracking Issue has a title like `Tags in docs/get-started/index.md [5 open]` showing the number of open tasks. The Issue body lists each task with a clickable source label:
+
+- **(file)** — links to the source file in edit mode, so you can delete the tag directly
+- **(comment)** — links to the original comment where the task was added
+
+!!! tip “Do not edit the Issue body directly”
+    The Issue body is auto-managed by the workflow. Any manual edits will be overwritten on the next run. To change tasks, edit the source file or use comment reactions.
 
 ### Common formatting syntax
 
@@ -85,7 +111,7 @@ Here are some common Markdown elements:
 - **Bold text:** `**bold text**`
 - **Italic text:** `*italic text*`
 - **Links:** `[link text](URL)`
-- **Lists:** 
+- **Lists:**
     - Unordered list: `- Item 1`
     - Ordered list: `1. Item 1`
 - **Images:** `![Alt text](path/to/image.png)` (see [this section](#adding-and-linking-images) for instructions on how to link images.)
@@ -189,10 +215,10 @@ This workflow is ideal for making small, quick changes to a single file. It can 
 ??? tip "Edit directly from this page!"
     Existing pages can be edited directly through the Wiki! If you need to edit or add information to any page, look for the paper and pencil symbol :material-file-edit-outline: at the top-right of the page, next to the page title. This will let you edit the page and open a PR either by creating a new branch on the main repo (if you are part of the Hoplab organization on GitHub) or by forking your own copy of the repo (if you are an external contributor). Make sure to [submit a PR](#step-3-submit-a-pr-with-your-proposed-changes) after your changes are made.
 
-#### Step 1: Make your changes 
+#### Step 1: Make your changes
 
 1. **To edit an existing page:**
-   
+
     1. Navigate to the [`HOPLAB-LBP/hoplab-wiki`](https://github.com/HOPLAB-LBP/hoplab-wiki) repository.
     2. Click on the file you want to edit (usually, in `docs/`).
     3. Click on the pencil icon (✏️) at the top right to edit the file.
@@ -204,7 +230,7 @@ This workflow is ideal for making small, quick changes to a single file. It can 
     3. Add the new page (e.g., `docs/new-page.md`) to the `nav` section and commit (follow the steps in the section 2 below).
     4. In the `docs` folder, click on "Add file" > "Create new file".
     5. Enter a name for your file in the `docs` directory (the same you used before, e.g., `docs/new-page.md`).
-       
+
 You can then add/edit your content in Markdown format (see [Editing the Wiki](#editing-the-wiki) for more info), and click on "Preview" next to the "Edit" tab to see how your changes will look like.
 
 #### Step 2: Commit changes to a temporary branch
@@ -214,22 +240,22 @@ You can then add/edit your content in Markdown format (see [Editing the Wiki](#e
 3. Select "Create a new branch for this commit and start a pull request".
 4. Click on "Propose changes".
 
-#### Step 3: Submit a PR with your proposed changes 
+#### Step 3: Submit a PR with your proposed changes
 
 1. In the "Open a pull request page", add an informative title and a description of the changes in the PR.
 2. In the right panel, make sure to assign an admin (as of July 2024, [@costantinoai](https://github.com/costantinoai)) to review your changes.
 3. Click on "Create pull request" to submit your changes.
 
 ??? tip "Add multiple commits to a single PR"
-    If you want to make additional changes related to an already opened PR (e.g., you need to change info in two separate files, or make additional adjustments), you do not need to open a new PR. Just go to the main page of the branch you created (you can find the branch in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches)) and **keep editing your files in this branch**. Every new commit you make in this branch will have the option to "Commit directly to the <name-of-new-branch> branch" or "Create a new branch for this commit and start a pull request". Make sure you select the first option to include your new commits to the original PR. Importantly, if you plan to add several commits to a PR this way, make sure you assign a reviewer **only after your last commit** to avoid merging PRs halfway in the process, or you can create a draft PR until all your changes are included.
-   
+    If you want to make additional changes related to an already opened PR (e.g., you need to change info in two separate files, or make additional adjustments), you do not need to open a new PR. Just go to the main page of the branch you created (you can find the branch in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches)) and **keep editing your files in this branch**. Every new commit you make in this branch will have the option to "Commit directly to the `<name-of-new-branch>` branch" or "Create a new branch for this commit and start a pull request". Make sure you select the first option to include your new commits to the original PR. Importantly, if you plan to add several commits to a PR this way, make sure you assign a reviewer **only after your last commit** to avoid merging PRs halfway in the process, or you can create a draft PR until all your changes are included.
+
 These steps above will create a new branch in the repository, that will be visible in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches), and a new PR visible in the [PRs list](https://github.com/HOPLAB-LBP/hoplab-wiki/pulls). Once the PR is approved by at least one reviewer and merged into the main branch, the newly created branch will be automatically deleted and the changes will go live.
-         
+
 ## Advanced Workflow (for Extensive Changes)
 
-The preferred way to contribute if you need to make **significant/multiple changes**, but it requires some familiarity with git, Python, and Conda environments. If you are not a Wiki maintainer, this workflow is probably overkill. 
+The preferred way to contribute if you need to make **significant/multiple changes**, but it requires some familiarity with git, Python, and Conda environments. If you are not a Wiki maintainer, this workflow is probably overkill.
 
-With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session. 
+With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session.
 
 !!! question "How should I organize my PR?"
     A [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (or PR) "*is a proposal to merge a set of changes from one branch into another*". Ideally, a PR should include all the commits **for a specific feature** or bugfix from end-to-end. Avoid making PRs that contain multiple unrelated changes. For instance, if you are working on a feature that requires modifications across multiple files, ensure all those changes are included in the same PR. Conversely, avoid combining changes for different features (e.g., adding unrelated updates to the fMRI workflow and the getting started section) in a single PR. Each PR should represent a cohesive unit of work.
@@ -260,7 +286,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
            ```
 
 === "Using GitHub Desktop"
-    
+
     1. **Navigate to the Original Repository:**
     
         Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
@@ -296,7 +322,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 3. **Install necessary packages:**
 
     ```bash
-    pip install mkdocs mkdocs-material mkdocs-task-collector mkdocs-git-revision-date-localized-plugin mkdocs-git-authors-plugin
+    pip install -r requirements.txt
     ```
 
 ### Step 3: Making changes
@@ -322,7 +348,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 ### Step 6: Committing Your Changes
 
 === "Using the CLI"
-    
+
     1. **Stage and commit your changes:**
         1. From your terminal, add all modified files to your commit:
           ```bash
@@ -348,7 +374,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
         
     2. **Push your changes:**
         1. In GitHub Desktop, click on the `Push origin` button at the top to push your commits to GitHub.
-   
+
 ### Step 7: Creating a Pull Request
 
 1. Navigate to your forked repository on GitHub.
@@ -357,7 +383,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 4. Choose the original repository's `main` branch as the base, and your fork's `main` branch as the compare.
 5. Fill out the form to describe the changes.
 6. In the right panel, make sure to assign an admin (as of July 2024, [@costantinoai](https://github.com/costantinoai)) to review your changes.
-7. Click on "Create pull request" to submit your changes.   
+7. Click on "Create pull request" to submit your changes.
 
 !!! note "Automatic Deployment with GitHub Actions"
     This repository is set up to use GitHub Actions for automatic deployment. This means that every time changes are merged into the `main` branch, the documentation will automatically be built and deployed to GitHub Pages. You do not need to manually run the `mkdocs gh-deploy` command each time you make changes. Simply push your changes to the `main` branch, and GitHub Actions will handle the deployment.
