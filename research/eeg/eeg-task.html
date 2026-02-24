@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -2526,7 +2526,7 @@
 </ul>
 <p>Note that these things are all implemented in the (upcoming) EEG task template (<a href="https://github.com/HOPLAB-LBP">link to GitHub task template repo</a>).</p>
 <h2 id="sending-triggers">Sending triggers<a class="headerlink" href="#sending-triggers" title="Permanent link">&para;</a></h2>
-<p>In order to be able to map psychophysical events from your task to the EEG data, you will need to send triggers from the task computer to the EEG computer. These triggers will then appear in a separate channels alongside your other EEG channels, allowing you to know precisely when e.g. an image was shown with respect to your brain signal. </p>
+<p>In order to be able to map psychophysical events from your task to the EEG data, you will need to send triggers from the task computer to the EEG computer. These triggers will then appear in a separate channels alongside your other EEG channels, allowing you to know precisely when e.g. an image was shown with respect to your brain signal.</p>
 <p>Triggers are sent via a serial port connection. To use it, you will need to link to the serial port within your script. In Python, this can be done using the <code>serial</code> package. The following code snippet shows how to open a connection to the serial port:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">serial</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">serialport</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">,</span><span class="n">baudrate</span><span class="o">=</span><span class="mi">115200</span><span class="p">)</span>

@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -2506,7 +2506,7 @@
 <li><strong>Design Matrix Setup</strong>: Define the model for your analysis.</li>
 <li><strong>Model Estimation &amp; Results</strong>: Estimate your model and analyze contrasts.</li>
 </ol>
-<p>This page will accompany you through the steps and can be used as a guide to the input and output of each function of SPM. It is not a complete tutorial on SPM, however, and there are more extensive resources out there. It can be a good idea to cover the tutorials from <a href="https://andysbrainbook.readthedocs.io/en/latest/index.html">Andy Jahn</a>, for instance, as they go in depth into SPM and how it works. </p>
+<p>This page will accompany you through the steps and can be used as a guide to the input and output of each function of SPM. It is not a complete tutorial on SPM, however, and there are more extensive resources out there. It can be a good idea to cover the tutorials from <a href="https://andysbrainbook.readthedocs.io/en/latest/index.html">Andy Jahn</a>, for instance, as they go in depth into SPM and how it works.</p>
 <hr />
 <h2 id="step-1-data-preparation">Step 1: Data Preparation<a class="headerlink" href="#step-1-data-preparation" title="Permanent link">&para;</a></h2>
 <p>Before running the GLM, we need to make sure the data is compatible with SPM. There are two steps that need to be taken to bring your <code>.nii</code> files from fMRIPrep output to SPM input:</p>
@@ -3268,10 +3268,11 @@
 <div class="admonition example">
 <p class="admonition-title">Example contrast</p>
 <p>For a comparison between two conditions (e.g., <code>Faces</code> vs. <code>Objects</code>), use:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[1 -1]
-</span></code></pre></div>
-This weights <code>Faces</code> positively and <code>Objects</code> negatively, highlighting brain regions more active during the <code>Faces</code> condition.</p>
+```</p>
 </div>
+<p>[1 -1]
+    <code>``
+    This weights</code>Faces<code>positively and</code>Objects<code>negatively, highlighting brain regions more active during the</code>Faces` condition.</p>
 <hr />
 <h3 id="verifying-the-order-of-regressors">Verifying the order of regressors<a class="headerlink" href="#verifying-the-order-of-regressors" title="Permanent link">&para;</a></h3>
 <p>It’s crucial to confirm the order of regressors in the design matrix before specifying contrasts to ensure that your weights align correctly with the conditions. Here’s how to verify this using both the SPM GUI and by inspecting the <code>SPM.mat</code> file directly.</p>
@@ -3306,26 +3307,26 @@ This weights <code>Faces</code> positively and <code>Objects</code> negatively, 
 <li>
 <p><strong>Load the <code>SPM.mat</code> File in MATLAB</strong>:</p>
 <p>In the MATLAB command window, navigate to the folder containing your <code>SPM.mat</code> file:
- <div class="language-matlab highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">cd</span><span class="p">(</span><span class="s">&#39;/path/to/your/SPM_results_folder&#39;</span><span class="p">);</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">load</span><span class="p">(</span><span class="s">&#39;SPM.mat&#39;</span><span class="p">);</span>
+ <div class="language-matlab highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="p">(</span><span class="s">&#39;/path/to/your/SPM_results_folder&#39;</span><span class="p">);</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">load</span><span class="p">(</span><span class="s">&#39;SPM.mat&#39;</span><span class="p">);</span>
 </span></code></pre></div>
 This loads the <code>SPM</code> structure into your workspace.</p>
 </li>
 <li>
 <p><strong>Explore the Regressors</strong>:</p>
 <p>To see the names of the regressors, type:
- <div class="language-matlab highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">SPM</span><span class="p">.</span><span class="n">xX</span><span class="p">.</span><span class="n">name</span>
+ <div class="language-matlab highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">SPM</span><span class="p">.</span><span class="n">xX</span><span class="p">.</span><span class="n">name</span>
 </span></code></pre></div>
 This command will display a list of the regressor names in the order they appear in the design matrix.</p>
 </li>
 <li>
 <p><strong>Interpret the Output</strong>:</p>
 <p>The output will look something like this:
- <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>&#39;Sn(1) condition1*bf(1)&#39;
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>&#39;Sn(1) condition2*bf(1)&#39;
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>&#39;Sn(1) condition3*bf(1)&#39;
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>&#39;Sn(1) motion_x&#39;
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>&#39;Sn(1) motion_y&#39;
+ <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>&#39;Sn(1) condition1*bf(1)&#39;
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>&#39;Sn(1) condition2*bf(1)&#39;
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>&#39;Sn(1) condition3*bf(1)&#39;
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>&#39;Sn(1) motion_x&#39;
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>&#39;Sn(1) motion_y&#39;
 </span></code></pre></div>
 Each string corresponds to a regressor:</p>
 <ul>
@@ -3337,16 +3338,16 @@ Each string corresponds to a regressor:</p>
 <li>
 <p><strong>Align the Contrast Weights</strong>:</p>
 <p>Based on this order, you can now set your contrast weights correctly. For instance, if <code>condition1</code> is the first regressor and <code>condition2</code> is the second, a contrast comparing them would be:
- <div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>[1 -1 0 0 0 ...]
+ <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>[1 -1 0 0 0 ...]
 </span></code></pre></div></p>
 </li>
 </ol>
 <div class="admonition example">
 <p class="admonition-title">Checking Regressors in a Script</p>
 <p>If you are scripting the process, you can automate this check by including:
-<div class="language-matlab highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c">% Load the design matrix and display regressor names</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">load</span><span class="p">(</span><span class="s">&#39;SPM.mat&#39;</span><span class="p">);</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nb">disp</span><span class="p">(</span><span class="n">SPM</span><span class="p">.</span><span class="n">xX</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c">% Load the design matrix and display regressor names</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nb">load</span><span class="p">(</span><span class="s">&#39;SPM.mat&#39;</span><span class="p">);</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">disp</span><span class="p">(</span><span class="n">SPM</span><span class="p">.</span><span class="n">xX</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
 </span></code></pre></div>
 This will print the regressor names directly in the MATLAB command window, helping you confirm the correct order before specifying your contrasts.</p>
 </div>
