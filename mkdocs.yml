@@ -9,7 +9,7 @@ edit_uri: edit/main/docs/
 
 nav:
   - Home: index.md
-  - Getting started: 
+  - Getting started:
     - get-started/index.md
     - Useful links: get-started/useful-links.md
     - Mailing lists: get-started/mailing-lists.md
@@ -19,6 +19,15 @@ nav:
     - Student starter pack: get-started/student-starter-pack.md
   - Research:
     - research/index.md
+    - Research data management:
+      - research/rdm/index.md
+      - Temporary guidelines: research/rdm/current.md
+      - Onboarding checklist: research/rdm/onboarding.md
+      - Workflows per research modality: research/rdm/SOPs.md
+      - ManGO for active research data: research/rdm/mango_active.md
+      - FriGO for archiving: research/rdm/frigo_archive.md
+      - RDR for data sharing: research/rdm/RDR_sharing.md
+      - Offboarding checklist: research/rdm/offboarding.md
     - Ethical approval:
       - research/ethics/index.md
       - EC onderzoek: research/ethics/MEC.md
@@ -28,7 +37,7 @@ nav:
     - Behaviour:
       - research/behaviour/index.md
       - Find participants: research/behaviour/bh-participants.md
-      - Set up your experiment: 
+      - Set up your experiment:
         - research/behaviour/experimental-setup/index.md
         - Online Experiments (jsPsych): research/behaviour/experimental-setup/pavlovia-jspsych.md
         - Online Experiments (PsychoPy): research/behaviour/experimental-setup/pavlovia-psychopy.md
@@ -38,7 +47,7 @@ nav:
       - research/fmri/index.md
       - First steps: research/fmri/fmri-get-started.md
       - Scanning procedure and info: research/fmri/fmri-procedure.md
-      - Analysis workflow: 
+      - Analysis workflow:
           - research/fmri/analysis/index.md
           - 0. General information: research/fmri/analysis/fmri-general.md
           - 1. Set up your environment: research/fmri/analysis/fmri-setup-env.md
@@ -77,17 +86,17 @@ nav:
 theme:
   name: material
   logo: assets/thicker_white_brain.svg
-  favicon: assets/hoplab_favicon_white.ico 
+  favicon: assets/hoplab_favicon_white.ico
   icon:
-    repo: fontawesome/brands/github 
+    repo: fontawesome/brands/github
 
-  palette: 
+  palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: custom
       toggle:
-        icon: material/lightbulb 
+        icon: material/lightbulb
         name: Switch to dark mode
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
@@ -145,7 +154,7 @@ markdown_extensions:
         kwds:
           case: lower
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji 
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tasklist:
       custom_checkbox: true
@@ -153,24 +162,24 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  
+
 plugins:
   - offline
 #  - privacy
   - search
   - git-authors
-  - git-revision-date-localized:
-      type: datetime
-      timezone: Europe/Brussels
-      
+#  - git-revision-date-localized:
+#      type: datetime
+#      timezone: Europe/Brussels
+
 extra_css:
   - stylesheets/extra.css
-  
+
 extra:
   consent:
     title: Cookie consent
     description: >-
-      Please, consider disabling your ad-blocker and allowing cookies for this Wiki . 
+      Please, consider disabling your ad-blocker and allowing cookies for this Wiki .
       We use cookies to recognize your repeated visits and preferences, as well
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
@@ -189,10 +198,9 @@ extra:
         - icon: material/emoticon-sad-outline
           name: This page could be improved
           data: 0
-          note: >- 
+          note: >-
             Thanks for your feedback! Help us improve this page by
             opening a new <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/issues/new/?title=[Feedback]+{title}+-+{url}" target="_blank" rel="noopener">Issue</a>, or contact a Wiki manager.
-            
+
 copyright: >
-  <a href="#__consent">Change cookie settings</a>            
-      
+  <a href="#__consent">Change cookie settings</a>

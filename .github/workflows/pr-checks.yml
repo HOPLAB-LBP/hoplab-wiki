@@ -1,0 +1,557 @@
+name: PR checks
+
+on:
+  pull_request:
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "README.md"
+      - "requirements.txt"
+      - ".markdownlint-cli2.yaml"
+      - ".yamllint.yml"
+      - "_typos.toml"
+      - ".lychee.toml"
+      - ".github/workflows/*.yml"
+      - "scripts/docs_ci_check.sh"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  # ───────────────────────────────────────────────────────────
+  #  Job 1: Auto-fix safe issues and push back
+  # ───────────────────────────────────────────────────────────
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Auto-fix markdown (trailing spaces, tabs, blank lines)
+        uses: DavidAnson/markdownlint-cli2-action@v19
+        with:
+          globs: "docs/**/*.md"
+          fix: true
+        continue-on-error: true
+
+      - name: Auto-fix YAML trailing whitespace
+        run: |
+          sed -i 's/[[:space:]]*$//' mkdocs.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
+
+      - name: Commit and push fixes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "style: auto-fix formatting issues"
+            git push
+          else
+            echo "Nothing to fix."
+          fi
+
+  # ───────────────────────────────────────────────────────────
+  #  Job 2: Run all checks and post a single report comment
+  # ───────────────────────────────────────────────────────────
+  check-and-report:
+    needs: autofix
+    if: always() && !cancelled()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      # ── Setup ─────────────────────────────────────────────
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt yamllint
+
+      - name: Create results directory
+        run: mkdir -p /tmp/pr-checks
+
+      # ── Check 1: Spell check ─────────────────────────────
+      - name: Install typos
+        run: |
+          TYPOS_VERSION="v1.43.5"
+          curl -fsSL "https://github.com/crate-ci/typos/releases/download/${TYPOS_VERSION}/typos-${TYPOS_VERSION}-x86_64-unknown-linux-musl.tar.gz" \
+            | tar xz -C /usr/local/bin/ ./typos
+          typos --version
+
+      - name: Spell check
+        id: spellcheck
+        if: always()
+        run: |
+          set -o pipefail
+          if typos --config ./_typos.toml --format brief 2>&1 | tee /tmp/pr-checks/spellcheck-raw; then
+            echo "passed" > /tmp/pr-checks/spellcheck-status
+          else
+            echo "failed" > /tmp/pr-checks/spellcheck-status
+          fi
+
+      # ── Check 2: Markdown lint ───────────────────────────
+      - name: Markdown lint
+        id: markdownlint
+        continue-on-error: true
+        run: |
+          npx -y markdownlint-cli2 "docs/**/*.md" 2>&1 | tee /tmp/pr-checks/markdownlint-output
+          echo "passed" > /tmp/pr-checks/markdownlint-status
+
+      - name: Mark markdown lint status
+        if: always() && steps.markdownlint.outcome == 'failure'
+        run: echo "failed" > /tmp/pr-checks/markdownlint-status
+
+      # ── Check 3: YAML lint ───────────────────────────────
+      - name: YAML lint
+        id: yamllint
+        continue-on-error: true
+        run: |
+          yamllint -c .yamllint.yml -f parsable mkdocs.yml .github/workflows/ 2>&1 | tee /tmp/pr-checks/yamllint-output
+          echo "passed" > /tmp/pr-checks/yamllint-status
+
+      - name: Mark YAML lint status
+        if: always() && steps.yamllint.outcome == 'failure'
+        run: echo "failed" > /tmp/pr-checks/yamllint-status
+
+      # ── Check 4: Link check ──────────────────────────────
+      - name: Link check
+        id: linkcheck
+        continue-on-error: true
+        uses: lycheeverse/lychee-action@v2.0.2
+        with:
+          args: --config .lychee.toml --format markdown README.md docs/**/*.md
+          output: /tmp/pr-checks/linkcheck-output.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Mark link check status
+        if: always()
+        run: |
+          if [ "$LINKCHECK_EXIT" = "0" ]; then
+            echo "passed" > /tmp/pr-checks/linkcheck-status
+          else
+            echo "failed" > /tmp/pr-checks/linkcheck-status
+          fi
+        env:
+          LINKCHECK_EXIT: ${{ steps.linkcheck.outputs.exit_code }}
+
+      # ── Check 5: MkDocs build ────────────────────────────
+      - name: MkDocs build
+        id: mkdocs
+        continue-on-error: true
+        run: |
+          chmod +x scripts/docs_ci_check.sh
+          scripts/docs_ci_check.sh 2>&1 | tee /tmp/pr-checks/mkdocs-output
+          echo "passed" > /tmp/pr-checks/mkdocs-status
+
+      - name: Mark MkDocs build status
+        if: always() && steps.mkdocs.outcome == 'failure'
+        run: echo "failed" > /tmp/pr-checks/mkdocs-status
+
+      # ── Assemble and post the report ─────────────────────
+      - name: Build report
+        if: always()
+        env:
+          EDIT_BASE: ${{ github.server_url }}/${{ github.repository }}/edit/${{ github.head_ref }}
+        run: |
+          REPORT="/tmp/pr-checks/report.md"
+
+          # Hidden marker so we can find and update this comment on future runs
+          echo '<!-- pr-checks-report -->' > "$REPORT"
+
+          SPELL=$(cat /tmp/pr-checks/spellcheck-status 2>/dev/null || echo "skipped")
+          MDLINT=$(cat /tmp/pr-checks/markdownlint-status 2>/dev/null || echo "skipped")
+          YAML=$(cat /tmp/pr-checks/yamllint-status 2>/dev/null || echo "skipped")
+          LINKS=$(cat /tmp/pr-checks/linkcheck-status 2>/dev/null || echo "skipped")
+          BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "skipped")
+
+          # Helper: clickable edit link for a file at a line number
+          # Usage: edit_link "path/to/file" "42" → markdown link to GitHub edit view
+          edit_link() {
+            local filepath="$1"
+            local lineno="$2"
+            # Strip leading ./ if present
+            filepath="${filepath#./}"
+            if [ -n "$lineno" ]; then
+              echo "[\`$filepath\` (line $lineno)]($EDIT_BASE/$filepath#L$lineno)"
+            else
+              echo "[\`$filepath\`]($EDIT_BASE/$filepath)"
+            fi
+          }
+
+          # Helper: status emoji
+          emoji() {
+            case "$1" in
+              passed)  echo ":white_check_mark:" ;;
+              failed)  echo ":x:" ;;
+              *)       echo ":white_circle:" ;;
+            esac
+          }
+
+          # Count failures
+          FAILURES=0
+          for s in "$SPELL" "$MDLINT" "$YAML" "$LINKS" "$BUILD"; do
+            [ "$s" = "failed" ] && FAILURES=$((FAILURES + 1))
+          done
+
+          # ── All passed ──────────────────────────────────
+          if [ "$FAILURES" -eq 0 ]; then
+            cat >> "$REPORT" << EOF
+          ## :white_check_mark: All checks passed
+
+          Great job! Your changes look good.
+
+          | Check | Status |
+          |-------|--------|
+          | Spell check | $(emoji "$SPELL") Passed |
+          | Markdown lint | $(emoji "$MDLINT") Passed |
+          | YAML lint | $(emoji "$YAML") Passed |
+          | Link check | $(emoji "$LINKS") Passed |
+          | MkDocs build | $(emoji "$BUILD") Passed |
+
+          A reviewer will take a look shortly.
+          EOF
+          else
+
+          # ── Header with summary table ──────────────────
+            cat >> "$REPORT" << EOF
+          ## :mag: PR check results
+
+          Some checks found issues that need your attention. Don't worry — most of these are easy to fix!
+
+          | Check | Status |
+          |-------|--------|
+          | Spell check | $(emoji "$SPELL") $(echo "$SPELL" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
+          | Markdown lint | $(emoji "$MDLINT") $(echo "$MDLINT" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
+          | YAML lint | $(emoji "$YAML") $(echo "$YAML" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
+          | Link check | $(emoji "$LINKS") $(echo "$LINKS" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
+          | MkDocs build | $(emoji "$BUILD") $(echo "$BUILD" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
+
+          Scroll down for details on each failed check and step-by-step instructions to fix them.
+          EOF
+          fi
+
+          # ── Spell check section ─────────────────────────
+          if [ "$SPELL" = "failed" ]; then
+            cat >> "$REPORT" << 'EOF'
+
+          ---
+
+          ### :x: Spell check — typos found
+
+          The spell checker found words that look misspelled. Here's exactly what was flagged:
+
+          | Location | Found | Suggested fix |
+          |----------|-------|---------------|
+          EOF
+
+            # Parse typos brief format: "file:line:col: error: `typo` should be `fix`"
+            if [ -f /tmp/pr-checks/spellcheck-raw ]; then
+              while IFS= read -r line; do
+                # Match: filepath:line:col: error: `word` should be `correction`
+                if echo "$line" | grep -qP '.*:\d+:\d+:.*`.*` should be `.*`'; then
+                  file=$(echo "$line" | cut -d: -f1)
+                  lineno=$(echo "$line" | cut -d: -f2)
+                  typo=$(echo "$line" | grep -oP '`\K[^`]+' | head -1)
+                  fix=$(echo "$line" | grep -oP '`\K[^`]+' | tail -1)
+                  echo "| $(edit_link "$file" "$lineno") | \`$typo\` | \`$fix\` |" >> "$REPORT"
+                # Match without correction: filepath:line:col: error: `word`
+                elif echo "$line" | grep -qP '.*:\d+:\d+:.*`.*`'; then
+                  file=$(echo "$line" | cut -d: -f1)
+                  lineno=$(echo "$line" | cut -d: -f2)
+                  typo=$(echo "$line" | grep -oP '`\K[^`]+' | head -1)
+                  echo "| $(edit_link "$file" "$lineno") | \`$typo\` | *(check manually)* |" >> "$REPORT"
+                fi
+              done < /tmp/pr-checks/spellcheck-raw
+            fi
+
+            # Fallback: if no table rows were generated, show raw output
+            if ! grep -q '(line ' "$REPORT" 2>/dev/null; then
+              echo "" >> "$REPORT"
+              echo '```' >> "$REPORT"
+              cat /tmp/pr-checks/spellcheck-raw >> "$REPORT" 2>/dev/null || echo "(output not available)" >> "$REPORT"
+              echo '```' >> "$REPORT"
+            fi
+
+            cat >> "$REPORT" << 'EOF'
+
+          **How to fix:**
+
+          For each word in the table above:
+          1. **If it's a real typo** — open the file, go to the line number shown, and correct the spelling.
+          2. **If the word is correct** (e.g. a technical term, name, abbreviation, or foreign word) — add it to the file `_typos.toml` so it won't be flagged again:
+             ```toml
+             [default.extend-words]
+             # Add your word here (case-sensitive):
+             YourWord = "YourWord"
+             ```
+          EOF
+          fi
+
+          # ── Markdown lint section ───────────────────────
+          if [ "$MDLINT" = "failed" ]; then
+            cat >> "$REPORT" << 'EOF'
+
+          ---
+
+          ### :x: Markdown lint — formatting issues
+
+          Some markdown formatting issues were found that couldn't be auto-fixed.
+
+          EOF
+
+            # Parse markdownlint output into a readable table
+            # Format: "file:line rule/name description"
+            if [ -f /tmp/pr-checks/markdownlint-output ]; then
+              echo "| Location | Issue |" >> "$REPORT"
+              echo "|----------|-------|" >> "$REPORT"
+              grep -E '^docs/.*:[0-9]+' /tmp/pr-checks/markdownlint-output | head -30 | while IFS= read -r line; do
+                file=$(echo "$line" | cut -d: -f1)
+                lineno=$(echo "$line" | cut -d: -f2)
+                issue=$(echo "$line" | sed 's/^[^:]*:[0-9]* *//')
+                echo "| $(edit_link "$file" "$lineno") | $issue |" >> "$REPORT"
+              done
+            fi
+
+            cat >> "$REPORT" << 'EOF'
+
+          <details>
+          <summary>Full output</summary>
+
+          ```
+          EOF
+            cat /tmp/pr-checks/markdownlint-output >> "$REPORT" 2>/dev/null || echo "(output not captured)" >> "$REPORT"
+            cat >> "$REPORT" << 'EOF'
+          ```
+
+          </details>
+
+          **How to fix:** Open the file at the line number shown and fix the issue described. Common problems:
+
+          | Issue | What it means | How to fix |
+          |-------|--------------|------------|
+          | **Bare URL** | A URL is pasted without formatting | Wrap it: `[link text](https://...)` or `<https://...>` |
+          | **Wrong heading style** | Heading uses underlines instead of `#` | Use `## My heading` with `#` symbols |
+          | **Multiple blank lines** | Two or more empty lines in a row | Remove the extra blank lines |
+          | **Trailing spaces** | Invisible spaces at end of a line | Delete the spaces at the end of the line |
+          EOF
+          fi
+
+          # ── YAML lint section ───────────────────────────
+          if [ "$YAML" = "failed" ]; then
+            cat >> "$REPORT" << 'EOF'
+
+          ---
+
+          ### :x: YAML lint — configuration file issues
+
+          Problems were found in YAML configuration files (like `mkdocs.yml`).
+
+          EOF
+
+            # Parse yamllint parsable output: "file:line:col: [level] message"
+            if [ -f /tmp/pr-checks/yamllint-output ]; then
+              echo "| Location | Problem |" >> "$REPORT"
+              echo "|----------|---------|" >> "$REPORT"
+              while IFS= read -r line; do
+                file=$(echo "$line" | cut -d: -f1)
+                lineno=$(echo "$line" | cut -d: -f2)
+                msg=$(echo "$line" | sed 's/^[^:]*:[0-9]*:[0-9]* *//')
+                echo "| $(edit_link "$file" "$lineno") | $msg |" >> "$REPORT"
+              done < /tmp/pr-checks/yamllint-output
+            fi
+
+            cat >> "$REPORT" << 'EOF'
+
+          **How to fix:** Open the file at the line number shown. YAML is sensitive to formatting:
+
+          | Issue | What it means | How to fix |
+          |-------|--------------|------------|
+          | **Wrong indentation** | Spaces don't match the expected level | Use exactly 2 spaces per indent level |
+          | **Trailing spaces** | Invisible spaces at end of a line | Delete the spaces at the end |
+          | **Too many blank lines** | Multiple empty lines in a row | Keep at most one blank line |
+          | **Line too long** | A line exceeds the maximum length | Break it into multiple lines |
+
+          > **Tip:** YAML only uses spaces for indentation, never tabs.
+          EOF
+          fi
+
+          # ── Link check section ─────────────────────────
+          if [ "$LINKS" = "failed" ]; then
+            cat >> "$REPORT" << 'EOF'
+
+          ---
+
+          ### :x: Link check — broken links found
+
+          Some links in the documentation point to pages that don't exist or can't be reached.
+
+          <details>
+          <summary>View broken links</summary>
+
+          EOF
+            cat /tmp/pr-checks/linkcheck-output.md >> "$REPORT" 2>/dev/null || echo "(output not captured)" >> "$REPORT"
+            cat >> "$REPORT" << 'EOF'
+
+          </details>
+
+          **How to fix:** For each broken link above:
+
+          | Problem | How to fix |
+          |---------|-----------|
+          | **404 Not Found** | The page was removed or the URL changed — find the new URL and update the link |
+          | **Timeout / connection error** | The website might be temporarily down — try opening the URL yourself. If it works, this is a false alarm and you can ignore it |
+          | **Broken internal link** (e.g. `[text](../other-page.md)`) | The file you're linking to doesn't exist at that path — check the filename and folder structure |
+
+          > **Note:** If a URL is correct but keeps getting flagged (e.g. the site blocks bots), you can add it to `.lychee.toml` under `exclude`:
+          > ```toml
+          > exclude = [
+          >   "https://example.com/.*",
+          > ]
+          > ```
+          EOF
+          fi
+
+          # ── MkDocs build section ───────────────────────
+          if [ "$BUILD" = "failed" ]; then
+            cat >> "$REPORT" << 'EOF'
+
+          ---
+
+          ### :x: MkDocs build — site failed to build
+
+          The documentation site failed to compile. This means your changes can't be published until this is fixed.
+
+          EOF
+
+            # Extract and categorize MkDocs errors
+            if [ -f /tmp/pr-checks/mkdocs-output ]; then
+              # Check for "not in nav" errors
+              if grep -q 'not included in the "nav"' /tmp/pr-checks/mkdocs-output; then
+                echo '**Missing from navigation:** You added a new page but forgot to register it.' >> "$REPORT"
+                echo '' >> "$REPORT"
+                echo 'The following files need to be added to `mkdocs.yml` under the `nav:` section:' >> "$REPORT"
+                echo '' >> "$REPORT"
+                # Extract the listed files
+                awk '/not included in the "nav"/{flag=1;next}/^(INFO|WARNING|ERROR|DEBUG|\[)/{flag=0}flag && /\.md/{print "- `" $NF "`"}' /tmp/pr-checks/mkdocs-output >> "$REPORT"
+                echo '' >> "$REPORT"
+                cat >> "$REPORT" << 'EOF'
+          To fix this, open `mkdocs.yml`, find the `nav:` section, and add your page in the right spot. For example:
+          ```yaml
+          nav:
+            - Home: index.md
+            - Research:
+              - fMRI:
+                - Your new page: research/fmri/your-new-page.md  # <-- add a line like this
+          ```
+          EOF
+              fi
+
+              # Check for broken internal links
+              if grep -q 'unrecognized relative link' /tmp/pr-checks/mkdocs-output; then
+                echo '' >> "$REPORT"
+                echo '**Broken internal links:** Some links in your pages point to files that do not exist.' >> "$REPORT"
+                echo '' >> "$REPORT"
+                echo '| File | Broken link |' >> "$REPORT"
+                echo '|------|-------------|' >> "$REPORT"
+                grep 'unrecognized relative link' /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
+                  file=$(echo "$line" | grep -oP "Doc '\\K[^']+")
+                  link=$(echo "$line" | grep -oP "relative link '\\K[^']+")
+                  echo "| $(edit_link "$file") | \`$link\` |" >> "$REPORT"
+                done
+                echo '' >> "$REPORT"
+                echo 'To fix this, check that the linked file exists and the path is spelled correctly.' >> "$REPORT"
+              fi
+
+              # Check for missing anchor errors
+              if grep -q 'no such anchor' /tmp/pr-checks/mkdocs-output; then
+                echo '' >> "$REPORT"
+                echo '**Broken anchor links:** Some links point to headings that do not exist on the target page.' >> "$REPORT"
+                echo '' >> "$REPORT"
+                echo '| File | Broken anchor |' >> "$REPORT"
+                echo '|------|---------------|' >> "$REPORT"
+                grep 'no such anchor' /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
+                  file=$(echo "$line" | grep -oP "Doc '\\K[^']+")
+                  anchor=$(echo "$line" | grep -oP "'#[^']+'" | head -1 | tr -d "'")
+                  echo "| $(edit_link "$file") | \`$anchor\` |" >> "$REPORT"
+                done
+                echo '' >> "$REPORT"
+                echo 'To fix this, update the `#anchor` in the link to match an actual heading on the target page.' >> "$REPORT"
+              fi
+            fi
+
+            # Always show full output in collapsed section
+            cat >> "$REPORT" << 'EOF'
+
+          <details>
+          <summary>Full build output</summary>
+
+          ```
+          EOF
+            grep -E '^(WARNING|ERROR|\[ERROR\]|\[docs-ci\])' /tmp/pr-checks/mkdocs-output >> "$REPORT" 2>/dev/null || cat /tmp/pr-checks/mkdocs-output >> "$REPORT" 2>/dev/null
+            cat >> "$REPORT" << 'EOF'
+          ```
+
+          </details>
+          EOF
+          fi
+
+          # ── Footer ─────────────────────────────────────
+          if [ "$FAILURES" -gt 0 ]; then
+            cat >> "$REPORT" << 'EOF'
+
+          ---
+
+          > :pushpin: **Need help?** Ping @costantinoai in the PR comments and I'll help you sort it out.
+          >
+          > Push a new commit to re-run these checks — this comment will update automatically.
+          EOF
+          fi
+
+          echo "--- Report ---"
+          cat "$REPORT"
+
+      - name: Find existing bot comment
+        if: always()
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: github-actions[bot]
+          body-includes: "<!-- pr-checks-report -->"
+
+      - name: Post or update PR comment
+        if: always()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          edit-mode: replace
+          body-path: /tmp/pr-checks/report.md
+
+      # ── Final verdict ──────────────────────────────────
+      - name: Fail if any check failed
+        if: always()
+        run: |
+          SPELL=$(cat /tmp/pr-checks/spellcheck-status 2>/dev/null || echo "skipped")
+          MDLINT=$(cat /tmp/pr-checks/markdownlint-status 2>/dev/null || echo "skipped")
+          YAML=$(cat /tmp/pr-checks/yamllint-status 2>/dev/null || echo "skipped")
+          LINKS=$(cat /tmp/pr-checks/linkcheck-status 2>/dev/null || echo "skipped")
+          BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "skipped")
+          FAILED=false
+          for s in "$SPELL" "$MDLINT" "$YAML" "$LINKS" "$BUILD"; do
+            [ "$s" = "failed" ] && FAILED=true
+          done
+          if [ "$FAILED" = "true" ]; then
+            echo "One or more checks failed. See the PR comment for details."
+            exit 1
+          fi

@@ -52,6 +52,14 @@ Welcome to the central hub for all research activities at Hoplab. This page serv
 
     [:octicons-arrow-right-24: fMRI resources](fmri/index.md)
 
+- :fontawesome-solid-database:{ .lg .middle } __Research Data Management (RDM)__
+
+    ---
+
+    Learn how to handle research data during the full project lifecycle.
+
+    [:octicons-arrow-right-24: RDM guidelines](rdm/index.md)
+
 </div>
 
 ## Quick links to resources

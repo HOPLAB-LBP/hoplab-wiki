@@ -24,13 +24,13 @@ jobs:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5.1.1
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
       - name: Install dependencies
         run: |
-          pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-task-collector mkdocs-git-authors-plugin
+          pip install -r requirements.txt
 
       - name: Build the documentation
         run: |

@@ -1,0 +1,28 @@
+extends: default
+
+rules:
+  # GitHub Actions convention: no --- document start
+  document-start: disable
+
+  # Commented-out nav items in mkdocs.yml cause false positives
+  comments-indentation: disable
+
+  # Relax line length for nav entries, descriptions, inline JS in manage-docs-tags
+  line-length:
+    max: 400
+    allow-non-breakable-inline-mappings: true
+
+  # Truthy values: mkdocs uses bare true/false which is fine
+  truthy:
+    allowed-values: ["true", "false", "on", "off", "yes", "no"]
+    check-keys: false
+
+  # Allow both styles of comments
+  comments:
+    require-starting-space: true
+    min-spaces-from-content: 1
+
+  # Indentation: mkdocs.yml uses 2-space indent
+  indentation:
+    spaces: 2
+    indent-sequences: whatever

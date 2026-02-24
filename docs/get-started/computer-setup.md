@@ -19,10 +19,8 @@ Faculty issued computers can be recognized by their name starting with GHUM. To 
     - To access KU Leuven intranet pages, you will need to log in with [KU Leuven Authenticator](https://admin.kuleuven.be/icts/english/mfa). You can register your device with a smartphone or tablet via the KU Leuven Authenticator App ([read the instructions](https://admin.kuleuven.be/icts/english/mfa/startwithmfa#smartphone)).
     - If you are having issues with MFA, check this [FAQ page](https://admin.kuleuven.be/icts/services/mfa/faq_en).
 5. **Downloading software**:
-    - Before downloading software, make sure you acquired administrator access. You can request administrator rights by double clicking the "Make Me Admin" icon on your Windows, providing ICT with a short reason on why you need this access. Follow the further instructions to get temporary administrator rights on your computer. 
+    - Before downloading software, make sure you acquired administrator access. You can request administrator rights by double clicking the "Make Me Admin" icon on your Windows, providing ICT with a short reason on why you need this access. Follow the further instructions to get temporary administrator rights on your computer.
     - Software should always be installed in 'C:\Workdir\MyApps\'. If software is installed elsewhere, the system will block these programs from running. Please contact the [ICT helpdesk](https://ppw.kuleuven.be/ppw-dict) if a problem occurs.
-
-
 
 ??? question "Where do I find the hostname of my pc?"
     The hostname is usually printed on a sticker on the computer. If not, go to Start, right click on "This PC", choose properties, and check the "Device name" field.
@@ -177,6 +175,6 @@ For **mac users**, follow the instructions on [this page](https://ppw.kuleuven.b
 
 <!--
 __TODO__: [Klara] Explain how you can forward emails from your student mailing address to your professional mailing address (for PhD'ers)
-__TODO__: [Klara] Specify how to encrypt your (external) hard drive --> I think it happens automatically at least for Windows 
+__TODO__: [Klara] Specify how to encrypt your (external) hard drive --> I think it happens automatically at least for Windows
 __TODO__: [Klara] Edit info on data storage after BADM consultation has ended (e.g., OneDrive info is outdated and not recommended any longer by KU Leuven)
 -->
