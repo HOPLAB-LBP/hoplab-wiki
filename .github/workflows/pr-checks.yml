@@ -92,8 +92,8 @@ jobs:
         run: |
           if [ "$SPELLCHECK_OUTCOME" = "failure" ]; then
             echo "failed" > /tmp/pr-checks/spellcheck-status
-            # Re-run to capture output (the action doesn't expose it)
-            npx -y typos-cli --config ./_typos.toml docs/ 2>&1 | head -100 > /tmp/pr-checks/spellcheck-output || true
+            # Re-run typos to capture output (the action binary is on PATH after the step above)
+            typos --config ./_typos.toml docs/ 2>&1 | head -100 > /tmp/pr-checks/spellcheck-output || true
           else
             echo "passed" > /tmp/pr-checks/spellcheck-status
           fi
