@@ -238,22 +238,22 @@ jobs:
           |------|------|-------|---------------|
           EOF
 
-            # Parse typos brief output format: "file:line:col: `typo` -> `fix`"
+            # Parse typos brief format: "file:line:col: error: `typo` should be `fix`"
             if [ -f /tmp/pr-checks/spellcheck-raw ]; then
               while IFS= read -r line; do
-                # Match pattern: filepath:line:col: `word` -> `correction`
-                if echo "$line" | grep -qE '.*:[0-9]+:[0-9]+:.*`.*`.*->.*`.*`'; then
+                # Match: filepath:line:col: error: `word` should be `correction`
+                if echo "$line" | grep -qP '.*:\d+:\d+:.*`.*` should be `.*`'; then
                   file=$(echo "$line" | cut -d: -f1)
                   lineno=$(echo "$line" | cut -d: -f2)
                   typo=$(echo "$line" | grep -oP '`\K[^`]+' | head -1)
                   fix=$(echo "$line" | grep -oP '`\K[^`]+' | tail -1)
                   echo "| \`$file\` | $lineno | \`$typo\` | \`$fix\` |" >> "$REPORT"
-                # Match pattern without suggestion: filepath:line:col: `word` is a typo
-                elif echo "$line" | grep -qE '.*:[0-9]+:[0-9]+:.*`.*`'; then
+                # Match without correction: filepath:line:col: error: `word`
+                elif echo "$line" | grep -qP '.*:\d+:\d+:.*`.*`'; then
                   file=$(echo "$line" | cut -d: -f1)
                   lineno=$(echo "$line" | cut -d: -f2)
                   typo=$(echo "$line" | grep -oP '`\K[^`]+' | head -1)
-                  echo "| \`$file\` | $lineno | \`$typo\` | *(no suggestion)* |" >> "$REPORT"
+                  echo "| \`$file\` | $lineno | \`$typo\` | *(check manually)* |" >> "$REPORT"
                 fi
               done < /tmp/pr-checks/spellcheck-raw
             fi
