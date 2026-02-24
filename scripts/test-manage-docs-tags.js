@@ -133,7 +133,8 @@ assert(wasAutoCompleted({ labels: [{ name: 'doc-tags-complete' }] }), 'wasAutoCo
 assert(!wasAutoCompleted({ labels: [{ name: 'doc-tags' }] }), 'wasAutoCompleted: no');
 
 assert(isDocTagsIssue({ labels: [{ name: 'doc-tags' }], title: 'x' }), 'isDocTags: by label');
-assert(isDocTagsIssue({ labels: [], title: 'Tags in docs/foo.md [3 open]' }), 'isDocTags: new title');
+assert(isDocTagsIssue({ labels: [], title: '[3 open] Tags in docs/foo.md' }), 'isDocTags: current title');
+assert(isDocTagsIssue({ labels: [], title: 'Tags in docs/foo.md [3 open]' }), 'isDocTags: previous title');
 assert(isDocTagsIssue({ labels: [], title: '(2/5 open) Tags in docs/foo.md' }), 'isDocTags: legacy title');
 assert(isDocTagsIssue({ labels: [], title: 'Tags in docs/foo.md' }), 'isDocTags: simple title');
 assert(!isDocTagsIssue({ labels: [], title: 'Fix the tags parser' }), 'isDocTags: unrelated');
@@ -144,11 +145,17 @@ assert(!isDocTagsIssue({ labels: [{ name: 'bug' }], title: 'Bug report' }), 'isD
 // =========================================================================
 console.log('\n--- extractFileFromIssue ---');
 
-// New format
-assertEqual(extractFileFromIssue({ title: 'Tags in docs/foo.md [5 open]' }), 'docs/foo.md', 'extract: new format');
-assertEqual(extractFileFromIssue({ title: 'Tags in docs/foo.md [0 open]' }), 'docs/foo.md', 'extract: new format zero');
+// Current format: "[N open] Tags in file"
+assertEqual(extractFileFromIssue({ title: '[5 open] Tags in docs/foo.md' }), 'docs/foo.md', 'extract: current format');
+assertEqual(extractFileFromIssue({ title: '[0 open] Tags in docs/foo.md' }), 'docs/foo.md', 'extract: current format zero');
+assertEqual(extractFileFromIssue({ title: '[4 open] Tags in docs/research/fmri/analysis/fmri-glm.md' }),
+  'docs/research/fmri/analysis/fmri-glm.md', 'extract: current deep nested');
+
+// Previous format: "Tags in file [N open]"
+assertEqual(extractFileFromIssue({ title: 'Tags in docs/foo.md [5 open]' }), 'docs/foo.md', 'extract: previous format');
+assertEqual(extractFileFromIssue({ title: 'Tags in docs/foo.md [0 open]' }), 'docs/foo.md', 'extract: previous format zero');
 assertEqual(extractFileFromIssue({ title: 'Tags in docs/research/fmri/analysis/fmri-glm.md [4 open]' }),
-  'docs/research/fmri/analysis/fmri-glm.md', 'extract: deep nested new format');
+  'docs/research/fmri/analysis/fmri-glm.md', 'extract: previous deep nested');
 
 // Legacy format
 assertEqual(extractFileFromIssue({ title: '(2/5 open) Tags in docs/foo.md' }), 'docs/foo.md', 'extract: legacy');
@@ -167,8 +174,10 @@ assertEqual(extractFileFromIssue({ title: '', body: '' }), null, 'extract: empty
 assertEqual(extractFileFromIssue({}), null, 'extract: empty object');
 
 // File with spaces (edge case)
+assertEqual(extractFileFromIssue({ title: '[1 open] Tags in docs/my file.md' }),
+  'docs/my file.md', 'extract: current file with spaces');
 assertEqual(extractFileFromIssue({ title: 'Tags in docs/my file.md [1 open]' }),
-  'docs/my file.md', 'extract: file with spaces');
+  'docs/my file.md', 'extract: previous file with spaces');
 
 // =========================================================================
 // getLabel
@@ -658,9 +667,9 @@ assertEqual(getChangedFiles({ eventName: 'push', payload: {} }), null, 'push no 
 // buildTitle
 // =========================================================================
 console.log('\n--- buildTitle ---');
-assertEqual(buildTitle('docs/foo.md', 5), 'Tags in docs/foo.md [5 open]', 'title: 5 open');
-assertEqual(buildTitle('docs/foo.md', 0), 'Tags in docs/foo.md [0 open]', 'title: 0 open');
-assertEqual(buildTitle('docs/foo.md', 1), 'Tags in docs/foo.md [1 open]', 'title: 1 open');
+assertEqual(buildTitle('docs/foo.md', 5), '[5 open] Tags in docs/foo.md', 'title: 5 open');
+assertEqual(buildTitle('docs/foo.md', 0), '[0 open] Tags in docs/foo.md', 'title: 0 open');
+assertEqual(buildTitle('docs/foo.md', 1), '[1 open] Tags in docs/foo.md', 'title: 1 open');
 
 // Verify the new title can be parsed back
 {

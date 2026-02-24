@@ -61,7 +61,10 @@ function isDocTagsIssue(issue) {
 
 function extractFileFromIssue(issue) {
   const title = issue.title || '';
-  // New format: "Tags in docs/foo.md [5 open]"
+  // Current format: "[5 open] Tags in docs/foo.md"
+  const cf = title.match(/^\[\d+ open\]\s+Tags in\s+(.+)$/);
+  if (cf && cf[1]) return normalizePath(cf[1]);
+  // Previous format: "Tags in docs/foo.md [5 open]"
   const nm = title.match(/Tags in\s+(.+?)\s*\[/);
   if (nm && nm[1]) return normalizePath(nm[1]);
   // Legacy format: "(5/8 open) Tags in docs/foo.md"
@@ -795,7 +798,7 @@ async function handleNewComment({ github, owner, repo, serverUrl, issue, comment
 // ---------------------------------------------------------------------------
 
 function buildTitle(file, openCount) {
-  return `Tags in ${file} [${openCount} open]`;
+  return `[${openCount} open] Tags in ${file}`;
 }
 
 function buildBody(file, owner, repo, formattedTasks) {
