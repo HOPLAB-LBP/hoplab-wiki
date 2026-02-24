@@ -3658,7 +3658,7 @@
 </span><span id="__span-10-422"><a id="__codelineno-10-422" name="__codelineno-10-422"></a><span class="w">    </span><span class="p">};</span>
 </span><span id="__span-10-423"><a id="__codelineno-10-423" name="__codelineno-10-423"></a>
 </span><span id="__span-10-424"><a id="__codelineno-10-424" name="__codelineno-10-424"></a><span class="c">% Iterate over contrasts to generate plots</span>
-</span><span id="__span-10-425"><a id="__codelineno-10-425" name="__codelineno-10-425"></a><span class="k">for</span><span class="w"> </span><span class="n">constrastIdx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">selectedTasks</span><span class="p">(</span><span class="n">taskIndex</span><span class="p">).</span><span class="n">contrasts</span><span class="p">)</span>
+</span><span id="__span-10-425"><a id="__codelineno-10-425" name="__codelineno-10-425"></a><span class="k">for</span><span class="w"> </span><span class="n">contrastIdx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">selectedTasks</span><span class="p">(</span><span class="n">taskIndex</span><span class="p">).</span><span class="n">contrasts</span><span class="p">)</span>
 </span><span id="__span-10-426"><a id="__codelineno-10-426" name="__codelineno-10-426"></a>
 </span><span id="__span-10-427"><a id="__codelineno-10-427" name="__codelineno-10-427"></a><span class="w">    </span><span class="c">% Iterate over thresholds to generate plots</span>
 </span><span id="__span-10-428"><a id="__codelineno-10-428" name="__codelineno-10-428"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">thresholdIndex</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">thresholds</span><span class="p">)</span>
@@ -3669,7 +3669,7 @@
 </span><span id="__span-10-433"><a id="__codelineno-10-433" name="__codelineno-10-433"></a><span class="w">        </span><span class="n">crossCoords</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">52</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">18</span><span class="p">];</span><span class="w"> </span><span class="c">% FFA. Change as needed.</span>
 </span><span id="__span-10-434"><a id="__codelineno-10-434" name="__codelineno-10-434"></a>
 </span><span id="__span-10-435"><a id="__codelineno-10-435" name="__codelineno-10-435"></a><span class="w">        </span><span class="c">% Set the index of the contrast to display (modify if needed)</span>
-</span><span id="__span-10-436"><a id="__codelineno-10-436" name="__codelineno-10-436"></a><span class="w">        </span><span class="n">spmContrastIndex</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">constrastIdx</span><span class="p">;</span>
+</span><span id="__span-10-436"><a id="__codelineno-10-436" name="__codelineno-10-436"></a><span class="w">        </span><span class="n">spmContrastIndex</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">contrastIdx</span><span class="p">;</span>
 </span><span id="__span-10-437"><a id="__codelineno-10-437" name="__codelineno-10-437"></a>
 </span><span id="__span-10-438"><a id="__codelineno-10-438" name="__codelineno-10-438"></a><span class="w">        </span><span class="c">% Call the function to generate and save contrast overlay images</span>
 </span><span id="__span-10-439"><a id="__codelineno-10-439" name="__codelineno-10-439"></a><span class="w">        </span><span class="n">generateContrastOverlayImages</span><span class="p">(</span><span class="n">spmMatPath</span><span class="p">,</span><span class="w"> </span><span class="n">outPath</span><span class="p">,</span><span class="w"> </span><span class="n">fmriprepRoot</span><span class="p">,</span><span class="w"> </span><span class="n">subjectName</span><span class="p">,</span><span class="w"> </span><span class="n">pipelineStr</span><span class="p">,</span><span class="w"> </span><span class="n">thresholds</span><span class="p">{</span><span class="n">thresholdIndex</span><span class="p">},</span><span class="w"> </span><span class="n">spmContrastIndex</span><span class="p">,</span><span class="w"> </span><span class="n">crossCoords</span><span class="p">);</span>
@@ -5879,8 +5879,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      <a href="#__consent">Change cookie settings</a>            
-    
+      <a href="#__consent">Change cookie settings</a>
 
     </div>
   
@@ -5913,7 +5912,7 @@
 
 
 <h4>Cookie consent</h4>
-<p>Please, consider disabling your ad-blocker and allowing cookies for this Wiki .  We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<p>Please, consider disabling your ad-blocker and allowing cookies for this Wiki . We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
 <input class="md-toggle" type="checkbox" id="__settings" >
 <div class="md-consent__settings">
   <ul class="task-list">
