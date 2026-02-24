@@ -28,7 +28,7 @@ Before diving into your (f)MRI study, make sure you're prepared by following the
 
 ### Get formal ethical approval
 
-Note that for most fMRI studies (including healthy adult participants), ethical approval has already been obtained and will fall under application nr. S62131 (until end of December 2025) or S70813 (from January 2026 onwards, hopefully). 
+Note that for most fMRI studies (including healthy adult participants), ethical approval has already been obtained and will fall under application nr. S62131 (until end of December 2025) or S70813 (from January 2026 onwards, hopefully).
 
 Follow the yellow section of the [flowchart](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AAATYJes74w8KvI0OEOd1MmYa?e=4&preview=Flowchart_MR8_scanning.pdf) to make sure everything is in order for you to start scanning.
 
@@ -40,7 +40,6 @@ Follow the yellow section of the [flowchart](https://www.dropbox.com/sh/6hdu5z59
    For more info, we refer you to [this page](../ethics/MEC.md#step-2-apply-for-ec-approval).
 4. **Follow the MR safety course**:
    And become an authorized user of the MRI-scanner (see below).
-
 
 ### Attend the MR safety course
 
@@ -76,9 +75,9 @@ Follow the yellow section of the [flowchart](https://www.dropbox.com/sh/6hdu5z59
           | Extranet required         | No                               |
           | Phone number              |                                  |
 
-2. **Card activation for MR suite access**:   
+2. **Card activation for MR suite access**:
   After you have completed all the steps above, Ron will arrange everything and you will automatically gain access to MR8 with your KU Leuven staff/student card.
-    
+
 ### Training and preparation
 
 Before you can become an Authorized Other User (AOU), you must undergo practical training and testing:

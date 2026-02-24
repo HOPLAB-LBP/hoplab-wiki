@@ -17,7 +17,7 @@ Templates are organized into two sections:
   
     ---
   
-    Visual similarity multi-arrangement task, using inverse MDS, based upon [Kriegeskorte & Mur (2012)](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2012.00245/full). 
+    Visual similarity multi-arrangement task, using inverse MDS, based upon [Kriegeskorte & Mur (2012)](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2012.00245/full).
   
     This paradigm can be implemented online, through the [Meadows research platform](https://meadows-research.com/). This platform asks a small fee per participant.
 

@@ -147,7 +147,7 @@ The [Hoplab](https://www.hoplab.be/) is part of the larger [NeuroSPACE consortiu
 
 ## Need Help?
 
-Can't find what you're looking for? Have questions or suggestions? Don't hesitate to reach out: 
+Can't find what you're looking for? Have questions or suggestions? Don't hesitate to reach out:
 
 - __Wiki Managers:__ [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels)
 - __Contact:__ [Andrea Costantino](mailto:andreaivan.costantino@kuleuven.be)

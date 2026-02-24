@@ -35,17 +35,13 @@ Systems are color-coded, and can be read as follow:
     - Power for the ET system is located in the back room.
 - <span style="color:rgb(123, 82, 123)">**Purple**</span> lines and boxes connect the MRI control PC (old system, which we use)
 - <span style="color:rgb(204, 146, 39)">**Gold**</span> lines and boxes connect the MRI control PC (new system, which we DO NOT use)
-- **Dotted** lines mostly relay audio/video 
+- **Dotted** lines mostly relay audio/video
 - **Dashed** lines are power lines.
-
- 
 
 Other instruments we use are:
 
 - the **3NB light filter**, which should be placed between the projector and the **MRI compatible screen** at  the back of the scanner.
 - the **Headphones**, which are used as a safety measure for the participant, and to deliver audio when needed. These headphones are MRI compatible and work using the magnetic field produced by the scanner. That means that they **will not work outside of the scanner**, and the sounds will get increasingly strong as you move inside the scanner. The sound for these (yellow) headphones is sent from the stim PC through the **Lindy** box, passes through the **amplifier** located next to the stim PC, and it finally reaches the HP. Volume can be controlled through the amplifier or the stim PC general volume level.
-
-
 
 <!--
 | **Area/Equipment**                 | **Description**                                                                                                                                                    |
@@ -173,7 +169,6 @@ The stimulus computer's desktop is located in the **control room**. It is the se
     - To flip the screen, adjust the **projector settings**, not the computer.
 ![Screen information](../../assets/mr8_screenInformation.png)
 
- 
 ---
 
 ### Trigger Boxes
@@ -205,8 +200,6 @@ The scanner sends a trigger "5" to the stimulus computer. Different setups are u
     - Check if any cables have been left disconnected. The **response box** is on top of the stimulus desktop PC in the **control room**. Ensure both cables are properly connected.
 
 ![Trigger box](../../assets/triggerbox.png)
-
- 
 
 #### Common Issues
 
@@ -431,9 +424,8 @@ The **control panels** on the left and right of the scanner have identical funct
 
 Before leaving the room, check the following:
 
-- **Ask the volunteer** if the screen is fully visible and centered, using the "reading-test" located in Desktop>RESEARCH>psychology>ReadingTest. They should be able to read down to 2nd to last line. 
+- **Ask the volunteer** if the screen is fully visible and centered, using the "reading-test" located in Desktop>RESEARCH>psychology>ReadingTest. They should be able to read down to 2nd to last line.
 - **Check the screen yourself** to ensure it is aligned with the black marks on the scanner table.
-
 
 ---
 
@@ -516,7 +508,7 @@ Before leaving the room, check the following:
 1. **New Examination**:
     - Select **"Patient – New Examination"**.
     - Choose **RIS** to load the volunteer's details. Their data (name, ID, birthdate, sex, and exam) will be automatically filled in.
-    - NOTE: if you are running a pilot (and booked through Ron), then you need to create a new subject. You can generate a random ID. 
+    - NOTE: if you are running a pilot (and booked through Ron), then you need to create a new subject. You can generate a random ID.
 
 2. **Volunteer Information**:
     - Enter the volunteer’s weight (from the **MR Safety Checklist**).
@@ -622,7 +614,7 @@ Before leaving the room, check the following:
     - You can either proceed without adjusting the setting or adjust ventilation via **Examination > Adjust Ventilation** in the scan console.
 
 ??? failure "Participant leaving the scanner during the task"
-    It might happen that your participant feels uncomfortable during the scanning, and has to get out of the scanner to stretch their legs, go to the toilet or so. If time allows it and they are ok with it, you can consider re-starting the scanning session where it was left off. 
+    It might happen that your participant feels uncomfortable during the scanning, and has to get out of the scanner to stretch their legs, go to the toilet or so. If time allows it and they are ok with it, you can consider re-starting the scanning session where it was left off.
 
     To do so, follow these steps to adapt your sequence at the MRI control computer:
     - Right-click and duplicate both _Smartbrain_ and _Check_fMRI_ in your sequence.
@@ -632,7 +624,7 @@ Before leaving the room, check the following:
     Once they are ready, place your participant in the scanner as you did to begin the scanning, and re-start the sequence from the events you just created.
 
 ??? failure "No key press seems to be recorded"
-    The good practice is always to have someone press the button boxes you're going to use _before_ the participant enters the scanner. That allows to see if the button boxes are connected & all the buttons functional. If you're not sure the key presses of your participant actually send a key press to the computer and you're in the middle of a run, the first thing to do is to have a look at the logging coming into the MatLab console after the run. You can also ask your participant to press the response buttons during the break, with the cursor in the console, and see what comes out.
+    The good practice is always to have someone press the button boxes you're going to use *before* the participant enters the scanner. That allows to see if the button boxes are connected & all the buttons functional. If you're not sure the key presses of your participant actually send a key press to the computer and you're in the middle of a run, the first thing to do is to have a look at the logging coming into the MatLab console after the run. You can also ask your participant to press the response buttons during the break, with the cursor in the console, and see what comes out.
 
     In any case, if no key press is being recorded, try the following steps:
     - Check in the projector room if the transmitter box connected to the cables of the button boxes you are using is connected to the stimulus computer.
@@ -988,5 +980,3 @@ In case of an emergency involving the MRI system or facility:
 **TODO:** update pics. They do not seem to be up-to-date anymore.
 __TODO__: add additional info on DICOM (no enhanced, missing values, etc.). See also [this](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) where Chris Rorden explains some practical issues with Philips DICOMs, particularly the section on missing info (which we should probably link somewhere), and [this thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703), which explains issues with the enhanced DICOMs.
 -->
-
- 

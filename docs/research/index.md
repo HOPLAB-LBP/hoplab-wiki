@@ -52,7 +52,6 @@ Welcome to the central hub for all research activities at Hoplab. This page serv
 
     [:octicons-arrow-right-24: RDM guidelines](rdm/index.md)
 
-
 </div>
 
 ## Quick links to resources

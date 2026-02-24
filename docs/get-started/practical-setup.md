@@ -24,11 +24,11 @@ Within the Faculty of Psychology and Educational Sciences, Brain and Cognition (
 
 An overview of the office spaces and who is located where, can be found [here](https://www.kuleuven.be/wieiswie/nl/person/00029058).
 
-## Kitchen 
+## Kitchen
 
-All members of Hoplab have access to the LBP-kitchen (shared with the labs of [Bram](https://www.kuleuven.be/wieiswie/nl/person/00035504), [Rudi](https://www.kuleuven.be/wieiswie/nl/person/00043549), and [Markus](https://www.kuleuven.be/wieiswie/nl/person/00140784)). The kitchen is located in PSI 02.53 and has a fridge, coffee machine, kettle, microwave, diswasher,... 
+All members of Hoplab have access to the LBP-kitchen (shared with the labs of [Bram](https://www.kuleuven.be/wieiswie/nl/person/00035504), [Rudi](https://www.kuleuven.be/wieiswie/nl/person/00043549), and [Markus](https://www.kuleuven.be/wieiswie/nl/person/00140784)). The kitchen is located in PSI 02.53 and has a fridge, coffee machine, kettle, microwave, diswasher,...
 
-There is a rotation system (hanging in the kitchen) indicating two people every week who are responsible to clean the kitchen. 
+There is a rotation system (hanging in the kitchen) indicating two people every week who are responsible to clean the kitchen.
 - Please check the coffee, sugar, and milk supplies at least once a week. If anything is running low, inform [Ying](https://www.kuleuven.be/wieiswie/nl/person/00098752) in time so she can place a new order.
 - Make sure the table and microwave are clean; wipe them down if necessary. The coffee room is occasionally used for general meetings (including meetings with external visitors), so it should always be presentable without last-minute cleaning.
 - There are plenty of towels available. If any look dirty or worn, replace them. In particular, do not use a grimy towel to dry clean dishes when unloading the dishwasher.
