@@ -372,5 +372,3 @@ For example:
 **TODO:** Refine the phrasing and add more info on the parameters for GLM and contrasts setup.
 **TODO:** Possibly include screenshots for better clarity (e.g., code sections).
 -->
-
- 

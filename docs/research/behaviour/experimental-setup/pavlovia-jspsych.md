@@ -6,9 +6,9 @@ For ready-to-use example, please refer to the [Behavioural tasks](../bh-tasks.md
 
 ## Learning resources
 
-If you're unfamiliar with jsPsych, it's a good idea to start by learning some basics. 
+If you're unfamiliar with jsPsych, it's a good idea to start by learning some basics.
 
-There is plenty of documentation on the [main jsPsych page](https://www.jspsych.org/v7/). In particular, go through the _tutorial_ section, which contains some very accessible, step-by-step instructions on how to build your script. 
+There is plenty of documentation on the [main jsPsych page](https://www.jspsych.org/v7/). In particular, go through the _tutorial_ section, which contains some very accessible, step-by-step instructions on how to build your script.
 
 You can also check out the content from Christophe Bossens' workshop on [online experiments with jsPsych](https://kuleuven.sharepoint.com/:p:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Behaviour/Experiment%20building/jspsych_workshop_christophe.pptx?d=w7d8cb68a430746bcb4b9bcb6ceddaf23&csf=1&web=1&e=L9FXng).
 

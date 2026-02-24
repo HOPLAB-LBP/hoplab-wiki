@@ -6,7 +6,7 @@ Before starting participant recruitment, ensure your study is formally approved 
 
 1. Through the laboratory's participant database:
 
-    - Including previous participants and individuals who have expressed interest in participating through word-of-mouth referrals 
+    - Including previous participants and individuals who have expressed interest in participating through word-of-mouth referrals
 
 2. Through social connections of the researchers involved and/or by sharing your announcement via social media:
 
@@ -124,7 +124,6 @@ Reimbursement can take the following forms:
 - **Credit study**: Research participation credits must be assigned in multiples of 0.25, i.e., 0.25 credit per 15 minutes, such that 1h equals 1 credit. Credits cannot be transferred between academic years.
 - **Paid study**: The standard pay rate is up to 10 euros per hour, without additional incentives. Exceptions are possible for high-effort or aversive studies (e.g., fMRI, ESM).
 - **Mixed study**: Award 0 credits to those who receive payment.
-
 
 Of course, all (psychology) students also benefit from participation by gathering insights into the common procedures of psychological research (wink).
 

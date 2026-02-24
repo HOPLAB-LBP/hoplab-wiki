@@ -114,7 +114,6 @@ This section contains some foundational papers to give you some background on th
 
      - [A visual and intuitive understanding of deep learning](https://www.youtube.com/watch?v=Oqm9vsf_hvU&ab_channel=otaviogood) is a great lecture to begin with if you feel like convolutional neural networks are still obscure to you.
 
-
 <!--
 __TODO__: [Klara] Add info on interesting internal & external trainings (soft skills, career choices, programming, academic writing, presenting your research, stats, HPC etc.) for PhDs/postdocs/ATP
 __TODO__: [Klara] Expand list of papers & lectures 

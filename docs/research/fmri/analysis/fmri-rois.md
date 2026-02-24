@@ -14,8 +14,6 @@ The following types of ROIs are commonly used in fMRI research:
 
 ### Example: Creating Spherical ROIs with the GUI
 
- 
-  
 ### Example: Creating Spherical ROIs with a Script
 
 Below is an example MATLAB script designed to creare bilateral ROIs. This script leverages **MarsBaR** and **SPM** to generate spherical ROIs around given MNI coordinates. The ROIs are saved as NIfTI files, which can be further used in analyses such as **multivariate decoding**.
@@ -839,8 +837,6 @@ This code generates a new folder containing **subject-specific ROIs**. While pre
 Now that you have your beta images (from the GLM) and your ROIs, you have everything you need to run your multi-variate analysis. [--> MVPA](fmri-mvpa.md)
 
 ---
-
- 
 
 <https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/atlases.html#id4>
 <https://neurosynth.org/>

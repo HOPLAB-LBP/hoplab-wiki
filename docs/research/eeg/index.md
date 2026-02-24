@@ -12,7 +12,6 @@ If you are just starting out, it might be worthwhile to check out the NeuroSPACE
 
 In Hoplab, we typically set up experiments for multivariate EEG ("Representational Dynamics"). Our standard analysis pipeline is described most in detail in *[Leys et al.](https://jov.arvojournals.org/article.aspx?articleid=2811037)* (2025, JoV) and *[Chen et al.](https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00006/116700/The-representational-dynamics-of-the-animal)* (2023, Imaging Neuroscience). The latter is accompanied by an [OSF archive](https://osf.io/d5egu/) that contains the analysis code to do multivariate analysis with Matlab and the [CosmoMVPA](https://www.cosmomvpa.org/) toolbox.
 
-
 <div class="grid cards" markdown>
 
 - :octicons-rocket-24:{ .lg .middle } __Data acquisition__
@@ -27,7 +26,7 @@ In Hoplab, we typically set up experiments for multivariate EEG ("Representation
 
     ---
 
-    A placeholder for another EEG-related topic: eye tracking and/or EOG? 
+    A placeholder for another EEG-related topic: eye tracking and/or EOG?
 
     [:octicons-arrow-right-24: something](eeg-acquisition.md)
 
@@ -48,7 +47,6 @@ In Hoplab, we typically set up experiments for multivariate EEG ("Representation
     [:octicons-arrow-right-24: Start scripting](eeg-task.md)
 
 </div>
-
 
 <!--
 __TODO__: Add information on the analysis (OSF page of Chen et al has no readme!)

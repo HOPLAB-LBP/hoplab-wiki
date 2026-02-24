@@ -10,7 +10,7 @@ Note that these things are all implemented in the (upcoming) EEG task template (
 
 ## Sending triggers
 
-In order to be able to map psychophysical events from your task to the EEG data, you will need to send triggers from the task computer to the EEG computer. These triggers will then appear in a separate channels alongside your other EEG channels, allowing you to know precisely when e.g. an image was shown with respect to your brain signal. 
+In order to be able to map psychophysical events from your task to the EEG data, you will need to send triggers from the task computer to the EEG computer. These triggers will then appear in a separate channels alongside your other EEG channels, allowing you to know precisely when e.g. an image was shown with respect to your brain signal.
 
 Triggers are sent via a serial port connection. To use it, you will need to link to the serial port within your script. In Python, this can be done using the `serial` package. The following code snippet shows how to open a connection to the serial port:
 
@@ -80,11 +80,9 @@ The advantage of the photocell is not only that it allows you to know exactly *w
   <figcaption>Photocell colour switch logic.</figcaption>
 </figure>
 
-
 ## Inter-trial interval and jitter
 
 When preparing your task for EEG, you will need pay extra attention to the trial timing, in particular to the **inter-trial interval** (ITI) and **jitter**. Having a decent ITI is important to allow the brain response to return to baseline. The jitter duration should also align with the design of your experiment—for example, to accommodate late ERP components such as the P300 or N400. A minimum inter-trial interval (ITI) of around 0.9 s provides sufficient time for these late components to resolve. Additionally, adding some jitter in the inter-trial interval is important to prevent participants from developing strong expectations about the upcoming stimulus. As a rule of thumb, think of having a jitter varying between 0.7 and 1.5s.
-
 
 ## Psychopy-specific
 
@@ -109,4 +107,3 @@ win.flip()
 <!-- 
 __TODO__: [Andrea,Tim] Create the template and link it here.
 -->
-

@@ -1719,5 +1719,3 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
 
 Continue to the next guide for instructions on setting up Regions of Interest (ROIs) to extract and analyze data from specific brain regions:
 [--> Regions of Interest](fmri-rois.md)
-
-

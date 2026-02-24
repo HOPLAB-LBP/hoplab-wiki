@@ -54,12 +54,12 @@ For a valid application, you are required to upload the following components:
     - Method of data processing
     - Publication policy
     - References
-    - Each page of the protocol should be numbered ("page X"), with a footer recording the version      number and date. 
+    - Each page of the protocol should be numbered ("page X"), with a footer recording the version      number and date.
 
 3. **Participant recruitment**
 
     - Provide a recruitment summary that describes the procedure that will be used to contact and recruit the study population described in the protocol: where, how, by whom.
-    - Make sure to include a justification for the potential recruitment of participants who are unable to give their consent. This info should be provided in the recruitment summary. 
+    - Make sure to include a justification for the potential recruitment of participants who are unable to give their consent. This info should be provided in the recruitment summary.
     - If recruitment materials (posters, brochures, advertisements, website, etc.) are used, they also have to be submitted under this section. You can read the guidelines on advertising/recruting [here](https://www.uzleuven.be/nl/ethische-commissie-onderzoek/templates-en-interne-richtlijnen-bij-starten-van-dossier-bij-ec-onderzoek/adverterenrekruteren-voor-klinische-studies-richtlijnen-ec-onderzoek).
     - Each piece of recruitment material should clearly state the version number and date.
 
@@ -93,21 +93,21 @@ Once you have written all the necessary documents, you can file your application
 ---
 
 # Filing an amendment with Ethical Committee UZ/KU Leuven
-For UZ/KU Leuven there are two types of amendment. Detailed information which option to choose can be found [here](https://www.uzleuven.be/en/ethics-committee-research/supplement-approved-study-ec-research/submitting-amendments-ec-research): 
+For UZ/KU Leuven there are two types of amendment. Detailed information which option to choose can be found [here](https://www.uzleuven.be/en/ethics-committee-research/supplement-approved-study-ec-research/submitting-amendments-ec-research):
 - Substantial amendments
-- Amendments for participation of additional centres in a previously approved study 
+- Amendments for participation of additional centres in a previously approved study
 
 **Substantial amendments**
 
-Requirements for submission (for detailed information, see [here](https://www.uzleuven.be/en/ethics-committee-research/experiment/submitting-amendments-ec-research-experiment/substantial-amendments): 
+Requirements for submission (for detailed information, see [here](https://www.uzleuven.be/en/ethics-committee-research/experiment/submitting-amendments-ec-research-experiment/substantial-amendments):
 - Cover letter of the PI
 - Amended documents with changes marked via track changes (**must have updated version numbers and dates**)
 - **IF** changes to ICF are needed, it is recommended to use an **ICF Addendum for ongoing participants** The ICF addendum includes only the changes or new information, making it more clear for the participant than a revised ICF with marked changes.
 - When submitting provide the name, telephone and email address of contact within UZ Leuven/KU Leuven (other than the investigator) for follow-up of the file.
-- **Submission to be made by electronic submission via Eudralink, via Liquidfiles or by email (ecstaf@uzleuven.be)** 
+- **Submission to be made by electronic submission via Eudralink, via Liquidfiles or by email (<ecstaf@uzleuven.be>)**
 
 **Amendments for participation of additional centres in a previously approved study**
-Requirements for submission (for detailed information, see [here](https://www.uzleuven.be/en/ethics-committee-research/experiment/submitting-amendments-ec-research-experiment/participation-additional-centres-previously-approved-research) 
+Requirements for submission (for detailed information, see [here](https://www.uzleuven.be/en/ethics-committee-research/experiment/submitting-amendments-ec-research-experiment/participation-additional-centres-previously-approved-research)
 
 - Cover letter of the PI
 - Written confirmation of the sponsor that the file was simultaneously submitted at all new centres
@@ -117,7 +117,7 @@ Requirements for submission (for detailed information, see [here](https://www.uz
 - Concise CV(s) of the investigator(s) of the added centres
 - Name and address (preferably in Belgium) of a contact at the company to whom the invoice can be sent
 - Name, tel/fax, email of contact at UZ Leuven/KU Leuven (other than the investigator) for follow-up of the file
-- **Submission to be made by electronic submission via Eudralink, via Liquidfiles or by email (ecstaf@uzleuven.be)** 
+- **Submission to be made by electronic submission via Eudralink, via Liquidfiles or by email (<ecstaf@uzleuven.be>)**
 ---
 
 <!--
