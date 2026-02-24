@@ -130,8 +130,8 @@ Reimbursement can take the following forms:
 
 === “Participant Monetary Payment”
     The following information applies not only to behavioral participants but also to all other forms of study.
-    If the participant has to be paid from grant money, you will need to fill out a payment Excel and mail it to your financial Antenna (in our case, most likely [Agna](mailto:agna.marien@kuleuven.be).
-    It is adviced to not do this for each participant separately but batch them together to ensure efficiency.
+    If the participant has to be paid from grant money, you will need to fill out a payment Excel and mail it to your financial Antenna (in our case, most likely [Agna](mailto:agna.marien@kuleuven.be)).
+    It is advised not to do this for each participant separately but batch them together to ensure efficiency.
 
     - Information you will need:
         - Participant Name and Surname
@@ -141,18 +141,18 @@ Reimbursement can take the following forms:
         - Study Number (Ethics)
         - Grant number
 
-    - Depending on whether the partcipant has a Belgian IBAN or not fill out the appropriate form: [Belgian Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20belgian%20account%20numbers.xlsx?d=w90debbbdd86e4ebab4c32c42d02ec9e4&csf=1&web=1&e=VfcP7g), [International Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20foreign%20account%20numbers.xlsx?d=w1555b214f88b4114a9378d483aef71d4&csf=1&web=1&e=fCtsMe). You will notice that in the file ‘Copy of Voorbeeld buitenlandse leveranciers.xlsx’ two columns are added: BIC and landcode. This information is very important for the Financial Department.
-    - In the file at “mededeling” the Financial Department needs “*surname participant_number ethical approval study_ initials of the researcher*” .
-    - Please do NOT CHANGE nor ADD columns to these excel files
+    - Depending on whether the participant has a Belgian IBAN or not fill out the appropriate form: [Belgian Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20belgian%20account%20numbers.xlsx?d=w90debbbdd86e4ebab4c32c42d02ec9e4&csf=1&web=1&e=VfcP7g), [International Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20foreign%20account%20numbers.xlsx?d=w1555b214f88b4114a9378d483aef71d4&csf=1&web=1&e=fCtsMe). You will notice that in the file ‘Copy of Voorbeeld buitenlandse leveranciers.xlsx’ two columns are added: BIC and landcode. This information is very important for the Financial Department.
+    - In the file at “mededeling” the Financial Department needs “*surname participant_number ethical approval study_ initials of the researcher*”.
+    - Please do NOT CHANGE nor ADD columns to these Excel files
     - It is also important that the participant’s *address* is filled in. In case the participant refuses to give you his/her/its private address, you may use the KU Leuven address.
     - You forward the filled in file(s) to Agna together with this information:
         Title study and number of the ethical approval
         Name(s) of researcher (s)
-        How is the amount calculated: e.g. participants receive 10 EUR/hour.
+        How is the amount calculated: e.g., participants receive 10 EUR/hour.
     - Please mention in the *subject of your e-mail* your name and a number/month. This helps us to find a specific payment and the original e-mail.
 
 === “Credit Assignment”
-    To assign participants their credits surf to EMS sona > login > uncredited timeslots > and mark the participant as ‘completed’ > click save.
+    To assign participants their credits: surf to EMS sona > login > uncredited timeslots > and mark the participant as ‘completed’ > click save.
 
 Of course, all (psychology) students also benefit from participation by gathering insights into the common procedures of psychological research (wink).
 
