@@ -130,7 +130,7 @@ Reimbursement can take the following forms:
   
 === "Participant Monetary Payment"
     The following information applies not only to behavioral participants but also to all other forms of study. 
-    If the participant has to be paid from grant money, you will need to fill out a payment Excel and mail it to your financial Antenna (in our case, most likely Agna: agna.marien@kuleuven.be). 
+    If the participant has to be paid from grant money, you will need to fill out a payment Excel and mail it to your financial Antenna (in our case, most likely [Agna](mailto:agna.marien@kuleuven.be). 
     It is adviced to not do this for each participant separately but batch them together to ensure efficiency. 
 
     - Information you will need: 
