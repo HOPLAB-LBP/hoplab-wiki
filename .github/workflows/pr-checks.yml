@@ -165,6 +165,9 @@ jobs:
         run: |
           REPORT="/tmp/pr-checks/report.md"
 
+          # Hidden marker so we can find and update this comment on future runs
+          echo '<!-- pr-checks-report -->' > "$REPORT"
+
           SPELL=$(cat /tmp/pr-checks/spellcheck-status 2>/dev/null || echo "skipped")
           MDLINT=$(cat /tmp/pr-checks/markdownlint-status 2>/dev/null || echo "skipped")
           YAML=$(cat /tmp/pr-checks/yamllint-status 2>/dev/null || echo "skipped")
@@ -179,7 +182,7 @@ jobs:
 
           # ── All passed ──────────────────────────────────
           if [ "$FAILURES" -eq 0 ]; then
-            cat > "$REPORT" << 'EOF'
+            cat >> "$REPORT" << 'EOF'
           ## :white_check_mark: All checks passed
 
           Your changes look good! A reviewer will take a look shortly.
@@ -187,7 +190,7 @@ jobs:
           else
 
           # ── Header ──────────────────────────────────────
-            cat > "$REPORT" << 'EOF'
+            cat >> "$REPORT" << 'EOF'
           ## :mag: PR check results
 
           Some checks found issues in your changes. Don't worry — most of these are easy to fix!
@@ -345,12 +348,22 @@ jobs:
           echo "--- Report ---"
           cat "$REPORT"
 
+      - name: Find existing bot comment
+        if: always()
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: github-actions[bot]
+          body-includes: "<!-- pr-checks-report -->"
+
       - name: Post or update PR comment
         if: always()
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.pull_request.number }}
-          comment-tag: pr-checks-report
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          edit-mode: replace
           body-path: /tmp/pr-checks/report.md
 
       # ── Final verdict ──────────────────────────────────
