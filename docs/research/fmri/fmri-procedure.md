@@ -25,7 +25,7 @@ Systems are color-coded, and can be read as follow:
     - **TTL Pulse** a.k.a. the "trigger", which is used among other things to synchronize the fMRI task with the scan.
     - **Data** connections from the scanner to the PC.
 - <span style="color:rgb(65, 115, 185)">**Blue**</span> lines and boxes indicate button boxes, and double lines represent optical fiber connections. Specifically:
-    - **Nata** box, 5 buttons. Important: if you use this box, make sure your code can differentiate between the `5` button code and the `5` trigger code. This can be done programmatically, and it is addressed in recent versions of our scripts. An alternative workaround would be to relay the trigger thorugh the diamond box, which sends the `T` trigger code instead of the usual `5`. If you need to do this, **make sure you switch back to the original set-up** at the end of your scanning session.
+    - **Nata** box, 5 buttons. Important: if you use this box, make sure your code can differentiate between the `5` button code and the `5` trigger code. This can be done programmatically, and it is addressed in recent versions of our scripts. An alternative workaround would be to relay the trigger through the diamond box, which sends the `T` trigger code instead of the usual `5`. If you need to do this, **make sure you switch back to the original set-up** at the end of your scanning session.
     - **Diamond** box, 4 buttons. This box is marked with a red tape. When the trigger box is connected to this box (which *should not* be the case), this box relays the trigger `T` to the stim PC.
     - **2-buttons** box. When the trigger box is connected to this box (which is the expected and usual set-up), this box relays the trigger `5` from the scanner to the Stim PC.
 - <span style="color:rgb(103, 166, 90)">**Green**</span> lines and boxes indicate Eye-tracking instruments and connections
@@ -622,7 +622,7 @@ Before leaving the room, check the following:
     - You can either proceed without adjusting the setting or adjust ventilation via **Examination > Adjust Ventilation** in the scan console.
 
 ??? failure "Participant leaving the scanner during the task"
-    It might happen that your participant feels uncomfortable during the scanning, and has to get out of the scanner to strech their legs, go to the toilet or so. If time allows it and they are ok with it, you can consider re-starting the scanning session where it was left off. 
+    It might happen that your participant feels uncomfortable during the scanning, and has to get out of the scanner to stretch their legs, go to the toilet or so. If time allows it and they are ok with it, you can consider re-starting the scanning session where it was left off. 
 
     To do so, follow these steps to adapt your sequence at the MRI control computer:
     - Right-click and duplicate both _Smartbrain_ and _Check_fMRI_ in your sequence.
@@ -636,7 +636,7 @@ Before leaving the room, check the following:
 
     In any case, if no key press is being recorded, try the following steps:
     - Check in the projector room if the transmitter box connected to the cables of the button boxes you are using is connected to the stimulus computer.
-    - Check if the transmittor box connected to the cables of the button boxes you are using is _turned on_. Some boxes require a to be switched on to actually transmit signals.
+    - Check if the transmitter box connected to the cables of the button boxes you are using is _turned on_. Some boxes require a to be switched on to actually transmit signals.
     
     **Tip**: A good way to make sure participants can send key presses from the button boxes they are using is to have an instruction screen that requires a key press to continue. Assuming that screen contains information relevant to the participant, they will be able to read and press whenever they are ready. Such a screen can allow to ensure the stimulus computer receives _at least_ some kind of key press.
 

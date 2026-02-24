@@ -10,7 +10,7 @@ Welcome to the Coding Practices section! Here, you'll find essential guidance fo
   Every new project starts with the right environment setup. Find out how to create a proper environment for your coding projects.
 
 - :material-bug: **[Understanding your code](#understanding-your-code)**  
-  Encountering inexplicable errors? Want to know what data are you plotting? Don't know how to use a misterious function? Learn how to effectively debug your code using Spyder’s powerful tools.
+  Encountering inexplicable errors? Want to know what data are you plotting? Don't know how to use a mysterious function? Learn how to effectively debug your code using Spyder’s powerful tools.
 
 - :material-source-branch: **[Using version control](#version-control-with-git-and-github)**  
   Discover how to integrate Git and GitHub into your workflow to keep track of changes and collaborate with ease.

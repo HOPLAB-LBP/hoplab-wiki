@@ -2,7 +2,7 @@
 
 When conducting fMRI analyses, we often focus on specific brain regions based on theoretical or empirical questions. These **Regions of Interest (ROIs)** are defined areas in the brain that we hypothesize to be relevant to a particular cognitive function or task.
 
-By restricting the analysis to ROIs, researchers can improve **statistical power**, focus on **hypothesized brain areas**, and extrat data for **multivariate pattern analyses** (MVPA).
+By restricting the analysis to ROIs, researchers can improve **statistical power**, focus on **hypothesized brain areas**, and extract data for **multivariate pattern analyses** (MVPA).
 
 ## Commonly Used ROI Types
 
