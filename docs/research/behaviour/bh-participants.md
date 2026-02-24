@@ -123,7 +123,7 @@ These personal data should be saved in a password-protected file that will be st
 Reimbursement can take the following forms:
 
 - **Credit study**: Research participation credits must be assigned in multiples of 0.25, i.e., 0.25 credit per 15 minutes, such that 1h equals 1 credit. Credits cannot be transferred between academic years.
-- **Paid study**: The standard pay rate for EEG is currently 15 euros per hour, and 30 per hour for fMRI studies, without additional incentives. Exceptions are possible for high-effort or aversive studies (e.g., fMRI, ESM). (Last updated: Feb 2026 - check your informed consent to be 100% sure you are using the correct values). 
+- **Paid study**: The standard pay rate for EEG is currently 15 euros per hour, and 30 per hour for fMRI studies, without additional incentives. Exceptions are possible for high-effort or aversive studies (e.g., fMRI, ESM). (Last updated: Feb 2026 - check your informed consent to be 100% sure you are using the correct values).
 - **Mixed study**: Award 0 credits to those who receive payment.
 
 - For **more information** for instance, also for payment of [third parties](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/experimental-subjects). Use this when paying e.g., guest speakers’ travel expenses.
@@ -153,7 +153,6 @@ Reimbursement can take the following forms:
 
 === “Credit Assignment”
     To assign participants their credits surf to EMS sona > login > uncredited timeslots > and mark the participant as ‘completed’ > click save.
-
 
 Of course, all (psychology) students also benefit from participation by gathering insights into the common procedures of psychological research (wink).
 
