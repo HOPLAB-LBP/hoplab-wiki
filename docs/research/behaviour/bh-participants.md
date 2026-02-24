@@ -61,7 +61,7 @@ To add a new study, provide the following information (for more detailed explana
 
     - Pre-requisite and disqualifier studies
     - Course restrictions, select either
-    - Payed volunteer ("betaalde vrijwilliger"), to make sure participants expect payment, or
+    - Paid volunteer ("betaalde vrijwilliger"), to make sure participants expect payment, or
     - The ongoing methods course, to make sure participants expect course credit.
     - Age restrictions
     - Be careful with restrictions, think about inclusivity (be as inclusive as possible)
