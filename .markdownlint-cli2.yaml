@@ -1,0 +1,39 @@
+config:
+  # MD003: heading style - ATX only (# Heading)
+  MD003:
+    style: "atx"
+
+  # MD013: line length - disabled for documentation prose
+  MD013: false
+
+  # MD024: duplicate headings - allow siblings with same name
+  MD024:
+    siblings_only: true
+
+  # MD033: inline HTML - allowlist elements used by mkdocs-material
+  MD033:
+    allowed_elements:
+      - "div"
+      - "figure"
+      - "figcaption"
+      - "img"
+      - "a"
+      - "br"
+      - "p"
+      - "span"
+      - "video"
+      - "source"
+      - "iframe"
+      - "sup"
+      - "sub"
+
+  # MD041: first line h1 - disabled, pages may start with front matter or admonitions
+  MD041: false
+
+  # MD046: code block style - fenced (supports attributes like title=, linenums=)
+  MD046:
+    style: "fenced"
+
+  # MD048: code fence style - backticks
+  MD048:
+    style: "backtick"

@@ -1,0 +1,16 @@
+name: Spell Check
+
+on:
+  pull_request:
+    paths:
+      - "docs/**"
+      - "_typos.toml"
+
+jobs:
+  typos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: crate-ci/typos@v1
+        with:
+          config: ./_typos.toml

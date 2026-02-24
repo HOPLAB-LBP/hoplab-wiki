@@ -5,9 +5,9 @@ exclude = [
   "https://anydesk.com/.*",
 ]
 max_redirects = 10
+max_retries = 3
 retry_wait_time = 2
 user_agent = "hoplab-wiki-link-check"
 timeout = 20
 
 [headers]
-
