@@ -80,25 +80,20 @@ jobs:
         run: mkdir -p /tmp/pr-checks
 
       # ── Check 1: Spell check ─────────────────────────────
+      - name: Install typos
+        run: |
+          curl -sL https://github.com/crate-ci/typos/releases/latest/download/typos-x86_64-unknown-linux-musl.tar.gz | tar xz -C /usr/local/bin/
+
       - name: Spell check
         id: spellcheck
         continue-on-error: true
-        uses: crate-ci/typos@v1
-        with:
-          config: ./_typos.toml
-
-      - name: Capture spell check output
-        if: always()
         run: |
-          if [ "$SPELLCHECK_OUTCOME" = "failure" ]; then
-            echo "failed" > /tmp/pr-checks/spellcheck-status
-            # Re-run typos to capture output (the action binary is on PATH after the step above)
-            typos --config ./_typos.toml docs/ 2>&1 | head -100 > /tmp/pr-checks/spellcheck-output || true
-          else
-            echo "passed" > /tmp/pr-checks/spellcheck-status
-          fi
-        env:
-          SPELLCHECK_OUTCOME: ${{ steps.spellcheck.outcome }}
+          typos --config ./_typos.toml docs/ 2>&1 | tee /tmp/pr-checks/spellcheck-output
+          echo "passed" > /tmp/pr-checks/spellcheck-status
+
+      - name: Mark spell check status
+        if: always() && steps.spellcheck.outcome == 'failure'
+        run: echo "failed" > /tmp/pr-checks/spellcheck-status
 
       # ── Check 2: Markdown lint ───────────────────────────
       - name: Markdown lint
