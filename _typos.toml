@@ -1,0 +1,88 @@
+[default]
+extend-ignore-re = [
+  # Inline code spans
+  "`[^`]+`",
+  # URLs
+  "https?://[^\\s)]+",
+  # Material / FontAwesome / Octicons icon syntax
+  ":[a-z]+-[a-z-]+:",
+]
+
+[default.extend-words]
+# Scientific terms
+fMRI = "fMRI"
+EEG = "EEG"
+BIDS = "BIDS"
+iRODS = "iRODS"
+NIfTI = "NIfTI"
+DICOM = "DICOM"
+fMRIprep = "fMRIprep"
+NiMARE = "NiMARE"
+MVPA = "MVPA"
+RSA = "RSA"
+GLM = "GLM"
+ROI = "ROI"
+ROIs = "ROIs"
+FWE = "FWE"
+
+# Tools and platforms
+SPM = "SPM"
+jsPsych = "jsPsych"
+PsychoPy = "PsychoPy"
+Pavlovia = "Pavlovia"
+ManGO = "ManGO"
+FriGO = "FriGO"
+MobaXterm = "MobaXterm"
+pymdownx = "pymdownx"
+mkdocs = "mkdocs"
+MkDocs = "MkDocs"
+MarsBaR = "MarsBaR"
+Ba = "Ba"
+
+# Lab and institution
+Hoplab = "Hoplab"
+NeuroSPACE = "NeuroSPACE"
+KU = "KU"
+Leuven = "Leuven"
+
+# Common abbreviations
+HPC = "HPC"
+VSC = "VSC"
+ORCID = "ORCID"
+SMEC = "SMEC"
+MEC = "MEC"
+RDR = "RDR"
+RDM = "RDM"
+QA = "QA"
+SOP = "SOP"
+SOPs = "SOPs"
+
+# Proper nouns
+Shepard = "Shepard"
+Zink = "Zink"
+
+# Dutch words in KU Leuven context
+informatie = "informatie"
+
+# HPC cluster name
+wice = "wice"
+
+# Abbreviations in code/docs
+nd = "nd"
+thr = "thr"
+
+# Filename typo baked into URLs (fmri-prepocessing-qa.md)
+prepocessing = "prepocessing"
+
+[files]
+extend-exclude = [
+  "*.yml",
+  "*.yaml",
+  "*.toml",
+  "*.json",
+  "*.css",
+  "*.svg",
+  "*.ico",
+  "*.js",
+  "site/",
+]

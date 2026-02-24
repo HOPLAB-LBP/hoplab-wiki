@@ -6,7 +6,7 @@ Before starting participant recruitment, ensure your study is formally approved 
 
 1. Through the laboratory's participant database:
 
-    - Including previous participants and individuals who have expressed interest in participating through word-of-mouth referrals 
+    - Including previous participants and individuals who have expressed interest in participating through word-of-mouth referrals
 
 2. Through social connections of the researchers involved and/or by sharing your announcement via social media:
 
@@ -61,7 +61,7 @@ To add a new study, provide the following information (for more detailed explana
 
     - Pre-requisite and disqualifier studies
     - Course restrictions, select either
-    - Payed volunteer ("betaalde vrijwilliger"), to make sure participants expect payment, or
+    - Paid volunteer ("betaalde vrijwilliger"), to make sure participants expect payment, or
     - The ongoing methods course, to make sure participants expect course credit.
     - Age restrictions
     - Be careful with restrictions, think about inclusivity (be as inclusive as possible)
@@ -126,34 +126,34 @@ Reimbursement can take the following forms:
 - **Paid study**: The standard pay rate for EEG is currently 15 euros per hour, and 30 per hour for fMRI studies, without additional incentives. Exceptions are possible for high-effort or aversive studies (e.g., fMRI, ESM). (Last updated: Feb 2026 - check your informed consent to be 100% sure you are using the correct values). 
 - **Mixed study**: Award 0 credits to those who receive payment.
 
-- For **more information** for instance, also for payment of [third parties](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/experimental-subjects). Use this when paying e.g., guest speakers' travel expenses. 
-  
-=== "Participant Monetary Payment"
-    The following information applies not only to behavioral participants but also to all other forms of study. 
-    If the participant has to be paid from grant money, you will need to fill out a payment Excel and mail it to your financial Antenna (in our case, most likely [Agna](mailto:agna.marien@kuleuven.be). 
-    It is adviced to not do this for each participant separately but batch them together to ensure efficiency. 
+- For **more information** for instance, also for payment of [third parties](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/experimental-subjects). Use this when paying e.g., guest speakers’ travel expenses.
 
-    - Information you will need: 
+=== “Participant Monetary Payment”
+    The following information applies not only to behavioral participants but also to all other forms of study.
+    If the participant has to be paid from grant money, you will need to fill out a payment Excel and mail it to your financial Antenna (in our case, most likely [Agna](mailto:agna.marien@kuleuven.be).
+    It is adviced to not do this for each participant separately but batch them together to ensure efficiency.
+
+    - Information you will need:
         - Participant Name and Surname
         - Participant Address
-        - Participant's IBAN (and BIC if international IBAN)
+        - Participant’s IBAN (and BIC if international IBAN)
         - Payment amount
         - Study Number (Ethics)
         - Grant number
-    
+
     - Depending on whether the partcipant has a Belgian IBAN or not fill out the appropriate form: [Belgian Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20belgian%20account%20numbers.xlsx?d=w90debbbdd86e4ebab4c32c42d02ec9e4&csf=1&web=1&e=VfcP7g), [International Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20foreign%20account%20numbers.xlsx?d=w1555b214f88b4114a9378d483aef71d4&csf=1&web=1&e=fCtsMe). You will notice that in the file ‘Copy of Voorbeeld buitenlandse leveranciers.xlsx’ two columns are added: BIC and landcode. This information is very important for the Financial Department.
     - In the file at “mededeling” the Financial Department needs “*surname participant_number ethical approval study_ initials of the researcher*” .
     - Please do NOT CHANGE nor ADD columns to these excel files
     - It is also important that the participant’s *address* is filled in. In case the participant refuses to give you his/her/its private address, you may use the KU Leuven address.
-    - You forward the filled in file(s) to Agna together with this information: 
+    - You forward the filled in file(s) to Agna together with this information:
         Title study and number of the ethical approval
         Name(s) of researcher (s)
-        How is the amount calculated: e.g. participants receive 10 EUR/hour. 
+        How is the amount calculated: e.g. participants receive 10 EUR/hour.
     - Please mention in the *subject of your e-mail* your name and a number/month. This helps us to find a specific payment and the original e-mail.
 
-=== "Credit Assignment"
-    To assign participants their credits surf to EMS sona > login > uncredited timeslots > and mark the participant as 'completed' > click save. 
-    
+=== “Credit Assignment”
+    To assign participants their credits surf to EMS sona > login > uncredited timeslots > and mark the participant as ‘completed’ > click save.
+
 
 Of course, all (psychology) students also benefit from participation by gathering insights into the common procedures of psychological research (wink).
 

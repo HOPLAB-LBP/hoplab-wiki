@@ -1,26 +1,26 @@
 # Acquisition manual
 
-This manual is based on the BioSemi EEG manual from the Cognitive Control in Context (CogTex) research group led by Eva Van den Bussche and was modified by Chiu-Yueh Chen and Klara Schevenels. It is specifically written for the 128-channel BioSemi EEG system located in PSI room 00.52. Eva's lab also provides a [video user tutorial](https://www.youtube.com/watch?v=ZuJ4i9Q7po8&feature=youtu.be) (for their 64-channel BioSemi system), which is highly recommended to watch given the many similarities with our system. 
+This manual is based on the BioSemi EEG manual from the Cognitive Control in Context (CogTex) research group led by Eva Van den Bussche and was modified by Chiu-Yueh Chen and Klara Schevenels. It is specifically written for the 128-channel BioSemi EEG system located in PSI room 00.52. Eva's lab also provides a [video user tutorial](https://www.youtube.com/watch?v=ZuJ4i9Q7po8&feature=youtu.be) (for their 64-channel BioSemi system), which is highly recommended to watch given the many similarities with our system.
 
 !!! info "Do's and don'ts"
     - **Do not change any hardware or permanent software settings** (e.g., monitor refresh rate) without approval from the EEG lab manager.
     - **Reserve your slots via Calira.** Make sure all your lab sessions are properly scheduled. If you don’t have access yet to Calira, contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473).
     - If you are planning to use the EEG lab for your experiment, ask Klara to add you to the **EEG channel on the NeuroSPACE Slack** through which everything related to the EEG lab is communicated.
-    - Don’t use the system before carefully reading the **user documentation**. You can find the ActiveTwo user manual and operating guidelines on [Teams](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/1.%20EEG%20BioSemi%20Manuals?csf=1&web=1&e=sA1ycQ). 
+    - Don’t use the system before carefully reading the **user documentation**. You can find the ActiveTwo user manual and operating guidelines on [Teams](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/1.%20EEG%20BioSemi%20Manuals?csf=1&web=1&e=sA1ycQ).
     - **Avoid contact with metal** while handling or storing the electrodes (this increases noise).
     - **Always keep one battery charging.** Batteries can break if they are fully discharged (“deep discharge”), but there’s no risk of damage from overcharging.
     - **Never force connectors** into the system, always check orientation before plugging them in.
-    - **Report low supplies or broken equipment.** Immediately inform the lab manager (currently [Klara Schevenels](https://www.kuleuven.be/wieiswie/nl/person/00116743)) if something appears broken or stock is running low (e.g., towels, Signa gel, shampoo, adhesive tape, interdental brushes, etc.). 
+    - **Report low supplies or broken equipment.** Immediately inform the lab manager (currently [Klara Schevenels](https://www.kuleuven.be/wieiswie/nl/person/00116743)) if something appears broken or stock is running low (e.g., towels, Signa gel, shampoo, adhesive tape, interdental brushes, etc.).
     - **Keep the connectors dry.** During cleaning, only the caps and electrodes should get wet. To protect the connectors, cover them with theor protective caps immediately after unplugging the electrode sets and wrap them carefully in a towel or plastic bag.
     - **Remove electrodes gently from the cap**, never pull on or bend the wires. The equipment is costly, so handle electrodes and other items with great care.
     - **Wash the electrodes immediately after use** by rinsing them with warm water (do not soak more than 10 mins). Do not scrub or use detergents on electrodes, only use mild disinfectant if absolutely necessary.
-    - **Avoid using hot air for drying caps.** Caps can be washed with mild detergent, but dry them by towel and lay flat. If you need to speed-dry a wet cap, you may use a blow dryer—but only with cold air. 
+    - **Avoid using hot air for drying caps.** Caps can be washed with mild detergent, but dry them by towel and lay flat. If you need to speed-dry a wet cap, you may use a blow dryer—but only with cold air.
     - **Transfer your data after each session.** For example, make sure to copy your data at the end of the day. The computers are regularly cleaned, and it’s your own responsibility to avoid data loss.
     - **Always return the key of the EEG lab to the locker** when you’re not in the lab. You can find the key in the keybox next to the coffee machine on the ground floor. You can ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) for the code.
 
 ## Before the day: planning participants
 
-Before collecting data you will need to recruit participants and plan their visit to the lab. Here are a few things to keep in mind for that. 
+Before collecting data you will need to recruit participants and plan their visit to the lab. Here are a few things to keep in mind for that.
 
 ### Recruiting participants
 
@@ -136,14 +136,14 @@ Go to the acquisition computer, and take care of the following steps:
     ![distorted EEG signal](../../assets/eeg-acquisition-fig11.png)
 
     ![good EEG signal](../../assets/eeg-acquisition-fig12.png)
-   
+
 ## Recording EEG-data
 
 Hooray, you are now ready to start acquiring EEG data! To do so, follow these steps on the acquisition PC:
 
 1. Start recording (= saving data to file) by clicking the `paused` button in ActiView on the bottom right. When recording, it switches to `saving` and turns green (see **Figure 12**). **Do not forget this** (you wouldn't be the first)!
 2. Give your participant the last instructions via the intercom system and start the experiment on the stimulus PC. If you get an error along the lines of "could not open port COM [X]", it might help to reconnect the cables connecting the trigger box with either stimulus or acquisition PC and/or restart both PCs.
-3. Once the run has started, quickly ensure that triggers from your experiment are being sent and recorded correctly. Do this by changing `trigger format` from `analog` to `digital` (see **Figure 13**) and by checking that the numbers correspond to your task and stimuli. 
+3. Once the run has started, quickly ensure that triggers from your experiment are being sent and recorded correctly. Do this by changing `trigger format` from `analog` to `digital` (see **Figure 13**) and by checking that the numbers correspond to your task and stimuli.
 4. When an experiment run is finished, click on `pause save` below the green `saving` button and then on `stop` on the top left of the screen.
 5. Continue to record another run with a different filename by clicking `start`, `start file` and entering your new filename in BIDS (see earlier). Do not forget to restart the recording by clicking the `paused` button again so that it switches to `saving` and turns green. If you want all your data to be saved in one file, you can skip this step. However, in that case the file size can become inconveniently large.
 6. The data is saved in the folder you selected earlier. Make sure to copy the data from the acquisition computer to your personal (encrypted) drive at the end of your experiment. Occasionally, the EEG computer drive will be cleaned and your data might be lost if it is not backed-up.
@@ -161,19 +161,17 @@ Hooray, you are now ready to start acquiring EEG data! To do so, follow these st
 3. Escort the participant out of the EEG booth to the preparation room and put a towel on the participant's shoulders to prevent gel leaking on their clothes.
 4. Remove the electrodes from the cap **one-by-one**. Do not pull on the wires but on the electrode itself to avoid damage to the wires. **Make sure the electrodes never touch metal**. This is especially a risk if the participant's chair contains a lot of metal.  
 5. Once all electrodes are removed, immediately place them in the plastic tub filled with lukewarm water (not directly in the metal sink!). Do not soak the electrodes for more than 10 minutes.
-6. Remove the head cap from the participant's head and place it in another tub with lukewarm water and some mild detergent. 
+6. Remove the head cap from the participant's head and place it in another tub with lukewarm water and some mild detergent.
 7. Let the participant wash the gel out off their hair in the sink. Below the sink we have shampoo they can use.
-8. Do not forget to note the necessary payment details in case the participated should receive a monetary compensation. Save this personal information in a password-protected file in a secure environment and separately from the research data. 
-9. When they are dry, add all of your used towels and/or wash cloths to the laundry bag and indicate this on the paper taped to the cupboard (check one box per towel/hand cloth added). When all boxes are checked, the laundry bag is ful. Notify [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) to have them washed.
+8. Do not forget to note the necessary payment details in case the participated should receive a monetary compensation. Save this personal information in a password-protected file in a secure environment and separately from the research data.
+9. When they are dry, add all of your used towels and/or wash cloths to the laundry bag and indicate this on the paper taped to the cupboard (check one box per towel/hand cloth added). When all boxes are checked, the laundry bag is full. Notify [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) to have them washed.
 10. Check whether any material is close to running out of stock (e.g., SignaGel, shampoo, adhesive tape, interdental brushes, cotton swabs, etc.) and notify [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) if this is the case. Please take into account that refilling stock might take several weeks.
 11. Take the signed ICF with you (do not leave it in the EEG room) and safely store it in a locked cabinet in your office.
 
 ## Cleaning
 
-1. Put the leftover gel in the syringes back in the tube. 
+1. Put the leftover gel in the syringes back in the tube.
 2. Rinse the syringes, head cap and electrode sets (not the connectors!) with lukewarm water. Do not scrub or use detergents on electrodes, only use mild disinfectant if absolutely necessary. Caps can be washed with mild detergent.
-3.	Use a plastic toothpick to remove the gel from all the gaps in the head cap.
+3. Use a plastic toothpick to remove the gel from all the gaps in the head cap.
 4. If necessary, fill the tub with clean lukewarm water and add a bit of the 70% alcohol solution to it. Soak the electrodes, the head cap and the syringes in it for a few seconds to disinfect them, and then rinse everything again with lukewarm water.
-5.	Let the caps and syringes dry flat on the round table (do not hang the caps to dry). Put the electrode sets back on the rack (make sure they are stable and don't fall on the floor).
-
-
+5. Let the caps and syringes dry flat on the round table (do not hang the caps to dry). Put the electrode sets back on the rack (make sure they are stable and don't fall on the floor).

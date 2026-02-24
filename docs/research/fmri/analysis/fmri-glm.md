@@ -4,14 +4,13 @@ You should land on this page after having collected your fMRI data, [converted i
 
 You should start here if you are not yet familiar with SPM and what it does. Before scripting your analysis pipeline, take your time to understand the different steps taken by SPM and what they do. Once you're confident with it, move ahead and write your analysis in code (see [First-level analysis - scripting](./fmri-glm-script.md)).
 
-
 In this section, we will use the [Statistical Parametric Mapping](https://www.fil.ion.ucl.ac.uk/spm/) (SPM) package to construct the GLM. Here’s an overview of the steps:
 
 1. **Data Preparation**: Get your files ready for SPM.
 2. **Design Matrix Setup**: Define the model for your analysis.
 3. **Model Estimation & Results**: Estimate your model and analyze contrasts.
 
-This page will accompany you through the steps and can be used as a guide to the input and output of each function of SPM. It is not a complete tutorial on SPM, however, and there are more extensive resources out there. It can be a good idea to cover the tutorials from [Andy Jahn](https://andysbrainbook.readthedocs.io/en/latest/index.html), for instance, as they go in depth into SPM and how it works. 
+This page will accompany you through the steps and can be used as a guide to the input and output of each function of SPM. It is not a complete tutorial on SPM, however, and there are more extensive resources out there. It can be a good idea to cover the tutorials from [Andy Jahn](https://andysbrainbook.readthedocs.io/en/latest/index.html), for instance, as they go in depth into SPM and how it works.
 
 ---
 
@@ -484,7 +483,7 @@ Contrasts allow you to test specific hypotheses about the brain's response to di
 !!! example "Example contrast"
     For a comparison between two conditions (e.g., `Faces` vs. `Objects`), use:
     ```
-    [1 -1]
+[1 -1]
     ```
     This weights `Faces` positively and `Objects` negatively, highlighting brain regions more active during the `Faces` condition.
 

@@ -638,7 +638,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
         };
 
     % Iterate over contrasts to generate plots
-    for constrastIdx = 1:length(selectedTasks(taskIndex).contrasts)
+    for contrastIdx = 1:length(selectedTasks(taskIndex).contrasts)
 
         % Iterate over thresholds to generate plots
         for thresholdIndex = 1:length(thresholds)
@@ -649,7 +649,7 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
             crossCoords = [40, -52, -18]; % FFA. Change as needed.
 
             % Set the index of the contrast to display (modify if needed)
-            spmContrastIndex = constrastIdx;
+            spmContrastIndex = contrastIdx;
 
             % Call the function to generate and save contrast overlay images
             generateContrastOverlayImages(spmMatPath, outPath, fmriprepRoot, subjectName, pipelineStr, thresholds{thresholdIndex}, spmContrastIndex, crossCoords);
@@ -1719,5 +1719,3 @@ These functions can either be saved as standalone `.m` files in a `functions` fo
 
 Continue to the next guide for instructions on setting up Regions of Interest (ROIs) to extract and analyze data from specific brain regions:
 [--> Regions of Interest](fmri-rois.md)
-
-

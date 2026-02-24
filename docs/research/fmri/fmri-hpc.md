@@ -22,7 +22,7 @@ This guide describes how to connect to the KU Leuven/VSC HPC cluster, manage you
 
 ---
 
-VSC offers a [full documentation](https://docs.vscentrum.be/) of all the services, but in case of question of problems, you 
+VSC offers a [full documentation](https://docs.vscentrum.be/) of all the services, but in case of question of problems, you
 may contact the [local support team at KU Leuven](https://docs.vscentrum.be/contact_vsc.html).
 
 ## 1. Prerequisites
@@ -51,7 +51,7 @@ Look at the last line:
 ✔ [Apr/15 15:13] vsc12345@tier2-p-login-1 ~ $ 
 ```
 
-which suggests we are connected to the login node `tier2-p-login-1` as `vsc12345` (your VSC username). From now on, what we type in the terminal will be executed on the login node. Note that the login nodes are only meant to move your data around, submit and monitor your jobs, and write/edit your scripts. For all other purposes (actual computation, pre-/post-processing and software installation), you have to start an 
+which suggests we are connected to the login node `tier2-p-login-1` as `vsc12345` (your VSC username). From now on, what we type in the terminal will be executed on the login node. Note that the login nodes are only meant to move your data around, submit and monitor your jobs, and write/edit your scripts. For all other purposes (actual computation, pre-/post-processing and software installation), you have to start an
 [interactive or batch job using Slurm](https://docs.vscentrum.be/compute/jobs/running_jobs.html).
 
 To exit the ssh session and go back to your local terminal, type `exit`.
@@ -289,7 +289,6 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
     58070026 batch     fmriprep vsc12345  R       0:00      1 (Priority)
     ```
     Through the KU Leuven **OnDemand** interface, you can also check the status of your job by clicking on the *Active jobs* tab in the dashboard.
-
 
 Congrats! Your job is now being executed on the cluster.
 

@@ -1,16 +1,15 @@
 # Temporary RDM Guidelines (transition period)
 
-    !!! warning "Work in progress"
-        These guidelines reflect the **currently recommended practices** while we are setting up the full Research Data Management workflows (ManGO, RDR, FriGO, SOPs). They may evolve over time. When in doubt, ask.
+!!! warning "Work in progress"
+    These guidelines reflect the **currently recommended practices** while we are setting up the full Research Data Management workflows (ManGO, RDR, FriGO, SOPs). They may evolve over time. When in doubt, ask.
 
-
-## The big picture 
+## The big picture
 
 The decision tree below shows the intended direction of storage across the research lifecycle depending on researcher stage:
 
-    ![Decision tree](../../assets/rdm_decision_tree_18122025.png)
+![Decision tree](../../assets/rdm_decision_tree_18122025.png)
 
-If you are an early-stage researcher and/or start a new project: 
+If you are an early-stage researcher and/or start a new project:
 
 - Start with SharePoint for organisation and daily files
 - Move structured study datasets to ManGO once the project is properly set up (primary location)
@@ -18,7 +17,7 @@ If you are an early-stage researcher and/or start a new project:
 If you are a late-stage researcher or dealing with ongoing research:
 
 - Ensure everything (active and old research data) is (at least) safely stored on SharePoint
-- If you want, you can move your active research datasets to ManGO 
+- If you want, you can move your active research datasets to ManGO
 
 We are currently rolling this out gradually, starting with pilot users who are
 
@@ -42,13 +41,13 @@ As we are all collecting and processing [personal data](https://www.kuleuven.be/
 ### Storage and backups
 
 - Always keep 1–2 independent local copies of raw (pseudonymized) data on BitLocker-encrypted drives (no auto-sync).
-- OneDrive is only for documents that are personal to you and do not need to survive the end of your contract. 
-- SharePoint is the default for day-to-day work and serves as a time-capsule for people leaving the lab. 
+- OneDrive is only for documents that are personal to you and do not need to survive the end of your contract.
+- SharePoint is the default for day-to-day work and serves as a time-capsule for people leaving the lab.
 
 ### Dataset organisation and reproducibility
 
-- All data should be organised following the [**BIDS structure**](https://bids-specification.readthedocs.io/en/stable/), independent of its modality. 
-- Upload scripts and analysis code to GitHub throughout the project lifecycle. 
+- All data should be organised following the [**BIDS structure**](https://bids-specification.readthedocs.io/en/stable/), independent of its modality.
+- Upload scripts and analysis code to GitHub throughout the project lifecycle.
 - Clearly document your study and dataset contents, preprocessing and analysis steps, code, etc.
 
 ### Documentation guidance
@@ -58,7 +57,7 @@ As we are all collecting and processing [personal data](https://www.kuleuven.be/
 
 ## SharePoint setup (current default for daily work)
 
-As a first rollout step, each lab member received a **personal KU Leuven SharePoint space** (1 TB). The email with your personal SharePoint site was sent out on 17/12/2025 with subject "KULeuven Teams Creation Info". 
+As a first rollout step, each lab member received a **personal KU Leuven SharePoint space** (1 TB). The email with your personal SharePoint site was sent out on 17/12/2025 with subject "KULeuven Teams Creation Info".
 
 For now:
 
@@ -66,7 +65,7 @@ For now:
 
 ❌ Do NOT rely on OneDrive for this anymore. If you still do, move files gradually whenever you start something new or touch old files.
 
-If you haven't yet, these are the steps to sync SharePoint to your computer (one-time setup). 
+If you haven't yet, these are the steps to sync SharePoint to your computer (one-time setup).
 
 1. Open the email “KULeuven Teams Creation Info”
 2. Click the SharePoint site link
@@ -85,7 +84,5 @@ These guidelines reflect the **current working procedures** and may be updated a
 
 Please check this page regularly if you are starting a new project.
 
-
-    !!! tip "Questions welcome"
-        We know this transition phase can feel unclear. If something is confusing, send concrete questions, report unclear cases, or suggest examples we should document. This helps us build better permanent guidelines.
-
+!!! tip "Questions welcome"
+    We know this transition phase can feel unclear. If something is confusing, send concrete questions, report unclear cases, or suggest examples we should document. This helps us build better permanent guidelines.
