@@ -26,4 +26,4 @@ Our procedures aim to ensure:
 Some procedures are still being tested or refined.
 Check the [**Temporary guidelines**](current.md) page for the currently recommended practices.
 
-If anything is unclear or missing, please contact the RDM responsible ([Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) or [Andrea](https://www.kuleuven.be/wieiswie/nl/person/00152046)) so the documentation can be improved.
+If anything is unclear or missing, please contact the RDM responsible ([Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or [Andrea](https://www.kuleuven.be/wieiswie/nl/person/00152046)) so the documentation can be improved.
