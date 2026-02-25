@@ -5,18 +5,21 @@
 Kickstart your (f)MRI learning journey by engaging in the following key activities:
 
 === "Subscribe to the MR mailing list"
+
     - **How to subscribe**:  
       Join the MR mailing list by visiting [this link](https://ls.kuleuven.be/cgi-bin/wa?A0=MRI). Make an account and make sure you are logged in and click on "Subscribe or Unsubscribe" in the menu on the top right. Provide your first and last name and hit the subscribe button. A confirmation request will be sent to your email address. Your subscription will be completed if you respond to this request within 48h.
     - **Purpose of the list**:  
       This mailing list is used by the MR Safety Officer to report on the status of the MRI equipment and announce upcoming MR safety courses. It also allows MRI researchers to ask each other questions about MRI practices and possible issues.  
 
 === "Browse documentation"
+
     - **The lab's resources**:  
       Documentation related to (f)MRI studies is available in [this Hoplab Teams folder](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Info%20for%20newbies?csf=1&web=1&e=V4tzxl), including manuals, protocols, and information on safety procedures. Regular updates and additional resources will be added to this folder, so make sure to stay informed by regularly checking the documentation.
     - **MRI dropbox folder**:  
       The radiology department of UZ Leuven also provides documentation related to the experimental use of the research MRI scanner (MR8) in this [Dropbox folder](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AAATYJes74w8KvI0OEOd1MmYa?e=4).
 
 === "Participate in a study"
+
     - **Get involved**:  
       Interested in participating in an (f)MRI study? Discover ongoing studies within our faculty by visiting [this Facebook page](https://www.facebook.com/ExperimentKUL/) or by following [this page](http://twitter.com/experimentkul) on X (formerly Twitter). To sign up for a study, simply register through the faculty's [Experiment Management System](https://psykuleuven.sona-systems.com/Default.aspx?ReturnUrl=%2f) (EMS).
     - **What to expect**:  

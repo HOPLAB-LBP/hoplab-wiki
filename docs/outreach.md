@@ -48,10 +48,11 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 #### Storage Instructions
 
 === "1-Slide Updates"
+
     - **Before the meeting**:
       Store your slides in:
       ```
-Hoplab > Science outreach > Lab meetings > 1-slide updates
+      Hoplab > Science outreach > Lab meetings > 1-slide updates
       ```
       This allows all updates to be presented from one computer.
 
@@ -62,17 +63,19 @@ Hoplab > Science outreach > Lab meetings > 1-slide updates
       ```
 
 === "Individual Meetings"
+
     - **After the meeting**:
       Store your presentation in:
       ```
-Hoplab > Science outreach > Lab meetings > Past LM presentations
+      Hoplab > Science outreach > Lab meetings > Past LM presentations
       ```
 
 === "New Papers Meetings"
+
     - **Before the meeting**:
       Add papers of interest to:
       ```
-Hoplab > Science outreach > Lab meetings > Papers
+      Hoplab > Science outreach > Lab meetings > Papers
       ```
       This allows lab members to review them before the meeting.
 
