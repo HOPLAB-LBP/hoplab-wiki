@@ -508,7 +508,7 @@ Before leaving the room, check the following:
 1. **New Examination**:
     - Select **"Patient – New Examination"**.
     - Choose **RIS** to load the volunteer's details. Their data (name, ID, birthdate, sex, and exam) will be automatically filled in.
-    - NOTE: if you are running a pilot (and booked through Ron), then you need to create a new subject. You can generate a random ID.
+    - Note: if you are running a pilot (and booked through Ron), then you need to create a new subject. You can generate a random ID.
 
 2. **Volunteer Information**:
     - Enter the volunteer’s weight (from the **MR Safety Checklist**).
@@ -974,6 +974,8 @@ In case of an emergency involving the MRI system or facility:
 2. **Call emergency number 1000**. Clearly state the location: **"MRI Suite MR8"**.
 
 <!--
+** TODO ** [Simen] IMPORTANT, in fMRI testing room, measure the screen and viewing distance to confirm which setup is correct (as outlined in this link: https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/_layouts/15/Doc.aspx?sourcedoc=%7B68475DCF-8E6F-4182-B4E6-82E343B22356%7D&file=MR8_screeninfo.docx&action=default&mobileredirect=true) -> [Andrea] I measured the projected screen size (the physical size of the projection on the panel in the scanner bore), and it measures 32 cm in length and 18.5 in height (full screen). If this differs from what is reported in thos files/ on the wiki, this should be updated, as it is crucial for visual angle calculations.
+** TODO ** [Simen] better explain the scanning and booking procedure regarding pilot versus real run.
 **TODO:** add info about the codes sent by each box.
 **TODO:** MATLAB and PTB have been updated to newer version!
 **TODO:** the structure of these sections is a bit confusing. We list the instruments in the section above, then we explain what to do at the scanner room, then we go back to describing instruments.. perhaps we should streamline this? Or probably just make two different pages, one for instruments, one for a general step-by-step procedure, and one for frequent errors and solutions/workarounds?
