@@ -174,3 +174,8 @@ KU Leuven and external organisations offer a wide range of training for research
     - **[VSC documentation](https://docs.vscentrum.be/)**: Comprehensive guides on using the Vlaams Supercomputer Centrum infrastructure.
     - **[Genius quick-start](https://docs.vscentrum.be/en/latest/leuven/genius_quick_start.html)**: Getting started on KU Leuven's Genius cluster.
     - The HPC team regularly hosts intro sessions — check the [VSC training page](https://www.vscentrum.be/training) for upcoming dates.
+
+<!--
+__TODO__: Verify and expand the Training Opportunities section above. Check that all links are current, confirm that the listed programmes are still recommended by the lab, and add any missing training resources (e.g., faculty-specific workshops, summer schools).
+__TODO__: Verify the Recent Lab Publications tab. Confirm that the listed papers are correct (titles, authors, DOIs, journals) and add any missing recent publications. Remove any entries that are not yet publicly available.
+-->
