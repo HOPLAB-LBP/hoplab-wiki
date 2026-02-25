@@ -2,14 +2,9 @@
 exclude = [
   "mailto:",
   "https://kuleuven.sharepoint.com/.*",
-  "https://anydesk.com/.*",
-  "https://docs.conda.io/.*",
-  "https://scholar.google.com/.*",
-  "https://fwo.be/.*",
-  "https://www.fwo.be/.*",
 ]
 max_redirects = 10
 max_retries = 3
 retry_wait_time = 2
-user_agent = "hoplab-wiki-link-check"
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
 timeout = 20
