@@ -12,11 +12,19 @@ Welcome to the landing page for all things related to functional MRI (fMRI) in o
 
     [:octicons-arrow-right-24: Get started](fmri-get-started.md)
 
+- :octicons-server-24:{ .lg .middle } __MR8 Equipment Reference__
+
+    ---
+
+    Hardware descriptions and connection diagrams for the MR8 suite: stimulus PC, trigger boxes, projection system, audio, and eyetracker.
+
+    [:octicons-arrow-right-24: View equipment](fmri-equipment.md)
+
 - :octicons-checklist-24:{ .lg .middle } __Scanning Procedure__
 
     ---
 
-    Detailed guidelines for preparing and conducting fMRI scans, including participants registration, equipment setup, and scan procedures.
+    Step-by-step protocol for conducting fMRI scans, from participant registration to data export and cleanup.
 
     [:octicons-arrow-right-24: View procedures](fmri-procedure.md)
 
