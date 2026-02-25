@@ -14,6 +14,10 @@ The following types of ROIs are commonly used in fMRI research:
 
 ### Example: Creating Spherical ROIs with the GUI
 
+<!--
+__TODO__: Add a step-by-step walkthrough for creating spherical ROIs using the MarsBaR GUI in SPM. Include screenshots of the key dialogs (ROI definition, coordinate entry, radius selection, saving).
+-->
+
 ### Example: Creating Spherical ROIs with a Script
 
 Below is an example MATLAB script designed to creare bilateral ROIs. This script leverages **MarsBaR** and **SPM** to generate spherical ROIs around given MNI coordinates. The ROIs are saved as NIfTI files, which can be further used in analyses such as **multivariate decoding**.
@@ -871,5 +875,5 @@ Now that you have your beta images (from the GLM) and your ROIs, you have everyt
 <https://openneuro.org/>
 
 <!--
-__TODO__: link resources on how to do this using marsbar GUI.
+__TODO__: Link resources on how to do this using the MarsBaR GUI. Also consider expanding this section with references to other commonly used atlases (e.g., AAL, Schaefer, Brodmann) and functional atlas databases (e.g., NeuroSynth, Neuroquery) for defining ROIs beyond the Glasser parcellation.
 -->

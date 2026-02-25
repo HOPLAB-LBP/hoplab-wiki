@@ -242,6 +242,10 @@ docker run -it --rm \
 
 Replace the paths as appropriate for your dataset.
 
+<!--
+__TODO__: Document the bidsmreye output structure (what files are generated, where they are saved) and how to interpret and use the extracted gaze position data in downstream analyses (e.g., as confound regressors or for quality control).
+-->
+
 !!! note
     In practice, `bidsmreye` has been found to work reliably only when using the `T1w` fMRIPrep output space.
 

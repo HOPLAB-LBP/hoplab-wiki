@@ -291,6 +291,10 @@ Each `nii` file **must** have a sidecar JSON file. Make sure you [anonymised and
 
 ---
 
+<!--
+__TODO__: Add a utility script (or link to one) that automates the creation of events.tsv files from the fMRI task template log files. The chess-expertise-2025 repo has an example (script02_behavioural-to-BIDS.m) — document its key parameters (input/output paths, column mappings) and adapt it as a reusable template.
+-->
+
 ### 8. Create event files
 
 <pre><code>
@@ -439,6 +443,10 @@ If your experiment includes eye-tracking recorded during fMRI (e.g., using an Ey
 
 1. Use the EyeLink API's `edf2asc` tool to convert your `.edf` files to `.asc` format.
 2. Run your eye-tracking conversion script to organize the ASC files into the BIDS structure, placing them alongside the corresponding functional data.
+
+<!--
+__TODO__: Add the name and link to the eye-tracking conversion script (from chess-expertise-2025 or a reusable template). Include the expected BIDS output structure (folder tree with `_recording-eye_physio.tsv.gz` files) and document any key parameters.
+-->
 
 !!! warning "BEP020 is not yet finalized"
     The BIDS Extension Proposal for eye-tracking data ([BEP020](https://bids.neuroimaging.io/bep020)) has **not been approved yet**. The specification may change before finalization. Consider whether event messages should be included in the BIDS structure, and be prepared to update your data organization as the standard evolves.
