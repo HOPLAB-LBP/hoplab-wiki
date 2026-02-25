@@ -45,9 +45,6 @@ The installation process differs for students and personnel. Please follow the i
         
         The license fee can be covered using individual professional funding sources (e.g., bench fees, grant money, etc.), depending on your contractual situation. For more details, please discuss with your PI.
 
-        ??? warning "Transition to "Individual License""
-            The old '5pack' license will no longer be available after October 31, 2024. To continue using MATLAB, users must switch to an 'Individual License' or 'Designated Computer License'. It is recommended to remove any older versions of MATLAB and install the most recent version as an 'Individual License' user. For newer versions (from R2023b onwards), you can easily switch licenses by placing a new license file. Detailed instructions are available [here](https://nl.mathworks.com/matlabcentral/answers/2099121-how-do-i-transition-matlab-installations-to-matlab-individual-and-the-campus-wide-license).
-
     2. **Request access from ICTS**:
     
         - The information for Matlab can be found [here](https://icts.kuleuven.be/sc/english/software/matlab). The **request form** can be found at [this link](https://www.groupware.kuleuven.be/sites/klantencentrum/Paginas/AanvraagformulierMatlab.aspx). 
@@ -125,6 +122,36 @@ Here are some programs we frequently use in the lab, which you might find useful
 !!! tip "Administrative privileges on KU Leuven PCs"
     In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in `C:\Workdir\MyApps\`. Please contact the ICT helpdesk if problems persist.
 
+## Recommended research software
+
+Beyond the lab essentials listed above, here are tools commonly used for research at Hoplab:
+
+| Category | Tools |
+|----------|-------|
+| **Reference managers** | [Zotero](https://www.zotero.org/) (recommended), [Mendeley](https://www.mendeley.com/) |
+| **Text editors / IDEs** | [VSCode](https://code.visualstudio.com/) (recommended for most use cases) |
+| **Programming** | [Python](https://www.python.org/) (via [Miniconda](https://docs.conda.io/en/latest/miniconda.html)), [R](https://www.r-project.org/) + [RStudio](https://posit.co/products/open-source/rstudio/) |
+| **Experiment building** | [PsychoPy](https://www.psychopy.org/), [jsPsych](https://www.jspsych.org/) |
+| **EEG acquisition** | [BioSemi ActiView](https://www.biosemi.com/products.htm) (for BioSemi ActiveTwo systems) |
+| **Version control** | [Git](https://git-scm.com/) + [GitHub Desktop](https://desktop.github.com/) (optional GUI) |
+| **Writing** | [Overleaf](https://www.overleaf.com/) (see above), <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> |
+| **Image editing** | [GIMP](https://www.gimp.org/) (raster), [Inkscape](https://inkscape.org/) (vector) |
+| **Literature search** | [Semantic Scholar](https://www.semanticscholar.org/), [Elicit](https://elicit.com/), [Google Scholar](https://scholar.google.com/) |
+
+## Email forwarding for PhD students
+
+If you have both a student address (`@student.kuleuven.be`) and a professional address (`@kuleuven.be`), you can set up automatic forwarding so you never miss messages sent to the wrong address.
+
+??? tip "Forward your student email to your professional address"
+    1. Go to [KU Leuven Outlook Web Access](https://outlook.office.com/) and sign in with your **student** account (r-number).
+    2. Click the **gear icon** (Settings) in the top-right corner, then select **View all Outlook settings**.
+    3. Navigate to **Mail > Forwarding**.
+    4. Enable forwarding and enter your professional email address (`firstname.lastname@kuleuven.be`).
+    5. Optionally check "Keep a copy of forwarded messages" if you want to retain emails in your student inbox as well.
+    6. Click **Save**.
+
+    You can verify it works by sending a test email to your student address and checking your professional inbox.
+
 ## Data storage
 
 All KU Leuven staff and students have their own [OneDrive](https://admin.kuleuven.be/icts/services/onedrive) environment with 2 TB of online storage space to store personal work files. The files on OneDrive are synced to a folder on your local device (Windows Explorer), but can be accessed from various devices from any location. It is also possible to share documents with someone else and work together on the same document.
@@ -134,6 +161,32 @@ All KU Leuven staff and students have their own [OneDrive](https://admin.kuleuve
 
     1. A portable **hard drive** (shared between interns, or ask [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) if you are personnel). Don’t forget to give the external drives back to your supervisor when your role ends.
     2. Your online **OneDrive folder**. To get started with OneDrive, check out this [page](https://admin.kuleuven.be/icts/services/onedrive/vanstartonedrive).
+
+### Encrypting external hard drives
+
+When storing research data on external drives, encryption is strongly recommended to protect sensitive information (e.g., participant data).
+
+=== "Windows (BitLocker)"
+
+    On KU Leuven managed PCs, BitLocker is typically pre-enabled. To encrypt an external drive:
+
+    1. Insert the external hard drive.
+    2. Open **File Explorer**, right-click the drive, and select **Turn on BitLocker**.
+    3. Choose how you want to unlock the drive (password is the simplest option).
+    4. Save or print the **recovery key** — store it securely (e.g., in your OneDrive or a password manager). Without this key, you cannot recover data if you forget the password.
+    5. Choose **Encrypt entire drive** and click **Start encrypting**.
+
+=== "Mac (Disk Utility)"
+
+    1. Insert the external hard drive.
+    2. Open **Disk Utility** (Applications > Utilities > Disk Utility).
+    3. Select the external drive in the sidebar and click **Erase**.
+    4. Set the **Format** to **APFS (Encrypted)** or **Mac OS Extended (Journaled, Encrypted)**.
+    5. Enter and confirm a password. Store this password securely.
+    6. Click **Erase** to format and encrypt the drive.
+
+    !!! warning
+        Erasing the drive will delete all existing data. Back up any important files before encrypting.
 
 ## Printing
 
@@ -174,8 +227,5 @@ For **mac users**, follow the instructions on [this page](https://ppw.kuleuven.b
 </style>
 
 <!--
-__TODO__: [Klara] Add a short guide on how PhD students can forward emails from their student address (@student.kuleuven.be) to their professional address (@kuleuven.be) via KU Leuven webmail settings.
-__TODO__: [Klara] Add instructions for encrypting external hard drives. On Windows, BitLocker is enabled by default on managed PCs — confirm this and document the steps. For Mac users, document how to use FileVault or Disk Utility encryption.
 __TODO__: [Klara] The OneDrive section (line ~130) states OneDrive is the primary storage solution, but KU Leuven no longer recommends OneDrive for research data. After the BADM consultation concludes, update this section to reflect current KU Leuven storage recommendations (SharePoint for collaboration, ManGO for research data archival). Clarify which storage solution to use for which purpose.
-__TODO__: [Klara] The MATLAB "Transition to Individual License" warning box (line ~48) references an October 2024 deadline that has now passed. Simplify this section: remove the transition warning and just document the current licensing model (Individual License and Designated Computer License). The old 5pack license info is no longer relevant.
 -->

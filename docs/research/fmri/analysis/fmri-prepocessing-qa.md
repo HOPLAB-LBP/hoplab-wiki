@@ -242,12 +242,92 @@ docker run -it --rm \
 
 Replace the paths as appropriate for your dataset.
 
-<!--
-__TODO__: Document the bidsmreye output structure (what files are generated, where they are saved) and how to interpret and use the extracted gaze position data in downstream analyses (e.g., as confound regressors or for quality control).
--->
-
 !!! note
     In practice, `bidsmreye` has been found to work reliably only when using the `T1w` fMRIPrep output space.
+
+### Output structure
+
+bidsmreye saves its outputs following the [BIDS derivatives](https://bids-specification.readthedocs.io/en/stable/derivatives/introduction.html) convention. After running the `all` (or `generalize` + `qc`) steps, you will find:
+
+```
+derivatives/bidsmreye/
+├── dataset_description.json
+├── group_eyetrack.tsv                         # group-level QC summary
+└── sub-01/
+    └── ses-01/
+        └── func/
+            ├── sub-01_ses-01_task-<task>_desc-<model>_eyetrack.tsv    # gaze time series
+            ├── sub-01_ses-01_task-<task>_desc-<model>_eyetrack.json   # sidecar metadata + QC
+            └── sub-01_ses-01_task-<task>_desc-<model>_eyetrack.html   # interactive QC plot
+```
+
+The `desc-<model>` entity identifies the pre-trained deepMReye model used (default: `1to6`).
+
+### Gaze time series (TSV columns)
+
+The per-run `_eyetrack.tsv` file contains one row per fMRI volume with the following columns:
+
+| Column | Description |
+|--------|-------------|
+| `timestamp` | Time in seconds corresponding to each volume |
+| `x_coordinate` | Predicted horizontal gaze position (degrees) |
+| `y_coordinate` | Predicted vertical gaze position (degrees) |
+| `displacement` | Framewise gaze displacement between consecutive volumes (degrees), computed as $\sqrt{\Delta x^2 + \Delta y^2}$ |
+| `displacement_outliers` | Binary flag (`0`/`1`) marking displacement outliers (Carling's k method) |
+| `x_outliers` | Binary flag for x-coordinate outliers |
+| `y_outliers` | Binary flag for y-coordinate outliers |
+
+The gaze coordinates are reported in degrees of visual angle relative to the screen center (`EnvironmentCoordinates: center`), and represent the `cyclopean` (i.e., combined binocular) eye estimate.
+
+### Per-run sidecar JSON
+
+The JSON sidecar for each run contains:
+
+- **`SamplingFrequency`**: Sampling rate in Hz (inherited from the BOLD repetition time)
+- **`NbDisplacementOutliers`**, **`NbXOutliers`**, **`NbYOutliers`**: Number of outlier timepoints detected for each metric
+- **`XVar`**, **`YVar`**: Variance of x and y gaze position across the run
+
+These metrics give a quick per-run summary of data quality and fixation stability.
+
+### Group-level QC summary
+
+The `group_eyetrack.tsv` file at the dataset root aggregates per-run QC metrics across all subjects:
+
+| Column | Description |
+|--------|-------------|
+| `subject` | Subject label |
+| `filename` | Per-run sidecar JSON filename |
+| `NbDisplacementOutliers` | Number of displacement outlier volumes |
+| `NbXOutliers` / `NbYOutliers` | Number of x / y outlier volumes |
+| `XVar` / `YVar` | Gaze position variance for x / y |
+
+Use this table to identify runs or subjects with unusually high gaze variance or many outlier timepoints, which may indicate poor fixation compliance or noisy data.
+
+### Using bidsmreye outputs in downstream analyses
+
+The gaze position and displacement columns can be used in two main ways:
+
+1. **As confound regressors in your GLM**: Include `x_coordinate`, `y_coordinate`, and/or `displacement` as additional nuisance regressors alongside motion parameters. This helps remove variance related to systematic eye movements.
+
+2. **For quality control and participant exclusion**: Use the outlier columns and the group summary to flag runs with excessive eye movement. For example, you might exclude runs where the number of displacement outliers exceeds a set threshold.
+
+To load the gaze data in Python:
+
+```python
+import pandas as pd
+
+gaze = pd.read_csv(
+    "derivatives/bidsmreye/sub-01/ses-01/func/"
+    "sub-01_ses-01_task-rest_desc-1to6_eyetrack.tsv",
+    sep="\t",
+)
+
+# Extract columns for use as GLM confound regressors
+confounds = gaze[["x_coordinate", "y_coordinate", "displacement"]]
+```
+
+!!! tip
+    The interactive HTML report (`_eyetrack.html`) generated for each run provides a quick visual check of the gaze traces and outlier detection. Open it in your browser to inspect individual runs before proceeding with group analysis.
 
 ---
 

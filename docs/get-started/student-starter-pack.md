@@ -113,11 +113,69 @@ This section contains some foundational papers to give you some background on th
 
      - The tradition in the lab to use carefully crafted stimulus set is a promising approach to understand the differences between human visual processing and DNNs, as for example illustrated by [Bracci et al 2019](https://www.jneurosci.org/content/39/33/6513.abstract).
 
+=== "Recent lab publications"
+
+     Some recent publications from the lab to give you a feel for our current research directions. For the full list, see the [Hoplab publications page](https://www.hoplab.be/publications/).
+
+     - [Maniquet, Fang, Ratan Murty & Op de Beeck 2026](https://doi.org/10.1101/2026) — Can category-selective cortex predict categorisation behaviour? (*bioRxiv*)
+     - [Maniquet, Op de Beeck & Costantino 2025](https://doi.org/10.1038/s41598-025) — Recurrent issues with deep neural network models of visual recognition. (*Scientific Reports*)
+     - [Leys, Chen, von Leupoldt, Ritchie & Op de Beeck 2025](https://doi.org/10.1167/jov.25) — Representational dynamics of the main dimensions of object space. (*Journal of Vision*)
+     - [Bougou et al. 2024](https://doi.org/10.1038/s41467-024) — Neuronal tuning and population representations of shape and category in human visual cortex. (*Nature Communications*)
+     - [Garcia Ramirez et al. 2024](https://doi.org/10.1073/pnas.2024) — Intracortical recordings reveal neuronal selectivity for bodies in human visual cortex. (*PNAS*)
+
 === "Lectures"
 
      - [A visual and intuitive understanding of deep learning](https://www.youtube.com/watch?v=Oqm9vsf_hvU&ab_channel=otaviogood) is a great lecture to begin with if you feel like convolutional neural networks are still obscure to you.
 
+## Suggested conferences
+
+Major conferences relevant to our research, roughly in chronological order within the academic year:
+
+| Conference | Focus | Typical timing | Website |
+|-----------|-------|---------------|---------|
+| **VSS** (Vision Sciences Society) | Visual perception, cognition, neuroscience | May (St. Pete Beach, FL) | [visionsciences.org](https://www.visionsciences.org/) |
+| **OHBM** (Organization for Human Brain Mapping) | Neuroimaging methods and applications | June | [humanbrainmapping.org](https://www.humanbrainmapping.org/) |
+| **ECVP** (European Conference on Visual Perception) | Visual perception | August–September | Rotating European city |
+| **CCN** (Conference on Cognitive Computational Neuroscience) | Computational models of cognition and brain | August–September | [ccneuro.org](https://ccneuro.org/) |
+| **SfN** (Society for Neuroscience) | Broad neuroscience | November (Washington DC / San Diego / Chicago) | [sfn.org](https://www.sfn.org/) |
+| **CoSyNe** (Computational and Systems Neuroscience) | Computational neuroscience | March | [cosyne.org](https://www.cosyne.org/) |
+
+!!! tip "Submission deadlines and funding"
+    Most conferences have abstract submission deadlines 3–6 months before the event. Check with your PI about travel funding options — KU Leuven offers travel grants through the [Doctoral School](https://ppw.kuleuven.be/en/research/doctoral-programme/doctoral-training/stam-doctoral-training) and FWO provides [conference travel grants](https://fwo.be/en/support-programmes/international-mobility/) and funding for longer research visits abroad.
+
+## Training opportunities
+
+KU Leuven and external organisations offer a wide range of training for researchers. Below is a selection — check with colleagues for recommendations and current availability.
+
+=== "Soft skills & career"
+
+    - **[Doctoral School Transferable Skills](https://ppw.kuleuven.be/en/research/doctoral-programme/doctoral-training/stam-doctoral-training)**: Wide range of workshops on communication, leadership, project management, and career planning.
+    - **[The Floor is Yours](https://thefloorisyours.be/en/)**: Coaching and workshops on presenting your research and telling your story (also listed in [Outreach](../outreach.md)).
+    - **[ImagineX](https://admin.kuleuven.be/rd/imaginex)**: KU Leuven's innovation programme for researchers interested in entrepreneurship or knowledge transfer.
+
+=== "Programming & data science"
+
+    - **[Carpentries workshops](https://carpentries.org/)**: Foundational workshops in Python, R, Unix shell, and Git. KU Leuven regularly hosts these — check the [VIB training calendar](https://training.vib.be/).
+    - **[VSC/HPC training](https://www.vscentrum.be/training)**: Introductory and advanced sessions on using the KU Leuven high-performance computing cluster (Genius, wICE).
+    - **[DataCamp](https://www.datacamp.com/)**: Online interactive courses for Python, R, SQL (some free).
+
+=== "Academic writing"
+
+    - **[Doctoral School writing workshops](https://ppw.kuleuven.be/en/research/doctoral-programme/doctoral-training/stam-doctoral-training)**: Includes scientific writing retreats, grant writing, and thesis writing support.
+    - **[Principiae](https://www.principiae.be/)**: Jean-Luc Doumont's workshops on structured writing, effective presentations, and scientific posters (frequently held at KU Leuven).
+
+=== "Statistics"
+
+    - **[KU Leuven Statistics Consulting](https://lstat.kuleuven.be/)**: Free statistical advice for KU Leuven researchers. Book a consultation via their website.
+    - **[Interuniversity Institute for Biostatistics (I-BioStat)](https://ibiostat.be/)**: Courses on biostatistics, multilevel modelling, and survival analysis.
+
+=== "HPC usage"
+
+    - **[VSC documentation](https://docs.vscentrum.be/)**: Comprehensive guides on using the Vlaams Supercomputer Centrum infrastructure.
+    - **[Genius quick-start](https://docs.vscentrum.be/en/latest/leuven/genius_quick_start.html)**: Getting started on KU Leuven's Genius cluster.
+    - The HPC team regularly hosts intro sessions — check the [VSC training page](https://www.vscentrum.be/training) for upcoming dates.
+
 <!--
-__TODO__: [Klara] Add a "Training opportunities" section listing internal and external training resources for PhDs, postdocs, and ATP. Categories to cover: (1) soft skills (Doctoral School offerings, The Floor is Yours), (2) career development (ImagineX, academic career coaching), (3) programming (Carpentries workshops, KU Leuven HPC training), (4) academic writing (Doctoral School writing retreats), (5) presenting research (Principiae workshops), (6) statistics (KU Leuven stats consulting, online courses), (7) HPC usage (VSC documentation, intro sessions).
-__TODO__: [Klara] Expand the Papers & Lectures section. Add: (1) more recent Hoplab publications (check https://www.hoplab.be/publications/), (2) foundational computational neuroscience papers, (3) recommended lectures and conference talks available online. Also consider adding a "Suggested conferences" subsection listing relevant conferences (VSS, ECVP, OHBM, SfN, CCN) with typical submission deadlines and travel funding info.
+__TODO__: Verify and expand the Training Opportunities section above. Check that all links are current, confirm that the listed programmes are still recommended by the lab, and add any missing training resources (e.g., faculty-specific workshops, summer schools).
+__TODO__: Verify the Recent Lab Publications tab. Confirm that the listed papers are correct (titles, authors, DOIs, journals) and add any missing recent publications. Remove any entries that are not yet publicly available.
 -->

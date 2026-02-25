@@ -702,6 +702,18 @@ To monitor export progress, navigate to:
 
 ### DICOM Export
 
+!!! warning "Avoid enhanced (4D) DICOMs"
+    When exporting DICOM files from Philips scanners, **always choose Classic (2D) DICOM** format rather than Enhanced (4D) DICOM. Enhanced DICOMs bundle all slices into a single file, which causes problems with many conversion tools:
+
+    - **Missing metadata**: Philips enhanced DICOMs often omit fields that other tools expect (e.g., slice timing, echo time for individual volumes).
+    - **Conversion failures**: `dcm2niix` may produce incorrect or incomplete NIfTI files from enhanced DICOMs.
+    - **Compatibility**: Classic DICOMs (one file per slice) are supported by virtually all neuroimaging tools.
+
+    For detailed documentation on Philips DICOM quirks, see:
+
+    - [Chris Rorden's dcm2niix Philips documentation](https://github.com/rordenlab/dcm2niix/tree/master/Philips)
+    - [NITRC discussion on Philips DICOM issues](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703)
+
 1. Go to **Patients > Administration** in the scan program.
 2. In the **patient administration** window, locate the participant’s name.
 3. Double-click the name and select the runs to export.
@@ -987,5 +999,4 @@ __TODO__: Document the response codes sent by each button box: (1) Nata box (5 b
 __TODO__: The MATLAB and Psychtoolbox (PTB) versions referenced on this page are outdated. Update to reflect the current versions installed on the stimulus PC at MR8. Document the current MATLAB version, PTB version, and any version-specific configuration changes.
 __TODO__: Reorganise this page for better flow. Current structure mixes equipment descriptions with step-by-step procedures and troubleshooting. Suggested split: (1) a dedicated equipment/instruments sub-page, (2) a step-by-step scanning procedure page, and (3) a troubleshooting and common issues page.
 __TODO__: Update all photographs and screenshots on this page. Several images appear outdated and may not reflect the current MR8 setup. Re-take photos of: the control room, the scanner room layout, the button boxes, and the stimulus PC setup.
-__TODO__: Add a section on DICOM files: explain why enhanced DICOMs should be avoided, document known missing fields from Philips DICOMs, and link to Chris Rorden's documentation on Philips DICOM issues (https://github.com/rordenlab/dcm2niix/tree/master/Philips) and the related NITRC thread (https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703).
 -->

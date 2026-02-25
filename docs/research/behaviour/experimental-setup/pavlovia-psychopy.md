@@ -162,7 +162,54 @@ To introduce rest trials or breaks, add a code snippet under **Each Frame**. For
 
 ## Informed consent
 
-For setting up informed consent forms for online experiments, refer to [this guide on informed consent](https://www.psychopy.org/online/informed-consent.html).
+Online experiments require participants to give informed consent before starting. Since PsychoPy's **Form component does not work on Pavlovia**, you need an alternative approach. The two most common methods are:
+
+### Option 1: Button-based consent screen (recommended)
+
+Build a consent routine in the Builder using text and shape components:
+
+1. Add a **Text** component displaying the consent information (study purpose, data handling, right to withdraw, etc.).
+2. Add two **Polygon** components styled as buttons (e.g., green "I agree" and red "I do not agree"), each with a **Text** label on top.
+3. Add a **Mouse** component and a **Code** component to detect clicks:
+
+    ```python
+    # Begin Routine
+    consent_given = False
+
+    # Each Frame
+    if mouse.isPressedIn(agree_button):
+        consent_given = True
+        continueRoutine = False
+    elif mouse.isPressedIn(disagree_button):
+        consent_given = False
+        continueRoutine = False
+    ```
+
+4. After the consent routine, use a **Code** component to end the experiment if consent was not given:
+
+    ```python
+    # Begin Routine (in the next routine)
+    if not consent_given:
+        thisExp.addData('consent', 'refused')
+        psychoJS.quit()  # online
+    else:
+        thisExp.addData('consent', 'given')
+    ```
+
+!!! warning
+    Make sure to define `consent_given = False` in the **Begin Experiment** tab to avoid undefined variable errors on Pavlovia.
+
+### Option 2: Embedded HTML consent form
+
+For more complex consent forms (e.g., with checkboxes for multiple clauses), you can embed an external HTML file using JavaScript. This approach loads a `.html` consent form in an iframe and captures the responses. Note that **this only works online** — it will not run locally.
+
+For a working example, see [this community thread on embedded HTML consent forms](https://discourse.psychopy.org/t/embedded-html-consent-form/40927).
+
+### Further reading
+
+- [Best practices for consent forms in online experiments](https://discourse.psychopy.org/t/best-practice-for-consent-forms-information-sheets-in-online-experiments/8784)
+- [Consent form in PsychoPy Builder](https://discourse.psychopy.org/t/consent-form-in-psychopy-builder/20216)
+- [Adding consent to online tasks](https://discourse.psychopy.org/t/how-to-add-consent-forms-to-online-task-how-to-randomise-versions-of-tasks-online/12065)
 
 ## Images
 
@@ -198,6 +245,5 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 
 <!--
 __TODO__: [Klara] Upload Christophe Bossens' workshop materials on online experimentation to the Hoplab Teams folder and add a link in the "Learning resources" or introductory section of this page.
-__TODO__: [Klara] Fix the broken link in the Informed Consent section (line ~165). The current link to psychopy.org/online/informed-consent.html may have moved — verify and update.
 __TODO__: [Klara] Restructure this page for better flow. Current organisation jumps between topics (e.g., error avoidance, stimuli types, consent, cellphone detection). Suggested structure: (1) Installation, (2) Building your experiment, (3) Uploading to Pavlovia, (4) Common pitfalls and troubleshooting, (5) Advanced topics (custom code, language selection, mobile detection), (6) Informed consent setup.
 -->

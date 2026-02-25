@@ -144,6 +144,7 @@ The [Hoplab](https://www.hoplab.be/) is part of the larger [NeuroSPACE consortiu
 - [:octicons-organization-16: Hoplab Teams Directory](https://teams.microsoft.com/l/team/19%3A9fcb4eb9c75049d4bad118cf8afcb9cb%40thread.tacv2/conversations?groupId=714187e1-4ec7-496a-9922-933eb237402f&tenantId=3973589b-9e40-4eb5-800e-b0b6383d1621) (Requires permission)
 - [:octicons-home-16: Hoplab Website](https://www.hoplab.be/)
 - [:octicons-bookmark-16: Hoplab Publications](https://www.hoplab.be/publications/)
+- [:octicons-beaker-16: Open Science Framework (OSF)](https://osf.io/institutions/kuleuven/) — KU Leuven institutional page; lab datasets and materials are linked from individual publications on the [Hoplab website](https://www.hoplab.be/publications/)
 
 ## Need Help?
 
@@ -154,5 +155,4 @@ Can't find what you're looking for? Have questions or suggestions? Don't hesitat
 
 <!--
 __TODO__: Create a dedicated "Data Management" overview page (or section on this page) that links to: (1) the Research Data Management (RDM) section, (2) the BIDS documentation in the fMRI analysis pages, and (3) modality-specific data storage pages (fMRI, EEG, behaviour). Include guidance on Open Science practices such as data sharing templates and preregistration.
-__TODO__: Add a Quick Link entry pointing to the lab's OSF page (https://osf.io/) and/or the Hoplab finished-papers repository so new members can easily find published datasets and supplementary materials.
 -->

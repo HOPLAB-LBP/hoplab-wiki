@@ -4,6 +4,9 @@ exclude = [
   "https://kuleuven.sharepoint.com/.*",
   "https://anydesk.com/.*",
   "https://docs.conda.io/.*",
+  "https://scholar.google.com/.*",
+  "https://fwo.be/.*",
+  "https://www.fwo.be/.*",
 ]
 max_redirects = 10
 max_retries = 3
