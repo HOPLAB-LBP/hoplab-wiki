@@ -66,5 +66,5 @@ A flowchart visualising the ethical review process (and its timing) can be consu
 5. Save and submit the new dossier
 
 <!--
-__TODO__: [Klara] Update this page and add some explanation about the new SMEC templates
+__TODO__: [Klara] Update this page to reflect the latest SMEC procedures. Specifically: (1) document the new SMEC application templates (if template URLs have changed, update the links), (2) clarify any changes to the PRET platform workflow, and (3) verify that the example applications folder on Teams still contains relevant and up-to-date examples. Add a brief note explaining what changed in the new templates compared to the old ones.
 -->

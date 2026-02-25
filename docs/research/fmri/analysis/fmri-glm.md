@@ -583,7 +583,10 @@ It’s crucial to confirm the order of regressors in the design matrix before sp
 
 ---
 
-- __[TODO]:__ Add example directories showing how files are organized before and after preprocessing.
-- __[TODO]:__ Include screenshots or illustrations for key steps (e.g., setting up the design matrix in SPM).
-- __[PLACEHOLDER]:__ Add a screenshot of the SPM results interface to illustrate how to set thresholds.
-- __[TODO]:__ Include instructions on visualizing and saving the design matrix in SPM for documentation.
+<!--
+__TODO__: Add example directory trees showing the file organisation before running the GLM (after preprocessing) and after the GLM estimation (beta images, SPM.mat, contrast images). Use the same format as the BIDS directory tree earlier on this page.
+__TODO__: Add screenshots of key SPM GUI steps: (1) the "Specify 1st Level" interface with fields filled in, (2) the design matrix visualisation after specification, (3) the contrast definition dialog.
+__PLACEHOLDER__: Add a screenshot of the SPM Results interface showing how to set statistical thresholds (p-value, cluster extent) and view activation maps.
+__TODO__: Add instructions for exporting and saving the design matrix visualisation in SPM (right-click > Save as Image) for inclusion in lab notebooks and publications.
+__TODO__: Add a section on second-level (group-level) analysis. The wiki currently jumps from first-level GLM to MVPA with no documentation on group statistics. Cover: (1) how to set up a second-level model in SPM (one-sample t-test, flexible factorial), (2) how to input first-level contrast images, (3) how to define group-level contrasts, and (4) how to interpret and report group-level results.
+-->

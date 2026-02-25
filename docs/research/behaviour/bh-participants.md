@@ -170,12 +170,8 @@ Please record participant presence ("show-ups") and assign credits or pay partic
 - **Unexcused no-shows** incur a penalty of -0.5 credit. If a participant has 5 or more no-shows, their account will be inactivated.
 
 <!--
-__TODO__: [Klara] Check whether EMS info is still up to date (info dates from 09/2022). Update with info to be found [here](https://admin.kuleuven.be/mykuleuven/en/channel/50000339/research/research-support) and make it shorter/more to the point?
-
-__TODO__: [Klara] Add info on how to recruit other types of participants (e.g., elderly, patients, children, experts, etc.) including how to get access to KWS if needed. 
-
-__TODO__: [Klara] Add the lab's participant database info
-
-__TODO__: [Klara] Add (more) guidelines on how to store/manage data (probably best in a separate section)
-
+__TODO__: [Klara] EMS information was last verified September 2022. Verify that current EMS procedures, the credit system (18 points, 0.25 per 15 min), the participant interface, and the YouTube tutorial links are still accurate. Cross-check against current info at https://admin.kuleuven.be/mykuleuven/en/channel/50000339/research/research-support. Consider condensing the page to focus on essential steps and linking to official EMS documentation for details.
+__TODO__: [Klara] Add a section on recruiting non-student participant populations (e.g., elderly, patients, children, domain experts). Include: how to get access to KWS (clinical recruitment system) if needed, specific ethical considerations for vulnerable populations, and practical tips for recruitment outside the EMS pool.
+__TODO__: [Klara] Add a section documenting the lab's participant database: what it contains, how to access it, how to add new participants, and data privacy guidelines for maintaining the database.
+__TODO__: [Klara] Add guidelines on storing and managing participant data (or link to a dedicated RDM section). Cover: where to store consent forms, how long to retain participant records, and anonymisation procedures.
 -->

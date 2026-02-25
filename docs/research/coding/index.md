@@ -916,3 +916,7 @@ By following these practices, you can ensure smoother collaboration and minimize
 ---
 
 We hope this guide helps you establish a solid coding practice. Follow these steps to ensure your code is well-organized, collaborative, and reproducible!
+
+<!--
+__TODO__: This page is very long (~900 lines). Consider improving internal navigation by: (1) ensuring all major sections have clear, descriptive heading anchors so other wiki pages can deep-link to specific topics (e.g., coding/index.md#version-control-with-git-and-github), (2) adding a brief table of contents or summary card grid at the top (similar to the current grid but with anchors to each section), and (3) evaluating whether some sections (e.g., the full Git troubleshooting guide) should be split into separate pages.
+-->

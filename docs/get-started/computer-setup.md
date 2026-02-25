@@ -174,7 +174,8 @@ For **mac users**, follow the instructions on [this page](https://ppw.kuleuven.b
 </style>
 
 <!--
-__TODO__: [Klara] Explain how you can forward emails from your student mailing address to your professional mailing address (for PhD'ers)
-__TODO__: [Klara] Specify how to encrypt your (external) hard drive --> I think it happens automatically at least for Windows
-__TODO__: [Klara] Edit info on data storage after BADM consultation has ended (e.g., OneDrive info is outdated and not recommended any longer by KU Leuven)
+__TODO__: [Klara] Add a short guide on how PhD students can forward emails from their student address (@student.kuleuven.be) to their professional address (@kuleuven.be) via KU Leuven webmail settings.
+__TODO__: [Klara] Add instructions for encrypting external hard drives. On Windows, BitLocker is enabled by default on managed PCs — confirm this and document the steps. For Mac users, document how to use FileVault or Disk Utility encryption.
+__TODO__: [Klara] The OneDrive section (line ~130) states OneDrive is the primary storage solution, but KU Leuven no longer recommends OneDrive for research data. After the BADM consultation concludes, update this section to reflect current KU Leuven storage recommendations (SharePoint for collaboration, ManGO for research data archival). Clarify which storage solution to use for which purpose.
+__TODO__: [Klara] The MATLAB "Transition to Individual License" warning box (line ~48) references an October 2024 deadline that has now passed. Simplify this section: remove the transition warning and just document the current licensing model (Individual License and Designated Computer License). The old 5pack license info is no longer relevant.
 -->

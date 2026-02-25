@@ -67,5 +67,5 @@ Here are some additional links to key research resources, tutorials, and tools:
 ---
 
 <!--
-**TODO**: [Klara] Make list of hardware available in/to the lab: licenses are here: https://admin.kuleuven.be/icts/english/services/software; https://teams.microsoft.com/v2/?tenantId=3973589b-9e40-4eb5-800e-b0b6383d1621#/l/channel/19:5b7757aa9d98480a9c2915a7c9c9b613@thread.tacv2/PPW%20research%20infrastructure?groupId=72910d2a-8121-481d-a927-ab011cec6340&tenantId=3973589b-9e40-4eb5-800e-b0b6383d1621&deeplinkId=e2029347-b8e5-4181-b59b-542d5f33e51d; Make list of software available, but link to the 2 pages to access. hardware: we can add an inventory page under the main research 
+__TODO__: [Klara] Make list of hardware available in/to the lab: licenses are here: https://admin.kuleuven.be/icts/english/services/software; https://teams.microsoft.com/v2/?tenantId=3973589b-9e40-4eb5-800e-b0b6383d1621#/l/channel/19:5b7757aa9d98480a9c2915a7c9c9b613@thread.tacv2/PPW%20research%20infrastructure?groupId=72910d2a-8121-481d-a927-ab011cec6340&tenantId=3973589b-9e40-4eb5-800e-b0b6383d1621&deeplinkId=e2029347-b8e5-4181-b59b-542d5f33e51d; Make list of software available, but link to the 2 pages to access. hardware: we can add an inventory page under the main research 
 -->

@@ -12,5 +12,5 @@ Examples of previous applications can be found in [this folder](https://kuleuven
 For more detailed info, please check out the following pages.
 
 <!--
-__TODO__: [Klara] Add page on amendments?
+__TODO__: [Klara] Create a dedicated "Amendments" sub-page (or expand this page) covering: (1) when an amendment is needed vs. a new application, (2) the amendment process for both EC onderzoek and SMEC, (3) required documents and templates, and (4) typical turnaround times. Both the MEC.md and SMEC.md pages already have some amendment info — consider consolidating it here or cross-linking.
 -->

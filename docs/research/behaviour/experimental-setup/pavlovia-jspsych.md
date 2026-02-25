@@ -35,5 +35,6 @@ A basic workflow that you might want to adopt when scripting your experiment is 
         It can sometimes be cumbersome to go through the complete _local change > commit > test_ loop just to test out a minor code change. An elegant alternative is to use **flags** in your code that will activate or de-activate the Pavlovia components. The latter are just two: a `init` and a `finish` event. Set these behind an `if` statement, and you'll be able to switch from online to local with one flag, so that you can go back to trying your code locally before syncing your changes (see an example [here](https://github.com/TimManiquet/mouse_tracker_template)).
 
 <!--
-__TODO__: [Klara] Make sure the workshop material from Christophe Bossens is updated to the latest version
+__TODO__: [Klara] Verify that the Christophe Bossens workshop material link (SharePoint) points to the latest version. Update the link if a newer version is available.
+__TODO__: [Klara] This page is significantly thinner than the PsychoPy guide. To match depth, add: (1) code examples for common trial types (e.g., image display, keyboard response, survey), (2) common pitfalls when deploying jsPsych on Pavlovia (e.g., resource preloading, data saving issues), (3) a troubleshooting section covering frequent errors, and (4) tips for integrating jsPsych plugins.
 -->

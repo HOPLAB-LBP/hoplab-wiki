@@ -291,13 +291,10 @@ If you can't wait to start engaging, check out the following **initiatives**:
 (It should be mentioned that all credits for this section go to Klara's former colleague [Simon Geirnaert](https://simongeirnaert.com/)!)
 
 <!--
-__TODO__: [Andrea] perhaps add links to new NeuroSPACE Linkedin and other socials at the top of the page (and remove the LBP?)
-
-**TODO**: [Klara] Add links to nice data visualisation tools (science outreach / useful resources)
-	 
-**TODO**: [Klara] Explain how Lirias works/what it is used for (one sentence in getting started + section in outreach)
-	 
-**TODO**: [Klara] Make list of events throughout the year e.g. conferences, scicomm activities, days to remember (e.g., stroke day) (add a new page to science outreach, add calendar widget (connected to hoplab calendar?) + important dates/conferences)	 
+__TODO__: [Andrea] Update the social media section: add links to the NeuroSPACE LinkedIn page and any other new consortium social media accounts. Consider whether the LBP X profile should remain as the primary social or be supplemented/replaced by NeuroSPACE accounts.
+__TODO__: [Klara] Add a "Data Visualisation Tools" subsection under SciComm or as a new section. Include tools like: BioRender (for scientific figures), Datawrapper (for charts), Flourish (for interactive visualisations), and any lab-recommended plotting libraries (matplotlib, seaborn, ggplot2).
+__TODO__: [Klara] Add a brief explanation of Lirias (KU Leuven's institutional repository): what it is, why researchers must register publications there, and a link to the Lirias portal. Add one sentence with a link on the Get Started page, and a more detailed section here in Outreach.
+__TODO__: [Klara] Create a new sub-page or section listing key events throughout the academic year: major conferences in the field (VSS, ECVP, OHBM, SfN, etc.), SciComm activities (Dag van de Wetenschap, Science Figured Out deadlines), and awareness days relevant to our research (e.g., World Brain Day, Stroke Day). Consider embedding or linking to the Hoplab Google Calendar.
 -->
 
 <style>
