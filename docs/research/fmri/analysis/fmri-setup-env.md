@@ -9,6 +9,9 @@ Welcome to the fMRI analysis environment setup guide. This walkthrough will help
     - **CPU:** Multi-core processor (4+ cores)
     - **GPU:** NVIDIA GPU with CUDA support (optional, but beneficial)
 
+!!! tip "General coding setup"
+    For general guidance on setting up Python/Conda environments, Git, and IDE configuration, see [Coding practices](../../coding/index.md).
+
 ## Folder Structure
 
 Our lab uses a specific folder structure for fMRI projects. Here's an overview:

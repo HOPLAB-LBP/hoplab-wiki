@@ -1,5 +1,8 @@
 # Filing your study with the Ethical Committee UZ/KU Leuven
 
+!!! info "Which approval do you need?"
+    This page covers the **EC onderzoek (Medical Ethics Committee)** pathway, required for fMRI studies, patient studies, UZ Leuven studies, and TMS/tDCS research. For behavioral studies not involving medical procedures, see [SMEC](SMEC.md) instead. Check the [ethics overview](index.md) for a decision tree.
+
 ## Step 1: Register your study at the UZ Leuven Clinical Trial Center (CTC)
 
 1. **Fill in [this online form](https://www.uzleuven.be/en/register-a-study)** in order to register your study in the UZ/KU Leuven central clinical research database.

@@ -82,6 +82,9 @@ Before going to the hospital, ensure that you have the following forms ready:
 
 ## Participant Arrival and Registration
 
+!!! tip "Recruitment and compensation"
+    For details on recruiting participants and compensation rates, see the [participant recruitment and reimbursement guide](../behaviour/bh-participants.md).
+
 ### Participant Registration
 
 Upon arriving at the hospital, participants must register at the **main entrance**. The registration procedure varies depending on whether they hold a Belgian ID:
