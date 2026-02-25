@@ -14,7 +14,7 @@ In Hoplab, we typically set up experiments for multivariate EEG ("Representation
 
 <div class="grid cards" markdown>
 
-- :octicons-rocket-24:{ .lg .middle } __Data acquisition__
+- :octicons-rocket-24:{ .lg .middle } __Data acquisition__ <span class="chip chip--green">Complete</span>
 
     ---
 
@@ -22,7 +22,7 @@ In Hoplab, we typically set up experiments for multivariate EEG ("Representation
 
     [:octicons-arrow-right-24: Get started](eeg-acquisition.md)
 
-- :octicons-tools-24:{ .lg .middle } __Data analysis__
+- :octicons-tools-24:{ .lg .middle } __Data analysis__ <span class="chip chip--red">Needs content</span>
 
     ---
 
@@ -30,7 +30,7 @@ In Hoplab, we typically set up experiments for multivariate EEG ("Representation
 
     [:octicons-arrow-right-24: Start analyzing](eeg-analysis.md)
 
-- :simple-github:{ .lg .middle } __Create an EEG task__
+- :simple-github:{ .lg .middle } __Create an EEG task__ <span class="chip chip--blue">In progress</span>
 
     ---
 

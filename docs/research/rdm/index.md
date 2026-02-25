@@ -11,15 +11,15 @@ Our procedures aim to ensure:
 
 ## Start here
 
-- **New to the lab?** → See the [*onboarding checklist*](onboarding.md)
-- **Leaving the lab?** → See the [*offboarding checklist*](offboarding.md)
-- **Working with data?** → Follow the [*workflows per modality*](SOPs.md)
+- **New to the lab?** → See the [*onboarding checklist*](onboarding.md) <span class="chip chip--red">Needs content</span>
+- **Leaving the lab?** → See the [*offboarding checklist*](offboarding.md) <span class="chip chip--red">Needs content</span>
+- **Working with data?** → Follow the [*workflows per modality*](SOPs.md) <span class="chip chip--red">Needs content</span>
 
 ## Storage and sharing platforms
 
-- **ManGO** → [How to](mango_active.md) store active research data
-- **FriGO** → [How to](frigo_archive.md) archive data on the long-term after projects end
-- **RDR** → [How to](RDR_sharing.md) publish and share datasets
+- **ManGO** → [How to](mango_active.md) store active research data <span class="chip chip--green">Complete</span>
+- **FriGO** → [How to](frigo_archive.md) archive data on the long-term after projects end <span class="chip chip--red">Needs content</span>
+- **RDR** → [How to](RDR_sharing.md) publish and share datasets <span class="chip chip--red">Needs content</span>
 
 ## ⚠️ Work in progress
 

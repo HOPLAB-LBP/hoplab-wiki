@@ -8,13 +8,22 @@ The full code is available in the [chess-expertise-2025 GitHub repository](https
 
 ## Pipeline overview
 
+<ul class="timeline" markdown>
+
+<li markdown>
+<div class="timeline-card" markdown>
+
 ### 1. Collecting raw data at the hospital
 
 The first thing you do after a scanning session is collect the data from the hospital computers: fMRI scans (DICOMs), behavioral log files, and — in this study — eye-tracking recordings. Before anything leaves the hospital, you anonymize all filenames to remove any personal identifiers. The raw files are then organized into a `sourcedata/` folder with separate subfolders for each data type (`nifti/`, `bh/`, `et/`).
 
 For the practical details of what happens in the scanning room, see [Scanning procedure](../fmri-procedure.md). For how to organize your raw data, see [General information](fmri-general.md).
 
----
+</div>
+</li>
+
+<li markdown>
+<div class="timeline-card" markdown>
 
 ### 2. Converting everything to BIDS
 
@@ -28,7 +37,11 @@ After conversion, always run the [BIDS Validator](https://bids-standard.github.i
 
 :material-arrow-right: Full guide: [BIDS conversion](fmri-bids-conversion.md), including the [eye-tracking section](fmri-bids-conversion.md#11-converting-eye-tracking-data-to-bids).
 
----
+</div>
+</li>
+
+<li markdown>
+<div class="timeline-card" markdown>
 
 ### 3. Quality control with MRIQC
 
@@ -36,7 +49,11 @@ Before investing hours in preprocessing, you want to check data quality. MRIQC g
 
 :material-arrow-right: Commands and interpretation: [Preprocessing & QA — MRIQC](fmri-prepocessing-qa.md#quality-assessment-with-mriqc).
 
----
+</div>
+</li>
+
+<li markdown>
+<div class="timeline-card" markdown>
 
 ### 4. Preprocessing with fMRIPrep
 
@@ -46,7 +63,11 @@ After each subject completes, check the HTML report carefully — especially the
 
 :material-arrow-right: Setup, resource tips, and report interpretation: [Preprocessing & QA — fMRIPrep](fmri-prepocessing-qa.md#preprocessing-with-fmriprep).
 
----
+</div>
+</li>
+
+<li markdown>
+<div class="timeline-card" markdown>
 
 ### 5. Eye-tracking extraction with bidsmreye
 
@@ -54,7 +75,11 @@ This study also used `bidsmreye`, a tool that extracts gaze position directly fr
 
 :material-arrow-right: Docker command and usage notes: [Preprocessing & QA — bidsmreye](fmri-prepocessing-qa.md#processing-eye-tracking-data-with-bidsmreye).
 
----
+</div>
+</li>
+
+<li markdown>
+<div class="timeline-card" markdown>
 
 ### 6. First-level GLM
 
@@ -64,7 +89,11 @@ After running the GLM, it's important to open SPM's Results interface and verify
 
 :material-arrow-right: Full guide: [GLM analysis](fmri-glm.md). For visualizing results on brain volumes or surfaces, see the [activation visualization section](fmri-glm.md#visualizing-activations-on-volume-or-surface).
 
----
+</div>
+</li>
+
+<li markdown>
+<div class="timeline-card" markdown>
 
 ### 7. Defining ROIs with the Glasser parcellation
 
@@ -72,7 +101,11 @@ For the MVPA, we needed Regions of Interest covering the entire cortex. We used 
 
 :material-arrow-right: All ROI methods: [ROIs](fmri-rois.md), including the [Glasser parcellation section](fmri-rois.md#hcp-glasser-parcellation-hcp-mmp10).
 
----
+</div>
+</li>
+
+<li markdown>
+<div class="timeline-card" markdown>
 
 ### 8. Whole-brain MVPA decoding
 
@@ -82,7 +115,11 @@ The results are saved as decoding accuracy per ROI in a BIDS-compatible `derivat
 
 :material-arrow-right: MVPA concepts and tutorial: [MVPA](fmri-mvpa.md).
 
----
+</div>
+</li>
+
+<li markdown>
+<div class="timeline-card" markdown>
 
 ### 9. Hierarchical aggregation, significance testing, and visualization
 
@@ -95,3 +132,8 @@ The Glasser parcellation has a built-in hierarchy: the 180 fine-grained parcels 
 At each level, significance was tested against chance, and the results were plotted on inflated brain surfaces:
 
 ![Decoding Example](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/combined_brain_grid.png)
+
+</div>
+</li>
+
+</ul>
