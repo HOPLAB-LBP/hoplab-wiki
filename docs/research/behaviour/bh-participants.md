@@ -154,7 +154,7 @@ Reimbursement can take the following forms:
 
 === "Credit Assignment"
 
-    To assign participants their credits: surf to EMS sona > login > uncredited timeslots > and mark the participant as 'completed' > click save.
+    To assign participants their credits: surf to EMS sona > login > uncredited timeslots > and mark the participant as ‘completed’ > click save.
 
 Of course, all (psychology) students also benefit from participation by gathering insights into the common procedures of psychological research (wink).
 

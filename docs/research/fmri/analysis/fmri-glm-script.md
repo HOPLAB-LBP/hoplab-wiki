@@ -146,6 +146,7 @@ Here’s a breakdown of best practices for managing functions in MATLAB, includi
 ### Where to Place Functions
 
 === "**Reusable Functions**"
+
     If a function is intended for use across multiple scripts, it's best to save it as a separate `.m` file in a designated folder (e.g., `scripts/functions`). This keeps your code organized and ensures that changes to the function are applied consistently across all scripts.
 
     To make sure MATLAB can locate your function, add the functions folder to the MATLAB path. This can be done in two ways:
@@ -164,6 +165,7 @@ Here’s a breakdown of best practices for managing functions in MATLAB, includi
     By adding the folder to your path, the function is accessible across all scripts, ensuring consistency and reducing redundancy.
 
 === "**Script-Specific Functions**"
+
     If a function is specifically tailored for a single script and not intended for reuse, include it at the end of that script. This keeps the function accessible only within the script, reducing dependencies on external files.
 
     Here’s an example of including a function at the end of a script.

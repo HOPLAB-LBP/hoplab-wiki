@@ -407,11 +407,13 @@ Spyder is a powerful IDE for scientific programming in Python. Here’s how to s
 ### 1. Install Spyder
 
 === "Using Conda (Recommended)"
+
     ```bash
     conda install spyder
     ```
 
 === "Using Anaconda Navigator"
+
     - Open Anaconda Navigator.
     - Find Spyder in the "Home" tab and click "Install".
 
@@ -660,6 +662,7 @@ For a beginner-friendly guide, with explanation on main steps and terminology se
     - Alternatively, download the [Git installer](https://git-scm.com/download/mac).
 
 === "Ubuntu"
+
     ```
     sudo apt-get update
     sudo apt-get install git
