@@ -197,7 +197,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 ```
 
 <!--
-__TODO__: [Klara] Refer to the workshop material in the series on online experimentation given by Christophe Bossens (Klara has access and can probably put them on Teams somewhere)
-__TODO__: [Klara] Fix broken link in Informed Consent section
-__TODO__: [Klara] Structure this page a bit better? It seems a bit "here and there" to me 
+__TODO__: [Klara] Upload Christophe Bossens' workshop materials on online experimentation to the Hoplab Teams folder and add a link in the "Learning resources" or introductory section of this page.
+__TODO__: [Klara] Fix the broken link in the Informed Consent section (line ~165). The current link to psychopy.org/online/informed-consent.html may have moved — verify and update.
+__TODO__: [Klara] Restructure this page for better flow. Current organisation jumps between topics (e.g., error avoidance, stimuli types, consent, cellphone detection). Suggested structure: (1) Installation, (2) Building your experiment, (3) Uploading to Pavlovia, (4) Common pitfalls and troubleshooting, (5) Advanced topics (custom code, language selection, mobile detection), (6) Informed consent setup.
 -->

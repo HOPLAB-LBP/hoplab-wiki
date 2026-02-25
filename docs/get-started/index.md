@@ -90,10 +90,10 @@ We hope this guide helps you settle into your new role. Dive in, and enjoy your 
 ---
 
 <!--
-**TODO**: [Klara] Add info on interesting conferences to attend, suggested reading (books, papers, websites), suggested courses (soft skills, programming, EEG/fMRI, version control, stats, science, etc.). Part of this is already covered in the "Student Starter Pack" page. (Starter pack)
-**TODO**: [Klara] Add info on existing focus groups (e.g., EEG, MRI) which people can attend (e.g., within LBI)
-__TODO__: [Klara] Add info on the remote work policy (of KU Leuven but also of the lab specifically)
-__TODO__: [Klara] Add info on technical services/CLD on how to report technical defects (KU Loket/HSE & Spaces/Reporting technical defects/New notification)
-**TODO**: [Klara] Add more recommended software (e.g., Mendeley/Endnote, R, Text editors, Image editing software, Git, LaTeX, Pandoc, Markdown, Python, Overleaf, RBA, BioSemi, PsychoPy, Pavlovia). (AI) tools to find papers (move to computer set-up)
-**TODO**: [Klara] Refer to the resources for researchers on the PPW Research page --> Added from file <-- https://ppw.kuleuven.be/en/research (to getting started)
+__TODO__: [Klara] Conferences and suggested reading are being consolidated in the Student Starter Pack page. Once that page is complete, add a cross-reference here (e.g., "For conferences, courses, and suggested reading, see the Student Starter Pack"). Remove any duplicated content from this page.
+__TODO__: [Klara] Add a section on existing focus groups (e.g., EEG focus group, MRI focus group) within LBI/NeuroSPACE that new members can attend. Include: meeting frequency, how to join, and contact persons.
+__TODO__: [Klara] Add a section on the remote work policy: (1) KU Leuven's official hybrid working policy (link to https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/), (2) Hoplab-specific expectations (e.g., expected on-site days, how to communicate remote days).
+__TODO__: [Klara] Add info on how to report technical defects via KU Loket (path: HSE & Spaces > Reporting technical defects > New notification). Also mention contacting CLD/technical services for lab equipment issues.
+__TODO__: [Klara] Move the recommended software list to the Computer Setup page. Include: reference managers (Zotero, Mendeley), text editors (VSCode), image editing (GIMP, Inkscape), Git, LaTeX/Overleaf, Python, R, BioSemi software, PsychoPy, and AI-powered literature search tools (e.g., Semantic Scholar, Elicit).
+__TODO__: [Klara] Add a link to the PPW Research resources page (https://ppw.kuleuven.be/en/research) with a brief description of what researchers can find there (funding info, research support, infrastructure).
 -->

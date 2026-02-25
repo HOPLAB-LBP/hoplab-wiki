@@ -153,6 +153,6 @@ Can't find what you're looking for? Have questions or suggestions? Don't hesitat
 - __Contact:__ [Andrea Costantino](mailto:andreaivan.costantino@kuleuven.be)
 
 <!--
-TODO: general info on how to store data: data management section with ref to BIDS logics and docs + refs to modality-specific BIDS pages + Open Science (templates, data sharing etc.)
-TODO: add link to hoplab/resources (finished papers + OSF)
+__TODO__: Create a dedicated "Data Management" overview page (or section on this page) that links to: (1) the Research Data Management (RDM) section, (2) the BIDS documentation in the fMRI analysis pages, and (3) modality-specific data storage pages (fMRI, EEG, behaviour). Include guidance on Open Science practices such as data sharing templates and preregistration.
+__TODO__: Add a Quick Link entry pointing to the lab's OSF page (https://osf.io/) and/or the Hoplab finished-papers repository so new members can easily find published datasets and supplementary materials.
 -->

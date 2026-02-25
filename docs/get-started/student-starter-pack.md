@@ -115,6 +115,6 @@ This section contains some foundational papers to give you some background on th
      - [A visual and intuitive understanding of deep learning](https://www.youtube.com/watch?v=Oqm9vsf_hvU&ab_channel=otaviogood) is a great lecture to begin with if you feel like convolutional neural networks are still obscure to you.
 
 <!--
-__TODO__: [Klara] Add info on interesting internal & external trainings (soft skills, career choices, programming, academic writing, presenting your research, stats, HPC etc.) for PhDs/postdocs/ATP
-__TODO__: [Klara] Expand list of papers & lectures 
+__TODO__: [Klara] Add a "Training opportunities" section listing internal and external training resources for PhDs, postdocs, and ATP. Categories to cover: (1) soft skills (Doctoral School offerings, The Floor is Yours), (2) career development (ImagineX, academic career coaching), (3) programming (Carpentries workshops, KU Leuven HPC training), (4) academic writing (Doctoral School writing retreats), (5) presenting research (Principiae workshops), (6) statistics (KU Leuven stats consulting, online courses), (7) HPC usage (VSC documentation, intro sessions).
+__TODO__: [Klara] Expand the Papers & Lectures section. Add: (1) more recent Hoplab publications (check https://www.hoplab.be/publications/), (2) foundational computational neuroscience papers, (3) recommended lectures and conference talks available online. Also consider adding a "Suggested conferences" subsection listing relevant conferences (VSS, ECVP, OHBM, SfN, CCN) with typical submission deadlines and travel funding info.
 -->

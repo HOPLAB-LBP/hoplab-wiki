@@ -121,6 +121,6 @@ Requirements for submission (for detailed information, see [here](https://www.uz
 ---
 
 <!--
-__TODO__: [Klara] Check whether this still applies --> "If the medical ethical committee has an issue with the principal investigator not being connected with UZ Leuven (e.g. in case the PI is a professor at the Faculty of Psychology and Educational Sciences); report this to Prof. Dr. Pol Ghesquière."
-__TODO__: [Klara] Update this page and make a bit more to the point
+__TODO__: [Klara] Verify whether the PI-affiliation issue with EC onderzoek still applies: previously, if the PI was not affiliated with UZ Leuven (e.g., a PPW professor), the committee could raise objections, and the workaround was to report this to Prof. Dr. Pol Ghesquiere. Confirm with Klara or the EC secretariat whether this is still the correct procedure and update or remove this guidance accordingly.
+__TODO__: [Klara] Review and condense this page. The current content is thorough but lengthy. Consider: (1) moving the detailed document checklists into collapsible sections, (2) adding a quick-start summary at the top with the essential steps (register at CTC, get S-number, prepare documents, submit), and (3) removing redundant information that is already available on the linked UZ Leuven pages.
 -->

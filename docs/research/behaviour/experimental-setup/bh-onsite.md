@@ -33,5 +33,10 @@ Print out as many ICFs as you will test participants.
 Store the signed ICFs in a locked closet or as described by your RDM plan.
 
 <!--
-__TODO__: here we need to add all the practical info on how to run bh exps
+__TODO__: Add comprehensive practical information for running on-site behavioural experiments. Specifically:
+  1. Equipment setup procedures: how to configure testing booth PCs, connect response devices, set screen resolution and refresh rate, and launch experiment software.
+  2. Participant management during sessions: greeting protocol, consent form procedure, how to assign participant IDs, how to handle late arrivals and no-shows.
+  3. Data collection and backup procedures: where raw data files are saved, how to verify data integrity after each session, and how to back up data to the lab server or external drive the same day.
+  4. Troubleshooting common issues: what to do if the experiment crashes, if a PC freezes, if Calira booking conflicts arise, or if equipment malfunctions.
+  5. Session timing and scheduling tips: recommended buffer time between participants, how to handle back-to-back sessions, and end-of-day cleanup checklist.
 -->
