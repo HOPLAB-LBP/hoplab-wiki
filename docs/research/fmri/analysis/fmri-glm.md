@@ -596,10 +596,233 @@ To overlay activations on a subject's anatomy:
 
 ---
 
-<!--
-__TODO__: Add example directory trees showing the file organisation before running the GLM (after preprocessing) and after the GLM estimation (beta images, SPM.mat, contrast images). Use the same format as the BIDS directory tree earlier on this page.
-__TODO__: Add screenshots of key SPM GUI steps: (1) the "Specify 1st Level" interface with fields filled in, (2) the design matrix visualisation after specification, (3) the contrast definition dialog.
-__PLACEHOLDER__: Add a screenshot of the SPM Results interface showing how to set statistical thresholds (p-value, cluster extent) and view activation maps.
-__TODO__: Add instructions for exporting and saving the design matrix visualisation in SPM (right-click > Save as Image) for inclusion in lab notebooks and publications.
-__TODO__: Add a section on second-level (group-level) analysis. The wiki currently jumps from first-level GLM to MVPA with no documentation on group statistics. Cover: (1) how to set up a second-level model in SPM (one-sample t-test, flexible factorial), (2) how to input first-level contrast images, (3) how to define group-level contrasts, and (4) how to interpret and report group-level results.
--->
+## Directory Structure Reference
+
+Below are example directory trees showing file organisation before and after running the first-level GLM.
+
+### Before GLM (after preprocessing)
+
+```
+BIDS/
+├── sub-01/
+│   └── func/
+│       ├── sub-01_task-exp_run-1_events.tsv
+│       ├── sub-01_task-exp_run-1_eventsspm.mat     ← onset file (from eventsBIDS2SPM)
+│       ├── sub-01_task-exp_run-2_events.tsv
+│       └── sub-01_task-exp_run-2_eventsspm.mat
+└── derivatives/
+    ├── fmriprep/
+    │   └── sub-01/
+    │       ├── anat/
+    │       │   └── sub-01_space-MNI_desc-preproc_T1w.nii.gz
+    │       └── func/
+    │           ├── sub-01_task-exp_run-1_space-MNI_desc-preproc_bold.nii.gz
+    │           ├── sub-01_task-exp_run-1_desc-confounds_timeseries.tsv
+    │           ├── sub-01_task-exp_run-2_space-MNI_desc-preproc_bold.nii.gz
+    │           └── sub-01_task-exp_run-2_desc-confounds_timeseries.tsv
+    └── pre-SPM/
+        ├── gunzipped/
+        │   └── sub-01/
+        │       └── func/
+        │           ├── sub-01_task-exp_run-1_space-MNI_desc-preproc_bold.nii
+        │           └── sub-01_task-exp_run-2_space-MNI_desc-preproc_bold.nii
+        └── smoothed/
+            └── sub-01/
+                └── func/
+                    ├── ssub-01_task-exp_run-1_space-MNI_desc-preproc_bold.nii
+                    └── ssub-01_task-exp_run-2_space-MNI_desc-preproc_bold.nii
+```
+
+### After GLM estimation
+
+```
+derivatives/
+└── SPM/
+    └── GLM/
+        └── sub-01/
+            └── task-exp/
+                ├── SPM.mat                    ← model specification and results
+                ├── beta_0001.nii              ← beta image for regressor 1
+                ├── beta_0002.nii              ← beta image for regressor 2
+                ├── ...
+                ├── con_0001.nii               ← contrast image (e.g., CondA > CondB)
+                ├── spmT_0001.nii              ← t-statistic map for contrast 1
+                ├── mask.nii                   ← analysis mask
+                ├── ResMS.nii                  ← residual mean squares
+                └── RPV.nii                    ← resels per voxel (for RFT corrections)
+```
+
+---
+
+## Saving the Design Matrix
+
+After specifying your model (before or after estimation), you can save the design matrix visualisation for your records:
+
+1. In the SPM Graphics window, the design matrix is displayed after specification.
+2. **Right-click** on the design matrix figure and select **Save as Image** (or **Print to File**).
+3. Choose a format (PNG or EPS for publication quality) and save to your GLM output directory.
+
+Alternatively, you can save it programmatically:
+
+```matlab
+% After running spm_spm, the design matrix is in SPM.xX.X
+load('SPM.mat');
+figure; imagesc(SPM.xX.X); colormap('gray');
+title('Design Matrix');
+ylabel('Scans'); xlabel('Regressors');
+saveas(gcf, 'design_matrix.png');
+```
+
+!!! tip
+    Always save a copy of the design matrix. It is essential for verifying that conditions and confounds are correctly modelled, and reviewers may request it.
+
+---
+
+<!-- __PLACEHOLDER__: Add screenshots of key SPM GUI steps: (1) the "Specify 1st Level" interface with fields filled in, (2) the design matrix visualisation after specification, (3) the contrast definition dialog. -->
+<!-- __PLACEHOLDER__: Add a screenshot of the SPM Results interface showing how to set statistical thresholds (p-value, cluster extent) and view activation maps. -->
+
+## Step 4: Second-Level (Group) Analysis
+
+After running first-level GLMs for each subject, the next step is to test for effects at the **group level**. This is done by feeding the first-level contrast images (e.g., `con_0001.nii`) into a second-level model.
+
+### When to use second-level analysis
+
+- To test whether an effect observed in individual subjects is **consistent across the group**
+- To perform group comparisons (e.g., patients vs. controls)
+- To report results in publications (most fMRI papers require group-level statistics)
+
+!!! note
+    For multivariate analyses (MVPA, RSA), group statistics are typically handled differently — see the [MVPA page](fmri-mvpa.md). Second-level GLM is primarily for **univariate** analyses.
+
+### Setting up a second-level model in SPM
+
+The most common second-level designs are:
+
+=== "One-Sample t-Test"
+
+    Tests whether a contrast is significantly different from zero across subjects (e.g., "Is there significant activation for faces > objects across the group?").
+
+    **GUI procedure:**
+
+    1. Open SPM and click **Specify 2nd-level**.
+    2. Set the **Directory** to your group-level output folder (e.g., `derivatives/SPM/GLM/group/task-exp/`).
+    3. Select **One-sample t-test** as the design.
+    4. Under **Scans**, select the first-level contrast images from all subjects:
+        - e.g., `derivatives/SPM/GLM/sub-01/task-exp/con_0001.nii`, `derivatives/SPM/GLM/sub-02/task-exp/con_0001.nii`, etc.
+    5. Optionally add covariates (e.g., age, performance scores).
+    6. Click **Run** (the green play button).
+
+    **Scripted version:**
+
+    ```matlab
+    % Second-level one-sample t-test
+    matlabbatch{1}.spm.stats.factorial_design.dir = {'derivatives/SPM/GLM/group/task-exp/'};
+
+    % Collect contrast images from all subjects
+    subjects = dir('derivatives/SPM/GLM/sub-*/task-exp/con_0001.nii');
+    scans = cellfun(@(p,f) fullfile(p,f), {subjects.folder}, {subjects.name}, 'UniformOutput', false);
+    matlabbatch{1}.spm.stats.factorial_design.des.t1.scans = scans';
+
+    % Estimate
+    matlabbatch{2}.spm.stats.fmri_est.spmmat = {'derivatives/SPM/GLM/group/task-exp/SPM.mat'};
+    matlabbatch{2}.spm.stats.fmri_est.write_residuals = 0;
+    matlabbatch{2}.spm.stats.fmri_est.method.Classical = 1;
+
+    % Run
+    spm_jobman('run', matlabbatch);
+    ```
+
+### Defining group-level contrasts
+
+After estimating the second-level model:
+
+1. Click **Results** in the SPM GUI.
+2. Select the group-level `SPM.mat`.
+3. Define contrasts:
+    - For a **one-sample t-test**, a single contrast `[1]` tests for positive activation, `[-1]` for deactivation.
+
+### Interpreting and reporting results
+
+When viewing results:
+
+1. Set the **significance threshold** (commonly p < 0.001 uncorrected at voxel level, or p < 0.05 FWE-corrected).
+2. Set a **cluster extent threshold** (e.g., k = 10 voxels) to filter out small, isolated activations.
+3. SPM will display:
+    - A **glass brain** showing suprathreshold clusters
+    - A **table of results** with peak MNI coordinates, cluster sizes, t-values, and p-values
+
+!!! tip "Reporting conventions"
+    When reporting group results in a publication, include:
+
+    - The statistical threshold used (voxel-level and cluster-level)
+    - Whether correction is FWE, FDR, or uncorrected
+    - Peak MNI coordinates, t/z-values, and cluster extent for each significant cluster
+    - The number of subjects included in the analysis
+
+---
+
+## Visualising Results with Python
+
+While SPM provides built-in visualisation tools, Python offers more flexibility for creating publication-quality figures.
+
+### Glass brain and slice plots with nilearn
+
+```python
+from nilearn import plotting
+
+# Glass brain plot of a statistical map
+plotting.plot_glass_brain(
+    'path/to/spmT_0001.nii',
+    threshold=3.0,
+    title='Group activation (t > 3.0)',
+    display_mode='lyrz'
+)
+plotting.show()
+```
+
+### Surface plots with nilearn
+
+Nilearn's [`plot_surf_stat_map`](https://nilearn.github.io/stable/modules/generated/nilearn.plotting.plot_surf_stat_map.html) is the recommended way to create surface visualisations. Using the **plotly** engine gives interactive plots and is significantly faster:
+
+```python
+from nilearn import plotting, surface, datasets
+
+# Fetch fsaverage surface mesh
+fsaverage = datasets.fetch_surf_fsaverage()
+
+# Plot a statistical map on the inflated surface
+plotting.plot_surf_stat_map(
+    fsaverage.infl_left,
+    stat_map=stat_map_lh,       # surface stat map (e.g., from nilearn GLM)
+    hemi='left',
+    view='lateral',
+    threshold=3.0,
+    colorbar=True,
+    cmap='cold_hot',
+    engine='plotly'             # interactive and faster than matplotlib
+)
+```
+
+!!! tip
+    Set `engine='plotly'` for interactive rotation and zooming in notebooks. Use `engine='matplotlib'` when you need a static image for a publication figure.
+
+An alternative for more customised multi-panel surface figures is [surfplot](https://surfplot.readthedocs.io/), which provides finer control over layout and layering.
+
+### FreeSurfer surface geometries
+
+fMRIPrep (via FreeSurfer's `recon-all`) produces several surface reconstructions for each hemisphere:
+
+| Surface | Description |
+|---------|-------------|
+| **pial** | The outer cortical surface (grey matter / CSF boundary). |
+| **white** | The inner cortical surface (grey / white matter boundary). |
+| **inflated** | The cortex "inflated" so that sulci are visible — useful for visualisation. |
+| **sphere** | The cortex mapped onto a sphere — used for inter-subject alignment (e.g., fsaverage registration). |
+
+fMRIPrep can output BOLD data projected onto fsaverage or individual surfaces (in GIFTI `.gii` format), which can then be used for surface-based group analysis. For cross-space transformations (e.g., MNI volume to fsaverage surface), see [neuromaps](https://netneurolab.github.io/neuromaps/).
+
+For more details:
+
+- [nilearn plotting gallery](https://nilearn.github.io/stable/auto_examples/index.html#plotting)
+- [surfplot documentation](https://surfplot.readthedocs.io/)
+- [FreeSurfer documentation](https://surfer.nmr.mgh.harvard.edu/fswiki)

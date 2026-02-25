@@ -54,6 +54,13 @@ The procedure for KU Leuven employees is as follows (If you are financed by FWO,
 
 To register **other kinds of personal leave** (e.g., [short-term or social leave](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/short-leave) or [sick leave](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/illness-accident/incapacity-to-work-illness)), check out the corresponding links. For further questions on this topic, browse to [this page](https://admin.kuleuven.be/mykuleuven/en/theme/hr-wellbeing/holidays-leaves-of-absence).
 
+??? info "Youth holiday (*jeugdvakantie*)"
+    Young employees who have not yet built up a full year of leave entitlement may be eligible for **youth holiday** (*jeugdvakantie*). This allows you to supplement your regular holiday days with additional paid leave days (funded by social security rather than the employer).
+
+    **Eligibility**: You must be under 25 years old on 31 December of the year in which you completed your studies, and you must have worked at least one month as an employee during that year. The youth holiday days cover the gap between the (limited) regular leave you accrued and a full leave entitlement.
+
+    For full details on eligibility and the application procedure, see the [KU Leuven youth holiday page](https://admin.kuleuven.be/personeel/intranet/verlof-afwezigheden/verlof/jeugdvakantie.html).
+
 ## Register professional leave
 
 This has to be done (in advance) for absence in the context of **any work-related event** (national and international), such as a conference or the annual LBP retreat. This registration is needed in order to claim professional expenses made during this trip, to make sure you are correctly insured and to allow the KU Leuven to monitor the safety level of the trip.
@@ -139,5 +146,4 @@ __TODO__: [Klara] Incorporate info from Jasmine's presentation to LBP on 08/10/2
 __TODO__: [Klara] Expand the "Reserve equipment or a room for testing" section into a broader overview of research infrastructure available at PPW. Calira is not the only booking tool — document other systems and the types of infrastructure they cover (e.g., shared labs, specialised equipment).
 __TODO__: [Klara] After the BADM consultation ends, update the "What to do when you leave" section with the researcher onboarding/offboarding checklist. Also add a new section on Research Data Management (RDM) covering data storage policies, backup requirements, and handover procedures.
 __TODO__: [Klara] Add a new section on PhD defense planning. Include: timeline, required forms, committee composition rules, the PhD book procedure, and the checklist adapted by Filippo for this faculty. Link to relevant KU Leuven doctoral school pages.
-__TODO__: [Klara] Add info on youth holiday ("jeugdvakantie") to the personal leave section. Link to: https://admin.kuleuven.be/personeel/intranet/verlof-afwezigheden/verlof/jeugdvakantie.html and summarise eligibility criteria. See Emily's email to Klara for details.
 -->

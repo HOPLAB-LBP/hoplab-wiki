@@ -14,9 +14,29 @@ The following types of ROIs are commonly used in fMRI research:
 
 ### Example: Creating Spherical ROIs with the GUI
 
-<!--
-__TODO__: Add a step-by-step walkthrough for creating spherical ROIs using the MarsBaR GUI in SPM. Include screenshots of the key dialogs (ROI definition, coordinate entry, radius selection, saving).
--->
+You can create spherical ROIs interactively using the MarsBaR toolbox within SPM. Here is the step-by-step procedure:
+
+1. **Launch MarsBaR**: In the MATLAB command window, type `marsbar` to open the MarsBaR GUI. Alternatively, start SPM and select MarsBaR from the toolbox menu.
+
+2. **Create a new ROI**: In the MarsBaR menu, go to **ROI definition > Build**.
+
+3. **Select ROI type**: Choose **Sphere** from the shape options.
+
+4. **Enter MNI coordinates**: A dialog will ask for the centre coordinates. Enter the X, Y, Z coordinates in MNI space (e.g., `[42 -54 -18]` for right FFA).
+
+5. **Set the radius**: Enter the sphere radius in millimetres (a common choice is 8–10 mm).
+
+6. **Label the ROI**: Give the ROI a descriptive name (e.g., `ROI-rFFA_radius-10`).
+
+7. **Save the ROI**: MarsBaR saves ROIs in its own `.mat` format. To convert to NIfTI for use in other tools:
+    - Go to **ROI definition > Export** (or **ROI definition > Save as image**).
+    - Select the ROI `.mat` file and choose an output `.nii` filename.
+    - Specify the reference image (e.g., a subject's functional image or the MNI template) to define the voxel grid.
+
+!!! tip
+    You can create multiple ROIs in sequence by repeating steps 2–7. For bilateral ROIs, create one ROI per hemisphere using mirrored X coordinates (e.g., `[-42 -54 -18]` and `[42 -54 -18]`).
+
+<!-- __PLACEHOLDER__: Add screenshots of the MarsBaR GUI dialogs: (1) ROI definition dialog, (2) coordinate entry, (3) radius selection, (4) save as image dialog. -->
 
 ### Example: Creating Spherical ROIs with a Script
 
@@ -870,10 +890,64 @@ Now that you have your beta images (from the GLM) and your ROIs, you have everyt
 
 ---
 
-<https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/atlases.html#id4>
-<https://neurosynth.org/>
-<https://openneuro.org/>
+## Atlas Resources and Functional Databases
 
-<!--
-__TODO__: Link resources on how to do this using the MarsBaR GUI. Also consider expanding this section with references to other commonly used atlases (e.g., AAL, Schaefer, Brodmann) and functional atlas databases (e.g., NeuroSynth, Neuroquery) for defining ROIs beyond the Glasser parcellation.
--->
+Beyond the Glasser parcellation used in the examples above, many other atlases and databases can be used to define ROIs:
+
+### Commonly used atlases
+
+| Atlas | Regions | Type | Where to get it |
+|-------|---------|------|-----------------|
+| **Glasser (HCP-MMP1)** | 360 (cortical) | Multi-modal | [TemplateFlow](https://www.templateflow.org/) or [original paper](https://doi.org/10.1038/nature18933) |
+| **Schaefer** | 100–1000 | Functional parcellation | [GitHub](https://github.com/ThomasYeoLab/CBIG/tree/master/stable_projects/brain_parcellation/Schaefer2018_LocalGlobal) |
+| **Harvard-Oxford** | 48 cortical + 21 subcortical | Probabilistic anatomical | Distributed with FSL; also in [nilearn.datasets](https://nilearn.github.io/stable/modules/generated/nilearn.datasets.fetch_atlas_harvard_oxford.html) |
+
+### Functional databases for meta-analytic ROIs
+
+| Database | Description | Link |
+|----------|-------------|------|
+| **NeuroSynth** | Automated meta-analysis platform. Generate activation maps from thousands of studies using keyword search. | [neurosynth.org](https://neurosynth.org/) |
+| **Neuroquery** | Multivariate meta-analysis tool that predicts brain maps from text queries. | [neuroquery.org](https://neuroquery.org/) |
+| **OpenNeuro** | Open repository of neuroimaging datasets. Useful for finding localiser data and task contrasts. | [openneuro.org](https://openneuro.org/) |
+| **Neuroimaging Core Atlas Docs** | Practical guide to working with brain atlases. | [readthedocs](https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/atlases.html) |
+
+!!! tip "Loading atlases in Python"
+    Nilearn provides convenient functions to fetch and load many standard atlases directly:
+
+    ```python
+    from nilearn import datasets
+
+    # Fetch Schaefer 400-region parcellation
+    schaefer = datasets.fetch_atlas_schaefer_2018(n_rois=400)
+    atlas_img = schaefer.maps
+    labels = schaefer.labels
+    ```
+
+For a broader overview of atlases and templates, see the [Brain Atlases and Templates](../index.md#brain-atlases-and-templates) section on the fMRI landing page.
+
+---
+
+## Extracting Signal from ROIs with Python
+
+As an alternative to the MATLAB workflow above, you can use nilearn to extract signal from ROIs:
+
+```python
+from nilearn.maskers import NiftiMasker
+
+# Load an ROI mask and extract signal from functional data
+masker = NiftiMasker(mask_img='path/to/roi_mask.nii.gz', standardize=True)
+signals = masker.fit_transform('path/to/func_bold.nii.gz')
+print(f"Extracted signal shape: {signals.shape}")  # (n_timepoints, n_voxels)
+```
+
+For atlas-based parcellations (extracting one signal per region):
+
+```python
+from nilearn.maskers import NiftiLabelsMasker
+
+masker = NiftiLabelsMasker(labels_img='path/to/schaefer_400.nii.gz', standardize=True)
+region_signals = masker.fit_transform('path/to/func_bold.nii.gz')
+print(f"Region signals shape: {region_signals.shape}")  # (n_timepoints, n_regions)
+```
+
+For more examples, see the [nilearn masker documentation](https://nilearn.github.io/stable/manipulating_images/masker_objects.html).

@@ -62,6 +62,9 @@ To help you get settled quickly, here are some essential resources:
 
 </div>
 
+!!! tip "Looking for conferences, courses, and reading recommendations?"
+    Check out the [Student Starter Pack](student-starter-pack.md) for curated papers, lectures, training opportunities, and a list of relevant conferences.
+
 ## Need help?
 
 If you have any questions or run into issues while getting set up, the following resources are available:
@@ -69,6 +72,8 @@ If you have any questions or run into issues while getting set up, the following
 - **ICT helpdesk**: For technical issues related to your computer or network access. [ICT FAQ](https://ppw.kuleuven.be/ppw-dict/faq/index.htm)
 - **HR advisor**: Find your HR advisor's details in your [KU Loket profile](https://www.kuleuven.be/kuloket).
 - **Admin contact**: If you need assistance with (general) lab operations such as equipment and orders, reach out to [Ying Cai](https://www.kuleuven.be/wieiswie/en/person/00098752)
+- **PPW Research resources**: Funding info, research support, and infrastructure — see the [PPW Research page](https://ppw.kuleuven.be/en/research).
+- **Report technical defects**: Use [KU Loket](https://www.kuleuven.be/kuloket) (HSE & Spaces > Reporting technical defects > New notification) to report building or equipment issues. For lab-specific equipment, contact CLD/technical services directly.
 
 ## Health, Safety and Environment
 
@@ -90,10 +95,6 @@ We hope this guide helps you settle into your new role. Dive in, and enjoy your 
 ---
 
 <!--
-__TODO__: [Klara] Conferences and suggested reading are being consolidated in the Student Starter Pack page. Once that page is complete, add a cross-reference here (e.g., "For conferences, courses, and suggested reading, see the Student Starter Pack"). Remove any duplicated content from this page.
 __TODO__: [Klara] Add a section on existing focus groups (e.g., EEG focus group, MRI focus group) within LBI/NeuroSPACE that new members can attend. Include: meeting frequency, how to join, and contact persons.
 __TODO__: [Klara] Add a section on the remote work policy: (1) KU Leuven's official hybrid working policy (link to https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/), (2) Hoplab-specific expectations (e.g., expected on-site days, how to communicate remote days).
-__TODO__: [Klara] Add info on how to report technical defects via KU Loket (path: HSE & Spaces > Reporting technical defects > New notification). Also mention contacting CLD/technical services for lab equipment issues.
-__TODO__: [Klara] Move the recommended software list to the Computer Setup page. Include: reference managers (Zotero, Mendeley), text editors (VSCode), image editing (GIMP, Inkscape), Git, LaTeX/Overleaf, Python, R, BioSemi software, PsychoPy, and AI-powered literature search tools (e.g., Semantic Scholar, Elicit).
-__TODO__: [Klara] Add a link to the PPW Research resources page (https://ppw.kuleuven.be/en/research) with a brief description of what researchers can find there (funding info, research support, infrastructure).
 -->
