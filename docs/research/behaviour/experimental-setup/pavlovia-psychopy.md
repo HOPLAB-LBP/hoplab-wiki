@@ -162,7 +162,7 @@ To introduce rest trials or breaks, add a code snippet under **Each Frame**. For
 
 ## Informed consent
 
-<!-- __PLACEHOLDER__: The original PsychoPy informed consent guide (psychopy.org/online/informed-consent.html) is no longer available. Find the updated URL or write a brief guide on setting up informed consent forms for online PsychoPy experiments. -->
+<!-- __TODO__: The original PsychoPy informed consent guide (psychopy.org/online/informed-consent.html) is no longer available. Find the updated URL or write a brief guide on setting up informed consent forms for online PsychoPy experiments. -->
 For setting up informed consent forms for online experiments, refer to the [PsychoPy documentation](https://www.psychopy.org/documentation.html) and the [community discussion on best practices for consent forms](https://discourse.psychopy.org/t/best-practice-for-consent-forms-information-sheets-in-online-experiments/8784).
 
 ## Images
