@@ -1,10 +1,36 @@
 # Lychee configuration for link checking
-exclude = [
-  "mailto:",
-  "https://kuleuven.sharepoint.com/.*",
-]
+#
+# Strategy: Accept common "bot-unfriendly" status codes (403, 429) so
+# external sites that block CI runners don't cause false positives.
+# Real broken links (404, 5xx) are still caught.
+
+# Accept success, forbidden (bot-blocked), and rate-limited responses
+accept = ["100..=103", "200..=299", "403", "429"]
+
+# Allow invalid TLS certificates — CI runners often have different CA
+# trust stores than browsers, causing spurious SSL failures on valid sites
+insecure = true
+
+# Cache results to reduce repeated external requests across CI runs
+cache = true
+max_cache_age = "1d"
+
+# Skip localhost and private IP ranges
+exclude_all_private = true
+
 max_redirects = 10
 max_retries = 3
 retry_wait_time = 2
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
 timeout = 20
+
+# Browser-like user agent to avoid basic bot detection
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+
+# Only exclude links that can never be checked from CI
+exclude = [
+  "mailto:",
+  # Requires authentication:
+  "https://kuleuven.sharepoint.com/.*",
+  # Aggressive bot detection beyond status codes (CAPTCHAs, JS challenges):
+  "https://scholar.google.com/.*",
+]
