@@ -19,6 +19,7 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
     - [Creating child pages](#creating-child-pages)
     - [Adding tags](#adding-todo-note-and-placeholder-tags)
     - [Common formatting syntax](#common-formatting-syntax)
+    - [Advanced formatting features](#advanced-formatting-features)
     - [Linking and referencing](#linking-and-referencing)
 5. [Reviewing and accepting pull requests (for admins)](#reviewing-and-accepting-pull-requests-for-admins)
 6. [Troubleshooting](#troubleshooting)
@@ -328,6 +329,72 @@ Here are some common Markdown elements:
 - **Images:** `![Alt text](path/to/image.png)` (see [this section](#adding-and-linking-images) for instructions on how to link images.)
 
 For more advanced formatting options, refer to the [MkDocs Material Reference Guide](https://squidfunk.github.io/mkdocs-material/reference/).
+
+### Advanced formatting features
+
+#### Abbreviation tooltips
+
+Hover over common acronyms (BIDS, fMRI, MVPA, GLM, ROI, etc.) to see their
+full definition as a tooltip. Abbreviations are defined centrally in
+`docs/includes/abbreviations.md` and auto-appended to every page.
+
+To add a new abbreviation, edit `docs/includes/abbreviations.md`:
+
+```markdown
+*[BIDS]: Brain Imaging Data Structure
+```
+
+See [Material — Tooltips](https://squidfunk.github.io/mkdocs-material/reference/tooltips/) for details.
+
+#### Figure captions
+
+Wrap images in `<figure>` / `<figcaption>` for numbered, captioned images:
+
+```html
+<figure markdown="span">
+  ![Alt text](../../assets/image.png)
+  <figcaption>Figure 1 — Description of the image.</figcaption>
+</figure>
+```
+
+This renders a centered caption below the image. See the EEG acquisition page
+for examples.
+
+#### Buttons
+
+Style important links as buttons using the `.md-button` attribute:
+
+```markdown
+[Next step :material-arrow-right:](target-page.md){ .md-button .md-button--primary }
+```
+
+Use `.md-button--primary` for filled buttons and `.md-button` alone for outlined buttons. See [Material — Buttons](https://squidfunk.github.io/mkdocs-material/reference/buttons/) for details.
+
+#### Mermaid diagrams
+
+Create interactive diagrams using Mermaid syntax in fenced code blocks:
+
+````markdown
+``` mermaid
+graph TD
+    A[Step 1] --> B[Step 2]
+    B --> C[Step 3]
+```
+````
+
+See [Material — Diagrams](https://squidfunk.github.io/mkdocs-material/reference/diagrams/) for syntax options.
+
+#### Math notation
+
+Render LaTeX math using MathJax. Inline: `$E = mc^2$`, display:
+
+```markdown
+$$
+\sum_{i=1}^{n} x_i
+$$
+```
+
+See [Material — Math](https://squidfunk.github.io/mkdocs-material/reference/math/) for details.
 
 ### Linking and referencing
 
