@@ -655,13 +655,13 @@ For a beginner-friendly guide, with explanation on main steps and terminology se
 
     - Install via Homebrew:
         ```
-brew install git
+        brew install git
         ```
     - Alternatively, download the [Git installer](https://git-scm.com/download/mac).
 
 === "Ubuntu"
     ```
-sudo apt-get update
+    sudo apt-get update
     sudo apt-get install git
     ```
 
@@ -691,17 +691,17 @@ git config --global user.email "youremail@example.com"
 
     1. **Clone a Repository**:
        ```
-git clone <https://github.com/your-username/repo-name.git>
+       git clone https://github.com/your-username/repo-name.git
        cd repo-name
        ```
     2. **Stage and Commit Changes**:
        ```
-git add .
+       git add .
        git commit -m "Initial commit"
        ```
     3. **Push Changes**:
        ```
-git push origin main
+       git push origin main
        ```
 
 ### 4. Workflow tips for effective collaboration
