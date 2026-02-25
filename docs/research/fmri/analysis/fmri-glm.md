@@ -581,6 +581,19 @@ It’s crucial to confirm the order of regressors in the design matrix before sp
     - Use `Export` in SPM to save figures as high-resolution images.
     - For 3D brain renderings, adjust the orientation and threshold for a clear presentation.
 
+### Visualizing Activations on Volume or Surface
+
+To overlay activations on a subject's anatomy:
+
+1. Click **Display** -> **overlays...** in the SPM GUI.
+2. Select **sections** for volume plotting or **render** for surface plotting.
+3. Choose the subject's anatomical image from `BIDS/derivatives/fmriprep/sub-xx/anat`:
+    - For volume plots, select the `.nii` file corresponding to the same space as your GLM (usually MNI).
+    - For surface plots, select the pial or inflated brain image.
+
+!!! warning
+    SPM cannot read `.nii.gz` files directly, so you must decompress them into `.nii` files. This can be done with any decompression tool by right-clicking on the file in your file explorer. Once decompressed, use the SPM GUI to select the `.nii` file.
+
 ---
 
 <!--

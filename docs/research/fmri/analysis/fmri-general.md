@@ -57,7 +57,7 @@ For optimal BIDS conversion of fMRI data, it is recommended to initially collect
 
 1. **Initial DICOM Collection**:
     - Collect DICOM files for each modality (e.g., T1 and BOLD) for one subject.
-    - Convert these DICOM files to NIfTI format using `dcm2nii`, which will generate JSON sidecar files. Refer to [this section](./fmri-andrea-workflow.md#converting-fmri-data-to-bids) for more details on the conversion process.
+    - Convert these DICOM files to NIfTI format using `dcm2nii`, which will generate JSON sidecar files. Refer to the [BIDS conversion guide](./fmri-bids-conversion.md) for more details on the conversion process.
 
 2. **Template Creation**:
     - Rename the JSON files for T1 and BOLD images to `sub-xx_T1w.json` and `sub-xx_task-exp_run-x_bold.json`.

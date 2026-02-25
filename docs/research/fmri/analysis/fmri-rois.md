@@ -14,6 +14,10 @@ The following types of ROIs are commonly used in fMRI research:
 
 ### Example: Creating Spherical ROIs with the GUI
 
+<!--
+__TODO__: Add a step-by-step walkthrough for creating spherical ROIs using the MarsBaR GUI in SPM. Include screenshots of the key dialogs (ROI definition, coordinate entry, radius selection, saving).
+-->
+
 ### Example: Creating Spherical ROIs with a Script
 
 Below is an example MATLAB script designed to creare bilateral ROIs. This script leverages **MarsBaR** and **SPM** to generate spherical ROIs around given MNI coordinates. The ROIs are saved as NIfTI files, which can be further used in analyses such as **multivariate decoding**.
@@ -29,7 +33,7 @@ Below is an example MATLAB script designed to creare bilateral ROIs. This script
     % Date: October 2024
 
     % Define output paths and options
-    outRoot = './chess-expertise-2024/results/test';
+    outRoot = './chess-expertise-2025/results/test';
     opt = struct();
     opt.space = 'MNI152NLin2009cAsym_res-2'; % Coordinate space
     opt.dir.output = fullfile(outRoot, 'rois'); % Output directory for ROIs
@@ -203,6 +207,34 @@ The size of the ROIs is defined in millimeters, and is a list of **radii** such 
 
 !!! warning
     The bilateral masks will be generated automatically only when both R and L coordinates are provided for a given ROI. If only R or L coordinates are provided, only the R or L mask will be saved.
+
+---
+
+### HCP Glasser Parcellation (HCP-MMP1.0)
+
+The [Glasser2016 parcellation](https://figshare.com/articles/dataset/HCP-MMP1_0_projected_on_fsaverage/3498446) (HCP-MMP1.0) provides a comprehensive cortical atlas with **180 ROIs per hemisphere**, based on the Human Connectome Project Multi-Modal Parcellation. This parcellation is particularly useful for whole-brain ROI-based analyses such as MVPA, where you want to systematically decode information across all cortical regions.
+
+#### Using the Glasser atlas in MNI space
+
+If you are running your analyses in a common volumetric space (e.g., MNI) — which is the most common approach — you can use a ready-made **MNI volumetric version** of the Glasser atlas provided by AFNI:
+
+- **Atlas file**: [`MNI_Glasser_HCP_v1.0.nii.gz`](https://afni.nimh.nih.gov/pub/dist/atlases/MNI_HCP/MNI_Glasser_HCP_2021_v1.0a/MNI_Glasser_HCP_v1.0.nii.gz)
+- **Documentation and additional files**: [MNI_HCP atlas folder](https://afni.nimh.nih.gov/pub/dist/atlases/MNI_HCP/MNI_Glasser_HCP_2021_v1.0a/)
+
+This atlas can be used directly with your MNI-space beta images (e.g., from fMRIPrep with `MNI152NLin2009cAsym` output space) without any further projection or transformation steps.
+
+#### Projecting the Glasser atlas to subject space
+
+If you need higher-fidelity, **subject-specific** ROIs — for instance, when running analyses in native subject space — you can project the Glasser parcellation from `fsaverage` to each individual subject. This involves converting annotation files to labels and mapping them through FreeSurfer's surface registration. The result is a set of volumetric ROIs in each subject's T1 space that respect individual cortical folding patterns.
+
+??? tip "Automating Glasser projection with HPC-to-subject.sh"
+    If you are using the Glasser parcellation across many subjects, you can automate the projection from `fsaverage` to subject space using a shell script (e.g., `HPC-to-subject.sh`). This script typically:
+
+    1. Converts Glasser annotation files (`.annot`) to individual label files.
+    2. Maps each label from `fsaverage` to the subject's native surface using FreeSurfer's `mri_label2vol` or similar tools.
+    3. Transforms the resulting ROIs into the volumetric spaces used by your analysis (e.g., T1w, MNI).
+
+    See the top of the script file for usage notes. An example implementation can be found in the [chess-expertise-2025 repository](https://github.com/costantinoai/chess-expertise-2025).
 
 ---
 
@@ -843,5 +875,5 @@ Now that you have your beta images (from the GLM) and your ROIs, you have everyt
 <https://openneuro.org/>
 
 <!--
-__TODO__: link resources on how to do this using marsbar GUI.
+__TODO__: Link resources on how to do this using the MarsBaR GUI. Also consider expanding this section with references to other commonly used atlases (e.g., AAL, Schaefer, Brodmann) and functional atlas databases (e.g., NeuroSynth, Neuroquery) for defining ROIs beyond the Glasser parcellation.
 -->
