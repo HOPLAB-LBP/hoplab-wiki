@@ -141,7 +141,7 @@ Major conferences relevant to our research, roughly in chronological order withi
 | **CoSyNe** (Computational and Systems Neuroscience) | Computational neuroscience | March | [cosyne.org](https://www.cosyne.org/) |
 
 !!! tip "Submission deadlines and funding"
-    Most conferences have abstract submission deadlines 3–6 months before the event. Check with your PI about travel funding options — KU Leuven offers travel grants through the [Doctoral School](https://www.kuleuven.be/doctoralschool/) and FWO provides [travel credits](https://www.fwo.be/en/fellowships-funding/international-mobility/travel-grants-for-long-stays-abroad/) for longer research visits.
+    Most conferences have abstract submission deadlines 3–6 months before the event. Check with your PI about travel funding options — KU Leuven offers travel grants through the [Doctoral School](https://ppw.kuleuven.be/en/research/doctoral-programme/doctoral-training/stam-doctoral-training) and FWO provides [conference travel grants](https://fwo.be/en/support-programmes/international-mobility/) and funding for longer research visits abroad.
 
 ## Training opportunities
 
@@ -149,7 +149,7 @@ KU Leuven and external organisations offer a wide range of training for research
 
 === "Soft skills & career"
 
-    - **[Doctoral School Transferable Skills](https://www.kuleuven.be/doctoralschool/training)**: Wide range of workshops on communication, leadership, project management, and career planning.
+    - **[Doctoral School Transferable Skills](https://ppw.kuleuven.be/en/research/doctoral-programme/doctoral-training/stam-doctoral-training)**: Wide range of workshops on communication, leadership, project management, and career planning.
     - **[The Floor is Yours](https://thefloorisyours.be/en/)**: Coaching and workshops on presenting your research and telling your story (also listed in [Outreach](../outreach.md)).
     - **[ImagineX](https://admin.kuleuven.be/rd/imaginex)**: KU Leuven's innovation programme for researchers interested in entrepreneurship or knowledge transfer.
 
@@ -161,7 +161,7 @@ KU Leuven and external organisations offer a wide range of training for research
 
 === "Academic writing"
 
-    - **[Doctoral School writing workshops](https://www.kuleuven.be/doctoralschool/training)**: Includes scientific writing retreats, grant writing, and thesis writing support.
+    - **[Doctoral School writing workshops](https://ppw.kuleuven.be/en/research/doctoral-programme/doctoral-training/stam-doctoral-training)**: Includes scientific writing retreats, grant writing, and thesis writing support.
     - **[Principiae](https://www.principiae.be/)**: Jean-Luc Doumont's workshops on structured writing, effective presentations, and scientific posters (frequently held at KU Leuven).
 
 === "Statistics"
