@@ -429,4 +429,7 @@ By following these detailed steps, you'll ensure your data is properly organized
 
 ---
 
+!!! info "Next steps: Data storage"
+    Once your data is in BIDS format, make sure to follow the lab's [data management guidelines](../../rdm/current.md) for storing and backing up your dataset. See the [ManGO guide](../../rdm/mango_active.md) for uploading your data to the lab's active research data storage.
+
 Now that you have your data in BIDS format, we can proceed to data pre-processing and quality assessment. See the next guide for instructions. [--> Pre-processing and QA](fmri-prepocessing-qa.md)

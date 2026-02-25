@@ -1,5 +1,8 @@
 # Filing your study with the Social and Societal Ethics Committee
 
+!!! info "Which approval do you need?"
+    This page covers the **SMEC** pathway for behavioral research not involving medical procedures. For fMRI studies, patient studies, or TMS/tDCS research, see [EC onderzoek](MEC.md) instead. Check the [ethics overview](index.md) for a decision tree.
+
 SMEC evaluates research on human subjects that is not related to health science practices or includes medical or pharmacological procedures.
 
 As of February 2020, the SMEC performs an **integrated ethics and privacy (GDPR) check** on all new applications through the [**PRET platform**](https://www.kuleuven.be/pret) (external applicants can download the application form [here](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/application-form)).

@@ -25,6 +25,9 @@ This guide describes how to connect to the KU Leuven/VSC HPC cluster, manage you
 VSC offers a [full documentation](https://docs.vscentrum.be/) of all the services, but in case of question of problems, you
 may contact the [local support team at KU Leuven](https://docs.vscentrum.be/contact_vsc.html).
 
+!!! tip "General coding setup"
+    For general guidance on setting up Python/Conda environments and Git, see [Coding practices](../coding/index.md).
+
 ## 1. Prerequisites
 
 1. You have a valid VSC account (e.g., `vsc12345`). Request one [here](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/index.html).

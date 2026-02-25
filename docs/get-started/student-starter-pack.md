@@ -24,6 +24,9 @@ Developing strong coding skills is crucial for success in our lab. Here are some
 
 8. If you're going to use MatLab, you can check this [live script tutorial](https://github.com/VisCog/MatlabForTheBehavioralSciences/tree/main) to learn the fundamentals.
 
+!!! tip "Hoplab coding practices"
+    After completing these tutorials, check out the lab's [Coding practices](../research/coding/index.md) guide for our specific conventions on project organization, environments, and version control.
+
 ## Miscellaneous
 
 <div class="grid cards" markdown>

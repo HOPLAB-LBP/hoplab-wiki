@@ -59,6 +59,9 @@ Templates are organized into two sections:
 
 </div>
 
+!!! tip "Setting up your experiment"
+    For instructions on deploying these tasks online or running them on-site, see [Experimental setup](experimental-setup/index.md).
+
 <!--
 __TODO__: Add inverse MDS info Emily
 -->

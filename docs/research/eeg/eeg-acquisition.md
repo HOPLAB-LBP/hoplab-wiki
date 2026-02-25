@@ -175,3 +175,6 @@ Hooray, you are now ready to start acquiring EEG data! To do so, follow these st
 3. Use a plastic toothpick to remove the gel from all the gaps in the head cap.
 4. If necessary, fill the tub with clean lukewarm water and add a bit of the 70% alcohol solution to it. Soak the electrodes, the head cap and the syringes in it for a few seconds to disinfect them, and then rinse everything again with lukewarm water.
 5. Let the caps and syringes dry flat on the round table (do not hang the caps to dry). Put the electrode sets back on the rack (make sure they are stable and don't fall on the floor).
+
+!!! info "Data storage"
+    After transferring your data, make sure to follow the lab's [Research Data Management guidelines](../rdm/current.md) for organizing and backing up your dataset.
