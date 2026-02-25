@@ -34,6 +34,8 @@ nav:
       - SMEC: research/ethics/SMEC.md
     - Coding practices:
       - research/coding/index.md
+      - Environment & editor setup: research/coding/environment-setup.md
+      - Version control: research/coding/version-control.md
     - Behaviour:
       - research/behaviour/index.md
       - Find participants: research/behaviour/bh-participants.md
