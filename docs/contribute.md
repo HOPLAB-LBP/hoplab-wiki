@@ -224,6 +224,8 @@ When you open or update a Pull Request, automated checks run to catch common iss
 - Trailing whitespace and extra blank lines in Markdown files
 - Hard tabs converted to spaces
 - Trailing whitespace in YAML files
+- Curly/smart quotes in content tab (`=== "..."`) and admonition (`!!! type "..."`) titles
+- Missing blank lines after content tab headers (`=== "Title"`)
 
 **Checked and reported** (you fix these if flagged):
 
@@ -234,6 +236,7 @@ When you open or update a Pull Request, automated checks run to catch common iss
 | **Link check** | Verifies all links are reachable. |
 | **YAML lint** | Validates syntax in `mkdocs.yml` and workflow files. |
 | **MkDocs build** | Builds the full site to ensure no broken references or config errors. |
+| **MkDocs syntax** | Catches MkDocs Material-specific issues (under-indented tab/admonition content, code blocks at wrong indent level) that cause silent rendering failures. |
 
 !!! tip "Need help with a failing check?"
     The bot comment on your PR will explain the issue and how to fix it. If you're still unsure, ping @costantinoai in the PR comments.

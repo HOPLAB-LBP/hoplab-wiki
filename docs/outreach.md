@@ -9,15 +9,19 @@
 There are different types of lab meetings that happen throughout the academic year.
 
 === "Individual meetings"
+
     On a rotation basis, each lab member is assigned with a slot and is in charge of the presentation. On this occasion, you can present an update on your research, an interesting / relevant paper for a Journal Club (JC), or other important topics (practicing an upcoming talk or interview, for example).
 
 === "Quick updates"
+
     Once per month, lab members assigned to a specific batch will give a quick (1-2 slides, 15 minutes) update on the latest development in their work. This meeting is an occasion to ask for help if you are stuck on a particular step, method, analysis, or to just keep each other in the loop. If your individual meeting is scheduled for the week before or the week after your batch, you can skip the quick update for the longer one.
 
 === "Conference updates"
+
     This type of lab meeting is usually scheduled after a lab member is back from a conference / workshop. The idea is for that person (or those people) to give an overview of the conference and present studies of interest for the lab. This type of meeting does not have a regular frequency.
 
 === "New papers"
+
     Once every two months, we meet to discuss new papers that came out recently. This is an occasion to discuss new topics, new methods, or just interesting work that you might have seen around. There is no fixed presenter, we will go over the list of papers one by one and the person who added it will introduce it. At any time, if you see an interesting paper you can add it to the [reading list](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bb985e56f-b02f-437c-a511-05a10d8dfe68%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724147078370&web=1).
 
 ### Schedule

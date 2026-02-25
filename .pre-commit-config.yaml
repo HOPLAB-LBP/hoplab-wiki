@@ -9,6 +9,14 @@ repos:
     hooks:
       - id: markdownlint
         files: \.(md|markdown)$
+  - repo: local
+    hooks:
+      - id: check-mkdocs-syntax
+        name: Check MkDocs Material syntax
+        entry: python3 scripts/check_mkdocs_syntax.py
+        language: system
+        files: \.md$
+        pass_filenames: true
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.35.1
     hooks:
