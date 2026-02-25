@@ -2822,6 +2822,8 @@
 <li>Trailing whitespace and extra blank lines in Markdown files</li>
 <li>Hard tabs converted to spaces</li>
 <li>Trailing whitespace in YAML files</li>
+<li>Curly/smart quotes in content tab (<code>=== "..."</code>) and admonition (<code>!!! type "..."</code>) titles</li>
+<li>Missing blank lines after content tab headers (<code>=== "Title"</code>)</li>
 </ul>
 <p><strong>Checked and reported</strong> (you fix these if flagged):</p>
 <table>
@@ -2851,6 +2853,10 @@
 <tr>
 <td><strong>MkDocs build</strong></td>
 <td>Builds the full site to ensure no broken references or config errors.</td>
+</tr>
+<tr>
+<td><strong>MkDocs syntax</strong></td>
+<td>Catches MkDocs Material-specific issues (under-indented tab/admonition content, code blocks at wrong indent level) that cause silent rendering failures.</td>
 </tr>
 </tbody>
 </table>
