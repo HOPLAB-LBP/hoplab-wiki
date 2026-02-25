@@ -6,6 +6,7 @@ We also remind of some good practices to get good quality data.
 
 <!--
 === EEG Analysis Page TODOs ===
+
 This page should eventually mirror the fMRI analysis section structure, with a
 step-by-step progression from raw data through final statistical results.
 
