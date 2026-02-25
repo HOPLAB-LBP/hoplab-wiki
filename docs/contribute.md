@@ -29,7 +29,7 @@ Before you begin, ensure you have the following:
 
 - A GitHub account (click [here](https://github.com/signup) to sign up).
 - Be part of the [`HOPLAB-LBP`](https://github.com/orgs/HOPLAB-LBP/people) organization (contact [Andrea](mailto:andreaivan.costantino@kuleuven.be) if you need to be added).
-- If you plan on following the [Advanced workflow](#advanced-workflow-for-extensive-changes) (encouraged for more complex changes), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html), and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or [GitHub Desktop](https://desktop.github.com/) (strongly encouraged) installed.
+- If you plan on following the [Advanced workflow](#advanced-workflow-for-extensive-changes) (encouraged for more complex changes), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html), and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or [GitHub Desktop](https://desktop.github.com/) (strongly encouraged) installed. If you are new to Git, branches, and pull requests, see the [Version control](research/coding/version-control.md) page for a full introduction.
 
 ## How to contribute
 
@@ -83,6 +83,9 @@ These steps above will create a new branch in the repository, that will be visib
 The preferred way to contribute if you need to make **significant/multiple changes**, but it requires some familiarity with git, Python, and Conda environments. If you are not a Wiki maintainer, this workflow is probably overkill.
 
 With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session.
+
+!!! tip "Unfamiliar with branches and pull requests?"
+    This workflow relies on creating branches and opening pull requests. If these concepts are new to you, read the [Working with branches](research/coding/version-control.md#4-working-with-branches) and [Pull requests](research/coding/version-control.md#5-pull-requests) sections first.
 
 !!! question "How should I organize my PR?"
     A [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (or PR) "*is a proposal to merge a set of changes from one branch into another*". Ideally, a PR should include all the commits **for a specific feature** or bugfix from end-to-end. Avoid making PRs that contain multiple unrelated changes. For instance, if you are working on a feature that requires modifications across multiple files, ensure all those changes are included in the same PR. Conversely, avoid combining changes for different features (e.g., adding unrelated updates to the fMRI workflow and the getting started section) in a single PR. Each PR should represent a cohesive unit of work.
