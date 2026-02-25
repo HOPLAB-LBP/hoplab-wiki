@@ -974,7 +974,7 @@ In case of an emergency involving the MRI system or facility:
 2. **Call emergency number 1000**. Clearly state the location: **"MRI Suite MR8"**.
 
 <!--
-** TODO ** [Simen] IMPORTANT, in fMRI testing room, measure the screen and viewing distance to confirm which setup is correct (as outlined in this link: https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/_layouts/15/Doc.aspx?sourcedoc=%7B68475DCF-8E6F-4182-B4E6-82E343B22356%7D&file=MR8_screeninfo.docx&action=default&mobileredirect=true) -> [Andrea] I measured the projected screen size (the physical size of the projection on the panel in the scanner bore), and it measures 32 cm in length and 18.5 in height (full screen). If this differs from what is reported in thos files/ on the wiki, this should be updated, as it is crucial for visual angle calculations.
+** TODO ** [Simen] IMPORTANT, in fMRI testing room, measure the screen and viewing distance to confirm which setup is correct (as outlined in this link: https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/_layouts/15/Doc.aspx?sourcedoc=%7B68475DCF-8E6F-4182-B4E6-82E343B22356%7D&file=MR8_screeninfo.docx&action=default&mobileredirect=true) -> [Andrea] I measured the projected screen size (the physical size of the projection on the panel in the scanner bore), and it measures 32 cm in length and 18.5 in height (full screen). If this differs from what is reported in these files/ on the wiki, this should be updated, as it is crucial for visual angle calculations.
 ** TODO ** [Simen] better explain the scanning and booking procedure regarding pilot versus real run.
 **TODO:** add info about the codes sent by each box.
 **TODO:** MATLAB and PTB have been updated to newer version!
