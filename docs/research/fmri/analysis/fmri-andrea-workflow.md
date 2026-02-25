@@ -95,4 +95,3 @@ The Glasser parcellation has a built-in hierarchy: the 180 fine-grained parcels 
 At each level, significance was tested against chance, and the results were plotted on inflated brain surfaces:
 
 ![Decoding Example](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/combined_brain_grid.png)
-
