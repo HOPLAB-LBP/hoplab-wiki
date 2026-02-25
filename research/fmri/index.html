@@ -2368,6 +2368,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#brain-atlases-and-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Brain Atlases and Templates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-tools-for-fmri" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python Tools for fMRI
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2436,6 +2458,75 @@
 <li><a href="https://en.wikibooks.org/wiki/SPM/Programming_intro">SPM Programming Introduction</a></li>
 <li><a href="https://github.com/rordenlab/spmScripts?tab=readme-ov-file">SPM Scripts on GitHub</a></li>
 </ul>
+<h2 id="brain-atlases-and-templates">Brain Atlases and Templates<a class="headerlink" href="#brain-atlases-and-templates" title="Permanent link">&para;</a></h2>
+<p>Standard brain atlases are essential for defining ROIs, reporting results, and comparing across studies. Below are commonly used resources:</p>
+<h3 id="atlas-repositories">Atlas repositories<a class="headerlink" href="#atlas-repositories" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TemplateFlow</strong></td>
+<td>Centralised repository of brain templates and atlases in standardised spaces (MNI, fsaverage, etc.). Used by fMRIPrep.</td>
+<td><a href="https://www.templateflow.org/">templateflow.org</a></td>
+</tr>
+<tr>
+<td><strong>OSF Atlas Collection</strong></td>
+<td>Curated collection of brain atlases and parcellations hosted on OSF.</td>
+<td><a href="https://osf.io/4mw3a/">osf.io/4mw3a</a></td>
+</tr>
+<tr>
+<td><strong>neuromaps</strong></td>
+<td>Python toolbox for mapping, transforming, and comparing brain annotations across MNI, fsaverage, and other coordinate systems.</td>
+<td><a href="https://netneurolab.github.io/neuromaps/">neuromaps docs</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="commonly-used-atlases-in-the-lab">Commonly used atlases in the lab<a class="headerlink" href="#commonly-used-atlases-in-the-lab" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atlas</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Glasser (HCP-MMP1)</strong></td>
+<td>Multi-modal parcellation</td>
+<td>360-region cortical parcellation from the Human Connectome Project. Based on architecture, function, connectivity, and topography.</td>
+</tr>
+<tr>
+<td><strong>Schaefer</strong></td>
+<td>Functional parcellation</td>
+<td>Data-driven parcellations available in 100–1000 region versions. Aligned to the Yeo 7/17 network parcellation.</td>
+</tr>
+<tr>
+<td><strong>Harvard-Oxford</strong></td>
+<td>Probabilistic anatomical</td>
+<td>Probabilistic atlas based on manual segmentation. Available in cortical and subcortical versions. Distributed with FSL.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Which atlas to choose?</p>
+<p>The choice of atlas depends on your research question. For ROI-based analyses, <strong>Glasser</strong> and <strong>Schaefer</strong> provide finer-grained and more functionally meaningful parcellations. For reporting peak coordinates and comparing with older literature, <strong>Harvard-Oxford</strong> remains a common choice. See the <a href="analysis/fmri-rois.html">ROIs page</a> for how to create and use ROIs from these atlases.</p>
+</div>
+<h2 id="python-tools-for-fmri">Python Tools for fMRI<a class="headerlink" href="#python-tools-for-fmri" title="Permanent link">&para;</a></h2>
+<p>While the lab's primary analysis pipeline uses MATLAB and SPM, Python offers powerful complementary tools. Python-specific examples are included in the relevant analysis pages:</p>
+<ul>
+<li><strong>GLM and results visualisation</strong>: <a href="https://nilearn.github.io/">nilearn</a> for running GLMs and plotting brain maps — see the <a href="analysis/fmri-glm.html">GLM page</a></li>
+<li><strong>ROI extraction</strong>: nilearn's maskers for extracting signal from ROIs — see the <a href="analysis/fmri-rois.html">ROIs page</a></li>
+<li><strong>File handling</strong>: <a href="https://nipy.org/nibabel/">nibabel</a> for loading, manipulating, and saving NIfTI files</li>
+<li><strong>Surface plots</strong>: nilearn surface plotting (with plotly engine) for interactive and publication-quality visualisations — see the <a href="analysis/fmri-glm.html">GLM page</a></li>
+<li><strong>Cross-space transformations</strong>: <a href="https://netneurolab.github.io/neuromaps/">neuromaps</a> for converting between MNI and fsaverage spaces</li>
+</ul>
 <hr />
 
 
@@ -2457,7 +2548,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="February 25, 2026 14:32:45 CET">February 25, 2026 14:32:45</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="February 25, 2026 17:39:43 CET">February 25, 2026 17:39:43</span>
   </span>
 
     

@@ -1991,6 +1991,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#directory-structure-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory Structure Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-the-design-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saving the Design Matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-second-level-group-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Second-Level (Group) Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualising-results-with-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualising Results with Python
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2466,6 +2510,50 @@
     <span class="md-ellipsis">
       
         Step 3: Model Estimation &amp; Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-structure-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory Structure Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-the-design-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saving the Design Matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-second-level-group-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Second-Level (Group) Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualising-results-with-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualising Results with Python
       
     </span>
   </a>
@@ -3397,6 +3485,230 @@ This will print the regressor names directly in the MATLAB command window, helpi
 <p>SPM cannot read <code>.nii.gz</code> files directly, so you must decompress them into <code>.nii</code> files. This can be done with any decompression tool by right-clicking on the file in your file explorer. Once decompressed, use the SPM GUI to select the <code>.nii</code> file.</p>
 </div>
 <hr />
+<h2 id="directory-structure-reference">Directory Structure Reference<a class="headerlink" href="#directory-structure-reference" title="Permanent link">&para;</a></h2>
+<p>Below are example directory trees showing file organisation before and after running the first-level GLM.</p>
+<h3 id="before-glm-after-preprocessing">Before GLM (after preprocessing)<a class="headerlink" href="#before-glm-after-preprocessing" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>BIDS/
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>├── sub-01/
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>│   └── func/
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>│       ├── sub-01_task-exp_run-1_events.tsv
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>│       ├── sub-01_task-exp_run-1_eventsspm.mat     ← onset file (from eventsBIDS2SPM)
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>│       ├── sub-01_task-exp_run-2_events.tsv
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>│       └── sub-01_task-exp_run-2_eventsspm.mat
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>└── derivatives/
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    ├── fmriprep/
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    │   └── sub-01/
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>    │       ├── anat/
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>    │       │   └── sub-01_space-MNI_desc-preproc_T1w.nii.gz
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>    │       └── func/
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>    │           ├── sub-01_task-exp_run-1_space-MNI_desc-preproc_bold.nii.gz
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>    │           ├── sub-01_task-exp_run-1_desc-confounds_timeseries.tsv
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>    │           ├── sub-01_task-exp_run-2_space-MNI_desc-preproc_bold.nii.gz
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>    │           └── sub-01_task-exp_run-2_desc-confounds_timeseries.tsv
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>    └── pre-SPM/
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>        ├── gunzipped/
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>        │   └── sub-01/
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>        │       └── func/
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>        │           ├── sub-01_task-exp_run-1_space-MNI_desc-preproc_bold.nii
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>        │           └── sub-01_task-exp_run-2_space-MNI_desc-preproc_bold.nii
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>        └── smoothed/
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>            └── sub-01/
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>                └── func/
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>                    ├── ssub-01_task-exp_run-1_space-MNI_desc-preproc_bold.nii
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>                    └── ssub-01_task-exp_run-2_space-MNI_desc-preproc_bold.nii
+</span></code></pre></div>
+<h3 id="after-glm-estimation">After GLM estimation<a class="headerlink" href="#after-glm-estimation" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>derivatives/
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>└── SPM/
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    └── GLM/
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>        └── sub-01/
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>            └── task-exp/
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>                ├── SPM.mat                    ← model specification and results
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>                ├── beta_0001.nii              ← beta image for regressor 1
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>                ├── beta_0002.nii              ← beta image for regressor 2
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>                ├── ...
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>                ├── con_0001.nii               ← contrast image (e.g., CondA &gt; CondB)
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>                ├── spmT_0001.nii              ← t-statistic map for contrast 1
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>                ├── mask.nii                   ← analysis mask
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>                ├── ResMS.nii                  ← residual mean squares
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>                └── RPV.nii                    ← resels per voxel (for RFT corrections)
+</span></code></pre></div>
+<hr />
+<h2 id="saving-the-design-matrix">Saving the Design Matrix<a class="headerlink" href="#saving-the-design-matrix" title="Permanent link">&para;</a></h2>
+<p>After specifying your model (before or after estimation), you can save the design matrix visualisation for your records:</p>
+<ol>
+<li>In the SPM Graphics window, the design matrix is displayed after specification.</li>
+<li><strong>Right-click</strong> on the design matrix figure and select <strong>Save as Image</strong> (or <strong>Print to File</strong>).</li>
+<li>Choose a format (PNG or EPS for publication quality) and save to your GLM output directory.</li>
+</ol>
+<p>Alternatively, you can save it programmatically:</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c">% After running spm_spm, the design matrix is in SPM.xX.X</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">load</span><span class="p">(</span><span class="s">&#39;SPM.mat&#39;</span><span class="p">);</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nb">figure</span><span class="p">;</span><span class="w"> </span><span class="nb">imagesc</span><span class="p">(</span><span class="n">SPM</span><span class="p">.</span><span class="n">xX</span><span class="p">.</span><span class="n">X</span><span class="p">);</span><span class="w"> </span><span class="nb">colormap</span><span class="p">(</span><span class="s">&#39;gray&#39;</span><span class="p">);</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Design Matrix&#39;</span><span class="p">);</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Scans&#39;</span><span class="p">);</span><span class="w"> </span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Regressors&#39;</span><span class="p">);</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="nb">saveas</span><span class="p">(</span><span class="nb">gcf</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;design_matrix.png&#39;</span><span class="p">);</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Always save a copy of the design matrix. It is essential for verifying that conditions and confounds are correctly modelled, and reviewers may request it.</p>
+</div>
+<hr />
+<h2 id="step-4-second-level-group-analysis">Step 4: Second-Level (Group) Analysis<a class="headerlink" href="#step-4-second-level-group-analysis" title="Permanent link">&para;</a></h2>
+<p>After running first-level GLMs for each subject, the next step is to test for effects at the <strong>group level</strong>. This is done by feeding the first-level contrast images (e.g., <code>con_0001.nii</code>) into a second-level model.</p>
+<h3 id="when-to-use-second-level-analysis">When to use second-level analysis<a class="headerlink" href="#when-to-use-second-level-analysis" title="Permanent link">&para;</a></h3>
+<ul>
+<li>To test whether an effect observed in individual subjects is <strong>consistent across the group</strong></li>
+<li>To perform group comparisons (e.g., patients vs. controls)</li>
+<li>To report results in publications (most fMRI papers require group-level statistics)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For multivariate analyses (MVPA, RSA), group statistics are typically handled differently — see the <a href="fmri-mvpa.html">MVPA page</a>. Second-level GLM is primarily for <strong>univariate</strong> analyses.</p>
+</div>
+<h3 id="setting-up-a-second-level-model-in-spm">Setting up a second-level model in SPM<a class="headerlink" href="#setting-up-a-second-level-model-in-spm" title="Permanent link">&para;</a></h3>
+<p>The most common second-level designs are:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="one-sample-t-test" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="one-sample-t-test">One-Sample t-Test</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Tests whether a contrast is significantly different from zero across subjects (e.g., "Is there significant activation for faces &gt; objects across the group?").</p>
+<p><strong>GUI procedure:</strong></p>
+<ol>
+<li>Open SPM and click <strong>Specify 2<sup>nd</sup>-level</strong>.</li>
+<li>Set the <strong>Directory</strong> to your group-level output folder (e.g., <code>derivatives/SPM/GLM/group/task-exp/</code>).</li>
+<li>Select <strong>One-sample t-test</strong> as the design.</li>
+<li>Under <strong>Scans</strong>, select the first-level contrast images from all subjects:<ul>
+<li>e.g., <code>derivatives/SPM/GLM/sub-01/task-exp/con_0001.nii</code>, <code>derivatives/SPM/GLM/sub-02/task-exp/con_0001.nii</code>, etc.</li>
+</ul>
+</li>
+<li>Optionally add covariates (e.g., age, performance scores).</li>
+<li>Click <strong>Run</strong> (the green play button).</li>
+</ol>
+<p><strong>Scripted version:</strong></p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c">% Second-level one-sample t-test</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">1</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">factorial_design</span><span class="p">.</span><span class="n">dir</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;derivatives/SPM/GLM/group/task-exp/&#39;</span><span class="p">};</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c">% Collect contrast images from all subjects</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">subjects</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">dir</span><span class="p">(</span><span class="s">&#39;derivatives/SPM/GLM/sub-*/task-exp/con_0001.nii&#39;</span><span class="p">);</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">scans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cellfun</span><span class="p">(@(</span><span class="n">p</span><span class="p">,</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="nb">fullfile</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="n">subjects</span><span class="p">.</span><span class="n">folder</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="n">subjects</span><span class="p">.</span><span class="n">name</span><span class="p">},</span><span class="w"> </span><span class="s">&#39;UniformOutput&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">1</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">factorial_design</span><span class="p">.</span><span class="n">des</span><span class="p">.</span><span class="n">t1</span><span class="p">.</span><span class="n">scans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">scans</span><span class="o">&#39;</span><span class="p">;</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="c">% Estimate</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">2</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">fmri_est</span><span class="p">.</span><span class="n">spmmat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;derivatives/SPM/GLM/group/task-exp/SPM.mat&#39;</span><span class="p">};</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">2</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">fmri_est</span><span class="p">.</span><span class="n">write_residuals</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">2</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">fmri_est</span><span class="p">.</span><span class="n">method</span><span class="p">.</span><span class="n">Classical</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="c">% Run</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="n">spm_jobman</span><span class="p">(</span><span class="s">&#39;run&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">matlabbatch</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="defining-group-level-contrasts">Defining group-level contrasts<a class="headerlink" href="#defining-group-level-contrasts" title="Permanent link">&para;</a></h3>
+<p>After estimating the second-level model:</p>
+<ol>
+<li>Click <strong>Results</strong> in the SPM GUI.</li>
+<li>Select the group-level <code>SPM.mat</code>.</li>
+<li>Define contrasts:<ul>
+<li>For a <strong>one-sample t-test</strong>, a single contrast <code>[1]</code> tests for positive activation, <code>[-1]</code> for deactivation.</li>
+</ul>
+</li>
+</ol>
+<h3 id="interpreting-and-reporting-results">Interpreting and reporting results<a class="headerlink" href="#interpreting-and-reporting-results" title="Permanent link">&para;</a></h3>
+<p>When viewing results:</p>
+<ol>
+<li>Set the <strong>significance threshold</strong> (commonly p &lt; 0.001 uncorrected at voxel level, or p &lt; 0.05 FWE-corrected).</li>
+<li>Set a <strong>cluster extent threshold</strong> (e.g., k = 10 voxels) to filter out small, isolated activations.</li>
+<li>SPM will display:<ul>
+<li>A <strong>glass brain</strong> showing suprathreshold clusters</li>
+<li>A <strong>table of results</strong> with peak MNI coordinates, cluster sizes, t-values, and p-values</li>
+</ul>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Reporting conventions</p>
+<p>When reporting group results in a publication, include:</p>
+<ul>
+<li>The statistical threshold used (voxel-level and cluster-level)</li>
+<li>Whether correction is FWE, FDR, or uncorrected</li>
+<li>Peak MNI coordinates, t/z-values, and cluster extent for each significant cluster</li>
+<li>The number of subjects included in the analysis</li>
+</ul>
+</div>
+<hr />
+<h2 id="visualising-results-with-python">Visualising Results with Python<a class="headerlink" href="#visualising-results-with-python" title="Permanent link">&para;</a></h2>
+<p>While SPM provides built-in visualisation tools, Python offers more flexibility for creating publication-quality figures.</p>
+<h3 id="glass-brain-and-slice-plots-with-nilearn">Glass brain and slice plots with nilearn<a class="headerlink" href="#glass-brain-and-slice-plots-with-nilearn" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">nilearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">plotting</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># Glass brain plot of a statistical map</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">plotting</span><span class="o">.</span><span class="n">plot_glass_brain</span><span class="p">(</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="s1">&#39;path/to/spmT_0001.nii&#39;</span><span class="p">,</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="n">threshold</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Group activation (t &gt; 3.0)&#39;</span><span class="p">,</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;lyrz&#39;</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="p">)</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="n">plotting</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="surface-plots-with-nilearn">Surface plots with nilearn<a class="headerlink" href="#surface-plots-with-nilearn" title="Permanent link">&para;</a></h3>
+<p>Nilearn's <a href="https://nilearn.github.io/stable/modules/generated/nilearn.plotting.plot_surf_stat_map.html"><code>plot_surf_stat_map</code></a> is the recommended way to create surface visualisations. Using the <strong>plotly</strong> engine gives interactive plots and is significantly faster:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">nilearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">plotting</span><span class="p">,</span> <span class="n">surface</span><span class="p">,</span> <span class="n">datasets</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># Fetch fsaverage surface mesh</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">fsaverage</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_surf_fsaverage</span><span class="p">()</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># Plot a statistical map on the inflated surface</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="n">plotting</span><span class="o">.</span><span class="n">plot_surf_stat_map</span><span class="p">(</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="n">fsaverage</span><span class="o">.</span><span class="n">infl_left</span><span class="p">,</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>    <span class="n">stat_map</span><span class="o">=</span><span class="n">stat_map_lh</span><span class="p">,</span>       <span class="c1"># surface stat map (e.g., from nilearn GLM)</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="n">hemi</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="n">view</span><span class="o">=</span><span class="s1">&#39;lateral&#39;</span><span class="p">,</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>    <span class="n">threshold</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;cold_hot&#39;</span><span class="p">,</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>    <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;plotly&#39;</span>             <span class="c1"># interactive and faster than matplotlib</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Set <code>engine='plotly'</code> for interactive rotation and zooming in notebooks. Use <code>engine='matplotlib'</code> when you need a static image for a publication figure.</p>
+</div>
+<p>An alternative for more customised multi-panel surface figures is <a href="https://surfplot.readthedocs.io/">surfplot</a>, which provides finer control over layout and layering.</p>
+<h3 id="freesurfer-surface-geometries">FreeSurfer surface geometries<a class="headerlink" href="#freesurfer-surface-geometries" title="Permanent link">&para;</a></h3>
+<p>fMRIPrep (via FreeSurfer's <code>recon-all</code>) produces several surface reconstructions for each hemisphere:</p>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>pial</strong></td>
+<td>The outer cortical surface (grey matter / CSF boundary).</td>
+</tr>
+<tr>
+<td><strong>white</strong></td>
+<td>The inner cortical surface (grey / white matter boundary).</td>
+</tr>
+<tr>
+<td><strong>inflated</strong></td>
+<td>The cortex "inflated" so that sulci are visible — useful for visualisation.</td>
+</tr>
+<tr>
+<td><strong>sphere</strong></td>
+<td>The cortex mapped onto a sphere — used for inter-subject alignment (e.g., fsaverage registration).</td>
+</tr>
+</tbody>
+</table>
+<p>fMRIPrep can output BOLD data projected onto fsaverage or individual surfaces (in GIFTI <code>.gii</code> format), which can then be used for surface-based group analysis. For cross-space transformations (e.g., MNI volume to fsaverage surface), see <a href="https://netneurolab.github.io/neuromaps/">neuromaps</a>.</p>
+<p>For more details:</p>
+<ul>
+<li><a href="https://nilearn.github.io/stable/auto_examples/index.html#plotting">nilearn plotting gallery</a></li>
+<li><a href="https://surfplot.readthedocs.io/">surfplot documentation</a></li>
+<li><a href="https://surfer.nmr.mgh.harvard.edu/fswiki">FreeSurfer documentation</a></li>
+</ul>
 
 
 
@@ -3417,7 +3729,7 @@ This will print the regressor names directly in the MATLAB command window, helpi
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="February 25, 2026 14:32:49 CET">February 25, 2026 14:32:49</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="February 25, 2026 17:39:43 CET">February 25, 2026 17:39:43</span>
   </span>
 
     

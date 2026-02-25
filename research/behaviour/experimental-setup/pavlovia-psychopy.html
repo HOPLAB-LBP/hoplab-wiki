@@ -2782,7 +2782,50 @@ This will center the text online; however, offline functionality may be impacted
 </li>
 </ul>
 <h2 id="informed-consent">Informed consent<a class="headerlink" href="#informed-consent" title="Permanent link">&para;</a></h2>
-<p>For setting up informed consent forms for online experiments, refer to <a href="https://www.psychopy.org/online/informed-consent.html">this guide on informed consent</a>.</p>
+<p>Online experiments require participants to give informed consent before starting. Since PsychoPy's <strong>Form component does not work on Pavlovia</strong>, you need an alternative approach. The two most common methods are:</p>
+<h3 id="option-1-button-based-consent-screen-recommended">Option 1: Button-based consent screen (recommended)<a class="headerlink" href="#option-1-button-based-consent-screen-recommended" title="Permanent link">&para;</a></h3>
+<p>Build a consent routine in the Builder using text and shape components:</p>
+<ol>
+<li>Add a <strong>Text</strong> component displaying the consent information (study purpose, data handling, right to withdraw, etc.).</li>
+<li>Add two <strong>Polygon</strong> components styled as buttons (e.g., green "I agree" and red "I do not agree"), each with a <strong>Text</strong> label on top.</li>
+<li>
+<p>Add a <strong>Mouse</strong> component and a <strong>Code</strong> component to detect clicks:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Begin Routine</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">consent_given</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Each Frame</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">if</span> <span class="n">mouse</span><span class="o">.</span><span class="n">isPressedIn</span><span class="p">(</span><span class="n">agree_button</span><span class="p">):</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">consent_given</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">continueRoutine</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">elif</span> <span class="n">mouse</span><span class="o">.</span><span class="n">isPressedIn</span><span class="p">(</span><span class="n">disagree_button</span><span class="p">):</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">consent_given</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">continueRoutine</span> <span class="o">=</span> <span class="kc">False</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>After the consent routine, use a <strong>Code</strong> component to end the experiment if consent was not given:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Begin Routine (in the next routine)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">consent_given</span><span class="p">:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">thisExp</span><span class="o">.</span><span class="n">addData</span><span class="p">(</span><span class="s1">&#39;consent&#39;</span><span class="p">,</span> <span class="s1">&#39;refused&#39;</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">psychoJS</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>  <span class="c1"># online</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">thisExp</span><span class="o">.</span><span class="n">addData</span><span class="p">(</span><span class="s1">&#39;consent&#39;</span><span class="p">,</span> <span class="s1">&#39;given&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure to define <code>consent_given = False</code> in the <strong>Begin Experiment</strong> tab to avoid undefined variable errors on Pavlovia.</p>
+</div>
+<h3 id="option-2-embedded-html-consent-form">Option 2: Embedded HTML consent form<a class="headerlink" href="#option-2-embedded-html-consent-form" title="Permanent link">&para;</a></h3>
+<p>For more complex consent forms (e.g., with checkboxes for multiple clauses), you can embed an external HTML file using JavaScript. This approach loads a <code>.html</code> consent form in an iframe and captures the responses. Note that <strong>this only works online</strong> — it will not run locally.</p>
+<p>For a working example, see <a href="https://discourse.psychopy.org/t/embedded-html-consent-form/40927">this community thread on embedded HTML consent forms</a>.</p>
+<h3 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://discourse.psychopy.org/t/best-practice-for-consent-forms-information-sheets-in-online-experiments/8784">Best practices for consent forms in online experiments</a></li>
+<li><a href="https://discourse.psychopy.org/t/consent-form-in-psychopy-builder/20216">Consent form in PsychoPy Builder</a></li>
+<li><a href="https://discourse.psychopy.org/t/how-to-add-consent-forms-to-online-task-how-to-randomise-versions-of-tasks-online/12065">Adding consent to online tasks</a></li>
+</ul>
 <h2 id="images">Images<a class="headerlink" href="#images" title="Permanent link">&para;</a></h2>
 <p>Make sure all image files are in the <strong>html &gt; Resources</strong> directory. Missing files will cause a resource error on Pavlovia.</p>
 <p>To ensure consistent display sizes across different screens, follow these <a href="https://discourse.psychopy.org/t/consistent-image-size-across-screens/12517">image guidelines</a>.</p>
@@ -2802,9 +2845,9 @@ This will center the text online; however, offline functionality may be impacted
 <img alt="Pavlovia configuration screenshot 3" src="../../../assets/bh-pavlovia7.png" /></p>
 <h2 id="cellphone-detection">Cellphone detection<a class="headerlink" href="#cellphone-detection" title="Permanent link">&para;</a></h2>
 <p>To prevent participants from accessing the experiment on mobile devices, use this <strong>JS-only</strong> code snippet at the start of the experiment:</p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="sr">/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nx">quitPsychoJS</span><span class="p">(</span><span class="s1">&#39;Mobile device detected. Goodbye!&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="sr">/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nx">quitPsychoJS</span><span class="p">(</span><span class="s1">&#39;Mobile device detected. Goodbye!&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
 </span></code></pre></div>
 
 
@@ -2826,7 +2869,7 @@ This will center the text online; however, offline functionality may be impacted
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="February 25, 2026 14:32:45 CET">February 25, 2026 14:32:45</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="February 25, 2026 17:46:00 CET">February 25, 2026 17:46:00</span>
   </span>
 
     

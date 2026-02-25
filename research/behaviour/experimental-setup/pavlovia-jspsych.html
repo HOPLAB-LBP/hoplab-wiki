@@ -1519,6 +1519,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#common-trial-types-code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common trial types — code examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls-on-pavlovia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common pitfalls on Pavlovia
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-jspsych-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using jsPsych plugins
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2450,6 +2494,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#common-trial-types-code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common trial types — code examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls-on-pavlovia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common pitfalls on Pavlovia
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-jspsych-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using jsPsych plugins
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2511,6 +2599,157 @@
 </div>
 </li>
 </ol>
+<h2 id="common-trial-types-code-examples">Common trial types — code examples<a class="headerlink" href="#common-trial-types-code-examples" title="Permanent link">&para;</a></h2>
+<p>Below are minimal examples for common trial types using jsPsych 7. These can be adapted and combined to build a full experiment.</p>
+<h3 id="image-display-with-keyboard-response">Image display with keyboard response<a class="headerlink" href="#image-display-with-keyboard-response" title="Permanent link">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">&lt;!-- Load the required plugins --&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/@jspsych/plugin-image-keyboard-response&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kd">var</span><span class="w"> </span><span class="nx">image_trial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">jsPsychImageKeyboardResponse</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nx">stimulus</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;img/my_stimulus.png&#39;</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nx">choices</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;j&#39;</span><span class="p">],</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nx">prompt</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;p&gt;Press F for category A, J for category B&lt;/p&gt;&#39;</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nx">stimulus_height</span><span class="o">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w">  </span><span class="c1">// in pixels</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nx">response_ends_trial</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">};</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h3 id="fixation-cross">Fixation cross<a class="headerlink" href="#fixation-cross" title="Permanent link">&para;</a></h3>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">fixation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">jsPsychHtmlKeyboardResponse</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">stimulus</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;p style=&quot;font-size: 48px;&quot;&gt;+&lt;/p&gt;&#39;</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">choices</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NO_KEYS&quot;</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">trial_duration</span><span class="o">:</span><span class="w"> </span><span class="mf">500</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">};</span>
+</span></code></pre></div>
+<h3 id="survey-with-likert-scale">Survey with Likert scale<a class="headerlink" href="#survey-with-likert-scale" title="Permanent link">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/@jspsych/plugin-survey-likert&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">likert_trial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">jsPsychSurveyLikert</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">questions</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">            </span><span class="nx">prompt</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;How confident are you in your response?&quot;</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">            </span><span class="nx">labels</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Not at all&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Slightly&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Moderately&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Very&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Extremely&quot;</span><span class="p">],</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">            </span><span class="nx">required</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">};</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h3 id="timeline-with-randomisation">Timeline with randomisation<a class="headerlink" href="#timeline-with-randomisation" title="Permanent link">&para;</a></h3>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">stimuli</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">stimulus</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;img/stim_01.png&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">correct_response</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;f&#39;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">stimulus</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;img/stim_02.png&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">correct_response</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;j&#39;</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">stimulus</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;img/stim_03.png&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">correct_response</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;f&#39;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">];</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kd">var</span><span class="w"> </span><span class="nx">trial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">jsPsychImageKeyboardResponse</span><span class="p">,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">stimulus</span><span class="o">:</span><span class="w"> </span><span class="nx">jsPsych</span><span class="p">.</span><span class="nx">timelineVariable</span><span class="p">(</span><span class="s1">&#39;stimulus&#39;</span><span class="p">),</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="nx">choices</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;j&#39;</span><span class="p">],</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="nx">correct_response</span><span class="o">:</span><span class="w"> </span><span class="nx">jsPsych</span><span class="p">.</span><span class="nx">timelineVariable</span><span class="p">(</span><span class="s1">&#39;correct_response&#39;</span><span class="p">)</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">};</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="kd">var</span><span class="w"> </span><span class="nx">block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="nx">timeline</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">fixation</span><span class="p">,</span><span class="w"> </span><span class="nx">trial</span><span class="p">],</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="nx">timeline_variables</span><span class="o">:</span><span class="w"> </span><span class="nx">stimuli</span><span class="p">,</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="nx">randomize_order</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">};</span>
+</span></code></pre></div>
+<p>For more examples and a full plugin reference, see the <a href="https://www.jspsych.org/v7/plugins/list-of-plugins/">jsPsych documentation</a>.</p>
+<hr />
+<h2 id="common-pitfalls-on-pavlovia">Common pitfalls on Pavlovia<a class="headerlink" href="#common-pitfalls-on-pavlovia" title="Permanent link">&para;</a></h2>
+<h3 id="resource-preloading">Resource preloading<a class="headerlink" href="#resource-preloading" title="Permanent link">&para;</a></h3>
+<p>Pavlovia needs to download all media files before the experiment starts. If files are missing or paths are incorrect, the experiment will hang on the loading screen.</p>
+<ul>
+<li>
+<p>Use the <a href="https://www.jspsych.org/v7/plugins/preload/"><code>jsPsychPreload</code></a> plugin to explicitly preload images, audio, and video:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">preload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">jsPsychPreload</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">images</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;img/stim_01.png&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;img/stim_02.png&#39;</span><span class="p">],</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nx">show_progress_bar</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">};</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Make sure all file paths are <strong>relative</strong> and match the exact case (Pavlovia's server is case-sensitive, unlike most local setups).</p>
+</li>
+</ul>
+<h3 id="data-saving">Data saving<a class="headerlink" href="#data-saving" title="Permanent link">&para;</a></h3>
+<p>If the experiment crashes or the participant closes the browser, data may be lost. To mitigate this:</p>
+<ul>
+<li>Use <a href="https://www.jspsych.org/v7/reference/jspsych-data/#jspsychdatagetcsv"><code>jsPsych.data.get().csv()</code></a> in the <code>on_finish</code> callback to send data to Pavlovia.</li>
+<li>The Pavlovia plugin handles saving automatically, but make sure you call <code>jsPsychPavlovia</code> with the <code>completedCallback</code> at the end of your timeline.</li>
+<li>Consider saving intermediate data with periodic <code>pipe</code> calls for long experiments.</li>
+</ul>
+<h3 id="file-paths-and-naming">File paths and naming<a class="headerlink" href="#file-paths-and-naming" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Avoid spaces and special characters in file names.</li>
+<li>Keep all stimulus files in a subfolder (e.g., <code>img/</code>, <code>audio/</code>) and reference them with relative paths.</li>
+<li>Double-check that the file structure on GitLab matches your local setup — files that exist locally but were not committed will cause errors on Pavlovia.</li>
+</ul>
+<hr />
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Likely cause</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Experiment stuck on loading screen</td>
+<td>Missing resource files or incorrect paths</td>
+<td>Check browser console (F12) for 404 errors; verify file paths and case sensitivity</td>
+</tr>
+<tr>
+<td>Data not saved after completion</td>
+<td>Pavlovia finish plugin not in timeline</td>
+<td>Ensure <code>jsPsychPavlovia</code> with <code>action: 'save'</code> is the last entry in your timeline</td>
+</tr>
+<tr>
+<td>Experiment works locally but not on Pavlovia</td>
+<td>Local-only code or missing Pavlovia init/finish</td>
+<td>Check that <code>jsPsychPavlovia</code> init and finish events are included (see <a href="https://pavlovia.org/docs/experiments/create-jsPsych">Pavlovia docs</a>)</td>
+</tr>
+<tr>
+<td>Timing seems off</td>
+<td>Browser rendering delays</td>
+<td>Use the <a href="https://www.jspsych.org/v7/plugins/browser-check/"><code>jsPsychBrowserCheck</code></a> plugin; avoid relying on frame-level precision for online experiments</td>
+</tr>
+<tr>
+<td>"Unexpected token" errors</td>
+<td>JavaScript syntax issue</td>
+<td>Check browser console; common causes are trailing commas, missing semicolons, or ES6 syntax not supported by older browsers</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="using-jspsych-plugins">Using jsPsych plugins<a class="headerlink" href="#using-jspsych-plugins" title="Permanent link">&para;</a></h2>
+<p>jsPsych's modular plugin system is one of its strengths. To add a plugin:</p>
+<ol>
+<li><strong>Find the plugin</strong> in the <a href="https://www.jspsych.org/v7/plugins/list-of-plugins/">plugin list</a> or search for community plugins on <a href="https://www.npmjs.com/search?q=jspsych-plugin">npm</a>.</li>
+<li>
+<p><strong>Include the script</strong> in your HTML <code>&lt;head&gt;</code> section (via CDN or local file):</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/@jspsych/plugin-html-button-response&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></code></pre></div>
+</li>
+<li>
+<p><strong>Use it in your timeline</strong> by referencing the plugin name (e.g., <code>jsPsychHtmlButtonResponse</code>).</p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When using multiple plugins, load them all in the <code>&lt;head&gt;</code> section before your experiment script. This prevents "plugin not found" errors.</p>
+</div>
 
 
 
@@ -2531,7 +2770,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="February 25, 2026 14:32:45 CET">February 25, 2026 14:32:45</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="February 25, 2026 17:39:43 CET">February 25, 2026 17:39:43</span>
   </span>
 
     

@@ -2036,6 +2036,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#atlas-resources-and-functional-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atlas Resources and Functional Databases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extracting-signal-from-rois-with-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extracting Signal from ROIs with Python
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2450,6 +2472,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#atlas-resources-and-functional-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atlas Resources and Functional Databases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extracting-signal-from-rois-with-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extracting Signal from ROIs with Python
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2486,6 +2530,39 @@
 <li><strong>Spherical ROIs</strong>: Spheres around specific MNI coordinates, offering a quick, automated way to generate ROIs.</li>
 </ol>
 <h3 id="example-creating-spherical-rois-with-the-gui">Example: Creating Spherical ROIs with the GUI<a class="headerlink" href="#example-creating-spherical-rois-with-the-gui" title="Permanent link">&para;</a></h3>
+<p>You can create spherical ROIs interactively using the MarsBaR toolbox within SPM. Here is the step-by-step procedure:</p>
+<ol>
+<li>
+<p><strong>Launch MarsBaR</strong>: In the MATLAB command window, type <code>marsbar</code> to open the MarsBaR GUI. Alternatively, start SPM and select MarsBaR from the toolbox menu.</p>
+</li>
+<li>
+<p><strong>Create a new ROI</strong>: In the MarsBaR menu, go to <strong>ROI definition &gt; Build</strong>.</p>
+</li>
+<li>
+<p><strong>Select ROI type</strong>: Choose <strong>Sphere</strong> from the shape options.</p>
+</li>
+<li>
+<p><strong>Enter MNI coordinates</strong>: A dialog will ask for the centre coordinates. Enter the X, Y, Z coordinates in MNI space (e.g., <code>[42 -54 -18]</code> for right FFA).</p>
+</li>
+<li>
+<p><strong>Set the radius</strong>: Enter the sphere radius in millimetres (a common choice is 8–10 mm).</p>
+</li>
+<li>
+<p><strong>Label the ROI</strong>: Give the ROI a descriptive name (e.g., <code>ROI-rFFA_radius-10</code>).</p>
+</li>
+<li>
+<p><strong>Save the ROI</strong>: MarsBaR saves ROIs in its own <code>.mat</code> format. To convert to NIfTI for use in other tools:</p>
+<ul>
+<li>Go to <strong>ROI definition &gt; Export</strong> (or <strong>ROI definition &gt; Save as image</strong>).</li>
+<li>Select the ROI <code>.mat</code> file and choose an output <code>.nii</code> filename.</li>
+<li>Specify the reference image (e.g., a subject's functional image or the MNI template) to define the voxel grid.</li>
+</ul>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can create multiple ROIs in sequence by repeating steps 2–7. For bilateral ROIs, create one ROI per hemisphere using mirrored X coordinates (e.g., <code>[-42 -54 -18]</code> and <code>[42 -54 -18]</code>).</p>
+</div>
 <h3 id="example-creating-spherical-rois-with-a-script">Example: Creating Spherical ROIs with a Script<a class="headerlink" href="#example-creating-spherical-rois-with-a-script" title="Permanent link">&para;</a></h3>
 <p>Below is an example MATLAB script designed to creare bilateral ROIs. This script leverages <strong>MarsBaR</strong> and <strong>SPM</strong> to generate spherical ROIs around given MNI coordinates. The ROIs are saved as NIfTI files, which can be further used in analyses such as <strong>multivariate decoding</strong>.</p>
 <details class="example">
@@ -4040,9 +4117,101 @@
 <hr />
 <p>Now that you have your beta images (from the GLM) and your ROIs, you have everything you need to run your multi-variate analysis. <a href="fmri-mvpa.html">&rarr; MVPA</a></p>
 <hr />
-<p><a href="https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/atlases.html#id4">https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/atlases.html#id4</a>
-<a href="https://neurosynth.org/">https://neurosynth.org/</a>
-<a href="https://openneuro.org/">https://openneuro.org/</a></p>
+<h2 id="atlas-resources-and-functional-databases">Atlas Resources and Functional Databases<a class="headerlink" href="#atlas-resources-and-functional-databases" title="Permanent link">&para;</a></h2>
+<p>Beyond the Glasser parcellation used in the examples above, many other atlases and databases can be used to define ROIs:</p>
+<h3 id="commonly-used-atlases">Commonly used atlases<a class="headerlink" href="#commonly-used-atlases" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atlas</th>
+<th>Regions</th>
+<th>Type</th>
+<th>Where to get it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Glasser (HCP-MMP1)</strong></td>
+<td>360 (cortical)</td>
+<td>Multi-modal</td>
+<td><a href="https://www.templateflow.org/">TemplateFlow</a> or <a href="https://doi.org/10.1038/nature18933">original paper</a></td>
+</tr>
+<tr>
+<td><strong>Schaefer</strong></td>
+<td>100–1000</td>
+<td>Functional parcellation</td>
+<td><a href="https://github.com/ThomasYeoLab/CBIG/tree/master/stable_projects/brain_parcellation/Schaefer2018_LocalGlobal">GitHub</a></td>
+</tr>
+<tr>
+<td><strong>Harvard-Oxford</strong></td>
+<td>48 cortical + 21 subcortical</td>
+<td>Probabilistic anatomical</td>
+<td>Distributed with FSL; also in <a href="https://nilearn.github.io/stable/modules/generated/nilearn.datasets.fetch_atlas_harvard_oxford.html">nilearn.datasets</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="functional-databases-for-meta-analytic-rois">Functional databases for meta-analytic ROIs<a class="headerlink" href="#functional-databases-for-meta-analytic-rois" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Database</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NeuroSynth</strong></td>
+<td>Automated meta-analysis platform. Generate activation maps from thousands of studies using keyword search.</td>
+<td><a href="https://neurosynth.org/">neurosynth.org</a></td>
+</tr>
+<tr>
+<td><strong>Neuroquery</strong></td>
+<td>Multivariate meta-analysis tool that predicts brain maps from text queries.</td>
+<td><a href="https://neuroquery.org/">neuroquery.org</a></td>
+</tr>
+<tr>
+<td><strong>OpenNeuro</strong></td>
+<td>Open repository of neuroimaging datasets. Useful for finding localiser data and task contrasts.</td>
+<td><a href="https://openneuro.org/">openneuro.org</a></td>
+</tr>
+<tr>
+<td><strong>Neuroimaging Core Atlas Docs</strong></td>
+<td>Practical guide to working with brain atlases.</td>
+<td><a href="https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/atlases.html">readthedocs</a></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Loading atlases in Python</p>
+<p>Nilearn provides convenient functions to fetch and load many standard atlases directly:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">nilearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Fetch Schaefer 400-region parcellation</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">schaefer</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_atlas_schaefer_2018</span><span class="p">(</span><span class="n">n_rois</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">atlas_img</span> <span class="o">=</span> <span class="n">schaefer</span><span class="o">.</span><span class="n">maps</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">labels</span> <span class="o">=</span> <span class="n">schaefer</span><span class="o">.</span><span class="n">labels</span>
+</span></code></pre></div>
+</div>
+<p>For a broader overview of atlases and templates, see the <a href="../index.html#brain-atlases-and-templates">Brain Atlases and Templates</a> section on the fMRI landing page.</p>
+<hr />
+<h2 id="extracting-signal-from-rois-with-python">Extracting Signal from ROIs with Python<a class="headerlink" href="#extracting-signal-from-rois-with-python" title="Permanent link">&para;</a></h2>
+<p>As an alternative to the MATLAB workflow above, you can use nilearn to extract signal from ROIs:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">nilearn.maskers</span><span class="w"> </span><span class="kn">import</span> <span class="n">NiftiMasker</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Load an ROI mask and extract signal from functional data</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">masker</span> <span class="o">=</span> <span class="n">NiftiMasker</span><span class="p">(</span><span class="n">mask_img</span><span class="o">=</span><span class="s1">&#39;path/to/roi_mask.nii.gz&#39;</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">signals</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="s1">&#39;path/to/func_bold.nii.gz&#39;</span><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Extracted signal shape: </span><span class="si">{</span><span class="n">signals</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (n_timepoints, n_voxels)</span>
+</span></code></pre></div>
+<p>For atlas-based parcellations (extracting one signal per region):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">nilearn.maskers</span><span class="w"> </span><span class="kn">import</span> <span class="n">NiftiLabelsMasker</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">masker</span> <span class="o">=</span> <span class="n">NiftiLabelsMasker</span><span class="p">(</span><span class="n">labels_img</span><span class="o">=</span><span class="s1">&#39;path/to/schaefer_400.nii.gz&#39;</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">region_signals</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="s1">&#39;path/to/func_bold.nii.gz&#39;</span><span class="p">)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Region signals shape: </span><span class="si">{</span><span class="n">region_signals</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (n_timepoints, n_regions)</span>
+</span></code></pre></div>
+<p>For more examples, see the <a href="https://nilearn.github.io/stable/manipulating_images/masker_objects.html">nilearn masker documentation</a>.</p>
 
 
 
@@ -4063,7 +4232,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="February 25, 2026 15:38:17 CET">February 25, 2026 15:38:17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="February 25, 2026 17:39:43 CET">February 25, 2026 17:39:43</span>
   </span>
 
     
