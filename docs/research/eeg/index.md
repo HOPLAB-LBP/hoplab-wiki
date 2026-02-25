@@ -22,14 +22,6 @@ In Hoplab, we typically set up experiments for multivariate EEG ("Representation
 
     [:octicons-arrow-right-24: Get started](eeg-acquisition.md)
 
-- :octicons-checklist-24:{ .lg .middle } __Something else__
-
-    ---
-
-    A placeholder for another EEG-related topic: eye tracking and/or EOG?
-
-    [:octicons-arrow-right-24: something](eeg-acquisition.md)
-
 - :octicons-tools-24:{ .lg .middle } __Data analysis__
 
     ---
@@ -49,13 +41,31 @@ In Hoplab, we typically set up experiments for multivariate EEG ("Representation
 </div>
 
 <!--
-__TODO__: Add information on the analysis (OSF page of Chen et al has no readme!)
+=== EEG Section TODOs ===
 
-__TODO__: Also describe details of pre-processing (no pre-processing script on OSF)
+__TODO__: [Analysis page] Document the lab's standard multivariate EEG analysis approach
+(Representational Dynamics per Chen et al. 2023 and Leys et al. 2025), including how to
+use the CoSMoMVPA toolbox. The OSF archive (https://osf.io/d5egu/) has code but no README
+— add explanatory context on this page.
 
-__TODO__: Add EEG default lab setup info (e.g. photocell setup, correct PsychoPy settings, response box configuration, screen resolution, EOG, timing delays, config file, triggers, eyetracking) along with common errors (e.g., triggers, USB connection error)
+__TODO__: [Analysis page] Describe the preprocessing pipeline (filtering, re-referencing,
+artifact detection/correction, ICA, epoching, baseline correction). Note: no preprocessing
+script is currently available on the OSF archive.
 
-__TODO__: Add PsychoPy script template
+__TODO__: [Lab setup] Document default EEG lab hardware configuration — photocell placement,
+screen resolution, response box setup, and config file structure.
 
-__TODO__: Add Eyetracking info
+__TODO__: [Lab setup] Document correct PsychoPy settings for EEG, including timing delays
+and trigger configuration.
+
+__TODO__: [Lab setup] Document EOG recording setup and electrode placement.
+
+__TODO__: [Lab setup] Add a troubleshooting section for common errors (e.g., triggers not
+registering, USB serial connection failures, timing drift).
+
+__TODO__: [Task page] Create and link a PsychoPy EEG task template implementing triggers,
+photocell, and timing best practices.
+
+__TODO__: [Eyetracking] Document concurrent EEG-eyetracking setup, including hardware
+configuration, synchronisation, and data integration workflow.
 -->
