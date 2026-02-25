@@ -1,32 +1,32 @@
 /* stylesheets/extra.css */
 :root {
   --md-primary-fg-color:        #44546A;
-  --md-primary-fg-color--light: #ECB7B7;
-  --md-primary-fg-color--dark:  #90030C;
+  --md-primary-fg-color--light: #8A97A8;
+  --md-primary-fg-color--dark:  #2D3A4D;
 }
 
 /* Light mode colors */
 [data-md-color-scheme="default"] {
   /* Main content link colors */
-  --md-typeset-a-color: #0077BE; /* Vibrant Blue */
-  --md-typeset-a-hover-color: #ad3d8c; /* Muted Purple */
+  --md-typeset-a-color: #1D6CB0;
+  --md-typeset-a-hover-color: #14507D;
   /* Table of contents link base color */
-  --md-toc-link-color: #44546A; /* Matches primary for consistency */
-  
+  --md-toc-link-color: #44546A;
+
   /* Table of contents link colors */
-  --md-toc-link-hover-color: #ad3d8c; /* Deep Mauve */
+  --md-toc-link-hover-color: #1D6CB0;
 }
 
 /* Dark mode colors */
 [data-md-color-scheme="slate"] {
   /* Main content link colors */
-  --md-typeset-a-color: #40E0D0; /* Turquoise */
-  --md-typeset-a-hover-color: #CCAADD; /* Soft Lilac */
+  --md-typeset-a-color: #7CB3F0;
+  --md-typeset-a-hover-color: #A8CFF5;
   /* Table of contents link base color */
-  --md-toc-link-color: #B0C4DE; /* Light Steel Blue for dark mode */
-  
+  --md-toc-link-color: #94A3B8;
+
   /* Table of contents link colors */
-  --md-toc-link-hover-color: #EEBB99; /* Peach */
+  --md-toc-link-hover-color: #B0C4DE;
 }
 
 /* Light mode main content link styles */
@@ -84,54 +84,55 @@
 }
 
 .md-content img:active {
-    transform: scale(2);
+    transform: scale(1.8);
+    transform-origin: center top;
     cursor: zoom-out;
     z-index: 1000; /* Increase z-index when zoomed */
 }
 
 /* First level: circles */
 .md-content ul {
-    list-style-type: disc; /* Use circle for the first level */
-    margin: 0.5em 0; /* Reduce space before and after lists */
-    padding-left: 20px; /* Consistent padding for all list levels */
-    color: #444; /* Softer color for better readability */
+    list-style-type: disc;
+    margin: 0.5em 0;
+    padding-left: 20px;
+    color: var(--md-default-fg-color);
 }
 
 /* Second level: hyphens */
 .md-content ul ul {
-    list-style-type: none; /* Remove default bullet */
-    margin: 0.25em 0; /* Tighter spacing for nested lists */
+    list-style-type: none;
+    margin: 0.25em 0;
 }
 
 .md-content ul ul li::before {
     content: "-";
-    color: #3498db; /* Customize color if needed */
-    margin-right: 8px; /* Add some space between the symbol and the text */
-    font-weight: bold; /* Optional: make the hyphen bold */
+    color: var(--md-primary-fg-color);
+    margin-right: 8px;
+    font-weight: bold;
 }
 
 /* Third level: small arrows */
 .md-content ul ul ul {
-    list-style-type: none; /* Remove default bullet */
-    margin: 0.25em 0; /* Further reduced spacing */
+    list-style-type: none;
+    margin: 0.25em 0;
 }
 
 .md-content ul ul ul li::before {
-    content: "→"; /* Small arrow symbol */
-    color: #1abc9c; /* Customize color if needed */
-    margin-right: 8px; /* Add space between the arrow and the text */
-    font-weight: bold; /* Optional: make the arrow bold */
+    content: "→";
+    color: var(--md-primary-fg-color--light);
+    margin-right: 8px;
+    font-weight: bold;
 }
 
 /* General styling for list items */
 .md-content ul li {
-    margin-bottom: 0.3em; /* Less space between each list item */
-    line-height: 1.5; /* Improved line height for readability */
+    margin-bottom: 0.3em;
+    line-height: 1.5;
 }
 
 /* Styling for code blocks in pre elements, useful to display directory trees */
 .pre code {
-  background-color: #f5f5f5;
+  background-color: var(--md-code-bg-color, #f5f5f5);
   padding: 10px;
   display: block;
   font-family: monospace;
@@ -178,7 +179,7 @@
 
 /* Optional: add subtle gradient to the first H1 on a page */
 .md-content__inner > h1:first-child {
-  background: linear-gradient(90deg, var(--md-primary-fg-color), #7e57c2);
+  background: linear-gradient(90deg, var(--md-primary-fg-color), var(--md-primary-fg-color--light));
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -341,12 +342,6 @@
 /* Bordered images helper: ![alt](src){ .img-border } */
 .img-border { border: 1px solid rgb(0 0 0 / 10%); border-radius: 6px; }
 [data-md-color-scheme="slate"] .img-border { border-color: rgb(255 255 255 / 12%); }
-
-/* Improve current zoom effect bounds */
-.md-content img:active {
-  transform: scale(1.8);
-  transform-origin: center top;
-}
 
 /* =========================
    Utilities & Components
