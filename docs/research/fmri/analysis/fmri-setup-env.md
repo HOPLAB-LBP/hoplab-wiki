@@ -500,4 +500,6 @@ Remember, setting up an fMRI analysis environment can be complex. Take your time
 
 ---
 
-Now you’re ready to proceed **convert your data into BIDS format**. See the next guide for instructions on setting up your BIDS folder. [--> BIDS conversion](fmri-bids-conversion.md)
+Now you’re ready to proceed to **convert your data into BIDS format**.
+
+[BIDS conversion :material-arrow-right:](fmri-bids-conversion.md){ .md-button .md-button--primary }

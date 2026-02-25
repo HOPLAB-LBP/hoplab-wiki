@@ -4,7 +4,7 @@ This manual is based on the BioSemi EEG manual from the Cognitive Control in Con
 
 !!! info "Do's and don'ts"
     - **Do not change any hardware or permanent software settings** (e.g., monitor refresh rate) without approval from the EEG lab manager.
-    - **Reserve your slots via Calira.** Make sure all your lab sessions are properly scheduled. If you don’t have access yet to Calira, contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473).
+    - **Reserve your slots via Calira.** Make sure all your lab sessions are properly scheduled. If you don’t have access yet to Calira, contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743).
     - If you are planning to use the EEG lab for your experiment, ask Klara to add you to the **EEG channel on the NeuroSPACE Slack** through which everything related to the EEG lab is communicated.
     - Don’t use the system before carefully reading the **user documentation**. You can find the ActiveTwo user manual and operating guidelines on [Teams](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/1.%20EEG%20BioSemi%20Manuals?csf=1&web=1&e=sA1ycQ).
     - **Avoid contact with metal** while handling or storing the electrodes (this increases noise).
@@ -16,7 +16,7 @@ This manual is based on the BioSemi EEG manual from the Cognitive Control in Con
     - **Wash the electrodes immediately after use** by rinsing them with warm water (do not soak more than 10 mins). Do not scrub or use detergents on electrodes, only use mild disinfectant if absolutely necessary.
     - **Avoid using hot air for drying caps.** Caps can be washed with mild detergent, but dry them by towel and lay flat. If you need to speed-dry a wet cap, you may use a blow dryer—but only with cold air.
     - **Transfer your data after each session.** For example, make sure to copy your data at the end of the day. The computers are regularly cleaned, and it’s your own responsibility to avoid data loss.
-    - **Always return the key of the EEG lab to the locker** when you’re not in the lab. You can find the key in the keybox next to the coffee machine on the ground floor. You can ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) for the code.
+    - **Always return the key of the EEG lab to the locker** when you’re not in the lab. You can find the key in the keybox next to the coffee machine on the ground floor. You can ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) for the code.
 
 ## Before the day: planning participants
 
@@ -44,8 +44,15 @@ These are the first things to do upon arriving in the EEG lab:
 2. In the EEG room, switch on the general power strip, turn on the screen of the task computer and run the script on the desktop to set the correct screen resolution. Then, switch on the A/D-box using the on/off switch (see **Figure 1**).
 3. Check on the A/D-box whether its battery is charged. If the battery is low, a red light will turn on (see **Figure 1**). In that case, take out the battery by opening the black clips at the sides and replace it with the spare battery that can be found in the left corner of the desk with the stimulus computer. Make sure that one battery is always charging (see **Figure 2**). At a later stage you can also check the battery status in ActiView (see **Figure 9**).
 
-![A/D-box](../../assets/eeg-acquisition-fig1.png)
-![A/D-box battery](../../assets/eeg-acquisition-fig2.png)
+<figure markdown="span">
+  ![A/D-box](../../assets/eeg-acquisition-fig1.png)
+  <figcaption>Figure 1 — The A/D-box with power switch and battery indicator.</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![A/D-box battery](../../assets/eeg-acquisition-fig2.png)
+  <figcaption>Figure 2 — Spare battery charging station.</figcaption>
+</figure>
 
 Then, make sure everything you'll need is within reach. You can find all necessary materials in the EEG closet in the room. It is easiest to prepare all the following items on the round table next to the closet, away from the computers:
 
@@ -57,8 +64,15 @@ Then, make sure everything you'll need is within reach. You can find all necessa
     - 1x medium (head circumference of 54-58 cm)
     - 2x medium-large (head circumference of 56-60 cm)
 
-![Syringe filling](../../assets/eeg-acquisition-fig3.png)
-![Syringe cleaning](../../assets/eeg-acquisition-fig4.png)
+<figure markdown="span">
+  ![Syringe filling](../../assets/eeg-acquisition-fig3.png)
+  <figcaption>Figure 3 — Filling the syringe with Signa gel (do not fill to the rim).</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![Syringe cleaning](../../assets/eeg-acquisition-fig4.png)
+  <figcaption>Figure 4 — Cleaning gel remainders off the syringe tip.</figcaption>
+</figure>
 
 ## Upon participant arrival
 
@@ -70,12 +84,18 @@ It is probably the first time for your participant to participate in an EEG expe
 4. In case the participant wears glasses, it is easiest to remove them for the application of the EEG cap and the electrodes. Right before the start of the experiment, the participant can put their glasses back on. If possible, ask the participant to wear glasses rather than contact lenses to decrease the blinking frequency during the experiment.
 5. Measure the participant's linear distance from nasion (indentation at the top of the nose between the eyes) to inion (small bump just above the neck) to determine the correct cap size (see **Figure 5**). The sizes can be found on the label in the back of the cap (e.g., if you measure 54 cm, then take the small-medium sized head cap with range 52-56 cm).
 
-    ![Measuring head circumference](../../assets/eeg-acquisition-fig5.png)
+    <figure markdown="span">
+      ![Measuring head circumference](../../assets/eeg-acquisition-fig5.png)
+      <figcaption>Figure 5 — Measuring the nasion-to-inion distance to determine cap size.</figcaption>
+    </figure>
 
 6. Place the cap on the participant's head: Spread both of your hands in the cap and ask the participant to hold the front part. Make sure both the ears and the label on the back stick out of the cap.
 7. Make sure the cap is properly centered by measuring whether A1 (Vertex) is in the center, i.e., halfway between the ears and halfway between the nasion and inion (see **Figure 6**). Adjust if necessary.
 
-    ![Centering the electrode cap](../../assets/eeg-acquisition-fig6.png)
+    <figure markdown="span">
+      ![Centering the electrode cap](../../assets/eeg-acquisition-fig6.png)
+      <figcaption>Figure 6 — Centering the cap by checking A1 (Vertex) position.</figcaption>
+    </figure>
 
 8. Close the cap with the velcro straps under the chin. To avoid itching from the velcro, you can add a gauze pad underneath. Make sure that the participant is comfortable.
 9. Fill all electrode gaps with superconducting gel (see **Figure 7a**) in the following way:
@@ -96,11 +116,17 @@ It is probably the first time for your participant to participate in an EEG expe
     !!! tip "Tip"
         Per set, individual electrodes are numbered. Place the electrodes in ascending order to avoid tangling the wires. Start at the base of the skull and work your way up towards the forehead. Make sure all electrode wires are routed toward a single point at the back of the head and toward the A/D box. This reduces cable strain when connecting the electrodes.
 
-    ![Applying gel and electrodes](../../assets/eeg-acquisition-fig7.png)
+    <figure markdown="span">
+      ![Applying gel and electrodes](../../assets/eeg-acquisition-fig7.png)
+      <figcaption>Figure 7 — (a) Applying superconducting gel and (b) inserting electrodes into the cap.</figcaption>
+    </figure>
 
 11. Go into the EEG booth and let the participant sit in the right position for the experiment. Take off the protective caps from the electrode sets, double check their orientation and carefully connect them to the A/D box (see **Figure 8**). Make sure the participant sits comfortably to avoid them moving too much during the experiment. You can adjust the height of the chair and the chin rest if needed.
 
-    ![Connecting the electrodes](../../assets/eeg-acquisition-fig8.png)
+    <figure markdown="span">
+      ![Connecting the electrodes](../../assets/eeg-acquisition-fig8.png)
+      <figcaption>Figure 8 — Connecting the electrode sets to the A/D-box.</figcaption>
+    </figure>
 
 12. In case the participant wears glasses, you can put them back on now.
 13. Turn the lights low (the light switch is near the door) and make sure the lightning is consistent across all of your participants. Do not lower the lights too much as a high contrast between the room and monitor increases the blinking frequency. During breaks, you might want to turn the lights up (to increase alertness) and ask the participant if they would like to drink some water (to decrease swallowing).
@@ -111,7 +137,10 @@ Go to the acquisition computer, and take care of the following steps:
 
 1. Start up ActiView.
 
-    ![ActiView settings](../../assets/eeg-acquisition-fig9.png)
+    <figure markdown="span">
+      ![ActiView settings](../../assets/eeg-acquisition-fig9.png)
+      <figcaption>Figure 9 — ActiView interface showing start/file buttons, decimation, and battery status.</figcaption>
+    </figure>
 
 2. In the right top corner, you can check the battery status of the A/D-box (see **Figure 9**). ActiView will give a warning if the battery status is below 20%.
 3. Go to the `about actiview` tab and click `set up configuration file`. You can find preset configuration files for the 128-channel system in the desktop folder `config_files`. Check the associated readme file for more information on the chosen presets. Load the one that matches your experiment needs.
@@ -121,7 +150,10 @@ Go to the acquisition computer, and take care of the following steps:
     - The impedance of each electrode must be between -20 µV and 20 µV (note that this measure is actually an electrode offset value with the CMS electrode as a reference, so negative values are not actually negative). Adjust the electrodes that are not within these values (e.g., Fz in **Figure 10**) by adding or removing some gel, moving the hair below the electrode with the tip of the syringe and/or by wiggling the electrode a bit.
     - If the electrode impedance stays far outside the [-20 20 µV] range, the electrode might be broken and needs to be replaced. In case this electrode is not crucial for your study, you can write down the code of the electrode and later contact the EEG lab manager for the back-up electrode set.  
 
-    ![Electrode offsets](../../assets/eeg-acquisition-fig10.png)
+    <figure markdown="span">
+      ![Electrode offsets](../../assets/eeg-acquisition-fig10.png)
+      <figcaption>Figure 10 — Electrode offset tab showing impedance values (scale set to 50 µV).</figcaption>
+    </figure>
 
     !!! Tip
         You can mirror the screen of the acquisition PC with the electrode offsets in the EEG booth, so that you don't have to run back and forth when adjusting the electrodes to get the impedance right. Don't forget to turn off the screen when you are done.
@@ -133,9 +165,15 @@ Go to the acquisition computer, and take care of the following steps:
     - If all electrodes are connected correctly, Actiview should look like **Figure 12**.
     - Show the participant what happens when they blink, cough, swallow, etc. Instruct the participant to minimize these movements during the measurement phase.
 
-    ![distorted EEG signal](../../assets/eeg-acquisition-fig11.png)
+    <figure markdown="span">
+      ![distorted EEG signal](../../assets/eeg-acquisition-fig11.png)
+      <figcaption>Figure 11 — Distorted EEG signal: (a) bad reference electrode connection; (b) cap label not sticking out.</figcaption>
+    </figure>
 
-    ![good EEG signal](../../assets/eeg-acquisition-fig12.png)
+    <figure markdown="span">
+      ![good EEG signal](../../assets/eeg-acquisition-fig12.png)
+      <figcaption>Figure 12 — A properly connected EEG signal in ActiView.</figcaption>
+    </figure>
 
 ## Recording EEG-data
 
@@ -149,7 +187,10 @@ Hooray, you are now ready to start acquiring EEG data! To do so, follow these st
 6. The data is saved in the folder you selected earlier. Make sure to copy the data from the acquisition computer to your personal (encrypted) drive at the end of your experiment. Occasionally, the EEG computer drive will be cleaned and your data might be lost if it is not backed-up.
 7. When you are done, turn off the A/D-box, the general power strip and the lights in the EEG room.
 
-    ![trigger check](../../assets/eeg-acquisition-fig13.png)
+    <figure markdown="span">
+      ![trigger check](../../assets/eeg-acquisition-fig13.png)
+      <figcaption>Figure 13 — Checking trigger format (switch from analog to digital) to verify trigger codes.</figcaption>
+    </figure>
 
     !!! Tip
         Make sure to write down the "bad channels" (i.e., with impedances outside of the [-20 20 µV] range) on your participant log (you can find an example [here](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/log_EEG_participants.xlsx?d=wa29320cdb14c4e989a3c5eed41b4c61a&csf=1&web=1&e=R982GF)) for each run separately (the impedances can change throughout the experiment). You can then take this into account in your analysis (e.g., through interpolation).
@@ -164,8 +205,8 @@ Hooray, you are now ready to start acquiring EEG data! To do so, follow these st
 6. Remove the head cap from the participant's head and place it in another tub with lukewarm water and some mild detergent.
 7. Let the participant wash the gel out off their hair in the sink. Below the sink we have shampoo they can use.
 8. Do not forget to note the necessary payment details in case the participated should receive a monetary compensation. Save this personal information in a password-protected file in a secure environment and separately from the research data.
-9. When they are dry, add all of your used towels and/or wash cloths to the laundry bag and indicate this on the paper taped to the cupboard (check one box per towel/hand cloth added). When all boxes are checked, the laundry bag is full. Notify [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) to have them washed.
-10. Check whether any material is close to running out of stock (e.g., SignaGel, shampoo, adhesive tape, interdental brushes, cotton swabs, etc.) and notify [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116473) if this is the case. Please take into account that refilling stock might take several weeks.
+9. When they are dry, add all of your used towels and/or wash cloths to the laundry bag and indicate this on the paper taped to the cupboard (check one box per towel/hand cloth added). When all boxes are checked, the laundry bag is full. Notify [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to have them washed.
+10. Check whether any material is close to running out of stock (e.g., SignaGel, shampoo, adhesive tape, interdental brushes, cotton swabs, etc.) and notify [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) if this is the case. Please take into account that refilling stock might take several weeks.
 11. Take the signed ICF with you (do not leave it in the EEG room) and safely store it in a locked cabinet in your office.
 
 ## Cleaning

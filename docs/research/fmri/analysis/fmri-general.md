@@ -129,4 +129,4 @@ Additional information on the fMRI sequence can be found directly at the scanner
 
 ---
 
-Next Step --> [Set-up your environment](fmri-setup-env.md)
+[Set up your environment :material-arrow-right:](fmri-setup-env.md){ .md-button .md-button--primary }

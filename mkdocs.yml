@@ -110,6 +110,7 @@ theme:
     - content.code.copy
     - content.code.select
     - content.action.edit
+    - content.tooltips
     - navigation.instant
     - navigation.tracking
     - navigation.tabs
@@ -134,19 +135,26 @@ markdown_extensions:
   - footnotes
   - admonition
   - meta
-  - pymdownx.arithmatex
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.betterem
   - pymdownx.caret
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
   - pymdownx.striphtml
   - pymdownx.magiclink
   - pymdownx.progressbar
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tilde
   - pymdownx.tabbed:
       alternate_style: true
@@ -168,12 +176,16 @@ plugins:
 #  - privacy
   - search
   - git-authors
-#  - git-revision-date-localized:
-#      type: datetime
-#      timezone: Europe/Brussels
+  - git-revision-date-localized:
+      type: datetime
+      timezone: Europe/Brussels
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra:
   consent:

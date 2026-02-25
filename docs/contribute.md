@@ -7,6 +7,8 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
 !!! tip "Suggest or make quick changes"
     For most cases, if you want to suggest some changes you can do so by opening a new Issue. If you want to make quick changes to any page, you can do so by clicking on the pencil icon (✏️) at the top right of the page to begin editing the file.
 
+[Open an Issue :material-alert-circle-outline:](https://github.com/HOPLAB-LBP/hoplab-wiki/issues/new){ .md-button } [View open PRs :material-source-pull:](https://github.com/HOPLAB-LBP/hoplab-wiki/pulls){ .md-button }
+
 ## Table of contents
 
 1. [Getting started](#getting-started)
