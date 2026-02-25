@@ -13,6 +13,7 @@ on:
       - ".lychee.toml"
       - ".github/workflows/*.yml"
       - "scripts/docs_ci_check.sh"
+      - "scripts/check_mkdocs_syntax.py"
 
 permissions:
   contents: write
@@ -35,6 +36,10 @@ jobs:
         with:
           globs: "docs/**/*.md"
           fix: true
+        continue-on-error: true
+
+      - name: Auto-fix MkDocs Material syntax (curly quotes, missing blank lines)
+        run: python3 scripts/check_mkdocs_syntax.py --fix docs/
         continue-on-error: true
 
       - name: Auto-fix YAML trailing whitespace
@@ -157,6 +162,18 @@ jobs:
         if: always() && steps.mkdocs.outcome == 'failure'
         run: echo "failed" > /tmp/pr-checks/mkdocs-status
 
+      # ── Check 6: MkDocs Material syntax ─────────────────
+      - name: MkDocs Material syntax check
+        id: mkdocs_syntax
+        continue-on-error: true
+        run: |
+          python3 scripts/check_mkdocs_syntax.py docs/ 2>&1 | tee /tmp/pr-checks/mkdocs-syntax-output
+          echo "passed" > /tmp/pr-checks/mkdocs-syntax-status
+
+      - name: Mark MkDocs syntax status
+        if: always() && steps.mkdocs_syntax.outcome == 'failure'
+        run: echo "failed" > /tmp/pr-checks/mkdocs-syntax-status
+
       # ── Assemble and post the report ─────────────────────
       - name: Build report
         if: always()
@@ -173,6 +190,7 @@ jobs:
           YAML=$(cat /tmp/pr-checks/yamllint-status 2>/dev/null || echo "skipped")
           LINKS=$(cat /tmp/pr-checks/linkcheck-status 2>/dev/null || echo "skipped")
           BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "skipped")
+          SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "skipped")
 
           # Helper: clickable edit link for a file at a line number
           # Usage: edit_link "path/to/file" "42" → markdown link to GitHub edit view
@@ -199,7 +217,7 @@ jobs:
 
           # Count failures
           FAILURES=0
-          for s in "$SPELL" "$MDLINT" "$YAML" "$LINKS" "$BUILD"; do
+          for s in "$SPELL" "$MDLINT" "$YAML" "$LINKS" "$BUILD" "$SYNTAX"; do
             [ "$s" = "failed" ] && FAILURES=$((FAILURES + 1))
           done
 
@@ -217,6 +235,7 @@ jobs:
           | YAML lint | $(emoji "$YAML") Passed |
           | Link check | $(emoji "$LINKS") Passed |
           | MkDocs build | $(emoji "$BUILD") Passed |
+          | MkDocs syntax | $(emoji "$SYNTAX") Passed |
 
           A reviewer will take a look shortly.
           EOF
@@ -235,6 +254,7 @@ jobs:
           | YAML lint | $(emoji "$YAML") $(echo "$YAML" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
           | Link check | $(emoji "$LINKS") $(echo "$LINKS" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
           | MkDocs build | $(emoji "$BUILD") $(echo "$BUILD" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
+          | MkDocs syntax | $(emoji "$SYNTAX") $(echo "$SYNTAX" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
 
           Scroll down for details on each failed check and step-by-step instructions to fix them.
           EOF
@@ -505,6 +525,44 @@ jobs:
           EOF
           fi
 
+          # ── MkDocs syntax section ───────────────────────
+          if [ "$SYNTAX" = "failed" ]; then
+            cat >> "$REPORT" << 'EOF'
+
+          ---
+
+          ### :x: MkDocs syntax — rendering issues detected
+
+          Some MkDocs Material syntax issues were found that cause **silent rendering failures** (tabs not appearing, content falling outside admonitions, etc.).
+
+          EOF
+
+            if [ -f /tmp/pr-checks/mkdocs-syntax-output ]; then
+              echo "| Location | Issue |" >> "$REPORT"
+              echo "|----------|-------|" >> "$REPORT"
+              grep -E '^docs/.*:[0-9]+:' /tmp/pr-checks/mkdocs-syntax-output | head -30 | while IFS= read -r line; do
+                file=$(echo "$line" | cut -d: -f1)
+                lineno=$(echo "$line" | cut -d: -f2)
+                issue=$(echo "$line" | sed 's/^[^:]*:[0-9]*: *//')
+                echo "| $(edit_link "$file" "$lineno") | $issue |" >> "$REPORT"
+              done
+            fi
+
+            cat >> "$REPORT" << 'EOF'
+
+          **How to fix:**
+
+          | Issue | What it means | How to fix |
+          |-------|--------------|------------|
+          | **Curly/smart quotes in tab title** | The `===` line uses `"..."` instead of `"..."` | Replace with straight ASCII double quotes |
+          | **Missing blank line after tab header** | Content starts right after `=== "Title"` | Add an empty line between the `===` line and the content |
+          | **Tab/admonition content not indented** | Content is not indented 4 spaces inside the block | Indent all content by 4 spaces relative to the `===` or `!!!` marker |
+          | **Code block content at column 0** | Code inside an indented fence starts at the left margin | Indent the code to match the fence indentation |
+
+          > **Tip:** Most of these are auto-fixed by CI. If they persist, the fix requires manual attention.
+          EOF
+          fi
+
           # ── Footer ─────────────────────────────────────
           if [ "$FAILURES" -gt 0 ]; then
             cat >> "$REPORT" << 'EOF'
@@ -547,8 +605,9 @@ jobs:
           YAML=$(cat /tmp/pr-checks/yamllint-status 2>/dev/null || echo "skipped")
           LINKS=$(cat /tmp/pr-checks/linkcheck-status 2>/dev/null || echo "skipped")
           BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "skipped")
+          SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "skipped")
           FAILED=false
-          for s in "$SPELL" "$MDLINT" "$YAML" "$LINKS" "$BUILD"; do
+          for s in "$SPELL" "$MDLINT" "$YAML" "$LINKS" "$BUILD" "$SYNTAX"; do
             [ "$s" = "failed" ] && FAILED=true
           done
           if [ "$FAILED" = "true" ]; then

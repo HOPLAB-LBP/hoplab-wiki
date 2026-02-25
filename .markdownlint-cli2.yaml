@@ -38,6 +38,14 @@ config:
   # blank lines by design.
   MD032: false
 
+  # MD034: bare URLs
+  # Disabled: the auto-fix wraps URLs in <angle brackets>, which breaks URLs
+  # inside fenced code blocks (e.g., `git clone https://...` becomes invalid
+  # shell syntax). This is especially dangerous when code block content has
+  # inconsistent indentation inside MkDocs tabs, causing markdownlint to
+  # misidentify code as prose.
+  MD034: false
+
   # MD033: inline HTML - allowlist elements used by mkdocs-material
   MD033:
     allowed_elements:
