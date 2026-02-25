@@ -93,7 +93,35 @@ Replace:
 
     - **MNI152NLin2009cAsym**: Standard volumetric template.
     - **anat**: Subject’s native T1w space.
-    - **fsnative**: FreeSurfer's subject-specific surface space.
+    - **fsnative**: FreeSurfer’s subject-specific surface space.
+
+??? tip "Use CIFTI output for surface data"
+    If you plan to run analysis on **surface data**, consider using **CIFTI output images** from fMRIPrep. While this approach hasn’t been directly tested here, CIFTI outputs can provide several advantages:
+
+    - **Surface analysis in SPM** (see [this](https://neurostars.org/t/analyzing-func-gii-files-with-spm12/852/2) conversation on Neurostars).
+    - **CIFTI images** include cortical BOLD time series projected onto the surface using templates like the **Glasser2016 parcellation** (which is also used for MVPA).
+    - This method allows for direct analysis of surface data in formats like `.gii`, which can be compatible with **SPM** for further analysis.
+    - Using CIFTI outputs could simplify the process of obtaining **surface-based parcellations** and make the data more directly usable in subject space, potentially eliminating the need for complex and time-consuming transformations.
+    - It may also provide a **more accurate representation of cortical activity** by avoiding interpolation errors that can occur when mapping from volume to surface space.
+
+    If you decide to explore this option, make sure to include the cifti flag in `--output-spaces` when running `fmriprep-docker`. This setup will produce CIFTI files (`.dtseries.nii`) along with standard volumetric outputs, giving you flexibility in how you proceed with your analysis.
+
+??? warning "Allocating resources to fMRIPrep"
+    **Running fMRIPrep is resource and time intensive**, especially with high-resolution data. Here are some practical tips to optimize the process:
+
+    - **Time Estimate**: Processing a single subject can take between **4-8 hours** depending on your system’s specifications (e.g., CPU, RAM). Plan accordingly if you have many subjects.
+    - **Optimize Resource Allocation**: Adjust the `--n-cpus` and `--mem-mb` arguments to make the best use of your available hardware:
+        - **n-cpus**: Allocate about 70-80% of your CPU cores to avoid system slowdowns (e.g., `--n-cpus 12` on a 16-core system).
+        - **mem-mb**: Use around **80-90% of your total RAM**, leaving some free for the operating system (e.g., `--mem-mb 32000` on a 40 GB system).
+
+    - **Monitor Resource Usage**: While running fMRIPrep, open a system monitor like **Task Manager** (Windows), **Activity Monitor** (Mac), or **htop** (Linux) to observe CPU and memory usage:
+        - Aim for **high CPU usage** (close to maximum) and **RAM usage** that is slightly below your system’s capacity.
+        - If memory usage exceeds available RAM, the process might crash due to **Out of Memory (OOM)** errors or cause **disk space issues** if using a `--work-dir` that fills up.
+
+    - **Adjust Settings if Necessary**: If you encounter OOM errors or the process is slower than expected:
+        - **Lower `--mem-mb`**: Decrease memory allocation incrementally (e.g., by 2-4 GB at a time).
+        - **Reduce `--n-cpus`**: Using fewer cores can help balance the load and prevent crashes.
+        - **Use a dedicated `--work-dir`**: Specify a work directory on a **high-speed SSD** or similar to reduce I/O bottlenecks and ensure there’s enough disk space for temporary files.
 
 ### 3. Output Structure and Files
 
@@ -135,6 +163,54 @@ This command will analyze individual subjects and save the results in the specif
         --nprocs 8 --mem-gb 16 --verbose-reports
     ```
 
+??? example "MRIQC batch script with subject exclusion, group analysis, and classifier"
+    The following script runs MRIQC for multiple subjects (skipping excluded ones), then runs group-level analysis and the MRIQC classifier:
+
+    ```sh linenums="1" title="mriqc_batch.sh"
+    #!/bin/bash
+    for i in {0..40}; do
+        if [ $i -eq 0 ] || [ $i -eq 5 ] || [ $i -eq 14 ] || [ $i -eq 31 ]; then
+            continue
+        fi
+        subID=$(printf "sub-%02d" $i)
+        echo "Processing $subID"
+        docker run -it --rm \
+            -v /data/BIDS:/data:ro \
+            -v /data/BIDS/derivatives/mriqc:/out \
+            -v /temp_mriqc:/scratch \
+            nipreps/mriqc:latest /data /out participant \
+            --participant-label ${subID} \
+            --nprocs 16 --mem-gb 40 --float32 \
+            --work-dir /scratch \
+            --verbose-reports --resource-monitor -vv
+        sleep 0.5
+    done
+
+    echo "Running group analysis"
+    docker run -it --rm \
+        -v /data/BIDS:/data:ro \
+        -v /data/BIDS/derivatives/mriqc:/out \
+        -v /temp_mriqc:/scratch \
+        nipreps/mriqc:latest /data /out group \
+        --nprocs 16 --mem-gb 40 --float32 \
+        --work-dir /scratch \
+        --verbose-reports --resource-monitor -vv
+
+    sleep 0.5
+
+    echo "Running classifier"
+    docker run \
+        -v /temp_mriqc:/scratch \
+        -v /data/BIDS/derivatives/mriqc:/resdir \
+        -w /scratch --entrypoint=mriqc_clf poldracklab/mriqc:latest \
+        --load-classifier -X /resdir/group_T1w.tsv
+    ```
+
+    Adapt the subject range, exclusion list, paths, and resource parameters (`--nprocs`, `--mem-gb`) to match your dataset and system.
+
+    !!! warning
+        JSON files may include `NaN` values that are incompatible with MRIQC. Use a sanitization script (e.g., `sanitize_json.py`) to fix this issue before running MRIQC.
+
 ### 2. Understanding MRIQC Outputs
 
 MRIQC generates:
@@ -144,6 +220,30 @@ MRIQC generates:
 - **Group-level metrics** for overall dataset quality.
 
 Refer to the [MRIQC Documentation](https://mriqc.readthedocs.io/en/stable/) for a detailed explanation of each metric.
+
+---
+
+## Processing Eye-Tracking Data with bidsmreye
+
+[bidsmreye](https://bidsmreye.readthedocs.io/) is a tool that can extract eye-tracking information from the eye region of fMRI images using a deep learning model. It operates on fMRIPrep outputs and follows the BIDS convention.
+
+To process eye-tracking data using `bidsmreye`, run the following Docker command:
+
+```sh
+docker run -it --rm \
+    -v /path/to/BIDS/derivatives/fmriprep:/data \
+    -v /path/to/temp_bidsmreye:/out \
+    cpplab/bidsmreye:0.5.0 \
+    /data /out participant all \
+    --space T1w \
+    --reset_database \
+    --verbose
+```
+
+Replace the paths as appropriate for your dataset.
+
+!!! note
+    In practice, `bidsmreye` has been found to work reliably only when using the `T1w` fMRIPrep output space.
 
 ---
 

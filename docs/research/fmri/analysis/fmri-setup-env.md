@@ -372,7 +372,7 @@ These tools are not mandatory -- they can be installed if needed.
 
 ### FreeSurfer
 
-FreeSurfer is used for cortical surface reconstruction. The main surface reconstruction pipeline of FreeSurfer (`recon-all`) is bundled in the fmriprep docker image, and it is performed during the fmriprep anatomical workflow. This means that this tool is not strictly necessary, unless you plan on running additional surface processing steps (e.g., additional surface projections, such as the Glasser volumetric projection from fsaverage that is performed in the [fMRI workflow example](fmri-andrea-workflow.md#hcp-glasser-parcellation).
+FreeSurfer is used for cortical surface reconstruction. The main surface reconstruction pipeline of FreeSurfer (`recon-all`) is bundled in the fmriprep docker image, and it is performed during the fmriprep anatomical workflow. This means that this tool is not strictly necessary, unless you plan on running additional surface processing steps (e.g., additional surface projections, such as the Glasser volumetric projection from fsaverage described in the [ROIs guide](fmri-rois.md#hcp-glasser-parcellation-hcp-mmp10)).
 
 To install:
 
@@ -411,7 +411,7 @@ To install:
 
 ### ANTs
 
-ANTs is used for image registration and normalization. As for FreeSurfer, this tool is not strictly necessary, unless you want to generate the Glasser volumetric projection from fsaverage described [here](fmri-andrea-workflow.md#hcp-glasser-parcellation)
+ANTs is used for image registration and normalization. As for FreeSurfer, this tool is not strictly necessary, unless you want to generate the Glasser volumetric projection from fsaverage described in the [ROIs guide](fmri-rois.md#hcp-glasser-parcellation-hcp-mmp10)
 
 1. Download from [GitHub](https://github.com/ANTsX/ANTs/releases)
 2. Add to system PATH:
