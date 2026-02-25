@@ -3381,6 +3381,21 @@ This will print the regressor names directly in the MATLAB command window, helpi
 - Use <code>Export</code> in SPM to save figures as high-resolution images.
 - For 3D brain renderings, adjust the orientation and threshold for a clear presentation.</p>
 </div>
+<h3 id="visualizing-activations-on-volume-or-surface">Visualizing Activations on Volume or Surface<a class="headerlink" href="#visualizing-activations-on-volume-or-surface" title="Permanent link">&para;</a></h3>
+<p>To overlay activations on a subject's anatomy:</p>
+<ol>
+<li>Click <strong>Display</strong> -&gt; <strong>overlays...</strong> in the SPM GUI.</li>
+<li>Select <strong>sections</strong> for volume plotting or <strong>render</strong> for surface plotting.</li>
+<li>Choose the subject's anatomical image from <code>BIDS/derivatives/fmriprep/sub-xx/anat</code>:<ul>
+<li>For volume plots, select the <code>.nii</code> file corresponding to the same space as your GLM (usually MNI).</li>
+<li>For surface plots, select the pial or inflated brain image.</li>
+</ul>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>SPM cannot read <code>.nii.gz</code> files directly, so you must decompress them into <code>.nii</code> files. This can be done with any decompression tool by right-clicking on the file in your file explorer. Once decompressed, use the SPM GUI to select the <code>.nii</code> file.</p>
+</div>
 <hr />
 
 

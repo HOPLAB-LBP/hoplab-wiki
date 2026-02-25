@@ -2865,6 +2865,19 @@ myproject
 </ol>
 <p>By following these detailed steps, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration.</p>
 <hr />
+<hr />
+<h3 id="11-converting-eye-tracking-data-to-bids">11. Converting Eye-Tracking Data to BIDS<a class="headerlink" href="#11-converting-eye-tracking-data-to-bids" title="Permanent link">&para;</a></h3>
+<p>If your experiment includes eye-tracking recorded during fMRI (e.g., using an EyeLink system), you can organize this data following the BIDS convention.</p>
+<p><strong>Pre-requisite:</strong> Install the <a href="https://www.sr-research.com/support/thread-13.html">EyeLink Developers Kit/API</a> to convert EDF files into ASC files.</p>
+<ol>
+<li>Use the EyeLink API's <code>edf2asc</code> tool to convert your <code>.edf</code> files to <code>.asc</code> format.</li>
+<li>Run your eye-tracking conversion script to organize the ASC files into the BIDS structure, placing them alongside the corresponding functional data.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">BEP020 is not yet finalized</p>
+<p>The BIDS Extension Proposal for eye-tracking data (<a href="https://bids.neuroimaging.io/bep020">BEP020</a>) has <strong>not been approved yet</strong>. The specification may change before finalization. Consider whether event messages should be included in the BIDS structure, and be prepared to update your data organization as the standard evolves.</p>
+</div>
+<hr />
 <div class="admonition info">
 <p class="admonition-title">Next steps: Data storage</p>
 <p>Once your data is in BIDS format, make sure to follow the lab's <a href="../../rdm/current.html">data management guidelines</a> for storing and backing up your dataset. See the <a href="../../rdm/mango_active.html">ManGO guide</a> for uploading your data to the lab's active research data storage.</p>

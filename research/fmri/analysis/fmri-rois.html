@@ -2626,7 +2626,7 @@
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="c">% Date: October 2024</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="c">% Define output paths and options</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="n">outRoot</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;./chess-expertise-2024/results/test&#39;</span><span class="p">;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="n">outRoot</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;./chess-expertise-2025/results/test&#39;</span><span class="p">;</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="n">opt</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">struct</span><span class="p">();</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="n">opt</span><span class="p">.</span><span class="n">space</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;MNI152NLin2009cAsym_res-2&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% Coordinate space</span>
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="n">opt</span><span class="p">.</span><span class="n">dir</span><span class="p">.</span><span class="n">output</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fullfile</span><span class="p">(</span><span class="n">outRoot</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;rois&#39;</span><span class="p">);</span><span class="w"> </span><span class="c">% Output directory for ROIs</span>
@@ -2798,6 +2798,28 @@
 <p class="admonition-title">Warning</p>
 <p>The bilateral masks will be generated automatically only when both R and L coordinates are provided for a given ROI. If only R or L coordinates are provided, only the R or L mask will be saved.</p>
 </div>
+<hr />
+<h3 id="hcp-glasser-parcellation-hcp-mmp10">HCP Glasser Parcellation (HCP-MMP1.0)<a class="headerlink" href="#hcp-glasser-parcellation-hcp-mmp10" title="Permanent link">&para;</a></h3>
+<p>The <a href="https://figshare.com/articles/dataset/HCP-MMP1_0_projected_on_fsaverage/3498446">Glasser2016 parcellation</a> (HCP-MMP1.0) provides a comprehensive cortical atlas with <strong>180 ROIs per hemisphere</strong>, based on the Human Connectome Project Multi-Modal Parcellation. This parcellation is particularly useful for whole-brain ROI-based analyses such as MVPA, where you want to systematically decode information across all cortical regions.</p>
+<h4 id="using-the-glasser-atlas-in-mni-space">Using the Glasser atlas in MNI space<a class="headerlink" href="#using-the-glasser-atlas-in-mni-space" title="Permanent link">&para;</a></h4>
+<p>If you are running your analyses in a common volumetric space (e.g., MNI) — which is the most common approach — you can use a ready-made <strong>MNI volumetric version</strong> of the Glasser atlas provided by AFNI:</p>
+<ul>
+<li><strong>Atlas file</strong>: <a href="https://afni.nimh.nih.gov/pub/dist/atlases/MNI_HCP/MNI_Glasser_HCP_2021_v1.0a/MNI_Glasser_HCP_v1.0.nii.gz"><code>MNI_Glasser_HCP_v1.0.nii.gz</code></a></li>
+<li><strong>Documentation and additional files</strong>: <a href="https://afni.nimh.nih.gov/pub/dist/atlases/MNI_HCP/MNI_Glasser_HCP_2021_v1.0a/">MNI_HCP atlas folder</a></li>
+</ul>
+<p>This atlas can be used directly with your MNI-space beta images (e.g., from fMRIPrep with <code>MNI152NLin2009cAsym</code> output space) without any further projection or transformation steps.</p>
+<h4 id="projecting-the-glasser-atlas-to-subject-space">Projecting the Glasser atlas to subject space<a class="headerlink" href="#projecting-the-glasser-atlas-to-subject-space" title="Permanent link">&para;</a></h4>
+<p>If you need higher-fidelity, <strong>subject-specific</strong> ROIs — for instance, when running analyses in native subject space — you can project the Glasser parcellation from <code>fsaverage</code> to each individual subject. This involves converting annotation files to labels and mapping them through FreeSurfer's surface registration. The result is a set of volumetric ROIs in each subject's T1 space that respect individual cortical folding patterns.</p>
+<details class="tip">
+<summary>Automating Glasser projection with HPC-to-subject.sh</summary>
+<p>If you are using the Glasser parcellation across many subjects, you can automate the projection from <code>fsaverage</code> to subject space using a shell script (e.g., <code>HPC-to-subject.sh</code>). This script typically:</p>
+<ol>
+<li>Converts Glasser annotation files (<code>.annot</code>) to individual label files.</li>
+<li>Maps each label from <code>fsaverage</code> to the subject's native surface using FreeSurfer's <code>mri_label2vol</code> or similar tools.</li>
+<li>Transforms the resulting ROIs into the volumetric spaces used by your analysis (e.g., T1w, MNI).</li>
+</ol>
+<p>See the top of the script file for usage notes. An example implementation can be found in the <a href="https://github.com/costantinoai/chess-expertise-2025">chess-expertise-2025 repository</a>.</p>
+</details>
 <hr />
 <h2 id="intersecting-roi-masks-with-glm-results">Intersecting ROI Masks with GLM Results<a class="headerlink" href="#intersecting-roi-masks-with-glm-results" title="Permanent link">&para;</a></h2>
 <p>In our lab, we apply an additional refinement step to <strong>Region of Interest (ROI)</strong> masks to precisely target the most relevant brain voxels. This involves intersecting the mask (e.g., a spherical or anatomical ROI) with the <strong>significant activation</strong> of a specific contrast. This approach is particularly beneficial for analyses like <strong>multivariate pattern analysis (MVPA)</strong>, where targeted voxel selection is crucial for decoding tasks.</p>

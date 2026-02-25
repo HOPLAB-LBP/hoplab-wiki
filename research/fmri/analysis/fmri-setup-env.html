@@ -2885,7 +2885,7 @@
 <h2 id="installing-additional-tools">Installing additional tools<a class="headerlink" href="#installing-additional-tools" title="Permanent link">&para;</a></h2>
 <p>These tools are not mandatory -- they can be installed if needed.</p>
 <h3 id="freesurfer">FreeSurfer<a class="headerlink" href="#freesurfer" title="Permanent link">&para;</a></h3>
-<p>FreeSurfer is used for cortical surface reconstruction. The main surface reconstruction pipeline of FreeSurfer (<code>recon-all</code>) is bundled in the fmriprep docker image, and it is performed during the fmriprep anatomical workflow. This means that this tool is not strictly necessary, unless you plan on running additional surface processing steps (e.g., additional surface projections, such as the Glasser volumetric projection from fsaverage that is performed in the <a href="fmri-andrea-workflow.html#hcp-glasser-parcellation">fMRI workflow example</a>.</p>
+<p>FreeSurfer is used for cortical surface reconstruction. The main surface reconstruction pipeline of FreeSurfer (<code>recon-all</code>) is bundled in the fmriprep docker image, and it is performed during the fmriprep anatomical workflow. This means that this tool is not strictly necessary, unless you plan on running additional surface processing steps (e.g., additional surface projections, such as the Glasser volumetric projection from fsaverage described in the <a href="fmri-rois.html#hcp-glasser-parcellation-hcp-mmp10">ROIs guide</a>).</p>
 <p>To install:</p>
 <ol>
 <li>Download from the <a href="https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall">official website</a></li>
@@ -2933,7 +2933,7 @@
 </details>
 <hr />
 <h3 id="ants">ANTs<a class="headerlink" href="#ants" title="Permanent link">&para;</a></h3>
-<p>ANTs is used for image registration and normalization. As for FreeSurfer, this tool is not strictly necessary, unless you want to generate the Glasser volumetric projection from fsaverage described <a href="fmri-andrea-workflow.html#hcp-glasser-parcellation">here</a></p>
+<p>ANTs is used for image registration and normalization. As for FreeSurfer, this tool is not strictly necessary, unless you want to generate the Glasser volumetric projection from fsaverage described in the <a href="fmri-rois.html#hcp-glasser-parcellation-hcp-mmp10">ROIs guide</a></p>
 <ol>
 <li>Download from <a href="https://github.com/ANTsX/ANTs/releases">GitHub</a></li>
 <li>Add to system PATH:</li>

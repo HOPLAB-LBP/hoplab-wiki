@@ -1964,6 +1964,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#processing-eye-tracking-data-with-bidsmreye" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processing Eye-Tracking Data with bidsmreye
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#interpreting-fmriprep-and-mriqc-reports" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2495,6 +2506,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#processing-eye-tracking-data-with-bidsmreye" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processing Eye-Tracking Data with bidsmreye
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#interpreting-fmriprep-and-mriqc-reports" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2638,7 +2660,48 @@
 <ul>
 <li><strong>MNI152NLin2009cAsym</strong>: Standard volumetric template.</li>
 <li><strong>anat</strong>: Subject’s native T1w space.</li>
-<li><strong>fsnative</strong>: FreeSurfer's subject-specific surface space.</li>
+<li><strong>fsnative</strong>: FreeSurfer’s subject-specific surface space.</li>
+</ul>
+</details>
+<details class="tip">
+<summary>Use CIFTI output for surface data</summary>
+<p>If you plan to run analysis on <strong>surface data</strong>, consider using <strong>CIFTI output images</strong> from fMRIPrep. While this approach hasn’t been directly tested here, CIFTI outputs can provide several advantages:</p>
+<ul>
+<li><strong>Surface analysis in SPM</strong> (see <a href="https://neurostars.org/t/analyzing-func-gii-files-with-spm12/852/2">this</a> conversation on Neurostars).</li>
+<li><strong>CIFTI images</strong> include cortical BOLD time series projected onto the surface using templates like the <strong>Glasser2016 parcellation</strong> (which is also used for MVPA).</li>
+<li>This method allows for direct analysis of surface data in formats like <code>.gii</code>, which can be compatible with <strong>SPM</strong> for further analysis.</li>
+<li>Using CIFTI outputs could simplify the process of obtaining <strong>surface-based parcellations</strong> and make the data more directly usable in subject space, potentially eliminating the need for complex and time-consuming transformations.</li>
+<li>It may also provide a <strong>more accurate representation of cortical activity</strong> by avoiding interpolation errors that can occur when mapping from volume to surface space.</li>
+</ul>
+<p>If you decide to explore this option, make sure to include the cifti flag in <code>--output-spaces</code> when running <code>fmriprep-docker</code>. This setup will produce CIFTI files (<code>.dtseries.nii</code>) along with standard volumetric outputs, giving you flexibility in how you proceed with your analysis.</p>
+</details>
+<details class="warning">
+<summary>Allocating resources to fMRIPrep</summary>
+<p><strong>Running fMRIPrep is resource and time intensive</strong>, especially with high-resolution data. Here are some practical tips to optimize the process:</p>
+<ul>
+<li><strong>Time Estimate</strong>: Processing a single subject can take between <strong>4-8 hours</strong> depending on your system’s specifications (e.g., CPU, RAM). Plan accordingly if you have many subjects.</li>
+<li>
+<p><strong>Optimize Resource Allocation</strong>: Adjust the <code>--n-cpus</code> and <code>--mem-mb</code> arguments to make the best use of your available hardware:</p>
+<ul>
+<li><strong>n-cpus</strong>: Allocate about 70-80% of your CPU cores to avoid system slowdowns (e.g., <code>--n-cpus 12</code> on a 16-core system).</li>
+<li><strong>mem-mb</strong>: Use around <strong>80-90% of your total RAM</strong>, leaving some free for the operating system (e.g., <code>--mem-mb 32000</code> on a 40 GB system).</li>
+</ul>
+</li>
+<li>
+<p><strong>Monitor Resource Usage</strong>: While running fMRIPrep, open a system monitor like <strong>Task Manager</strong> (Windows), <strong>Activity Monitor</strong> (Mac), or <strong>htop</strong> (Linux) to observe CPU and memory usage:</p>
+<ul>
+<li>Aim for <strong>high CPU usage</strong> (close to maximum) and <strong>RAM usage</strong> that is slightly below your system’s capacity.</li>
+<li>If memory usage exceeds available RAM, the process might crash due to <strong>Out of Memory (OOM)</strong> errors or cause <strong>disk space issues</strong> if using a <code>--work-dir</code> that fills up.</li>
+</ul>
+</li>
+<li>
+<p><strong>Adjust Settings if Necessary</strong>: If you encounter OOM errors or the process is slower than expected:</p>
+<ul>
+<li><strong>Lower <code>--mem-mb</code></strong>: Decrease memory allocation incrementally (e.g., by 2-4 GB at a time).</li>
+<li><strong>Reduce <code>--n-cpus</code></strong>: Using fewer cores can help balance the load and prevent crashes.</li>
+<li><strong>Use a dedicated <code>--work-dir</code></strong>: Specify a work directory on a <strong>high-speed SSD</strong> or similar to reduce I/O bottlenecks and ensure there’s enough disk space for temporary files.</li>
+</ul>
+</li>
 </ul>
 </details>
 <h3 id="3-output-structure-and-files">3. Output Structure and Files<a class="headerlink" href="#3-output-structure-and-files" title="Permanent link">&para;</a></h3>
@@ -2671,6 +2734,89 @@
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span>--nprocs<span class="w"> </span><span class="m">8</span><span class="w"> </span>--mem-gb<span class="w"> </span><span class="m">16</span><span class="w"> </span>--verbose-reports
 </span></code></pre></div>
 </div>
+<details class="example">
+<summary>MRIQC batch script with subject exclusion, group analysis, and classifier</summary>
+<p>The following script runs MRIQC for multiple subjects (skipping excluded ones), then runs group-level analysis and the MRIQC classifier:</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">mriqc_batch.sh</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span>
+<span class="normal"><a href="#__codelineno-4-28">28</a></span>
+<span class="normal"><a href="#__codelineno-4-29">29</a></span>
+<span class="normal"><a href="#__codelineno-4-30">30</a></span>
+<span class="normal"><a href="#__codelineno-4-31">31</a></span>
+<span class="normal"><a href="#__codelineno-4-32">32</a></span>
+<span class="normal"><a href="#__codelineno-4-33">33</a></span>
+<span class="normal"><a href="#__codelineno-4-34">34</a></span>
+<span class="normal"><a href="#__codelineno-4-35">35</a></span>
+<span class="normal"><a href="#__codelineno-4-36">36</a></span>
+<span class="normal"><a href="#__codelineno-4-37">37</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">0</span>..40<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">        </span><span class="k">continue</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="nv">subID</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;sub-%02d&quot;</span><span class="w"> </span><span class="nv">$i</span><span class="k">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Processing </span><span class="nv">$subID</span><span class="s2">&quot;</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">    </span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">        </span>-v<span class="w"> </span>/data/BIDS:/data:ro<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">        </span>-v<span class="w"> </span>/data/BIDS/derivatives/mriqc:/out<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">        </span>-v<span class="w"> </span>/temp_mriqc:/scratch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">        </span>nipreps/mriqc:latest<span class="w"> </span>/data<span class="w"> </span>/out<span class="w"> </span>participant<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">        </span>--participant-label<span class="w"> </span><span class="si">${</span><span class="nv">subID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">        </span>--nprocs<span class="w"> </span><span class="m">16</span><span class="w"> </span>--mem-gb<span class="w"> </span><span class="m">40</span><span class="w"> </span>--float32<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">        </span>--work-dir<span class="w"> </span>/scratch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">        </span>--verbose-reports<span class="w"> </span>--resource-monitor<span class="w"> </span>-vv
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">    </span>sleep<span class="w"> </span><span class="m">0</span>.5
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="k">done</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19"></a>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Running group analysis&quot;</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">    </span>-v<span class="w"> </span>/data/BIDS:/data:ro<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="w">    </span>-v<span class="w"> </span>/data/BIDS/derivatives/mriqc:/out<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">    </span>-v<span class="w"> </span>/temp_mriqc:/scratch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="w">    </span>nipreps/mriqc:latest<span class="w"> </span>/data<span class="w"> </span>/out<span class="w"> </span>group<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="w">    </span>--nprocs<span class="w"> </span><span class="m">16</span><span class="w"> </span>--mem-gb<span class="w"> </span><span class="m">40</span><span class="w"> </span>--float32<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="w">    </span>--work-dir<span class="w"> </span>/scratch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28"></a><span class="w">    </span>--verbose-reports<span class="w"> </span>--resource-monitor<span class="w"> </span>-vv
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29"></a>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30"></a>sleep<span class="w"> </span><span class="m">0</span>.5
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31"></a>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Running classifier&quot;</span>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34"></a><span class="w">    </span>-v<span class="w"> </span>/temp_mriqc:/scratch<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35"></a><span class="w">    </span>-v<span class="w"> </span>/data/BIDS/derivatives/mriqc:/resdir<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36"></a><span class="w">    </span>-w<span class="w"> </span>/scratch<span class="w"> </span>--entrypoint<span class="o">=</span>mriqc_clf<span class="w"> </span>poldracklab/mriqc:latest<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37"></a><span class="w">    </span>--load-classifier<span class="w"> </span>-X<span class="w"> </span>/resdir/group_T1w.tsv
+</span></code></pre></div></td></tr></table></div>
+<p>Adapt the subject range, exclusion list, paths, and resource parameters (<code>--nprocs</code>, <code>--mem-gb</code>) to match your dataset and system.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>JSON files may include <code>NaN</code> values that are incompatible with MRIQC. Use a sanitization script (e.g., <code>sanitize_json.py</code>) to fix this issue before running MRIQC.</p>
+</div>
+</details>
 <h3 id="2-understanding-mriqc-outputs">2. Understanding MRIQC Outputs<a class="headerlink" href="#2-understanding-mriqc-outputs" title="Permanent link">&para;</a></h3>
 <p>MRIQC generates:</p>
 <ul>
@@ -2679,6 +2825,24 @@
 <li><strong>Group-level metrics</strong> for overall dataset quality.</li>
 </ul>
 <p>Refer to the <a href="https://mriqc.readthedocs.io/en/stable/">MRIQC Documentation</a> for a detailed explanation of each metric.</p>
+<hr />
+<h2 id="processing-eye-tracking-data-with-bidsmreye">Processing Eye-Tracking Data with bidsmreye<a class="headerlink" href="#processing-eye-tracking-data-with-bidsmreye" title="Permanent link">&para;</a></h2>
+<p><a href="https://bidsmreye.readthedocs.io/">bidsmreye</a> is a tool that can extract eye-tracking information from the eye region of fMRI images using a deep learning model. It operates on fMRIPrep outputs and follows the BIDS convention.</p>
+<p>To process eye-tracking data using <code>bidsmreye</code>, run the following Docker command:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>-v<span class="w"> </span>/path/to/BIDS/derivatives/fmriprep:/data<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span>-v<span class="w"> </span>/path/to/temp_bidsmreye:/out<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span>cpplab/bidsmreye:0.5.0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span>/data<span class="w"> </span>/out<span class="w"> </span>participant<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span>--space<span class="w"> </span>T1w<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span>--reset_database<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span>--verbose
+</span></code></pre></div>
+<p>Replace the paths as appropriate for your dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In practice, <code>bidsmreye</code> has been found to work reliably only when using the <code>T1w</code> fMRIPrep output space.</p>
+</div>
 <hr />
 <h2 id="interpreting-fmriprep-and-mriqc-reports">Interpreting fMRIPrep and MRIQC Reports<a class="headerlink" href="#interpreting-fmriprep-and-mriqc-reports" title="Permanent link">&para;</a></h2>
 <h3 id="fmriprep-html-report">fMRIPrep HTML Report<a class="headerlink" href="#fmriprep-html-report" title="Permanent link">&para;</a></h3>
@@ -2828,7 +2992,7 @@
 <ul>
 <li><strong>Problem</strong>: fMRIPrep cannot access input or output directories due to file permissions.</li>
 <li><strong>Solution</strong>: Ensure that Docker has read and write permissions to the directories being mounted. Adjust permissions using:
-  <div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">755</span><span class="w"> </span>/path/to/BIDS<span class="w"> </span>/path/to/derivatives
+  <div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">755</span><span class="w"> </span>/path/to/BIDS<span class="w"> </span>/path/to/derivatives
 </span></code></pre></div></li>
 <li><strong>Tip</strong>: On Windows, ensure that <strong>Shared Drives</strong> are enabled in Docker Desktop settings.</li>
 </ul>
@@ -2932,12 +3096,12 @@
 </tbody>
 </table>
 <p>For instance, if you need <code>lh.pial</code> and it’s empty, you can create it by copying <code>lh.pial.T1</code> with the following command:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cp<span class="w"> </span>lh.pial.T1<span class="w"> </span>lh.pial
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cp<span class="w"> </span>lh.pial.T1<span class="w"> </span>lh.pial
 </span></code></pre></div>
 <p>To <strong>fix these links automatically</strong> across multiple subjects (on Windows, use the WSL terminal, <strong>not</strong> in the native PowerShell / Windows terminal)):</p>
 <ol>
 <li>Set your <code>FREESURFER_PATH</code> (the folder containing your pre-existing <code>recon-all</code> or output): 
-    <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FREESURFER_PATH</span><span class="o">=</span>/BIDE/derivatives/freesurfer
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FREESURFER_PATH</span><span class="o">=</span>/BIDE/derivatives/freesurfer
 </span></code></pre></div></li>
 <li>Copy and paste the script below into an empty file and save it as <strong><code>fix_surf_files.sh</code></strong>.  </li>
 <li>Open a terminal and navigate to the folder where you saved the file (e.g., <code>cd ~/Documents</code>).</li>
@@ -2945,163 +3109,163 @@
 <li>Run the script: <code>./fix_surf_files.sh</code></li>
 </ol>
 <p>Here is the full script:</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-7-10">10</a></span>
-<span class="normal"><a href="#__codelineno-7-11">11</a></span>
-<span class="normal"><a href="#__codelineno-7-12">12</a></span>
-<span class="normal"><a href="#__codelineno-7-13">13</a></span>
-<span class="normal"><a href="#__codelineno-7-14">14</a></span>
-<span class="normal"><a href="#__codelineno-7-15">15</a></span>
-<span class="normal"><a href="#__codelineno-7-16">16</a></span>
-<span class="normal"><a href="#__codelineno-7-17">17</a></span>
-<span class="normal"><a href="#__codelineno-7-18">18</a></span>
-<span class="normal"><a href="#__codelineno-7-19">19</a></span>
-<span class="normal"><a href="#__codelineno-7-20">20</a></span>
-<span class="normal"><a href="#__codelineno-7-21">21</a></span>
-<span class="normal"><a href="#__codelineno-7-22">22</a></span>
-<span class="normal"><a href="#__codelineno-7-23">23</a></span>
-<span class="normal"><a href="#__codelineno-7-24">24</a></span>
-<span class="normal"><a href="#__codelineno-7-25">25</a></span>
-<span class="normal"><a href="#__codelineno-7-26">26</a></span>
-<span class="normal"><a href="#__codelineno-7-27">27</a></span>
-<span class="normal"><a href="#__codelineno-7-28">28</a></span>
-<span class="normal"><a href="#__codelineno-7-29">29</a></span>
-<span class="normal"><a href="#__codelineno-7-30">30</a></span>
-<span class="normal"><a href="#__codelineno-7-31">31</a></span>
-<span class="normal"><a href="#__codelineno-7-32">32</a></span>
-<span class="normal"><a href="#__codelineno-7-33">33</a></span>
-<span class="normal"><a href="#__codelineno-7-34">34</a></span>
-<span class="normal"><a href="#__codelineno-7-35">35</a></span>
-<span class="normal"><a href="#__codelineno-7-36">36</a></span>
-<span class="normal"><a href="#__codelineno-7-37">37</a></span>
-<span class="normal"><a href="#__codelineno-7-38">38</a></span>
-<span class="normal"><a href="#__codelineno-7-39">39</a></span>
-<span class="normal"><a href="#__codelineno-7-40">40</a></span>
-<span class="normal"><a href="#__codelineno-7-41">41</a></span>
-<span class="normal"><a href="#__codelineno-7-42">42</a></span>
-<span class="normal"><a href="#__codelineno-7-43">43</a></span>
-<span class="normal"><a href="#__codelineno-7-44">44</a></span>
-<span class="normal"><a href="#__codelineno-7-45">45</a></span>
-<span class="normal"><a href="#__codelineno-7-46">46</a></span>
-<span class="normal"><a href="#__codelineno-7-47">47</a></span>
-<span class="normal"><a href="#__codelineno-7-48">48</a></span>
-<span class="normal"><a href="#__codelineno-7-49">49</a></span>
-<span class="normal"><a href="#__codelineno-7-50">50</a></span>
-<span class="normal"><a href="#__codelineno-7-51">51</a></span>
-<span class="normal"><a href="#__codelineno-7-52">52</a></span>
-<span class="normal"><a href="#__codelineno-7-53">53</a></span>
-<span class="normal"><a href="#__codelineno-7-54">54</a></span>
-<span class="normal"><a href="#__codelineno-7-55">55</a></span>
-<span class="normal"><a href="#__codelineno-7-56">56</a></span>
-<span class="normal"><a href="#__codelineno-7-57">57</a></span>
-<span class="normal"><a href="#__codelineno-7-58">58</a></span>
-<span class="normal"><a href="#__codelineno-7-59">59</a></span>
-<span class="normal"><a href="#__codelineno-7-60">60</a></span>
-<span class="normal"><a href="#__codelineno-7-61">61</a></span>
-<span class="normal"><a href="#__codelineno-7-62">62</a></span>
-<span class="normal"><a href="#__codelineno-7-63">63</a></span>
-<span class="normal"><a href="#__codelineno-7-64">64</a></span>
-<span class="normal"><a href="#__codelineno-7-65">65</a></span>
-<span class="normal"><a href="#__codelineno-7-66">66</a></span>
-<span class="normal"><a href="#__codelineno-7-67">67</a></span>
-<span class="normal"><a href="#__codelineno-7-68">68</a></span>
-<span class="normal"><a href="#__codelineno-7-69">69</a></span>
-<span class="normal"><a href="#__codelineno-7-70">70</a></span>
-<span class="normal"><a href="#__codelineno-7-71">71</a></span>
-<span class="normal"><a href="#__codelineno-7-72">72</a></span>
-<span class="normal"><a href="#__codelineno-7-73">73</a></span>
-<span class="normal"><a href="#__codelineno-7-74">74</a></span>
-<span class="normal"><a href="#__codelineno-7-75">75</a></span>
-<span class="normal"><a href="#__codelineno-7-76">76</a></span>
-<span class="normal"><a href="#__codelineno-7-77">77</a></span>
-<span class="normal"><a href="#__codelineno-7-78">78</a></span>
-<span class="normal"><a href="#__codelineno-7-79">79</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="c1"># ==============================================================================</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="c1"># Fix Broken Files in FreeSurfer Directories</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="c1">#</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="c1"># This script checks for specific broken or empty files in a FreeSurfer directory.</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="c1"># If a broken file is found, it creates a symbolic link to its corresponding</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="c1"># original file.</span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="c1">#</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="c1"># Usage:</span>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="c1">#   ./fix_freesurfer_links.sh         # Process all subjects in $FREESURFER_PATH</span>
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="c1">#   ./fix_freesurfer_links.sh sub-01  # Process only the given subject(s)</span>
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="c1">#</span>
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="c1"># Requirements:</span>
-</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="c1">#   - The environment variable $FREESURFER_PATH must be set and point to the </span>
-</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="c1">#     directory containing the subject folders.</span>
-</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="c1">#   - FreeSurfer outputs must exist for the fix to work.</span>
-</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="c1"># ==============================================================================</span>
-</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19"></a>
-</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="c1"># Check if FREESURFER_PATH is set</span>
-</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FREESURFER_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;❌ Error: FREESURFER_PATH is not set. Please export FREESURFER_PATH first.&quot;</span>
-</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="k">fi</span>
-</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25"></a>
-</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26"></a><span class="c1"># If no subject is provided, process all subjects in the FreeSurfer directory</span>
-</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28"></a><span class="w">    </span><span class="nv">SUBJS</span><span class="o">=(</span><span class="k">$(</span>ls<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FREESURFER_PATH</span><span class="s2">&quot;</span><span class="k">)</span><span class="o">)</span><span class="w">  </span><span class="c1"># Get all subjects in the directory</span>
-</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29"></a><span class="k">else</span>
-</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="w">    </span><span class="nv">SUBJS</span><span class="o">=(</span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="o">)</span><span class="w">  </span><span class="c1"># Use provided subjects</span>
-</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="k">fi</span>
-</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32"></a>
-</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33"></a><span class="c1"># Define file mappings: (broken file → target file)</span>
-</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34"></a><span class="nb">declare</span><span class="w"> </span>-A<span class="w"> </span><span class="nv">FILE_MAP</span><span class="o">=(</span>
-</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;lh.fsaverage.sphere.reg&quot;</span><span class="o">]=</span><span class="s2">&quot;lh.sphere.reg&quot;</span>
-</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;rh.fsaverage.sphere.reg&quot;</span><span class="o">]=</span><span class="s2">&quot;rh.sphere.reg&quot;</span>
-</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;lh.pial&quot;</span><span class="o">]=</span><span class="s2">&quot;lh.pial.T1&quot;</span>
-</span><span id="__span-7-38"><a id="__codelineno-7-38" name="__codelineno-7-38"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;rh.pial&quot;</span><span class="o">]=</span><span class="s2">&quot;rh.pial.T1&quot;</span>
-</span><span id="__span-7-39"><a id="__codelineno-7-39" name="__codelineno-7-39"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;lh.white.K&quot;</span><span class="o">]=</span><span class="s2">&quot;lh.white.preaparc.K&quot;</span>
-</span><span id="__span-7-40"><a id="__codelineno-7-40" name="__codelineno-7-40"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;rh.white.K&quot;</span><span class="o">]=</span><span class="s2">&quot;rh.white.preaparc.K&quot;</span>
-</span><span id="__span-7-41"><a id="__codelineno-7-41" name="__codelineno-7-41"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;lh.white.H&quot;</span><span class="o">]=</span><span class="s2">&quot;lh.white.preaparc.H&quot;</span>
-</span><span id="__span-7-42"><a id="__codelineno-7-42" name="__codelineno-7-42"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;rh.white.H&quot;</span><span class="o">]=</span><span class="s2">&quot;rh.white.preaparc.H&quot;</span>
-</span><span id="__span-7-43"><a id="__codelineno-7-43" name="__codelineno-7-43"></a><span class="o">)</span>
-</span><span id="__span-7-44"><a id="__codelineno-7-44" name="__codelineno-7-44"></a>
-</span><span id="__span-7-45"><a id="__codelineno-7-45" name="__codelineno-7-45"></a><span class="c1"># Loop over subjects</span>
-</span><span id="__span-7-46"><a id="__codelineno-7-46" name="__codelineno-7-46"></a><span class="k">for</span><span class="w"> </span>SUBJ<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SUBJS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-7-47"><a id="__codelineno-7-47" name="__codelineno-7-47"></a><span class="w">    </span><span class="nv">SURF_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FREESURFER_PATH</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">SUBJ</span><span class="si">}</span><span class="s2">/surf&quot;</span>
-</span><span id="__span-7-48"><a id="__codelineno-7-48" name="__codelineno-7-48"></a>
-</span><span id="__span-7-49"><a id="__codelineno-7-49" name="__codelineno-7-49"></a><span class="w">    </span><span class="c1"># Check if the subject directory exists</span>
-</span><span id="__span-7-50"><a id="__codelineno-7-50" name="__codelineno-7-50"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SURF_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-7-51"><a id="__codelineno-7-51" name="__codelineno-7-51"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;⚠️ Warning: Subject directory not found for </span><span class="nv">$SUBJ</span><span class="s2">. Skipping...&quot;</span>
-</span><span id="__span-7-52"><a id="__codelineno-7-52" name="__codelineno-7-52"></a><span class="w">        </span><span class="k">continue</span>
-</span><span id="__span-7-53"><a id="__codelineno-7-53" name="__codelineno-7-53"></a><span class="w">    </span><span class="k">fi</span>
-</span><span id="__span-7-54"><a id="__codelineno-7-54" name="__codelineno-7-54"></a>
-</span><span id="__span-7-55"><a id="__codelineno-7-55" name="__codelineno-7-55"></a><span class="w">    </span><span class="c1"># Loop over each broken file type</span>
-</span><span id="__span-7-56"><a id="__codelineno-7-56" name="__codelineno-7-56"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span>BROKEN_FILE<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">!FILE_MAP[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-7-57"><a id="__codelineno-7-57" name="__codelineno-7-57"></a><span class="w">        </span><span class="nv">TARGET_FILE</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FILE_MAP</span><span class="p">[</span><span class="nv">$BROKEN_FILE</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="__span-7-58"><a id="__codelineno-7-58" name="__codelineno-7-58"></a><span class="w">        </span><span class="nv">BROKEN_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SURF_PATH</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">BROKEN_FILE</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="__span-7-59"><a id="__codelineno-7-59" name="__codelineno-7-59"></a><span class="w">        </span><span class="nv">TARGET_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SURF_PATH</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">TARGET_FILE</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="__span-7-60"><a id="__codelineno-7-60" name="__codelineno-7-60"></a>
-</span><span id="__span-7-61"><a id="__codelineno-7-61" name="__codelineno-7-61"></a><span class="w">        </span><span class="c1"># Check if the broken file exists and is empty</span>
-</span><span id="__span-7-62"><a id="__codelineno-7-62" name="__codelineno-7-62"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BROKEN_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>!<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BROKEN_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-7-63"><a id="__codelineno-7-63" name="__codelineno-7-63"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;🛠 Fixing </span><span class="nv">$BROKEN_FILE</span><span class="s2"> for </span><span class="nv">$SUBJ</span><span class="s2">...&quot;</span>
-</span><span id="__span-7-64"><a id="__codelineno-7-64" name="__codelineno-7-64"></a>
-</span><span id="__span-7-65"><a id="__codelineno-7-65" name="__codelineno-7-65"></a><span class="w">            </span><span class="c1"># Check if the corresponding target file exists before creating the link</span>
-</span><span id="__span-7-66"><a id="__codelineno-7-66" name="__codelineno-7-66"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TARGET_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-7-67"><a id="__codelineno-7-67" name="__codelineno-7-67"></a><span class="w">                </span>ln<span class="w"> </span>-sf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TARGET_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BROKEN_PATH</span><span class="s2">&quot;</span>
-</span><span id="__span-7-68"><a id="__codelineno-7-68" name="__codelineno-7-68"></a><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✔ Created symbolic link: </span><span class="nv">$BROKEN_FILE</span><span class="s2"> → </span><span class="nv">$TARGET_FILE</span><span class="s2">&quot;</span>
-</span><span id="__span-7-69"><a id="__codelineno-7-69" name="__codelineno-7-69"></a><span class="w">            </span><span class="k">else</span>
-</span><span id="__span-7-70"><a id="__codelineno-7-70" name="__codelineno-7-70"></a><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;⚠️ Warning: </span><span class="nv">$TARGET_FILE</span><span class="s2"> not found for </span><span class="nv">$SUBJ</span><span class="s2">. Cannot create link.&quot;</span>
-</span><span id="__span-7-71"><a id="__codelineno-7-71" name="__codelineno-7-71"></a><span class="w">            </span><span class="k">fi</span>
-</span><span id="__span-7-72"><a id="__codelineno-7-72" name="__codelineno-7-72"></a><span class="w">        </span><span class="k">else</span>
-</span><span id="__span-7-73"><a id="__codelineno-7-73" name="__codelineno-7-73"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✅ </span><span class="nv">$BROKEN_FILE</span><span class="s2"> for </span><span class="nv">$SUBJ</span><span class="s2"> is fine. No action needed.&quot;</span>
-</span><span id="__span-7-74"><a id="__codelineno-7-74" name="__codelineno-7-74"></a><span class="w">        </span><span class="k">fi</span>
-</span><span id="__span-7-75"><a id="__codelineno-7-75" name="__codelineno-7-75"></a><span class="w">    </span><span class="k">done</span>
-</span><span id="__span-7-76"><a id="__codelineno-7-76" name="__codelineno-7-76"></a>
-</span><span id="__span-7-77"><a id="__codelineno-7-77" name="__codelineno-7-77"></a><span class="k">done</span>
-</span><span id="__span-7-78"><a id="__codelineno-7-78" name="__codelineno-7-78"></a>
-</span><span id="__span-7-79"><a id="__codelineno-7-79" name="__codelineno-7-79"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✅ Done.&quot;</span>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span>
+<span class="normal"><a href="#__codelineno-9-20">20</a></span>
+<span class="normal"><a href="#__codelineno-9-21">21</a></span>
+<span class="normal"><a href="#__codelineno-9-22">22</a></span>
+<span class="normal"><a href="#__codelineno-9-23">23</a></span>
+<span class="normal"><a href="#__codelineno-9-24">24</a></span>
+<span class="normal"><a href="#__codelineno-9-25">25</a></span>
+<span class="normal"><a href="#__codelineno-9-26">26</a></span>
+<span class="normal"><a href="#__codelineno-9-27">27</a></span>
+<span class="normal"><a href="#__codelineno-9-28">28</a></span>
+<span class="normal"><a href="#__codelineno-9-29">29</a></span>
+<span class="normal"><a href="#__codelineno-9-30">30</a></span>
+<span class="normal"><a href="#__codelineno-9-31">31</a></span>
+<span class="normal"><a href="#__codelineno-9-32">32</a></span>
+<span class="normal"><a href="#__codelineno-9-33">33</a></span>
+<span class="normal"><a href="#__codelineno-9-34">34</a></span>
+<span class="normal"><a href="#__codelineno-9-35">35</a></span>
+<span class="normal"><a href="#__codelineno-9-36">36</a></span>
+<span class="normal"><a href="#__codelineno-9-37">37</a></span>
+<span class="normal"><a href="#__codelineno-9-38">38</a></span>
+<span class="normal"><a href="#__codelineno-9-39">39</a></span>
+<span class="normal"><a href="#__codelineno-9-40">40</a></span>
+<span class="normal"><a href="#__codelineno-9-41">41</a></span>
+<span class="normal"><a href="#__codelineno-9-42">42</a></span>
+<span class="normal"><a href="#__codelineno-9-43">43</a></span>
+<span class="normal"><a href="#__codelineno-9-44">44</a></span>
+<span class="normal"><a href="#__codelineno-9-45">45</a></span>
+<span class="normal"><a href="#__codelineno-9-46">46</a></span>
+<span class="normal"><a href="#__codelineno-9-47">47</a></span>
+<span class="normal"><a href="#__codelineno-9-48">48</a></span>
+<span class="normal"><a href="#__codelineno-9-49">49</a></span>
+<span class="normal"><a href="#__codelineno-9-50">50</a></span>
+<span class="normal"><a href="#__codelineno-9-51">51</a></span>
+<span class="normal"><a href="#__codelineno-9-52">52</a></span>
+<span class="normal"><a href="#__codelineno-9-53">53</a></span>
+<span class="normal"><a href="#__codelineno-9-54">54</a></span>
+<span class="normal"><a href="#__codelineno-9-55">55</a></span>
+<span class="normal"><a href="#__codelineno-9-56">56</a></span>
+<span class="normal"><a href="#__codelineno-9-57">57</a></span>
+<span class="normal"><a href="#__codelineno-9-58">58</a></span>
+<span class="normal"><a href="#__codelineno-9-59">59</a></span>
+<span class="normal"><a href="#__codelineno-9-60">60</a></span>
+<span class="normal"><a href="#__codelineno-9-61">61</a></span>
+<span class="normal"><a href="#__codelineno-9-62">62</a></span>
+<span class="normal"><a href="#__codelineno-9-63">63</a></span>
+<span class="normal"><a href="#__codelineno-9-64">64</a></span>
+<span class="normal"><a href="#__codelineno-9-65">65</a></span>
+<span class="normal"><a href="#__codelineno-9-66">66</a></span>
+<span class="normal"><a href="#__codelineno-9-67">67</a></span>
+<span class="normal"><a href="#__codelineno-9-68">68</a></span>
+<span class="normal"><a href="#__codelineno-9-69">69</a></span>
+<span class="normal"><a href="#__codelineno-9-70">70</a></span>
+<span class="normal"><a href="#__codelineno-9-71">71</a></span>
+<span class="normal"><a href="#__codelineno-9-72">72</a></span>
+<span class="normal"><a href="#__codelineno-9-73">73</a></span>
+<span class="normal"><a href="#__codelineno-9-74">74</a></span>
+<span class="normal"><a href="#__codelineno-9-75">75</a></span>
+<span class="normal"><a href="#__codelineno-9-76">76</a></span>
+<span class="normal"><a href="#__codelineno-9-77">77</a></span>
+<span class="normal"><a href="#__codelineno-9-78">78</a></span>
+<span class="normal"><a href="#__codelineno-9-79">79</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="c1"># ==============================================================================</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="c1"># Fix Broken Files in FreeSurfer Directories</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="c1">#</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="c1"># This script checks for specific broken or empty files in a FreeSurfer directory.</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="c1"># If a broken file is found, it creates a symbolic link to its corresponding</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="c1"># original file.</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="c1">#</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="c1"># Usage:</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="c1">#   ./fix_freesurfer_links.sh         # Process all subjects in $FREESURFER_PATH</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="c1">#   ./fix_freesurfer_links.sh sub-01  # Process only the given subject(s)</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="c1">#</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="c1"># Requirements:</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="c1">#   - The environment variable $FREESURFER_PATH must be set and point to the </span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="c1">#     directory containing the subject folders.</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="c1">#   - FreeSurfer outputs must exist for the fix to work.</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18"></a><span class="c1"># ==============================================================================</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19"></a>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20"></a><span class="c1"># Check if FREESURFER_PATH is set</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FREESURFER_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;❌ Error: FREESURFER_PATH is not set. Please export FREESURFER_PATH first.&quot;</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24"></a><span class="k">fi</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25"></a>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26"></a><span class="c1"># If no subject is provided, process all subjects in the FreeSurfer directory</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28"></a><span class="w">    </span><span class="nv">SUBJS</span><span class="o">=(</span><span class="k">$(</span>ls<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FREESURFER_PATH</span><span class="s2">&quot;</span><span class="k">)</span><span class="o">)</span><span class="w">  </span><span class="c1"># Get all subjects in the directory</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29"></a><span class="k">else</span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30"></a><span class="w">    </span><span class="nv">SUBJS</span><span class="o">=(</span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="o">)</span><span class="w">  </span><span class="c1"># Use provided subjects</span>
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31"></a><span class="k">fi</span>
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32"></a>
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33"></a><span class="c1"># Define file mappings: (broken file → target file)</span>
+</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34"></a><span class="nb">declare</span><span class="w"> </span>-A<span class="w"> </span><span class="nv">FILE_MAP</span><span class="o">=(</span>
+</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;lh.fsaverage.sphere.reg&quot;</span><span class="o">]=</span><span class="s2">&quot;lh.sphere.reg&quot;</span>
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;rh.fsaverage.sphere.reg&quot;</span><span class="o">]=</span><span class="s2">&quot;rh.sphere.reg&quot;</span>
+</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;lh.pial&quot;</span><span class="o">]=</span><span class="s2">&quot;lh.pial.T1&quot;</span>
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;rh.pial&quot;</span><span class="o">]=</span><span class="s2">&quot;rh.pial.T1&quot;</span>
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;lh.white.K&quot;</span><span class="o">]=</span><span class="s2">&quot;lh.white.preaparc.K&quot;</span>
+</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;rh.white.K&quot;</span><span class="o">]=</span><span class="s2">&quot;rh.white.preaparc.K&quot;</span>
+</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;lh.white.H&quot;</span><span class="o">]=</span><span class="s2">&quot;lh.white.preaparc.H&quot;</span>
+</span><span id="__span-9-42"><a id="__codelineno-9-42" name="__codelineno-9-42"></a><span class="w">    </span><span class="o">[</span><span class="s2">&quot;rh.white.H&quot;</span><span class="o">]=</span><span class="s2">&quot;rh.white.preaparc.H&quot;</span>
+</span><span id="__span-9-43"><a id="__codelineno-9-43" name="__codelineno-9-43"></a><span class="o">)</span>
+</span><span id="__span-9-44"><a id="__codelineno-9-44" name="__codelineno-9-44"></a>
+</span><span id="__span-9-45"><a id="__codelineno-9-45" name="__codelineno-9-45"></a><span class="c1"># Loop over subjects</span>
+</span><span id="__span-9-46"><a id="__codelineno-9-46" name="__codelineno-9-46"></a><span class="k">for</span><span class="w"> </span>SUBJ<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SUBJS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-9-47"><a id="__codelineno-9-47" name="__codelineno-9-47"></a><span class="w">    </span><span class="nv">SURF_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FREESURFER_PATH</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">SUBJ</span><span class="si">}</span><span class="s2">/surf&quot;</span>
+</span><span id="__span-9-48"><a id="__codelineno-9-48" name="__codelineno-9-48"></a>
+</span><span id="__span-9-49"><a id="__codelineno-9-49" name="__codelineno-9-49"></a><span class="w">    </span><span class="c1"># Check if the subject directory exists</span>
+</span><span id="__span-9-50"><a id="__codelineno-9-50" name="__codelineno-9-50"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SURF_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-9-51"><a id="__codelineno-9-51" name="__codelineno-9-51"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;⚠️ Warning: Subject directory not found for </span><span class="nv">$SUBJ</span><span class="s2">. Skipping...&quot;</span>
+</span><span id="__span-9-52"><a id="__codelineno-9-52" name="__codelineno-9-52"></a><span class="w">        </span><span class="k">continue</span>
+</span><span id="__span-9-53"><a id="__codelineno-9-53" name="__codelineno-9-53"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-9-54"><a id="__codelineno-9-54" name="__codelineno-9-54"></a>
+</span><span id="__span-9-55"><a id="__codelineno-9-55" name="__codelineno-9-55"></a><span class="w">    </span><span class="c1"># Loop over each broken file type</span>
+</span><span id="__span-9-56"><a id="__codelineno-9-56" name="__codelineno-9-56"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span>BROKEN_FILE<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">!FILE_MAP[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-9-57"><a id="__codelineno-9-57" name="__codelineno-9-57"></a><span class="w">        </span><span class="nv">TARGET_FILE</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FILE_MAP</span><span class="p">[</span><span class="nv">$BROKEN_FILE</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-9-58"><a id="__codelineno-9-58" name="__codelineno-9-58"></a><span class="w">        </span><span class="nv">BROKEN_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SURF_PATH</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">BROKEN_FILE</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-9-59"><a id="__codelineno-9-59" name="__codelineno-9-59"></a><span class="w">        </span><span class="nv">TARGET_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SURF_PATH</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">TARGET_FILE</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-9-60"><a id="__codelineno-9-60" name="__codelineno-9-60"></a>
+</span><span id="__span-9-61"><a id="__codelineno-9-61" name="__codelineno-9-61"></a><span class="w">        </span><span class="c1"># Check if the broken file exists and is empty</span>
+</span><span id="__span-9-62"><a id="__codelineno-9-62" name="__codelineno-9-62"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BROKEN_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>!<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BROKEN_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-9-63"><a id="__codelineno-9-63" name="__codelineno-9-63"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;🛠 Fixing </span><span class="nv">$BROKEN_FILE</span><span class="s2"> for </span><span class="nv">$SUBJ</span><span class="s2">...&quot;</span>
+</span><span id="__span-9-64"><a id="__codelineno-9-64" name="__codelineno-9-64"></a>
+</span><span id="__span-9-65"><a id="__codelineno-9-65" name="__codelineno-9-65"></a><span class="w">            </span><span class="c1"># Check if the corresponding target file exists before creating the link</span>
+</span><span id="__span-9-66"><a id="__codelineno-9-66" name="__codelineno-9-66"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TARGET_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-9-67"><a id="__codelineno-9-67" name="__codelineno-9-67"></a><span class="w">                </span>ln<span class="w"> </span>-sf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TARGET_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BROKEN_PATH</span><span class="s2">&quot;</span>
+</span><span id="__span-9-68"><a id="__codelineno-9-68" name="__codelineno-9-68"></a><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✔ Created symbolic link: </span><span class="nv">$BROKEN_FILE</span><span class="s2"> → </span><span class="nv">$TARGET_FILE</span><span class="s2">&quot;</span>
+</span><span id="__span-9-69"><a id="__codelineno-9-69" name="__codelineno-9-69"></a><span class="w">            </span><span class="k">else</span>
+</span><span id="__span-9-70"><a id="__codelineno-9-70" name="__codelineno-9-70"></a><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;⚠️ Warning: </span><span class="nv">$TARGET_FILE</span><span class="s2"> not found for </span><span class="nv">$SUBJ</span><span class="s2">. Cannot create link.&quot;</span>
+</span><span id="__span-9-71"><a id="__codelineno-9-71" name="__codelineno-9-71"></a><span class="w">            </span><span class="k">fi</span>
+</span><span id="__span-9-72"><a id="__codelineno-9-72" name="__codelineno-9-72"></a><span class="w">        </span><span class="k">else</span>
+</span><span id="__span-9-73"><a id="__codelineno-9-73" name="__codelineno-9-73"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✅ </span><span class="nv">$BROKEN_FILE</span><span class="s2"> for </span><span class="nv">$SUBJ</span><span class="s2"> is fine. No action needed.&quot;</span>
+</span><span id="__span-9-74"><a id="__codelineno-9-74" name="__codelineno-9-74"></a><span class="w">        </span><span class="k">fi</span>
+</span><span id="__span-9-75"><a id="__codelineno-9-75" name="__codelineno-9-75"></a><span class="w">    </span><span class="k">done</span>
+</span><span id="__span-9-76"><a id="__codelineno-9-76" name="__codelineno-9-76"></a>
+</span><span id="__span-9-77"><a id="__codelineno-9-77" name="__codelineno-9-77"></a><span class="k">done</span>
+</span><span id="__span-9-78"><a id="__codelineno-9-78" name="__codelineno-9-78"></a>
+</span><span id="__span-9-79"><a id="__codelineno-9-79" name="__codelineno-9-79"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✅ Done.&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 </li>
 </ul>

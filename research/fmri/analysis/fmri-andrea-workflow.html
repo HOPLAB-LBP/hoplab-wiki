@@ -2071,65 +2071,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#from-raw-data-to-bids" class="md-nav__link">
+  <a href="#pipeline-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        From raw data to BIDS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pre-processing-fmri-data-in-bids-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pre-processing fMRI Data in BIDS Format
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#processing-eye-tracking-data-with-bidsmreye" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Processing Eye-Tracking Data with bidsmreye
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#first-level-analysis-general-linear-model-glm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        First-Level Analysis – General Linear Model (GLM)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#generating-and-organizing-regions-of-interest-rois" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Generating and Organizing Regions of Interest (ROIs)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multi-variate-pattern-analysis-mvpa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Multi-Variate Pattern Analysis (MVPA)
+        Pipeline overview
       
     </span>
   </a>
@@ -2473,65 +2418,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#from-raw-data-to-bids" class="md-nav__link">
+  <a href="#pipeline-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        From raw data to BIDS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pre-processing-fmri-data-in-bids-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pre-processing fMRI Data in BIDS Format
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#processing-eye-tracking-data-with-bidsmreye" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Processing Eye-Tracking Data with bidsmreye
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#first-level-analysis-general-linear-model-glm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        First-Level Analysis – General Linear Model (GLM)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#generating-and-organizing-regions-of-interest-rois" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Generating and Organizing Regions of Interest (ROIs)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multi-variate-pattern-analysis-mvpa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Multi-Variate Pattern Analysis (MVPA)
+        Pipeline overview
       
     </span>
   </a>
@@ -2564,446 +2454,60 @@
 
 
 <h1 id="fmri-workflow-example">fMRI workflow example<a class="headerlink" href="#fmri-workflow-example" title="Permanent link">&para;</a></h1>
-<p>This page is a work in progress and is based on my (Andrea) fMRI pipeline. This information may change once we agree on shared practices.</p>
-<p>The code to reproduce these analyses can be found <a href="https://github.com/costantinoai/chess-expertise-2024">here</a>.</p>
-<p>For information on how to set up the working environment, install, and configure the packages mentioned in this document, refer to <a href="fmri-setup-env.html">Set-up your fMRI environment</a> and <a href="../../coding/index.html">Coding practices</a></p>
+<p>This page walks through a complete fMRI analysis pipeline as implemented in a real study on chess expertise. It shows how the individual steps documented throughout this wiki come together in practice — from collecting scans at the hospital all the way to whole-brain decoding results plotted on inflated cortical surfaces.</p>
+<p>The full code is available in the <a href="https://github.com/costantinoai/chess-expertise-2025">chess-expertise-2025 GitHub repository</a>. For setting up your environment and tools, see <a href="fmri-setup-env.html">Set-up your fMRI environment</a> and <a href="../../coding/index.html">Coding practices</a>.</p>
 <hr />
-<h2 id="from-raw-data-to-bids">From raw data to BIDS<a class="headerlink" href="#from-raw-data-to-bids" title="Permanent link">&para;</a></h2>
-<h3 id="collecting-raw-data">Collecting raw data<a class="headerlink" href="#collecting-raw-data" title="Permanent link">&para;</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It is essential to ensure that no personal identifiers are present in any of the files that leave the hospital. Use my script for anonymizing filenames and data.</p>
-</div>
-<p><strong>At the hospital:</strong></p>
+<h2 id="pipeline-overview">Pipeline overview<a class="headerlink" href="#pipeline-overview" title="Permanent link">&para;</a></h2>
+<h3 id="1-collecting-raw-data-at-the-hospital">1. Collecting raw data at the hospital<a class="headerlink" href="#1-collecting-raw-data-at-the-hospital" title="Permanent link">&para;</a></h3>
+<p>The first thing you do after a scanning session is collect the data from the hospital computers: fMRI scans (DICOMs), behavioral log files, and — in this study — eye-tracking recordings. Before anything leaves the hospital, you anonymize all filenames to remove any personal identifiers. The raw files are then organized into a <code>sourcedata/</code> folder with separate subfolders for each data type (<code>nifti/</code>, <code>bh/</code>, <code>et/</code>).</p>
+<p>For the practical details of what happens in the scanning room, see <a href="../fmri-procedure.html">Scanning procedure</a>. For how to organize your raw data, see <a href="fmri-general.html">General information</a>.</p>
+<hr />
+<h3 id="2-converting-everything-to-bids">2. Converting everything to BIDS<a class="headerlink" href="#2-converting-everything-to-bids" title="Permanent link">&para;</a></h3>
+<p>With raw data in hand, the next step is converting it all into a standardized <a href="https://bids.neuroimaging.io/">BIDS</a> structure. This involves three conversions:</p>
 <ul>
-<li>Take fMRI scans from the hospital computer. Specify which buttons to select in the GUI.</li>
-<li>Anonymize the filenames using my script to ensure subject privacy.</li>
-<li>Extract behavioral (bh) and eye-tracking (et) data from the output folders on the experiment PC.</li>
-<li>Copy all files into a <code>sourcedata/</code> folder organized with subfolders: <code>bh</code>, <code>nifti</code>, and <code>et</code>.</li>
+<li><strong>fMRI data</strong>: Use <code>dicm2nii</code> in MATLAB to convert DICOMs to NIfTI files and generate JSON sidecars. For the first subject, you create template JSON files; subsequent subjects reuse those templates.</li>
+<li><strong>Behavioral data</strong>: A custom script (<code>script02</code>) parses the <code>.mat</code> log files from the task and produces <code>events.tsv</code> files with <code>onset</code>, <code>duration</code>, and <code>trial_type</code> columns.</li>
+<li><strong>Eye-tracking data</strong>: EDF files from the EyeLink system are converted to ASC format using the EyeLink API, then organized following the (still draft) BEP020 convention.</li>
 </ul>
+<p>After conversion, always run the <a href="https://bids-standard.github.io/bids-validator/">BIDS Validator</a> to catch any issues.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span> Full guide: <a href="fmri-bids-conversion.html">BIDS conversion</a>, including the <a href="fmri-bids-conversion.html#11-converting-eye-tracking-data-to-bids">eye-tracking section</a>.</p>
 <hr />
-<h3 id="converting-fmri-data-to-bids">Converting fMRI Data to BIDS<a class="headerlink" href="#converting-fmri-data-to-bids" title="Permanent link">&para;</a></h3>
-<h4 id="step-1-preparing-for-the-first-subject">Step 1: Preparing for the First Subject<a class="headerlink" href="#step-1-preparing-for-the-first-subject" title="Permanent link">&para;</a></h4>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>This step should only be performed for the first subject in your dataset. It can be skipped if anatomical and functional JSON templates are already available in <code>code/misc/</code>. See <a href="fmri-general.html#how-to-get-images-from-the-scanner">this guide</a> for more info on the template files.</p>
-</div>
+<h3 id="3-quality-control-with-mriqc">3. Quality control with MRIQC<a class="headerlink" href="#3-quality-control-with-mriqc" title="Permanent link">&para;</a></h3>
+<p>Before investing hours in preprocessing, you want to check data quality. MRIQC generates per-subject quality reports with metrics like SNR, motion estimates, and artifact indicators. You can then run group-level analysis to compare subjects and use the MRIQC classifier to flag problematic datasets. In this study, several subjects were excluded at this stage due to excessive motion.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span> Commands and interpretation: <a href="fmri-prepocessing-qa.html#quality-assessment-with-mriqc">Preprocessing &amp; QA — MRIQC</a>.</p>
+<hr />
+<h3 id="4-preprocessing-with-fmriprep">4. Preprocessing with fMRIPrep<a class="headerlink" href="#4-preprocessing-with-fmriprep" title="Permanent link">&para;</a></h3>
+<p>fMRIPrep handles the heavy lifting: motion correction, slice timing correction, spatial normalization, and (optionally) surface reconstruction via FreeSurfer. In this pipeline, we requested three output spaces — <code>MNI152NLin2009cAsym:res-2</code> for group analyses, <code>anat</code> for subject-space analyses, and <code>fsnative</code> for surface data. Processing takes roughly 4–8 hours per subject depending on hardware.</p>
+<p>After each subject completes, check the HTML report carefully — especially the registration overlays and framewise displacement plots.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span> Setup, resource tips, and report interpretation: <a href="fmri-prepocessing-qa.html#preprocessing-with-fmriprep">Preprocessing &amp; QA — fMRIPrep</a>.</p>
+<hr />
+<h3 id="5-eye-tracking-extraction-with-bidsmreye">5. Eye-tracking extraction with bidsmreye<a class="headerlink" href="#5-eye-tracking-extraction-with-bidsmreye" title="Permanent link">&para;</a></h3>
+<p>This study also used <code>bidsmreye</code>, a tool that extracts gaze position directly from the eye region in BOLD images using a deep learning model. It runs as a post-processing step on fMRIPrep outputs and provides eye-tracking estimates even when no external eye-tracker was used (or as a complement to external recordings).</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span> Docker command and usage notes: <a href="fmri-prepocessing-qa.html#processing-eye-tracking-data-with-bidsmreye">Preprocessing &amp; QA — bidsmreye</a>.</p>
+<hr />
+<h3 id="6-first-level-glm">6. First-level GLM<a class="headerlink" href="#6-first-level-glm" title="Permanent link">&para;</a></h3>
+<p>With preprocessed data, the next step is fitting a General Linear Model (GLM) in SPM to obtain beta images for each experimental condition. A custom script (<code>script03</code>) automates the full pipeline: gunzipping fMRIPrep outputs, optional smoothing, design matrix construction (incorporating confound regressors from fMRIPrep), model estimation, and contrast specification.</p>
+<p>After running the GLM, it's important to open SPM's Results interface and verify that the design matrix looks correct: no overlapping conditions, right number of runs, confounds at the end of each run, and contrast weights assigned properly.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span> Full guide: <a href="fmri-glm.html">GLM analysis</a>. For visualizing results on brain volumes or surfaces, see the <a href="fmri-glm.html#visualizing-activations-on-volume-or-surface">activation visualization section</a>.</p>
+<hr />
+<h3 id="7-defining-rois-with-the-glasser-parcellation">7. Defining ROIs with the Glasser parcellation<a class="headerlink" href="#7-defining-rois-with-the-glasser-parcellation" title="Permanent link">&para;</a></h3>
+<p>For the MVPA, we needed Regions of Interest covering the entire cortex. We used the <a href="https://figshare.com/articles/dataset/HCP-MMP1_0_projected_on_fsaverage/3498446">Glasser2016 parcellation</a> (HCP-MMP1.0), which provides 180 anatomically defined parcels per hemisphere. For this study, we projected the atlas from <code>fsaverage</code> onto each subject's native space using an automated shell script (<code>HPC-to-subject.sh</code>), since we ran analyses in subject space. If you're working in MNI space instead (which is the more common case), a ready-made volumetric MNI atlas is available — see the <a href="fmri-rois.html#hcp-glasser-parcellation-hcp-mmp10">ROIs page</a> for details.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span> All ROI methods: <a href="fmri-rois.html">ROIs</a>, including the <a href="fmri-rois.html#hcp-glasser-parcellation-hcp-mmp10">Glasser parcellation section</a>.</p>
+<hr />
+<h3 id="8-whole-brain-mvpa-decoding">8. Whole-brain MVPA decoding<a class="headerlink" href="#8-whole-brain-mvpa-decoding" title="Permanent link">&para;</a></h3>
+<p>With beta images and ROIs in hand, we ran independent cross-validated SVM classification in each of the 180 Glasser parcels per hemisphere (<code>script04</code>). This tells us which brain regions carry information about the experimental conditions (in this case, chess expertise).</p>
+<p>The results are saved as decoding accuracy per ROI in a BIDS-compatible <code>derivatives/mvpa</code> structure.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span> MVPA concepts and tutorial: <a href="fmri-mvpa.html">MVPA</a>.</p>
+<hr />
+<h3 id="9-hierarchical-aggregation-significance-testing-and-visualization">9. Hierarchical aggregation, significance testing, and visualization<a class="headerlink" href="#9-hierarchical-aggregation-significance-testing-and-visualization" title="Permanent link">&para;</a></h3>
+<p>The Glasser parcellation has a built-in hierarchy: the 180 fine-grained parcels group into larger cortical regions, which in turn group into broad cortical divisions. We leveraged this by running the analysis at the finest level and then aggregating upward (<code>script06</code>):</p>
 <ol>
-<li>
-<p><strong>Convert DICOM to BIDS (NIfTI):</strong></p>
-<ol>
-<li>
-<p><strong>Prerequisites:</strong></p>
-<ul>
-<li><code>dcm2nii</code></li>
-<li>Raw data should be organized as: <code>/sourcedata/sub-&lt;xx&gt;/dicom</code></li>
-<li>MATLAB</li>
-</ul>
-</li>
-<li>
-<p>Download <code>dicm2nii</code> from <a href="https://github.com/xiangruili/dicm2nii">dicm2nii</a>, unzip, and add to the MATLAB path.</p>
-</li>
-<li>
-<p>Open MATLAB and type <code>anonymize_dicm</code> in the console. Select the folder where the files are and the output folder: <code>/sourcedata/sub-&lt;xx&gt;/dicom_Anon</code>.</p>
-</li>
-<li>
-<p>Run <code>dicm2nii</code> in MATLAB. Select the DICOM folder and result folder (e.g., <code>dicom_converted</code>). Untick the compress box and ensure to save the JSON file.</p>
-</li>
+<li><strong>Fine-grained (Level 1)</strong>: Decoding accuracy in each of the 180 parcels per hemisphere.</li>
+<li><strong>Intermediate (Level 2)</strong>: Averaged accuracy across parcels belonging to the same larger region.</li>
+<li><strong>Coarse (Level 3)</strong>: Averaged across broad cortical divisions.</li>
 </ol>
-<p>The output folder structure should be as follows:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dicom_converted
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├──<span class="w"> </span>sub-01
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│<span class="w">   </span>├──<span class="w"> </span>anat
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>sub-01_T1w.json
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>sub-01_T1w.nii.gz
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│<span class="w">   </span>├──<span class="w"> </span>func
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>sub-01_task-exp_run-1_bold.json
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>sub-01_task-exp_run-1_bold.nii.gz
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│<span class="w">   </span>└──<span class="w"> </span>dcmHeaders.mat
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>└──<span class="w"> </span>participants.tsv
-</span></code></pre></div>
-<ul>
-<li>Copy the <code>sub-01</code> folder from <code>dicom_converted</code> into the BIDS folder.</li>
-</ul>
-</li>
-<li>
-<p><strong>Validate the BIDS Directory:</strong></p>
-<ul>
-<li>Use the <a href="https://bids-standard.github.io/bids-validator/">BIDS Validator</a> to check for any errors.</li>
-</ul>
-</li>
-</ol>
-<hr />
-<h4 id="step-2-processing-subsequent-subjects">Step 2: Processing Subsequent Subjects<a class="headerlink" href="#step-2-processing-subsequent-subjects" title="Permanent link">&para;</a></h4>
-<p>If the raw data is organized in a <code>sourcedata/sub-xx</code> folder, and JSON templates are already created:</p>
-<ul>
-<li>Anonymize/deface the images.</li>
-<li>Run <code>script01</code> to move and rename the raw files into the BIDS folder, creating a <code>sub-xx</code> folder for each subject.</li>
-</ul>
-<hr />
-<h3 id="converting-behavioral-data-to-bids">Converting behavioral data to BIDS<a class="headerlink" href="#converting-behavioral-data-to-bids" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Run <code>script02</code> to convert behavioral <code>.mat</code> data into <code>events.tsv</code> files following the BIDS specification. This will parse the trial data from the <code>.mat</code> file and create new <code>.tsv</code> files for each subject and run.</li>
-</ul>
-<p>The fMRI task script should output two files per run:</p>
-<ol>
-<li>
-<p><code>&lt;timestamp&gt;_log_&lt;subID&gt;-&lt;run&gt;-&lt;buttonMapping&gt;_&lt;taskName&gt;.tsv</code> : This is the human-readable log file produced by the task. Here is an extract from the file:</p>
-<table>
-<thead>
-<tr>
-<th>EVENT_TYPE</th>
-<th>EVENT_NAME</th>
-<th>DATETIME</th>
-<th>EXP_ONSET</th>
-<th>ACTUAL_ONSET</th>
-<th>DELTA</th>
-<th>EVENT_ID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>START</td>
-<td>-</td>
-<td>2024-05-03 10:49:43.099</td>
-<td>-</td>
-<td>0</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>FLIP</td>
-<td>Instr</td>
-<td>2024-05-03 10:50:11.399</td>
-<td>-</td>
-<td>28.300201</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>RESP</td>
-<td>KeyPress</td>
-<td>2024-05-03 10:50:34.160</td>
-<td>-</td>
-<td>51.063114</td>
-<td>-</td>
-<td>51</td>
-</tr>
-<tr>
-<td>FLIP</td>
-<td>TgrWait</td>
-<td>2024-05-03 10:50:34.216</td>
-<td>-</td>
-<td>51.117046</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>PULSE</td>
-<td>Trigger</td>
-<td>2024-05-03 10:50:40.000</td>
-<td>-</td>
-<td>56.904357</td>
-<td>-</td>
-<td>53</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p><code>&lt;timestamp&gt;_log_&lt;subID&gt;_&lt;run&gt;_&lt;taskName&gt;.mat</code>: This MATLAB file contains all the parameters to reproduce the experimental run, and stores input parameters and results.</p>
-</li>
-</ol>
-<p>Ensure that each resulting TSV file has at least three columns: <code>onset</code>, <code>duration</code>, and <code>trial_type</code>.</p>
-<p>If the behavioural data is stored in a sourcedata/sub-xx/bh/ folder consistent to the one described <a href="fmri-general.html#how-to-store-raw-data">above</a>, you can run the script02_behavioural-to-BIDS.m script, after editing the parameters at the top of the script. This script iterates through subject-specific directories targeting behavioral .mat files, then processes and exports trial-related info into BIDS-compliant TSV event files in the BIDS folder provided as parameters.</p>
-<hr />
-<h3 id="converting-eye-tracking-data-to-bids">Converting Eye-Tracking Data to BIDS<a class="headerlink" href="#converting-eye-tracking-data-to-bids" title="Permanent link">&para;</a></h3>
-<p><strong>Pre-requisite:</strong> Install the EyeLink Developers Kit/API to convert EDF files into ASC files. Refer to the official setup guide:</p>
-<ul>
-<li>
-<p><a href="https://www.sr-research.com/support/thread-13.html">EyeLink Developers Kit/API</a></p>
-</li>
-<li>
-<p>Run the eye-tracking (ET) conversion script to convert the data to ASC in BIDS format.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>BEP020 has not been approved yet. Consider whether event messages should be included in the BIDS structure.</p>
-</div>
-</li>
-</ul>
-<hr />
-<h2 id="pre-processing-fmri-data-in-bids-format">Pre-processing fMRI Data in BIDS Format<a class="headerlink" href="#pre-processing-fmri-data-in-bids-format" title="Permanent link">&para;</a></h2>
-<h3 id="quality-control-with-mriqc">Quality Control with MRIQC<a class="headerlink" href="#quality-control-with-mriqc" title="Permanent link">&para;</a></h3>
-<p>Use <a href="https://mriqc.readthedocs.io/en/latest/">MRIQC</a> to perform quality control checks on your fMRI data:</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">mriqc_batch.sh</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#__codelineno-1-14">14</a></span>
-<span class="normal"><a href="#__codelineno-1-15">15</a></span>
-<span class="normal"><a href="#__codelineno-1-16">16</a></span>
-<span class="normal"><a href="#__codelineno-1-17">17</a></span>
-<span class="normal"><a href="#__codelineno-1-18">18</a></span>
-<span class="normal"><a href="#__codelineno-1-19">19</a></span>
-<span class="normal"><a href="#__codelineno-1-20">20</a></span>
-<span class="normal"><a href="#__codelineno-1-21">21</a></span>
-<span class="normal"><a href="#__codelineno-1-22">22</a></span>
-<span class="normal"><a href="#__codelineno-1-23">23</a></span>
-<span class="normal"><a href="#__codelineno-1-24">24</a></span>
-<span class="normal"><a href="#__codelineno-1-25">25</a></span>
-<span class="normal"><a href="#__codelineno-1-26">26</a></span>
-<span class="normal"><a href="#__codelineno-1-27">27</a></span>
-<span class="normal"><a href="#__codelineno-1-28">28</a></span>
-<span class="normal"><a href="#__codelineno-1-29">29</a></span>
-<span class="normal"><a href="#__codelineno-1-30">30</a></span>
-<span class="normal"><a href="#__codelineno-1-31">31</a></span>
-<span class="normal"><a href="#__codelineno-1-32">32</a></span>
-<span class="normal"><a href="#__codelineno-1-33">33</a></span>
-<span class="normal"><a href="#__codelineno-1-34">34</a></span>
-<span class="normal"><a href="#__codelineno-1-35">35</a></span>
-<span class="normal"><a href="#__codelineno-1-36">36</a></span>
-<span class="normal"><a href="#__codelineno-1-37">37</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">0</span>..40<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">        </span><span class="k">continue</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="k">fi</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="nv">subID</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;sub-%02d&quot;</span><span class="w"> </span><span class="nv">$i</span><span class="k">)</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Processing </span><span class="nv">$subID</span><span class="s2">&quot;</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">        </span>-v<span class="w"> </span>/data/BIDS:/data:ro<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">        </span>-v<span class="w"> </span>/data/BIDS/derivatives/mriqc:/out<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">        </span>-v<span class="w"> </span>/temp_mriqc:/scratch<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">        </span>nipreps/mriqc:latest<span class="w"> </span>/data<span class="w"> </span>/out<span class="w"> </span>participant<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">        </span>--participant-label<span class="w"> </span><span class="si">${</span><span class="nv">subID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">        </span>--nprocs<span class="w"> </span><span class="m">16</span><span class="w"> </span>--mem-gb<span class="w"> </span><span class="m">40</span><span class="w"> </span>--float32<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">        </span>--work-dir<span class="w"> </span>/scratch<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">        </span>--verbose-reports<span class="w"> </span>--resource-monitor<span class="w"> </span>-vv
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span>sleep<span class="w"> </span><span class="m">0</span>.5
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="k">done</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Running group analysis&quot;</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">    </span>-v<span class="w"> </span>/data/BIDS:/data:ro<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">    </span>-v<span class="w"> </span>/data/BIDS/derivatives/mriqc:/out<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">    </span>-v<span class="w"> </span>/temp_mriqc:/scratch<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">    </span>nipreps/mriqc:latest<span class="w"> </span>/data<span class="w"> </span>/out<span class="w"> </span>group<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">    </span>--nprocs<span class="w"> </span><span class="m">16</span><span class="w"> </span>--mem-gb<span class="w"> </span><span class="m">40</span><span class="w"> </span>--float32<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">    </span>--work-dir<span class="w"> </span>/scratch<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="w">    </span>--verbose-reports<span class="w"> </span>--resource-monitor<span class="w"> </span>-vv
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29"></a>
-</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30"></a>sleep<span class="w"> </span><span class="m">0</span>.5
-</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31"></a>
-</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Running classifier&quot;</span>
-</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="w">    </span>-v<span class="w"> </span>/temp_mriqc:/scratch<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="w">    </span>-v<span class="w"> </span>/data/BIDS/derivatives/mriqc:/resdir<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="w">    </span>-w<span class="w"> </span>/scratch<span class="w"> </span>--entrypoint<span class="o">=</span>mriqc_clf<span class="w"> </span>poldracklab/mriqc:latest<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="w">    </span>--load-classifier<span class="w"> </span>-X<span class="w"> </span>/resdir/group_T1w.tsv
-</span></code></pre></div></td></tr></table></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>JSON files may include <code>NaN</code> values that are incompatible with MRIQC. Use <code>./utils/sanitize_json.py</code> to fix this issue before running MRIQC.</p>
-</div>
-<hr />
-<h3 id="minimal-preprocessing-with-fmriprep">Minimal Preprocessing with fMRIprep<a class="headerlink" href="#minimal-preprocessing-with-fmriprep" title="Permanent link">&para;</a></h3>
-<p>With your BIDS data organized, the next step is preprocessing using <a href="https://fmriprep.org/en/stable/">fMRIprep</a>:</p>
-<ul>
-<li>Install Docker (and WSL if on Windows) and configure it for use with fMRIprep.</li>
-<li>Install <code>fmriprep-docker</code> with <code>pip install fmriprep-docker</code>.</li>
-<li>Ensure Docker has access to the folders you will be using (e.g., BIDS folder, temporary work directory).</li>
-</ul>
-<p>To run <code>fmriprep</code> for a single subject, use the following command:</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>fmriprep-docker<span class="w"> </span>/data/projects/chess/data/BIDS<span class="w"> </span>/data/projects/chess/data/BIDS/derivatives/fmriprep<span class="w"> </span>participant<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>--work-dir<span class="w"> </span>//data/projects/chess/data/temp_fmriprep<span class="w"> </span>--mem-mb<span class="w"> </span><span class="m">10000</span><span class="w"> </span>--n-cpus<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>--output-spaces<span class="w"> </span>MNI152NLin2009cAsym:res-2<span class="w"> </span>anat<span class="w"> </span>fsnative<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>--fs-license-file<span class="w"> </span>/data/projects/chess/misc/.license<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>--bold2t1w-dof<span class="w"> </span><span class="m">9</span><span class="w"> </span>--task<span class="w"> </span>exp<span class="w"> </span>--dummy-scans<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span>--fs-subjects-dir<span class="w"> </span>/data/projects/chess/data/BIDS/derivatives/fastsurfer<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span>--notrack<span class="w"> </span>--participant-label<span class="w"> </span><span class="m">41</span>
-</span></code></pre></div>
-<details class="tip">
-<summary>Use CIFTI output for surface data</summary>
-<p>If you plan to run analysis on <strong>surface data</strong>, consider using <strong>CIFTI output images</strong> from fMRIPrep. While this approach hasn't been directly tested here, CIFTI outputs can provide several advantages:</p>
-<ul>
-<li><strong>Surface analysis in SPM</strong> (see <a href="https://neurostars.org/t/analyzing-func-gii-files-with-spm12/852/2">this</a> conversation on Neurostars).</li>
-<li><strong>CIFTI images</strong> include cortical BOLD time series projected onto the surface using templates like the <strong>Glasser2016 parcellation</strong> (which is also used for MVPA).</li>
-<li>This method allows for direct analysis of surface data in formats like <code>.gii</code>, which can be compatible with <strong>SPM</strong> for further analysis.</li>
-<li>Using CIFTI outputs could simplify the process of obtaining <strong>surface-based parcellations</strong> and make the data more directly usable in subject space, potentially eliminating the need for complex and time-consuming transformations.</li>
-<li>It may also provide a <strong>more accurate representation of cortical activity</strong> by avoiding interpolation errors that can occur when mapping from volume to surface space.</li>
-</ul>
-<p>If you decide to explore this option, make sure to include the cifti falg in <code>--output-spaces</code> when running <code>fmriprep-docker</code>. This setup will produce CIFTI files (<code>.dtseries.nii</code>) along with standard volumetric outputs, giving you flexibility in how you proceed with your analysis.</p>
-</details>
-<details class="warning">
-<summary>Allocating resources to fMRIprep</summary>
-<p><strong>Running fMRIPrep is resource and time intensive</strong>, especially with high-resolution data. Here are some practical tips to optimize the process:</p>
-<ul>
-<li><strong>Time Estimate</strong>: Processing a single subject can take between <strong>4-8 hours</strong> depending on your system's specifications (e.g., CPU, RAM). Plan accordingly if you have many subjects.</li>
-<li>
-<p><strong>Optimize Resource Allocation</strong>: Adjust the <code>--n-cpus</code> and <code>--mem-mb</code> arguments to make the best use of your available hardware:</p>
-<ul>
-<li><strong>n-cpus</strong>: Allocate about 70-80% of your CPU cores to avoid system slowdowns (e.g., <code>--n-cpus 12</code> on a 16-core system).</li>
-<li><strong>mem-mb</strong>: Use around <strong>80-90% of your total RAM</strong>, leaving some free for the operating system (e.g., <code>--mem-mb 32000</code> on a 40 GB system).</li>
-</ul>
-</li>
-<li>
-<p><strong>Monitor Resource Usage</strong>: While running fMRIPrep, open a system monitor like <strong>Task Manager</strong> (Windows), <strong>Activity Monitor</strong> (Mac), or <strong>htop</strong> (Linux) to observe CPU and memory usage:</p>
-<ul>
-<li>Aim for <strong>high CPU usage</strong> (close to maximum) and <strong>RAM usage</strong> that is slightly below your system’s capacity.</li>
-<li>If memory usage exceeds available RAM, the process might crash due to <strong>Out of Memory (OOM)</strong> errors or cause <strong>disk space issues</strong> if using a <code>--work-dir</code> that fills up.</li>
-</ul>
-</li>
-<li>
-<p><strong>Adjust Settings if Necessary</strong>: If you encounter OOM errors or the process is slower than expected:</p>
-<ul>
-<li><strong>Lower <code>--mem-mb</code></strong>: Decrease memory allocation incrementally (e.g., by 2-4 GB at a time).</li>
-<li><strong>Reduce <code>--n-cpus</code></strong>: Using fewer cores can help balance the load and prevent crashes.</li>
-<li><strong>Use a dedicated <code>--work-dir</code></strong>: Specify a work directory on a <strong>high-speed SSD</strong> or similar to reduce I/O bottlenecks and ensure there's enough disk space for temporary files.</li>
-</ul>
-</li>
-</ul>
-</details>
-<p>If the run finishes successfully (check the last line of your terminal output), you should have a new <code>BIDS/derivatives/fmriprep/sub-xx</code> folder. See <a href="https://fmriprep.org/en/stable/outputs.html">here</a> for a complete list of outputs generated by fMRIPrep. Make sure that inside your <code>anat</code> and <code>func</code> folders you have all the scans (anatomical and functional for all runs) in the specified spaces. Since we specified <code>fsnative</code> as a space and did not use the <code>--no-recon-all</code> flag, fMRIPrep will also produce surface data in <code>BIDS/derivatives/fastsurfer/sub-xx</code>.</p>
-<hr />
-<h3 id="interpreting-fmriprep-visual-reports">Interpreting fMRIPrep Visual Reports<a class="headerlink" href="#interpreting-fmriprep-visual-reports" title="Permanent link">&para;</a></h3>
-<p>Check the <code>sub-xx.html</code> report to ensure everything ran smoothly. Pay particular attention to:</p>
-<ul>
-<li><strong>Registrations</strong>: Verify the alignment between functional and anatomical images.</li>
-<li><strong>Framewise Displacement (FD) Values</strong>: Look for runs with unusually high FD values, as these may indicate motion artifacts or poor data quality.</li>
-</ul>
-<p>For more details, refer to the general guidelines outlined <a href="fmri-prepocessing-qa.html#interpreting-fmriprep-and-mriqc-reports">here</a>, and to the following links:</p>
-<ul>
-<li><a href="https://fmriprep.org/en/stable/outputs.html#confounds">fMRIPrep Output Confounds</a></li>
-<li><a href="https://www.youtube.com/watch?v=fQHEKSzFKDc&amp;list=PLIQIswOrUH6_szyxn9Fy-2cxd3vjlklde&amp;index=3">Video on Reviewing fMRIPrep Outputs</a></li>
-</ul>
-<hr />
-<h2 id="processing-eye-tracking-data-with-bidsmreye">Processing Eye-Tracking Data with <code>bidsmreye</code><a class="headerlink" href="#processing-eye-tracking-data-with-bidsmreye" title="Permanent link">&para;</a></h2>
-<p>To process eye-tracking data using <code>bidsmreye</code>, run the following Docker command:</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>-v<span class="w"> </span>/data/projects/chess/data/BIDS/derivatives/fmriprep:/data<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>-v<span class="w"> </span>/data/projects/chess/temp_bidsmreye:/out<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span>cpplab/bidsmreye:0.5.0<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span>/data<span class="w"> </span>/out<span class="w"> </span>participant<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span>--space<span class="w"> </span>T1w<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span>--reset_database<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span>--verbose
-</span></code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In my experience, <code>bidsmreye</code> worked only when using the <code>T1w</code> fMRIPrep output space.</p>
-</div>
-<hr />
-<h2 id="first-level-analysis-general-linear-model-glm">First-Level Analysis – General Linear Model (GLM)<a class="headerlink" href="#first-level-analysis-general-linear-model-glm" title="Permanent link">&para;</a></h2>
-<p>After preprocessing, proceed to the first-level analysis with the GLM. Running the GLM and setting contrasts is straightforward using <code>script03</code>. Make sure to adjust the following parameters:</p>
-<ul>
-<li><strong>Paths</strong>:</li>
-<li><code>fmriprepRoot</code>: Path to the fMRIPrep folder.</li>
-<li><code>BIDSRoot</code>: Path to your BIDS folder.</li>
-<li><code>outRoot</code>: Path to save GLM results (ideally in the derivatives folder, in a <code>fmriprep-spm</code> folder).</li>
-<li>
-<p><code>tempDir</code>: Directory for temporary files, such as uncompressed or smoothed files.</p>
-</li>
-<li>
-<p><strong>Subject Selection</strong>:</p>
-<p>Leave a new line before listing subjects.</p>
-</li>
-<li>
-<p><code>selectedSubjectsList</code>: A list of integers like <code>[41, 42, 43, 44]</code> or use <code>'*'</code> to analyze all subjects.</p>
-</li>
-<li>
-<p><code>selectedRuns</code>: List of runs to analyze.</p>
-</li>
-<li>
-<p><strong>Contrasts Setup</strong>:</p>
-<div class="language-matlab highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">selectedTasks</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;exp&#39;</span><span class="p">;</span><span class="w">  </span><span class="c">% The name of the task. Must match the task name in your BIDS filenames.</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">selectedTasks</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">contrasts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;Check &gt; No-Check&#39;</span><span class="p">};</span><span class="w">  </span><span class="c">% Name of the contrast.</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">selectedTasks</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">weights</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">struct</span><span class="p">(</span><span class="s">&#39;C_WILDCARD___WILDCARD_&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NC_WILDCARD___WILDCARD_&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c">% Weights for each regressor.</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">selectedTasks</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">smoothBool</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w">  </span><span class="c">% Whether to smooth images before GLM. Useful for localizers.</span>
-</span></code></pre></div>
-</li>
-</ul>
-<p>If everything is configured correctly, the script will generate new <code>sub-xx</code> folders in your output directory. These folders will contain subdirectories for each analysis task, with <code>beta_000x.nii</code> files for each regressor (including confounds and conditions).</p>
-<hr />
-<h3 id="verifying-the-design-matrix">Verifying the Design Matrix<a class="headerlink" href="#verifying-the-design-matrix" title="Permanent link">&para;</a></h3>
-<p>It is advisable to verify that the design matrix is set up correctly:</p>
-<ol>
-<li>Open the SPM GUI by typing <code>spm fmri</code> in the MATLAB Command Window.</li>
-<li>Click on <strong>Results</strong> and select the <code>SPM.mat</code> file located in your <code>BIDS/fmriprep-spm/{space}/sub-xx/{task_name}/</code> directory.</li>
-<li>
-<p>This will open the SPM Contrast Manager, showing the design matrix and assigned contrasts. Ensure the following:</p>
-<ul>
-<li>No overlapping or unusually long conditions.</li>
-<li>The correct number of runs.</li>
-<li>Confound regressors are positioned at the end of each run.</li>
-<li>Contrast weights are assigned correctly.</li>
-</ul>
-</li>
-<li>
-<p>Select your contrast and click <strong>Done</strong>.</p>
-</li>
-<li>In the next window, set the following options:<ul>
-<li><strong>Apply masking</strong>: None</li>
-<li><strong>P-value adjustment</strong>: None</li>
-<li><strong>Threshold</strong>: <code>0.001</code></li>
-<li><strong>Extent threshold</strong>: <code>0</code></li>
-</ul>
-</li>
-</ol>
-<p>This will display the results of the contrast (thresholded t-map) on the top right, along with a list of significantly active clusters in the bottom right panel.</p>
-<hr />
-<h3 id="visualizing-activations">Visualizing Activations<a class="headerlink" href="#visualizing-activations" title="Permanent link">&para;</a></h3>
-<p>To visualize activations on a volume or surface:</p>
-<ol>
-<li>Click <strong>Display</strong> -&gt; <strong>overlays...</strong> in the SPM GUI.</li>
-<li>Select <strong>sections</strong> for volume plotting or <strong>render</strong> for surface plotting.</li>
-<li>Choose the subject's anatomical image from <code>BIDS/derivatives/fmriprep/sub-xx/anat</code>.<ul>
-<li>For volume plots, select the <code>.nii</code> file corresponding to the same space as your GLM (usually MNI).</li>
-<li>For surface plots, select the pial or inflated brain image.</li>
-</ul>
-</li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>SPM cannot read <code>.nii.gz</code> files directly, so you must decompress them into <code>.nii</code> files. This can be done with any decompression tool by right-clicking on the file in your file explorer. Once decompressed, use the SPM GUI to select the <code>.nii</code> file.</p>
-</div>
-<hr />
-<h2 id="generating-and-organizing-regions-of-interest-rois">Generating and Organizing Regions of Interest (ROIs)<a class="headerlink" href="#generating-and-organizing-regions-of-interest-rois" title="Permanent link">&para;</a></h2>
-<h3 id="rois-from-functional-localizers">ROIs from Functional Localizers<a class="headerlink" href="#rois-from-functional-localizers" title="Permanent link">&para;</a></h3>
-<p>To run MVPA, you need Regions of Interest (ROIs) to select your voxels. You can obtain ROIs through:</p>
-<ul>
-<li><strong>Functional Localizers</strong>: Perform a localizer task in the scanner, then run a GLM on the preprocessed and smoothed data. For example, <code>Faces &gt; Objects</code> to identify the <strong>FFA</strong>.</li>
-<li><strong>Pre-defined Anatomical Masks</strong>: Use anatomical masks in the same space as your subjects (e.g., MNI). Ensure the mask resolution matches the resolution of your data (e.g., resample/reslice if necessary using tools like <strong>ANTs</strong>, <strong>SPM</strong>, or Python libraries like <strong>nilearn</strong> or <strong>nibabel</strong>).</li>
-</ul>
-<hr />
-<h3 id="hcp-glasser-parcellation">HCP Glasser Parcellation<a class="headerlink" href="#hcp-glasser-parcellation" title="Permanent link">&para;</a></h3>
-<p>In my pipeline, I use the <a href="https://figshare.com/articles/dataset/HCP-MMP1_0_projected_on_fsaverage/3498446">Glasser2016 parcellation projected on <code>fsaverage</code></a>, which includes 180 ROIs per hemisphere. This process involves converting Glasser parcellation annotation files to labels and mapping them from <code>fsaverage</code> to the subject's T1 and MNI spaces. Use the <code>HPC-to-subject.sh</code> script for automation (see the top of the script file for usage notes).</p>
-<hr />
-<h2 id="multi-variate-pattern-analysis-mvpa">Multi-Variate Pattern Analysis (MVPA)<a class="headerlink" href="#multi-variate-pattern-analysis-mvpa" title="Permanent link">&para;</a></h2>
-<h3 id="running-decoding-with-svm">Running Decoding with SVM<a class="headerlink" href="#running-decoding-with-svm" title="Permanent link">&para;</a></h3>
-<p>After organizing your ROIs, proceed with the MVPA analysis:</p>
-<ul>
-<li>Use <code>script04</code> to perform independent cross-validated SVM classification on each subject and ROI.</li>
-<li>The script outputs decoding accuracy for each ROI of the HCP parcellation.</li>
-</ul>
-<p>The results are saved in a <code>BIDS/derivatives/mvpa</code> folder organized according to the BIDS structure. Each subject's folder will contain a <code>.tsv</code> file with the decoding accuracy results.</p>
-<hr />
-<h3 id="plotting-and-reporting">Plotting and Reporting<a class="headerlink" href="#plotting-and-reporting" title="Permanent link">&para;</a></h3>
-<p>The Glasser parcellation includes parcels at three levels, with each higher level grouping several ROIs into a single ROI. In my pipeline, the analysis is performed at the lowest level (180 parcels per hemisphere), then averaged across ROIs within a larger ROI using <code>script06</code>.</p>
-<ul>
-<li>The script computes the significance of each decoding accuracy against chance.</li>
-<li>It generates plots of significant accuracies on an inflated brain for each grouping level.</li>
-</ul>
-<p>For example:</p>
+<p>At each level, significance was tested against chance, and the results were plotted on inflated brain surfaces:</p>
 <p><img alt="Decoding Example" src="https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/combined_brain_grid.png" /></p>
-<hr />
 
 
 
