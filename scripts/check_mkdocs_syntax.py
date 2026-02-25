@@ -154,7 +154,7 @@ def check_file(filepath: Path, fix: bool = False) -> list[Issue]:
                     if actual_indent < expected_len and content_line.strip():
                         issues.append(Issue(
                             rel, j + 1,
-                            f"tab content indented {actual_indent} spaces, expected {expected_len}",
+                            f"tab content indented {actual_indent} space{'s' if actual_indent != 1 else ''}, expected {expected_len}",
                         ))
 
             i += 1
@@ -200,7 +200,7 @@ def check_file(filepath: Path, fix: bool = False) -> list[Issue]:
                         and not content_line.strip().startswith("---")):
                     issues.append(Issue(
                         rel, j + 1,
-                        f"admonition content indented {actual_indent} spaces, expected {expected_len}",
+                        f"admonition content indented {actual_indent} space{'s' if actual_indent != 1 else ''}, expected {expected_len}",
                     ))
 
         i += 1
