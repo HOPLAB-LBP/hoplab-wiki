@@ -19,6 +19,7 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
     - [Creating child pages](#creating-child-pages)
     - [Adding tags](#adding-todo-note-and-placeholder-tags)
     - [Common formatting syntax](#common-formatting-syntax)
+    - [Advanced formatting features](#advanced-formatting-features)
     - [Linking and referencing](#linking-and-referencing)
 5. [Reviewing and accepting pull requests (for admins)](#reviewing-and-accepting-pull-requests-for-admins)
 6. [Troubleshooting](#troubleshooting)
@@ -328,6 +329,49 @@ Here are some common Markdown elements:
 - **Images:** `![Alt text](path/to/image.png)` (see [this section](#adding-and-linking-images) for instructions on how to link images.)
 
 For more advanced formatting options, refer to the [MkDocs Material Reference Guide](https://squidfunk.github.io/mkdocs-material/reference/).
+
+### Advanced formatting features
+
+#### Code annotations
+
+Add numbered annotations to code blocks to explain individual lines or flags:
+
+````markdown
+```bash
+docker run -it --rm \ # (1)!
+    -v /path/to/data:/data:ro # (2)!
+```
+
+1. Run interactively (`-it`) and remove the container after exit (`--rm`).
+2. Mount the data directory as read-only inside the container.
+````
+
+Annotation markers `(N)!` are placed as comments in the code, and numbered definitions follow the code block. See [Material — Annotations](https://squidfunk.github.io/mkdocs-material/reference/annotations/) for details.
+
+#### Definition lists
+
+Use definition list syntax for glossary-style terms:
+
+```markdown
+Term name
+:   Definition of the term, which can span multiple lines
+    and include **formatting**.
+
+Another term
+:   Another definition.
+```
+
+This renders with proper indentation and styling. Works inside admonitions too. See [Material — Lists (definition lists)](https://squidfunk.github.io/mkdocs-material/reference/lists/#using-definition-lists).
+
+#### Keyboard keys
+
+Style keyboard shortcuts using the `keys` extension:
+
+```markdown
+Press ++ctrl+c++ to copy, ++ctrl+v++ to paste.
+```
+
+This renders styled key caps. Use `+` to combine keys. See [PyMdown — Keys](https://facelessuser.github.io/pymdown-extensions/extensions/keys/) for the full key reference.
 
 ### Linking and referencing
 
