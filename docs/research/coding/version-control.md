@@ -1,6 +1,6 @@
 # Version control with Git and GitHub
 
-Version control is crucial for collaborative coding and tracking changes in your projects. This page covers how to set up and use Git and GitHub, including practical tips for effective collaboration.
+Version control is crucial for collaborative coding and tracking changes in your projects. This page covers how to set up and use Git and GitHub, including how to work with branches and pull requests for effective collaboration.
 
 !!! tip "New to Git?"
     If you've never used Git before, start with the [Software Carpentry Git lesson](https://swcarpentry.github.io/git-novice/) or the beginner-friendly [GitHub guide](https://github.blog/developer-skills/github/beginners-guide-to-github-adding-code-to-your-repository/).
@@ -38,7 +38,7 @@ git config --global user.name "Your Name"
 git config --global user.email "youremail@example.com"
 ```
 
-## 3. Using GitHub
+## 3. Getting started with GitHub
 
 === "GitHub Desktop (GUI)"
 
@@ -68,212 +68,203 @@ git config --global user.email "youremail@example.com"
        git push origin main
        ```
 
-## 4. Workflow tips for effective collaboration
+## 4. Working with branches
 
-1. **Always pull before making changes**:
-    - Before starting any work, ensure your local repository is up-to-date with the latest changes:
+### Why use branches?
 
+The `main` branch contains the stable, "official" version of a project. You should **never commit directly to `main`**. Instead, create a **branch** — an independent copy of the codebase where you can make changes without affecting anyone else's work. This way:
+
+- You can experiment freely without breaking the main version.
+- Multiple people can work on different features at the same time.
+- Changes are reviewed before they are merged, catching mistakes early.
+
+### Creating and switching branches
+
+=== "GitHub Desktop"
+
+    1. **Create a new branch**: Click the `Current Branch` dropdown at the top → click `New Branch` → give it a descriptive name (e.g., `fix/update-fmri-docs`) → click `Create Branch`.
+    2. **Switch between branches**: Click the `Current Branch` dropdown and select the branch you want to work on. GitHub Desktop will update all the files on your computer to match that branch.
+    3. **Publish the branch**: The first time you switch to a new branch, click `Publish branch` to push it to GitHub so others can see it.
+
+=== "Command Line (CLI)"
+
+    1. **Create and switch to a new branch**:
        ```bash
-       git pull origin main
+       git checkout -b fix/update-fmri-docs
        ```
-
-    - This prevents merge conflicts and keeps your local version in sync with the remote repository.
-
-2. **Typical workflow**:
-    - **Fetch updates**:
-
+    2. **Switch to an existing branch**:
        ```bash
-       git fetch
+       git checkout fix/update-fmri-docs
        ```
-
-    - **Pull latest changes**:
-
+    3. **Push a new branch to GitHub**:
        ```bash
-       git pull origin main
+       git push -u origin fix/update-fmri-docs
        ```
-
-    - **Make edits**: Modify files as needed.
-    - **Stage changes**:
-
+    4. **List all branches** (local and remote):
        ```bash
-       git add .
+       git branch -a
        ```
 
-    - **Commit changes** with a clear message:
+!!! tip "Branch naming"
+    Use descriptive names that indicate what the branch is for. Common prefixes:
 
-       ```bash
-       git commit -m "Describe the changes made"
-       ```
+    - `fix/` — for bug fixes (e.g., `fix/broken-link-fmri`)
+    - `feature/` or `feat/` — for new features (e.g., `feature/add-eeg-tutorial`)
+    - `improve/` — for improvements (e.g., `improve/restructure-coding-page`)
+    - `docs/` — for documentation changes (e.g., `docs/update-ethics-info`)
 
-    - **Push to remote**:
+### Working on a branch
 
-       ```bash
-       git push origin main
-       ```
+Once you are on your branch, the workflow is the same as usual — edit files, stage, commit, and push:
 
-3. **Commit often, but meaningfully**:
-    - Frequent commits help track your progress, but ensure each commit is meaningful and descriptive.
+=== "GitHub Desktop"
 
----
+    1. Make your edits to files as normal.
+    2. In GitHub Desktop, you will see the changed files listed on the left.
+    3. Write a commit message at the bottom-left and click `Commit to <branch-name>`.
+    4. Click `Push origin` to send your commits to GitHub.
 
-## Common Git issues
+=== "Command Line (CLI)"
 
-??? failure "Merge conflict"
-    **Issue**: This occurs when changes are made in the same part of a file in both the local and remote versions.
+    ```bash
+    # Make your edits, then:
+    git add .
+    git commit -m "Describe what you changed"
+    git push origin fix/update-fmri-docs
+    ```
 
-    **Solution**:
-    - Resolve the conflict manually in the affected file.
-    - Stage the resolved file:
-       ```
-       git add <file>
-       ```
-    - Commit the resolution:
-       ```
-       git commit -m "Resolved merge conflict in <file>"
-       ```
+### Keeping your branch up to date
 
-??? failure "Detached HEAD"
-    **Issue**: Happens when you are not on a branch but on a specific commit.
+If others have made changes to `main` while you were working on your branch, you should pull those changes into your branch to stay up to date and avoid conflicts later:
 
-    **Solution**:
-    - Switch back to your branch:
-       ```
-       git checkout main
-       ```
+=== "GitHub Desktop"
 
-??? failure "Push rejected"
-    **Issue**: Your push was rejected because the remote has changes that you don't have locally.
+    1. Switch to `main` (click `Current Branch` → select `main`).
+    2. Click `Fetch origin` and then `Pull origin` to get the latest changes.
+    3. Switch back to your branch.
+    4. Go to `Branch > Update from main` (or `Branch > Merge into current branch` → select `main`). This brings the latest `main` changes into your branch.
 
-    **Solution**:
-    - Pull the latest changes, resolve any conflicts, and try pushing again:
-       ```
-       git pull origin main
-       git push origin main
-       ```
+=== "Command Line (CLI)"
 
-??? failure "Failed to push some refs"
-    **Issue**: Occurs when there are changes on the remote that need to be merged before pushing.
+    ```bash
+    git checkout main
+    git pull origin main
+    git checkout fix/update-fmri-docs
+    git merge main
+    ```
 
-    **Solution**:
-    - Run:
-       ```
-       git pull --rebase origin main
-       ```
-    - This replays your changes on top of the pulled changes and then allows you to push again.
+### Collaborating on a branch
 
-??? failure "Changes not staged for commit"
-    **Issue**: Files were modified but not added to the staging area.
+Multiple people can work on the same branch. To pick up a colleague's branch that already exists on GitHub:
 
-    **Solution**:
-    - Add the changes to the staging area:
-       ```
-       git add <file>
-       ```
-    - Or add all changes:
-       ```
-       git add .
-       ```
+=== "GitHub Desktop"
 
-??? failure "File deleted locally, but not in remote"
-    **Issue**: A file was deleted locally but still exists in the remote repository.
+    1. Click `Fetch origin` to refresh the list of remote branches.
+    2. Click `Current Branch` → you will see the remote branch listed. Click on it to check it out locally.
+    3. You can now make edits, commit, and push to the same branch.
 
-    **Solution**:
-    - To stage the deletion:
-       ```
-       git rm <file>
-       ```
-    - Commit and push the change:
-       ```
-       git commit -m "Deleted <file>"
-       git push origin main
-       ```
+=== "Command Line (CLI)"
 
-??? failure "Authentication failed"
-    **Issue**: This happens if your credentials are incorrect or have expired.
+    ```bash
+    git fetch origin
+    git checkout fix/update-fmri-docs
+    ```
 
-    **Solution**:
-    - Update your Git credentials:
-       ```
-       git config --global credential.helper store
-       ```
-    - Re-run the `git push` command, and enter your credentials when prompted.
+Before starting work on a shared branch, always **pull first** to get your colleague's latest changes:
 
-??? failure "Branch not found"
-    **Issue**: Occurs when you try to checkout a branch that doesn't exist locally or remotely.
+=== "GitHub Desktop"
 
-    **Solution**:
-    - Create the branch:
-       ```
-       git checkout -b branch-name
-       ```
-    - Or fetch all remote branches:
-       ```
-       git fetch --all
-       ```
+    Click `Fetch origin`, then `Pull origin`.
 
-??? failure "Untracked files"
-    **Issue**: New files are created locally but not yet added to Git.
+=== "Command Line (CLI)"
 
-    **Solution**:
-    - Stage the files:
-       ```
-       git add <file>
-       ```
-    - To ignore certain files, add them to `.gitignore`.
+    ```bash
+    git pull origin fix/update-fmri-docs
+    ```
 
-??? failure "File size too large"
-    **Issue**: Git prevents files larger than 100MB from being pushed.
+## 5. Pull requests
 
-    **Solution**:
-    - Use [Git Large File Storage (LFS)](https://git-lfs.github.com/) to manage large files:
-       ```
-       git lfs install
-       git lfs track "<file-pattern>"
-       git add <large-file>
-       git commit -m "Add large file using Git LFS"
-       git push origin main
-       ```
-    - Alternatively, remove the large file and add it to `.gitignore`:
-       ```
-       git rm --cached <large-file>
-       echo "<large-file>" >> .gitignore
-       git commit -m "Remove large file and update .gitignore"
-       git push origin main
-       ```
+### What is a pull request?
 
-??? failure "Repository size exceeds limit"
-    **Issue**: GitHub imposes a repository size limit, typically 1GB for free accounts.
+A **pull request** (PR) is a request to merge the changes from your branch into `main`. It is the standard way to propose changes in a collaborative project. A PR lets others:
 
-    **Solution**:
-    - Clean up your repository by removing large files from history using `git filter-branch` or tools like [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/):
-       ```
-       bfg --delete-files <large-file>
-       git reflog expire --expire=now --all && git gc --prune=now --aggressive
-       git push --force
-       ```
-    - If large files are essential, consider hosting them elsewhere (e.g., cloud storage) and linking to them.
+- **See exactly what you changed** (added, modified, or deleted).
+- **Review your work** — leave comments, suggest edits, or approve.
+- **Discuss** any questions before the changes go live.
 
-??? failure "Packfile too large"
-    **Issue**: This error can occur when trying to push a repository with a large packfile.
+Once the PR is approved, the branch is merged into `main` and typically deleted.
 
-    **Solution**:
-    - Reduce the size of the packfile:
-       ```
-       git gc --aggressive --prune=now
-       ```
-    - If the repository is still too large, consider splitting it into smaller repositories.
+### Opening a pull request
 
-??? failure "History contains large files"
-    **Issue**: Even if a large file has been deleted, it may still be present in the repository history.
+=== "GitHub Desktop"
 
-    **Solution**:
-    - Remove the file from history with:
-       ```
-       git filter-branch --tree-filter 'rm -f <large-file>' HEAD
-       git push origin --force
-       ```
-    - Note: Use `git filter-branch` carefully as it rewrites history.
+    After pushing your branch, GitHub Desktop will show a banner: `Create Pull Request`. Click it, and it will open the PR form on GitHub in your browser.
 
----
+=== "GitHub website"
 
-By following these practices, you can ensure smoother collaboration and minimize common issues when working with Git and GitHub.
+    1. Go to the repository on GitHub.
+    2. If you recently pushed a branch, you will see a yellow banner: `Compare & pull request`. Click it.
+    3. Alternatively, go to the `Pull requests` tab → `New pull request` → select your branch.
+
+=== "Command Line (CLI)"
+
+    If you have the [GitHub CLI](https://cli.github.com/) installed:
+    ```bash
+    gh pr create --title "Brief description of changes" --body "More details here"
+    ```
+
+When filling in the PR form:
+
+1. **Title**: Write a short, clear summary of what the PR does (e.g., "Update fMRI scanning procedure").
+2. **Description**: Explain *what* you changed and *why*. If the PR resolves a GitHub Issue, write `Closes #123` in the description — this will automatically close the Issue when the PR is merged.
+3. **Reviewer**: Assign a reviewer (someone who will check your work before it is merged).
+
+### Resolving a GitHub Issue with a PR
+
+GitHub Issues are used to track tasks, bugs, and suggestions. To resolve an issue:
+
+1. Open the Issue on GitHub and read what needs to be done.
+2. Create a branch (see [above](#creating-and-switching-branches)) with a name that references the issue (e.g., `fix/issue-42-broken-links`).
+3. Make your changes on that branch and push them.
+4. Open a PR and include `Closes #42` (or `Fixes #42`) in the PR description.
+5. When the PR is merged, the Issue is automatically closed.
+
+### Reviewing a pull request
+
+If you are asked to review a PR:
+
+1. Go to the `Pull requests` tab on GitHub and open the PR.
+2. Click on the `Files changed` tab to see all modifications.
+3. Leave comments on specific lines by clicking the `+` icon next to a line.
+4. When done, click `Review changes` and choose:
+    - **Approve** — if everything looks good.
+    - **Request changes** — if something needs to be fixed before merging.
+
+### After the PR is merged
+
+Once a PR is approved and merged:
+
+- The branch is typically deleted on GitHub (you can do this from the PR page).
+- Switch back to `main` and pull the latest changes to get the merged updates locally:
+
+=== "GitHub Desktop"
+
+    1. Switch to `main` via the `Current Branch` dropdown.
+    2. Click `Fetch origin` → `Pull origin`.
+    3. You can delete the old branch locally: `Branch > Delete`.
+
+=== "Command Line (CLI)"
+
+    ```bash
+    git checkout main
+    git pull origin main
+    git branch -d fix/update-fmri-docs
+    ```
+
+## 6. General tips
+
+- **Pull before you start working** to avoid conflicts.
+- **Commit often, but meaningfully** — each commit should represent a logical unit of work.
+- **Never commit directly to `main`** — always use a branch and a PR.
+- **Write clear commit messages** that explain *what* changed and *why*.
+- **Keep PRs focused** — one PR per feature or fix. Avoid bundling unrelated changes.

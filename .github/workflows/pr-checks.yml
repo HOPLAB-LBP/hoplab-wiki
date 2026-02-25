@@ -128,6 +128,13 @@ jobs:
         run: echo "failed" > /tmp/pr-checks/yamllint-status
 
       # ── Check 4: Link check ──────────────────────────────
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: cache-lychee-${{ github.sha }}
+          restore-keys: cache-lychee-
+
       - name: Link check
         id: linkcheck
         continue-on-error: true
@@ -215,9 +222,18 @@ jobs:
             esac
           }
 
-          # Count failures
+          # Link check emoji: warning instead of failure (advisory only)
+          link_emoji() {
+            case "$1" in
+              passed)  echo ":white_check_mark:" ;;
+              failed)  echo ":warning:" ;;
+              *)       echo ":white_circle:" ;;
+            esac
+          }
+
+          # Count failures (link check is advisory — excluded from count)
           FAILURES=0
-          for s in "$SPELL" "$MDLINT" "$YAML" "$LINKS" "$BUILD" "$SYNTAX"; do
+          for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX"; do
             [ "$s" = "failed" ] && FAILURES=$((FAILURES + 1))
           done
 
@@ -233,7 +249,7 @@ jobs:
           | Spell check | $(emoji "$SPELL") Passed |
           | Markdown lint | $(emoji "$MDLINT") Passed |
           | YAML lint | $(emoji "$YAML") Passed |
-          | Link check | $(emoji "$LINKS") Passed |
+          | Link check | $(link_emoji "$LINKS") Passed |
           | MkDocs build | $(emoji "$BUILD") Passed |
           | MkDocs syntax | $(emoji "$SYNTAX") Passed |
 
@@ -252,7 +268,7 @@ jobs:
           | Spell check | $(emoji "$SPELL") $(echo "$SPELL" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
           | Markdown lint | $(emoji "$MDLINT") $(echo "$MDLINT" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
           | YAML lint | $(emoji "$YAML") $(echo "$YAML" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
-          | Link check | $(emoji "$LINKS") $(echo "$LINKS" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
+          | Link check | $(link_emoji "$LINKS") $(echo "$LINKS" | sed 's/passed/Passed/;s/failed/**Warning**/;s/skipped/Skipped/') |
           | MkDocs build | $(emoji "$BUILD") $(echo "$BUILD" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
           | MkDocs syntax | $(emoji "$SYNTAX") $(echo "$SYNTAX" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
 
@@ -411,9 +427,9 @@ jobs:
 
           ---
 
-          ### :x: Link check — broken links found
+          ### :warning: Link check — potential issues found
 
-          Some links in the documentation point to pages that don't exist or can't be reached.
+          Some links may be broken or unreachable. Note that external sites sometimes block automated checks, so **verify the links below in your browser** before taking action.
 
           EOF
             cat /tmp/pr-checks/linkcheck-output.md >> "$REPORT" 2>/dev/null || echo "(output not captured)" >> "$REPORT"
@@ -631,8 +647,15 @@ jobs:
           LINKS=$(cat /tmp/pr-checks/linkcheck-status 2>/dev/null || echo "skipped")
           BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "skipped")
           SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "skipped")
+
+          # Link check is advisory only — external sites may block CI runners.
+          # Results still appear in the PR comment for manual review.
+          if [ "$LINKS" = "failed" ]; then
+            echo "::warning::Link check found issues — see the PR comment for details."
+          fi
+
           FAILED=false
-          for s in "$SPELL" "$MDLINT" "$YAML" "$LINKS" "$BUILD" "$SYNTAX"; do
+          for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX"; do
             [ "$s" = "failed" ] && FAILED=true
           done
           if [ "$FAILED" = "true" ]; then
