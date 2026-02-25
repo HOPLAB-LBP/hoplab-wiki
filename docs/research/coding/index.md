@@ -691,7 +691,7 @@ git config --global user.email "youremail@example.com"
 
     1. **Clone a Repository**:
        ```
-git clone https://github.com/your-username/repo-name.git
+git clone <https://github.com/your-username/repo-name.git>
        cd repo-name
        ```
     2. **Stage and Commit Changes**:
