@@ -19,6 +19,9 @@
 
 /* Dark mode colors */
 [data-md-color-scheme="slate"] {
+  /* Softer dark background — slightly warm slate instead of near-black */
+  --md-default-bg-color: #1E2433;
+  --md-default-bg-color--light: #262D3E;
   /* Main content link colors */
   --md-typeset-a-color: #7CB3F0;
   --md-typeset-a-hover-color: #A8CFF5;
