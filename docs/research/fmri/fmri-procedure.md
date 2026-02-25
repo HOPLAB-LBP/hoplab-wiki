@@ -93,6 +93,7 @@ Upon arriving at the hospital, participants must register at the **main entrance
 Participants must wait at the **main entrance at least 30 minutes before** their scheduled scanning session. A researcher will meet them and guide them through the check-in process.
 
 === "Weekdays (before 5:30 PM)"
+
     The researcher will guide the participant through the process, ensuring that:
 
     - The **MR Safety Checklist** and **Consent Form** are completed at the hospital entrance. Family members or anyone accompanying the participant into the Inner Controlled Area must also complete the **MR Safety Checklist**.
@@ -104,6 +105,7 @@ Participants must wait at the **main entrance at least 30 minutes before** their
         The **MR Safety Checklist** must be submitted **at the Radiology desk**. Failure to do so will prevent the participant from being listed in the **Radiology Information System (RIS)**, which could cause delays.
 
 === "After 5:30 PM or Weekends/Holidays"
+
     - The **MR Safety Checklist** and **Consent Form** are completed at the hospital entrance.
     - The researcher and participant will proceed directly to the MR8 suite together.
 
@@ -176,6 +178,7 @@ The stimulus computer's desktop is located in the **control room**. It is the se
 The scanner sends a trigger "5" to the stimulus computer. Different setups are used for static and dynamic stimuli:
 
 === "Static Stimuli"
+
     A single wire connects two button boxes, each with 2 buttons:
 
       - **Box 1**: 
@@ -186,6 +189,7 @@ The scanner sends a trigger "5" to the stimulus computer. Different setups are u
         - Red button = Trigger 4
 
 === "Dynamic Stimuli (e.g., movies)"
+
     A response box with 4 buttons:
 
       - Blue button = Trigger "b"

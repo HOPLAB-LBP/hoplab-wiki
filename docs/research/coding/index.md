@@ -311,6 +311,7 @@ Download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
     - **Anaconda** comes with a full suite of pre-installed packages like `numpy`, `pandas`, `scipy`, and many others, and with a GUI to manage packages and environments.
 
 === "Windows"
+
     - **Download** the installer from the [Anaconda website](https://www.anaconda.com/products/distribution#windows).
     - **Run the Installer**: Double-click the `.exe` file and follow the installation wizard.
     - **Add Conda to PATH**: During installation, check the box that says "Add Anaconda to my PATH environment variable" if you plan to use `conda` directly from the command prompt.
@@ -319,6 +320,7 @@ Download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
         Adding Anaconda to PATH can sometimes cause conflicts with other software. Only do this if you are familiar with PATH management.
 
 === "Mac"
+
     - **Download** the installer from the [Anaconda website](https://www.anaconda.com/products/distribution#macos).
     - **Run the Installer**: Open the downloaded `.pkg` file and follow the installation instructions.
     - **Verify Installation**:
@@ -333,6 +335,7 @@ Download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
         ```
 
 === "Ubuntu"
+
     - **Download** the installer script from the terminal:
         ```bash
         wget https://repo.anaconda.com/archive/Anaconda3-<version>-Linux-x86_64.sh
@@ -356,6 +359,7 @@ Download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 ### 2. Create and manage a Conda environment
 
 === "CLI"
+
     1. **Create a new environment**:
        Use the following command to create a new environment. Replace `myenv` with the name of your environment:
        ```bash
@@ -384,6 +388,7 @@ Download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
        ```
 
 === "GUI (Anaconda Navigator)"
+
     1. **Open Anaconda Navigator**: Launch the Anaconda Navigator from your start menu.
 
     2. **Create a new environment**:
@@ -642,10 +647,12 @@ For a beginner-friendly guide, with explanation on main steps and terminology se
 ### 1. Install Git
 
 === "Windows"
+
     - Download the installer from the [Git website](https://git-scm.com/download/win).
     - Follow the installation wizard, using default options.
 
 === "Mac"
+
     - Install via Homebrew:
         ```
 brew install git
@@ -670,6 +677,7 @@ git config --global user.email "youremail@example.com"
 ### 3. Using GitHub
 
 === "GitHub Desktop (GUI)"
+
     1. **Download** [GitHub Desktop](https://desktop.github.com/).
     2. **Sign in** with your GitHub account.
     3. **Clone a Repository**:
@@ -680,6 +688,7 @@ git config --global user.email "youremail@example.com"
         - After committing, click `Push` to sync changes with GitHub.
 
 === "Command Line (CLI)"
+
     1. **Clone a Repository**:
        ```
 git clone https://github.com/your-username/repo-name.git
