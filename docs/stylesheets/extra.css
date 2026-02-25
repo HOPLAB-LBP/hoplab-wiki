@@ -76,22 +76,68 @@
   color: var(--md-toc-link-hover-color);
 }
 
-/* Add a subtle shadow to all images */
+/* =========================
+   Text selection
+   ========================= */
+
+::selection {
+  background-color: color-mix(in srgb, var(--md-primary-fg-color) 30%, transparent);
+  color: inherit;
+}
+[data-md-color-scheme="slate"] ::selection {
+  background-color: color-mix(in srgb, #7CB3F0 35%, transparent);
+}
+
+/* =========================
+   Custom scrollbar
+   ========================= */
+
+/* Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--md-default-fg-color) 25%, transparent);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--md-default-fg-color) 45%, transparent);
+}
+
+/* Firefox */
+* {
+  scrollbar-color: color-mix(in srgb, var(--md-default-fg-color) 25%, transparent) transparent;
+  scrollbar-width: thin;
+}
+
+/* =========================
+   Images
+   ========================= */
+
+/* Subtle shadow — adapts to light/dark */
 .md-content img {
-    box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
-    border-radius: 4px; /* Optional: adds rounded corners */
+    box-shadow: 0 2px 12px color-mix(in srgb, var(--md-default-fg-color) 12%, transparent);
+    border-radius: 4px;
     cursor: zoom-in;
     transition: transform 0.2s ease-in-out, z-index 0.2s ease-in-out;
-    z-index: 1; /* Default z-index */
-    position: relative; /* Ensure it respects stacking order */
+    z-index: 1;
+    position: relative;
+}
+
+/* Dark mode: use a faint light glow instead of invisible black shadow */
+[data-md-color-scheme="slate"] .md-content img {
+    box-shadow: 0 2px 16px rgba(255, 255, 255, 0.08);
 }
 
 .md-content img:active {
     transform: scale(1.8);
     transform-origin: center top;
     cursor: zoom-out;
-    z-index: 1000; /* Increase z-index when zoomed */
+    z-index: 1000;
 }
+
+/* =========================
+   Lists
+   ========================= */
 
 /* First level: circles */
 .md-content ul {
@@ -148,19 +194,21 @@
 /* Fully fluid content area: expand with viewport without cap */
 .md-grid { max-width: none; width: 98vw; }
 
-/* Active link accent in primary nav (reverted to theme default) */
-
-/* Sticky secondary sidebar (reverted to theme default) */
-
-/* Breadcrumbs subtle style (reverted) */
-
 /* Search input focus accent */
 .md-search__input:focus {
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--md-primary-fg-color) 35%, transparent);
+  outline: 2px solid var(--md-primary-fg-color);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+[data-md-color-scheme="slate"] .md-search__input:focus {
+  outline-color: #7CB3F0;
 }
 
-/* Footer subtle background and links */
-.md-footer { box-shadow: 0 -2px 8px rgb(0 0 0 / 5%); }
+/* Footer: clearer separation from content */
+.md-footer {
+  border-top: 1px solid color-mix(in srgb, var(--md-default-fg-color) 10%, transparent);
+  box-shadow: 0 -2px 8px rgb(0 0 0 / 5%);
+}
 .md-footer a { text-decoration: none; }
 .md-footer a:hover { text-decoration: underline; }
 
@@ -180,9 +228,16 @@
 }
 .md-typeset h3 { margin-top: 1.5rem; }
 
-/* Optional: add subtle gradient to the first H1 on a page */
+/* Subtle gradient on page H1 — light mode */
 .md-content__inner > h1:first-child {
   background: linear-gradient(90deg, var(--md-primary-fg-color), var(--md-primary-fg-color--light));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dark mode: use lighter link-family colors so the H1 is actually visible */
+[data-md-color-scheme="slate"] .md-content__inner > h1:first-child {
+  background: linear-gradient(90deg, #7CB3F0, #A8CFF5);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -197,15 +252,13 @@
   box-shadow: 0 2px 10px rgb(0 0 0 / 6%);
   transition: transform .15s ease, box-shadow .15s ease;
 }
-/* Let Material's default grid.cards layout adapt responsively (no fixed columns) */
 .md-typeset .grid.cards > ul > li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgb(0 0 0 / 12%);
 }
 .md-typeset .grid.cards > ul > li > a { padding: 0.9rem 1rem; }
 .md-typeset .grid.cards svg,
 .md-typeset .grid.cards .twemoji {
-  /* Use theme default icon size; keep brand color */
   color: var(--md-primary-fg-color);
 }
 
@@ -225,6 +278,11 @@
 .md-typeset table:not(.highlighttable) th {
   position: sticky; top: 0; z-index: 1;
   background: var(--md-default-bg-color);
+  border-bottom: 2px solid color-mix(in srgb, var(--md-default-fg-color) 15%, transparent);
+}
+/* Dark mode: lift header slightly above page background */
+[data-md-color-scheme="slate"] .md-typeset table:not(.highlighttable) th {
+  background: color-mix(in srgb, var(--md-default-bg-color) 92%, white);
 }
 .md-typeset table:not(.highlighttable) tbody tr:nth-child(even) td {
   background: color-mix(in srgb, var(--md-default-bg-color) 92%, black);
@@ -237,8 +295,11 @@
 .md-typeset pre {
   border-radius: 8px;
   box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
+  border: 1px solid color-mix(in srgb, var(--md-default-fg-color) 6%, transparent);
 }
-/* Keep default theme background for code blocks */
+[data-md-color-scheme="slate"] .md-typeset pre {
+  border-color: color-mix(in srgb, var(--md-default-fg-color) 10%, transparent);
+}
 
 /* =========================
    Buttons, Chips, Labels
@@ -251,7 +312,7 @@
   box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
 }
 
-/* Fix: non-primary buttons in light mode should not turn purple on hover */
+/* Non-primary buttons in light mode */
 [data-md-color-scheme="default"] .md-typeset .md-button:not(.md-button--primary) {
   color: var(--md-primary-fg-color);
   border-color: var(--md-primary-fg-color);
@@ -264,7 +325,7 @@
   background-color: color-mix(in srgb, var(--md-primary-fg-color) 16%, white);
 }
 
-/* Dark mode: non-primary buttons adopt link color with subtle tints */
+/* Dark mode: non-primary buttons adopt link color */
 [data-md-color-scheme="slate"] .md-typeset .md-button:not(.md-button--primary) {
   color: var(--md-typeset-a-color);
   border-color: color-mix(in srgb, var(--md-typeset-a-color) 70%, transparent);
@@ -282,8 +343,7 @@
   color: white;
 }
 
-/* Improve primary button hover colors for light/dark */
-/* Light mode: darken primary on hover for better contrast */
+/* Primary button hover */
 [data-md-color-scheme="default"] .md-typeset .md-button--primary:hover,
 [data-md-color-scheme="default"] .md-typeset .md-button--primary:focus {
   background: color-mix(in srgb, var(--md-primary-fg-color) 88%, black);
@@ -332,6 +392,21 @@
 }
 
 /* =========================
+   Accessibility: focus indicators
+   ========================= */
+
+.md-nav__link:focus-visible,
+.md-typeset a:focus-visible {
+  outline: 2px solid var(--md-primary-fg-color);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+[data-md-color-scheme="slate"] .md-nav__link:focus-visible,
+[data-md-color-scheme="slate"] .md-typeset a:focus-visible {
+  outline-color: #7CB3F0;
+}
+
+/* =========================
    Media & Figures
    ========================= */
 
@@ -367,12 +442,18 @@
   content: ""; position: absolute; left: .4rem; top: 0; bottom: 0;
   width: 2px; background: color-mix(in srgb, var(--md-primary-fg-color) 25%, transparent);
 }
+[data-md-color-scheme="slate"] .timeline::before {
+  background: color-mix(in srgb, #7CB3F0 30%, transparent);
+}
 .timeline > li { position: relative; margin: 0 0 1rem 0; }
 .timeline > li::before {
   content: ""; position: absolute; left: -.1rem; top: .25rem;
   width: .7rem; height: .7rem; border-radius: 50%;
   background: var(--md-default-bg-color);
   border: 2px solid color-mix(in srgb, var(--md-primary-fg-color) 60%, transparent);
+}
+[data-md-color-scheme="slate"] .timeline > li::before {
+  border-color: color-mix(in srgb, #7CB3F0 70%, transparent);
 }
 .timeline > li > .timeline-card {
   margin-left: .75rem; padding: .6rem .8rem; border-radius: .5rem;
