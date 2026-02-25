@@ -153,6 +153,17 @@ In other words, the classifier looks at the activity from multiple voxels and tr
 
 This works because the brain encodes information about what we see in these patterns—like a unique "signature" for each category. If the classifier succeeds, it shows that the brain region we're analyzing contains information relevant to distinguishing those categories.
 
+!!! info "Key MVPA Concepts"
+
+    Cross-validation
+    :   A technique for evaluating classifier performance by splitting data into training and test sets across multiple folds, ensuring the model is tested on unseen data.
+
+    Decoding accuracy
+    :   The proportion of correctly classified trials or conditions. Chance level depends on the number of classes (e.g., 50% for 2 classes).
+
+    Support Vector Machine (SVM)
+    :   A supervised learning algorithm that finds the optimal hyperplane separating different classes in high-dimensional feature space.
+
 #### Steps
 
 1. **Partitioning**: Divide the data into folds based on runs (e.g., leave-one-run-out).

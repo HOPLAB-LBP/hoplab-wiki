@@ -170,7 +170,7 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 ### Step 5: Closing the local server
 
 1. **Stop the server:**
-    When you are done previewing and editing and you are done with the changes, go back to the terminal where your server is running and press `Ctrl+C` to stop the server.
+    When you are done previewing and editing and you are done with the changes, go back to the terminal where your server is running and press ++ctrl+c++ to stop the server.
 
 ### Step 6: Committing your changes
 

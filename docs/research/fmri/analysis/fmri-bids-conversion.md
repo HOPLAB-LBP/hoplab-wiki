@@ -174,12 +174,10 @@ To convert your data:
     Use the `anonymize_dicm` function. This removes identifying fields and creates a safe copy for conversion:
 
     ```matlab
-    anonymize_dicm('sub-01/dicom', 'sub-01/dicom_anon', 'sub-01')
+    anonymize_dicm('sub-01/dicom', 'sub-01/dicom_anon', 'sub-01') % (1)!
     ```
 
-    - First argument = path to **raw DICOM** folder
-    - Second argument = path to output **anonymized DICOM** folder
-    - Third argument = subject ID string used in metadata fields (optional but recommended)
+    1. Arguments: (1) raw DICOM folder, (2) output anonymized folder, (3) subject ID string for metadata replacement.
 
     This will create `dicom_anon` and log any changes made.
 
@@ -188,12 +186,10 @@ To convert your data:
     Now convert the anonymized files:
 
     ```matlab
-    dicm2nii('sub-01/dicom_anon', 'sub-01/nifti', 'nii.gz')
+    dicm2nii('sub-01/dicom_anon', 'sub-01/nifti', 'nii.gz') % (1)!
     ```
 
-    - First argument = path to anonymized DICOMs
-    - Second argument = output directory
-    - Third argument = output format (`nii`, `nii.gz`)
+    1. Arguments: (1) input anonymized DICOMs, (2) output directory, (3) output format -- use `nii.gz` for compressed NIfTI.
 
     This will:
 

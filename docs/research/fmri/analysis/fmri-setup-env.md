@@ -284,8 +284,10 @@ We use Conda to manage our Python environment.
 2. Create and activate the environment:
 
     ```bash
-    conda create -n fmri_env python=3.9 spyder numpy scipy matplotlib nibabel nilearn scikit-learn
+    conda create -n fmri_env python=3.9 spyder numpy scipy matplotlib nibabel nilearn scikit-learn # (1)!
     ```
+
+    1. Creates an isolated environment named `fmri_env` with Python 3.9 and all core neuroimaging packages. Always use a dedicated environment per project.
 
 3. Activate the environment:
 
@@ -380,9 +382,12 @@ To install:
 2. Set up environment variables:
 
    ```bash
-   export FREESURFER_HOME=/path/to/freesurfer
-   source $FREESURFER_HOME/SetUpFreeSurfer.sh
+   export FREESURFER_HOME=/path/to/freesurfer # (1)!
+   source $FREESURFER_HOME/SetUpFreeSurfer.sh # (2)!
    ```
+
+   1. Set the `FREESURFER_HOME` variable to the directory where FreeSurfer is installed.
+   2. This script configures all necessary environment variables (`SUBJECTS_DIR`, `PATH`, etc.) for FreeSurfer to run correctly.
 
 ??? warning "FreeSurfer on Windows"
     FreeSurfer is not natively compatible with Windows. To use FreeSurfer on a Windows system, you have a few options:

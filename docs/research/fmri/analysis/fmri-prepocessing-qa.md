@@ -74,13 +74,18 @@ For detailed instructions, visit the [fMRIPrep Installation Guide](https://fmrip
 Once your environment is ready, you can run fMRIPrep using the following command:
 
 ```sh
-fmriprep-docker /path/to/BIDS /path/to/derivatives/fmriprep participant \
+fmriprep-docker /path/to/BIDS /path/to/derivatives/fmriprep participant \ # (1)!
     --work-dir /path/to/temp_fmriprep \
-    --fs-license-file /path/to/.license \
-    --output-spaces MNI152NLin2009cAsym:res-2 anat fsnative \
+    --fs-license-file /path/to/.license \ # (2)!
+    --output-spaces MNI152NLin2009cAsym:res-2 anat fsnative \ # (3)!
     --participant-label <SUBJECT_ID> \
-    --n-cpus 8 --mem-mb 16000 --notrack
+    --n-cpus 8 --mem-mb 16000 --notrack # (4)!
 ```
+
+1. The first positional arguments are: (1) path to your BIDS directory, (2) output directory for fMRIPrep derivatives, and (3) analysis level (`participant`).
+2. FreeSurfer requires a license file. Get one free from [FreeSurfer registration](https://surfer.nmr.mgh.harvard.edu/registration.html).
+3. Request multiple output spaces: MNI volumetric (2 mm), subject anatomical, and FreeSurfer native surface.
+4. Adjust `--n-cpus` and `--mem-mb` based on your machine's resources. fMRIPrep is memory-hungry -- 16 GB is a safe minimum.
 
 Replace:
 
@@ -143,12 +148,16 @@ Refer to the [fMRIPrep Output Documentation](https://fmriprep.org/en/stable/outp
 MRIQC helps identify potential issues in your data by generating quality metrics. Run MRIQC using Docker with the following command:
 
 ```sh
-docker run -it --rm \
-    -v /path/to/BIDS:/data:ro \
+docker run -it --rm \ # (1)!
+    -v /path/to/BIDS:/data:ro \ # (2)!
     -v /path/to/derivatives/mriqc:/out \
     nipreps/mriqc:latest /data /out participant \
-    --participant-label <SUBJECT_ID> --nprocs 8 --mem-gb 16 --verbose-reports
+    --participant-label <SUBJECT_ID> --nprocs 8 --mem-gb 16 --verbose-reports # (3)!
 ```
+
+1. `--rm` automatically removes the container when it exits, keeping your system clean.
+2. Mount your BIDS directory as read-only (`:ro`) inside the container at `/data`.
+3. `--verbose-reports` generates detailed HTML reports with additional visualizations for quality assessment.
 
 This command will analyze individual subjects and save the results in the specified output directory. Replace the paths as appropriate.
 

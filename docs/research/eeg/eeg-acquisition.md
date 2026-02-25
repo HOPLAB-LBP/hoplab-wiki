@@ -62,7 +62,23 @@ Then, make sure everything you'll need is within reach. You can find all necessa
 
 ## Upon participant arrival
 
-It is probably the first time for your participant to participate in an EEG experiment. As it may be a bit scary for them, make sure to explain everything slowly and in great detail. Prepare the participant for data acquisition as follows:
+It is probably the first time for your participant to participate in an EEG experiment. As it may be a bit scary for them, make sure to explain everything slowly and in great detail.
+
+!!! info "Key Anatomical Landmarks"
+
+    Nasion
+    :   The indentation at the top of the nose, between the eyes. Used as the anterior reference point for cap placement.
+
+    Inion
+    :   The small bump at the back of the skull, just above the neck. Used as the posterior reference point.
+
+    A1 (Vertex)
+    :   The midpoint of the scalp, equidistant between nasion and inion and between the left and right ears. The reference point for centering the EEG cap.
+
+    Signa gel
+    :   A conductive gel applied between electrodes and the scalp to ensure good electrical contact for EEG signal recording.
+
+Prepare the participant for data acquisition as follows:
 
 1. Explain the procedure to the participant.
 2. Give the participant enough time to read the information letter, ask questions, and sign the informed consent.
