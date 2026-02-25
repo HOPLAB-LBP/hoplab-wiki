@@ -19,6 +19,7 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
     - [Creating child pages](#creating-child-pages)
     - [Adding tags](#adding-todo-note-and-placeholder-tags)
     - [Common formatting syntax](#common-formatting-syntax)
+    - [Advanced formatting features](#advanced-formatting-features)
     - [Linking and referencing](#linking-and-referencing)
 5. [Reviewing and accepting pull requests (for admins)](#reviewing-and-accepting-pull-requests-for-admins)
 6. [Troubleshooting](#troubleshooting)
@@ -328,6 +329,44 @@ Here are some common Markdown elements:
 - **Images:** `![Alt text](path/to/image.png)` (see [this section](#adding-and-linking-images) for instructions on how to link images.)
 
 For more advanced formatting options, refer to the [MkDocs Material Reference Guide](https://squidfunk.github.io/mkdocs-material/reference/).
+
+### Advanced formatting features
+
+#### Timeline component
+
+Use the `.timeline` CSS class for step-by-step processes with a vertical line and circle markers:
+
+```html
+<ul class="timeline" markdown>
+
+<li markdown>
+<div class="timeline-card" markdown>
+
+### Step title
+
+Description of this step with **markdown** support.
+
+:material-arrow-right: [Link to detailed guide](page.md)
+
+</div>
+</li>
+
+</ul>
+```
+
+The `markdown` attribute on `<ul>`, `<li>`, and `<div>` is required to process markdown inside HTML.
+
+#### Status chips
+
+Use inline chip badges to indicate content status on index pages:
+
+```html
+<span class="chip chip--green">Complete</span>
+<span class="chip chip--blue">In progress</span>
+<span class="chip chip--red">Needs content</span>
+```
+
+Available styles: default (primary color), `chip--green`, `chip--blue`, `chip--red`.
 
 ### Linking and referencing
 
