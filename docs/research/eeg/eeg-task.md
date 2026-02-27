@@ -289,7 +289,6 @@ Before starting a real EEG recording session, verify that the system is configur
 
 - **Lowlatency kernel**: recommended for Linux to reduce OS jitter
 - **CPU governor**: set to `performance` mode (not `powersave`)
-- **Desktop compositor**: disabled (use i3 or similar minimal window manager)
 - **Serial port**: detected and accessible (`ls /dev/ttyUSB*`)
 - **VSync**: engaged (PsychoPy's `getActualFrameRate()` returns a stable value close to 60 Hz)
 
