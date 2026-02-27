@@ -59,7 +59,7 @@ For each participant, create a `sub-<ID>` folder inside `sourcedata/` with three
 | Folder | Contents |
 |--------|----------|
 | `eeg/` | EEG recording files (`.bdf` for BioSemi) |
-| `bh/`  | Behavioural logs: `*_events.tsv` (trial-level), `*_log.tsv` (frame-level), `session.log` |
+| `bh/`  | Behavioural logs: `*_events.tsv` (trial-level), `*_log.tsv` (frame-level), `*_session.log` |
 | `et/`  | Eye-tracking data (`.edf`, `.asc`, or `.tsv`) — leave empty if not collected |
 
 Create these folders from the terminal:
@@ -112,9 +112,154 @@ sub-<ID>_task-<taskname>_session.log
 
 - **`*_events.tsv`**: trial-level event log (onset, duration, trial_type, trigger codes, responses). This is the primary file for BIDS conversion.
 - **`*_log.tsv`**: frame-level timing log (useful for debugging timing issues but not used in BIDS).
-- **`session.log`**: session-wide log (experiment start/stop, errors).
+- **`*_session.log`**: session-wide log (experiment start/stop, errors).
 
 Place all of these in `bh/` without renaming.
+
+#### `*_events.tsv` (trial-level, BIDS-ready)
+
+Your experiment should produce event log files that are **directly usable as BIDS `*_events.tsv`** without any transformation. The BIDS conversion script should only need to **copy** the events file into the BIDS directory.
+
+The [BIDS events specification](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html) requires `onset` and `duration`. Beyond that, include every column that your analysis pipeline will need.
+
+| Column | Required | Description |
+|--------|----------|-------------|
+| `onset` | **yes** | Time of the event in seconds, relative to the **start of the run**. Resets to 0 at each run start. |
+| `duration` | **yes** | Duration of the event in seconds. Use `0` for instantaneous events (triggers, button presses). Use `n/a` if unknown. |
+| `trial_type` | recommended | Condition label — the primary variable you will analyse (e.g., `check`, `no_check`, `fixation`, `response`). |
+| `trigger_id` | recommended | The trigger code sent to the EEG system (integer 0–255). Matches the trigger mapping JSON. |
+| `response` | if applicable | Participant's response key or label. Use `n/a` for non-response events. |
+| `response_time` | if applicable | Reaction time in seconds. Use `n/a` if no response. |
+| `stim_file` | if applicable | Path to the stimulus file, relative to the `stimuli/` folder (e.g., `images/01.png`). |
+| `block` | recommended | Block number (1-indexed). |
+| `trial` | recommended | Trial number within the block. |
+| *your columns* | as needed | Any additional experimental variables (e.g., `check_status`, `strategy_id`, `visual_pair`). |
+
+!!! note "Use relative paths and BIDS missing values"
+    Avoid absolute paths in any column (e.g., stimulus file paths). Use relative paths (e.g., `images/...`) and use `n/a` (not empty cells, `NaN`, or `None`) for missing values.
+
+Example (first 10 rows from `sourcedata/sub-03/bh/2026-02-14-16-13_sub-03_run-01_task-chess_1back_events.tsv`):
+
+| onset | duration | trial_type | block | trial | phase | trigger_id | trigger_sent | response | response_category | stim_file | check_status | strategy_id | visual_pair | filename | check | correct |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0.000000 | 0.000000 | run_start | 0 | 0 | n/a | 141 | 1 | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a |
+| 1.987302 | 0.000000 | block_start | 1 | 0 | n/a | 121 | 1 | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a |
+| 2.003917 | 2.504575 | stimulus | 1 | 1 | stimulus | 28 | 1 | n/a | n/a | images/28_NC_SY8_P08.png | NC | 8 | 8 | 28_NC_SY8_P08.png | 0 | n/a |
+| 4.510339 | 1.452654 | fixation | 1 | 1 | fixation | 81 | 1 | n/a | n/a | images/28_NC_SY8_P08.png | NC | 8 | 8 | 28_NC_SY8_P08.png | 0 | n/a |
+| 5.961672 | 2.504575 | stimulus | 1 | 2 | stimulus | 14 | 1 | n/a | n/a | images/14_C_SY3_P14.png | C | 3 | 14 | 14_C_SY3_P14.png | 1 | better |
+| 8.466581 | 1.335773 | fixation | 1 | 2 | fixation | 81 | 1 | n/a | n/a | images/14_C_SY3_P14.png | C | 3 | 14 | 14_C_SY3_P14.png | 1 | better |
+| 9.802531 | 2.504575 | stimulus | 1 | 3 | stimulus | 10 | 1 | n/a | n/a | images/10_C_SY3_P10.png | C | 3 | 10 | 10_C_SY3_P10.png | 1 | n/a |
+| 12.307449 | 1.102013 | fixation | 1 | 3 | fixation | 81 | 1 | n/a | n/a | images/10_C_SY3_P10.png | C | 3 | 10 | 10_C_SY3_P10.png | 1 | n/a |
+| 13.410465 | 2.504575 | stimulus | 1 | 4 | stimulus | 29 | 1 | n/a | n/a | images/29_NC_SY8_P09.png | NC | 8 | 9 | 29_NC_SY8_P09.png | 0 | worse |
+| 15.914512 | 1.085316 | fixation | 1 | 4 | fixation | 81 | 1 | n/a | n/a | images/29_NC_SY8_P09.png | NC | 8 | 9 | 29_NC_SY8_P09.png | 0 | worse |
+
+#### `*_log.tsv` (frame-level, debugging)
+
+This is a high-frequency timing log (screen flips, frame counts, expected vs. actual onsets). It is useful for diagnosing dropped frames and timing drift, but it is **not** used in BIDS conversion.
+
+Example (first 10 rows from `sourcedata/sub-03/bh/2026-02-14-16-13_sub-03_run-01_task-chess_1back_log.tsv`):
+
+| EVENT_TYPE | EVENT_NAME | DATETIME | EXP_ONSET | ACTUAL_ONSET | DELTA | FRAME_N | EVENT_ID |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| SCREEN | Instruction | 2026-02-14-16-13-17-882801 | - | - | - | 0 | instruction_screen |
+| START | RunStart | 2026-02-14-16-13-32-362301 | - | 0.000000 | - | 0 | run-1 |
+| FLIP | PreRunFix | 2026-02-14-16-13-32-376219 | - | 0.000016 | - | 0 | - |
+| START | BlockStart | 2026-02-14-16-13-34-363347 | - | 1.987302 | - | 120 | block-1 |
+| FLIP | Stimulus | 2026-02-14-16-13-36-869601 | 2.000000 | 2.003917 | 0.003917 | 120 | images/28_NC_SY8_P08.png |
+| FLIP | PostStimFix | 2026-02-14-16-13-38-320900 | - | 4.510339 | - | 270 | - |
+| FLIP | Stimulus | 2026-02-14-16-13-40-825813 | 5.957229 | 5.961672 | 0.004443 | 357 | images/14_C_SY3_P14.png |
+| FLIP | PostStimFix | 2026-02-14-16-13-42-161760 | - | 8.466581 | - | 507 | - |
+| FLIP | Stimulus | 2026-02-14-16-13-44-666668 | 9.797578 | 9.802531 | 0.004954 | 587 | images/10_C_SY3_P10.png |
+| FLIP | PostStimFix | 2026-02-14-16-13-45-769725 | - | 12.307449 | - | 737 | - |
+
+#### `*_session.log` (session-wide)
+
+Session-level log containing experiment start/stop, key configuration values, and errors.
+
+Example (full file from `sourcedata/sub-03/bh/sub-03_task-chess_1back_session.log`):
+
+```text
+16:13:14 | Session log: sub-03_task-chess_1back_session.log
+16:13:14 | ======================================================================
+16:13:14 | SESSION START: 2026-02-14 16:13:14
+16:13:14 | ======================================================================
+16:13:14 | 
+16:13:14 | COMMAND LINE
+16:13:14 |   Task: chess_1back
+16:13:14 |   Subject: 3
+16:13:14 |   Starting run: None
+16:13:14 |   EEG mode: True
+16:13:14 |   Machine: eeg-pc
+16:13:14 |   Debug: False
+16:13:14 |   Quick mode: False
+16:13:14 |   Verbose: False
+16:13:14 | 
+16:13:14 | TASK CONFIGURATION
+16:13:14 |   Class: Chess1BackTask
+16:13:14 |   Task name: chess_1back
+16:13:14 |   Response keys: ['f', 'j']
+16:13:14 | 
+16:13:14 |   Phases:
+16:13:14 |     1. stimulus           2500ms  trigger=trigger_id, response=True, diode=0
+16:13:14 |     2. fixation      1000-1500ms  trigger=fixation_post_stim, response=True, diode=1, absorbs_delay
+16:13:14 | 
+16:13:14 |   Response mapping: [{'better': 'f', 'worse': 'j'}, {'better': 'j', 'worse': 'f'}]
+16:13:14 |   Counterbalance: run
+16:13:14 |   Available mappings (2):
+16:13:14 |     [0] {'better': 'f', 'worse': 'j'}
+16:13:14 |     [1] {'better': 'j', 'worse': 'f'}
+16:13:14 |   Subject 3 mapping by run:
+16:13:14 |     Run 1: mapping [1] -> {'better': 'j', 'worse': 'f'}
+16:13:14 |     Run 2: mapping [0] -> {'better': 'f', 'worse': 'j'}
+16:13:14 |     Run 3: mapping [1] -> {'better': 'j', 'worse': 'f'}
+16:13:14 |     Run 4: mapping [0] -> {'better': 'f', 'worse': 'j'}
+16:13:14 |     Run 5: mapping [1] -> {'better': 'j', 'worse': 'f'}
+16:13:14 |     ... (5 more runs)
+16:13:14 | 
+16:13:14 |   Pre-run fixation: 2000ms
+16:13:14 |   Post-run fixation: 2000ms
+16:13:14 |   Block breaks: False
+16:13:14 | 
+16:13:14 | TRIAL STRUCTURE
+16:13:14 |   Available runs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+16:13:14 |   Blocks per run: 1
+16:13:14 |   Trials per block: 160
+16:13:14 |   Total trials per run: 160
+16:13:14 |   Total trials: 1600
+16:13:14 | 
+16:13:14 |   Stimulus columns: ['stimulus']
+16:13:14 |   Unique stimuli: 40
+16:13:14 |   Trigger ID range: 1-40
+16:13:14 | 
+16:13:14 | RANDOMIZATION
+16:13:14 |   Jitter seed formula: subject * 100000 + run * 100 + block
+16:13:14 |   Example seeds for subject 3:
+16:13:14 |     Run 1, Block 1: seed 300101
+16:13:14 |     Run 2, Block 1: seed 300201
+16:13:14 | 
+16:13:14 | MACHINE CONFIGURATION
+16:13:14 |   Name: unknown
+16:13:14 |   Refresh rate: 59.9 Hz
+16:13:14 |   Serial port: Serial<id=0x76aa470826e0, open=True>(port='/dev/ttyUSB0', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1.0, xonxoff=False, rtscts=False, dsrdtr=False)
+16:13:14 |   Screen: 1920x1080 (fullscreen=True)
+16:13:14 | 
+16:13:14 | ENVIRONMENT
+16:13:14 |   Python: 3.10.18
+16:13:14 |   Psychopy: 2023.2.3
+16:13:14 |   Numpy: 1.26.4
+16:13:14 |   Pandas: 2.3.1
+16:13:14 |   Scipy: 1.15.3
+16:13:14 |   OS: Linux 6.8.0-90-lowlatency
+16:13:14 | 
+16:13:14 | SYSTEM CHECKS
+16:13:14 |   System:
+16:13:14 |     [SKIP] System checks: skipped (--skip-checks)
+16:13:14 | 
+16:13:14 |   Summary: 0 pass, 0 warn, 0 fail, 1 skip
+16:13:14 | 
+16:13:14 | ======================================================================
+16:13:14 | 
+```
 
 ### Eye-tracking data
 
@@ -156,7 +301,13 @@ The mapping uses a structured range scheme:
 | 140–149 | Run start markers (`140 + run_number`) |
 | 150–159 | Run end markers (`150 + run_number`) |
 
-See [Creating EEG tasks — Trigger mapping](../eeg-task.md#trigger-mapping) for details on how to define and use trigger codes in your experiment.
+See [Creating EEG tasks — Trigger mapping](../eeg-task.md#trigger-mapping) for the full reference: what the file is, what it looks like (example JSON), where it lives in the experiment repo (typically `config/triggers/trigger_mapping.json`), and how it is loaded in the task code.
+
+### PC configs (machine configuration)
+
+Your task should use a machine configuration JSON to store computer-specific settings (display properties, serial port, sample rate) so the same experiment runs on the EEG PC and on a laptop by switching config files.
+
+See [Creating EEG tasks — Machine configuration](../eeg-task.md#machine-configuration) for what these files are, what they look like (example `config/machines/eeg-pc.json`), where they should be stored, and how they are loaded in the task code.
 
 ### Results directory
 

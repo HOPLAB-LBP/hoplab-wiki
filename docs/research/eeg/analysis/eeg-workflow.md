@@ -238,7 +238,7 @@ plt.show()
 ---
 
 !!! tip "Photodiode-based event timing"
-    For the most accurate event timing, consider replacing trigger-based event times with photodiode onsets before epoching. See the [quality control page](eeg-quality-control.md#8-photodiode-based-event-timing) for details.
+    For the most accurate event timing, consider replacing trigger-based event times with photodiode onsets before epoching. See the [epoch traces section](eeg-quality-control.md#9-epoch-traces-photodiode-locked) for an example of photodiode-locked epoching.
 
 !!! warning "TGM quality check"
     After computing temporal generalisation matrices, always check the pre-stimulus window. Above-chance decoding before stimulus onset is a red flag for preprocessing artifacts (see [Tanner et al., 2016](https://doi.org/10.1111/psyp.12437)).

@@ -254,7 +254,7 @@ print(epochs)
     The epoch window depends on your analysis. For ERP studies, -200 to 800 ms is common. For time-resolved decoding (Representational Dynamics), you may want a longer window (e.g., -200 to 1000 ms) to capture later processing stages. Include enough pre-stimulus time for a baseline period.
 
 !!! tip "Photodiode-based event timing"
-    If you performed the photodiode timing validation in the [quality control](eeg-quality-control.md#4-photodiode-delay-analysis) step, consider using **photodiode onsets as your event times** for more accurate epoching. The photodiode directly measures when the screen changed, while digital triggers include variable software/OS delays. See the [photodiode-based event timing](eeg-quality-control.md#8-photodiode-based-event-timing) section for how to replace trigger times with photodiode onsets in your events array.
+    If you performed the photodiode timing validation in the [quality control](eeg-quality-control.md#5-photodiode-timing-validation-analog-vs-digital) step, consider using **photodiode onsets as your event times** for more accurate epoching. The photodiode directly measures when the screen changed, while digital triggers include variable software/OS delays. See the [epoch traces](eeg-quality-control.md#9-epoch-traces-photodiode-locked) section for an example of photodiode-locked epoching.
 
 ---
 
