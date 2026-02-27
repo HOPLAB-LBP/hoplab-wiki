@@ -53,7 +53,4 @@ In Hoplab, we typically set up experiments for multivariate EEG ("Representation
 
 __TODO__: [Task page] Create and link a PsychoPy EEG task template implementing triggers,
 photocell, and timing best practices.
-
-__TODO__: [Eyetracking] Document concurrent EEG-eyetracking setup, including hardware
-configuration, synchronisation, and data integration workflow.
 -->

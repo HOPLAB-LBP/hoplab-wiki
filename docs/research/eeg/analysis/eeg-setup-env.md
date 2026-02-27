@@ -37,7 +37,9 @@ Install the main packages for EEG analysis:
 pip install mne mne-bids autoreject
 pip install scikit-learn rsatoolbox
 pip install matplotlib pandas numpy scipy
-pip install jupyter  # optional, for notebook-based workflows
+pip install eyelinkio          # for reading EyeLink .edf files (if using eye-tracking)
+pip install sr-research-pylink # for controlling EyeLink during experiments (if using eye-tracking)
+pip install jupyter            # optional, for notebook-based workflows
 ```
 
 | Package | Purpose |
@@ -48,6 +50,11 @@ pip install jupyter  # optional, for notebook-based workflows
 | [**scikit-learn**](https://scikit-learn.org/) | Machine learning for decoding analyses |
 | [**rsatoolbox**](https://rsatoolbox.readthedocs.io/) | Representational similarity analysis |
 | **matplotlib, pandas, numpy, scipy** | General scientific computing and plotting |
+| [**eyelinkio**](https://github.com/scott-huberty/eyelinkio) | Read EyeLink .edf files into Python (for eye-tracking setups) |
+| [**sr-research-pylink**](https://pypi.org/project/sr-research-pylink/) | Control EyeLink eye-tracker during experiments |
+
+!!! info "Eye-tracking packages"
+    The `eyelinkio` and `sr-research-pylink` packages are only needed if you are running concurrent EEG + eye-tracking experiments. `sr-research-pylink` also requires the [EyeLink Developers Kit](https://www.sr-research.com/support-options/learning-resources/) to be installed on the Display PC. See the [EEG and eye-tracking](eeg-eyetracking.md) page for the full setup.
 
 !!! warning "Environment isolation"
     It is **crucial** to create a new Conda environment for each project. Installing packages into the base environment leads to dependency conflicts that can be very difficult to resolve. See the [general environment guide](../../../research/coding/environment-setup.md#setting-up-a-conda-environment) for details.

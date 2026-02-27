@@ -28,6 +28,9 @@ If you are new to EEG analysis, we recommend following the steps in order. Each 
 - :material-chart-bar: **[Statistical testing](eeg-statistics.md)**
   Cluster-based permutation tests and multiple comparison correction.
 
+- :material-eye: **[Concurrent EEG and eye-tracking](eeg-eyetracking.md)**
+  Hardware synchronisation, BIDS conversion, data alignment, and combined analysis with EyeLink.
+
 - :material-code-tags: **[EEG analysis in MATLAB](eeg-matlab.md)**
   Companion guide for EEGLAB and CoSMoMVPA users.
 
