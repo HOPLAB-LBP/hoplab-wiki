@@ -18,7 +18,7 @@ In Hoplab, we typically set up experiments for multivariate EEG ("Representation
 
     ---
 
-    Starting guide on all the practical aspects of collecting EEG data.
+    Step-by-step guide for setting up the EEG cap, electrodes, and recording software.
 
     [:octicons-arrow-right-24: Get started](eeg-acquisition.md)
 
@@ -26,15 +26,15 @@ In Hoplab, we typically set up experiments for multivariate EEG ("Representation
 
     ---
 
-    Analysis workflow for EEG data.
+    Preprocessing, quality control, and multivariate analysis workflows for EEG data.
 
     [:octicons-arrow-right-24: Start analyzing](eeg-analysis.md)
 
-- :simple-github:{ .lg .middle } __Create an EEG task__
+- :simple-github:{ .lg .middle } __Creating EEG tasks__
 
     ---
 
-    Instructions on how to make your behavioural task EEG-compatible, including sending triggers and using a photocell.
+    How to make your behavioural task EEG-compatible: sending triggers, using a photocell, and timing best practices.
 
     [:octicons-arrow-right-24: Start scripting](eeg-task.md)
 
