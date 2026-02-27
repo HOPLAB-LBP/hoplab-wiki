@@ -57,8 +57,10 @@ EEG = pop_chanedit(EEG, 'lookup', 'standard-10-5-cap385.elp');
 % Band-pass filter: 0.1 – 100 Hz
 EEG = pop_eegfiltnew(EEG, 'locutoff', 0.1, 'hicutoff', 100);
 
-% Notch filter at 50 Hz
+% Notch filter at 50 Hz and harmonics (100, 150 Hz)
 EEG = pop_eegfiltnew(EEG, 'locutoff', 49, 'hicutoff', 51, 'revfilt', 1);
+EEG = pop_eegfiltnew(EEG, 'locutoff', 99, 'hicutoff', 101, 'revfilt', 1);
+EEG = pop_eegfiltnew(EEG, 'locutoff', 149, 'hicutoff', 151, 'revfilt', 1);
 
 % Re-reference to average
 EEG = pop_reref(EEG, []);
@@ -66,10 +68,12 @@ EEG = pop_reref(EEG, []);
 % Run ICA
 EEG = pop_runica(EEG, 'icatype', 'runica', 'extended', 1);
 
-% Use ICLabel to automatically classify components
+% Use ICLabel to automatically classify components.
+% ICLabel categories: [Brain; Muscle; Eye; Heart; Line Noise; Channel Noise; Other]
+% Each row sets [min max] probability for flagging that category.
+% Below: flag muscle components >60%, eye >40%, heart >60%.
 EEG = pop_iclabel(EEG, 'default');
-EEG = pop_icflag(EEG, [NaN NaN; 0.8 1; 0.8 1; NaN NaN; NaN NaN; NaN NaN; NaN NaN]);
-% This flags eye and muscle components with > 80% probability
+EEG = pop_icflag(EEG, [NaN NaN; 0.6 1; 0.4 1; 0.6 1; NaN NaN; NaN NaN; NaN NaN]);
 
 % Remove flagged components
 EEG = pop_subcomp(EEG, find(EEG.reject.gcompreject), 0);
@@ -87,6 +91,9 @@ EEG = pop_eegthresh(EEG, 1, 1:EEG.nbchan, -150, 150, ...
 % Save
 pop_saveset(EEG, 'filename', 'sub-01_task-main_clean.set');
 ```
+
+!!! info "Filter differences between MATLAB and Python pipelines"
+    The MATLAB pipeline shown above uses a **0.1 Hz high-pass** filter to match the Python pipeline. Note that older lab scripts (e.g., the `eeg-masters` preprocessing code) used a **2 Hz high-pass** — this was the previous lab standard but is no longer recommended for most analyses. The Python pages document the current recommended settings (0.1 Hz high-pass with two-copy ICA strategy). See the [Preprocessing](eeg-preprocessing.md#3-filtering) page for the rationale.
 
 For detailed preprocessing guidance, see the [EEGLAB wiki](https://eeglab.org/tutorials/).
 

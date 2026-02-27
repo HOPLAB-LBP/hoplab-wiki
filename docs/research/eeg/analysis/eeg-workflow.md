@@ -13,7 +13,7 @@ Raw .bdf file
     │
     ├── Quality control (triggers, electrodes)
     │
-    ├── Preprocessing (filter → re-reference → ICA → epoch → baseline → reject)
+    ├── Preprocessing (filter → re-reference → two-copy ICA → epoch → baseline → reject)
     │
     ├── Multivariate analysis (time-resolved decoding, RSA)
     │
@@ -56,7 +56,7 @@ chance_level = 1 / n_conditions
 
 # Preprocessing parameters
 l_freq, h_freq = 0.1, 100.0
-notch_freqs = [50, 100]
+notch_freqs = [50, 100, 150]  # 50 Hz mains + harmonics
 tmin, tmax = -0.2, 0.8
 baseline = (-0.2, 0)
 n_ica_components = 25
@@ -98,7 +98,9 @@ for sub in subjects:
     raw.set_montage(montage)
 
     # --- Quality control: check triggers ---
-    events = mne.find_events(raw, stim_channel='Status', min_duration=0.001)
+    # Use bitmask to extract only the lower 8 bits (trigger codes) from BioSemi
+    events = mne.find_events(raw, stim_channel='Status', min_duration=0.001,
+                             mask=0x00FF, mask_type='and')
     for code, name in event_id.items():
         count = np.sum(events[:, 2] == name)
         print(f"  {code}: {count} events")
@@ -111,17 +113,22 @@ for sub in subjects:
     raw.set_eeg_reference('average', projection=True)
     raw.apply_proj()
 
-    # --- ICA ---
+    # --- Two-copy ICA ---
+    # Fit ICA on a 1 Hz high-pass copy for better decomposition,
+    # then apply the solution to the 0.1 Hz-filtered data.
+    raw_for_ica = raw.copy().filter(l_freq=1.0, h_freq=None)
     ica = ICA(n_components=n_ica_components, method='infomax',
               fit_params=dict(extended=True), random_state=42)
-    ica.fit(raw, picks='eeg')
+    ica.fit(raw_for_ica, picks='eeg')
     eog_indices, _ = ica.find_bads_eog(raw)
     ica.exclude = eog_indices
     print(f"  ICA: removing {len(eog_indices)} component(s)")
-    raw_clean = ica.apply(raw.copy())
+    raw_clean = ica.apply(raw.copy())  # apply to original 0.1 Hz data
 
     # --- Epoch ---
-    events = mne.find_events(raw_clean, stim_channel='Status', min_duration=0.001)
+    # Re-extract events from the cleaned data with BioSemi bitmask
+    events = mne.find_events(raw_clean, stim_channel='Status', min_duration=0.001,
+                             mask=0x00FF, mask_type='and')
     epochs = mne.Epochs(raw_clean, events, event_id=event_id,
                         tmin=tmin, tmax=tmax, baseline=None, preload=True)
 
@@ -230,9 +237,19 @@ plt.show()
 
 ---
 
+!!! tip "Photodiode-based event timing"
+    For the most accurate event timing, consider replacing trigger-based event times with photodiode onsets before epoching. See the [quality control page](eeg-quality-control.md#8-photodiode-based-event-timing) for details.
+
+!!! warning "TGM quality check"
+    After computing temporal generalisation matrices, always check the pre-stimulus window. Above-chance decoding before stimulus onset is a red flag for preprocessing artifacts (see [Tanner et al., 2016](https://doi.org/10.1111/psyp.12437)).
+
+---
+
 ## References
 
+- Chen, Y., et al. (2023). The representational dynamics of the animal appearance bias in human visual cortex. *Imaging Neuroscience*, 1, 1–27. [doi:10.1162/imag_a_00006](https://doi.org/10.1162/imag_a_00006)
+- Leys, T., et al. (2025). Representational dynamics of object recognition in humans. *Journal of Vision*, 25(2), 6. [doi:10.1167/jov.25.2.6](https://doi.org/10.1167/jov.25.2.6)
+- Tanner, D., et al. (2016). How inappropriate high-pass filters can produce artifactual effects and incorrect conclusions in ERP studies. *Psychophysiology*, 52(7), 997–1009. [doi:10.1111/psyp.12437](https://doi.org/10.1111/psyp.12437)
+- Winkler, I., et al. (2015). On the influence of high-pass filtering on ICA-based artifact reduction in EEG-ERP. *NeuroImage*, 112, 165–179. [doi:10.1016/j.neuroimage.2015.02.025](https://doi.org/10.1016/j.neuroimage.2015.02.025)
 - [MNE-Python tutorials](https://mne.tools/stable/auto_tutorials/index.html)
 - [OSF archive — Chen et al. (2023)](https://osf.io/d5egu/) — complete MATLAB workflow
-- Chen et al. (2023), *Imaging Neuroscience*. [DOI](https://doi.org/10.1162/imag_a_00006)
-- Leys et al. (2025), *Journal of Vision*. [DOI](https://doi.org/10.1167/jov.25.2.6)

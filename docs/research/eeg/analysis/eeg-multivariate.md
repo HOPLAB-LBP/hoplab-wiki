@@ -144,6 +144,9 @@ plt.show()
     - **Off-diagonal above chance**: the representation at training time generalises to testing time — this suggests a stable or recurrent neural code.
     - **Strictly diagonal pattern**: representations are transient, changing rapidly over time.
 
+!!! warning "Pre-stimulus decoding as a quality check"
+    Always plot the full TGM **including the pre-stimulus window**. Above-chance decoding accuracy in the pre-stimulus period (before the stimulus appeared) is a red flag — it suggests that your preprocessing pipeline (typically the interaction between high-pass filtering and baseline correction) has introduced spurious temporal patterns. If you observe this, revisit your filtering and baseline correction choices. See [Tanner et al. (2016)](https://doi.org/10.1111/psyp.12437) for a detailed discussion of this issue.
+
 ---
 
 ## 3. Representational similarity analysis (RSA)
@@ -213,6 +216,70 @@ plt.show()
 
 ---
 
+## Best practices for multivariate EEG analysis
+
+### Trial averaging (supertrials)
+
+When you have many stimulus conditions but few repetitions per condition (common in object recognition studies), decoding performance can be poor because single trials are very noisy. A practical solution is to average a small number of trials per condition into **supertrials** before classification ([Grootswagers et al., 2017](https://doi.org/10.1016/j.neuroimage.2016.10.001)).
+
+The typical approach is to randomly group ~4–5 trials of the same condition and average them, creating fewer but cleaner observations:
+
+```python
+def make_supertrials(X, y, n_avg=4, random_state=None):
+    """Average groups of trials within each condition to create supertrials.
+
+    This improves SNR at the cost of fewer observations. The resulting
+    supertrials have better signal quality for classification, which is
+    especially helpful when you have many conditions with few repetitions.
+
+    Parameters
+    ----------
+    X : array, shape (n_trials, n_channels, n_times)
+    y : array, shape (n_trials,)
+    n_avg : int
+        Number of trials to average per supertrial.
+    random_state : int or None
+        For reproducibility of trial grouping.
+
+    Returns
+    -------
+    X_super, y_super : arrays with shape (n_supertrials, ...)
+    """
+    rng = np.random.default_rng(random_state)
+    X_super, y_super = [], []
+
+    for cond in np.unique(y):
+        idx = np.where(y == cond)[0]
+        rng.shuffle(idx)
+
+        # Group trials into chunks of n_avg, discard any remainder
+        n_full = (len(idx) // n_avg) * n_avg
+        for i in range(0, n_full, n_avg):
+            X_super.append(X[idx[i:i + n_avg]].mean(axis=0))
+            y_super.append(cond)
+
+    return np.array(X_super), np.array(y_super)
+```
+
+<!--
+__TODO__: [Andrea] Verify that supertrial averaging (~4 trials) aligns
+with the lab's standard practice for decoding with many conditions.
+-->
+
+### Multivariate noise normalization
+
+For RSA, the choice of distance metric matters. Standard Euclidean or correlation distances can be biased by noise correlations between channels. **Multivariate noise normalisation** ([Guggenmos et al., 2018](https://doi.org/10.1016/j.neuroimage.2018.02.024)) addresses this by whitening the data with the within-condition error covariance before computing distances. This produces **cross-validated Mahalanobis distances** that are more reliable for comparing representational geometries.
+
+The [rsatoolbox](https://rsatoolbox.readthedocs.io/) package implements cross-validated Mahalanobis (crossnobis) distance and is recommended for RSA analyses. See also [Walther et al. (2016)](https://doi.org/10.1016/j.neuroimage.2015.12.049) for a thorough discussion of distance measures for RSA.
+
+<!--
+__TODO__: [Andrea] Discuss whether to adopt multivariate noise
+normalisation (cross-validated Mahalanobis distance) as part of the standard
+RSA pipeline.
+-->
+
+---
+
 ## Pairwise decoding matrix
 
 For Representational Dynamics, it is common to decode every pair of conditions separately, producing a pairwise decoding matrix at each time point. This gives a richer picture than binary decoding and directly relates to RSA:
@@ -264,11 +331,20 @@ group_sem = all_scores.std(axis=0) / np.sqrt(all_scores.shape[0])
 
 ## References
 
-- Chen, Y., Leys, T., & Op de Beeck, H. (2023). The representational dynamics of the animal appearance bias in human visual cortex are explained by a deep neural network trained for object classification. *Imaging Neuroscience*, 1, 1–27. [DOI](https://doi.org/10.1162/imag_a_00006)
-- Leys, T., Chen, Y., & Op de Beeck, H. (2025). Representational dynamics of object recognition in humans. *Journal of Vision*, 25(2), 6. [DOI](https://doi.org/10.1167/jov.25.2.6)
-- King, J.-R., & Dehaene, S. (2014). Characterizing the dynamics of mental representations: the temporal generalization method. *Trends in Cognitive Sciences*, 18(4), 203–210.
-- Kriegeskorte, N., Mur, M., & Bandettini, P. (2008). Representational similarity analysis — connecting the branches of systems neuroscience. *Frontiers in Systems Neuroscience*, 2, 4.
+- Carlson, T. A., Grootswagers, T., & Robinson, A. K. (2019). An introduction to time-resolved decoding analysis for M/EEG. In *The Oxford Handbook of Event-Related Potential Components*. [arXiv:1905.04820](https://arxiv.org/abs/1905.04820)
+- Chen, Y., Leys, T., & Op de Beeck, H. (2023). The representational dynamics of the animal appearance bias in human visual cortex are explained by a deep neural network trained for object classification. *Imaging Neuroscience*, 1, 1–27. [doi:10.1162/imag_a_00006](https://doi.org/10.1162/imag_a_00006)
+- Cichy, R. M., Pantazis, D., & Oliva, A. (2014). Resolving human object recognition in space and time. *Nature Neuroscience*, 17(3), 455–462. [doi:10.1038/nn.3635](https://doi.org/10.1038/nn.3635)
+- Grootswagers, T., Wardle, S. G., & Carlson, T. A. (2017). Decoding dynamic brain patterns from evoked responses: a tutorial on multivariate pattern analysis applied to time series neuroimaging data. *Journal of Cognitive Neuroscience*, 29(4), 677–697. [doi:10.1162/jocn_a_01068](https://doi.org/10.1162/jocn_a_01068)
+- Guggenmos, M., Sterzer, P., & Cichy, R. M. (2018). Multivariate pattern analysis for MEG: a comparison of dissimilarity measures. *NeuroImage*, 173, 434–447. [doi:10.1016/j.neuroimage.2018.02.024](https://doi.org/10.1016/j.neuroimage.2018.02.024)
+- Hebart, M. N., & Baker, C. I. (2018). Deconstructing multivariate decoding for the study of brain function. *NeuroImage*, 180, 4–18. [doi:10.1016/j.neuroimage.2017.08.005](https://doi.org/10.1016/j.neuroimage.2017.08.005)
+- King, J.-R., & Dehaene, S. (2014). Characterizing the dynamics of mental representations: the temporal generalization method. *Trends in Cognitive Sciences*, 18(4), 203–210. [doi:10.1016/j.tics.2014.01.002](https://doi.org/10.1016/j.tics.2014.01.002)
+- Kriegeskorte, N., Mur, M., & Bandettini, P. (2008). Representational similarity analysis — connecting the branches of systems neuroscience. *Frontiers in Systems Neuroscience*, 2, 4. [doi:10.3389/neuro.06.004.2008](https://doi.org/10.3389/neuro.06.004.2008)
+- Leys, T., Chen, Y., & Op de Beeck, H. (2025). Representational dynamics of object recognition in humans. *Journal of Vision*, 25(2), 6. [doi:10.1167/jov.25.2.6](https://doi.org/10.1167/jov.25.2.6)
+- Nili, H., et al. (2014). A toolbox for representational similarity analysis. *PLoS Computational Biology*, 10(4), e1003553. [doi:10.1371/journal.pcbi.1003553](https://doi.org/10.1371/journal.pcbi.1003553)
+- Tanner, D., Morgan-Short, K., & Luck, S. J. (2016). How inappropriate high-pass filters can produce artifactual effects and incorrect conclusions in ERP studies of language and cognition. *Psychophysiology*, 52(7), 997–1009. [doi:10.1111/psyp.12437](https://doi.org/10.1111/psyp.12437)
+- Walther, A., et al. (2016). Reliability of dissimilarity measures for multi-voxel pattern analysis. *NeuroImage*, 137, 188–200. [doi:10.1016/j.neuroimage.2015.12.049](https://doi.org/10.1016/j.neuroimage.2015.12.049)
 - [OSF archive — Chen et al. (2023) analysis code](https://osf.io/d5egu/)
+- [rsatoolbox documentation](https://rsatoolbox.readthedocs.io/)
 
 ---
 
