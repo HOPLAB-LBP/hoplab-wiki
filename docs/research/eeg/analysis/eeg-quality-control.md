@@ -457,7 +457,7 @@ trigger_results = qc_trigger_inventory(events, trigger_map, results_dir, sub_id)
 - Table: `sub-03_trigger_inventory.csv` (`../../../assets/eeg-qc-chess-eeg/sub-03_trigger_inventory.csv`)
 
 <figure markdown="span">
-  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_trigger_inventory.png" style="max-width: 980px; width: 100%; height: auto;" />
+  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_trigger_inventory.png" alt="Trigger inventory bar chart" style="max-width: 980px; width: 100%; height: auto;" />
   <figcaption>Trigger inventory bar plot produced by the QC script.</figcaption>
 </figure>
 
@@ -698,7 +698,7 @@ isi_results = qc_trigger_timing(events, trigger_map, sfreq, results_dir, sub_id)
 - Figure: `sub-03_trigger_timing.png` — ISI histogram (top) + event timeline (bottom)
 
 <figure markdown="span">
-  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_trigger_timing.png" style="width: 100%; max-width: 1000px; height: auto;" />
+  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_trigger_timing.png" alt="Trigger timing panel figure" style="width: 100%; max-width: 1000px; height: auto;" />
   <figcaption>Trigger timing: ISI distribution (within-run, top) and full-session event timeline (bottom). Long ISI tails usually reflect breaks, not trial-to-trial jitter. The timeline color-codes events by category and marks run boundaries.</figcaption>
 </figure>
 
@@ -1036,7 +1036,7 @@ photodiode_results = qc_photodiode_delay(raw, events, trigger_map,
 - Table: `sub-03_photodiode_delays.csv`
 
 <figure markdown="span">
-  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_photodiode.png" style="width: 100%; max-width: 1000px; height: auto;" />
+  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_photodiode.png" alt="Photodiode timing validation panel figure" style="width: 100%; max-width: 1000px; height: auto;" />
   <figcaption>Photodiode timing validation (5 panels). A: delay distribution with mean/median/outlier lines. B: delay drift over recording time (trend line reveals clock drift). C: full-session photodiode signal with detected onsets. D: 30-second zoom showing digital triggers (red dashed) vs analog onsets (green). E: single-event zoom showing the exact display delay.</figcaption>
 </figure>
 
@@ -1342,7 +1342,7 @@ channel_results = qc_channel_quality(raw, results_dir, sub_id)
 - Figure: `sub-03_channel_quality.png` — 6-panel channel diagnostics (variance bar, 3 topomaps, correlation matrix, summary)
 
 <figure markdown="span">
-  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_channel_quality.png" style="width: 100%; max-width: 1100px; height: auto;" />
+  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_channel_quality.png" alt="Channel quality diagnostics panel figure" style="width: 100%; max-width: 1100px; height: auto;" />
   <figcaption>Channel quality diagnostics (6 panels). A: channel variance bar chart (log scale) with flat/noisy thresholds. B: log-variance scalp topography. C: bad-channel categorical map with labeled markers. D: bridged-electrode heatmap (max |r| vs 6 nearest neighbors) with pair connections. E: full correlation matrix (after 1 Hz HP filter). F: text summary of flagged channels.</figcaption>
 </figure>
 
@@ -1437,7 +1437,7 @@ qc_raw_signal_plot(raw, results_dir, sub_id)
 - Figure: `sub-03_raw_segment.png` (`../../../assets/eeg-qc-chess-eeg/sub-03_raw_segment.png`)
 
 <figure markdown="span">
-  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_raw_segment.png" style="max-width: 900px; width: 100%; height: auto;" />
+  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_raw_segment.png" alt="Raw EEG signal overview" style="max-width: 900px; width: 100%; height: auto;" />
   <figcaption>Raw signal overview plot saved by the QC script (short segment for visual inspection).</figcaption>
 </figure>
 
@@ -1543,7 +1543,7 @@ qc_psd_plot(raw, results_dir, sub_id)
 - Figure: `sub-03_psd.png` (`../../../assets/eeg-qc-chess-eeg/sub-03_psd.png`)
 
 <figure markdown="span">
-  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_psd.png" style="max-width: 980px; width: 100%; height: auto;" />
+  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_psd.png" alt="Power spectral density plot" style="max-width: 980px; width: 100%; height: auto;" />
   <figcaption>Power spectral density (PSD): butterfly plot with +2.5 SD outlier channels highlighted in red and labeled, plus mean PSD with frequency bands.</figcaption>
 </figure>
 
@@ -1678,7 +1678,7 @@ if photodiode_results.get("photodiode_available") and photodiode_results.get("n_
 - Figure: `sub-03_epoch_traces.png`
 
 <figure markdown="span">
-  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_epoch_traces.png" style="max-width: 980px; width: 100%; height: auto;" />
+  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_epoch_traces.png" alt="Epoch traces ERP plot" style="max-width: 980px; width: 100%; height: auto;" />
   <figcaption>Trial-averaged ERP locked to photodiode onset: butterfly (left), stacked channels (center), and GFP (right). Red dashed line = stimulus onset; orange dotted = expected stimulus offset (2.5 s).</figcaption>
 </figure>
 
@@ -1824,7 +1824,7 @@ else:
 - Figure: `sub-03_photodiode_duration.png`
 
 <figure markdown="span">
-  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_photodiode_duration.png" style="max-width: 980px; width: 100%; height: auto;" />
+  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_photodiode_duration.png" alt="Stimulus duration distribution" style="max-width: 980px; width: 100%; height: auto;" />
   <figcaption>Stimulus duration distribution (left) and stability over the session (right). Grey dotted lines mark frame boundaries. Clusters should land exactly on frame-boundary values.</figcaption>
 </figure>
 
@@ -2047,7 +2047,7 @@ bh_results = qc_behavioral(sub_id, results_dir)
 - Figure: `sub-03_behavioral.png`
 
 <figure markdown="span">
-  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_behavioral.png" style="max-width: 700px; width: 100%; height: auto;" />
+  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_behavioral.png" alt="Behavioral data summary" style="max-width: 700px; width: 100%; height: auto;" />
   <figcaption>Behavioral QC: trial counts (top-left), accuracy per run (top-right), RT distribution (bottom-left), and summary table (bottom-right).</figcaption>
 </figure>
 
@@ -2170,7 +2170,7 @@ alignment_results = qc_bh_eeg_alignment(events, trigger_map, sfreq, sub_id,
 - Figure: `sub-03_bh_eeg_alignment.png`
 
 <figure markdown="span">
-  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_bh_eeg_alignment.png" style="max-width: 700px; width: 100%; height: auto;" />
+  <img src="../../../assets/eeg-qc-chess-eeg/sub-03_bh_eeg_alignment.png" alt="Behavioral-EEG alignment check" style="max-width: 700px; width: 100%; height: auto;" />
   <figcaption>Behavioral ↔ EEG stimulus count alignment. Bars should be identical for each run. Red markers flag mismatches.</figcaption>
 </figure>
 
