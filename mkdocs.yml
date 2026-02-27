@@ -65,9 +65,18 @@ nav:
       - fMRIprep on HPC: research/fmri/fmri-hpc.md
     - EEG:
       - research/eeg/index.md
+      - Lab setup: research/eeg/eeg-lab-setup.md
       - Data acquisition: research/eeg/eeg-acquisition.md
       - Creating EEG tasks: research/eeg/eeg-task.md
-      - EEG data analysis: research/eeg/eeg-analysis.md
+      - Analysis workflow:
+          - research/eeg/analysis/index.md
+          - 0. Set up your environment: research/eeg/analysis/eeg-setup-env.md
+          - 1. Quality control: research/eeg/analysis/eeg-quality-control.md
+          - 2. Preprocessing: research/eeg/analysis/eeg-preprocessing.md
+          - 3. Multivariate analysis: research/eeg/analysis/eeg-multivariate.md
+          - 4. Statistical testing: research/eeg/analysis/eeg-statistics.md
+          - EEG analysis in MATLAB: research/eeg/analysis/eeg-matlab.md
+          - EEG workflow example: research/eeg/analysis/eeg-workflow.md
 #    - Eye-tracking:
 #      - research/eyetracking/index.md
 #    - Neural Networks:
