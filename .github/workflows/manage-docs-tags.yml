@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 7 * * *'  # Daily at 07:00 UTC (08:00 Brussels winter / 09:00 summer)
   issue_comment:
     types: [created]
   workflow_dispatch:
