@@ -15,6 +15,14 @@ set -e
 
 fail=false
 
+has_pattern() {
+  grep -Eq "$1" "$LOG_FILE"
+}
+
+print_matching_lines() {
+  grep -En "$1" "$LOG_FILE" >&2 || true
+}
+
 # 0) Any WARNING lines from MkDocs should fail the check
 if grep -Eq '^WARNING -' "$LOG_FILE"; then
   echo "\n[ERROR] MkDocs emitted WARNINGs; treat as failure for PRs." >&2
@@ -34,18 +42,26 @@ if grep -Fq 'The following pages exist in the docs directory, but are not includ
 fi
 
 # 2) Unrecognized relative links (general)
-if grep -Fq "contains an unrecognized relative link" "$LOG_FILE"; then
-  echo "\n[ERROR] Found unrecognized relative links in docs." >&2
-  echo "        Fix or remove these links before merging." >&2
-  grep -Fn "contains an unrecognized relative link" "$LOG_FILE" >&2 || true
+if has_pattern "contains an unrecognized relative link|contains a link '.*', but the target '.*' is not found among documentation files|target not found"; then
+  echo "\n[ERROR] Found broken documentation links." >&2
+  echo "        MkDocs could not resolve one or more linked pages from the source file." >&2
+  echo "        Fix the path so it resolves from the page being built, or use the published-site URL." >&2
+  if has_pattern "Doc( file)? 'docs/contribute\\.md'"; then
+    echo "        Note: docs/contribute.md is synced from README.md, so fix README.md instead." >&2
+    echo "        In that file, repo-root paths like 'docs/...' usually fail after sync; prefer a docs-relative path or the full site URL." >&2
+  fi
+  print_matching_lines "contains an unrecognized relative link|contains a link '.*', but the target '.*' is not found among documentation files|target not found"
   fail=true
 fi
 
 # 3) Missing anchors (links to non-existent headings)
-if grep -Fq "but there is no such anchor on this page" "$LOG_FILE"; then
+if has_pattern "but there is no such anchor on this page|does not contain an anchor"; then
   echo "\n[ERROR] Found links to missing anchors (section headings)." >&2
-  echo "        Update the link or add the corresponding heading/anchor." >&2
-  grep -Fn "but there is no such anchor on this page" "$LOG_FILE" >&2 || true
+  echo "        Update the '#anchor' fragment to match the rendered heading slug, or add the missing heading." >&2
+  if has_pattern "Doc( file)? 'docs/contribute\\.md'"; then
+    echo "        Note: if the warning points at docs/contribute.md, edit README.md because contribute.md is generated from it." >&2
+  fi
+  print_matching_lines "but there is no such anchor on this page|does not contain an anchor"
   fail=true
 fi
 

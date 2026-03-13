@@ -213,6 +213,18 @@ jobs:
             fi
           }
 
+          # docs/contribute.md is generated from README.md, so send contributors
+          # to the source file they actually need to edit.
+          report_fix_target() {
+            local filepath="$1"
+            filepath="${filepath#./}"
+            if [ "$filepath" = "docs/contribute.md" ]; then
+              echo "[\`README.md\` (sync source for \`docs/contribute.md\`)]($EDIT_BASE/README.md)"
+            else
+              edit_link "$filepath"
+            fi
+          }
+
           # Helper: status emoji
           emoji() {
             case "$1" in
@@ -487,36 +499,62 @@ jobs:
           EOF
               fi
 
-              # Check for broken internal links
-              if grep -q 'unrecognized relative link' /tmp/pr-checks/mkdocs-output; then
+              # Check for broken internal links / unresolved targets
+              if grep -Eq "unrecognized relative link|contains a link '.*', but the target '.*' is not found among documentation files|target not found" /tmp/pr-checks/mkdocs-output; then
                 echo '' >> "$REPORT"
-                echo '**Broken internal links:** Some links in your pages point to files that do not exist.' >> "$REPORT"
+                echo '**Broken documentation links:** Some links point to pages MkDocs cannot resolve from the page being built.' >> "$REPORT"
                 echo '' >> "$REPORT"
-                echo '| File | Broken link |' >> "$REPORT"
-                echo '|------|-------------|' >> "$REPORT"
-                grep 'unrecognized relative link' /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
-                  file=$(echo "$line" | grep -oP "Doc '\\K[^']+")
-                  link=$(echo "$line" | grep -oP "relative link '\\K[^']+")
-                  echo "| $(edit_link "$file") | \`$link\` |" >> "$REPORT"
+                echo '| Fix in | Reported in | Broken target |' >> "$REPORT"
+                echo '|--------|-------------|---------------|' >> "$REPORT"
+                grep -E "unrecognized relative link|contains a link '.*', but the target '.*' is not found among documentation files|target not found" /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
+                  file=$(echo "$line" | grep -oP "Doc( file)? '\\K[^']+" | head -1)
+                  link=$(echo "$line" | grep -oP "contains an unrecognized relative link '\\K[^']+" | head -1)
+                  if [ -z "$link" ]; then
+                    link=$(echo "$line" | grep -oP "contains a link '\\K[^']+" | head -1)
+                  fi
+                  if [ -z "$link" ]; then
+                    link=$(echo "$line" | grep -oP "target '\\K[^']+" | head -1)
+                  fi
+                  [ -z "$file" ] && file="(unknown file)"
+                  [ -z "$link" ] && link="(could not parse target)"
+                  echo "| $(report_fix_target "$file") | \`$file\` | \`$link\` |" >> "$REPORT"
                 done
                 echo '' >> "$REPORT"
-                echo 'To fix this, check that the linked file exists and the path is spelled correctly.' >> "$REPORT"
+                cat >> "$REPORT" << 'EOF'
+          **How to fix:**
+
+          1. Open the file in the first column and update the broken link target.
+          2. If the "Reported in" file is `docs/contribute.md`, edit `README.md` instead because CI copies `README.md` into `docs/contribute.md`.
+          3. In `README.md` / `docs/contribute.md`, avoid repo-root paths like `docs/...` for wiki pages. Those are resolved from inside `docs/` during the MkDocs build and usually fail. Prefer a docs-relative path that works from `docs/`, or use the published-site URL.
+          4. If the target page was renamed or moved, update the filename/path to the new location.
+          EOF
               fi
 
               # Check for missing anchor errors
-              if grep -q 'no such anchor' /tmp/pr-checks/mkdocs-output; then
+              if grep -Eq 'no such anchor|does not contain an anchor|but there is no such anchor on this page' /tmp/pr-checks/mkdocs-output; then
                 echo '' >> "$REPORT"
                 echo '**Broken anchor links:** Some links point to headings that do not exist on the target page.' >> "$REPORT"
                 echo '' >> "$REPORT"
-                echo '| File | Broken anchor |' >> "$REPORT"
-                echo '|------|---------------|' >> "$REPORT"
-                grep 'no such anchor' /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
-                  file=$(echo "$line" | grep -oP "Doc '\\K[^']+")
-                  anchor=$(echo "$line" | grep -oP "'#[^']+'" | head -1 | tr -d "'")
-                  echo "| $(edit_link "$file") | \`$anchor\` |" >> "$REPORT"
+                echo '| Fix in | Reported in | Broken link |' >> "$REPORT"
+                echo '|--------|-------------|-------------|' >> "$REPORT"
+                grep -E 'no such anchor|does not contain an anchor|but there is no such anchor on this page' /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
+                  file=$(echo "$line" | grep -oP "Doc( file)? '\\K[^']+" | head -1)
+                  link=$(echo "$line" | grep -oP "contains a link '\\K[^']+" | head -1)
+                  if [ -z "$link" ]; then
+                    link=$(echo "$line" | grep -oP "'[^']*#[^']+'" | head -1 | tr -d "'")
+                  fi
+                  [ -z "$file" ] && file="(unknown file)"
+                  [ -z "$link" ] && link="(could not parse anchor)"
+                  echo "| $(report_fix_target "$file") | \`$file\` | \`$link\` |" >> "$REPORT"
                 done
                 echo '' >> "$REPORT"
-                echo 'To fix this, update the `#anchor` in the link to match an actual heading on the target page.' >> "$REPORT"
+                cat >> "$REPORT" << 'EOF'
+          **How to fix:**
+
+          1. Open the file in the first column.
+          2. Update the `#anchor` fragment so it matches the rendered heading slug on the destination page.
+          3. If the warning is reported in `docs/contribute.md`, edit `README.md` instead because `docs/contribute.md` is generated from it.
+          EOF
               fi
             fi
 
@@ -652,6 +690,13 @@ jobs:
           # Results still appear in the PR comment for manual review.
           if [ "$LINKS" = "failed" ]; then
             echo "::warning::Link check found issues — see the PR comment for details."
+          fi
+
+          if [ "$BUILD" = "failed" ]; then
+            echo "::error::MkDocs build failed. See the PR comment for a parsed breakdown of missing nav entries, broken documentation links, and broken anchors."
+            if grep -Eq "target not found|unrecognized relative link|does not contain an anchor|no such anchor|not included in the \"nav\"" /tmp/pr-checks/mkdocs-output 2>/dev/null; then
+              grep -E "target not found|unrecognized relative link|does not contain an anchor|no such anchor|not included in the \"nav\"|^\\[ERROR\\]|^\\[docs-ci\\]" /tmp/pr-checks/mkdocs-output | head -40 || true
+            fi
           fi
 
           FAILED=false
