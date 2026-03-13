@@ -14,58 +14,43 @@ In Hoplab, we typically set up experiments for multivariate EEG ("Representation
 
 <div class="grid cards" markdown>
 
+- :octicons-gear-24:{ .lg .middle } __Lab setup__
+
+    ---
+
+    Hardware configuration, PsychoPy settings, EOG placement, and troubleshooting for the EEG lab.
+
+    [:octicons-arrow-right-24: Lab setup](eeg-lab-setup.md)
+
 - :octicons-rocket-24:{ .lg .middle } __Data acquisition__
 
     ---
 
-    Starting guide on all the practical aspects of collecting EEG data.
+    Step-by-step guide for setting up the EEG cap, electrodes, and recording software.
 
     [:octicons-arrow-right-24: Get started](eeg-acquisition.md)
+
+- :simple-github:{ .lg .middle } __Creating EEG tasks__
+
+    ---
+
+    How to make your behavioural task EEG-compatible: sending triggers, using a photocell, and timing best practices.
+
+    [:octicons-arrow-right-24: Start scripting](eeg-task.md)
 
 - :octicons-tools-24:{ .lg .middle } __Data analysis__
 
     ---
 
-    Analysis workflow for EEG data.
+    Preprocessing, quality control, and multivariate analysis workflows for EEG data.
 
-    [:octicons-arrow-right-24: Start analyzing](eeg-analysis.md)
-
-- :simple-github:{ .lg .middle } __Create an EEG task__
-
-    ---
-
-    Instructions on how to make your behavioural task EEG-compatible, including sending triggers and using a photocell.
-
-    [:octicons-arrow-right-24: Start scripting](eeg-task.md)
+    [:octicons-arrow-right-24: Start analyzing](analysis/index.md)
 
 </div>
 
 <!--
 === EEG Section TODOs ===
 
-__TODO__: [Analysis page] Document the lab's standard multivariate EEG analysis approach
-(Representational Dynamics per Chen et al. 2023 and Leys et al. 2025), including how to
-use the CoSMoMVPA toolbox. The OSF archive (https://osf.io/d5egu/) has code but no README
-— add explanatory context on this page.
-
-__TODO__: [Analysis page] Describe the preprocessing pipeline (filtering, re-referencing,
-artifact detection/correction, ICA, epoching, baseline correction). Note: no preprocessing
-script is currently available on the OSF archive.
-
-__TODO__: [Lab setup] Document default EEG lab hardware configuration — photocell placement,
-screen resolution, response box setup, and config file structure.
-
-__TODO__: [Lab setup] Document correct PsychoPy settings for EEG, including timing delays
-and trigger configuration.
-
-__TODO__: [Lab setup] Document EOG recording setup and electrode placement.
-
-__TODO__: [Lab setup] Add a troubleshooting section for common errors (e.g., triggers not
-registering, USB serial connection failures, timing drift).
-
 __TODO__: [Task page] Create and link a PsychoPy EEG task template implementing triggers,
 photocell, and timing best practices.
-
-__TODO__: [Eyetracking] Document concurrent EEG-eyetracking setup, including hardware
-configuration, synchronisation, and data integration workflow.
 -->

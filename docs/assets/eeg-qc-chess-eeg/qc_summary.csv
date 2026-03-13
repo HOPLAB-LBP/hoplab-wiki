@@ -1,0 +1,16 @@
+subject,check,value,status
+sub-03,sampling_rate,1024.0,PASS
+sub-03,eeg_channel_count,128,PASS
+sub-03,recording_duration_min,73.7,PASS
+sub-03,unknown_trigger_codes,0,PASS
+sub-03,n_runs_detected,7,PASS
+sub-03,missing_run_end_triggers,[],PASS
+sub-03,isi_mean_s,3.931,PASS
+sub-03,photodiode_match_rate,100.0%,PASS
+sub-03,photodiode_delay_mean_ms,12.75,PASS
+sub-03,photodiode_outliers,279,WARN
+sub-03,photodiode_onsets_detected,1127,PASS
+sub-03,flat_channels,"2 (B31, B32)",WARN
+sub-03,noisy_channels,1 (A12),WARN
+sub-03,bridged_pairs,7,WARN
+sub-03,OVERALL,WARN,WARN
