@@ -667,13 +667,20 @@ jobs:
           body-includes: "<!-- pr-checks-report -->"
 
       - name: Post or update PR comment
+        id: update-comment
         if: always()
+        continue-on-error: true
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           edit-mode: replace
           body-path: /tmp/pr-checks/report.md
+
+      - name: Warn if PR comment could not be updated
+        if: always() && steps.update-comment.outcome == 'failure'
+        run: |
+          echo "::warning::Could not update the PR comment, likely due to pull-request permissions on a fork. The check results are still available in the job log."
 
       # ── Final verdict ──────────────────────────────────
       - name: Fail if any check failed
