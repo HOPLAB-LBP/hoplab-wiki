@@ -4,6 +4,12 @@ On this page, we will specify the procedures for the most common administrative 
 
 **KU Loket** is the university portal through which many administrative things are done. You can access it [here](https://www.kuleuven.be/sapredir/kuloket).
 
+## Activate your KU Leuven account
+
+After enrollment or hiring, you’ll receive an activation email with a link in your private mailbox.
+
+The email includes an activation code to set your password via [this link](https://account.kuleuven.be/activate). If you’ve been affiliated with the KU Leuven Association before, your previous password may still be active, and you won’t receive a new activation email. Check your spam folder if you can't find the activation email.
+
 ## Consult your personnel file
 
 Log in to KU Loket and go to "Personnel", then click on "My details" (shown in red below):
