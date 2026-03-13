@@ -8,9 +8,9 @@
 
 There are different types of lab meetings that happen throughout the academic year.
 
-=== "Individual meetings"
+=== "Individual update"
 
-    On a rotation basis, each lab member is assigned with a slot and is in charge of the presentation. On this occasion, you can present an update on your research, an interesting / relevant paper for a Journal Club (JC), or other important topics (practicing an upcoming talk or interview, for example).
+    On a rotation basis, each lab member is assigned with a slot and is in charge of the presentation. On this occasion, you can present an update on your research, an interesting/relevant paper for a Journal Club (JC), or other important topics (practicing an upcoming talk or interview, for example).
 
 === "Quick updates"
 
@@ -18,76 +18,78 @@ There are different types of lab meetings that happen throughout the academic ye
 
 === "Conference updates"
 
-    This type of lab meeting is usually scheduled after a lab member is back from a conference / workshop. The idea is for that person (or those people) to give an overview of the conference and present studies of interest for the lab. This type of meeting does not have a regular frequency.
+    This type of lab meeting is usually scheduled after a (group of) lab member(s) is back from a conference/workshop. The idea is for that person (or those people) to give an overview of the conference and present studies of interest for the lab. This type of meeting does not have a regular frequency.
 
-=== "New papers"
+=== "New papers discussion"
 
-    Once every two months, we meet to discuss new papers that came out recently. This is an occasion to discuss new topics, new methods, or just interesting work that you might have seen around. There is no fixed presenter, we will go over the list of papers one by one and the person who added it will introduce it. At any time, if you see an interesting paper you can add it to the [reading list](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bb985e56f-b02f-437c-a511-05a10d8dfe68%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724147078370&web=1).
+    When possible, we meet to discuss new papers that came out recently. This is an occasion to discuss new topics, new methods, or just interesting work that you might have seen around. There is no fixed presenter, we will go over the list of papers one by one and the person who added it will introduce it. At any time, if you see an interesting paper you can add it to the [reading list](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bb985e56f-b02f-437c-a511-05a10d8dfe68%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724147078370&web=1).
 
 ### Schedule
 
-Lab meetings usually happen once per week on Mondays, after lunch. On that day, we have lunch together in the meeting room and then move to the more science-y affairs.
+Lab meetings usually happen once per week on Mondays, after lunch. On that day, we have lunch together in the meeting room (usually, PSI 01.07) and then move to the more science-y affairs.
 The meeting room will be specified in a reminder email that is sent every Thursday before the lab meeting and can be seen in the [meeting schedule](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Science%20outreach/Lab%20meetings/HOPLAB%20meeting%20schedule.xlsx?d=w80204729ed3145b2b80e99208701a7a3&csf=1&web=1&e=ANkp44).
-The schedule is made at the beginning of the academic year and consists of a mix of meetings with updates and others with more fixed topics.
+The schedule is made once per year and consists of a mix of meetings with updates and others with more fixed topics.
 
 ### Attendance
 
-You can attend the meetings in person or online, there will be always a link to a Teams call. If you will be online, or absent, let the lab meeting manager know (as of August 2024, [Filippo Cerpelloni](mailto:filippo.cerpelloni@kuleuven.be)).
+You can attend the meetings in person or online, there will be always a link to a Teams call. If you will be online, or absent, let the lab meeting manager know ([Klara](mailto:klara.schevenels@kuleuven.be)).
 
 ### Who is presenting
 
 Each lab member is part of the standard rotation of presenters for the individual meetings. Additionally, they are assigned to one of the batches that will alternate in the [quick updates](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Science%20outreach/Lab%20meetings/HOPLAB%201-slide%20update%20batches.xlsx?d=w9794c03dff3543e6895f3302b35b385f&csf=1&web=1&e=ATFVt1). Interns are usually not part of the standard rotations, but will be assigned to a batch.
 
-The rotation of presenters is made by randomizing the order of the names, but can be adjusted based on anyone's availability. If you want / need to switch your slot, you can directly contact the person you would like to switch with and then let the lab meeting manager know about the change. If you would like to change with a slot assigned for a group meeting, ask the lab meeting manager directly.  
+The rotation of presenters is made by randomizing the order of the names, but can be adjusted based on anyone's availability. If you want/need to switch your slot, you can directly contact the person you would like to switch with and then let the lab meeting manager know about the change. If you would like to change with a slot assigned for a group meeting, ask the lab meeting manager directly.  
 
-### Presentation Guidelines
+### Presentation guidelines
+
+#### File naming convention
 
 To keep our lab meeting presentations organized, please follow these guidelines:
 
-!!! info "Naming Convention for Individual Lab Meetings"
+!!! info "Naming convention for individual lab meetings"
     Use the format: `YYYY-MM-DD_presenter_topic.pdf`
 
     Example: `2024-08-24_andrea_dnns-in-vision.pdf`
 
-#### Storage Instructions
+#### Storage instructions
 
-=== "1-Slide Updates"
+=== "Quick updates"
 
     - **Before the meeting**:
-      Store your slides in:
+      Store your slides in
       ```
-      Hoplab > Science outreach > Lab meetings > 1-slide updates
+      Hoplab > Science outreach > Lab meetings > Current LM presentations
       ```
       This allows all updates to be presented from one computer.
 
     - **After the meeting**:
-      Move your presentation to:
+      Move your presentation to
       ```
       Hoplab > Science outreach > Lab meetings > Past LM presentations
       ```
 
-=== "Individual Meetings"
+=== "Individual update"
 
     - **After the meeting**:
-      Store your presentation in:
+      Store your presentation in
       ```
       Hoplab > Science outreach > Lab meetings > Past LM presentations
       ```
 
-=== "New Papers Meetings"
+=== "New papers discussion"
 
     - **Before the meeting**:
-      Add papers of interest to:
+      Add papers of interest to the [reading list](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bb985e56f-b02f-437c-a511-05a10d8dfe68%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724147078370&web=1) and upload them to 
       ```
       Hoplab > Science outreach > Lab meetings > Papers
       ```
       This allows lab members to review them before the meeting.
 
-### Useful Links
+### Useful links
 
 <div class="grid cards" markdown>
 
-- :calendar:{ .lg .middle } **Meeting Schedule**
+- :calendar:{ .lg .middle } **Meeting schedule**
 
     ---
 
@@ -95,7 +97,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     [:octicons-arrow-right-24: Open Schedule](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B80204729-ed31-45b2-b80e-99208701a7a3%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724072455092&web=1)
 
-- :busts_in_silhouette:{ .lg .middle } **Presenters and Batches**
+- :busts_in_silhouette:{ .lg .middle } **Presenters and batches**
 
     ---
 
@@ -103,7 +105,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     [:octicons-arrow-right-24: View List](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B9794c03d-ff35-43e6-895f-3302b35b385f%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724156901971&web=1)
 
-- :books:{ .lg .middle } **New Papers List**
+- :books:{ .lg .middle } **New papers list**
 
     ---
 
@@ -113,16 +115,22 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
 </div>
   
-!!! note "Access Required"
-    These files are located in the NeuroSPACE / Hoplab Team organizational folders. You need access to the Teams group to view them.
+!!! note "Access required"
+    These files are located in the NeuroSPACE/Hoplab Team organizational folders. You need access to the Teams group to view them.
 
-## Conference Posters
+### Other meetings
 
-### Useful Resources
+Nex to the weekly lab meetings, we have monthly NeuroSPACE methods meetings where we focus on topics that are relevant across the four groups, as well as weekly B&C seminars with internal or external speakers. Meeting invitations are sent to the NeuroSPACE and LBP mailing lists, respectively. 
+
+## Present your work (and announce it)
+
+### Conference posters
+
+#### Useful resources
 
 <div class="grid cards" markdown>
 
-- :art:{ .lg .middle } **Design Guidelines**
+- :art:{ .lg .middle } **Design guidelines**
 
     ---
 
@@ -130,7 +138,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     [:octicons-arrow-right-24: View Guidelines](https://admin.kuleuven.be/icts/english/research/dissemination/sciposter/acadposter)
 
-- :printer:{ .lg .middle } **Printing Services**
+- :printer:{ .lg .middle } **Printing services**
 
     ---
 
@@ -139,7 +147,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
     [:octicons-arrow-right-24: Printing Services](https://icts.kuleuven.be/sc/english/education/plotter)
     [:octicons-arrow-right-24: Additional Info](https://admin.kuleuven.be/icts/english/services/plotter/plotter)
 
-- :frame_with_picture:{ .lg .middle } **KU Leuven Templates**
+- :frame_with_picture:{ .lg .middle } **KU Leuven templates**
 
     ---
 
@@ -147,7 +155,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     [:octicons-arrow-right-24: Browse Templates](https://admin.kuleuven.be/mykuleuven/en/theme/ict-communication-events/communication-guidelines-tools/layout-and-printed-materials/poster-templates)
 
-- :page_facing_up:{ .lg .middle } **Printing Request Form**
+- :page_facing_up:{ .lg .middle } **Printing request form**
 
     ---
 
@@ -155,7 +163,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     [:octicons-arrow-right-24: Open Form](https://www.groupware.kuleuven.be/sites/lio2/gebruikerslab/Paginas/FormulierPosters.aspx)
 
-- :bulb:{ .lg .middle } **Tips and Tricks**
+- :bulb:{ .lg .middle } **Tips and tricks**
 
     ---
 
@@ -165,7 +173,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
 </div>
 
-### Poster printing request
+#### How to print your poster
 
 To print your poster, submit a "Large-format printing request" using [this form](https://www.groupware.kuleuven.be/sites/lio2/gebruikerslab/Paginas/FormulierPosters.aspx). Follow these steps:
 
@@ -186,37 +194,17 @@ To print your poster, submit a "Large-format printing request" using [this form]
 
 6. **Finalize request:**
     - Ask for an invoice
-    - Use An Van Kets' u-number (`u0057838`) when finalizing your request.
+    - Use Agna Mariën's u-number (`u0088446`) when finalizing your request.
 
-## Present your work (and announce it)
-
-### Presentation Templates
+### Presentation templates
 
 You can find KU Leuven PowerPoint and <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> templates for presentations [here](https://admin.kuleuven.be/mykuleuven/en/theme/ict-communication-events/communication-guidelines-tools/layout-and-printed-materials/templates-for-presentations).
 
 Please consult [this page](https://admin.kuleuven.be/icts/opleidingen/englishwebsite/powerpoint-templates#install) to correctly use the official KU Leuven brand templates.
 
-### LBP social media
+### PPW faculty calendar
 
-The Laboratory of Biological Psychology has its own :simple-x: profile!
-
-[:simple-x: @biolpsychol](https://x.com/biolpsychol){ .md-button }
-
-If you are active on :simple-x::
-
-- Tweet about your lab's and your own achievements
-- Share conference presentations / posters
-- Announce pre-prints and new papers
-- Highlight any relevant scientific wins
-
-!!! tip
-    Remember to tag [@biolpsychol](https://x.com/biolpsychol) in your tweets, or DM LBP for a re-tweet to boost visibility!
-
-### PPW Faculty calendar
-
-It's good practice to announce your PPW presentations in the faculty calendar.
-
-Typically, [Kirsten Blommaerts](https://www.kuleuven.be/wieiswie/en/person/00127342) coordinates B&C level announcements. If she's unavailable, follow these steps:
+It's good practice to announce your PPW presentations in the faculty calendar. Typically, [Kirsten Blommaerts](https://www.kuleuven.be/wieiswie/en/person/00127342) coordinates B&C level announcements. If she's unavailable, follow these steps:
 
 1. Go to the [PPW faculty calendar](https://ppw.kuleuven.be/agenda/eng)
 2. Log in with your KU Leuven credentials
@@ -231,7 +219,7 @@ Typically, [Kirsten Blommaerts](https://www.kuleuven.be/wieiswie/en/person/00127
 
 Having issues? Check [the manual](https://ppw.kuleuven.be/agenda/handleiding-agenda-20200204.pdf) for help.
 
-### Example announcements
+#### Example announcements
 
 Below you can find an example announcement for a general seminar:
 
@@ -241,7 +229,34 @@ Below you can find an example announcement for a doctoral school presentation:
 
 ![Doctoral School Presentation Announcement](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/example_doctoralschoolpresentation_announcement.PNG)
 
-## Science communication (SciComm)
+### Registering your academic outreach in Lirias
+
+[Lirias](https://lirias.kuleuven.be/) is KU Leuven's institutional repository for research output. All KU Leuven researchers are required to register their publications (journal articles, conference contributions, book chapters, etc.) in Lirias. This ensures that your work is:
+
+- Visible in the [KU Leuven research portal](https://research.kuleuven.be/) and on your "Who is Who" profile
+- Counted for internal evaluations and reporting
+- Archived with a persistent link
+
+To register a publication, log in to [Lirias](https://lirias.kuleuven.be/) with your KU Leuven credentials and follow the submission workflow. You can import records directly from DOI, PubMed, or Web of Science. For detailed instructions, check out the [Lirias FAQ page](https://research.kuleuven.be/en/associatienet/output/lirias/faq_webpages/faqs-Lirias). 
+
+Make sure to add the **Methusalem label** `METH/24/003#57874482` to all of your entries as well, such that they are included in the Methusalem reporting ([how?](https://research.kuleuven.be/en/associatienet/output/lirias/faq_webpages/labels-in-lirias)). 
+
+!!! tip
+    Register your publications as soon as they are accepted or published — it only takes a few minutes and keeps your academic profile up to date.
+
+## Data visualisation tools
+
+A selection of tools for creating figures, charts, and visualisations for publications and presentations:
+
+- **[BioRender](https://www.biorender.com/)** — Create scientific figures and diagrams with a drag-and-drop interface. Free for educational use; paid plans for publication-quality exports.
+- **[Datawrapper](https://www.datawrapper.de/)** — Build clean, responsive charts and maps directly in your browser. Great for quick, publication-ready visualisations.
+- **[Flourish](https://flourish.studio/)** — Create interactive and animated visualisations (bar charts, scatter plots, story-driven graphics).
+- **[matplotlib](https://matplotlib.org/)** / **[seaborn](https://seaborn.pydata.org/)** — Python libraries for static and statistical plots. Seaborn builds on matplotlib with a higher-level interface and attractive defaults.
+- **[ggplot2](https://ggplot2.tidyverse.org/)** — The go-to R plotting library, based on the Grammar of Graphics. Excellent for publication-quality figures.
+- **[Inkscape](https://inkscape.org/)** — Free, open-source vector graphics editor. Useful for post-processing figures (adjusting layouts, fonts, and colours for publication).
+- **[GIMP](https://www.gimp.org/)** — Free raster image editor for photo editing and bitmap manipulation.
+
+## Science communication
 
 ### Reasons to start engaging in SciComm
 
@@ -257,11 +272,36 @@ If you are already interested in science communication, that's great! If you nee
 
 The easiest and **most straightforward ideas** to start participating in SciComm yourself are:
 
-- Being active on social media (e.g., on X)
+- Being active on social media (see [below](#social-media)) 
 - Creating video abstracts for your paper and starting a Youtube channel
 - Writing a press release if you have done newsworthy research (ask the [KU Leuven press office](https://nieuws.kuleuven.be/en/press-office/press-office-and-policy-communications) for help)
 - Writing and publishing a blog post about your research (e.g., on [EOS blogs](https://www.eoswetenschap.eu/eosblogs), see for example [Klara's blog](https://www.eoswetenschap.eu/psyche-brein/wat-als-je-je-taal-verliest-na-een-beroerte))
 - Making a podcast about your research
+
+!!! tip
+    Register your non-academic outreach activities (e.g., public lectures, media appearances, blog posts, science workshops, etc.) [here](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824/Shared%20Documents/General/Methusalem%20reporting/Methusalem_Scicomm_Overview.xlsx?d=wcafaa0336ef941b3989dd98a38b35e9b&csf=1&web=1&e=U3PAVl) as well as on Lirias. Don't forget to add the Methusalem label `METH/24/003#57874482`. This helps both with reporting and keeping your own portfolio up to date. Your future self will thank you!
+    
+### Social media
+
+NeuroSPACE is active on LinkedIn and Bluesky, and the Laboratory of Biological Psychology has its own :simple-x: profile!
+
+<div class="grid cards" markdown>
+
+[:material-linkedin: NeuroSPACE on LinkedIn](https://www.linkedin.com/company/neurospace-kuleuven/){ .md-button }
+[:simple-bluesky: **NeuroSPACE on Bluesky**](https://bsky.app/profile/neurospacekuleuven.bsky.social){ .md-button }
+[:simple-x: **@biolpsychol**](https://x.com/biolpsychol){ .md-button }
+
+</div>  
+
+If you are active on social media:
+
+- Post about your lab's and your own research
+- Share conference presentations/posters
+- Announce pre-prints and new papers
+- Highlight any interesting scientific progress (every small step counts!)
+
+!!! tip
+    Remember to tag @NeuroSPACE in your posts, or DM [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or [Silke](https://www.kuleuven.be/wieiswie/nl/person/00170487) for a repost to boost visibility! Also, do not hesitate to contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or [Silke](https://www.kuleuven.be/wieiswie/nl/person/00170487) if you have a creative idea for the LinkedIn page. We try to post regularly, so every input is welcome to keep our page alive.
 
 ### Training and opportunities
 
@@ -289,31 +329,6 @@ If you can't wait to start engaging, check out the following **initiatives**:
 - [Nerdland Festival](https://www.nerdlandfestival.be/nl/) is the biggest science festival in Flanders hosted by Lieven Scheire, to which you can participate with cool ideas.
 
 (It should be mentioned that all credits for this section go to Klara's former colleague [Simon Geirnaert](https://simongeirnaert.com/)!)
-
-## Lirias — Registering your publications
-
-[Lirias](https://lirias.kuleuven.be/) is KU Leuven's institutional repository for research output. All KU Leuven researchers are required to register their publications (journal articles, conference papers, book chapters, etc.) in Lirias. This ensures that your work is:
-
-- Visible in the [KU Leuven research portal](https://research.kuleuven.be/) and on your "Who is Who" profile
-- Counted for internal evaluations and reporting
-- Archived with a persistent link
-
-To register a publication, log in to [Lirias](https://lirias.kuleuven.be/) with your KU Leuven credentials and follow the submission workflow. You can import records directly from DOI, PubMed, or Web of Science. For detailed instructions, see the [Lirias documentation](https://bib.kuleuven.be/english/lirias).
-
-!!! tip
-    Register your publications as soon as they are accepted or published — it only takes a few minutes and keeps your academic profile up to date.
-
-## Data visualisation tools
-
-A selection of tools for creating figures, charts, and visualisations for publications and presentations:
-
-- **[BioRender](https://www.biorender.com/)** — Create scientific figures and diagrams with a drag-and-drop interface. Free for educational use; paid plans for publication-quality exports.
-- **[Datawrapper](https://www.datawrapper.de/)** — Build clean, responsive charts and maps directly in your browser. Great for quick, publication-ready visualisations.
-- **[Flourish](https://flourish.studio/)** — Create interactive and animated visualisations (bar charts, scatter plots, story-driven graphics).
-- **[matplotlib](https://matplotlib.org/)** / **[seaborn](https://seaborn.pydata.org/)** — Python libraries for static and statistical plots. Seaborn builds on matplotlib with a higher-level interface and attractive defaults.
-- **[ggplot2](https://ggplot2.tidyverse.org/)** — The go-to R plotting library, based on the Grammar of Graphics. Excellent for publication-quality figures.
-- **[Inkscape](https://inkscape.org/)** — Free, open-source vector graphics editor. Useful for post-processing figures (adjusting layouts, fonts, and colours for publication).
-- **[GIMP](https://www.gimp.org/)** — Free raster image editor for photo editing and bitmap manipulation.
 
 <!--
 __TODO__: [Andrea] Update the social media section: add links to the NeuroSPACE LinkedIn page and any other new consortium social media accounts. Consider whether the LBP X profile should remain as the primary social or be supplemented/replaced by NeuroSPACE accounts.

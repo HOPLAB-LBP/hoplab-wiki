@@ -70,11 +70,9 @@ The installation process differs for students and personnel. Please follow the i
         2. Click the pencil icon under "register your PC"
         3. Update your hostname and IP address as needed
 
-## Frequently used software
+## Other frequently used tools
 
 Here are some programs we frequently use in the lab, which you might find useful to download:
-
-- **Google Calendar**: Make sure you have writing access to the lab's Google calendar (ask [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046) or [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743)).
 
 - **TeamViewer**: For remote access to a desktop PC, e.g. the fMRI PC to run your analyses.
 
@@ -99,9 +97,7 @@ Here are some programs we frequently use in the lab, which you might find useful
 
 - **Google Chrome**: This is the preferred web browser. For example, the MR calendar is only compatible with this browser.
 
-- **Slack**: Slack is used for communication within the lab. Ask any lab member to add you to the relevant channels.
-
-- **Microsoft Teams**: KU Leuven offers [MS Teams](https://admin.kuleuven.be/icts/english/teams/index) for communication purposes. MS Teams is the newer and preferred option, however, it only allows its users to reach other MS Teams users. With MS Teams, it is currently not possible to call (or be called by) telephone numbers (landline and mobile).
+- **Microsoft Teams**: KU Leuven offers [MS Teams](https://admin.kuleuven.be/icts/english/teams/index) for co-working and communication purposes. For most people, it is possible to reach other MS Teams users, but not to call (or be called by) external telephone numbers (landline and mobile). If you do need this functionality, you can request a phone number with ICTS (see [this page](https://admin.kuleuven.be/icts/english/teams/calling-in-teams/teams_calling)).
   
 - **SSL VPN Pulse Client / Ivanti Secure Access Client**: The VPN offered by the university. For more information, check out this [link](https://admin.kuleuven.be/icts/services/vpn/).
 
@@ -152,15 +148,20 @@ If you have both a student address (`@student.kuleuven.be`) and a professional a
 
     You can verify it works by sending a test email to your student address and checking your professional inbox.
 
-## Data storage
+## Communication channels
 
-All KU Leuven staff and students have their own [OneDrive](https://admin.kuleuven.be/icts/services/onedrive) environment with 2 TB of online storage space to store personal work files. The files on OneDrive are synced to a folder on your local device (Windows Explorer), but can be accessed from various devices from any location. It is also possible to share documents with someone else and work together on the same document.
+In Hoplab, several communication channels are used, on different levels. Here is an overview:
 
-!!! warning "Back up your data twice"
-    Keep your data in one main folder (folder name = your first name) if you are an intern, or on your PC if you are personnel, and back-up this data to:
-
-    1. A portable **hard drive** (shared between interns, or ask [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) if you are personnel). Don’t forget to give the external drives back to your supervisor when your role ends.
-    2. Your online **OneDrive folder**. To get started with OneDrive, check out this [page](https://admin.kuleuven.be/icts/services/onedrive/vanstartonedrive).
+| Channel | Level | Purpose | How to get access |
+|---------|-------|---------|-------------------|
+| **Google Calendar** | Hoplab | Share group meetings, events, holidays | Ask [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046) or [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743)
+| **Slack LBP workspace** | Hoplab | Quick (dissappearing) communication | Ask any lab member
+| **Hoplab mailing list** | Hoplab | More formal communication | See [this page](mailing-lists.md#some-useful-mailing-lists)
+| **Hoplab Teams** | Hoplab | Shared documents | Ask [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046), [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or [Silke](https://www.kuleuven.be/wieiswie/en/person/00170487)
+| **Slack NeuroSPACE workspace** | NeuroSPACE | Quick (dissappearing) communication | Ask any lab member 
+| **NeuroSPACE Teams** | NeuroSPACE | Shared documents | Ask [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046), [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or [Silke](https://www.kuleuven.be/wieiswie/en/person/00170487)
+| **NeuroSPACE mailing list** | NeuroSPACE | More formal communication | See [this page](mailing-lists.md#some-useful-mailing-lists)
+| **LBP mailing list** | LBP | Administrative announcements | See [this page](mailing-lists.md#some-useful-mailing-lists)
 
 ### Encrypting external hard drives
 
@@ -193,16 +194,19 @@ When storing research data on external drives, encryption is strongly recommende
 Find info on how to install printing services on your desktop or laptop connected to the KU Leuven or faculty network [here](https://ppw.kuleuven.be/home/ppw-dict/dictservicedesk/netwerkprinter).
 
 On the second floor, the printer names are:
+
 - PRLBP (Black & White printer)
 - PRLBP2 (Color printer)
 
 Downstairs on the ground floor, the printer names are:
-- PRLEB1 (Black & White printer)
-- PRLEB3 (Color printer)
+
+- PRLEP1 (Black & White printer near kitchen LEP) --> currently out of service
+- PRLEP3 (Color printer near kitchen LEP) --> currently out of service
+- PRLEP (Color printer in downstairs hallway)
 
 If the installation doesn’t work, or you are using a windows desktop or laptop not connected to the KU Leuven or faculty network, use a USB key to print on the black and white printer in room 02.28. You can also get permanent access by asking [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) to add you to the list of users.
 
-For **mac users**, follow the instructions on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration) to print from your personal computer. More generally, this manual tries to give an overview of most frequently asked questions concerning configuration and initial setup of a secure work environment on Mac OS X.
+For **Mac users**, follow the instructions on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration) to print from your personal computer. More generally, this manual tries to give an overview of most frequently asked questions concerning configuration and initial setup of a secure work environment on Mac OS X.
 
 <style>
 .latex {
@@ -227,5 +231,5 @@ For **mac users**, follow the instructions on [this page](https://ppw.kuleuven.b
 </style>
 
 <!--
-__TODO__: [Klara] The OneDrive section (line ~130) states OneDrive is the primary storage solution, but KU Leuven no longer recommends OneDrive for research data. After the BADM consultation concludes, update this section to reflect current KU Leuven storage recommendations (SharePoint for collaboration, ManGO for research data archival). Clarify which storage solution to use for which purpose.
+__TODO__: [Klara] The info about encrypting external drives should move to the RDM section.
 -->
