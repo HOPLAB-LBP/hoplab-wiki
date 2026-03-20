@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -42,15 +42,15 @@
     
     
       
-        <script src="../../assets/external/unpkg.com/iframe-worker/shim.js"></script>
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
       
     
     
       
         
         
-        
-        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -2620,17 +2620,17 @@
 <h2 id="the-big-picture">The big picture<a class="headerlink" href="#the-big-picture" title="Permanent link">&para;</a></h2>
 <p>The decision tree below shows the intended direction of storage across the research lifecycle depending on researcher stage:</p>
 <p><img alt="Decision tree" src="../../assets/rdm_decision_tree_18122025.png" /></p>
-<p>If you are an early-stage researcher and/or start a new project:</p>
+<p>If you are an <strong>early-stage researcher</strong> and/or start a new project:</p>
 <ul>
 <li>Start with SharePoint for organisation and daily files</li>
 <li>Move structured study datasets to ManGO once the project is properly set up (primary location)</li>
 </ul>
-<p>If you are a late-stage researcher or dealing with ongoing research:</p>
+<p>If you are a <strong>late-stage researcher</strong> or dealing with ongoing research:</p>
 <ul>
 <li>Ensure everything (active and old research data) is (at least) safely stored on SharePoint</li>
 <li>If you want, you can move your active research datasets to ManGO</li>
 </ul>
-<p>We are currently rolling this out gradually, starting with pilot users who are</p>
+<p>We are currently rolling this out gradually, starting with <strong>pilot users</strong> who are</p>
 <ul>
 <li>testing ManGO ingestion workflows</li>
 <li>testing RDR for upcoming publications</li>
@@ -2640,7 +2640,7 @@
 <p>If you want to help test these systems, feel free to volunteer. 🙂</p>
 <h2 id="global-rules">Global rules<a class="headerlink" href="#global-rules" title="Permanent link">&para;</a></h2>
 <h3 id="data-protection-and-gdpr-compliance">Data protection and GDPR compliance<a class="headerlink" href="#data-protection-and-gdpr-compliance" title="Permanent link">&para;</a></h3>
-<p>As we are all collecting and processing <a href="https://www.kuleuven.be/rdm/en/guidance/legal-ethical/personal_data">personal data</a>  that is either confidential or strictly confidential according to the <a href="https://www.kuleuven.be/rdm/en/guidance/storage/data_classification">KU Leuven data classification chart</a>, this requires specific care and precautions in accordance with the <a href="https://admin.kuleuven.be/privacy/en/studpers/gdpr-code-of-conduct">GDPR</a>:</p>
+<p>As we are all collecting and processing <a href="https://www.kuleuven.be/rdm/en/guidance/legal-ethical/personal_data">personal data</a> that is either confidential or strictly confidential according to the <a href="https://www.kuleuven.be/rdm/en/guidance/storage/data_classification">KU Leuven data classification chart</a>, this requires specific care and precautions in accordance with the <a href="https://admin.kuleuven.be/privacy/en/studpers/gdpr-code-of-conduct">GDPR</a>:</p>
 <ul>
 <li>All research data should be <a href="https://admin.kuleuven.be/privacy/en/studpers/pae/pseudonymisation">pseudonymized</a> ASAP and the key stored separately from the research dataset. Note that in our (neuroimaging) studies, full anonymization is almost impossible since reidentification cannot be fully eliminated (see <a href="https://www.kuleuven.be/rdm/en/guidance/legal-ethical/anonymise-pseudonymise">this page</a> if you are unsure what the difference is).</li>
 <li>Delete sensitive data from unencrypted devices immediately (e.g., after transfer from the acquisition PC).</li>
@@ -2648,20 +2648,15 @@
 </ul>
 <h3 id="storage-and-backups">Storage and backups<a class="headerlink" href="#storage-and-backups" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Always keep 1–2 independent local copies of raw (pseudonymized) data on BitLocker-encrypted drives (no auto-sync).</li>
+<li>Always keep an independent local copy of raw (pseudonymized) data on a BitLocker-encrypted drive (no auto-sync).</li>
 <li>OneDrive is only for documents that are personal to you and do not need to survive the end of your contract.</li>
-<li>SharePoint is the default for day-to-day work and serves as a time-capsule for people leaving the lab.</li>
+<li><strong>SharePoint is the default for day-to-day work</strong> and serves as a time-capsule for people leaving the lab.</li>
 </ul>
 <h3 id="dataset-organisation-and-reproducibility">Dataset organisation and reproducibility<a class="headerlink" href="#dataset-organisation-and-reproducibility" title="Permanent link">&para;</a></h3>
 <ul>
 <li>All data should be organised following the <a href="https://bids-specification.readthedocs.io/en/stable/"><strong>BIDS structure</strong></a>, independent of its modality.</li>
 <li>Upload scripts and analysis code to GitHub throughout the project lifecycle.</li>
-<li>Clearly document your study and dataset contents, preprocessing and analysis steps, code, etc.</li>
-</ul>
-<h3 id="documentation-guidance">Documentation guidance<a class="headerlink" href="#documentation-guidance" title="Permanent link">&para;</a></h3>
-<ul>
-<li>In BIDS, this can best be done in the README file in the dataset root. This is the primary place for free-form notes ensuring that the dataset remains understandable to other humans (&lt;-&gt; machines).</li>
-<li>Further note-taking can be done using e.g. Obsidian (in the open <code>.md</code> format) and included in a <code>/doc</code> folder added to <code>.bidsignore</code>  to exclude it from validation.</li>
+<li>Clearly document your study and dataset contents, preprocessing and analysis steps, code, etc. (see <a href="offboarding.html#documentation-expectations">this page</a>)</li>
 </ul>
 <h2 id="sharepoint-setup-current-default-for-daily-work">SharePoint setup (current default for daily work)<a class="headerlink" href="#sharepoint-setup-current-default-for-daily-work" title="Permanent link">&para;</a></h2>
 <p>As a first rollout step, each lab member received a <strong>personal KU Leuven SharePoint space</strong> (1 TB). The email with your personal SharePoint site was sent out on 17/12/2025 with subject "KULeuven Teams Creation Info".</p>
@@ -2693,42 +2688,6 @@
 
 
 
-  
-    
-  
-  
-
-
-  <aside class="md-source-file">
-    
-      
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
-    </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="February 24, 2026 12:58:50 CET">February 24, 2026 12:58:50</span>
-  </span>
-
-    
-    
-    
-      
-  
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="Contributors">
-      
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
-      
-    </span>
-    <nav>
-      
-        <a href="mailto:klara.schevenels@outlook.com">kschevenels</a>
-    </nav>
-  </span>
-
-    
-    
-  </aside>
 
 
   
@@ -2958,7 +2917,7 @@
       
         <script src="../../javascripts/mathjax.js"></script>
       
-        <script src="../../assets/external/unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
