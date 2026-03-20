@@ -169,12 +169,12 @@ markdown_extensions:
 
 plugins:
   - offline
-  - privacy
+#  - privacy
   - search
-  - git-authors
-  - git-revision-date-localized:
-      type: datetime
-      timezone: Europe/Brussels
+#  - git-authors
+#  - git-revision-date-localized:
+#      type: datetime
+#      timezone: Europe/Brussels
 
 extra_css:
   - stylesheets/extra.css
