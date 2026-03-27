@@ -33,4 +33,6 @@ exclude = [
   "https://kuleuven.sharepoint.com/.*",
   # Aggressive bot detection beyond status codes (CAPTCHAs, JS challenges):
   "https://scholar.google.com/.*",
+  # KU Leuven auth portal — too many redirects for bot checks:
+  "https://account.kuleuven.be/.*",
 ]
