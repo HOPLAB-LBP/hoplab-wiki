@@ -907,7 +907,7 @@
   <span class="md-ellipsis">
     
   
-    Workflows per research modality
+    Study workflow
   
 
     
@@ -2613,12 +2613,12 @@
 
 
 <h1 id="researcher-offboarding-checklist">Researcher offboarding checklist<a class="headerlink" href="#researcher-offboarding-checklist" title="Permanent link">&para;</a></h1>
-<p>To ensure a smooth transition for everyone, you can find some general guidelines as well as a checklist of things to take care of before you leave below. It links to external pages so every step should speak for itself. If it doesn’t, do not hesitate to contact <a href="https://www.kuleuven.be/wieiswie/nl/person/00116743">Klara</a> to help you wrap up. </p>
-<p><a href="https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/RDM/Researcher-offboarding-checklist_WIP.docx?d=w103a73d188fd48beb69a23404a5f9af8&amp;csf=1&amp;web=1&amp;e=HcBn9l">Download a personal copy here</a> to fill in your information. When completed, sign it and send it to your PI with <a href="https://www.kuleuven.be/wieiswie/nl/person/00116743">Klara</a> in CC. </p>
+<p>To ensure a smooth transition for everyone, you can find some general guidelines as well as a checklist of things to take care of before you leave below. It links to external pages so every step should speak for itself. If it doesn’t, do not hesitate to contact <a href="https://www.kuleuven.be/wieiswie/nl/person/00116743">Klara</a> to help you wrap up.</p>
+<p><a href="https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/RDM/Researcher-offboarding-checklist_WIP.docx?d=w103a73d188fd48beb69a23404a5f9af8&amp;csf=1&amp;web=1&amp;e=HcBn9l">Download a personal copy here</a> to fill in your information. When completed, sign it and send it to your PI with <a href="https://www.kuleuven.be/wieiswie/nl/person/00116743">Klara</a> in CC.</p>
 <h2 id="general-guidelines">General guidelines<a class="headerlink" href="#general-guidelines" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Create a <a href="https://www.kuleuven.be/rdm/en/guidance/data-standards/file-organisation">logical folder structure with consistent file and folder naming</a></li>
-<li>Use <a href="https://www.kuleuven.be/rdm/en/rdr/file-formats/">open file formats or generally accepted standard formats</a> </li>
+<li>Use <a href="https://www.kuleuven.be/rdm/en/rdr/file-formats/">open file formats or generally accepted standard formats</a></li>
 <li>Provide <a href="https://www.kuleuven.be/rdm/en/guidance/documentation-metadata">clear documentation of project folders and datasets</a> (see <a href="#documentation-expectations">below</a> for more details)</li>
 <li>In case of doubt, refer to our <a href="current.html#the-big-picture">decision tree regarding data storage</a></li>
 </ol>
@@ -2876,41 +2876,41 @@
 </details>
 <h2 id="documentation-expectations">Documentation expectations<a class="headerlink" href="#documentation-expectations" title="Permanent link">&para;</a></h2>
 <h3 id="guiding-principle">Guiding principle<a class="headerlink" href="#guiding-principle" title="Permanent link">&para;</a></h3>
-<p>Documentation should allow a new lab member or external researcher to understand what the data or files are, how they were created, and how they can be reused, without additional guidance from the original researcher. </p>
+<p>Documentation should allow a new lab member or external researcher to understand what the data or files are, how they were created, and how they can be reused, without additional guidance from the original researcher.</p>
 <h4 id="non-research-project-files">Non-research project files<a class="headerlink" href="#non-research-project-files" title="Permanent link">&para;</a></h4>
-<p>For non-research data stored on SharePoint or FriGO, documentation related to those files should be provided in the root directory of each project (e.g. a README) and include: </p>
+<p>For non-research data stored on SharePoint or FriGO, documentation related to those files should be provided in the root directory of each project (e.g. a README) and include:</p>
 <ul>
-<li>A short description of the files and their purpose </li>
-<li>An overview of the folder structure with subfolder content and naming conventions </li>
-<li>Types of files present (e.g. administrative documents, templates, meeting notes, stimuli) </li>
-<li>Notes on what is final, ongoing, or obsolete </li>
+<li>A short description of the files and their purpose</li>
+<li>An overview of the folder structure with subfolder content and naming conventions</li>
+<li>Types of files present (e.g. administrative documents, templates, meeting notes, stimuli)</li>
+<li>Notes on what is final, ongoing, or obsolete</li>
 <li>References to related research data, scripts, or repositories if applicable  </li>
 </ul>
 <p>Note-taking can be done using e.g. Obsidian (in the open <code>.md</code> format) and included in a <code>/doc</code> folder added to <code>.bidsignore</code>  to exclude it from BIDS validation.</p>
 <h4 id="research-data-in-bids">Research data in BIDS<a class="headerlink" href="#research-data-in-bids" title="Permanent link">&para;</a></h4>
-<p>For research data organized in BIDS format, documentation should include: </p>
+<p>For research data organized in BIDS format, documentation should include:</p>
 <ul>
-<li>Study description, data modalities (e.g. MRI, EEG, behavioral, eye-tracking, DNN), number and type of participants (including key inclusion/exclusion criteria), stimuli, acquisition parameters/protocol, main experimental conditions/tasks, preprocessing/analysis steps </li>
-<li>BIDS-required metadata and sidecar files: dataset description, participant information, modality-specific metadata, event files, data dictionaries </li>
-<li>Make sure that the documentation covers all data stages: raw data (ground truth), derived data from preprocessing, intermediate and final analysis outputs </li>
+<li>Study description, data modalities (e.g. MRI, EEG, behavioral, eye-tracking, DNN), number and type of participants (including key inclusion/exclusion criteria), stimuli, acquisition parameters/protocol, main experimental conditions/tasks, preprocessing/analysis steps</li>
+<li>BIDS-required metadata and sidecar files: dataset description, participant information, modality-specific metadata, event files, data dictionaries</li>
+<li>Make sure that the documentation covers all data stages: raw data (ground truth), derived data from preprocessing, intermediate and final analysis outputs</li>
 <li>A README in the root directory explaining folder structure, relationship between raw and derived data, essential vs optional/legacy files, important notes/remarks (e.g., missing files). This is the primary place for free-form notes ensuring that the dataset remains understandable to other humans (&lt;-&gt; machines)</li>
-<li>References/links to preprocessing/analysis scripts, software versions/pipelines used, and external repositories </li>
+<li>References/links to preprocessing/analysis scripts, software versions/pipelines used, and external repositories</li>
 </ul>
 <h4 id="scripts-and-research-software">Scripts and research software<a class="headerlink" href="#scripts-and-research-software" title="Permanent link">&para;</a></h4>
-<p>For scripts and research software, documentation should include: </p>
+<p>For scripts and research software, documentation should include:</p>
 <ul>
-<li>A top-level README describing the purpose of the code, which part of the project it relates to, and the expected inputs and outputs </li>
-<li>Clear instructions on how to run the scripts or pipeline, dependencies, software requirements/versions, and configuration files or parameters that need to be set </li>
-<li>Inline comments or additional documentation explaining non-trivial processing steps, key analysis decisions, assumptions or known limitations </li>
-<li>An indication of which scripts are final/reproducible vs exploratory/deprecated/superseded </li>
+<li>A top-level README describing the purpose of the code, which part of the project it relates to, and the expected inputs and outputs</li>
+<li>Clear instructions on how to run the scripts or pipeline, dependencies, software requirements/versions, and configuration files or parameters that need to be set</li>
+<li>Inline comments or additional documentation explaining non-trivial processing steps, key analysis decisions, assumptions or known limitations</li>
+<li>An indication of which scripts are final/reproducible vs exploratory/deprecated/superseded</li>
 </ul>
 <h4 id="datasets-published-in-public-repositories">Datasets published in public repositories<a class="headerlink" href="#datasets-published-in-public-repositories" title="Permanent link">&para;</a></h4>
-<p>For projects hosted on public (trusted) repositories, documentation should include: </p>
+<p>For projects hosted on public (trusted) repositories, documentation should include:</p>
 <ul>
 <li>A README in the root describing data modality/format, how the data were collected and processed, repository structure (folders and files), and relationship of raw vs derived data  </li>
-<li>Metadata fields completed in the repository interface, including authorship, affiliations, keywords, subject areas, licensing, access restrictions/conditions, ethical/legal considerations, citation instructions for reuse, contact person(s) </li>
+<li>Metadata fields completed in the repository interface, including authorship, affiliations, keywords, subject areas, licensing, access restrictions/conditions, ethical/legal considerations, citation instructions for reuse, contact person(s)</li>
 <li>A clear indication of restricted vs open files  </li>
-<li>References to related publications, datasets, or code repositories </li>
+<li>References to related publications, datasets, or code repositories</li>
 </ul>
 <h2 id="in-case-of-unfinished-projects">In case of unfinished projects<a class="headerlink" href="#in-case-of-unfinished-projects" title="Permanent link">&para;</a></h2>
 <p>If you are a <strong>PhD student</strong> and your contract ends before your defense, you can contact your doctoral school to arrange a <a href="https://icts.kuleuven.be/docs/at/oz/doctoraten/s/doctoraatsgegevens-extra-info/MRE">minimal registration</a>. This allows you to keep access to key facilities (e-mail address, appearing on the who-is-who, a u-number to log in to KU Loket, <a href="https://bib.kuleuven.be/english/collections-access-borrowing/access-to-e-resources/consulting-e-resources/consulting">Limo</a> and LIRIAS, and a personnel card with possible access to buildings), although you are not/no longer formally employed by KU Leuven (this is standard for FWO fellowships).  </p>
@@ -2920,7 +2920,7 @@
 <li>Give <a href="https://admin.kuleuven.be/mykuleuven/en/theme/international/going-abroad-practical-aspects/eea-countries"><strong>non-EEA citizens</strong></a> who are not residing in Belgium (anymore) access to (parts of) the KU Leuven network via <a href="https://icts.kuleuven.be/sc/english/netinter/VPN-for-external-users">VPN for externals</a> (for 6 months, extendable once).</li>
 <li>Note that in both cases, there are no extra facilities such as keeping your e-mail address, etc. (see above). See <a href="https://admin.kuleuven.be/sab/od/intranet/minimale_registratie.html#autotoc-item-autotoc-3">this page</a> for more information on how to request this.</li>
 </ul>
-<p>If additional affiliation is needed, you can discuss with your PI to continue working for KU Leuven under a <a href="https://admin.kuleuven.be/personeel/intranet/statuten/vrijwillig-wetenschappelijk-medewerker"><strong>volunteer researcher contract</strong></a> (min. 10%): </p>
+<p>If additional affiliation is needed, you can discuss with your PI to continue working for KU Leuven under a <a href="https://admin.kuleuven.be/personeel/intranet/statuten/vrijwillig-wetenschappelijk-medewerker"><strong>volunteer researcher contract</strong></a> (min. 10%):</p>
 <ul>
 <li>This always requires a well-described and clearly defined academic assignment.</li>
 <li>Note that to combine this with unemployment benefits, the appointment percentage cannot exceed 20% (more info <a href="https://admin.kuleuven.be/personeel/intranet/statuten/vrijwillig-wetenschappelijk-medewerker#autotoc-item-autotoc-9">here</a>).</li>
