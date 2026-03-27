@@ -158,7 +158,7 @@ In Hoplab, several communication channels are used, on different levels. Here is
 | **Slack LBP workspace** | Hoplab | Quick (dissappearing) communication | Ask any lab member
 | **Hoplab mailing list** | Hoplab | More formal communication | See [this page](mailing-lists.md#some-useful-mailing-lists)
 | **Hoplab Teams** | Hoplab | Shared documents | Ask [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046), [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or [Silke](https://www.kuleuven.be/wieiswie/en/person/00170487)
-| **Slack NeuroSPACE workspace** | NeuroSPACE | Quick (dissappearing) communication | Ask any lab member 
+| **Slack NeuroSPACE workspace** | NeuroSPACE | Quick (dissappearing) communication | Ask any lab member
 | **NeuroSPACE Teams** | NeuroSPACE | Shared documents | Ask [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046), [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or [Silke](https://www.kuleuven.be/wieiswie/en/person/00170487)
 | **NeuroSPACE mailing list** | NeuroSPACE | More formal communication | See [this page](mailing-lists.md#some-useful-mailing-lists)
 | **LBP mailing list** | LBP | Administrative announcements | See [this page](mailing-lists.md#some-useful-mailing-lists)
