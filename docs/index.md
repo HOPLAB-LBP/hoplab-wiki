@@ -96,7 +96,6 @@ The [Hoplab](https://www.hoplab.be/) is part of the larger [NeuroSPACE consortiu
 
     [:octicons-arrow-right-24: Get started](get-started/student-starter-pack.md)
 
-
 - :octicons-checklist-24:{ .lg .middle } __Onboarding checklist__
 
     ---
