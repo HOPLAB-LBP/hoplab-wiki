@@ -2915,8 +2915,8 @@
 <p>This repository is set up to use GitHub Actions for automatic deployment. This means that every time changes are merged into the <code>main</code> branch, the documentation will automatically be built and deployed to GitHub Pages. You do not need to manually run the <code>mkdocs gh-deploy</code> command each time you make changes. Simply push your changes to the <code>main</code> branch, and GitHub Actions will handle the deployment.</p>
 </div>
 <h2 id="automated-pr-checks">Automated PR checks<a class="headerlink" href="#automated-pr-checks" title="Permanent link">&para;</a></h2>
-<p>When you open or update a Pull Request, automated checks run to catch common issues early. A bot will post a comment on your PR summarizing the results — if anything fails, the comment explains exactly what went wrong and how to fix it.</p>
-<p><strong>Auto-fixed for you</strong> (no action needed):</p>
+<p>When you open or update a Pull Request, automated checks run to catch common issues early. A bot will post a comment on your PR summarizing the results — if anything fails, the comment explains exactly what went wrong and how to fix it. You can also view the full report in the job summary by clicking "Details" next to any check.</p>
+<p><strong>Auto-fixed for you</strong> (no action needed for PRs from branches in this repo):</p>
 <ul>
 <li>Trailing whitespace and extra blank lines in Markdown files</li>
 <li>Hard tabs converted to spaces</li>
@@ -2924,6 +2924,10 @@
 <li>Curly/smart quotes in content tab (<code>=== "..."</code>) and admonition (<code>!!! type "..."</code>) titles</li>
 <li>Missing blank lines after content tab headers (<code>=== "Title"</code>)</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Fork PRs</p>
+<p>If your PR comes from a fork, auto-fixes cannot be pushed automatically (GitHub restricts write access on fork PRs). The check report will tell you exactly what needs manual fixing. The bot comment and all other checks work normally for fork PRs.</p>
+</div>
 <p><strong>Checked and reported</strong> (you fix these if flagged):</p>
 <table>
 <thead>
