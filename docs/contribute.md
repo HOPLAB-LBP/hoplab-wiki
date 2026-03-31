@@ -220,15 +220,18 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
 ## Automated PR checks
 
-When you open or update a Pull Request, automated checks run to catch common issues early. A bot will post a comment on your PR summarizing the results — if anything fails, the comment explains exactly what went wrong and how to fix it.
+When you open or update a Pull Request, automated checks run to catch common issues early. A bot will post a comment on your PR summarizing the results — if anything fails, the comment explains exactly what went wrong and how to fix it. You can also view the full report in the job summary by clicking "Details" next to any check.
 
-**Auto-fixed for you** (no action needed):
+**Auto-fixed for you** (no action needed for PRs from branches in this repo):
 
 - Trailing whitespace and extra blank lines in Markdown files
 - Hard tabs converted to spaces
 - Trailing whitespace in YAML files
 - Curly/smart quotes in content tab (`=== "..."`) and admonition (`!!! type "..."`) titles
 - Missing blank lines after content tab headers (`=== "Title"`)
+
+!!! note "Fork PRs"
+    If your PR comes from a fork, auto-fixes cannot be pushed automatically (GitHub restricts write access on fork PRs). The check report will tell you exactly what needs manual fixing. The bot comment and all other checks work normally for fork PRs.
 
 **Checked and reported** (you fix these if flagged):
 
