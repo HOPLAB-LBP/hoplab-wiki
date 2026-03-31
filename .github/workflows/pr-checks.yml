@@ -17,7 +17,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   # ───────────────────────────────────────────────────────────
@@ -47,13 +46,20 @@ jobs:
           sed -i 's/[[:space:]]*$//' mkdocs.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
 
       - name: Commit and push fixes
+        env:
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          BASE_REPO: ${{ github.repository }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           if ! git diff --cached --quiet; then
             git commit -m "style: auto-fix formatting issues"
-            git push
+            if [ "$HEAD_REPO" = "$BASE_REPO" ]; then
+              git push
+            else
+              echo "::notice::Auto-fixes were found but cannot be pushed to fork PRs. See the check report for what needs manual fixing."
+            fi
           else
             echo "Nothing to fix."
           fi
@@ -657,30 +663,25 @@ jobs:
           echo "--- Report ---"
           cat "$REPORT"
 
-      - name: Find existing bot comment
+      - name: Write report to job summary
         if: always()
-        uses: peter-evans/find-comment@v3
-        id: find-comment
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          comment-author: github-actions[bot]
-          body-includes: "<!-- pr-checks-report -->"
+        run: cat /tmp/pr-checks/report.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Post or update PR comment
-        id: update-comment
+      - name: Save PR metadata for comment workflow
         if: always()
-        continue-on-error: true
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          comment-id: ${{ steps.find-comment.outputs.comment-id }}
-          edit-mode: replace
-          body-path: /tmp/pr-checks/report.md
+        run: echo "$PR_NUMBER" > /tmp/pr-checks/pr-number.txt
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
 
-      - name: Warn if PR comment could not be updated
-        if: always() && steps.update-comment.outcome == 'failure'
-        run: |
-          echo "::warning::Could not update the PR comment, likely due to pull-request permissions on a fork. The check results are still available in the job log."
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-check-report
+          path: |
+            /tmp/pr-checks/report.md
+            /tmp/pr-checks/pr-number.txt
+          retention-days: 1
 
       # ── Final verdict ──────────────────────────────────
       - name: Fail if any check failed

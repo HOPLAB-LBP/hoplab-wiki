@@ -24,6 +24,7 @@ permissions:
 
 jobs:
   manage-docs-tags:
+    if: github.repository == 'HOPLAB-LBP/hoplab-wiki'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
