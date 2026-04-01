@@ -1,5 +1,7 @@
 # How to manage your data at Hoplab
 
+blablabla
+
 This workflow (or technically speaking, Standard Operating Procedures) is the product of a consultation process with the Book A Data Manager team in 2025-2026. They aim to provide guidelines for collecting, organizing, and analyzing research data across the modalities used in our studies.
 
 ## Data collection 
