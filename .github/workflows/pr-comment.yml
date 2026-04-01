@@ -1,0 +1,46 @@
+name: Post PR check report
+
+# Posts the check report as a PR comment. Runs via workflow_run so it has
+# write permissions even when the triggering PR comes from a fork.
+
+on:
+  workflow_run:
+    workflows: ["PR checks"]
+    types: [completed]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  post-comment:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.event == 'pull_request'
+    steps:
+      - name: Download report artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: pr-check-report
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Read PR number
+        id: meta
+        run: |
+          PR=$(cat pr-number.txt)
+          echo "pr_number=$PR" >> "$GITHUB_OUTPUT"
+
+      - name: Find existing bot comment
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          issue-number: ${{ steps.meta.outputs.pr_number }}
+          comment-author: github-actions[bot]
+          body-includes: "<!-- pr-checks-report -->"
+
+      - name: Post or update PR comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ steps.meta.outputs.pr_number }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          edit-mode: replace
+          body-path: report.md

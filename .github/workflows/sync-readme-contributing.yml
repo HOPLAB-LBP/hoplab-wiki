@@ -22,6 +22,9 @@ jobs:
       - name: Commit and push changes (if any)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          BASE_REPO: ${{ github.repository }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -29,7 +32,11 @@ jobs:
           # Only commit/push when there are changes; otherwise exit gracefully
           if ! git diff --cached --quiet -- docs/contribute.md; then
             git commit -m "Auto Sync README.md to docs/contribute.md"
-            git push origin HEAD:${{ github.event.pull_request.head.ref }}
+            if [ "$HEAD_REPO" = "$BASE_REPO" ]; then
+              git push origin "HEAD:$HEAD_REF"
+            else
+              echo "::notice::README sync commit created but cannot be pushed to fork PRs. The sync will apply automatically when this PR is merged."
+            fi
           else
             echo "No changes to commit; skipping push."
           fi
