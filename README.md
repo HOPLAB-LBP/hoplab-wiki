@@ -29,7 +29,7 @@ Before you begin, ensure you have the following:
 
 - A GitHub account (click [here](https://github.com/signup) to sign up).
 - Be part of the [`HOPLAB-LBP`](https://github.com/orgs/HOPLAB-LBP/people) organization (contact [Andrea](mailto:andreaivan.costantino@kuleuven.be) if you need to be added).
-- If you plan on following the [Advanced workflow](#advanced-workflow-for-extensive-changes) (encouraged for more complex changes), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html), and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or [GitHub Desktop](https://desktop.github.com/) (strongly encouraged) installed. If you are new to Git, branches, and pull requests, see the [Version control](https://hoplab-lbp.github.io/hoplab-wiki/research/coding/version-control/) page for a full introduction.
+- If you plan on following the [Advanced workflow](#advanced-workflow-for-extensive-changes) (encouraged for more complex changes), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html), and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or [GitHub Desktop](https://desktop.github.com/) (strongly encouraged) installed. If you are new to Git, branches, and pull requests, see the [Version control](https://hoplab-lbp.github.io/hoplab-wiki/research/coding/version-control.html) page for a full introduction.
 
 ## How to contribute
 
@@ -85,7 +85,7 @@ The preferred way to contribute if you need to make **significant/multiple chang
 With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session.
 
 !!! tip "Unfamiliar with branches and pull requests?"
-    This workflow relies on creating branches and opening pull requests. If these concepts are new to you, read the [Working with branches](https://hoplab-lbp.github.io/hoplab-wiki/research/coding/version-control/#4-working-with-branches) and [Pull requests](https://hoplab-lbp.github.io/hoplab-wiki/research/coding/version-control/#5-pull-requests) sections first.
+    This workflow relies on creating branches and opening pull requests. If these concepts are new to you, read the [Working with branches](https://hoplab-lbp.github.io/hoplab-wiki/research/coding/version-control.html#4-working-with-branches) and [Pull requests](https://hoplab-lbp.github.io/hoplab-wiki/research/coding/version-control.html#5-pull-requests) sections first.
 
 !!! question "How should I organize my PR?"
     A [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (or PR) "*is a proposal to merge a set of changes from one branch into another*". Ideally, a PR should include all the commits **for a specific feature** or bugfix from end-to-end. Avoid making PRs that contain multiple unrelated changes. For instance, if you are working on a feature that requires modifications across multiple files, ensure all those changes are included in the same PR. Conversely, avoid combining changes for different features (e.g., adding unrelated updates to the fMRI workflow and the getting started section) in a single PR. Each PR should represent a cohesive unit of work.
@@ -220,15 +220,18 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 
 ## Automated PR checks
 
-When you open or update a Pull Request, automated checks run to catch common issues early. A bot will post a comment on your PR summarizing the results — if anything fails, the comment explains exactly what went wrong and how to fix it.
+When you open or update a Pull Request, automated checks run to catch common issues early. A bot will post a comment on your PR summarizing the results — if anything fails, the comment explains exactly what went wrong and how to fix it. You can also view the full report in the job summary by clicking "Details" next to any check.
 
-**Auto-fixed for you** (no action needed):
+**Auto-fixed for you** (no action needed for PRs from branches in this repo):
 
 - Trailing whitespace and extra blank lines in Markdown files
 - Hard tabs converted to spaces
 - Trailing whitespace in YAML files
 - Curly/smart quotes in content tab (`=== "..."`) and admonition (`!!! type "..."`) titles
 - Missing blank lines after content tab headers (`=== "Title"`)
+
+!!! note "Fork PRs"
+    If your PR comes from a fork, auto-fixes cannot be pushed automatically (GitHub restricts write access on fork PRs). The check report will tell you exactly what needs manual fixing. The bot comment and all other checks work normally for fork PRs.
 
 **Checked and reported** (you fix these if flagged):
 

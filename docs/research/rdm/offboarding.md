@@ -1,13 +1,13 @@
 # Researcher offboarding checklist
 
-To ensure a smooth transition for everyone, you can find some general guidelines as well as a checklist of things to take care of before you leave below. It links to external pages so every step should speak for itself. If it doesn’t, do not hesitate to contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to help you wrap up. 
+To ensure a smooth transition for everyone, you can find some general guidelines as well as a checklist of things to take care of before you leave below. It links to external pages so every step should speak for itself. If it doesn’t, do not hesitate to contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to help you wrap up.
 
-[Download a personal copy here](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/RDM/Researcher-offboarding-checklist_WIP.docx?d=w103a73d188fd48beb69a23404a5f9af8&csf=1&web=1&e=HcBn9l) to fill in your information. When completed, sign it and send it to your PI with [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) in CC. 
+[Download a personal copy here](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/RDM/Researcher-offboarding-checklist_WIP.docx?d=w103a73d188fd48beb69a23404a5f9af8&csf=1&web=1&e=HcBn9l) to fill in your information. When completed, sign it and send it to your PI with [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) in CC.
 
 ## General guidelines
 
 1. Create a [logical folder structure with consistent file and folder naming](https://www.kuleuven.be/rdm/en/guidance/data-standards/file-organisation)
-2. Use [open file formats or generally accepted standard formats](https://www.kuleuven.be/rdm/en/rdr/file-formats/) 
+2. Use [open file formats or generally accepted standard formats](https://www.kuleuven.be/rdm/en/rdr/file-formats/)
 3. Provide [clear documentation of project folders and datasets](https://www.kuleuven.be/rdm/en/guidance/documentation-metadata) (see [below](#documentation-expectations) for more details)
 4. In case of doubt, refer to our [decision tree regarding data storage](./current.md#the-big-picture)
 
@@ -74,53 +74,53 @@ To ensure a smooth transition for everyone, you can find some general guidelines
     |------|--------------|------|
     | Provide feedback on RDM, lab experience, and suggestions. | [any feedback is welcome! 😊] | ☐ |
 
-## Documentation expectations 
+## Documentation expectations
 
-### Guiding principle 
+### Guiding principle
 
-Documentation should allow a new lab member or external researcher to understand what the data or files are, how they were created, and how they can be reused, without additional guidance from the original researcher. 
+Documentation should allow a new lab member or external researcher to understand what the data or files are, how they were created, and how they can be reused, without additional guidance from the original researcher.
 
 #### Non-research project files  
 
-For non-research data stored on SharePoint or FriGO, documentation related to those files should be provided in the root directory of each project (e.g. a README) and include: 
+For non-research data stored on SharePoint or FriGO, documentation related to those files should be provided in the root directory of each project (e.g. a README) and include:
 
-- A short description of the files and their purpose 
-- An overview of the folder structure with subfolder content and naming conventions 
-- Types of files present (e.g. administrative documents, templates, meeting notes, stimuli) 
-- Notes on what is final, ongoing, or obsolete 
+- A short description of the files and their purpose
+- An overview of the folder structure with subfolder content and naming conventions
+- Types of files present (e.g. administrative documents, templates, meeting notes, stimuli)
+- Notes on what is final, ongoing, or obsolete
 - References to related research data, scripts, or repositories if applicable  
 
 Note-taking can be done using e.g. Obsidian (in the open `.md` format) and included in a `/doc` folder added to `.bidsignore`  to exclude it from BIDS validation.
 
-#### Research data in BIDS 
+#### Research data in BIDS
 
-For research data organized in BIDS format, documentation should include: 
+For research data organized in BIDS format, documentation should include:
 
-- Study description, data modalities (e.g. MRI, EEG, behavioral, eye-tracking, DNN), number and type of participants (including key inclusion/exclusion criteria), stimuli, acquisition parameters/protocol, main experimental conditions/tasks, preprocessing/analysis steps 
-- BIDS-required metadata and sidecar files: dataset description, participant information, modality-specific metadata, event files, data dictionaries 
-- Make sure that the documentation covers all data stages: raw data (ground truth), derived data from preprocessing, intermediate and final analysis outputs 
+- Study description, data modalities (e.g. MRI, EEG, behavioral, eye-tracking, DNN), number and type of participants (including key inclusion/exclusion criteria), stimuli, acquisition parameters/protocol, main experimental conditions/tasks, preprocessing/analysis steps
+- BIDS-required metadata and sidecar files: dataset description, participant information, modality-specific metadata, event files, data dictionaries
+- Make sure that the documentation covers all data stages: raw data (ground truth), derived data from preprocessing, intermediate and final analysis outputs
 - A README in the root directory explaining folder structure, relationship between raw and derived data, essential vs optional/legacy files, important notes/remarks (e.g., missing files). This is the primary place for free-form notes ensuring that the dataset remains understandable to other humans (<-> machines)
-- References/links to preprocessing/analysis scripts, software versions/pipelines used, and external repositories 
+- References/links to preprocessing/analysis scripts, software versions/pipelines used, and external repositories
 
-#### Scripts and research software 
+#### Scripts and research software
 
-For scripts and research software, documentation should include: 
+For scripts and research software, documentation should include:
 
-- A top-level README describing the purpose of the code, which part of the project it relates to, and the expected inputs and outputs 
-- Clear instructions on how to run the scripts or pipeline, dependencies, software requirements/versions, and configuration files or parameters that need to be set 
-- Inline comments or additional documentation explaining non-trivial processing steps, key analysis decisions, assumptions or known limitations 
-- An indication of which scripts are final/reproducible vs exploratory/deprecated/superseded 
+- A top-level README describing the purpose of the code, which part of the project it relates to, and the expected inputs and outputs
+- Clear instructions on how to run the scripts or pipeline, dependencies, software requirements/versions, and configuration files or parameters that need to be set
+- Inline comments or additional documentation explaining non-trivial processing steps, key analysis decisions, assumptions or known limitations
+- An indication of which scripts are final/reproducible vs exploratory/deprecated/superseded
 
-#### Datasets published in public repositories 
+#### Datasets published in public repositories
 
-For projects hosted on public (trusted) repositories, documentation should include: 
+For projects hosted on public (trusted) repositories, documentation should include:
 
 - A README in the root describing data modality/format, how the data were collected and processed, repository structure (folders and files), and relationship of raw vs derived data  
-- Metadata fields completed in the repository interface, including authorship, affiliations, keywords, subject areas, licensing, access restrictions/conditions, ethical/legal considerations, citation instructions for reuse, contact person(s) 
+- Metadata fields completed in the repository interface, including authorship, affiliations, keywords, subject areas, licensing, access restrictions/conditions, ethical/legal considerations, citation instructions for reuse, contact person(s)
 - A clear indication of restricted vs open files  
-- References to related publications, datasets, or code repositories 
+- References to related publications, datasets, or code repositories
 
-## In case of unfinished projects 
+## In case of unfinished projects
 
 If you are a **PhD student** and your contract ends before your defense, you can contact your doctoral school to arrange a [minimal registration](https://icts.kuleuven.be/docs/at/oz/doctoraten/s/doctoraatsgegevens-extra-info/MRE). This allows you to keep access to key facilities (e-mail address, appearing on the who-is-who, a u-number to log in to KU Loket, [Limo](https://bib.kuleuven.be/english/collections-access-borrowing/access-to-e-resources/consulting-e-resources/consulting) and LIRIAS, and a personnel card with possible access to buildings), although you are not/no longer formally employed by KU Leuven (this is standard for FWO fellowships).  
 
@@ -130,7 +130,7 @@ A **minimal registration** can also be used to:
 - Give [**non-EEA citizens**](https://admin.kuleuven.be/mykuleuven/en/theme/international/going-abroad-practical-aspects/eea-countries) who are not residing in Belgium (anymore) access to (parts of) the KU Leuven network via [VPN for externals](https://icts.kuleuven.be/sc/english/netinter/VPN-for-external-users) (for 6 months, extendable once).
 - Note that in both cases, there are no extra facilities such as keeping your e-mail address, etc. (see above). See [this page](https://admin.kuleuven.be/sab/od/intranet/minimale_registratie.html#autotoc-item-autotoc-3) for more information on how to request this.
 
-If additional affiliation is needed, you can discuss with your PI to continue working for KU Leuven under a [**volunteer researcher contract**](https://admin.kuleuven.be/personeel/intranet/statuten/vrijwillig-wetenschappelijk-medewerker) (min. 10%): 
+If additional affiliation is needed, you can discuss with your PI to continue working for KU Leuven under a [**volunteer researcher contract**](https://admin.kuleuven.be/personeel/intranet/statuten/vrijwillig-wetenschappelijk-medewerker) (min. 10%):
 
 - This always requires a well-described and clearly defined academic assignment.
 - Note that to combine this with unemployment benefits, the appointment percentage cannot exceed 20% (more info [here](https://admin.kuleuven.be/personeel/intranet/statuten/vrijwillig-wetenschappelijk-medewerker#autotoc-item-autotoc-9)).

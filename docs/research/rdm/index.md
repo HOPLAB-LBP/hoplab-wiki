@@ -13,7 +13,7 @@ Our procedures aim to ensure:
 
 - **New to the lab?** → See the [*onboarding checklist*](onboarding.md)
 - **Leaving the lab?** → See the [*offboarding checklist*](offboarding.md)
-- **Working with data?** → Follow the [*workflows per modality*](SOPs.md)
+- **Starting a new study?** → Follow the appropriate [*workflows*](SOPs.md)
 
 ## Storage and sharing platforms
 

@@ -1,6 +1,6 @@
 # Researcher onboarding checklist
 
-Hi and welcome to Hoplab! Here’s a list of things to think about if you are just starting out. It links to different Wiki pages so every step should speak for itself. If it doesn’t, do not hesitate to contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to help you set up. 
+Hi and welcome to Hoplab! Here’s a list of things to think about if you are just starting out. It links to different Wiki pages so every step should speak for itself. If it doesn’t, do not hesitate to contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to help you set up.
 
 You can follow the checklist step by step below or [download a personal copy](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/RDM/Researcher-onboarding-checklist_WIP.docx?d=w671ad86c962d4a2092ed494e51e0cd04&csf=1&web=1&e=FXG5oL).
 
@@ -60,6 +60,3 @@ You can follow the checklist step by step below or [download a personal copy](ht
     | Get to know [relevant meeting structures](../../outreach.md#lab-meetings) | On the levels of Hoplab, B&C and NeuroSPACE | ☐ |
     | Get information on retreat and internal events | PPP, social lab activities, scicomm events | ☐ |
     | Be added to WhatsApp group for social stuff | Ask any colleague to add you! 😊 | ☐ |
-
-
-

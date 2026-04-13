@@ -2,7 +2,7 @@
 
 ## Keys
 
-Ask the LBP lab technician ([Ying Cai](https://www.kuleuven.be/wieiswie/en/person/00098752)), whom you can find in room 02.37, for a key to your new office. You can also ask her for a key to the underground private bike parking (next to the Alma) if you need it. 
+Ask the LBP lab technician ([Ying Cai](https://www.kuleuven.be/wieiswie/en/person/00098752)), whom you can find in room 02.37, for a key to your new office. You can also ask her for a key to the underground private bike parking (next to the Alma) if you need it.
 
 ## Staff card
 
@@ -26,7 +26,7 @@ An overview of the office spaces and who is located where, can be found [here](h
 
 ## Kitchen
 
-All members of Hoplab have access to the LBP kitchen (shared with the labs of [Bram](https://www.kuleuven.be/wieiswie/nl/person/00035504), [Rudi](https://www.kuleuven.be/wieiswie/nl/person/00043549), and [Markus](https://www.kuleuven.be/wieiswie/nl/person/00140784)). The kitchen is located in PSI 02.53 and has a fridge, coffee machine, kettle, microwave and diswasher. 
+All members of Hoplab have access to the LBP kitchen (shared with the labs of [Bram](https://www.kuleuven.be/wieiswie/nl/person/00035504), [Rudi](https://www.kuleuven.be/wieiswie/nl/person/00043549), and [Markus](https://www.kuleuven.be/wieiswie/nl/person/00140784)). The kitchen is located in PSI 02.53 and has a fridge, coffee machine, kettle, microwave and diswasher.
 
 There is a rotation system (hanging in the kitchen) indicating two people every week who are responsible to clean the kitchen.
 

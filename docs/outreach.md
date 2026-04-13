@@ -120,7 +120,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
 ### Other meetings
 
-Nex to the weekly lab meetings, we have monthly NeuroSPACE methods meetings where we focus on topics that are relevant across the four groups, as well as weekly B&C seminars with internal or external speakers. Meeting invitations are sent to the NeuroSPACE and LBP mailing lists, respectively. 
+Nex to the weekly lab meetings, we have monthly NeuroSPACE methods meetings where we focus on topics that are relevant across the four groups, as well as weekly B&C seminars with internal or external speakers. Meeting invitations are sent to the NeuroSPACE and LBP mailing lists, respectively.
 
 ## Present your work (and announce it)
 
@@ -237,9 +237,9 @@ Below you can find an example announcement for a doctoral school presentation:
 - Counted for internal evaluations and reporting
 - Archived with a persistent link
 
-To register a publication, log in to [Lirias](https://lirias.kuleuven.be/) with your KU Leuven credentials and follow the submission workflow. You can import records directly from DOI, PubMed, or Web of Science. For detailed instructions, check out the [Lirias FAQ page](https://research.kuleuven.be/en/associatienet/output/lirias/faq_webpages/faqs-Lirias). 
+To register a publication, log in to [Lirias](https://lirias.kuleuven.be/) with your KU Leuven credentials and follow the submission workflow. You can import records directly from DOI, PubMed, or Web of Science. For detailed instructions, check out the [Lirias FAQ page](https://research.kuleuven.be/en/associatienet/output/lirias/faq_webpages/faqs-Lirias).
 
-Make sure to add the **Methusalem label** `METH/24/003#57874482` to all of your entries as well, such that they are included in the Methusalem reporting ([how?](https://research.kuleuven.be/en/associatienet/output/lirias/faq_webpages/labels-in-lirias)). 
+Make sure to add the **Methusalem label** `METH/24/003#57874482` to all of your entries as well, such that they are included in the Methusalem reporting ([how?](https://research.kuleuven.be/en/associatienet/output/lirias/faq_webpages/labels-in-lirias)).
 
 !!! tip
     Register your publications as soon as they are accepted or published — it only takes a few minutes and keeps your academic profile up to date.
@@ -272,7 +272,7 @@ If you are already interested in science communication, that's great! If you nee
 
 The easiest and **most straightforward ideas** to start participating in SciComm yourself are:
 
-- Being active on social media (see [below](#social-media)) 
+- Being active on social media (see [below](#social-media))
 - Creating video abstracts for your paper and starting a Youtube channel
 - Writing a press release if you have done newsworthy research (ask the [KU Leuven press office](https://nieuws.kuleuven.be/en/press-office/press-office-and-policy-communications) for help)
 - Writing and publishing a blog post about your research (e.g., on [EOS blogs](https://www.eoswetenschap.eu/eosblogs), see for example [Klara's blog](https://www.eoswetenschap.eu/psyche-brein/wat-als-je-je-taal-verliest-na-een-beroerte))
@@ -280,7 +280,7 @@ The easiest and **most straightforward ideas** to start participating in SciComm
 
 !!! tip
     Register your non-academic outreach activities (e.g., public lectures, media appearances, blog posts, science workshops, etc.) [here](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824/Shared%20Documents/General/Methusalem%20reporting/Methusalem_Scicomm_Overview.xlsx?d=wcafaa0336ef941b3989dd98a38b35e9b&csf=1&web=1&e=U3PAVl) as well as on Lirias. Don't forget to add the Methusalem label `METH/24/003#57874482`. This helps both with reporting and keeping your own portfolio up to date. Your future self will thank you!
-    
+
 ### Social media
 
 NeuroSPACE is active on LinkedIn and Bluesky, and the Laboratory of Biological Psychology has its own :simple-x: profile!
