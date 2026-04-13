@@ -1,0 +1,197 @@
+# RDR for data sharing
+
+[KU Leuven Research Data Repository (RDR)](https://rdr.kuleuven.be/) is the university's platform for publishing and sharing research datasets alongside a publication. This page walks you through the full upload process.
+
+!!! info "When to use RDR"
+    RDR is for **finished datasets** tied to a publication. For active research data, use [ManGO](mango_active.md). For long-term archiving, use [FriGO](frigo_archive.md).
+
+## Before you start
+
+- [ ] Your dataset is complete, well-organised, and validated
+- [ ] For fMRI data: [BIDS-compliant](../fmri/analysis/fmri-bids-conversion.md) and [anonymized](../fmri/analysis/fmri-anonymization.md)
+- [ ] Your S-case/ethics application mentions data sharing (required for restricted access)
+- [ ] You have a code repository on GitHub with analysis scripts and documentation
+
+## Where does what go?
+
+For neuroimaging projects, data and code live in two places:
+
+| What | Where | Why |
+|------|-------|-----|
+| Raw data, preprocessed data, all derivatives | **BIDS dataset on RDR** | Reproducibility; data preservation |
+| Analysis code, scripts, documentation | **GitHub repository** | Version control; open access |
+
+Everything in the BIDS dataset — raw scans, preprocessed outputs, subject-level derivatives, and group-level results — goes on RDR. The code repo contains the scripts that produced those outputs, plus READMEs explaining how to run them.
+
+## Step 1: Validate your dataset
+
+### For fMRI (BIDS) datasets
+
+Run the [BIDS validator](https://bids-standard.github.io/bids-validator/):
+
+```bash
+pip install bids-validator-deno
+bids-validator-deno /path/to/your/BIDS
+```
+
+Fix all **errors** before proceeding. Warnings are recommended but not blocking.
+
+??? info "Common BIDS errors and how to fix them"
+
+    | Error | Fix |
+    |-------|-----|
+    | `JSON_INVALID` | Remove trailing commas; validate with a JSON linter |
+    | `SIDECAR_KEY_REQUIRED` / `TaskName` missing | Create a root-level `task-<label>_bold.json` with `{"TaskName": "yourtask"}` |
+    | `PARTICIPANT_ID_MISMATCH` | Ensure every `sub-XX/` directory has a matching row in `participants.tsv` |
+
+For fMRI datasets, also follow the [anonymization guide](../fmri/analysis/fmri-anonymization.md) (defacing, metadata scrubbing, participant data review).
+
+### For other dataset types
+
+Ensure your data has a clear folder structure, consistent naming, and sufficient metadata (README + data dictionaries) for others to understand it.
+
+## Step 2: Write a README
+
+A README is **mandatory** for RDR. Upload it as a **separate file** (not inside a ZIP) so it is directly visible on the dataset landing page — even for restricted datasets, the README should be publicly accessible.
+
+For BIDS datasets, the `README` file at the dataset root serves double duty. It should cover:
+
+- What the dataset contains and why it was collected
+- Participants (number, groups, key demographics)
+- Acquisition parameters (scanner, software, sequences)
+- Folder structure and file naming conventions
+- What derivatives are included and how they were produced
+- Link to the analysis code repository
+- Contact information
+- License
+
+## Step 3: Prepare ZIP files
+
+!!! warning "ZIPs are required"
+    RDR runs on Dataverse, which loads very slowly with more than ~1,000 individual files. The RDR team requires organising data into **ZIP files, each under 20 GB**. RDR includes a built-in ZIP previewer that lets users browse contents and download individual files from within archives.
+
+Use [7-Zip](https://www.7-zip.org/) to compress and automatically split into volumes:
+
+```bash
+# Example: compress a folder and split at 20 GB
+7z a -v20g my_bundle.zip my_folder/
+```
+
+On **Windows**: right-click the folder → **7-Zip > Add to archive** → set format to **zip** → enter `20G` under **Split to volumes**.
+
+To extract (recipient side):
+
+```bash
+7z x my_bundle.zip.001    # 7-Zip auto-detects the other parts
+```
+
+### How to split your dataset
+
+If your dataset is small enough (<20 GB total), a single ZIP is fine. For larger datasets, split into **logical bundles** so users can download only what they need. A good default for fMRI datasets:
+
+| Bundle | Contents | Typical size |
+|--------|----------|-------------|
+| **Core** | `participants.tsv`, sidecars, `stimuli/`, atlases | Small (~20 MB) |
+| **Raw** | `sub-*/anat/`, `sub-*/func/*_bold.nii.gz` | Large (tens of GB) |
+| **Preprocessed** | `derivatives/fmriprep/` | Large |
+| **First-level** | `derivatives/spm/` or equivalent GLM outputs | Medium–large |
+| **Derivatives** | All other derivative pipelines + group-level results | Usually small (~100–300 MB) |
+
+The idea is that **most users only need the core + derivatives bundle** to reproduce group-level analyses, tables, and figures (~300 MB). Only users who want to re-run preprocessing or subject-level analyses need the heavier bundles.
+
+Further splitting makes sense when a specific pipeline stage is large and only needed for a subset of analyses. For example, if most analyses read from SPM first-level betas, shipping SPM separately from fMRIPrep lets users skip the ~180 GB fMRIPrep bundle entirely.
+
+!!! tip "Example"
+    The [chess expertise fMRI dataset](https://doi.org/10.48804/VVCEWP) uses 5 bundles: core (20 MB), raw (39 GB), fMRIPrep (187 GB), SPM (30 GB), and all other derivatives + group results (184 MB). The README and documentation HTML files are uploaded separately as unrestricted files, visible on the landing page without access request.
+
+## Step 4: Choose a license
+
+RDR requires selecting a license in the **Terms** tab.
+
+For **restricted datasets** (most Hoplab neuroimaging data):
+
+- Select a standard license (e.g., **CC-BY 4.0**) — this applies to the **unrestricted files** (README, documentation)
+- For the restricted data itself, access is governed by a **Data Transfer Agreement (DTA)** that is drafted when someone requests access. The DTA serves as the effective license for the restricted files.
+
+For **open datasets** (no access restrictions): **CC-BY 4.0** (attribution required) or **CC0** (no restrictions).
+
+See the [RDR license guidance](https://www.kuleuven.be/rdm/en/rdr/manual#License) for details.
+
+## Step 5: Create a draft dataset
+
+1. Go to [rdr.kuleuven.be](https://rdr.kuleuven.be/) and log in with your KU Leuven account
+2. Navigate to your Dataverse collection
+3. Click **Add Data > New Dataset**
+4. Fill in the required metadata (see below)
+5. Click **Save Dataset** — this creates the draft
+
+### Required metadata
+
+**At draft creation:**
+
+| Field | What to enter |
+|-------|---------------|
+| **Title** | Name of your dataset |
+| **Author(s)** | Name and affiliation of each contributor (match your paper) |
+| **Contact** | Name and email of who handles access requests |
+| **Description** | What the dataset contains, how it was collected |
+| **Subject** | Broad discipline (e.g., "Medicine, Health and Life Sciences") |
+
+**Before publishing** (fields appear after the first save):
+
+| Field | What to enter |
+|-------|---------------|
+| **License** | CC-BY 4.0 (for unrestricted files); DTA covers restricted data |
+| **Access rights** | `restricted` (for neuroimaging data with GDPR constraints) |
+| **Technical format** | File extensions in the dataset (e.g., `nii.gz, json, tsv, png`) |
+| **Legitimate opt-out** | Reason for restricting access: `ethical` (for human subjects data) |
+
+Additional fields (keywords, related publication DOI, funding) are optional but improve discoverability.
+
+## Step 6: Upload files
+
+### Unrestricted files (README, documentation)
+
+Upload the README and any documentation files (e.g., HTML visualisations) first, and set them as **unrestricted** so users can read them before requesting access.
+
+In the draft, click **Upload Files**, select your files, and after upload, change their access from "Restricted" to "Public" in the file listing.
+
+### ZIP bundles
+
+Upload all ZIP volumes via the web interface:
+
+1. In your draft, click **Upload Files**
+2. Use the **folder upload** option and select the folder containing your ZIP files
+3. The web UI uploads the ZIPs as opaque files (it does not try to extract them)
+
+!!! warning "Do not use the Dataverse API for ZIP uploads"
+    The Dataverse API attempts to extract ZIP files with more than 1,000 internal entries and rejects them with a "files over limit" error. The web UI folder upload does not have this limitation. Use the web UI for all ZIP uploads.
+
+!!! tip "Upload from the KU Leuven network"
+    Uploading from campus or via VPN significantly improves transfer speed and reliability for large files.
+
+## Step 7: Verify and publish
+
+1. Check that all files appear in the draft and sizes match your local copies
+2. Verify the README and documentation files are set to **unrestricted**
+3. Fill in any remaining metadata fields
+4. For restricted access: confirm the contact person is correct
+5. Click **Publish Dataset** > **Major version** (v1.0)
+6. Copy the DOI and add it to your paper and code repository
+
+## Important notes
+
+!!! warning "Large datasets (> 50 GB)"
+    Contact the [RDR team](mailto:rdm@kuleuven.be) **before** uploading. Large datasets are handled case-by-case. Free hosting is offered for 10 years on a best-effort basis.
+
+!!! tip "Link your code repository"
+    Add the GitHub repository URL to the dataset metadata (Related Publication or Related Material field). In the code repo README, add the RDR DOI. This makes both discoverable from either direction.
+
+## Example
+
+The chess expertise fMRI dataset is a complete example of a Hoplab RDR upload:
+
+- **RDR dataset**: [doi.org/10.48804/VVCEWP](https://doi.org/10.48804/VVCEWP) — the README and interactive documentation (analysis flowcharts, BIDS file tree) are publicly visible; data bundles require access request
+- **Code repository**: [github.com/costantinoai/chess-expertise-2025](https://github.com/costantinoai/chess-expertise-2025) — includes a Quick Start section, per-analysis READMEs, and a `run_all_analyses.sh` pipeline
+
+For questions or issues at any stage, contact the RDR team via [rdm@kuleuven.be](mailto:rdm@kuleuven.be) or check the [RDR support guidelines](https://www.kuleuven.be/rdm/en/rdr/support-guidelines).
