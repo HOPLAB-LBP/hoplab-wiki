@@ -191,13 +191,65 @@ RDR exposes the standard [Dataverse REST API](https://guides.dataverse.org/en/6.
 5. Click **Publish Dataset** > **Major version** (v1.0)
 6. Copy the DOI and add it to your paper and code repository
 
+## Step 8: Get DOIs for your data and code
+
+After publishing, you need two DOIs: one for the **data** (RDR) and one for the **code** (Zenodo). Both go in your paper's Data Availability statement.
+
+### Data DOI (automatic)
+
+When you publish your RDR dataset, it automatically gets a DOI (e.g., `doi:10.48804/XXXXXX`). This is visible on the dataset landing page. Use this DOI in your paper and code repository.
+
+### Code DOI (Zenodo + GitHub)
+
+[Zenodo](https://zenodo.org/) mints DOIs for GitHub releases. Set this up **once** per repository, then every tagged release automatically gets a DOI.
+
+**One-time setup:**
+
+1. Go to [zenodo.org](https://zenodo.org/) and log in with your GitHub account
+2. Go to [zenodo.org/account/settings/github](https://zenodo.org/account/settings/github/)
+3. Find your repository and flip the toggle to **ON**
+4. Zenodo installs a webhook on your repo — from now on, every GitHub release triggers a new Zenodo DOI
+
+**For each release:**
+
+1. Tag a snapshot of your code when the paper is submitted or accepted:
+
+    ```bash
+    git tag -a v1.0.0 -m "v1.0.0 — publication release"
+    git push origin v1.0.0
+    ```
+
+2. Create a GitHub release from the tag:
+
+    ```bash
+    gh release create v1.0.0 --title "v1.0.0 — Publication Release" \
+        --notes "Analysis code for [paper title]. Data: doi:10.48804/XXXXXX"
+    ```
+
+    Or do it via the GitHub web UI: go to your repo → **Releases** → **Draft a new release** → select the tag → fill in title and notes → **Publish release**.
+
+3. Zenodo automatically picks up the release and mints a DOI (takes a few minutes). Check at `zenodo.org/account/settings/github/` or search for your repo on Zenodo.
+
+**Zenodo gives you two DOIs:**
+
+- A **version DOI** (e.g., `10.5281/zenodo.12345678`) — points to this specific release
+- A **concept DOI** (e.g., `10.5281/zenodo.12345677`) — always resolves to the latest release
+
+Use the **concept DOI** in your paper (so it stays current if you release bug fixes). Use the **version DOI** when you need to cite a specific snapshot.
+
+### Cross-linking
+
+Once you have both DOIs:
+
+- In your **paper**: cite both the data DOI and the code concept DOI
+- In your **code repo README**: add the RDR data DOI and the Zenodo badge
+- In your **RDR metadata**: add the code repo URL and paper DOI (when available) in the "Related Publication" field
+- In your **RDR README**: link to the code repo and cite both DOIs
+
 ## Important notes
 
 !!! warning "Large datasets (> 50 GB)"
     Contact the [RDR team](mailto:rdm@kuleuven.be) **before** uploading. Large datasets are handled case-by-case. Free hosting is offered for 10 years on a best-effort basis.
-
-!!! tip "Link your code repository"
-    Add the GitHub repository URL to the dataset metadata (Related Publication or Related Material field). In the code repo README, add the RDR DOI. This makes both discoverable from either direction.
 
 ## Example
 
