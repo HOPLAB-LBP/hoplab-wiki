@@ -9,7 +9,7 @@
 
 - [ ] Your dataset is complete, well-organised, and validated
 - [ ] For fMRI data: [BIDS-compliant](../fmri/analysis/fmri-bids-conversion.md) and [anonymized](../fmri/analysis/fmri-anonymization.md)
-- [ ] Your S-case/ethics application mentions data sharing (required for restricted access)
+- [ ] Your S-case/ethics application mentions data sharing (required for restricted access). Contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to check what your S-case allows and whether an amendment is needed.
 - [ ] You have a code repository on GitHub with analysis scripts and documentation
 
 ## Where does what go?
@@ -120,7 +120,7 @@ See the [RDR license guidance](https://www.kuleuven.be/rdm/en/rdr/manual#License
 ## Step 5: Create a draft dataset
 
 1. Go to [rdr.kuleuven.be](https://rdr.kuleuven.be/) and log in with your KU Leuven account
-2. Navigate to your Dataverse collection
+2. Navigate to the Hoplab Dataverse collection (contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) if you don't have access)
 3. Click **Add Data > New Dataset**
 4. Fill in the required metadata (see below)
 5. Click **Save Dataset** — this creates the draft
@@ -158,14 +158,26 @@ In the draft, click **Upload Files**, select your files, and after upload, chang
 
 ### ZIP bundles
 
-Upload all ZIP volumes via the web interface:
+There are several ways to upload your ZIP bundles:
+
+**Option 1: Web UI (simplest)**
 
 1. In your draft, click **Upload Files**
 2. Use the **folder upload** option and select the folder containing your ZIP files
 3. The web UI uploads the ZIPs as opaque files (it does not try to extract them)
 
-!!! warning "Do not use the Dataverse API for ZIP uploads"
-    The Dataverse API attempts to extract ZIP files with more than 1,000 internal entries and rejects them with a "files over limit" error. The web UI folder upload does not have this limitation. Use the web UI for all ZIP uploads.
+This can be slow for very large datasets but is the most straightforward option.
+
+**Option 2: Integration Dashboard (recommended if data is on SharePoint or ManGO)**
+
+If your data is already on a KU Leuven platform, the [Integration Dashboard](https://www.kuleuven.be/rdm/en/rdr/integration-dashboard) can pull files directly into your RDR draft from OneDrive, SharePoint, ManGO, or GitHub — no local download needed.
+
+**Option 3: Dataverse API (advanced)**
+
+RDR exposes the standard [Dataverse REST API](https://guides.dataverse.org/en/6.7/api/native-api.html#add-a-file-to-a-dataset). See also the [KU Leuven API documentation](https://www.kuleuven.be/rdm/en/rdr/api-documentation). This is useful for scripting uploads of many files.
+
+!!! warning "API limitation with large ZIP files"
+    The Dataverse API attempts to extract ZIP files with more than 1,000 internal entries and rejects them. For large ZIPs, use the web UI or the Integration Dashboard instead.
 
 !!! tip "Upload from the KU Leuven network"
     Uploading from campus or via VPN significantly improves transfer speed and reliability for large files.

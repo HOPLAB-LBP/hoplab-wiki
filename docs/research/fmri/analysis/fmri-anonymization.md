@@ -4,7 +4,14 @@ Before sharing an fMRI dataset (e.g., via [RDR](../../rdm/RDR_sharing.md)), you 
 
 ## When to anonymize
 
-Anonymize **right after [BIDS conversion](fmri-bids-conversion.md)**, before preprocessing (fMRIPrep, SPM, etc.). This is safe because:
+Anonymize **right after [BIDS conversion](fmri-bids-conversion.md)**, before preprocessing (fMRIPrep, SPM, etc.).
+
+!!! warning "Deface raw data, not preprocessed data"
+    Defacing tools (pydeface, mri_deface, afni_refacer_run) are designed to work on **raw T1w images in native scanner coordinates**. They use face-detection algorithms calibrated for standard anatomical orientations. Running them on already-preprocessed data (fMRIPrep outputs, FreeSurfer surfaces, etc.) may fail or produce incorrect results because the coordinate system and voxel intensities have been altered.
+
+    **Always deface the raw BIDS T1w images first, then run your preprocessing pipeline on the defaced data.**
+
+This is safe because:
 
 - [fMRIPrep](https://fmriprep.org/) was developed and tested ["almost exclusively using defaced data"](https://neurostars.org/t/is-how-much-fmriprep-freesurfer-et-al-is-resilient-to-defacing/2642) (Chris Gorgolewski, fMRIPrep developer)
 - A [multisite comparison](https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2021.617997/full) (Theyers et al., 2021) confirmed preprocessing results are effectively identical with defaced inputs
@@ -12,6 +19,16 @@ Anonymize **right after [BIDS conversion](fmri-bids-conversion.md)**, before pre
 - Preprocessing tools [do not use](https://github.com/nipreps/fmriprep/issues/2067) any of the metadata fields you will remove
 
 Anonymizing early minimises the non-anonymized surface and prevents accidental sharing of identifiable data.
+
+### Reproducibility note
+
+While the studies above show that defacing has **minimal impact** on downstream results, it is not zero. Small differences in brain extraction, spatial normalization, and cortical surface reconstruction can occur because defacing alters voxels near the face/skull boundary. These differences are typically negligible for group-level analyses but should be documented:
+
+- In your **RDR README**: mention that the shared raw data is defaced, and that results were originally computed from non-defaced data
+- In your **code repository**: note that reproducing the full pipeline from the shared raw data may produce small floating-point differences compared to the published results
+- In your **manuscript** (if applicable): state that data was defaced for sharing and reference the validation literature above
+
+This is standard practice — most shared fMRI datasets are defaced, and the community considers the trade-off acceptable.
 
 ## The pipeline
 
