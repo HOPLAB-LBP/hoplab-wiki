@@ -111,7 +111,7 @@ Preprocess the data (see the guidelines for [setting up your fMRI analysis envir
 
 ### 3. Perform analysis
 
-- For fMRI data, perform first-level (subject) analysis and second-level (group) analysis (via the [SPM GUI](../fmri/analysis/fmri-glm.md]) or a [batch script](../fmri/analysis/fmri-glm-script.md)). If applicable, define subject-level or group-level ROIs (see [this page](../fmri/analysis/fmri-rois.md)), and perform multi-variate analysis (see [this page](../fmri/analysis/fmri-mvpa.md)).
+- For fMRI data, perform first-level (subject) analysis and second-level (group) analysis (via the [SPM GUI](../fmri/analysis/fmri-glm.md) or a [batch script](../fmri/analysis/fmri-glm-script.md)). If applicable, define subject-level or group-level ROIs (see [this page](../fmri/analysis/fmri-rois.md)), and perform multi-variate analysis (see [this page](../fmri/analysis/fmri-mvpa.md)).
 - For EEG data, you can find the analysis guidelines [here](../eeg/eeg-analysis.md).
 - For purely behavioural data, process them through your programming script (R, Matlab, Python).
 
