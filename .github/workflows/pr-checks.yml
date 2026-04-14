@@ -350,17 +350,17 @@ jobs:
             if [ -f /tmp/pr-checks/spellcheck-raw ]; then
               while IFS= read -r line; do
                 # Match: filepath:line:col: error: `word` should be `correction`
-                if echo "$line" | grep -qP ".*:\\d+:\\d+:.*\`.*\` should be \`.*\`"; then
+                if echo "$line" | grep -qP '.*:\d+:\d+:.*\x60.*\x60 should be \x60.*\x60'; then
                   file=$(echo "$line" | cut -d: -f1)
                   lineno=$(echo "$line" | cut -d: -f2)
-                  typo=$(echo "$line" | grep -oP "\`\\K[^\`]+" | head -1)
-                  fix=$(echo "$line" | grep -oP "\`\\K[^\`]+" | tail -1)
+                  typo=$(echo "$line" | awk -F'\x60' '{print $2}')
+                  fix=$(echo "$line" | awk -F'\x60' '{print $4}')
                   echo "| $(edit_link "$file" "$lineno") | \`$typo\` | \`$fix\` |" >> "$REPORT"
                 # Match without correction: filepath:line:col: error: `word`
-                elif echo "$line" | grep -qP ".*:\\d+:\\d+:.*\`.*\`"; then
+                elif echo "$line" | grep -qP '.*:\d+:\d+:.*\x60.*\x60'; then
                   file=$(echo "$line" | cut -d: -f1)
                   lineno=$(echo "$line" | cut -d: -f2)
-                  typo=$(echo "$line" | grep -oP "\`\\K[^\`]+" | head -1)
+                  typo=$(echo "$line" | awk -F'\x60' '{print $2}')
                   echo "| $(edit_link "$file" "$lineno") | \`$typo\` | *(check manually)* |" >> "$REPORT"
                 fi
               done < /tmp/pr-checks/spellcheck-raw
