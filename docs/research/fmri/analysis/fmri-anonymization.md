@@ -32,11 +32,6 @@ This is standard practice — most shared fMRI datasets are defaced, and the com
 
 ## The pipeline
 
-```
-DICOM → dcm2niix (with -ba y) → BIDS → Anonymize → Validate → Preprocess
-                                          ↑ you are here
-```
-
 ### Step 1: Deface structural images and scrub metadata with BIDSonym
 
 [BIDSonym](https://peerherholz.github.io/BIDSonym/) is a [BIDS App](https://bids-apps.neuroimaging.io/) that handles the full anonymization pipeline in one pass: defacing structural images, scrubbing PII from JSON sidecars, and cleaning NIfTI headers. It was [explicitly designed](https://peerherholz.github.io/BIDSonym/usage.html) to run right after BIDS conversion.

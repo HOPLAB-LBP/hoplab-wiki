@@ -150,37 +150,148 @@ Additional fields (keywords, related publication DOI, funding) are optional but 
 
 ## Step 6: Upload files
 
-### Unrestricted files (README, documentation)
-
-Upload the README and any documentation files (e.g., HTML visualisations) first, and set them as **unrestricted** so users can read them before requesting access.
-
-In the draft, click **Upload Files**, select your files, and after upload, change their access from "Restricted" to "Public" in the file listing.
-
-### ZIP bundles
-
-There are several ways to upload your ZIP bundles:
-
-**Option 1: Web UI (simplest)**
-
-1. In your draft, click **Upload Files**
-2. Use the **folder upload** option and select the folder containing your ZIP files
-3. The web UI uploads the ZIPs as opaque files (it does not try to extract them)
-
-This can be slow for very large datasets but is the most straightforward option.
-
-**Option 2: Integration Dashboard (recommended if data is on SharePoint or ManGO)**
-
-If your data is already on a KU Leuven platform, the [Integration Dashboard](https://www.kuleuven.be/rdm/en/rdr/integration-dashboard) can pull files directly into your RDR draft from OneDrive, SharePoint, ManGO, or GitHub — no local download needed.
-
-**Option 3: Dataverse API (advanced)**
-
-RDR exposes the standard [Dataverse REST API](https://guides.dataverse.org/en/6.7/api/native-api.html#add-a-file-to-a-dataset). See also the [KU Leuven API documentation](https://www.kuleuven.be/rdm/en/rdr/api-documentation). This is useful for scripting uploads of many files.
-
-!!! warning "API limitation with large ZIP files"
-    The Dataverse API attempts to extract ZIP files with more than 1,000 internal entries and rejects them. For large ZIPs, use the web UI or the Integration Dashboard instead.
-
 !!! tip "Upload from the KU Leuven network"
     Uploading from campus or via VPN significantly improves transfer speed and reliability for large files.
+
+There are three ways to upload files. The **web UI** is the simplest; the **API** is better for large datasets with many files; the **Integration Dashboard** is useful when data already lives on a KU Leuven platform.
+
+### Option A: Web UI
+
+The web UI is the most straightforward option, especially for smaller datasets or when you only have a handful of ZIP files. It does **not** unpack ZIPs — they are stored as-is.
+
+1. Open your draft dataset on [rdr.kuleuven.be](https://rdr.kuleuven.be/)
+2. Click **Upload Files** (top right, next to "Edit Files")
+
+    ![RDR dataset page](../../assets/rdr_dataset_page.png)
+
+3. You get three sub-options (see screenshot below):
+    - **Select Files to Add** — pick individual files via a file browser
+    - **Upload a Folder** — select a local folder; RDR preserves the relative path structure
+    - **Upload from other source** — connect to SharePoint, ManGO, Globus, or GitHub via the Integration Dashboard (see Option C below)
+
+    ![RDR add files dialog](../../assets/rdr_add_files.png)
+
+4. After uploading, set the **access level** for each file:
+    - README and documentation files → **Public** (so users can read them without requesting access)
+    - Data bundles → **Restricted** (access via Data Transfer Agreement)
+    - To change: click the file's lock icon or go to **Edit Files** and change the restriction setting
+
+!!! warning "Web UI file size limit"
+    The web UI has a per-file upload limit (currently **10 GB** on RDR). For larger files, use the API (Option B) or the Integration Dashboard (Option C).
+
+### Option B: API upload with dvuploader
+
+For datasets with many files or files larger than 10 GB, the Dataverse API is the way to go. RDR uses **S3 direct upload** — the upload tool sends files directly to the storage backend, bypassing Dataverse's processing. This is important because if files go through the Dataverse backend instead, **ZIP files get automatically unpacked**.
+
+The RDR team maintains a fork of `dvuploader` that works correctly with their S3 setup:
+
+```bash
+pip install git+https://github.com/libis/python-dvuploader.git
+```
+
+!!! warning "Python version"
+    The LIBIS fork requires Python ≤ 3.13. Python 3.14 is not yet supported.
+
+#### Basic usage
+
+```python
+from dvuploader import DVUploader, File
+
+files = [
+    # Restricted data bundle
+    File(filepath="chess-bids_B_raw.z01", restrict=True),
+    # Unrestricted documentation
+    File(filepath="README", restrict=False),
+]
+
+uploader = DVUploader(files=files)
+uploader.upload(
+    dataverse_url="https://rdr.kuleuven.be",
+    api_token="YOUR_API_TOKEN",
+    persistent_id="doi:10.48804/VVCEWP",  # your dataset DOI
+    n_parallel_uploads=2,
+)
+```
+
+Get your API token from [rdr.kuleuven.be](https://rdr.kuleuven.be/) → click your name (top right) → **API Token** → **Create Token**. The token is valid for one year.
+
+#### File options
+
+The `File` class supports several useful parameters:
+
+```python
+File(
+    filepath="my_bundle.zip",       # path to the file
+    restrict=True,                  # True = restricted, False = public
+    description="Raw fMRI data",   # shows up in the file listing on RDR
+    directory_label="data/raw",     # virtual folder path on RDR
+    categories=["Data"],            # file category tags
+)
+```
+
+#### Batch upload example
+
+```python
+from pathlib import Path
+from dvuploader import DVUploader, File
+
+UPLOAD_DIR = Path("rdr-upload")
+API_TOKEN = "your-token-here"
+PID = "doi:10.48804/VVCEWP"
+
+# Collect all ZIP volumes
+bundle_files = sorted(
+    list(UPLOAD_DIR.glob("*.zip"))
+    + list(UPLOAD_DIR.glob("*.z[0-9][0-9]"))
+)
+
+files = [File(filepath=str(f), restrict=True) for f in bundle_files]
+
+# Add unrestricted docs
+files.append(File(filepath=str(UPLOAD_DIR / "README"), restrict=False))
+
+uploader = DVUploader(files=files)
+uploader.upload(
+    dataverse_url="https://rdr.kuleuven.be",
+    api_token=API_TOKEN,
+    persistent_id=PID,
+    n_parallel_uploads=2,
+)
+```
+
+!!! danger "Do NOT use `curl` or the upstream `dvuploader` for ZIP files"
+    Uploading ZIP files with `curl -F` to the `/api/datasets/:persistentId/add` endpoint sends the file through the Dataverse backend, which **automatically unpacks ZIP files**. The LIBIS fork of dvuploader avoids this by uploading directly to S3. The upstream (non-LIBIS) version of dvuploader also does not work correctly with RDR's S3 setup.
+
+    For non-ZIP files (e.g., README, HTML, TSV), `curl` works fine:
+
+    ```bash
+    curl -H "X-Dataverse-key:$API_TOKEN" -X POST \
+      -F "file=@README" \
+      -F 'jsonData={"restrict":false, "description":"Dataset documentation"}' \
+      "https://rdr.kuleuven.be/api/datasets/:persistentId/add?persistentId=$PID"
+    ```
+
+#### Other useful API calls
+
+```bash
+# List files in your draft
+curl -H "X-Dataverse-key:$API_TOKEN" \
+  "https://rdr.kuleuven.be/api/datasets/:persistentId/versions/:draft/files?persistentId=$PID"
+
+# Delete a file from the draft (by file ID)
+curl -H "X-Dataverse-key:$API_TOKEN" -X DELETE \
+  "https://rdr.kuleuven.be/api/files/12345"
+
+# Change a file's restriction (true = restricted, false = public)
+curl -H "X-Dataverse-key:$API_TOKEN" -X PUT -d false \
+  "https://rdr.kuleuven.be/api/files/12345/restrict"
+```
+
+See the [Dataverse Native API docs](https://guides.dataverse.org/en/6.7/api/native-api.html) and the [KU Leuven API documentation](https://www.kuleuven.be/rdm/en/rdr/api-documentation) for the full reference.
+
+### Option C: Integration Dashboard
+
+If your data is already on a KU Leuven platform (OneDrive, SharePoint, ManGO, or GitHub), the [Integration Dashboard](https://www.kuleuven.be/rdm/en/rdr/integration-dashboard) can pull files directly into your RDR draft — no local download or upload needed. Access it from the **Upload from other source** button in the web UI (see screenshot above).
 
 ## Step 7: Verify and publish
 
