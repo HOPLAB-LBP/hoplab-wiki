@@ -112,26 +112,26 @@ jobs:
       # ── Check 2: Markdown lint ───────────────────────────
       - name: Markdown lint
         id: markdownlint
-        continue-on-error: true
+        if: always()
         run: |
-          npx -y markdownlint-cli2 "docs/**/*.md" 2>&1 | tee /tmp/pr-checks/markdownlint-output
-          echo "passed" > /tmp/pr-checks/markdownlint-status
-
-      - name: Mark markdown lint status
-        if: always() && steps.markdownlint.outcome == 'failure'
-        run: echo "failed" > /tmp/pr-checks/markdownlint-status
+          set -o pipefail
+          if npx -y markdownlint-cli2 "docs/**/*.md" 2>&1 | tee /tmp/pr-checks/markdownlint-output; then
+            echo "passed" > /tmp/pr-checks/markdownlint-status
+          else
+            echo "failed" > /tmp/pr-checks/markdownlint-status
+          fi
 
       # ── Check 3: YAML lint ───────────────────────────────
       - name: YAML lint
         id: yamllint
-        continue-on-error: true
+        if: always()
         run: |
-          yamllint -c .yamllint.yml -f parsable mkdocs.yml .github/workflows/ 2>&1 | tee /tmp/pr-checks/yamllint-output
-          echo "passed" > /tmp/pr-checks/yamllint-status
-
-      - name: Mark YAML lint status
-        if: always() && steps.yamllint.outcome == 'failure'
-        run: echo "failed" > /tmp/pr-checks/yamllint-status
+          set -o pipefail
+          if yamllint -c .yamllint.yml -f parsable mkdocs.yml .github/workflows/ 2>&1 | tee /tmp/pr-checks/yamllint-output; then
+            echo "passed" > /tmp/pr-checks/yamllint-status
+          else
+            echo "failed" > /tmp/pr-checks/yamllint-status
+          fi
 
       # ── Check 4: Link check ──────────────────────────────
       - name: Restore lychee cache
@@ -165,27 +165,27 @@ jobs:
       # ── Check 5: MkDocs build ────────────────────────────
       - name: MkDocs build
         id: mkdocs
-        continue-on-error: true
+        if: always()
         run: |
+          set -o pipefail
           chmod +x scripts/docs_ci_check.sh
-          scripts/docs_ci_check.sh 2>&1 | tee /tmp/pr-checks/mkdocs-output
-          echo "passed" > /tmp/pr-checks/mkdocs-status
-
-      - name: Mark MkDocs build status
-        if: always() && steps.mkdocs.outcome == 'failure'
-        run: echo "failed" > /tmp/pr-checks/mkdocs-status
+          if scripts/docs_ci_check.sh 2>&1 | tee /tmp/pr-checks/mkdocs-output; then
+            echo "passed" > /tmp/pr-checks/mkdocs-status
+          else
+            echo "failed" > /tmp/pr-checks/mkdocs-status
+          fi
 
       # ── Check 6: MkDocs Material syntax ─────────────────
       - name: MkDocs Material syntax check
         id: mkdocs_syntax
-        continue-on-error: true
+        if: always()
         run: |
-          python3 scripts/check_mkdocs_syntax.py docs/ 2>&1 | tee /tmp/pr-checks/mkdocs-syntax-output
-          echo "passed" > /tmp/pr-checks/mkdocs-syntax-status
-
-      - name: Mark MkDocs syntax status
-        if: always() && steps.mkdocs_syntax.outcome == 'failure'
-        run: echo "failed" > /tmp/pr-checks/mkdocs-syntax-status
+          set -o pipefail
+          if python3 scripts/check_mkdocs_syntax.py docs/ 2>&1 | tee /tmp/pr-checks/mkdocs-syntax-output; then
+            echo "passed" > /tmp/pr-checks/mkdocs-syntax-status
+          else
+            echo "failed" > /tmp/pr-checks/mkdocs-syntax-status
+          fi
 
       # ── Assemble and post the report ─────────────────────
       - name: Build report
