@@ -1,0 +1,93 @@
+name: Automation tests
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/*.yml"
+      - "scripts/**"
+      - "tests/**"
+      - "requirements.txt"
+      - ".markdownlint-cli2.yaml"
+      - ".yamllint.yml"
+      - ".lychee.toml"
+      - "_typos.toml"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/*.yml"
+      - "scripts/**"
+      - "tests/**"
+      - "requirements.txt"
+      - ".markdownlint-cli2.yaml"
+      - ".yamllint.yml"
+      - ".lychee.toml"
+      - "_typos.toml"
+  workflow_dispatch:
+
+concurrency:
+  group: "automation-tests-${{ github.event.pull_request.number || github.ref }}"
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      automation: ${{ steps.filter.outputs.automation }}
+      workflow: ${{ steps.filter.outputs.workflow }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            workflow:
+              - ".github/workflows/*.yml"
+            automation:
+              - "scripts/**"
+              - "tests/**"
+              - "requirements.txt"
+              - ".markdownlint-cli2.yaml"
+              - ".yamllint.yml"
+              - ".lychee.toml"
+              - "_typos.toml"
+
+  custom-tests:
+    needs: detect-changes
+    if: github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.automation == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run MkDocs syntax tests
+        run: bash tests/test_check_mkdocs_syntax.sh
+
+      - name: Run markdown table autofix tests
+        run: bash tests/test_fix_markdown_table_pipes.sh
+
+      - name: Run docs tag automation tests
+        run: node tests/test-manage-docs-tags.js
+
+  workflow-lint:
+    needs: detect-changes
+    if: github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.workflow == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: rhysd/actionlint@v1.7.12

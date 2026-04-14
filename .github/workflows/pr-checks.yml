@@ -14,9 +14,17 @@ on:
       - ".github/workflows/*.yml"
       - "scripts/docs_ci_check.sh"
       - "scripts/check_mkdocs_syntax.py"
+      - "scripts/prepare_docs.sh"
+      - "scripts/manage-docs-tags.js"
+      - "tests/**"
+
+concurrency:
+  group: "pr-checks-${{ github.event.pull_request.number || github.head_ref || github.ref }}"
+  cancel-in-progress: true
 
 permissions:
   contents: write
+  pull-requests: read
 
 jobs:
   # ───────────────────────────────────────────────────────────
@@ -30,15 +38,21 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Auto-fix markdown table trailing pipes
+        run: python3 scripts/fix_markdown_table_pipes.py README.md docs/
+        continue-on-error: true
+
       - name: Auto-fix markdown (trailing spaces, tabs, blank lines)
         uses: DavidAnson/markdownlint-cli2-action@v19
         with:
-          globs: "docs/**/*.md"
+          globs: |
+            README.md
+            docs/**/*.md
           fix: true
         continue-on-error: true
 
       - name: Auto-fix MkDocs Material syntax (curly quotes, missing blank lines)
-        run: python3 scripts/check_mkdocs_syntax.py --fix docs/
+        run: python3 scripts/check_mkdocs_syntax.py --fix README.md docs/
         continue-on-error: true
 
       - name: Auto-fix YAML trailing whitespace
@@ -77,26 +91,55 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
 
+      - name: Detect automation-related changes
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            workflow:
+              - ".github/workflows/*.yml"
+            automation:
+              - "scripts/**"
+              - "tests/**"
+              - "requirements.txt"
+              - ".markdownlint-cli2.yaml"
+              - ".yamllint.yml"
+              - ".lychee.toml"
+              - "_typos.toml"
+
       # ── Setup ─────────────────────────────────────────────
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Create results directory
+        run: mkdir -p /tmp/pr-checks
 
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt yamllint
 
-      - name: Create results directory
-        run: mkdir -p /tmp/pr-checks
+      - name: Prepare generated docs
+        run: bash scripts/prepare_docs.sh
 
       # ── Check 1: Spell check ─────────────────────────────
       - name: Install typos
         run: |
+          mkdir -p "$RUNNER_TEMP/bin"
+          rm -rf "$RUNNER_TEMP/typos-extract"
+          mkdir -p "$RUNNER_TEMP/typos-extract"
           TYPOS_VERSION="v1.43.5"
           curl -fsSL "https://github.com/crate-ci/typos/releases/download/${TYPOS_VERSION}/typos-${TYPOS_VERSION}-x86_64-unknown-linux-musl.tar.gz" \
-            | tar xz -C /usr/local/bin/ ./typos
-          typos --version
+            -o "$RUNNER_TEMP/typos.tar.gz"
+          tar -xzf "$RUNNER_TEMP/typos.tar.gz" -C "$RUNNER_TEMP/typos-extract"
+          install "$RUNNER_TEMP/typos-extract/typos" "$RUNNER_TEMP/bin/typos"
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/bin/typos" --version
 
       - name: Spell check
         id: spellcheck
@@ -115,7 +158,7 @@ jobs:
         if: always()
         run: |
           set -o pipefail
-          if npx -y markdownlint-cli2 "docs/**/*.md" 2>&1 | tee /tmp/pr-checks/markdownlint-output; then
+          if npx -y markdownlint-cli2 "README.md" "docs/**/*.md" 2>&1 | tee /tmp/pr-checks/markdownlint-output; then
             echo "passed" > /tmp/pr-checks/markdownlint-status
           else
             echo "failed" > /tmp/pr-checks/markdownlint-status
@@ -181,10 +224,48 @@ jobs:
         if: always()
         run: |
           set -o pipefail
-          if python3 scripts/check_mkdocs_syntax.py docs/ 2>&1 | tee /tmp/pr-checks/mkdocs-syntax-output; then
+          if python3 scripts/check_mkdocs_syntax.py README.md docs/ 2>&1 | tee /tmp/pr-checks/mkdocs-syntax-output; then
             echo "passed" > /tmp/pr-checks/mkdocs-syntax-status
           else
             echo "failed" > /tmp/pr-checks/mkdocs-syntax-status
+          fi
+
+      # ── Check 7: Automation regression tests ────────────
+      - name: Automation regression tests
+        id: automation_tests
+        if: always() && steps.changes.outputs.automation == 'true'
+        run: |
+          set -o pipefail
+          if {
+            bash tests/test_check_mkdocs_syntax.sh
+            bash tests/test_fix_markdown_table_pipes.sh
+            node tests/test-manage-docs-tags.js
+          } 2>&1 | tee /tmp/pr-checks/automation-tests-output; then
+            echo "passed" > /tmp/pr-checks/automation-tests-status
+          else
+            echo "failed" > /tmp/pr-checks/automation-tests-status
+          fi
+
+      # ── Check 8: Workflow lint ──────────────────────────
+      - name: Workflow lint
+        id: workflow_lint
+        if: always() && steps.changes.outputs.workflow == 'true'
+        run: |
+          mkdir -p "$RUNNER_TEMP/bin"
+          rm -rf "$RUNNER_TEMP/actionlint-extract"
+          mkdir -p "$RUNNER_TEMP/actionlint-extract"
+          ACTIONLINT_VERSION="1.7.12"
+          curl -fsSL "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz" \
+            -o "$RUNNER_TEMP/actionlint.tar.gz"
+          tar -xzf "$RUNNER_TEMP/actionlint.tar.gz" -C "$RUNNER_TEMP/actionlint-extract"
+          install "$RUNNER_TEMP/actionlint-extract/actionlint" "$RUNNER_TEMP/bin/actionlint"
+          export PATH="$RUNNER_TEMP/bin:$PATH"
+          actionlint -version
+          set -o pipefail
+          if actionlint .github/workflows/*.yml 2>&1 | tee /tmp/pr-checks/workflow-lint-output; then
+            echo "passed" > /tmp/pr-checks/workflow-lint-status
+          else
+            echo "failed" > /tmp/pr-checks/workflow-lint-status
           fi
 
       # ── Assemble and post the report ─────────────────────
@@ -204,6 +285,8 @@ jobs:
           LINKS=$(cat /tmp/pr-checks/linkcheck-status 2>/dev/null || echo "skipped")
           BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "skipped")
           SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "skipped")
+          AUTOTESTS=$(cat /tmp/pr-checks/automation-tests-status 2>/dev/null || echo "skipped")
+          WFLINT=$(cat /tmp/pr-checks/workflow-lint-status 2>/dev/null || echo "skipped")
 
           # Helper: clickable edit link for a file at a line number
           # Usage: edit_link "path/to/file" "42" → markdown link to GitHub edit view
@@ -249,9 +332,36 @@ jobs:
             esac
           }
 
+          status_label() {
+            case "$1" in
+              passed) echo "Passed" ;;
+              failed) echo "**Failed**" ;;
+              skipped) echo "Skipped" ;;
+              *) echo "$1" ;;
+            esac
+          }
+
+          link_status_label() {
+            case "$1" in
+              passed) echo "Passed" ;;
+              failed) echo "**Warning**" ;;
+              skipped) echo "Skipped" ;;
+              *) echo "$1" ;;
+            esac
+          }
+
+          append_file_or_placeholder() {
+            local filepath="$1"
+            if [ -f "$filepath" ]; then
+              cat "$filepath"
+            else
+              echo "(output not captured)"
+            fi
+          }
+
           # Count failures (link check is advisory — excluded from count)
           FAILURES=0
-          for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX"; do
+          for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX" "$AUTOTESTS" "$WFLINT"; do
             [ "$s" = "failed" ] && FAILURES=$((FAILURES + 1))
           done
 
@@ -270,6 +380,8 @@ jobs:
           | Link check | $(link_emoji "$LINKS") Passed |
           | MkDocs build | $(emoji "$BUILD") Passed |
           | MkDocs syntax | $(emoji "$SYNTAX") Passed |
+          | Automation regression tests | $(emoji "$AUTOTESTS") Passed |
+          | Workflow lint | $(emoji "$WFLINT") Passed |
 
           A reviewer will take a look shortly.
           EOF
@@ -283,12 +395,14 @@ jobs:
 
           | Check | Status |
           |-------|--------|
-          | Spell check | $(emoji "$SPELL") $(echo "$SPELL" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
-          | Markdown lint | $(emoji "$MDLINT") $(echo "$MDLINT" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
-          | YAML lint | $(emoji "$YAML") $(echo "$YAML" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
-          | Link check | $(link_emoji "$LINKS") $(echo "$LINKS" | sed 's/passed/Passed/;s/failed/**Warning**/;s/skipped/Skipped/') |
-          | MkDocs build | $(emoji "$BUILD") $(echo "$BUILD" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
-          | MkDocs syntax | $(emoji "$SYNTAX") $(echo "$SYNTAX" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
+          | Spell check | $(emoji "$SPELL") $(status_label "$SPELL") |
+          | Markdown lint | $(emoji "$MDLINT") $(status_label "$MDLINT") |
+          | YAML lint | $(emoji "$YAML") $(status_label "$YAML") |
+          | Link check | $(link_emoji "$LINKS") $(link_status_label "$LINKS") |
+          | MkDocs build | $(emoji "$BUILD") $(status_label "$BUILD") |
+          | MkDocs syntax | $(emoji "$SYNTAX") $(status_label "$SYNTAX") |
+          | Automation regression tests | $(emoji "$AUTOTESTS") $(status_label "$AUTOTESTS") |
+          | Workflow lint | $(emoji "$WFLINT") $(status_label "$WFLINT") |
 
           Scroll down for details on each failed check and step-by-step instructions to fix them.
           EOF
@@ -296,7 +410,8 @@ jobs:
 
           # ── Spell check section ─────────────────────────
           if [ "$SPELL" = "failed" ]; then
-            cat >> "$REPORT" << 'EOF'
+            {
+              cat << 'EOF'
 
           ---
 
@@ -308,35 +423,39 @@ jobs:
           |----------|-------|---------------|
           EOF
 
-            # Parse typos brief format: "file:line:col: error: `typo` should be `fix`"
-            if [ -f /tmp/pr-checks/spellcheck-raw ]; then
-              while IFS= read -r line; do
-                # Match: filepath:line:col: error: `word` should be `correction`
-                if echo "$line" | grep -qP '.*:\d+:\d+:.*`.*` should be `.*`'; then
-                  file=$(echo "$line" | cut -d: -f1)
-                  lineno=$(echo "$line" | cut -d: -f2)
-                  typo=$(echo "$line" | grep -oP '`\K[^`]+' | head -1)
-                  fix=$(echo "$line" | grep -oP '`\K[^`]+' | tail -1)
-                  echo "| $(edit_link "$file" "$lineno") | \`$typo\` | \`$fix\` |" >> "$REPORT"
-                # Match without correction: filepath:line:col: error: `word`
-                elif echo "$line" | grep -qP '.*:\d+:\d+:.*`.*`'; then
-                  file=$(echo "$line" | cut -d: -f1)
-                  lineno=$(echo "$line" | cut -d: -f2)
-                  typo=$(echo "$line" | grep -oP '`\K[^`]+' | head -1)
-                  echo "| $(edit_link "$file" "$lineno") | \`$typo\` | *(check manually)* |" >> "$REPORT"
-                fi
-              done < /tmp/pr-checks/spellcheck-raw
-            fi
+              # Parse typos brief format: "file:line:col: error: `typo` should be `fix`"
+              spell_rows_written=false
+              if [ -f /tmp/pr-checks/spellcheck-raw ]; then
+                while IFS= read -r line; do
+                  # Use \x60 (backtick) to avoid shellcheck SC2016 false positives with literal backticks in regex.
+                  # Match: filepath:line:col: error: `word` should be `correction`
+                  if echo "$line" | grep -qP '.*:\d+:\d+:.*\x60.*\x60 should be \x60.*\x60'; then
+                    file=$(echo "$line" | cut -d: -f1)
+                    lineno=$(echo "$line" | cut -d: -f2)
+                    typo=$(echo "$line" | awk -F'\x60' '{print $2}')
+                    fix=$(echo "$line" | awk -F'\x60' '{print $4}')
+                    spell_rows_written=true
+                    echo "| $(edit_link "$file" "$lineno") | \`$typo\` | \`$fix\` |"
+                  # Match without correction: filepath:line:col: error: `word`
+                  elif echo "$line" | grep -qP '.*:\d+:\d+:.*\x60.*\x60'; then
+                    file=$(echo "$line" | cut -d: -f1)
+                    lineno=$(echo "$line" | cut -d: -f2)
+                    typo=$(echo "$line" | awk -F'\x60' '{print $2}')
+                    spell_rows_written=true
+                    echo "| $(edit_link "$file" "$lineno") | \`$typo\` | *(check manually)* |"
+                  fi
+                done < /tmp/pr-checks/spellcheck-raw
+              fi
 
-            # Fallback: if no table rows were generated, show raw output
-            if ! grep -q '(line ' "$REPORT" 2>/dev/null; then
-              echo "" >> "$REPORT"
-              echo '```' >> "$REPORT"
-              cat /tmp/pr-checks/spellcheck-raw >> "$REPORT" 2>/dev/null || echo "(output not available)" >> "$REPORT"
-              echo '```' >> "$REPORT"
-            fi
+              # Fallback: if no table rows were generated, show raw output
+              if [ "$spell_rows_written" = "false" ]; then
+                echo ""
+                echo '```'
+                append_file_or_placeholder /tmp/pr-checks/spellcheck-raw
+                echo '```'
+              fi
 
-            cat >> "$REPORT" << 'EOF'
+              cat << 'EOF'
 
           **How to fix:**
 
@@ -349,11 +468,98 @@ jobs:
              YourWord = "YourWord"
              ```
           EOF
+            } >> "$REPORT"
+          fi
+
+          # ── Automation regression tests section ─────────
+          if [ "$AUTOTESTS" = "failed" ]; then
+            {
+              cat << 'EOF'
+
+          ---
+
+          ### :x: Automation regression tests — repo support checks failed
+
+          One or more tracked automation regression tests failed. These tests protect the helper scripts used by our workflows, so this usually means a recent workflow or script change broke repo automation behavior.
+
+          **How to fix:**
+
+          1. Re-run the same test entrypoints locally from the repo root:
+             ```bash
+             bash tests/test_check_mkdocs_syntax.sh
+             bash tests/test_fix_markdown_table_pipes.sh
+             node tests/test-manage-docs-tags.js
+             ```
+          2. Read the first failing test output below and fix the underlying script or fixture mismatch.
+          3. Re-run the failing command locally before pushing again.
+
+          <details>
+          <summary>Full automation test output</summary>
+
+          ```
+          EOF
+              append_file_or_placeholder /tmp/pr-checks/automation-tests-output
+              cat << 'EOF'
+          ```
+
+          </details>
+          EOF
+            } >> "$REPORT"
+          fi
+
+          # ── Workflow lint section ───────────────────────
+          if [ "$WFLINT" = "failed" ]; then
+            {
+              cat << 'EOF'
+
+          ---
+
+          ### :x: Workflow lint — GitHub Actions syntax or shell issues found
+
+          `actionlint` found a problem in one or more workflow files. This usually means one of these:
+
+          - invalid workflow syntax or unsupported keys
+          - a bad action reference
+          - shell script issues inside a `run:` block
+
+          EOF
+              if [ -f /tmp/pr-checks/workflow-lint-output ]; then
+                echo "| Workflow file | Problem |"
+                echo "|---------------|---------|"
+                while IFS= read -r line; do
+                  file="${line%%:*}"
+                  problem="${line#*:}"
+                  problem="${problem# }"
+                  echo "| \`$file\` | $problem |"
+                done < /tmp/pr-checks/workflow-lint-output
+              fi
+
+              cat << 'EOF'
+
+          **How to fix:**
+
+          1. Run `actionlint .github/workflows/*.yml` locally.
+          2. If the message mentions a ShellCheck code such as `SC2001`, `SC2016`, or `SC2129`, fix the shell inside the relevant `run:` block rather than ignoring it.
+          3. If the message mentions an action ref, key, or event, correct the workflow YAML and re-run `actionlint`.
+
+          <details>
+          <summary>Full workflow-lint output</summary>
+
+          ```
+          EOF
+              append_file_or_placeholder /tmp/pr-checks/workflow-lint-output
+              cat << 'EOF'
+          ```
+
+          </details>
+          EOF
+            } >> "$REPORT"
           fi
 
           # ── Markdown lint section ───────────────────────
           if [ "$MDLINT" = "failed" ]; then
-            cat >> "$REPORT" << 'EOF'
+            {
+              cat << 'EOF'
 
           ---
 
@@ -363,28 +569,31 @@ jobs:
 
           EOF
 
-            # Parse markdownlint output into a readable table
-            # Format: "file:line rule/name description"
-            if [ -f /tmp/pr-checks/markdownlint-output ]; then
-              echo "| Location | Issue |" >> "$REPORT"
-              echo "|----------|-------|" >> "$REPORT"
-              grep -E '^docs/.*:[0-9]+' /tmp/pr-checks/markdownlint-output | head -30 | while IFS= read -r line; do
-                file=$(echo "$line" | cut -d: -f1)
-                lineno=$(echo "$line" | cut -d: -f2)
-                issue=$(echo "$line" | sed 's/^[^:]*:[0-9]* *//')
-                echo "| $(edit_link "$file" "$lineno") | $issue |" >> "$REPORT"
-              done
-            fi
+              # Parse markdownlint output into a readable table
+              # Format: "file:line rule/name description"
+              if [ -f /tmp/pr-checks/markdownlint-output ]; then
+                echo "| Location | Issue |"
+                echo "|----------|-------|"
+                grep -E '^docs/.*:[0-9]+' /tmp/pr-checks/markdownlint-output | head -30 | while IFS= read -r line; do
+                  file=$(echo "$line" | cut -d: -f1)
+                  lineno=$(echo "$line" | cut -d: -f2)
+                  # Strip "file:line" and the following space.
+                  issue="${line#*:}"
+                  issue="${issue#*:}"
+                  issue="${issue# }"
+                  echo "| $(edit_link "$file" "$lineno") | $issue |"
+                done
+              fi
 
-            cat >> "$REPORT" << 'EOF'
+              cat << 'EOF'
 
           <details>
           <summary>Full output</summary>
 
           ```
           EOF
-            cat /tmp/pr-checks/markdownlint-output >> "$REPORT" 2>/dev/null || echo "(output not captured)" >> "$REPORT"
-            cat >> "$REPORT" << 'EOF'
+              append_file_or_placeholder /tmp/pr-checks/markdownlint-output
+              cat << 'EOF'
           ```
 
           </details>
@@ -398,11 +607,13 @@ jobs:
           | **Multiple blank lines** | Two or more empty lines in a row | Remove the extra blank lines |
           | **Trailing spaces** | Invisible spaces at end of a line | Delete the spaces at the end of the line |
           EOF
+            } >> "$REPORT"
           fi
 
           # ── YAML lint section ───────────────────────────
           if [ "$YAML" = "failed" ]; then
-            cat >> "$REPORT" << 'EOF'
+            {
+              cat << 'EOF'
 
           ---
 
@@ -412,19 +623,23 @@ jobs:
 
           EOF
 
-            # Parse yamllint parsable output: "file:line:col: [level] message"
-            if [ -f /tmp/pr-checks/yamllint-output ]; then
-              echo "| Location | Problem |" >> "$REPORT"
-              echo "|----------|---------|" >> "$REPORT"
-              while IFS= read -r line; do
-                file=$(echo "$line" | cut -d: -f1)
-                lineno=$(echo "$line" | cut -d: -f2)
-                msg=$(echo "$line" | sed 's/^[^:]*:[0-9]*:[0-9]* *//')
-                echo "| $(edit_link "$file" "$lineno") | $msg |" >> "$REPORT"
-              done < /tmp/pr-checks/yamllint-output
-            fi
+              # Parse yamllint parsable output: "file:line:col: [level] message"
+              if [ -f /tmp/pr-checks/yamllint-output ]; then
+                echo "| Location | Problem |"
+                echo "|----------|---------|"
+                while IFS= read -r line; do
+                  file=$(echo "$line" | cut -d: -f1)
+                  lineno=$(echo "$line" | cut -d: -f2)
+                  # Strip "file:line:col" and the following space.
+                  msg="${line#*:}"
+                  msg="${msg#*:}"
+                  msg="${msg#*:}"
+                  msg="${msg# }"
+                  echo "| $(edit_link "$file" "$lineno") | $msg |"
+                done < /tmp/pr-checks/yamllint-output
+              fi
 
-            cat >> "$REPORT" << 'EOF'
+              cat << 'EOF'
 
           **How to fix:** Open the file at the line number shown. YAML is sensitive to formatting:
 
@@ -437,11 +652,13 @@ jobs:
 
           > **Tip:** YAML only uses spaces for indentation, never tabs.
           EOF
+            } >> "$REPORT"
           fi
 
           # ── Link check section ─────────────────────────
           if [ "$LINKS" = "failed" ]; then
-            cat >> "$REPORT" << 'EOF'
+            {
+              cat << 'EOF'
 
           ---
 
@@ -450,8 +667,8 @@ jobs:
           Some links may be broken or unreachable. Note that external sites sometimes block automated checks, so **verify the links below in your browser** before taking action.
 
           EOF
-            cat /tmp/pr-checks/linkcheck-output.md >> "$REPORT" 2>/dev/null || echo "(output not captured)" >> "$REPORT"
-            cat >> "$REPORT" << 'EOF'
+              append_file_or_placeholder /tmp/pr-checks/linkcheck-output.md
+              cat << 'EOF'
 
           **How to fix:** For each broken link above:
 
@@ -468,11 +685,13 @@ jobs:
           > ]
           > ```
           EOF
+            } >> "$REPORT"
           fi
 
           # ── MkDocs build section ───────────────────────
           if [ "$BUILD" = "failed" ]; then
-            cat >> "$REPORT" << 'EOF'
+            {
+              cat << 'EOF'
 
           ---
 
@@ -482,18 +701,20 @@ jobs:
 
           EOF
 
-            # Extract and categorize MkDocs errors
-            if [ -f /tmp/pr-checks/mkdocs-output ]; then
-              # Check for "not in nav" errors
-              if grep -q 'not included in the "nav"' /tmp/pr-checks/mkdocs-output; then
-                echo '**Missing from navigation:** You added a new page but forgot to register it.' >> "$REPORT"
-                echo '' >> "$REPORT"
-                echo 'The following files need to be added to `mkdocs.yml` under the `nav:` section:' >> "$REPORT"
-                echo '' >> "$REPORT"
-                # Extract the listed files
-                awk '/not included in the "nav"/{flag=1;next}/^(INFO|WARNING|ERROR|DEBUG|\[)/{flag=0}flag && /\.md/{print "- `" $NF "`"}' /tmp/pr-checks/mkdocs-output >> "$REPORT"
-                echo '' >> "$REPORT"
-                cat >> "$REPORT" << 'EOF'
+              # Extract and categorize MkDocs errors
+              if [ -f /tmp/pr-checks/mkdocs-output ]; then
+                # Check for "not in nav" errors
+                if grep -q 'not included in the "nav"' /tmp/pr-checks/mkdocs-output; then
+                  cat << 'EOF'
+
+          **Missing from navigation:** You added a new page but forgot to register it.
+
+          The following files need to be added to `mkdocs.yml` under the `nav:` section:
+
+          EOF
+                  awk '/not included in the "nav"/{flag=1;next}/^(INFO|WARNING|ERROR|DEBUG|\[)/{flag=0}flag && /\.md/{print "- `" $NF "`"}' /tmp/pr-checks/mkdocs-output
+                  cat << 'EOF'
+
           To fix this, open `mkdocs.yml`, find the `nav:` section, and add your page in the right spot. For example:
           ```yaml
           nav:
@@ -503,30 +724,32 @@ jobs:
                 - Your new page: research/fmri/your-new-page.md  # <-- add a line like this
           ```
           EOF
-              fi
+                fi
 
-              # Check for broken internal links / unresolved targets
-              if grep -Eq "unrecognized relative link|contains a link '.*', but the target '.*' is not found among documentation files|target not found" /tmp/pr-checks/mkdocs-output; then
-                echo '' >> "$REPORT"
-                echo '**Broken documentation links:** Some links point to pages MkDocs cannot resolve from the page being built.' >> "$REPORT"
-                echo '' >> "$REPORT"
-                echo '| Fix in | Reported in | Broken target |' >> "$REPORT"
-                echo '|--------|-------------|---------------|' >> "$REPORT"
-                grep -E "unrecognized relative link|contains a link '.*', but the target '.*' is not found among documentation files|target not found" /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
-                  file=$(echo "$line" | grep -oP "Doc( file)? '\\K[^']+" | head -1)
-                  link=$(echo "$line" | grep -oP "contains an unrecognized relative link '\\K[^']+" | head -1)
-                  if [ -z "$link" ]; then
-                    link=$(echo "$line" | grep -oP "contains a link '\\K[^']+" | head -1)
-                  fi
-                  if [ -z "$link" ]; then
-                    link=$(echo "$line" | grep -oP "target '\\K[^']+" | head -1)
-                  fi
-                  [ -z "$file" ] && file="(unknown file)"
-                  [ -z "$link" ] && link="(could not parse target)"
-                  echo "| $(report_fix_target "$file") | \`$file\` | \`$link\` |" >> "$REPORT"
-                done
-                echo '' >> "$REPORT"
-                cat >> "$REPORT" << 'EOF'
+                # Check for broken internal links / unresolved targets
+                if grep -Eq "unrecognized relative link|contains a link '.*', but the target '.*' is not found among documentation files|target not found" /tmp/pr-checks/mkdocs-output; then
+                  cat << 'EOF'
+
+          **Broken documentation links:** Some links point to pages MkDocs cannot resolve from the page being built.
+
+          | Fix in | Reported in | Broken target |
+          |--------|-------------|---------------|
+          EOF
+                  grep -E "unrecognized relative link|contains a link '.*', but the target '.*' is not found among documentation files|target not found" /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
+                    file=$(echo "$line" | grep -oP "Doc( file)? '\\K[^']+" | head -1)
+                    link=$(echo "$line" | grep -oP "contains an unrecognized relative link '\\K[^']+" | head -1)
+                    if [ -z "$link" ]; then
+                      link=$(echo "$line" | grep -oP "contains a link '\\K[^']+" | head -1)
+                    fi
+                    if [ -z "$link" ]; then
+                      link=$(echo "$line" | grep -oP "target '\\K[^']+" | head -1)
+                    fi
+                    [ -z "$file" ] && file="(unknown file)"
+                    [ -z "$link" ] && link="(could not parse target)"
+                    echo "| $(report_fix_target "$file") | \`$file\` | \`$link\` |"
+                  done | awk '!seen[$0]++'
+                  cat << 'EOF'
+
           **How to fix:**
 
           1. Open the file in the first column and update the broken link target.
@@ -534,55 +757,63 @@ jobs:
           3. In `README.md` / `docs/contribute.md`, avoid repo-root paths like `docs/...` for wiki pages. Those are resolved from inside `docs/` during the MkDocs build and usually fail. Prefer a docs-relative path that works from `docs/`, or use the published-site URL.
           4. If the target page was renamed or moved, update the filename/path to the new location.
           EOF
-              fi
+                fi
 
-              # Check for missing anchor errors
-              if grep -Eq 'no such anchor|does not contain an anchor|but there is no such anchor on this page' /tmp/pr-checks/mkdocs-output; then
-                echo '' >> "$REPORT"
-                echo '**Broken anchor links:** Some links point to headings that do not exist on the target page.' >> "$REPORT"
-                echo '' >> "$REPORT"
-                echo '| Fix in | Reported in | Broken link |' >> "$REPORT"
-                echo '|--------|-------------|-------------|' >> "$REPORT"
-                grep -E 'no such anchor|does not contain an anchor|but there is no such anchor on this page' /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
-                  file=$(echo "$line" | grep -oP "Doc( file)? '\\K[^']+" | head -1)
-                  link=$(echo "$line" | grep -oP "contains a link '\\K[^']+" | head -1)
-                  if [ -z "$link" ]; then
-                    link=$(echo "$line" | grep -oP "'[^']*#[^']+'" | head -1 | tr -d "'")
-                  fi
-                  [ -z "$file" ] && file="(unknown file)"
-                  [ -z "$link" ] && link="(could not parse anchor)"
-                  echo "| $(report_fix_target "$file") | \`$file\` | \`$link\` |" >> "$REPORT"
-                done
-                echo '' >> "$REPORT"
-                cat >> "$REPORT" << 'EOF'
+                # Check for missing anchor errors
+                if grep -Eq 'no such anchor|does not contain an anchor|but there is no such anchor on this page' /tmp/pr-checks/mkdocs-output; then
+                  cat << 'EOF'
+
+          **Broken anchor links:** Some links point to headings that do not exist on the target page.
+
+          | Fix in | Reported in | Broken link |
+          |--------|-------------|-------------|
+          EOF
+                  grep -E 'no such anchor|does not contain an anchor|but there is no such anchor on this page' /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
+                    file=$(echo "$line" | grep -oP "Doc( file)? '\\K[^']+" | head -1)
+                    link=$(echo "$line" | grep -oP "contains a link '\\K[^']+" | head -1)
+                    if [ -z "$link" ]; then
+                      link=$(echo "$line" | grep -oP "'[^']*#[^']+'" | head -1 | tr -d "'")
+                    fi
+                    [ -z "$file" ] && file="(unknown file)"
+                    [ -z "$link" ] && link="(could not parse anchor)"
+                    echo "| $(report_fix_target "$file") | \`$file\` | \`$link\` |"
+                  done
+                  echo ''
+                  cat << 'EOF'
           **How to fix:**
 
           1. Open the file in the first column.
           2. Update the `#anchor` fragment so it matches the rendered heading slug on the destination page.
           3. If the warning is reported in `docs/contribute.md`, edit `README.md` instead because `docs/contribute.md` is generated from it.
           EOF
+                fi
               fi
-            fi
 
-            # Always show full output in collapsed section
-            cat >> "$REPORT" << 'EOF'
+              # Always show full output in collapsed section
+              cat << 'EOF'
 
           <details>
           <summary>Full build output</summary>
 
           ```
           EOF
-            grep -E '^(WARNING|ERROR|\[ERROR\]|\[docs-ci\])' /tmp/pr-checks/mkdocs-output >> "$REPORT" 2>/dev/null || cat /tmp/pr-checks/mkdocs-output >> "$REPORT" 2>/dev/null
-            cat >> "$REPORT" << 'EOF'
+              if grep -E '^(WARNING|ERROR|\[ERROR\]|\[docs-ci\])' /tmp/pr-checks/mkdocs-output >/dev/null 2>&1; then
+                grep -E '^(WARNING|ERROR|\[ERROR\]|\[docs-ci\])' /tmp/pr-checks/mkdocs-output
+              else
+                append_file_or_placeholder /tmp/pr-checks/mkdocs-output
+              fi
+              cat << 'EOF'
           ```
 
           </details>
           EOF
+            } >> "$REPORT"
           fi
 
           # ── MkDocs syntax section ───────────────────────
           if [ "$SYNTAX" = "failed" ]; then
-            cat >> "$REPORT" << 'EOF'
+            {
+              cat << 'EOF'
 
           ---
 
@@ -592,18 +823,21 @@ jobs:
 
           EOF
 
-            if [ -f /tmp/pr-checks/mkdocs-syntax-output ]; then
-              echo "| Location | Issue |" >> "$REPORT"
-              echo "|----------|-------|" >> "$REPORT"
-              grep -E '^docs/.*:[0-9]+:' /tmp/pr-checks/mkdocs-syntax-output | head -30 | while IFS= read -r line; do
-                file=$(echo "$line" | cut -d: -f1)
-                lineno=$(echo "$line" | cut -d: -f2)
-                issue=$(echo "$line" | sed 's/^[^:]*:[0-9]*: *//')
-                echo "| $(edit_link "$file" "$lineno") | $issue |" >> "$REPORT"
-              done
-            fi
+              if [ -f /tmp/pr-checks/mkdocs-syntax-output ]; then
+                echo "| Location | Issue |"
+                echo "|----------|-------|"
+                grep -E '^docs/.*:[0-9]+:' /tmp/pr-checks/mkdocs-syntax-output | head -30 | while IFS= read -r line; do
+                  file=$(echo "$line" | cut -d: -f1)
+                  lineno=$(echo "$line" | cut -d: -f2)
+                  # Strip "file:line" and the following space.
+                  issue="${line#*:}"
+                  issue="${issue#*:}"
+                  issue="${issue# }"
+                  echo "| $(edit_link "$file" "$lineno") | $issue |"
+                done
+              fi
 
-            cat >> "$REPORT" << 'EOF'
+              cat << 'EOF'
 
           **How to fix:**
 
@@ -646,11 +880,26 @@ jobs:
 
           </details>
           EOF
+            } >> "$REPORT"
           fi
 
           # ── Footer ─────────────────────────────────────
           if [ "$FAILURES" -gt 0 ]; then
             cat >> "$REPORT" << 'EOF'
+
+          ---
+
+          ### :bulb: Quick troubleshooting for lint failures
+
+          If CI reports shellcheck/actionlint warnings (for example ShellCheck codes `SC2001`, `SC2016`, `SC2129`), here is how to fix them quickly:
+
+          | Warning | What it means | Typical fix |
+          |---------|---------------|-------------|
+          | `SC2001` | Using `sed` for simple string cleanup | Prefer shell parameter expansion (e.g., `${var#prefix}` / `${var%suffix}`) |
+          | `SC2016` | Single-quoted string contains characters that look like expansions | Use double quotes when interpolation is intended, or escape literals like backticks |
+          | `SC2129` | Repeated `>> file` writes | Group writes with `{ ...; } >> file` or use a single heredoc block |
+
+          > Re-run `actionlint .github/workflows/*.yml` locally after editing workflow scripts.
 
           ---
 
@@ -693,6 +942,8 @@ jobs:
           LINKS=$(cat /tmp/pr-checks/linkcheck-status 2>/dev/null || echo "skipped")
           BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "skipped")
           SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "skipped")
+          AUTOTESTS=$(cat /tmp/pr-checks/automation-tests-status 2>/dev/null || echo "skipped")
+          WFLINT=$(cat /tmp/pr-checks/workflow-lint-status 2>/dev/null || echo "skipped")
 
           # Link check is advisory only — external sites may block CI runners.
           # Results still appear in the PR comment for manual review.
@@ -708,7 +959,7 @@ jobs:
           fi
 
           FAILED=false
-          for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX"; do
+          for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX" "$AUTOTESTS" "$WFLINT"; do
             [ "$s" = "failed" ] && FAILED=true
           done
           if [ "$FAILED" = "true" ]; then
