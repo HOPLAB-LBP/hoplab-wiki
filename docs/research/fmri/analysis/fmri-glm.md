@@ -482,7 +482,7 @@ Contrasts allow you to test specific hypotheses about the brain's response to di
 
 !!! example "Example contrast"
     For a comparison between two conditions (e.g., `Faces` vs. `Objects`), use:
-    ```
+    ```text
     [1 -1]
     ```
     This weights `Faces` positively and `Objects` negatively, highlighting brain regions more active during the `Faces` condition.
@@ -532,7 +532,7 @@ It’s crucial to confirm the order of regressors in the design matrix before sp
     3. **Interpret the Output**:
     
         The output will look something like this:
-         ```
+         ```text
          'Sn(1) condition1*bf(1)'
          'Sn(1) condition2*bf(1)'
          'Sn(1) condition3*bf(1)'
@@ -548,7 +548,7 @@ It’s crucial to confirm the order of regressors in the design matrix before sp
     4. **Align the Contrast Weights**:
     
         Based on this order, you can now set your contrast weights correctly. For instance, if `condition1` is the first regressor and `condition2` is the second, a contrast comparing them would be:
-         ```
+         ```text
          [1 -1 0 0 0 ...]
          ```
 
