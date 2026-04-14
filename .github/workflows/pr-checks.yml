@@ -95,10 +95,21 @@ jobs:
         with:
           python-version: "3.11"
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt yamllint
+
+      - name: Install actionlint
+        run: |
+          ACTIONLINT_VERSION="1.7.12"
+          curl -fsSL "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz" \
+            | tar xz -C /usr/local/bin ./actionlint
+          actionlint -version
 
       - name: Create results directory
         run: mkdir -p /tmp/pr-checks
@@ -203,6 +214,34 @@ jobs:
             echo "failed" > /tmp/pr-checks/mkdocs-syntax-status
           fi
 
+      # ── Check 7: Automation regression tests ────────────
+      - name: Automation regression tests
+        id: automation_tests
+        if: always()
+        run: |
+          set -o pipefail
+          if {
+            bash tests/test_check_mkdocs_syntax.sh
+            bash tests/test_fix_markdown_table_pipes.sh
+            node tests/test-manage-docs-tags.js
+          } 2>&1 | tee /tmp/pr-checks/automation-tests-output; then
+            echo "passed" > /tmp/pr-checks/automation-tests-status
+          else
+            echo "failed" > /tmp/pr-checks/automation-tests-status
+          fi
+
+      # ── Check 8: Workflow lint ──────────────────────────
+      - name: Workflow lint
+        id: workflow_lint
+        if: always()
+        run: |
+          set -o pipefail
+          if actionlint .github/workflows/*.yml 2>&1 | tee /tmp/pr-checks/workflow-lint-output; then
+            echo "passed" > /tmp/pr-checks/workflow-lint-status
+          else
+            echo "failed" > /tmp/pr-checks/workflow-lint-status
+          fi
+
       # ── Assemble and post the report ─────────────────────
       - name: Build report
         if: always()
@@ -222,6 +261,8 @@ jobs:
           LINKS=$(cat /tmp/pr-checks/linkcheck-status 2>/dev/null || echo "skipped")
           BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "skipped")
           SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "skipped")
+          AUTOTESTS=$(cat /tmp/pr-checks/automation-tests-status 2>/dev/null || echo "skipped")
+          WFLINT=$(cat /tmp/pr-checks/workflow-lint-status 2>/dev/null || echo "skipped")
 
           # Helper: clickable edit link for a file at a line number
           # Usage: edit_link "path/to/file" "42" → markdown link to GitHub edit view
@@ -287,7 +328,7 @@ jobs:
 
           # Count failures (link check is advisory — excluded from count)
           FAILURES=0
-          for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX"; do
+          for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX" "$AUTOTESTS" "$WFLINT"; do
             [ "$s" = "failed" ] && FAILURES=$((FAILURES + 1))
           done
 
@@ -306,13 +347,14 @@ jobs:
           | Link check | $(link_emoji "$LINKS") Passed |
           | MkDocs build | $(emoji "$BUILD") Passed |
           | MkDocs syntax | $(emoji "$SYNTAX") Passed |
+          | Automation regression tests | $(emoji "$AUTOTESTS") Passed |
+          | Workflow lint | $(emoji "$WFLINT") Passed |
 
           A reviewer will take a look shortly.
           EOF
           else
 
           # ── Header with summary table ──────────────────
-            # shellcheck disable=SC2129
             cat >> "$REPORT" << EOF
           ## :mag: PR check results
 
@@ -326,6 +368,8 @@ jobs:
           | Link check | $(link_emoji "$LINKS") $(link_status_label "$LINKS") |
           | MkDocs build | $(emoji "$BUILD") $(status_label "$BUILD") |
           | MkDocs syntax | $(emoji "$SYNTAX") $(status_label "$SYNTAX") |
+          | Automation regression tests | $(emoji "$AUTOTESTS") $(status_label "$AUTOTESTS") |
+          | Workflow lint | $(emoji "$WFLINT") $(status_label "$WFLINT") |
 
           Scroll down for details on each failed check and step-by-step instructions to fix them.
           EOF
@@ -333,8 +377,8 @@ jobs:
 
           # ── Spell check section ─────────────────────────
           if [ "$SPELL" = "failed" ]; then
-            # shellcheck disable=SC2129
-            cat >> "$REPORT" << 'EOF'
+            {
+              cat << 'EOF'
 
           ---
 
@@ -346,36 +390,36 @@ jobs:
           |----------|-------|---------------|
           EOF
 
-            # Parse typos brief format: "file:line:col: error: `typo` should be `fix`"
-            if [ -f /tmp/pr-checks/spellcheck-raw ]; then
-              while IFS= read -r line; do
-                # Use \x60 (backtick) to avoid shellcheck SC2016 false positives with literal backticks in regex.
-                # Match: filepath:line:col: error: `word` should be `correction`
-                if echo "$line" | grep -qP '.*:\d+:\d+:.*\x60.*\x60 should be \x60.*\x60'; then
-                  file=$(echo "$line" | cut -d: -f1)
-                  lineno=$(echo "$line" | cut -d: -f2)
-                  typo=$(echo "$line" | awk -F'\x60' '{print $2}')
-                  fix=$(echo "$line" | awk -F'\x60' '{print $4}')
-                  echo "| $(edit_link "$file" "$lineno") | \`$typo\` | \`$fix\` |" >> "$REPORT"
-                # Match without correction: filepath:line:col: error: `word`
-                elif echo "$line" | grep -qP '.*:\d+:\d+:.*\x60.*\x60'; then
-                  file=$(echo "$line" | cut -d: -f1)
-                  lineno=$(echo "$line" | cut -d: -f2)
-                  typo=$(echo "$line" | awk -F'\x60' '{print $2}')
-                  echo "| $(edit_link "$file" "$lineno") | \`$typo\` | *(check manually)* |" >> "$REPORT"
-                fi
-              done < /tmp/pr-checks/spellcheck-raw
-            fi
+              # Parse typos brief format: "file:line:col: error: `typo` should be `fix`"
+              if [ -f /tmp/pr-checks/spellcheck-raw ]; then
+                while IFS= read -r line; do
+                  # Use \x60 (backtick) to avoid shellcheck SC2016 false positives with literal backticks in regex.
+                  # Match: filepath:line:col: error: `word` should be `correction`
+                  if echo "$line" | grep -qP '.*:\d+:\d+:.*\x60.*\x60 should be \x60.*\x60'; then
+                    file=$(echo "$line" | cut -d: -f1)
+                    lineno=$(echo "$line" | cut -d: -f2)
+                    typo=$(echo "$line" | awk -F'\x60' '{print $2}')
+                    fix=$(echo "$line" | awk -F'\x60' '{print $4}')
+                    echo "| $(edit_link "$file" "$lineno") | \`$typo\` | \`$fix\` |"
+                  # Match without correction: filepath:line:col: error: `word`
+                  elif echo "$line" | grep -qP '.*:\d+:\d+:.*\x60.*\x60'; then
+                    file=$(echo "$line" | cut -d: -f1)
+                    lineno=$(echo "$line" | cut -d: -f2)
+                    typo=$(echo "$line" | awk -F'\x60' '{print $2}')
+                    echo "| $(edit_link "$file" "$lineno") | \`$typo\` | *(check manually)* |"
+                  fi
+                done < /tmp/pr-checks/spellcheck-raw
+              fi
 
-            # Fallback: if no table rows were generated, show raw output
-            if ! grep -q '(line ' "$REPORT" 2>/dev/null; then
-              echo "" >> "$REPORT"
-              echo '```' >> "$REPORT"
-              cat /tmp/pr-checks/spellcheck-raw >> "$REPORT" 2>/dev/null || echo "(output not available)" >> "$REPORT"
-              echo '```' >> "$REPORT"
-            fi
+              # Fallback: if no table rows were generated, show raw output
+              if ! grep -q '(line ' "$REPORT" 2>/dev/null; then
+                echo ""
+                echo '```'
+                cat /tmp/pr-checks/spellcheck-raw 2>/dev/null || echo "(output not available)"
+                echo '```'
+              fi
 
-            cat >> "$REPORT" << 'EOF'
+              cat << 'EOF'
 
           **How to fix:**
 
@@ -387,6 +431,88 @@ jobs:
              # Add your word here (case-sensitive):
              YourWord = "YourWord"
              ```
+          EOF
+            } >> "$REPORT"
+          fi
+
+          # ── Automation regression tests section ─────────
+          if [ "$AUTOTESTS" = "failed" ]; then
+            cat >> "$REPORT" << 'EOF'
+
+          ---
+
+          ### :x: Automation regression tests — repo support checks failed
+
+          One or more tracked automation regression tests failed. These tests protect the helper scripts used by our workflows, so this usually means a recent workflow or script change broke repo automation behavior.
+
+          **How to fix:**
+
+          1. Re-run the same test entrypoints locally from the repo root:
+             ```bash
+             bash tests/test_check_mkdocs_syntax.sh
+             bash tests/test_fix_markdown_table_pipes.sh
+             node tests/test-manage-docs-tags.js
+             ```
+          2. Read the first failing test output below and fix the underlying script or fixture mismatch.
+          3. Re-run the failing command locally before pushing again.
+
+          <details>
+          <summary>Full automation test output</summary>
+
+          ```
+          EOF
+            cat /tmp/pr-checks/automation-tests-output >> "$REPORT" 2>/dev/null || echo "(output not captured)" >> "$REPORT"
+            cat >> "$REPORT" << 'EOF'
+          ```
+
+          </details>
+          EOF
+          fi
+
+          # ── Workflow lint section ───────────────────────
+          if [ "$WFLINT" = "failed" ]; then
+            cat >> "$REPORT" << 'EOF'
+
+          ---
+
+          ### :x: Workflow lint — GitHub Actions syntax or shell issues found
+
+          `actionlint` found a problem in one or more workflow files. This usually means one of these:
+
+          - invalid workflow syntax or unsupported keys
+          - a bad action reference
+          - shell script issues inside a `run:` block
+
+          EOF
+            if [ -f /tmp/pr-checks/workflow-lint-output ]; then
+              echo "| Workflow file | Problem |" >> "$REPORT"
+              echo "|---------------|---------|" >> "$REPORT"
+              while IFS= read -r line; do
+                file="${line%%:*}"
+                problem="${line#*:}"
+                problem="${problem# }"
+                echo "| \`$file\` | $problem |" >> "$REPORT"
+              done < /tmp/pr-checks/workflow-lint-output
+            fi
+
+            cat >> "$REPORT" << 'EOF'
+
+          **How to fix:**
+
+          1. Run `actionlint .github/workflows/*.yml` locally.
+          2. If the message mentions a ShellCheck code such as `SC2001`, `SC2016`, or `SC2129`, fix the shell inside the relevant `run:` block rather than ignoring it.
+          3. If the message mentions an action ref, key, or event, correct the workflow YAML and re-run `actionlint`.
+
+          <details>
+          <summary>Full workflow-lint output</summary>
+
+          ```
+          EOF
+            cat /tmp/pr-checks/workflow-lint-output >> "$REPORT" 2>/dev/null || echo "(output not captured)" >> "$REPORT"
+            cat >> "$REPORT" << 'EOF'
+          ```
+
+          </details>
           EOF
           fi
 
@@ -762,6 +888,8 @@ jobs:
           LINKS=$(cat /tmp/pr-checks/linkcheck-status 2>/dev/null || echo "skipped")
           BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "skipped")
           SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "skipped")
+          AUTOTESTS=$(cat /tmp/pr-checks/automation-tests-status 2>/dev/null || echo "skipped")
+          WFLINT=$(cat /tmp/pr-checks/workflow-lint-status 2>/dev/null || echo "skipped")
 
           # Link check is advisory only — external sites may block CI runners.
           # Results still appear in the PR comment for manual review.
@@ -777,7 +905,7 @@ jobs:
           fi
 
           FAILED=false
-          for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX"; do
+          for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX" "$AUTOTESTS" "$WFLINT"; do
             [ "$s" = "failed" ] && FAILED=true
           done
           if [ "$FAILED" = "true" ]; then

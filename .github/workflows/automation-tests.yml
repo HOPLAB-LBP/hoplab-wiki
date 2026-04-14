@@ -61,5 +61,3 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: rhysd/actionlint@v1.7.12
-        with:
-          args: -ignore 'SC2129:'
