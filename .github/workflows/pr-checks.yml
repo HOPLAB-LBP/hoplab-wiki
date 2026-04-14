@@ -349,6 +349,7 @@ jobs:
             # Parse typos brief format: "file:line:col: error: `typo` should be `fix`"
             if [ -f /tmp/pr-checks/spellcheck-raw ]; then
               while IFS= read -r line; do
+                # Use \x60 (backtick) to avoid shellcheck SC2016 false positives with literal backticks in regex.
                 # Match: filepath:line:col: error: `word` should be `correction`
                 if echo "$line" | grep -qP '.*:\d+:\d+:.*\x60.*\x60 should be \x60.*\x60'; then
                   file=$(echo "$line" | cut -d: -f1)
@@ -409,6 +410,7 @@ jobs:
                 grep -E '^docs/.*:[0-9]+' /tmp/pr-checks/markdownlint-output | head -30 | while IFS= read -r line; do
                   file=$(echo "$line" | cut -d: -f1)
                   lineno=$(echo "$line" | cut -d: -f2)
+                  # Strip "file:line" and the following space.
                   issue="${line#*:}"
                   issue="${issue#*:}"
                   issue="${issue# }"
@@ -459,6 +461,7 @@ jobs:
                 while IFS= read -r line; do
                   file=$(echo "$line" | cut -d: -f1)
                   lineno=$(echo "$line" | cut -d: -f2)
+                  # Strip "file:line:col" and the following space.
                   msg="${line#*:}"
                   msg="${msg#*:}"
                   msg="${msg#*:}"
@@ -647,6 +650,7 @@ jobs:
               grep -E '^docs/.*:[0-9]+:' /tmp/pr-checks/mkdocs-syntax-output | head -30 | while IFS= read -r line; do
                 file=$(echo "$line" | cut -d: -f1)
                 lineno=$(echo "$line" | cut -d: -f2)
+                # Strip "file:line" and the following space.
                 issue="${line#*:}"
                 issue="${issue#*:}"
                 issue="${issue# }"
