@@ -36,8 +36,8 @@ SMART_DOUBLE_QUOTE_PATTERN = re.compile(
 TAB_HEADER = re.compile(r"^(\s*)===\s+.")  # === "Tab Title" at any indent
 ADMONITION_HEADER = re.compile(r"^(\s*)(!{3}|\?{3}\+?)\s+\w+")  # !!! note or ??? note
 FENCE_OPEN = re.compile(r"^(\s*)(`{3,}|~{3,})")  # opening code fence
-HTML_COMMENT_OPEN = re.compile(r"<!--")
-HTML_COMMENT_CLOSE = re.compile(r"-->")
+HTML_COMMENT_OPEN = "<!--"
+HTML_COMMENT_CLOSE_MARKERS = ("-->", "--!>")
 
 
 class Issue:
@@ -140,15 +140,15 @@ def check_file(filepath: Path, fix: bool = False) -> list[Issue]:
         # ── Track HTML comments ───────────────────────────────
         if not in_fence:
             if in_html_comment:
-                if HTML_COMMENT_CLOSE.search(line):
+                if any(marker in line for marker in HTML_COMMENT_CLOSE_MARKERS):
                     in_html_comment = False
                 i += 1
                 continue
             # Check for comment open (that doesn't close on the same line)
-            if HTML_COMMENT_OPEN.search(line):
-                if not HTML_COMMENT_CLOSE.search(
-                    line[line.index("<!--") + 4:]
-                ):
+            comment_open_index = line.find(HTML_COMMENT_OPEN)
+            if comment_open_index != -1:
+                after_open = line[comment_open_index + len(HTML_COMMENT_OPEN):]
+                if not any(marker in after_open for marker in HTML_COMMENT_CLOSE_MARKERS):
                     in_html_comment = True
                     i += 1
                     continue

@@ -30,6 +30,7 @@ echo
 # ── Good fixtures should pass (exit 0) ──
 echo "Good fixtures (should pass):"
 run_test "valid syntax" 0 python3 "$SCRIPT" "$FIXTURES/mkdocs_syntax_good.md"
+run_test "html comment bang-close syntax ignored" 0 python3 "$SCRIPT" "$FIXTURES/mkdocs_syntax_html_comment_bang_good.md"
 
 # ── Bad fixtures should fail (exit 1) ──
 echo "Bad fixtures (should fail):"
