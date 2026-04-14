@@ -78,7 +78,7 @@ Project_Name/
     mkdir -p temp/{temp_fmriprep,temp_spm,temp_deepmreye,temp_mriqc}
 
     echo "Folder structure created successfully!"
-    ```
+    ```bash
 
     Save this script as `create_fmri_structure.sh` and run it using:
 

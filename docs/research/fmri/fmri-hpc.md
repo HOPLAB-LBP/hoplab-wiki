@@ -555,7 +555,7 @@ After fMRIPrep completes successfully, you might want to retrieve the `derivativ
       3. **Navigate & Download:**
 
          - In WinSCP, navigate on the remote side to:
-          ```
+          ```bash
           /data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep
           ```
           (Replace `vsc12345` with your actual VSC username.)
@@ -591,7 +591,7 @@ After fMRIPrep completes successfully, you might want to retrieve the `derivativ
            - `--progress` shows real-time progress info (optional).
 
          - Or, if you only want to **quickly download reports** and related files (for quick results check):
-           ```
+           ```bash
            rsync -av --progress \
            --include='*/' \
            --include='*.html' \
