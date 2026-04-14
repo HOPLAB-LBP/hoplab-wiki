@@ -99,7 +99,7 @@ If the different steps below are followed in quick succession (or certain steps 
 
 Depending on the workflow, you may want to [mount the ManGO platform as a virtual folder](https://rdm-docs.icts.kuleuven.be/mango/clients/sftp_clients.html) and read the data from that point rather than (re)downloading the data.​
 
-Throughout the process, you should make sure that any new or modified scripts are uploaded to the **GitHub environment**(see the page on [coding practices](../coding/version-control.md)).
+Throughout the process, you should make sure that any new or modified scripts are uploaded to the **GitHub environment** (see the page on [coding practices](../coding/version-control.md)).
 
 ### 1. Download data
 
