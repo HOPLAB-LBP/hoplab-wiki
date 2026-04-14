@@ -26,13 +26,13 @@ jobs:
           node-version: "20"
 
       - name: Auto-fix markdown table trailing pipes
-        run: python3 scripts/fix_markdown_table_pipes.py docs/
+        run: python3 scripts/fix_markdown_table_pipes.py README.md docs/
 
       - name: Auto-fix markdown
-        run: npx -y markdownlint-cli2 "docs/**/*.md" --fix
+        run: npx -y markdownlint-cli2 README.md "docs/**/*.md" --fix
 
       - name: Auto-fix MkDocs Material syntax
-        run: python3 scripts/check_mkdocs_syntax.py --fix docs/
+        run: python3 scripts/check_mkdocs_syntax.py --fix README.md docs/
 
       - name: Auto-fix YAML trailing whitespace
         run: |
