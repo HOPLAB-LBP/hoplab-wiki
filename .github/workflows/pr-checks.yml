@@ -711,7 +711,7 @@ jobs:
 
           ### :bulb: Quick troubleshooting for lint failures
 
-          If CI reports shellcheck/actionlint warnings (for example `SC2001`, `SC2016`, `SC2129`), here is how to fix them quickly:
+          If CI reports shellcheck/actionlint warnings (for example ShellCheck codes `SC2001`, `SC2016`, `SC2129`), here is how to fix them quickly:
 
           | Warning | What it means | Typical fix |
           |---------|---------------|-------------|
