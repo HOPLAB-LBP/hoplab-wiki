@@ -14,6 +14,14 @@ on:
       - ".github/workflows/*.yml"
       - "scripts/docs_ci_check.sh"
       - "scripts/check_mkdocs_syntax.py"
+      - "scripts/prepare_docs.sh"
+      - "scripts/manage-docs-tags.js"
+      - "scripts/test-manage-docs-tags.js"
+      - "tests/**"
+
+concurrency:
+  group: "pr-checks-${{ github.event.pull_request.number || github.head_ref || github.ref }}"
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -30,15 +38,21 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Auto-fix markdown table trailing pipes
+        run: python3 scripts/fix_markdown_table_pipes.py README.md docs/
+        continue-on-error: true
+
       - name: Auto-fix markdown (trailing spaces, tabs, blank lines)
         uses: DavidAnson/markdownlint-cli2-action@v19
         with:
-          globs: "docs/**/*.md"
+          globs: |
+            README.md
+            docs/**/*.md
           fix: true
         continue-on-error: true
 
       - name: Auto-fix MkDocs Material syntax (curly quotes, missing blank lines)
-        run: python3 scripts/check_mkdocs_syntax.py --fix docs/
+        run: python3 scripts/check_mkdocs_syntax.py --fix README.md docs/
         continue-on-error: true
 
       - name: Auto-fix YAML trailing whitespace
@@ -90,6 +104,9 @@ jobs:
       - name: Create results directory
         run: mkdir -p /tmp/pr-checks
 
+      - name: Prepare generated docs
+        run: bash scripts/prepare_docs.sh
+
       # ── Check 1: Spell check ─────────────────────────────
       - name: Install typos
         run: |
@@ -115,7 +132,7 @@ jobs:
         if: always()
         run: |
           set -o pipefail
-          if npx -y markdownlint-cli2 "docs/**/*.md" 2>&1 | tee /tmp/pr-checks/markdownlint-output; then
+          if npx -y markdownlint-cli2 "README.md" "docs/**/*.md" 2>&1 | tee /tmp/pr-checks/markdownlint-output; then
             echo "passed" > /tmp/pr-checks/markdownlint-status
           else
             echo "failed" > /tmp/pr-checks/markdownlint-status
@@ -181,7 +198,7 @@ jobs:
         if: always()
         run: |
           set -o pipefail
-          if python3 scripts/check_mkdocs_syntax.py docs/ 2>&1 | tee /tmp/pr-checks/mkdocs-syntax-output; then
+          if python3 scripts/check_mkdocs_syntax.py README.md docs/ 2>&1 | tee /tmp/pr-checks/mkdocs-syntax-output; then
             echo "passed" > /tmp/pr-checks/mkdocs-syntax-status
           else
             echo "failed" > /tmp/pr-checks/mkdocs-syntax-status
@@ -523,8 +540,8 @@ jobs:
                   fi
                   [ -z "$file" ] && file="(unknown file)"
                   [ -z "$link" ] && link="(could not parse target)"
-                  echo "| $(report_fix_target "$file") | \`$file\` | \`$link\` |" >> "$REPORT"
-                done
+                  echo "| $(report_fix_target "$file") | \`$file\` | \`$link\` |"
+                done | awk '!seen[$0]++' >> "$REPORT"
                 echo '' >> "$REPORT"
                 cat >> "$REPORT" << 'EOF'
           **How to fix:**

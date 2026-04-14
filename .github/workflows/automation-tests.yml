@@ -1,0 +1,63 @@
+name: Automation tests
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/*.yml"
+      - "scripts/**"
+      - "tests/**"
+      - "requirements.txt"
+      - ".markdownlint-cli2.yaml"
+      - ".yamllint.yml"
+      - ".lychee.toml"
+      - "_typos.toml"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/*.yml"
+      - "scripts/**"
+      - "tests/**"
+      - "requirements.txt"
+      - ".markdownlint-cli2.yaml"
+      - ".yamllint.yml"
+      - ".lychee.toml"
+      - "_typos.toml"
+  workflow_dispatch:
+
+concurrency:
+  group: "automation-tests-${{ github.event.pull_request.number || github.ref }}"
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  custom-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run MkDocs syntax tests
+        run: bash tests/test_check_mkdocs_syntax.sh
+
+      - name: Run markdown table autofix tests
+        run: bash tests/test_fix_markdown_table_pipes.sh
+
+      - name: Run docs tag automation tests
+        run: node scripts/test-manage-docs-tags.js
+
+  workflow-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: rhysd/actionlint@v1

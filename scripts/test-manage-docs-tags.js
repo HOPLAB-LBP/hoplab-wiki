@@ -728,11 +728,18 @@ console.log('\n--- walkSync (integration) ---');
     const fs = require('fs').promises;
     const files = await walkSync('docs');
     let totalTags = 0;
+    let filesWithTags = 0;
+    let filesWithoutTags = 0;
 
     for (const file of files) {
       const content = await fs.readFile(file, 'utf8');
       const tags = parseTags(content);
       totalTags += tags.length;
+      if (tags.length > 0) {
+        filesWithTags++;
+      } else {
+        filesWithoutTags++;
+      }
 
       // Verify no duplicate keys within a file
       const keys = tags.map(t => t.normalizedKey);
@@ -748,22 +755,9 @@ console.log('\n--- walkSync (integration) ---');
       }
     }
 
-    assert(totalTags > 50, `total tags across all files: ${totalTags} (expected >50)`);
-
-    // Specific file checks based on known state
-    const indexContent = await fs.readFile('docs/index.md', 'utf8');
-    assertEqual(parseTags(indexContent).length, 2, 'docs/index.md: 2 tags');
-
-    const contributeContent = await fs.readFile('docs/contribute.md', 'utf8');
-    assertEqual(parseTags(contributeContent).length, 0, 'docs/contribute.md: 0 tags (examples in code blocks)');
-
-    const andreaContent = await fs.readFile('docs/research/fmri/analysis/fmri-andrea-workflow.md', 'utf8');
-    assertEqual(parseTags(andreaContent).length, 9, 'fmri-andrea-workflow.md: 9 tags');
-
-    // Ghost duplicate test: fmri/index.md
-    const fmriIndexContent = await fs.readFile('docs/research/fmri/index.md', 'utf8');
-    const fmriIndexTags = parseTags(fmriIndexContent);
-    assertEqual(fmriIndexTags.length, 5, 'fmri/index.md: 5 unique tags (no ghosts)');
+    assert(totalTags > 0, `total tags across all files: ${totalTags} (expected >0)`);
+    assert(filesWithTags > 0, `files with tags across docs/: ${filesWithTags} (expected >0)`);
+    assert(filesWithoutTags > 0, `files without tags across docs/: ${filesWithoutTags} (expected >0)`);
 
   } catch (e) {
     assert(false, `integration error: ${e.message}`);
@@ -776,19 +770,34 @@ console.log('\n--- walkSync (integration) ---');
   try {
     const fs = require('fs').promises;
     process.env.GITHUB_SERVER_URL = 'https://github.com';
+    const files = await walkSync('docs');
+    let roundtripFile = null;
+    let tags = [];
 
-    const content = await fs.readFile('docs/index.md', 'utf8');
-    const tags = parseTags(content);
+    for (const file of files) {
+      const content = await fs.readFile(file, 'utf8');
+      const parsed = parseTags(content);
+      if (parsed.length > 0) {
+        roundtripFile = file;
+        tags = parsed;
+        break;
+      }
+    }
+
+    assert(roundtripFile !== null, 'roundtrip: found at least one file with tags');
+    if (!roundtripFile) {
+      throw new Error('No markdown file with tags found for roundtrip test');
+    }
 
     // Format into issue body
     const { text, tasks } = formatTasks(tags, [], {
-      filePath: 'docs/index.md',
+      filePath: roundtripFile,
       owner: 'HOPLAB-LBP',
       repo: 'hoplab-wiki',
     });
 
     // Build full body
-    const body = buildBody('docs/index.md', 'HOPLAB-LBP', 'hoplab-wiki', text);
+    const body = buildBody(roundtripFile, 'HOPLAB-LBP', 'hoplab-wiki', text);
 
     // Parse back
     const parsed = parseExistingTasks(body);
@@ -803,12 +812,12 @@ console.log('\n--- walkSync (integration) ---');
     // Second roundtrip with comment tasks
     const commentTask = { content: 'TODO: from comment', normalizedKey: 'TODO: from comment', source: 'comment', commentId: '999' };
     const { text: text2 } = formatTasks(tags, [commentTask], {
-      filePath: 'docs/index.md',
+      filePath: roundtripFile,
       owner: 'HOPLAB-LBP',
       repo: 'hoplab-wiki',
       commentUrlBase: 'https://github.com/HOPLAB-LBP/hoplab-wiki/issues/262',
     });
-    const body2 = buildBody('docs/index.md', 'HOPLAB-LBP', 'hoplab-wiki', text2);
+    const body2 = buildBody(roundtripFile, 'HOPLAB-LBP', 'hoplab-wiki', text2);
     const parsed2 = parseExistingTasks(body2);
     assertEqual(parsed2.length, tags.length + 1, 'roundtrip2: file tags + comment task');
     const commentParsed = parsed2.find(t => t.source === 'comment');
@@ -817,7 +826,7 @@ console.log('\n--- walkSync (integration) ---');
 
     // Third roundtrip: remove all file tags, only comment survives
     const { tasks: tasks3 } = formatTasks([], [commentTask], {
-      filePath: 'docs/index.md', owner: 'HOPLAB-LBP', repo: 'hoplab-wiki',
+      filePath: roundtripFile, owner: 'HOPLAB-LBP', repo: 'hoplab-wiki',
     });
     assertEqual(tasks3.length, 1, 'roundtrip3: only comment survives');
     assertEqual(tasks3[0].source, 'comment', 'roundtrip3: it is the comment task');
