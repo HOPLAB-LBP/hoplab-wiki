@@ -209,6 +209,8 @@ jobs:
         env:
           EDIT_BASE: ${{ github.server_url }}/${{ github.repository }}/edit/${{ github.head_ref }}
         run: |
+          # shellcheck disable=SC2129
+          # Intentionally appending to REPORT in multiple conditional sections for readability.
           REPORT="/tmp/pr-checks/report.md"
 
           # Hidden marker so we can find and update this comment on future runs
@@ -265,6 +267,24 @@ jobs:
             esac
           }
 
+          status_label() {
+            case "$1" in
+              passed) echo "Passed" ;;
+              failed) echo "**Failed**" ;;
+              skipped) echo "Skipped" ;;
+              *) echo "$1" ;;
+            esac
+          }
+
+          link_status_label() {
+            case "$1" in
+              passed) echo "Passed" ;;
+              failed) echo "**Warning**" ;;
+              skipped) echo "Skipped" ;;
+              *) echo "$1" ;;
+            esac
+          }
+
           # Count failures (link check is advisory — excluded from count)
           FAILURES=0
           for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX"; do
@@ -292,6 +312,7 @@ jobs:
           else
 
           # ── Header with summary table ──────────────────
+            # shellcheck disable=SC2129
             cat >> "$REPORT" << EOF
           ## :mag: PR check results
 
@@ -299,12 +320,12 @@ jobs:
 
           | Check | Status |
           |-------|--------|
-          | Spell check | $(emoji "$SPELL") $(echo "$SPELL" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
-          | Markdown lint | $(emoji "$MDLINT") $(echo "$MDLINT" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
-          | YAML lint | $(emoji "$YAML") $(echo "$YAML" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
-          | Link check | $(link_emoji "$LINKS") $(echo "$LINKS" | sed 's/passed/Passed/;s/failed/**Warning**/;s/skipped/Skipped/') |
-          | MkDocs build | $(emoji "$BUILD") $(echo "$BUILD" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
-          | MkDocs syntax | $(emoji "$SYNTAX") $(echo "$SYNTAX" | sed 's/passed/Passed/;s/failed/**Failed**/;s/skipped/Skipped/') |
+          | Spell check | $(emoji "$SPELL") $(status_label "$SPELL") |
+          | Markdown lint | $(emoji "$MDLINT") $(status_label "$MDLINT") |
+          | YAML lint | $(emoji "$YAML") $(status_label "$YAML") |
+          | Link check | $(link_emoji "$LINKS") $(link_status_label "$LINKS") |
+          | MkDocs build | $(emoji "$BUILD") $(status_label "$BUILD") |
+          | MkDocs syntax | $(emoji "$SYNTAX") $(status_label "$SYNTAX") |
 
           Scroll down for details on each failed check and step-by-step instructions to fix them.
           EOF
@@ -312,6 +333,7 @@ jobs:
 
           # ── Spell check section ─────────────────────────
           if [ "$SPELL" = "failed" ]; then
+            # shellcheck disable=SC2129
             cat >> "$REPORT" << 'EOF'
 
           ---
@@ -328,17 +350,17 @@ jobs:
             if [ -f /tmp/pr-checks/spellcheck-raw ]; then
               while IFS= read -r line; do
                 # Match: filepath:line:col: error: `word` should be `correction`
-                if echo "$line" | grep -qP '.*:\d+:\d+:.*`.*` should be `.*`'; then
+                if echo "$line" | grep -qP ".*:\\d+:\\d+:.*\`.*\` should be \`.*\`"; then
                   file=$(echo "$line" | cut -d: -f1)
                   lineno=$(echo "$line" | cut -d: -f2)
-                  typo=$(echo "$line" | grep -oP '`\K[^`]+' | head -1)
-                  fix=$(echo "$line" | grep -oP '`\K[^`]+' | tail -1)
+                  typo=$(echo "$line" | grep -oP "\`\\K[^\`]+" | head -1)
+                  fix=$(echo "$line" | grep -oP "\`\\K[^\`]+" | tail -1)
                   echo "| $(edit_link "$file" "$lineno") | \`$typo\` | \`$fix\` |" >> "$REPORT"
                 # Match without correction: filepath:line:col: error: `word`
-                elif echo "$line" | grep -qP '.*:\d+:\d+:.*`.*`'; then
+                elif echo "$line" | grep -qP ".*:\\d+:\\d+:.*\`.*\`"; then
                   file=$(echo "$line" | cut -d: -f1)
                   lineno=$(echo "$line" | cut -d: -f2)
-                  typo=$(echo "$line" | grep -oP '`\K[^`]+' | head -1)
+                  typo=$(echo "$line" | grep -oP "\`\\K[^\`]+" | head -1)
                   echo "| $(edit_link "$file" "$lineno") | \`$typo\` | *(check manually)* |" >> "$REPORT"
                 fi
               done < /tmp/pr-checks/spellcheck-raw
@@ -382,15 +404,17 @@ jobs:
             # Parse markdownlint output into a readable table
             # Format: "file:line rule/name description"
             if [ -f /tmp/pr-checks/markdownlint-output ]; then
-              echo "| Location | Issue |" >> "$REPORT"
-              echo "|----------|-------|" >> "$REPORT"
-              grep -E '^docs/.*:[0-9]+' /tmp/pr-checks/markdownlint-output | head -30 | while IFS= read -r line; do
-                file=$(echo "$line" | cut -d: -f1)
-                lineno=$(echo "$line" | cut -d: -f2)
-                issue=$(echo "$line" | sed 's/^[^:]*:[0-9]* *//')
-                echo "| $(edit_link "$file" "$lineno") | $issue |" >> "$REPORT"
-              done
-            fi
+                echo "| Location | Issue |" >> "$REPORT"
+                echo "|----------|-------|" >> "$REPORT"
+                grep -E '^docs/.*:[0-9]+' /tmp/pr-checks/markdownlint-output | head -30 | while IFS= read -r line; do
+                  file=$(echo "$line" | cut -d: -f1)
+                  lineno=$(echo "$line" | cut -d: -f2)
+                  issue="${line#*:}"
+                  issue="${issue#*:}"
+                  issue="${issue# }"
+                  echo "| $(edit_link "$file" "$lineno") | $issue |" >> "$REPORT"
+                done
+              fi
 
             cat >> "$REPORT" << 'EOF'
 
@@ -430,15 +454,18 @@ jobs:
 
             # Parse yamllint parsable output: "file:line:col: [level] message"
             if [ -f /tmp/pr-checks/yamllint-output ]; then
-              echo "| Location | Problem |" >> "$REPORT"
-              echo "|----------|---------|" >> "$REPORT"
-              while IFS= read -r line; do
-                file=$(echo "$line" | cut -d: -f1)
-                lineno=$(echo "$line" | cut -d: -f2)
-                msg=$(echo "$line" | sed 's/^[^:]*:[0-9]*:[0-9]* *//')
-                echo "| $(edit_link "$file" "$lineno") | $msg |" >> "$REPORT"
-              done < /tmp/pr-checks/yamllint-output
-            fi
+                echo "| Location | Problem |" >> "$REPORT"
+                echo "|----------|---------|" >> "$REPORT"
+                while IFS= read -r line; do
+                  file=$(echo "$line" | cut -d: -f1)
+                  lineno=$(echo "$line" | cut -d: -f2)
+                  msg="${line#*:}"
+                  msg="${msg#*:}"
+                  msg="${msg#*:}"
+                  msg="${msg# }"
+                  echo "| $(edit_link "$file" "$lineno") | $msg |" >> "$REPORT"
+                done < /tmp/pr-checks/yamllint-output
+              fi
 
             cat >> "$REPORT" << 'EOF'
 
@@ -502,14 +529,16 @@ jobs:
             if [ -f /tmp/pr-checks/mkdocs-output ]; then
               # Check for "not in nav" errors
               if grep -q 'not included in the "nav"' /tmp/pr-checks/mkdocs-output; then
-                echo '**Missing from navigation:** You added a new page but forgot to register it.' >> "$REPORT"
-                echo '' >> "$REPORT"
-                echo 'The following files need to be added to `mkdocs.yml` under the `nav:` section:' >> "$REPORT"
-                echo '' >> "$REPORT"
+                {
+                  echo '**Missing from navigation:** You added a new page but forgot to register it.'
+                  echo ''
+                  echo "The following files need to be added to \`mkdocs.yml\` under the \`nav:\` section:"
+                  echo ''
+                } >> "$REPORT"
                 # Extract the listed files
                 awk '/not included in the "nav"/{flag=1;next}/^(INFO|WARNING|ERROR|DEBUG|\[)/{flag=0}flag && /\.md/{print "- `" $NF "`"}' /tmp/pr-checks/mkdocs-output >> "$REPORT"
-                echo '' >> "$REPORT"
                 cat >> "$REPORT" << 'EOF'
+
           To fix this, open `mkdocs.yml`, find the `nav:` section, and add your page in the right spot. For example:
           ```yaml
           nav:
@@ -523,11 +552,13 @@ jobs:
 
               # Check for broken internal links / unresolved targets
               if grep -Eq "unrecognized relative link|contains a link '.*', but the target '.*' is not found among documentation files|target not found" /tmp/pr-checks/mkdocs-output; then
-                echo '' >> "$REPORT"
-                echo '**Broken documentation links:** Some links point to pages MkDocs cannot resolve from the page being built.' >> "$REPORT"
-                echo '' >> "$REPORT"
-                echo '| Fix in | Reported in | Broken target |' >> "$REPORT"
-                echo '|--------|-------------|---------------|' >> "$REPORT"
+                {
+                  echo ''
+                  echo '**Broken documentation links:** Some links point to pages MkDocs cannot resolve from the page being built.'
+                  echo ''
+                  echo '| Fix in | Reported in | Broken target |'
+                  echo '|--------|-------------|---------------|'
+                } >> "$REPORT"
                 grep -E "unrecognized relative link|contains a link '.*', but the target '.*' is not found among documentation files|target not found" /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
                   file=$(echo "$line" | grep -oP "Doc( file)? '\\K[^']+" | head -1)
                   link=$(echo "$line" | grep -oP "contains an unrecognized relative link '\\K[^']+" | head -1)
@@ -541,8 +572,8 @@ jobs:
                   [ -z "$link" ] && link="(could not parse target)"
                   echo "| $(report_fix_target "$file") | \`$file\` | \`$link\` |"
                 done | awk '!seen[$0]++' >> "$REPORT"
-                echo '' >> "$REPORT"
                 cat >> "$REPORT" << 'EOF'
+
           **How to fix:**
 
           1. Open the file in the first column and update the broken link target.
@@ -554,11 +585,13 @@ jobs:
 
               # Check for missing anchor errors
               if grep -Eq 'no such anchor|does not contain an anchor|but there is no such anchor on this page' /tmp/pr-checks/mkdocs-output; then
-                echo '' >> "$REPORT"
-                echo '**Broken anchor links:** Some links point to headings that do not exist on the target page.' >> "$REPORT"
-                echo '' >> "$REPORT"
-                echo '| Fix in | Reported in | Broken link |' >> "$REPORT"
-                echo '|--------|-------------|-------------|' >> "$REPORT"
+                {
+                  echo ''
+                  echo '**Broken anchor links:** Some links point to headings that do not exist on the target page.'
+                  echo ''
+                  echo '| Fix in | Reported in | Broken link |'
+                  echo '|--------|-------------|-------------|'
+                } >> "$REPORT"
                 grep -E 'no such anchor|does not contain an anchor|but there is no such anchor on this page' /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
                   file=$(echo "$line" | grep -oP "Doc( file)? '\\K[^']+" | head -1)
                   link=$(echo "$line" | grep -oP "contains a link '\\K[^']+" | head -1)
@@ -614,7 +647,9 @@ jobs:
               grep -E '^docs/.*:[0-9]+:' /tmp/pr-checks/mkdocs-syntax-output | head -30 | while IFS= read -r line; do
                 file=$(echo "$line" | cut -d: -f1)
                 lineno=$(echo "$line" | cut -d: -f2)
-                issue=$(echo "$line" | sed 's/^[^:]*:[0-9]*: *//')
+                issue="${line#*:}"
+                issue="${issue#*:}"
+                issue="${issue# }"
                 echo "| $(edit_link "$file" "$lineno") | $issue |" >> "$REPORT"
               done
             fi
@@ -667,6 +702,20 @@ jobs:
           # ── Footer ─────────────────────────────────────
           if [ "$FAILURES" -gt 0 ]; then
             cat >> "$REPORT" << 'EOF'
+
+          ---
+
+          ### :bulb: Quick troubleshooting for lint failures
+
+          If CI reports shellcheck/actionlint warnings (for example `SC2001`, `SC2016`, `SC2129`), here is how to fix them quickly:
+
+          | Warning | What it means | Typical fix |
+          |---------|---------------|-------------|
+          | `SC2001` | Using `sed` for simple string cleanup | Prefer shell parameter expansion (e.g., `${var#prefix}` / `${var%suffix}`) |
+          | `SC2016` | Single-quoted string contains characters that look like expansions | Use double quotes when interpolation is intended, or escape literals like backticks |
+          | `SC2129` | Repeated `>> file` writes | Group writes with `{ ...; } >> file` or use a single heredoc block |
+
+          > Re-run `actionlint .github/workflows/*.yml` locally after editing workflow scripts.
 
           ---
 
