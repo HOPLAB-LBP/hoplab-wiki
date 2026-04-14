@@ -63,6 +63,26 @@ else
   fail "empty directories are handled cleanly"
 fi
 
+printf '| A | B\r\n| --- | ---\r\n| 1 | 2\r\n' > "$TMPDIR/crlf.md"
+python3 "$SCRIPT" "$TMPDIR/crlf.md" > /dev/null 2>&1
+if python3 - "$TMPDIR/crlf.md" <<'PY' > /dev/null 2>&1
+from pathlib import Path
+import sys
+
+data = Path(sys.argv[1]).read_bytes()
+if b"\r\n" not in data:
+    raise SystemExit(1)
+if b"\n" in data.replace(b"\r\n", b""):
+    raise SystemExit(1)
+if b"| 1 | 2 |\r\n" not in data:
+    raise SystemExit(1)
+PY
+then
+  pass "preserves CRLF line endings when fixing table rows"
+else
+  fail "preserves CRLF line endings when fixing table rows"
+fi
+
 rm -rf "$EMPTYDIR" "$TMPDIR"
 
 echo

@@ -63,8 +63,18 @@ def is_table_body_row(line: str) -> bool:
 
 
 def ensure_trailing_pipe(line: str) -> str:
-    newline = "\n" if line.endswith("\n") else ""
-    content = line[:-1] if newline else line
+    if line.endswith("\r\n"):
+        newline = "\r\n"
+        content = line[:-2]
+    elif line.endswith("\n"):
+        newline = "\n"
+        content = line[:-1]
+    elif line.endswith("\r"):
+        newline = "\r"
+        content = line[:-1]
+    else:
+        newline = ""
+        content = line
     content = content.rstrip()
     if content.endswith("|"):
         return line
@@ -121,10 +131,12 @@ def fix_table_pipes(text: str) -> tuple[str, bool]:
 
 
 def fix_file(path: Path) -> bool:
-    original = path.read_text(encoding="utf-8")
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        original = handle.read()
     fixed, changed = fix_table_pipes(original)
     if changed:
-        path.write_text(fixed, encoding="utf-8")
+        with path.open("w", encoding="utf-8", newline="") as handle:
+            handle.write(fixed)
     return changed
 
 
