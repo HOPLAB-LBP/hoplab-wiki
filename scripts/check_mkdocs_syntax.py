@@ -36,6 +36,8 @@ SMART_DOUBLE_QUOTE_PATTERN = re.compile(
 TAB_HEADER = re.compile(r"^(\s*)===\s+.")  # === "Tab Title" at any indent
 ADMONITION_HEADER = re.compile(r"^(\s*)(!{3}|\?{3}\+?)\s+\w+")  # !!! note or ??? note
 FENCE_OPEN = re.compile(r"^(\s*)(`{3,}|~{3,})")  # opening code fence
+HTML_COMMENT_OPEN = re.compile(r"<!--")
+HTML_COMMENT_CLOSE = re.compile(r"-->")
 
 
 class Issue:
@@ -48,6 +50,30 @@ class Issue:
     def __str__(self):
         tag = " [auto-fixable]" if self.fixable else ""
         return f"{self.filepath}:{self.line}: {self.message}{tag}"
+
+
+def _reindent_block(lines: list[str], start: int, base_indent: str, delta: int) -> None:
+    """Re-indent a content block by adding *delta* spaces to each line.
+
+    Walks forward from *start* until hitting a line at or below *base_indent*
+    level (the indent of the ``===`` or ``!!!`` header).  Blank lines are
+    left untouched; non-blank lines get *delta* spaces prepended.
+    """
+    base_len = len(base_indent)
+    pad = " " * delta
+    j = start
+    while j < len(lines):
+        ln = lines[j]
+        # Blank lines belong to the block — skip without modifying
+        if not ln.strip():
+            j += 1
+            continue
+        cur_indent = len(ln) - len(ln.lstrip())
+        # A line at the base indent level (or less) means the block ended
+        if cur_indent <= base_len:
+            break
+        lines[j] = pad + ln
+        j += 1
 
 
 def check_file(filepath: Path, fix: bool = False) -> list[Issue]:
@@ -67,9 +93,28 @@ def check_file(filepath: Path, fix: bool = False) -> list[Issue]:
     fence_indent = 0
     fence_marker = ""
 
+    # Track HTML comment state to skip === and !!! inside <!-- -->
+    in_html_comment = False
+
     i = 0
     while i < len(lines):
         line = lines[i]
+
+        # ── Track HTML comments ───────────────────────────────
+        if not in_fence:
+            if in_html_comment:
+                if HTML_COMMENT_CLOSE.search(line):
+                    in_html_comment = False
+                i += 1
+                continue
+            # Check for comment open (that doesn't close on the same line)
+            if HTML_COMMENT_OPEN.search(line):
+                if not HTML_COMMENT_CLOSE.search(
+                    line[line.index("<!--") + 4:]
+                ):
+                    in_html_comment = True
+                    i += 1
+                    continue
 
         # ── Track fenced code blocks ──────────────────────────
         fence_match = FENCE_OPEN.match(line)
@@ -83,6 +128,7 @@ def check_file(filepath: Path, fix: bool = False) -> list[Issue]:
             if fence_indent > 0:
                 # Look ahead at content lines until closing fence
                 j = i + 1
+                has_col0_content = False
                 while j < len(lines):
                     cl = lines[j]
                     # Check for closing fence
@@ -91,11 +137,27 @@ def check_file(filepath: Path, fix: bool = False) -> list[Issue]:
                         break
                     # Check if non-empty content line starts at column 0
                     if cl.strip() and not cl.startswith(" "):
+                        has_col0_content = True
                         issues.append(Issue(
                             rel, j + 1,
                             f"code block content at column 0 inside indented fence (fence is at col {fence_indent})",
+                            fixable=True,
                         ))
                     j += 1
+
+                # Auto-fix: indent all content lines to match fence indent
+                if fix and has_col0_content:
+                    indent_str = " " * fence_indent
+                    j = i + 1
+                    while j < len(lines):
+                        cl = lines[j]
+                        stripped = cl.lstrip()
+                        if stripped.startswith(fence_marker * fence_min_len) and len(stripped.rstrip()) <= fence_min_len + 1:
+                            break
+                        if cl.strip() and not cl.startswith(" " * fence_indent):
+                            lines[j] = indent_str + cl
+                            modified = True
+                        j += 1
 
             i += 1
             continue
@@ -152,10 +214,15 @@ def check_file(filepath: Path, fix: bool = False) -> list[Issue]:
                     actual_indent = len(content_line) - len(content_line.lstrip())
                     expected_len = len(expected_content_indent)
                     if actual_indent < expected_len and content_line.strip():
+                        delta = expected_len - actual_indent
                         issues.append(Issue(
                             rel, j + 1,
                             f"tab content indented {actual_indent} space{'s' if actual_indent != 1 else ''}, expected {expected_len}",
+                            fixable=True,
                         ))
+                        if fix:
+                            _reindent_block(lines, j, indent, delta)
+                            modified = True
 
             i += 1
             continue
@@ -198,10 +265,15 @@ def check_file(filepath: Path, fix: bool = False) -> list[Issue]:
                         and not ADMONITION_HEADER.match(content_line)
                         and not content_line.strip().startswith("#")
                         and not content_line.strip().startswith("---")):
+                    delta = expected_len - actual_indent
                     issues.append(Issue(
                         rel, j + 1,
                         f"admonition content indented {actual_indent} space{'s' if actual_indent != 1 else ''}, expected {expected_len}",
+                        fixable=True,
                     ))
+                    if fix:
+                        _reindent_block(lines, j, indent, delta)
+                        modified = True
 
         i += 1
 
@@ -235,7 +307,7 @@ def main():
     parser.add_argument(
         "--fix",
         action="store_true",
-        help="Auto-fix issues where possible (curly quotes, missing blank lines)",
+        help="Auto-fix issues where possible (curly quotes, missing blank lines, indentation)",
     )
     args = parser.parse_args()
 

@@ -483,7 +483,7 @@ Contrasts allow you to test specific hypotheses about the brain's response to di
 !!! example "Example contrast"
     For a comparison between two conditions (e.g., `Faces` vs. `Objects`), use:
     ```
-[1 -1]
+    [1 -1]
     ```
     This weights `Faces` positively and `Objects` negatively, highlighting brain regions more active during the `Faces` condition.
 
