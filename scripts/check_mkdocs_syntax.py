@@ -56,23 +56,60 @@ def _reindent_block(lines: list[str], start: int, base_indent: str, delta: int) 
     """Re-indent a content block by adding *delta* spaces to each line.
 
     Walks forward from *start* until hitting a line at or below *base_indent*
-    level (the indent of the ``===`` or ``!!!`` header).  Blank lines are
+    level (the indent of the ``===`` or ``!!!`` header). Blank lines are
     left untouched; non-blank lines get *delta* spaces prepended.
+
+    The first content line may itself be under-indented to the same column as
+    the header. In that case it still belongs to the block and must be fixed
+    before the usual block-boundary rule applies. While walking the block, we
+    also track fenced code blocks so we do not accidentally treat structure-like
+    lines inside code as new block boundaries.
     """
     base_len = len(base_indent)
     pad = " " * delta
     j = start
+    seen_content = False
+    in_fence = False
+    fence_marker = ""
+    fence_min_len = 0
     while j < len(lines):
         ln = lines[j]
+        stripped = ln.lstrip()
+
         # Blank lines belong to the block — skip without modifying
         if not ln.strip():
             j += 1
             continue
-        cur_indent = len(ln) - len(ln.lstrip())
-        # A line at the base indent level (or less) means the block ended
-        if cur_indent <= base_len:
+
+        cur_indent = len(ln) - len(stripped)
+        fence_match = FENCE_OPEN.match(ln)
+
+        if in_fence:
+            lines[j] = pad + ln
+            if (
+                fence_match
+                and stripped.startswith(fence_marker * fence_min_len)
+                and len(stripped.rstrip()) <= fence_min_len + 1
+            ):
+                in_fence = False
+            seen_content = True
+            j += 1
+            continue
+
+        # Once we've already seen block content, a line at the base indent
+        # level (or less) means the block ended. The first content line may
+        # still belong to the block even if it is under-indented.
+        if seen_content and cur_indent <= base_len:
             break
+        if cur_indent < base_len:
+            break
+
         lines[j] = pad + ln
+        seen_content = True
+        if fence_match:
+            fence_marker = fence_match.group(2)[0]
+            fence_min_len = len(fence_match.group(2))
+            in_fence = True
         j += 1
 
 

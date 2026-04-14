@@ -41,11 +41,14 @@ echo "Fix mode:"
 TMPDIR=$(mktemp -d)
 cp "$FIXTURES/mkdocs_syntax_bad.md" "$TMPDIR/fixable.md"
 cp "$FIXTURES/mkdocs_syntax_bad_quotes.md" "$TMPDIR/fixable_quotes.md"
+cp "$FIXTURES/mkdocs_syntax_regression_coding_index.md" "$TMPDIR/regression.md"
 
-# Fix mode should still exit 1 (manual issues remain in bad.md)
-run_test "fix mode with manual issues remaining" 1 python3 "$SCRIPT" --fix "$TMPDIR/fixable.md"
+# Fix mode should exit 0 when all detected issues are auto-fixable
+run_test "fix mode on fully auto-fixable fixture" 0 python3 "$SCRIPT" --fix "$TMPDIR/fixable.md"
 # Fix mode on curly quotes should exit 0 (all issues are auto-fixable)
 run_test "fix mode on curly quotes (all fixable)" 0 python3 "$SCRIPT" --fix "$TMPDIR/fixable_quotes.md"
+# Re-running on the fixed broken fixture should pass
+run_test "re-check fixed syntax fixture" 0 python3 "$SCRIPT" "$TMPDIR/fixable.md"
 # Re-running on fixed curly quotes should pass
 run_test "re-check fixed curly quotes" 0 python3 "$SCRIPT" "$TMPDIR/fixable_quotes.md"
 
@@ -57,6 +60,15 @@ if diff -q "$FIXTURES/mkdocs_syntax_good.md" "$TMPDIR/clean.md" > /dev/null 2>&1
   PASS=$((PASS + 1))
 else
   echo "  FAIL: fix mode modified a clean file"
+  FAIL=$((FAIL + 1))
+fi
+
+python3 "$SCRIPT" --fix "$TMPDIR/regression.md" > /dev/null 2>&1
+if diff -q "$FIXTURES/mkdocs_syntax_regression_coding_index.md" "$TMPDIR/regression.md" > /dev/null 2>&1; then
+  echo "  PASS: fix mode does not break clean admonitions with nested code fences"
+  PASS=$((PASS + 1))
+else
+  echo "  FAIL: fix mode modified the coding-index regression fixture"
   FAIL=$((FAIL + 1))
 fi
 

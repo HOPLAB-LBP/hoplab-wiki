@@ -225,7 +225,7 @@ To keep your project organized, we've provided a **set of utility functions** th
         logger.propagate = False
 
         return logger
-    ```bash
+    ```
 
 ??? example "Using the utility functions in a script"
     To use the functions defined in `utils.py`, import them in your script and follow the example below. This will ensure reproducibility and proper organization of your experimental results.
