@@ -33,6 +33,20 @@ run_cmd() {
   fi
 }
 
+assert_files_equal() {
+  local name="$1"
+  local expected="$2"
+  local actual="$3"
+  local diff_output
+  diff_output=$(mktemp "$LOGDIR/diff-output.XXXXXX")
+  if diff -u "$expected" "$actual" >"$diff_output" 2>&1; then
+    pass "$name"
+  else
+    fail "$name"
+    cat "$diff_output"
+  fi
+}
+
 echo "Running fix_markdown_table_pipes.py tests..."
 echo
 
@@ -42,25 +56,13 @@ cp "$FIXTURES/markdown_table_pipe_autofix_expected.md" "$TMPDIR/expected.md"
 cp "$FIXTURES/markdown_table_pipe_autofix_expected.md" "$TMPDIR/clean.md"
 
 if run_cmd python3 "$SCRIPT" "$TMPDIR/bad.md"; then
-  diff_output=$(mktemp "$LOGDIR/diff-output.XXXXXX")
-  if diff -u "$TMPDIR/expected.md" "$TMPDIR/bad.md" >"$diff_output" 2>&1; then
-    pass "fixes missing trailing pipes in normal and indented tables"
-  else
-    fail "fixes missing trailing pipes in normal and indented tables"
-    cat "$diff_output"
-  fi
+  assert_files_equal "fixes missing trailing pipes in normal and indented tables" "$TMPDIR/expected.md" "$TMPDIR/bad.md"
 else
   fail "fixes missing trailing pipes in normal and indented tables"
 fi
 
 if run_cmd python3 "$SCRIPT" "$TMPDIR/bad.md"; then
-  diff_output=$(mktemp "$LOGDIR/diff-output.XXXXXX")
-  if diff -u "$TMPDIR/expected.md" "$TMPDIR/bad.md" >"$diff_output" 2>&1; then
-    pass "is idempotent on already-fixed tables"
-  else
-    fail "is idempotent on already-fixed tables"
-    cat "$diff_output"
-  fi
+  assert_files_equal "is idempotent on already-fixed tables" "$TMPDIR/expected.md" "$TMPDIR/bad.md"
 else
   fail "is idempotent on already-fixed tables"
 fi
@@ -72,13 +74,7 @@ else
 fi
 
 if run_cmd python3 "$SCRIPT" "$TMPDIR/clean.md"; then
-  diff_output=$(mktemp "$LOGDIR/diff-output.XXXXXX")
-  if diff -u "$FIXTURES/markdown_table_pipe_autofix_expected.md" "$TMPDIR/clean.md" >"$diff_output" 2>&1; then
-    pass "does not modify already-clean files"
-  else
-    fail "does not modify already-clean files"
-    cat "$diff_output"
-  fi
+  assert_files_equal "does not modify already-clean files" "$FIXTURES/markdown_table_pipe_autofix_expected.md" "$TMPDIR/clean.md"
 else
   fail "does not modify already-clean files"
 fi
@@ -91,7 +87,7 @@ else
 fi
 
 printf '| A | B\r\n| --- | ---\r\n| 1 | 2\r\n' > "$TMPDIR/crlf.md"
-if run_cmd python3 "$SCRIPT" "$TMPDIR/crlf.md" && python3 - "$TMPDIR/crlf.md" <<'PY'
+if run_cmd python3 "$SCRIPT" "$TMPDIR/crlf.md" && run_cmd python3 - "$TMPDIR/crlf.md" <<'PY'
 from pathlib import Path
 import sys
 
