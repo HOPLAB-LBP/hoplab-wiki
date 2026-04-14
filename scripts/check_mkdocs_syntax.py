@@ -36,8 +36,8 @@ SMART_DOUBLE_QUOTE_PATTERN = re.compile(
 TAB_HEADER = re.compile(r"^(\s*)===\s+.")  # === "Tab Title" at any indent
 ADMONITION_HEADER = re.compile(r"^(\s*)(!{3}|\?{3}\+?)\s+\w+")  # !!! note or ??? note
 FENCE_OPEN = re.compile(r"^(\s*)(`{3,}|~{3,})")  # opening code fence
-HTML_COMMENT_OPEN = re.compile(r"<!--")
-HTML_COMMENT_CLOSE = re.compile(r"-->")
+HTML_COMMENT_OPEN = "<!--"
+HTML_COMMENT_CLOSE_MARKERS = ("-->", "--!>")
 
 
 class Issue:
@@ -56,23 +56,60 @@ def _reindent_block(lines: list[str], start: int, base_indent: str, delta: int) 
     """Re-indent a content block by adding *delta* spaces to each line.
 
     Walks forward from *start* until hitting a line at or below *base_indent*
-    level (the indent of the ``===`` or ``!!!`` header).  Blank lines are
+    level (the indent of the ``===`` or ``!!!`` header). Blank lines are
     left untouched; non-blank lines get *delta* spaces prepended.
+
+    The first content line may itself be under-indented to the same column as
+    the header. In that case it still belongs to the block and must be fixed
+    before the usual block-boundary rule applies. While walking the block, we
+    also track fenced code blocks so we do not accidentally treat structure-like
+    lines inside code as new block boundaries.
     """
     base_len = len(base_indent)
     pad = " " * delta
     j = start
+    seen_content = False
+    in_fence = False
+    fence_marker = ""
+    fence_min_len = 0
     while j < len(lines):
         ln = lines[j]
+        stripped = ln.lstrip()
+
         # Blank lines belong to the block — skip without modifying
         if not ln.strip():
             j += 1
             continue
-        cur_indent = len(ln) - len(ln.lstrip())
-        # A line at the base indent level (or less) means the block ended
-        if cur_indent <= base_len:
+
+        cur_indent = len(ln) - len(stripped)
+        fence_match = FENCE_OPEN.match(ln)
+
+        if in_fence:
+            lines[j] = pad + ln
+            if (
+                fence_match
+                and stripped.startswith(fence_marker * fence_min_len)
+                and len(stripped.rstrip()) <= fence_min_len + 1
+            ):
+                in_fence = False
+            seen_content = True
+            j += 1
+            continue
+
+        # Once we've already seen block content, a line at the base indent
+        # level (or less) means the block ended. The first content line may
+        # still belong to the block even if it is under-indented.
+        if seen_content and cur_indent <= base_len:
             break
+        if cur_indent < base_len:
+            break
+
         lines[j] = pad + ln
+        seen_content = True
+        if fence_match:
+            fence_marker = fence_match.group(2)[0]
+            fence_min_len = len(fence_match.group(2))
+            in_fence = True
         j += 1
 
 
@@ -103,15 +140,15 @@ def check_file(filepath: Path, fix: bool = False) -> list[Issue]:
         # ── Track HTML comments ───────────────────────────────
         if not in_fence:
             if in_html_comment:
-                if HTML_COMMENT_CLOSE.search(line):
+                if any(marker in line for marker in HTML_COMMENT_CLOSE_MARKERS):
                     in_html_comment = False
                 i += 1
                 continue
             # Check for comment open (that doesn't close on the same line)
-            if HTML_COMMENT_OPEN.search(line):
-                if not HTML_COMMENT_CLOSE.search(
-                    line[line.index("<!--") + 4:]
-                ):
+            comment_open_index = line.find(HTML_COMMENT_OPEN)
+            if comment_open_index != -1:
+                after_open = line[comment_open_index + len(HTML_COMMENT_OPEN):]
+                if not any(marker in after_open for marker in HTML_COMMENT_CLOSE_MARKERS):
                     in_html_comment = True
                     i += 1
                     continue
