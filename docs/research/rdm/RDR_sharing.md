@@ -192,72 +192,78 @@ There are three ways to upload files. The **web UI** is the simplest; the **API*
     !!! warning "Python version"
         The LIBIS fork requires Python ≤ 3.13. Python 3.14 is not yet supported.
 
-    **Basic usage**
+    **Getting your API token**
+
+    Go to [rdr.kuleuven.be](https://rdr.kuleuven.be/) → click your name (top right) → **API Token** → **Create Token**. The token is valid for one year.
+
+    **Uploading a single file**
 
     ```python
     from dvuploader import DVUploader, File
 
-    files = [
-        # Restricted data bundle
-        File(filepath="chess-bids_B_raw.z01", restrict=True),
-        # Unrestricted documentation
-        File(filepath="README", restrict=False),
-    ]
+    API_TOKEN = "your-token-here"
+    PID = "doi:10.48804/XXXXXX"  # your dataset DOI
 
-    uploader = DVUploader(files=files)
-    uploader.upload(
-        dataverse_url="https://rdr.kuleuven.be",
-        api_token="YOUR_API_TOKEN",
-        persistent_id="doi:10.48804/VVCEWP",  # your dataset DOI
-        n_parallel_uploads=2,
-    )
-    ```
-
-    Get your API token from [rdr.kuleuven.be](https://rdr.kuleuven.be/) → click your name (top right) → **API Token** → **Create Token**. The token is valid for one year.
-
-    **File options**
-
-    The `File` class supports several useful parameters:
-
-    ```python
-    File(
+    f = File(
         filepath="my_bundle.zip",       # path to the file
         restrict=True,                  # True = restricted, False = public
         description="Raw fMRI data",   # shows up in the file listing on RDR
         directory_label="data/raw",     # virtual folder path on RDR
         categories=["Data"],            # file category tags
     )
+
+    uploader = DVUploader(files=[f])
+    uploader.upload(
+        dataverse_url="https://rdr.kuleuven.be",
+        api_token=API_TOKEN,
+        persistent_id=PID,
+        n_parallel_uploads=1,
+    )
     ```
 
-    **Batch upload example**
+    **Uploading multiple files**
+
+    When uploading large files (multi-GB), make a **separate `DVUploader` call per file** rather than passing all files at once. This is because dvuploader requests temporary upload URLs (presigned S3 URLs) for all files at the start of the call, and these URLs expire after about one hour. If you pass 10 large files in one call, the URLs for the later files will have expired by the time they start uploading, and the upload will fail with a `403 Forbidden` error.
+
+    The safe pattern is to loop over your files:
 
     ```python
     from pathlib import Path
     from dvuploader import DVUploader, File
 
-    UPLOAD_DIR = Path("rdr-upload")
     API_TOKEN = "your-token-here"
-    PID = "doi:10.48804/VVCEWP"
+    PID = "doi:10.48804/XXXXXX"
 
-    # Collect all ZIP volumes
-    bundle_files = sorted(
-        list(UPLOAD_DIR.glob("*.zip"))
-        + list(UPLOAD_DIR.glob("*.z[0-9][0-9]"))
+    files_to_upload = sorted(
+        list(Path("rdr-upload").glob("*.zip"))
+        + list(Path("rdr-upload").glob("*.z[0-9][0-9]"))
     )
 
-    files = [File(filepath=str(f), restrict=True) for f in bundle_files]
-
-    # Add unrestricted docs
-    files.append(File(filepath=str(UPLOAD_DIR / "README"), restrict=False))
-
-    uploader = DVUploader(files=files)
-    uploader.upload(
-        dataverse_url="https://rdr.kuleuven.be",
-        api_token=API_TOKEN,
-        persistent_id=PID,
-        n_parallel_uploads=2,
-    )
+    for fpath in files_to_upload:
+        print(f"Uploading {fpath.name}...")
+        f = File(filepath=str(fpath), restrict=True)
+        uploader = DVUploader(files=[f])
+        try:
+            uploader.upload(
+                dataverse_url="https://rdr.kuleuven.be",
+                api_token=API_TOKEN,
+                persistent_id=PID,
+                n_parallel_uploads=1,
+            )
+            print(f"  {fpath.name} done")
+        except Exception as e:
+            print(f"  {fpath.name} failed: {e}, retrying...")
+            # fresh DVUploader = fresh presigned URL
+            uploader = DVUploader(files=[f])
+            uploader.upload(
+                dataverse_url="https://rdr.kuleuven.be",
+                api_token=API_TOKEN,
+                persistent_id=PID,
+                n_parallel_uploads=1,
+            )
     ```
+
+    Each iteration gets a fresh presigned URL, so there is no expiry risk regardless of how long the full upload takes.
 
     !!! danger "Do NOT use `curl` or the upstream `dvuploader` for ZIP files"
         Uploading ZIP files with `curl -F` to the `/api/datasets/:persistentId/add` endpoint sends the file through the Dataverse backend, which **automatically unpacks ZIP files**. The LIBIS fork of dvuploader avoids this by uploading directly to S3. The upstream (non-LIBIS) version of dvuploader also does not work correctly with RDR's S3 setup.
