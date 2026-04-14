@@ -3451,11 +3451,10 @@
 <div class="admonition example">
 <p class="admonition-title">Example contrast</p>
 <p>For a comparison between two conditions (e.g., <code>Faces</code> vs. <code>Objects</code>), use:
-```</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[1 -1]
+</span></code></pre></div>
+This weights <code>Faces</code> positively and <code>Objects</code> negatively, highlighting brain regions more active during the <code>Faces</code> condition.</p>
 </div>
-<p>[1 -1]
-    <code>``
-    This weights</code>Faces<code>positively and</code>Objects<code>negatively, highlighting brain regions more active during the</code>Faces` condition.</p>
 <hr />
 <h3 id="verifying-the-order-of-regressors">Verifying the order of regressors<a class="headerlink" href="#verifying-the-order-of-regressors" title="Permanent link">&para;</a></h3>
 <p>It’s crucial to confirm the order of regressors in the design matrix before specifying contrasts to ensure that your weights align correctly with the conditions. Here’s how to verify this using both the SPM GUI and by inspecting the <code>SPM.mat</code> file directly.</p>
@@ -3490,26 +3489,26 @@
 <li>
 <p><strong>Load the <code>SPM.mat</code> File in MATLAB</strong>:</p>
 <p>In the MATLAB command window, navigate to the folder containing your <code>SPM.mat</code> file:
- <div class="language-matlab highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="p">(</span><span class="s">&#39;/path/to/your/SPM_results_folder&#39;</span><span class="p">);</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">load</span><span class="p">(</span><span class="s">&#39;SPM.mat&#39;</span><span class="p">);</span>
+ <div class="language-matlab highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">cd</span><span class="p">(</span><span class="s">&#39;/path/to/your/SPM_results_folder&#39;</span><span class="p">);</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">load</span><span class="p">(</span><span class="s">&#39;SPM.mat&#39;</span><span class="p">);</span>
 </span></code></pre></div>
 This loads the <code>SPM</code> structure into your workspace.</p>
 </li>
 <li>
 <p><strong>Explore the Regressors</strong>:</p>
 <p>To see the names of the regressors, type:
- <div class="language-matlab highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">SPM</span><span class="p">.</span><span class="n">xX</span><span class="p">.</span><span class="n">name</span>
+ <div class="language-matlab highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">SPM</span><span class="p">.</span><span class="n">xX</span><span class="p">.</span><span class="n">name</span>
 </span></code></pre></div>
 This command will display a list of the regressor names in the order they appear in the design matrix.</p>
 </li>
 <li>
 <p><strong>Interpret the Output</strong>:</p>
 <p>The output will look something like this:
- <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>&#39;Sn(1) condition1*bf(1)&#39;
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>&#39;Sn(1) condition2*bf(1)&#39;
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>&#39;Sn(1) condition3*bf(1)&#39;
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>&#39;Sn(1) motion_x&#39;
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>&#39;Sn(1) motion_y&#39;
+ <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>&#39;Sn(1) condition1*bf(1)&#39;
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>&#39;Sn(1) condition2*bf(1)&#39;
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>&#39;Sn(1) condition3*bf(1)&#39;
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>&#39;Sn(1) motion_x&#39;
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>&#39;Sn(1) motion_y&#39;
 </span></code></pre></div>
 Each string corresponds to a regressor:</p>
 <ul>
@@ -3521,16 +3520,16 @@ Each string corresponds to a regressor:</p>
 <li>
 <p><strong>Align the Contrast Weights</strong>:</p>
 <p>Based on this order, you can now set your contrast weights correctly. For instance, if <code>condition1</code> is the first regressor and <code>condition2</code> is the second, a contrast comparing them would be:
- <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>[1 -1 0 0 0 ...]
+ <div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>[1 -1 0 0 0 ...]
 </span></code></pre></div></p>
 </li>
 </ol>
 <div class="admonition example">
 <p class="admonition-title">Checking Regressors in a Script</p>
 <p>If you are scripting the process, you can automate this check by including:
-<div class="language-matlab highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c">% Load the design matrix and display regressor names</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nb">load</span><span class="p">(</span><span class="s">&#39;SPM.mat&#39;</span><span class="p">);</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">disp</span><span class="p">(</span><span class="n">SPM</span><span class="p">.</span><span class="n">xX</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c">% Load the design matrix and display regressor names</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">load</span><span class="p">(</span><span class="s">&#39;SPM.mat&#39;</span><span class="p">);</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nb">disp</span><span class="p">(</span><span class="n">SPM</span><span class="p">.</span><span class="n">xX</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
 </span></code></pre></div>
 This will print the regressor names directly in the MATLAB command window, helping you confirm the correct order before specifying your contrasts.</p>
 </div>
@@ -3583,50 +3582,50 @@ This will print the regressor names directly in the MATLAB command window, helpi
 <h2 id="directory-structure-reference">Directory Structure Reference<a class="headerlink" href="#directory-structure-reference" title="Permanent link">&para;</a></h2>
 <p>Below are example directory trees showing file organisation before and after running the first-level GLM.</p>
 <h3 id="before-glm-after-preprocessing">Before GLM (after preprocessing)<a class="headerlink" href="#before-glm-after-preprocessing" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>BIDS/
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>├── sub-01/
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>│   └── func/
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>│       ├── sub-01_task-exp_run-1_events.tsv
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>│       ├── sub-01_task-exp_run-1_eventsspm.mat     ← onset file (from eventsBIDS2SPM)
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>│       ├── sub-01_task-exp_run-2_events.tsv
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>│       └── sub-01_task-exp_run-2_eventsspm.mat
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>└── derivatives/
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    ├── fmriprep/
-</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    │   └── sub-01/
-</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>    │       ├── anat/
-</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>    │       │   └── sub-01_space-MNI_desc-preproc_T1w.nii.gz
-</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>    │       └── func/
-</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>    │           ├── sub-01_task-exp_run-1_space-MNI_desc-preproc_bold.nii.gz
-</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>    │           ├── sub-01_task-exp_run-1_desc-confounds_timeseries.tsv
-</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>    │           ├── sub-01_task-exp_run-2_space-MNI_desc-preproc_bold.nii.gz
-</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>    │           └── sub-01_task-exp_run-2_desc-confounds_timeseries.tsv
-</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>    └── pre-SPM/
-</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>        ├── gunzipped/
-</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>        │   └── sub-01/
-</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>        │       └── func/
-</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>        │           ├── sub-01_task-exp_run-1_space-MNI_desc-preproc_bold.nii
-</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>        │           └── sub-01_task-exp_run-2_space-MNI_desc-preproc_bold.nii
-</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>        └── smoothed/
-</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>            └── sub-01/
-</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>                └── func/
-</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>                    ├── ssub-01_task-exp_run-1_space-MNI_desc-preproc_bold.nii
-</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>                    └── ssub-01_task-exp_run-2_space-MNI_desc-preproc_bold.nii
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>BIDS/
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>├── sub-01/
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>│   └── func/
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>│       ├── sub-01_task-exp_run-1_events.tsv
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>│       ├── sub-01_task-exp_run-1_eventsspm.mat     ← onset file (from eventsBIDS2SPM)
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>│       ├── sub-01_task-exp_run-2_events.tsv
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>│       └── sub-01_task-exp_run-2_eventsspm.mat
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>└── derivatives/
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    ├── fmriprep/
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    │   └── sub-01/
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>    │       ├── anat/
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>    │       │   └── sub-01_space-MNI_desc-preproc_T1w.nii.gz
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>    │       └── func/
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>    │           ├── sub-01_task-exp_run-1_space-MNI_desc-preproc_bold.nii.gz
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>    │           ├── sub-01_task-exp_run-1_desc-confounds_timeseries.tsv
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>    │           ├── sub-01_task-exp_run-2_space-MNI_desc-preproc_bold.nii.gz
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>    │           └── sub-01_task-exp_run-2_desc-confounds_timeseries.tsv
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>    └── pre-SPM/
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>        ├── gunzipped/
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>        │   └── sub-01/
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>        │       └── func/
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>        │           ├── sub-01_task-exp_run-1_space-MNI_desc-preproc_bold.nii
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>        │           └── sub-01_task-exp_run-2_space-MNI_desc-preproc_bold.nii
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a>        └── smoothed/
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>            └── sub-01/
+</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a>                └── func/
+</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a>                    ├── ssub-01_task-exp_run-1_space-MNI_desc-preproc_bold.nii
+</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a>                    └── ssub-01_task-exp_run-2_space-MNI_desc-preproc_bold.nii
 </span></code></pre></div>
 <h3 id="after-glm-estimation">After GLM estimation<a class="headerlink" href="#after-glm-estimation" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>derivatives/
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>└── SPM/
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    └── GLM/
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>        └── sub-01/
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>            └── task-exp/
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>                ├── SPM.mat                    ← model specification and results
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>                ├── beta_0001.nii              ← beta image for regressor 1
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>                ├── beta_0002.nii              ← beta image for regressor 2
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>                ├── ...
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>                ├── con_0001.nii               ← contrast image (e.g., CondA &gt; CondB)
-</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>                ├── spmT_0001.nii              ← t-statistic map for contrast 1
-</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>                ├── mask.nii                   ← analysis mask
-</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>                ├── ResMS.nii                  ← residual mean squares
-</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>                └── RPV.nii                    ← resels per voxel (for RFT corrections)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>derivatives/
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>└── SPM/
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    └── GLM/
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>        └── sub-01/
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>            └── task-exp/
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>                ├── SPM.mat                    ← model specification and results
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>                ├── beta_0001.nii              ← beta image for regressor 1
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>                ├── beta_0002.nii              ← beta image for regressor 2
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>                ├── ...
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>                ├── con_0001.nii               ← contrast image (e.g., CondA &gt; CondB)
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>                ├── spmT_0001.nii              ← t-statistic map for contrast 1
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>                ├── mask.nii                   ← analysis mask
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>                ├── ResMS.nii                  ← residual mean squares
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>                └── RPV.nii                    ← resels per voxel (for RFT corrections)
 </span></code></pre></div>
 <hr />
 <h2 id="saving-the-design-matrix">Saving the Design Matrix<a class="headerlink" href="#saving-the-design-matrix" title="Permanent link">&para;</a></h2>
@@ -3637,12 +3636,12 @@ This will print the regressor names directly in the MATLAB command window, helpi
 <li>Choose a format (PNG or EPS for publication quality) and save to your GLM output directory.</li>
 </ol>
 <p>Alternatively, you can save it programmatically:</p>
-<div class="language-matlab highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c">% After running spm_spm, the design matrix is in SPM.xX.X</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">load</span><span class="p">(</span><span class="s">&#39;SPM.mat&#39;</span><span class="p">);</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nb">figure</span><span class="p">;</span><span class="w"> </span><span class="nb">imagesc</span><span class="p">(</span><span class="n">SPM</span><span class="p">.</span><span class="n">xX</span><span class="p">.</span><span class="n">X</span><span class="p">);</span><span class="w"> </span><span class="nb">colormap</span><span class="p">(</span><span class="s">&#39;gray&#39;</span><span class="p">);</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Design Matrix&#39;</span><span class="p">);</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Scans&#39;</span><span class="p">);</span><span class="w"> </span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Regressors&#39;</span><span class="p">);</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="nb">saveas</span><span class="p">(</span><span class="nb">gcf</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;design_matrix.png&#39;</span><span class="p">);</span>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c">% After running spm_spm, the design matrix is in SPM.xX.X</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nb">load</span><span class="p">(</span><span class="s">&#39;SPM.mat&#39;</span><span class="p">);</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nb">figure</span><span class="p">;</span><span class="w"> </span><span class="nb">imagesc</span><span class="p">(</span><span class="n">SPM</span><span class="p">.</span><span class="n">xX</span><span class="p">.</span><span class="n">X</span><span class="p">);</span><span class="w"> </span><span class="nb">colormap</span><span class="p">(</span><span class="s">&#39;gray&#39;</span><span class="p">);</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Design Matrix&#39;</span><span class="p">);</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Scans&#39;</span><span class="p">);</span><span class="w"> </span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Regressors&#39;</span><span class="p">);</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nb">saveas</span><span class="p">(</span><span class="nb">gcf</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;design_matrix.png&#39;</span><span class="p">);</span>
 </span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -3680,21 +3679,21 @@ This will print the regressor names directly in the MATLAB command window, helpi
 <li>Click <strong>Run</strong> (the green play button).</li>
 </ol>
 <p><strong>Scripted version:</strong></p>
-<div class="language-matlab highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c">% Second-level one-sample t-test</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">1</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">factorial_design</span><span class="p">.</span><span class="n">dir</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;derivatives/SPM/GLM/group/task-exp/&#39;</span><span class="p">};</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c">% Collect contrast images from all subjects</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">subjects</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">dir</span><span class="p">(</span><span class="s">&#39;derivatives/SPM/GLM/sub-*/task-exp/con_0001.nii&#39;</span><span class="p">);</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">scans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cellfun</span><span class="p">(@(</span><span class="n">p</span><span class="p">,</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="nb">fullfile</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="n">subjects</span><span class="p">.</span><span class="n">folder</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="n">subjects</span><span class="p">.</span><span class="n">name</span><span class="p">},</span><span class="w"> </span><span class="s">&#39;UniformOutput&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">1</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">factorial_design</span><span class="p">.</span><span class="n">des</span><span class="p">.</span><span class="n">t1</span><span class="p">.</span><span class="n">scans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">scans</span><span class="o">&#39;</span><span class="p">;</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="c">% Estimate</span>
-</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">2</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">fmri_est</span><span class="p">.</span><span class="n">spmmat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;derivatives/SPM/GLM/group/task-exp/SPM.mat&#39;</span><span class="p">};</span>
-</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">2</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">fmri_est</span><span class="p">.</span><span class="n">write_residuals</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">2</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">fmri_est</span><span class="p">.</span><span class="n">method</span><span class="p">.</span><span class="n">Classical</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
-</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="c">% Run</span>
-</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="n">spm_jobman</span><span class="p">(</span><span class="s">&#39;run&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">matlabbatch</span><span class="p">);</span>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c">% Second-level one-sample t-test</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">1</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">factorial_design</span><span class="p">.</span><span class="n">dir</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;derivatives/SPM/GLM/group/task-exp/&#39;</span><span class="p">};</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c">% Collect contrast images from all subjects</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">subjects</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">dir</span><span class="p">(</span><span class="s">&#39;derivatives/SPM/GLM/sub-*/task-exp/con_0001.nii&#39;</span><span class="p">);</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">scans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cellfun</span><span class="p">(@(</span><span class="n">p</span><span class="p">,</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="nb">fullfile</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="n">subjects</span><span class="p">.</span><span class="n">folder</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="n">subjects</span><span class="p">.</span><span class="n">name</span><span class="p">},</span><span class="w"> </span><span class="s">&#39;UniformOutput&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">1</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">factorial_design</span><span class="p">.</span><span class="n">des</span><span class="p">.</span><span class="n">t1</span><span class="p">.</span><span class="n">scans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">scans</span><span class="o">&#39;</span><span class="p">;</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="c">% Estimate</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">2</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">fmri_est</span><span class="p">.</span><span class="n">spmmat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;derivatives/SPM/GLM/group/task-exp/SPM.mat&#39;</span><span class="p">};</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">2</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">fmri_est</span><span class="p">.</span><span class="n">write_residuals</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">2</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">fmri_est</span><span class="p">.</span><span class="n">method</span><span class="p">.</span><span class="n">Classical</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="c">% Run</span>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="n">spm_jobman</span><span class="p">(</span><span class="s">&#39;run&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">matlabbatch</span><span class="p">);</span>
 </span></code></pre></div>
 </div>
 </div>
@@ -3734,35 +3733,35 @@ This will print the regressor names directly in the MATLAB command window, helpi
 <h2 id="visualising-results-with-python">Visualising Results with Python<a class="headerlink" href="#visualising-results-with-python" title="Permanent link">&para;</a></h2>
 <p>While SPM provides built-in visualisation tools, Python offers more flexibility for creating publication-quality figures.</p>
 <h3 id="glass-brain-and-slice-plots-with-nilearn">Glass brain and slice plots with nilearn<a class="headerlink" href="#glass-brain-and-slice-plots-with-nilearn" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">nilearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">plotting</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># Glass brain plot of a statistical map</span>
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">plotting</span><span class="o">.</span><span class="n">plot_glass_brain</span><span class="p">(</span>
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="s1">&#39;path/to/spmT_0001.nii&#39;</span><span class="p">,</span>
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="n">threshold</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
-</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Group activation (t &gt; 3.0)&#39;</span><span class="p">,</span>
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;lyrz&#39;</span>
-</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="p">)</span>
-</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="n">plotting</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">nilearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">plotting</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># Glass brain plot of a statistical map</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">plotting</span><span class="o">.</span><span class="n">plot_glass_brain</span><span class="p">(</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="s1">&#39;path/to/spmT_0001.nii&#39;</span><span class="p">,</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="n">threshold</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Group activation (t &gt; 3.0)&#39;</span><span class="p">,</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;lyrz&#39;</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="p">)</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="n">plotting</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></code></pre></div>
 <h3 id="surface-plots-with-nilearn">Surface plots with nilearn<a class="headerlink" href="#surface-plots-with-nilearn" title="Permanent link">&para;</a></h3>
 <p>Nilearn's <a href="https://nilearn.github.io/stable/modules/generated/nilearn.plotting.plot_surf_stat_map.html"><code>plot_surf_stat_map</code></a> is the recommended way to create surface visualisations. Using the <strong>plotly</strong> engine gives interactive plots and is significantly faster:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">nilearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">plotting</span><span class="p">,</span> <span class="n">surface</span><span class="p">,</span> <span class="n">datasets</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># Fetch fsaverage surface mesh</span>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">fsaverage</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_surf_fsaverage</span><span class="p">()</span>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># Plot a statistical map on the inflated surface</span>
-</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="n">plotting</span><span class="o">.</span><span class="n">plot_surf_stat_map</span><span class="p">(</span>
-</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="n">fsaverage</span><span class="o">.</span><span class="n">infl_left</span><span class="p">,</span>
-</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>    <span class="n">stat_map</span><span class="o">=</span><span class="n">stat_map_lh</span><span class="p">,</span>       <span class="c1"># surface stat map (e.g., from nilearn GLM)</span>
-</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="n">hemi</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
-</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="n">view</span><span class="o">=</span><span class="s1">&#39;lateral&#39;</span><span class="p">,</span>
-</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>    <span class="n">threshold</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
-</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;cold_hot&#39;</span><span class="p">,</span>
-</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>    <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;plotly&#39;</span>             <span class="c1"># interactive and faster than matplotlib</span>
-</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">nilearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">plotting</span><span class="p">,</span> <span class="n">surface</span><span class="p">,</span> <span class="n">datasets</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="c1"># Fetch fsaverage surface mesh</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">fsaverage</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_surf_fsaverage</span><span class="p">()</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="c1"># Plot a statistical map on the inflated surface</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="n">plotting</span><span class="o">.</span><span class="n">plot_surf_stat_map</span><span class="p">(</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>    <span class="n">fsaverage</span><span class="o">.</span><span class="n">infl_left</span><span class="p">,</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>    <span class="n">stat_map</span><span class="o">=</span><span class="n">stat_map_lh</span><span class="p">,</span>       <span class="c1"># surface stat map (e.g., from nilearn GLM)</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>    <span class="n">hemi</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>    <span class="n">view</span><span class="o">=</span><span class="s1">&#39;lateral&#39;</span><span class="p">,</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>    <span class="n">threshold</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>    <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;cold_hot&#39;</span><span class="p">,</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>    <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;plotly&#39;</span>             <span class="c1"># interactive and faster than matplotlib</span>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="p">)</span>
 </span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
