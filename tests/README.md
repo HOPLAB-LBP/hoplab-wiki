@@ -63,10 +63,8 @@ jobs:
 - checks that fenced code blocks are left alone
 - checks that the fixed file passes `markdownlint-cli2`
 
-`scripts/test-manage-docs-tags.js`
+`tests/test-manage-docs-tags.js`
 
-- this one lives under `scripts/`, but `automation-tests.yml` runs it alongside
-  the shell tests above
 - it tests the docs-tag automation logic used for issue/task handling
 - it covers parsing, normalization, deduplication, formatting, and real-world
   content patterns from the wiki
@@ -103,7 +101,7 @@ From the repo root:
 ```bash
 bash tests/test_check_mkdocs_syntax.sh
 bash tests/test_fix_markdown_table_pipes.sh
-node scripts/test-manage-docs-tags.js
+node tests/test-manage-docs-tags.js
 ```
 
 For full docs validation, the other useful local checks are:

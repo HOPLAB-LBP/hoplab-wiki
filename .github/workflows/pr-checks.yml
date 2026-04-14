@@ -16,7 +16,6 @@ on:
       - "scripts/check_mkdocs_syntax.py"
       - "scripts/prepare_docs.sh"
       - "scripts/manage-docs-tags.js"
-      - "scripts/test-manage-docs-tags.js"
       - "tests/**"
 
 concurrency:

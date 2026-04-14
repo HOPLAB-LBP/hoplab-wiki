@@ -2,7 +2,7 @@
 /**
  * Comprehensive test suite for manage-docs-tags.js
  * Covers all edge cases including non-technical user scenarios.
- * Run with: node scripts/test-manage-docs-tags.js
+ * Run with: node tests/test-manage-docs-tags.js
  */
 
 const {
@@ -20,7 +20,7 @@ const {
   buildTitle,
   buildBody,
   walkSync,
-} = require('./manage-docs-tags.js');
+} = require('../scripts/manage-docs-tags.js');
 
 let passed = 0;
 let failed = 0;

@@ -53,7 +53,7 @@ jobs:
         run: bash tests/test_fix_markdown_table_pipes.sh
 
       - name: Run docs tag automation tests
-        run: node scripts/test-manage-docs-tags.js
+        run: node tests/test-manage-docs-tags.js
 
   workflow-lint:
     runs-on: ubuntu-latest
