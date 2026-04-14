@@ -27,7 +27,7 @@ Most likely, you are seeking to get ethical approval for a **prospective monocen
 For a valid application, you are required to upload the following components:
 
 !!! warning "Language of documentation"
- All the documentation needs to be written in Dutch, except for the research protocol and the translated versions of the ICFs.
+    All the documentation needs to be written in Dutch, except for the research protocol and the translated versions of the ICFs.
 
 1. **Accompanying letter signed by the PI**
 

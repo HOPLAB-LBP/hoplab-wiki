@@ -10,7 +10,7 @@ For assistance, please make use of the [manual](https://www.groupware.kuleuven.b
 Also, there are ample examples of previous SMEC applications in [this folder](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/SMEC?csf=1&web=1&e=ZcVxJL) located on the lab's Teams channel to get you started.
 
 !!! info
- Please note that there exists a shortened procedure for master's thesis studies in our faculty through [this form](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/aanvraagmasterproef-eng).
+    Please note that there exists a shortened procedure for master's thesis studies in our faculty through [this form](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/aanvraagmasterproef-eng).
 
 ## Ethical review
 
