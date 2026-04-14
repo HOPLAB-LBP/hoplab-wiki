@@ -9,6 +9,16 @@ FIXTURES="tests/fixtures"
 PASS=0
 FAIL=0
 LOGDIR=$(mktemp -d)
+TMPDIR=""
+EMPTYDIR=""
+
+cleanup() {
+  [ -n "$EMPTYDIR" ] && rm -rf "$EMPTYDIR"
+  [ -n "$TMPDIR" ] && rm -rf "$TMPDIR"
+  rm -rf "$LOGDIR"
+}
+
+trap cleanup EXIT
 
 pass() {
   local name="$1"
@@ -104,9 +114,6 @@ then
 else
   fail "preserves CRLF line endings when fixing table rows"
 fi
-
-rm -rf "$EMPTYDIR" "$TMPDIR"
-rm -rf "$LOGDIR"
 
 echo
 echo "Results: $PASS passed, $FAIL failed"
