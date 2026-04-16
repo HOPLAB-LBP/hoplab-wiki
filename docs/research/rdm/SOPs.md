@@ -124,6 +124,6 @@ Organize and store all relevant preprocessing scripts and outputs in the appropr
 - Each subfolder must include a `dataset_description.json` file describing how the data were generated (e.g., software, version, pipeline). Optionally, include a `README` file for additional context or explanations.
 - Any code used to generate the derivatives from the source data (e.g., the analysis scripts and pipelines), may be included in a `code/` subdirectory. Extra documentation (and relevant images) may be included in a `docs/` subdirectory. Logs from running the code or other commands may be stored in a `logs/` subdirectory.
 
-### 4. Upload & clean up
+### 5. Upload & clean up
 
 Push the resulting data to ManGO using your preferred client and clear any data from your local device or the HPC environment.
