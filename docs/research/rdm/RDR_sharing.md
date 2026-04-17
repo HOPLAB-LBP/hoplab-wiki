@@ -111,7 +111,7 @@ Further splitting makes sense when a specific pipeline stage is large and only n
 
 ### Required metadata
 
-The following mandatory fields must be completed before you can save the dataset: 
+The following mandatory fields must be completed before you can save the dataset:
 
 | Field | What to enter |
 |-------|---------------|
@@ -302,7 +302,7 @@ There are three ways to upload files. The **web UI** is the simplest; the **API*
 6. Copy the DOI and add it to your paper and code repository
 
 !!! warning "Restricted files"
-    Make sure that all files that have to be restricted are actually restricted. In the `files` tab under the dataset, you can select the file(s) and click `edit files` and choose ´restrict`. You can also restrict each file individually by clicking `file options` (3 dots after every file) and select `restrict`. 
+    Make sure that all files that have to be restricted are actually restricted. In the `files` tab under the dataset, you can select the file(s) and click `edit files` and choose ´restrict`. You can also restrict each file individually by clicking`file options` (3 dots after every file) and select `restrict`.
 
 ## Step 8: Get DOIs for your data and code
 
