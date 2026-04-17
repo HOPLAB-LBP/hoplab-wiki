@@ -7,10 +7,13 @@
 
 ## Before you start
 
-- [ ] Your dataset is complete, well-organised, and validated
-- [ ] For fMRI data: [BIDS-compliant](../fmri/analysis/fmri-bids-conversion.md) and [anonymized](../fmri/analysis/fmri-anonymization.md)
-- [ ] Your S-case/ethics application mentions data sharing (required for restricted access). Contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to check what your S-case allows and whether an amendment is needed.
+- [ ] Your dataset is complete, well documented, pseudonymized, organized in BIDS, and validated (check out the guidelines [here](SOPs.md))
+- [ ] For fMRI data, check out the specific guidance on the [BIDS-conversion](../fmri/analysis/fmri-bids-conversion.md) and [pseudonymization](../fmri/analysis/fmri-anonymization.md)
+- [ ] Your S-case/ethics application mentions data sharing (either restricted or openly). Contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to check what your S-case allows and whether an amendment is needed.
 - [ ] You have a code repository on GitHub with analysis scripts and documentation
+
+!!! warning "Large datasets (> 50 GB)"
+    Fill in [this form](https://www.kuleuven.be/rdm/en/rdr/large-dataset-publication) **before** you start the RDR process. Free hosting is offered for 10 years on a case-by-case basis.
 
 ## Where does what go?
 
@@ -24,8 +27,6 @@ For neuroimaging projects, data and code live in two places:
 Everything in the BIDS dataset — raw scans, preprocessed outputs, subject-level derivatives, and group-level results — goes on RDR. The code repo contains the scripts that produced those outputs, plus READMEs explaining how to run them.
 
 ## Step 1: Validate your dataset
-
-### For fMRI (BIDS) datasets
 
 Run the [BIDS validator](https://bids-standard.github.io/bids-validator/):
 
@@ -44,11 +45,7 @@ Fix all **errors** before proceeding. Warnings are recommended but not blocking.
     | `SIDECAR_KEY_REQUIRED` / `TaskName` missing | Create a root-level `task-<label>_bold.json` with `{"TaskName": "yourtask"}` |
     | `PARTICIPANT_ID_MISMATCH` | Ensure every `sub-XX/` directory has a matching row in `participants.tsv` |
 
-For fMRI datasets, also follow the [anonymization guide](../fmri/analysis/fmri-anonymization.md) (defacing, metadata scrubbing, participant data review).
-
-### For other dataset types
-
-Ensure your data has a clear folder structure, consistent naming, and sufficient metadata (README + data dictionaries) for others to understand it.
+For fMRI datasets, also follow the [pseudonymization guide](../fmri/analysis/fmri-anonymization.md) (defacing, metadata scrubbing, participant data review).
 
 ## Step 2: Write a README
 
@@ -104,30 +101,17 @@ Further splitting makes sense when a specific pipeline stage is large and only n
 !!! tip "Example"
     The [chess expertise fMRI dataset](https://doi.org/10.48804/VVCEWP) uses 5 bundles: core (20 MB), raw (39 GB), fMRIPrep (187 GB), SPM (30 GB), and all other derivatives + group results (184 MB). The README and documentation HTML files are uploaded separately as unrestricted files, visible on the landing page without access request.
 
-## Step 4: Choose a license
-
-RDR requires selecting a license in the **Terms** tab.
-
-For **restricted datasets** (most Hoplab neuroimaging data):
-
-- Select a standard license (e.g., **CC-BY 4.0**) — this applies to the **unrestricted files** (README, documentation)
-- For the restricted data itself, access is governed by a **Data Transfer Agreement (DTA)** that is drafted when someone requests access. The DTA serves as the effective license for the restricted files.
-
-For **open datasets** (no access restrictions): **CC-BY 4.0** (attribution required) or **CC0** (no restrictions).
-
-See the [RDR license guidance](https://www.kuleuven.be/rdm/en/rdr/manual#License) for details.
-
-## Step 5: Create a draft dataset
+## Step 4: Create a draft dataset
 
 1. Go to [rdr.kuleuven.be](https://rdr.kuleuven.be/) and log in with your KU Leuven account
-2. Navigate to the Hoplab Dataverse collection (contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) if you don't have access)
+2. The host dataverse is "KU Leuven" and shouldn't be changed
 3. Click **Add Data > New Dataset**
 4. Fill in the required metadata (see below)
 5. Click **Save Dataset** — this creates the draft
 
 ### Required metadata
 
-**At draft creation:**
+The following mandatory fields must be completed before you can save the dataset: 
 
 | Field | What to enter |
 |-------|---------------|
@@ -135,25 +119,32 @@ See the [RDR license guidance](https://www.kuleuven.be/rdm/en/rdr/manual#License
 | **Author(s)** | Name and affiliation of each contributor (match your paper) |
 | **Contact** | Name and email of who handles access requests |
 | **Description** | What the dataset contains, how it was collected |
-| **Subject** | Broad discipline (e.g., "Medicine, Health and Life Sciences") |
-
-**Before publishing** (fields appear after the first save):
-
-| Field | What to enter |
-|-------|---------------|
-| **License** | CC-BY 4.0 (for unrestricted files); DTA covers restricted data |
-| **Access rights** | `restricted` (for neuroimaging data with GDPR constraints) |
+| **Keyword** | Key Terms that describe important aspects of your dataset |
 | **Technical format** | File extensions in the dataset (e.g., `nii.gz, json, tsv, png`) |
+| **Access rights** | `restricted` (for subject-level data with GDPR constraints) |
 | **Legitimate opt-out** | Reason for restricting access: `ethical` (for human subjects data) |
 
-Additional fields (keywords, related publication DOI, funding) are optional but improve discoverability.
+Additional fields (subject, related publication DOI, funding) are optional but improve discoverability. Note that more metadata fields become available for editing after your draft dataset is saved.
+
+## Step 5: Choose a license
+
+After creating your draft dataset, you should select a license in the **Terms** tab.
+
+For **restricted datasets** (most Hoplab neuroimaging data):
+
+- Select a standard license (e.g., **CC-BY 4.0**) — this applies to the **unrestricted files** (README, documentation)
+- For the restricted data itself, access is governed by a **Data Transfer Agreement (DTA)** that is drafted when someone requests access. The DTA serves as the effective license for the restricted files. If all files in your dataset are restricted, choose the **Custom KU Leuven** option.
+
+For **open datasets** (no access restrictions): **CC-BY 4.0** (attribution required) or **CC0** (no restrictions).
+
+See the [RDR license guidance](https://www.kuleuven.be/rdm/en/rdr/manual#License) for details.
 
 ## Step 6: Upload files
 
 !!! tip "Upload from the KU Leuven network"
     Uploading from campus or via VPN significantly improves transfer speed and reliability for large files.
 
-There are three ways to upload files. The **web UI** is the simplest; the **API** is better for large datasets with many files; the **Integration Dashboard** is useful when data already lives on a KU Leuven platform.
+There are three ways to upload files. The **web UI** is the simplest; the **API** is better for large datasets with many files; the **Integration Dashboard** is useful when data already lives on a KU Leuven platform (e.g., SharePoint or ManGO).
 
 === "Web UI"
 
@@ -297,7 +288,7 @@ There are three ways to upload files. The **web UI** is the simplest; the **API*
 
 === "Integration Dashboard"
 
-    If your data is already on a KU Leuven platform (OneDrive, SharePoint, ManGO, or GitHub), the [Integration Dashboard](https://www.kuleuven.be/rdm/en/rdr/integration-dashboard) can pull files directly into your RDR draft — no local download or upload needed.
+    If your data is already on a KU Leuven platform (SharePoint, ManGO, or Gitlab/GitHub), the [Integration Dashboard](https://www.kuleuven.be/rdm/en/rdr/integration-dashboard) can pull files directly into your RDR draft — no local download or upload needed.
 
     Access it from the **Upload from other source** button in the web UI upload dialog, or directly at [kuleuven.be/rdm/en/rdr/integration-dashboard](https://www.kuleuven.be/rdm/en/rdr/integration-dashboard).
 
@@ -310,13 +301,16 @@ There are three ways to upload files. The **web UI** is the simplest; the **API*
 5. Click **Publish Dataset** > **Major version** (v1.0)
 6. Copy the DOI and add it to your paper and code repository
 
+!!! warning "Restricted files"
+    Make sure that all files that have to be restricted are actually restricted. In the `files` tab under the dataset, you can select the file(s) and click `edit files` and choose ´restrict`. You can also restrict each file individually by clicking `file options` (3 dots after every file) and select `restrict`. 
+
 ## Step 8: Get DOIs for your data and code
 
 After publishing, you need two DOIs: one for the **data** (RDR) and one for the **code** (Zenodo). Both go in your paper's Data Availability statement.
 
 ### Data DOI (automatic)
 
-When you publish your RDR dataset, it automatically gets a DOI (e.g., `doi:10.48804/XXXXXX`). This is visible on the dataset landing page. Use this DOI in your paper and code repository.
+When you publish your RDR dataset, it automatically gets a DOI (e.g., `doi:10.48804/XXXXXX`). This is visible on the dataset landing page upon creation of the draft dataset. Use this DOI in your paper and code repository.
 
 ### Code DOI (Zenodo + GitHub)
 
@@ -364,11 +358,6 @@ Once you have both DOIs:
 - In your **code repo README**: add the RDR data DOI and the Zenodo badge
 - In your **RDR metadata**: add the code repo URL and paper DOI (when available) in the "Related Publication" field
 - In your **RDR README**: link to the code repo and cite both DOIs
-
-## Important notes
-
-!!! warning "Large datasets (> 50 GB)"
-    Contact the [RDR team](mailto:rdm@kuleuven.be) **before** uploading. Large datasets are handled case-by-case. Free hosting is offered for 10 years on a best-effort basis.
 
 ## Example
 
