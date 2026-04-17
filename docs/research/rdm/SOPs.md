@@ -127,3 +127,15 @@ Organize and store all relevant preprocessing scripts and outputs in the appropr
 ### 5. Upload & clean up
 
 Push the resulting data to ManGO using your preferred client and clear any data from your local device or the HPC environment.
+
+## Data sharing (when publishing)
+
+When your study is ready for publication, share the dataset via [RDR](RDR_sharing.md):
+
+1. **Anonymize** your data: for fMRI, follow the [anonymization guide](../fmri/analysis/fmri-anonymization.md) (defacing, metadata scrubbing, participant review)
+2. **Package** the dataset into ZIP bundles (see the [RDR guide](RDR_sharing.md#step-3-prepare-zip-files))
+3. **Upload** to RDR and fill in the required metadata
+4. **Link** the RDR DOI in your paper and code repository
+5. **Publish** the RDR dataset alongside your paper
+
+See the full step-by-step guide at [RDR for data sharing](RDR_sharing.md).
