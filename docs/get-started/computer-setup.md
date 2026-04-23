@@ -166,28 +166,7 @@ In Hoplab, several communication channels are used, on different levels. Here is
 ### Encrypting external hard drives
 
 When storing research data on external drives, encryption is strongly recommended to protect sensitive information (e.g., participant data).
-
-=== "Windows (BitLocker)"
-
-    On KU Leuven managed PCs, BitLocker is typically pre-enabled. To encrypt an external drive:
-
-    1. Insert the external hard drive.
-    2. Open **File Explorer**, right-click the drive, and select **Turn on BitLocker**.
-    3. Choose how you want to unlock the drive (password is the simplest option).
-    4. Save or print the **recovery key** — store it securely (e.g., in your OneDrive or a password manager). Without this key, you cannot recover data if you forget the password.
-    5. Choose **Encrypt entire drive** and click **Start encrypting**.
-
-=== "Mac (Disk Utility)"
-
-    1. Insert the external hard drive.
-    2. Open **Disk Utility** (Applications > Utilities > Disk Utility).
-    3. Select the external drive in the sidebar and click **Erase**.
-    4. Set the **Format** to **APFS (Encrypted)** or **Mac OS Extended (Journaled, Encrypted)**.
-    5. Enter and confirm a password. Store this password securely.
-    6. Click **Erase** to format and encrypt the drive.
-
-    !!! warning
-        Erasing the drive will delete all existing data. Back up any important files before encrypting.
+For more information on Hard drive encryption see: [Study workflow > Data Storage](https://hoplab-lbp.github.io/hoplab-wiki/research/rdm/SOPs.html#data-collection)
 
 ## Printing
 
@@ -229,7 +208,3 @@ For **Mac users**, follow the instructions on [this page](https://ppw.kuleuven.b
 }
 
 </style>
-
-<!--
-__TODO__: [Klara] The info about encrypting external drives should move to the RDM section.
--->

@@ -55,6 +55,32 @@ For behavioural experiments, this can either be using one of the specified onlin
     - For data collected through an **online platform**: Export the data from the platform and save it in an open format (Pavlovia supports `.csv` and `.json`; Meadows supports `.csv`, `.json`, `.mat` and `.log`; Prolific supports `.csv`; Microsoft Forms only supports `.xlsx`). Make sure that the participant ID you use to store the research data is unique and thus different from the participant's SONA or Prolific ID. You can store the link between both in the `confidential` folder on your Sharepoint.
     - In **EEG experiments**, raw EEG data are saved in the `.bdf` format (on the Windows PC) and associated behavioral data in `.csv` and `.log` formats (on the Linux PC). Move the data from both PCs using an SSD to your personal Sharepoint site. Ensure the output files are pseudonymized as far as possible without impacting research results before proceeding (e.g. through the [BESA Anonymizer](https://wiki.besa.de/index.php?title=BESA_Anonymizer) and using BIDS compliant subject IDs).
     - In **fMRI experiments**, raw MRI data are automatically (temporarily) saved in the PACS system on the acquisition PC. To allow for optimal BIDS conversion of the data, export the data in DICOM format (more information [here](../fmri/analysis/fmri-general.md#how-to-get-images-from-the-scanner) and [here](../fmri/fmri-procedure.md#exporting-data)) using an SSD. Make sure to do the export **pseudonomously** by assigning a code name to the data (in BIDS format, e.g., `sub-01`), and to stick to a consistent DICOM layout across scans. Transfer the data from the SSD to your personal Sharepoint site.
+  
+!!! Encrypting a Hard drive
+    If you also work with a Hard drive, it is important that you always encrypt Hard drives containing confidential or raw data.
+    This can be done so as follows:
+
+    === "Windows (BitLocker)"
+
+        On KU Leuven managed PCs, BitLocker is typically pre-enabled. To encrypt an external drive:
+
+        1. Insert the external hard drive.
+        2. Open **File Explorer**, right-click the drive, and select **Turn on BitLocker**.
+        3. Choose how you want to unlock the drive (password is the simplest option).
+        4. Save or print the **recovery key** — store it securely (e.g., in your OneDrive or a password manager). Without this key, you cannot recover data if you forget the password.
+        5. Choose **Encrypt entire drive** and click **Start encrypting**.
+
+    === "Mac (Disk Utility)"
+
+        1. Insert the external hard drive.
+        2. Open **Disk Utility** (Applications > Utilities > Disk Utility).
+        3. Select the external drive in the sidebar and click **Erase**.
+        4. Set the **Format** to **APFS (Encrypted)** or **Mac OS Extended (Journaled, Encrypted)**.
+        5. Enter and confirm a password. Store this password securely.
+        6. Click **Erase** to format and encrypt the drive.
+
+    !!! warning
+        Erasing the drive will delete all existing data. Back up any important files before encrypting.
 
 ### 6. Store signed consent forms
 
