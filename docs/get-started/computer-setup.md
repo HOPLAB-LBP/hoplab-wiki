@@ -208,7 +208,3 @@ For **Mac users**, follow the instructions on [this page](https://ppw.kuleuven.b
 }
 
 </style>
-
-<!--
-__TODO__: [Klara] The info about encrypting external drives should move to the RDM section.
--->
