@@ -57,9 +57,9 @@ For behavioural experiments, this can either be using one of the specified onlin
     - In **fMRI experiments**, raw MRI data are automatically (temporarily) saved in the PACS system on the acquisition PC. To allow for optimal BIDS conversion of the data, export the data in DICOM format (more information [here](../fmri/analysis/fmri-general.md#how-to-get-images-from-the-scanner) and [here](../fmri/fmri-procedure.md#exporting-data)) using an SSD. Make sure to do the export **pseudonomously** by assigning a code name to the data (in BIDS format, e.g., `sub-01`), and to stick to a consistent DICOM layout across scans. Transfer the data from the SSD to your personal Sharepoint site.
   
 !!! Encrypting a Hard drive
-    If you also work with a Hard drive, it is important that you always encrypt Hard drives containing confidential or raw data. 
-    This can be done so as follows: 
-    
+    If you also work with a Hard drive, it is important that you always encrypt Hard drives containing confidential or raw data.
+    This can be done so as follows:
+
     === "Windows (BitLocker)"
 
         On KU Leuven managed PCs, BitLocker is typically pre-enabled. To encrypt an external drive:
@@ -81,7 +81,6 @@ For behavioural experiments, this can either be using one of the specified onlin
 
     !!! warning
         Erasing the drive will delete all existing data. Back up any important files before encrypting.
-
 
 ### 6. Store signed consent forms
 
