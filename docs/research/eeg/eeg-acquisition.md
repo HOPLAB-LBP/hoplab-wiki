@@ -177,4 +177,4 @@ Hooray, you are now ready to start acquiring EEG data! To do so, follow these st
 5. Let the caps and syringes dry flat on the round table (do not hang the caps to dry). Put the electrode sets back on the rack (make sure they are stable and don't fall on the floor).
 
 !!! info "Data storage"
-    After transferring your data, make sure to follow the lab's [Research Data Management guidelines](../rdm/current.md) for organizing and backing up your dataset.
+    After transferring your data, make sure to follow the lab's [Research Data Management guidelines](../rdm/SOPs.md) for organizing and backing up your dataset.

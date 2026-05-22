@@ -9,7 +9,7 @@ To ensure a smooth transition for everyone, you can find some general guidelines
 1. Create a [logical folder structure with consistent file and folder naming](https://www.kuleuven.be/rdm/en/guidance/data-standards/file-organisation)
 2. Use [open file formats or generally accepted standard formats](https://www.kuleuven.be/rdm/en/rdr/file-formats/)
 3. Provide [clear documentation of project folders and datasets](https://www.kuleuven.be/rdm/en/guidance/documentation-metadata) (see [below](#documentation-expectations) for more details)
-4. In case of doubt, refer to our [decision tree regarding data storage](./current.md#the-big-picture)
+4. In case of doubt, refer to our [decision tree regarding data storage](./index.md#tools-we-use-to-store-and-share-data)
 
 ## Checklist of tasks
 
@@ -35,7 +35,7 @@ To ensure a smooth transition for everyone, you can find some general guidelines
     |------|--------------|------|
     | Ensure all research data has been organized in BIDS and is stored on your personal SharePoint, [ManGO](mango_active.md) (active data) or [FriGO](frigo_archive.md) (archived data), including raw and derived data (outputs from preprocessing and analysis steps), with [clear documentation](#research-data-in-bids). | [BIDS folder path(s)] | ☐ |
     | Ensure all raw (non-BIDS) data are saved in a single separate immutable “ground truth” folder per project on your personal SharePoint, [ManGO](mango_active.md) (active data) or [FriGO](frigo_archive.md) (archived data), with read-only access and the correct permissions set. | [raw data folder path(s)] | ☐ |
-    | Make sure that all other relevant project data files (non-research data) have been transferred from OneDrive/local drive to your personal SharePoint site (see [these guidelines](./current.md#sharepoint-setup-current-default-for-daily-work)) or FriGO, organized in a single directory per project, with logical subfolders and [documentation](#non-research-project-files) in the root on the content of the folders and files. | [project folder path(s)] | ☐ |
+    | Make sure that all other relevant project data files (non-research data) have been transferred from OneDrive/local drive to your personal SharePoint site (see [these guidelines](./sharepoint_daily.md)) or FriGO, organized in a single directory per project, with logical subfolders and [documentation](#non-research-project-files) in the root on the content of the folders and files. | [project folder path(s)] | ☐ |
     | Provide an estimation of your total data volume (to be archived on KU Leuven servers). | [estimated total data volume] | ☐ |
 
 ??? note "💻 Local data & hardware"

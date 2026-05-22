@@ -20,7 +20,7 @@ You can follow the checklist step by step below or [download a personal copy](ht
 ??? note "📊 Research data management"
     | Task | Information | Done |
     |------|-------------|------|
-    | Get acquainted with the [current RDM guidelines](current.md) | Please check these regularly for updates | ☐ |
+    | Get acquainted with the [current RDM guidelines](SOPs.md) | Please check these regularly for updates | ☐ |
     | Get acquainted with our [offboarding expectations](offboarding.md) | To do it right from the start :) | ☐ |
     | Read [guidelines regarding documentation](offboarding.md#documentation-expectations) | To make your data FAIR | ☐ |
     | Get acquainted with the [BIDS standard](https://bids-specification.readthedocs.io/en/stable/) | [Hoplab example for fMRI datasets](../fmri/analysis/fmri-bids-conversion.md) | ☐ |
