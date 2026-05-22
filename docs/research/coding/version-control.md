@@ -17,14 +17,14 @@ Version control is crucial for collaborative coding and tracking changes in your
 === "Mac"
 
     - Install via Homebrew:
-        ```
+        ```bash
         brew install git
         ```
     - Alternatively, download the [Git installer](https://git-scm.com/download/mac).
 
 === "Ubuntu"
 
-    ```
+    ```bash
     sudo apt-get update
     sudo apt-get install git
     ```
@@ -54,17 +54,17 @@ git config --global user.email "youremail@example.com"
 === "Command Line (CLI)"
 
     1. **Clone a Repository**:
-       ```
+       ```bash
        git clone https://github.com/your-username/repo-name.git
        cd repo-name
        ```
     2. **Stage and Commit Changes**:
-       ```
+       ```bash
        git add .
        git commit -m "Initial commit"
        ```
     3. **Push Changes**:
-       ```
+       ```bash
        git push origin main
        ```
 

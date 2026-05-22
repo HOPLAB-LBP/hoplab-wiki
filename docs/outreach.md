@@ -57,14 +57,14 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     - **Before the meeting**:
       Store your slides in
-      ```
+      ```text
       Hoplab > Science outreach > Lab meetings > Current LM presentations
       ```
       This allows all updates to be presented from one computer.
 
     - **After the meeting**:
       Move your presentation to
-      ```
+      ```text
       Hoplab > Science outreach > Lab meetings > Past LM presentations
       ```
 
@@ -72,7 +72,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     - **After the meeting**:
       Store your presentation in
-      ```
+      ```text
       Hoplab > Science outreach > Lab meetings > Past LM presentations
       ```
 
@@ -80,7 +80,7 @@ To keep our lab meeting presentations organized, please follow these guidelines:
 
     - **Before the meeting**:
       Add papers of interest to the [reading list](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bb985e56f-b02f-437c-a511-05a10d8dfe68%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724147078370&web=1) and upload them to 
-      ```
+      ```text
       Hoplab > Science outreach > Lab meetings > Papers
       ```
       This allows lab members to review them before the meeting.

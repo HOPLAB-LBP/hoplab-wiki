@@ -227,8 +227,8 @@ To keep your project organized, we've provided a **set of utility functions** th
         return logger
     ```
 
-??? example "Using the utility functions in a script"
-    To use the functions defined in `utils.py`, import them in your script and follow the example below. This will ensure reproducibility and proper organization of your experimental results.
+    ??? example "Using the utility functions in a script"
+        To use the functions defined in `utils.py`, import them in your script and follow the example below. This will ensure reproducibility and proper organization of your experimental results.
 
     ``` py title="main.py"  linenums="1"
     import os
@@ -277,7 +277,7 @@ To keep your project organized, we've provided a **set of utility functions** th
 !!! example "Example results folder structure"
     After running the script, your results might be structured as follows:
 
-    ```
+    ```text
     results/
     ├── 20241018-153045_train-pair-temp-ws-softmax_proba-0.2_probb-0.2_probtest-0.6_tempa-0.1_tempb-5_lr-1e-5/
     │   ├── log_output.txt        # Logs of the run

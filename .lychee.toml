@@ -35,4 +35,5 @@ exclude = [
   "https://scholar.google.com/.*",
   # KU Leuven auth portal — too many redirects for bot checks:
   "https://account.kuleuven.be/.*",
+  "https://www.biosemi.com/.*"
 ]
