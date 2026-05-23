@@ -1,33 +1,44 @@
 # ManGO for active research data
 
-In Hoplab, we expect you to save active research data on [ManGO](https://mango.kuleuven.be/). After logging in with your KU Leuven credentials, every researcher should have access to a personal folder within the `Hoplab project`. In your personal folder, you can then create a subfolder per (active) study. If this is not the case, contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to create a new folder and set the correct permissions. Check out the [research workflows page](SOPs.md) for more specific guidelines on how to manage your study data depending on the used research modality.
+After logging in in [ManGO](https://mango.kuleuven.be/) with your KU Leuven credentials, every researcher should have access to a personal folder within the `Hoplab project`. In your personal folder, you can then create a subfolder per (active) study. If this is not the case, contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to create a new folder and set the correct permissions. Check out the [research workflow page](SOPs.md) for more specific guidelines on how to organize your study data in ManGO.
 
-General documentation on ManGO can be found [here](https://rdm-docs.icts.kuleuven.be/mango/index.html). This page will focus on the setup and use of Python to interact with ManGO and is mainly based on the instructions on [this page](https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html). Note that there exist other clients to connect to ManGO (e.g., the ManGO portal in the browser, iron CLI Client, iCommands and several SFTP clients), which we won't cover here but you are of course welcome to explore.
+ManGO is based on the open source software iRODS. General documentation on ManGO can be found [here](https://rdm-docs.icts.kuleuven.be/mango/index.html). This page will focus on the setup and use of two clients to interact with ManGO, i.e., the **Python-iRODSClient** and **ManGO Ingest**, and is mainly based on the instructions on [this](https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html) and [this](https://github.com/kuleuven/mango-ingest/blob/development/README.md) page, respectively. Note that there exist other clients to connect to ManGO (e.g., the ManGO portal in the browser, iron CLI Client, iCommands and several SFTP clients), which we won't cover here but you are of course welcome to explore.
 
-## Installing and setting up the Python-iRODSClient (PRC)
+## The Python-iRODSClient (PRC)
+
+### Installing and setting up the client
 
 Using a virtual environment keeps things clean and avoids breaking other Python setups. To do so, open a terminal in your project folder and activate it. To avoid issues with KU Leuven policy restrictions, we use Conda for this. If you don't have Conda installed, download and install it from [Conda's official website](https://www.anaconda.com/docs/getting-started/miniconda/main).
 
 ```bash
-conda create -n mango_env   
+# create environment
+conda create -n mango_env 
+
+# activate environment
 conda activate mango_env
 ```
+
 You should see (mango_env) in your terminal. Now, we can install the Python-iRODSClient and check the installation:
 
 ```bash
+# install client
 pip install python-irodsclient
+
+# verify installation
 pip show python-irodsclient
 ```
 
-Next, we have to make sure you are logged in to ManGO and your irods_environment.json is configured correctly. The Python client needs an environment file that tells it which server to connect to, your username, SSL settings and authentification method. To do so, we have to install the required authentication package:
+Next, we have to make sure you are logged in to ManGO and your `irods_environment.json` is configured correctly. The Python client needs an environment file that tells it which server to connect to, your username, SSL settings and authentification method. To do so, we have to install the required authentication package:
 
 ```bash
+# install authentication package
 pip install mango_auth
 ```
 
-Then, go to the "How to connect" page in [the ManGO portal](https://mango.kuleuven.be/) to get your irods_user_name, irods_zone_name and irods_host information. Execute the command below with your own information in your terminal:
+Then, go to the "How to connect" page in [the ManGO portal](https://mango.kuleuven.be/) to get your `irods_user_name`, `irods_zone_name` and `irods_host` information. Execute the command below with your own information in your terminal:
 
 ```bash
+# log in to mango
 mango_auth <irods_user_name> <irods_zone_name> <irods_host>
 ```
 
@@ -46,15 +57,15 @@ mango_auth <irods_user_name> <irods_zone_name> <irods_host>
 
 You will be redirected to your terminal, where you have to click the displayed authentication link. After successful login, an environment file is created at `~/.irods/irods_environment.json`. You now have a connection with the default password duration of 60 hours. However, it is also possible to log in with a password of long duration (7 days) if you have a Linux client environment with iCommands installed (see [this page](https://rdm-docs.icts.kuleuven.be/mango/clients/icommands.html)).
 
-## Creating a ManGO session and uploading files to iRODS (Python)
+### Creating a ManGO session and uploading files to iRODS
 
-This section contains a script to create a ManGO (iRODS) session using your environment file and upload files from a local directory to an iRODS collection. It supports both single files and full folders (including subfolders) and recreates the folder structure in iRODS. Optionally, it also sets read permissions.
+This section contains a script to create a ManGO (iRODS) session using your environment file and upload files from a local directory to an iRODS collection, using the Python-iRODS client. It supports both single files and full folders (including subfolders) and recreates the folder structure in iRODS. Optionally, it also sets read permissions.
 
 Before you start, make sure that:
 
 - You have access to your personal folder on ManGO (do a quick check via the browser)
-- You installed the Python-iRODSClient (see [previous section](#installing-and-setting-up-the-python-irodsclient-prc))
-- You are logged in and your irods_environment.json is configured correctly (see [previous section](#installing-and-setting-up-the-python-irodsclient-prc))
+- You installed the Python-iRODSClient (see [previous section](#installing-and-setting-up-the-client))
+- You are logged in and your irods_environment.json is configured correctly (see [previous section](#installing-and-setting-up-the-client))
 - Your data is in BIDS format
 
 Before running the script, make sure to change the following variables:
@@ -62,13 +73,13 @@ Before running the script, make sure to change the following variables:
 - `local_path` to your local folder containing the data
 - `collection_path` to the ManGO/iRODS destination folder
 
-    !!! warning "Common errors"
-        - If you get an error related to `irods_environment.json`, check that all values (especially `irods_authentication_uid`) are correct and make sure numeric values are integers.
-        - If the environment file is not found, verify that you are logged in and that the file exists at `~/.irods/irods_environment.json`.
+!!! warning "Common errors"
+    - If you get an error related to `irods_environment.json`, check that all values (especially `irods_authentication_uid`) are correct and make sure numeric values are integers.
+    - If the environment file is not found, verify that you are logged in and that the file exists at `~/.irods/irods_environment.json`.
 
-    !!! warning "Important"
-        - The name of the local folder itself is not uploaded, only its contents. If you want to preserver the folder name, include it in the `collection_path`.
-        - The destination collection can already exist. If it does not exist, the script will create it automatically.
+!!! Tip
+    - The name of the folder itself is not uploaded, only its contents. If you want to preserve its name, include it in `collection_path`.
+    - The destination collection can already exist. If it does not exist, the script will create it automatically.
 
 ```python title="mango_upload.py"
 import os
@@ -160,13 +171,13 @@ else:
     print("Cannot proceed: check that both local_path and iRODS environment file exist.")
 ```
 
-## Downloading files from iRODS (Python)
+### Downloading files from iRODS
 
-This section contains a script to download a complete iRODS collection to your computer. It supports both single files and full folders (including subfolders). It allows for parallel downloads in case of large datasets.
+This section contains a script to download a complete iRODS collection to your computer using the Python-iRODS client. It supports both single files and full folders (including subfolders). It allows for parallel downloads in case of large datasets.
 
 It will:
 
-- Connect using your irods_environment.json (see [this section](#installing-and-setting-up-the-python-irodsclient-prc))
+- Connect using your irods_environment.json (see [this section](#installing-and-setting-up-the-client))
 - Download all files in the chosen ManGO folder (recursively, so it also handles all subfolders)
 - Recreate the same folder structure locally
 - Skip files that already exist to prevent accidental overwrite
@@ -177,13 +188,13 @@ Before running the script, make sure to change the following variables:
 - `LOCAL_DEST` = your local folder you want to download to
 - `THREADS` = set the number of parallel downloads (4-8 is usually safe)
 
-    !!! warning "Common errors"
-        - If you get an error related to `irods_environment.json`, check that all values (especially `irods_authentication_uid`) are correct and make sure numeric values are integers.
-        - If the environment file is not found, verify that you are logged in and that the file exists at `~/.irods/irods_environment.json`.
+!!! warning "Common errors"
+    - If you get an error related to `irods_environment.json`, check that all values (especially `irods_authentication_uid`) are correct and make sure numeric values are integers.
+    - If the environment file is not found, verify that you are logged in and that the file exists at `~/.irods/irods_environment.json`.
 
-    !!! warning "Important"
-        - The name of the local folder itself is not downloaded, only its contents. If you want to preserver the folder name, include it in the `LOCAL_DEST`.
-        - The destination collection can already exist. If it does not exist, the script will create it automatically.
+!!! Tip
+    - The name of the folder itself is not downloaded, only its contents. If you want to preserve its name, include it in `LOCAL_DEST`.
+    - The destination collection can already exist. If it does not exist, the script will create it automatically.
 
 ```python title="mango_download.py"
 """
@@ -292,7 +303,7 @@ with iRODSSession(irods_env_file=env_file, ssl_context=ssl_context) as session:
 print("\nFinished download.")
 ```
 
-## Monitoring a folder with ManGO Ingest
+## ManGO Ingest
 
 ManGO Ingest watches a local folder and uploads its contents to a ManGO collection. After triggering it, it automatically detects new or modified files and uploads only (part of) those changes.
 
@@ -303,123 +314,86 @@ ManGO Ingest can:
 - run once and upload everthing currently present, or
 - continuously monitor the folder and upload new files automatically
 
-Uploads are **one-way only**: changes made in ManGO are not pulled down locally.
+!!! Tip "Remarks & practical tips"
+    - Uploads are **one-way only**: changes made in ManGO are not pulled down locally.
+    - Deleting files locally does **not** remove them from ManGO.
+    - Empty folders cannot be uploaded.
+    - Removing the monitored folder (or unplugging the drive) while ingest runs will cause errors.
+    - Re-running mango-ingest with the same local path only uploads new or modified files/folders.
+    - A `.json` log file is created for every sync. This file records upload status and errors and can be used for restart.
 
 We'll guide you through the setup, but if you want more information, here are a few useful resources:
 
-- [ManGO Ingest README](https://github.com/kuleuven/mango-ingest/blob/development/README.md )
+- [ManGO Ingest README](https://github.com/kuleuven/mango-ingest/blob/development/README.md)
 - [Github issue for setting up in Windows](https://github.com/kuleuven/mango-ingest/issues/14)
-- [Documentation on the Python-iRODSClient](https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html )
+- [Documentation on the Python-iRODSClient](https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html)
 
-### How to use ManGO Ingest
+### Installing and setting up the client
 
 1. Download the [mango-ingest development branch](https://github.com/kuleuven/mango-ingest/tree/development) and unzip it into: `C:\Workdir\MyApps`
 
 2. Open a command prompt and navigate
 
-```bash
-cd C:\Workdir\MyApps\mango-ingest-development
-```
+    ```bash
+    cd "C:\Workdir\MyApps\mango-ingest-development"
+    ```
 
-3. Create an activate a virtual environment
+3. Create and activate a virtual environment
 
-```bash
-python -m venv venv
-venv\Scripts\activate
-```
+    ```bash
+    # create environment
+    python -m venv venv
+
+    # activate environment
+    venv\\Scripts\\activate
+    ```
 
 4. Install mango-ingest and check packages
 
-```bash
-venv\Scripts\python -m pip install -e mango-ingest-development
-venv\Scripts\python -m pip list
-```
+    ```bash
+    # install mango-ingest
+    python -m pip install -e mango-ingest-development
+
+    # check installation
+    python -m pip list
+    ```
 
 5. If you haven't yet, install the Python-iRODSClient (PRC) and authentication tools, and log in to iRODS
 
-```bash
-pip install python-irodsclient
-pip install mango_auth
-mango_auth <your_username> ghum ghum.irods.icts.kuleuven.be
-```
+    ```bash
+    # install prc
+    pip install python-irodsclient
 
-6. Start ingest for a local folder
+    # install authentication package
+    pip install mango_auth
 
-```bash
-venv\Scripts\python -m mango_ingest -d /ghum/home/Hoplab/[collection]/[sub-collection] -p "path_to_data_to_upload" -nw -r --verify-checksum
-```
+    # log in to mango
+    mango_auth <your_username> ghum ghum.irods.icts.kuleuven.be
+    ```
+
+6. Adapt your paths in the line below and start ingest for a local folder
+
+    ```bash
+    python -m mango_ingest -d /ghum/home/Hoplab/[collection]/[sub-collection] -p "path_to_data_to_upload" -nw -r --verify-checksum
+    ```
 
 ### Command options explained
 
-#### Core paths
-
-`-d`
-Destination collection path in ManGO.
-
-`-p`
-Local folder path to upload and monitor.
-
-#### Upload behaviour
-
-`-nw`
-Run once only.
-Uploads current files and exits.
-If omitted, the folder stays monitored for future changes and new files will be uploaded automatically as they appear.
-
-`-r`
-Upload folders recursively, including all subfolders and files.
-
-`--sync`
-Useful when starting ingest for the first time.
-Ensures the existing folder contents are uploaded.
-(Automatically implied when using `-nw`.)
-
-#### File integrity and recovery
-
-`--verify-checksum`
-Recommended for large datasets.
-After transfer, ManGO verifies that the uploaded file matches the original.
-This protects against silent corruption during transfer.
-
-`--restart <logfile.json>`
-Retries failed uploads from a previous run using its JSON log file.
-
-#### File selection (optional filtering)
-
-Upload only matching files:
-
-```bash
---glob "*.edf"  # for EEG files only
-```
-
-or
-
-```bash
---regex PATTERN
-```
-
-Ignore specific files:
-
-```bash
---ignore-glob "*.tmp" # to ignore temporary files
-```
-
-or
-
-```bash
---ignore PATTERN
-```
-
-### Remarks & practical tips
-
-- Deleting files locally does **not** remove them from ManGO.
-- Empty folders cannot be uploaded.
-- Removing the monitored folder (or unplugging the drive) while ingest runs will cause errors.
-- Re-running mango-ingest with the same local path only uploads new or modified files/folders.
-- A `.json` log file is created for every sync. This file records upload status and errors and can be used for restart.
-- ManGO Ingest can also automatically attach metadata:
-    - `--md-mtime` → add file modification time
-    - `--md-path REGEX` → extract metadata from folder names
+| Category | Option | Description |
+|----------|--------|-------------|
+| Core paths | `-d` | Destination collection path in ManGO |
+| Core paths | `-p` | Local folder path to upload and monitor |
+| Upload behaviour | `-nw` | Run once only. Uploads current files and exits. If omitted, the folder is continuously monitored and new files are uploaded automatically as they appear |
+| Upload behaviour | `-r` | Upload folders recursively, including all subfolders and files |
+| Upload behaviour | `--sync` | Ensures existing folder contents are uploaded when starting ingest, useful when starting ingest for the first time (automatically implied with `-nw`) |
+| File integrity and recovery | `--verify-checksum` | Verifies uploaded files match originals after transfer to prevent silent corruption during transfer (recommended for large datasets) |
+| File integrity and recovery | `--restart <logfile.json>` | Restarts failed uploads using a previous run’s JSON log file |
+| File selection (filtering) | `--glob "*.bdf"` | Upload only files matching a glob pattern (e.g. EEG files only) |
+| File selection (filtering) | `--regex PATTERN` | Upload only files matching a regular expression |
+| File selection (filtering) | `--ignore-glob "*.tmp"` | Ignore files matching a glob pattern (e.g. temporary files) |
+| File selection (filtering) | `--ignore PATTERN` | Ignore files matching a regex pattern |
+| Metadata | `--md-mtime` | Adds file modification time as metadata |
+| Metadata | `--md-path REGEX` | Extracts metadata from folder names |
 
 For advanced metadata examples, see [`doc/examples/extract_metadata.py`](https://github.com/kuleuven/mango-ingest/blob/development/doc/examples/extract_metadata.py).
 

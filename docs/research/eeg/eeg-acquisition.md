@@ -32,9 +32,17 @@ If you are collecting data over the summer, mind that the EEG room can get warm.
 
 ### Planning your time slot
 
-To ensure correct use of the EEG testing room, we use a booking system via **[Calira](https://app.clustermarket.com/login)**. Make sure to book your time slots well in advance. If you don’t yet have access, contact [Klara Schevenels](https://www.kuleuven.be/wieiswie/nl/person/00116743) to get the correct invitation link. When you book a time slot, add in the "note" field whether you are testing a participant (yes/no) and for whose study.
+To ensure correct use of the EEG testing room, we use a booking system via **[Calira](https://app.clustermarket.com/login)**. Make sure to book your time slots well in advance. If you don’t yet have access, contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to get the correct invitation link. Please always make a reservation in Calira when testing, even if the calendar appears empty. This ensures there is a clear record for insurance purposes.
 
-When planning your sessions, make sure to allocate enough time for setting up the EEG cap and electrodes (up to 45-60 minutes, depending on your experience and the participant's hair type). Also, allocate some time at the end of the session for removing the cap and cleaning up (probably around 20-30 minutes).
+To keep scheduling fair during busy periods with multiple studies running, the following **booking rules** apply:  
+
+- **Max. 4 booked slots per person per week.** If you need more (which can happen), please first ask permission from the other users in the EEG Slack channel.  
+- **Only book the EEG room when you have a confirmed participant.** The only exception is briefly booking time to test a script/setup. When booking your slot in Calira, please indicate in the notes whether you are testing a participant (Y/N) and for which study.  
+- **If you cancel a session, please mention it in the EEG Slack channel** so others can quickly take the freed slot.  
+- **Book realistic durations.** Please don’t reserve a 4h block for a 2h EEG session. Book the time you need to comfortably prepare the participant (up to 45-60 minutes, depending on your experience and the participant's hair type), collect the EEG data (depending on the study), and take care of cleaning (probably around 20-30 minutes).  
+
+!!! warning "Testing outside of regular office hours (evening/weekends)"
+    For the safety of both participants and researchers, we ask that EEG testing outside office hours is not done alone, but **with two people present**. If, for any exceptional reason, you do need to test alone outside office hours, please make sure there is **a clear communication line with a colleague** who is reachable and able to come to the lab on short notice if needed. Please make sure you know who this person is for your study.
 
 ## On the day: before the participant arrives
 
@@ -177,4 +185,4 @@ Hooray, you are now ready to start acquiring EEG data! To do so, follow these st
 5. Let the caps and syringes dry flat on the round table (do not hang the caps to dry). Put the electrode sets back on the rack (make sure they are stable and don't fall on the floor).
 
 !!! info "Data storage"
-    After transferring your data, make sure to follow the lab's [Research Data Management guidelines](../rdm/current.md) for organizing and backing up your dataset.
+    After transferring your data, make sure to follow the lab's [Research Data Management guidelines](../rdm/SOPs.md) for organizing and backing up your dataset.

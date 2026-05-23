@@ -1,6 +1,17 @@
 # How to manage your data at Hoplab
 
-This workflow (or technically speaking, Standard Operating Procedures) is the product of a consultation process with the Book A Data Manager team in 2025-2026. They aim to provide guidelines for collecting, organizing, and analyzing research data across the modalities used in our studies.
+This workflow (or technically speaking, Standard Operating Procedure) is the product of a consultation process with the Book A Data Manager team in 2025-2026. It serves as a guideline for collecting, organizing, and analyzing research data across the modalities used in our studies.
+
+As we are all collecting and processing [personal data](https://www.kuleuven.be/rdm/en/guidance/legal-ethical/personal_data) that is classified as confidential or strictly confidential according to the [KU Leuven data classification chart](https://www.kuleuven.be/rdm/en/guidance/storage/data_classification), this requires specific care and precautions in accordance with the [GDPR](https://admin.kuleuven.be/privacy/en/studpers/gdpr-code-of-conduct).
+
+- All research data should be [pseudonymized](https://admin.kuleuven.be/privacy/en/studpers/pae/pseudonymisation) ASAP, with the key stored separately from the dataset.  
+  Note that in our (neuroimaging) studies, full anonymization is almost impossible since reidentification cannot be fully eliminated (see [this page](https://www.kuleuven.be/rdm/en/guidance/legal-ethical/anonymise-pseudonymise) if you are unsure about the difference).
+
+- Sensitive data should be removed from unencrypted devices immediately (e.g., after transfer from the acquisition PC).
+
+- Files containing confidential information should always be [encrypted](https://admin.kuleuven.be/icts/english/research/datamgmtpract/ape/encryption) and restricted to authorised project members.
+
+Below, we provide more specific guidelines on how to manage your data per phase of the research lifecycle.
 
 ## Data collection
 
@@ -8,19 +19,12 @@ This workflow (or technically speaking, Standard Operating Procedures) is the pr
 
 Check whether the correct **ethical approval** is in place (see [this page](../ethics/index.md) for further information on the ethical procedure).
 
-- For behavioral and EEG studies, you need ethical approval from SMEC via the PRET platform;
-- For fMRI studies and studies involving patients, you need to register your study at the CTC and Radiology department of UZ Leuven, become and authorized user of the MRI scanner and get ethical approval from EC Research UZ/KU Leuven (more detailed information [here](../fmri/fmri-get-started.md)).
-- If your research is related to another study that has already been ethically approved, you can also file for an amendment to the existing approval. Note that for most studies in the NeuroSPACE project, ethical approval has already been obtained (fMRI: [S70813](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/EC%20onderzoek/S70813_Methusalem?csf=1&web=1&e=40KtDM/); EEG and behaviour: [G-2024-8685](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/SMEC/G-2024-8685_Methusalem/Latest%20documents?csf=1&web=1&e=Vc4LT7)).
-
-    !!! warning "Important"
-        Regularly update the number of participants you have tested (with a signed ICF) on each ethical application in the [ethics tracker](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/ethics_tracker.xlsx?d=w3176be826a5c428987db1b936bb8f422&csf=1&web=1&e=miRf4y).
-
-    !!! warning "Important"
-        Make sure you are using the latest and correct (approved) recruitment materials, information letters, demographics questionnaires and informed consent forms (ICFs). Contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) in case you are not sure which version you should use.
+!!! warning "Important"
+    Make sure you are using the latest and correct (approved) recruitment materials, information letters, demographics questionnaires and informed consent forms (ICFs). Contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) in case you are not sure which version you should use.
 
 ### 2. Create project folder (SharePoint)
 
-Create a **study-specific folder** on your personal SharePoint:
+When you start a new study, create a **study-specific folder** on your personal SharePoint:
 
 - Give it a sensible name, e.g. `2026-StudyAcronym-YourInitials`
 - Required subfolders:
@@ -56,9 +60,9 @@ For behavioural experiments, this can either be using one of the specified onlin
     - In **EEG experiments**, raw EEG data are saved in the `.bdf` format (on the Windows PC) and associated behavioral data in `.csv` and `.log` formats (on the Linux PC). Move the data from both PCs using an SSD to your personal Sharepoint site. Ensure the output files are pseudonymized as far as possible without impacting research results before proceeding (e.g. through the [BESA Anonymizer](https://wiki.besa.de/index.php?title=BESA_Anonymizer) and using BIDS compliant subject IDs).
     - In **fMRI experiments**, raw MRI data are automatically (temporarily) saved in the PACS system on the acquisition PC. To allow for optimal BIDS conversion of the data, export the data in DICOM format (more information [here](../fmri/analysis/fmri-general.md#how-to-get-images-from-the-scanner) and [here](../fmri/fmri-procedure.md#exporting-data)) using an SSD. Make sure to do the export **pseudonomously** by assigning a code name to the data (in BIDS format, e.g., `sub-01`), and to stick to a consistent DICOM layout across scans. Transfer the data from the SSD to your personal Sharepoint site.
   
-!!! Encrypting a Hard drive
-    If you also work with a Hard drive, it is important that you always encrypt Hard drives containing confidential or raw data.
-    This can be done so as follows:
+!!! info "Encrypting your hard drive"
+    If you also work with a hard drive containing confidential or raw data, it is important that you always encrypt it.
+    This can be done as follows:
 
     === "Windows (BitLocker)"
 
@@ -79,8 +83,8 @@ For behavioural experiments, this can either be using one of the specified onlin
         5. Enter and confirm a password. Store this password securely.
         6. Click **Erase** to format and encrypt the drive.
 
-    !!! warning
-        Erasing the drive will delete all existing data. Back up any important files before encrypting.
+            !!! warning
+                Erasing the drive will delete all existing data. Back up any important files before encrypting.
 
 ### 6. Store signed consent forms
 
@@ -88,7 +92,7 @@ Store **physically signed ICFs** properly in the designated secure location (i.e
 
 At the end of your study, you can bring them to the lab's physical data archive (ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) in case you don't know where that is).
 
-### 7. Confidential data
+### 7. Store confidential data securely
 
 **Confidential personal data** that is requested in the context of participant payment, communication of study results or at-home testing (name, phone number, email address, home address and/or bank account details) should be stored in the `confidential/` folder on your Sharepoint.
 
@@ -101,7 +105,7 @@ At the end of your study, you can bring them to the lab's physical data archive 
 
 ### 1. Convert to BIDS
 
-Reorganize the raw data files in your `BIDS/` folder in accordance with the **BIDS metadata standard** ([behavioural data](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/behavioral-experiments.html); [EEG data](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/electroencephalography.html); [fMRI data](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/magnetic-resonance-imaging-data.html)).
+Reorganise all the raw data files in your `BIDS/` folder according to the **BIDS standard**, independent of their modality (BIDS guidelines for [behavioural data](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/behavioral-experiments.html); [EEG data](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/electroencephalography.html); [fMRI data](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/magnetic-resonance-imaging-data.html)).
 
 - Personal demographic information you collect (age, education level, handedness, etc.) is considered research data if you use them in your analysis, so they need to be stored pseudonymously as well. In BIDS, these can be described in a [participant file](https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files/data-summary-files.html#participants-file) in the root directory of the dataset.
 - Make sure to add all the [modality agnostic files](https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html) the BIDS format requires, such that your experiment and dataset is properly documented (see also the guidelines [here](./offboarding.md#research-data-in-bids)).
@@ -125,7 +129,7 @@ If the different steps below are followed in quick succession (or certain steps 
 
 Depending on the workflow, you may want to [mount the ManGO platform as a virtual folder](https://rdm-docs.icts.kuleuven.be/mango/clients/sftp_clients.html) and read the data from that point rather than (re)downloading the data.​
 
-Throughout the process, you should make sure that any new or modified scripts are uploaded to the **GitHub environment** (see the page on [coding practices](../coding/version-control.md)).
+Throughout the process, you should make sure that any new or modified scripts and analysis code are uploaded to the **GitHub environment** (see the page on [coding practices](../coding/version-control.md)).
 
 ### 1. Download data
 
@@ -137,7 +141,7 @@ Preprocess the data (see the guidelines for [setting up your fMRI analysis envir
 
 ### 3. Perform analysis
 
-- For fMRI data, perform first-level (subject) analysis and second-level (group) analysis (via the [SPM GUI](../fmri/analysis/fmri-glm.md) or a [batch script](../fmri/analysis/fmri-glm-script.md)). If applicable, define subject-level or group-level ROIs (see [this page](../fmri/analysis/fmri-rois.md)), and perform multi-variate analysis (see [this page](../fmri/analysis/fmri-mvpa.md)).
+- For fMRI data, perform first-level (subject) analysis and second-level (group) analysis (via the [SPM GUI](../fmri/analysis/fmri-glm.md) or a [batch script](../fmri/analysis/fmri-glm-script.md)). If applicable, define ROIs (see [this page](../fmri/analysis/fmri-rois.md)), and perform multi-variate analysis (see [this page](../fmri/analysis/fmri-mvpa.md)).
 - For EEG data, you can find the analysis guidelines [here](../eeg/eeg-analysis.md).
 - For purely behavioural data, process them through your programming script (R, Matlab, Python).
 
@@ -158,7 +162,7 @@ Push the resulting data to ManGO using your preferred client and clear any data 
 
 When your study is ready for publication, share the dataset via [RDR](RDR_sharing.md):
 
-1. **Anonymize** your data: for fMRI, follow the [anonymization guide](../fmri/analysis/fmri-anonymization.md) (defacing, metadata scrubbing, participant review)
+1. **Pseudonymize** your data: for fMRI, follow [this guide](../fmri/analysis/fmri-anonymization.md) (defacing, metadata scrubbing, participant review)
 2. **Package** the dataset into ZIP bundles (see the [RDR guide](RDR_sharing.md#step-3-prepare-zip-files))
 3. **Upload** to RDR and fill in the required metadata
 4. **Link** the RDR DOI in your paper and code repository

@@ -47,7 +47,7 @@ Welcome to the landing page for all things related to functional MRI (fMRI) in o
 </div>
 
 !!! tip "Data Management"
-    Make sure to follow the lab's [Research Data Management guidelines](../rdm/index.md) throughout your project. See the [temporary RDM guidelines](../rdm/current.md) for current recommended practices on data storage and organization.
+    Make sure to follow the lab's [Research Data Management guidelines](../rdm/index.md) throughout your project. See the [temporary RDM guidelines](../rdm/SOPs.md) for current recommended practices on data storage and organization.
 
 ## Quick Links to Resources
 

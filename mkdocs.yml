@@ -21,10 +21,10 @@ nav:
     - research/index.md
     - Research data management:
       - research/rdm/index.md
-      - Temporary guidelines: research/rdm/current.md
       - Onboarding checklist: research/rdm/onboarding.md
       - Study workflow: research/rdm/SOPs.md
-      - ManGO for active research data: research/rdm/mango_active.md
+      - SharePoint for daily use: research/rdm/sharepoint_daily.md
+      - ManGO for active data: research/rdm/mango_active.md
       - FriGO for archiving: research/rdm/frigo_archive.md
       - RDR for data sharing: research/rdm/RDR_sharing.md
       - Offboarding checklist: research/rdm/offboarding.md

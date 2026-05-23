@@ -13,17 +13,21 @@ Our procedures aim to ensure:
 
 - **New to the lab?** → See the [*onboarding checklist*](onboarding.md)
 - **Leaving the lab?** → See the [*offboarding checklist*](offboarding.md)
-- **Starting a new study?** → Follow the appropriate [*workflows*](SOPs.md)
+- **Starting a new project?** → Follow the appropriate [*workflow*](SOPs.md)
 
-## Storage and sharing platforms
+## Tools we use to store and share data 
 
+- **SharePoint** → [How to](sharepoint_daily.md) set it up for daily use
 - **ManGO** → [How to](mango_active.md) store active research data
 - **FriGO** → [How to](frigo_archive.md) archive data on the long-term after projects end
 - **RDR** → [How to](RDR_sharing.md) publish and share datasets
 
+This decision tree shows the intended storage location of project data at Hoplab across the lifecycle:
+
+![Decision tree](../../assets/rdm_decision_tree_18122025.png)
+
 ## ⚠️ Work in progress
 
-Some procedures are still being tested or refined.
-Check the [**Temporary guidelines**](current.md) page for the currently recommended practices.
+These guidelines reflect the current working procedures and may be updated as workflows are tested and improved. Please check out this section regularly if you are starting a new project.
 
-If anything is unclear or missing, please contact the RDM responsible ([Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or [Andrea](https://www.kuleuven.be/wieiswie/nl/person/00152046)) so the documentation can be improved.
+If anything is unclear or missing, please contact the RDM responsibles ([Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or [Andrea](https://www.kuleuven.be/wieiswie/nl/person/00152046)) so the documentation can be refined. 
