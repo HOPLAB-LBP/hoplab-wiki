@@ -16,7 +16,7 @@
         <link rel="prev" href="onboarding.html">
       
       
-        <link rel="next" href="mango_active.html">
+        <link rel="next" href="sharepoint_daily.html">
       
       
         
@@ -844,34 +844,6 @@
   
   
     <li class="md-nav__item">
-      <a href="current.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Temporary guidelines
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="onboarding.html" class="md-nav__link">
         
   
@@ -1019,6 +991,34 @@
   
   
     <li class="md-nav__item">
+      <a href="sharepoint_daily.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SharePoint for daily use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="mango_active.html" class="md-nav__link">
         
   
@@ -1026,7 +1026,7 @@
   <span class="md-ellipsis">
     
   
-    ManGO for active research data
+    ManGO for active data
   
 
     
@@ -2643,27 +2643,30 @@
 
 
 <h1 id="how-to-manage-your-data-at-hoplab">How to manage your data at Hoplab<a class="headerlink" href="#how-to-manage-your-data-at-hoplab" title="Permanent link">&para;</a></h1>
-<p>This workflow (or technically speaking, Standard Operating Procedures) is the product of a consultation process with the Book A Data Manager team in 2025-2026. They aim to provide guidelines for collecting, organizing, and analyzing research data across the modalities used in our studies.</p>
+<p>This workflow (or technically speaking, Standard Operating Procedure) is the product of a consultation process with the Book A Data Manager team in 2025-2026. It serves as a guideline for collecting, organizing, and analyzing research data across the modalities used in our studies.</p>
+<p>As we are all collecting and processing <a href="https://www.kuleuven.be/rdm/en/guidance/legal-ethical/personal_data">personal data</a> that is classified as confidential or strictly confidential according to the <a href="https://www.kuleuven.be/rdm/en/guidance/storage/data_classification">KU Leuven data classification chart</a>, this requires specific care and precautions in accordance with the <a href="https://admin.kuleuven.be/privacy/en/studpers/gdpr-code-of-conduct">GDPR</a>.</p>
+<ul>
+<li>
+<p>All research data should be <a href="https://admin.kuleuven.be/privacy/en/studpers/pae/pseudonymisation">pseudonymized</a> ASAP, with the key stored separately from the dataset.<br />
+  Note that in our (neuroimaging) studies, full anonymization is almost impossible since reidentification cannot be fully eliminated (see <a href="https://www.kuleuven.be/rdm/en/guidance/legal-ethical/anonymise-pseudonymise">this page</a> if you are unsure about the difference).</p>
+</li>
+<li>
+<p>Sensitive data should be removed from unencrypted devices immediately (e.g., after transfer from the acquisition PC).</p>
+</li>
+<li>
+<p>Files containing confidential information should always be <a href="https://admin.kuleuven.be/icts/english/research/datamgmtpract/ape/encryption">encrypted</a> and restricted to authorised project members.</p>
+</li>
+</ul>
+<p>Below, we provide more specific guidelines on how to manage your data per phase of the research lifecycle.</p>
 <h2 id="data-collection">Data collection<a class="headerlink" href="#data-collection" title="Permanent link">&para;</a></h2>
 <h3 id="1-ethical-approval">1. Ethical approval<a class="headerlink" href="#1-ethical-approval" title="Permanent link">&para;</a></h3>
 <p>Check whether the correct <strong>ethical approval</strong> is in place (see <a href="../ethics/index.html">this page</a> for further information on the ethical procedure).</p>
-<ul>
-<li>For behavioral and EEG studies, you need ethical approval from SMEC via the PRET platform;</li>
-<li>For fMRI studies and studies involving patients, you need to register your study at the CTC and Radiology department of UZ Leuven, become and authorized user of the MRI scanner and get ethical approval from EC Research UZ/KU Leuven (more detailed information <a href="../fmri/fmri-get-started.html">here</a>).</li>
-<li>
-<p>If your research is related to another study that has already been ethically approved, you can also file for an amendment to the existing approval. Note that for most studies in the NeuroSPACE project, ethical approval has already been obtained (fMRI: <a href="https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/EC%20onderzoek/S70813_Methusalem?csf=1&amp;web=1&amp;e=40KtDM/">S70813</a>; EEG and behaviour: <a href="https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/SMEC/G-2024-8685_Methusalem/Latest%20documents?csf=1&amp;web=1&amp;e=Vc4LT7">G-2024-8685</a>).</p>
-<div class="admonition warning">
-<p class="admonition-title">Important</p>
-<p>Regularly update the number of participants you have tested (with a signed ICF) on each ethical application in the <a href="https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/ethics_tracker.xlsx?d=w3176be826a5c428987db1b936bb8f422&amp;csf=1&amp;web=1&amp;e=miRf4y">ethics tracker</a>.</p>
-</div>
 <div class="admonition warning">
 <p class="admonition-title">Important</p>
 <p>Make sure you are using the latest and correct (approved) recruitment materials, information letters, demographics questionnaires and informed consent forms (ICFs). Contact <a href="https://www.kuleuven.be/wieiswie/nl/person/00116743">Klara</a> in case you are not sure which version you should use.</p>
 </div>
-</li>
-</ul>
 <h3 id="2-create-project-folder-sharepoint">2. Create project folder (SharePoint)<a class="headerlink" href="#2-create-project-folder-sharepoint" title="Permanent link">&para;</a></h3>
-<p>Create a <strong>study-specific folder</strong> on your personal SharePoint:</p>
+<p>When you start a new study, create a <strong>study-specific folder</strong> on your personal SharePoint:</p>
 <ul>
 <li>Give it a sensible name, e.g. <code>2026-StudyAcronym-YourInitials</code></li>
 <li>Required subfolders:<ul>
@@ -2701,10 +2704,10 @@
 </ul>
 </li>
 </ol>
-<div class="admonition encrypting a hard drive">
-<p class="admonition-title">Encrypting</p>
-<p>If you also work with a Hard drive, it is important that you always encrypt Hard drives containing confidential or raw data.
-This can be done so as follows:</p>
+<div class="admonition info">
+<p class="admonition-title">Encrypting your hard drive</p>
+<p>If you also work with a hard drive containing confidential or raw data, it is important that you always encrypt it.
+This can be done as follows:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="windows-bitlocker" name="__tabbed_1" type="radio" /><input id="mac-disk-utility" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="windows-bitlocker">Windows (BitLocker)</label><label for="mac-disk-utility">Mac (Disk Utility)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2724,20 +2727,22 @@ This can be done so as follows:</p>
 <li>Select the external drive in the sidebar and click <strong>Erase</strong>.</li>
 <li>Set the <strong>Format</strong> to <strong>APFS (Encrypted)</strong> or <strong>Mac OS Extended (Journaled, Encrypted)</strong>.</li>
 <li>Enter and confirm a password. Store this password securely.</li>
-<li>Click <strong>Erase</strong> to format and encrypt the drive.</li>
-</ol>
-</div>
-</div>
-</div>
+<li>
+<p>Click <strong>Erase</strong> to format and encrypt the drive.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Erasing the drive will delete all existing data. Back up any important files before encrypting.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 <h3 id="6-store-signed-consent-forms">6. Store signed consent forms<a class="headerlink" href="#6-store-signed-consent-forms" title="Permanent link">&para;</a></h3>
 <p>Store <strong>physically signed ICFs</strong> properly in the designated secure location (i.e., a locked cupboard in your office). They must be stored for a retention period of at least 10 years (SMEC) or 25 years (EC).</p>
 <p>At the end of your study, you can bring them to the lab's physical data archive (ask <a href="https://www.kuleuven.be/wieiswie/nl/person/00116743">Klara</a> in case you don't know where that is).</p>
-<h3 id="7-confidential-data">7. Confidential data<a class="headerlink" href="#7-confidential-data" title="Permanent link">&para;</a></h3>
+<h3 id="7-store-confidential-data-securely">7. Store confidential data securely<a class="headerlink" href="#7-store-confidential-data-securely" title="Permanent link">&para;</a></h3>
 <p><strong>Confidential personal data</strong> that is requested in the context of participant payment, communication of study results or at-home testing (name, phone number, email address, home address and/or bank account details) should be stored in the <code>confidential/</code> folder on your Sharepoint.</p>
 <div class="admonition warning">
 <p class="admonition-title">Important</p>
@@ -2746,7 +2751,7 @@ This can be done so as follows:</p>
 </div>
 <h2 id="data-organisation">Data organisation<a class="headerlink" href="#data-organisation" title="Permanent link">&para;</a></h2>
 <h3 id="1-convert-to-bids">1. Convert to BIDS<a class="headerlink" href="#1-convert-to-bids" title="Permanent link">&para;</a></h3>
-<p>Reorganize the raw data files in your <code>BIDS/</code> folder in accordance with the <strong>BIDS metadata standard</strong> (<a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/behavioral-experiments.html">behavioural data</a>; <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/electroencephalography.html">EEG data</a>; <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/magnetic-resonance-imaging-data.html">fMRI data</a>).</p>
+<p>Reorganise all the raw data files in your <code>BIDS/</code> folder according to the <strong>BIDS standard</strong>, independent of their modality (BIDS guidelines for <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/behavioral-experiments.html">behavioural data</a>; <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/electroencephalography.html">EEG data</a>; <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/magnetic-resonance-imaging-data.html">fMRI data</a>).</p>
 <ul>
 <li>Personal demographic information you collect (age, education level, handedness, etc.) is considered research data if you use them in your analysis, so they need to be stored pseudonymously as well. In BIDS, these can be described in a <a href="https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files/data-summary-files.html#participants-file">participant file</a> in the root directory of the dataset.</li>
 <li>Make sure to add all the <a href="https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html">modality agnostic files</a> the BIDS format requires, such that your experiment and dataset is properly documented (see also the guidelines <a href="offboarding.html#research-data-in-bids">here</a>).</li>
@@ -2767,14 +2772,14 @@ This can be done so as follows:</p>
 <h2 id="data-preprocessing-analysis">Data preprocessing &amp; analysis<a class="headerlink" href="#data-preprocessing-analysis" title="Permanent link">&para;</a></h2>
 <p>If the different steps below are followed in quick succession (or certain steps are done several times), repeated downloads/uploads make less sense and might be cumbersome. Therefore, they may be omitted, but researchers should keep in mind that ManGO is the main storage location for the research data and should thus be kept up to date.​</p>
 <p>Depending on the workflow, you may want to <a href="https://rdm-docs.icts.kuleuven.be/mango/clients/sftp_clients.html">mount the ManGO platform as a virtual folder</a> and read the data from that point rather than (re)downloading the data.​</p>
-<p>Throughout the process, you should make sure that any new or modified scripts are uploaded to the <strong>GitHub environment</strong> (see the page on <a href="../coding/version-control.html">coding practices</a>).</p>
+<p>Throughout the process, you should make sure that any new or modified scripts and analysis code are uploaded to the <strong>GitHub environment</strong> (see the page on <a href="../coding/version-control.html">coding practices</a>).</p>
 <h3 id="1-download-data">1. Download data<a class="headerlink" href="#1-download-data" title="Permanent link">&para;</a></h3>
 <p>Download the data from Sharepoint or ManGO to a local computer (e.g., your laptop, a more performant local computer or the <a href="../fmri/fmri-hpc.html">HPC infrastructure</a>).</p>
 <h3 id="2-preprocess-data">2. Preprocess data<a class="headerlink" href="#2-preprocess-data" title="Permanent link">&para;</a></h3>
 <p>Preprocess the data (see the guidelines for <a href="../fmri/analysis/fmri-setup-env.html">setting up your fMRI analysis environment</a>, <a href="../fmri/analysis/fmri-prepocessing-qa.html">preprocessing of fMRI data</a> and <a href="../eeg/eeg-analysis.html">preprocessing of EEG data</a>).</p>
 <h3 id="3-perform-analysis">3. Perform analysis<a class="headerlink" href="#3-perform-analysis" title="Permanent link">&para;</a></h3>
 <ul>
-<li>For fMRI data, perform first-level (subject) analysis and second-level (group) analysis (via the <a href="../fmri/analysis/fmri-glm.html">SPM GUI</a> or a <a href="../fmri/analysis/fmri-glm-script.html">batch script</a>). If applicable, define subject-level or group-level ROIs (see <a href="../fmri/analysis/fmri-rois.html">this page</a>), and perform multi-variate analysis (see <a href="../fmri/analysis/fmri-mvpa.html">this page</a>).</li>
+<li>For fMRI data, perform first-level (subject) analysis and second-level (group) analysis (via the <a href="../fmri/analysis/fmri-glm.html">SPM GUI</a> or a <a href="../fmri/analysis/fmri-glm-script.html">batch script</a>). If applicable, define ROIs (see <a href="../fmri/analysis/fmri-rois.html">this page</a>), and perform multi-variate analysis (see <a href="../fmri/analysis/fmri-mvpa.html">this page</a>).</li>
 <li>For EEG data, you can find the analysis guidelines <a href="../eeg/eeg-analysis.html">here</a>.</li>
 <li>For purely behavioural data, process them through your programming script (R, Matlab, Python).</li>
 </ul>
@@ -2791,7 +2796,7 @@ This can be done so as follows:</p>
 <h2 id="data-sharing-when-publishing">Data sharing (when publishing)<a class="headerlink" href="#data-sharing-when-publishing" title="Permanent link">&para;</a></h2>
 <p>When your study is ready for publication, share the dataset via <a href="RDR_sharing.html">RDR</a>:</p>
 <ol>
-<li><strong>Anonymize</strong> your data: for fMRI, follow the <a href="../fmri/analysis/fmri-anonymization.html">anonymization guide</a> (defacing, metadata scrubbing, participant review)</li>
+<li><strong>Pseudonymize</strong> your data: for fMRI, follow <a href="../fmri/analysis/fmri-anonymization.html">this guide</a> (defacing, metadata scrubbing, participant review)</li>
 <li><strong>Package</strong> the dataset into ZIP bundles (see the <a href="RDR_sharing.html#step-3-prepare-zip-files">RDR guide</a>)</li>
 <li><strong>Upload</strong> to RDR and fill in the required metadata</li>
 <li><strong>Link</strong> the RDR DOI in your paper and code repository</li>
@@ -2904,13 +2909,13 @@ This can be done so as follows:</p>
         
         
           
-          <a href="mango_active.html" class="md-footer__link md-footer__link--next" aria-label="Next: ManGO for active research data">
+          <a href="sharepoint_daily.html" class="md-footer__link md-footer__link--next" aria-label="Next: SharePoint for daily use">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                ManGO for active research data
+                SharePoint for daily use
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://hoplab-lbp.github.io/hoplab-wiki/research/rdm/mango_active.html">
       
       
-        <link rel="prev" href="SOPs.html">
+        <link rel="prev" href="sharepoint_daily.html">
       
       
         <link rel="next" href="frigo_archive.html">
@@ -27,7 +27,7 @@
     
     
       
-        <title>ManGO for active research data - Hoplab Wiki</title>
+        <title>ManGO for active data - Hoplab Wiki</title>
       
     
     
@@ -127,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ManGO for active research data
+              ManGO for active data
             
           </span>
         </div>
@@ -844,34 +844,6 @@
   
   
     <li class="md-nav__item">
-      <a href="current.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Temporary guidelines
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="onboarding.html" class="md-nav__link">
         
   
@@ -925,6 +897,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="sharepoint_daily.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SharePoint for daily use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -944,7 +944,7 @@
   <span class="md-ellipsis">
     
   
-    ManGO for active research data
+    ManGO for active data
   
 
     
@@ -962,7 +962,7 @@
   <span class="md-ellipsis">
     
   
-    ManGO for active research data
+    ManGO for active data
   
 
     
@@ -988,10 +988,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-and-setting-up-the-python-irodsclient-prc" class="md-nav__link">
+  <a href="#the-python-irodsclient-prc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing and setting up the Python-iRODSClient (PRC)
+        The Python-iRODSClient (PRC)
       
     </span>
   </a>
@@ -999,32 +999,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-a-mango-session-and-uploading-files-to-irods-python" class="md-nav__link">
+  <a href="#mango-ingest" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Creating a ManGO session and uploading files to iRODS (Python)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#downloading-files-from-irods-python" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Downloading files from iRODS (Python)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring-a-folder-with-mango-ingest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring a folder with ManGO Ingest
+        ManGO Ingest
       
     </span>
   </a>
@@ -2574,10 +2552,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-and-setting-up-the-python-irodsclient-prc" class="md-nav__link">
+  <a href="#the-python-irodsclient-prc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing and setting up the Python-iRODSClient (PRC)
+        The Python-iRODSClient (PRC)
       
     </span>
   </a>
@@ -2585,32 +2563,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-a-mango-session-and-uploading-files-to-irods-python" class="md-nav__link">
+  <a href="#mango-ingest" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Creating a ManGO session and uploading files to iRODS (Python)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#downloading-files-from-irods-python" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Downloading files from iRODS (Python)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring-a-folder-with-mango-ingest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring a folder with ManGO Ingest
+        ManGO Ingest
       
     </span>
   </a>
@@ -2643,22 +2599,31 @@
 
 
 <h1 id="mango-for-active-research-data">ManGO for active research data<a class="headerlink" href="#mango-for-active-research-data" title="Permanent link">&para;</a></h1>
-<p>In Hoplab, we expect you to save active research data on <a href="https://mango.kuleuven.be/">ManGO</a>. After logging in with your KU Leuven credentials, every researcher should have access to a personal folder within the <code>Hoplab project</code>. In your personal folder, you can then create a subfolder per (active) study. If this is not the case, contact <a href="https://www.kuleuven.be/wieiswie/nl/person/00116743">Klara</a> to create a new folder and set the correct permissions. Check out the <a href="SOPs.html">research workflows page</a> for more specific guidelines on how to manage your study data depending on the used research modality.</p>
-<p>General documentation on ManGO can be found <a href="https://rdm-docs.icts.kuleuven.be/mango/index.html">here</a>. This page will focus on the setup and use of Python to interact with ManGO and is mainly based on the instructions on <a href="https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html">this page</a>. Note that there exist other clients to connect to ManGO (e.g., the ManGO portal in the browser, iron CLI Client, iCommands and several SFTP clients), which we won't cover here but you are of course welcome to explore.</p>
-<h2 id="installing-and-setting-up-the-python-irodsclient-prc">Installing and setting up the Python-iRODSClient (PRC)<a class="headerlink" href="#installing-and-setting-up-the-python-irodsclient-prc" title="Permanent link">&para;</a></h2>
+<p>After logging in in <a href="https://mango.kuleuven.be/">ManGO</a> with your KU Leuven credentials, every researcher should have access to a personal folder within the <code>Hoplab project</code>. In your personal folder, you can then create a subfolder per (active) study. If this is not the case, contact <a href="https://www.kuleuven.be/wieiswie/nl/person/00116743">Klara</a> to create a new folder and set the correct permissions. Check out the <a href="SOPs.html">research workflow page</a> for more specific guidelines on how to organize your study data in ManGO.</p>
+<p>ManGO is based on the open source software iRODS. General documentation on ManGO can be found <a href="https://rdm-docs.icts.kuleuven.be/mango/index.html">here</a>. This page will focus on the setup and use of two clients to interact with ManGO, i.e., the <strong>Python-iRODSClient</strong> and <strong>ManGO Ingest</strong>, and is mainly based on the instructions on <a href="https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html">this</a> and <a href="https://github.com/kuleuven/mango-ingest/blob/development/README.md">this</a> page, respectively. Note that there exist other clients to connect to ManGO (e.g., the ManGO portal in the browser, iron CLI Client, iCommands and several SFTP clients), which we won't cover here but you are of course welcome to explore.</p>
+<h2 id="the-python-irodsclient-prc">The Python-iRODSClient (PRC)<a class="headerlink" href="#the-python-irodsclient-prc" title="Permanent link">&para;</a></h2>
+<h3 id="installing-and-setting-up-the-client">Installing and setting up the client<a class="headerlink" href="#installing-and-setting-up-the-client" title="Permanent link">&para;</a></h3>
 <p>Using a virtual environment keeps things clean and avoids breaking other Python setups. To do so, open a terminal in your project folder and activate it. To avoid issues with KU Leuven policy restrictions, we use Conda for this. If you don't have Conda installed, download and install it from <a href="https://www.anaconda.com/docs/getting-started/miniconda/main">Conda's official website</a>.</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>mango_env<span class="w">   </span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>mango_env
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># create environment</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>mango_env<span class="w"> </span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># activate environment</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>conda<span class="w"> </span>activate<span class="w"> </span>mango_env
 </span></code></pre></div>
-You should see (mango_env) in your terminal. Now, we can install the Python-iRODSClient and check the installation:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>python-irodsclient
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>pip<span class="w"> </span>show<span class="w"> </span>python-irodsclient
+<p>You should see (mango_env) in your terminal. Now, we can install the Python-iRODSClient and check the installation:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># install client</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>pip<span class="w"> </span>install<span class="w"> </span>python-irodsclient
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># verify installation</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>pip<span class="w"> </span>show<span class="w"> </span>python-irodsclient
 </span></code></pre></div>
-<p>Next, we have to make sure you are logged in to ManGO and your irods_environment.json is configured correctly. The Python client needs an environment file that tells it which server to connect to, your username, SSL settings and authentification method. To do so, we have to install the required authentication package:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mango_auth
+<p>Next, we have to make sure you are logged in to ManGO and your <code>irods_environment.json</code> is configured correctly. The Python client needs an environment file that tells it which server to connect to, your username, SSL settings and authentification method. To do so, we have to install the required authentication package:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># install authentication package</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>pip<span class="w"> </span>install<span class="w"> </span>mango_auth
 </span></code></pre></div>
-<p>Then, go to the "How to connect" page in <a href="https://mango.kuleuven.be/">the ManGO portal</a> to get your irods_user_name, irods_zone_name and irods_host information. Execute the command below with your own information in your terminal:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mango_auth<span class="w"> </span>&lt;irods_user_name&gt;<span class="w"> </span>&lt;irods_zone_name&gt;<span class="w"> </span>&lt;irods_host&gt;
+<p>Then, go to the "How to connect" page in <a href="https://mango.kuleuven.be/">the ManGO portal</a> to get your <code>irods_user_name</code>, <code>irods_zone_name</code> and <code>irods_host</code> information. Execute the command below with your own information in your terminal:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># log in to mango</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>mango_auth<span class="w"> </span>&lt;irods_user_name&gt;<span class="w"> </span>&lt;irods_zone_name&gt;<span class="w"> </span>&lt;irods_host&gt;
 </span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -2672,20 +2637,20 @@ You should see (mango_env) in your terminal. Now, we can install the Python-iROD
 </span></code></pre></div>
 </div>
 <p>You will be redirected to your terminal, where you have to click the displayed authentication link. After successful login, an environment file is created at <code>~/.irods/irods_environment.json</code>. You now have a connection with the default password duration of 60 hours. However, it is also possible to log in with a password of long duration (7 days) if you have a Linux client environment with iCommands installed (see <a href="https://rdm-docs.icts.kuleuven.be/mango/clients/icommands.html">this page</a>).</p>
-<h2 id="creating-a-mango-session-and-uploading-files-to-irods-python">Creating a ManGO session and uploading files to iRODS (Python)<a class="headerlink" href="#creating-a-mango-session-and-uploading-files-to-irods-python" title="Permanent link">&para;</a></h2>
-<p>This section contains a script to create a ManGO (iRODS) session using your environment file and upload files from a local directory to an iRODS collection. It supports both single files and full folders (including subfolders) and recreates the folder structure in iRODS. Optionally, it also sets read permissions.</p>
+<h3 id="creating-a-mango-session-and-uploading-files-to-irods">Creating a ManGO session and uploading files to iRODS<a class="headerlink" href="#creating-a-mango-session-and-uploading-files-to-irods" title="Permanent link">&para;</a></h3>
+<p>This section contains a script to create a ManGO (iRODS) session using your environment file and upload files from a local directory to an iRODS collection, using the Python-iRODS client. It supports both single files and full folders (including subfolders) and recreates the folder structure in iRODS. Optionally, it also sets read permissions.</p>
 <p>Before you start, make sure that:</p>
 <ul>
 <li>You have access to your personal folder on ManGO (do a quick check via the browser)</li>
-<li>You installed the Python-iRODSClient (see <a href="#installing-and-setting-up-the-python-irodsclient-prc">previous section</a>)</li>
-<li>You are logged in and your irods_environment.json is configured correctly (see <a href="#installing-and-setting-up-the-python-irodsclient-prc">previous section</a>)</li>
+<li>You installed the Python-iRODSClient (see <a href="#installing-and-setting-up-the-client">previous section</a>)</li>
+<li>You are logged in and your irods_environment.json is configured correctly (see <a href="#installing-and-setting-up-the-client">previous section</a>)</li>
 <li>Your data is in BIDS format</li>
 </ul>
 <p>Before running the script, make sure to change the following variables:</p>
 <ul>
 <li><code>local_path</code> to your local folder containing the data</li>
-<li>
-<p><code>collection_path</code> to the ManGO/iRODS destination folder</p>
+<li><code>collection_path</code> to the ManGO/iRODS destination folder</li>
+</ul>
 <div class="admonition warning">
 <p class="admonition-title">Common errors</p>
 <ul>
@@ -2693,15 +2658,13 @@ You should see (mango_env) in your terminal. Now, we can install the Python-iROD
 <li>If the environment file is not found, verify that you are logged in and that the file exists at <code>~/.irods/irods_environment.json</code>.</li>
 </ul>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Important</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <ul>
-<li>The name of the local folder itself is not uploaded, only its contents. If you want to preserver the folder name, include it in the <code>collection_path</code>.</li>
+<li>The name of the folder itself is not uploaded, only its contents. If you want to preserve its name, include it in <code>collection_path</code>.</li>
 <li>The destination collection can already exist. If it does not exist, the script will create it automatically.</li>
 </ul>
 </div>
-</li>
-</ul>
 <div class="language-python highlight"><span class="filename">mango_upload.py</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">ssl</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -2790,11 +2753,11 @@ You should see (mango_env) in your terminal. Now, we can install the Python-iROD
 </span><span id="__span-5-86"><a id="__codelineno-5-86" name="__codelineno-5-86" href="#__codelineno-5-86"></a><span class="k">else</span><span class="p">:</span>
 </span><span id="__span-5-87"><a id="__codelineno-5-87" name="__codelineno-5-87" href="#__codelineno-5-87"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cannot proceed: check that both local_path and iRODS environment file exist.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<h2 id="downloading-files-from-irods-python">Downloading files from iRODS (Python)<a class="headerlink" href="#downloading-files-from-irods-python" title="Permanent link">&para;</a></h2>
-<p>This section contains a script to download a complete iRODS collection to your computer. It supports both single files and full folders (including subfolders). It allows for parallel downloads in case of large datasets.</p>
+<h3 id="downloading-files-from-irods">Downloading files from iRODS<a class="headerlink" href="#downloading-files-from-irods" title="Permanent link">&para;</a></h3>
+<p>This section contains a script to download a complete iRODS collection to your computer using the Python-iRODS client. It supports both single files and full folders (including subfolders). It allows for parallel downloads in case of large datasets.</p>
 <p>It will:</p>
 <ul>
-<li>Connect using your irods_environment.json (see <a href="#installing-and-setting-up-the-python-irodsclient-prc">this section</a>)</li>
+<li>Connect using your irods_environment.json (see <a href="#installing-and-setting-up-the-client">this section</a>)</li>
 <li>Download all files in the chosen ManGO folder (recursively, so it also handles all subfolders)</li>
 <li>Recreate the same folder structure locally</li>
 <li>Skip files that already exist to prevent accidental overwrite</li>
@@ -2803,8 +2766,8 @@ You should see (mango_env) in your terminal. Now, we can install the Python-iROD
 <ul>
 <li><code>IRODS_COLLECTION</code> = path to the ManGO folder you want to download from</li>
 <li><code>LOCAL_DEST</code> = your local folder you want to download to</li>
-<li>
-<p><code>THREADS</code> = set the number of parallel downloads (4-8 is usually safe)</p>
+<li><code>THREADS</code> = set the number of parallel downloads (4-8 is usually safe)</li>
+</ul>
 <div class="admonition warning">
 <p class="admonition-title">Common errors</p>
 <ul>
@@ -2812,15 +2775,13 @@ You should see (mango_env) in your terminal. Now, we can install the Python-iROD
 <li>If the environment file is not found, verify that you are logged in and that the file exists at <code>~/.irods/irods_environment.json</code>.</li>
 </ul>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Important</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <ul>
-<li>The name of the local folder itself is not downloaded, only its contents. If you want to preserver the folder name, include it in the <code>LOCAL_DEST</code>.</li>
+<li>The name of the folder itself is not downloaded, only its contents. If you want to preserve its name, include it in <code>LOCAL_DEST</code>.</li>
 <li>The destination collection can already exist. If it does not exist, the script will create it automatically.</li>
 </ul>
 </div>
-</li>
-</ul>
 <div class="language-python highlight"><span class="filename">mango_download.py</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="sd">Download a full ManGO (iRODS) folder to your computer using parallel downloads.</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
@@ -2926,7 +2887,7 @@ You should see (mango_env) in your terminal. Now, we can install the Python-iROD
 </span><span id="__span-6-103"><a id="__codelineno-6-103" name="__codelineno-6-103" href="#__codelineno-6-103"></a>
 </span><span id="__span-6-104"><a id="__codelineno-6-104" name="__codelineno-6-104" href="#__codelineno-6-104"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Finished download.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<h2 id="monitoring-a-folder-with-mango-ingest">Monitoring a folder with ManGO Ingest<a class="headerlink" href="#monitoring-a-folder-with-mango-ingest" title="Permanent link">&para;</a></h2>
+<h2 id="mango-ingest">ManGO Ingest<a class="headerlink" href="#mango-ingest" title="Permanent link">&para;</a></h2>
 <p>ManGO Ingest watches a local folder and uploads its contents to a ManGO collection. After triggering it, it automatically detects new or modified files and uploads only (part of) those changes.</p>
 <p>This is useful when you regularly add or update files locally (for example, during ongoing data collection) and want them pushed efficiently to ManGO.</p>
 <p>ManGO Ingest can:</p>
@@ -2934,102 +2895,150 @@ You should see (mango_env) in your terminal. Now, we can install the Python-iROD
 <li>run once and upload everthing currently present, or</li>
 <li>continuously monitor the folder and upload new files automatically</li>
 </ul>
-<p>Uploads are <strong>one-way only</strong>: changes made in ManGO are not pulled down locally.</p>
+<div class="admonition tip">
+<p class="admonition-title">Remarks &amp; practical tips</p>
+<ul>
+<li>Uploads are <strong>one-way only</strong>: changes made in ManGO are not pulled down locally.</li>
+<li>Deleting files locally does <strong>not</strong> remove them from ManGO.</li>
+<li>Empty folders cannot be uploaded.</li>
+<li>Removing the monitored folder (or unplugging the drive) while ingest runs will cause errors.</li>
+<li>Re-running mango-ingest with the same local path only uploads new or modified files/folders.</li>
+<li>A <code>.json</code> log file is created for every sync. This file records upload status and errors and can be used for restart.</li>
+</ul>
+</div>
 <p>We'll guide you through the setup, but if you want more information, here are a few useful resources:</p>
 <ul>
 <li><a href="https://github.com/kuleuven/mango-ingest/blob/development/README.md">ManGO Ingest README</a></li>
 <li><a href="https://github.com/kuleuven/mango-ingest/issues/14">Github issue for setting up in Windows</a></li>
 <li><a href="https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html">Documentation on the Python-iRODSClient</a></li>
 </ul>
-<h3 id="how-to-use-mango-ingest">How to use ManGO Ingest<a class="headerlink" href="#how-to-use-mango-ingest" title="Permanent link">&para;</a></h3>
+<h3 id="installing-and-setting-up-the-client_1">Installing and setting up the client<a class="headerlink" href="#installing-and-setting-up-the-client_1" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Download the <a href="https://github.com/kuleuven/mango-ingest/tree/development">mango-ingest development branch</a> and unzip it into: <code>C:\Workdir\MyApps</code></p>
 </li>
 <li>
 <p>Open a command prompt and navigate</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;C:\Workdir\MyApps\mango-ingest-development&quot;</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Create and activate a virtual environment</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># create environment</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># activate environment</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>venv<span class="se">\\</span>Scripts<span class="se">\\</span>activate
+</span></code></pre></div>
+</li>
+<li>
+<p>Install mango-ingest and check packages</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># install mango-ingest</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>mango-ingest-development
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># check installation</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>list
+</span></code></pre></div>
+</li>
+<li>
+<p>If you haven't yet, install the Python-iRODSClient (PRC) and authentication tools, and log in to iRODS</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># install prc</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>pip<span class="w"> </span>install<span class="w"> </span>python-irodsclient
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># install authentication package</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>pip<span class="w"> </span>install<span class="w"> </span>mango_auth
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># log in to mango</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>mango_auth<span class="w"> </span>&lt;your_username&gt;<span class="w"> </span>ghum<span class="w"> </span>ghum.irods.icts.kuleuven.be
+</span></code></pre></div>
+</li>
+<li>
+<p>Adapt your paths in the line below and start ingest for a local folder</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>python<span class="w"> </span>-m<span class="w"> </span>mango_ingest<span class="w"> </span>-d<span class="w"> </span>/ghum/home/Hoplab/<span class="o">[</span>collection<span class="o">]</span>/<span class="o">[</span>sub-collection<span class="o">]</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;path_to_data_to_upload&quot;</span><span class="w"> </span>-nw<span class="w"> </span>-r<span class="w"> </span>--verify-checksum
+</span></code></pre></div>
 </li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span>C:<span class="se">\W</span>orkdir<span class="se">\M</span>yApps<span class="se">\m</span>ango-ingest-development
-</span></code></pre></div>
-<ol>
-<li>Create an activate a virtual environment</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
-</span></code></pre></div>
-<ol>
-<li>Install mango-ingest and check packages</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>venv<span class="se">\S</span>cripts<span class="se">\p</span>ython<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>mango-ingest-development
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>venv<span class="se">\S</span>cripts<span class="se">\p</span>ython<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>list
-</span></code></pre></div>
-<ol>
-<li>If you haven't yet, install the Python-iRODSClient (PRC) and authentication tools, and log in to iRODS</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>pip<span class="w"> </span>install<span class="w"> </span>python-irodsclient
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>pip<span class="w"> </span>install<span class="w"> </span>mango_auth
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>mango_auth<span class="w"> </span>&lt;your_username&gt;<span class="w"> </span>ghum<span class="w"> </span>ghum.irods.icts.kuleuven.be
-</span></code></pre></div>
-<ol>
-<li>Start ingest for a local folder</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>venv<span class="se">\S</span>cripts<span class="se">\p</span>ython<span class="w"> </span>-m<span class="w"> </span>mango_ingest<span class="w"> </span>-d<span class="w"> </span>/ghum/home/Hoplab/<span class="o">[</span>collection<span class="o">]</span>/<span class="o">[</span>sub-collection<span class="o">]</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;path_to_data_to_upload&quot;</span><span class="w"> </span>-nw<span class="w"> </span>-r<span class="w"> </span>--verify-checksum
-</span></code></pre></div>
 <h3 id="command-options-explained">Command options explained<a class="headerlink" href="#command-options-explained" title="Permanent link">&para;</a></h3>
-<h4 id="core-paths">Core paths<a class="headerlink" href="#core-paths" title="Permanent link">&para;</a></h4>
-<p><code>-d</code>
-Destination collection path in ManGO.</p>
-<p><code>-p</code>
-Local folder path to upload and monitor.</p>
-<h4 id="upload-behaviour">Upload behaviour<a class="headerlink" href="#upload-behaviour" title="Permanent link">&para;</a></h4>
-<p><code>-nw</code>
-Run once only.
-Uploads current files and exits.
-If omitted, the folder stays monitored for future changes and new files will be uploaded automatically as they appear.</p>
-<p><code>-r</code>
-Upload folders recursively, including all subfolders and files.</p>
-<p><code>--sync</code>
-Useful when starting ingest for the first time.
-Ensures the existing folder contents are uploaded.
-(Automatically implied when using <code>-nw</code>.)</p>
-<h4 id="file-integrity-and-recovery">File integrity and recovery<a class="headerlink" href="#file-integrity-and-recovery" title="Permanent link">&para;</a></h4>
-<p><code>--verify-checksum</code>
-Recommended for large datasets.
-After transfer, ManGO verifies that the uploaded file matches the original.
-This protects against silent corruption during transfer.</p>
-<p><code>--restart &lt;logfile.json&gt;</code>
-Retries failed uploads from a previous run using its JSON log file.</p>
-<h4 id="file-selection-optional-filtering">File selection (optional filtering)<a class="headerlink" href="#file-selection-optional-filtering" title="Permanent link">&para;</a></h4>
-<p>Upload only matching files:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>--glob<span class="w"> </span><span class="s2">&quot;*.edf&quot;</span><span class="w">  </span><span class="c1"># for EEG files only</span>
-</span></code></pre></div>
-<p>or</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>--regex<span class="w"> </span>PATTERN
-</span></code></pre></div>
-<p>Ignore specific files:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>--ignore-glob<span class="w"> </span><span class="s2">&quot;*.tmp&quot;</span><span class="w"> </span><span class="c1"># to ignore temporary files</span>
-</span></code></pre></div>
-<p>or</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>--ignore<span class="w"> </span>PATTERN
-</span></code></pre></div>
-<h3 id="remarks-practical-tips">Remarks &amp; practical tips<a class="headerlink" href="#remarks-practical-tips" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Deleting files locally does <strong>not</strong> remove them from ManGO.</li>
-<li>Empty folders cannot be uploaded.</li>
-<li>Removing the monitored folder (or unplugging the drive) while ingest runs will cause errors.</li>
-<li>Re-running mango-ingest with the same local path only uploads new or modified files/folders.</li>
-<li>A <code>.json</code> log file is created for every sync. This file records upload status and errors and can be used for restart.</li>
-<li>ManGO Ingest can also automatically attach metadata:<ul>
-<li><code>--md-mtime</code> → add file modification time</li>
-<li><code>--md-path REGEX</code> → extract metadata from folder names</li>
-</ul>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core paths</td>
+<td><code>-d</code></td>
+<td>Destination collection path in ManGO</td>
+</tr>
+<tr>
+<td>Core paths</td>
+<td><code>-p</code></td>
+<td>Local folder path to upload and monitor</td>
+</tr>
+<tr>
+<td>Upload behaviour</td>
+<td><code>-nw</code></td>
+<td>Run once only. Uploads current files and exits. If omitted, the folder is continuously monitored and new files are uploaded automatically as they appear</td>
+</tr>
+<tr>
+<td>Upload behaviour</td>
+<td><code>-r</code></td>
+<td>Upload folders recursively, including all subfolders and files</td>
+</tr>
+<tr>
+<td>Upload behaviour</td>
+<td><code>--sync</code></td>
+<td>Ensures existing folder contents are uploaded when starting ingest, useful when starting ingest for the first time (automatically implied with <code>-nw</code>)</td>
+</tr>
+<tr>
+<td>File integrity and recovery</td>
+<td><code>--verify-checksum</code></td>
+<td>Verifies uploaded files match originals after transfer to prevent silent corruption during transfer (recommended for large datasets)</td>
+</tr>
+<tr>
+<td>File integrity and recovery</td>
+<td><code>--restart &lt;logfile.json&gt;</code></td>
+<td>Restarts failed uploads using a previous run’s JSON log file</td>
+</tr>
+<tr>
+<td>File selection (filtering)</td>
+<td><code>--glob "*.bdf"</code></td>
+<td>Upload only files matching a glob pattern (e.g. EEG files only)</td>
+</tr>
+<tr>
+<td>File selection (filtering)</td>
+<td><code>--regex PATTERN</code></td>
+<td>Upload only files matching a regular expression</td>
+</tr>
+<tr>
+<td>File selection (filtering)</td>
+<td><code>--ignore-glob "*.tmp"</code></td>
+<td>Ignore files matching a glob pattern (e.g. temporary files)</td>
+</tr>
+<tr>
+<td>File selection (filtering)</td>
+<td><code>--ignore PATTERN</code></td>
+<td>Ignore files matching a regex pattern</td>
+</tr>
+<tr>
+<td>Metadata</td>
+<td><code>--md-mtime</code></td>
+<td>Adds file modification time as metadata</td>
+</tr>
+<tr>
+<td>Metadata</td>
+<td><code>--md-path REGEX</code></td>
+<td>Extracts metadata from folder names</td>
+</tr>
+</tbody>
+</table>
 <p>For advanced metadata examples, see <a href="https://github.com/kuleuven/mango-ingest/blob/development/doc/examples/extract_metadata.py"><code>doc/examples/extract_metadata.py</code></a>.</p>
 <h3 id="quick-rule-of-thumb">Quick rule of thumb<a class="headerlink" href="#quick-rule-of-thumb" title="Permanent link">&para;</a></h3>
 <p>Use:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>-nw<span class="w"> </span>-r<span class="w"> </span>--verify-checksum
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>-nw<span class="w"> </span>-r<span class="w"> </span>--verify-checksum
 </span></code></pre></div>
 <p>when you want a <strong>safe one-time upload of a full dataset</strong>.</p>
 <p>Omit <code>-nw</code> when you want <strong>continuous automatic syncing</strong> during ongoing data collection.</p>
@@ -3088,7 +3097,7 @@ Retries failed uploads from a previous run using its JSON log file.</p>
                 
                 
               
-              Thanks for your feedback! Help us improve this page by opening a new <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/issues/new/?title=[Feedback]+ManGO%20for%20active%20research%20data+-+/research/rdm/mango_active.html" target="_blank" rel="noopener">Issue</a>, or contact a Wiki manager.
+              Thanks for your feedback! Help us improve this page by opening a new <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/issues/new/?title=[Feedback]+ManGO%20for%20active%20data+-+/research/rdm/mango_active.html" target="_blank" rel="noopener">Issue</a>, or contact a Wiki manager.
             </div>
           
         </div>
@@ -3122,7 +3131,7 @@ Retries failed uploads from a previous run using its JSON log file.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="SOPs.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Study workflow">
+          <a href="sharepoint_daily.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: SharePoint for daily use">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3132,7 +3141,7 @@ Retries failed uploads from a previous run using its JSON log file.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Study workflow
+                SharePoint for daily use
               </div>
             </div>
           </a>
