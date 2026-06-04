@@ -35,6 +35,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          # Checkout from the head repo so fork PRs work too. Pushing
+          # fixes back is still same-repo only (see guard below).
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -88,7 +91,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          # No ref: checks out the PR merge commit, which exists in the
+          # base repo even for fork PRs (and tests the merged result).
           fetch-depth: 0
 
       - name: Detect automation-related changes
