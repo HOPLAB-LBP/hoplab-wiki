@@ -299,7 +299,3 @@ Do a full dress rehearsal with a test ID before any real participant:
 - [Version control](../../coding/version-control.md)
 
 ---
-
-
-
-
