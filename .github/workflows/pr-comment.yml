@@ -6,15 +6,60 @@ name: Post PR check report
 on:
   workflow_run:
     workflows: ["PR checks"]
-    types: [completed]
+    # requested/in_progress: a (re-)run started — delete the stale comment
+    # so an outdated report never lingers while checks run. 'requested'
+    # does not fire for re-runs and 'in_progress' does, so both are needed.
+    # completed: post the fresh report.
+    types: [requested, in_progress, completed]
 
 permissions:
   pull-requests: write
 
 jobs:
+  delete-stale-comment:
+    runs-on: ubuntu-latest
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.action != 'completed'
+    steps:
+      # The report artifact does not exist yet at run start, so resolve the
+      # PR number from the head repo/branch instead (works for fork PRs,
+      # where workflow_run.pull_requests is empty).
+      - name: Find PR for this run
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_OWNER: ${{ github.event.workflow_run.head_repository.owner.login }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+        run: |
+          PR=$(gh api -X GET "/repos/${{ github.repository }}/pulls" \
+            -f head="$HEAD_OWNER:$HEAD_BRANCH" -f state=open \
+            --jq '.[0].number // empty')
+          echo "pr_number=$PR" >> "$GITHUB_OUTPUT"
+
+      - name: Find existing bot comment
+        if: steps.pr.outputs.pr_number != ''
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          issue-number: ${{ steps.pr.outputs.pr_number }}
+          comment-author: github-actions[bot]
+          body-includes: "<!-- pr-checks-report -->"
+
+      - name: Delete stale comment
+        if: steps.find-comment.outputs.comment-id != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api -X DELETE \
+            "/repos/${{ github.repository }}/issues/comments/${{ steps.find-comment.outputs.comment-id }}"
+
   post-comment:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.event == 'pull_request'
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.action == 'completed' &&
+      github.event.workflow_run.conclusion != 'cancelled'
     steps:
       - name: Download report artifact
         uses: actions/download-artifact@v4

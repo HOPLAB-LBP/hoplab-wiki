@@ -574,17 +574,21 @@ jobs:
           EOF
 
               # Parse markdownlint output into a readable table
-              # Format: "file:line rule/name description"
+              # Format: "file:line[:column] rule/name description" — the
+              # column is omitted by whole-line rules like MD012/MD047.
               if [ -f /tmp/pr-checks/markdownlint-output ]; then
                 echo "| Location | Issue |"
                 echo "|----------|-------|"
                 grep -E '^docs/.*:[0-9]+' /tmp/pr-checks/markdownlint-output | head -30 | while IFS= read -r line; do
-                  file=$(echo "$line" | cut -d: -f1)
-                  lineno=$(echo "$line" | cut -d: -f2)
-                  # Strip "file:line" and the following space.
-                  issue="${line#*:}"
-                  issue="${issue#*:}"
-                  issue="${issue# }"
+                  file="${line%%:*}"
+                  rest="${line#*:}"
+                  # Line number, dropping the ":column" part if present.
+                  lineno="${rest%% *}"
+                  lineno="${lineno%%:*}"
+                  # Issue text: everything after "line[:col] ", with pipes
+                  # escaped so they can't break the table.
+                  issue="${rest#* }"
+                  issue="${issue//|/\\|}"
                   echo "| $(edit_link "$file" "$lineno") | $issue |"
                 done
               fi
