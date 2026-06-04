@@ -121,11 +121,11 @@ The [Hoplab](https://www.hoplab.be/) is part of the larger [NeuroSPACE consortiu
     [:octicons-arrow-right-24: Learn more](research/ethics/index.md)
 
 - :fontawesome-solid-database:{ .lg .middle } __Research Data Management__
-    
+
     ---
-    
+
      Managing data throughout the project lifecycle
-    
+
     [:octicons-arrow-right-24: RDM guidelines](./research/rdm/index.md)
 
 - :octicons-megaphone-24:{ .lg .middle } __Outreach__

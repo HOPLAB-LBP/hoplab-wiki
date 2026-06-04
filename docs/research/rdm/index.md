@@ -15,7 +15,7 @@ Our procedures aim to ensure:
 - **Leaving the lab?** → See the [*offboarding checklist*](offboarding.md)
 - **Starting a new project?** → Follow the appropriate [*workflow*](SOPs.md)
 
-## Tools we use to store and share data 
+## Tools we use to store and share data
 
 - **SharePoint** → [How to](sharepoint_daily.md) set it up for daily use
 - **ManGO** → [How to](mango_active.md) store active research data
@@ -30,4 +30,4 @@ This decision tree shows the intended storage location of project data at Hoplab
 
 These guidelines reflect the current working procedures and may be updated as workflows are tested and improved. Please check out this section regularly if you are starting a new project.
 
-If anything is unclear or missing, please contact the RDM responsibles ([Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or [Andrea](https://www.kuleuven.be/wieiswie/nl/person/00152046)) so the documentation can be refined. 
+If anything is unclear or missing, please contact the RDM responsibles ([Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or [Andrea](https://www.kuleuven.be/wieiswie/nl/person/00152046)) so the documentation can be refined.
