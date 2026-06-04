@@ -43,6 +43,7 @@ nav:
         - research/behaviour/experimental-setup/index.md
         - Online Experiments (jsPsych): research/behaviour/experimental-setup/pavlovia-jspsych.md
         - Online Experiments (PsychoPy): research/behaviour/experimental-setup/pavlovia-psychopy.md
+        - Multi-session training studies: research/behaviour/experimental-setup/pavlovia-training-study.md
         - On-site Experiments: research/behaviour/experimental-setup/bh-onsite.md
       - Behavioural tasks: research/behaviour/bh-tasks.md
     - fMRI:
