@@ -20,6 +20,12 @@ config:
   MD024:
     siblings_only: true
 
+  # MD026: trailing punctuation in headings
+  # Allow ! and ? — conversational headings like "Help, I haven't set up
+  # my SharePoint yet!" are intentional style in this wiki.
+  MD026:
+    punctuation: ".,;:。，；："
+
   # MD025: single top-level heading
   # Disabled: some pages legitimately use multiple H1 headings.
   MD025: false

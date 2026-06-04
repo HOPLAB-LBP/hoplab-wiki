@@ -20,7 +20,7 @@ Please check out the [workflow page](SOPs.md) for specific guidelines on how to 
 !!! tip "Transferring files from OneDrive to SharePoint"
     If you need to transfer a large number of files from OneDrive to SharePoint, Windows path-length limitations may sometimes cause errors, especially with deeply nested folder structures (e.g. BIDS datasets).  To reduce these issues, you can install **TeraCopy** via the Software Center (icon on your desktop), and use this program for copying your data.
 
-## Help, I (still) haven't set up my SharePoint yet
+## Help, I (still) haven't set up my SharePoint yet!
 
 Each lab member received a **personal KU Leuven SharePoint space** (1 TB). The email with your personal SharePoint site was sent out on 17/12/2025 with subject "KULeuven Teams Creation Info".
 
