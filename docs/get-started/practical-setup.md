@@ -18,6 +18,27 @@ For each new member, a laptop and other pc material (e.g., an external hard driv
 
 You can get a phone from [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752). If you do, make sure you submit the serial number [here](https://ppw.kuleuven.be/intranet/onlineform/lynctelefoon).
 
+## Hybrid working policy
+
+Hoplab follows the official KU Leuven hybrid working framework, which defines the general rules and administrative procedures for remote and hybrid work. The full policy can be consulted [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/). 
+
+***A few highlights***
+
+- KU Leuven provides a **remote work allowance** for eligible staff members. Staff members can consult KU Loket to verify which allowances they are registered for and can indicate whether they wish to receive them. More information [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/allowances-and-registration/index).
+
+- Structural teleworking **must always be formally registered** in KU Loket. Once this registration is completed, both the staff member and their supervisor receive a confirmation email. Any later changes to the telework arrangement must also be updated through KU Loket to ensure compliance with administrative requirements. More information [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/allowances-and-registration/index#registration).
+
+- **Remote working from abroad is not automatically permitted**. Due to additional legal and administrative obligations, working outside Belgium requires prior verification and may not always be possible. Staff members are expected to consult the official KU Leuven guidelines before planning any work abroad. More information [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/remote-working-from-abroad).
+
+
+***Hoplab-Specific Expectations***
+
+In addition to the KU Leuven framework, Hoplab applies its own working agreements to ensure smooth collaboration within the lab. The number of working hours remains defined by the individual employment contract. Within those contractual hours, there is flexibility in how work is organized, allowing team members to structure their days in a way that best fits their tasks and personal rhythm. This flexibility is granted on the condition that it remains compatible with lab meetings, project deadlines, and other scheduled commitments.
+
+To support collaboration and in-person interaction, we work with designated on-campus days. **Monday, Tuesday, and Thursday** are expected office days, during which team members are generally present in the lab. Wednesday and Friday are considered more flexible, meaning that work can be performed either from home or from the office. Some team members still choose to come to the lab on these days, and this is always welcome.
+
+To maintain transparency and coordination, team members are expected to indicate in the **shared Google Calendar** if they are working from home or abroad. The goal is to ensure that collaboration remains easy and predictable for everyone in the team.
+
 ## Broader research environment
 
 Within the Faculty of Psychology and Educational Sciences, Brain and Cognition (B&C, headed by [Ralf Krampe](https://www.kuleuven.be/wieiswie/nl/person/00046921)) is a research unit dedicated to the experimental and neuroscientific study of psychological functions and metacognition. B&C consists of several research groups, each specializing in specific themes and methodologies. One of these is the Laboratory of Biological Psychology (LBP, led by [Rudi D'Hooge](https://www.kuleuven.be/wieiswie/nl/person/00043549)) which investigates the biological foundations of behaviour and cognition, including learning, memory, perception, motivation, and emotion. Hoplab is a subgroup within LBP, led by [Hans](https://www.kuleuven.be/wieiswie/nl/person/00029058). As a member of Hoplab, you will work closely with the broader LBP team.
