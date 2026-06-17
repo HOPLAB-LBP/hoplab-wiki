@@ -71,7 +71,11 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           if ! git diff --cached --quiet; then
-            git commit -m "style: auto-fix formatting issues"
+            # [skip ci]: this bot push must not trigger another "PR checks"
+            # run. Such a run lands as 'action_required' (never executes), so
+            # it can't refresh the report — the current run already reports
+            # the post-fix state (see "Apply safe auto-fixes locally").
+            git commit -m "style: auto-fix formatting issues [skip ci]"
             if [ "$HEAD_REPO" = "$BASE_REPO" ]; then
               git push
             else
@@ -127,6 +131,25 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt yamllint
+
+      # Re-apply the same safe auto-fixes the autofix job makes, but only in
+      # this job's working tree (never committed). The report below is built
+      # from the result, so it always reflects the post-autofix state.
+      #
+      # Without this, the report lints the pre-fix merge commit and flags
+      # issues the autofix job already fixed in the same run. The corrected
+      # re-run that would refresh the comment is usually blocked (pushes by
+      # github-actions land as 'action_required'), so a stale "Failed"
+      # comment would linger. Same-repo PRs only: forks can't be auto-fixed
+      # (the autofix job can't push to them), so their report must keep
+      # showing the real issues for manual fixing.
+      - name: Apply safe auto-fixes locally (keeps the report accurate)
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          python3 scripts/fix_markdown_table_pipes.py README.md docs/ || true
+          npx -y markdownlint-cli2 README.md "docs/**/*.md" --fix || true
+          python3 scripts/check_mkdocs_syntax.py --fix README.md docs/ || true
+          sed -i 's/[[:space:]]*$//' mkdocs.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
 
       - name: Prepare generated docs
         run: bash scripts/prepare_docs.sh
@@ -419,9 +442,9 @@ jobs:
 
           ---
 
-          ### :x: Spell check — typos found
+          ### :x: Spell check — possible typos
 
-          The spell checker found words that look misspelled. Here's exactly what was flagged:
+          The spell checker flagged these words:
 
           | Location | Found | Suggested fix |
           |----------|-------|---------------|
@@ -461,16 +484,17 @@ jobs:
 
               cat << 'EOF'
 
-          **How to fix:**
+          **How to fix:** open each file at the line shown and correct the spelling.
 
-          For each word in the table above:
-          1. **If it's a real typo** — open the file, go to the line number shown, and correct the spelling.
-          2. **If the word is correct** (e.g. a technical term, name, abbreviation, or foreign word) — add it to the file `_typos.toml` so it won't be flagged again:
-             ```toml
-             [default.extend-words]
-             # Add your word here (case-sensitive):
-             YourWord = "YourWord"
-             ```
+          <details>
+          <summary>Is the word actually correct? (add it to the dictionary)</summary>
+
+          If a flagged word is a real term, name, or abbreviation, add it to `_typos.toml` (case-sensitive) so it is not flagged again:
+          ```toml
+          [default.extend-words]
+          YourWord = "YourWord"
+          ```
+          </details>
           EOF
             } >> "$REPORT"
           fi
@@ -567,36 +591,53 @@ jobs:
 
           ---
 
-          ### :x: Markdown lint — formatting issues
+          ### :x: Markdown lint — a few formatting fixes needed
 
-          Some markdown formatting issues were found that couldn't be auto-fixed.
+          Open each file at the line shown and make the small change listed. That's all that's left to fix:
 
           EOF
 
-              # Parse markdownlint output into a readable table
-              # Format: "file:line[:column] rule/name description" — the
-              # column is omitted by whole-line rules like MD012/MD047.
+              # Parse markdownlint output into a plain-language table. Format:
+              # "file:line[:column] rule/name description" — the column is
+              # omitted by whole-line rules like MD012/MD047. We translate the
+              # common rules into one clear instruction; anything else falls
+              # back to markdownlint's own description.
               if [ -f /tmp/pr-checks/markdownlint-output ]; then
-                echo "| Location | Issue |"
-                echo "|----------|-------|"
+                echo "| Where | What to change |"
+                echo "|-------|----------------|"
                 grep -E '^docs/.*:[0-9]+' /tmp/pr-checks/markdownlint-output | head -30 | while IFS= read -r line; do
                   file="${line%%:*}"
                   rest="${line#*:}"
-                  # Line number, dropping the ":column" part if present.
                   lineno="${rest%% *}"
                   lineno="${lineno%%:*}"
-                  # Issue text: everything after "line[:col] ", with pipes
-                  # escaped so they can't break the table.
-                  issue="${rest#* }"
-                  issue="${issue//|/\\|}"
-                  echo "| $(edit_link "$file" "$lineno") | $issue |"
+                  raw="${rest#* }"
+                  case "$raw" in
+                    *MD009*) msg='Delete the leftover space(s) at the end of this line' ;;
+                    *MD010*) msg='Replace the tab with spaces' ;;
+                    *MD012*) msg='Remove the extra blank line — keep only one' ;;
+                    *MD047*) msg='Add a single blank line at the very end of the file' ;;
+                    *MD018*|*MD019*) msg='Use exactly one space after the # in this heading' ;;
+                    *MD026*) msg='Remove the punctuation (like a period or colon) at the end of this heading' ;;
+                    *MD024*) msg='Rename this heading — another heading already uses the same text' ;;
+                    *MD003*) msg='Start this heading with # symbols, not = or - underlines' ;;
+                    *MD001*) msg='Do not skip heading levels (## must follow #, not jump to ###)' ;;
+                    *) msg="${raw//|/\\|}" ;;
+                  esac
+                  echo "| $(edit_link "$file" "$lineno") | $msg |"
                 done
               fi
 
               cat << 'EOF'
 
           <details>
-          <summary>Full output</summary>
+          <summary>More help: formatting cheat-sheet and full tool output</summary>
+
+          | Common issue | How to fix it |
+          |--------------|---------------|
+          | Trailing spaces | Delete any spaces at the end of the line |
+          | Multiple blank lines | Keep at most one blank line in a row |
+          | Heading style | Start headings with `#`, not `===`/`---` underlines |
+          | Heading spacing | Use one space after `#`, e.g. `## Title` |
 
           ```
           EOF
@@ -605,15 +646,6 @@ jobs:
           ```
 
           </details>
-
-          **How to fix:** Open the file at the line number shown and fix the issue described. Common problems:
-
-          | Issue | What it means | How to fix |
-          |-------|--------------|------------|
-          | **Bare URL** | A URL is pasted without formatting | Wrap it: `[link text](https://...)` or `<https://...>` |
-          | **Wrong heading style** | Heading uses underlines instead of `#` | Use `## My heading` with `#` symbols |
-          | **Multiple blank lines** | Two or more empty lines in a row | Remove the extra blank lines |
-          | **Trailing spaces** | Invisible spaces at end of a line | Delete the spaces at the end of the line |
           EOF
             } >> "$REPORT"
           fi
@@ -627,7 +659,7 @@ jobs:
 
           ### :x: YAML lint — configuration file issues
 
-          Problems were found in YAML configuration files (like `mkdocs.yml`).
+          A YAML config file (like `mkdocs.yml`) has a formatting problem. Open each file at the line shown and fix it:
 
           EOF
 
@@ -649,16 +681,18 @@ jobs:
 
               cat << 'EOF'
 
-          **How to fix:** Open the file at the line number shown. YAML is sensitive to formatting:
+          <details>
+          <summary>YAML formatting help</summary>
 
-          | Issue | What it means | How to fix |
-          |-------|--------------|------------|
-          | **Wrong indentation** | Spaces don't match the expected level | Use exactly 2 spaces per indent level |
-          | **Trailing spaces** | Invisible spaces at end of a line | Delete the spaces at the end |
-          | **Too many blank lines** | Multiple empty lines in a row | Keep at most one blank line |
-          | **Line too long** | A line exceeds the maximum length | Break it into multiple lines |
+          YAML is sensitive to formatting (spaces only, never tabs):
 
-          > **Tip:** YAML only uses spaces for indentation, never tabs.
+          | Issue | How to fix |
+          |-------|-----------|
+          | Wrong indentation | Use exactly 2 spaces per level |
+          | Trailing spaces | Delete the spaces at the end of the line |
+          | Too many blank lines | Keep at most one blank line in a row |
+          | Line too long | Break it into multiple lines |
+          </details>
           EOF
             } >> "$REPORT"
           fi
@@ -723,7 +757,10 @@ jobs:
                   awk '/not included in the "nav"/{flag=1;next}/^(INFO|WARNING|ERROR|DEBUG|\[)/{flag=0}flag && /\.md/{print "- `" $NF "`"}' /tmp/pr-checks/mkdocs-output
                   cat << 'EOF'
 
-          To fix this, open `mkdocs.yml`, find the `nav:` section, and add your page in the right spot. For example:
+          <details>
+          <summary>How to add a page to the nav</summary>
+
+          Open `mkdocs.yml`, find the `nav:` section, and add your page in the right spot. For example:
           ```yaml
           nav:
             - Home: index.md
@@ -731,6 +768,7 @@ jobs:
               - fMRI:
                 - Your new page: research/fmri/your-new-page.md  # <-- add a line like this
           ```
+          </details>
           EOF
                 fi
 
@@ -758,12 +796,14 @@ jobs:
                   done | awk '!seen[$0]++'
                   cat << 'EOF'
 
-          **How to fix:**
+          <details>
+          <summary>How to fix broken links</summary>
 
           1. Open the file in the first column and update the broken link target.
-          2. If the "Reported in" file is `docs/contribute.md`, edit `README.md` instead because CI copies `README.md` into `docs/contribute.md`.
-          3. In `README.md` / `docs/contribute.md`, avoid repo-root paths like `docs/...` for wiki pages. Those are resolved from inside `docs/` during the MkDocs build and usually fail. Prefer a docs-relative path that works from `docs/`, or use the published-site URL.
-          4. If the target page was renamed or moved, update the filename/path to the new location.
+          2. If the "Reported in" file is `docs/contribute.md`, edit `README.md` instead — CI copies `README.md` into `docs/contribute.md`.
+          3. In `README.md` / `docs/contribute.md`, avoid repo-root paths like `docs/...` for wiki pages; they're resolved from inside `docs/` and usually fail. Use a docs-relative path or the published-site URL.
+          4. If the target page was renamed or moved, update the path to its new location.
+          </details>
           EOF
                 fi
 
@@ -788,11 +828,14 @@ jobs:
                   done
                   echo ''
                   cat << 'EOF'
-          **How to fix:**
+
+          <details>
+          <summary>How to fix broken anchors</summary>
 
           1. Open the file in the first column.
-          2. Update the `#anchor` fragment so it matches the rendered heading slug on the destination page.
-          3. If the warning is reported in `docs/contribute.md`, edit `README.md` instead because `docs/contribute.md` is generated from it.
+          2. Update the `#anchor` fragment so it matches the heading slug on the destination page.
+          3. If reported in `docs/contribute.md`, edit `README.md` instead — `docs/contribute.md` is generated from it.
+          </details>
           EOF
                 fi
               fi
@@ -847,19 +890,17 @@ jobs:
 
               cat << 'EOF'
 
-          **How to fix:**
-
-          | Issue | What it means | How to fix |
-          |-------|--------------|------------|
-          | **Curly/smart quotes in tab title** | The `===` line uses `\u201c...\u201d` instead of `"..."` | Replace with straight ASCII double quotes |
-          | **Missing blank line after tab header** | Content starts right after `=== "Title"` | Add an empty line between the `===` line and the content |
-          | **Tab/admonition content not indented** | Content is not indented 4 spaces inside the block | Indent all content by 4 spaces relative to the `===` or `!!!` marker |
-          | **Code block content at column 0** | Code inside an indented fence starts at the left margin | Indent the code to match the fence indentation |
-
-          > **Tip:** Curly quotes and missing blank lines are auto-fixed by CI. If issues persist after the auto-fix commit, they require manual attention.
+          Most of these are auto-fixed by CI; anything still listed above needs a manual fix.
 
           <details>
-          <summary>Examples of correct syntax</summary>
+          <summary>How to fix each issue, with examples</summary>
+
+          | Issue | How to fix |
+          |-------|-----------|
+          | Curly/smart quotes in a tab title | Replace them with straight `"..."` quotes |
+          | Missing blank line after a tab header | Add an empty line between `=== "Title"` and the content |
+          | Content not indented in a tab/admonition | Indent the content 4 spaces under the `===` or `!!!` marker |
+          | Code block at column 0 | Indent the code to match the fence indentation |
 
           **Content tabs** — always leave a blank line after `===` and indent content by 4 spaces:
           ~~~markdown
@@ -897,23 +938,9 @@ jobs:
 
           ---
 
-          ### :bulb: Quick troubleshooting for lint failures
-
-          If CI reports shellcheck/actionlint warnings (for example ShellCheck codes `SC2001`, `SC2016`, `SC2129`), here is how to fix them quickly:
-
-          | Warning | What it means | Typical fix |
-          |---------|---------------|-------------|
-          | `SC2001` | Using `sed` for simple string cleanup | Prefer shell parameter expansion (e.g., `${var#prefix}` / `${var%suffix}`) |
-          | `SC2016` | Single-quoted string contains characters that look like expansions | Use double quotes when interpolation is intended, or escape literals like backticks |
-          | `SC2129` | Repeated `>> file` writes | Group writes with `{ ...; } >> file` or use a single heredoc block |
-
-          > Re-run `actionlint .github/workflows/*.yml` locally after editing workflow scripts.
-
-          ---
-
           > :pushpin: **Need help?** Ping @costantinoai in the PR comments and I'll help you sort it out.
           >
-          > Push a new commit to re-run these checks — this comment will update automatically.
+          > Fix the items above and push — this comment updates automatically on the next commit.
           EOF
           fi
 
