@@ -20,7 +20,7 @@ You can get a phone from [Ying](https://www.kuleuven.be/wieiswie/en/person/00098
 
 ## Hybrid working policy
 
-Hoplab follows the official KU Leuven hybrid working framework, which defines the general rules and administrative procedures for remote and hybrid work. The full policy can be consulted [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/). 
+Hoplab follows the official KU Leuven hybrid working framework, which defines the general rules and administrative procedures for remote and hybrid work. The full policy can be consulted [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/).
 
 ***A few highlights***
 
@@ -29,7 +29,6 @@ Hoplab follows the official KU Leuven hybrid working framework, which defines th
 - Structural teleworking **must always be formally registered** in KU Loket. Once this registration is completed, both the staff member and their supervisor receive a confirmation email. Any later changes to the telework arrangement must also be updated through KU Loket to ensure compliance with administrative requirements. More information [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/allowances-and-registration/index#registration).
 
 - **Remote working from abroad is not automatically permitted**. Due to additional legal and administrative obligations, working outside Belgium requires prior verification and may not always be possible. Staff members are expected to consult the official KU Leuven guidelines before planning any work abroad. More information [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/remote-working-from-abroad).
-
 
 ***Hoplab-Specific Expectations***
 
