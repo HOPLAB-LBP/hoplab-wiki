@@ -96,5 +96,4 @@ We hope this guide helps you settle into your new role. Dive in, and enjoy your 
 
 <!--
 __TODO__: [Klara] Add a section on existing focus groups (e.g., EEG focus group, MRI focus group) within LBI/NeuroSPACE that new members can attend. Include: meeting frequency, how to join, and contact persons.
-__TODO__: [Klara] Add a section on the remote work policy: (1) KU Leuven's official hybrid working policy (link to https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/), (2) Hoplab-specific expectations (e.g., expected on-site days, how to communicate remote days).
 -->
