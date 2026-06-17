@@ -98,4 +98,4 @@ We hope this guide helps you settle into your new role. Dive in, and enjoy your 
 __TODO__: [Klara] Add a section on existing focus groups (e.g., EEG focus group, MRI focus group) within LBI/NeuroSPACE that new members can attend. Include: meeting frequency, how to join, and contact persons.
 -->
 
-CI smoke test - safe to delete. 
+CI smoke test - safe to delete.
