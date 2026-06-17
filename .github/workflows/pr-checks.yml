@@ -71,7 +71,11 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           if ! git diff --cached --quiet; then
-            git commit -m "style: auto-fix formatting issues"
+            # [skip ci]: this bot push must not trigger another "PR checks"
+            # run. Such a run lands as 'action_required' (never executes), so
+            # it can't refresh the report — the current run already reports
+            # the post-fix state (see "Apply safe auto-fixes locally").
+            git commit -m "style: auto-fix formatting issues [skip ci]"
             if [ "$HEAD_REPO" = "$BASE_REPO" ]; then
               git push
             else
@@ -127,6 +131,25 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt yamllint
+
+      # Re-apply the same safe auto-fixes the autofix job makes, but only in
+      # this job's working tree (never committed). The report below is built
+      # from the result, so it always reflects the post-autofix state.
+      #
+      # Without this, the report lints the pre-fix merge commit and flags
+      # issues the autofix job already fixed in the same run. The corrected
+      # re-run that would refresh the comment is usually blocked (pushes by
+      # github-actions land as 'action_required'), so a stale "Failed"
+      # comment would linger. Same-repo PRs only: forks can't be auto-fixed
+      # (the autofix job can't push to them), so their report must keep
+      # showing the real issues for manual fixing.
+      - name: Apply safe auto-fixes locally (keeps the report accurate)
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          python3 scripts/fix_markdown_table_pipes.py README.md docs/ || true
+          npx -y markdownlint-cli2 README.md "docs/**/*.md" --fix || true
+          python3 scripts/check_mkdocs_syntax.py --fix README.md docs/ || true
+          sed -i 's/[[:space:]]*$//' mkdocs.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
 
       - name: Prepare generated docs
         run: bash scripts/prepare_docs.sh
@@ -567,36 +590,53 @@ jobs:
 
           ---
 
-          ### :x: Markdown lint — formatting issues
+          ### :x: Markdown lint — a few formatting fixes needed
 
-          Some markdown formatting issues were found that couldn't be auto-fixed.
+          Open each file at the line shown and make the small change listed. That's all that's left to fix:
 
           EOF
 
-              # Parse markdownlint output into a readable table
-              # Format: "file:line[:column] rule/name description" — the
-              # column is omitted by whole-line rules like MD012/MD047.
+              # Parse markdownlint output into a plain-language table. Format:
+              # "file:line[:column] rule/name description" — the column is
+              # omitted by whole-line rules like MD012/MD047. We translate the
+              # common rules into one clear instruction; anything else falls
+              # back to markdownlint's own description.
               if [ -f /tmp/pr-checks/markdownlint-output ]; then
-                echo "| Location | Issue |"
-                echo "|----------|-------|"
+                echo "| Where | What to change |"
+                echo "|-------|----------------|"
                 grep -E '^docs/.*:[0-9]+' /tmp/pr-checks/markdownlint-output | head -30 | while IFS= read -r line; do
                   file="${line%%:*}"
                   rest="${line#*:}"
-                  # Line number, dropping the ":column" part if present.
                   lineno="${rest%% *}"
                   lineno="${lineno%%:*}"
-                  # Issue text: everything after "line[:col] ", with pipes
-                  # escaped so they can't break the table.
-                  issue="${rest#* }"
-                  issue="${issue//|/\\|}"
-                  echo "| $(edit_link "$file" "$lineno") | $issue |"
+                  raw="${rest#* }"
+                  case "$raw" in
+                    *MD009*) msg='Delete the leftover space(s) at the end of this line' ;;
+                    *MD010*) msg='Replace the tab with spaces' ;;
+                    *MD012*) msg='Remove the extra blank line — keep only one' ;;
+                    *MD047*) msg='Add a single blank line at the very end of the file' ;;
+                    *MD018*|*MD019*) msg='Use exactly one space after the # in this heading' ;;
+                    *MD026*) msg='Remove the punctuation (like a period or colon) at the end of this heading' ;;
+                    *MD024*) msg='Rename this heading — another heading already uses the same text' ;;
+                    *MD003*) msg='Start this heading with # symbols, not = or - underlines' ;;
+                    *MD001*) msg='Do not skip heading levels (## must follow #, not jump to ###)' ;;
+                    *) msg="${raw//|/\\|}" ;;
+                  esac
+                  echo "| $(edit_link "$file" "$lineno") | $msg |"
                 done
               fi
 
               cat << 'EOF'
 
           <details>
-          <summary>Full output</summary>
+          <summary>More help: formatting cheat-sheet and full tool output</summary>
+
+          | Common issue | How to fix it |
+          |--------------|---------------|
+          | Trailing spaces | Delete any spaces at the end of the line |
+          | Multiple blank lines | Keep at most one blank line in a row |
+          | Heading style | Start headings with `#`, not `===`/`---` underlines |
+          | Heading spacing | Use one space after `#`, e.g. `## Title` |
 
           ```
           EOF
@@ -605,15 +645,6 @@ jobs:
           ```
 
           </details>
-
-          **How to fix:** Open the file at the line number shown and fix the issue described. Common problems:
-
-          | Issue | What it means | How to fix |
-          |-------|--------------|------------|
-          | **Bare URL** | A URL is pasted without formatting | Wrap it: `[link text](https://...)` or `<https://...>` |
-          | **Wrong heading style** | Heading uses underlines instead of `#` | Use `## My heading` with `#` symbols |
-          | **Multiple blank lines** | Two or more empty lines in a row | Remove the extra blank lines |
-          | **Trailing spaces** | Invisible spaces at end of a line | Delete the spaces at the end of the line |
           EOF
             } >> "$REPORT"
           fi
@@ -897,23 +928,9 @@ jobs:
 
           ---
 
-          ### :bulb: Quick troubleshooting for lint failures
-
-          If CI reports shellcheck/actionlint warnings (for example ShellCheck codes `SC2001`, `SC2016`, `SC2129`), here is how to fix them quickly:
-
-          | Warning | What it means | Typical fix |
-          |---------|---------------|-------------|
-          | `SC2001` | Using `sed` for simple string cleanup | Prefer shell parameter expansion (e.g., `${var#prefix}` / `${var%suffix}`) |
-          | `SC2016` | Single-quoted string contains characters that look like expansions | Use double quotes when interpolation is intended, or escape literals like backticks |
-          | `SC2129` | Repeated `>> file` writes | Group writes with `{ ...; } >> file` or use a single heredoc block |
-
-          > Re-run `actionlint .github/workflows/*.yml` locally after editing workflow scripts.
-
-          ---
-
           > :pushpin: **Need help?** Ping @costantinoai in the PR comments and I'll help you sort it out.
           >
-          > Push a new commit to re-run these checks — this comment will update automatically.
+          > Fix the items above and push — this comment updates automatically on the next commit.
           EOF
           fi
 
