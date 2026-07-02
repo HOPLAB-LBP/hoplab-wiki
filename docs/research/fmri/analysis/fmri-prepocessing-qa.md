@@ -531,11 +531,7 @@ For more information on understanding these metrics, check out the [MRIQC interp
 
 ??? failure "fMRIPrep output: empty surf files"
     - **Problem**: Some files in `freesurfer/sub-xx/surf` are empty (0 KB), namely:  
-
-<!--
-__TODO__: [Brent] Include information about when to exclude runs. Should we use average FD? Exclude runs if any movement is greater than voxel size. Upload code to flag high movement in confound output from fmriprep
--->
-  
+ 
         - `*h.fsaverage.sphere.reg`
         - `*h.pial`
         - `*h.white.H`
@@ -658,3 +654,7 @@ __TODO__: [Brent] Include information about when to exclude runs. Should we use 
 ---
 
 With these quality checks complete, you're ready to proceed to the **General Linear Model (GLM) analysis**. See the next guide for instructions on setting up your GLM. [--> Go to GLM](./fmri-glm.md)
+
+<!--
+__TODO__: [Brent] Include information about when to exclude runs. Should we use average FD? Exclude runs if any movement is greater than voxel size. Upload code to flag high movement in confound output from fmriprep
+-->
