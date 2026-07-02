@@ -531,6 +531,10 @@ For more information on understanding these metrics, check out the [MRIQC interp
 
 ??? failure "fMRIPrep output: empty surf files"
     - **Problem**: Some files in `freesurfer/sub-xx/surf` are empty (0 KB), namely:  
+
+<!--
+__TODO__: [Brent] Include information about when to exclude runs. Should we use average FD? Exclude runs if any movement is greater than voxel size. Upload code to flag high movement in confound output from fmriprep
+-->
   
         - `*h.fsaverage.sphere.reg`
         - `*h.pial`
