@@ -531,7 +531,7 @@ For more information on understanding these metrics, check out the [MRIQC interp
 
 ??? failure "fMRIPrep output: empty surf files"
     - **Problem**: Some files in `freesurfer/sub-xx/surf` are empty (0 KB), namely:  
- 
+
         - `*h.fsaverage.sphere.reg`
         - `*h.pial`
         - `*h.white.H`
