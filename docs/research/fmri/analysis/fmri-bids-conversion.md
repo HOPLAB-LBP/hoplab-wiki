@@ -391,7 +391,7 @@ Event TSV files can also be generated from the .mat behavioral files created in 
     % ASSUMES:
     %   - A BIDS dataset already exists with sub-*/func folders (e.g. from
     %     dcm2niix / dicm2nii + fMRIPrep-ready structure).
-    %   - Raw behavioral .mat files live in a parallel sourcedata/sub-*/beh
+    %   - Raw behavioral .mat files live in a parallel sourcedata/sub-*/bh
     %     folder, one .mat file per subject/run, containing a struct array
     %     called `runTrials` with fields: stimOnset, domain, difficulty,
     %     accuracy, responseStimTime, stimulus (path to stimulus file).
@@ -427,7 +427,8 @@ Event TSV files can also be generated from the .mat behavioral files created in 
     BIDSRoot = fullfile(mainTaskRoot, 'BIDS');
     sourceRoot = fullfile(mainTaskRoot, 'sourcedata');
 
-    % Find all subject folders already present in the BIDS directorysubDirs = dir(fullfile(BIDSRoot, 'sub-*'));
+    % Find all subject folders already present in the BIDS directory
+    subDirs = dir(fullfile(BIDSRoot, 'sub-*'));
     subDirs = subDirs([subDirs.isdir]);
     subNums = regexp({subDirs.name}, '\d+', 'match', 'once');
 
@@ -438,7 +439,7 @@ Event TSV files can also be generated from the .mat behavioral files created in 
 
         %define subject specific folders
         funcPathSub = fullfile(BIDSRoot, sub, 'func'); % BIDS func folder (output goes here)
-        behavPathSub = fullfile(sourceRoot, sub, 'beh'); % raw behavioral .mat files (input)
+        behavPathSub = fullfile(sourceRoot, sub, 'bh'); % raw behavioral .mat files (input)
         
         %% --- Inner loop: runs
         for runNumCell = runNums
@@ -451,12 +452,13 @@ Event TSV files can also be generated from the .mat behavioral files created in 
 
             %skip this run if it does not exist
             if ~isfile(origMatFile)
-                disp(['file for sub ' cell2mat({subNum{1}}) ' run number: ' num2str(runNum) ' does not exist' ])
+                disp(['file for sub ' subNum{1} ' run number: ' runNum ' does not exist'])
                 continue
             end
             
             
-            load(origMatFile) % loads `runTrials` struct array from the .mat file
+            S = load(origMatFile, 'runTrials'); % loads `runTrials` struct array from the .mat file
+            runTrials = S.runTrials;
             numTrials = length(runTrials);
             
             ef = []; % will build up as a struct array, one entry per trial
@@ -465,14 +467,14 @@ Event TSV files can also be generated from the .mat behavioral files created in 
             for i = 1:length(runTrials)
                 ef(i).onset =  runTrials(i).stimOnset;
                 ef(i).duration = stimLength; %change if stim length changes
-                ef(i).trialType = 'conditionInfo' ; %change to more informative file type based on conditions 
+                ef(i).trial_type = 'conditionInfo'; % change to a more informative trial type based on conditions
     
                 [~, name, ext] = fileparts(runTrials(i).stimulus);
                 stim = [name ext];
                 % sanitize: keep only a–z A–Z 0–9 _ - .
                 stim = regexprep(stim, '[^a-zA-Z0-9_\-\.]', '_');
             
-                ef(i).event_ID = stim;
+                ef(i).event_id = stim;
 
 
             
