@@ -376,7 +376,137 @@ onset           duration        trial_type     event_id
 10.022209       0.0473259       building       building_image.png
 13.072346       0.0482089       face           face_image.png
 ```
+Event TSV files can also be generated from the .mat behavioral files created in each run when using the fMRI task template. Depending on your pipeline, one format may be more convenient to work with than the other. Below is an example script to create BIDS-compliant Event TSV files from the .mat behavioral files.
 
+??? example "createEventTSVFromMatlabFile.m"
+    ```matlab  linenums="1"
+
+    %% createEventTSVFromMatlabFile.m
+    %
+    % Converts MATLAB behavioral logs from an fMRI task into BIDS-compliant
+    % *_events.tsv files, one per subject/run, matched to an existing BIDS
+    % dataset structure.
+    %
+    % ASSUMES:
+    %   - A BIDS dataset already exists with sub-*/func folders (e.g. from
+    %     dcm2niix / dicm2nii + fMRIPrep-ready structure).
+    %   - Raw behavioral .mat files live in a parallel sourcedata/sub-*/bh
+    %     folder, one .mat file per subject/run, containing a struct array
+    %     called `runTrials` with fields: stimOnset, domain, difficulty,
+    %     accuracy, responseStimTime, stimulus (path to stimulus file).
+    %
+    % OUTPUT:
+    %   For each subject/run found, writes:
+    %     BIDS/sub-XX/func/sub-XX_task-<taskName>_run-XX_events.tsv
+    %   with columns: onset, duration, domain, difficulty, stimACC, RT,
+    %   stimFile, trial_type — sorted by onset, NaNs/empties replaced with
+    %   'n/a' per BIDS spec.
+    %
+    % USAGE:
+    %   Edit taskName, maxRun, stimLength, and mainTaskRoot below, then run.
+    %
+    % LIMITATIONS / TODO:
+    %   - stimLength is currently a single fixed value for all trials.
+    %     If stimulus duration varies by trial, replace with a per-trial
+    %     value from runTrials instead.
+
+
+    %% --- User-defined parameters 
+
+    taskName = 'yourTaskName'; %define task name as it appears in BIDS filenames
+    maxRun = 10; %put max run number here - 10 for example.
+    stimLength = 4.1; %how long each stim is shown for in seconds. 
+    mainTaskRoot = 'C:\path\to\projectfolder'; % folder containing BIDS/ and sourcedata/
+
+    % Auto-generate zero-padded run number strings: {'01','02',...,'10'}
+    runNums = arrayfun(@(x) sprintf('%02d', x), 1:maxRun, 'UniformOutput', false);
+
+
+    %% --- Path setup
+    BIDSRoot = fullfile(mainTaskRoot, 'BIDS');
+    sourceRoot = fullfile(mainTaskRoot, 'sourcedata');
+
+    % Find all subject folders already present in the BIDS directory
+    subDirs = dir(fullfile(BIDSRoot, 'sub-*'));
+    subDirs = subDirs([subDirs.isdir]);
+    subNums = regexp({subDirs.name}, '\d+', 'match', 'once');
+
+    %% --- Main loop: subjects 
+    for subNum = subNums
+
+        sub = ['sub-' subNum{1}];
+
+        %define subject specific folders
+        funcPathSub = fullfile(BIDSRoot, sub, 'func'); % BIDS func folder (output goes here)
+        behavPathSub = fullfile(sourceRoot, sub, 'bh'); % raw behavioral .mat files (input)
+        
+        %% --- Inner loop: runs
+        for runNumCell = runNums
+            runNum = runNumCell{:};
+            
+            origBehavFileName = [sub '_task-' taskName '_run-' runNum ];
+            origMatFile = fullfile(behavPathSub, [origBehavFileName '.mat']);
+            saveTSVFileName = [sub '_task-' taskName '_run-' runNum ]; 
+            tsvFile = fullfile(funcPathSub, [saveTSVFileName, '_events.tsv']);
+
+            %skip this run if it does not exist
+            if ~isfile(origMatFile)
+                disp(['file for sub ' subNum{1} ' run number: ' runNum ' does not exist'])
+                continue
+            end
+            
+            
+            S = load(origMatFile, 'runTrials'); % loads `runTrials` struct array from the .mat file
+            runTrials = S.runTrials;
+            numTrials = length(runTrials);
+            
+            ef = []; % will build up as a struct array, one entry per trial
+
+            % --- Build one event entry per trial
+            for i = 1:length(runTrials)
+                ef(i).onset =  runTrials(i).stimOnset;
+                ef(i).duration = stimLength; %change if stim length changes
+                ef(i).trial_type = 'conditionInfo'; % change to a more informative trial type based on conditions
+    
+                [~, name, ext] = fileparts(runTrials(i).stimulus);
+                stim = [name ext];
+                % sanitize: keep only a–z A–Z 0–9 _ - .
+                stim = regexprep(stim, '[^a-zA-Z0-9_\-\.]', '_');
+            
+                ef(i).event_id = stim;
+
+
+            
+            end
+                
+            % Sort all trials by onset time 
+            [~, sortIdx] = sort([ef.onset]);
+            ef = ef(sortIdx);
+
+            % Convert to table for writing
+            T = struct2table(ef);
+        
+            %convert all NaNs and [] into n/a for BIDS format
+            varNames = T.Properties.VariableNames;
+            for col = varNames
+                colName = col{1};
+                colData = T.(colName);
+                if isnumeric(colData)
+                    colCell = arrayfun(@(x) x, colData, 'UniformOutput', false);
+                    colCell(cellfun(@(x) isempty(x) || (isnumeric(x) && any(isnan(x(:)))), colCell)) = {'n/a'};
+                    T.(colName) = colCell;
+                elseif iscell(colData)
+                    colData(cellfun(@(x) isempty(x) || (isnumeric(x) && any(isnan(x(:)))), colData)) = {'n/a'};
+                    T.(colName) = colData;
+                end
+            end
+                
+            % Write BIDS-compliant tab-separated events file
+            writetable(T, tsvFile, 'FileType', 'text', 'Delimiter', '\t')
+        end
+    end
+
+    ```
 ---
 
 ### 9. Create additional BIDS files
