@@ -376,8 +376,7 @@ onset           duration        trial_type     event_id
 10.022209       0.0473259       building       building_image.png
 13.072346       0.0482089       face           face_image.png
 ```
-Event TSV files can also be generated from the .mat behavioral files created in each run when using the fMRI task template. Depending on your pipeline, one format may be more convenient to work with than the other. Below is an example script to create BIDS-compliant Event TSV files from the .mat behavioral files. 
-
+Event TSV files can also be generated from the .mat behavioral files created in each run when using the fMRI task template. Depending on your pipeline, one format may be more convenient to work with than the other. Below is an example script to create BIDS-compliant Event TSV files from the .mat behavioral files.
 
 ??? example "createEventTSVFromMatlabFile.m"
     ```matlab  linenums="1"
