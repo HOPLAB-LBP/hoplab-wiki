@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2775,7 +2775,7 @@
 </span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="c1"># Create temp structure</span>
 </span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>temp/<span class="o">{</span>temp_fmriprep,temp_spm,temp_deepmreye,temp_mriqc<span class="o">}</span>
 </span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Folder structure created successfully!&quot;</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Folder structure created successfully!"</span>
 </span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="sb">```</span>bash
 </span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a>
 </span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a>Save<span class="w"> </span>this<span class="w"> </span>script<span class="w"> </span>as<span class="w"> </span><span class="sb">`</span>create_fmri_structure.sh<span class="sb">`</span><span class="w"> </span>and<span class="w"> </span>run<span class="w"> </span>it<span class="w"> </span>using:
@@ -2873,7 +2873,7 @@
    <div class="language-powershell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">curl </span><span class="n">-fLO</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">rordenlab</span><span class="p">/</span><span class="n">dcm2niix</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">dcm2niix_win</span><span class="p">.</span><span class="n">zip</span>
 </span></code></pre></div>
    Unzip the file and add the executable to your system PATH:
-   <div class="language-powershell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">$env:Path</span> <span class="p">+=</span> <span class="s2">&quot;;C:\path\to\dcm2niix&quot;</span>
+   <div class="language-powershell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">$env:Path</span> <span class="p">+=</span> <span class="s2">";C:\path\to\dcm2niix"</span>
 </span></code></pre></div>
    Replace <code>C:\path\to\dcm2niix</code> with the actual path where you unzipped dcm2niix.</p>
 </li>
@@ -2930,7 +2930,7 @@
    <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>curl<span class="w"> </span>-fLO<span class="w"> </span>https://github.com/rordenlab/dcm2niix/releases/latest/download/dcm2niix_lnx.zip
 </span></code></pre></div>
    Unzip the file and add the executable to your system PATH:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PATH=$PATH:/path/to/dcm2niix&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'export PATH=$PATH:/path/to/dcm2niix'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </span></code></pre></div>
    Replace <code>/path/to/dcm2niix</code> with the actual path where you unzipped dcm2niix.</p>
@@ -3009,7 +3009,7 @@
 <li>Unzip to a location of your choice</li>
 <li>Add SPM to MATLAB path:</li>
 </ol>
-<div class="language-matlab highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="s">&#39;path/to/spm12&#39;</span><span class="p">)</span>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="s">'path/to/spm12'</span><span class="p">)</span>
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nb">savepath</span>
 </span></code></pre></div>
 <div class="admonition warning">
@@ -3024,7 +3024,7 @@
 <li>Download from the <a href="http://www.cosmomvpa.org/download.html">official website</a></li>
 <li>Add to MATLAB path:</li>
 </ol>
-<div class="language-matlab highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="nb">genpath</span><span class="p">(</span><span class="s">&#39;path/to/CoSMoMVPA&#39;</span><span class="p">))</span>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="nb">genpath</span><span class="p">(</span><span class="s">'path/to/CoSMoMVPA'</span><span class="p">))</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nb">savepath</span>
 </span></code></pre></div>
 </li>
@@ -3137,7 +3137,7 @@ To make this change permanent, add the above line to your <code>~/.bashrc</code>
 <summary>SPM: Missing Toolboxes</summary>
 <p><strong>Problem</strong>: Errors occur due to missing SPM toolboxes in MATLAB.</p>
 <p><strong>Solution</strong>: Ensure the required toolboxes (e.g., SPM, CoSMoMVPA, MarsBaR) are installed and added to the MATLAB path. Use the following in MATLAB:
-<div class="language-matlab highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="s">&#39;path/to/spm12&#39;</span><span class="p">)</span>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="s">'path/to/spm12'</span><span class="p">)</span>
 </span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nb">savepath</span>
 </span></code></pre></div></p>
 </details>
@@ -3404,7 +3404,7 @@ For existing environments, try resolving conflicts by specifying package version
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tabs.link", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.sections", "search.highlight", "search.suggest", "search.share", "navigation.indexes", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       

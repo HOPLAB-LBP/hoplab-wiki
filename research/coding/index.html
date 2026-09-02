@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2636,7 +2636,7 @@
 <li>
 <p><strong>Use Docstrings</strong> to document functions and classes:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="sd">"""</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="sd">    Loads data from a specified file path.</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="sd">    Args:</span>
@@ -2644,7 +2644,7 @@
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="sd">    Returns:</span>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="sd">        pandas.DataFrame: Loaded data as a DataFrame.</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="sd">    """</span>
 </span></code></pre></div>
 </li>
 <li>
@@ -2800,16 +2800,16 @@
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">set_random_seeds</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="sd">    Set the random seed for reproducibility in PyTorch, NumPy, and Python&#39;s random module.</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="sd">    Set the random seed for reproducibility in PyTorch, NumPy, and Python's random module.</span>
 </span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="sd">    This function sets the seed for random number generation in PyTorch, NumPy, and Python&#39;s built-in random module.</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="sd">    This function sets the seed for random number generation in PyTorch, NumPy, and Python's built-in random module.</span>
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="sd">    It also configures PyTorch to use deterministic algorithms and disables the benchmark mode for convolutional layers</span>
 </span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="sd">    when CUDA is available, to ensure reproducibility.</span>
 </span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a>
 </span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="sd">    :param seed: The random seed. Defaults to 42.</span>
 </span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="sd">    :type seed: int</span>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="sd">    """</span>
 </span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a>    <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 </span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a>    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 </span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a>    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
@@ -2820,20 +2820,20 @@
 </span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a>        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">False</span>
 </span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a>
 </span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_run_id</span><span class="p">():</span>
-</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="w">    </span><span class="sd">"""</span>
 </span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="sd">    Generate a unique run identifier based on the current date and time.</span>
 </span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34"></a>
-</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="sd">    This function creates a string representing the current date and time in the format &#39;YYYYMMDD-HHMMSS&#39;.</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="sd">    This function creates a string representing the current date and time in the format 'YYYYMMDD-HHMMSS'.</span>
 </span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="sd">    It can be used to create unique identifiers for different runs or experiments.</span>
 </span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37"></a>
 </span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="sd">    :returns: A string representing the current date and time.</span>
 </span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="sd">    :rtype: str</span>
-</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="sd">    """</span>
 </span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41"></a>    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42"></a>    <span class="k">return</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">-%H%M%S&quot;</span><span class="p">)</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42"></a>    <span class="k">return</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y%m</span><span class="si">%d</span><span class="s2">-%H%M%S"</span><span class="p">)</span>
 </span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43"></a>
 </span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_output_directory</span><span class="p">(</span><span class="n">directory_path</span><span class="p">):</span>
-</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="w">    </span><span class="sd">"""</span>
 </span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="sd">    Creates an output directory at the specified path.</span>
 </span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47"></a>
 </span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="sd">    This function attempts to create a directory at the given path.</span>
@@ -2842,19 +2842,19 @@
 </span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51"></a>
 </span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="sd">    :param directory_path: The path where the output directory will be created.</span>
 </span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="sd">    :type directory_path: str</span>
-</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="sd">    """</span>
 </span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55"></a>    <span class="k">try</span><span class="p">:</span>
-</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56"></a>        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attempting to create output directory at: </span><span class="si">{</span><span class="n">directory_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56"></a>        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Attempting to create output directory at: </span><span class="si">{</span><span class="n">directory_path</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory_path</span><span class="p">):</span>
 </span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58"></a>            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory_path</span><span class="p">)</span>
-</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59"></a>            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Output directory created successfully.&quot;</span><span class="p">)</span>
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59"></a>            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Output directory created successfully."</span><span class="p">)</span>
 </span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60"></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61"></a>            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Output directory already exists.&quot;</span><span class="p">)</span>
+</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61"></a>            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Output directory already exists."</span><span class="p">)</span>
 </span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63"></a>        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred while creating the output directory: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63"></a>        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"An error occurred while creating the output directory: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64"></a>
 </span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65"></a><span class="k">def</span><span class="w"> </span><span class="nf">save_script_to_file</span><span class="p">(</span><span class="n">output_directory</span><span class="p">):</span>
-</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66"></a><span class="w">    </span><span class="sd">"""</span>
 </span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67"></a><span class="sd">    Saves the script file that is calling this function to the specified output directory.</span>
 </span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68"></a>
 </span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69"></a><span class="sd">    This function automatically detects the script file that is executing this function</span>
@@ -2863,7 +2863,7 @@
 </span><span id="__span-2-72"><a id="__codelineno-2-72" name="__codelineno-2-72"></a>
 </span><span id="__span-2-73"><a id="__codelineno-2-73" name="__codelineno-2-73"></a><span class="sd">    :param output_directory: The directory where the script file will be saved.</span>
 </span><span id="__span-2-74"><a id="__codelineno-2-74" name="__codelineno-2-74"></a><span class="sd">    :type output_directory: str</span>
-</span><span id="__span-2-75"><a id="__codelineno-2-75" name="__codelineno-2-75"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-2-75"><a id="__codelineno-2-75" name="__codelineno-2-75"></a><span class="sd">    """</span>
 </span><span id="__span-2-76"><a id="__codelineno-2-76" name="__codelineno-2-76"></a>    <span class="k">try</span><span class="p">:</span>
 </span><span id="__span-2-77"><a id="__codelineno-2-77" name="__codelineno-2-77"></a>        <span class="c1"># Get the frame of the caller to this function</span>
 </span><span id="__span-2-78"><a id="__codelineno-2-78" name="__codelineno-2-78"></a>        <span class="n">caller_frame</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
@@ -2873,17 +2873,17 @@
 </span><span id="__span-2-82"><a id="__codelineno-2-82" name="__codelineno-2-82"></a>        <span class="c1"># Construct the output file paths</span>
 </span><span id="__span-2-83"><a id="__codelineno-2-83" name="__codelineno-2-83"></a>        <span class="n">script_file_out</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_directory</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">script_file</span><span class="p">))</span>
 </span><span id="__span-2-84"><a id="__codelineno-2-84" name="__codelineno-2-84"></a>
-</span><span id="__span-2-85"><a id="__codelineno-2-85" name="__codelineno-2-85"></a>        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attempting to save the script file to: </span><span class="si">{</span><span class="n">script_file_out</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-2-85"><a id="__codelineno-2-85" name="__codelineno-2-85"></a>        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Attempting to save the script file to: </span><span class="si">{</span><span class="n">script_file_out</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="__span-2-86"><a id="__codelineno-2-86" name="__codelineno-2-86"></a>
 </span><span id="__span-2-87"><a id="__codelineno-2-87" name="__codelineno-2-87"></a>        <span class="c1"># Copy the script and additional files to the output directory</span>
 </span><span id="__span-2-88"><a id="__codelineno-2-88" name="__codelineno-2-88"></a>        <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">script_file</span><span class="p">,</span> <span class="n">script_file_out</span><span class="p">)</span>
 </span><span id="__span-2-89"><a id="__codelineno-2-89" name="__codelineno-2-89"></a>
-</span><span id="__span-2-90"><a id="__codelineno-2-90" name="__codelineno-2-90"></a>        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Script files saved successfully.&quot;</span><span class="p">)</span>
+</span><span id="__span-2-90"><a id="__codelineno-2-90" name="__codelineno-2-90"></a>        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Script files saved successfully."</span><span class="p">)</span>
 </span><span id="__span-2-91"><a id="__codelineno-2-91" name="__codelineno-2-91"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="__span-2-92"><a id="__codelineno-2-92" name="__codelineno-2-92"></a>        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred while saving the script file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-2-92"><a id="__codelineno-2-92" name="__codelineno-2-92"></a>        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"An error occurred while saving the script file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span><span id="__span-2-93"><a id="__codelineno-2-93" name="__codelineno-2-93"></a>
 </span><span id="__span-2-94"><a id="__codelineno-2-94" name="__codelineno-2-94"></a><span class="k">def</span><span class="w"> </span><span class="nf">setup_logger</span><span class="p">(</span><span class="n">log_file_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">):</span>
-</span><span id="__span-2-95"><a id="__codelineno-2-95" name="__codelineno-2-95"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-2-95"><a id="__codelineno-2-95" name="__codelineno-2-95"></a><span class="w">    </span><span class="sd">"""</span>
 </span><span id="__span-2-96"><a id="__codelineno-2-96" name="__codelineno-2-96"></a><span class="sd">    Set up a logger with both console and file handlers.</span>
 </span><span id="__span-2-97"><a id="__codelineno-2-97" name="__codelineno-2-97"></a>
 </span><span id="__span-2-98"><a id="__codelineno-2-98" name="__codelineno-2-98"></a><span class="sd">    :param log_file_path: The path for the log file. If None, only console logging is enabled.</span>
@@ -2892,13 +2892,13 @@
 </span><span id="__span-2-101"><a id="__codelineno-2-101" name="__codelineno-2-101"></a><span class="sd">    :type level: int</span>
 </span><span id="__span-2-102"><a id="__codelineno-2-102" name="__codelineno-2-102"></a><span class="sd">    :return: Configured logger.</span>
 </span><span id="__span-2-103"><a id="__codelineno-2-103" name="__codelineno-2-103"></a><span class="sd">    :rtype: logging.Logger</span>
-</span><span id="__span-2-104"><a id="__codelineno-2-104" name="__codelineno-2-104"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-2-104"><a id="__codelineno-2-104" name="__codelineno-2-104"></a><span class="sd">    """</span>
 </span><span id="__span-2-105"><a id="__codelineno-2-105" name="__codelineno-2-105"></a>    <span class="c1"># Create a logger</span>
 </span><span id="__span-2-106"><a id="__codelineno-2-106" name="__codelineno-2-106"></a>    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 </span><span id="__span-2-107"><a id="__codelineno-2-107" name="__codelineno-2-107"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
 </span><span id="__span-2-108"><a id="__codelineno-2-108" name="__codelineno-2-108"></a>
 </span><span id="__span-2-109"><a id="__codelineno-2-109" name="__codelineno-2-109"></a>    <span class="c1"># Create a formatter for logs</span>
-</span><span id="__span-2-110"><a id="__codelineno-2-110" name="__codelineno-2-110"></a>    <span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-2-110"><a id="__codelineno-2-110" name="__codelineno-2-110"></a>    <span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s2">"</span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="__span-2-111"><a id="__codelineno-2-111" name="__codelineno-2-111"></a>
 </span><span id="__span-2-112"><a id="__codelineno-2-112" name="__codelineno-2-112"></a>    <span class="c1"># Create a stream handler (for console output)</span>
 </span><span id="__span-2-113"><a id="__codelineno-2-113" name="__codelineno-2-113"></a>    <span class="n">stream_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
@@ -2974,8 +2974,8 @@
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="n">set_random_seeds</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a>
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="c1"># Define parameters for the run</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="n">results_dir</span> <span class="o">=</span> <span class="s2">&quot;./results&quot;</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="n">dataset_dir</span> <span class="o">=</span> <span class="s2">&quot;./datasets&quot;</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="n">results_dir</span> <span class="o">=</span> <span class="s2">"./results"</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="n">dataset_dir</span> <span class="o">=</span> <span class="s2">"./datasets"</span>
 </span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="n">epochs</span> <span class="o">=</span> <span class="mi">20</span>
 </span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">1e-5</span>
 </span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
@@ -2987,7 +2987,7 @@
 </span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="n">temperature_model_b</span> <span class="o">=</span> <span class="mi">5</span>
 </span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25"></a>
 </span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="c1"># Create a unique run ID and results directory</span>
-</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="n">run_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">create_run_id</span><span class="p">()</span><span class="si">}</span><span class="s2">_train-pair-temp-ws-softmax_proba-</span><span class="si">{</span><span class="n">prob_a</span><span class="si">}</span><span class="s2">_probb-</span><span class="si">{</span><span class="n">prob_b</span><span class="si">}</span><span class="s2">_probtest-</span><span class="si">{</span><span class="n">prob_test</span><span class="si">}</span><span class="s2">_tempa-</span><span class="si">{</span><span class="n">temperature_model_a</span><span class="si">}</span><span class="s2">_tempb-</span><span class="si">{</span><span class="n">temperature_model_b</span><span class="si">}</span><span class="s2">_lr-</span><span class="si">{</span><span class="n">learning_rate</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="n">run_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">create_run_id</span><span class="p">()</span><span class="si">}</span><span class="s2">_train-pair-temp-ws-softmax_proba-</span><span class="si">{</span><span class="n">prob_a</span><span class="si">}</span><span class="s2">_probb-</span><span class="si">{</span><span class="n">prob_b</span><span class="si">}</span><span class="s2">_probtest-</span><span class="si">{</span><span class="n">prob_test</span><span class="si">}</span><span class="s2">_tempa-</span><span class="si">{</span><span class="n">temperature_model_a</span><span class="si">}</span><span class="s2">_tempb-</span><span class="si">{</span><span class="n">temperature_model_b</span><span class="si">}</span><span class="s2">_lr-</span><span class="si">{</span><span class="n">learning_rate</span><span class="si">}</span><span class="s2">"</span>
 </span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="n">results_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="n">run_id</span><span class="p">)</span>
 </span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="n">create_output_directory</span><span class="p">(</span><span class="n">results_dir</span><span class="p">)</span>
 </span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30"></a>
@@ -2995,12 +2995,12 @@
 </span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="n">save_script_to_file</span><span class="p">(</span><span class="n">results_dir</span><span class="p">)</span>
 </span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33"></a>
 </span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="c1"># Set up logging to log both to the console and a file</span>
-</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="n">log_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="s2">&quot;log_output.txt&quot;</span><span class="p">)</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="n">log_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="s2">"log_output.txt"</span><span class="p">)</span>
 </span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="n">logger</span> <span class="o">=</span> <span class="n">setup_logger</span><span class="p">(</span><span class="n">log_file_path</span><span class="p">)</span>
-</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Results will be saved in: </span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Run ID: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">run_id</span><span class="p">)</span>
-</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting the experiment with the following parameters:&quot;</span><span class="p">)</span>
-</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Learning Rate: </span><span class="si">{</span><span class="n">learning_rate</span><span class="si">}</span><span class="s2">, Epochs: </span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s2">, Batch Size: </span><span class="si">{</span><span class="n">batch_size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Results will be saved in: </span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Run ID: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">run_id</span><span class="p">)</span>
+</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Starting the experiment with the following parameters:"</span><span class="p">)</span>
+</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Learning Rate: </span><span class="si">{</span><span class="n">learning_rate</span><span class="si">}</span><span class="s2">, Epochs: </span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s2">, Batch Size: </span><span class="si">{</span><span class="n">batch_size</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41"></a>
 </span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="c1"># ... Your training or analysis code here ...</span>
 </span></code></pre></div></td></tr></table></div>
@@ -3261,7 +3261,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.sections", "search.highlight", "search.suggest", "search.share", "navigation.indexes", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       
