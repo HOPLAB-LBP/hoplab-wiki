@@ -110,14 +110,14 @@ All referenced documents are regularly updated and available in the [Hoplab Team
 
 ### Managing scan data and invoicing
 
-- **Tracking sessions**:  
-  Keep detailed records of all scan sessions, noting which sessions provided useful data and/or when you experienced technical issues. Regular reports should be made to your Principal Investigator (PI). In case of technical issues, it is useful to also include what kind of issues you had as well as an estimation of the amount of time lost due to the issues.
+??? deflist "Tracking sessions"
+    Keep detailed records of all scan sessions, noting which sessions provided useful data and/or when you experienced technical issues. Regular reports should be made to your Principal Investigator (PI). In case of technical issues, it is useful to also include what kind of issues you had as well as an estimation of the amount of time lost due to the issues.
 
-- **Quarterly reports**:  
-  Every four months, your PI will receive an Excel sheet listing all scan sessions conducted during that period. This file will be forwarded to all researchers who have scanned in the corresponding period.
+??? deflist "Quarterly reports"
+    Every four months, your PI will receive an Excel sheet listing all scan sessions conducted during that period. This file will be forwarded to all researchers who have scanned in the corresponding period.
 
-- **Documenting experiments**:  
-  Complete the Excel sheet with the experiment name for each session and clearly note down comments for any session that did not yield useful data for various reasons (e.g., participant cancellation, no-shows, artifacts, technical issues) and send it back.
+??? deflist "Documenting experiments"
+    Complete the Excel sheet with the experiment name for each session and clearly note down comments for any session that did not yield useful data for various reasons (e.g., participant cancellation, no-shows, artifacts, technical issues) and send it back.
 
-- **Financial management**:  
-  Support staff (currently Klara) will further process the file by including the name of the SAP antenna (i.e., Agna Marien), specifying the funding source for each researcher, and by adjusting the total invoice amount on the invoice to reflect the actual scan hours based on successful data collection sessions ("corrected total").
+??? deflist "Financial management"
+    Support staff (currently Klara) will further process the file by including the name of the SAP antenna (i.e., Agna Marien), specifying the funding source for each researcher, and by adjusting the total invoice amount on the invoice to reflect the actual scan hours based on successful data collection sessions ("corrected total").

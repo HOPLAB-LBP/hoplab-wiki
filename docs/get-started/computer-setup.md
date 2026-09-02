@@ -4,21 +4,25 @@ Please read the [Welcome to ICT@PPW three-pager](https://ppw.kuleuven.be/ppw-dic
 
 ## Using a computer managed by the university
 
-Faculty issued computers can be recognized by their name starting with GHUM. To set you up, follow these steps:
+Faculty issued computers can be recognized by their name starting with GHUM. To set you up, go through the following:
 
-1. **Login**:
+??? numlist "Login"
     - You can log in to faculty issued computers with your intranet account.
     - Use your u-number (or r-number in case you are a student) and the password of your e-mail address to do so.
-2. **Internet access**:
+
+??? numlist "Internet access"
     - To access [the university's wireless network](https://admin.kuleuven.be/icts/english/services/wifi), look for *campusroam* in the list of available networks. This network offers the broadest access to faculty resources but only accepts u-numbers. When asked to authenticate, enter your u-number followed by *@kuleuven.be* and your intranet password. If you have an r-number, you can connect to the *eduroam* network, but this network does not allow access to PPW faculty file shares or printers.
     - To gain access to the wired network in the PPW-buildings, get your network outlet activated by completing [this form](https://ppw.kuleuven.be/home/ppw-dict/forms/activating-network-outlets) (in case it is not pre-activated).
-3. **Administrator access**:
+
+??? numlist "Administrator access"
     - If you are not already, contact dICT (*<dict@ppw.kuleuven.be>*) to make you administrator for the computer you are going to work on. You need to provide them the hostname of your pc (GHUM-…) and your u-number.
     - Alternatively, if someone else is already administrator, ask them to add you (Windows control panel > Change account type > Add > Add a new LUNA account).
-4. **Multi-factor authentication**:
+
+??? numlist "Multi-factor authentication"
     - To access KU Leuven intranet pages, you will need to log in with [KU Leuven Authenticator](https://admin.kuleuven.be/icts/english/mfa). You can register your device with a smartphone or tablet via the KU Leuven Authenticator App ([read the instructions](https://admin.kuleuven.be/icts/english/mfa/startwithmfa#smartphone)).
     - If you are having issues with MFA, check this [FAQ page](https://admin.kuleuven.be/icts/services/mfa/faq_en).
-5. **Downloading software**:
+
+??? numlist "Downloading software"
     - Before downloading software, make sure you acquired administrator access. You can request administrator rights by double clicking the "Make Me Admin" icon on your Windows, providing ICT with a short reason on why you need this access. Follow the further instructions to get temporary administrator rights on your computer.
     - Software should always be installed in 'C:\Workdir\MyApps\'. If software is installed elsewhere, the system will block these programs from running. Please contact the [ICT helpdesk](https://ppw.kuleuven.be/ppw-dict) if a problem occurs.
 
@@ -74,46 +78,48 @@ The installation process differs for students and personnel. Please follow the i
 
 Here are some programs we frequently use in the lab, which you might find useful to download:
 
-- **TeamViewer**: For remote access to a desktop PC, e.g. the fMRI PC to run your analyses.
+??? deflist "TeamViewer"
+    For remote access to a desktop PC, e.g. the fMRI PC to run your analyses.
 
-    ??? info "TeamViewer Setup Guide"
-        1. Download the free **private** version from the [official website](https://www.teamviewer.com/en/download/windows/).
-        2. Create an account:
-            - Open TeamViewer and click "Sign Up".
-            - Enter your email, name, and a strong password.
-            - Verify your email address.
-        3. Add a computer:
-            - Sign in and go to "Computers & Contacts".
-            - Click "Add Computer".
-            - Name the computer (e.g., "Lab Desktop").
-            - Click "Add" to save.
-        4. Connect:
-            - Open TeamViewer and log in.
-            - Find the computer in your list.
-            - Double-click to connect.
-            - Enter the remote computer's password when prompted.
+    1. Download the free **private** version from the [official website](https://www.teamviewer.com/en/download/windows/).
+    2. Create an account:
+        - Open TeamViewer and click "Sign Up".
+        - Enter your email, name, and a strong password.
+        - Verify your email address.
+    3. Add a computer:
+        - Sign in and go to "Computers & Contacts".
+        - Click "Add Computer".
+        - Name the computer (e.g., "Lab Desktop").
+        - Click "Add" to save.
+    4. Connect:
+        - Open TeamViewer and log in.
+        - Find the computer in your list.
+        - Double-click to connect.
+        - Enter the remote computer's password when prompted.
 
-- **AnyDesk**: A good alternative if TeamViewer is inaccessible. [Install the free private version](https://anydesk.com/en). It is advisable to install and configure both TeamViewer and AnyDesk to avoid being locked out if one of them is not accessible.
+??? deflist "AnyDesk"
+    A good alternative if TeamViewer is inaccessible. [Install the free private version](https://anydesk.com/en). It is advisable to install and configure both TeamViewer and AnyDesk to avoid being locked out if one of them is not accessible.
 
-- **Google Chrome**: This is the preferred web browser. For example, the MR calendar is only compatible with this browser.
+??? deflist "Google Chrome"
+    This is the preferred web browser. For example, the MR calendar is only compatible with this browser.
 
-- **Microsoft Teams**: KU Leuven offers [MS Teams](https://admin.kuleuven.be/icts/english/teams/index) for co-working and communication purposes. For most people, it is possible to reach other MS Teams users, but not to call (or be called by) external telephone numbers (landline and mobile). If you do need this functionality, you can request a phone number with ICTS (see [this page](https://admin.kuleuven.be/icts/english/teams/calling-in-teams/teams_calling)).
-  
-- **SSL VPN Pulse Client / Ivanti Secure Access Client**: The VPN offered by the university. For more information, check out this [link](https://admin.kuleuven.be/icts/services/vpn/).
+??? deflist "Microsoft Teams"
+    KU Leuven offers [MS Teams](https://admin.kuleuven.be/icts/english/teams/index) for co-working and communication purposes. For most people, it is possible to reach other MS Teams users, but not to call (or be called by) external telephone numbers (landline and mobile). If you do need this functionality, you can request a phone number with ICTS (see [this page](https://admin.kuleuven.be/icts/english/teams/calling-in-teams/teams_calling)).
 
-- **Overleaf**: An online <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> editor for collaborative writing and publishing.
+??? deflist "SSL VPN Pulse Client / Ivanti Secure Access Client"
+    The VPN offered by the university. For more information, check out this [link](https://admin.kuleuven.be/icts/services/vpn/).
 
-    ??? question "Why use Overleaf?"
-        Overleaf is a powerful tool for academic writing, especially for scientific papers and theses. Here's why it's important:
+??? deflist "Overleaf"
+    An online <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> editor for collaborative writing and publishing. It is a powerful tool for academic writing, especially for scientific papers and theses. Here's why it's important:
 
-        1. **<span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>-based**: Produces high-quality, professional-looking documents with complex equations and formatting.
-        2. **Collaboration**: Real-time collaboration with co-authors, similar to Google Docs.
-        3. **Version control**: Tracks changes and allows reverting to previous versions.
-        4. **Journal templates**: Many journals provide <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> templates that can be directly used in Overleaf, streamlining the submission process.
-        5. **Integration**: Works with reference managers like Mendeley and Zotero.
-        6. **Accessibility**: Web-based, so you can work from any computer without installing software.
+    1. **<span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>-based**: Produces high-quality, professional-looking documents with complex equations and formatting.
+    2. **Collaboration**: Real-time collaboration with co-authors, similar to Google Docs.
+    3. **Version control**: Tracks changes and allows reverting to previous versions.
+    4. **Journal templates**: Many journals provide <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> templates that can be directly used in Overleaf, streamlining the submission process.
+    5. **Integration**: Works with reference managers like Mendeley and Zotero.
+    6. **Accessibility**: Web-based, so you can work from any computer without installing software.
 
-        While <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> has a learning curve, investing time in learning it can significantly improve your academic writing workflow and the quality of your documents.
+    While <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> has a learning curve, investing time in learning it can significantly improve your academic writing workflow and the quality of your documents.
 
 !!! tip "Administrative privileges on KU Leuven PCs"
     In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in `C:\Workdir\MyApps\`. Please contact the ICT helpdesk if problems persist.

@@ -139,7 +139,7 @@ For detailed installation and usage instructions, please refer to each tool's re
 
 Below are the basic Docker pull commands for the main tools we use:
 
-- **fMRIprep**:
+??? deflist "fMRIprep"
 
     [fMRIPrep](https://fmriprep.org/en/stable/) is a tool for minimal pre-processing of structural and anatomical MRI images.
 
@@ -149,7 +149,7 @@ Below are the basic Docker pull commands for the main tools we use:
     python -m pip install fmriprep-docker
     ```
 
-- **MRIQC**:
+??? deflist "MRIQC"
 
     [MRIQC](https://mriqc.readthedocs.io/en/latest/) is a tool to perform Quality Check on your raw and pre-processed MRI images.
 
@@ -159,7 +159,7 @@ Below are the basic Docker pull commands for the main tools we use:
     docker pull nipreps/mriqc:latest
     ```
 
-- **FastSurfer**:
+??? deflist "FastSurfer"
 
     [FastSurfer](https://github.com/Deep-MI/FastSurfer) is a self-contained, faster (it uses the NVIDIA GPU processing) alternative to FreeSurfer. It can save quite some time when performing surface processing pipelines (e.g., `recon-all`).
 
@@ -172,7 +172,7 @@ Below are the basic Docker pull commands for the main tools we use:
     !!! note
         FastSurfer can save you time if you have a **[CUDA-compatible GPU](https://developer.nvidia.com/cuda-gpus)**. In short, this means that your machine should have a dedicated NVIDIA GPU with CUDA installed. You can check whether CUDA is correctly installed on you machine by typing `nvidia-smi` on your terminal. If this command does not return a list of active GPUs, you either need to install and configure CUDA, or you can avoid installing this tool and rely on the `recon-all` pipeline performed with the anatomical workflow of fMRIPrep.
 
-- **DeepMReye**:
+??? deflist "DeepMReye"
 
     [DeepMReye](https://github.com/DeepMReye/DeepMReye) is a tool to perform eye-tracking data analysis when you have no eye-tracking data. It estimates eye-movements from the eyes position in your functional images. This will of course results in a (very) much lower temporal resolution than real eye-tracking data, but we found results to be good enough for some experimental paradigms.
 
@@ -319,7 +319,7 @@ For MATLAB installation and licensing, please refer to the [Installing MATLAB](.
 
 Install the following MATLAB toolboxes:
 
-- **SPM**:
+??? deflist "SPM"
 
     SPM (Statistical Parametric Mapping) is used for GLM analysis.
 
@@ -335,7 +335,7 @@ Install the following MATLAB toolboxes:
     !!! warning "Mac installtion"
         For mac users, potential installation issues can be tackled with the [instructions for mac](https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)) on the SPM wiki. Make sure **Xcode** is installed on your computer before installing SPM.
 
-- **CoSMoMVPA**
+??? deflist "CoSMoMVPA"
 
     CoSMoMVPA is used for multivariate pattern analysis.
 
@@ -347,7 +347,7 @@ Install the following MATLAB toolboxes:
     savepath
     ```
 
-- **MarsBaR**:
+??? deflist "MarsBaR"
 
     MarsBaR is a region of interest toolbox for SPM.
 

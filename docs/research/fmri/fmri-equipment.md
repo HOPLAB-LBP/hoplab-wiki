@@ -35,19 +35,23 @@ Systems are color-coded, and can be read as follows:
 
 The stimulus computer's desktop is located in the **control room**. It is the second-last computer from the right, between the eye-tracking computer (last) and MRI control computer.
 
-- **Login**: Use the provided username and password. Login details can be found [here](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/_layouts/15/Doc.aspx?sourcedoc=%7B5F0ACBA0-431D-45EE-BB84-4DAF31531222%7D&file=Contact%20information%2C%20usernames%20and%20passwords.docx&action=default&mobileredirect=true).
+??? deflist "Login"
+    Use the provided username and password. Login details can be found [here](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/_layouts/15/Doc.aspx?sourcedoc=%7B5F0ACBA0-431D-45EE-BB84-4DAF31531222%7D&file=Contact%20information%2C%20usernames%20and%20passwords.docx&action=default&mobileredirect=true).
 
     !!! tip "Password Not Accepted?"
         If the password is not accepted, check for a **qwerty-azerty** keyboard mismatch. Press `alt+shift` and ensure **EN** is selected on the login screen.
 
-- **Experiment files**: Store your experiment folders under `C:\Research\Psychology\` (create your own folder within this directory).
+??? deflist "Experiment files"
+    Store your experiment folders under `C:\Research\Psychology\` (create your own folder within this directory).
 
-- **Installed software**: **Matlab 2011b, 2015a**, and **Psychtoolbox 3.0.123** are installed.
+??? deflist "Installed software"
+    **Matlab 2011b, 2015a**, and **Psychtoolbox 3.0.123** are installed.
 
     !!! tip
         If Matlab freezes or shows a JAVA error, restarting Matlab should fix the issue.
 
-- **Screen information**: To flip the screen, adjust the **projector settings**, not the computer.
+??? deflist "Screen information"
+    To flip the screen, adjust the **projector settings**, not the computer.
 
 ![Screen information](../../assets/mr8_screenInformation.png)
 

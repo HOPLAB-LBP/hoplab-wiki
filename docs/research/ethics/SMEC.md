@@ -26,10 +26,10 @@ Your application will be first evaluated on its privacy impact (all aspects rela
 
 The SMEC puts a lot of emphasis on a well thought out **recruitment and informed consent procedure**, for which you can consult their **guidelines** [here](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/informed-consent-eng-07-23.pdf). In short:
 
-??? note "Information provided to participants"
+??? deflist "Information provided to participants"
     Researchers should use an **information letter**, an **informed consent form** (ICF; [Dutch example template](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/icf-template.doc), [English example template](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/icf-template-eng.doc)) and a **GDPR appendix** ([template](https://admin.kuleuven.be/privacy/en/intranet/doc/informatie-over-verwerking-persoonsgegevens-en.docx)) to provide potential participants with the necessary information about the study.
 
-??? note "Information required in the ICF and information letter"
+??? deflist "Information required in the ICF and information letter"
     Necessary information in the ICF as well as the information letter includes the following:
 
     - An invitation to participate in the study
@@ -45,7 +45,7 @@ The SMEC puts a lot of emphasis on a well thought out **recruitment and informed
 
     Do not forget to include version numbers and dates on all documents, preferably in a footer or header, and update them when making amendments.
 
-??? note "Brief consent forms"
+??? deflist "Brief consent forms"
     In some cases, it may be justifiable to use a **brief consent form** (e.g., a short online questionnaire that is likely to be completed on a small screen). A full consent form might be intimidating in this case or considered a barrier that might limit response rates. A concise consent form should include at least the following elements:
 
     - Short description of the study and the researchers
@@ -54,10 +54,10 @@ The SMEC puts a lot of emphasis on a well thought out **recruitment and informed
     - The potential risks of participating in the study
     - Reference and easily accessible link to the information letter with the full info about the study (as listed above)
 
-??? note "Recruitment materials"
+??? deflist "Recruitment materials"
     To fully assess the recruitment process, the **recruitment materials** that will be used (e.g., flyer, poster, call on social media, etc.) should be included in the ethics application. Specific guidelines on recruiting participants through social media can be found [here](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/recruitment-via-social-media-english.pdf).
 
-??? note "Research involving minors"
+??? deflist "Research involving minors"
     Specific guidelines on **research involving minors** can be found [here](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/nota-research-involving-minors.pdf).
 
 For any further questions, you can check out the [FAQ section](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/faq) of the SMEC.
