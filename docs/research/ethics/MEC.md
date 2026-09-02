@@ -85,20 +85,20 @@ Most likely, you are seeking to get ethical approval for a **prospective monocen
 
 For a valid application, you are required to upload the following documents:
 
-??? note "1. Accompanying letter signed by the PI"
+??? numlist "Accompanying letter signed by the PI"
     You can find more specific guidelines [here](https://www.uzleuven.be/en/ethics-committee-research/explanatory-notes/cover-letter-investigator-ec-research).
 
-??? note "2. Research protocol including a summary of the protocol in Dutch"
+??? numlist "Research protocol, including a summary of the protocol in Dutch"
     You can find more specific guidelines [here](https://www.uzleuven.be/en/ethics-committee-research/explanatory-notes/protocol-ec-research).
 
     They generally recommend to follow the [CTC template](https://gbiomed.kuleuven.be/english/ctc/intern/ctc-homepage/quality-management/procedural-documents-1/general-procedures/copy9_of_procedural-documents), which already includes the correct info on e.g., safety procedures.
 
-??? note "3. Participant recruitment"
+??? numlist "Participant recruitment"
     Please consult [these guidelines](https://www.uzleuven.be/en/ethics-committee-research/explanatory-notes/method-recruitment-recruitment-material-ec-research).
 
     Note that all recruitment materials (posters, brochures, flyers, etc.) have to be submitted under this section; and that there are specific guidelines regarding advertising your study, especially via social media.
 
-??? note "4. Informed consent forms (ICFs) (in English and in Dutch)"
+??? numlist "Informed consent forms (ICFs), in English and in Dutch"
     The EC prefers the use of ICF templates which already include information regarding the legal basis for data processing chosen by UZ/KU Leuven (i.e., "public interest", cf. Article 6 of the GDPR), the correct wordings, etc. You can find them [here](https://www.uzleuven.be/en/ethics-committee-research/explanatory-notes/drawing-informed-consent-form-icf#templates-non-eudract-studies).
 
     [Here](https://www.uzleuven.be/en/ethics-committee-research/explanatory-notes/drawing-informed-consent-form-icf#guidelines-for-drawing-up-icf) you can also find specific guidelines for drawing up your ICF.
@@ -109,22 +109,22 @@ For a valid application, you are required to upload the following documents:
     - the consent form
     - any additional information (appendices)
 
-??? note "5. Resume of the Principal Investigator (dated and signed)"
+??? numlist "Resume of the Principal Investigator (dated and signed)"
     You can find more specific guidelines [here](https://www.uzleuven.be/en/ethics-committee-research/explanatory-notes/suitability-competence-principal-investigator-promoter-ec-research).
 
     Note that the PI (and preferably every researcher to be involved in data collection) should also have a valid **Good Clinical Practice (GCP)** certificate.
 
     The training can be followed online via [Transcelerate](https://gbiomed.kuleuven.be/english/ctc/intern/ctc-academy/ich-gcp-e6-r2-training-certification).
 
-??? note "6. GDPR / PRET questionnaire"
+??? numlist "GDPR / PRET questionnaire"
     A pdf-version of the completed [**UZ Leuven GDPR questionnaire**](https://www.uzleuven.be/en/ctc-gdpr-questionnaire) or the accepted [**KU Leuven PRET questionnaire**](https://www.groupware.kuleuven.be/sites/pret/Pages/default.aspx).
 
     Read the guidelines [here](https://www.uzleuven.be/en/ethics-committee-research/explanatory-notes/gdpr-questionnaire-ec-research).
 
-??? note "7. Proof of no-fault insurance"
+??? numlist "Proof of no-fault insurance"
     [Proof of "no fault" insurance](https://admin.kuleuven.be/sab/vz/en/public-liability#autotoc-item-autotoc-4), which you can find [here](https://gbiomed.kuleuven.be/english/ctc/intern/ctc-homepage/portlet_links/insurance-certificates) if UZ/KU Leuven is the sponsor of the study.
 
-??? note "8. Suitability/agreement of the relevant supporting UZ Leuven departments"
+??? numlist "Suitability/agreement of the relevant supporting UZ Leuven departments"
     See [this page](https://www.uzleuven.be/en/ethics-committee-research/explanatory-notes/suitability-facilitiesinvolved-supporting-services-ec-research).
 
 ### Submit the application
@@ -138,7 +138,7 @@ Once you have written all the necessary documents, you can file your application
 
 An amendment can only be approved if the EC has provided a prior opinion on the initial protocol. For UZ/KU Leuven there are **three types of amendments**:
 
-??? note "1. Substantial amendments"
+??? numlist "Substantial amendments"
     Requirements for submission (for detailed information, see [this page](https://www.uzleuven.be/en/ethics-committee-research/experiment/submitting-amendments-ec-research-experiment/substantial-amendments)):
 
     - Cover letter of the PI
@@ -146,7 +146,7 @@ An amendment can only be approved if the EC has provided a prior opinion on the 
     - **If** changes to the ICF are needed, an **ICF addendum for ongoing participants** is recommended (the addendum includes only the changes or new information, making it clearer for participants than a revised ICF with marked changes)
     - Contact details of the contact person within UZ Leuven/KU Leuven (other than the investigator) who will follow up the file
 
-??? note "2. Amendments for participation of additional centres in a previously approved study"
+??? numlist "Amendments for participation of additional centres in a previously approved study"
     Requirements for submission (for detailed information, see [this page](https://www.uzleuven.be/en/ethics-committee-research/experiment/submitting-amendments-ec-research-experiment/participation-additional-centres-previously-approved-research)):
 
     - Cover letter of the PI
@@ -157,7 +157,7 @@ An amendment can only be approved if the EC has provided a prior opinion on the 
     - Concise **CV(s) of the investigator(s)** of the added centres
     - Contact details of the contact person within UZ Leuven/KU Leuven (other than the investigator) who will follow up the file
 
-??? note "3. Notifications"
+??? numlist "Notifications"
     Amendments that do not involve substantial changes in content must be submitted as a notification. Requirements for submission (for detailed information, see [this page](https://www.uzleuven.be/en/ethics-committee-research/experiment/submitting-amendments-ec-research-experiment/notifications)):
 
     - Any amendments to the documents must be made using **track changes**
