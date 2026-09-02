@@ -42,7 +42,7 @@ The SMEC puts a lot of emphasis on a well thought out **recruitment and informed
     - If applicable, clarification that the study is not set within the hospital context
     - Contact details of the researchers
     - Ethics committee contact information
-   
+
     Do not forget to include version numbers and dates on all documents, preferably in a footer or header, and update them when making amendments.
 
 ??? note "Brief consent forms"

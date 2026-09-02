@@ -3,7 +3,7 @@
 !!! info "Which approval do you need?"
     This page covers the **EC onderzoek (Medical Ethics Committee)** pathway, required for fMRI studies, patient studies, UZ Leuven studies, and TMS/tDCS research. For behavioral studies not involving medical procedures, see [SMEC](SMEC.md) instead. Check the [ethics overview](index.md) for more information.
 
-The EC Research UZ/KU Leuven evaluates research that falls within the scope of the Belgian law of 7 May 2004 on Experiments on Human Beings (the ‘Human Experiments Act’). 
+The EC Research UZ/KU Leuven evaluates research that falls within the scope of the Belgian law of 7 May 2004 on Experiments on Human Beings (the ‘Human Experiments Act’).
 
 ## Step 1: Register your study at the CTC
 
@@ -121,7 +121,7 @@ For a valid application, you are required to upload the following documents:
 
     Read the guidelines [here](https://www.uzleuven.be/en/ethics-committee-research/explanatory-notes/gdpr-questionnaire-ec-research).
 
-??? note "7. Proof of "no fault" insurance"
+??? note "7. Proof of no-fault insurance"
     [Proof of "no fault" insurance](https://admin.kuleuven.be/sab/vz/en/public-liability#autotoc-item-autotoc-4), which you can find [here](https://gbiomed.kuleuven.be/english/ctc/intern/ctc-homepage/portlet_links/insurance-certificates) if UZ/KU Leuven is the sponsor of the study.
 
 ??? note "8. Suitability/agreement of the relevant supporting UZ Leuven departments"
