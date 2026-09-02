@@ -4,21 +4,25 @@ Please read the [Welcome to ICT@PPW three-pager](https://ppw.kuleuven.be/ppw-dic
 
 ## Using a computer managed by the university
 
-Faculty issued computers can be recognized by their name starting with GHUM. To set you up, follow these steps:
+Faculty issued computers can be recognized by their name starting with GHUM. To set you up, go through the following:
 
-1. **Login**:
+??? numlist "Login"
     - You can log in to faculty issued computers with your intranet account.
     - Use your u-number (or r-number in case you are a student) and the password of your e-mail address to do so.
-2. **Internet access**:
+
+??? numlist "Internet access"
     - To access [the university's wireless network](https://admin.kuleuven.be/icts/english/services/wifi), look for *campusroam* in the list of available networks. This network offers the broadest access to faculty resources but only accepts u-numbers. When asked to authenticate, enter your u-number followed by *@kuleuven.be* and your intranet password. If you have an r-number, you can connect to the *eduroam* network, but this network does not allow access to PPW faculty file shares or printers.
     - To gain access to the wired network in the PPW-buildings, get your network outlet activated by completing [this form](https://ppw.kuleuven.be/home/ppw-dict/forms/activating-network-outlets) (in case it is not pre-activated).
-3. **Administrator access**:
+
+??? numlist "Administrator access"
     - If you are not already, contact dICT (*<dict@ppw.kuleuven.be>*) to make you administrator for the computer you are going to work on. You need to provide them the hostname of your pc (GHUM-…) and your u-number.
     - Alternatively, if someone else is already administrator, ask them to add you (Windows control panel > Change account type > Add > Add a new LUNA account).
-4. **Multi-factor authentication**:
+
+??? numlist "Multi-factor authentication"
     - To access KU Leuven intranet pages, you will need to log in with [KU Leuven Authenticator](https://admin.kuleuven.be/icts/english/mfa). You can register your device with a smartphone or tablet via the KU Leuven Authenticator App ([read the instructions](https://admin.kuleuven.be/icts/english/mfa/startwithmfa#smartphone)).
     - If you are having issues with MFA, check this [FAQ page](https://admin.kuleuven.be/icts/services/mfa/faq_en).
-5. **Downloading software**:
+
+??? numlist "Downloading software"
     - Before downloading software, make sure you acquired administrator access. You can request administrator rights by double clicking the "Make Me Admin" icon on your Windows, providing ICT with a short reason on why you need this access. Follow the further instructions to get temporary administrator rights on your computer.
     - Software should always be installed in 'C:\Workdir\MyApps\'. If software is installed elsewhere, the system will block these programs from running. Please contact the [ICT helpdesk](https://ppw.kuleuven.be/ppw-dict) if a problem occurs.
 
