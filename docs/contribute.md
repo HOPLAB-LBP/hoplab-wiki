@@ -44,13 +44,13 @@ This workflow is ideal for making small, quick changes to a single file. It can 
 
 #### Step 1: Make your changes
 
-1. **To edit an existing page:**
+=== "Edit an existing page"
 
     1. Navigate to the [`HOPLAB-LBP/hoplab-wiki`](https://github.com/HOPLAB-LBP/hoplab-wiki) repository.
     2. Click on the file you want to edit (usually, in `docs/`).
     3. Click on the pencil icon (✏️) at the top right to edit the file.
 
-2. **To create a new page:**
+=== "Create a new page"
 
     1. Navigate to the `mkdocs.yml` file.
     2. Click on the pencil icon (✏️) at the top right to edit the file.
