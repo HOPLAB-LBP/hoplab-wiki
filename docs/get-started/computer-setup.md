@@ -74,46 +74,48 @@ The installation process differs for students and personnel. Please follow the i
 
 Here are some programs we frequently use in the lab, which you might find useful to download:
 
-- **TeamViewer**: For remote access to a desktop PC, e.g. the fMRI PC to run your analyses.
+??? deflist "TeamViewer"
+    For remote access to a desktop PC, e.g. the fMRI PC to run your analyses.
 
-    ??? info "TeamViewer Setup Guide"
-        1. Download the free **private** version from the [official website](https://www.teamviewer.com/en/download/windows/).
-        2. Create an account:
-            - Open TeamViewer and click "Sign Up".
-            - Enter your email, name, and a strong password.
-            - Verify your email address.
-        3. Add a computer:
-            - Sign in and go to "Computers & Contacts".
-            - Click "Add Computer".
-            - Name the computer (e.g., "Lab Desktop").
-            - Click "Add" to save.
-        4. Connect:
-            - Open TeamViewer and log in.
-            - Find the computer in your list.
-            - Double-click to connect.
-            - Enter the remote computer's password when prompted.
+    1. Download the free **private** version from the [official website](https://www.teamviewer.com/en/download/windows/).
+    2. Create an account:
+        - Open TeamViewer and click "Sign Up".
+        - Enter your email, name, and a strong password.
+        - Verify your email address.
+    3. Add a computer:
+        - Sign in and go to "Computers & Contacts".
+        - Click "Add Computer".
+        - Name the computer (e.g., "Lab Desktop").
+        - Click "Add" to save.
+    4. Connect:
+        - Open TeamViewer and log in.
+        - Find the computer in your list.
+        - Double-click to connect.
+        - Enter the remote computer's password when prompted.
 
-- **AnyDesk**: A good alternative if TeamViewer is inaccessible. [Install the free private version](https://anydesk.com/en). It is advisable to install and configure both TeamViewer and AnyDesk to avoid being locked out if one of them is not accessible.
+??? deflist "AnyDesk"
+    A good alternative if TeamViewer is inaccessible. [Install the free private version](https://anydesk.com/en). It is advisable to install and configure both TeamViewer and AnyDesk to avoid being locked out if one of them is not accessible.
 
-- **Google Chrome**: This is the preferred web browser. For example, the MR calendar is only compatible with this browser.
+??? deflist "Google Chrome"
+    This is the preferred web browser. For example, the MR calendar is only compatible with this browser.
 
-- **Microsoft Teams**: KU Leuven offers [MS Teams](https://admin.kuleuven.be/icts/english/teams/index) for co-working and communication purposes. For most people, it is possible to reach other MS Teams users, but not to call (or be called by) external telephone numbers (landline and mobile). If you do need this functionality, you can request a phone number with ICTS (see [this page](https://admin.kuleuven.be/icts/english/teams/calling-in-teams/teams_calling)).
-  
-- **SSL VPN Pulse Client / Ivanti Secure Access Client**: The VPN offered by the university. For more information, check out this [link](https://admin.kuleuven.be/icts/services/vpn/).
+??? deflist "Microsoft Teams"
+    KU Leuven offers [MS Teams](https://admin.kuleuven.be/icts/english/teams/index) for co-working and communication purposes. For most people, it is possible to reach other MS Teams users, but not to call (or be called by) external telephone numbers (landline and mobile). If you do need this functionality, you can request a phone number with ICTS (see [this page](https://admin.kuleuven.be/icts/english/teams/calling-in-teams/teams_calling)).
 
-- **Overleaf**: An online <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> editor for collaborative writing and publishing.
+??? deflist "SSL VPN Pulse Client / Ivanti Secure Access Client"
+    The VPN offered by the university. For more information, check out this [link](https://admin.kuleuven.be/icts/services/vpn/).
 
-    ??? question "Why use Overleaf?"
-        Overleaf is a powerful tool for academic writing, especially for scientific papers and theses. Here's why it's important:
+??? deflist "Overleaf"
+    An online <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> editor for collaborative writing and publishing. It is a powerful tool for academic writing, especially for scientific papers and theses. Here's why it's important:
 
-        1. **<span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>-based**: Produces high-quality, professional-looking documents with complex equations and formatting.
-        2. **Collaboration**: Real-time collaboration with co-authors, similar to Google Docs.
-        3. **Version control**: Tracks changes and allows reverting to previous versions.
-        4. **Journal templates**: Many journals provide <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> templates that can be directly used in Overleaf, streamlining the submission process.
-        5. **Integration**: Works with reference managers like Mendeley and Zotero.
-        6. **Accessibility**: Web-based, so you can work from any computer without installing software.
+    1. **<span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>-based**: Produces high-quality, professional-looking documents with complex equations and formatting.
+    2. **Collaboration**: Real-time collaboration with co-authors, similar to Google Docs.
+    3. **Version control**: Tracks changes and allows reverting to previous versions.
+    4. **Journal templates**: Many journals provide <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> templates that can be directly used in Overleaf, streamlining the submission process.
+    5. **Integration**: Works with reference managers like Mendeley and Zotero.
+    6. **Accessibility**: Web-based, so you can work from any computer without installing software.
 
-        While <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> has a learning curve, investing time in learning it can significantly improve your academic writing workflow and the quality of your documents.
+    While <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> has a learning curve, investing time in learning it can significantly improve your academic writing workflow and the quality of your documents.
 
 !!! tip "Administrative privileges on KU Leuven PCs"
     In case you have issues installing software (e.g., because of lack of administrator access), you can double click the "Make Me Admin" icon on your Windows desktop and follow the instructions to get temporary administrator rights on your computer. Additionally, make sure to install the software in `C:\Workdir\MyApps\`. Please contact the ICT helpdesk if problems persist.
