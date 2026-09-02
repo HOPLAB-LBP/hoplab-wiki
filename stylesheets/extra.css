@@ -469,3 +469,120 @@
 .task-list-control input[type="checkbox"]:checked {
   background: var(--md-primary-fg-color); border-color: var(--md-primary-fg-color);
 }
+
+/* =========================
+   Collapsible definition lists
+   ========================= */
+
+/*
+  ??? deflist "Term"   -> collapsible entry, bullet marker
+  ??? numlist "Term"   -> collapsible entry, auto-numbered
+  ???+ ...             -> same, open by default
+
+  Renders as a definition list: the summary is the term, the body the
+  definition. Numbering is a CSS counter and restarts at every heading,
+  so items can be reordered or inserted without renumbering by hand.
+*/
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 { counter-reset: deflist-item; }
+
+.md-typeset details.deflist,
+.md-typeset details.numlist {
+  margin: 0 0 .55em 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  font-size: inherit;
+}
+
+/* term */
+.md-typeset details.deflist > summary,
+.md-typeset details.numlist > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  width: auto;
+  min-height: 0;
+  margin: 0 0 0 -.35rem;
+  padding: .1rem .35rem .1rem 1.9rem;
+  position: relative;
+  background: none;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: 1.5;
+  border-radius: .3rem;
+}
+.md-typeset details.deflist > summary:hover,
+.md-typeset details.numlist > summary:hover {
+  color: var(--md-primary-fg-color);
+  background: color-mix(in srgb, var(--md-primary-fg-color) 7%, transparent);
+}
+
+/* marker replaces the admonition icon */
+.md-typeset details.deflist > summary::before,
+.md-typeset details.numlist > summary::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-mask-image: none;
+  mask-image: none;
+  border-radius: 50%;
+}
+.md-typeset details.numlist > summary::before {
+  content: counter(deflist-item);
+  counter-increment: deflist-item;
+  left: .35rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  background: color-mix(in srgb, var(--md-primary-fg-color) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 28%, transparent);
+  color: var(--md-primary-fg-color);
+  font-size: .7rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.md-typeset details.deflist > summary::before {
+  content: "";
+  left: .75rem;
+  width: .4rem;
+  height: .4rem;
+  background: color-mix(in srgb, var(--md-primary-fg-color) 55%, transparent);
+  border: 0;
+}
+.md-typeset details.deflist > summary { padding-left: 1.4rem; }
+
+/* chevron follows the term instead of being pinned to the right edge */
+.md-typeset details.deflist > summary::after,
+.md-typeset details.numlist > summary::after {
+  position: static;
+  top: auto;
+  right: auto;
+  width: .95rem;
+  height: .95rem;
+  transform: none;
+  opacity: .5;
+}
+.md-typeset details.deflist[open] > summary::after,
+.md-typeset details.numlist[open] > summary::after {
+  transform: rotate(90deg);
+  opacity: .8;
+}
+
+/* definition */
+.md-typeset details.numlist > *:not(summary) { margin-left: 1.9rem; margin-right: 0; }
+.md-typeset details.deflist > *:not(summary) { margin-left: 1.4rem; margin-right: 0; }
+.md-typeset details.deflist > summary + *,
+.md-typeset details.numlist > summary + * { margin-top: .3em; }
+
+@media print {
+  .md-typeset details.deflist > summary::after,
+  .md-typeset details.numlist > summary::after { display: none; }
+}

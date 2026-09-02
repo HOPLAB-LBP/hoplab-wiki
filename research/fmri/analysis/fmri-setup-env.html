@@ -2826,23 +2826,22 @@
 </div>
 <p>For detailed installation and usage instructions, please refer to each tool's respective documentation. For examples of how to run these tools using Docker, refer to the usage notes in their respective documentation or check our <a href="fmri-andrea-workflow.html">fMRI workflow example</a> in this same folder.</p>
 <p>Below are the basic Docker pull commands for the main tools we use:</p>
-<ul>
-<li>
-<p><strong>fMRIprep</strong>:</p>
+<details class="deflist">
+<summary>fMRIprep</summary>
 <p><a href="https://fmriprep.org/en/stable/">fMRIPrep</a> is a tool for minimal pre-processing of structural and anatomical MRI images.</p>
 <p>To get the Docker image:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>fmriprep-docker
 </span></code></pre></div>
-</li>
-<li>
-<p><strong>MRIQC</strong>:</p>
+</details>
+<details class="deflist">
+<summary>MRIQC</summary>
 <p><a href="https://mriqc.readthedocs.io/en/latest/">MRIQC</a> is a tool to perform Quality Check on your raw and pre-processed MRI images.</p>
 <p>To get the Docker image:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>nipreps/mriqc:latest
 </span></code></pre></div>
-</li>
-<li>
-<p><strong>FastSurfer</strong>:</p>
+</details>
+<details class="deflist">
+<summary>FastSurfer</summary>
 <p><a href="https://github.com/Deep-MI/FastSurfer">FastSurfer</a> is a self-contained, faster (it uses the NVIDIA GPU processing) alternative to FreeSurfer. It can save quite some time when performing surface processing pipelines (e.g., <code>recon-all</code>).</p>
 <p>To get the Docker image:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>deepmi/fastsurfer:latest
@@ -2851,15 +2850,14 @@
 <p class="admonition-title">Note</p>
 <p>FastSurfer can save you time if you have a <strong><a href="https://developer.nvidia.com/cuda-gpus">CUDA-compatible GPU</a></strong>. In short, this means that your machine should have a dedicated NVIDIA GPU with CUDA installed. You can check whether CUDA is correctly installed on you machine by typing <code>nvidia-smi</code> on your terminal. If this command does not return a list of active GPUs, you either need to install and configure CUDA, or you can avoid installing this tool and rely on the <code>recon-all</code> pipeline performed with the anatomical workflow of fMRIPrep.</p>
 </div>
-</li>
-<li>
-<p><strong>DeepMReye</strong>:</p>
+</details>
+<details class="deflist">
+<summary>DeepMReye</summary>
 <p><a href="https://github.com/DeepMReye/DeepMReye">DeepMReye</a> is a tool to perform eye-tracking data analysis when you have no eye-tracking data. It estimates eye-movements from the eyes position in your functional images. This will of course results in a (very) much lower temporal resolution than real eye-tracking data, but we found results to be good enough for some experimental paradigms.</p>
 <p>To get the Docker image:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>deepmreye/deepmreye
 </span></code></pre></div>
-</li>
-</ul>
+</details>
 <hr />
 <h3 id="dcm2niix">dcm2niix<a class="headerlink" href="#dcm2niix" title="Permanent link">&para;</a></h3>
 <p><a href="https://www.nitrc.org/plugins/mwiki/index.php/dcm2nii:MainPage">dcm2niix</a> is a powerful tool used for DICOM to NIfTI conversion. It can be used as a command-line tool or through a Graphical User Interface (GUI) when shipped with <a href="https://www.nitrc.org/projects/mricrogl/">MRIcroGL</a> (see <a href="https://www.nitrc.org/plugins/mwiki/index.php/dcm2nii:MainPage#Graphical_interface">this</a> for more information).</p>
@@ -3000,9 +2998,8 @@
 <h3 id="matlab">MATLAB<a class="headerlink" href="#matlab" title="Permanent link">&para;</a></h3>
 <p>For MATLAB installation and licensing, please refer to the <a href="../../../get-started/computer-setup.html#installing-matlab">Installing MATLAB</a> section in our computer setup guide.</p>
 <p>Install the following MATLAB toolboxes:</p>
-<ul>
-<li>
-<p><strong>SPM</strong>:</p>
+<details class="deflist">
+<summary>SPM</summary>
 <p>SPM (Statistical Parametric Mapping) is used for GLM analysis.</p>
 <ol>
 <li>Download <a href="https://www.fil.ion.ucl.ac.uk/spm/software/download/">SPM12</a></li>
@@ -3016,9 +3013,9 @@
 <p class="admonition-title">Mac installtion</p>
 <p>For mac users, potential installation issues can be tackled with the <a href="https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)">instructions for mac</a> on the SPM wiki. Make sure <strong>Xcode</strong> is installed on your computer before installing SPM.</p>
 </div>
-</li>
-<li>
-<p><strong>CoSMoMVPA</strong></p>
+</details>
+<details class="deflist">
+<summary>CoSMoMVPA</summary>
 <p>CoSMoMVPA is used for multivariate pattern analysis.</p>
 <ol>
 <li>Download from the <a href="http://www.cosmomvpa.org/download.html">official website</a></li>
@@ -3027,9 +3024,9 @@
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="nb">genpath</span><span class="p">(</span><span class="s">'path/to/CoSMoMVPA'</span><span class="p">))</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nb">savepath</span>
 </span></code></pre></div>
-</li>
-<li>
-<p><strong>MarsBaR</strong>:</p>
+</details>
+<details class="deflist">
+<summary>MarsBaR</summary>
 <p>MarsBaR is a region of interest toolbox for SPM.</p>
 <ol>
 <li>Download <a href="https://marsbar-toolbox.github.io/download.html">MarsBaR</a></li>
@@ -3043,8 +3040,7 @@
 </ol>
 <p>Change <code>/path-to-spm/</code> with your SPM path (e.g., <code>/usr/local/spm/spm12/</code>).</p>
 <p>The next time you start spm you should be able to start the toolbox by selecting ‘marsbar’ from the toolbox button on the SPM interface.  </p>
-</li>
-</ul>
+</details>
 <hr />
 <h2 id="installing-additional-tools">Installing additional tools<a class="headerlink" href="#installing-additional-tools" title="Permanent link">&para;</a></h2>
 <p>These tools are not mandatory -- they can be installed if needed.</p>
@@ -3407,6 +3403,8 @@ For existing environments, try resolving conflicts by specifying package version
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="../../../javascripts/details.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
