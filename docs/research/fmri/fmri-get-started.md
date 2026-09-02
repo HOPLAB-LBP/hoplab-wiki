@@ -36,7 +36,7 @@ Note that for most fMRI studies (including healthy adult participants), ethical 
 Follow the yellow section of the [flowchart](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AAATYJes74w8KvI0OEOd1MmYa?e=4&preview=Flowchart_MR8_scanning.pdf) to make sure everything is in order for you to start scanning.
 
 1. **Register your study at the CTC**:
-   After this you receive an S-number (for more info, we refer you to [this page](../ethics/MEC.md#step-1-register-your-study-at-the-uz-leuven-clinical-trial-center-ctc)).
+   After this you receive an S-number (for more info, we refer you to [this page](../ethics/MEC.md#step-1-register-your-study-at-the-ctc)).
 2. **Register your study at the MR research department**:
    Upload the [application form for support from the Radiology department](https://gbiomed.kuleuven.be/english/ctc/supporting-hospital-departments-for-public-ctc-website/aanvraagformulier_radiologie_eng) via [this link](https://www.uzleuven.be/en/uploading-application-forms-supporting-departments-ctc). Include the Clinical Study Coordinator of Radiology (currently, that is <lesley.cockmartin@uzleuven.be>) as contact person, who will approve your request via email.
 3. **Get approval from the ethical committee of UZ/KU Leuven**:
