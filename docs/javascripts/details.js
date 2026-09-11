@@ -28,9 +28,14 @@ document$.subscribe(function () {
     if (d.id) return;
     const summary = d.querySelector("summary");
     if (!summary) return;
-    d.id = summary.textContent.trim().toLowerCase()
+    const base = summary.textContent.trim().toLowerCase()
       .replace(/[^\w\s-]/g, "")
       .replace(/\s+/g, "-");
+    /* Never reuse an id a heading or another entry already has: with
+       duplicate ids a link only ever resolves to the first element. */
+    let id = base;
+    for (let n = 2; document.getElementById(id); n++) id = base + "-" + n;
+    d.id = id;
   });
   openDetailsFromHash();
 });
