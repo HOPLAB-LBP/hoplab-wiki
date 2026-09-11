@@ -1,177 +1,191 @@
 # Participant recruitment
 
-Before starting participant recruitment, ensure your study is formally approved by the [ethical committee](https://research.kuleuven.be/en/integrity-ethics/ethics/committees) (if you didn't do this yet, check out [this page](../ethics/index.md)). Prepare this well in advance. All recruitment materials (e.g., flyers, posters) must include the study's end date as specified in the ethics application.
+!!! warning
+    Before starting participant recruitment, ensure your study is formally approved by the [ethical committee](https://research.kuleuven.be/en/integrity-ethics/ethics/committees) (if you didn't do this yet, check out [this page](../ethics/index.md)). Prepare this well in advance. 
+    
+    Make sure you are using the **latest and correct (approved) recruitment materials, information letters, demographics questionnaires and informed consent forms (ICFs)**. All recruitment materials (e.g., flyers, posters) must include the study's end date as specified in the ethics application.
 
-(Healthy young adult) participants can be recruited in different ways:
+## Healthy adults
 
-1. Through the laboratory's participant database:
+Healthy adult participants can be recruited in different ways:
 
-    - Including previous participants and individuals who have expressed interest in participating through word-of-mouth referrals
+1. Through [NeuroSPACE's participant database](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=m1hzOUCetU6ADrC2OD0WIZquopqLrtBFjNZoWiO2ApRUNFdCTzlBM1AxTTBMRENONjNHNzFYTjEwOS4u)
 
-2. Through social connections of the researchers involved and/or by sharing your announcement via social media:
+    - Including past participants who explicitly agreed to be contacted for future research and individuals who have expressed interest in participating through word-of-mouth referrals, science outreach events, etc. 
+    - If you are looking for participants from a specific age range, gender, or education level, contact [Silke](https://www.kuleuven.be/wieiswie/en/person/00170487) and/or [Klara](https://www.kuleuven.be/wieiswie/en/person/00116743) to have a look in the database. 
+    - Reversely, if you test participants, ask them if they can be contacted again in the future, and let/help them register themselves in our database ([link](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=m1hzOUCetU6ADrC2OD0WIZquopqLrtBFjNZoWiO2ApRUNFdCTzlBM1AxTTBMRENONjNHNzFYTjEwOS4u)).
 
-    - For example, announce your experiment on [this facebook page](https://www.facebook.com/ExperimentKUL), which collects the latest info on psychological experiments at KU Leuven
-    - Make sure to read the guidelines on recruiting participants via social media provided by the ethical committee that approved your study ([guidelines SMEC](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/recruitment-via-social-media-english.pdf), [guidelines EC onderzoek](https://www.uzleuven.be/nl/ethische-commissie-onderzoek/templates-en-interne-richtlijnen-bij-starten-van-dossier-bij-ec-onderzoek/adverterenrekruteren-voor-klinische-studies-richtlijnen-ec-onderzoek))
+2. Through social connections of the researchers involved and/or by sharing your announcement via social media 
 
-3. Through the online recruitment system of the faculty (see below)
+    - For example, announce your experiment on [this facebook page](https://www.facebook.com/ExperimentKUL), which collects the latest info on psychological experiments at KU Leuven.
+    - Make sure to read the guidelines on recruiting participants via social media provided by the ethical committee that approved your study ([guidelines SMEC](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/recruitment-via-social-media-english.pdf), [guidelines EC onderzoek](https://www.uzleuven.be/nl/ethische-commissie-onderzoek/templates-en-interne-richtlijnen-bij-starten-van-dossier-bij-ec-onderzoek/.adverterenrekruteren-voor-klinische-studies-richtlijnen-ec-onderzoek)). 
 
-## Recruitment through the faculty's online recruitment system
+3. Through the [online recruitment system of the faculty](https://psykuleuven.sona-systems.com/Default.aspx?ReturnUrl=%2f) (first-year students & paid participants; see below)
 
-The **Experiment Management System (EMS)** of the faculty is an online platform used to facilitate the management of experimental research and the recruitment of participants. As it is managed by **Sona Systems**, it is often referred to with this name as well. It can be accessed through [this link](https://psykuleuven.sona-systems.com/Default.aspx?ReturnUrl=%2f). Here is some general info about the system:
+### Recruitment through the faculty's online recruitment system
 
-- The EMS can be used to schedule the experiment, set time slots, and easily manage the availability of participants. It can also facilitate communication between researchers and participants, such as sending reminders for scheduled experiments or sharing important information. The system provides a clear overview of available experiments, the status of participation, and accredited course credits.
-- All first-year psychology students can participate in experimental research by signing up through the EMS as part of their research methods course (typically between mid October and the end of May and in July).
-- A **credit system** is used in which they can earn course credits (18 research participation points) by participating in collective (max. 12 points) and/or individual testing sessions.
-- Students can also opt to do an **alternative assignment** to earn 2 course credits (i.e., writing a 1-2 page description of the participant experience from the methods section of a recent empirical paper). In this way, students can earn the same course credits as they would for participating in an experiment. This option is provided to ensure voluntariness of participation at all times.
-- In addition, both students and non-students can sign up through the EMS for **paid studies** throughout the entire year.
+The **Experiment Management System (EMS)**, managed through **Sona Systems**, is the Faculty of Psychology and Educational Sciences' platform for recruiting and managing research participants. Access it [here](https://psykuleuven.sona-systems.com?utm_source=chatgpt.com).
 
-PPW-affiliated researchers (you!) can offer their (on-site as well as online) experiments on the platform through a **researcher account**:
+EMS can be used for:
 
-- To request such an account, send an email to *<ioco@kuleuven.be>*, and provide the following information: [firstname], [lastname], [u-number]@kuleuven.be, [firstname].[lastname]@kuleuven.be).
-- Master's thesis students supervised by PPW staff are also allowed to access the participant pool, but supervisors need to request an account on their behalf.
-- Participants can create an account themselves by following the instructions on the [website of the EMS](https://psykuleuven.sona-systems.com/Default.aspx?ReturnUrl=%2f).
+* 👥 **Individual or collective studies**
+* 🎓 **Studies offering research participation points**
+* 💶 **Studies offering financial compensation**
+* 💻 **On-site or online studies**
 
-If you or your participants have any questions or problems related to the EMS, please check out these **Youtube tutorials** ([for participants](https://www.youtube.com/watch?v=_1OnT2ZU6QQ), [for researchers](https://www.youtube.com/watch?v=ec8S3xfO-a8)) and/or rely on peer support (fellow students/researchers) before addressing the system administrator at *<ioco@kuleuven.be>*.  
+!!! info "EMS support"
+    For questions or technical support, ask your colleagues for support, consult the **[participant](https://www.youtube.com/watch?v=_1OnT2ZU6QQ) and [researcher](https://www.youtube.com/watch?v=ec8S3xfO-a8) tutorials** from Sona, or  
+    contact **[ioco@kuleuven.be](mailto:ioco@kuleuven.be)**.
 
-!!!warning "Recruitment Bias"
-    It is important to consider potential **recruitment biases** when using the EMS. Since the pool primarily draws from **university students**, particularly first-year psychology students, the sample may not be fully representative of the general population. Additionally, there is often a higher proportion of **female students** in our faculty, which can introduce gender bias into the research findings. You should take this into account when designing studies and interpreting results when drawing from this participant pool.
+#### Who can participate?
 
-### Create a new experiment on the platform
+First-year psychology students can participate in research through EMS as part of their research methods course:
 
-As students rely on these experiments to collect the necessary research participation points for their research methods course (pass/fall evaluation, 1 ECTS), make sure to think about **inclusivity and accessibility**. Always specify whether the study location is wheelchair accessible and if students with disabilities can participate (e.g., motor, visual impairments).
+* Students are required to obtain **18 research participation points (PPs)** to pass, by participating in collective and/or individual testing sessions (credits can not be transferred between academic years).
+* Credit-based recruitment takes place approximately **from the beginning of October until the end of May**.
 
-To add a new study, provide the following information (for more detailed explanations, please watch [this](https://www.youtube.com/watch?v=ec8S3xfO-a8)):
+Other students and non-students can participate in **paid studies**.
 
-1. Study type: In case the experiment is online only, choose "Online External Study"
-2. Choose between a paid or credit study (in case both are options, "credit" must be selected)
-3. Study information:
-    - Study name: Include the type of compensation in the title
-    - Brief abstract
-    - Detailed description
-    - Eligibility requirements: Can be linked to the pre-screen participants fill out when signing up
-    - Session duration
-    - Credits: The total credit cap (= a technical matter on PI basis) can be set at 999 (if this is reached, email [Tom Beckers](https://www.kuleuven.be/wieiswie/nl/person/00005902) to increase it)
-    - Preparation: What to bring and/or how to prepare
-    - Researcher & PI details
-    - SMEC or EC approval number and expiration date
-    - Approval status: The study needs to be approved by the system administrator when it's added
-    - Activity status: Switch to inactive when you are not actively recruiting, toggle back when you resume
+!!! warning "Consider recruitment bias"
+    The EMS pool is strongly connected to the university population (faculty PPW). Studies recruiting primarily through EMS may therefore produce samples that are relatively young, highly educated, female or otherwise not representative of the general population.
 
-4. Advanced settings (optional):
+#### Set up your study
 
-    - Pre-requisite and disqualifier studies
-    - Course restrictions, select either
-    - Paid volunteer ("betaalde vrijwilliger"), to make sure participants expect payment, or
-    - The ongoing methods course, to make sure participants expect course credit.
-    - Age restrictions
-    - Be careful with restrictions, think about inclusivity (be as inclusive as possible)
-    - Ensure first-years are eligible by putting the lower age limit at 16 in the ethical dossier
-    - Study invitation code
-    - Study URL in case of web-based studies
-    - Participant sign-up and cancellation deadlines
-    - The cancellation deadline must have at least the same duration as the sign-up deadline
-    - You cannot cancel participation before you sign up
-    - Enable automated e-mails
-    - Assign timeslots to a specific researcher
-    - Automatic credit granting
-    - Frequency of participation
-    - Shared and private comments
+Setting up an EMS study involves three main steps:
 
-5. Add timeslots for your experiment: For online studies, the timeslot is the participation deadline
+??? numlist "Create an account"
+    | Role                                 | How to get access                                   |
+    | ------------------------------------ | --------------------------------------------------- |
+    | Participant                        | Create an account through the EMS website           |
+    | Researcher (PhD/postdoc)           | Request an account by contacting `ioco@kuleuven.be` |
+    | Master's thesis student/intern     | Access can be requested by the supervisor           |
 
-Make sure to prepare your study carefully before asking for **EMS approval**, as some changes will require re-approval. To ask for approval, click the "asking approval" button.
-You can start preparing your study in EMS before obtaining **ethics approval**, but you cannot request EMS approval until you obtain formal ethical approval. Once the latter is obtained, approval in EMS will take 10 days at the very most (usually less than a few days; sending a polite reminder after a few days is fine).
+    Researchers should provide their **U-number, first name, last name and KU Leuven email address** when requesting an account.
 
-!!!tip
-    The [Sona Mobile app](https://play.google.com/store/apps/details?id=com.sona_systems.mobile&hl=en_IE&pli=1) can be used to facilitate experiment scheduling (by adding/removing time slots as needed), but not to set up your study.
+??? numlist "Obtain ethics approval"
 
-### Collective testing sessions
+    You can start preparing your study in EMS before obtaining ethics approval, but you cannot request EMS approval until you obtain formal ethical approval.
 
-- Students can earn up to 12 research participation credits per academic year by participating in collective testing sessions.
-- For such sessions, researchers have to make all necessary arrangements themselves (e.g., rooms, equipment, setting up the study in the EMS, credit granting).
-- In the EMS, you can create collective sessions by allowing multiple participants to access the same time slot.
-- Students are encouraged to participate, but of course this is not mandatory, so you can not imply in your announcement that they *have* to participate.
-- An overarching informed consent is provided through the EMS as a condition for signing up to a collective session, to allow data pooling across different collective testing sessions. However, individual consent is still necessary for each specific session, along with separate ethics approval.
+    Apply for ethics approval **well in advance** and make sure that the planned recruitment and eligibility criteria are consistent with the approved ethics application. 
 
-### Screener
+    When submitting a study to EMS, you will need to provide your ethics approval code and the approval's expiry date.
 
-- Upon getting an account, participants need to fill out a pre-screener. In this screener, they are asked to indicate their handedness, gender, vision status, age, availability in weekends and evenings, fluency in Dutch and English and the last digit of their student number (for random assignment).
-- While setting up your experiment, you can set a few pre-screen restrictions to restrict the visibility of your study to participants who fail to meet those restrictions. Vice versa, you can also choose to send an automated email to all students who qualify for the pre-screen restrictions specific to your study.
-- If you want to see more items added to the pre-screen, you can send an email to *<ioco@kuleuven.be>* and/or [Tom Beckers](https://www.kuleuven.be/wieiswie/nl/person/00005902).
+??? numlist "Set up your study"
 
-### Participant consent
+    To add a new study, follow the steps below (for more details, please watch [this tutorial](https://www.youtube.com/watch?v=ec8S3xfO-a8) and check out the latest info provided by [PPW](https://admin.kuleuven.be/mykuleuven/en/channel/50000339/research/research-support)):
 
-Before starting the experiment, participants need to be fully informed about the study via a study information sheet, after which they need to sign the informed consent form. In these forms, it is important to make clear that they can withdraw from the study at any time and to provide contact details to give them the opportunity to ask questions (before and/or after the experiment).
+    1. Complete the **study information** (make sure to double check all info before going to the next step; changes will require re-approval)
+    2. Request **approval** of your study (this might take a few days, max. 10)
+    3. Add **timeslots** for participation (timeslot = participation deadline for online studies)
+    4. Set **sign-up and cancellation deadlines** (cancellation deadline >= sign-up deadline)
+    5. Add **accessibility information**
+    6. **Activate** your study once it is ready and approved
 
-- In case of **on-site experiments**, the information sheet as well as the informed consent can be presented (and signed) on paper.
-- In case of **online experiments**, the information sheet as well as the informed consent can be presented digitally via the EMS. Instead of signing the ICF, participants can then explicitly select whether they agree or not agree to participate.
+    Check your study settings, timeslots and recruitment status regularly. Deactivate studies when recruitment is no longer ongoing, toggle back when you resume.
 
-After participation or after the study is finished, you can choose to debrief participants orally or via mail about the (general) study results and/or discuss their individual task performance during the experimental session.
+    ??? warning "Be mindful of how inclusive and accessible your study is"
+        As students rely on these experiments to collect the necessary research participation points for their research methods course, make sure to think about inclusivity and accessibility. Always specify whether the study location is wheelchair accessible and if students with disabilities can participate (e.g., motor, auditory, visual impairments, etc.). Ensure all first-years are eligible by putting the lower age limit at 16 in the ethical dossier. 
 
-### Data confidentiality
+    ??? tip "Use the Sona Mobile app"
+        The [Sona Mobile app](https://play.google.com/store/apps/details?id=com.sona_systems.mobile&hl=en_IE&pli=1) can be used to facilitate experiment scheduling (e.g., adding time slots, but not to set up your study) and assigning participation points.
 
-Generally, except for gender and age, personal information does not need to be recorded. As all participants receive a system-assigned ID code (EMS code) to log in to the experiment, their participation and research data can remain **fully anonymous**. Also external people can use the EMS to ensure confidentiality.
+    ??? info "Collective sessions"
+        Students can receive a maximum of **12 PPs per academic year** through collective sessions. These are online studies that require large sample sizes. Researchers are usually asked to provide the study information to the IOCO coordinators by the end of August, after which a schedule will be drawn up for the whole academic year.
 
-- To avoid that a link is created between the EMS code and participant identity, please make sure to never ask for any identifying information such as their name or student number. This information will also never be provided by the administrator.
-- Of course, if a person participates in a paid study, you will need to ask for their name, address, email and bank account number to process the payment. This communication can occur through the EMS, such that this information is not shared on any of the online platforms.
-- Likewise, if a student wants to receive an update about the study results after the study is finished, they will need to provide their email address.
-These personal data should be saved in a password-protected file that will be stored as long as the study is ongoing, but deleted after publication of the research data.
+        Researchers are responsible for the **practical organisation** of collective sessions (e.g. booking rooms, equipment, setting up the study in EMS, credit granting, etc.). In the EMS, you can create collective sessions by allowing multiple participants to access the same time slot. 
+        
+        An overarching informed consent is provided through EMS, but **specific informed consent (and ethical approval) is still required for each collective session**.  
 
----
+#### Running a study
 
-### Reimbursement
-Reimbursement can take the following forms:
+##### Informed consent and confidentiality
 
-- **Credit study**: Research participation credits must be assigned in multiples of 0.25, i.e., 0.25 credit per 15 minutes, such that 1h equals 1 credit. Credits cannot be transferred between academic years.
-- **Paid study**: The standard pay rate for EEG is currently 15 euros per hour, and 30 per hour for fMRI studies, without additional incentives. Exceptions are possible for high-effort or aversive studies (e.g., fMRI, ESM). (Last updated: Feb 2026 - check your informed consent to be 100% sure you are using the correct values).
-- **Mixed study**: Award 0 credits to those who receive payment.
+Before participation, participants must receive the full study information and provide informed consent, in accordance with the approved ethics application.
 
-- For **more information** for instance, also for payment of [third parties](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/experimental-subjects). Use this when paying e.g., guest speakers' travel expenses.
+- For **on-site studies**, consent should be obtained on paper.
+- For **online studies**, consent can be obtained digitally via the EMS, usually by explicitly checking a consent box. 
 
-=== "Participant Monetary Payment"
+Only collect personal data that is necessary for the study, and process them in accordance with the approved ethics application.
 
-    The following information applies not only to behavioral participants but also to all other forms of study.
-    If the participant has to be paid from grant money, you will need to fill out a payment Excel and mail it to your financial Antenna (in our case, most likely [Agna](mailto:agna.marien@kuleuven.be)).
-    It is advised not to do this for each participant separately but batch them together to ensure efficiency.
+!!! warning "Keep participant and research data separate"
+    Do not directly link the EMS code or Sona ID to a participant's research data. Assign each participant a **study-specific participant ID** according to the [approved data management procedures](../rdm/SOPs.md), and use this ID to link research data across different study components. 
 
-    - Information you will need:
-        - Participant Name and Surname
-        - Participant Address
-        - Participant's IBAN (and BIC if international IBAN)
-        - Payment amount
-        - Study Number (Ethics)
-        - Grant number
+ For studies where no identifying information is required, participation via the EMS can remain fully anonymous. Some studies may require identifying information for **administrative purposes**:
 
-    - Depending on whether the participant has a Belgian IBAN or not fill out the appropriate form: [Belgian Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20belgian%20account%20numbers.xlsx?d=w90debbbdd86e4ebab4c32c42d02ec9e4&csf=1&web=1&e=VfcP7g), [International Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20foreign%20account%20numbers.xlsx?d=w1555b214f88b4114a9378d483aef71d4&csf=1&web=1&e=fCtsMe). You will notice that in the file 'Copy of Voorbeeld buitenlandse leveranciers.xlsx' two columns are added: BIC and landcode. This information is very important for the Financial Department.
-    - In the file at "mededeling" the Financial Department needs "*surname participant_number ethical approval study_ initials of the researcher*".
-    - Please do NOT CHANGE nor ADD columns to these Excel files
-    - It is also important that the participant's *address* is filled in. In case the participant refuses to give you his/her/its private address, you may use the KU Leuven address.
-    - You forward the filled in file(s) to Agna together with this information:
-        Title study and number of the ethical approval
-        Name(s) of researcher (s)
-        How is the amount calculated: e.g., participants receive 10 EUR/hour.
-    - Please mention in the *subject of your e-mail* your name and a number/month. This helps us to find a specific payment and the original e-mail.
+- Payment: For paid studies, you need to collect the participant's name, address, email address, and bank account details to process payment.
+- Follow-up communication: If participants wish to receive study results or other follow-up information after the study, you may need to collect their email address.
 
-=== "Credit Assignment"
+!!! warning "Keep confidential and research data separate"
+    You should keep such administrative/contact information separate from the research data, in a secure, access-restricted and password-protected file on your personal SharePoint. Do not include these details in the research dataset.
 
-    To assign participants their credits: surf to EMS sona > login > uncredited timeslots > and mark the participant as ‘completed’ > click save.
+    Personal data collected solely for payment or follow-up should be retained only for as long as necessary for that purpose and deleted when it is no longer needed, in accordance with the [approved data management procedures](../rdm/SOPs.md).
 
-Of course, all (psychology) students also benefit from participation by gathering insights into the common procedures of psychological research (wink).
+##### Research participation points
 
-Please record participant presence ("show-ups") and assign credits or pay participants promptly (preferably the same day and always within 1 week). To do so, you will need to collect the student's EMS code.
+For credit-based studies:
 
-!!!tip
+* Participants receive **0.25 PP per 15 minutes** of participation.
+* Set the appropriate **course restrictions** when creating the study (correct academic year).
+* Record participant presence ("show-ups") and assign participation points preferably the same day, but always **within one week** of participation.
+
+??? info "How to assign credits"
+    To assign participants their credits, surf to `EMS > Sona > Login > uncredited timeslots`, mark the participant as `completed`, and click `save`. 
+    
     The [Sona Mobile app](https://play.google.com/store/apps/details?id=com.sona_systems.mobile&hl=en_IE&pli=1) can be used for quick credit granting by scanning the QR code in the reminder email to the participants.
 
----
-### No shows
+??? info "Mixed studies"
+    If a study offers financial compensation and research participation points, set it up as a **credit study** and assign **0 credits to participants who are paid** to avoid that the timeslot is left open. You can add a comment that a payment was made.   
 
-- Participants should contact the researcher if they cannot attend the session, which qualifies as an **excused no-show**.
-- **Unexcused no-shows** incur a penalty of -0.5 credit. If a participant has 5 or more no-shows, their account will be inactivated.
+##### Financial compensation
+
+The standard financial compensation indicated in the current EMS guidance is €10/hour, although exceptions may apply for high-effort or aversive studies (such as fMRI or EEG). 
+
+Across NeuroSPACE, participant compensation was increased in October 2025 to **€15/hour for behavioral and EEG studies**, and to **€30/hour for fMRI studies**. If you are not sure, check your informed consent form for the correct compensation rate.
+
+??? info " Detailed instructions for reimbursing participants"
+
+    For paid studies, participant reimbursement from grant money is processed using an **Excel file**, that you send to the financial antenna (in our case, [Agna](mailto:agna.marien@kuleuven.be)). It is advised not to do this for each participant separately, but batch them together to ensure efficiency. 
+    
+    Prepare the reimbursement file as follows: 
+
+    1. Use the appropriate **KU Leuven reimbursement Excel template**, depending on whether the participant has a Belgian IBAN or not ([Belgian Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20belgian%20account%20numbers.xlsx?d=w90debbbdd86e4ebab4c32c42d02ec9e4&csf=1&web=1&e=VfcP7g), [International Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20foreign%20account%20numbers.xlsx?d=w1555b214f88b4114a9378d483aef71d4&csf=1&web=1&e=fCtsMe)). 
+
+    2. **Do not change the columns or structure** of the Excel templates!
+
+    3. Enter the required participant information:
+
+        * Name (surname and first name)
+        * Address (if the participant refuses to give you their private address, you may use the KU Leuven address)
+        * Payment amount
+        * Payment reference ("mededeling"): `[surname participant]_[code ethics approval]_[initials of the researcher]`
+        * IBAN
+        * BIC (if the IBAN is international)
+        * Country code (if the IBAN is international) 
+
+    4. Send the completed file to [Agna](mailto:agna.marien@kuleuven.be), together with the following information:
+        
+        * Title of the study 
+        * Code of the ethics approval
+        * Grant number to pay the participants from
+        * Name(s) of the researcher(s)
+        * How is the amount calculated (e.g., participants receive €15/hour)
+        * In the subject of the email, make sure to include your name and a number/month (this helps us to find a specific payment and the original email associated with it)
+
+    !!! warning "Protect payment information"
+        Payment information is confidential personal data. Keep it separate from research data in a secure, access-restricted and password-protected file on your personal SharePoint. Retain only for as long as necessary and delete it when it is no longer needed, in accordance with the [approved data management procedures](../rdm/SOPs.md).
+
+##### No-shows
+
+We distinguish between **excused** and **unexcused** no-shows.
+
+* An **excused no-show** is communicated to the researcher, typically by email.
+* An **unexcused no-show** is not communicated and results in a **−0.5 PP penalty**.
+* After **5 unexcused no-shows**, the participant's EMS account is blocked.
+
+## Special populations
+
+tbd
 
 <!--
-__TODO__: [Klara] EMS information was last verified September 2022. Verify that current EMS procedures, the credit system (18 points, 0.25 per 15 min), the participant interface, and the YouTube tutorial links are still accurate. Cross-check against current info at https://admin.kuleuven.be/mykuleuven/en/channel/50000339/research/research-support. Consider condensing the page to focus on essential steps and linking to official EMS documentation for details.
-__TODO__: [Klara] Add a section on recruiting non-student participant populations (e.g., elderly, patients, children, domain experts). Include: how to get access to KWS (clinical recruitment system) if needed, specific ethical considerations for vulnerable populations, and practical tips for recruitment outside the EMS pool.
-__TODO__: [Klara] Add a section documenting the lab's participant database: what it contains, how to access it, how to add new participants, and data privacy guidelines for maintaining the database.
-__TODO__: [Klara] Add guidelines on storing and managing participant data (or link to a dedicated RDM section). Cover: where to store consent forms, how long to retain participant records, and anonymisation procedures.
+__TODO__: [Klara] Add a section on recruiting non-student participant populations (e.g., elderly, patients, children, parents, domain-specific experts). Include: ask colleagues for tips (Ibe, Laura, Silke, Brent, Floor, etc.), how to get access to KWS (clinical recruitment system) if needed, specific ethical considerations for vulnerable populations, and practical tips for recruitment outside the EMS pool.
 -->

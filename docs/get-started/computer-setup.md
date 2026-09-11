@@ -1,6 +1,8 @@
 # Setting up your digital working environment
 
-Please read the [Welcome to ICT@PPW three-pager](https://ppw.kuleuven.be/ppw-dict/dictservicecatalog/welcome-to-ict-at-ppw.pdf) to get up and running with IT at our faculty. In case of ICT-related problems, make sure to check the FAQ page of PPW Dienst ICT [here](https://ppw.kuleuven.be/ppw-dict/faq/index.htm).
+Please have a look at the [Quick Start ICT Onboarding website](https://ghum.kuleuven.be/EN/icthw/ict-hw-helpdesk) to get up and running with ICT at our faculty (logging in, printing, installing software, and IT security). 
+
+In case of (other) ICT-related problems, make sure to check the [FAQ page of PPW Dienst ICT](https://ppw.kuleuven.be/ppw-dict/faq/index.htm).
 
 ## Using a computer managed by the university
 
@@ -24,10 +26,14 @@ Faculty issued computers can be recognized by their name starting with GHUM. To 
 
 ??? numlist "Downloading software"
     - Before downloading software, make sure you acquired administrator access. You can request administrator rights by double clicking the "Make Me Admin" icon on your Windows, providing ICT with a short reason on why you need this access. Follow the further instructions to get temporary administrator rights on your computer.
-    - Software should always be installed in 'C:\Workdir\MyApps\'. If software is installed elsewhere, the system will block these programs from running. Please contact the [ICT helpdesk](https://ppw.kuleuven.be/ppw-dict) if a problem occurs.
+    - Software should always be installed in `C:\Workdir\MyApps\`. If software is installed elsewhere, the system will block these programs from running. Please contact the [ICT helpdesk](https://ppw.kuleuven.be/ppw-dict) if a problem occurs.
 
 ??? question "Where do I find the hostname of my pc?"
     The hostname is usually printed on a sticker on the computer. If not, go to Start, right click on "This PC", choose properties, and check the "Device name" field.
+
+## Using a Mac (OS X) pc 
+
+Mac users can find a manual with an overview of the most frequently asked questions concerning configuration and initial setup of a secure work environment on Mac OS X on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration). It is advised by dICT to read the page from top to bottom, and it is mandatory to go at least through the chapter on [safety settings](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration#autotoc-item-autotoc-17).
 
 ## Installing MATLAB
 
@@ -52,9 +58,9 @@ The installation process differs for students and personnel. Please follow the i
     2. **Request access from ICTS**:
     
         - The information for Matlab can be found [here](https://icts.kuleuven.be/sc/english/software/matlab). The **request form** can be found at [this link](https://www.groupware.kuleuven.be/sites/klantencentrum/Paginas/AanvraagformulierMatlab.aspx). 
-        - The u-number workflowreceiver is `u0057838` (An van Kets) 
+        - The u-number workflowreceiver is `u0088446` (Agna Mariën) 
         - The number for the organizational unit is `53197848` (Brain and Cognition). 
-        - The "credit" section can be left blank. You can write KULC if your research funding code does not begin ZL…. If it begins with ZL, then then you can fill in with LRD. 
+        - In the credit section, fill in the funding code of the funding source that will cover the license fee.  
        
     3. **Download MATLAB**:
         
@@ -140,6 +146,11 @@ Beyond the lab essentials listed above, here are tools commonly used for researc
 | **Image editing** | [GIMP](https://www.gimp.org/) (raster), [Inkscape](https://inkscape.org/) (vector) |
 | **Literature search** | [Semantic Scholar](https://www.semanticscholar.org/), [Elicit](https://elicit.com/), [Google Scholar](https://scholar.google.com/) |
 
+!!! tip
+    KU Leuven provides access to a range of software packages through campus licences. For an overview of available software and information on licences and installation, see the [KU Leuven software catalogue](https://admin.kuleuven.be/icts/english/services/software).
+
+    For an overview of research software and tools used specifically within the **Faculty of Psychology and Educational Sciences (PPW)**, see the [PPW Research Infrastructure Teams channel](https://teams.microsoft.com/l/entity/0d820ecd-def2-4297-adad-78056cde7c78/_djb2_msteams_prefix_3935117037?context=%7B%22channelId%22%3A%2219%3A5b7757aa9d98480a9c2915a7c9c9b613%40thread.tacv2%22%7D&tenantId=3973589b-9e40-4eb5-800e-b0b6383d1621).
+
 ## Email forwarding for PhD students
 
 If you have both a student address (`@student.kuleuven.be`) and a professional address (`@kuleuven.be`), you can set up automatic forwarding so you never miss messages sent to the wrong address.
@@ -172,11 +183,11 @@ In Hoplab, several communication channels are used, on different levels. Here is
 ### Encrypting external hard drives
 
 When storing research data on external drives, encryption is strongly recommended to protect sensitive information (e.g., participant data).
-For more information on Hard drive encryption see: [Study workflow > Data Storage](https://hoplab-lbp.github.io/hoplab-wiki/research/rdm/SOPs.html#data-collection)
+For more information on hard drive encryption see: [Study workflow > Store raw data](https://hoplab-lbp.github.io/hoplab-wiki/research/rdm/SOPs.html#5-store-raw-data).
 
 ## Printing
 
-Find info on how to install printing services on your desktop or laptop connected to the KU Leuven or faculty network [here](https://ppw.kuleuven.be/home/ppw-dict/dictservicedesk/netwerkprinter).
+Find info on how to install printing services on your desktop or laptop connected to the KU Leuven or faculty network [here](https://ppw.kuleuven.be/ppw-dict/faq/index.htm#printers).
 
 On the second floor, the printer names are:
 
@@ -189,9 +200,9 @@ Downstairs on the ground floor, the printer names are:
 - PRLEP3 (Color printer near kitchen LEP) --> currently out of service
 - PRLEP (Color printer in downstairs hallway)
 
-If the installation doesn’t work, or you are using a windows desktop or laptop not connected to the KU Leuven or faculty network, use a USB key to print on the black and white printer in room 02.28. You can also get permanent access by asking [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) to add you to the list of users.
+If the installation doesn’t work, or you are using a windows desktop or laptop not connected to the KU Leuven or faculty network, use a USB key to print on the black and white printer in room 02.28. You can also get permanent access by asking [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) to add you to the list of users. Alternatively, you can try out the [KU Leuven Web Print](https://ghum.kuleuven.be/EN/icthw/printing-through-ku-leuven-web-print).
 
-For **Mac users**, follow the instructions on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration) to print from your personal computer. More generally, this manual tries to give an overview of most frequently asked questions concerning configuration and initial setup of a secure work environment on Mac OS X.
+For **Mac users**, follow the instructions on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration) to print from your personal computer. 
 
 <style>
 .latex {
