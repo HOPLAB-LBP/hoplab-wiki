@@ -333,6 +333,7 @@ If you can't wait to start engaging, check out the following **initiatives**:
 <!--
 __TODO__: [Andrea] Update the social media section: add links to the NeuroSPACE LinkedIn page and any other new consortium social media accounts. Consider whether the LBP X profile should remain as the primary social or be supplemented/replaced by NeuroSPACE accounts.
 __TODO__: [Klara] Create a new sub-page or section listing key events throughout the academic year: major conferences in the field (VSS, ECVP, OHBM, SfN, etc.), SciComm activities (Dag van de Wetenschap, Science Figured Out deadlines), and awareness days relevant to our research (e.g., World Brain Day, Stroke Day). Consider embedding or linking to the Hoplab Google Calendar.
+__TODO__: [Klara] Create an inventory of material that was purchased for science outreach events and where to find it (prisma glasses, markers, neurospace t shirts, beach flag, books, games, etc)
 __TODO__: Verify and expand the Lirias section above. Confirm that the described workflow is accurate and add any tips specific to the lab (e.g., linking Lirias entries to ORCID, handling preprints).
 __TODO__: Verify and expand the Data Visualisation Tools section above. Confirm the tool list is still relevant, add any tools commonly used in the lab, and remove any that are not recommended.
 -->

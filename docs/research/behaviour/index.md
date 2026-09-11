@@ -38,14 +38,9 @@ We hope this section helps you conduct your behavioural research with ease and p
 
     Guidance on compensating participants, including credit and payment processes.
 
-    [:octicons-arrow-right-24: Reimbursements Guide](bh-participants.md#reimbursement)
+    [:octicons-arrow-right-24: Reimbursements guide](bh-participants.md#financial-compensation)
 
 </div>
 
 !!! tip "Data Management"
     Follow the lab's [Research Data Management guidelines](../rdm/index.md) for storing and organizing your behavioural data.
-
-<!--
-__TODO__: [Klara] Add info on how/where to rent lab coats (mandatory when testing in the hospital)
-__TODO__: [Klara]: Add info on shredding paper with sensitive information
--->

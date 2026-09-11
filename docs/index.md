@@ -82,6 +82,22 @@ The [Hoplab](https://www.hoplab.be/) is part of the larger [NeuroSPACE consortiu
 
     [:octicons-arrow-right-24: Learn more](research/fmri/index.md)
 
+- :octicons-book-24:{ .lg .middle } __Research ethics__
+
+    ---
+
+    Ethical guidelines for research
+
+    [:octicons-arrow-right-24: Learn more](research/ethics/index.md)
+
+- :fontawesome-solid-database:{ .lg .middle } __Research Data Management__
+
+    ---
+
+     Managing data throughout the project lifecycle
+
+    [:octicons-arrow-right-24: RDM guidelines](./research/rdm/index.md)
+
 </div>
 
 ## Essential resources
@@ -104,6 +120,14 @@ The [Hoplab](https://www.hoplab.be/) is part of the larger [NeuroSPACE consortiu
 
     [:octicons-arrow-right-24: Learn more](./research/rdm/onboarding.md)
 
+- :octicons-checklist-24:{ .lg .middle } __Offboarding checklist__
+
+    ---
+
+    List of key steps when finishing up
+
+    [:octicons-arrow-right-24: Learn more](./research/rdm/offboarding.md)
+
 - :octicons-mail-24:{ .lg .middle } __Mailing lists__
 
     ---
@@ -112,22 +136,6 @@ The [Hoplab](https://www.hoplab.be/) is part of the larger [NeuroSPACE consortiu
 
     [:octicons-arrow-right-24: Subscribe](get-started/mailing-lists.md)
 
-- :octicons-book-24:{ .lg .middle } __Research ethics__
-
-    ---
-
-    Ethical guidelines for research
-
-    [:octicons-arrow-right-24: Learn more](research/ethics/index.md)
-
-- :fontawesome-solid-database:{ .lg .middle } __Research Data Management__
-
-    ---
-
-     Managing data throughout the project lifecycle
-
-    [:octicons-arrow-right-24: RDM guidelines](./research/rdm/index.md)
-
 - :octicons-megaphone-24:{ .lg .middle } __Outreach__
 
     ---
@@ -135,14 +143,6 @@ The [Hoplab](https://www.hoplab.be/) is part of the larger [NeuroSPACE consortiu
     Engage with the wider community
 
     [:octicons-arrow-right-24: Explore](outreach.md)
-
-- :octicons-checklist-24:{ .lg .middle } __Offboarding checklist__
-
-    ---
-
-    List of key steps when finishing up
-
-    [:octicons-arrow-right-24: Learn more](./research/rdm/offboarding.md)
 
 </div>
 
@@ -164,7 +164,3 @@ Can't find what you're looking for? Have questions or suggestions? Don't hesitat
 
 - __Wiki managers:__ [@costantinoai](https://github.com/costantinoai) and [@kschevenels](https://github.com/kschevenels)
 - __Contact:__ [Andrea Costantino](mailto:andreaivan.costantino@kuleuven.be)
-
-<!--
-__TODO__: Create a dedicated "Data Management" overview page (or section on this page) that links to: (1) the Research Data Management (RDM) section, (2) the BIDS documentation in the fMRI analysis pages, and (3) modality-specific data storage pages (fMRI, EEG, behaviour). Include guidance on Open Science practices such as data sharing templates and preregistration.
--->
