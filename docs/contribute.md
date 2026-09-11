@@ -357,8 +357,9 @@ glance, and the explanation opens on click:
   insert entries without renumbering anything by hand.
 - Each entry gets its own anchor from its term, so you can link straight to it:
   `[the ICF requirements](MEC.md#informed-consent-forms-icfs)`. Opening such a
-  link expands that entry. Everything also expands automatically when the page is
-  printed or saved as PDF.
+  link expands that entry. If the term is the same as a heading or another entry
+  on the page, `-2`, `-3`, … is appended to keep the anchor unique. Everything also
+  expands automatically when the page is printed or saved as PDF.
 
 Which renders as:
 
