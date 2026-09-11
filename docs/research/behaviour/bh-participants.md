@@ -1,8 +1,8 @@
 # Participant recruitment
 
 !!! warning
-    Before starting participant recruitment, ensure your study is formally approved by the [ethical committee](https://research.kuleuven.be/en/integrity-ethics/ethics/committees) (if you didn't do this yet, check out [this page](../ethics/index.md)). Prepare this well in advance. 
-    
+    Before starting participant recruitment, ensure your study is formally approved by the [ethical committee](https://research.kuleuven.be/en/integrity-ethics/ethics/committees) (if you didn't do this yet, check out [this page](../ethics/index.md)). Prepare this well in advance.
+
     Make sure you are using the **latest and correct (approved) recruitment materials, information letters, demographics questionnaires and informed consent forms (ICFs)**. All recruitment materials (e.g., flyers, posters) must include the study's end date as specified in the ethics application.
 
 ## Healthy adults
@@ -11,14 +11,14 @@ Healthy adult participants can be recruited in different ways:
 
 1. Through [NeuroSPACE's participant database](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=m1hzOUCetU6ADrC2OD0WIZquopqLrtBFjNZoWiO2ApRUNFdCTzlBM1AxTTBMRENONjNHNzFYTjEwOS4u)
 
-    - Including past participants who explicitly agreed to be contacted for future research and individuals who have expressed interest in participating through word-of-mouth referrals, science outreach events, etc. 
-    - If you are looking for participants from a specific age range, gender, or education level, contact [Silke](https://www.kuleuven.be/wieiswie/en/person/00170487) and/or [Klara](https://www.kuleuven.be/wieiswie/en/person/00116743) to have a look in the database. 
+    - Including past participants who explicitly agreed to be contacted for future research and individuals who have expressed interest in participating through word-of-mouth referrals, science outreach events, etc.
+    - If you are looking for participants from a specific age range, gender, or education level, contact [Silke](https://www.kuleuven.be/wieiswie/en/person/00170487) and/or [Klara](https://www.kuleuven.be/wieiswie/en/person/00116743) to have a look in the database.
     - Reversely, if you test participants, ask them if they can be contacted again in the future, and let/help them register themselves in our database ([link](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=m1hzOUCetU6ADrC2OD0WIZquopqLrtBFjNZoWiO2ApRUNFdCTzlBM1AxTTBMRENONjNHNzFYTjEwOS4u)).
 
-2. Through social connections of the researchers involved and/or by sharing your announcement via social media 
+2. Through social connections of the researchers involved and/or by sharing your announcement via social media
 
     - For example, announce your experiment on [this facebook page](https://www.facebook.com/ExperimentKUL), which collects the latest info on psychological experiments at KU Leuven.
-    - Make sure to read the guidelines on recruiting participants via social media provided by the ethical committee that approved your study ([guidelines SMEC](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/recruitment-via-social-media-english.pdf), [guidelines EC onderzoek](https://www.uzleuven.be/nl/ethische-commissie-onderzoek/templates-en-interne-richtlijnen-bij-starten-van-dossier-bij-ec-onderzoek/.adverterenrekruteren-voor-klinische-studies-richtlijnen-ec-onderzoek)). 
+    - Make sure to read the guidelines on recruiting participants via social media provided by the ethical committee that approved your study ([guidelines SMEC](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/recruitment-via-social-media-english.pdf), [guidelines EC onderzoek](https://www.uzleuven.be/nl/ethische-commissie-onderzoek/templates-en-interne-richtlijnen-bij-starten-van-dossier-bij-ec-onderzoek/.adverterenrekruteren-voor-klinische-studies-richtlijnen-ec-onderzoek)).
 
 3. Through the [online recruitment system of the faculty](https://psykuleuven.sona-systems.com/Default.aspx?ReturnUrl=%2f) (first-year students & paid participants; see below)
 
@@ -28,10 +28,10 @@ The **Experiment Management System (EMS)**, managed through **Sona Systems**, is
 
 EMS can be used for:
 
-* 👥 **Individual or collective studies**
-* 🎓 **Studies offering research participation points**
-* 💶 **Studies offering financial compensation**
-* 💻 **On-site or online studies**
+- 👥 **Individual or collective studies**
+- 🎓 **Studies offering research participation points**
+- 💶 **Studies offering financial compensation**
+- 💻 **On-site or online studies**
 
 !!! info "EMS support"
     For questions or technical support, ask your colleagues for support, consult the **[participant](https://www.youtube.com/watch?v=_1OnT2ZU6QQ) and [researcher](https://www.youtube.com/watch?v=ec8S3xfO-a8) tutorials** from Sona, or  
@@ -41,8 +41,8 @@ EMS can be used for:
 
 First-year psychology students can participate in research through EMS as part of their research methods course:
 
-* Students are required to obtain **18 research participation points (PPs)** to pass, by participating in collective and/or individual testing sessions (credits can not be transferred between academic years).
-* Credit-based recruitment takes place approximately **from the beginning of October until the end of May**.
+- Students are required to obtain **18 research participation points (PPs)** to pass, by participating in collective and/or individual testing sessions (credits can not be transferred between academic years).
+- Credit-based recruitment takes place approximately **from the beginning of October until the end of May**.
 
 Other students and non-students can participate in **paid studies**.
 
@@ -103,12 +103,12 @@ Setting up an EMS study involves three main steps:
 Before participation, participants must receive the full study information and provide informed consent, in accordance with the approved ethics application.
 
 - For **on-site studies**, consent should be obtained on paper.
-- For **online studies**, consent can be obtained digitally via the EMS, usually by explicitly checking a consent box. 
+- For **online studies**, consent can be obtained digitally via the EMS, usually by explicitly checking a consent box.
 
 Only collect personal data that is necessary for the study, and process them in accordance with the approved ethics application.
 
 !!! warning "Keep participant and research data separate"
-    Do not directly link the EMS code or Sona ID to a participant's research data. Assign each participant a **study-specific participant ID** according to the [approved data management procedures](../rdm/SOPs.md), and use this ID to link research data across different study components. 
+    Do not directly link the EMS code or Sona ID to a participant's research data. Assign each participant a **study-specific participant ID** according to the [approved data management procedures](../rdm/SOPs.md), and use this ID to link research data across different study components.
 
  For studies where no identifying information is required, participation via the EMS can remain fully anonymous. Some studies may require identifying information for **administrative purposes**:
 
@@ -124,21 +124,21 @@ Only collect personal data that is necessary for the study, and process them in 
 
 For credit-based studies:
 
-* Participants receive **0.25 PP per 15 minutes** of participation.
-* Set the appropriate **course restrictions** when creating the study (correct academic year).
-* Record participant presence ("show-ups") and assign participation points preferably the same day, but always **within one week** of participation.
+- Participants receive **0.25 PP per 15 minutes** of participation.
+- Set the appropriate **course restrictions** when creating the study (correct academic year).
+- Record participant presence ("show-ups") and assign participation points preferably the same day, but always **within one week** of participation.
 
 ??? info "How to assign credits"
-    To assign participants their credits, surf to `EMS > Sona > Login > uncredited timeslots`, mark the participant as `completed`, and click `save`. 
-    
+    To assign participants their credits, surf to `EMS > Sona > Login > uncredited timeslots`, mark the participant as `completed`, and click `save`.
+
     The [Sona Mobile app](https://play.google.com/store/apps/details?id=com.sona_systems.mobile&hl=en_IE&pli=1) can be used for quick credit granting by scanning the QR code in the reminder email to the participants.
 
 ??? info "Mixed studies"
-    If a study offers financial compensation and research participation points, set it up as a **credit study** and assign **0 credits to participants who are paid** to avoid that the timeslot is left open. You can add a comment that a payment was made.   
+    If a study offers financial compensation and research participation points, set it up as a **credit study** and assign **0 credits to participants who are paid** to avoid that the timeslot is left open. You can add a comment that a payment was made.
 
 ##### Financial compensation
 
-The standard financial compensation indicated in the current EMS guidance is €10/hour, although exceptions may apply for high-effort or aversive studies (such as fMRI or EEG). 
+The standard financial compensation indicated in the current EMS guidance is €10/hour, although exceptions may apply for high-effort or aversive studies (such as fMRI or EEG).
 
 Across NeuroSPACE, participant compensation was increased in October 2025 to **€15/hour for behavioral and EEG studies**, and to **€30/hour for fMRI studies**. If you are not sure, check your informed consent form for the correct compensation rate.
 
@@ -178,13 +178,9 @@ Across NeuroSPACE, participant compensation was increased in October 2025 to **�
 
 We distinguish between **excused** and **unexcused** no-shows.
 
-* An **excused no-show** is communicated to the researcher, typically by email.
-* An **unexcused no-show** is not communicated and results in a **−0.5 PP penalty**.
-* After **5 unexcused no-shows**, the participant's EMS account is blocked.
-
-## Special populations
-
-tbd
+- An **excused no-show** is communicated to the researcher, typically by email.
+- An **unexcused no-show** is not communicated and results in a **−0.5 PP penalty**.
+- After **5 unexcused no-shows**, the participant's EMS account is blocked.
 
 <!--
 __TODO__: [Klara] Add a section on recruiting non-student participant populations (e.g., elderly, patients, children, parents, domain-specific experts). Include: ask colleagues for tips (Ibe, Laura, Silke, Brent, Floor, etc.), how to get access to KWS (clinical recruitment system) if needed, specific ethical considerations for vulnerable populations, and practical tips for recruitment outside the EMS pool.

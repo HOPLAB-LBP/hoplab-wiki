@@ -22,9 +22,9 @@ Below, you can **edit your personal details** (2), such as adding a new private 
 
 Browse through the **other tabs** to find out and/or change information on communication means (3), [insurances](https://admin.kuleuven.be/sab/vz/intranet/en/insurance-office) and [other financial advantages](https://admin.kuleuven.be/mykuleuven/en/theme/hr-wellbeing/salary-benefits-insurances/index) you are entitled to (4), your contract details (5), mobility (e.g., to order a [KU Leuven bike](https://admin.kuleuven.be/td/intranet/en/mobility/2WD/2wd), get a refund for [public transportation commuting costs](https://admin.kuleuven.be/personeel/english/intranet/salary-benefits-insurances/commuting/recovery-commuting-expenses), or to [register your personal vehicle for work use](https://admin.kuleuven.be/personeel/intranet/verloning-personeelsvoordelen/verplaatsingen_dienstverband/verplaatsing_dienstverband#section-2)) (6) and your curriculum at KU Leuven (7).
 
-Through your personnel file, you can also apply for [teleworking allowances](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/allowances-and-registration/index) (for KU Leuven staff only) (8) and/or apply for a [bicycle allowance](https://admin.kuleuven.be/personeel/english/intranet/salary-benefits-insurances/commuting/bicycle-allowance) if you bike (part of) your home-work journey (9). 
+Through your personnel file, you can also apply for [teleworking allowances](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/allowances-and-registration/index) (for KU Leuven staff only) (8) and/or apply for a [bicycle allowance](https://admin.kuleuven.be/personeel/english/intranet/salary-benefits-insurances/commuting/bicycle-allowance) if you bike (part of) your home-work journey (9).
 
-If you are financed by **FWO**, check out [this page](https://admin.kuleuven.be/mykuleuven/en/channel/mk108/index). 
+If you are financed by **FWO**, check out [this page](https://admin.kuleuven.be/mykuleuven/en/channel/mk108/index).
 
 ## Reimbursement for professional expenses
 
@@ -48,15 +48,15 @@ There are a couple of things we usually do in the lab when we take a holiday:
 
 - **Notify Hans** by sending an email with the subject "Holiday", to keep an official trace of your holiday request (that also helps him keep track of who’s on leave).
 - Mark the days you’re off in the Hoplab **Google calendar**, so everyone is aware of your absence.
-- **Notify your employer**, which can be different depending on your contract. The procedure for KU Leuven employees is as follows (If you are financed by FWO, check out [this page](https://admin.kuleuven.be/mykuleuven/en/channel/mk108/index)):
+- **Notify your employer**, which can be different depending on your contract.
 
-    <ol style="list-style-type: decimal;">
-      <li>Log in to KU Loket and go to <strong>"Personnel"</strong></li>
-      <li>Navigate to <strong>"Absences"</strong> and make sure <strong>"Leave"</strong> is selected in the selection pane (it should be the default)</li>
-      <li>Select the start and end date of your holiday period on the displayed calendar and click <strong>"Request"</strong></li>
-      <li>Choose how many hours of each type of leave you are entitled to you want to use for this request</li>
-      <li>Submit the request to your approver, who will need to approve it</li>
-    </ol>
+The procedure for KU Leuven employees is as follows (If you are financed by FWO, check out [this page](https://admin.kuleuven.be/mykuleuven/en/channel/mk108/index)):
+
+1. Log in to KU Loket and go to **"Personnel"**
+2. Navigate to **"Absences"** and make sure **"Leave"** is selected in the selection pane (it should be the default)
+3. Select the start and end date of your holiday period on the displayed calendar and click **"Request"**
+4. Choose how many hours of each type of leave you are entitled to you want to use for this request
+5. Submit the request to your approver, who will need to approve it
 
 ![Holiday](../assets/KULoket_leave.png)
 
@@ -76,9 +76,9 @@ To register **other kinds of personal leave** (e.g., [short-term or social leave
 
 ## Register professional leave
 
-This has to be done (in advance) for absence in the context of **any work-related event** (national and international), such as a conference or the annual NeuroSPACE retreat. 
+This has to be done (in advance) for absence in the context of **any work-related event** (national and international), such as a conference or the annual NeuroSPACE retreat.
 
-This registration is needed in order to claim professional expenses made during this trip, to make sure you are correctly insured and to allow the KU Leuven to monitor the safety level of the trip. For more information, check out [this page](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/absences_university_business). 
+This registration is needed in order to claim professional expenses made during this trip, to make sure you are correctly insured and to allow the KU Leuven to monitor the safety level of the trip. For more information, check out [this page](https://admin.kuleuven.be/personeel/english/intranet/holiday-absence/absences_university_business).
 
 Proceed as follows:
 
@@ -104,7 +104,7 @@ Proceed as follows:
 In order to book a room, contact [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752). You can check which rooms are available yourself through KU Loket:
 
 1. Go to KU Loket, navigate to the tab "**HSE & Spaces**" and click on "**Classroom reservations**"
-2. Click "**Search on room or building**" and enter `PSI` 
+2. Click "**Search on room or building**" and enter `PSI`
 3. Select the rooms that fit your needs
 4. Click "**Show reservations**"
 5. Browse to the date & time when you need the room
@@ -121,7 +121,7 @@ The standard booking tool for testing rooms and equipment (testing cubicles, EEG
 
 - To access Calira, you need to make a user account using an invitation link. This link decides to which infrastructure you have access to and is different for every research unit/group. For our group (B&C Human), you can get the link by sending an email to [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) (<klara.schevenels@kuleuven.be>).
 - When you have access, choose the option to log in via your organization, so you can access it through the KU Leuven login tool.
-- Make sure to use Calira to book your testing time slots when you use common rooms or material. Request access to the items you don’t have permission to in case you need it. 
+- Make sure to use Calira to book your testing time slots when you use common rooms or material. Request access to the items you don’t have permission to in case you need it.
 
 If you need a **larger PC room**, e.g., for a collective testing session, you can follow the steps [above](#reserve-a-room-for-a-meeting) to book one of the "ICTS PC-KLAS" rooms in VHI.
 
@@ -153,27 +153,27 @@ Please contact [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) and/o
 More generally, on [this page](https://admin.kuleuven.be/td/aankoop/associatienet/en/index), you can check **all existing framework and discount agreements** with external suppliers, as well as the correct ordering method (KU Loket/purchase order).
 
 !!! warning "Aanvraag uitzondering online aankoop"
-    If you need to buy something via a webshop that doesn't accept purchase orders **and** is not available via one of the existing framework agreements (including [software](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/software)), you can request an exception [via this form](https://admin.kuleuven.be/td/aankoop/associatienet/en/procedures/online-purchase) **prior to the online purchase**. This also applies to purchases with the corporate credit card (except for books, journals, membership/registration fees, and accomodation costs)! 
+    If you need to buy something via a webshop that doesn't accept purchase orders **and** is not available via one of the existing framework agreements (including [software](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/software)), you can request an exception [via this form](https://admin.kuleuven.be/td/aankoop/associatienet/en/procedures/online-purchase) **prior to the online purchase**. This also applies to purchases with the corporate credit card (except for books, journals, membership/registration fees, and accommodation costs)!
 
     Always ask for a purchase order for Fnac and Acco (avoid bol.com). 
 
-If you want to order **specific testing equipment or consumables** (e.g., a new EEG cap), you can contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or send an email to <neurospace@kuleuven.be> (general mailing address to reach the NeuroSPACE support staff). 
+If you want to order **specific testing equipment or consumables** (e.g., a new EEG cap), you can contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or send an email to <neurospace@kuleuven.be> (general mailing address to reach the NeuroSPACE support staff).
 
 !!! warning "Goods receipt and credit card expenses"
-    Let [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) know when you receive your ordered item. They need this confirmation to settle the invoice (i.e., if you forget, the invoice will not be paid). 
+    Let [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) know when you receive your ordered item. They need this confirmation to settle the invoice (i.e., if you forget, the invoice will not be paid).
 
-    Likewise, if you payed something with the corporate credit card, immediately inform [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) of this and provide them with the digital receipt and justification (work-related character) for the expense.  
+    Likewise, if you paid something with the corporate credit card, immediately inform [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) of this and provide them with the digital receipt and justification (work-related character) for the expense.  
 
 ## Arrange a parking spot for a visitor
 
 If you need to arrange parking for a visitor in the **city center**, you can do so by requesting a day code for the visitor to operate the barriers of the KU Leuven personnel parkings. For more information, check out [this page](https://admin.kuleuven.be/td/intranet/en/fd/bws/parking-policy#section-8).
 
 !!! info "Parking policy"
-    You can find more info on KU Leuven's **parking policy** [here](https://admin.kuleuven.be/td/en/mobility/parking-policy). It is worth noting that the car park underneath the Herman Servotte Residence located on the Social Sciences campus (Parkstraat 39-53) can be accessed outside of working hours (18h-24h) and during holidays with your staff card. 
+    You can find more info on KU Leuven's **parking policy** [here](https://admin.kuleuven.be/td/en/mobility/parking-policy). It is worth noting that the car park underneath the Herman Servotte Residence located on the Social Sciences campus (Parkstraat 39-53) can be accessed outside of working hours (18h-24h) and during holidays with your staff card.
 
-Parking spots at the **university hospital** (UZ Leuven campus Gasthuisberg) can be refunded in the form of a parking ticket that visitors can use to pay their parking fee. 
+Parking spots at the **university hospital** (UZ Leuven campus Gasthuisberg) can be refunded in the form of a parking ticket that visitors can use to pay their parking fee.
 
-- We can buy these tickets (in batches) in advance, so make sure to check beforehand with your fellow fMRI-colleagues currently or previously testing if we have tickets left or not. 
+- We can buy these tickets (in batches) in advance, so make sure to check beforehand with your fellow fMRI-colleagues currently or previously testing if we have tickets left or not.
 - New tickets can be ordered by [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446), by sending a purchase order to <toegangsbeheer@uzleuven.be>. You will need to pick up the tickets in UZ Leuven (dienst toegangsbeheer).
 
 <!--

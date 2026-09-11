@@ -1,6 +1,6 @@
 # Setting up your digital working environment
 
-Please have a look at the [Quick Start ICT Onboarding website](https://ghum.kuleuven.be/EN/icthw/ict-hw-helpdesk) to get up and running with ICT at our faculty (logging in, printing, installing software, and IT security). 
+Please have a look at the [Quick Start ICT Onboarding website](https://ghum.kuleuven.be/EN/icthw/ict-hw-helpdesk) to get up and running with ICT at our faculty (logging in, printing, installing software, and IT security).
 
 In case of (other) ICT-related problems, make sure to check the [FAQ page of PPW Dienst ICT](https://ppw.kuleuven.be/ppw-dict/faq/index.htm).
 
@@ -31,7 +31,7 @@ Faculty issued computers can be recognized by their name starting with GHUM. To 
 ??? question "Where do I find the hostname of my pc?"
     The hostname is usually printed on a sticker on the computer. If not, go to Start, right click on "This PC", choose properties, and check the "Device name" field.
 
-## Using a Mac (OS X) pc 
+## Using a Mac (OS X) pc
 
 Mac users can find a manual with an overview of the most frequently asked questions concerning configuration and initial setup of a secure work environment on Mac OS X on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration). It is advised by dICT to read the page from top to bottom, and it is mandatory to go at least through the chapter on [safety settings](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration#autotoc-item-autotoc-17).
 
@@ -202,7 +202,7 @@ Downstairs on the ground floor, the printer names are:
 
 If the installation doesn’t work, or you are using a windows desktop or laptop not connected to the KU Leuven or faculty network, use a USB key to print on the black and white printer in room 02.28. You can also get permanent access by asking [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) to add you to the list of users. Alternatively, you can try out the [KU Leuven Web Print](https://ghum.kuleuven.be/EN/icthw/printing-through-ku-leuven-web-print).
 
-For **Mac users**, follow the instructions on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration) to print from your personal computer. 
+For **Mac users**, follow the instructions on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration) to print from your personal computer.
 
 <style>
 .latex {
