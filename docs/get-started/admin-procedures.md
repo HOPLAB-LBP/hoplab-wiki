@@ -35,10 +35,10 @@ Note that KU Leuven typically works with a purchase order (PO) or invoice. Occas
 3. Click on "**Forms**", create a "**+ New form**" and give it an informative name (e.g., congres X)
 4. Add all your expenses to the form (e.g., train tickets, dinner expenses, the registration fee)
 5. Link a [digital proof](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/what/supporting-documents) to each expense
-   
+
     !!! warning "Invoices as digital proof"
         If the digital proof is an invoice, it has to be issued to your **private address**. If an invoice is still issued in the **name of KU Leuven**, it will not be systematically rejected, but this practice is being phased out.
-   
+
 7. Couple the appropriate financial antenna to your form ([Agna Marien](https://www.kuleuven.be/wieiswie/en/person/00088446), u0088446)
 8. Add information on which fund your expenses should be paid from (ask  your PI)
 
@@ -150,7 +150,7 @@ Please contact [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497) and/
 
   Alternatively, you can use the **offline booking form** for more complex trips, bookings with a private part (more info on this [here](https://admin.kuleuven.be/td/aankoop/associatienet/en/contracts/travel/businesstraveldgi#autotoc-item-autotoc-10)), destinations involving multiple modes of transport, price inquiries, group trips, etc. ([Dutch](https://zfrmz.eu/7urhZsL28rIBnGbgCGrW)|[English](https://zfrmz.eu/9bAFxwQJi7KWo3hwIVcl])). DGI will then send you the requested quote via email.  
 
-  For questions or requests regarding quotes, bookings, changes, or offline and online support, please use DGI's **central contact point** (<KULeuven@dgitravel.com>; +32 (0)2 808 98 55). Note that, if you are awarded an FWO travel grant, you have to book your trip through the FWO-approved travel agencies Omnia Travel or Uniglobe and **not** DGI. 
+  For questions or requests regarding quotes, bookings, changes, or offline and online support, please use DGI's **central contact point** (<KULeuven@dgitravel.com>; +32 (0)2 808 98 55). Note that, if you are awarded an FWO travel grant, you have to book your trip through the FWO-approved travel agencies Omnia Travel or Uniglobe and **not** DGI.
 
 - [Computer accessories](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/computer-accessories)
 
