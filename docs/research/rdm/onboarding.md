@@ -34,7 +34,7 @@ You can follow the checklist step by step below or [download a personal copy](ht
     |------|-------------|------|
     | Get [ethical approval](../ethics/index.md#general-information) (if needed) | Don't forget to update our [ethics tracker](../ethics/index.md#ethics-tracker) | ☐ |
     | Fulfill e-learning *GDPR and privacy in research* | [Link](https://admin.kuleuven.be/privacy/en/studpers/index) to e-learning | ☐ |
-    | Obtain your GCP certificate (if applicable) | [Link](https://gbiomed.kuleuven.be/english/ctc/intern/ctc-academy/ich-gcp-e6-r2-training-certification) to e-learning | ☐ |
+    | Obtain your GCP certificate and upload it [here](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/GCP?d=wd7ef0bd74e6c4f508c3bdd76ed00a66c&csf=1&web=1&e=yD6tVt) | [Link](https://gbiomed.kuleuven.be/english/ctc/intern/ctc-academy/ich-gcp-e6-r2-training-certification) to e-learning | ☐ |
     | Make sure you know [how to handle confidential info](./SOPs.md) | ICFs, contact info, pseudonymization keys, etc. | ☐ |
     | Get to know our [participant database](https://forms.office.com/Pages/ResponsePage.aspx?id=m1hzOUCetU6ADrC2OD0WIZquopqLrtBFjNZoWiO2ApRUNFdCTzlBM1AxTTBMRENONjNHNzFYTjEwOS4u) (healthy adults) | Contact [Silke](https://www.kuleuven.be/wieiswie/nl/person/00170487) or [Klara](https://www.kuleuven.be/wieiswie/en/person/00116743) if you need participants| ☐ |
 
