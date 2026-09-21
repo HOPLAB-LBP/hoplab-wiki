@@ -28,17 +28,23 @@ If you are financed by **FWO**, check out [this page](https://admin.kuleuven.be/
 
 ## Reimbursement for professional expenses
 
+Note that KU Leuven typically works with a purchase order (PO) or invoice. Occasionally, purchases can be made with personal funds (e.g., for small amounts or in urgent cases), which can be recovered through the professional expenses process in KU Loket as follows:
+
 1. Log in to KU Loket and go to "**Finance & Purchasing**"
 2. Click on "**Professional expenses**" (shown in red below)
 3. Click on "**Forms**", create a "**+ New form**" and give it an informative name (e.g., congres X)
 4. Add all your expenses to the form (e.g., train tickets, dinner expenses, the registration fee)
-5. Link a digital proof to each expense
-6. Couple the appropriate financial antenna to your form ([Agna Marien](https://www.kuleuven.be/wieiswie/en/person/00088446), u0088446)
-7. Add information on which fund your expenses should be paid from (ask  your PI)
+5. Link a [digital proof](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/what/supporting-documents) to each expense
+   
+    !!! warning "Invoices as digital proof"
+        If the digital proof is an invoice, it has to be issued to your **private address**. If an invoice is still issued in the **name of KU Leuven**, it will not be systematically rejected, but this practice is being phased out.
+   
+7. Couple the appropriate financial antenna to your form ([Agna Marien](https://www.kuleuven.be/wieiswie/en/person/00088446), u0088446)
+8. Add information on which fund your expenses should be paid from (ask  your PI)
 
 ![Reimbursement](../assets/KULoket_reimbursement.png)
 
-For more information, check out the available [demo videos](https://icts.kuleuven.be/docs/at/lofi/aankoop/k/beroepskosten/BK/Begunstigde/demo) and/or read the [FAQ](https://icts.kuleuven.be/docs/at/lofi/aankoop/k/beroepskosten/BK/FAQ). If you have specific questions concerning this procedure, contact Agna (*<agna.marien@kuleuven.be>*) or go find her in office 02.80.
+For more information, check out [this page](https://admin.kuleuven.be/mykuleuven/en/theme/purchases-sales-finances-logistics/purchases-costs/refunds/general). If you have specific questions concerning this procedure, contact Agna (*<agna.marien@kuleuven.be>*) or go find her in office 00.37.
 
 ## Register personal leave
 
@@ -101,18 +107,18 @@ Proceed as follows:
 
 ## Reserve a room for a meeting
 
-In order to book a room, contact [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752). You can check which rooms are available yourself through KU Loket:
+In order to book a room, contact [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497). You can check which rooms are available yourself through KU Loket:
 
 1. Go to KU Loket, navigate to the tab "**HSE & Spaces**" and click on "**Classroom reservations**"
 2. Click "**Search on room or building**" and enter `PSI`
 3. Select the rooms that fit your needs
 4. Click "**Show reservations**"
 5. Browse to the date & time when you need the room
-6. Look for an available room and send this info to [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752)
+6. Look for an available room and send this info to [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497).
 
 ![Room reservation](../assets/KULoket_roomreservation.png)
 
-!!! info "In case of absence of Ying"
+!!! info "In case of absence of Manou"
     Through the "**Request Room(s)**" tile, next to "Classroom reservations", you can reserve a room yourself.  
 
 ## Reserve equipment or a room for testing
@@ -133,14 +139,18 @@ If you need a **larger PC room**, e.g., for a collective testing session, you ca
 !!! Info "Most recent information from the Finance Department"
     [Here](https://kuleuven.sharepoint.com/:p:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/General%20information/08102025%20finance%20@%20KULeuven.pptx?d=w617d174e07644c38b29b428cdd98cd4b&csf=1&web=1&e=GJycN1) you can find the presentation given by the finance department to LBP on 08/10/2025 (access required). Check it out for a complete overview.
 
-Please contact [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) and/or the financial antenna [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) for assistance with arranging, ordering and/or paying for the following things (more info via the links below):
+Please contact [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497) and/or the financial antenna [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) for assistance with arranging, ordering and/or paying for the following things (more info via the links below):
 
 - [Office equipment and supplies](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/office-equipment)
 - [Software](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/software)
 - [Hotel reservations](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/hotel)
 - [Flight bookings](https://admin.kuleuven.be/td/aankoop/associatienet/en/contracts/travel/businesstraveldgi)
 
-    Since 01/10/2025, the travel agency KU Leuven works with for booking flights has changed from Omnia Travel to **DGI** (previously Diversity Travel). You can book a flight via their [online booking tool](https://idp2.diversitytravel.com/serviceprovider/initiatesso/kuleuven). To confirm your booking, you will need an order number from the financial antenna [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446), who will need the correct booking information to create one. Note that, if you are awarded an FWO travel grant, you have to book your trip through the FWO-approved travel agencies Omnia Travel or Uniglobe and **not** DGI.
+    Since 01/10/2025, the travel agency KU Leuven works with for booking flights has changed from Omnia Travel to **DGI** (previously Diversity Travel). You can book a flight via their [**online booking tool**](https://idp2.diversitytravel.com/serviceprovider/initiatesso/kuleuven) ([tool guide](https://admin.kuleuven.be/td/aankoop/associatienet/en/contracts/docsandimages/businesstravel/ku-leuven-obt-guide-english-oct-2025.docx)). To confirm your booking, you will need a purchase order number from the financial antenna [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446), who will need the correct booking information to create one.
+
+  Alternatively, you can use the **offline booking form** for more complex trips, bookings with a private part (more info on this [here](https://admin.kuleuven.be/td/aankoop/associatienet/en/contracts/travel/businesstraveldgi#autotoc-item-autotoc-10)), destinations involving multiple modes of transport, price inquiries, group trips, etc. ([Dutch](https://zfrmz.eu/7urhZsL28rIBnGbgCGrW)|[English](https://zfrmz.eu/9bAFxwQJi7KWo3hwIVcl])). DGI will then send you the requested quote via email.  
+
+  For questions or requests regarding quotes, bookings, changes, or offline and online support, please use DGI's **central contact point** (<KULeuven@dgitravel.com>; +32 (0)2 808 98 55). Note that, if you are awarded an FWO travel grant, you have to book your trip through the FWO-approved travel agencies Omnia Travel or Uniglobe and **not** DGI. 
 
 - [Computer accessories](https://admin.kuleuven.be/sab/ic/intranet/en/operatingcosts/operating-costs-details/computer-accessories)
 
@@ -150,19 +160,19 @@ Please contact [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) and/o
 - [Reimbursement of costs to third parties](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/costs-third-parties) (e.g., a guest speaker's travel expenses)
 - [Personal protective equipment and work clothing](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/ppe) (e.g., a [lab coat](https://admin.kuleuven.be/td/intranet/veiligheid_bescherming/werkkledij/workwearrequest) for testing patients in the hospital)
 
-More generally, on [this page](https://admin.kuleuven.be/td/aankoop/associatienet/en/index), you can check **all existing framework and discount agreements** with external suppliers, as well as the correct ordering method (KU Loket/purchase order).
+More generally, on [this page](https://admin.kuleuven.be/td/aankoop/associatienet/en/index), you can check **all existing framework and discount agreements** with external suppliers, as well as the correct ordering method (KU Loket/purchase order). Typically, KU Leuven works with a purchase order (PO)/invoice. Occasionally, purchases can be made with personal funds (e.g., in urgent cases or for small amounts), which you can recover via the [professional expenses process in KU Loket](#reimbursement-for-professional-expenses).  
 
 !!! warning "Aanvraag uitzondering online aankoop"
-    If you need to buy something via a webshop that doesn't accept purchase orders **and** is not available via one of the existing framework agreements (including [software](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/software)), you can request an exception [via this form](https://admin.kuleuven.be/td/aankoop/associatienet/en/procedures/online-purchase) **prior to the online purchase**. This also applies to purchases with the corporate credit card (except for books, journals, membership/registration fees, and accommodation costs)!
+    If you need to buy something via a webshop that doesn't accept purchase orders (POs) **and** is not available via one of the existing framework agreements (including [software](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/software)), you can request an exception [via this form](https://admin.kuleuven.be/td/aankoop/associatienet/en/procedures/online-purchase) **prior to the online purchase**. This also applies to purchases with the corporate credit card (except for books, journals, membership/registration fees, and accommodation costs)!
 
     Always ask for a purchase order for Fnac and Acco (avoid bol.com). 
 
 If you want to order **specific testing equipment or consumables** (e.g., a new EEG cap), you can contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or send an email to <neurospace@kuleuven.be> (general mailing address to reach the NeuroSPACE support staff).
 
 !!! warning "Goods receipt and credit card expenses"
-    Let [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) know when you receive your ordered item. They need this confirmation to settle the invoice (i.e., if you forget, the invoice will not be paid).
+    Let [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) know when you receive your ordered item. They need this confirmation to settle the invoice (i.e., if you forget, the invoice will not be paid).
 
-    Likewise, if you paid something with the corporate credit card, immediately inform [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) of this and provide them with the digital receipt and justification (work-related character) for the expense.  
+    Likewise, if you paid something with the corporate credit card, immediately inform [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) of this and provide them with the digital receipt and justification (work-related character) for the expense.  
 
 ## Arrange a parking spot for a visitor
 
@@ -174,7 +184,7 @@ If you need to arrange parking for a visitor in the **city center**, you can do 
 Parking spots at the **university hospital** (UZ Leuven campus Gasthuisberg) can be refunded in the form of a parking ticket that visitors can use to pay their parking fee.
 
 - We can buy these tickets (in batches) in advance, so make sure to check beforehand with your fellow fMRI-colleagues currently or previously testing if we have tickets left or not.
-- New tickets can be ordered by [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446), by sending a purchase order to <toegangsbeheer@uzleuven.be>. You will need to pick up the tickets in UZ Leuven (dienst toegangsbeheer).
+- New tickets can be ordered by [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446), by sending a purchase order to <toegangsbeheer@uzleuven.be>. You will need to pick up the tickets in UZ Leuven (dienst toegangsbeheer).
 
 <!--
 __TODO__: [Klara] Add a new section on PhD defense planning. Include: timeline, required forms, committee composition rules, the PhD book procedure, and the checklist adapted by Filippo for this faculty. Link to relevant KU Leuven doctoral school pages.
