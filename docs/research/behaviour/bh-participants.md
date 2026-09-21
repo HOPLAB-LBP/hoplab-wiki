@@ -21,9 +21,9 @@ Healthy adult participants can be recruited in different ways:
     - Make sure to read the guidelines on recruiting participants via social media provided by the ethical committee that approved your study ([guidelines SMEC](https://research.kuleuven.be/en/integrity-ethics/ethics/committees/smec/documenten-1/documents-guidance/recruitment-via-social-media-english.pdf), [guidelines EC onderzoek](https://www.uzleuven.be/nl/ethische-commissie-onderzoek/templates-en-interne-richtlijnen-bij-starten-van-dossier-bij-ec-onderzoek/.adverterenrekruteren-voor-klinische-studies-richtlijnen-ec-onderzoek)).
 
 3. Through the [online recruitment system of the faculty](https://psykuleuven.sona-systems.com/Default.aspx?ReturnUrl=%2f) (first-year students & paid participants; see below)
-   
+
 4. For testing non-Dutch speaking or other more specific populations that cannot be acquired through a student pool you can also use the paid [Prolific](https://www.prolific.com/)
-    - Please note that payment for this service will need to occur through a PO statement (so not just a credit card payment). For this you will need to contact your financial antenna. 
+    - Please note that payment for this service will need to occur through a PO statement (so not just a credit card payment). For this you will need to contact your financial antenna.
 
 ### Recruitment through the faculty's online recruitment system
 
