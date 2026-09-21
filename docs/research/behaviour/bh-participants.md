@@ -22,6 +22,9 @@ Healthy adult participants can be recruited in different ways:
 
 3. Through the [online recruitment system of the faculty](https://psykuleuven.sona-systems.com/Default.aspx?ReturnUrl=%2f) (first-year students & paid participants; see below)
 
+4. For testing non-Dutch speaking or other more specific populations that cannot be acquired through a student pool you can also use the paid [Prolific](https://www.prolific.com/)
+    - Please note that payment for this service will need to occur through a PO statement (so not just a credit card payment). For this you will need to contact your financial antenna.
+
 ### Recruitment through the faculty's online recruitment system
 
 The **Experiment Management System (EMS)**, managed through **Sona Systems**, is the Faculty of Psychology and Educational Sciences' platform for recruiting and managing research participants. Access it [here](https://psykuleuven.sona-systems.com?utm_source=chatgpt.com).
