@@ -2,7 +2,7 @@
 
 ## Keys
 
-Ask the LBP lab technician ([Ying Cai](https://www.kuleuven.be/wieiswie/en/person/00098752)), whom you can find in room 02.37, for a key to your new office. You can also ask her for a key to the underground private bike parking (next to the Alma) if you need it.
+Ask the LBP lab technician ([Manou](https://www.kuleuven.be/wieiswie/en/person/00160497)), whom you can find in room 02.37, for a key to your new office. You can also ask her for a key to the underground private bike parking (next to the Alma) if you need it.
 
 ## Staff card
 
@@ -12,11 +12,11 @@ If you have students working with you who need access to the office during the w
 
 ## Office set-up
 
-For each new member, a laptop and other pc material (e.g., an external hard drive, computer screen, mouse, keyboard, etc.) will be ordered or be made available. If you are missing something or need something specific (smaller purchases), please contact [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) with [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) in CC. Orders for new laptops are placed via [dICT](https://ppw.kuleuven.be/ppw-dict).
+For each new member, a laptop and other pc material (e.g., an external hard drive, computer screen, mouse, keyboard, etc.) will be ordered or be made available. If you are missing something or need something specific (smaller purchases), please contact [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497) with [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) in CC. Orders for new laptops are placed via [dICT](https://ppw.kuleuven.be/ppw-dict).
 
 ## Phone
 
-You can get a phone from [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752). If you do, make sure you submit the serial number [here](https://ppw.kuleuven.be/intranet/onlineform/lynctelefoon).
+You can get a phone from [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497). If you do, make sure you submit the serial number [here](https://ppw.kuleuven.be/intranet/onlineform/lynctelefoon).
 
 ## Hybrid working policy
 
@@ -50,6 +50,6 @@ All members of Hoplab have access to the LBP kitchen (shared with the labs of [B
 
 There is a rotation system (hanging in the kitchen) indicating two people every week who are responsible to clean the kitchen.
 
-- Please check the coffee, sugar, and milk supplies at least once a week. If anything is running low, inform [Ying](https://www.kuleuven.be/wieiswie/nl/person/00098752) in time so she can place a new order.
+- Please check the coffee, sugar, and milk supplies at least once a week. If anything is running low, inform [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497) in time so she can place a new order.
 - Make sure the table and microwave are clean; wipe them down if necessary. The coffee room is occasionally used for general meetings (including meetings with external visitors), so it should always be presentable without last-minute cleaning.
 - There are plenty of towels available. If any look dirty or worn, replace them. In particular, do not use a grimy towel to dry clean dishes when unloading the dishwasher.

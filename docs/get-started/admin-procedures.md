@@ -107,14 +107,14 @@ Proceed as follows:
 
 ## Reserve a room for a meeting
 
-In order to book a room, contact [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497). You can check which rooms are available yourself through KU Loket:
+In order to book a room, contact [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497). You can check which rooms are available yourself through KU Loket:
 
 1. Go to KU Loket, navigate to the tab "**HSE & Spaces**" and click on "**Classroom reservations**"
 2. Click "**Search on room or building**" and enter `PSI`
 3. Select the rooms that fit your needs
 4. Click "**Show reservations**"
 5. Browse to the date & time when you need the room
-6. Look for an available room and send this info to [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497).
+6. Look for an available room and send this info to [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497).
 
 ![Room reservation](../assets/KULoket_roomreservation.png)
 
@@ -139,7 +139,7 @@ If you need a **larger PC room**, e.g., for a collective testing session, you ca
 !!! Info "Most recent information from the Finance Department"
     [Here](https://kuleuven.sharepoint.com/:p:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/General%20information/08102025%20finance%20@%20KULeuven.pptx?d=w617d174e07644c38b29b428cdd98cd4b&csf=1&web=1&e=GJycN1) you can find the presentation given by the finance department to LBP on 08/10/2025 (access required). Check it out for a complete overview.
 
-Please contact [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497) and/or the financial antenna [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) for assistance with arranging, ordering and/or paying for the following things (more info via the links below):
+Please contact [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497) and/or the financial antenna [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) for assistance with arranging, ordering and/or paying for the following things (more info via the links below):
 
 - [Office equipment and supplies](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/office-equipment)
 - [Software](https://admin.kuleuven.be/sab/od/intranet/english/operatingcosts/operating-costs-details/software)
@@ -170,9 +170,9 @@ More generally, on [this page](https://admin.kuleuven.be/td/aankoop/associatiene
 If you want to order **specific testing equipment or consumables** (e.g., a new EEG cap), you can contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or send an email to <neurospace@kuleuven.be> (general mailing address to reach the NeuroSPACE support staff).
 
 !!! warning "Goods receipt and credit card expenses"
-    Let [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) know when you receive your ordered item. They need this confirmation to settle the invoice (i.e., if you forget, the invoice will not be paid).
+    Let [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) know when you receive your ordered item. They need this confirmation to settle the invoice (i.e., if you forget, the invoice will not be paid).
 
-    Likewise, if you paid something with the corporate credit card, immediately inform [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) of this and provide them with the digital receipt and justification (work-related character) for the expense.  
+    Likewise, if you paid something with the corporate credit card, immediately inform [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446) of this and provide them with the digital receipt and justification (work-related character) for the expense.
 
 ## Arrange a parking spot for a visitor
 
@@ -184,7 +184,7 @@ If you need to arrange parking for a visitor in the **city center**, you can do 
 Parking spots at the **university hospital** (UZ Leuven campus Gasthuisberg) can be refunded in the form of a parking ticket that visitors can use to pay their parking fee.
 
 - We can buy these tickets (in batches) in advance, so make sure to check beforehand with your fellow fMRI-colleagues currently or previously testing if we have tickets left or not.
-- New tickets can be ordered by [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446), by sending a purchase order to <toegangsbeheer@uzleuven.be>. You will need to pick up the tickets in UZ Leuven (dienst toegangsbeheer).
+- New tickets can be ordered by [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497) and/or [Agna](https://www.kuleuven.be/wieiswie/en/person/00088446), by sending a purchase order to <toegangsbeheer@uzleuven.be>. You will need to pick up the tickets in UZ Leuven (dienst toegangsbeheer).
 
 <!--
 __TODO__: [Klara] Add a new section on PhD defense planning. Include: timeline, required forms, committee composition rules, the PhD book procedure, and the checklist adapted by Filippo for this faculty. Link to relevant KU Leuven doctoral school pages.

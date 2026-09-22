@@ -200,7 +200,7 @@ Downstairs on the ground floor, the printer names are:
 - PRLEP3 (Color printer near kitchen LEP) --> currently out of service
 - PRLEP (Color printer in downstairs hallway)
 
-If the installation doesn’t work, or you are using a windows desktop or laptop not connected to the KU Leuven or faculty network, use a USB key to print on the black and white printer in room 02.28. You can also get permanent access by asking [Ying](https://www.kuleuven.be/wieiswie/en/person/00098752) to add you to the list of users. Alternatively, you can try out the [KU Leuven Web Print](https://ghum.kuleuven.be/EN/icthw/printing-through-ku-leuven-web-print).
+If the installation doesn’t work, or you are using a windows desktop or laptop not connected to the KU Leuven or faculty network, use a USB key to print on the black and white printer in room 02.28. You can also get permanent access by asking [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497) to add you to the list of users. Alternatively, you can try out the [KU Leuven Web Print](https://ghum.kuleuven.be/EN/icthw/printing-through-ku-leuven-web-print).
 
 For **Mac users**, follow the instructions on [this page](https://ppw.kuleuven.be/ppw-dict/dictservicedesk/mac-osx-configuration) to print from your personal computer.
 
