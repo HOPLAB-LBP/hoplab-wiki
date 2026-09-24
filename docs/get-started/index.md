@@ -6,6 +6,8 @@ We are thrilled to have you join our team at HOPLAB. Our lab is dedicated to exp
 
 On this onboarding page, you'll find all the information you need to navigate the KU Leuven environment and adapt to our lab’s practices. We’ll guide you in setting up both your physical and digital workspaces, and offer step-by-step instructions for the most common administrative procedures at KU Leuven. Additionally, we’ve curated a selection of resources to give you a strong foundation as you start your journey with us.
 
+Make sure to go over the [**onboarding checklist**](../research/rdm/onboarding.md) as a starting point for getting familiar with how the lab works, what is expected of you, and where to find relevant information across the wiki.
+
 ## Quick links
 
 To help you get settled quickly, here are some essential resources:
