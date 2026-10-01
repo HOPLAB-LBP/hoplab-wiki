@@ -8,25 +8,33 @@ Welcome to the landing page for all things related to functional MRI (fMRI) in o
 
     ---
 
-    Everything you need to know before you start scanning, including MRI booking, invoicing, training and ethical approval.
+    Everything you need to know before you start scanning: the scanners we use, ethical approval, safety training, access, XNAT, booking and invoicing.
 
     [:octicons-arrow-right-24: Get started](fmri-get-started.md)
 
-- :octicons-server-24:{ .lg .middle } __MR8 Equipment Reference__
+- :octicons-server-24:{ .lg .middle } __MR11 Equipment Reference__
 
     ---
 
-    Hardware descriptions and connection diagrams for the MR8 suite: stimulus PC, trigger boxes, projection system, audio, and eyetracker.
+    The equipment around MR11, the Siemens Cima.X 3T at Gasthuisberg: stimulus PC, trigger box and buttons, in-room screen, audio and coils.
 
     [:octicons-arrow-right-24: View equipment](fmri-equipment.md)
 
-- :octicons-checklist-24:{ .lg .middle } __Scanning Procedure__
+- :octicons-checklist-24:{ .lg .middle } __MR11 Scanning Procedure__
 
     ---
 
-    Step-by-step protocol for conducting fMRI scans, from participant registration to data export and cleanup.
+    Step-by-step protocol for a scan session at MR11, from participant registration to getting your data from XNAT and cleaning up.
 
     [:octicons-arrow-right-24: View procedures](fmri-procedure.md)
+
+- :octicons-zap-24:{ .lg .middle } __Flanders 7T (Brussels)__
+
+    ---
+
+    How a study at the GE 7T in Brussels works: contacts, booking, protocols, stimulus set-up and data.
+
+    [:octicons-arrow-right-24: View 7T page](fmri-7t.md)
 
 - :octicons-tools-24:{ .lg .middle } __Data Analysis__
 
@@ -95,6 +103,5 @@ While the lab's primary analysis pipeline uses MATLAB and SPM, Python offers pow
 ---
 
 <!--
-__TODO__: [Klara] Add practical scanning info to the procedure page or a new sub-page: correct screen and projector positioning for visual experiments at MR8, and document that card access to the MR suite is valid for 1 year and needs annual renewal.
 __TODO__: [Klara] Add a page or section on retinotopic mapping: what it is, when it is needed, the protocol used in the lab, and links to analysis tools (e.g., pRF mapping with mrVista or neuropythy).
 -->
