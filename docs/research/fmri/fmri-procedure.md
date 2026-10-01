@@ -8,7 +8,7 @@ This page walks through a scan session at **MR11** (Siemens Cima.X 3T, UZ Leuven
 !!! tip "For detailed information, go to the radiology wiki"
     The official step-by-step guide is on the radiology wiki: *Scanners › MR11 - Cima.X 3T › Main User Guide*, with *Troubleshooting* below it, and the *Standard Procedures* poster under *Safety, Rules & Procedures* (the poster also hangs in the console room). This page follows them and adds what we learned in the lab.
 
-    [:octicons-link-external-16: Open the radiology wiki (MR11)](https://wiki.kulradiology.be/s/radxnat){ .md-button .md-button--primary }
+    [:octicons-link-external-16: Open the radiology wiki (MR11)](https://wiki.kulradiology.be/s/radxnat){ .md-button }
 
     You need an account: ask Rodrigo Trevisan Massera ([rodrigo.trevisanmassera@kuleuven.be](mailto:rodrigo.trevisanmassera@kuleuven.be)).
 

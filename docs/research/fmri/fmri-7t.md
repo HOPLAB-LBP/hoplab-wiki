@@ -7,7 +7,7 @@ This page explains how a 7T study differs from a study at MR11. Everything that 
 !!! tip "For detailed information, go to the radiology wiki"
     The 7T team documents the scanner in the *Flanders-7T* space of the radiology wiki: the logbook of every scan day, scan protocols, GE sequence settings and data export. Check it first for anything this page does not cover.
 
-    [:octicons-link-external-16: Open the radiology wiki (Flanders 7T)](https://wiki.kulradiology.be/s/fin2u7t){ .md-button .md-button--primary }
+    [:octicons-link-external-16: Open the radiology wiki (Flanders 7T)](https://wiki.kulradiology.be/s/fin2u7t){ .md-button }
 
     You need an account: ask Rodrigo Trevisan Massera ([rodrigo.trevisanmassera@kuleuven.be](mailto:rodrigo.trevisanmassera@kuleuven.be)).
 

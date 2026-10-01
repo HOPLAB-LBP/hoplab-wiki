@@ -5,7 +5,7 @@ This page describes the equipment you use around **MR11**, the Siemens MAGNETOM 
 !!! tip "For detailed information, go to the radiology wiki"
     The manuals and photos of each device are on the radiology wiki, under *Peripheral Equipment › MR11 - Cima.X 3T* (stimulus PC, trigger box and buttons, in-room screen, audio system). This page keeps what you need to program and run an experiment.
 
-    [:octicons-link-external-16: Open the radiology wiki (MR11)](https://wiki.kulradiology.be/s/radxnat){ .md-button .md-button--primary }
+    [:octicons-link-external-16: Open the radiology wiki (MR11)](https://wiki.kulradiology.be/s/radxnat){ .md-button }
 
     You need an account: ask Rodrigo Trevisan Massera ([rodrigo.trevisanmassera@kuleuven.be](mailto:rodrigo.trevisanmassera@kuleuven.be)).
 
