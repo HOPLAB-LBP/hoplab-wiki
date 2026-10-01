@@ -12,7 +12,7 @@ MR11 has been the lab's 3T research scanner since June 2026. Notes on the previo
 !!! info "The radiology wiki"
     The KU Leuven radiology department keeps its own wiki at [wiki.kulradiology.be](https://wiki.kulradiology.be), with the full scanner user guide, safety rules, peripheral equipment manuals, XNAT instructions, and a separate space for the 7T. It needs an account: ask Rodrigo Trevisan Massera ([rodrigo.trevisanmassera@kuleuven.be](mailto:rodrigo.trevisanmassera@kuleuven.be)). This page and the pages linked above cover what you need day to day; the radiology wiki has the details.
 
-### Who to contact
+## Who to contact
 
 | Question | Contact |
 |----------|---------|
