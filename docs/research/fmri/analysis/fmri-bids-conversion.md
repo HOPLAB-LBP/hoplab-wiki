@@ -139,7 +139,7 @@ If you have collected DICOM files from the scanner, you need to **anonymise** an
 !!! question "Why `dicm2nii` and not `dcm2niix`?"
     Although [`dcm2niix`](https://github.com/rordenlab/dcm2niix) is widely used and robust, especially for modern enhanced DICOMs and vendor-specific edge cases (like Philips), `dicm2nii` is often suggested.
 
-    For data acquired with Philips scanners, or if your DICOMs have missing metadata (e.g., `PhaseEncodingDirection`), see [this Rorden Lab guide](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) and this [NITRC forum thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703) See also [Missing fields in JSON files](./fmri-general.md#missing-fields-in-json-files) for more information.
+    For data acquired with Philips scanners, or if your DICOMs have missing metadata (e.g., `PhaseEncodingDirection`), see [this Rorden Lab guide](https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips) and this [NITRC forum thread](https://www.nitrc.org/forum/forum.php?thread_id=15186&forum_id=4703) For older Philips (MR8) data, see also [Missing fields in JSON files](../fmri-mr8.md#missing-fields-in-json-files).
 
 To convert your data:
 
@@ -286,7 +286,7 @@ Create `.json` sidecar files for each functional run `.nii` file, using the outp
 Each `nii` file **must** have a sidecar JSON file. Make sure you [anonymised and converted your DICOM files](./fmri-bids-conversion.md#4-convert-dicom-files) and go through the following steps:
 
   1. Locate the JSON sidecar files in `sourcedata/sub-xx/nifti/`.
-  2. Open each JSON file and Complete the `PhaseEncodingDirection` and `SliceTiming` fields (see [Missing fields in JSON files](./fmri-general.md#missing-fields-in-json-files) for more information).
+  2. Open each JSON file and Check that the `PhaseEncodingDirection` and `SliceTiming` fields are filled in. They were missing in older Philips (MR8) data; see [Missing fields in JSON files](../fmri-mr8.md#missing-fields-in-json-files).
   3. Copy-paste the updated JSON files to accompany each NIfTI file in the `BIDS/sub-xx/func` folder: each run should have its accompanying `sub-xx_task-{taskname}_run-{runnumber}_bold.json` sidecar file.
 
 ---
