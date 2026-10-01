@@ -5,7 +5,12 @@ This page walks through a scan session at **MR11** (Siemens Cima.X 3T, UZ Leuven
 !!! info "Before your first scan"
     Make sure you have completed all prerequisites: MRI safety course, ethical approval, card access, an XNAT account and project, and a booked slot. See [First steps](fmri-get-started.md).
 
-The radiology department's *Main User Guide* for MR11 and the *Standard Procedures* poster (also on the wall of the console room) are on the [radiology wiki](https://wiki.kulradiology.be). This page follows them and adds what we learned in the lab.
+!!! tip "For detailed information, go to the radiology wiki"
+    The official step-by-step guide is on the radiology wiki: *Scanners › MR11 - Cima.X 3T › Main User Guide*, with *Troubleshooting* below it, and the *Standard Procedures* poster under *Safety, Rules & Procedures* (the poster also hangs in the console room). This page follows them and adds what we learned in the lab.
+
+    [:octicons-link-external-16: Open the radiology wiki (MR11)](https://wiki.kulradiology.be/s/radxnat){ .md-button .md-button--primary }
+
+    You need an account: ask Rodrigo Trevisan Massera ([rodrigo.trevisanmassera@kuleuven.be](mailto:rodrigo.trevisanmassera@kuleuven.be)).
 
 ??? danger "Emergency procedures"
     **Keep this information in mind at all times when working in the MR suite.**

@@ -4,6 +4,13 @@
 
 This page explains how a 7T study differs from a study at MR11. Everything that is not specific to the 7T (ethics, safety course, participant handling, analysis) works as described in [First steps](fmri-get-started.md) and the [MR11 scanning procedure](fmri-procedure.md).
 
+!!! tip "For detailed information, go to the radiology wiki"
+    The 7T team documents the scanner in the *Flanders-7T* space of the radiology wiki: the logbook of every scan day, scan protocols, GE sequence settings and data export. Check it first for anything this page does not cover.
+
+    [:octicons-link-external-16: Open the radiology wiki (Flanders 7T)](https://wiki.kulradiology.be/s/fin2u7t){ .md-button .md-button--primary }
+
+    You need an account: ask Rodrigo Trevisan Massera ([rodrigo.trevisanmassera@kuleuven.be](mailto:rodrigo.trevisanmassera@kuleuven.be)).
+
 !!! warning "Work in progress"
     The 7T centre and its documentation are new. Several sections below are **provisional**: they say what we know now and whom to ask. If you learn something new, please update this page.
 
@@ -113,7 +120,7 @@ Each scan day is also recorded in the logbook of the Flanders-7T space on the ra
 __TODO__: [Andrea] 7T stimulus set-up: display (size, resolution, viewing distance), trigger box and trigger key, response buttons and key codes, audio system, and whether we can bring our own laptop. Fill in "Stimulus presentation" and remove "provisional". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] Ask whether the trigger issue with the CRS device (7T logbook, 2026-05-20: tasks started 2 to 4 volumes late) is solved. (Not asked yet.)
 __TODO__: [Andrea] How 7T scan time is booked (calendar, request form, fixed KU Leuven Wednesdays?) and how it is invoiced. Replace the provisional booking section. (Not asked yet.)
-__TODO__: [Andrea] Which safety course, screening forms and access steps KU Leuven researchers need for the 7T, and whether S70813 covers 7T scanning. (Not asked yet.)
+__TODO__: [Andrea] Which safety course, screening forms and access steps KU Leuven researchers need for the 7T. (Not asked yet. Whether S70813 covers the 7T is asked to Klara in the first-steps page TODOs.)
 __TODO__: [Andrea] Whether MRI-compatible glasses are available at the 7T. Update "Ethics and safety". (Not asked yet.)
 __TODO__: [Andrea] Confirm the address of the 7T centre and add directions (parking, entrance) for participants. (Not asked yet.)
 __TODO__: [Andrea] How 7T data reach KU Leuven researchers (USB export by the technician, research PACS, XNAT?), and where the current BIDScoin bidsmap is. Update "Getting your data" and store the bidsmap in the lab's Teams folder or a lab repository. (Not asked yet.)

@@ -9,8 +9,12 @@ The lab scans at two research scanners:
 
 MR11 has been the lab's 3T research scanner since June 2026. Notes on the previous scanner, for older datasets only, are on the [MR8 (decommissioned)](fmri-mr8.md) page. If you find outdated instructions elsewhere, please tell [Andrea](mailto:andreaivan.costantino@kuleuven.be) or open an issue.
 
-!!! info "The radiology wiki"
-    The KU Leuven radiology department keeps its own wiki at [wiki.kulradiology.be](https://wiki.kulradiology.be), with the full scanner user guide, safety rules, peripheral equipment manuals, XNAT instructions, and a separate space for the 7T. It needs an account: ask Rodrigo Trevisan Massera ([rodrigo.trevisanmassera@kuleuven.be](mailto:rodrigo.trevisanmassera@kuleuven.be)). This page and the pages linked above cover what you need day to day; the radiology wiki has the details.
+!!! tip "For detailed information, go to the radiology wiki"
+    The KU Leuven radiology department keeps the reference documentation for both scanners at **[wiki.kulradiology.be](https://wiki.kulradiology.be)**: the full MR11 user guide, safety rules and procedures, peripheral equipment manuals, XNAT instructions, and a separate space for the Flanders 7T. Our pages cover what lab members need day to day. For anything more detailed, check the radiology wiki first.
+
+    [:octicons-link-external-16: Open the radiology wiki](https://wiki.kulradiology.be){ .md-button .md-button--primary }
+
+    You need an account: ask Rodrigo Trevisan Massera ([rodrigo.trevisanmassera@kuleuven.be](mailto:rodrigo.trevisanmassera@kuleuven.be)).
 
 ## Who to contact
 
@@ -172,8 +176,8 @@ For the practical steps on the scan day, see the [Scanning procedure](fmri-proce
     Support staff (currently Klara) will further process the file by including the name of the SAP antenna (i.e., Agna Marien), specifying the funding source for each researcher, and by adjusting the total invoice amount on the invoice to reflect the actual scan hours based on successful data collection sessions ("corrected total").
 
 <!--
-__TODO__: [Andrea] Confirm with Klara that S70813 is approved and covers standard MR11 and 7T studies, then remove the "check with Klara" sentence. (Not asked yet.)
+__TODO__: [Klara] Is S70813 approved, and does it cover standard studies at MR11 and at the Flanders 7T? Then remove the "check with Klara" sentence in "Get formal ethical approval" and update the 7T page. (Asked Klara on PR #367, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] Check whether the MR Access file, MRI Safety Checklist, Appendix and key/badge form moved from the old Dropbox folder to the radiology Google Drive folder (Safety Notes v5.0), and whether the access procedure (Ilse Roebben, Silvia Kovacs, Ron) is unchanged for MR11. Update the links. (Not asked yet.)
 __TODO__: [Andrea] Add how pilot sessions are booked on MR11 to "Booking the scanner" (previously a pilot was booked by e-mail to Ron with a random subject ID). (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
-__TODO__: [Klara] Check whether invoicing at MR11 still uses the quarterly Excel sheet and the check-in/out times, and update "Managing scan data and invoicing". (Not asked yet.)
+__TODO__: [Klara] Does invoicing at MR11 still use the quarterly Excel sheet and the check-in/out times? Update "Managing scan data and invoicing". (Asked Klara on PR #367, 2026-10-01; waiting for answer.)
 -->

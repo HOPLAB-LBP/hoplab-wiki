@@ -12,6 +12,14 @@ Welcome to the landing page for all things related to functional MRI (fMRI) in o
 
     [:octicons-arrow-right-24: Get started](fmri-get-started.md)
 
+- :octicons-link-external-24:{ .lg .middle } __Radiology wiki__
+
+    ---
+
+    The radiology department's reference documentation for MR11 and the Flanders 7T: full user guide, safety rules, equipment manuals, XNAT and the 7T logbook. Go there for detailed information (account needed, see [First steps](fmri-get-started.md)).
+
+    [:octicons-arrow-right-24: Open the radiology wiki](https://wiki.kulradiology.be)
+
 - :octicons-server-24:{ .lg .middle } __MR11 Equipment Reference__
 
     ---

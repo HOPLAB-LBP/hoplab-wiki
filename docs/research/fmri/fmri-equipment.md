@@ -2,7 +2,12 @@
 
 This page describes the equipment you use around **MR11**, the Siemens MAGNETOM Cima.X 3T research scanner at UZ Leuven Gasthuisberg. For the step-by-step session, see the [Scanning procedure](fmri-procedure.md). For the 7T in Brussels, see [Flanders 7T](fmri-7t.md).
 
-The radiology wiki ([wiki.kulradiology.be](https://wiki.kulradiology.be), section *Peripheral Equipment › MR11 - Cima.X 3T*) has the manuals and photos of each device. This page keeps what you need to program and run an experiment.
+!!! tip "For detailed information, go to the radiology wiki"
+    The manuals and photos of each device are on the radiology wiki, under *Peripheral Equipment › MR11 - Cima.X 3T* (stimulus PC, trigger box and buttons, in-room screen, audio system). This page keeps what you need to program and run an experiment.
+
+    [:octicons-link-external-16: Open the radiology wiki (MR11)](https://wiki.kulradiology.be/s/radxnat){ .md-button .md-button--primary }
+
+    You need an account: ask Rodrigo Trevisan Massera ([rodrigo.trevisanmassera@kuleuven.be](mailto:rodrigo.trevisanmassera@kuleuven.be)).
 
 ---
 
