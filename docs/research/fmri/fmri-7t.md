@@ -43,7 +43,7 @@ This page explains how a 7T study differs from a study at MR11. Everything that 
 
 ### Ethics and safety
 
-- Your EC approval must explicitly cover scanning at **7T** and at the Brussels site. Check this with Klara before you submit or amend your application.
+- The lab's umbrella application S70813 does **not** cover 7T scanning. Your EC approval must explicitly cover scanning at **7T** and at the Brussels site: discuss this with Klara before you submit or amend your application.
 - The 7T has stricter safety rules than 3T. An implant or object that is safe at 3T is not necessarily safe at 7T. Ask the 7T team which screening form to use for your participants.
 - Ask Stefan Sunaert which safety course and access steps you need to attend 7T sessions.
 - **Glasses**: participants cannot wear their own glasses in the scanner. Ask the 7T team whether MRI-compatible glasses are available, or ask participants to wear contact lenses.
@@ -120,7 +120,7 @@ Each scan day is also recorded in the logbook of the Flanders-7T space on the ra
 __TODO__: [Andrea] 7T stimulus set-up: display (size, resolution, viewing distance), trigger box and trigger key, response buttons and key codes, audio system, and whether we can bring our own laptop. Fill in "Stimulus presentation" and remove "provisional". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] Ask whether the trigger issue with the CRS device (7T logbook, 2026-05-20: tasks started 2 to 4 volumes late) is solved. (Not asked yet.)
 __TODO__: [Andrea] How 7T scan time is booked (calendar, request form, fixed KU Leuven Wednesdays?) and how it is invoiced. Replace the provisional booking section. (Not asked yet.)
-__TODO__: [Andrea] Which safety course, screening forms and access steps KU Leuven researchers need for the 7T. (Not asked yet. Whether S70813 covers the 7T is asked to Klara in the first-steps page TODOs.)
+__TODO__: [Andrea] Which safety course, screening forms and access steps KU Leuven researchers need for the 7T. (Not asked yet.)
 __TODO__: [Andrea] Whether MRI-compatible glasses are available at the 7T. Update "Ethics and safety". (Not asked yet.)
 __TODO__: [Andrea] Confirm the address of the 7T centre and add directions (parking, entrance) for participants. (Not asked yet.)
 __TODO__: [Andrea] How 7T data reach KU Leuven researchers (USB export by the technician, research PACS, XNAT?), and where the current BIDScoin bidsmap is. Update "Getting your data" and store the bidsmap in the lab's Teams folder or a lab repository. (Not asked yet.)

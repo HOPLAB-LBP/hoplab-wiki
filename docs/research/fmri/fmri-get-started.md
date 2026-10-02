@@ -61,7 +61,7 @@ Before diving into your (f)MRI study, make sure you're prepared by following the
 
 ### Get formal ethical approval
 
-Most lab fMRI studies with healthy adults fall under the lab's umbrella application **S70813** (Methusalem), which replaced S62131 (ended 31 December 2025). Check with Klara whether your study is covered before you set up anything else. See the [ethics pages](../ethics/index.md) for details.
+Most of the lab's standard 3T studies at UZ Leuven are covered by the approved umbrella application **S70813** (Methusalem), which replaced S62131 (ended 31 December 2025). Check with Klara and/or your PI whether it covers your experiment before you set up anything else. S70813 does **not** cover scanning at the 7T. See the [ethics pages](../ethics/index.md) for details.
 
 1. **Register your study at the CTC**:
    After this you receive an S-number (for more info, we refer you to [this page](../ethics/MEC.md#step-1-register-your-study-at-the-ctc)).
@@ -175,11 +175,12 @@ For the practical steps on the scan day, see the [Scanning procedure](fmri-proce
 ??? deflist "Documenting experiments"
     Complete the Excel sheet with the experiment name for each session and clearly note down comments for any session that did not yield useful data for various reasons (e.g., participant cancellation, no-shows, artifacts, technical issues) and send it back.
 
+??? deflist "Scan rate"
+    MR11 is invoiced at **€400 per hour** (MR8 was €300 per hour). The invoicing procedure is the same as for MR8.
+
 ??? deflist "Financial management"
     Support staff (currently Klara) will further process the file by including the name of the SAP antenna (i.e., Agna Marien), specifying the funding source for each researcher, and by adjusting the total invoice amount on the invoice to reflect the actual scan hours based on successful data collection sessions ("corrected total").
 
 <!--
-__TODO__: [Klara] Is S70813 approved, and does it cover standard studies at MR11 and at the Flanders 7T? Then remove the "check with Klara" sentence in "Get formal ethical approval" and update the 7T page. (Asked Klara on PR #367, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] Check whether the MR Access file, MRI Safety Checklist, Appendix and key/badge form moved from the old Dropbox folder to the radiology Google Drive folder (Safety Notes v5.0), and whether the access procedure (Ilse Roebben, Silvia Kovacs, Ron) is unchanged for MR11. Update the links. (Not asked yet.)
-__TODO__: [Klara] Does invoicing at MR11 still use the quarterly Excel sheet and the check-in/out times? Update "Managing scan data and invoicing". (Asked Klara on PR #367, 2026-10-01; waiting for answer.)
 -->
