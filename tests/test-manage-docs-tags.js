@@ -16,7 +16,6 @@ const {
   parseTags,
   parseExistingTasks,
   formatTasks,
-  getChangedFiles,
   buildTitle,
   buildBody,
   walkSync,
@@ -621,46 +620,6 @@ console.log('\n--- formatTasks: output with links ---');
   const { text } = formatTasks(tags, []);
   assert(text.includes('(file)'), 'output fallback: plain (file) label');
   assert(text.includes('<!-- source:file -->'), 'output fallback: still has metadata');
-}
-
-// =========================================================================
-// getChangedFiles
-// =========================================================================
-console.log('\n--- getChangedFiles ---');
-
-assertEqual(getChangedFiles({ eventName: 'workflow_dispatch', payload: {} }), null, 'dispatch: null');
-assertEqual(getChangedFiles({ eventName: 'issue_comment', payload: {} }), null, 'comment: null');
-assertEqual(getChangedFiles({ eventName: 'push', payload: { commits: [] } }), null, 'push empty: null');
-assertEqual(getChangedFiles({ eventName: 'push', payload: {} }), null, 'push no commits: null');
-
-{
-  const ctx = {
-    eventName: 'push',
-    payload: { commits: [{ added: ['docs/a.md'], modified: ['docs/b.md'], removed: ['docs/c.md'] }] }
-  };
-  const r = getChangedFiles(ctx);
-  assertEqual(r.length, 2, 'push: added+modified, not removed');
-  assert(r.includes('docs/a.md'), 'push: includes added');
-  assert(r.includes('docs/b.md'), 'push: includes modified');
-}
-
-{
-  const r = getChangedFiles({ eventName: 'push', payload: { commits: [{ added: ['README.md'], modified: [], removed: [] }] } });
-  assert(Array.isArray(r), 'push: non-docs returns array');
-  assertEqual(r.length, 0, 'push: non-docs returns empty array');
-}
-
-// Multi-commit dedup
-{
-  const ctx = {
-    eventName: 'push',
-    payload: { commits: [
-      { added: ['docs/x.md'], modified: [], removed: [] },
-      { added: [], modified: ['docs/x.md', 'docs/y.md'], removed: [] },
-    ]}
-  };
-  const r = getChangedFiles(ctx);
-  assertEqual(r.length, 2, 'multi-commit: deduplicates');
 }
 
 // =========================================================================

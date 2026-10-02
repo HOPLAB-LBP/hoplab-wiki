@@ -10,7 +10,7 @@
  *   - No checkboxes (they give false affordance). Plain bullets with clickable source labels.
  *   - Comment tasks are resolved by reacting with 🚀 on the original comment.
  *   - Aggressive normalization prevents ghost duplicates from reformatting.
- *   - Scoped push processing for efficiency; full scan on dispatch.
+ *   - Every push, scheduled and manual run scans all docs files.
  */
 
 const fs = require('fs').promises;
@@ -267,26 +267,6 @@ function formatTasks(currentTags, existingTasks, { filePath, owner, repo, commen
   return { text: lines.join('\n'), tasks };
 }
 
-/**
- * Extract changed docs/*.md files from a push event payload.
- * Returns null when a full scan is needed (workflow_dispatch or missing data).
- */
-function getChangedFiles(context) {
-  if (context.eventName !== 'push') return null;
-  const commits = (context.payload && context.payload.commits) || [];
-  if (commits.length === 0) return null;
-
-  const files = new Set();
-  for (const commit of commits) {
-    for (const f of (commit.added || [])) files.add(f);
-    for (const f of (commit.modified || [])) files.add(f);
-  }
-
-  return Array.from(files).filter(
-    f => f.startsWith('docs/') && f.endsWith('.md')
-  );
-}
-
 // ---------------------------------------------------------------------------
 // I/O helpers
 // ---------------------------------------------------------------------------
@@ -406,31 +386,10 @@ async function run({ github, context, core }) {
   const allFilesSet = new Set(allFiles.map(normalizePath));
   console.log(`Found ${allFiles.length} Markdown files in docs/`);
 
-  const changedFiles = getChangedFiles(context);
-  const filesToProcess = changedFiles ? [...changedFiles] : [...allFiles];
-  if (changedFiles) {
-    const existing = [];
-    for (const f of filesToProcess) {
-      try {
-        await fs.access(f);
-        existing.push(f);
-      } catch {
-        console.log(`Changed file ${f} deleted; orphan cleanup will handle it`);
-      }
-    }
-    filesToProcess.length = 0;
-    filesToProcess.push(...existing);
-    console.log(`Push event: processing ${filesToProcess.length} changed file(s)`);
-  } else {
-    console.log('Full scan: processing all files');
-  }
-
-  // Also process files with open issues (to catch removed tags)
-  for (const [fp] of cache.openByFile.entries()) {
-    if (!filesToProcess.some(f => normalizePath(f) === fp) && allFilesSet.has(fp)) {
-      filesToProcess.push(fp);
-    }
-  }
+  // Every run scans all files. Push payloads in GitHub Actions carry no
+  // per-commit file lists, so a scoped scan would miss new pages.
+  const filesToProcess = allFiles;
+  console.log('Full scan: processing all files');
 
   // Process files
   for (const file of filesToProcess) {
@@ -841,7 +800,6 @@ module.exports = {
   parseTags,
   parseExistingTasks,
   formatTasks,
-  getChangedFiles,
   buildTitle,
   buildBody,
   walkSync,
