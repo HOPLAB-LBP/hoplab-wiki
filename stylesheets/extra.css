@@ -786,3 +786,8 @@
   --hl-tick: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 20.42 2.79 14.21l2.83-2.83L9 14.77l9.88-9.89 2.83 2.83L9 20.42Z"/></svg>');
   --hl-cross: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 6.91 17.09 4 12 9.09 6.91 4 4 6.91 9.09 12 4 17.09 6.91 20 12 14.91 17.09 20 20 17.09 14.91 12 20 6.91Z"/></svg>');
 }
+
+/* Sidebar: sections are collapsible (navigation.sections is off), but their names stay bold */
+.md-nav--primary .md-nav[data-md-level="1"] > .md-nav__list > .md-nav__item--nested > .md-nav__link {
+  font-weight: 700;
+}

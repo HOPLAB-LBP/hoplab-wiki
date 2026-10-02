@@ -1,0 +1,295 @@
+/* =========================
+   Resource cards
+   =========================
+
+   One card per model, tool or dataset. The accent colour of the left rule says which group the
+   card belongs to; a matching square marks the group's heading. Usage (md_in_html, attr_list and
+   def_list are on):
+
+   ### Brain-inspired models { .resource-group .resource-group--brain }
+
+   <details class="resource-card resource-card--brain" markdown>
+   <summary markdown>
+
+   #### VOneNet
+
+   [:material-file-document-outline: Paper](https://...) [:material-github: Code](https://...)
+   { .resource-card__links }
+
+   **Pick it when** you want a model of primate V1 in front of a standard CNN.
+
+   </summary>
+
+   Architecture
+   :   Fixed V1 model + ResNet-50
+
+   Trained on
+   :   ImageNet, 1000 labels
+
+   [![VOneNet on the cat sprite](../../assets/dnn/cards/vonenet.png){ .resource-card__figure }](../../assets/dnn/cards/vonenet.png)
+   { .resource-card__plate }
+
+   What the panels show, in one or two sentences (optional).
+   { .resource-card__caption }
+
+   ??? example "Load it"
+       ...
+
+   </details>
+
+   Add `open` to the <details> tag to show a card expanded.
+
+   Groups: --classic (default), --brain, --language, --topo.
+
+   The figure sits on a white plate that runs to both edges of the card (also in dark mode, since
+   the figures are drawn on white). Wrapping the image in a link to itself opens it at full size;
+   on narrow screens the plate keeps the figure readable and scrolls sideways.
+*/
+
+.md-typeset .resource-card,
+.md-typeset .resource-group {
+  --card-accent: #44546A;
+}
+.md-typeset .resource-card--brain,    .md-typeset .resource-group--brain    { --card-accent: #DD8452; }
+.md-typeset .resource-card--language, .md-typeset .resource-group--language { --card-accent: #1D6CB0; }
+.md-typeset .resource-card--topo,     .md-typeset .resource-group--topo     { --card-accent: #4C9F70; }
+[data-md-color-scheme="slate"] .md-typeset .resource-card,
+[data-md-color-scheme="slate"] .md-typeset .resource-group { --card-accent: #94A3B8; }
+[data-md-color-scheme="slate"] .md-typeset :is(.resource-card--brain, .resource-group--brain) { --card-accent: #E9A07A; }
+[data-md-color-scheme="slate"] .md-typeset :is(.resource-card--language, .resource-group--language) { --card-accent: #7CB3F0; }
+[data-md-color-scheme="slate"] .md-typeset :is(.resource-card--topo, .resource-group--topo) { --card-accent: #7CC49B; }
+
+/* Group heading: a small square in the group's colour */
+.md-typeset .resource-group::before {
+  content: "";
+  display: inline-block;
+  width: .62em;
+  height: .62em;
+  margin-right: .5em;
+  border-radius: 2px;
+  background: var(--card-accent);
+  vertical-align: .05em;
+}
+
+/* The card is a <details>: closed, it shows only its <summary> (name, links, "Pick it when") and
+   the divider under it, which is also the toggle. Flat, hairline border, accent rule on the left.
+   details.resource-card raises specificity over Material's admonition-style details rules. */
+.md-typeset details.resource-card {
+  display: block;
+  margin: 1rem 0 1.4rem;
+  padding: 0 1.15rem 0 1.2rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-left: 3px solid var(--card-accent);
+  border-radius: 6px;
+  background: var(--md-default-bg-color);
+  box-shadow: none;
+  color: inherit;
+  font-size: inherit;
+}
+.md-typeset details.resource-card > * { margin-top: 0; margin-bottom: .65rem; }
+.md-typeset details.resource-card > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 1rem;
+  align-items: start;
+  min-height: 0;
+  margin: 0;
+  padding: .9rem 0 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font-weight: 400;
+  cursor: pointer;
+}
+.md-typeset details.resource-card > summary > * { grid-column: 1 / -1; margin-top: 0; margin-bottom: .65rem; }
+.md-typeset details.resource-card > summary:focus-visible { outline: none; }
+
+/* The divider row: label on the left, chevron on the right, both in the toggle's hit area */
+.md-typeset details.resource-card > summary::after,
+.md-typeset details.resource-card[open] > summary::after {
+  content: "Show facts, figure and code";
+  position: static;
+  grid-column: 1 / -1;
+  grid-row: 3;
+  width: auto;
+  height: auto;
+  margin: .1rem 0 0;
+  padding: .45rem 0 .55rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  background: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+  transform: none;
+  color: var(--md-default-fg-color--light);
+  font-size: .7rem;
+  font-weight: 400;
+}
+.md-typeset details.resource-card[open] > summary::after { content: "Hide facts, figure and code"; }
+.md-typeset details.resource-card > summary::before,
+.md-typeset details.resource-card[open] > summary::before {
+  content: "";
+  position: static;
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: end;
+  align-self: center;
+  width: .38rem;
+  height: .38rem;
+  margin: .1rem .2rem 0 0;
+  border-right: 1.5px solid var(--card-accent);
+  border-bottom: 1.5px solid var(--card-accent);
+  background: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+  transform: rotate(45deg);
+  z-index: 1;
+}
+.md-typeset details.resource-card[open] > summary::before { transform: rotate(-135deg); margin-top: .35rem; }
+.md-typeset details.resource-card > summary:hover::after { color: var(--md-typeset-a-color); }
+.md-typeset details.resource-card > summary:focus-visible::after { outline: 2px solid var(--card-accent); outline-offset: -1px; }
+@media (prefers-reduced-motion: no-preference) {
+  .md-typeset details.resource-card > summary::before { transition: transform 150ms ease; }
+}
+
+/* Name on the left, links on the right of the same line */
+.md-typeset details.resource-card > summary > :is(h3, h4) {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  margin: 0 0 .5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -.005em;
+}
+.md-typeset details.resource-card > summary > .resource-card__links {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .35rem;
+  margin: 0 0 .5rem;
+  font-size: .72rem;
+}
+.md-typeset .resource-card__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: .3em;
+  padding: .12rem .55rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+  color: var(--md-default-fg-color);
+  line-height: 1.6;
+}
+.md-typeset .resource-card__links a:is(:hover, :focus-visible) {
+  border-color: var(--card-accent);
+  color: var(--md-typeset-a-color);
+}
+.md-typeset .resource-card__links .twemoji { color: var(--card-accent); }
+
+/* Facts: term and value pairs, two pairs per row on wide screens */
+.md-typeset .resource-card > dl {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) max-content minmax(0, 1fr);
+  column-gap: .9rem;
+  row-gap: .3rem;
+  margin: .1rem 0 .7rem;
+  padding: 0;
+  font-size: .74rem;
+  line-height: 1.45;
+}
+.md-typeset .resource-card > dl dt {
+  margin: 0;
+  color: var(--md-default-fg-color--light);
+  font-weight: 400;
+}
+.md-typeset .resource-card > dl dd { margin: 0; }
+.md-typeset .resource-card > dl dd p { margin: 0; }
+
+/* The plate: the card's one strong element. White, edge to edge, hairlines above and below */
+.md-typeset .resource-card > .resource-card__plate {
+  margin: .2rem -1.15rem .55rem -1.2rem;
+  padding: .7rem 1.15rem .6rem 1.2rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  background: #fff;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+.md-typeset .resource-card__plate a { display: block; cursor: zoom-in; }
+.md-typeset .resource-card__plate a:focus-visible {
+  outline: 2px solid var(--card-accent);
+  outline-offset: 3px;
+}
+/* The figure keeps its own outlines: no shadow, no rounding */
+.md-typeset .resource-card__figure {
+  display: block;
+  width: 100%;
+  margin: 0;
+  box-shadow: none !important;
+  border-radius: 0;
+}
+/* Caption: belongs to the plate above it, so smaller and quieter than the body text */
+.md-typeset .resource-card > .resource-card__caption {
+  max-width: 75ch;
+  margin-top: -.15rem;
+  font-size: .7rem;
+  line-height: 1.55;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .resource-card > .resource-card__caption code { font-size: .95em; }
+
+/* "Load it" is quiet: the figure is the card's one strong element */
+.md-typeset .resource-card > details {
+  margin: .2rem 0 .55rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+  box-shadow: none;
+  background: none;
+}
+.md-typeset .resource-card > details > summary {
+  background: none;
+  font-weight: 500;
+}
+.md-typeset .resource-card > details > summary::before { background-color: var(--card-accent); }
+.md-typeset .resource-card > details > summary:hover { color: var(--md-typeset-a-color); }
+
+/* Narrow screens: links under the name, one fact per row */
+@media (max-width: 44.9375em) {
+  .md-typeset details.resource-card > summary > .resource-card__links { grid-column: 1 / -1; grid-row: auto; justify-content: flex-start; }
+  .md-typeset details.resource-card > summary::after,
+  .md-typeset details.resource-card[open] > summary::after,
+  .md-typeset details.resource-card > summary::before,
+  .md-typeset details.resource-card[open] > summary::before { grid-row: 4; }
+  .md-typeset .resource-card > dl { grid-template-columns: max-content minmax(0, 1fr); }
+  /* the strip stays readable and scrolls sideways inside the plate */
+  .md-typeset .resource-card__plate .resource-card__figure { width: 36rem; max-width: none; }
+}
+
+/* Keyboard focus, in the group's colour */
+.md-typeset .resource-card__links a:focus-visible,
+.md-typeset .resource-card > details > summary:focus-visible {
+  outline: 2px solid var(--card-accent);
+  outline-offset: 2px;
+}
+.md-typeset .resource-card > details > summary::after { background-color: var(--md-default-fg-color--light); }
+
+/* Swatch for tables and lists that refer to a group: <span class="resource-swatch resource-swatch--brain"></span> */
+.md-typeset .resource-swatch {
+  --card-accent: #44546A;
+  display: inline-block;
+  width: .62em;
+  height: .62em;
+  margin-right: .25em;
+  border-radius: 2px;
+  background: var(--card-accent);
+  vertical-align: .02em;
+}
+.md-typeset .resource-swatch--brain { --card-accent: #DD8452; }
+.md-typeset .resource-swatch--language { --card-accent: #1D6CB0; }
+.md-typeset .resource-swatch--topo { --card-accent: #4C9F70; }
+[data-md-color-scheme="slate"] .md-typeset .resource-swatch { --card-accent: #94A3B8; }
+[data-md-color-scheme="slate"] .md-typeset .resource-swatch--brain { --card-accent: #E9A07A; }
+[data-md-color-scheme="slate"] .md-typeset .resource-swatch--language { --card-accent: #7CB3F0; }
+[data-md-color-scheme="slate"] .md-typeset .resource-swatch--topo { --card-accent: #7CC49B; }
