@@ -2,21 +2,31 @@
 
 This manual is based on the BioSemi EEG manual from the Cognitive Control in Context (CogTex) research group led by Eva Van den Bussche and was modified by Chiu-Yueh Chen and Klara Schevenels. It is specifically written for the 128-channel BioSemi EEG system located in PSI room 00.52. Eva's lab also provides a [video user tutorial](https://www.youtube.com/watch?v=ZuJ4i9Q7po8&feature=youtu.be) (for their 64-channel BioSemi system), which is highly recommended to watch given the many similarities with our system.
 
-!!! info "Do's and don'ts"
-    - **Do not change any hardware or permanent software settings** (e.g., monitor refresh rate) without approval from the EEG lab manager.
-    - **Reserve your slots via Calira.** Make sure all your lab sessions are properly scheduled. If you don’t have access yet to Calira, contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743).
-    - If you are planning to use the EEG lab for your experiment, ask Klara to add you to the **EEG channel on the NeuroSPACE Slack** through which everything related to the EEG lab is communicated.
-    - Don’t use the system before carefully reading the **user documentation**. You can find the ActiveTwo user manual and operating guidelines on [Teams](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/1.%20EEG%20BioSemi%20Manuals?csf=1&web=1&e=sA1ycQ).
-    - **Avoid contact with metal** while handling or storing the electrodes (this increases noise).
-    - **Always keep one battery charging.** Batteries can break if they are fully discharged (“deep discharge”), but there’s no risk of damage from overcharging.
-    - **Never force connectors** into the system, always check orientation before plugging them in.
-    - **Report low supplies or broken equipment.** Immediately inform the lab manager (currently [Klara Schevenels](https://www.kuleuven.be/wieiswie/nl/person/00116743)) if something appears broken or stock is running low (e.g., towels, Signa gel, shampoo, adhesive tape, interdental brushes, etc.).
-    - **Keep the connectors dry.** During cleaning, only the caps and electrodes should get wet. To protect the connectors, cover them with theor protective caps immediately after unplugging the electrode sets and wrap them carefully in a towel or plastic bag.
-    - **Remove electrodes gently from the cap**, never pull on or bend the wires. The equipment is costly, so handle electrodes and other items with great care.
-    - **Wash the electrodes immediately after use** by rinsing them with warm water (do not soak more than 10 mins). Do not scrub or use detergents on electrodes, only use mild disinfectant if absolutely necessary.
-    - **Avoid using hot air for drying caps.** Caps can be washed with mild detergent, but dry them by towel and lay flat. If you need to speed-dry a wet cap, you may use a blow dryer—but only with cold air.
-    - **Transfer your data after each session.** For example, make sure to copy your data at the end of the day. The computers are regularly cleaned, and it’s your own responsibility to avoid data loss.
-    - **Always return the key of the EEG lab to the locker** when you’re not in the lab. You can find the key in the keybox next to the coffee machine on the ground floor. You can ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) for the code.
+<div class="do-list" markdown>
+<p class="do-list__heading">Do</p>
+
+- **Reserve your slots via Calira.** Make sure all your lab sessions are properly scheduled. If you don’t have access yet to Calira, contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743).
+- If you are planning to use the EEG lab for your experiment, ask Klara to add you to the **EEG channel on the NeuroSPACE Slack** through which everything related to the EEG lab is communicated.
+- **Always keep one battery charging.** Batteries can break if they are fully discharged (“deep discharge”), but there’s no risk of damage from overcharging.
+- **Never force connectors** into the system, always check orientation before plugging them in.
+- **Report low supplies or broken equipment.** Immediately inform the lab manager (currently [Klara Schevenels](https://www.kuleuven.be/wieiswie/nl/person/00116743)) if something appears broken or stock is running low (e.g., towels, Signa gel, shampoo, adhesive tape, interdental brushes, etc.).
+- **Keep the connectors dry.** During cleaning, only the caps and electrodes should get wet. To protect the connectors, cover them with theor protective caps immediately after unplugging the electrode sets and wrap them carefully in a towel or plastic bag.
+- **Remove electrodes gently from the cap**, never pull on or bend the wires. The equipment is costly, so handle electrodes and other items with great care.
+- **Wash the electrodes immediately after use** by rinsing them with warm water (do not soak more than 10 mins). Do not scrub or use detergents on electrodes, only use mild disinfectant if absolutely necessary.
+- **Avoid using hot air for drying caps.** Caps can be washed with mild detergent, but dry them by towel and lay flat. If you need to speed-dry a wet cap, you may use a blow dryer—but only with cold air.
+- **Transfer your data after each session.** For example, make sure to copy your data at the end of the day. The computers are regularly cleaned, and it’s your own responsibility to avoid data loss.
+- **Always return the key of the EEG lab to the locker** when you’re not in the lab. You can find the key in the keybox next to the coffee machine on the ground floor. You can ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) for the code.
+
+</div>
+
+<div class="dont-list" markdown>
+<p class="do-list__heading">Don't</p>
+
+- **Do not change any hardware or permanent software settings** (e.g., monitor refresh rate) without approval from the EEG lab manager.
+- Don’t use the system before carefully reading the **user documentation**. You can find the ActiveTwo user manual and operating guidelines on [Teams](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/1.%20EEG%20BioSemi%20Manuals?csf=1&web=1&e=sA1ycQ).
+- **Avoid contact with metal** while handling or storing the electrodes (this increases noise).
+
+</div>
 
 ## Before the day: planning participants
 
@@ -48,9 +58,13 @@ To keep scheduling fair during busy periods with multiple studies running, the f
 
 These are the first things to do upon arriving in the EEG lab:
 
+<div class="steps-list" markdown>
+
 1. Switch on the stimulus presentation computer and the EEG acquisition computer in the experimenter room. If you don't know the credentials of the computers, check [this document](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/eeg-computer-info.docx?d=wccddd39191864b9891c0f51cfb6fdf6f&csf=1&web=1&e=AUEUtv) (*access required*).
 2. In the EEG room, switch on the general power strip, turn on the screen of the task computer and run the script on the desktop to set the correct screen resolution. Then, switch on the A/D-box using the on/off switch (see **Figure 1**).
 3. Check on the A/D-box whether its battery is charged. If the battery is low, a red light will turn on (see **Figure 1**). In that case, take out the battery by opening the black clips at the sides and replace it with the spare battery that can be found in the left corner of the desk with the stimulus computer. Make sure that one battery is always charging (see **Figure 2**). At a later stage you can also check the battery status in ActiView (see **Figure 9**).
+
+</div>
 
 ![A/D-box](../../assets/eeg-acquisition-fig1.png)
 ![A/D-box battery](../../assets/eeg-acquisition-fig2.png)
@@ -71,6 +85,8 @@ Then, make sure everything you'll need is within reach. You can find all necessa
 ## Upon participant arrival
 
 It is probably the first time for your participant to participate in an EEG experiment. As it may be a bit scary for them, make sure to explain everything slowly and in great detail. Prepare the participant for data acquisition as follows:
+
+<div class="steps-list" markdown>
 
 1. Explain the procedure to the participant.
 2. Give the participant enough time to read the information letter, ask questions, and sign the informed consent.
@@ -113,9 +129,13 @@ It is probably the first time for your participant to participate in an EEG expe
 12. In case the participant wears glasses, you can put them back on now.
 13. Turn the lights low (the light switch is near the door) and make sure the lightning is consistent across all of your participants. Do not lower the lights too much as a high contrast between the room and monitor increases the blinking frequency. During breaks, you might want to turn the lights up (to increase alertness) and ask the participant if they would like to drink some water (to decrease swallowing).
 
+</div>
+
 ## Setting-up the datafile
 
 Go to the acquisition computer, and take care of the following steps:
+
+<div class="steps-list" markdown>
 
 1. Start up ActiView.
 
@@ -145,9 +165,13 @@ Go to the acquisition computer, and take care of the following steps:
 
     ![good EEG signal](../../assets/eeg-acquisition-fig12.png)
 
+</div>
+
 ## Recording EEG-data
 
 Hooray, you are now ready to start acquiring EEG data! To do so, follow these steps on the acquisition PC:
+
+<div class="steps-list" markdown>
 
 1. Start recording (= saving data to file) by clicking the `paused` button in ActiView on the bottom right. When recording, it switches to `saving` and turns green (see **Figure 12**). **Do not forget this** (you wouldn't be the first)!
 2. Give your participant the last instructions via the intercom system and start the experiment on the stimulus PC. If you get an error along the lines of "could not open port COM [X]", it might help to reconnect the cables connecting the trigger box with either stimulus or acquisition PC and/or restart both PCs.
@@ -162,7 +186,11 @@ Hooray, you are now ready to start acquiring EEG data! To do so, follow these st
     !!! Tip
         Make sure to write down the "bad channels" (i.e., with impedances outside of the [-20 20 µV] range) on your participant log (you can find an example [here](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/EEG/log_EEG_participants.xlsx?d=wa29320cdb14c4e989a3c5eed41b4c61a&csf=1&web=1&e=R982GF)) for each run separately (the impedances can change throughout the experiment). You can then take this into account in your analysis (e.g., through interpolation).
 
+</div>
+
 ## After the experiment
+
+<div class="steps-list" markdown>
 
 1. Unplug the electrode sets from the A/D-box (4 sets + mini-set with DRL and CMS electrodes).
 2. Put the protective caps back on the connectors. Put the connectors in a waterproof plastic bag and use an elastic band to close the bag. **The connectors are very sensitive and should not get wet!**
@@ -176,13 +204,19 @@ Hooray, you are now ready to start acquiring EEG data! To do so, follow these st
 10. Check whether any material is close to running out of stock (e.g., SignaGel, shampoo, adhesive tape, interdental brushes, cotton swabs, etc.) and notify [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) if this is the case. Please take into account that refilling stock might take several weeks.
 11. Take the signed ICF with you (do not leave it in the EEG room) and safely store it in a locked cabinet in your office.
 
+</div>
+
 ## Cleaning
+
+<div class="steps-list" markdown>
 
 1. Put the leftover gel in the syringes back in the tube.
 2. Rinse the syringes, head cap and electrode sets (not the connectors!) with lukewarm water. Do not scrub or use detergents on electrodes, only use mild disinfectant if absolutely necessary. Caps can be washed with mild detergent.
 3. Use a plastic toothpick to remove the gel from all the gaps in the head cap.
 4. If necessary, fill the tub with clean lukewarm water and add a bit of the 70% alcohol solution to it. Soak the electrodes, the head cap and the syringes in it for a few seconds to disinfect them, and then rinse everything again with lukewarm water.
 5. Let the caps and syringes dry flat on the round table (do not hang the caps to dry). Put the electrode sets back on the rack (make sure they are stable and don't fall on the floor).
+
+</div>
 
 !!! info "Data storage"
     After transferring your data, make sure to follow the lab's [Research Data Management guidelines](../rdm/SOPs.md) for organizing and backing up your dataset.

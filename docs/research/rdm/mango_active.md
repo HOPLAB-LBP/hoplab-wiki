@@ -330,6 +330,8 @@ We'll guide you through the setup, but if you want more information, here are a 
 
 ### Installing and setting up the client
 
+<div class="steps-list" markdown>
+
 1. Download the [mango-ingest development branch](https://github.com/kuleuven/mango-ingest/tree/development) and unzip it into: `C:\Workdir\MyApps`
 
 2. Open a command prompt and navigate
@@ -376,6 +378,8 @@ We'll guide you through the setup, but if you want more information, here are a 
     ```bash
     python -m mango_ingest -d /ghum/home/Hoplab/[collection]/[sub-collection] -p "path_to_data_to_upload" -nw -r --verify-checksum
     ```
+
+</div>
 
 ### Command options explained
 

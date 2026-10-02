@@ -176,15 +176,15 @@ Make sure you replace `/local/path/BIDS` with your local BIDS folder, and `vsc12
 
 1. **Move to `VSC_DATA`:**
 
-   ```
-   cd $VSC_DATA
-   ```
+    ```
+    cd $VSC_DATA
+    ```
 
 2. **Build the Container:**
 
-   ```
-   singularity build fmriprep-25.0.0.sif docker://nipreps/fmriprep:25.0.0
-   ```
+    ```
+    singularity build fmriprep-25.0.0.sif docker://nipreps/fmriprep:25.0.0
+    ```
 
 This fetches the Docker image and converts it to a Singularity `.sif` image.
 
@@ -257,6 +257,8 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
 
 ### 6.2 Submitting the Job
 
+<div class="steps-list" markdown>
+
 1. Navigate to the same directory as your script (or specify the full path):
 
     ```bash
@@ -275,7 +277,7 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
     Submitted batch job 58070026
     ```
 
-   *where `58070026` is your job ID* (but it will be different in your case).
+    *where `58070026` is your job ID* (but it will be different in your case).
 
 3. Check the status of your job:
 
@@ -291,7 +293,10 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
     58070026 batch     fmriprep vsc12345  R       0:00      1 (Priority)
     ```
+
     Through the KU Leuven **OnDemand** interface, you can also check the status of your job by clicking on the *Active jobs* tab in the dashboard.
+
+</div>
 
 Congrats! Your job is now being executed on the cluster.
 
@@ -434,6 +439,8 @@ Once your job finishes, you will receive an email from the SLURM scheduler. This
 
 If your job failed, the first thing to do is inspect the `.out` and `.err` files written by SLURM. These contain the full log and error output from `fMRIPrep`.
 
+<div class="steps-list" markdown>
+
 1. Go to the correct folder (usually `$VSC_DATA`):
 
     ```bash
@@ -457,6 +464,8 @@ If your job failed, the first thing to do is inspect the `.out` and `.err` files
     ```
 
     - This might contain Python tracebacks or messages from Singularity.
+
+</div>
 
 Make sure to check **both files**, as the error could appear in either.
 

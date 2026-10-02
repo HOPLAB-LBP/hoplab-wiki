@@ -151,6 +151,8 @@ Across NeuroSPACE, participant compensation was increased in October 2025 to **â
     
     Prepare the reimbursement file as follows: 
 
+    <div class="steps-list" markdown>
+
     1. Use the appropriate **KU Leuven reimbursement Excel template**, depending on whether the participant has a Belgian IBAN or not ([Belgian Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20belgian%20account%20numbers.xlsx?d=w90debbbdd86e4ebab4c32c42d02ec9e4&csf=1&web=1&e=VfcP7g), [International Payment Excel](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Practical%20aspects/Participant%20payment/template%20participants%20with%20foreign%20account%20numbers.xlsx?d=w1555b214f88b4114a9378d483aef71d4&csf=1&web=1&e=fCtsMe)). 
 
     2. **Do not change the columns or structure** of the Excel templates!
@@ -173,6 +175,8 @@ Across NeuroSPACE, participant compensation was increased in October 2025 to **â
         * Name(s) of the researcher(s)
         * How is the amount calculated (e.g., participants receive â‚¬15/hour)
         * In the subject of the email, make sure to include your name and a number/month (this helps us to find a specific payment and the original email associated with it)
+
+    </div>
 
     !!! warning "Protect payment information"
         Payment information is confidential personal data. Keep it separate from research data in a secure, access-restricted and password-protected file on your personal SharePoint. Retain only for as long as necessary and delete it when it is no longer needed, in accordance with the [approved data management procedures](../rdm/SOPs.md).

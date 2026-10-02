@@ -80,8 +80,12 @@ After the review, you will be informed of the outcome via an automated email fro
 
 Amendments of approved protocols should be resubmitted for additional review. Amendments can only be submitted for **small modifications or extensions**, and only for dossiers of which the initial approval is **no older than 4 years**. To do so:
 
+<div class="steps-list" markdown>
+
 1. Access the [PRET platform](https://www.kuleuven.be/pret).
 2. Open a previously approved application dossier and make a copy to begin your amendment.
 3. Make any necessary changes to the dossier, giving a clear explanation of changes on the communication page prior to submission.
 4. To amend documents, use track changes and re-upload documents to the dossier.
 5. Save and submit the new dossier.
+
+</div>

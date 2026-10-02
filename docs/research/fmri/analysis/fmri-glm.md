@@ -27,19 +27,23 @@ The suggested way of proceeding is to create a `derivatives/pre-SPM` folder wher
 
 SPM cannot process `.nii.gz` files directly, so we first need to decompress them:
 
+<div class="steps-list" markdown>
+
 1. Create a directory for pre-processed files:
 
-   ```bash
-   mkdir derivatives/pre-SPM
-   ```
+    ```bash
+    mkdir derivatives/pre-SPM
+    ```
 
 2. Decompress the files using `gunzip` in the terminal:
 
-   ```bash
-   gunzip path/to/your/files/*.nii.gz
-   ```
+    ```bash
+    gunzip path/to/your/files/*.nii.gz
+    ```
 
-   - Store the decompressed files in a subdirectory called `gunzipped` inside `derivatives/pre-SPM`.
+    - Store the decompressed files in a subdirectory called `gunzipped` inside `derivatives/pre-SPM`.
+
+</div>
 
 !!! tip "Decompress with a right-click!"
     Most Operating Systems will let you decompress the `nii.gz` files directly from the File Explorer. Right click on the files you want to decompress, and extract them like you would do with a compressed folder.
@@ -48,16 +52,20 @@ SPM cannot process `.nii.gz` files directly, so we first need to decompress them
 
 Smoothing is required to increase signal-to-noise ratio, especially for localizer runs. Follow these steps:
 
+<div class="steps-list" markdown>
+
 1. Launch the SPM GUI with the command:
 
-   ```matlab
-   spm fmri
-   ```
+    ```matlab
+    spm fmri
+    ```
 
 2. In the GUI, click on `Smooth`.
 3. Select the decompressed `.nii` files.
 4. Set the **FWHM** (Full Width at Half Maximum) to `[4 4 4]` or `[6 6 6]` for moderate smoothing.
 5. Save the smoothed output in `derivatives/pre-SPM/smoothed`.
+
+</div>
 
 !!! tip "Automated Preprocessing"
     You can integrate the decompression and smoothing steps into a script to streamline your workflow, avoiding manual steps (see the [Analysis Workflow](fmri-andrea-workflow.md) for an example).
@@ -419,15 +427,21 @@ Both `eventsBIDS2SPM` and `fMRIprepConfounds2SPM` are MATLAB functions that can 
 
 Once you have your onset times and confound regressors files ready, you can set up the design matrix:
 
-1. **Open SPM**: Launch the SPM GUI with `spm fmri`
-2. **Specify 1st-Level**: Go to `Specify 1st Level` in the SPM menu.
-3. **Set Parameters**:
+???+ steps "Open SPM"
+    Launch the SPM GUI with `spm fmri`
+
+???+ steps "Specify 1st-Level"
+    Go to `Specify 1st Level` in the SPM menu.
+
+???+ steps "Set Parameters"
     - **Units for design**: Set to `seconds`.
     - **Interscan interval (TR)**: Use your fMRI acquisition’s TR value.
     - **Microtime resolution**: This should be the number of slices acquired per TR (e.g., `64` for a 64-slice scan).
-4. **Input Onset Files**:
+
+???+ steps "Input Onset Files"
     - Use the *multiple conditions* option to input onset time files (e.g., `sub-01_run-01_eventsspm.mat`).
-5. **Include Confound Regressors**:
+
+???+ steps "Include Confound Regressors"
     - Select the confound regressors from the confound files (e.g., `sub-01_run-01_confoundsspm.mat`).
 
 ### Reviewing the Design Matrix
@@ -569,10 +583,13 @@ It’s crucial to confirm the order of regressors in the design matrix before sp
 
 ### Visualizing and Saving Results
 
-1. **Viewing Results**: Use the SPM results viewer to explore significant clusters.
-2. **Save the Statistical Maps**:
+???+ steps "Viewing Results"
+    Use the SPM results viewer to explore significant clusters.
+
+???+ steps "Save the Statistical Maps"
     - Save thresholded activation maps as `.nii` files using the `Save` button in the results window.
-3. **Generate Figures**:
+
+???+ steps "Generate Figures"
     - Use the `Render` or `Surface` options to create visual summaries of your findings.
     - Save these figures for inclusion in reports or presentations.
 
@@ -585,11 +602,15 @@ It’s crucial to confirm the order of regressors in the design matrix before sp
 
 To overlay activations on a subject's anatomy:
 
+<div class="steps-list" markdown>
+
 1. Click **Display** -> **overlays...** in the SPM GUI.
 2. Select **sections** for volume plotting or **render** for surface plotting.
 3. Choose the subject's anatomical image from `BIDS/derivatives/fmriprep/sub-xx/anat`:
     - For volume plots, select the `.nii` file corresponding to the same space as your GLM (usually MNI).
     - For surface plots, select the pial or inflated brain image.
+
+</div>
 
 !!! warning
     SPM cannot read `.nii.gz` files directly, so you must decompress them into `.nii` files. This can be done with any decompression tool by right-clicking on the file in your file explorer. Once decompressed, use the SPM GUI to select the `.nii` file.
@@ -658,9 +679,13 @@ derivatives/
 
 After specifying your model (before or after estimation), you can save the design matrix visualisation for your records:
 
+<div class="steps-list" markdown>
+
 1. In the SPM Graphics window, the design matrix is displayed after specification.
 2. **Right-click** on the design matrix figure and select **Save as Image** (or **Print to File**).
 3. Choose a format (PNG or EPS for publication quality) and save to your GLM output directory.
+
+</div>
 
 Alternatively, you can save it programmatically:
 
@@ -704,6 +729,8 @@ The most common second-level designs are:
 
     **GUI procedure:**
 
+    <div class="steps-list" markdown>
+
     1. Open SPM and click **Specify 2nd-level**.
     2. Set the **Directory** to your group-level output folder (e.g., `derivatives/SPM/GLM/group/task-exp/`).
     3. Select **One-sample t-test** as the design.
@@ -711,6 +738,8 @@ The most common second-level designs are:
         - e.g., `derivatives/SPM/GLM/sub-01/task-exp/con_0001.nii`, `derivatives/SPM/GLM/sub-02/task-exp/con_0001.nii`, etc.
     5. Optionally add covariates (e.g., age, performance scores).
     6. Click **Run** (the green play button).
+
+    </div>
 
     **Scripted version:**
 
@@ -736,20 +765,28 @@ The most common second-level designs are:
 
 After estimating the second-level model:
 
+<div class="steps-list" markdown>
+
 1. Click **Results** in the SPM GUI.
 2. Select the group-level `SPM.mat`.
 3. Define contrasts:
     - For a **one-sample t-test**, a single contrast `[1]` tests for positive activation, `[-1]` for deactivation.
 
+</div>
+
 ### Interpreting and reporting results
 
 When viewing results:
+
+<div class="steps-list" markdown>
 
 1. Set the **significance threshold** (commonly p < 0.001 uncorrected at voxel level, or p < 0.05 FWE-corrected).
 2. Set a **cluster extent threshold** (e.g., k = 10 voxels) to filter out small, isolated activations.
 3. SPM will display:
     - A **glass brain** showing suprathreshold clusters
     - A **table of results** with peak MNI coordinates, cluster sizes, t-values, and p-values
+
+</div>
 
 !!! tip "Reporting conventions"
     When reporting group results in a publication, include:

@@ -140,6 +140,8 @@ This code defines two functions Google will call over the web: `doGet` (handles 
 
 This turns your script into something the experiment can reach over the internet.
 
+<div class="steps-list" markdown>
+
 1. Click the blue **Deploy** button (top right) -> **New deployment**.
 2. Click the gear icon next to "Select type" -> choose **Web app**.
 3. Fill in:
@@ -150,6 +152,8 @@ This turns your script into something the experiment can reach over the internet
 5. The first time, Google asks you to **authorize**. Click through: choose your account -> "Advanced" -> "Go to (project name)" -> **Allow**. This is normal — you are granting your own script permission to edit your own sheet.
 6. Copy the **Web app URL**. It ends in `/exec` and looks like:
    `https://script.google.com/macros/s/AKfy...long.../exec`
+
+</div>
 
 You will paste this URL into the experiment's config (Part D).
 
@@ -266,6 +270,8 @@ This follows the normal jsPsych-on-Pavlovia process (see [Online Experiments (js
 
 Do a full dress rehearsal with a test ID before any real participant:
 
+<div class="steps-list" markdown>
+
 1. Temporarily shorten sessions (e.g. set the trials-per-block and convergence parameters to small values in `config.js`).
 2. Run **three** sessions with the same test ID (e.g. `TEST01`).
 3. In the `state` tab, confirm there is **one** row for `TEST01`, and that its `block_history` grows with each session (not duplicate rows).
@@ -273,6 +279,8 @@ Do a full dress rehearsal with a test ID before any real participant:
 5. Confirm the "progress saved" confirmation appears at the end of each session.
 6. Run `previewReminders` and confirm the right people would be emailed.
 7. Restore your real session-length parameters before running participants.
+
+</div>
 
 ---
 

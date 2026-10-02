@@ -632,8 +632,8 @@
   </div>
 
   A plain numbered list drawn like ??? steps: number circles joined by a
-  vertical line. For short procedures where every step must stay visible
-  (emergencies), so nothing has to be clicked open.
+  vertical line. For procedures written as plain sentences, and for those
+  where every step must stay visible (emergencies).
 */
 
 .md-typeset .steps-list > ol {

@@ -103,11 +103,15 @@ Further splitting makes sense when a specific pipeline stage is large and only n
 
 ## Step 4: Create a draft dataset
 
+<div class="steps-list" markdown>
+
 1. Go to [rdr.kuleuven.be](https://rdr.kuleuven.be/) and log in with your KU Leuven account
 2. The host dataverse is "KU Leuven" and shouldn't be changed
 3. Click **Add Data > New Dataset**
 4. Fill in the required metadata (see below)
 5. Click **Save Dataset** — this creates the draft
+
+</div>
 
 ### Required metadata
 
@@ -150,6 +154,8 @@ There are three ways to upload files. The **web UI** is the simplest; the **API*
 
     The web UI is the most straightforward option, especially for smaller datasets or when you only have a handful of ZIP files. It does **not** unpack ZIPs — they are stored as-is.
 
+    <div class="steps-list" markdown>
+
     1. Open your draft dataset on [rdr.kuleuven.be](https://rdr.kuleuven.be/)
     2. Click **Upload Files** (top right, next to "Edit Files")
 
@@ -166,6 +172,8 @@ There are three ways to upload files. The **web UI** is the simplest; the **API*
         - README and documentation files → **Public** (so users can read them without requesting access)
         - Data bundles → **Restricted** (access via Data Transfer Agreement)
         - To change: click the file's lock icon or go to **Edit Files** and change the restriction setting
+
+    </div>
 
     !!! warning "Web UI file size limit"
         The web UI has a per-file upload limit (currently **10 GB** on RDR). For larger files, use the API or the Integration Dashboard.
@@ -294,12 +302,16 @@ There are three ways to upload files. The **web UI** is the simplest; the **API*
 
 ## Step 7: Verify and publish
 
+<div class="steps-list" markdown>
+
 1. Check that all files appear in the draft and sizes match your local copies
 2. Verify the README and documentation files are set to **unrestricted**
 3. Fill in any remaining metadata fields
 4. For restricted access: confirm the contact person is correct
 5. Click **Publish Dataset** > **Major version** (v1.0)
 6. Copy the DOI and add it to your paper and code repository
+
+</div>
 
 !!! warning "Restricted files"
     Make sure that all files that have to be restricted are actually restricted. In the `files` tab under the dataset, you can select the file(s) and click `edit files` and choose ´restrict`. You can also restrict each file individually by clicking`file options` (3 dots after every file) and select `restrict`.
@@ -318,12 +330,18 @@ When you publish your RDR dataset, it automatically gets a DOI (e.g., `doi:10.48
 
 **One-time setup:**
 
+<div class="steps-list" markdown>
+
 1. Go to [zenodo.org](https://zenodo.org/) and log in with your GitHub account
 2. Go to [zenodo.org/account/settings/github](https://zenodo.org/account/settings/github/)
 3. Find your repository and flip the toggle to **ON**
 4. Zenodo installs a webhook on your repo — from now on, every GitHub release triggers a new Zenodo DOI
 
+</div>
+
 **For each release:**
+
+<div class="steps-list" markdown>
 
 1. Tag a snapshot of your code when the paper is submitted or accepted:
 
@@ -342,6 +360,8 @@ When you publish your RDR dataset, it automatically gets a DOI (e.g., `doi:10.48
     Or do it via the GitHub web UI: go to your repo → **Releases** → **Draft a new release** → select the tag → fill in title and notes → **Publish release**.
 
 3. Zenodo automatically picks up the release and mints a DOI (takes a few minutes). Check at `zenodo.org/account/settings/github/` or search for your repo on Zenodo.
+
+</div>
 
 **Zenodo gives you two DOIs:**
 

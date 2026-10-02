@@ -177,6 +177,8 @@ Nex to the weekly lab meetings, we have monthly NeuroSPACE methods meetings wher
 
 To print your poster, submit a "Large-format printing request" using [this form](https://www.groupware.kuleuven.be/sites/lio2/gebruikerslab/Paginas/FormulierPosters.aspx). Follow these steps:
 
+<div class="steps-list" markdown>
+
 1. **Choose paper type:**
     - `140gr`: Standard paper
     - `Glanzend`: Shiny version
@@ -196,6 +198,8 @@ To print your poster, submit a "Large-format printing request" using [this form]
     - Ask for an invoice
     - Use Agna Mariën's u-number (`u0088446`) when finalizing your request.
 
+</div>
+
 ### Presentation templates
 
 You can find KU Leuven PowerPoint and <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> templates for presentations [here](https://admin.kuleuven.be/mykuleuven/en/theme/ict-communication-events/communication-guidelines-tools/layout-and-printed-materials/templates-for-presentations).
@@ -206,6 +210,8 @@ Please consult [this page](https://admin.kuleuven.be/icts/opleidingen/englishweb
 
 It's good practice to announce your PPW presentations in the faculty calendar. Typically, [Kirsten Blommaerts](https://www.kuleuven.be/wieiswie/en/person/00127342) coordinates B&C level announcements. If she's unavailable, follow these steps:
 
+<div class="steps-list" markdown>
+
 1. Go to the [PPW faculty calendar](https://ppw.kuleuven.be/agenda/eng)
 2. Log in with your KU Leuven credentials
 3. Click "Add new items (Dutch)"
@@ -213,6 +219,8 @@ It's good practice to announce your PPW presentations in the faculty calendar. T
 5. Click "+ Nieuw" > "Agenda-item"
 6. Add your presentation details (title, abstract, time, location)
 7. Save your changes
+
+</div>
 
 !!! note
     After submission, there's a brief moderation period before your announcement appears online.

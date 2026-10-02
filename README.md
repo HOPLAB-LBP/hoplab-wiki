@@ -391,7 +391,7 @@ to show every step open:
 The line runs only between consecutive `steps` entries, so a paragraph or heading between two entries ends the
 sequence. Numbering restarts at every heading, as for `numlist`.
 
-When every step must stay visible without clicking (an emergency procedure), wrap an ordinary numbered list in a
+For a procedure whose steps are plain sentences, or one that must stay visible without clicking (an emergency), wrap an ordinary numbered list in a
 `steps-list` block. It draws the same circles and line:
 
 ```markdown
@@ -435,7 +435,7 @@ What to say and where you are.
     |---|---|
     | A list of items, each with a paragraph or more of explanation, all relevant to every reader | `??? numlist` / `??? deflist` |
     | Steps done in order, each with an explanation | `???+ steps` |
-    | Steps done in order that must always be visible (emergencies) | `<div class="steps-list" markdown>` around a numbered list |
+    | Steps done in order, written as plain sentences or always visible (emergencies) | `<div class="steps-list" markdown>` around a numbered list |
     | Items with a one-line explanation | a plain bullet list — there is nothing worth hiding |
     | The reader needs exactly **one** of several alternatives (Windows/macOS, one of three procedures) | [content tabs](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/) (`=== "Tab"`) |
     | A single aside, warning or tip interrupting the text | `!!! warning`, `!!! tip`, … |

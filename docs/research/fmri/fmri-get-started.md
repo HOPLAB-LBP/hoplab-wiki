@@ -63,14 +63,17 @@ Before diving into your (f)MRI study, make sure you're prepared by following the
 
 Most of the lab's standard 3T studies at UZ Leuven are covered by the approved umbrella application **S70813** (Methusalem), which replaced S62131 (ended 31 December 2025). Check with Klara and/or your PI whether it covers your experiment before you set up anything else. S70813 does **not** cover scanning at the 7T. See the [ethics pages](../ethics/index.md) for details.
 
-1. **Register your study at the CTC**:
-   After this you receive an S-number (for more info, we refer you to [this page](../ethics/MEC.md#step-1-register-your-study-at-the-ctc)).
-2. **Register your study at the MR research department**:
-   Upload the [application form for support from the Radiology department](https://gbiomed.kuleuven.be/english/ctc/supporting-hospital-departments-for-public-ctc-website/aanvraagformulier_radiologie_eng) via [this link](https://www.uzleuven.be/en/uploading-application-forms-supporting-departments-ctc). Include the Clinical Study Coordinator of Radiology (currently, that is <lesley.cockmartin@uzleuven.be>) as contact person, who will approve your request via email.
-3. **Get approval from the ethical committee of UZ/KU Leuven**:
-   For more info, we refer you to [this page](../ethics/MEC.md#step-2-apply-for-ec-approval).
-4. **Follow the MR safety course**:
-   And become an authorized user of the MRI-scanner (see below).
+???+ steps "Register your study at the CTC"
+    After this you receive an S-number (for more info, we refer you to [this page](../ethics/MEC.md#step-1-register-your-study-at-the-ctc)).
+
+???+ steps "Register your study at the MR research department"
+    Upload the [application form for support from the Radiology department](https://gbiomed.kuleuven.be/english/ctc/supporting-hospital-departments-for-public-ctc-website/aanvraagformulier_radiologie_eng) via [this link](https://www.uzleuven.be/en/uploading-application-forms-supporting-departments-ctc). Include the Clinical Study Coordinator of Radiology (currently, that is <lesley.cockmartin@uzleuven.be>) as contact person, who will approve your request via email.
+
+???+ steps "Get approval from the ethical committee of UZ/KU Leuven"
+    For more info, we refer you to [this page](../ethics/MEC.md#step-2-apply-for-ec-approval).
+
+???+ steps "Follow the MR safety course"
+    And become an authorized user of the MRI-scanner (see below).
 
 !!! warning "Research sequences (WIP and C2P)"
     Some advanced sequences on MR11 are Siemens *works-in-progress* (WIP) or come from other Siemens sites (C2P). They show a lab-flask icon on the console. Using them can require an extra CTC notification, and their authors may require a citation, an acknowledgement or co-authorship. Ask Ron Peeters, Stefan Sunaert or Daan Christiaens which ones your protocol uses before you start data collection.
@@ -93,33 +96,34 @@ Most of the lab's standard 3T studies at UZ Leuven are covered by the approved u
 !!! warning "This procedure is being updated"
     The procedure to become an authorised MR11 user changed considerably in 2026. The steps in this section and in "Training and preparation" below may be outdated. Check with Klara before you start; this section will be updated once the radiology team has confirmed the new procedure.
 
-1. **Document submission**  
+???+ steps "Document submission"
     - After obtaining ethical approval, send the completed [MR Access file](https://www.dropbox.com/s/hh0l3swkjnx96vb/MR_Access.xlsx?e=1&dl=0) and the approved ICF to [ilse.roebben@uzleuven.be](mailto:ilse.roebben@uzleuven.be) and [silvia.kovacs@uzleuven.be](mailto:silvia.kovacs@uzleuven.be).  
     - Before entering the Controlled Area for the first time, complete the following:  
+
         - [MRI Safety Checklist](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=1&preview=MR+patient+Questionnaire+-+ENGELS.pdf)  
         - [Appendix](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=1&preview=Appendix1A_v1.2.pdf) confirming you completed the MR safety course  
         - [Key and badge access form](https://docs.google.com/document/d/143GdWPMCy9pAAmRcEm8toCgNDZ-5E7Vn/edit)  
 
-          Send all three documents to [ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be), along with the S-number of your study and the following details:
+        Send all three documents to [ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be), along with the S-number of your study and the following details:
 
-          | Field                     | Value (to be filled in)           |
-          |---------------------------|----------------------------------|
-          | First name                |                                  |
-          | Last name                 |                                  |
-          | Place of birth            |                                  |
-          | Date of birth             |                                  |
-          | Start date                |                                  |
-          | Expiry date               |                                  |
-          | Purpose                   | Scanning on research scanner MR11 |
-          | Educational institution   | KU Leuven                        |
-          | National register number  |                                  |
-          | KU Leuven u-number        |                                  |
-          | Email address             |                                  |
-          | Extranet required         | No                               |
-          | Phone number              |                                  |
+        | Field                     | Value (to be filled in)           |
+        |---------------------------|----------------------------------|
+        | First name                |                                  |
+        | Last name                 |                                  |
+        | Place of birth            |                                  |
+        | Date of birth             |                                  |
+        | Start date                |                                  |
+        | Expiry date               |                                  |
+        | Purpose                   | Scanning on research scanner MR11 |
+        | Educational institution   | KU Leuven                        |
+        | National register number  |                                  |
+        | KU Leuven u-number        |                                  |
+        | Email address             |                                  |
+        | Extranet required         | No                               |
+        | Phone number              |                                  |
 
-2. **Card activation for MR suite access**:
-  After you have completed all the steps above, Ron will arrange everything and your KU Leuven staff/student card will give you access to the MR11 suite. Access is valid for one year and has to be renewed.
+???+ steps "Card activation for MR suite access"
+    After you have completed all the steps above, Ron will arrange everything and your KU Leuven staff/student card will give you access to the MR11 suite. Access is valid for one year and has to be renewed.
 
 ### Set up XNAT for your study
 
@@ -134,11 +138,11 @@ How the data reach your project and how you download them is explained in the [S
 
 Before you can become an Authorized Other User (AOU), you must undergo practical training and testing:
 
-1. **Observational training**:  
-  After reviewing all relevant documentation, observe scan procedures by joining sessions of your colleagues. We have an internal Slack channel to keep track of upcoming scans, so make sure you are invited to it if you want to be up to date.
+???+ steps "Observational training"
+    After reviewing all relevant documentation, observe scan procedures by joining sessions of your colleagues. We have an internal Slack channel to keep track of upcoming scans, so make sure you are invited to it if you want to be up to date.
 
-2. **Testing protocols**:  
-   Before your pilot (f)MRI session with an actual participant, set up your sequences with Ron and test your experiment script at the scanner. Book a phantom session by contacting Dr. Ron(ald) Peeters at [ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be). Use the session to check the trigger and the button boxes with your own script (see [Trigger box and buttons](fmri-equipment.md#trigger-box-and-buttons)) and to check that your stimuli look right on the in-room screen.
+???+ steps "Testing protocols"
+    Before your pilot (f)MRI session with an actual participant, set up your sequences with Ron and test your experiment script at the scanner. Book a phantom session by contacting Dr. Ron(ald) Peeters at [ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be). Use the session to check the trigger and the button boxes with your own script (see [Trigger box and buttons](fmri-equipment.md#trigger-box-and-buttons)) and to check that your stimuli look right on the in-room screen.
 
 !!! warning "Independent scanning"
     You are allowed to conduct scans independently after attending approximately **10 sessions** with experienced personnel (e.g., more senior colleagues). This will help you learn how to control the scanner effectively. After 2 sessions, you should know how to control the scanner and you are allowed to be the second researcher during a scan session outside office hours.
@@ -149,8 +153,11 @@ Before you can become an Authorized Other User (AOU), you must undergo practical
 
 MR11 is booked through the **MRI Scientific Planning Agenda**: [kuleuven.be/radiology/Research/MR11_calendar.php](https://www.kuleuven.be/radiology/Research/MR11_calendar.php). The same page shows the live calendar. Booking has two steps:
 
-1. **Reserve the slot**: fill in your name, e-mail, study number (S- or RAD-number), scan date, start time and duration, then click *Submit request*.
-2. **Register the participant**: you receive an e-mail with a link to a *Mynexuzhealth* form. Fill in the participant's details (name, date of birth, nationality, national register number, address, general practitioner with contact details), the pseudonymised subject and session IDs, the scan type (e.g., neuro) and the volunteer type (healthy), then click *Submit*. Do this as soon as possible after booking, and **at least 72 hours before the scan**.
+???+ steps "Reserve the slot"
+    fill in your name, e-mail, study number (S- or RAD-number), scan date, start time and duration, then click *Submit request*.
+
+???+ steps "Register the participant"
+    you receive an e-mail with a link to a *Mynexuzhealth* form. Fill in the participant's details (name, date of birth, nationality, national register number, address, general practitioner with contact details), the pseudonymised subject and session IDs, the scan type (e.g., neuro) and the volunteer type (healthy), then click *Submit*. Do this as soon as possible after booking, and **at least 72 hours before the scan**.
 
 !!! warning "Since 1 September 2026"
     Participant details sent by e-mail are ignored (not GDPR-compliant). The form is the only way to plan a participant. A scan can only be planned once all participant details are known, because every structural scan is checked for incidental findings and the participant's GP is contacted if needed.
