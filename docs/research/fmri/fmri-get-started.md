@@ -152,6 +152,9 @@ MR11 is booked through the **MRI Scientific Planning Agenda**: [kuleuven.be/radi
 !!! warning "Since 1 September 2026"
     Participant details sent by e-mail are ignored (not GDPR-compliant). The form is the only way to plan a participant. A scan can only be planned once all participant details are known, because every structural scan is checked for incidental findings and the participant's GP is contacted if needed.
 
+!!! tip "Booking a pilot"
+    Pilot sessions are usually booked through Ron Peeters: e-mail him ([ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be)) to ask for a pilot slot. At the console, register the pilot with *New examination* (see [Pilots, phantoms, or a participant who is not in the RIS list](fmri-procedure.md#register-the-participant-at-the-console)).
+
 Tips for booking:
 
 - **Slot length** = scan time + 10 to 20 minutes for set-up and clean-up. Durations from 15 to 180 minutes are available.
@@ -178,6 +181,5 @@ For the practical steps on the scan day, see the [Scanning procedure](fmri-proce
 <!--
 __TODO__: [Klara] Is S70813 approved, and does it cover standard studies at MR11 and at the Flanders 7T? Then remove the "check with Klara" sentence in "Get formal ethical approval" and update the 7T page. (Asked Klara on PR #367, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] Check whether the MR Access file, MRI Safety Checklist, Appendix and key/badge form moved from the old Dropbox folder to the radiology Google Drive folder (Safety Notes v5.0), and whether the access procedure (Ilse Roebben, Silvia Kovacs, Ron) is unchanged for MR11. Update the links. (Not asked yet.)
-__TODO__: [Andrea] Add how pilot sessions are booked on MR11 to "Booking the scanner" (previously a pilot was booked by e-mail to Ron with a random subject ID). (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Klara] Does invoicing at MR11 still use the quarterly Excel sheet and the check-in/out times? Update "Managing scan data and invoicing". (Asked Klara on PR #367, 2026-10-01; waiting for answer.)
 -->
