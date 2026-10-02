@@ -1,5 +1,5 @@
 /*
-  Collapsible definition lists: ??? deflist / ??? numlist.
+  Collapsible definition lists: ??? deflist / ??? numlist / ??? steps.
 
   Collapsing hides content from deep links and from print. These two handlers
   give it back:
@@ -24,7 +24,7 @@ function openDetailsFromHash() {
 }
 
 document$.subscribe(function () {
-  document.querySelectorAll("details.deflist, details.numlist").forEach(function (d) {
+  document.querySelectorAll("details.deflist, details.numlist, details.steps").forEach(function (d) {
     if (d.id) return;
     const summary = d.querySelector("summary");
     if (!summary) return;

@@ -3100,38 +3100,164 @@
 <li><strong>Images:</strong> <code>![Alt text](path/to/image.png)</code> (see <a href="#adding-and-linking-images">this section</a> for instructions on how to link images.)</li>
 </ul>
 <p>For more advanced formatting options, refer to the <a href="https://squidfunk.github.io/mkdocs-material/reference/">MkDocs Material Reference Guide</a>.</p>
+<h3 id="collapsible-definition-lists">Collapsible definition lists<a class="headerlink" href="#collapsible-definition-lists" title="Permanent link">&para;</a></h3>
+<p>When a section is a <strong>list of things that each need a short explanation</strong> — the
+documents an application must contain, the tools on a machine, the fields in a
+form — use <code>??? numlist</code> (numbered) or <code>??? deflist</code> (bulleted) instead of a run
+of <code>!!!</code> boxes. The term stays visible so the whole list can be scanned at a
+glance, and the explanation opens on click:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>??? numlist "Accompanying letter signed by the PI"
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    You can find the guidelines [<span class="nt">here</span>](<span class="na">https://example.org</span>).
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>???+ numlist "Research protocol, including a summary in Dutch"
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    Best to follow the CTC template, which already covers safety procedures.
+</span></code></pre></div>
+<ul>
+<li><code>???</code> starts closed, <code>???+</code> starts open.</li>
+<li>Indent the body by <strong>four spaces</strong>, exactly like an admonition.</li>
+<li>Numbering is automatic and <strong>restarts at every heading</strong>, so you can reorder or
+  insert entries without renumbering anything by hand.</li>
+<li>Each entry gets its own anchor from its term, so you can link straight to it:
+  <code>[the ICF requirements](MEC.md#informed-consent-forms-icfs)</code>. Opening such a
+  link expands that entry. If the term is the same as a heading or another entry
+  on the page, <code>-2</code>, <code>-3</code>, … is appended to keep the anchor unique. Everything also
+  expands automatically when the page is printed or saved as PDF.</li>
+</ul>
+<p>Which renders as:</p>
+<details class="numlist">
+<summary>Accompanying letter signed by the PI</summary>
+<p>You can find the guidelines <a href="https://squidfunk.github.io/mkdocs-material/reference/">here</a>.</p>
+</details>
+<details class="numlist" open="open">
+<summary>Research protocol, including a summary in Dutch</summary>
+<p>Best to follow the CTC template, which already covers safety procedures.</p>
+</details>
+<details class="numlist">
+<summary>Informed consent forms, in English and in Dutch</summary>
+<p>The templates already carry the legal basis for data processing. Three parts:</p>
+<ul>
+<li>essential information to decide on participation</li>
+<li>the consent form</li>
+<li>any appendices</li>
+</ul>
+</details>
+<p>For <strong>steps that follow each other in order</strong> (a procedure, the path to a first session), use <code>??? steps</code>. It looks
+exactly like <code>??? numlist</code>, and a vertical line joins the numbers so the steps read as one sequence. Write <code>???+ steps</code>
+to show every step open:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>???+ steps "Get ethical approval"
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    Submit the study to the ethics committee.
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>???+ steps "Book the room"
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    Book it in Calira once approval is in.
+</span></code></pre></div>
+<p>The line runs only between consecutive <code>steps</code> entries, so a paragraph or heading between two entries ends the
+sequence. Numbering restarts at every heading, as for <code>numlist</code>.</p>
+<p>When every step must stay visible without clicking (an emergency procedure), wrap an ordinary numbered list in a
+<code>steps-list</code> block. It draws the same circles and line:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>&lt;div class="steps-list" markdown&gt;
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">1.</span> Stop stimulating.
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">2.</span> Help the participant lie down.
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>&lt;/div&gt;
+</span></code></pre></div>
+<h3 id="safety-guidance-care-cards-and-do-dont-lists">Safety guidance: care cards and do / don't lists<a class="headerlink" href="#safety-guidance-care-cards-and-do-dont-lists" title="Permanent link">&para;</a></h3>
+<p>For safety and emergency information, two blocks follow the NHS design system
+(<a href="https://service-manual.nhs.uk/design-system/components/care-cards">care cards</a>,
+<a href="https://service-manual.nhs.uk/design-system/components/do-and-dont-lists">do and don't lists</a>).
+Use them sparingly: one emergency card per page, for the number to call. For other warnings, use the usual <code>!!! danger</code> or <code>!!! warning</code> boxes.</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>&lt;div class="care-card care-card--emergency" markdown&gt;
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>&lt;p class="care-card__heading"&gt;Emergency: call +32 16 32 22 22&lt;/p&gt;
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>&lt;div class="care-card__body" markdown&gt;
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>What to say and where you are.
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>&lt;/div&gt;
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>&lt;/div&gt;
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>&lt;div class="dont-list" markdown&gt;
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>&lt;p class="do-list__heading"&gt;Don't&lt;/p&gt;
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="k">-</span><span class="w"> </span>Never get the TMS coil wet.
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>&lt;/div&gt;
+</span></code></pre></div>
+<p><code>do-list</code> gives green ticks, <code>dont-list</code> red crosses.</p>
+<div class="admonition tip">
+<p class="admonition-title">Which one do I use?</p>
+<table>
+<thead>
+<tr>
+<th>Your content</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A list of items, each with a paragraph or more of explanation, all relevant to every reader</td>
+<td><code>??? numlist</code> / <code>??? deflist</code></td>
+</tr>
+<tr>
+<td>Steps done in order, each with an explanation</td>
+<td><code>???+ steps</code></td>
+</tr>
+<tr>
+<td>Steps done in order that must always be visible (emergencies)</td>
+<td><code>&lt;div class="steps-list" markdown&gt;</code> around a numbered list</td>
+</tr>
+<tr>
+<td>Items with a one-line explanation</td>
+<td>a plain bullet list — there is nothing worth hiding</td>
+</tr>
+<tr>
+<td>The reader needs exactly <strong>one</strong> of several alternatives (Windows/macOS, one of three procedures)</td>
+<td><a href="https://squidfunk.github.io/mkdocs-material/reference/content-tabs/">content tabs</a> (<code>=== "Tab"</code>)</td>
+</tr>
+<tr>
+<td>A single aside, warning or tip interrupting the text</td>
+<td><code>!!! warning</code>, <code>!!! tip</code>, …</td>
+</tr>
+<tr>
+<td>Troubleshooting entries the reader consults only when something breaks</td>
+<td><code>??? failure "Symptom"</code></td>
+</tr>
+</tbody>
+</table>
+<p>A run of three or more <code>!!!</code> boxes in a row is a sign that none of them is
+really an aside, and that the section wants one of the list forms above.</p>
+</div>
 <h3 id="linking-and-referencing">Linking and referencing<a class="headerlink" href="#linking-and-referencing" title="Permanent link">&para;</a></h3>
 <p>When creating or editing content, you may want to reference or link to other sections within the wiki, external resources, or images. Here's how to do it:</p>
 <h4 id="internal-links-within-the-wiki">Internal links (within the wiki)<a class="headerlink" href="#internal-links-within-the-wiki" title="Permanent link">&para;</a></h4>
 <p>Use relative paths for internal links. The general format is:</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>[<span class="nt">Link Text</span>](<span class="na">path/to/file.md</span>)
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>[<span class="nt">Link Text</span>](<span class="na">path/to/file.md</span>)
 </span></code></pre></div>
 <p>Examples:</p>
 <ol>
 <li>
 <p>Linking to a page in the same directory:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>[<span class="nt">Getting Started</span>](<span class="na">getting-started.md</span>)
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>[<span class="nt">Getting Started</span>](<span class="na">getting-started.md</span>)
 </span></code></pre></div></p>
 </li>
 <li>
 <p>Linking to a page in a subdirectory:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>[<span class="nt">fMRI Analysis</span>](<span class="na">research/fmri/fmri-analysis.md</span>)
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>[<span class="nt">fMRI Analysis</span>](<span class="na">research/fmri/fmri-analysis.md</span>)
 </span></code></pre></div></p>
 </li>
 <li>
 <p>Linking to a specific section on another page:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>[<span class="nt">Ethics Guidelines</span>](<span class="na">research/ethics/index.md#ethical-guidelines</span>)
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>[<span class="nt">Ethics Guidelines</span>](<span class="na">research/ethics/index.md#ethical-guidelines</span>)
 </span></code></pre></div></p>
 </li>
 <li>
 <p>Linking to a parent directory:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>[<span class="nt">Back to Research</span>](<span class="na">../index.md</span>)
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>[<span class="nt">Back to Research</span>](<span class="na">../index.md</span>)
 </span></code></pre></div></p>
 </li>
 </ol>
 <h4 id="external-links-outside-the-wiki">External links (outside the wiki)<a class="headerlink" href="#external-links-outside-the-wiki" title="Permanent link">&para;</a></h4>
 <p>For external links, use the full URL:</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>)
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>)
 </span></code></pre></div>
 <h4 id="adding-and-linking-images">Adding and linking images<a class="headerlink" href="#adding-and-linking-images" title="Permanent link">&para;</a></h4>
 <p>When adding images to the Wiki:</p>
@@ -3143,29 +3269,29 @@
 <ul>
 <li>
 <p>If your Markdown file is in the main <code>docs</code> folder:
- <div class="language-markdown highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
+ <div class="language-markdown highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
 </span></code></pre></div></p>
 </li>
 <li>
 <p>If your file is in a subdirectory of <code>docs</code> (e.g., <code>docs/research/</code>):
- <div class="language-markdown highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../assets/fmri-analysis-workflow.png</span>)
+ <div class="language-markdown highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../assets/fmri-analysis-workflow.png</span>)
 </span></code></pre></div></p>
 </li>
 <li>
 <p>If your file is in a sub-subdirectory (e.g., <code>docs/research/fmri/</code>):
- <div class="language-markdown highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../../assets/fmri-analysis-workflow.png</span>)
+ <div class="language-markdown highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../../assets/fmri-analysis-workflow.png</span>)
 </span></code></pre></div></p>
 </li>
 </ul>
 </li>
 <li>
 <p>Always include descriptive alt text for accessibility:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>![<span class="nt">Diagram showing steps of fMRI analysis</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>![<span class="nt">Diagram showing steps of fMRI analysis</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
 </span></code></pre></div></p>
 </li>
 <li>
 <p>Optionally, specify image dimensions using HTML:
-   <div class="language-html highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"../assets/fmri-analysis-workflow.png"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"fMRI Analysis Workflow"</span> <span class="na">width</span><span class="o">=</span><span class="s">"500"</span><span class="p">&gt;</span>
+   <div class="language-html highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"../assets/fmri-analysis-workflow.png"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"fMRI Analysis Workflow"</span> <span class="na">width</span><span class="o">=</span><span class="s">"500"</span><span class="p">&gt;</span>
 </span></code></pre></div></p>
 </li>
 </ol>
@@ -3174,7 +3300,7 @@
 <li>Use descriptive link text that gives users an idea of where the link will take them.</li>
 <li>Check your links after creating them to ensure they work correctly.</li>
 <li>For external links, consider opening them in a new tab:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>){target="_blank"}
+   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>){target="_blank"}
 </span></code></pre></div></li>
 <li>When linking to specific sections within long documents, use anchor links to improve user experience.</li>
 <li>For images, <strong>always use relative links</strong> and store images in the <code>docs/assets</code> folder to maintain a self-contained Wiki.</li>

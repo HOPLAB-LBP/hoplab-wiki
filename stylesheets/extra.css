@@ -477,6 +477,8 @@
 /*
   ??? deflist "Term"   -> collapsible entry, bullet marker
   ??? numlist "Term"   -> collapsible entry, auto-numbered
+  ??? steps "Term"     -> same as numlist, with a line joining the numbers,
+                          for steps done in order
   ???+ ...             -> same, open by default
 
   Renders as a definition list: the summary is the term, the body the
@@ -490,7 +492,8 @@
 .md-typeset h4 { counter-reset: deflist-item; }
 
 .md-typeset details.deflist,
-.md-typeset details.numlist {
+.md-typeset details.numlist,
+.md-typeset details.steps {
   margin: 0 0 .55em 0;
   padding: 0;
   border: 0;
@@ -502,7 +505,8 @@
 
 /* term */
 .md-typeset details.deflist > summary,
-.md-typeset details.numlist > summary {
+.md-typeset details.numlist > summary,
+.md-typeset details.steps > summary {
   display: inline-flex;
   align-items: center;
   gap: .3rem;
@@ -518,14 +522,16 @@
   border-radius: .3rem;
 }
 .md-typeset details.deflist > summary:hover,
-.md-typeset details.numlist > summary:hover {
+.md-typeset details.numlist > summary:hover,
+.md-typeset details.steps > summary:hover {
   color: var(--md-primary-fg-color);
   background: color-mix(in srgb, var(--md-primary-fg-color) 7%, transparent);
 }
 
 /* marker replaces the admonition icon */
 .md-typeset details.deflist > summary::before,
-.md-typeset details.numlist > summary::before {
+.md-typeset details.numlist > summary::before,
+.md-typeset details.steps > summary::before {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -536,7 +542,8 @@
   mask-image: none;
   border-radius: 50%;
 }
-.md-typeset details.numlist > summary::before {
+.md-typeset details.numlist > summary::before,
+.md-typeset details.steps > summary::before {
   content: counter(deflist-item);
   counter-increment: deflist-item;
   left: .35rem;
@@ -561,7 +568,8 @@
 
 /* chevron follows the term instead of being pinned to the right edge */
 .md-typeset details.deflist > summary::after,
-.md-typeset details.numlist > summary::after {
+.md-typeset details.numlist > summary::after,
+.md-typeset details.steps > summary::after {
   position: static;
   top: auto;
   right: auto;
@@ -571,18 +579,210 @@
   opacity: .5;
 }
 .md-typeset details.deflist[open] > summary::after,
-.md-typeset details.numlist[open] > summary::after {
+.md-typeset details.numlist[open] > summary::after,
+.md-typeset details.steps[open] > summary::after {
   transform: rotate(90deg);
   opacity: .8;
 }
 
 /* definition */
-.md-typeset details.numlist > *:not(summary) { margin-left: 1.9rem; margin-right: 0; }
+.md-typeset details.numlist > *:not(summary),
+.md-typeset details.steps > *:not(summary) { margin-left: 1.9rem; margin-right: 0; }
 .md-typeset details.deflist > *:not(summary) { margin-left: 1.4rem; margin-right: 0; }
 .md-typeset details.deflist > summary + *,
-.md-typeset details.numlist > summary + * { margin-top: .3em; }
+.md-typeset details.numlist > summary + *,
+.md-typeset details.steps > summary + * { margin-top: .3em; }
 
 @media print {
   .md-typeset details.deflist > summary::after,
-  .md-typeset details.numlist > summary::after { display: none; }
+  .md-typeset details.numlist > summary::after,
+  .md-typeset details.steps > summary::after { display: none; }
+}
+
+/* steps: a numlist whose circles are joined by a vertical line.
+   The line belongs to each entry that has another step after it, and runs
+   from the centre of its circle to the centre of the next one, behind both. */
+.md-typeset details.steps { position: relative; }
+.md-typeset details.steps:has(+ details.steps)::before {
+  content: "";
+  position: absolute;
+  left: calc(.675rem - 1px);
+  top: .85em;
+  bottom: -1.4em;
+  width: 2px;
+  background: var(--md-default-fg-color--lightest);
+  z-index: 0;
+}
+.md-typeset details.steps > summary { z-index: 1; }
+.md-typeset details.steps > summary::before {
+  background: color-mix(in srgb, var(--md-primary-fg-color) 12%, var(--md-default-bg-color));
+}
+
+
+/* =========================
+   Connected step list (not collapsible)
+   ========================= */
+
+/*
+  <div class="steps-list" markdown>
+
+  1. First step
+  2. Second step
+
+  </div>
+
+  A plain numbered list drawn like ??? steps: number circles joined by a
+  vertical line. For short procedures where every step must stay visible
+  (emergencies), so nothing has to be clicked open.
+*/
+
+.md-typeset .steps-list > ol {
+  list-style: none;
+  counter-reset: steps-list;
+  margin-left: 0;
+  padding-left: 0;
+}
+.md-typeset .steps-list > ol > li {
+  counter-increment: steps-list;
+  position: relative;
+  margin: 0 0 .9em 0;
+  padding-left: 2.1rem;
+}
+.md-typeset .steps-list > ol > li::before {
+  content: counter(steps-list);
+  position: absolute;
+  left: 0;
+  top: .05em;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--md-primary-fg-color) 12%, var(--md-default-bg-color));
+  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 28%, transparent);
+  color: var(--md-primary-fg-color);
+  font-size: .7rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.md-typeset .steps-list > ol > li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(.675rem - 1px);
+  top: 1.4rem;
+  bottom: -.9em;
+  width: 2px;
+  background: var(--md-default-fg-color--lightest);
+}
+
+/* =========================
+   Care cards and do / don't lists
+   ========================= */
+
+/*
+  After the NHS care card and do-and-don't list patterns
+  (service-manual.nhs.uk/design-system). Use few per page.
+
+  <div class="care-card care-card--emergency" markdown>
+  <p class="care-card__heading">Emergency: call ...</p>
+  <div class="care-card__body" markdown>
+  ...
+  </div>
+  </div>
+
+  care-card--emergency : red heading and outline, lightly tinted body (one per page, for the call).
+  For other warnings use the built-in !!! danger / !!! warning admonitions.
+
+  <div class="do-list" markdown>      or class="dont-list"
+  <p class="do-list__heading">Do</p>
+  - item
+  </div>
+*/
+
+:root {
+  --hl-red: #d5281b;
+  --hl-green: #007f3b;
+}
+
+.md-typeset .care-card {
+  margin: 1.4em 0;
+  border-radius: .3rem;
+  overflow: hidden;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.md-typeset .care-card__heading {
+  margin: 0;
+  padding: .55rem .9rem;
+  background: var(--hl-red);
+  color: #fff;
+  font-weight: 700;
+  font-size: .85rem;
+  line-height: 1.35;
+}
+.md-typeset .care-card__body {
+  padding: .7rem .9rem .8rem;
+}
+.md-typeset .care-card__body > :first-child { margin-top: 0; }
+.md-typeset .care-card__body > :last-child { margin-bottom: 0; }
+
+.md-typeset .care-card--emergency { border: 1px solid var(--hl-red); }
+.md-typeset .care-card--emergency .care-card__heading { font-size: 1rem; }
+.md-typeset .care-card--emergency .care-card__body {
+  background: color-mix(in srgb, var(--hl-red) 7%, var(--md-default-bg-color));
+}
+[data-md-color-scheme="slate"] .md-typeset .care-card--emergency .care-card__body {
+  background: color-mix(in srgb, var(--hl-red) 12%, var(--md-default-bg-color));
+}
+
+.md-typeset .do-list,
+.md-typeset .dont-list {
+  margin: 1em 0;
+  padding: .6rem .9rem .3rem;
+  border-left: 4px solid var(--hl-green);
+  background: color-mix(in srgb, var(--hl-green) 5%, transparent);
+}
+.md-typeset .dont-list {
+  border-left-color: var(--hl-red);
+  background: color-mix(in srgb, var(--hl-red) 5%, transparent);
+}
+.md-typeset .do-list__heading {
+  margin: 0 0 .4em;
+  font-weight: 700;
+}
+.md-typeset .do-list > ul,
+.md-typeset .dont-list > ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+.md-typeset .do-list > ul > li,
+.md-typeset .dont-list > ul > li {
+  position: relative;
+  margin-left: 0;
+  padding-left: 1.6rem;
+}
+.md-typeset .do-list > ul > li::before,
+.md-typeset .dont-list > ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .15em;
+  width: 1.1rem;
+  height: 1.1rem;
+  background-color: var(--hl-green);
+  -webkit-mask: var(--hl-tick) center / contain no-repeat;
+  mask: var(--hl-tick) center / contain no-repeat;
+}
+.md-typeset .dont-list > ul > li::before {
+  background-color: var(--hl-red);
+  -webkit-mask-image: var(--hl-cross);
+  mask-image: var(--hl-cross);
+}
+:root {
+  /* Material Design Icons "check-bold" and "close-thick" */
+  --hl-tick: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 20.42 2.79 14.21l2.83-2.83L9 14.77l9.88-9.89 2.83 2.83L9 20.42Z"/></svg>');
+  --hl-cross: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 6.91 17.09 4 12 9.09 6.91 4 4 6.91 9.09 12 4 17.09 6.91 20 12 14.91 17.09 20 20 17.09 14.91 12 20 6.91Z"/></svg>');
 }
