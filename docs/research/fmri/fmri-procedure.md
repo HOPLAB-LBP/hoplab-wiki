@@ -126,6 +126,8 @@ In the preparation room:
 - Explain what will happen: they may feel nerve or muscle twitches, must not cross hands or feet, must not touch the scanner, the scanner is loud and changes sound, you can talk through the intercom, and they can press the communication (panic) button at any time. They can stop the scan at any moment without giving a reason.
 
 !!! tip "Scanning children: preparation"
+    Floor Vandecruys has a full protocol for scanning children, including a mock-scanner demo and child-friendly games to prepare them. Ask her before your first session with children.
+
     When scanning children, allow extra preparation time:
 
     - Bring **biscuits** and **drinks** for the child.
@@ -323,7 +325,8 @@ __TODO__: [Emma] Click-by-click guide for the MR11 console with screenshots or p
 __TODO__: [Emma] How to check head motion during or after a run on the MR11 console. Add it to "Run your sequences". (Emma is looking into it at her next scan session.)
 __TODO__: [Simen] Protocol file or pictures of the functional and anatomical scans of your main task, so we can document the lab's standard MR11 parameters (TR, TE, voxel size, slices, multiband, dummies), as we had for MR8. (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] Find out where the MRI-compatible glasses are kept, how to get them, and which prescriptions are available, and add it to "Instruct the participant". (Not asked yet.)
-__TODO__: [Andrea] Check whether the check-in/check-out form is still used at MR11 (it was used before to record scanner hours for invoicing). If so, add it to "Required forms". (Not asked yet.)
+__TODO__: [Andrea] Check whether the check-in/check-out form is still used at MR11 (it was used before to record scanner hours for invoicing). If so, add it to "Required forms". (Raised by Klara in her PR review, 2026-10-02; not asked yet.)
+__TODO__: [Floor] Add the lab's protocol for scanning children (mock-scanner demo, child-friendly games, preparation steps) to the "Scanning children" tips, or link to it. (Suggested by Klara in her PR review, 2026-10-02.)
 __TODO__: [Simen] Expand the scanning procedure section to clearly distinguish between pilot scans and real data collection runs: explain differences in booking, billing, and data handling at MR11.
 __TODO__: [Andrea] Agree on a lab-wide XNAT subject and session naming convention (e.g., Subject:sub-01 Session:sub-01_ses-01) and add it to the RDM pages.
 __TODO__: [Andrea] Add eye-tracking set-up steps (positioning, camera set-up, calibration and validation) once the EyeLink is installed at MR11.

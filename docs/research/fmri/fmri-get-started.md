@@ -90,6 +90,9 @@ Most of the lab's standard 3T studies at UZ Leuven are covered by the approved u
 
 ### Gain access to MR facilities
 
+!!! warning "This procedure is being updated"
+    The procedure to become an authorised MR11 user changed considerably in 2026. The steps in this section and in "Training and preparation" below may be outdated. Check with Klara before you start; this section will be updated once the radiology team has confirmed the new procedure.
+
 1. **Document submission**  
     - After obtaining ethical approval, send the completed [MR Access file](https://www.dropbox.com/s/hh0l3swkjnx96vb/MR_Access.xlsx?e=1&dl=0) and the approved ICF to [ilse.roebben@uzleuven.be](mailto:ilse.roebben@uzleuven.be) and [silvia.kovacs@uzleuven.be](mailto:silvia.kovacs@uzleuven.be).  
     - Before entering the Controlled Area for the first time, complete the following:  
@@ -182,5 +185,5 @@ For the practical steps on the scan day, see the [Scanning procedure](fmri-proce
     Support staff (currently Klara) will further process the file by including the name of the SAP antenna (i.e., Agna Marien), specifying the funding source for each researcher, and by adjusting the total invoice amount on the invoice to reflect the actual scan hours based on successful data collection sessions ("corrected total").
 
 <!--
-__TODO__: [Andrea] Check whether the MR Access file, MRI Safety Checklist, Appendix and key/badge form moved from the old Dropbox folder to the radiology Google Drive folder (Safety Notes v5.0), and whether the access procedure (Ilse Roebben, Silvia Kovacs, Ron) is unchanged for MR11. Update the links. (Not asked yet.)
+__TODO__: [Klara] Update "Gain access to MR facilities" and "Training and preparation" with the new procedure to become an authorised MR11 user (forms, where they are, who to send them to), then remove the warning box. (Klara asked Ron by e-mail on 2026-09-25; she will update the page after his answer.)
 -->
