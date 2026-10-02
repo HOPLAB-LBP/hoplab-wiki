@@ -321,8 +321,6 @@ Also take your behavioural log files from the stimulus PC (on your encrypted dri
 <!--
 __TODO__: [Emma] Click-by-click guide for the MR11 console with screenshots or phone photos, from registering the participant to starting a run (and restarting after a break). Replace "Run your sequences" with it. (Emma will make it at her scan session in the week of 2026-10-05.)
 __TODO__: [Emma] How to check head motion during or after a run on the MR11 console. Add it to "Run your sequences". (Emma is looking into it at her next scan session.)
-__TODO__: [Floor] Check the arrival procedure and the invitation text in "Participant arrival and registration" (written from Emma's answer of 2026-10-02), in particular on weekdays and after hours. (Asked Emma, Floor and Simen by e-mail, 2026-10-01; Emma answered.)
-__TODO__: [Andrea] Compare "Getting your data (XNAT)" with Emma's MR11 procedures document (attached to her e-mail of 2026-10-02) and correct any step that differs.
 __TODO__: [Simen] Protocol file or pictures of the functional and anatomical scans of your main task, so we can document the lab's standard MR11 parameters (TR, TE, voxel size, slices, multiband, dummies), as we had for MR8. (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] Find out where the MRI-compatible glasses are kept, how to get them, and which prescriptions are available, and add it to "Instruct the participant". (Not asked yet.)
 __TODO__: [Andrea] Check whether the check-in/check-out form is still used at MR11 (it was used before to record scanner hours for invoicing). If so, add it to "Required forms". (Not asked yet.)

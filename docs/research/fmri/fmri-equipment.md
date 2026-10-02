@@ -72,21 +72,16 @@ LEDs on the box show each trigger and button press, which helps when you check t
 
 | Input | Key sent |
 |-------|----------|
-| Scanner trigger (one per pulse) | `t` |
+| Scanner trigger (one per volume) | `t` |
 | First button pad: blue, yellow, green, red | `b`, `y`, `g`, `r` |
 | Second button pad | `d`, `n`, `w`, `e` (from a lab experiment; which colour sends which key, and which pad is left or right, to be confirmed) |
 
 The radiology wiki gives the trigger as the letter "T" and the buttons as "B for blue, Y for yellow, etc.". Your script receives them as ordinary key presses (PsychoPy and Psychtoolbox report lowercase key names such as `t`). Check the exact names with your own script during your test session.
 
-!!! warning "Test the trigger with your own script before scanning participants"
-    The trigger set-up at MR11 had problems in summer 2026:
+!!! warning "Trigger: one pulse per volume"
+    The scanner sends one trigger (`t`, shown as "T" on the box) at the start of the run, then one per volume. Start your task on the first trigger, and log the triggers with their timestamps so you can check the timing afterwards.
 
-    - The fibre-optic trigger cable failed in early July 2026 and was replaced. Only one of the two installed cables works, and it is fragile: **do not touch or move it**.
-    - After the repair, one study received many more pulses than expected: (number of slices × 10) + 1 pulses, e.g. 641 pulses for 64 slices, instead of one pulse per volume. Scripts that counted pulses started late, with delays that grew from about 2 to 10 seconds over runs.
-
-    A run starts with a single trigger (`t`, sent as "T" by the box), as lab members confirmed in October 2026. How many pulses follow during the run is still being checked.
-
-    Until this is documented by the radiology team, write your script to **start the task on the first trigger** and to **log every trigger with its timestamp** during the run. Then you can check after the session how many pulses arrived per volume and realign the timing if needed. In your phantom session, confirm how many triggers arrive per volume with your own sequence.
+    The fibre-optic trigger cable is fragile (only one of the two installed cables works): **do not touch or move it**.
 
 ??? failure "No triggers or button presses arrive"
     1. Look at the LEDs on the interface box: if they light up, the box receives the signal and the problem is on the PC side (wrong window in focus, script not listening to the right keyboard). If they stay dark, the problem is on the scanner or cable side.
@@ -176,7 +171,6 @@ __TODO__: [Andrea] Which display resolution should laptops and the stimulus PC s
 __TODO__: [Andrea] Which input does the dedicated headphone system (blue box) take from the computer? Add it to "Audio system" and "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] When will the EyeLink be installed at MR11, and how does it connect (network or other port on the stimulus computer)? Update "Eye tracker". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] How is a new laptop approved by the MRI Safety Officer before first use, and is there anything else to consider when choosing it? Add it to "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
-__TODO__: [Andrea] How many trigger pulses arrive per volume during a run? (Emma, 2026-10-02: a run starts with one trigger, T; not sure about pulses per volume.) Update the trigger warning; consider a short PsychoPy and Psychtoolbox snippet that waits for the first trigger and logs all triggers. (Asked Emma, Floor and Simen by e-mail, 2026-10-01; Floor and Simen may still answer.)
 __TODO__: [Andrea] Confirm the BOLDscreen screen height (395 mm) and the eye-to-screen distance (1850 mm, from Simen's experiment settings; the original note said 185 mm), then remove the "to be confirmed" labels. (Not asked yet.)
 __TODO__: [Andrea] Confirm the second button pad codes (d, n, w, e in Simen's experiment settings) in mode 002: which colour sends which key, and which pad is for the left hand. The radiology wiki only documents B/Y/G/R and T. (Not asked yet.)
 __TODO__: [Andrea] Confirm with Ron that moving the trigger box USB cable from the stimulus PC to a laptop for each session is fine. (Not asked yet.)
