@@ -66,6 +66,14 @@ The [Hoplab](https://www.hoplab.be/) is part of the larger [NeuroSPACE consortiu
 
     [:octicons-arrow-right-24: Learn more](research/coding/index.md)
 
+- :material-robot-love-outline:{ .lg .middle } __Deep Neural Networks__
+
+    ---
+
+    Guides for implementing and using DNNs in research
+
+    [:octicons-arrow-right-24: Learn more](research/dnn/index.md)
+
 - :material-wave:{ .lg .middle } __EEG__
 
     ---

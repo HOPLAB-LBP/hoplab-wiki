@@ -80,18 +80,13 @@ nav:
       - Session procedure: research/tms/tms-procedure.md
 #    - Eye-tracking:
 #      - research/eyetracking/index.md
-#    - Neural Networks:
-#      - research/dnn/index.md
-#      - Analysis Workflow:
-#          - research/dnn/analysis/index.md
-#          - 1. Set up your environment: research/dnn/analysis/dnn-setup-env.md
-#          - 2. Data preparation: research/dnn/analysis/dnn-data-preparation.md
-#          - 3. Model training: research/dnn/analysis/dnn-model-training.md
-#          - 4. Model evaluation: research/dnn/analysis/dnn-model-evaluation.md
-#          - 5. Extract representations: research/dnn/analysis/dnn-extract-representations.md
-#          - 6a. Compare with brain data (RSA): research/dnn/analysis/dnn-compare-brain-data-rsa.md
-#          - 6b. Compare with brain data (Decoding): research/dnn/analysis/dnn-compare-brain-data-decoding.md
-#          - 6c. Compare with brain data (Linear Mapping): research/dnn/analysis/dnn-compare-brain-data-linear.md
+    - Neural Networks:
+      - research/dnn/index.md
+      - Set up and pick a model: research/dnn/dnn-setup.md
+      - Train or fine-tune: research/dnn/dnn-train.md
+      - Extract activations: research/dnn/dnn-extract.md
+      - Compare with a model: research/dnn/dnn-model.md
+      - Compare with brain data: research/dnn/dnn-compare.md
   - Science outreach: outreach.md
   - Contribute: contribute.md
 #  - Tasks List: tasks-list.md
@@ -120,6 +115,7 @@ theme:
         name: Switch to light mode
   features:
     - content.tabs.link
+    - content.code.annotate
     - content.code.copy
     - content.code.select
     - content.action.edit
@@ -129,7 +125,7 @@ theme:
     - navigation.tabs.sticky
     - navigation.top
     # - navigation.expand
-    - navigation.sections
+    # - navigation.sections  # off: sidebar sections are collapsed and expand on click
     # - toc.integrate # (1)!
     - search.highlight
     - search.suggest
@@ -188,6 +184,7 @@ plugins:
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/resource-cards.css
 
 extra_javascript:
   - javascripts/mathjax.js
