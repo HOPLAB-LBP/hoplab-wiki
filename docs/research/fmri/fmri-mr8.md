@@ -57,6 +57,7 @@ Despite these steps, some BIDS fields in the sidecar JSON files may remain empty
 - **SliceTiming**:
   - This field is required by fMRIPrep during slice timing correction.
   - Populate it using the [`get_philips_MB_slicetiming.py` script](../../assets/code/get_philips_MB_slicetiming.py), assuming you have access to a DICOM file and know the multiband factor (default is 2, as used in our lab).
+
     !!! warning
         The script assumes an interleaved, foot-to-head acquisition and will not work for other acquisition types.
 
