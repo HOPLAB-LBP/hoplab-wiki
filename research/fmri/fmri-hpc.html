@@ -3255,15 +3255,17 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 <hr />
 <h2 id="5-building-an-fmriprep-singularity-container">5. Building an <code>fMRIPrep</code> Singularity Container<a class="headerlink" href="#5-building-an-fmriprep-singularity-container" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Move to <code>VSC_DATA</code>:</strong></li>
-</ol>
+<li>
+<p><strong>Move to <code>VSC_DATA</code>:</strong></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cd $VSC_DATA
 </span></code></pre></div>
-<ol>
-<li><strong>Build the Container:</strong></li>
-</ol>
+</li>
+<li>
+<p><strong>Build the Container:</strong></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>singularity build fmriprep-25.0.0.sif docker://nipreps/fmriprep:25.0.0
 </span></code></pre></div>
+</li>
+</ol>
 <p>This fetches the Docker image and converts it to a Singularity <code>.sif</code> image.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -3319,6 +3321,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 <div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
 </span></code></pre></div>
 <h3 id="62-submitting-the-job">6.2 Submitting the Job<a class="headerlink" href="#62-submitting-the-job" title="Permanent link">&para;</a></h3>
+<div class="steps-list">
 <ol>
 <li>
 <p>Navigate to the same directory as your script (or specify the full path):</p>
@@ -3332,22 +3335,21 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 <p>A message appears:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">58070026</span>
 </span></code></pre></div>
-</li>
-</ol>
 <p><em>where <code>58070026</code> is your job ID</em> (but it will be different in your case).</p>
-<ol>
+</li>
 <li>
 <p>Check the status of your job:</p>
 <p>Through the <strong>terminal</strong>, you can check the status of your job by running:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>squeue<span class="w"> </span>-j<span class="w"> </span><span class="m">58070026</span>
 </span></code></pre></div>
 <p>Which returns:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="m">58070026</span><span class="w"> </span>batch<span class="w">     </span>fmriprep<span class="w"> </span>vsc12345<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:00<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>Priority<span class="o">)</span>
 </span></code></pre></div>
-Through the KU Leuven <strong>OnDemand</strong> interface, you can also check the status of your job by clicking on the <em>Active jobs</em> tab in the dashboard.</p>
+<p>Through the KU Leuven <strong>OnDemand</strong> interface, you can also check the status of your job by clicking on the <em>Active jobs</em> tab in the dashboard.</p>
 </li>
 </ol>
+</div>
 <p>Congrats! Your job is now being executed on the cluster.</p>
 <div class="admonition tip">
 <p class="admonition-title">Runtime</p>
@@ -3448,6 +3450,7 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 <hr />
 <h3 id="92-inspecting-failed-jobs">9.2 Inspecting Failed Jobs<a class="headerlink" href="#92-inspecting-failed-jobs" title="Permanent link">&para;</a></h3>
 <p>If your job failed, the first thing to do is inspect the <code>.out</code> and <code>.err</code> files written by SLURM. These contain the full log and error output from <code>fMRIPrep</code>.</p>
+<div class="steps-list">
 <ol>
 <li>
 <p>Go to the correct folder (usually <code>$VSC_DATA</code>):</p>
@@ -3473,6 +3476,7 @@ Through the KU Leuven <strong>OnDemand</strong> interface, you can also check th
 </ul>
 </li>
 </ol>
+</div>
 <p>Make sure to check <strong>both files</strong>, as the error could appear in either.</p>
 <hr />
 <h3 id="93-verifying-successful-runs">9.3 Verifying Successful Runs<a class="headerlink" href="#93-verifying-successful-runs" title="Permanent link">&para;</a></h3>

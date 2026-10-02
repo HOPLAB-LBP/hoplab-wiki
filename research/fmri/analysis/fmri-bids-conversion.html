@@ -3013,6 +3013,7 @@ myproject
 <p>For data acquired with Philips scanners, or if your DICOMs have missing metadata (e.g., <code>PhaseEncodingDirection</code>), see <a href="https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips">this Rorden Lab guide</a> and this <a href="https://www.nitrc.org/forum/forum.php?thread_id=15186&amp;forum_id=4703">NITRC forum thread</a> For older Philips (MR8) data, see also <a href="../fmri-mr8.html#missing-fields-in-json-files">Missing fields in JSON files</a>.</p>
 </div>
 <p>To convert your data:</p>
+<div class="steps-list">
 <ol>
 <li>
 <p>Navigate to your sourcedata folder</p>
@@ -3032,9 +3033,9 @@ myproject
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can also use <code>uigetdir</code> to interactively select the folder:</p>
-</div>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">addpath</span><span class="p">(</span><span class="nb">uigetdir</span><span class="p">)</span>
 </span></code></pre></div>
+</div>
 </li>
 <li>
 <p>Anonymize your DICOM files</p>
@@ -3066,6 +3067,7 @@ myproject
 </ul>
 </li>
 </ol>
+</div>
 <hr />
 <h3 id="5-create-the-bids-directory">5. Create the BIDS directory<a class="headerlink" href="#5-create-the-bids-directory" title="Permanent link">&para;</a></h3>
 <pre><code>
@@ -3107,6 +3109,7 @@ myproject
         └── nifti
 </code></pre>
 
+<div class="steps-list">
 <ol>
 <li>Navigate to your <code>sourcedata/sub-xx/nifti/</code> folder.</li>
 <li>Identify the functional and structural NIfTI files.</li>
@@ -3121,6 +3124,7 @@ myproject
 </ul>
 </li>
 </ol>
+</div>
 <hr />
 <h3 id="7-create-json-sidecar-files">7. Create JSON sidecar files<a class="headerlink" href="#7-create-json-sidecar-files" title="Permanent link">&para;</a></h3>
 <pre><code>
@@ -3180,11 +3184,13 @@ myproject
 
 <p>Create one <code>events.tsv</code> file for each function run <code>.nii</code> file, using the output from your experimental task. If you used the <a href="https://github.com/HOPLAB-LBP/fMRI-task-template">fMRI task template</a>), output log files can be used to create event files quite easily. More info on events files can be found <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html">here</a>.</p>
 <p>Event files are crucial for analyzing fMRI data. They contain information about the timing and nature of stimuli or tasks during the scan. To create your event files manually:</p>
+<div class="steps-list">
 <ol>
 <li>Navigate to your <code>sourcedata/sub-xx/bh/</code> folder.</li>
 <li>Locate the behavioral output files (<code>.mat</code> or <code>.log</code>) for each run.</li>
 <li>Create a corresponding <code>events.tsv</code> file for each run in the <code>BIDS/sub-xx/func/</code> folder.</li>
 </ol>
+</div>
 <p>Each <code>events.tsv</code> file <strong>must</strong> contain at least three columns: <code>onset</code>, <code>duration</code>, and <code>trial_type</code>, and <strong>can</strong> include additional as needed for your specific analysis. It also <strong>must</strong> contain one row per trial (stimulus) in your experiment.</p>
 <p>If you use the <a href="https://github.com/TimManiquet/fMRI-task-template">fMRI task template</a>, the log files you get as output contain all the information needed to build event files in a few steps. Below is a quick overview of the steps to take to make event files from log files. Note that it might not apply perfectly to all cases, and that other approaches can be more practical to you. It can be a good idea to create your own utility script to create event files from your behavioural results.</p>
 <p>To <strong>create event files from log files</strong>, here is what you need to do (see the example below for an example transformation):</p>
@@ -3525,11 +3531,13 @@ myproject
 <h3 id="10-validating-your-bids-structure">10. Validating Your BIDS Structure<a class="headerlink" href="#10-validating-your-bids-structure" title="Permanent link">&para;</a></h3>
 <p>By following these steps systematically, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration.</p>
 <p>Make sure all the steps have been followed successfully by validating your BIDS folder. To do so, use the <strong><a href="https://bids-standard.github.io/bids-validator/">BIDS validator</a></strong>.</p>
+<div class="steps-list">
 <ol>
 <li>Use the online <a href="https://bids-standard.github.io/bids-validator/">BIDS Validator</a> to check your BIDS structure.</li>
 <li>Upload your entire <code>BIDS/</code> folder and review any errors or warnings.</li>
 <li>Make necessary corrections based on the validator's output.</li>
 </ol>
+</div>
 <p>By following these detailed steps, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration.</p>
 <hr />
 <hr />

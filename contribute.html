@@ -3409,7 +3409,7 @@ to show every step open:</p>
 </span></code></pre></div>
 <p>The line runs only between consecutive <code>steps</code> entries, so a paragraph or heading between two entries ends the
 sequence. Numbering restarts at every heading, as for <code>numlist</code>.</p>
-<p>When every step must stay visible without clicking (an emergency procedure), wrap an ordinary numbered list in a
+<p>For a procedure whose steps are plain sentences, or one that must stay visible without clicking (an emergency), wrap an ordinary numbered list in a
 <code>steps-list</code> block. It draws the same circles and line:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>&lt;div class="steps-list" markdown&gt;
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
@@ -3459,7 +3459,7 @@ Use them sparingly: one emergency card per page, for the number to call. For oth
 <td><code>???+ steps</code></td>
 </tr>
 <tr>
-<td>Steps done in order that must always be visible (emergencies)</td>
+<td>Steps done in order, written as plain sentences or always visible (emergencies)</td>
 <td><code>&lt;div class="steps-list" markdown&gt;</code> around a numbered list</td>
 </tr>
 <tr>

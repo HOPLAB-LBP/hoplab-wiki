@@ -3010,15 +3010,17 @@
 <p><a class="md-button" href="https://wiki.kulradiology.be/s/radxnat"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2m6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1"/></svg></span> Open the radiology wiki (MR11)</a></p>
 <p>You need an account: ask Rodrigo Trevisan Massera (<a href="mailto:rodrigo.trevisanmassera@kuleuven.be">rodrigo.trevisanmassera@kuleuven.be</a>).</p>
 </div>
-<details class="danger">
-<summary>Emergency procedures</summary>
+<div class="admonition danger">
+<p class="admonition-title">Emergency procedures</p>
 <p><strong>Keep this information in mind at all times when working in the MR suite.</strong></p>
 <h3 id="stopping-a-scan">Stopping a scan<a class="headerlink" href="#stopping-a-scan" title="Permanent link">&para;</a></h3>
+<div class="steps-list" markdown>
 <ol>
 <li>Press <em>stop scanning</em> on the console or the red button on the intercom.</li>
 <li>Take the participant out of the scanner.</li>
 <li>Call Ron Peeters (41103), another MR Safety Officer, or the MR technicians (40526).</li>
 </ol>
+</div>
 <h3 id="equipment-malfunction-or-system-failure">Equipment malfunction or system failure<a class="headerlink" href="#equipment-malfunction-or-system-failure" title="Permanent link">&para;</a></h3>
 <ul>
 <li>If part of the system fails and puts the participant at risk, first <strong>take the participant out</strong> of the scanner, then get help from the MR technicians or the radiologist.</li>
@@ -3078,7 +3080,7 @@
 <p>Avoid causing unnecessary distress. False alarms are common.</p>
 </div>
 <p>All structural scans are checked for incidental findings by the radiology team. If you see something that worries you, e-mail Prof. Stefan Sunaert (<a href="mailto:stefan.sunaert@uzleuven.be">stefan.sunaert@uzleuven.be</a>) with the participant's first name, surname and patient ID (from the console), and call 47754 or the internal number 44191 if it is urgent.</p>
-</details>
+</div>
 <hr />
 <h2 id="general-information">General information<a class="headerlink" href="#general-information" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
@@ -3122,11 +3124,13 @@
 <p>Participants sometimes go to the wrong waiting area, where there is no phone connection, so you have to go and look for them. Give the exact location in your invitation: <em>Beeldvorming 2, Gele straat, Poort 2, niveau 0, MR11</em>.</p>
 </div>
 <h3 id="consent-and-screening">Consent and screening<a class="headerlink" href="#consent-and-screening" title="Permanent link">&para;</a></h3>
+<div class="steps-list">
 <ol>
 <li>Let the participant sign the consent form and the MRI Safety Checklist in the waiting room or in preparation room 1 or 2, <strong>before</strong> they enter the controlled area.</li>
 <li>Show both forms to an MRI technician or radiologist for approval. If any item on the checklist is answered <em>yes</em>, call the MR technician (40526) before going further.</li>
 <li>Store your own keys, phone, watch, jewellery, hairpins etc. in preparation room 1 or 2.</li>
 </ol>
+</div>
 <div class="admonition danger">
 <p class="admonition-title">Controlled area</p>
 <p>Access to the controlled area requires an activated KU Leuven card. Nobody enters it before their MRI Safety Checklist has been checked, including parents and other accompanying persons.</p>
@@ -3157,14 +3161,25 @@
 </ul>
 </div>
 <h3 id="prepare-the-console-room">Prepare the console room<a class="headerlink" href="#prepare-the-console-room" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Stimulus PC</strong>: log in, open your experiment and check that it loads. See <a href="fmri-equipment.html#stimulus-pc">Stimulus PC</a>.</li>
-<li><strong>In-room screen</strong>: switch it on and check that the input is the stimulus PC and L/R flip is on. See <a href="fmri-equipment.html#in-room-screen">In-room screen</a>.</li>
-<li><strong>Trigger box</strong>: press the knob and check that it is in mode 002 (<code>HID NAR BYGRT</code>). Press each button you will use and check that your script receives the right keys. See <a href="fmri-equipment.html#trigger-box-and-buttons">Trigger box and buttons</a>.</li>
-<li><strong>Audio</strong>: if you use sound, switch on the audio system and check the volume. See <a href="fmri-equipment.html#audio-system">Audio system</a>.</li>
-</ol>
+<details class="steps" open="open">
+<summary>Stimulus PC</summary>
+<p>log in, open your experiment and check that it loads. See <a href="fmri-equipment.html#stimulus-pc">Stimulus PC</a>.</p>
+</details>
+<details class="steps" open="open">
+<summary>In-room screen</summary>
+<p>switch it on and check that the input is the stimulus PC and L/R flip is on. See <a href="fmri-equipment.html#in-room-screen">In-room screen</a>.</p>
+</details>
+<details class="steps" open="open">
+<summary>Trigger box</summary>
+<p>press the knob and check that it is in mode 002 (<code>HID NAR BYGRT</code>). Press each button you will use and check that your script receives the right keys. See <a href="fmri-equipment.html#trigger-box-and-buttons">Trigger box and buttons</a>.</p>
+</details>
+<details class="steps" open="open">
+<summary>Audio</summary>
+<p>if you use sound, switch on the audio system and check the volume. See <a href="fmri-equipment.html#audio-system">Audio system</a>.</p>
+</details>
 <h3 id="register-the-participant-at-the-console">Register the participant at the console<a class="headerlink" href="#register-the-participant-at-the-console" title="Permanent link">&para;</a></h3>
 <p>Do this before the participant goes into the magnet room.</p>
+<div class="steps-list">
 <ol>
 <li>Select the participant from the <strong>RIS</strong> list (scheduler). Name and date of birth are filled in automatically; check them.</li>
 <li>Fill in <strong>height and weight</strong> from the MRI Safety Checklist, and implants if applicable.</li>
@@ -3185,6 +3200,7 @@
 </li>
 <li>Check all examination information again. Errors here send your data to the wrong place in XNAT or break the de-identification.</li>
 </ol>
+</div>
 <details class="tip">
 <summary>Pilots, phantoms, or a participant who is not in the RIS list</summary>
 <p>Click <em>New examination</em> and fill in the details by hand (pseudo data for a phantom). The <strong>Study description</strong> (project ID) and <strong>Study comment</strong> still matter, so the data reach your XNAT project. Use a clear label, for example:</p>
@@ -3194,20 +3210,38 @@
 <hr />
 <h2 id="getting-the-participant-ready">Getting the participant ready<a class="headerlink" href="#getting-the-participant-ready" title="Permanent link">&para;</a></h2>
 <h3 id="on-the-scanner-table">On the scanner table<a class="headerlink" href="#on-the-scanner-table" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Earplugs</strong>: give the participant earplugs and show them how to roll them small so they expand in the ear. Participants who refuse hearing protection cannot be scanned.</li>
-<li><strong>Positioning</strong>: let them lie down with the head in the coil (watch that they do not hit their head). Put the knee cushion under their legs.</li>
-<li><strong>Communication button</strong>: give them the panic button, explain it, and test it at the start of the session.</li>
-<li><strong>Response buttons</strong>: hand them the button pads and repeat which buttons to use.</li>
-<li><strong>Headphones</strong>: with the 64-channel coil, use the small ear shells of the dedicated audio system. Put cushions or the ear shells around the ears; they also limit head motion. Do not press on the head.</li>
-<li><strong>Coil</strong>: put the top of the coil on. The participant's eyebrows should be at the calibration line on the coil, so the head ends up at the centre of the magnet. Clip the coil with the handle at the back. Check that the participant can see the screen in the mirror. This can feel claustrophobic: check that they are OK.</li>
-</ol>
+<details class="steps" open="open">
+<summary>Earplugs</summary>
+<p>give the participant earplugs and show them how to roll them small so they expand in the ear. Participants who refuse hearing protection cannot be scanned.</p>
+</details>
+<details class="steps" open="open">
+<summary>Positioning</summary>
+<p>let them lie down with the head in the coil (watch that they do not hit their head). Put the knee cushion under their legs.</p>
+</details>
+<details class="steps" open="open">
+<summary>Communication button</summary>
+<p>give them the panic button, explain it, and test it at the start of the session.</p>
+</details>
+<details class="steps" open="open">
+<summary>Response buttons</summary>
+<p>hand them the button pads and repeat which buttons to use.</p>
+</details>
+<details class="steps" open="open">
+<summary>Headphones</summary>
+<p>with the 64-channel coil, use the small ear shells of the dedicated audio system. Put cushions or the ear shells around the ears; they also limit head motion. Do not press on the head.</p>
+</details>
+<details class="steps" open="open">
+<summary>Coil</summary>
+<p>put the top of the coil on. The participant's eyebrows should be at the calibration line on the coil, so the head ends up at the centre of the magnet. Clip the coil with the handle at the back. Check that the participant can see the screen in the mirror. This can feel claustrophobic: check that they are OK.</p>
+</details>
 <h3 id="moving-the-table-in">Moving the table in<a class="headerlink" href="#moving-the-table-in" title="Permanent link">&para;</a></h3>
+<div class="steps-list">
 <ol>
 <li>Turn the round knob to raise the table. Ask the participant to close their eyes.</li>
 <li>Use the same knob to align the light marker with the calibration line on the coil. <strong>Hold the knob</strong> to save the position: the table moves to the magnet centre by itself. For head scans, you can also select <em>head</em> on the screen at the scanner.</li>
 <li>If the table goes too far into the scanner, the calibration did not work: bring the table out and calibrate again.</li>
 </ol>
+</div>
 <p>Before you leave the magnet room, check that:</p>
 <ul>
 <li>the participant is comfortable and has not crossed arms or legs (no current loops);</li>
@@ -3226,11 +3260,13 @@
 </ul>
 <h3 id="run-your-sequences">Run your sequences<a class="headerlink" href="#run-your-sequences" title="Permanent link">&para;</a></h3>
 <p>Your protocol is set up with Ron Peeters when you prepare the study. The lab's standard fMRI protocol at MR11 will be documented here. The exam cards of lab studies that started before June 2026 were transferred to MR11 in May 2026; if your study continues one of them, ask Ron for the MR11 version. In general:</p>
+<div class="steps-list">
 <ol>
 <li>Run the localiser, then set the imaging and shim volumes.</li>
 <li>Start your experiment on the stimulus PC so it waits for the trigger, <strong>then</strong> start the functional sequence on the console.</li>
 <li>After each scan, check the images for movement and artefacts.</li>
 </ol>
+</div>
 <p>During the session, regularly ask the participant (by intercom) how they are doing, and watch the console for warnings.</p>
 <div class="admonition warning">
 <p class="admonition-title">Keep settings constant</p>
@@ -3283,6 +3319,7 @@
 <hr />
 <h2 id="getting-your-data-xnat">Getting your data (XNAT)<a class="headerlink" href="#getting-your-data-xnat" title="Permanent link">&para;</a></h2>
 <p>MR11 sends all images <strong>automatically</strong> to the radiology research image server RADXNAT (<a href="https://prdaradxnat01.uz.kuleuven.ac.be/">prdaradxnat01.uz.kuleuven.ac.be</a>). There is no export to USB at the console.</p>
+<div class="steps-list">
 <ol>
 <li><strong>Wait about 30 minutes</strong> after the session, then check your project page in XNAT.</li>
 <li>If the session is not there, look in the <strong>prearchive</strong> of your project. A <em>conflict</em> status usually means a wrong or duplicate session ID: fix it in XNAT (see the XNAT FAQ on the radiology wiki).</li>
@@ -3293,6 +3330,7 @@
 </li>
 <li>Move the data to the lab storage as described in the <a href="../rdm/SOPs.html">RDM study workflow</a>.</li>
 </ol>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Archive your data quickly</p>
 <p>The XNAT <strong>prearchive is not backed up</strong>, and images older than 30 days that are not archived to a project are deleted. Check after every session that your data arrived in your project.</p>
@@ -3309,6 +3347,7 @@
 <hr />
 <h2 id="after-scanning">After scanning<a class="headerlink" href="#after-scanning" title="Permanent link">&para;</a></h2>
 <h3 id="participant-and-magnet-room">Participant and magnet room<a class="headerlink" href="#participant-and-magnet-room" title="Permanent link">&para;</a></h3>
+<div class="steps-list">
 <ol>
 <li>Bring the participant out with the round knob, lower the table, and let them get up slowly (children especially).</li>
 <li>Debrief the participant and return their belongings.</li>
@@ -3321,6 +3360,7 @@
 </ul>
 </li>
 </ol>
+</div>
 <h3 id="console-room">Console room<a class="headerlink" href="#console-room" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Switch off the in-room screen and the audio system.</li>
@@ -3330,6 +3370,7 @@
 <li>Incidental finding suspected? See <em>Seeing an abnormality</em> in the emergency procedures above. Do not tell the participant.</li>
 </ul>
 <h3 id="if-you-are-the-last-user-of-the-day">If you are the last user of the day<a class="headerlink" href="#if-you-are-the-last-user-of-the-day" title="Permanent link">&para;</a></h3>
+<div class="steps-list">
 <ol>
 <li>Clean the patient table with alcohol wipes.</li>
 <li>Shut down the scanner: on the console, go to <em>Home</em> (top left) › <em>Shut down system</em> (bottom right). Wait until the screens are black and the lights on the intercom flicker. Then press <em>system off</em> below the quench button (key turned to <em>unlock</em>); the last blinking light on the intercom goes out.</li>
@@ -3337,6 +3378,7 @@
 <li>Put the cover on the in-room screen (the cover lies on its base).</li>
 <li>Close all doors.</li>
 </ol>
+</div>
 <hr />
 <div class="admonition info">
 <p class="admonition-title">Next steps</p>

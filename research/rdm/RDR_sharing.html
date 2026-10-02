@@ -3230,6 +3230,7 @@
 <p>The <a href="https://doi.org/10.48804/VVCEWP">chess expertise fMRI dataset</a> uses 5 bundles: core (20 MB), raw (39 GB), fMRIPrep (187 GB), SPM (30 GB), and all other derivatives + group results (184 MB). The README and documentation HTML files are uploaded separately as unrestricted files, visible on the landing page without access request.</p>
 </div>
 <h2 id="step-4-create-a-draft-dataset">Step 4: Create a draft dataset<a class="headerlink" href="#step-4-create-a-draft-dataset" title="Permanent link">&para;</a></h2>
+<div class="steps-list">
 <ol>
 <li>Go to <a href="https://rdr.kuleuven.be/">rdr.kuleuven.be</a> and log in with your KU Leuven account</li>
 <li>The host dataverse is "KU Leuven" and shouldn't be changed</li>
@@ -3237,6 +3238,7 @@
 <li>Fill in the required metadata (see below)</li>
 <li>Click <strong>Save Dataset</strong> — this creates the draft</li>
 </ol>
+</div>
 <h3 id="required-metadata">Required metadata<a class="headerlink" href="#required-metadata" title="Permanent link">&para;</a></h3>
 <p>The following mandatory fields must be completed before you can save the dataset:</p>
 <table>
@@ -3301,6 +3303,7 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>The web UI is the most straightforward option, especially for smaller datasets or when you only have a handful of ZIP files. It does <strong>not</strong> unpack ZIPs — they are stored as-is.</p>
+<div class="steps-list" markdown>
 <ol>
 <li>Open your draft dataset on <a href="https://rdr.kuleuven.be/">rdr.kuleuven.be</a></li>
 <li>
@@ -3325,6 +3328,7 @@
 </ul>
 </li>
 </ol>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Web UI file size limit</p>
 <p>The web UI has a per-file upload limit (currently <strong>10 GB</strong> on RDR). For larger files, use the API or the Integration Dashboard.</p>
@@ -3433,6 +3437,7 @@
 </div>
 </div>
 <h2 id="step-7-verify-and-publish">Step 7: Verify and publish<a class="headerlink" href="#step-7-verify-and-publish" title="Permanent link">&para;</a></h2>
+<div class="steps-list">
 <ol>
 <li>Check that all files appear in the draft and sizes match your local copies</li>
 <li>Verify the README and documentation files are set to <strong>unrestricted</strong></li>
@@ -3441,6 +3446,7 @@
 <li>Click <strong>Publish Dataset</strong> &gt; <strong>Major version</strong> (v1.0)</li>
 <li>Copy the DOI and add it to your paper and code repository</li>
 </ol>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Restricted files</p>
 <p>Make sure that all files that have to be restricted are actually restricted. In the <code>files</code> tab under the dataset, you can select the file(s) and click <code>edit files</code> and choose ´restrict<code>. You can also restrict each file individually by clicking</code>file options<code>(3 dots after every file) and select</code>restrict`.</p>
@@ -3452,13 +3458,16 @@
 <h3 id="code-doi-zenodo-github">Code DOI (Zenodo + GitHub)<a class="headerlink" href="#code-doi-zenodo-github" title="Permanent link">&para;</a></h3>
 <p><a href="https://zenodo.org/">Zenodo</a> mints DOIs for GitHub releases. Set this up <strong>once</strong> per repository, then every tagged release automatically gets a DOI.</p>
 <p><strong>One-time setup:</strong></p>
+<div class="steps-list">
 <ol>
 <li>Go to <a href="https://zenodo.org/">zenodo.org</a> and log in with your GitHub account</li>
 <li>Go to <a href="https://zenodo.org/account/settings/github/">zenodo.org/account/settings/github</a></li>
 <li>Find your repository and flip the toggle to <strong>ON</strong></li>
 <li>Zenodo installs a webhook on your repo — from now on, every GitHub release triggers a new Zenodo DOI</li>
 </ol>
+</div>
 <p><strong>For each release:</strong></p>
+<div class="steps-list">
 <ol>
 <li>
 <p>Tag a snapshot of your code when the paper is submitted or accepted:</p>
@@ -3477,6 +3486,7 @@
 <p>Zenodo automatically picks up the release and mints a DOI (takes a few minutes). Check at <code>zenodo.org/account/settings/github/</code> or search for your repo on Zenodo.</p>
 </li>
 </ol>
+</div>
 <p><strong>Zenodo gives you two DOIs:</strong></p>
 <ul>
 <li>A <strong>version DOI</strong> (e.g., <code>10.5281/zenodo.12345678</code>) — points to this specific release</li>

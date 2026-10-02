@@ -3016,6 +3016,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="github-desktop-gui" name="__tabbed_2" type="radio" /><input id="command-line-cli" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="github-desktop-gui">GitHub Desktop (GUI)</label><label for="command-line-cli">Command Line (CLI)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
+<div class="steps-list" markdown>
 <ol>
 <li><strong>Download</strong> <a href="https://desktop.github.com/">GitHub Desktop</a>.</li>
 <li><strong>Sign in</strong> with your GitHub account.</li>
@@ -3032,6 +3033,7 @@
 </ul>
 </li>
 </ol>
+</div>
 </div>
 <div class="tabbed-block">
 <ol>
@@ -3062,11 +3064,13 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="github-desktop" name="__tabbed_3" type="radio" /><input id="command-line-cli_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="github-desktop">GitHub Desktop</label><label for="command-line-cli_1">Command Line (CLI)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
+<div class="steps-list" markdown>
 <ol>
 <li><strong>Create a new branch</strong>: Click the <code>Current Branch</code> dropdown at the top → click <code>New Branch</code> → give it a descriptive name (e.g., <code>fix/update-fmri-docs</code>) → click <code>Create Branch</code>.</li>
 <li><strong>Switch between branches</strong>: Click the <code>Current Branch</code> dropdown and select the branch you want to work on. GitHub Desktop will update all the files on your computer to match that branch.</li>
 <li><strong>Publish the branch</strong>: The first time you switch to a new branch, click <code>Publish branch</code> to push it to GitHub so others can see it.</li>
 </ol>
+</div>
 </div>
 <div class="tabbed-block">
 <ol>
@@ -3101,12 +3105,14 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="github-desktop_1" name="__tabbed_4" type="radio" /><input id="command-line-cli_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="github-desktop_1">GitHub Desktop</label><label for="command-line-cli_2">Command Line (CLI)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
+<div class="steps-list" markdown>
 <ol>
 <li>Make your edits to files as normal.</li>
 <li>In GitHub Desktop, you will see the changed files listed on the left.</li>
 <li>Write a commit message at the bottom-left and click <code>Commit to &lt;branch-name&gt;</code>.</li>
 <li>Click <code>Push origin</code> to send your commits to GitHub.</li>
 </ol>
+</div>
 </div>
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Make your edits, then:</span>
@@ -3122,12 +3128,14 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="github-desktop_2" name="__tabbed_5" type="radio" /><input id="command-line-cli_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="github-desktop_2">GitHub Desktop</label><label for="command-line-cli_3">Command Line (CLI)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
+<div class="steps-list" markdown>
 <ol>
 <li>Switch to <code>main</code> (click <code>Current Branch</code> → select <code>main</code>).</li>
 <li>Click <code>Fetch origin</code> and then <code>Pull origin</code> to get the latest changes.</li>
 <li>Switch back to your branch.</li>
 <li>Go to <code>Branch &gt; Update from main</code> (or <code>Branch &gt; Merge into current branch</code> → select <code>main</code>). This brings the latest <code>main</code> changes into your branch.</li>
 </ol>
+</div>
 </div>
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
@@ -3143,11 +3151,13 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="github-desktop_3" name="__tabbed_6" type="radio" /><input id="command-line-cli_4" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="github-desktop_3">GitHub Desktop</label><label for="command-line-cli_4">Command Line (CLI)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
+<div class="steps-list" markdown>
 <ol>
 <li>Click <code>Fetch origin</code> to refresh the list of remote branches.</li>
 <li>Click <code>Current Branch</code> → you will see the remote branch listed. Click on it to check it out locally.</li>
 <li>You can now make edits, commit, and push to the same branch.</li>
 </ol>
+</div>
 </div>
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git<span class="w"> </span>fetch<span class="w"> </span>origin
@@ -3205,6 +3215,7 @@
 </ol>
 <h3 id="resolving-a-github-issue-with-a-pr">Resolving a GitHub Issue with a PR<a class="headerlink" href="#resolving-a-github-issue-with-a-pr" title="Permanent link">&para;</a></h3>
 <p>GitHub Issues are used to track tasks, bugs, and suggestions. To resolve an issue:</p>
+<div class="steps-list">
 <ol>
 <li>Open the Issue on GitHub and read what needs to be done.</li>
 <li>Create a branch (see <a href="#creating-and-switching-branches">above</a>) with a name that references the issue (e.g., <code>fix/issue-42-broken-links</code>).</li>
@@ -3212,8 +3223,10 @@
 <li>Open a PR and include <code>Closes #42</code> (or <code>Fixes #42</code>) in the PR description.</li>
 <li>When the PR is merged, the Issue is automatically closed.</li>
 </ol>
+</div>
 <h3 id="reviewing-a-pull-request">Reviewing a pull request<a class="headerlink" href="#reviewing-a-pull-request" title="Permanent link">&para;</a></h3>
 <p>If you are asked to review a PR:</p>
+<div class="steps-list">
 <ol>
 <li>Go to the <code>Pull requests</code> tab on GitHub and open the PR.</li>
 <li>Click on the <code>Files changed</code> tab to see all modifications.</li>
@@ -3224,6 +3237,7 @@
 </ul>
 </li>
 </ol>
+</div>
 <h3 id="after-the-pr-is-merged">After the PR is merged<a class="headerlink" href="#after-the-pr-is-merged" title="Permanent link">&para;</a></h3>
 <p>Once a PR is approved and merged:</p>
 <ul>
@@ -3233,11 +3247,13 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="github-desktop_6" name="__tabbed_9" type="radio" /><input id="command-line-cli_7" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="github-desktop_6">GitHub Desktop</label><label for="command-line-cli_7">Command Line (CLI)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
+<div class="steps-list" markdown>
 <ol>
 <li>Switch to <code>main</code> via the <code>Current Branch</code> dropdown.</li>
 <li>Click <code>Fetch origin</code> → <code>Pull origin</code>.</li>
 <li>You can delete the old branch locally: <code>Branch &gt; Delete</code>.</li>
 </ol>
+</div>
 </div>
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
@@ -3248,13 +3264,21 @@
 </div>
 </div>
 <h2 id="6-general-tips">6. General tips<a class="headerlink" href="#6-general-tips" title="Permanent link">&para;</a></h2>
+<div class="do-list">
+<p class="do-list__heading">Do</p>
 <ul>
 <li><strong>Pull before you start working</strong> to avoid conflicts.</li>
 <li><strong>Commit often, but meaningfully</strong> — each commit should represent a logical unit of work.</li>
-<li><strong>Never commit directly to <code>main</code></strong> — always use a branch and a PR.</li>
 <li><strong>Write clear commit messages</strong> that explain <em>what</em> changed and <em>why</em>.</li>
 <li><strong>Keep PRs focused</strong> — one PR per feature or fix. Avoid bundling unrelated changes.</li>
 </ul>
+</div>
+<div class="dont-list">
+<p class="do-list__heading">Don't</p>
+<ul>
+<li><strong>Never commit directly to <code>main</code></strong> — always use a branch and a PR.</li>
+</ul>
+</div>
 
 
 

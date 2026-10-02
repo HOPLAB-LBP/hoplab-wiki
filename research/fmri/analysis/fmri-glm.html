@@ -3020,36 +3020,44 @@
 <p>The suggested way of proceeding is to create a <code>derivatives/pre-SPM</code> folder where to store a <code>gunzipped</code> output folder and a <code>smoothed</code> output folder.</p>
 <h3 id="decompressing-nifti-files">Decompressing NIfTI Files<a class="headerlink" href="#decompressing-nifti-files" title="Permanent link">&para;</a></h3>
 <p>SPM cannot process <code>.nii.gz</code> files directly, so we first need to decompress them:</p>
+<div class="steps-list">
 <ol>
-<li>Create a directory for pre-processed files:</li>
-</ol>
+<li>
+<p>Create a directory for pre-processed files:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>derivatives/pre-SPM
 </span></code></pre></div>
-<ol>
-<li>Decompress the files using <code>gunzip</code> in the terminal:</li>
-</ol>
+</li>
+<li>
+<p>Decompress the files using <code>gunzip</code> in the terminal:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>gunzip<span class="w"> </span>path/to/your/files/*.nii.gz
 </span></code></pre></div>
 <ul>
 <li>Store the decompressed files in a subdirectory called <code>gunzipped</code> inside <code>derivatives/pre-SPM</code>.</li>
 </ul>
+</li>
+</ol>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Decompress with a right-click!</p>
 <p>Most Operating Systems will let you decompress the <code>nii.gz</code> files directly from the File Explorer. Right click on the files you want to decompress, and extract them like you would do with a compressed folder.</p>
 </div>
 <h3 id="smoothing-functional-data">Smoothing functional data<a class="headerlink" href="#smoothing-functional-data" title="Permanent link">&para;</a></h3>
 <p>Smoothing is required to increase signal-to-noise ratio, especially for localizer runs. Follow these steps:</p>
+<div class="steps-list">
 <ol>
-<li>Launch the SPM GUI with the command:</li>
-</ol>
+<li>
+<p>Launch the SPM GUI with the command:</p>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">spm</span><span class="w"> </span><span class="s">fmri</span>
 </span></code></pre></div>
-<ol>
-<li>In the GUI, click on <code>Smooth</code>.</li>
+</li>
+<li>
+<p>In the GUI, click on <code>Smooth</code>.</p>
+</li>
 <li>Select the decompressed <code>.nii</code> files.</li>
 <li>Set the <strong>FWHM</strong> (Full Width at Half Maximum) to <code>[4 4 4]</code> or <code>[6 6 6]</code> for moderate smoothing.</li>
 <li>Save the smoothed output in <code>derivatives/pre-SPM/smoothed</code>.</li>
 </ol>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Automated Preprocessing</p>
 <p>You can integrate the decompression and smoothing steps into a script to streamline your workflow, avoiding manual steps (see the <a href="fmri-andrea-workflow.html">Analysis Workflow</a> for an example).</p>
@@ -3684,24 +3692,34 @@
 </div>
 <h3 id="specifying-the-1st-level-model-in-spm">Specifying the 1<sup>st</sup>-Level Model in SPM<a class="headerlink" href="#specifying-the-1st-level-model-in-spm" title="Permanent link">&para;</a></h3>
 <p>Once you have your onset times and confound regressors files ready, you can set up the design matrix:</p>
-<ol>
-<li><strong>Open SPM</strong>: Launch the SPM GUI with <code>spm fmri</code></li>
-<li><strong>Specify 1<sup>st</sup>-Level</strong>: Go to <code>Specify 1st Level</code> in the SPM menu.</li>
-<li><strong>Set Parameters</strong>:<ul>
+<details class="steps" open="open">
+<summary>Open SPM</summary>
+<p>Launch the SPM GUI with <code>spm fmri</code></p>
+</details>
+<details class="steps" open="open">
+<summary>Specify 1<sup>st</sup>-Level</summary>
+<p>Go to <code>Specify 1st Level</code> in the SPM menu.</p>
+</details>
+<details class="steps" open="open">
+<summary>Set Parameters</summary>
+<ul>
 <li><strong>Units for design</strong>: Set to <code>seconds</code>.</li>
 <li><strong>Interscan interval (TR)</strong>: Use your fMRI acquisition’s TR value.</li>
 <li><strong>Microtime resolution</strong>: This should be the number of slices acquired per TR (e.g., <code>64</code> for a 64-slice scan).</li>
 </ul>
-</li>
-<li><strong>Input Onset Files</strong>:<ul>
+</details>
+<details class="steps" open="open">
+<summary>Input Onset Files</summary>
+<ul>
 <li>Use the <em>multiple conditions</em> option to input onset time files (e.g., <code>sub-01_run-01_eventsspm.mat</code>).</li>
 </ul>
-</li>
-<li><strong>Include Confound Regressors</strong>:<ul>
+</details>
+<details class="steps" open="open">
+<summary>Include Confound Regressors</summary>
+<ul>
 <li>Select the confound regressors from the confound files (e.g., <code>sub-01_run-01_confoundsspm.mat</code>).</li>
 </ul>
-</li>
-</ol>
+</details>
 <h3 id="reviewing-the-design-matrix">Reviewing the Design Matrix<a class="headerlink" href="#reviewing-the-design-matrix" title="Permanent link">&para;</a></h3>
 <p>After specifying the design matrix:</p>
 <ol>
@@ -3865,18 +3883,23 @@ This will print the regressor names directly in the MATLAB command window, helpi
 </ul>
 </div>
 <h3 id="visualizing-and-saving-results">Visualizing and Saving Results<a class="headerlink" href="#visualizing-and-saving-results" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Viewing Results</strong>: Use the SPM results viewer to explore significant clusters.</li>
-<li><strong>Save the Statistical Maps</strong>:<ul>
+<details class="steps" open="open">
+<summary>Viewing Results</summary>
+<p>Use the SPM results viewer to explore significant clusters.</p>
+</details>
+<details class="steps" open="open">
+<summary>Save the Statistical Maps</summary>
+<ul>
 <li>Save thresholded activation maps as <code>.nii</code> files using the <code>Save</code> button in the results window.</li>
 </ul>
-</li>
-<li><strong>Generate Figures</strong>:<ul>
+</details>
+<details class="steps" open="open">
+<summary>Generate Figures</summary>
+<ul>
 <li>Use the <code>Render</code> or <code>Surface</code> options to create visual summaries of your findings.</li>
 <li>Save these figures for inclusion in reports or presentations.</li>
 </ul>
-</li>
-</ol>
+</details>
 <div class="admonition tip">
 <p class="admonition-title">Exporting Images</p>
 <p>To include figures in publications or reports:
@@ -3885,6 +3908,7 @@ This will print the regressor names directly in the MATLAB command window, helpi
 </div>
 <h3 id="visualizing-activations-on-volume-or-surface">Visualizing Activations on Volume or Surface<a class="headerlink" href="#visualizing-activations-on-volume-or-surface" title="Permanent link">&para;</a></h3>
 <p>To overlay activations on a subject's anatomy:</p>
+<div class="steps-list">
 <ol>
 <li>Click <strong>Display</strong> -&gt; <strong>overlays...</strong> in the SPM GUI.</li>
 <li>Select <strong>sections</strong> for volume plotting or <strong>render</strong> for surface plotting.</li>
@@ -3894,6 +3918,7 @@ This will print the regressor names directly in the MATLAB command window, helpi
 </ul>
 </li>
 </ol>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>SPM cannot read <code>.nii.gz</code> files directly, so you must decompress them into <code>.nii</code> files. This can be done with any decompression tool by right-clicking on the file in your file explorer. Once decompressed, use the SPM GUI to select the <code>.nii</code> file.</p>
@@ -3950,11 +3975,13 @@ This will print the regressor names directly in the MATLAB command window, helpi
 <hr />
 <h2 id="saving-the-design-matrix">Saving the Design Matrix<a class="headerlink" href="#saving-the-design-matrix" title="Permanent link">&para;</a></h2>
 <p>After specifying your model (before or after estimation), you can save the design matrix visualisation for your records:</p>
+<div class="steps-list">
 <ol>
 <li>In the SPM Graphics window, the design matrix is displayed after specification.</li>
 <li><strong>Right-click</strong> on the design matrix figure and select <strong>Save as Image</strong> (or <strong>Print to File</strong>).</li>
 <li>Choose a format (PNG or EPS for publication quality) and save to your GLM output directory.</li>
 </ol>
+</div>
 <p>Alternatively, you can save it programmatically:</p>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c">% After running spm_spm, the design matrix is in SPM.xX.X</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nb">load</span><span class="p">(</span><span class="s">'SPM.mat'</span><span class="p">);</span>
@@ -3987,6 +4014,7 @@ This will print the regressor names directly in the MATLAB command window, helpi
 <div class="tabbed-block">
 <p>Tests whether a contrast is significantly different from zero across subjects (e.g., "Is there significant activation for faces &gt; objects across the group?").</p>
 <p><strong>GUI procedure:</strong></p>
+<div class="steps-list" markdown>
 <ol>
 <li>Open SPM and click <strong>Specify 2<sup>nd</sup>-level</strong>.</li>
 <li>Set the <strong>Directory</strong> to your group-level output folder (e.g., <code>derivatives/SPM/GLM/group/task-exp/</code>).</li>
@@ -3998,6 +4026,7 @@ This will print the regressor names directly in the MATLAB command window, helpi
 <li>Optionally add covariates (e.g., age, performance scores).</li>
 <li>Click <strong>Run</strong> (the green play button).</li>
 </ol>
+</div>
 <p><strong>Scripted version:</strong></p>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c">% Second-level one-sample t-test</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">matlabbatch</span><span class="p">{</span><span class="mi">1</span><span class="p">}.</span><span class="n">spm</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">factorial_design</span><span class="p">.</span><span class="n">dir</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="s">'derivatives/SPM/GLM/group/task-exp/'</span><span class="p">};</span>
@@ -4020,6 +4049,7 @@ This will print the regressor names directly in the MATLAB command window, helpi
 </div>
 <h3 id="defining-group-level-contrasts">Defining group-level contrasts<a class="headerlink" href="#defining-group-level-contrasts" title="Permanent link">&para;</a></h3>
 <p>After estimating the second-level model:</p>
+<div class="steps-list">
 <ol>
 <li>Click <strong>Results</strong> in the SPM GUI.</li>
 <li>Select the group-level <code>SPM.mat</code>.</li>
@@ -4028,8 +4058,10 @@ This will print the regressor names directly in the MATLAB command window, helpi
 </ul>
 </li>
 </ol>
+</div>
 <h3 id="interpreting-and-reporting-results">Interpreting and reporting results<a class="headerlink" href="#interpreting-and-reporting-results" title="Permanent link">&para;</a></h3>
 <p>When viewing results:</p>
+<div class="steps-list">
 <ol>
 <li>Set the <strong>significance threshold</strong> (commonly p &lt; 0.001 uncorrected at voxel level, or p &lt; 0.05 FWE-corrected).</li>
 <li>Set a <strong>cluster extent threshold</strong> (e.g., k = 10 voxels) to filter out small, isolated activations.</li>
@@ -4039,6 +4071,7 @@ This will print the regressor names directly in the MATLAB command window, helpi
 </ul>
 </li>
 </ol>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Reporting conventions</p>
 <p>When reporting group results in a publication, include:</p>

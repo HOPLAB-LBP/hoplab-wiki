@@ -3044,12 +3044,20 @@
 </details>
 <details class="deflist">
 <summary>House rules</summary>
+<div class="dont-list" markdown>
+<p class="do-list__heading">Don't</p>
 <ul>
 <li>Do <strong>not</strong> use the stimulus PC for data transfer, e-mail or web browsing.</li>
 <li>Do <strong>not</strong> install software yourself. Ask Ron Peeters.</li>
+</ul>
+</div>
+<div class="do-list" markdown>
+<p class="do-list__heading">Do</p>
+<ul>
 <li>At the end of your session, close all software but <strong>leave the PC on</strong>.</li>
 <li>Take your log files with you at the end of the session (see <a href="fmri-procedure.html#after-scanning">After scanning</a>).</li>
 </ul>
+</div>
 </details>
 <div class="admonition note">
 <p class="admonition-title">A lab stimulus laptop is planned</p>
@@ -3096,6 +3104,7 @@
 </div>
 <details class="failure">
 <summary>No triggers or button presses arrive</summary>
+<div class="steps-list" markdown>
 <ol>
 <li>Look at the LEDs on the interface box: if they light up, the box receives the signal and the problem is on the PC side (wrong window in focus, script not listening to the right keyboard). If they stay dark, the problem is on the scanner or cable side.</li>
 <li>Check that the box is in mode 002.</li>
@@ -3103,6 +3112,7 @@
 <li>Do not touch the fibre-optic cables. If the trigger still does not arrive, call the MR technician (40526) or contact Ron Peeters.</li>
 <li><strong>Last resort</strong>: when the trigger cable failed in July 2026, the radiology team advised starting the task by hand: press <code>t</code> on the keyboard at a known moment of the run (e.g., when the console shows the remaining scan time you planned for). Write down for each run when you pressed it. You can estimate the delay afterwards from the time between the end of the task and the end of the scan, and correct your event timings or drop the first volume.</li>
 </ol>
+</div>
 </details>
 <hr />
 <h2 id="in-room-screen">In-room screen<a class="headerlink" href="#in-room-screen" title="Permanent link">&para;</a></h2>
@@ -3154,11 +3164,13 @@
 </ul>
 <h3 id="connecting-a-laptop">Connecting a laptop<a class="headerlink" href="#connecting-a-laptop" title="Permanent link">&para;</a></h3>
 <p>You may present stimuli from a laptop instead of the stimulus PC, <strong>after approval of the MRI Safety Officer</strong> (Ron Peeters). Steps used by lab members so far:</p>
+<div class="steps-list">
 <ol>
 <li>Connect the HDMI cable provided at the screen's control box to the laptop, and select input <strong>HDMI-2</strong> on the control box (press the input button).</li>
 <li>Unplug the trigger box USB cable from the front of the stimulus PC tower and plug it into the laptop. The laptop then receives both the scanner trigger and the button presses as key presses.</li>
 <li>At the end of the session, plug the USB cable back into the stimulus PC and switch the screen input back to the stimulus PC.</li>
 </ol>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Display set-up</p>
 <p>Use one mirrored screen: in Windows choose <em>Duplicate</em>, with the laptop screen and the in-room screen both at 1920 × 1080, 60 Hz. Do not use an extended desktop. Before scanning, check that the Psychtoolbox synchronisation tests or the PsychoPy frame-timing checks pass without warnings. If they do not, switch the laptop's own screen off and present on the in-room screen only.</p>
@@ -3171,6 +3183,7 @@
 <li><strong>Dedicated research headphone system</strong>: the blue box under the stimulus PC, with its own blue microphone. It uses <strong>smaller ear shells that fit inside the 64-channel head coil</strong> (the Siemens headset is too large for most participants in that coil). Use this system with the 64-channel coil.</li>
 </ul>
 <p>To play sound (stimuli or music) through the dedicated system:</p>
+<div class="steps-list">
 <ol>
 <li>Start the sound on the stimulus PC.</li>
 <li>Turn on the sound system (on/off button at the top left of the back, labelled <em>A</em>).</li>
@@ -3181,15 +3194,18 @@
 </li>
 <li>Switch the audio system off at the end of the session.</li>
 </ol>
+</div>
 <p>Participants always wear earplugs as well. Participants who refuse hearing protection cannot be scanned.</p>
 <details class="failure">
 <summary>The participant cannot hear the sound or you</summary>
+<div class="steps-list" markdown>
 <ol>
 <li>Check that the audio system is switched on (button <em>A</em> at the back) and that <strong>fMRI-VOL</strong> is not set too low.</li>
 <li>With the Siemens headset, check that the small audio cable is plugged in, otherwise only the intercom is heard.</li>
 <li>For the intercom, press the button to talk and release it to listen, with the volume at maximum.</li>
 <li>If it still does not work, call the MR technician (40526).</li>
 </ol>
+</div>
 </details>
 <hr />
 <h2 id="scanner-table-and-coils">Scanner table and coils<a class="headerlink" href="#scanner-table-and-coils" title="Permanent link">&para;</a></h2>

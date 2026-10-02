@@ -2935,6 +2935,8 @@
 <h1 id="how-to-manage-your-data-at-hoplab">How to manage your data at Hoplab<a class="headerlink" href="#how-to-manage-your-data-at-hoplab" title="Permanent link">&para;</a></h1>
 <p>This workflow (or technically speaking, Standard Operating Procedure) is the product of a consultation process with the Book A Data Manager team in 2025-2026. It serves as a guideline for collecting, organizing, and analyzing research data across the modalities used in our studies.</p>
 <p>As we are all collecting and processing <a href="https://www.kuleuven.be/rdm/en/guidance/legal-ethical/personal_data">personal data</a> that is classified as confidential or strictly confidential according to the <a href="https://www.kuleuven.be/rdm/en/guidance/storage/data_classification">KU Leuven data classification chart</a>, this requires specific care and precautions in accordance with the <a href="https://admin.kuleuven.be/privacy/en/studpers/gdpr-code-of-conduct">GDPR</a>.</p>
+<div class="do-list">
+<p class="do-list__heading">Do</p>
 <ul>
 <li>
 <p>All research data should be <a href="https://admin.kuleuven.be/privacy/en/studpers/pae/pseudonymisation">pseudonymized</a> ASAP, with the key stored separately from the dataset.<br />
@@ -2947,6 +2949,7 @@
 <p>Files containing confidential information should always be <a href="https://admin.kuleuven.be/icts/english/research/datamgmtpract/ape/encryption">encrypted</a> and restricted to authorised project members.</p>
 </li>
 </ul>
+</div>
 <p>Below, we provide more specific guidelines on how to manage your data per phase of the research lifecycle.</p>
 <h2 id="data-collection">Data collection<a class="headerlink" href="#data-collection" title="Permanent link">&para;</a></h2>
 <h3 id="1-ethical-approval">1. Ethical approval<a class="headerlink" href="#1-ethical-approval" title="Permanent link">&para;</a></h3>
@@ -2983,8 +2986,6 @@
 <p>If applicable, <strong>get acquainted with specific testing procedures</strong> (<a href="../eeg/eeg-acquisition.html">EEG</a>/<a href="../fmri/fmri-procedure.html">fMRI</a>) and start collecting your data.</p>
 <p>For behavioural experiments, this can either be using one of the specified online platforms (Pavlovia, Meadows, Prolific, Microsoft Forms), directly from your PC or using paper questionnaires.</p>
 <h3 id="5-store-raw-data">5. Store raw data<a class="headerlink" href="#5-store-raw-data" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
 <p><strong>Save the experimental output</strong> to the <code>sourcedata/</code> folder in your Sharepoint following the folder structure specified <a href="../fmri/analysis/fmri-general.html#how-to-store-raw-data">here</a>.</p>
 <ul>
 <li>For <strong>paper questionnaires</strong>: Digitize the (pseudonymized) data using either an OCR solution or manual transcription into spreadsheet software. Save the data in an open format. Note that in BIDS, <code>.tsv</code> is the preferred format for spreadsheets. Excel does not allow saving in <code>.tsv</code>; instead, you can export as <code>.txt</code> and change the file extension manually. You can also use this workaround to convert <code>.csv</code> files to <code>.tsv</code> files.</li>
@@ -2992,8 +2993,6 @@
 <li>In <strong>EEG experiments</strong>, raw EEG data are saved in the <code>.bdf</code> format (on the Windows PC) and associated behavioral data in <code>.csv</code> and <code>.log</code> formats (on the Linux PC). Move the data from both PCs using an SSD to your personal Sharepoint site. Ensure the output files are pseudonymized as far as possible without impacting research results before proceeding (e.g. through the <a href="https://wiki.besa.de/index.php?title=BESA_Anonymizer">BESA Anonymizer</a> and using BIDS compliant subject IDs).</li>
 <li>In <strong>fMRI experiments</strong>, raw MRI data from MR11 are sent automatically to the radiology research server XNAT, under the pseudonymised subject and session IDs you enter at the console (e.g., <code>sub-01</code>). Download the DICOMs from XNAT to an encrypted SSD (more information <a href="../fmri/fmri-procedure.html#getting-your-data-xnat">here</a>); for the 7T, see <a href="../fmri/fmri-7t.html#getting-your-data">here</a>. Transfer the data from the SSD to your personal Sharepoint site.</li>
 </ul>
-</li>
-</ol>
 <div class="admonition info">
 <p class="admonition-title">Encrypting your hard drive</p>
 <p>If you also work with a hard drive containing confidential or raw data, it is important that you always encrypt it.
@@ -3002,6 +3001,7 @@ This can be done as follows:</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>On KU Leuven managed PCs, BitLocker is typically pre-enabled. To encrypt an external drive:</p>
+<div class="steps-list" markdown>
 <ol>
 <li>Insert the external hard drive.</li>
 <li>Open <strong>File Explorer</strong>, right-click the drive, and select <strong>Turn on BitLocker</strong>.</li>
@@ -3010,7 +3010,9 @@ This can be done as follows:</p>
 <li>Choose <strong>Encrypt entire drive</strong> and click <strong>Start encrypting</strong>.</li>
 </ol>
 </div>
+</div>
 <div class="tabbed-block">
+<div class="steps-list" markdown>
 <ol>
 <li>Insert the external hard drive.</li>
 <li>Open <strong>Disk Utility</strong> (Applications &gt; Utilities &gt; Disk Utility).</li>
@@ -3025,6 +3027,7 @@ This can be done as follows:</p>
 </div>
 </li>
 </ol>
+</div>
 </div>
 </div>
 </div>
@@ -3085,6 +3088,7 @@ This can be done as follows:</p>
 <p>Push the resulting data to ManGO using your preferred client and clear any data from your local device or the HPC environment.</p>
 <h2 id="data-sharing-when-publishing">Data sharing (when publishing)<a class="headerlink" href="#data-sharing-when-publishing" title="Permanent link">&para;</a></h2>
 <p>When your study is ready for publication, share the dataset via <a href="RDR_sharing.html">RDR</a>:</p>
+<div class="steps-list">
 <ol>
 <li><strong>Pseudonymize</strong> your data: for fMRI, follow <a href="../fmri/analysis/fmri-anonymization.html">this guide</a> (defacing, metadata scrubbing, participant review)</li>
 <li><strong>Package</strong> the dataset into ZIP bundles (see the <a href="RDR_sharing.html#step-3-prepare-zip-files">RDR guide</a>)</li>
@@ -3092,6 +3096,7 @@ This can be done as follows:</p>
 <li><strong>Link</strong> the RDR DOI in your paper and code repository</li>
 <li><strong>Publish</strong> the RDR dataset alongside your paper</li>
 </ol>
+</div>
 <p>See the full step-by-step guide at <a href="RDR_sharing.html">RDR for data sharing</a>.</p>
 
 

@@ -2991,6 +2991,7 @@ After installation you will automatically have three PsychoPy applications/inter
 <hr />
 <h2 id="uploading-to-pavlovia">Uploading to Pavlovia<a class="headerlink" href="#uploading-to-pavlovia" title="Permanent link">&para;</a></h2>
 <p>Follow the steps below to successfully upload your experiment to Pavlovia.</p>
+<div class="steps-list">
 <ol>
 <li>Create the experiment in <strong>PsychoPy Builder</strong>.</li>
 <li>Create a <a href="https://gitlab.pavlovia.org/users/sign_in"><strong>Pavlovia account</strong></a> and log in.</li>
@@ -3000,6 +3001,7 @@ After installation you will automatically have three PsychoPy applications/inter
 <li>Access your experiment on Pavlovia by navigating to <strong>Dashboard &gt; Experiments</strong> in your account.</li>
 <li>To test the project, change the status to <strong>piloting</strong> and click <strong>pilot</strong>.</li>
 </ol>
+</div>
 <p><img alt="PsychoPy Builder main window screenshot" src="../../../assets/bh-psychopy-builder1.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -3042,6 +3044,7 @@ This will center the text online; however, offline functionality may be impacted
 <p>Online experiments require participants to give informed consent before starting. Since PsychoPy's <strong>Form component does not work on Pavlovia</strong>, you need an alternative approach. The two most common methods are:</p>
 <h3 id="option-1-button-based-consent-screen-recommended">Option 1: Button-based consent screen (recommended)<a class="headerlink" href="#option-1-button-based-consent-screen-recommended" title="Permanent link">&para;</a></h3>
 <p>Build a consent routine in the Builder using text and shape components:</p>
+<div class="steps-list">
 <ol>
 <li>Add a <strong>Text</strong> component displaying the consent information (study purpose, data handling, right to withdraw, etc.).</li>
 <li>Add two <strong>Polygon</strong> components styled as buttons (e.g., green "I agree" and red "I do not agree"), each with a <strong>Text</strong> label on top.</li>
@@ -3070,6 +3073,7 @@ This will center the text online; however, offline functionality may be impacted
 </span></code></pre></div>
 </li>
 </ol>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Make sure to define <code>consent_given = False</code> in the <strong>Begin Experiment</strong> tab to avoid undefined variable errors on Pavlovia.</p>
@@ -3087,12 +3091,20 @@ This will center the text online; however, offline functionality may be impacted
 <h2 id="common-pitfalls">Common pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
 <h3 id="excel-and-csv-files">Excel and CSV files<a class="headerlink" href="#excel-and-csv-files" title="Permanent link">&para;</a></h3>
 <p>To ensure compatibility, follow these conventions:</p>
+<div class="do-list">
+<p class="do-list__heading">Do</p>
 <ul>
 <li><strong>No empty columns or rows</strong>: Remove any extra spaces or blanks in your spreadsheet.</li>
 <li><strong>Unique column names</strong>: Every column needs a unique name, and the top row should not have empty cells.</li>
-<li><strong>Avoid special characters</strong> in the text fields.</li>
 <li><strong>Save as CSV</strong>: Convert your Excel files to CSV format before using them in Pavlovia.</li>
 </ul>
+</div>
+<div class="dont-list">
+<p class="do-list__heading">Don't</p>
+<ul>
+<li><strong>Avoid special characters</strong> in the text fields.</li>
+</ul>
+</div>
 <h3 id="writing-custom-code">Writing custom code<a class="headerlink" href="#writing-custom-code" title="Permanent link">&para;</a></h3>
 <p>Add custom code through the <strong>Components &gt; Custom &gt; Code</strong> tab in the Builder, and <strong>do not add code directly in Coder</strong>.</p>
 <p>For phase-specific code snippets, add them to the appropriate section in the Code Component (e.g., <code>Begin Experiment</code>, <code>Begin Routine</code>, <code>Each Frame</code>).</p>

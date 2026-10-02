@@ -3282,6 +3282,7 @@
 <p>This code defines two functions Google will call over the web: <code>doGet</code> (handles the "what block is this participant on?" request) and <code>doPost</code> (handles the "here's what happened this session" request).</p>
 <h3 id="step-3-deploy-it-as-a-web-app">Step 3: Deploy it as a web app<a class="headerlink" href="#step-3-deploy-it-as-a-web-app" title="Permanent link">&para;</a></h3>
 <p>This turns your script into something the experiment can reach over the internet.</p>
+<div class="steps-list">
 <ol>
 <li>Click the blue <strong>Deploy</strong> button (top right) -&gt; <strong>New deployment</strong>.</li>
 <li>Click the gear icon next to "Select type" -&gt; choose <strong>Web app</strong>.</li>
@@ -3296,6 +3297,7 @@
 <li>Copy the <strong>Web app URL</strong>. It ends in <code>/exec</code> and looks like:
    <code>https://script.google.com/macros/s/AKfy...long.../exec</code></li>
 </ol>
+</div>
 <p>You will paste this URL into the experiment's config (Part D).</p>
 <div class="admonition warning">
 <p class="admonition-title">Keep the /exec URL private</p>
@@ -3394,6 +3396,7 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
 <hr />
 <h2 id="part-f-pilot-before-recruiting">Part F — Pilot before recruiting<a class="headerlink" href="#part-f-pilot-before-recruiting" title="Permanent link">&para;</a></h2>
 <p>Do a full dress rehearsal with a test ID before any real participant:</p>
+<div class="steps-list">
 <ol>
 <li>Temporarily shorten sessions (e.g. set the trials-per-block and convergence parameters to small values in <code>config.js</code>).</li>
 <li>Run <strong>three</strong> sessions with the same test ID (e.g. <code>TEST01</code>).</li>
@@ -3403,6 +3406,7 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
 <li>Run <code>previewReminders</code> and confirm the right people would be emailed.</li>
 <li>Restore your real session-length parameters before running participants.</li>
 </ol>
+</div>
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <table>

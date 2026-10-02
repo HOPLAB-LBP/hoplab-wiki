@@ -2946,34 +2946,39 @@
 </ol>
 <h3 id="example-creating-spherical-rois-with-the-gui">Example: Creating Spherical ROIs with the GUI<a class="headerlink" href="#example-creating-spherical-rois-with-the-gui" title="Permanent link">&para;</a></h3>
 <p>You can create spherical ROIs interactively using the MarsBaR toolbox within SPM. Here is the step-by-step procedure:</p>
-<ol>
-<li>
-<p><strong>Launch MarsBaR</strong>: In the MATLAB command window, type <code>marsbar</code> to open the MarsBaR GUI. Alternatively, start SPM and select MarsBaR from the toolbox menu.</p>
-</li>
-<li>
-<p><strong>Create a new ROI</strong>: In the MarsBaR menu, go to <strong>ROI definition &gt; Build</strong>.</p>
-</li>
-<li>
-<p><strong>Select ROI type</strong>: Choose <strong>Sphere</strong> from the shape options.</p>
-</li>
-<li>
-<p><strong>Enter MNI coordinates</strong>: A dialog will ask for the centre coordinates. Enter the X, Y, Z coordinates in MNI space (e.g., <code>[42 -54 -18]</code> for right FFA).</p>
-</li>
-<li>
-<p><strong>Set the radius</strong>: Enter the sphere radius in millimetres (a common choice is 8–10 mm).</p>
-</li>
-<li>
-<p><strong>Label the ROI</strong>: Give the ROI a descriptive name (e.g., <code>ROI-rFFA_radius-10</code>).</p>
-</li>
-<li>
-<p><strong>Save the ROI</strong>: MarsBaR saves ROIs in its own <code>.mat</code> format. To convert to NIfTI for use in other tools:</p>
+<details class="steps" open="open">
+<summary>Launch MarsBaR</summary>
+<p>In the MATLAB command window, type <code>marsbar</code> to open the MarsBaR GUI. Alternatively, start SPM and select MarsBaR from the toolbox menu.</p>
+</details>
+<details class="steps" open="open">
+<summary>Create a new ROI</summary>
+<p>In the MarsBaR menu, go to <strong>ROI definition &gt; Build</strong>.</p>
+</details>
+<details class="steps" open="open">
+<summary>Select ROI type</summary>
+<p>Choose <strong>Sphere</strong> from the shape options.</p>
+</details>
+<details class="steps" open="open">
+<summary>Enter MNI coordinates</summary>
+<p>A dialog will ask for the centre coordinates. Enter the X, Y, Z coordinates in MNI space (e.g., <code>[42 -54 -18]</code> for right FFA).</p>
+</details>
+<details class="steps" open="open">
+<summary>Set the radius</summary>
+<p>Enter the sphere radius in millimetres (a common choice is 8–10 mm).</p>
+</details>
+<details class="steps" open="open">
+<summary>Label the ROI</summary>
+<p>Give the ROI a descriptive name (e.g., <code>ROI-rFFA_radius-10</code>).</p>
+</details>
+<details class="steps" open="open">
+<summary>Save the ROI</summary>
+<p>MarsBaR saves ROIs in its own <code>.mat</code> format. To convert to NIfTI for use in other tools:</p>
 <ul>
 <li>Go to <strong>ROI definition &gt; Export</strong> (or <strong>ROI definition &gt; Save as image</strong>).</li>
 <li>Select the ROI <code>.mat</code> file and choose an output <code>.nii</code> filename.</li>
 <li>Specify the reference image (e.g., a subject's functional image or the MNI template) to define the voxel grid.</li>
 </ul>
-</li>
-</ol>
+</details>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can create multiple ROIs in sequence by repeating steps 2–7. For bilateral ROIs, create one ROI per hemisphere using mirrored X coordinates (e.g., <code>[-42 -54 -18]</code> and <code>[42 -54 -18]</code>).</p>
@@ -3316,15 +3321,14 @@
 <h2 id="intersecting-roi-masks-with-glm-results">Intersecting ROI Masks with GLM Results<a class="headerlink" href="#intersecting-roi-masks-with-glm-results" title="Permanent link">&para;</a></h2>
 <p>In our lab, we apply an additional refinement step to <strong>Region of Interest (ROI)</strong> masks to precisely target the most relevant brain voxels. This involves intersecting the mask (e.g., a spherical or anatomical ROI) with the <strong>significant activation</strong> of a specific contrast. This approach is particularly beneficial for analyses like <strong>multivariate pattern analysis (MVPA)</strong>, where targeted voxel selection is crucial for decoding tasks.</p>
 <p>For instance, suppose we want to perform an MVPA to determine if we can distinguish between <em>Female</em> and <em>Male</em> faces in the <strong>Fusiform Face Area (FFA)</strong>. Here’s how we might set up the analysis:</p>
-<ol>
-<li>
-<p><strong>Create an Initial ROI Mask</strong>:</p>
+<details class="steps" open="open">
+<summary>Create an Initial ROI Mask</summary>
 <ul>
 <li>First, we create a NIfTI file with values of 1 in the FFA region and 0 elsewhere. This mask can be created either anatomically (using an atlas) or by defining a spherical mask centered on FFA coordinates.</li>
 </ul>
-</li>
-<li>
-<p><strong>Run a First-Level Analysis to Identify Activation in the ROI</strong>:</p>
+</details>
+<details class="steps" open="open">
+<summary>Run a First-Level Analysis to Identify Activation in the ROI</summary>
 <ul>
 <li>In <strong>SPM</strong>, perform a First-Level analysis to obtain significant activation for a relevant contrast, such as <em>Faces vs. Objects</em>. This will produce a <strong>t-map</strong> that indicates the t values of all voxels for the given contrast.</li>
 </ul>
@@ -3335,26 +3339,25 @@
 <li>If we use the <strong>experimental task run</strong> (i.e., when participants perform the main task), we generally choose contrasts that reflect overall activity in the region. For example, we might use an <em>All &gt; Rest</em> contrast where all experimental conditions are positive and rest blocks are negative, capturing the regions most active during the task overall.</li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Threshold the Activation Map</strong>  </p>
+</details>
+<details class="steps" open="open">
+<summary>Threshold the Activation Map</summary>
 <ul>
 <li>Apply a statistical threshold to the t-map, setting a significance level (e.g., p &lt; .001) to identify the voxels significantly active for the contrast of interest.</li>
 </ul>
-</li>
-<li>
-<p><strong>Intersect Masked and Activated Voxels</strong>  </p>
+</details>
+<details class="steps" open="open">
+<summary>Intersect Masked and Activated Voxels</summary>
 <ul>
 <li>Generate a new ROI that includes only the voxels both significantly active in the contrast and within the initial mask (e.g., sphere or anatomical region).</li>
 </ul>
-</li>
-<li>
-<p><strong>Extract beta values from selected voxels</strong>  </p>
+</details>
+<details class="steps" open="open">
+<summary>Extract beta values from selected voxels</summary>
 <ul>
 <li>We use the generated ROI to filter voxels in the beta images (the <code>beta_00*.nii</code> images in the SPM GLM output folder) for further MVPA.</li>
 </ul>
-</li>
-</ol>
+</details>
 <p>This approach has two key benefits:</p>
 <ol>
 <li><strong>Selective Targeting of Relevant Voxels</strong>: It ensures that the ROI captures only the voxels relevant for the cognitive function of interest, maximizing information and minimizing potential noise from uninformative voxels.</li>
