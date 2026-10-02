@@ -376,10 +376,66 @@ Which renders as:
     - the consent form
     - any appendices
 
+For **steps that follow each other in order** (a procedure, the path to a first session), use `??? steps`. It looks
+exactly like `??? numlist`, and a vertical line joins the numbers so the steps read as one sequence. Write `???+ steps`
+to show every step open:
+
+```markdown
+???+ steps "Get ethical approval"
+    Submit the study to the ethics committee.
+
+???+ steps "Book the room"
+    Book it in Calira once approval is in.
+```
+
+The line runs only between consecutive `steps` entries, so a paragraph or heading between two entries ends the
+sequence. Numbering restarts at every heading, as for `numlist`.
+
+When every step must stay visible without clicking (an emergency procedure), wrap an ordinary numbered list in a
+`steps-list` block. It draws the same circles and line:
+
+```markdown
+<div class="steps-list" markdown>
+
+1. Stop stimulating.
+2. Help the participant lie down.
+
+</div>
+```
+
+### Safety guidance: care cards and do / don't lists
+
+For safety and emergency information, two blocks follow the NHS design system
+([care cards](https://service-manual.nhs.uk/design-system/components/care-cards),
+[do and don't lists](https://service-manual.nhs.uk/design-system/components/do-and-dont-lists)).
+Use them sparingly: one emergency card per page, for the number to call. For other warnings, use the usual `!!! danger` or `!!! warning` boxes.
+
+```markdown
+<div class="care-card care-card--emergency" markdown>
+<p class="care-card__heading">Emergency: call +32 16 32 22 22</p>
+<div class="care-card__body" markdown>
+
+What to say and where you are.
+
+</div>
+</div>
+
+<div class="dont-list" markdown>
+<p class="do-list__heading">Don't</p>
+
+- Never get the TMS coil wet.
+
+</div>
+```
+
+`do-list` gives green ticks, `dont-list` red crosses.
+
 !!! tip "Which one do I use?"
     | Your content | Use |
     |---|---|
     | A list of items, each with a paragraph or more of explanation, all relevant to every reader | `??? numlist` / `??? deflist` |
+    | Steps done in order, each with an explanation | `???+ steps` |
+    | Steps done in order that must always be visible (emergencies) | `<div class="steps-list" markdown>` around a numbered list |
     | Items with a one-line explanation | a plain bullet list — there is nothing worth hiding |
     | The reader needs exactly **one** of several alternatives (Windows/macOS, one of three procedures) | [content tabs](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/) (`=== "Tab"`) |
     | A single aside, warning or tip interrupting the text | `!!! warning`, `!!! tip`, … |
