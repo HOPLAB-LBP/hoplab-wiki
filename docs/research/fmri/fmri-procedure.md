@@ -96,7 +96,10 @@ Participants register at the **main entrance** of the hospital:
 - **Children under 12**: with a Kids-ID or ISI+ card.
 - **After 17:30**: participants can go directly to the MR11 waiting room.
 
-Ask the participant to be at the main entrance **at least 30 minutes before** the scan slot. Meet them there and walk with them to MR11.
+After registering, participants go to the **Beeldvorming 2 waiting room** (*Gele straat, Poort 2, niveau 0*). Meet them there: they fill in the MRI Safety Checklist and the consent form, and then you go together to the scanner area. Ask participants to arrive **at least 30 minutes before** the scan slot.
+
+!!! tip "Text for your participant invitation"
+    *When you arrive at UZ Leuven Gasthuisberg, register at the main entrance at the self-service kiosks with your Belgian eID, or with the Mynexuzhealth app (without a Belgian eID, go to the registration desk). Then go to the Beeldvorming 2 waiting room: Gele straat, Poort 2, niveau 0. The researcher will meet you there. Please arrive 30 minutes before your appointment.*
 
 !!! warning "Give participants the MR11 location"
     Participants sometimes go to the wrong waiting area, where there is no phone connection, so you have to go and look for them. Give the exact location in your invitation: *Beeldvorming 2, Gele straat, Poort 2, niveau 0, MR11*.
@@ -117,6 +120,7 @@ In the preparation room:
 - Explain the task, and let the participant practise a few trials if needed.
 - Ask them to go to the toilet.
 - Screen them from head to toe for metal (watches, hair clips, bank cards, belts, phones, festival bracelets; if they keep a festival bracelet, cover the metal part with tape).
+- **Belongings**: participants can leave their belongings in the changing room attached to the magnet room, or in one of the preparation rooms (*onderzoekslokalen*) next to the console room.
 - **Glasses**: participants cannot wear their own glasses in the scanner. MRI-compatible glasses are available at the hospital; ask the participant their prescription in advance. Contact lenses are fine.
 - If the session is long, offer water or a snack before they go in.
 - Explain what will happen: they may feel nerve or muscle twitches, must not cross hands or feet, must not touch the scanner, the scanner is loud and changes sound, you can talk through the intercom, and they can press the communication (panic) button at any time. They can stop the scan at any moment without giving a reason.
@@ -159,6 +163,13 @@ Do this before the participant goes into the magnet room.
 
 6. Select the patient orientation.
 7. Check all examination information again. Errors here send your data to the wrong place in XNAT or break the de-identification.
+
+??? tip "Pilots, phantoms, or a participant who is not in the RIS list"
+    Click *New examination* and fill in the details by hand (pseudo data for a phantom). The **Study description** (project ID) and **Study comment** still matter, so the data reach your XNAT project. Use a clear label, for example:
+
+    ```text
+    Subject:pilot Session:pilot-ses1
+    ```
 
 ---
 
@@ -256,7 +267,7 @@ MR11 sends all images **automatically** to the radiology research image server R
 1. **Wait about 30 minutes** after the session, then check your project page in XNAT.
 2. If the session is not there, look in the **prearchive** of your project. A *conflict* status usually means a wrong or duplicate session ID: fix it in XNAT (see the XNAT FAQ on the radiology wiki).
 3. **Download** the DICOMs:
-    - at the XNAT PC in **preparation room 1** (generic login, see the radiology wiki), to your encrypted SSD or USB drive; the browser does not remember the address, so type it each time;
+    - at the XNAT PC in **preparation room 1**, one of the *onderzoekslokalen* next to the console room (generic login, see the radiology wiki), to your encrypted SSD or USB drive; the browser does not remember the address, so type it each time;
     - or from anywhere inside the hospital network, or with a UZ Leuven VPN (only for people with a UZ Leuven account).
 4. Move the data to the lab storage as described in the [RDM study workflow](../rdm/SOPs.md).
 
@@ -308,13 +319,11 @@ Also take your behavioural log files from the stimulus PC (on your encrypted dri
     Now that you're familiar with the scanning procedure, see the [Analysis workflow](analysis/index.md) to learn how to process and analyze your fMRI data.
 
 <!--
-__TODO__: [Emma, Floor, Simen] Click-by-click guide for the MR11 console with screenshots or phone photos, from registering the participant to starting a run (and restarting after a break). Replace "Run your sequences" with it. (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
-__TODO__: [Emma, Floor, Simen] How to check head motion during or after a run on the MR11 console. Add it to "Run your sequences". (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
-__TODO__: [Emma, Floor, Simen] What to do for a pilot, or when a participant is not in the RIS list (what Ron told them). Add it as a troubleshooting box under "Register the participant at the console". (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
-__TODO__: [Emma, Floor] What happens after participants check in at the main entrance, and which instructions and directions they get. Update "Participant arrival and registration" and add a text to paste into participant invitations. (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
-__TODO__: [Emma, Floor, Simen] The steps to get data from XNAT (Emma tested it). Check "Getting your data (XNAT)" against them. (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
+__TODO__: [Emma] Click-by-click guide for the MR11 console with screenshots or phone photos, from registering the participant to starting a run (and restarting after a break). Replace "Run your sequences" with it. (Emma will make it at her scan session in the week of 2026-10-05.)
+__TODO__: [Emma] How to check head motion during or after a run on the MR11 console. Add it to "Run your sequences". (Emma is looking into it at her next scan session.)
+__TODO__: [Floor] Check the arrival procedure and the invitation text in "Participant arrival and registration" (written from Emma's answer of 2026-10-02), in particular on weekdays and after hours. (Asked Emma, Floor and Simen by e-mail, 2026-10-01; Emma answered.)
+__TODO__: [Andrea] Compare "Getting your data (XNAT)" with Emma's MR11 procedures document (attached to her e-mail of 2026-10-02) and correct any step that differs.
 __TODO__: [Simen] Protocol file or pictures of the functional and anatomical scans of your main task, so we can document the lab's standard MR11 parameters (TR, TE, voxel size, slices, multiband, dummies), as we had for MR8. (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
-__TODO__: [Emma, Floor, Simen] Where participants leave their belongings at MR11. Add it to "Instruct the participant". (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] Find out where the MRI-compatible glasses are kept, how to get them, and which prescriptions are available, and add it to "Instruct the participant". (Not asked yet.)
 __TODO__: [Andrea] Check whether the check-in/check-out form is still used at MR11 (it was used before to record scanner hours for invoicing). If so, add it to "Required forms". (Not asked yet.)
 __TODO__: [Simen] Expand the scanning procedure section to clearly distinguish between pilot scans and real data collection runs: explain differences in booking, billing, and data handling at MR11.
