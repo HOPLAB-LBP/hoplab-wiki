@@ -1679,6 +1679,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1778,7 +1782,7 @@
   <span class="md-ellipsis">
     
   
-    MR8 equipment reference
+    MR11 equipment reference
   
 
     
@@ -1806,7 +1810,63 @@
   <span class="md-ellipsis">
     
   
-    Scanning procedure
+    MR11 scanning procedure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fmri-7t.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flanders 7T (Brussels)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fmri-mr8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MR8 (decommissioned)
   
 
     
@@ -1868,7 +1928,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1890,14 +1950,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3_6_5" id="__nav_3_6_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3_6_7" id="__nav_3_6_7_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_6_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_6_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2950,7 +3010,7 @@ myproject
 <div class="admonition question">
 <p class="admonition-title">Why <code>dicm2nii</code> and not <code>dcm2niix</code>?</p>
 <p>Although <a href="https://github.com/rordenlab/dcm2niix"><code>dcm2niix</code></a> is widely used and robust, especially for modern enhanced DICOMs and vendor-specific edge cases (like Philips), <code>dicm2nii</code> is often suggested.</p>
-<p>For data acquired with Philips scanners, or if your DICOMs have missing metadata (e.g., <code>PhaseEncodingDirection</code>), see <a href="https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips">this Rorden Lab guide</a> and this <a href="https://www.nitrc.org/forum/forum.php?thread_id=15186&amp;forum_id=4703">NITRC forum thread</a> See also <a href="fmri-general.html#missing-fields-in-json-files">Missing fields in JSON files</a> for more information.</p>
+<p>For data acquired with Philips scanners, or if your DICOMs have missing metadata (e.g., <code>PhaseEncodingDirection</code>), see <a href="https://github.com/rordenlab/dcm2niix/tree/3e02980597669ed8a9db073e824b4f74cccb597a/Philips">this Rorden Lab guide</a> and this <a href="https://www.nitrc.org/forum/forum.php?thread_id=15186&amp;forum_id=4703">NITRC forum thread</a> For older Philips (MR8) data, see also <a href="../fmri-mr8.html#missing-fields-in-json-files">Missing fields in JSON files</a>.</p>
 </div>
 <p>To convert your data:</p>
 <ol>
@@ -3088,7 +3148,7 @@ myproject
 <p>Each <code>nii</code> file <strong>must</strong> have a sidecar JSON file. Make sure you <a href="fmri-bids-conversion.html#4-convert-dicom-files">anonymised and converted your DICOM files</a> and go through the following steps:</p>
 <ol>
 <li>Locate the JSON sidecar files in <code>sourcedata/sub-xx/nifti/</code>.</li>
-<li>Open each JSON file and Complete the <code>PhaseEncodingDirection</code> and <code>SliceTiming</code> fields (see <a href="fmri-general.html#missing-fields-in-json-files">Missing fields in JSON files</a> for more information).</li>
+<li>Open each JSON file and Check that the <code>PhaseEncodingDirection</code> and <code>SliceTiming</code> fields are filled in. They were missing in older Philips (MR8) data; see <a href="../fmri-mr8.html#missing-fields-in-json-files">Missing fields in JSON files</a>.</li>
 <li>Copy-paste the updated JSON files to accompany each NIfTI file in the <code>BIDS/sub-xx/func</code> folder: each run should have its accompanying <code>sub-xx_task-{taskname}_run-{runnumber}_bold.json</code> sidecar file.</li>
 </ol>
 <hr />

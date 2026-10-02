@@ -1679,6 +1679,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1778,7 +1782,7 @@
   <span class="md-ellipsis">
     
   
-    MR8 equipment reference
+    MR11 equipment reference
   
 
     
@@ -1806,7 +1810,63 @@
   <span class="md-ellipsis">
     
   
-    Scanning procedure
+    MR11 scanning procedure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fmri-7t.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flanders 7T (Brussels)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fmri-mr8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MR8 (decommissioned)
   
 
     
@@ -1868,7 +1928,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1890,14 +1950,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3_6_5" id="__nav_3_6_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3_6_7" id="__nav_3_6_7_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_6_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_6_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1998,32 +2058,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-get-images-from-the-scanner" class="md-nav__link">
+  <a href="#handling-nans-in-json-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How to Get Images from the Scanner
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#missing-fields-in-json-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Missing Fields in JSON Files
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-find-additional-info-on-the-fmri-sequence" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where to Find Additional Info on the fMRI Sequence
+        Handling NaNs in JSON Files
       
     </span>
   </a>
@@ -2839,32 +2877,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-get-images-from-the-scanner" class="md-nav__link">
+  <a href="#handling-nans-in-json-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How to Get Images from the Scanner
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#missing-fields-in-json-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Missing Fields in JSON Files
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-find-additional-info-on-the-fmri-sequence" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where to Find Additional Info on the fMRI Sequence
+        Handling NaNs in JSON Files
       
     </span>
   </a>
@@ -2901,6 +2917,10 @@
 <div class="admonition tip">
 <p class="admonition-title">Data Storage Suggestion</p>
 <p>Bring a <strong>dedicated hard drive</strong> to the hospital for storing the output data. This will ensure that you have a reliable medium to transfer and secure the raw data from the scanner.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Where your data come from</p>
+<p>MR11 (Siemens) sends DICOMs to XNAT (see <a href="../fmri-procedure.html#getting-your-data-xnat">Getting your data</a>). The 7T is a GE scanner (see <a href="../fmri-7t.html">Flanders 7T</a>). Notes for older Philips datasets are on the <a href="../fmri-mr8.html">MR8 archive page</a>.</p>
 </div>
 <hr />
 <h2 id="quick-links-to-resources">Quick Links to Resources<a class="headerlink" href="#quick-links-to-resources" title="Permanent link">&para;</a></h2>
@@ -2941,116 +2961,8 @@
 <p>Ensure each subject’s data is organized as shown above to minimize errors during BIDS conversion. Store all behavioral and NIfTI files under <code>sourcedata</code>.</p>
 </div>
 <hr />
-<h2 id="how-to-get-images-from-the-scanner">How to Get Images from the Scanner<a class="headerlink" href="#how-to-get-images-from-the-scanner" title="Permanent link">&para;</a></h2>
-<p>For optimal BIDS conversion of fMRI data, it is recommended to initially collect <strong>DICOM files</strong> (not NIfTI or PAR/REC) at the scanner. Although this adds an extra conversion step, it ensures accurate conversion into BIDS format. Follow these steps:</p>
-<ol>
-<li>
-<p><strong>Initial DICOM Collection</strong>:</p>
-<ul>
-<li>Collect DICOM files for each modality (e.g., T1 and BOLD) for one subject.</li>
-<li>Convert these DICOM files to NIfTI format using <code>dcm2nii</code>, which will generate JSON sidecar files. Refer to the <a href="fmri-bids-conversion.html">BIDS conversion guide</a> for more details on the conversion process.</li>
-</ul>
-</li>
-<li>
-<p><strong>Template Creation</strong>:</p>
-<ul>
-<li>Rename the JSON files for T1 and BOLD images to <code>sub-xx_T1w.json</code> and <code>sub-xx_task-exp_run-x_bold.json</code>.</li>
-<li>Move the JSON files into the <code>misc/</code> folder.</li>
-</ul>
-</li>
-<li>
-<p><strong>Subsequent Data Collection</strong>:</p>
-<ul>
-<li>After creating the template JSON files, collect future data directly in NIfTI format to save time. The <code>script01_nifti-to-BIDS.m</code> script will use the JSON templates to populate the BIDS folders, as long as the fMRI sequence remains unchanged. If the sequence changes, generate new templates from the DICOM files.</li>
-</ul>
-</li>
-</ol>
-<hr />
-<h2 id="missing-fields-in-json-files">Missing Fields in JSON Files<a class="headerlink" href="#missing-fields-in-json-files" title="Permanent link">&para;</a></h2>
-<p>Despite these steps, some BIDS fields in the sidecar JSON files may remain empty due to limitations of the Philips scanner. The most relevant fields that may be left empty are <code>SliceTiming</code> and <a href="https://github.com/xiangruili/dicm2nii/issues/49"><code>PhaseEncodingDirection</code></a>.</p>
-<ul>
-<li><strong>SliceTiming</strong>:</li>
-<li>This field is required by fMRIPrep during slice timing correction.</li>
-<li>
-<p>Populate it using the <a href="../../../assets/code/get_philips_MB_slicetiming.py"><code>get_philips_MB_slicetiming.py</code> script</a>, assuming you have access to a DICOM file and know the multiband factor (default is 2, as used in our lab).
-    !!! warning
-        The script assumes an interleaved, foot-to-head acquisition and will not work for other acquisition types.</p>
-</li>
-<li>
-<p><strong>PhaseEncodingDirection</strong>:</p>
-</li>
-<li>This BIDS tag helps tools undistort images.</li>
-<li>Philips DICOM headers specify the phase encoding axis (e.g., A-P or L-R) but not the polarity (A &rarr; P or P &rarr; A).</li>
-<li>Check the scanner settings or consult with Ron to determine whether the polarity is A &rarr; P or P &rarr; A, and update the <code>?</code> in the JSON file with <code>j</code> (P &rarr; A) or <code>j-</code> (A &rarr; P).</li>
-<li>More info <a href="https://community.mrtrix.org/t/phase-encoding-direction-from-philips-achieva/3578/6">here</a> and <a href="https://neurostars.org/t/determining-phase-encoding-direction-and-total-read-out-time-from-philips-scans/25402/4">here</a></li>
-</ul>
-<div class="admonition info">
-<p class="admonition-title">Handling NaNs in JSON Files</p>
+<h2 id="handling-nans-in-json-files">Handling NaNs in JSON Files<a class="headerlink" href="#handling-nans-in-json-files" title="Permanent link">&para;</a></h2>
 <p>NaN values in JSON files can cause errors during the MRIQC workflow. To address NaN values, see the discussions in <a href="https://groups.google.com/g/mriqc-users/c/0v170KRJoKk">this post</a>, <a href="https://github.com/nipreps/mriqc/issues/1089">this GitHub issue</a>, and <a href="https://neurostars.org/t/node-error-on-mriqc-wf-dwimriqc-computeiqms-datasink/29188">this NeuroStars thread</a>.</p>
-</div>
-<p>For more details on Philips DICOM conversion, refer to the following resources:</p>
-<ul>
-<li><a href="https://github.com/rordenlab/dcm2niix/tree/master/Philips#missing-information">Philips DICOM Missing Information - dcm2niix</a></li>
-<li><a href="https://github.com/rordenlab/dcm2niix/tree/master/PARREC">PARREC Conversion - dcm2niix</a></li>
-</ul>
-<hr />
-<h2 id="where-to-find-additional-info-on-the-fmri-sequence">Where to Find Additional Info on the fMRI Sequence<a class="headerlink" href="#where-to-find-additional-info-on-the-fmri-sequence" title="Permanent link">&para;</a></h2>
-<p>Additional information on the fMRI sequence can be found directly at the scanner. Here’s a step-by-step guide:</p>
-<ol>
-<li>
-<p><strong>Start the Examination</strong>:</p>
-<ul>
-<li>Go to <strong>Patients</strong> -&gt; <strong>New Examination</strong> -&gt; <strong>RIS</strong>.</li>
-<li>Select your subject and fill out the required fields:<ul>
-<li><strong>Weight:</strong> Enter the subject's weight.</li>
-<li><strong>Implants:</strong> Specify if the subject has any implants.</li>
-<li><strong>Pregnant:</strong> Indicate if the subject is pregnant.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Load the Scanning Sequence</strong>:</p>
-<ul>
-<li>Drag and drop your scanning sequence from the bottom panel to the left panel.</li>
-</ul>
-</li>
-<li>
-<p><strong>Select a Run</strong>:</p>
-<ul>
-<li>Click on either a functional or anatomical run from the available list.</li>
-</ul>
-</li>
-<li>
-<p><strong>Expand the Tabs</strong>:</p>
-<ul>
-<li>Click on the <code>&gt;&gt;</code> symbol in the bottom panel, below the sagittal, coronal, and horizontal views, to expand additional tabs.</li>
-</ul>
-</li>
-<li>
-<p><strong>Access Geometry Settings</strong>:</p>
-<ul>
-<li>Navigate to the <strong>Geometry</strong> tab to access important scan parameters:<ul>
-<li><strong>MB factor</strong>: Indicates the number of slices recorded simultaneously, used for slice timing correction.</li>
-<li><strong>Slices</strong>: Total number of horizontal slices.</li>
-<li><strong>Fold-over direction</strong>: Required for correcting the phase encoding direction in the BIDS field.</li>
-<li><strong>Slice scan order</strong>: Typically Foot to Head (FH), used for slice timing correction.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Check Additional Fields</strong>:</p>
-<ul>
-<li>Visit the <strong>Coils</strong> tab for details about the head coils used during the scan.</li>
-<li>In the <strong>Contrast</strong> tab, note the following fields:<ul>
-<li><strong>TE (Echo Time)</strong>: Usually a single echo of 30 ms by default.</li>
-<li><strong>TR (Repetition Time)</strong>: Typically set to 2000 ms by default.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
 <hr />
 <p>Next Step &rarr; <a href="fmri-setup-env.html">Set-up your environment</a></p>
 
