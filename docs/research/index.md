@@ -52,6 +52,14 @@ Welcome to the central hub for all research activities at Hoplab. This page serv
 
     [:octicons-arrow-right-24: RDM guidelines](rdm/index.md)
 
+- :material-magnet:{ .lg .middle } __Transcranial magnetic stimulation (TMS)__
+
+    ---
+
+    Safety procedures, equipment and session protocols for TMS studies in the lab.
+
+    [:octicons-arrow-right-24: TMS resources](tms/index.md)
+
 </div>
 
 ## Quick links to resources
