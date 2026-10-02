@@ -1,232 +1,184 @@
-# MR8 Equipment Reference
+# MR11 equipment reference
 
-This page provides a reference guide to the equipment available in the MR8 suite. For the step-by-step scanning procedure, see the [Practical scanning protocol](fmri-procedure.md).
+This page describes the equipment you use around **MR11**, the Siemens MAGNETOM Cima.X 3T research scanner at UZ Leuven Gasthuisberg. For the step-by-step session, see the [Scanning procedure](fmri-procedure.md). For the 7T in Brussels, see [Flanders 7T](fmri-7t.md).
+
+!!! tip "For detailed information, go to the radiology wiki"
+    The manuals and photos of each device are on the radiology wiki, under *Peripheral Equipment › MR11 - Cima.X 3T* (stimulus PC, trigger box and buttons, in-room screen, audio system). This page keeps what you need to program and run an experiment.
+
+    [:octicons-link-external-16: Open the radiology wiki (MR11)](https://wiki.kulradiology.be/s/radxnat){ .md-button }
+
+    You need an account: ask Rodrigo Trevisan Massera ([rodrigo.trevisanmassera@kuleuven.be](mailto:rodrigo.trevisanmassera@kuleuven.be)).
 
 ---
 
-## Overview and diagram
+## The MR11 suite
 
-![MR8 Equipment Diagram](../../assets/mr8_diagram.png)
+- **Scanner**: Siemens MAGNETOM Cima.X 3T, in use since 11 June 2026 (software XA61, service pack 4 since 25 August 2026).
+- **Head coils**: 64-channel (default) and 20-channel head coils.
+- **Location**: *Beeldvorming 2, Gele straat, Poort 2, niveau 0, MR11* (UZ Leuven Gasthuisberg).
+- **Rooms**: the console room (scanner console, stimulus PC, trigger box, audio system and screen control box), the magnet room, the technical room, preparation rooms 1 and 2 (participant instructions and preparation; the XNAT download PC is in preparation room 1), a waiting room and a storage room.
 
-The diagram above provides a (non-exhaustive) overview of the MR8 suite's equipment and how instruments are connected. A more thorough description of the equipment is available in the [manual](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Scanner%20info%20%26%20safety/Manual_Philips-MR8?csf=1&web=1&e=1Bh0eI).
-
-Systems are color-coded, and can be read as follows:
-
-- <span style="color:rgb(150, 0, 0)">**Red**</span> lines and boxes indicate connections from the scanner:
-    - **TTL Pulse** a.k.a. the "trigger", which is used among other things to synchronize the fMRI task with the scan.
-    - **Data** connections from the scanner to the PC.
-- <span style="color:rgb(65, 115, 185)">**Blue**</span> lines and boxes indicate button boxes, and double lines represent optical fiber connections. Specifically:
-    - **Nata** box, 5 buttons. Important: if you use this box, make sure your code can differentiate between the `5` button code and the `5` trigger code. This can be done programmatically, and it is addressed in recent versions of our scripts. An alternative workaround would be to relay the trigger through the diamond box, which sends the `T` trigger code instead of the usual `5`. If you need to do this, **make sure you switch back to the original set-up** at the end of your scanning session.
-    - **Diamond** box, 4 buttons. This box is marked with a red tape. When the trigger box is connected to this box (which *should not* be the case), this box relays the trigger `T` to the stim PC.
-    - **2-buttons** box. When the trigger box is connected to this box (which is the expected and usual set-up), this box relays the trigger `5` from the scanner to the Stim PC.
-- <span style="color:rgb(103, 166, 90)">**Green**</span> lines and boxes indicate Eye-tracking instruments and connections
-    - **Eyelink 1000 long range** system, including the camera and infrared light source
-    - **ET box** to convert analog input from the EL-1000 to digital.
-    - **ET PC** to run the Eyelink software and control recordings and settings.
-    - Power for the ET system is located in the back room.
-- <span style="color:rgb(123, 82, 123)">**Purple**</span> lines and boxes connect the MRI control PC (old system, which we use)
-- <span style="color:rgb(204, 146, 39)">**Gold**</span> lines and boxes connect the MRI control PC (new system, which we DO NOT use)
-- **Dotted** lines mostly relay audio/video
-- **Dashed** lines are power lines.
+!!! danger "The magnetic field reaches outside the magnet room"
+    The 5 Gauss line extends into the technical room, and the hallway door of the magnet room is only about 2.7 m from the magnet centre. Bring no equipment into the MRI department without approval of the MRI Safety Officer (see [First steps](fmri-get-started.md#attend-the-mr-safety-course)).
 
 ---
 
 ## Stimulus PC
 
-The stimulus computer's desktop is located in the **control room**. It is the second-last computer from the right, between the eye-tracking computer (last) and MRI control computer.
+The hospital stimulus PC stands in the console room. It is the standard computer for presenting stimuli at MR11.
 
 ??? deflist "Login"
-    Use the provided username and password. Login details can be found [here](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/_layouts/15/Doc.aspx?sourcedoc=%7B5F0ACBA0-431D-45EE-BB84-4DAF31531222%7D&file=Contact%20information%2C%20usernames%20and%20passwords.docx&action=default&mobileredirect=true).
+    Login details are in the [contact and passwords document](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/_layouts/15/Doc.aspx?sourcedoc=%7B5F0ACBA0-431D-45EE-BB84-4DAF31531222%7D&file=Contact%20information%2C%20usernames%20and%20passwords.docx&action=default&mobileredirect=true) in the Hoplab Teams folder and on the radiology wiki (*Stimulus PC* page). Do not copy them anywhere public.
 
-    !!! tip "Password Not Accepted?"
+    !!! tip "Password not accepted?"
         If the password is not accepted, check for a **qwerty-azerty** keyboard mismatch. Press `alt+shift` and ensure **EN** is selected on the login screen.
 
-??? deflist "Experiment files"
-    Store your experiment folders under `C:\Research\Psychology\` (create your own folder within this directory).
+??? deflist "Software"
+    **PsychoPy v2026.1.3** is installed (radiology wiki, August 2026). Pin this version in your experiment (PsychoPy *useVersion*) or check that your script runs on it during your test session.
 
-??? deflist "Installed software"
-    **Matlab 2011b, 2015a**, and **Psychtoolbox 3.0.123** are installed.
+??? deflist "Displays"
+    The PC has two displays:
 
-    !!! tip
-        If Matlab freezes or shows a JAVA error, restarting Matlab should fix the issue.
+    - **Display 1** = the in-room screen (what the participant sees);
+    - **Display 2** = the local monitor in the console room.
 
-??? deflist "Screen information"
-    To flip the screen, adjust the **projector settings**, not the computer.
+    The displays can be set to *extend* or *duplicate* in Windows settings. In both modes, the participant screen is **screen 1**. In PsychoPy Builder, set it under *Experiment settings › Screen*.
 
-![Screen information](../../assets/mr8_screenInformation.png)
+??? deflist "House rules"
+    - Do **not** use the stimulus PC for data transfer, e-mail or web browsing.
+    - Do **not** install software yourself. Ask Ron Peeters.
+    - At the end of your session, close all software but **leave the PC on**.
+    - Take your log files with you at the end of the session (see [After scanning](fmri-procedure.md#after-scanning)).
 
----
-
-## Trigger and button boxes
-
-The scanner sends a trigger "5" to the stimulus computer. Different setups are used for static and dynamic stimuli:
-
-=== "Static Stimuli"
-
-    A single wire connects two button boxes, each with 2 buttons:
-
-      - **Box 1**:
-        - Blue button = Trigger 1
-        - Yellow button = Trigger 2
-      - **Box 2**:
-        - Green button = Trigger 3
-        - Red button = Trigger 4
-
-=== "Dynamic Stimuli (e.g., movies)"
-
-    A response box with 4 buttons:
-
-      - Blue button = Trigger "b"
-      - Yellow button = Trigger "y"
-      - Green button = Trigger "g"
-      - Red button = Trigger "r"
-
-!!! warning "Check Trigger Outputs"
-    Before starting the experiment, verify that the buttons provide the expected outputs on the stimulus PC screen. If no triggers are working:
-
-    - Restart Matlab and/or the stimulus computer.
-    - Check if any cables have been left disconnected. The **response box** is on top of the stimulus desktop PC in the **control room**. Ensure both cables are properly connected.
-
-![Trigger box](../../assets/triggerbox.png)
-
-??? failure "Button Box Not Responding"
-    1. Restart **Matlab**.
-    2. Reset the button boxes in the **technical room** by unplugging and reconnecting the power cables.
-    3. If the problem persists, restart the **stimulus computer**.
-
-??? failure "Trigger Not Working"
-    1. Restart **Matlab** and check for responses from the button box.
-    2. Ensure the trigger passes through the **static stimuli box** (check if the boxes are responsive).
-    3. Verify that all cables are connected properly. The **response box** is on the table next to the desktop PC in the technical room.
-
-    ??? danger "Restarting the Scanner"
-        Do not do this without the approval of Ron or Stefan. If the trigger still doesn't work, you may need to restart the scanner:
-
-        1. Ensure the volunteer is out of the scanner first.
-        2. Go to the **technical room** and locate the box with the **red stop** and **green start** buttons.
-        3. Press the **red button** to stop the scanner. Wait 10 seconds, then press the **green button** to restart it.
-        4. Log back into the scanner computer using **MRService** credentials.
-        5. Wait until all components are ready and restart the software.
-           Confirm any errors, such as helium pressure alerts, by pressing **OK**.
+!!! note "A lab stimulus laptop is planned"
+    The lab plans to buy its own stimulus-presentation laptop, so that we can maintain the software ourselves and test experiments on the same machine before going to the scanner. It is **not available yet**: until it is, use the hospital stimulus PC. A laptop can be connected to the in-room screen and the trigger box (see [Connecting a laptop](#connecting-a-laptop)), but any laptop brought into the MRI department needs prior approval of the MRI Safety Officer.
 
 ---
 
-## Scanner table and coils
+## Trigger box and buttons
 
-1. **Cover Cushions**:
-     Always cover the cushions with paper towels before use.
+MR11 uses a **Current Designs** fibre-optic response system (fORP). The interface box in the console room receives the scanner trigger and the button presses and sends them to the stimulus PC as keyboard presses over USB.
 
-2. **Keep Equipment Off the Floor**:
-     Do not place cushions or equipment on the floor. If any are found on the floor, place them on the shelves.
+### Mode
 
-3. **Patient Table Setup**:
-    - The **32-channel coil** should be placed ~10 cm from the edge of the table.
-    - Coil connections:
-        - **Left lower plug** and **right upper plug**.
-    - **Headphones**:
-      Plug into the upper left connector at the top of the table.
-    - **Panic Button**:
-      Plug into the lower left connector at the bottom of the table.
+The box has several output modes, selected with the knob. Check the mode at the start of every session by pressing the knob.
 
-!!! info "Running Low on Supplies?"
-    If you run out of supplies (e.g., paper towels), you can find new ones in the closet right in front of you when entering **MR suite E408**. Paper rolls are stored on top.
+- **Default: mode 002, `HID NAR BYGRT`**. The box acts as a USB keyboard; keys stay pressed until the button is released ("no auto-release"). This mode works best with the stimulus PC and PsychoPy.
+- If you find the box in another mode, set it back to 002 and leave it in 002 at the end of your session.
+
+LEDs on the box show each trigger and button press, which helps when you check the set-up.
+
+### Key codes (mode 002)
+
+| Input | Key sent |
+|-------|----------|
+| Scanner trigger (one per volume) | `t` |
+| First button pad: blue, yellow, green, red | `b`, `y`, `g`, `r` |
+| Second button pad | `d`, `n`, `w`, `e` (from a lab experiment; which colour sends which key, and which pad is left or right, to be confirmed) |
+
+The radiology wiki gives the trigger as the letter "T" and the buttons as "B for blue, Y for yellow, etc.". Your script receives them as ordinary key presses (PsychoPy and Psychtoolbox report lowercase key names such as `t`). Check the exact names with your own script during your test session.
+
+!!! warning "Trigger: one pulse per volume"
+    The scanner sends one trigger (`t`, shown as "T" on the box) at the start of the run, then one per volume. Start your task on the first trigger, and log the triggers with their timestamps so you can check the timing afterwards.
+
+    The fibre-optic trigger cable is fragile (only one of the two installed cables works): **do not touch or move it**.
+
+??? failure "No triggers or button presses arrive"
+    1. Look at the LEDs on the interface box: if they light up, the box receives the signal and the problem is on the PC side (wrong window in focus, script not listening to the right keyboard). If they stay dark, the problem is on the scanner or cable side.
+    2. Check that the box is in mode 002.
+    3. Restart your script, then PsychoPy.
+    4. Do not touch the fibre-optic cables. If the trigger still does not arrive, call the MR technician (40526) or contact Ron Peeters.
+    5. **Last resort**: when the trigger cable failed in July 2026, the radiology team advised starting the task by hand: press `t` on the keyboard at a known moment of the run (e.g., when the console shows the remaining scan time you planned for). Write down for each run when you pressed it. You can estimate the delay afterwards from the time between the end of the task and the end of the scan, and correct your event timings or drop the first volume.
 
 ---
 
-## Projection system
+## In-room screen
 
-### Screen
+The participant sees the stimuli on a **Cambridge Research Systems BOLDscreen 32 UHD**, an MR-compatible LCD screen at the back of the scanner, viewed through the mirror on the head coil. Its control box is in the console room.
 
-- **Correct Position**:
-    Ensure the back of the screen is aligned with the black marks on the scanner table.
+| Property | Value |
+|----------|-------|
+| Default input | Stimulus PC |
+| Default setting | L/R flip **ON** (corrects the mirror image) |
+| Native resolution | 3840 × 2160 at 60 Hz; other input resolutions are rescaled by the screen (manufacturer specification) |
+| Resolution used in lab experiments | 1920 × 1080 |
+| Screen width | 700 mm (used in lab experiments) |
+| Screen height | 395 mm (lab notes, to be confirmed) |
+| Eye-to-screen distance | 1850 mm (used in lab experiments, to be confirmed) |
 
-- **Handling**:
-    Never touch the projection side of the screen. Use the plastic stand at the bottom if you need to move it.
+!!! warning "Visual angles"
+    Compute visual angles from the values above only after they are confirmed. If your study depends on exact visual angles, measure the screen and the viewing distance yourself during your test session and report the values you used in your paper.
 
-### Projector filter
+- **End of session**: switch the screen off. The last user of the day puts the cover on the screen in the magnet room (the cover lies on its base).
 
-Ensure that **filter 3NB** (1.34% light transmission) is placed in front of the projector tunnel for consistency across scan sessions.
+### Connecting a laptop
 
-MR8 offers four filter options, each with different light transmission levels:
+You may present stimuli from a laptop instead of the stimulus PC, **after approval of the MRI Safety Officer** (Ron Peeters). Steps used by lab members so far:
 
-   | **Filter**             | **Light Transmission** |
-   |------------------------|------------------------|
-   | 3NB                    | 1.34%                  |
-   | A+B                    | 4.27%                  |
-   | A+C                    | 4.86%                  |
-   | Unnamed (grey tape)    | 69.3%                  |
+1. Connect the HDMI cable provided at the screen's control box to the laptop, and select input **HDMI-2** on the control box (press the input button).
+2. Unplug the trigger box USB cable from the front of the stimulus PC tower and plug it into the laptop. The laptop then receives both the scanner trigger and the button presses as key presses.
+3. At the end of the session, plug the USB cable back into the stimulus PC and switch the screen input back to the stimulus PC.
 
-You can combine filters to adjust the luminance.
-
-!!! tip "Handle Filters with Care"
-    Filters are fragile. Always hold them by the frame to avoid damage. Filters are stored in the top left drawer of the cabinet in the scanner room.
-
-### Projector usage
-
-1. **Powering On**:
-   The projector brand is **NEC**. Use the remote (button on the top right) to turn it on.
-
-2. **Adjusting the Lens**:
-   If the lens is out of position, use the buttons next to the lens on the projector to adjust — **do not touch the lens directly**.
-
-??? failure "Projector showing blue window or incorrect display"
-    - Check that the projector cable is properly connected to the stimulus computer.
-    - Ensure the source is set to DisplayPort.
-         Press the DisplayPort button on the remote to reset the projector to standard settings.
-
-!!! tip "Viewing Projector Menu"
-    To view the projector menu, you'll need to be inside the scanner room with the remote. Remove the filter, then use the remote inside the scanner to see the menu options on the projection screen.
+!!! tip "Display set-up"
+    Use one mirrored screen: in Windows choose *Duplicate*, with the laptop screen and the in-room screen both at 1920 × 1080, 60 Hz. Do not use an extended desktop. Before scanning, check that the Psychtoolbox synchronisation tests or the PsychoPy frame-timing checks pass without warnings. If they do not, switch the laptop's own screen off and present on the in-room screen only.
 
 ---
 
 ## Audio system
 
-### Yellow headphones
+There are two headphone options:
 
-- The yellow headphones are stored on the left side of the storage space (against the wall).
-- The headphones will present sound at full level only when placed inside the scanner bore.
-- To use them, disconnect the **white headphones** from the head coil and replace them with the yellow headphones.
+- **Siemens headphones** (large headset). You talk to the participant through the white Siemens intercom, which plays in the room and in this headset. To also play sound from the stimulus PC, plug in the small audio cable.
+- **Dedicated research headphone system**: the blue box under the stimulus PC, with its own blue microphone. It uses **smaller ear shells that fit inside the 64-channel head coil** (the Siemens headset is too large for most participants in that coil). Use this system with the 64-channel coil.
 
-### Control room microphone
+To play sound (stimuli or music) through the dedicated system:
 
-The microphone is always on, but goes into standby mode after a few seconds.
+1. Start the sound on the stimulus PC.
+2. Turn on the sound system (on/off button at the top left of the back, labelled *A*).
+3. Press the round volume knob (*B*) and choose:
+    - **fMRI-VOL** to set the volume for the participant;
+    - **fMRI-MONVOL** to set the monitoring volume in the console room.
+4. Switch the audio system off at the end of the session.
 
-| **Button**       | **Function**                                                                 |
-|------------------|-------------------------------------------------------------------------------|
-| **+ / - Buttons** | Increase/decrease the volume.                                                 |
-| **Menu Button**   | Access various options. Hold it and press the + button to navigate the menu.  |
-| **Grey Button**   | Speak to the participant.                                                     |
+Participants always wear earplugs as well. Participants who refuse hearing protection cannot be scanned.
 
-Activate the **fMRI settings** by holding the **Menu button** and pressing **+** to navigate to the fMRI option.
-
-### Amplifier and converter
-
-- Check that the **red and white plugs** (audio cables to the headphones) are connected to the converter.
-- Ensure the **power cable** is plugged in next to the red and white plugs.
-
-??? failure "Participant Can't Hear You"
-    - Reboot the amplifier by unplugging the **power cable** underneath the desk.
-    - Reboot the converter by unplugging its power cable.
-
-??? failure "Volume Imbalance (left/right)"
-    - Adjust the balance via the **Menu button**. Hold it and use **+/-** to adjust levels separately.
+??? failure "The participant cannot hear the sound or you"
+    1. Check that the audio system is switched on (button *A* at the back) and that **fMRI-VOL** is not set too low.
+    2. With the Siemens headset, check that the small audio cable is plugged in, otherwise only the intercom is heard.
+    3. For the intercom, press the button to talk and release it to listen, with the volume at maximum.
+    4. If it still does not work, call the MR technician (40526).
 
 ---
 
-## Eyetracker hardware
+## Scanner table and coils
 
-The MR8 suite includes an **Eyelink 1000 long range** eye-tracking system. For the procedural steps on setting up eye-tracking during a scan, see the [Eyetracker setup](fmri-procedure.md#eyetracker-setup) section of the scanning protocol.
+- Cover the cushions with paper towels. Do not put cushions or equipment on the floor; put them on a shelf.
+- The **64-channel coil** sits on the table about 10 cm from the edge, plugged in at the top of the table. The bottom part must be slotted into the table.
+- The **panic button** ("communication button" when you explain it to participants) is plugged in at the bottom left of the table.
+- After clinical use, the table may be set up differently: check the set-up before your participant arrives.
 
-- **Power**: Connect the eyetracker plug to the **power supply** (marked with a white tag: "eyetracking"). Power is located in the back room.
-- **Screen alignment**: Ensure the screen is aligned with the **EYE** line.
-- **Floor marks**: Check if the eyetracker setup is aligned with the floor marks.
-- **Eyelink software**: Boot the **Eyelink** software on the Eyetracker PC (default option in the Windows Boot Manager). If Eyelink doesn't start, press `t` followed by **Enter** to launch it manually.
+---
+
+## Eye tracker
+
+An EyeLink eye tracker (EyeLink 1000 long range) is planned to be installed at MR11, but is not available yet. If your study needs eye tracking, contact Ron Peeters to confirm whether and when it can be used.
 
 ---
 
 <!--
-__TODO__: [Simen] Verify the projected screen dimensions and viewing distance at MR8. Andrea measured the projection as 32 cm x 18.5 cm (full screen). Compare against the values in MR8_screeninfo.docx (https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/_layouts/15/Doc.aspx?sourcedoc=%7B68475DCF-8E6F-4182-B4E6-82E343B22356%7D) and update the wiki with the correct values. This is critical for accurate visual angle calculations.
-__TODO__: Document the response codes sent by each button box: (1) Nata box (5 buttons) — list the key codes, (2) Diamond box (4 buttons) — list the key codes and the "T" trigger code, (3) 2-button box — list the key codes and the "5" trigger relay. This info is essential for task programming.
-__TODO__: The MATLAB and Psychtoolbox (PTB) versions referenced on this page are outdated. Update to reflect the current versions installed on the stimulus PC at MR8. Document the current MATLAB version, PTB version, and any version-specific configuration changes.
-__TODO__: Update all photographs and screenshots on this page. Several images appear outdated and may not reflect the current MR8 setup. Re-take photos of: the control room, the scanner room layout, the button boxes, and the stimulus PC setup.
+__TODO__: [Andrea] Is there a console-room monitor that shows what the BOLDscreen shows (e.g., on the hub's Clone output), and is that image L/R flipped? Add it to "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
+__TODO__: [Andrea] Which display resolution should laptops and the stimulus PC send? The BOLDscreen panel is 3840 x 2160 at 60 Hz and rescales other inputs, while lab experiments use 1920 x 1080, which matters for visual angles. Can the BOLDscreen run at a lower native resolution, or should we move to 4K? Update "In-room screen". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
+__TODO__: [Andrea] Which input does the dedicated headphone system (blue box) take from the computer? Add it to "Audio system" and "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
+__TODO__: [Andrea] When will the EyeLink be installed at MR11, and how does it connect (network or other port on the stimulus computer)? Update "Eye tracker". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
+__TODO__: [Andrea] How is a new laptop approved by the MRI Safety Officer before first use, and is there anything else to consider when choosing it? Add it to "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
+__TODO__: [Andrea] Confirm the BOLDscreen screen height (395 mm) and the eye-to-screen distance (1850 mm, from Simen's experiment settings; the original note said 185 mm), then remove the "to be confirmed" labels. (Not asked yet.)
+__TODO__: [Andrea] Confirm the second button pad codes (d, n, w, e in Simen's experiment settings) in mode 002: which colour sends which key, and which pad is for the left hand. The radiology wiki only documents B/Y/G/R and T. (Not asked yet.)
+__TODO__: [Andrea] Confirm with Ron that moving the trigger box USB cable from the stimulus PC to a laptop for each session is fine. (Not asked yet.)
+__TODO__: [Andrea] Check whether MATLAB and Psychtoolbox are installed on the MR11 stimulus PC (the radiology wiki only lists PsychoPy) and add the versions. (Not asked yet.)
+__TODO__: [Andrea] Check which other equipment is available at MR11: MR-compatible (yellow) headphones, extra button boxes. (Not asked yet.)
+__TODO__: [Andrea] Find out what is kept in the MR11 storage room and where its key is (it was missing in September 2026), and add it to "The MR11 suite". (Not asked yet.)
+__TODO__: [Andrea] Get a copy of Ron's booklet on the new MRI system (asked on 2 July 2026) and check this page against it. (Not asked yet.)
+__TODO__: [Andrea] Ask the radiology team whether we may publish photos of the MR11 console room, trigger box and in-room screen on this wiki, then add them. (Not asked yet.)
+__TODO__: [Andrea] Lab stimulus laptop (status 1 October 2026: purchase proposed, not approved or ordered; maintainer, storage and booking not decided). When it is bought and approved, add a section on how to book it, its software (planned: Windows 11, MATLAB + Psychtoolbox and PsychoPy Standalone), how to connect it (HDMI-2 on the BOLDscreen box, fORP USB in mode 002, Windows Duplicate) and how to check it (Psychtoolbox sync tests and PsychoPy frame checks without warnings), and update the note in "Stimulus PC".
+__TODO__: [Simen] Simen reports that Windows *Duplicate* fails with the BOLDscreen and *Extend* works, while the "Connecting a laptop" tip says Duplicate at 1920 x 1080 and no extended desktop. Test again with the laptop screen switched off, then update the tip (also wait for the answer on the display resolution). (Reported on Slack, 2026-10-02.)
 -->

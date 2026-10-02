@@ -5,6 +5,9 @@ You should land on this page after collecting your fMRI data and [converting it 
 !!! tip "Data Storage Suggestion"
     Bring a **dedicated hard drive** to the hospital for storing the output data. This will ensure that you have a reliable medium to transfer and secure the raw data from the scanner.
 
+!!! info "Where your data come from"
+    MR11 (Siemens) sends DICOMs to XNAT (see [Getting your data](../fmri-procedure.md#getting-your-data-xnat)). The 7T is a GE scanner (see [Flanders 7T](../fmri-7t.md)). Notes for older Philips datasets are on the [MR8 archive page](../fmri-mr8.md).
+
 ---
 
 ## Quick Links to Resources
@@ -51,82 +54,14 @@ sourcedata
 
 ---
 
-## How to Get Images from the Scanner
+## Handling NaNs in JSON Files
 
-For optimal BIDS conversion of fMRI data, it is recommended to initially collect **DICOM files** (not NIfTI or PAR/REC) at the scanner. Although this adds an extra conversion step, it ensures accurate conversion into BIDS format. Follow these steps:
-
-1. **Initial DICOM Collection**:
-    - Collect DICOM files for each modality (e.g., T1 and BOLD) for one subject.
-    - Convert these DICOM files to NIfTI format using `dcm2nii`, which will generate JSON sidecar files. Refer to the [BIDS conversion guide](./fmri-bids-conversion.md) for more details on the conversion process.
-
-2. **Template Creation**:
-    - Rename the JSON files for T1 and BOLD images to `sub-xx_T1w.json` and `sub-xx_task-exp_run-x_bold.json`.
-    - Move the JSON files into the `misc/` folder.
-
-3. **Subsequent Data Collection**:
-    - After creating the template JSON files, collect future data directly in NIfTI format to save time. The `script01_nifti-to-BIDS.m` script will use the JSON templates to populate the BIDS folders, as long as the fMRI sequence remains unchanged. If the sequence changes, generate new templates from the DICOM files.
-
----
-
-## Missing Fields in JSON Files
-
-Despite these steps, some BIDS fields in the sidecar JSON files may remain empty due to limitations of the Philips scanner. The most relevant fields that may be left empty are `SliceTiming` and [`PhaseEncodingDirection`](https://github.com/xiangruili/dicm2nii/issues/49).
-
-- **SliceTiming**:
-  - This field is required by fMRIPrep during slice timing correction.
-  - Populate it using the [`get_philips_MB_slicetiming.py` script](../../../assets/code/get_philips_MB_slicetiming.py), assuming you have access to a DICOM file and know the multiband factor (default is 2, as used in our lab).
-    !!! warning
-        The script assumes an interleaved, foot-to-head acquisition and will not work for other acquisition types.
-
-- **PhaseEncodingDirection**:
-  - This BIDS tag helps tools undistort images.
-  - Philips DICOM headers specify the phase encoding axis (e.g., A-P or L-R) but not the polarity (A --> P or P --> A).
-  - Check the scanner settings or consult with Ron to determine whether the polarity is A --> P or P --> A, and update the `?` in the JSON file with `j` (P --> A) or `j-` (A --> P).
-  - More info [here](https://community.mrtrix.org/t/phase-encoding-direction-from-philips-achieva/3578/6) and [here](https://neurostars.org/t/determining-phase-encoding-direction-and-total-read-out-time-from-philips-scans/25402/4)
-
-!!! info "Handling NaNs in JSON Files"
-    NaN values in JSON files can cause errors during the MRIQC workflow. To address NaN values, see the discussions in [this post](https://groups.google.com/g/mriqc-users/c/0v170KRJoKk), [this GitHub issue](https://github.com/nipreps/mriqc/issues/1089), and [this NeuroStars thread](https://neurostars.org/t/node-error-on-mriqc-wf-dwimriqc-computeiqms-datasink/29188).
-
-For more details on Philips DICOM conversion, refer to the following resources:
-
-- [Philips DICOM Missing Information - dcm2niix](https://github.com/rordenlab/dcm2niix/tree/master/Philips#missing-information)
-- [PARREC Conversion - dcm2niix](https://github.com/rordenlab/dcm2niix/tree/master/PARREC)
-
----
-
-## Where to Find Additional Info on the fMRI Sequence
-
-Additional information on the fMRI sequence can be found directly at the scanner. Here’s a step-by-step guide:
-
-1. **Start the Examination**:
-    - Go to **Patients** -> **New Examination** -> **RIS**.
-    - Select your subject and fill out the required fields:
-        - **Weight:** Enter the subject's weight.
-        - **Implants:** Specify if the subject has any implants.
-        - **Pregnant:** Indicate if the subject is pregnant.
-
-2. **Load the Scanning Sequence**:
-    - Drag and drop your scanning sequence from the bottom panel to the left panel.
-
-3. **Select a Run**:
-    - Click on either a functional or anatomical run from the available list.
-
-4. **Expand the Tabs**:
-    - Click on the `>>` symbol in the bottom panel, below the sagittal, coronal, and horizontal views, to expand additional tabs.
-
-5. **Access Geometry Settings**:
-    - Navigate to the **Geometry** tab to access important scan parameters:
-        - **MB factor**: Indicates the number of slices recorded simultaneously, used for slice timing correction.
-        - **Slices**: Total number of horizontal slices.
-        - **Fold-over direction**: Required for correcting the phase encoding direction in the BIDS field.
-        - **Slice scan order**: Typically Foot to Head (FH), used for slice timing correction.
-
-6. **Check Additional Fields**:
-    - Visit the **Coils** tab for details about the head coils used during the scan.
-    - In the **Contrast** tab, note the following fields:
-        - **TE (Echo Time)**: Usually a single echo of 30 ms by default.
-        - **TR (Repetition Time)**: Typically set to 2000 ms by default.
+NaN values in JSON files can cause errors during the MRIQC workflow. To address NaN values, see the discussions in [this post](https://groups.google.com/g/mriqc-users/c/0v170KRJoKk), [this GitHub issue](https://github.com/nipreps/mriqc/issues/1089), and [this NeuroStars thread](https://neurostars.org/t/node-error-on-mriqc-wf-dwimriqc-computeiqms-datasink/29188).
 
 ---
 
 Next Step --> [Set-up your environment](fmri-setup-env.md)
+
+<!--
+__TODO__: [Andrea] Add Siemens (MR11, XA61 DICOM from XNAT) and GE (7T) notes for BIDS conversion: which fields dcm2niix fills (SliceTiming, PhaseEncodingDirection, TotalReadoutTime), and where to find sequence parameters on the Siemens console.
+-->
