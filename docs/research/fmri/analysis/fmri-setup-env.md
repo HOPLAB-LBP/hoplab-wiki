@@ -99,9 +99,13 @@ For up-to-date installation info, please consult the Docker Desktop installation
 After installation, one need to configure Docker resources.
 
 For operating sustems using a WSL2 backend as its default backend for the Windows Subsystem for Linux (e.g., Windows 11 home), resource configurations must be done in a .wslconfig file.
+
+<div class="steps-list" markdown>
+
 1. create a new .wslconfig file in unix format (e.g., use notpad++ and select unix format before saving). Here is an example of how one configuration may look:
+
     ```bash
-   [wsl2]
+    [wsl2]
     # Specify memory - 80% of total RAM
     memory=51GB 
     # Number of cores: max - 2
@@ -110,10 +114,15 @@ For operating sustems using a WSL2 backend as its default backend for the Window
     swap=16GB
     ```
 
-3. Store the .wslconfig file in Users/< username >
-4. Shut down and restart WSL (in powershell: wsl --shutdown)
+2. Store the .wslconfig file in Users/< username >
+3. Shut down and restart WSL (in powershell: wsl --shutdown)
+
+</div>
 
 For other operation systems that do not use WSL2 backend:
+
+<div class="steps-list" markdown>
+
 1. Open Docker Desktop settings
 2. Go to "Resources" section
 3. Allocate resources:
@@ -121,6 +130,8 @@ For other operation systems that do not use WSL2 backend:
     - Memory: Set to 80% of total RAM (e.g., if you have 32GB, set to 25GB)
     - Disk image size: Set to a reasonable amount (e.g., 100GB)
 4. In the "File sharing" or "Resources > File sharing" section, add your project folder (e.g., `~/fMRI_Projects`)
+
+</div>
 
 #### Installing Docker tools
 
@@ -280,6 +291,8 @@ There are several ways to install dcm2niix, depending on your operating system a
 
 We use Conda to manage our Python environment.
 
+<div class="steps-list" markdown>
+
 1. Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 2. Create and activate the environment:
 
@@ -292,6 +305,8 @@ We use Conda to manage our Python environment.
     ```bash
     conda activate fmri_env
     ```
+
+</div>
 
 !!! warning
     It's **crucial** to create a new conda environment for each new project you start. Installing new packages into the base conda environment is a very bad practice that will eventually lead to a bloated, brittle environment with broken packages and compatibility issues. Uninstalling or re-installing Python on some machines can be a very painful (sometimes impossible) process!
@@ -379,29 +394,33 @@ To install:
 1. Download from the [official website](https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall)
 2. Set up environment variables:
 
-   ```bash
-   export FREESURFER_HOME=/path/to/freesurfer
-   source $FREESURFER_HOME/SetUpFreeSurfer.sh
-   ```
+    ```bash
+    export FREESURFER_HOME=/path/to/freesurfer
+    source $FREESURFER_HOME/SetUpFreeSurfer.sh
+    ```
 
 ??? warning "FreeSurfer on Windows"
     FreeSurfer is not natively compatible with Windows. To use FreeSurfer on a Windows system, you have a few options:
 
-    1. Use Windows Subsystem for Linux (WSL):
+    === "Use Windows Subsystem for Linux (WSL)"
+
         - Install WSL 2 on your Windows machine
         - Install a Linux distribution like Ubuntu through WSL
         - Install FreeSurfer within the Linux environment
-    
-    2. Use a virtual machine:
+
+    === "Use a virtual machine"
+
         - Install virtualization software like VirtualBox or VMware
-        - Set up a Linux virtual machine 
+        - Set up a Linux virtual machine
         - Install FreeSurfer in the Linux VM
-    
-    3. Use a Docker container:
+
+    === "Use a Docker container"
+
         - Install Docker Desktop for Windows
         - Pull and run a FreeSurfer Docker image
-    
-    4. Remote access:
+
+    === "Remote access"
+
         - Use a remote Linux server or cluster with FreeSurfer installed
         - Connect via SSH or remote desktop
 
@@ -416,10 +435,10 @@ ANTs is used for image registration and normalization. As for FreeSurfer, this t
 1. Download from [GitHub](https://github.com/ANTsX/ANTs/releases)
 2. Add to system PATH:
 
-   ```bash
-   export ANTSPATH=/path/to/ANTs/bin
-   export PATH=$ANTSPATH:$PATH
-   ```
+    ```bash
+    export ANTSPATH=/path/to/ANTs/bin
+    export PATH=$ANTSPATH:$PATH
+    ```
 
 ---
 

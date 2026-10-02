@@ -30,6 +30,8 @@ If you are financed by **FWO**, check out [this page](https://admin.kuleuven.be/
 
 Note that KU Leuven typically works with a purchase order (PO) or invoice. Occasionally, purchases can be made with personal funds (e.g., for small amounts or in urgent cases), which can be recovered through the professional expenses process in KU Loket as follows:
 
+<div class="steps-list" markdown>
+
 1. Log in to KU Loket and go to "**Finance & Purchasing**"
 2. Click on "**Professional expenses**" (shown in red below)
 3. Click on "**Forms**", create a "**+ New form**" and give it an informative name (e.g., congres X)
@@ -39,8 +41,10 @@ Note that KU Leuven typically works with a purchase order (PO) or invoice. Occas
     !!! warning "Invoices as digital proof"
         If the digital proof is an invoice, it has to be issued to your **private address**. If an invoice is still issued in the **name of KU Leuven**, it will not be systematically rejected, but this practice is being phased out.
 
-7. Couple the appropriate financial antenna to your form ([Agna Marien](https://www.kuleuven.be/wieiswie/en/person/00088446), u0088446)
-8. Add information on which fund your expenses should be paid from (ask  your PI)
+6. Couple the appropriate financial antenna to your form ([Agna Marien](https://www.kuleuven.be/wieiswie/en/person/00088446), u0088446)
+7. Add information on which fund your expenses should be paid from (ask  your PI)
+
+</div>
 
 ![Reimbursement](../assets/KULoket_reimbursement.png)
 
@@ -58,11 +62,15 @@ There are a couple of things we usually do in the lab when we take a holiday:
 
 The procedure for KU Leuven employees is as follows (If you are financed by FWO, check out [this page](https://admin.kuleuven.be/mykuleuven/en/channel/mk108/index)):
 
+<div class="steps-list" markdown>
+
 1. Log in to KU Loket and go to **"Personnel"**
 2. Navigate to **"Absences"** and make sure **"Leave"** is selected in the selection pane (it should be the default)
 3. Select the start and end date of your holiday period on the displayed calendar and click **"Request"**
 4. Choose how many hours of each type of leave you are entitled to you want to use for this request
 5. Submit the request to your approver, who will need to approve it
+
+</div>
 
 ![Holiday](../assets/KULoket_leave.png)
 
@@ -88,6 +96,8 @@ This registration is needed in order to claim professional expenses made during 
 
 Proceed as follows:
 
+<div class="steps-list" markdown>
+
 1. Log in to KU Loket and Go to "**Personnel**"
 2. Navigate to "**Register missions**" and click on "**New request**"
 3. Fill out the required information on (amongst others):
@@ -100,6 +110,8 @@ Proceed as follows:
 4. Add the correct financial antenna to the form ([Agna Marien](https://www.kuleuven.be/wieiswie/en/person/00088446), u0088446)
 5. Submit the form
 
+</div>
+
 ![Register missions](../assets/KULoket_missions.png)
 
 !!! warning
@@ -109,12 +121,16 @@ Proceed as follows:
 
 In order to book a room, contact [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497). You can check which rooms are available yourself through KU Loket:
 
+<div class="steps-list" markdown>
+
 1. Go to KU Loket, navigate to the tab "**HSE & Spaces**" and click on "**Classroom reservations**"
 2. Click "**Search on room or building**" and enter `PSI`
 3. Select the rooms that fit your needs
 4. Click "**Show reservations**"
 5. Browse to the date & time when you need the room
 6. Look for an available room and send this info to [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497).
+
+</div>
 
 ![Room reservation](../assets/KULoket_roomreservation.png)
 
@@ -125,9 +141,9 @@ In order to book a room, contact [Manou](https://www.kuleuven.be/wieiswie/en/per
 
 The standard booking tool for testing rooms and equipment (testing cubicles, EEG room, TMS room, fMRI dummy scanner, VR room, etc.) in our faculty is [**Calira**](https://app.clustermarket.com/).
 
-- To access Calira, you need to make a user account using an invitation link. This link decides to which infrastructure you have access to and is different for every research unit/group. For our group (B&C Human), you can get the link by sending an email to [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) (<klara.schevenels@kuleuven.be>).
-- When you have access, choose the option to log in via your organization, so you can access it through the KU Leuven login tool.
-- Make sure to use Calira to book your testing time slots when you use common rooms or material. Request access to the items you don’t have permission to in case you need it.
+1. To access Calira, you need to make a user account using an invitation link. This link decides to which infrastructure you have access to and is different for every research unit/group. For our group (B&C Human), you can get the link by sending an email to [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) (<klara.schevenels@kuleuven.be>).
+2. When you have access, choose the option to log in via your organization, so you can access it through the KU Leuven login tool.
+3. Make sure to use Calira to book your testing time slots when you use common rooms or material. Request access to the items you don’t have permission to in case you need it.
 
 If you need a **larger PC room**, e.g., for a collective testing session, you can follow the steps [above](#reserve-a-room-for-a-meeting) to book one of the "ICTS PC-KLAS" rooms in VHI.
 

@@ -26,12 +26,16 @@ Each lab member received a **personal KU Leuven SharePoint space** (1 TB). The e
 
 If you haven't yet, these are the steps to sync SharePoint to your desktop (one-time setup).
 
+<div class="steps-list" markdown>
+
 1. Open the email “KULeuven Teams Creation Info”
 2. Click the SharePoint site link
 3. Click `Documents`
 4. Click Sync
 5. Allow Microsoft OneDrive if prompted
 6. Close the pop-up
+
+</div>
 
 Your SharePoint will now appear in File Explorer under `KU Leuven → GHUM PPW → your-name` and it will sync automatically like OneDrive.
 

@@ -6,10 +6,15 @@ To ensure a smooth transition for everyone, you can find some general guidelines
 
 ## General guidelines
 
-1. Create a [logical folder structure with consistent file and folder naming](https://www.kuleuven.be/rdm/en/guidance/data-standards/file-organisation)
-2. Use [open file formats or generally accepted standard formats](https://www.kuleuven.be/rdm/en/rdr/file-formats/)
-3. Provide [clear documentation of project folders and datasets](https://www.kuleuven.be/rdm/en/guidance/documentation-metadata) (see [below](#documentation-expectations) for more details)
-4. In case of doubt, refer to our [decision tree regarding data storage](./index.md#tools-we-use-to-store-and-share-data)
+<div class="do-list" markdown>
+<p class="do-list__heading">Do</p>
+
+- Create a [logical folder structure with consistent file and folder naming](https://www.kuleuven.be/rdm/en/guidance/data-standards/file-organisation)
+- Use [open file formats or generally accepted standard formats](https://www.kuleuven.be/rdm/en/rdr/file-formats/)
+- Provide [clear documentation of project folders and datasets](https://www.kuleuven.be/rdm/en/guidance/documentation-metadata) (see [below](#documentation-expectations) for more details)
+- In case of doubt, refer to our [decision tree regarding data storage](./index.md#tools-we-use-to-store-and-share-data)
+
+</div>
 
 ## Checklist of tasks
 

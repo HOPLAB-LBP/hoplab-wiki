@@ -98,12 +98,16 @@ Ask **Stefan Sunaert** for the current set-up well before your first session, an
 
 The MRI technician runs the scanner. You are responsible for your participant and your experiment:
 
+<div class="steps-list" markdown>
+
 1. Send the participant clear directions to the centre in advance. Participants travel to the centre themselves: the participant compensation already covers their transport.
 2. Bring the signed consent form and the participant's completed 7T safety screening form.
 3. Explain the task and let the participant practise before they go in.
 4. Set up and test your stimulus presentation, trigger and buttons before the participant goes in.
 5. During the scan, run your experiment and keep a written log of each run (start times, problems, repeated runs).
 6. After the session, check with the technician that all series were saved, and agree how you will receive the data.
+
+</div>
 
 Each scan day is also recorded in the logbook of the Flanders-7T space on the radiology wiki (subject code, scans, remarks).
 

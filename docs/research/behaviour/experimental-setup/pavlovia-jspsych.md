@@ -18,6 +18,8 @@ JsPsych offers a framework to write your experiment in javascript. While this mi
 
 A basic workflow that you might want to adopt when scripting your experiment is the following:
 
+<div class="steps-list" markdown>
+
 1. Open your experiment folder in your editor of choice and create a new `index.html` file. Build your javascript code and test it _locally_ by running it in your browser.
 
     !!! tip
@@ -33,6 +35,8 @@ A basic workflow that you might want to adopt when scripting your experiment is 
 
     !!! tip
         It can sometimes be cumbersome to go through the complete _local change > commit > test_ loop just to test out a minor code change. An elegant alternative is to use **flags** in your code that will activate or de-activate the Pavlovia components. The latter are just two: a `init` and a `finish` event. Set these behind an `if` statement, and you'll be able to switch from online to local with one flag, so that you can go back to trying your code locally before syncing your changes (see an example [here](https://github.com/TimManiquet/mouse_tracker_template)).
+
+</div>
 
 ## Common trial types — code examples
 

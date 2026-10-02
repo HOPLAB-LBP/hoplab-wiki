@@ -143,6 +143,8 @@ If you have collected DICOM files from the scanner, you need to **anonymise** an
 
 To convert your data:
 
+<div class="steps-list" markdown>
+
 1. Navigate to your sourcedata folder
 
     ```bash
@@ -165,9 +167,9 @@ To convert your data:
     !!! tip
         You can also use `uigetdir` to interactively select the folder:
 
-    ```matlab
-    addpath(uigetdir)
-    ```
+        ```matlab
+        addpath(uigetdir)
+        ```
 
 4. Anonymize your DICOM files
 
@@ -200,6 +202,8 @@ To convert your data:
     - Generate one `.nii.gz` file per series
     - Produce accompanying `.json` metadata files
     - Create a `dcmHeaders.mat` with all parsed metadata
+
+</div>
 
 ---
 
@@ -247,6 +251,8 @@ myproject
         └── nifti
 </code></pre>
 
+<div class="steps-list" markdown>
+
 1. Navigate to your `sourcedata/sub-xx/nifti/` folder.
 2. Identify the functional and structural NIfTI files.
 3. Rename the files following BIDS conventions:
@@ -255,6 +261,8 @@ myproject
 4. Move the renamed files to their respective folders in `BIDS/sub-xx/`:
     - Functional files go to `BIDS/sub-xx/func/`
     - Structural files go to `BIDS/sub-xx/anat/`
+
+</div>
 
 ---
 
@@ -326,9 +334,13 @@ Create one `events.tsv` file for each function run `.nii` file, using the output
 
 Event files are crucial for analyzing fMRI data. They contain information about the timing and nature of stimuli or tasks during the scan. To create your event files manually:
 
+<div class="steps-list" markdown>
+
 1. Navigate to your `sourcedata/sub-xx/bh/` folder.
 2. Locate the behavioral output files (`.mat` or `.log`) for each run.
 3. Create a corresponding `events.tsv` file for each run in the `BIDS/sub-xx/func/` folder.
+
+</div>
 
 Each `events.tsv` file **must** contain at least three columns: `onset`, `duration`, and `trial_type`, and **can** include additional as needed for your specific analysis. It also **must** contain one row per trial (stimulus) in your experiment.
 
@@ -555,9 +567,13 @@ By following these steps systematically, you'll ensure your data is properly org
 
 Make sure all the steps have been followed successfully by validating your BIDS folder. To do so, use the **[BIDS validator](https://bids-standard.github.io/bids-validator/)**.
 
+<div class="steps-list" markdown>
+
 1. Use the online [BIDS Validator](https://bids-standard.github.io/bids-validator/) to check your BIDS structure.
 2. Upload your entire `BIDS/` folder and review any errors or warnings.
 3. Make necessary corrections based on the validator's output.
+
+</div>
 
 By following these detailed steps, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration.
 

@@ -18,6 +18,8 @@ After installation you will automatically have three PsychoPy applications/inter
 
 Follow the steps below to successfully upload your experiment to Pavlovia.
 
+<div class="steps-list" markdown>
+
 1. Create the experiment in **PsychoPy Builder**.
 2. Create a [**Pavlovia account**](https://gitlab.pavlovia.org/users/sign_in) and log in.
 3. Link your account to the Builder via this button ![Pavlovia login button in PsychoPy Builder](../../../assets/bh-pavlovia-builder-button.png)
@@ -25,6 +27,8 @@ Follow the steps below to successfully upload your experiment to Pavlovia.
 5. Click the **Syncing Globe** ![Pavlovia sync globe button in PsychoPy Builder](../../../assets/bh-pavlovia-sync-button.png) in the Builder, enter a project name, and upload. The icon will turn green when the upload is complete.
 6. Access your experiment on Pavlovia by navigating to **Dashboard > Experiments** in your account.
 7. To test the project, change the status to **piloting** and click **pilot**.
+
+</div>
 
 ![PsychoPy Builder main window screenshot](../../../assets/bh-psychopy-builder1.png)
 
@@ -80,6 +84,8 @@ Online experiments require participants to give informed consent before starting
 
 Build a consent routine in the Builder using text and shape components:
 
+<div class="steps-list" markdown>
+
 1. Add a **Text** component displaying the consent information (study purpose, data handling, right to withdraw, etc.).
 2. Add two **Polygon** components styled as buttons (e.g., green "I agree" and red "I do not agree"), each with a **Text** label on top.
 3. Add a **Mouse** component and a **Code** component to detect clicks:
@@ -108,6 +114,8 @@ Build a consent routine in the Builder using text and shape components:
         thisExp.addData('consent', 'given')
     ```
 
+</div>
+
 !!! warning
     Make sure to define `consent_given = False` in the **Begin Experiment** tab to avoid undefined variable errors on Pavlovia.
 
@@ -131,10 +139,21 @@ For a working example, see [this community thread on embedded HTML consent forms
 
 To ensure compatibility, follow these conventions:
 
+<div class="do-list" markdown>
+<p class="do-list__heading">Do</p>
+
 - **No empty columns or rows**: Remove any extra spaces or blanks in your spreadsheet.
 - **Unique column names**: Every column needs a unique name, and the top row should not have empty cells.
-- **Avoid special characters** in the text fields.
 - **Save as CSV**: Convert your Excel files to CSV format before using them in Pavlovia.
+
+</div>
+
+<div class="dont-list" markdown>
+<p class="do-list__heading">Don't</p>
+
+- **Avoid special characters** in the text fields.
+
+</div>
 
 ### Writing custom code
 

@@ -4,12 +4,17 @@ This workflow (or technically speaking, Standard Operating Procedure) is the pro
 
 As we are all collecting and processing [personal data](https://www.kuleuven.be/rdm/en/guidance/legal-ethical/personal_data) that is classified as confidential or strictly confidential according to the [KU Leuven data classification chart](https://www.kuleuven.be/rdm/en/guidance/storage/data_classification), this requires specific care and precautions in accordance with the [GDPR](https://admin.kuleuven.be/privacy/en/studpers/gdpr-code-of-conduct).
 
+<div class="do-list" markdown>
+<p class="do-list__heading">Do</p>
+
 - All research data should be [pseudonymized](https://admin.kuleuven.be/privacy/en/studpers/pae/pseudonymisation) ASAP, with the key stored separately from the dataset.  
   Note that in our (neuroimaging) studies, full anonymization is almost impossible since reidentification cannot be fully eliminated (see [this page](https://www.kuleuven.be/rdm/en/guidance/legal-ethical/anonymise-pseudonymise) if you are unsure about the difference).
 
 - Sensitive data should be removed from unencrypted devices immediately (e.g., after transfer from the acquisition PC).
 
 - Files containing confidential information should always be [encrypted](https://admin.kuleuven.be/icts/english/research/datamgmtpract/ape/encryption) and restricted to authorised project members.
+
+</div>
 
 Below, we provide more specific guidelines on how to manage your data per phase of the research lifecycle.
 
@@ -53,12 +58,12 @@ For behavioural experiments, this can either be using one of the specified onlin
 
 ### 5. Store raw data
 
-5. **Save the experimental output** to the `sourcedata/` folder in your Sharepoint following the folder structure specified [here](../fmri/analysis/fmri-general.md#how-to-store-raw-data).
+**Save the experimental output** to the `sourcedata/` folder in your Sharepoint following the folder structure specified [here](../fmri/analysis/fmri-general.md#how-to-store-raw-data).
 
-    - For **paper questionnaires**: Digitize the (pseudonymized) data using either an OCR solution or manual transcription into spreadsheet software. Save the data in an open format. Note that in BIDS, `.tsv` is the preferred format for spreadsheets. Excel does not allow saving in `.tsv`; instead, you can export as `.txt` and change the file extension manually. You can also use this workaround to convert `.csv` files to `.tsv` files.
-    - For data collected through an **online platform**: Export the data from the platform and save it in an open format (Pavlovia supports `.csv` and `.json`; Meadows supports `.csv`, `.json`, `.mat` and `.log`; Prolific supports `.csv`; Microsoft Forms only supports `.xlsx`). Make sure that the participant ID you use to store the research data is unique and thus different from the participant's SONA or Prolific ID. You can store the link between both in the `confidential` folder on your Sharepoint.
-    - In **EEG experiments**, raw EEG data are saved in the `.bdf` format (on the Windows PC) and associated behavioral data in `.csv` and `.log` formats (on the Linux PC). Move the data from both PCs using an SSD to your personal Sharepoint site. Ensure the output files are pseudonymized as far as possible without impacting research results before proceeding (e.g. through the [BESA Anonymizer](https://wiki.besa.de/index.php?title=BESA_Anonymizer) and using BIDS compliant subject IDs).
-    - In **fMRI experiments**, raw MRI data from MR11 are sent automatically to the radiology research server XNAT, under the pseudonymised subject and session IDs you enter at the console (e.g., `sub-01`). Download the DICOMs from XNAT to an encrypted SSD (more information [here](../fmri/fmri-procedure.md#getting-your-data-xnat)); for the 7T, see [here](../fmri/fmri-7t.md#getting-your-data). Transfer the data from the SSD to your personal Sharepoint site.
+- For **paper questionnaires**: Digitize the (pseudonymized) data using either an OCR solution or manual transcription into spreadsheet software. Save the data in an open format. Note that in BIDS, `.tsv` is the preferred format for spreadsheets. Excel does not allow saving in `.tsv`; instead, you can export as `.txt` and change the file extension manually. You can also use this workaround to convert `.csv` files to `.tsv` files.
+- For data collected through an **online platform**: Export the data from the platform and save it in an open format (Pavlovia supports `.csv` and `.json`; Meadows supports `.csv`, `.json`, `.mat` and `.log`; Prolific supports `.csv`; Microsoft Forms only supports `.xlsx`). Make sure that the participant ID you use to store the research data is unique and thus different from the participant's SONA or Prolific ID. You can store the link between both in the `confidential` folder on your Sharepoint.
+- In **EEG experiments**, raw EEG data are saved in the `.bdf` format (on the Windows PC) and associated behavioral data in `.csv` and `.log` formats (on the Linux PC). Move the data from both PCs using an SSD to your personal Sharepoint site. Ensure the output files are pseudonymized as far as possible without impacting research results before proceeding (e.g. through the [BESA Anonymizer](https://wiki.besa.de/index.php?title=BESA_Anonymizer) and using BIDS compliant subject IDs).
+- In **fMRI experiments**, raw MRI data from MR11 are sent automatically to the radiology research server XNAT, under the pseudonymised subject and session IDs you enter at the console (e.g., `sub-01`). Download the DICOMs from XNAT to an encrypted SSD (more information [here](../fmri/fmri-procedure.md#getting-your-data-xnat)); for the 7T, see [here](../fmri/fmri-7t.md#getting-your-data). Transfer the data from the SSD to your personal Sharepoint site.
   
 !!! info "Encrypting your hard drive"
     If you also work with a hard drive containing confidential or raw data, it is important that you always encrypt it.
@@ -68,13 +73,19 @@ For behavioural experiments, this can either be using one of the specified onlin
 
         On KU Leuven managed PCs, BitLocker is typically pre-enabled. To encrypt an external drive:
 
+        <div class="steps-list" markdown>
+
         1. Insert the external hard drive.
         2. Open **File Explorer**, right-click the drive, and select **Turn on BitLocker**.
         3. Choose how you want to unlock the drive (password is the simplest option).
         4. Save or print the **recovery key** — store it securely (e.g., in your OneDrive or a password manager). Without this key, you cannot recover data if you forget the password.
         5. Choose **Encrypt entire drive** and click **Start encrypting**.
 
+        </div>
+
     === "Mac (Disk Utility)"
+
+        <div class="steps-list" markdown>
 
         1. Insert the external hard drive.
         2. Open **Disk Utility** (Applications > Utilities > Disk Utility).
@@ -85,6 +96,8 @@ For behavioural experiments, this can either be using one of the specified onlin
 
             !!! warning
                 Erasing the drive will delete all existing data. Back up any important files before encrypting.
+
+        </div>
 
 ### 6. Store signed consent forms
 
@@ -162,10 +175,14 @@ Push the resulting data to ManGO using your preferred client and clear any data 
 
 When your study is ready for publication, share the dataset via [RDR](RDR_sharing.md):
 
+<div class="steps-list" markdown>
+
 1. **Pseudonymize** your data: for fMRI, follow [this guide](../fmri/analysis/fmri-anonymization.md) (defacing, metadata scrubbing, participant review)
 2. **Package** the dataset into ZIP bundles (see the [RDR guide](RDR_sharing.md#step-3-prepare-zip-files))
 3. **Upload** to RDR and fill in the required metadata
 4. **Link** the RDR DOI in your paper and code repository
 5. **Publish** the RDR dataset alongside your paper
+
+</div>
 
 See the full step-by-step guide at [RDR for data sharing](RDR_sharing.md).

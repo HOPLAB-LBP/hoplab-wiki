@@ -46,29 +46,24 @@ The installation process differs for students and personnel. Please follow the i
 
 === "Personnel"
 
-    1. **Choose the appropriate MATLAB license:**
-        
+    ???+ steps "Choose the appropriate MATLAB license"
         - **Individual License**: Recommended for most users. This license allows you to use MATLAB on multiple computers (up to 2 simultaneously) and includes access to MATLAB desktop software and online services (e.g., MATLAB Online, Add-Ons, and MATLAB online training). This option in suited for individual personnel.
-        
+
         - **Designated Computer License**: Use this license if MATLAB is to be installed on a computer that is permanently offline or where users cannot log in under their own account. It allows any number of users to access MATLAB on that specific computer, though not simultaneously. This option is generally suited for lab/shared computers.
 
-        
         The license fee can be covered using individual professional funding sources (e.g., bench fees, grant money, etc.), depending on your contractual situation. For more details, please discuss with your PI.
 
-    2. **Request access from ICTS**:
-    
+    ???+ steps "Request access from ICTS"
         - The information for Matlab can be found [here](https://icts.kuleuven.be/sc/english/software/matlab). The **request form** can be found at [this link](https://www.groupware.kuleuven.be/sites/klantencentrum/Paginas/AanvraagformulierMatlab.aspx). 
         - The u-number workflowreceiver is `u0088446` (Agna Mariën) 
         - The number for the organizational unit is `53197848` (Brain and Cognition). 
         - In the credit section, fill in the funding code of the funding source that will cover the license fee.  
-       
-    3. **Download MATLAB**:
-        
+
+    ???+ steps "Download MATLAB"
         - Once approved, get the MATLAB installation files from the [KU Leuven portal](https://www.mathworks.com/academia/tah-portal/ku-leuven-30919019.html). You will receive an email once approved with this link.
         - Follow the instructions to download the installer for your operating system.
 
-    4. **Install and activate MATLAB**:
-        
+    ???+ steps "Install and activate MATLAB"
         - Run the MATLAB installer and follow the on-screen instructions.
         - During the activation process, select "Individual License" and log in with your MathWorks account.
         - Input the license key provided through the ICTS License Catalogue when prompted.
@@ -156,12 +151,16 @@ Beyond the lab essentials listed above, here are tools commonly used for researc
 If you have both a student address (`@student.kuleuven.be`) and a professional address (`@kuleuven.be`), you can set up automatic forwarding so you never miss messages sent to the wrong address.
 
 ??? tip "Forward your student email to your professional address"
+    <div class="steps-list" markdown>
+
     1. Go to [KU Leuven Outlook Web Access](https://outlook.office.com/) and sign in with your **student** account (r-number).
     2. Click the **gear icon** (Settings) in the top-right corner, then select **View all Outlook settings**.
     3. Navigate to **Mail > Forwarding**.
     4. Enable forwarding and enter your professional email address (`firstname.lastname@kuleuven.be`).
     5. Optionally check "Keep a copy of forwarded messages" if you want to retain emails in your student inbox as well.
     6. Click **Save**.
+
+    </div>
 
     You can verify it works by sending a test email to your student address and checking your professional inbox.
 

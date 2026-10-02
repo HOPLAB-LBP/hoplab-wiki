@@ -42,6 +42,8 @@ git config --global user.email "youremail@example.com"
 
 === "GitHub Desktop (GUI)"
 
+    <div class="steps-list" markdown>
+
     1. **Download** [GitHub Desktop](https://desktop.github.com/).
     2. **Sign in** with your GitHub account.
     3. **Clone a Repository**:
@@ -50,6 +52,8 @@ git config --global user.email "youremail@example.com"
         - Make changes to files, then click `Commit` to save a snapshot of your changes.
     5. **Push to GitHub**:
         - After committing, click `Push` to sync changes with GitHub.
+
+    </div>
 
 === "Command Line (CLI)"
 
@@ -82,9 +86,13 @@ The `main` branch contains the stable, "official" version of a project. You shou
 
 === "GitHub Desktop"
 
+    <div class="steps-list" markdown>
+
     1. **Create a new branch**: Click the `Current Branch` dropdown at the top → click `New Branch` → give it a descriptive name (e.g., `fix/update-fmri-docs`) → click `Create Branch`.
     2. **Switch between branches**: Click the `Current Branch` dropdown and select the branch you want to work on. GitHub Desktop will update all the files on your computer to match that branch.
     3. **Publish the branch**: The first time you switch to a new branch, click `Publish branch` to push it to GitHub so others can see it.
+
+    </div>
 
 === "Command Line (CLI)"
 
@@ -119,10 +127,14 @@ Once you are on your branch, the workflow is the same as usual — edit files, s
 
 === "GitHub Desktop"
 
+    <div class="steps-list" markdown>
+
     1. Make your edits to files as normal.
     2. In GitHub Desktop, you will see the changed files listed on the left.
     3. Write a commit message at the bottom-left and click `Commit to <branch-name>`.
     4. Click `Push origin` to send your commits to GitHub.
+
+    </div>
 
 === "Command Line (CLI)"
 
@@ -139,10 +151,14 @@ If others have made changes to `main` while you were working on your branch, you
 
 === "GitHub Desktop"
 
+    <div class="steps-list" markdown>
+
     1. Switch to `main` (click `Current Branch` → select `main`).
     2. Click `Fetch origin` and then `Pull origin` to get the latest changes.
     3. Switch back to your branch.
     4. Go to `Branch > Update from main` (or `Branch > Merge into current branch` → select `main`). This brings the latest `main` changes into your branch.
+
+    </div>
 
 === "Command Line (CLI)"
 
@@ -159,9 +175,13 @@ Multiple people can work on the same branch. To pick up a colleague's branch tha
 
 === "GitHub Desktop"
 
+    <div class="steps-list" markdown>
+
     1. Click `Fetch origin` to refresh the list of remote branches.
     2. Click `Current Branch` → you will see the remote branch listed. Click on it to check it out locally.
     3. You can now make edits, commit, and push to the same branch.
+
+    </div>
 
 === "Command Line (CLI)"
 
@@ -223,15 +243,21 @@ When filling in the PR form:
 
 GitHub Issues are used to track tasks, bugs, and suggestions. To resolve an issue:
 
+<div class="steps-list" markdown>
+
 1. Open the Issue on GitHub and read what needs to be done.
 2. Create a branch (see [above](#creating-and-switching-branches)) with a name that references the issue (e.g., `fix/issue-42-broken-links`).
 3. Make your changes on that branch and push them.
 4. Open a PR and include `Closes #42` (or `Fixes #42`) in the PR description.
 5. When the PR is merged, the Issue is automatically closed.
 
+</div>
+
 ### Reviewing a pull request
 
 If you are asked to review a PR:
+
+<div class="steps-list" markdown>
 
 1. Go to the `Pull requests` tab on GitHub and open the PR.
 2. Click on the `Files changed` tab to see all modifications.
@@ -239,6 +265,8 @@ If you are asked to review a PR:
 4. When done, click `Review changes` and choose:
     - **Approve** — if everything looks good.
     - **Request changes** — if something needs to be fixed before merging.
+
+</div>
 
 ### After the PR is merged
 
@@ -249,9 +277,13 @@ Once a PR is approved and merged:
 
 === "GitHub Desktop"
 
+    <div class="steps-list" markdown>
+
     1. Switch to `main` via the `Current Branch` dropdown.
     2. Click `Fetch origin` → `Pull origin`.
     3. You can delete the old branch locally: `Branch > Delete`.
+
+    </div>
 
 === "Command Line (CLI)"
 
@@ -263,8 +295,19 @@ Once a PR is approved and merged:
 
 ## 6. General tips
 
+<div class="do-list" markdown>
+<p class="do-list__heading">Do</p>
+
 - **Pull before you start working** to avoid conflicts.
 - **Commit often, but meaningfully** — each commit should represent a logical unit of work.
-- **Never commit directly to `main`** — always use a branch and a PR.
 - **Write clear commit messages** that explain *what* changed and *why*.
 - **Keep PRs focused** — one PR per feature or fix. Avoid bundling unrelated changes.
+
+</div>
+
+<div class="dont-list" markdown>
+<p class="do-list__heading">Don't</p>
+
+- **Never commit directly to `main`** — always use a branch and a PR.
+
+</div>

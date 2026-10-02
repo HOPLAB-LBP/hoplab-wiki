@@ -45,10 +45,25 @@ The hospital stimulus PC stands in the console room. It is the standard computer
     The displays can be set to *extend* or *duplicate* in Windows settings. In both modes, the participant screen is **screen 1**. In PsychoPy Builder, set it under *Experiment settings › Screen*.
 
 ??? deflist "House rules"
+    <div class="dont-list" markdown>
+
+    Don't
+    { .do-list__heading }
+
     - Do **not** use the stimulus PC for data transfer, e-mail or web browsing.
     - Do **not** install software yourself. Ask Ron Peeters.
+
+    </div>
+
+    <div class="do-list" markdown>
+
+    Do
+    { .do-list__heading }
+
     - At the end of your session, close all software but **leave the PC on**.
     - Take your log files with you at the end of the session (see [After scanning](fmri-procedure.md#after-scanning)).
+
+    </div>
 
 !!! note "A lab stimulus laptop is planned"
     The lab plans to buy its own stimulus-presentation laptop, so that we can maintain the software ourselves and test experiments on the same machine before going to the scanner. It is **not available yet**: until it is, use the hospital stimulus PC. A laptop can be connected to the in-room screen and the trigger box (see [Connecting a laptop](#connecting-a-laptop)), but any laptop brought into the MRI department needs prior approval of the MRI Safety Officer.
@@ -84,11 +99,15 @@ The radiology wiki gives the trigger as the letter "T" and the buttons as "B for
     The fibre-optic trigger cable is fragile (only one of the two installed cables works): **do not touch or move it**.
 
 ??? failure "No triggers or button presses arrive"
+    <div class="steps-list" markdown>
+
     1. Look at the LEDs on the interface box: if they light up, the box receives the signal and the problem is on the PC side (wrong window in focus, script not listening to the right keyboard). If they stay dark, the problem is on the scanner or cable side.
     2. Check that the box is in mode 002.
     3. Restart your script, then PsychoPy.
     4. Do not touch the fibre-optic cables. If the trigger still does not arrive, call the MR technician (40526) or contact Ron Peeters.
     5. **Last resort**: when the trigger cable failed in July 2026, the radiology team advised starting the task by hand: press `t` on the keyboard at a known moment of the run (e.g., when the console shows the remaining scan time you planned for). Write down for each run when you pressed it. You can estimate the delay afterwards from the time between the end of the task and the end of the scan, and correct your event timings or drop the first volume.
+
+    </div>
 
 ---
 
@@ -115,9 +134,13 @@ The participant sees the stimuli on a **Cambridge Research Systems BOLDscreen 32
 
 You may present stimuli from a laptop instead of the stimulus PC, **after approval of the MRI Safety Officer** (Ron Peeters). Steps used by lab members so far:
 
+<div class="steps-list" markdown>
+
 1. Connect the HDMI cable provided at the screen's control box to the laptop, and select input **HDMI-2** on the control box (press the input button).
 2. Unplug the trigger box USB cable from the front of the stimulus PC tower and plug it into the laptop. The laptop then receives both the scanner trigger and the button presses as key presses.
 3. At the end of the session, plug the USB cable back into the stimulus PC and switch the screen input back to the stimulus PC.
+
+</div>
 
 !!! tip "Display set-up"
     Use one mirrored screen: in Windows choose *Duplicate*, with the laptop screen and the in-room screen both at 1920 × 1080, 60 Hz. Do not use an extended desktop. Before scanning, check that the Psychtoolbox synchronisation tests or the PsychoPy frame-timing checks pass without warnings. If they do not, switch the laptop's own screen off and present on the in-room screen only.
@@ -133,6 +156,8 @@ There are two headphone options:
 
 To play sound (stimuli or music) through the dedicated system:
 
+<div class="steps-list" markdown>
+
 1. Start the sound on the stimulus PC.
 2. Turn on the sound system (on/off button at the top left of the back, labelled *A*).
 3. Press the round volume knob (*B*) and choose:
@@ -140,13 +165,19 @@ To play sound (stimuli or music) through the dedicated system:
     - **fMRI-MONVOL** to set the monitoring volume in the console room.
 4. Switch the audio system off at the end of the session.
 
+</div>
+
 Participants always wear earplugs as well. Participants who refuse hearing protection cannot be scanned.
 
 ??? failure "The participant cannot hear the sound or you"
+    <div class="steps-list" markdown>
+
     1. Check that the audio system is switched on (button *A* at the back) and that **fMRI-VOL** is not set too low.
     2. With the Siemens headset, check that the small audio cable is plugged in, otherwise only the intercom is heard.
     3. For the intercom, press the button to talk and release it to listen, with the volume at maximum.
     4. If it still does not work, call the MR technician (40526).
+
+    </div>
 
 ---
 
