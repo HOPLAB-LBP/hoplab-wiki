@@ -70,6 +70,12 @@ nav:
       - Data acquisition: research/eeg/eeg-acquisition.md
       - Creating EEG tasks: research/eeg/eeg-task.md
       - EEG data analysis: research/eeg/eeg-analysis.md
+    - TMS:
+      - research/tms/index.md
+      - First steps: research/tms/tms-get-started.md
+      - Safety and emergencies: research/tms/tms-safety.md
+      - Lab and equipment: research/tms/tms-equipment.md
+      - Session procedure: research/tms/tms-procedure.md
 #    - Eye-tracking:
 #      - research/eyetracking/index.md
 #    - Neural Networks:
