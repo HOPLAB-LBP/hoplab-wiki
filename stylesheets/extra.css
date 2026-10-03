@@ -117,10 +117,11 @@
 .md-content img {
     box-shadow: 0 2px 12px color-mix(in srgb, var(--md-default-fg-color) 12%, transparent);
     border-radius: 4px;
+}
+
+/* Images that open in the lightbox (mkdocs-glightbox wraps them in a.glightbox) */
+.md-content a.glightbox img {
     cursor: zoom-in;
-    transition: transform 0.2s ease-in-out, z-index 0.2s ease-in-out;
-    z-index: 1;
-    position: relative;
 }
 
 /* Dark mode: use a faint light glow instead of invisible black shadow */
@@ -128,12 +129,6 @@
     box-shadow: 0 2px 16px rgba(255, 255, 255, 0.08);
 }
 
-.md-content img:active {
-    transform: scale(1.8);
-    transform-origin: center top;
-    cursor: zoom-out;
-    z-index: 1000;
-}
 
 /* =========================
    Lists
@@ -790,6 +785,89 @@
 /* Sidebar: sections are collapsible (navigation.sections is off), but their names stay bold */
 .md-nav--primary .md-nav[data-md-level="1"] > .md-nav__list > .md-nav__item--nested > .md-nav__link {
   font-weight: 700;
+}
+
+/* =========================
+   Image lightbox: zoom bar (javascripts/lightbox-zoom.js)
+   ========================= */
+
+/* The open image zooms around its centre; while dragging it follows the pointer directly */
+.glightbox-container .gslide-image img {
+  transform-origin: center;
+  transition: transform .18s cubic-bezier(.22, .8, .24, 1);
+  touch-action: pinch-zoom;
+}
+.glightbox-container .gslide-image img.lb-zoomed {
+  cursor: grab;
+  touch-action: none;
+}
+.glightbox-container .gslide-image img.lb-panning {
+  cursor: grabbing;
+  transition: none;
+}
+
+/* The bar under the image */
+.lb-zoom {
+  position: fixed;
+  z-index: 1000000; /* above GLightbox (999999) */
+  left: 50%;
+  bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .3rem .5rem;
+  border-radius: .45rem;
+  background: rgba(18, 20, 24, .72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-family: var(--md-text-font-family);
+  font-size: .7rem;
+  transform: translateX(-50%);
+}
+.lb-zoom__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: .95rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.lb-zoom__btn:hover:not(:disabled),
+.lb-zoom__btn:focus-visible {
+  background: rgba(255, 255, 255, .16);
+  outline: none;
+}
+.lb-zoom__btn:disabled {
+  opacity: .35;
+  cursor: default;
+}
+.lb-zoom__range {
+  width: 9rem;
+  accent-color: var(--md-accent-fg-color);
+  cursor: pointer;
+}
+.lb-zoom__value {
+  min-width: 3.2em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+@media screen and (max-width: 30em) {
+  .lb-zoom__range {
+    width: 6.5rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glightbox-container .gslide-image img {
+    transition: none;
+  }
 }
 
 /* =========================

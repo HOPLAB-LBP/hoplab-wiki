@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -49,8 +46,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -75,7 +72,17 @@
 
     
     
-  </head>
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -117,7 +124,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -142,20 +149,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"></path></svg>
       </label>
     
   
@@ -171,29 +178,29 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -201,7 +208,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -219,7 +226,7 @@
         <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
   </div>
   <div class="md-source__repository">
     HOPLAB-LBP/hoplab-wiki
@@ -355,7 +362,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -378,7 +385,7 @@
       <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
   </div>
   <div class="md-source__repository">
     HOPLAB-LBP/hoplab-wiki
@@ -386,7 +393,7 @@
 </a>
     </div>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -451,7 +458,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -488,7 +495,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -712,7 +719,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -749,7 +756,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -791,7 +798,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -828,7 +835,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1064,7 +1071,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1101,7 +1108,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1197,7 +1204,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1234,7 +1241,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1252,7 +1259,7 @@
   <span class="md-ellipsis">
     
   
-    Environment & editor setup
+    Environment &amp; editor setup
   
 
     
@@ -1332,7 +1339,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1369,7 +1376,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1433,7 +1440,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1470,7 +1477,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1672,7 +1679,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1709,7 +1716,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1899,7 +1906,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1936,7 +1943,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2228,7 +2235,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
@@ -2424,7 +2431,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2461,7 +2468,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2589,7 +2596,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2626,7 +2633,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2784,7 +2791,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2821,7 +2828,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -3042,7 +3049,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -3058,7 +3065,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
@@ -3134,24 +3141,24 @@
   
     <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/edit/main/docs/research/fmri/analysis/fmri-mvpa.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="multi-variate-analysis-mvparsa-with-cosmomvpa">Multi-variate analysis (MVPA/RSA) with CoSMoMVPA<a class="headerlink" href="#multi-variate-analysis-mvparsa-with-cosmomvpa" title="Permanent link">&para;</a></h1>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<h1 id="multi-variate-analysis-mvparsa-with-cosmomvpa">Multi-variate analysis (MVPA/RSA) with CoSMoMVPA<a class="headerlink" href="#multi-variate-analysis-mvparsa-with-cosmomvpa" title="Permanent link">¶</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
 <p>This page shows how to use <strong>CoSMoMVPA for Multivariate Pattern Analysis (MVPA) and Representational Similarity Analysis (RSA)</strong> in fMRI research. It assumes that you understand basic fMRI concepts and want to
 learn how to go from raw data to advanced analyses that reveal the <a href="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGV4dWl5cmRhaGdycGN1dWlhMDhwdjhtZWRodHI5eWtuc3U2Y2hwbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lXu72d4iKwqek/giphy.gif">structure of neural representations</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Download full code example</p>
-<p>The full code example, along with all the needed files to run this script, can be found in <a href="https://github.com/costantinoai/cosmomvpa_tutorial">this repository</a> (click on <code>&lt;&gt;Code</code> &rarr; <code>Download ZIP</code>). The only pre-requisite is that you have <strong>MATLAB and CoSMoMVPA installed on your system</strong>.</p>
+<p>The full code example, along with all the needed files to run this script, can be found in <a href="https://github.com/costantinoai/cosmomvpa_tutorial">this repository</a> (click on <code>&lt;&gt;Code</code> → <code>Download ZIP</code>). The only pre-requisite is that you have <strong>MATLAB and CoSMoMVPA installed on your system</strong>.</p>
 <p>Some of the code used here (e.g., for plotting or clustering data) is <strong>not shipped with CoSMoMVPA</strong>, and can be found in the <code>utils</code> folder of the repository.</p>
 </div>
-<hr />
-<h3 id="typical-pipeline-for-real-fmri-data">Typical Pipeline for Real fMRI Data<a class="headerlink" href="#typical-pipeline-for-real-fmri-data" title="Permanent link">&para;</a></h3>
-<p><img alt="pipeline_flowchart" src="../../../assets/fmri_mvpa_data_flowchart.png" /></p>
+<hr>
+<h3 id="typical-pipeline-for-real-fmri-data">Typical Pipeline for Real fMRI Data<a class="headerlink" href="#typical-pipeline-for-real-fmri-data" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_data_flowchart.png" data-desc-position="bottom"><img alt="pipeline_flowchart" src="../../../assets/fmri_mvpa_data_flowchart.png"></a></p>
 <ol>
 <li><strong>Data Acquisition</strong>: Collect fMRI data as participants perform tasks or view stimuli from different categories.</li>
 <li><strong>BIDS Conversion</strong>: Convert raw data into the Brain Imaging Data Structure (BIDS) format. This standardization makes subsequent preprocessing and analysis much easier.</li>
@@ -3167,32 +3174,32 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </ul>
 </li>
 </ol>
-<hr />
-<h2 id="purpose-of-this-tutorial">Purpose of This Tutorial<a class="headerlink" href="#purpose-of-this-tutorial" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="purpose-of-this-tutorial">Purpose of This Tutorial<a class="headerlink" href="#purpose-of-this-tutorial" title="Permanent link">¶</a></h2>
 <p>In this example, we will investigate the representational structure of <strong>simulated synthetic data</strong>. We will illustrate the (few) steps required to perform a multi-variate analysis on post GLM data (i.e., beta images produces by SPM).</p>
 <p>The goal is to investigate the <strong>representational geometry</strong> of two ROIs, V1 and IT, to determine what properties of the stimuli are represented in these areas.</p>
-<h3 id="what-we-will-do">What we will do<a class="headerlink" href="#what-we-will-do" title="Permanent link">&para;</a></h3>
+<h3 id="what-we-will-do">What we will do<a class="headerlink" href="#what-we-will-do" title="Permanent link">¶</a></h3>
 <ol>
 <li>Generate synthetic fMRI-like data simulating responses in IT or V1.</li>
 <li>Perform <strong>MVPA (decoding)</strong> to see if the ROI can distinguish between multiple categories above chance.</li>
 <li>Conduct <strong>RSA</strong> to compare the observed representational geometry with theoretical model RDMs, revealing whether perceptual or categorical features dominate the neural patterns.</li>
 </ol>
-<h3 id="data-structure-synthetic">Data Structure (Synthetic)<a class="headerlink" href="#data-structure-synthetic" title="Permanent link">&para;</a></h3>
+<h3 id="data-structure-synthetic">Data Structure (Synthetic)<a class="headerlink" href="#data-structure-synthetic" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>Subject(s)</strong>: 1</li>
 <li><strong>Runs</strong>: 10 runs/subject</li>
 <li><strong>Categories</strong> (8 total): Human face, Human body, Animal face, Animal body, Natural round object, Natural spiky object, Artificial round object, Artificial spiky object</li>
 </ul>
-<p><img alt="flowchart" src="../../../assets/fmri_mvpa_categories_pretty.png" /></p>
-<hr />
-<h3 id="hypothesis">Hypothesis<a class="headerlink" href="#hypothesis" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_categories_pretty.png" data-desc-position="bottom"><img alt="flowchart" src="../../../assets/fmri_mvpa_categories_pretty.png"></a></p>
+<hr>
+<h3 id="hypothesis">Hypothesis<a class="headerlink" href="#hypothesis" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>V1</strong>: Similarities are based on low-level perceptual features (e.g., round vs. spiky).</li>
 <li><strong>IT</strong>: Similarities are based on higher-level conceptual distinctions (e.g., human vs. animal, animate vs. inanimate, natural vs. artificial).</li>
 </ul>
-<hr />
-<h2 id="code">Code<a class="headerlink" href="#code" title="Permanent link">&para;</a></h2>
-<h3 id="1-setup">1. Setup<a class="headerlink" href="#1-setup" title="Permanent link">&para;</a></h3>
+<hr>
+<h2 id="code">Code<a class="headerlink" href="#code" title="Permanent link">¶</a></h2>
+<h3 id="1-setup">1. Setup<a class="headerlink" href="#1-setup" title="Permanent link">¶</a></h3>
 <p>We set up the MATLAB environment, ensuring reproducibility and proper paths.</p>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c">% Clear workspace, close figures, and reset command window</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">clear</span><span class="w"> </span><span class="nb">all</span><span class="p">;</span>
@@ -3207,8 +3214,8 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">addpath</span><span class="p">(</span><span class="s">"functions/"</span><span class="p">);</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">outDir</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fullfile</span><span class="p">(</span><span class="nb">pwd</span><span class="p">,</span><span class="w"> </span><span class="s">"results"</span><span class="p">);</span>
 </span></code></pre></div>
-<hr />
-<h3 id="2-optional-loading-real-data-from-spm">2. (Optional) Loading Real Data from SPM<a class="headerlink" href="#2-optional-loading-real-data-from-spm" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="2-optional-loading-real-data-from-spm">2. (Optional) Loading Real Data from SPM<a class="headerlink" href="#2-optional-loading-real-data-from-spm" title="Permanent link">¶</a></h3>
 <p>If we had real data, after preprocessing and GLM estimation, we could load it like this:</p>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c">% Example (not run here):</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">spm_path</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'path_to_SPM.mat'</span><span class="p">;</span>
@@ -3216,8 +3223,8 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">ds</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cosmo_fmri_dataset</span><span class="p">(</span><span class="n">spm_path</span><span class="p">,</span><span class="w"> </span><span class="s">'mask'</span><span class="p">,</span><span class="w"> </span><span class="n">mask_path</span><span class="p">);</span>
 </span></code></pre></div>
 <p>For this tutorial, we are skipping this step because we use synthetic data.</p>
-<hr />
-<h3 id="3-synthetic-data-generation">3. Synthetic Data Generation<a class="headerlink" href="#3-synthetic-data-generation" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="3-synthetic-data-generation">3. Synthetic Data Generation<a class="headerlink" href="#3-synthetic-data-generation" title="Permanent link">¶</a></h3>
 <p>We generate synthetic data that mimics patterns in IT or V1. You can switch <code>roiName</code> between <code>"V1"</code> and <code>"IT"</code>.</p>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c">% Parameters for synthetic data generation</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">numCategories</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
@@ -3236,8 +3243,8 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">ds</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">generate_clustered_dataset</span><span class="p">(</span><span class="n">numCategories</span><span class="p">,</span><span class="w"> </span><span class="n">numSubjects</span><span class="p">,</span><span class="w"> </span><span class="n">numRuns</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="n">numRepetitions</span><span class="p">,</span><span class="w"> </span><span class="n">sigma</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="nb">size</span><span class="p">);</span>
 </span></code></pre></div>
-<hr />
-<h3 id="4-inspecting-the-data">4. Inspecting the Data<a class="headerlink" href="#4-inspecting-the-data" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="4-inspecting-the-data">4. Inspecting the Data<a class="headerlink" href="#4-inspecting-the-data" title="Permanent link">¶</a></h3>
 <p>Before proceeding, inspect the generated dataset:</p>
 <ul>
 <li><strong>Target-to-Label Mapping</strong>: Understand which category corresponds to which integer label.</li>
@@ -3251,19 +3258,19 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c">% Plot activation patterns</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">plot_activation_heatmap</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
 </span></code></pre></div>
-<p><img alt="activation heatmap" src="../../../assets/fmri_mvpa_IT_Activation_Heatmap.png" /></p>
-<hr />
-<h3 id="5-mvpa-classification-analysis">5. MVPA: Classification Analysis<a class="headerlink" href="#5-mvpa-classification-analysis" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_IT_Activation_Heatmap.png" data-desc-position="bottom"><img alt="activation heatmap" src="../../../assets/fmri_mvpa_IT_Activation_Heatmap.png"></a></p>
+<hr>
+<h3 id="5-mvpa-classification-analysis">5. MVPA: Classification Analysis<a class="headerlink" href="#5-mvpa-classification-analysis" title="Permanent link">¶</a></h3>
 <p>We use a simple Linear Discriminant Analysis (<strong>LDA</strong>) classifier with cross-validation to decode category information.</p>
 <p>The central idea is that <strong>if differences between categories are present, the classifier will be able to pick that signal up</strong>. When we use an MVPA classifier to brain data, we are testing whether the neural patterns (represented as voxel activity) for different categories contain distinct, systematic differences. If the brain region being analyzed encodes information about the categories in its activity patterns, the classifier will achieve accuracy above chance.</p>
-<p><img alt="brain pattern svm" src="../../../assets/fmri_mvpa_brain_patterns_svm.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_brain_patterns_svm.png" data-desc-position="bottom"><img alt="brain pattern svm" src="../../../assets/fmri_mvpa_brain_patterns_svm.png"></a></p>
 <p>In other words, the classifier looks at the activity from multiple voxels and tries to <strong>find consistent differences between patterns</strong> for different categories (e.g., cats vs. dogs). If those patterns are different enough, the classifier can "learn" to predict the category based on the brain activity by identifying separable representations in a high-dimensional space of neural activity.</p>
 <p>This works because the brain encodes information about what we see in these patterns—like a unique "signature" for each category. If the classifier succeeds, it shows that the brain region we're analyzing contains information relevant to distinguishing those categories.</p>
-<h4 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h4>
+<h4 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">¶</a></h4>
 <ol>
 <li><strong>Partitioning</strong>: Divide the data into folds based on runs (e.g., leave-one-run-out).</li>
 <li><strong>Training &amp; Testing</strong>: Train on some runs, test on another run.</li>
-<li><strong>Evaluate Accuracy</strong>: Compare accuracy to chance (&#8539; = 12.5%).</li>
+<li><strong>Evaluate Accuracy</strong>: Compare accuracy to chance (⅛ = 12.5%).</li>
 </ol>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c">% Define the classifier</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">classifier</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@</span><span class="n">cosmo_classify_lda</span><span class="p">;</span>
@@ -3286,10 +3293,10 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
 </span></code></pre></div>
 <p>A confusion matrix helps identify which categories are easily distinguishable and which are often confounded.</p>
-<p><img alt="confusion matrix" src="../../../assets/fmri_mvpa_IT_Confusion_Matrix.png" /></p>
-<hr />
-<h3 id="6-representational-dissimilarity-matrices-rdms">6. Representational Dissimilarity Matrices (RDMs)<a class="headerlink" href="#6-representational-dissimilarity-matrices-rdms" title="Permanent link">&para;</a></h3>
-<p><img alt="correlation matrix" src="../../../assets/fmri_mvpa_correlation_matrix.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_IT_Confusion_Matrix.png" data-desc-position="bottom"><img alt="confusion matrix" src="../../../assets/fmri_mvpa_IT_Confusion_Matrix.png"></a></p>
+<hr>
+<h3 id="6-representational-dissimilarity-matrices-rdms">6. Representational Dissimilarity Matrices (RDMs)<a class="headerlink" href="#6-representational-dissimilarity-matrices-rdms" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_correlation_matrix.png" data-desc-position="bottom"><img alt="correlation matrix" src="../../../assets/fmri_mvpa_correlation_matrix.png"></a></p>
 <p>RSA involves comparing the RDMs from brain data to RDM for our theoretical models. We do this by computing RDMs:</p>
 <ol>
 <li><strong>Mean Patterns</strong>: Average the data across runs for each category.</li>
@@ -3302,7 +3309,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c">% Visualize categories in a 2D space using MDS</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">plot_mds</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
 </span></code></pre></div>
-<p><img alt="mds plot" src="../../../assets/fmri_mvpa_IT_MDS_Plot_.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_IT_MDS_Plot_.png" data-desc-position="bottom"><img alt="mds plot" src="../../../assets/fmri_mvpa_IT_MDS_Plot_.png"></a></p>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c">% Compute the data RDM</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">measureDsm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@</span><span class="n">cosmo_dissimilarity_matrix_measure</span><span class="p">;</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">argsDsm</span><span class="p">.</span><span class="n">metric</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'correlation'</span><span class="p">;</span>
@@ -3320,8 +3327,8 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">plot_rdm_full</span><span class="p">(</span><span class="n">rdms</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">dsm</span><span class="p">,</span><span class="w"> </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">rdms</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">description</span><span class="p">);</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">plot_rdm_full</span><span class="p">(</span><span class="n">rdms</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="n">dsm</span><span class="p">,</span><span class="w"> </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">rdms</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="n">description</span><span class="p">);</span>
 </span></code></pre></div>
-<hr />
-<h3 id="7-rsa-regression">7. RSA Regression<a class="headerlink" href="#7-rsa-regression" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="7-rsa-regression">7. RSA Regression<a class="headerlink" href="#7-rsa-regression" title="Permanent link">¶</a></h3>
 <p>We now fit a linear model that predicts the data RDM from these model RDMs.</p>
 <p>The regression coefficients indicate how strongly each model explains the observed data's representational geometry.</p>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c">% Set up RSA regression</span>
@@ -3342,10 +3349,10 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="c">% Plot results: observed RDM, model RDMs, and regression coefficients</span>
 </span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="n">plot_rdms_and_coefficients</span><span class="p">(</span><span class="n">dataRdm</span><span class="p">,</span><span class="w"> </span><span class="n">rdms</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
 </span></code></pre></div>
-<p><img alt="regression result" src="../../../assets/fmri_mvpa_IT_RSA_regression.png" /></p>
-<h2 id="full-code-example-comparison-with-v1">Full code example: comparison with V1<a class="headerlink" href="#full-code-example-comparison-with-v1" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_IT_RSA_regression.png" data-desc-position="bottom"><img alt="regression result" src="../../../assets/fmri_mvpa_IT_RSA_regression.png"></a></p>
+<h2 id="full-code-example-comparison-with-v1">Full code example: comparison with V1<a class="headerlink" href="#full-code-example-comparison-with-v1" title="Permanent link">¶</a></h2>
 <p>Now that we have the full picture, let's re-run our full code, but this time we only see the main results for <strong>the other synthetic ROI: V1</strong>.</p>
-<div class="language-matlab highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<div class="language-matlab highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
@@ -3538,14 +3545,14 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-9-95"><a id="__codelineno-9-95" name="__codelineno-9-95"></a>
 </span><span id="__span-9-96"><a id="__codelineno-9-96" name="__codelineno-9-96"></a><span class="c">% Plot results: observed RDM, model RDMs, and regression coefficients</span>
 </span><span id="__span-9-97"><a id="__codelineno-9-97" name="__codelineno-9-97"></a><span class="n">plot_rdms_and_coefficients</span><span class="p">(</span><span class="n">dataRdm</span><span class="p">,</span><span class="w"> </span><span class="n">rdms</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">o</span>
-</span></code></pre></div></td></tr></table></div>
+</span></code></pre></div></td></tr></tbody></table></div>
 <p>And the results:</p>
-<p><img alt="V1 activations" src="../../../assets/fmri_mvpa_V1_Activation_Heatmap.png" />
-<img alt="V1 confusion matrix" src="../../../assets/fmri_mvpa_V1_Confusion_Matrix.png" />
-<img alt="V1 MDS plot" src="../../../assets/fmri_mvpa_V1_MDS_Plot_.png" />
-<img alt="V1 RSA results" src="../../../assets/fmri_mvpa_V1_RSA_regression.png" /></p>
-<hr />
-<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_V1_Activation_Heatmap.png" data-desc-position="bottom"><img alt="V1 activations" src="../../../assets/fmri_mvpa_V1_Activation_Heatmap.png"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_V1_Confusion_Matrix.png" data-desc-position="bottom"><img alt="V1 confusion matrix" src="../../../assets/fmri_mvpa_V1_Confusion_Matrix.png"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_V1_MDS_Plot_.png" data-desc-position="bottom"><img alt="V1 MDS plot" src="../../../assets/fmri_mvpa_V1_MDS_Plot_.png"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_V1_RSA_regression.png" data-desc-position="bottom"><img alt="V1 RSA results" src="../../../assets/fmri_mvpa_V1_RSA_regression.png"></a></p>
+<hr>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">¶</a></h2>
 <p><strong>What we learned</strong>:</p>
 <ul>
 <li>How to <strong>structure and preprocess fMRI data</strong> (BIDS, fMRIPrep, SPM) for MVPA and RSA.</li>
@@ -3574,7 +3581,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
       <time class="md-source-file__time" datetime="2025-10-09T13:24:32+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 9, 2025 13:24:32 CEST">October 9, 2025</span></time>
@@ -3588,7 +3595,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
   <span class="md-source-file__fact md-contributors">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"></path></svg>
       
     </span><span class="md-contributors__stack">
       
@@ -3598,13 +3605,11 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
         
         
         
-          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 100% of this page" style="--z: 1"
-             data-name="Andrea Costantino" data-share="100.0%">
+          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 100% of this page" style="--z: 1" data-name="Andrea Costantino" data-share="100.0%">
         
             <span class="md-contributor__face">
               
-                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/59078281?s=96"
-                     alt="" width="36" height="36" loading="lazy">
+                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/59078281?s=96" alt="" width="36" height="36" loading="lazy">
               
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
@@ -3625,7 +3630,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 
 
 
-  <form class="md-feedback" name="feedback" hidden>
+  <form class="md-feedback" name="feedback" hidden="">
     <fieldset>
       <legend class="md-feedback__title">
         Was this page helpful?
@@ -3634,17 +3639,17 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
         <div class="md-feedback__list">
           
             <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"></path></svg>
             </button>
           
             <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"></path></svg>
             </button>
           
         </div>
         <div class="md-feedback__note">
           
-            <div data-md-value="1" hidden>
+            <div data-md-value="1" hidden="">
               
               
                 
@@ -3657,7 +3662,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
               Thanks for your feedback!
             </div>
           
-            <div data-md-value="0" hidden>
+            <div data-md-value="0" hidden="">
               
               
                 
@@ -3686,9 +3691,9 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -3698,13 +3703,13 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="fmri-rois.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 5. Regions of interest">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -3729,7 +3734,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -3763,7 +3768,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
     </div>
     
     
-      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden="">
         <div class="md-consent__overlay"></div>
         <aside class="md-consent__inner">
           <form class="md-consent__form md-grid md-typeset" name="consent">
@@ -3775,7 +3780,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 
 <h4>Cookie consent</h4>
 <p>Please, consider disabling your ad-blocker and allowing cookies for this Wiki . We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
-<input class="md-toggle" type="checkbox" id="__settings" >
+<input class="md-toggle" type="checkbox" id="__settings">
 <div class="md-consent__settings">
   <ul class="task-list">
     
@@ -3789,7 +3794,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="analytics" checked>
+      <input type="checkbox" name="analytics" checked="">
       <span class="task-list-indicator"></span>
       Google Analytics
     </label>
@@ -3807,7 +3812,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="github" checked>
+      <input type="checkbox" name="github" checked="">
       <span class="task-list-indicator"></span>
       GitHub
     </label>
@@ -3850,10 +3855,14 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
       
         <script src="../../../javascripts/details.js"></script>
       
+        <script src="../../../javascripts/lightbox-zoom.js"></script>
+      
         <script src="../../../javascripts/source-file.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": false, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

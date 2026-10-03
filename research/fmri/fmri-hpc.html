@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -49,8 +46,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -75,7 +72,17 @@
 
     
     
-  </head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -117,7 +124,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -142,20 +149,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"></path></svg>
       </label>
     
   
@@ -171,29 +178,29 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -201,7 +208,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -219,7 +226,7 @@
         <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
   </div>
   <div class="md-source__repository">
     HOPLAB-LBP/hoplab-wiki
@@ -355,7 +362,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -378,7 +385,7 @@
       <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
   </div>
   <div class="md-source__repository">
     HOPLAB-LBP/hoplab-wiki
@@ -386,7 +393,7 @@
 </a>
     </div>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -451,7 +458,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -488,7 +495,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -712,7 +719,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -749,7 +756,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -791,7 +798,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -828,7 +835,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1064,7 +1071,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1101,7 +1108,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1197,7 +1204,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1234,7 +1241,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1252,7 +1259,7 @@
   <span class="md-ellipsis">
     
   
-    Environment & editor setup
+    Environment &amp; editor setup
   
 
     
@@ -1332,7 +1339,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1369,7 +1376,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1433,7 +1440,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1470,7 +1477,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1672,7 +1679,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1709,7 +1716,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1897,7 +1904,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1934,7 +1941,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2318,7 +2325,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#1-prerequisites" class="md-nav__link">
@@ -2499,7 +2506,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2536,7 +2543,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2664,7 +2671,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2701,7 +2708,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2859,7 +2866,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2896,7 +2903,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -3117,7 +3124,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -3133,7 +3140,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#1-prerequisites" class="md-nav__link">
@@ -3286,15 +3293,15 @@
   
     <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/edit/main/docs/research/fmri/fmri-hpc.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="ku-leuven-hpc-getting-started">KU Leuven HPC: Getting Started<a class="headerlink" href="#ku-leuven-hpc-getting-started" title="Permanent link">&para;</a></h1>
+<h1 id="ku-leuven-hpc-getting-started">KU Leuven HPC: Getting Started<a class="headerlink" href="#ku-leuven-hpc-getting-started" title="Permanent link">¶</a></h1>
 <p>This guide describes how to connect to the KU Leuven/VSC HPC cluster, manage your data, and run <code>fMRIPrep</code>.</p>
-<hr />
+<hr>
 <div class="admonition warning">
 <p class="admonition-title">Login Node</p>
 <p>When you connect via SSH, you land on a <em>login node</em>. Do <em>not</em> run compute-intensive tasks here, because login nodes are shared among tens of users. Submit jobs to the <em>compute</em> (<em>CPU</em> or <em>GPU</em>) nodes via Slurm.</p>
@@ -3310,14 +3317,14 @@ to your <code>$VSC_DATA</code> (75 GB) or to your <code>$VSC_SCRATCH</code> (500
 Beware that any files in your scratch folder which is not accessed for 30 days will be automatically deleted, and scratch
 folder (as the name proposes) has no backup.</p>
 </div>
-<hr />
+<hr>
 <p>VSC offers a <a href="https://docs.vscentrum.be/">full documentation</a> of all the services, but in case of question of problems, you
 may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local support team at KU Leuven</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">General coding setup</p>
 <p>For general guidance on setting up Python/Conda environments and Git, see <a href="../coding/index.html">Coding practices</a>.</p>
 </div>
-<h2 id="1-prerequisites">1. Prerequisites<a class="headerlink" href="#1-prerequisites" title="Permanent link">&para;</a></h2>
+<h2 id="1-prerequisites">1. Prerequisites<a class="headerlink" href="#1-prerequisites" title="Permanent link">¶</a></h2>
 <ol>
 <li>You have a valid VSC account (e.g., <code>vsc12345</code>). Request one <a href="https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/index.html">here</a>.</li>
 <li>For Windows users, install MobaXterm (SSH client) and FileZilla or WinSCP for file transfer;
@@ -3325,24 +3332,24 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 <li>You have logged into the <a href="https://firewall.vscentrum.be/auth/login">HPC firewall</a> before attempting SSH.</li>
 <li>You have requested introductory credits (2 million credits for 6 months) via <a href="https://admin.kuleuven.be/icts/onderzoek/hpc/request-introduction-credits">this form</a>.</li>
 </ol>
-<hr />
-<h2 id="2-connecting-to-the-cluster">2. Connecting to the Cluster<a class="headerlink" href="#2-connecting-to-the-cluster" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="2-connecting-to-the-cluster">2. Connecting to the Cluster<a class="headerlink" href="#2-connecting-to-the-cluster" title="Permanent link">¶</a></h2>
 <p>Once your account is active, you may follow <a href="https://docs.vscentrum.be/accounts/mfa_login.html">these steps</a> to login through Multi-Factor Authentication (MFA) depending on your choice of OS. The two main options are:</p>
 <ul>
 <li><strong>KU Leuven OnDemand</strong>: a browser-based graphical interface. Follow the instructions in <em>Login to Open OnDemand</em>. Once logged in, you will see a dashboard with options to launch interactive sessions, submit jobs, and manage files. Navigate to the terminal interface by clicking the <em>Login Server Shell Access</em> button.</li>
 <li><strong>SSH-based login</strong>: a terminal-based interface. Follow the instructions in <em>Connecting with an SSH agent</em>. Here, you connect to the cluster by directly opening the terminal interface on your local machine, using the Terminal, Powershell or whichever shell program.</li>
 </ul>
 <p>After a successful login, you will see something like:</p>
-<p><img alt="VSC Login" src="../../assets/fmri-hpc-login.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/fmri-hpc-login.png" data-desc-position="bottom"><img alt="VSC Login" src="../../assets/fmri-hpc-login.png"></a></p>
 <p>Look at the last line:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>✔<span class="w"> </span><span class="o">[</span>Apr/15<span class="w"> </span><span class="m">15</span>:13<span class="o">]</span><span class="w"> </span>vsc12345@tier2-p-login-1<span class="w"> </span>~<span class="w"> </span>$<span class="w"> </span>
 </span></code></pre></div>
 <p>which suggests we are connected to the login node <code>tier2-p-login-1</code> as <code>vsc12345</code> (your VSC username). From now on, what we type in the terminal will be executed on the login node. Note that the login nodes are only meant to move your data around, submit and monitor your jobs, and write/edit your scripts. For all other purposes (actual computation, pre-/post-processing and software installation), you have to start an
 <a href="https://docs.vscentrum.be/compute/jobs/running_jobs.html">interactive or batch job using Slurm</a>.</p>
 <p>To exit the ssh session and go back to your local terminal, type <code>exit</code>.</p>
-<hr />
-<h2 id="3-data-management-on-the-hpc">3. Data Management on the HPC<a class="headerlink" href="#3-data-management-on-the-hpc" title="Permanent link">&para;</a></h2>
-<h3 id="31-structuring-your-data">3.1. Structuring your data<a class="headerlink" href="#31-structuring-your-data" title="Permanent link">&para;</a></h3>
+<hr>
+<h2 id="3-data-management-on-the-hpc">3. Data Management on the HPC<a class="headerlink" href="#3-data-management-on-the-hpc" title="Permanent link">¶</a></h2>
+<h3 id="31-structuring-your-data">3.1. Structuring your data<a class="headerlink" href="#31-structuring-your-data" title="Permanent link">¶</a></h3>
 <p>Your VSC account comes equipped with several folders, each with different characteristics. When logging in, you automatically land in your home directory, which is located at <code>/user/leuven/123/vsc12345</code>. This path is stored in the variable <code>VSC_HOME</code>, which you check by typing <code>echo $VSC_HOME</code> in the terminal. Likewise, other important directories are stored in variables names. To navigate quickly to any of these directories, you can use the <code>cd</code> command followed by the variable name, e.g., <code>cd $VSC_DATA</code> to move to your data directory.</p>
 <p><strong>Folder Structure:</strong></p>
 <ul>
@@ -3368,7 +3375,7 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span>│<span class="w">           </span>└──<span class="w"> </span>sub-01<span class="w">      </span>
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span>└──<span class="w"> </span>fmriprep-25.0.0.sif<span class="w">     </span><span class="c1"># Singularity container</span>
 </span></code></pre></div>
-<h3 id="32-managing-storage-usage">3.2. Managing storage usage<a class="headerlink" href="#32-managing-storage-usage" title="Permanent link">&para;</a></h3>
+<h3 id="32-managing-storage-usage">3.2. Managing storage usage<a class="headerlink" href="#32-managing-storage-usage" title="Permanent link">¶</a></h3>
 <p>Operations like fMRIPrep can generate large amounts of data, so it is important to manage your data effectively. You can find some general advice on the <a href="https://docs.vscentrum.be/data/managing_storage_usage.html">VSC documentation</a>.</p>
 <p>If your HPC storage is full, you might encounter this type of error when sending data to the compute node:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>rsync:<span class="w"> </span>writefd_unbuffered<span class="w"> </span>failed<span class="w"> </span>to<span class="w"> </span>write<span class="w"> </span><span class="m">32768</span><span class="w"> </span>bytes<span class="w"> </span><span class="o">[</span>sender<span class="o">]</span>:<span class="w"> </span>Broken<span class="w"> </span>pipe<span class="w"> </span><span class="o">(</span>...<span class="o">)</span>
@@ -3383,10 +3390,10 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 </span></code></pre></div>
 <p>Where <code>-h</code> means "human-readable" (e.g., in GB or MB, add <code>-s</code> - "summary" for the total size).</p>
 <p>If you find your storage full, it is a good idea to <strong>clean up</strong> the files you won't need anymore, as well as the data you've already downloaded locally. In general, it is best not to consider the HPC as a long-term storage solution.</p>
-<hr />
-<h2 id="4-transferring-data-to-the-hpc">4. Transferring Data to the HPC<a class="headerlink" href="#4-transferring-data-to-the-hpc" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="4-transferring-data-to-the-hpc">4. Transferring Data to the HPC<a class="headerlink" href="#4-transferring-data-to-the-hpc" title="Permanent link">¶</a></h2>
 <p>Once connected to the cluster, you’ll need to transfer your BIDS dataset, FreeSurfer license, and other relevant files to your <code>VSC_DATA</code> directory on the HPC system.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="windows-winscp" name="__tabbed_1" type="radio" /><input id="linux--macos" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="windows-winscp">Windows (WinSCP)</label><label for="linux--macos">Linux / macOS</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="windows-winscp" name="__tabbed_1" type="radio"><input id="linux--macos" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="windows-winscp">Windows (WinSCP)</label><label for="linux--macos">Linux / macOS</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -3416,9 +3423,9 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 <li><a href="https://firewall.vscentrum.be/auth/login"><strong>Login</strong></a> through the firewall.</li>
 </ol>
 <p>2a. Basic <code>scp</code> (secure copy):
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>scp<span class="w"> </span>-r<span class="w"> </span>/local/path/BIDS<span class="w"> </span><span class="se">\</span>
+</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>scp<span class="w"> </span>-r<span class="w"> </span>/local/path/BIDS<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS
-</span></code></pre></div></p>
+</span></code></pre></div><p></p>
 <ul>
 <li><code>-r</code> copies directories recursively.</li>
 </ul>
@@ -3436,8 +3443,8 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 </div>
 </div>
 <p>Make sure you replace <code>/local/path/BIDS</code> with your local BIDS folder, and <code>vsc12345</code> and <code>123</code> with your actual VSC username and the first 3 digits of your ID.</p>
-<hr />
-<h2 id="5-building-an-fmriprep-singularity-container">5. Building an <code>fMRIPrep</code> Singularity Container<a class="headerlink" href="#5-building-an-fmriprep-singularity-container" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="5-building-an-fmriprep-singularity-container">5. Building an <code>fMRIPrep</code> Singularity Container<a class="headerlink" href="#5-building-an-fmriprep-singularity-container" title="Permanent link">¶</a></h2>
 <ol>
 <li>
 <p><strong>Move to <code>VSC_DATA</code>:</strong></p>
@@ -3455,16 +3462,16 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 <p class="admonition-title">Warning</p>
 <p>Ensure you have enough quota and that you are not attempting this in <code>VSC_HOME</code>!</p>
 </div>
-<hr />
-<h2 id="6-submitting-and-running-an-fmriprep-job-with-slurm">6. Submitting and Running an <code>fMRIPrep</code> Job with Slurm<a class="headerlink" href="#6-submitting-and-running-an-fmriprep-job-with-slurm" title="Permanent link">&para;</a></h2>
-<h3 id="61-creating-a-slurm-jobscript">6.1. Creating a Slurm Jobscript<a class="headerlink" href="#61-creating-a-slurm-jobscript" title="Permanent link">&para;</a></h3>
+<hr>
+<h2 id="6-submitting-and-running-an-fmriprep-job-with-slurm">6. Submitting and Running an <code>fMRIPrep</code> Job with Slurm<a class="headerlink" href="#6-submitting-and-running-an-fmriprep-job-with-slurm" title="Permanent link">¶</a></h2>
+<h3 id="61-creating-a-slurm-jobscript">6.1. Creating a Slurm Jobscript<a class="headerlink" href="#61-creating-a-slurm-jobscript" title="Permanent link">¶</a></h3>
 <p>To submit our job to the compute node, we will need to create a Slurm script. This script will define the job resources, dependencies, and all the steps needed to complete the workflow. Then, submit the jobscript to the cluster using the <code>sbatch</code> command. Your batch job will run remotely on a compute node, and <code>fmriprep</code> will be executed from within a container.</p>
 <p>To create such file, type in your ssh session:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$VSC_DATA</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>nano<span class="w"> </span>run_fmriprep_job.slurm
 </span></code></pre></div>
 <p>This will open a text editor. Use the following template as a guideline, but change relevant fields (such as job name, account name etc) accordingly:</p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>#!/bin/bash -l
+<p></p><div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>#!/bin/bash -l
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>#SBATCH --account=intro_vsc12345
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>#SBATCH --cluster=genius
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>#SBATCH --partition=batch
@@ -3498,13 +3505,13 @@ may contact the <a href="https://docs.vscentrum.be/contact_vsc.html">local suppo
 </span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>  --mem-mb 20000 \
 </span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a>  --clean-workdir
 </span></code></pre></div>
-Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether your file was saved correctly:</p>
+Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether your file was saved correctly:<p></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ls<span class="w"> </span><span class="nv">$VSC_DATA</span>
 </span></code></pre></div>
 <p>which should return:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
 </span></code></pre></div>
-<h3 id="62-submitting-the-job">6.2 Submitting the Job<a class="headerlink" href="#62-submitting-the-job" title="Permanent link">&para;</a></h3>
+<h3 id="62-submitting-the-job">6.2 Submitting the Job<a class="headerlink" href="#62-submitting-the-job" title="Permanent link">¶</a></h3>
 <div class="steps-list">
 <ol>
 <li>
@@ -3544,7 +3551,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 <li><strong>16 cores</strong> and <strong>20GB of RAM</strong> end up in a runtime of <code>03:59:27</code> on the same subjects</li>
 </ul>
 </div>
-<h3 id="63-slurm-basics-you-will-need">6.3 SLURM Basics you will need<a class="headerlink" href="#63-slurm-basics-you-will-need" title="Permanent link">&para;</a></h3>
+<h3 id="63-slurm-basics-you-will-need">6.3 SLURM Basics you will need<a class="headerlink" href="#63-slurm-basics-you-will-need" title="Permanent link">¶</a></h3>
 <ul>
 <li><code>sbatch</code>: Submits a jobscript to the cluster.</li>
 <li><code>srun</code>: Start an interactive session on a compute node.</li>
@@ -3553,9 +3560,9 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 <li><code>sstat</code>: Real-time CPU/memory info on running jobs.</li>
 <li><code>sacct</code>: Shows CPU time, wall time, memory usage, and exit codes for <em>finished</em> jobs.</li>
 </ul>
-<hr />
-<h2 id="7-monitoring-your-job">7. Monitoring Your Job<a class="headerlink" href="#7-monitoring-your-job" title="Permanent link">&para;</a></h2>
-<h3 id="71-job-queue">7.1 Job Queue<a class="headerlink" href="#71-job-queue" title="Permanent link">&para;</a></h3>
+<hr>
+<h2 id="7-monitoring-your-job">7. Monitoring Your Job<a class="headerlink" href="#7-monitoring-your-job" title="Permanent link">¶</a></h2>
+<h3 id="71-job-queue">7.1 Job Queue<a class="headerlink" href="#71-job-queue" title="Permanent link">¶</a></h3>
 <p>Check the status of your running or pending jobs:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>squeue<span class="w"> </span>-M<span class="w"> </span>genius,wice<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
 </span></code></pre></div>
@@ -3572,20 +3579,20 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 <li><code>R</code> means running, <code>PD</code> means pending.  </li>
 <li><code>NODELIST</code> shows the node(s) assigned. If it shows <code>(Priority)</code>, you`re still waiting.</li>
 </ul>
-<h3 id="72-checking-logs">7.2 Checking Logs<a class="headerlink" href="#72-checking-logs" title="Permanent link">&para;</a></h3>
+<h3 id="72-checking-logs">7.2 Checking Logs<a class="headerlink" href="#72-checking-logs" title="Permanent link">¶</a></h3>
 <p>When you submit a Slurm job, two log files are automatically generated in the directory where you ran <code>sbatch</code>:</p>
 <ul>
 <li><code>slurm-&lt;jobid&gt;.out</code>: captures <strong>standard output (stdout)</strong> — the regular printed output from your script.</li>
 <li><code>slurm-&lt;jobid&gt;.err</code>: captures <strong>standard error (stderr)</strong> — any warnings or errors encountered during the job.</li>
 </ul>
-<h4 id="check-available-files">Check available files<a class="headerlink" href="#check-available-files" title="Permanent link">&para;</a></h4>
+<h4 id="check-available-files">Check available files<a class="headerlink" href="#check-available-files" title="Permanent link">¶</a></h4>
 <p>To see the files in your current directory:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ls
 </span></code></pre></div>
 <p>You should see something like:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>fmriprep-25.0.0.sif  data  run_fmriprep_job.slurm  slurm-58070026.out  slurm-58070026.err
 </span></code></pre></div>
-<h4 id="open-and-read-the-logs">Open and Read the Logs<a class="headerlink" href="#open-and-read-the-logs" title="Permanent link">&para;</a></h4>
+<h4 id="open-and-read-the-logs">Open and Read the Logs<a class="headerlink" href="#open-and-read-the-logs" title="Permanent link">¶</a></h4>
 <p>To open the full output log (static view):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>nano<span class="w"> </span>slurm-58070026.out
 </span></code></pre></div>
@@ -3599,40 +3606,40 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 </span></code></pre></div>
 <p>This will auto-refresh every second and is very helpful to track live progress.</p>
 <p>To exit the <code>watch</code> session Press <code>Ctrl+Z</code>.</p>
-<h2 id="8-canceling-a-job">8. Canceling a Job<a class="headerlink" href="#8-canceling-a-job" title="Permanent link">&para;</a></h2>
+<h2 id="8-canceling-a-job">8. Canceling a Job<a class="headerlink" href="#8-canceling-a-job" title="Permanent link">¶</a></h2>
 <p>If you want to stop a running or pending job you need to provide the cluster name (defaults to Genius), and the unique <code>&lt;jobID&gt;</code>, e.g.:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>scancel<span class="w"> </span><span class="m">58070026</span>
 </span></code></pre></div>
 <p>Or:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>scancel<span class="w"> </span>--user<span class="o">=</span><span class="nv">$USER</span>
 </span></code></pre></div>
-<hr />
-<h2 id="9-after-the-job-completes">9. After the Job Completes<a class="headerlink" href="#9-after-the-job-completes" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="9-after-the-job-completes">9. After the Job Completes<a class="headerlink" href="#9-after-the-job-completes" title="Permanent link">¶</a></h2>
 <p>Once your job finishes, you will receive an email from the SLURM scheduler. This email tells you whether the job <strong>completed</strong>, <strong>failed</strong>, or was <strong>cancelled</strong>.</p>
-<h3 id="91-example-email-messages">9.1 Example Email Messages<a class="headerlink" href="#91-example-email-messages" title="Permanent link">&para;</a></h3>
+<h3 id="91-example-email-messages">9.1 Example Email Messages<a class="headerlink" href="#91-example-email-messages" title="Permanent link">¶</a></h3>
 <ul>
 <li>
 <p>✅ <strong>Successful run:</strong>
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Slurm Job_id=58070026 Name=fmriprep_sub-42 Ended, Run time 03:41:05, COMPLETED, ExitCode 0
-</span></code></pre></div></p>
+  </p><div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Slurm Job_id=58070026 Name=fmriprep_sub-42 Ended, Run time 03:41:05, COMPLETED, ExitCode 0
+</span></code></pre></div><p></p>
 </li>
 <li>
 <p>❌ <strong>Cancelled manually or by the system:</strong>
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Slurm Job_id=58069757 Name=fmriprep_sub-42 Ended, Run time 00:00:00, CANCELLED, ExitCode 0
-</span></code></pre></div></p>
+  </p><div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Slurm Job_id=58069757 Name=fmriprep_sub-42 Ended, Run time 00:00:00, CANCELLED, ExitCode 0
+</span></code></pre></div><p></p>
 </li>
 <li>
 <p>⚠️ <strong>Job failed with error:</strong>
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>Slurm Job_id=58069624 Name=fmriprep_sub-42 Failed, Run time 00:00:20, FAILED, ExitCode 255
-</span></code></pre></div></p>
+  </p><div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>Slurm Job_id=58069624 Name=fmriprep_sub-42 Failed, Run time 00:00:20, FAILED, ExitCode 255
+</span></code></pre></div><p></p>
 </li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>If you submit too many jobs, it is best not to enable email notifications.</p>
 </div>
-<hr />
-<h3 id="92-inspecting-failed-jobs">9.2 Inspecting Failed Jobs<a class="headerlink" href="#92-inspecting-failed-jobs" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="92-inspecting-failed-jobs">9.2 Inspecting Failed Jobs<a class="headerlink" href="#92-inspecting-failed-jobs" title="Permanent link">¶</a></h3>
 <p>If your job failed, the first thing to do is inspect the <code>.out</code> and <code>.err</code> files written by SLURM. These contain the full log and error output from <code>fMRIPrep</code>.</p>
 <div class="steps-list">
 <ol>
@@ -3662,8 +3669,8 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 </ol>
 </div>
 <p>Make sure to check <strong>both files</strong>, as the error could appear in either.</p>
-<hr />
-<h3 id="93-verifying-successful-runs">9.3 Verifying Successful Runs<a class="headerlink" href="#93-verifying-successful-runs" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="93-verifying-successful-runs">9.3 Verifying Successful Runs<a class="headerlink" href="#93-verifying-successful-runs" title="Permanent link">¶</a></h3>
 <p>If the job completed successfully, it's time to check the output files.</p>
 <p>In our SLURM script, the <code>--output</code> directory is bound to:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>-B $VSC_DATA/data/BIDS/derivatives:/out
@@ -3714,15 +3721,15 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 </span><span id="__span-39-30"><a id="__codelineno-39-30" name="__codelineno-39-30" href="#__codelineno-39-30"></a>├── sub-42.html              # Subject-level report
 </span></code></pre></div>
 <p>This confirms that <code>fMRIPrep</code> completed for subject 42 and produced its derivatives, QC figures, and logs.</p>
-<hr />
-<h3 id="94-downloading-the-results-derivatives-to-your-local-machine">9.4 Downloading the Results (Derivatives) to Your Local Machine<a class="headerlink" href="#94-downloading-the-results-derivatives-to-your-local-machine" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="94-downloading-the-results-derivatives-to-your-local-machine">9.4 Downloading the Results (Derivatives) to Your Local Machine<a class="headerlink" href="#94-downloading-the-results-derivatives-to-your-local-machine" title="Permanent link">¶</a></h3>
 <p>After fMRIPrep completes successfully, you might want to retrieve the <code>derivatives/fmriprep</code> folder from the HPC back to your local computer for further analysis. The steps differ slightly depending on your operating system.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="windows-winscp_1" name="__tabbed_2" type="radio" /><input id="macos--linux" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="windows-winscp_1">Windows (WinSCP)</label><label for="macos--linux">macOS / Linux</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="windows-winscp_1" name="__tabbed_2" type="radio"><input id="macos--linux" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="windows-winscp_1">Windows (WinSCP)</label><label for="macos--linux">macOS / Linux</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
 <li>
-<p><strong>Log in via the Firewall</strong><br />
+<p><strong>Log in via the Firewall</strong><br>
     Go to <a href="https://firewall.vscentrum.be/auth/login">https://firewall.vscentrum.be/auth/login</a> and enter your VSC credentials.</p>
 </li>
 <li>
@@ -3751,7 +3758,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 <div class="tabbed-block">
 <ol>
 <li>
-<p><strong>Confirm Firewall Access</strong><br />
+<p><strong>Confirm Firewall Access</strong><br>
      Visit <a href="https://firewall.vscentrum.be/auth/login">https://firewall.vscentrum.be/auth/login</a> if your connection is blocked by the HPC firewall.</p>
 </li>
 <li>
@@ -3767,10 +3774,10 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 </li>
 <li>
 <p><strong><code>rsync</code> (recommended for large data)</strong>:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>rsync<span class="w"> </span>-av<span class="w"> </span>--progress<span class="w"> </span><span class="se">\</span>
+   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>rsync<span class="w"> </span>-av<span class="w"> </span>--progress<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="w">  </span>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="w">  </span>/local/path/
-</span></code></pre></div></p>
+</span></code></pre></div><p></p>
 </li>
 <li><code>-a</code> preserves file attributes.</li>
 <li><code>-v</code> is verbose output.</li>
@@ -3779,7 +3786,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 </li>
 <li>
 <p>Or, if you only want to <strong>quickly download reports</strong> and related files (for quick results check):
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>rsync<span class="w"> </span>-av<span class="w"> </span>--progress<span class="w"> </span><span class="se">\</span>
+   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>rsync<span class="w"> </span>-av<span class="w"> </span>--progress<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>--include<span class="o">=</span><span class="s1">'*/'</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>--include<span class="o">=</span><span class="s1">'*.html'</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>--include<span class="o">=</span><span class="s1">'*.svg'</span><span class="w"> </span><span class="se">\</span>
@@ -3787,7 +3794,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 </span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a>--exclude<span class="o">=</span><span class="s1">'*'</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-43-7"><a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a>vsc12345@login.hpc.kuleuven.be:/data/leuven/123/vsc12345/data/BIDS/derivatives/fmriprep/<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-43-8"><a id="__codelineno-43-8" name="__codelineno-43-8" href="#__codelineno-43-8"></a>/local/path/fmriprep_reports/
-</span></code></pre></div></p>
+</span></code></pre></div><p></p>
 </li>
 </ul>
 </li>
@@ -3796,10 +3803,10 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 </div>
 </div>
 </div>
-<hr />
-<h2 id="10-advanced-monitoring-resource-usage">10. Advanced: Monitoring Resource Usage<a class="headerlink" href="#10-advanced-monitoring-resource-usage" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="10-advanced-monitoring-resource-usage">10. Advanced: Monitoring Resource Usage<a class="headerlink" href="#10-advanced-monitoring-resource-usage" title="Permanent link">¶</a></h2>
 <p>Sometimes you want to inspect your job in real-time to check whether it is using the resources (CPU, memory) you requested.</p>
-<h3 id="101-identify-the-compute-node">10.1 Identify the Compute Node<a class="headerlink" href="#101-identify-the-compute-node" title="Permanent link">&para;</a></h3>
+<h3 id="101-identify-the-compute-node">10.1 Identify the Compute Node<a class="headerlink" href="#101-identify-the-compute-node" title="Permanent link">¶</a></h3>
 <p>First, determine which compute node your job is running on by checking the job queue:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>squeue<span class="w"> </span>-M<span class="w"> </span>genius,wice<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
 </span></code></pre></div>
@@ -3810,7 +3817,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 </span></code></pre></div>
 <p>Look at the <strong>NODELIST</strong> column — in this case, your job is running on node <code>r27i27n19</code>.</p>
 <p>If NODELIST shows <code>(Priority)</code> with state <code>PD</code> (for pending), it means your job is still waiting in the queue and hasn`t started yet.</p>
-<h3 id="102-ssh-into-the-compute-node">10.2: SSH into the Compute Node<a class="headerlink" href="#102-ssh-into-the-compute-node" title="Permanent link">&para;</a></h3>
+<h3 id="102-ssh-into-the-compute-node">10.2: SSH into the Compute Node<a class="headerlink" href="#102-ssh-into-the-compute-node" title="Permanent link">¶</a></h3>
 <p>To access the compute node where your job is running:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>ssh<span class="w"> </span>r27i27n19
 </span></code></pre></div>
@@ -3818,12 +3825,12 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 <div class="language-text highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>Joining job 58070026
 </span></code></pre></div>
 <p>Also, the prompt will change from the login node (e.g., <code>tier2-p-login-2</code>) to the compute node (e.g., <code>r27i27n19</code>), indicating you are now inside the job environment on the actual node.</p>
-<h3 id="103-run-htop-to-monitor-resource-usage">10.3: Run <code>htop</code> to Monitor Resource Usage<a class="headerlink" href="#103-run-htop-to-monitor-resource-usage" title="Permanent link">&para;</a></h3>
+<h3 id="103-run-htop-to-monitor-resource-usage">10.3: Run <code>htop</code> to Monitor Resource Usage<a class="headerlink" href="#103-run-htop-to-monitor-resource-usage" title="Permanent link">¶</a></h3>
 <p>Once inside the compute node, run:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>htop<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
 </span></code></pre></div>
 <p>This opens a live system monitor like this one:</p>
-<p><img alt="fmri-htop" src="../../assets/fmri-hpc-htop.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/fmri-hpc-htop.png" data-desc-position="bottom"><img alt="fmri-htop" src="../../assets/fmri-hpc-htop.png"></a></p>
 <p>Which shows:</p>
 <ul>
 <li>All processes currently running under your username</li>
@@ -3833,10 +3840,10 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 </ul>
 <p>You should see multiple processes associated with <code>fmriprep</code>. Ideally, if you requested 32 cores, you should see all 32 cores utilized — especially during parallelizable tasks. However, some parts of <code>fmriprep</code> can only run serially. During these phases, only 1–2 cores may be active, which is normal.</p>
 <p>To exit <code>htop</code>, press <strong>F10</strong> or <strong>q</strong></p>
-<hr />
-<h2 id="11-checking-credit-usage">11. Checking Credit Usage<a class="headerlink" href="#11-checking-credit-usage" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="11-checking-credit-usage">11. Checking Credit Usage<a class="headerlink" href="#11-checking-credit-usage" title="Permanent link">¶</a></h2>
 <p>Each VSC account is allocated a fixed number of compute <strong>credits</strong>, which are consumed depending on the number of CPUs, memory, and time your jobs require. If your jobs are not running or are failing, it's useful to check how many credits you have <strong>left</strong>, and how many you’ve already <strong>used</strong>.</p>
-<h3 id="111-check-your-current-credit-balance">11.1 Check your current credit balance<a class="headerlink" href="#111-check-your-current-credit-balance" title="Permanent link">&para;</a></h3>
+<h3 id="111-check-your-current-credit-balance">11.1 Check your current credit balance<a class="headerlink" href="#111-check-your-current-credit-balance" title="Permanent link">¶</a></h3>
 <p>You can check the total number of credits <strong>deposited</strong>, <strong>used</strong>, and <strong>refunded</strong> using:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>sam-balance
 </span></code></pre></div>
@@ -3874,7 +3881,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 </span><span id="__span-52-22"><a id="__codelineno-52-22" name="__codelineno-52-22" href="#__codelineno-52-22"></a>58234300   genius   intro_vsc12345         vsc12345 batch       82
 </span><span id="__span-52-23"><a id="__codelineno-52-23" name="__codelineno-52-23" href="#__codelineno-52-23"></a>58234301   genius   intro_vsc12345         vsc12345 batch       21461
 </span></code></pre></div>
-<h3 id="112-check-how-many-credits-each-job-used">11.2 Check how many credits each job used<a class="headerlink" href="#112-check-how-many-credits-each-job-used" title="Permanent link">&para;</a></h3>
+<h3 id="112-check-how-many-credits-each-job-used">11.2 Check how many credits each job used<a class="headerlink" href="#112-check-how-many-credits-each-job-used" title="Permanent link">¶</a></h3>
 <p>To see how many credits were used <strong>per job</strong>, use either the <code>sam-statement</code> command from the section above, or:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>sam-list-usagerecords<span class="w"> </span>--start<span class="o">=</span><span class="m">2025</span>-01-01<span class="w"> </span>--end<span class="o">=</span><span class="m">2025</span>-07-01
 </span></code></pre></div>
@@ -3885,8 +3892,8 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 </span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>58270696   genius   intro_vsc12345  COMPLETED  vsc12345   23348       2025-07-08T12:45   2025-07-08T17:15
 </span></code></pre></div>
 <p>This helps you estimate how much a typical run (e.g. an <code>fMRIPrep</code> job) costs. In our experience, a <strong>successful fMRIPrep</strong> run with 16 cores and 20 GB RAM costs ~20,000–25,000 credits.</p>
-<hr />
-<h2 id="12-references-and-links">12. References and Links<a class="headerlink" href="#12-references-and-links" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="12-references-and-links">12. References and Links<a class="headerlink" href="#12-references-and-links" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/index.html">VSC Documentation</a></li>
 <li><a href="https://icts.kuleuven.be/sc/onderzoeksgegevens/hpc">KU Leuven HPC Info</a></li>
@@ -3918,7 +3925,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
       <time class="md-source-file__time" datetime="2026-10-02T21:39:56+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 2, 2026 21:39:56 CEST">October 2, 2026</span></time>
@@ -3932,7 +3939,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
   <span class="md-source-file__fact md-contributors">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"></path></svg>
       
     </span><span class="md-contributors__stack">
       
@@ -3942,13 +3949,11 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
         
         
         
-          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 87% of this page" style="--z: 3"
-             data-name="Andrea Costantino" data-share="87.39%">
+          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 87% of this page" style="--z: 3" data-name="Andrea Costantino" data-share="87.39%">
         
             <span class="md-contributor__face">
               
-                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/59078281?s=96"
-                     alt="" width="36" height="36" loading="lazy">
+                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/59078281?s=96" alt="" width="36" height="36" loading="lazy">
               
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
@@ -3963,13 +3968,11 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
         
         
         
-          <a class="md-contributor" href="https://github.com/timmaniquet" aria-label="Tim Maniquet, 7% of this page" style="--z: 2"
-             data-name="Tim Maniquet" data-share="6.63%">
+          <a class="md-contributor" href="https://github.com/timmaniquet" aria-label="Tim Maniquet, 7% of this page" style="--z: 2" data-name="Tim Maniquet" data-share="6.63%">
         
             <span class="md-contributor__face">
               
-                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/61991543?s=96"
-                     alt="" width="36" height="36" loading="lazy">
+                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/61991543?s=96" alt="" width="36" height="36" loading="lazy">
               
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
@@ -3984,13 +3987,11 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
         
         
         
-          <a class="md-contributor" href="https://github.com/moravveji" aria-label="Ehsan Moravveji, 6% of this page" style="--z: 1"
-             data-name="Ehsan Moravveji" data-share="5.98%">
+          <a class="md-contributor" href="https://github.com/moravveji" aria-label="Ehsan Moravveji, 6% of this page" style="--z: 1" data-name="Ehsan Moravveji" data-share="5.98%">
         
             <span class="md-contributor__face">
               
-                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/6280576?s=96"
-                     alt="" width="36" height="36" loading="lazy">
+                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/6280576?s=96" alt="" width="36" height="36" loading="lazy">
               
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
@@ -4011,7 +4012,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 
 
 
-  <form class="md-feedback" name="feedback" hidden>
+  <form class="md-feedback" name="feedback" hidden="">
     <fieldset>
       <legend class="md-feedback__title">
         Was this page helpful?
@@ -4020,17 +4021,17 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
         <div class="md-feedback__list">
           
             <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"></path></svg>
             </button>
           
             <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"></path></svg>
             </button>
           
         </div>
         <div class="md-feedback__note">
           
-            <div data-md-value="1" hidden>
+            <div data-md-value="1" hidden="">
               
               
                 
@@ -4043,7 +4044,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
               Thanks for your feedback!
             </div>
           
-            <div data-md-value="0" hidden>
+            <div data-md-value="0" hidden="">
               
               
                 
@@ -4072,9 +4073,9 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -4084,13 +4085,13 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="fmri-nimare.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Meta-analysis with NiMARE">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -4115,7 +4116,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -4149,7 +4150,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
     </div>
     
     
-      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden="">
         <div class="md-consent__overlay"></div>
         <aside class="md-consent__inner">
           <form class="md-consent__form md-grid md-typeset" name="consent">
@@ -4161,7 +4162,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
 
 <h4>Cookie consent</h4>
 <p>Please, consider disabling your ad-blocker and allowing cookies for this Wiki . We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
-<input class="md-toggle" type="checkbox" id="__settings" >
+<input class="md-toggle" type="checkbox" id="__settings">
 <div class="md-consent__settings">
   <ul class="task-list">
     
@@ -4175,7 +4176,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="analytics" checked>
+      <input type="checkbox" name="analytics" checked="">
       <span class="task-list-indicator"></span>
       Google Analytics
     </label>
@@ -4193,7 +4194,7 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="github" checked>
+      <input type="checkbox" name="github" checked="">
       <span class="task-list-indicator"></span>
       GitHub
     </label>
@@ -4236,10 +4237,14 @@ Then press <code>CTRL+X</code> to exit and <code>Y</code> to save. Check whether
       
         <script src="../../javascripts/details.js"></script>
       
+        <script src="../../javascripts/lightbox-zoom.js"></script>
+      
         <script src="../../javascripts/source-file.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": false, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

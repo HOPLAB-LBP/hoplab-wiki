@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -49,8 +46,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -75,7 +72,17 @@
 
     
     
-  </head>
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -117,7 +124,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -142,20 +149,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"></path></svg>
       </label>
     
   
@@ -171,29 +178,29 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -201,7 +208,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -219,7 +226,7 @@
         <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
   </div>
   <div class="md-source__repository">
     HOPLAB-LBP/hoplab-wiki
@@ -355,7 +362,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -378,7 +385,7 @@
       <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
   </div>
   <div class="md-source__repository">
     HOPLAB-LBP/hoplab-wiki
@@ -386,7 +393,7 @@
 </a>
     </div>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -451,7 +458,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -488,7 +495,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -712,7 +719,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -749,7 +756,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -791,7 +798,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -828,7 +835,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1064,7 +1071,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1101,7 +1108,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1197,7 +1204,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1234,7 +1241,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1252,7 +1259,7 @@
   <span class="md-ellipsis">
     
   
-    Environment & editor setup
+    Environment &amp; editor setup
   
 
     
@@ -1334,7 +1341,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1371,7 +1378,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1437,7 +1444,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1474,7 +1481,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1598,7 +1605,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#why-a-normal-jspsych-experiment-is-not-enough" class="md-nav__link">
@@ -1831,7 +1838,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1868,7 +1875,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2056,7 +2063,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2093,7 +2100,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2479,7 +2486,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2516,7 +2523,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2644,7 +2651,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2681,7 +2688,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2839,7 +2846,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2876,7 +2883,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -3097,7 +3104,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -3113,7 +3120,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#why-a-normal-jspsych-experiment-is-not-enough" class="md-nav__link">
@@ -3244,13 +3251,13 @@
   
     <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/edit/main/docs/research/behaviour/experimental-setup/pavlovia-training-study.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="multi-session-training-studies-on-pavlovia">Multi-session training studies on Pavlovia<a class="headerlink" href="#multi-session-training-studies-on-pavlovia" title="Permanent link">&para;</a></h1>
+<h1 id="multi-session-training-studies-on-pavlovia">Multi-session training studies on Pavlovia<a class="headerlink" href="#multi-session-training-studies-on-pavlovia" title="Permanent link">¶</a></h1>
 <p>Some studies require participants to come back many times over days or weeks, for example, perceptual <strong>training</strong> studies. This page explains how to run such a study on Pavlovia using jsPsych, and how to add the two things a multi-session study needs that a one-shot online experiment does not:</p>
 <ol>
 <li><strong>Cross-session progress tracking</strong>: so a returning participant resumes exactly where they left off.</li>
@@ -3258,8 +3265,8 @@
 </ol>
 <p>This page assumes you are already comfortable building a basic jsPsych experiment and putting it on Pavlovia. If not, read <a href="pavlovia-jspsych.html">Online Experiments (jsPsych)</a> first. The parts that are usually <strong>new</strong> to people — Google Apps Script and the tracking sheet — are explained step by step, with every click spelled out.</p>
 <p>A complete working implementation (a face-training study) is available as a reference here: <a href="https://github.com/LauraSoen/face-training-experiment" target="_blank">face-training-experiment</a>.</p>
-<hr />
-<h2 id="why-a-normal-jspsych-experiment-is-not-enough">Why a normal jsPsych experiment is not enough<a class="headerlink" href="#why-a-normal-jspsych-experiment-is-not-enough" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="why-a-normal-jspsych-experiment-is-not-enough">Why a normal jsPsych experiment is not enough<a class="headerlink" href="#why-a-normal-jspsych-experiment-is-not-enough" title="Permanent link">¶</a></h2>
 <p>A standard Pavlovia experiment is <strong>stateless</strong>: every time it runs, it starts from the beginning. It saves a data file at the end, but it does not <em>read</em> anything back at the start. For a multi-session study this is a problem, because session 5 needs to know what happened in sessions 1–4 (which training block the participant reached, how they have been improving, and so on).</p>
 <p>So you need somewhere to <strong>store a small amount of progress per participant</strong> that the experiment can both <em>write to</em> at the end of a session and <em>read from</em> at the start of the next one. The trial-by-trial data still goes to Pavlovia as usual — this extra store is only for the lightweight "where is this participant up to" information.</p>
 <p>The simplest, free way to do this is a <strong>Google Sheet</strong> that your experiment talks to through a small piece of code called a <strong>Google Apps Script web app</strong>. You do not need a server or a database.</p>
@@ -3272,8 +3279,8 @@
 <li><strong>The Apps Script</strong> — the messenger that lets the experiment read from and write to the Sheet, and that sends reminder emails.</li>
 </ul>
 </div>
-<hr />
-<h2 id="how-the-pieces-fit-together">How the pieces fit together<a class="headerlink" href="#how-the-pieces-fit-together" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="how-the-pieces-fit-together">How the pieces fit together<a class="headerlink" href="#how-the-pieces-fit-together" title="Permanent link">¶</a></h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>PARTICIPANT'S BROWSER (Pavlovia)
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   |
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   |  1. Session starts -&gt; experiment asks the Sheet:
@@ -3294,17 +3301,17 @@
 </span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>   |                                              (read from the emails tab)
 </span></code></pre></div>
 <p>Everything in steps 1–3 happens automatically inside the experiment. Step 4 is a separate scheduled job you set up once.</p>
-<hr />
-<h2 id="part-a-the-google-sheet-your-progress-store">Part A — The Google Sheet (your progress store)<a class="headerlink" href="#part-a-the-google-sheet-your-progress-store" title="Permanent link">&para;</a></h2>
-<h3 id="create-the-sheet">Create the Sheet<a class="headerlink" href="#create-the-sheet" title="Permanent link">&para;</a></h3>
+<hr>
+<h2 id="part-a-the-google-sheet-your-progress-store">Part A — The Google Sheet (your progress store)<a class="headerlink" href="#part-a-the-google-sheet-your-progress-store" title="Permanent link">¶</a></h2>
+<h3 id="create-the-sheet">Create the Sheet<a class="headerlink" href="#create-the-sheet" title="Permanent link">¶</a></h3>
 <ol>
 <li>Go to <a href="https://sheets.google.com" target="_blank">sheets.google.com</a> and create a new, blank spreadsheet.</li>
 <li>Give it a clear name, e.g. <em>"MyStudy Progress"</em>.</li>
 </ol>
 <p>That's all for now — you do <strong>not</strong> need to create the tabs or columns by hand. The Apps Script (set up in Part B) creates the <code>state</code> and <code>log</code> tabs automatically the first time the experiment writes to them. You only create the <code>emails</code> tab yourself (for reminders, see Part C).</p>
-<h3 id="the-tabs-explained">The tabs explained<a class="headerlink" href="#the-tabs-explained" title="Permanent link">&para;</a></h3>
+<h3 id="the-tabs-explained">The tabs explained<a class="headerlink" href="#the-tabs-explained" title="Permanent link">¶</a></h3>
 <p>Once running, your Sheet will contain these tabs:</p>
-<h4 id="state-tab-one-row-per-participant-the-live-progress"><code>state</code> tab — one row per participant (the live progress)<a class="headerlink" href="#state-tab-one-row-per-participant-the-live-progress" title="Permanent link">&para;</a></h4>
+<h4 id="state-tab-one-row-per-participant-the-live-progress"><code>state</code> tab — one row per participant (the live progress)<a class="headerlink" href="#state-tab-one-row-per-participant-the-live-progress" title="Permanent link">¶</a></h4>
 <p>This is the heart of the tracking. Each participant has exactly <strong>one</strong> row, which gets <strong>updated</strong> (not duplicated) after every session.</p>
 <table>
 <thead>
@@ -3352,7 +3359,7 @@
 <p class="admonition-title">One row per participant — watch for duplicates</p>
 <p>The <code>state</code> tab must have a single row per participant. If you see two rows for the same ID, the resume logic will read the wrong one and progress appears to reset. This usually happens when the ID is stored inconsistently (e.g. the number <code>0</code> vs the text <code>"0"</code>). The fix is to <strong>normalize the ID to text on both reading and writing</strong>, and to use Apps Script's <code>LockService</code> so two writes can't both append at once. (The reference implementation does both.) Prefer text IDs like <code>P01</code>, <code>P02</code> over bare numbers to avoid this entirely.</p>
 </div>
-<h4 id="log-tab-one-row-per-session-append-only-history"><code>log</code> tab — one row per session (append-only history)<a class="headerlink" href="#log-tab-one-row-per-session-append-only-history" title="Permanent link">&para;</a></h4>
+<h4 id="log-tab-one-row-per-session-append-only-history"><code>log</code> tab — one row per session (append-only history)<a class="headerlink" href="#log-tab-one-row-per-session-append-only-history" title="Permanent link">¶</a></h4>
 <p>This never updates existing rows; it just appends. Use it for auditing and analysis.</p>
 <table>
 <thead>
@@ -3415,7 +3422,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="emails-tab-you-fill-this-in-for-reminders"><code>emails</code> tab — you fill this in (for reminders)<a class="headerlink" href="#emails-tab-you-fill-this-in-for-reminders" title="Permanent link">&para;</a></h4>
+<h4 id="emails-tab-you-fill-this-in-for-reminders"><code>emails</code> tab — you fill this in (for reminders)<a class="headerlink" href="#emails-tab-you-fill-this-in-for-reminders" title="Permanent link">¶</a></h4>
 <p>You create this tab by hand. See Part C.</p>
 <table>
 <thead>
@@ -3443,12 +3450,12 @@
 </tr>
 </tbody>
 </table>
-<h4 id="reminder_log-tab-created-automatically"><code>reminder_log</code> tab — created automatically<a class="headerlink" href="#reminder_log-tab-created-automatically" title="Permanent link">&para;</a></h4>
+<h4 id="reminder_log-tab-created-automatically"><code>reminder_log</code> tab — created automatically<a class="headerlink" href="#reminder_log-tab-created-automatically" title="Permanent link">¶</a></h4>
 <p>The reminder script creates and manages this to avoid emailing the same person twice in one cycle. You don't touch it.</p>
-<hr />
-<h2 id="part-b-the-apps-script-the-messenger">Part B — The Apps Script (the messenger)<a class="headerlink" href="#part-b-the-apps-script-the-messenger" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="part-b-the-apps-script-the-messenger">Part B — The Apps Script (the messenger)<a class="headerlink" href="#part-b-the-apps-script-the-messenger" title="Permanent link">¶</a></h2>
 <p>Apps Script is just JavaScript that runs on Google's servers, attached to your Sheet. Follow these steps exactly.</p>
-<h3 id="step-1-open-the-script-editor">Step 1: Open the script editor<a class="headerlink" href="#step-1-open-the-script-editor" title="Permanent link">&para;</a></h3>
+<h3 id="step-1-open-the-script-editor">Step 1: Open the script editor<a class="headerlink" href="#step-1-open-the-script-editor" title="Permanent link">¶</a></h3>
 <ol>
 <li>In your Google Sheet, click the <strong>Extensions</strong> menu -&gt; <strong>Apps Script</strong>.</li>
 <li>A new tab opens with a code editor and a file called <code>Code.gs</code> containing an empty <code>myFunction</code>.</li>
@@ -3457,14 +3464,14 @@
 <p class="admonition-title">Create the script FROM the sheet</p>
 <p>Always open Apps Script via <strong>Extensions -&gt; Apps Script</strong> from inside the Sheet. This "binds" the script to that specific Sheet, which is what lets the code find it automatically. If you instead create a standalone script from script.google.com, it won't be attached to any sheet and writes will silently fail.</p>
 </div>
-<h3 id="step-2-paste-in-the-progress-tracking-code">Step 2: Paste in the progress-tracking code<a class="headerlink" href="#step-2-paste-in-the-progress-tracking-code" title="Permanent link">&para;</a></h3>
+<h3 id="step-2-paste-in-the-progress-tracking-code">Step 2: Paste in the progress-tracking code<a class="headerlink" href="#step-2-paste-in-the-progress-tracking-code" title="Permanent link">¶</a></h3>
 <ol>
 <li>Delete the empty <code>myFunction</code> content.</li>
 <li>Paste in the full progress-tracking script (in the reference repo this is <code>Code.gs</code>).</li>
 <li>Click the <strong>Save</strong> icon.</li>
 </ol>
 <p>This code defines two functions Google will call over the web: <code>doGet</code> (handles the "what block is this participant on?" request) and <code>doPost</code> (handles the "here's what happened this session" request).</p>
-<h3 id="step-3-deploy-it-as-a-web-app">Step 3: Deploy it as a web app<a class="headerlink" href="#step-3-deploy-it-as-a-web-app" title="Permanent link">&para;</a></h3>
+<h3 id="step-3-deploy-it-as-a-web-app">Step 3: Deploy it as a web app<a class="headerlink" href="#step-3-deploy-it-as-a-web-app" title="Permanent link">¶</a></h3>
 <p>This turns your script into something the experiment can reach over the internet.</p>
 <div class="steps-list">
 <ol>
@@ -3487,7 +3494,7 @@
 <p class="admonition-title">Keep the /exec URL private</p>
 <p>This URL is an unauthenticated endpoint — anyone who has it can read and write your progress data. Do <strong>not</strong> commit it to a public GitHub repository. Keep it only in your local experiment config and in the copy uploaded to Pavlovia. Put a blank placeholder in any committed code. (See the <a href="../../coding/version-control.html">Version control</a> page and the repo's privacy notes.)</p>
 </div>
-<h3 id="step-4-test-the-web-app-before-touching-the-experiment">Step 4: Test the web app before touching the experiment<a class="headerlink" href="#step-4-test-the-web-app-before-touching-the-experiment" title="Permanent link">&para;</a></h3>
+<h3 id="step-4-test-the-web-app-before-touching-the-experiment">Step 4: Test the web app before touching the experiment<a class="headerlink" href="#step-4-test-the-web-app-before-touching-the-experiment" title="Permanent link">¶</a></h3>
 <ol>
 <li><strong>Test reading:</strong> paste your <code>/exec</code> URL into a browser with <code>?id=TEST01</code> added on the end:
    <code>https://script.google.com/macros/s/AKfy.../exec?id=TEST01</code>
@@ -3498,23 +3505,23 @@
 <p class="admonition-title">If you change the code later, you must re-deploy</p>
 <p>Editing the code in the editor does <strong>not</strong> update the live web app. After any change, go to <strong>Deploy -&gt; Manage deployments -&gt; edit (pencil) -&gt; Version: New version -&gt; Deploy</strong>. This keeps the same <code>/exec</code> URL. (Creating a <em>new deployment</em> instead gives you a <em>new</em> URL, which you'd then have to update everywhere — avoid that.)</p>
 </div>
-<hr />
-<h2 id="part-c-automated-email-reminders">Part C — Automated email reminders<a class="headerlink" href="#part-c-automated-email-reminders" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="part-c-automated-email-reminders">Part C — Automated email reminders<a class="headerlink" href="#part-c-automated-email-reminders" title="Permanent link">¶</a></h2>
 <p>Reminders are a second piece of Apps Script that runs on a schedule. It reads the <code>state</code> tab (to see when each person last did a session) and the <code>emails</code> tab (to know who to write to).</p>
-<h3 id="step-1-add-the-reminder-code">Step 1: Add the reminder code<a class="headerlink" href="#step-1-add-the-reminder-code" title="Permanent link">&para;</a></h3>
+<h3 id="step-1-add-the-reminder-code">Step 1: Add the reminder code<a class="headerlink" href="#step-1-add-the-reminder-code" title="Permanent link">¶</a></h3>
 <ol>
 <li>In the same Apps Script project, add the reminder script (in the reference repo this is <code>Reminders.gs</code>) — either paste it below the existing code or add a new script file (the <strong>+</strong> next to "Files").</li>
 <li>At the top of it, fill in the configuration: your reply-to email address and the Pavlovia run URL participants should click.</li>
 <li>Save.</li>
 </ol>
-<h3 id="step-2-create-the-emails-tab">Step 2: Create the <code>emails</code> tab<a class="headerlink" href="#step-2-create-the-emails-tab" title="Permanent link">&para;</a></h3>
+<h3 id="step-2-create-the-emails-tab">Step 2: Create the <code>emails</code> tab<a class="headerlink" href="#step-2-create-the-emails-tab" title="Permanent link">¶</a></h3>
 <p>In the Google Sheet, add a new tab named exactly <strong><code>emails</code></strong> (lowercase), with this header row and then one row per participant:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>id      email                  done
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>P01     p01@example.com
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>P02     p02@example.com
 </span></code></pre></div>
 <p>Leave the <code>done</code> column blank. When a participant finishes the entire study, type anything (e.g. <code>x</code>) in their <code>done</code> cell — this triggers a one-time "thank you, you're finished" email and stops further reminders for them.</p>
-<h3 id="step-3-decide-the-timing">Step 3: Decide the timing<a class="headerlink" href="#step-3-decide-the-timing" title="Permanent link">&para;</a></h3>
+<h3 id="step-3-decide-the-timing">Step 3: Decide the timing<a class="headerlink" href="#step-3-decide-the-timing" title="Permanent link">¶</a></h3>
 <p>The reminder logic typically distinguishes:</p>
 <ul>
 <li><strong>Eligible:</strong> enough time has passed since their last session (e.g. &gt;= 1 full day for an every-other-day schedule) -&gt; send a "you can do your next session" email.</li>
@@ -3526,7 +3533,7 @@
 <p class="admonition-title">Reminders are continuation-only</p>
 <p>A participant only gets a row in the <code>state</code> tab <strong>after</strong> they finish their first session. So reminders prompt people to do their <em>next</em> session — they cannot invite someone to do session 1. Send the first invitation manually (or do session 1 in a lab visit).</p>
 </div>
-<h3 id="step-4-test-without-sending-anything">Step 4: Test without sending anything<a class="headerlink" href="#step-4-test-without-sending-anything" title="Permanent link">&para;</a></h3>
+<h3 id="step-4-test-without-sending-anything">Step 4: Test without sending anything<a class="headerlink" href="#step-4-test-without-sending-anything" title="Permanent link">¶</a></h3>
 <p>In the Apps Script editor:</p>
 <ol>
 <li>From the function dropdown (next to the Run button), select <strong><code>previewReminders</code></strong>.</li>
@@ -3534,7 +3541,7 @@
 <li>Open <strong>Execution log</strong> (bottom of the screen). It prints who <em>would</em> be emailed — <strong>nothing is actually sent</strong>. Use this to check your <code>emails</code> tab and timing are right.</li>
 </ol>
 <p>To make yourself a test case: give yourself a row in <code>emails</code> with an ID that exists in <code>state</code>, temporarily edit that participant's <code>updated</code> timestamp in the <code>state</code> tab to a few days ago, then run <code>previewReminders</code> — you should now see an eligible line.</p>
-<h3 id="step-5-turn-on-the-daily-automation">Step 5: Turn on the daily automation<a class="headerlink" href="#step-5-turn-on-the-daily-automation" title="Permanent link">&para;</a></h3>
+<h3 id="step-5-turn-on-the-daily-automation">Step 5: Turn on the daily automation<a class="headerlink" href="#step-5-turn-on-the-daily-automation" title="Permanent link">¶</a></h3>
 <ol>
 <li>Select <strong><code>installReminderTrigger</code></strong> in the function dropdown and click <strong>Run</strong> once. This schedules the reminder check to run automatically every day (e.g. ~09:00).</li>
 <li>Confirm it worked: click the <strong>Triggers</strong> icon (alarm clock) in the left sidebar — you should see one daily time-driven trigger.</li>
@@ -3548,8 +3555,8 @@
 <p class="admonition-title">Reminders are NOT deployed</p>
 <p>Unlike the progress-tracking web app, the reminder script is not "deployed". It runs on the time trigger you create in this step. Do not look for it under Deploy — look under the Triggers panel.</p>
 </div>
-<hr />
-<h2 id="part-d-connecting-the-experiment">Part D — Connecting the experiment<a class="headerlink" href="#part-d-connecting-the-experiment" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="part-d-connecting-the-experiment">Part D — Connecting the experiment<a class="headerlink" href="#part-d-connecting-the-experiment" title="Permanent link">¶</a></h2>
 <p>Inside your jsPsych experiment, you need code that calls the web app at the start and end of each session. In the reference implementation this lives in <code>experiment.js</code>, and the only thing you set per study is the URL, in <code>config.js</code>:</p>
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">PROGRESS_URL</span><span class="o">:</span><span class="w"> </span><span class="s2">"https://script.google.com/macros/s/AKfy.../exec"</span><span class="p">,</span>
 </span></code></pre></div>
@@ -3564,8 +3571,8 @@
 <p class="admonition-title">Show a save confirmation</p>
 <p>Have the final screen display whether the save to the Sheet succeeded (e.g. a green "saved" / red "not saved" line). This turns silent failures into something you notice immediately during piloting, instead of discovering an empty Sheet later.</p>
 </div>
-<hr />
-<h2 id="part-e-putting-it-on-pavlovia">Part E — Putting it on Pavlovia<a class="headerlink" href="#part-e-putting-it-on-pavlovia" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="part-e-putting-it-on-pavlovia">Part E — Putting it on Pavlovia<a class="headerlink" href="#part-e-putting-it-on-pavlovia" title="Permanent link">¶</a></h2>
 <p>This follows the normal jsPsych-on-Pavlovia process (see <a href="pavlovia-jspsych.html">Online Experiments (jsPsych)</a>), with two specifics for this setup:</p>
 <ul>
 <li>Include the <strong>Pavlovia jsPsych plugin</strong> file, placed in a folder named <strong><code>vendor/</code></strong>.</li>
@@ -3577,8 +3584,8 @@
 <code>unable to link the PsychoJS library ... lib directory already exists [Errno 17]</code>
 Use <code>vendor/</code> (or any other name) for the plugin and update the <code>&lt;script src="..."&gt;</code> in <code>index.html</code> accordingly. If you already hit this, rename the folder, delete the old <code>lib</code>, push, then toggle the experiment Inactive -&gt; Piloting.</p>
 </div>
-<hr />
-<h2 id="part-f-pilot-before-recruiting">Part F — Pilot before recruiting<a class="headerlink" href="#part-f-pilot-before-recruiting" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="part-f-pilot-before-recruiting">Part F — Pilot before recruiting<a class="headerlink" href="#part-f-pilot-before-recruiting" title="Permanent link">¶</a></h2>
 <p>Do a full dress rehearsal with a test ID before any real participant:</p>
 <div class="steps-list">
 <ol>
@@ -3591,8 +3598,8 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
 <li>Restore your real session-length parameters before running participants.</li>
 </ol>
 </div>
-<hr />
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -3644,15 +3651,15 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="pavlovia-jspsych.html">Online Experiments (jsPsych)</a></li>
 <li><a href="pavlovia-psychopy.html">Online Experiments (PsychoPy)</a></li>
 <li><a href="../bh-participants.html">Find participants</a></li>
 <li><a href="../../coding/version-control.html">Version control</a></li>
 </ul>
-<hr />
+<hr>
 
 
 
@@ -3675,7 +3682,7 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
       <time class="md-source-file__time" datetime="2026-10-02T21:39:56+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 2, 2026 21:39:56 CEST">October 2, 2026</span></time>
@@ -3689,7 +3696,7 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
   <span class="md-source-file__fact md-contributors">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"></path></svg>
       
     </span><span class="md-contributors__stack">
       
@@ -3699,13 +3706,11 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
         
         
         
-          <a class="md-contributor" href="https://github.com/laurasoen" aria-label="Laura Soen, 97% of this page" style="--z: 2"
-             data-name="Laura Soen" data-share="97.41%">
+          <a class="md-contributor" href="https://github.com/laurasoen" aria-label="Laura Soen, 97% of this page" style="--z: 2" data-name="Laura Soen" data-share="97.41%">
         
             <span class="md-contributor__face">
               
-                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/183722597?s=96"
-                     alt="" width="36" height="36" loading="lazy">
+                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/183722597?s=96" alt="" width="36" height="36" loading="lazy">
               
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
@@ -3720,13 +3725,11 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
         
         
         
-          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 3% of this page" style="--z: 1"
-             data-name="Andrea Costantino" data-share="2.59%">
+          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 3% of this page" style="--z: 1" data-name="Andrea Costantino" data-share="2.59%">
         
             <span class="md-contributor__face">
               
-                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/59078281?s=96"
-                     alt="" width="36" height="36" loading="lazy">
+                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/59078281?s=96" alt="" width="36" height="36" loading="lazy">
               
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
@@ -3747,7 +3750,7 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
 
 
 
-  <form class="md-feedback" name="feedback" hidden>
+  <form class="md-feedback" name="feedback" hidden="">
     <fieldset>
       <legend class="md-feedback__title">
         Was this page helpful?
@@ -3756,17 +3759,17 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
         <div class="md-feedback__list">
           
             <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"></path></svg>
             </button>
           
             <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"></path></svg>
             </button>
           
         </div>
         <div class="md-feedback__note">
           
-            <div data-md-value="1" hidden>
+            <div data-md-value="1" hidden="">
               
               
                 
@@ -3779,7 +3782,7 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
               Thanks for your feedback!
             </div>
           
-            <div data-md-value="0" hidden>
+            <div data-md-value="0" hidden="">
               
               
                 
@@ -3808,9 +3811,9 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -3820,13 +3823,13 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="pavlovia-psychopy.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Online Experiments (PsychoPy)">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -3851,7 +3854,7 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -3885,7 +3888,7 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
     </div>
     
     
-      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden="">
         <div class="md-consent__overlay"></div>
         <aside class="md-consent__inner">
           <form class="md-consent__form md-grid md-typeset" name="consent">
@@ -3897,7 +3900,7 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
 
 <h4>Cookie consent</h4>
 <p>Please, consider disabling your ad-blocker and allowing cookies for this Wiki . We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
-<input class="md-toggle" type="checkbox" id="__settings" >
+<input class="md-toggle" type="checkbox" id="__settings">
 <div class="md-consent__settings">
   <ul class="task-list">
     
@@ -3911,7 +3914,7 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="analytics" checked>
+      <input type="checkbox" name="analytics" checked="">
       <span class="task-list-indicator"></span>
       Google Analytics
     </label>
@@ -3929,7 +3932,7 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="github" checked>
+      <input type="checkbox" name="github" checked="">
       <span class="task-list-indicator"></span>
       GitHub
     </label>
@@ -3972,10 +3975,14 @@ Use <code>vendor/</code> (or any other name) for the plugin and update the <code
       
         <script src="../../../javascripts/details.js"></script>
       
+        <script src="../../../javascripts/lightbox-zoom.js"></script>
+      
         <script src="../../../javascripts/source-file.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": false, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

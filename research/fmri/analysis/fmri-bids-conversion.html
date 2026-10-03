@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -49,8 +46,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -75,7 +72,17 @@
 
     
     
-  </head>
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -117,7 +124,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -142,20 +149,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"></path></svg>
       </label>
     
   
@@ -171,29 +178,29 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -201,7 +208,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -219,7 +226,7 @@
         <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
   </div>
   <div class="md-source__repository">
     HOPLAB-LBP/hoplab-wiki
@@ -355,7 +362,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -378,7 +385,7 @@
       <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
   </div>
   <div class="md-source__repository">
     HOPLAB-LBP/hoplab-wiki
@@ -386,7 +393,7 @@
 </a>
     </div>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -451,7 +458,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -488,7 +495,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -712,7 +719,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -749,7 +756,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -791,7 +798,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -828,7 +835,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1064,7 +1071,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1101,7 +1108,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1197,7 +1204,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1234,7 +1241,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1252,7 +1259,7 @@
   <span class="md-ellipsis">
     
   
-    Environment & editor setup
+    Environment &amp; editor setup
   
 
     
@@ -1332,7 +1339,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1369,7 +1376,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1433,7 +1440,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1470,7 +1477,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1672,7 +1679,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1709,7 +1716,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1899,7 +1906,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1936,7 +1943,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2060,7 +2067,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#table-of-contents" class="md-nav__link">
@@ -2391,7 +2398,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2428,7 +2435,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2556,7 +2563,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2593,7 +2600,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2751,7 +2758,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2788,7 +2795,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -3009,7 +3016,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -3025,7 +3032,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#table-of-contents" class="md-nav__link">
@@ -3068,19 +3075,19 @@
   
     <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/edit/main/docs/research/fmri/analysis/fmri-bids-conversion.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="convert-your-fmri-data-into-bids-format">Convert your fMRI data into BIDS format<a class="headerlink" href="#convert-your-fmri-data-into-bids-format" title="Permanent link">&para;</a></h1>
+<h1 id="convert-your-fmri-data-into-bids-format">Convert your fMRI data into BIDS format<a class="headerlink" href="#convert-your-fmri-data-into-bids-format" title="Permanent link">¶</a></h1>
 <p>To organize our fMRI dataset, we follow the <a href="https://bids-specification.readthedocs.io/en/stable/introduction.html">BIDS</a> Specification.</p>
 <p>If you are not familiar with the BIDS Specification, the <a href="https://bids-standard.github.io/bids-starter-kit/index.html">BIDS Starter Kit</a> provides all the information needed to get started, along with <a href="https://bids-standard.github.io/bids-starter-kit/dataset_examples.html">example BIDS datasets</a>, <a href="https://bids-standard.github.io/bids-starter-kit/talks.html">Talks and Slides</a>, and most importantly <a href="https://bids-standard.github.io/bids-starter-kit/tutorials/tutorials.html">Tutorials</a>.</p>
 <p>It is crucial that you get familiar with BIDS folders/files naming convention and structure. Most, if not all, the tools we are going to use in the next steps are <a href="https://bids-apps.neuroimaging.io/apps/">BIDS Apps</a>, and they rely on data organized following the BIDS Specification. Following this structure will make it easier to use these tools, share your code and data, and communicate with other scientists.</p>
 <p>The BIDS Specification provides guidelines on how to organize all your data formats, including <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/magnetic-resonance-imaging-data.html">(f/d)MRI</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/electroencephalography.html">EEG</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/physiological-and-other-continuous-recordings.html">eye-tracking</a>, <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html">Task events</a> associated with Neuro-Imaging recordings or <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/behavioral-experiments.html">not</a>, and <a href="https://bids-specification.readthedocs.io/en/stable/derivatives/imaging.html">Derivatives</a> (e.g., pre-processed files, Regions Of Interest mask files, GLM files, etc.).</p>
 <p>At any moment, you can check your dataset for BIDS compliance. To do so, you can use the <a href="https://bids-standard.github.io/bids-validator/">BIDS dataset validator</a>.</p>
-<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="#convert-your-fmri-data-into-bids-format">Convert your fMRI data into BIDS format</a></li>
 <li><a href="#table-of-contents">Table of Contents</a></li>
@@ -3098,23 +3105,23 @@
 </ul>
 </li>
 </ul>
-<h2 id="bids-conversion-overview">BIDS Conversion Overview<a class="headerlink" href="#bids-conversion-overview" title="Permanent link">&para;</a></h2>
+<h2 id="bids-conversion-overview">BIDS Conversion Overview<a class="headerlink" href="#bids-conversion-overview" title="Permanent link">¶</a></h2>
 <p>Here's a high-level overview of the steps involved in arranging your data in a BIDS-compatible way. While this provides a general understanding, most of these steps should be performed using the code provided in each sub-section to minimize errors. After scanning participants, you'll obtain data from two primary sources:</p>
 <ol>
 <li>The scanner: <strong>functional</strong> and <strong>structural</strong> outputs (<code>DICOM</code> files).</li>
 <li>The stimulus presentation computer: <strong>behavioural</strong> outputs (mainly <code>log</code> files and <code>mat</code> files) and potentially eye-tracking data (<code>edf</code> files or <code>tsv</code> files).</li>
 </ol>
 <p>As you turn your raw data into a BIDS-compatible format, your project directory will change considerably. The folder trees below show you how each steps will affect your working directory, with changing folders and file in <strong>bold</strong> for each step.</p>
-<hr />
-<h3 id="1-create-the-raw-data-directory">1. Create the raw data directory<a class="headerlink" href="#1-create-the-raw-data-directory" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="1-create-the-raw-data-directory">1. Create the raw data directory<a class="headerlink" href="#1-create-the-raw-data-directory" title="Permanent link">¶</a></h3>
 <pre><code>
 <b>myproject</b>
 └── <b>sourcedata</b>
 </code></pre>
 
 <p>Your first step is to organize your files in a <code>sourcedata</code> folder. Follow the structure outlined in <a href="fmri-general.html#how-to-store-raw-data">How to store raw data</a>: have one main project folder (e.g. <code>myproject</code>), and a <code>sourcedata</code> folder in it.</p>
-<hr />
-<h3 id="2-create-the-subjects-directory">2. Create the subject's directory<a class="headerlink" href="#2-create-the-subjects-directory" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="2-create-the-subjects-directory">2. Create the subject's directory<a class="headerlink" href="#2-create-the-subjects-directory" title="Permanent link">¶</a></h3>
 <pre><code>
 myproject
 └── sourcedata
@@ -3136,8 +3143,8 @@ myproject
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>mkdir sub-01/dicom_anon
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>mkdir sub-01/nifti
 </span></code></pre></div>
-<hr />
-<h3 id="3-organize-your-source-files">3. Organize your source files<a class="headerlink" href="#3-organize-your-source-files" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="3-organize-your-source-files">3. Organize your source files<a class="headerlink" href="#3-organize-your-source-files" title="Permanent link">¶</a></h3>
 <pre><code>
 myproject
 └── sourcedata
@@ -3150,12 +3157,12 @@ myproject
         │   └── <b>yyyy-mm-dd-sub-01_run-{runnumber}_task-{taskname}.mat</b>
         ├── dicom
         │   ├── <b>IM_0001</b>
-        │   ├── <b>IM_0005</b>
-        │   ├── <b>PS_0002</b>
-        │   ├── <b>PS_0006</b>
-        │   ├── <b>XX_0003</b>
-        │   ├── <b>XX_0004</b>
-        │   └── <b>XX_0007</b>
+        │&nbsp;&nbsp; ├── <b>IM_0005</b>
+        │&nbsp;&nbsp; ├── <b>PS_0002</b>
+        │&nbsp;&nbsp; ├── <b>PS_0006</b>
+        │&nbsp;&nbsp; ├── <b>XX_0003</b>
+        │&nbsp;&nbsp; ├── <b>XX_0004</b>
+        │&nbsp;&nbsp; └── <b>XX_0007</b>
         ├── dicom_anon
         ├── nifti
         └── eye
@@ -3163,8 +3170,8 @@ myproject
 </code></pre>
 
 <p>Place the files you collected in this <code>sourcedata</code> structure: data collected from your experimental task goes into <code>bh</code> (e.g. <code>.mat</code> files and log files if you used the <a href="https://github.com/HOPLAB-LBP/fMRI-task-template">fMRI task template</a>), data collected from the scanner itself (DICOM) goes in <code>dicom</code>, eye-tracking data (generally, EDF or csv files) goes in <code>eye</code>.</p>
-<hr />
-<h3 id="4-convert-dicom-files">4. Convert DICOM files<a class="headerlink" href="#4-convert-dicom-files" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="4-convert-dicom-files">4. Convert DICOM files<a class="headerlink" href="#4-convert-dicom-files" title="Permanent link">¶</a></h3>
 <pre><code>
 myproject
 └── sourcedata
@@ -3173,12 +3180,12 @@ myproject
         ├── dicom
         ├── <b>dicom_anon</b>
         │   ├── <b>IM_0001</b>
-        │   ├── <b>IM_0005</b>
-        │   ├── <b>PS_0002</b>
-        │   ├── <b>PS_0006</b>
-        │   ├── <b>XX_0003</b>
-        │   ├── <b>XX_0004</b>
-        │   └── <b>XX_0007</b>
+        │&nbsp;&nbsp; ├── <b>IM_0005</b>
+        │&nbsp;&nbsp; ├── <b>PS_0002</b>
+        │&nbsp;&nbsp; ├── <b>PS_0006</b>
+        │&nbsp;&nbsp; ├── <b>XX_0003</b>
+        │&nbsp;&nbsp; ├── <b>XX_0004</b>
+        │&nbsp;&nbsp; └── <b>XX_0007</b>
         ├── <b>nifti</b>
         │   ├── <b>dcmHeaders.mat</b>
         │   ├── <b>sub-01_run-01.json</b>
@@ -3252,8 +3259,8 @@ myproject
 </li>
 </ol>
 </div>
-<hr />
-<h3 id="5-create-the-bids-directory">5. Create the BIDS directory<a class="headerlink" href="#5-create-the-bids-directory" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="5-create-the-bids-directory">5. Create the BIDS directory<a class="headerlink" href="#5-create-the-bids-directory" title="Permanent link">¶</a></h3>
 <pre><code>
 myproject
 ├── <b>BIDS</b>
@@ -3273,8 +3280,8 @@ myproject
 </code></pre>
 
 <p>Create a <code>BIDS</code> folder in your main project directory, alongside the <code>sourcedata</code> folder. For each participant, create a sub folder (e.g. <code>BIDS/sub-01</code>). In the BIDS folder of each participant, place a <code>func</code> folder for functional files and a <code>anat</code> folder for anatomical files. Copy-paste your functional <code>.nii</code> files from <code>sourcedata</code> to their corresponding <code>func</code> folder, renaming them if necessary to follow BIDS format (e.g. <code>sub-01_task-{taskname}_run-01_bold.nii</code>), and similarly copy-paste your structural <code>.nii</code> files to the <code>anat</code> folder, renaming them if necessary (e.g. <code>sub-01_T1w.nii</code>).</p>
-<hr />
-<h3 id="6-organise-the-bids-directory">6. Organise the BIDS directory<a class="headerlink" href="#6-organise-the-bids-directory" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="6-organise-the-bids-directory">6. Organise the BIDS directory<a class="headerlink" href="#6-organise-the-bids-directory" title="Permanent link">¶</a></h3>
 <pre><code>
 myproject
 ├── BIDS
@@ -3309,8 +3316,8 @@ myproject
 </li>
 </ol>
 </div>
-<hr />
-<h3 id="7-create-json-sidecar-files">7. Create JSON sidecar files<a class="headerlink" href="#7-create-json-sidecar-files" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="7-create-json-sidecar-files">7. Create JSON sidecar files<a class="headerlink" href="#7-create-json-sidecar-files" title="Permanent link">¶</a></h3>
 <pre><code>
 myproject
 ├── BIDS
@@ -3339,8 +3346,8 @@ myproject
 <li>Open each JSON file and Check that the <code>PhaseEncodingDirection</code> and <code>SliceTiming</code> fields are filled in. They were missing in older Philips (MR8) data; see <a href="../fmri-mr8.html#missing-fields-in-json-files">Missing fields in JSON files</a>.</li>
 <li>Copy-paste the updated JSON files to accompany each NIfTI file in the <code>BIDS/sub-xx/func</code> folder: each run should have its accompanying <code>sub-xx_task-{taskname}_run-{runnumber}_bold.json</code> sidecar file.</li>
 </ol>
-<hr />
-<h3 id="8-create-event-files">8. Create event files<a class="headerlink" href="#8-create-event-files" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="8-create-event-files">8. Create event files<a class="headerlink" href="#8-create-event-files" title="Permanent link">¶</a></h3>
 <pre><code>
 myproject
 ├── BIDS
@@ -3410,14 +3417,14 @@ myproject
 </span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>...
 </span></code></pre></div>
 <p>This is what the corresponding event file should look like:</p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>onset           duration        trial_type     event_id
+<p></p><div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>onset           duration        trial_type     event_id
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>10.022209       0.0473259       building       building_image.png
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>13.072346       0.0482089       face           face_image.png
 </span></code></pre></div>
-Event TSV files can also be generated from the .mat behavioral files created in each run when using the fMRI task template. Depending on your pipeline, one format may be more convenient to work with than the other. Below is an example script to create BIDS-compliant Event TSV files from the .mat behavioral files.</p>
+Event TSV files can also be generated from the .mat behavioral files created in each run when using the fMRI task template. Depending on your pipeline, one format may be more convenient to work with than the other. Below is an example script to create BIDS-compliant Event TSV files from the .mat behavioral files.<p></p>
 <details class="example">
 <summary>createEventTSVFromMatlabFile.m</summary>
-<div class="language-matlab highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">  1</a></span>
+<div class="language-matlab highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">  1</a></span>
 <span class="normal"><a href="#__codelineno-9-2">  2</a></span>
 <span class="normal"><a href="#__codelineno-9-3">  3</a></span>
 <span class="normal"><a href="#__codelineno-9-4">  4</a></span>
@@ -3664,10 +3671,10 @@ Event TSV files can also be generated from the .mat behavioral files created in 
 </span><span id="__span-9-122"><a id="__codelineno-9-122" name="__codelineno-9-122"></a><span class="w">        </span><span class="nb">writetable</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">tsvFile</span><span class="p">,</span><span class="w"> </span><span class="s">'FileType'</span><span class="p">,</span><span class="w"> </span><span class="s">'text'</span><span class="p">,</span><span class="w"> </span><span class="s">'Delimiter'</span><span class="p">,</span><span class="w"> </span><span class="s">'\t'</span><span class="p">)</span>
 </span><span id="__span-9-123"><a id="__codelineno-9-123" name="__codelineno-9-123"></a><span class="w">    </span><span class="k">end</span>
 </span><span id="__span-9-124"><a id="__codelineno-9-124" name="__codelineno-9-124"></a><span class="k">end</span>
-</span></code></pre></div></td></tr></table></div>
+</span></code></pre></div></td></tr></tbody></table></div>
 </details>
-<hr />
-<h3 id="9-create-additional-bids-files">9. Create additional BIDS files<a class="headerlink" href="#9-create-additional-bids-files" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="9-create-additional-bids-files">9. Create additional BIDS files<a class="headerlink" href="#9-create-additional-bids-files" title="Permanent link">¶</a></h3>
 <pre><code>
 myproject
 ├── BIDS
@@ -3711,8 +3718,8 @@ myproject
 <summary>Why should I use a .bidsignore file?</summary>
 <p>A `.bidsignore' file is useful to communicate to the BIDS validator which files should not be indexed, because they are not part of the standard BIDS structure. More information can be found <a href="https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/bids-validator.html#creating-a-bidsignore">here</a>.</p>
 </details>
-<hr />
-<h3 id="10-validating-your-bids-structure">10. Validating Your BIDS Structure<a class="headerlink" href="#10-validating-your-bids-structure" title="Permanent link">&para;</a></h3>
+<hr>
+<h3 id="10-validating-your-bids-structure">10. Validating Your BIDS Structure<a class="headerlink" href="#10-validating-your-bids-structure" title="Permanent link">¶</a></h3>
 <p>By following these steps systematically, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration.</p>
 <p>Make sure all the steps have been followed successfully by validating your BIDS folder. To do so, use the <strong><a href="https://bids-standard.github.io/bids-validator/">BIDS validator</a></strong>.</p>
 <div class="steps-list">
@@ -3723,9 +3730,9 @@ myproject
 </ol>
 </div>
 <p>By following these detailed steps, you'll ensure your data is properly organized in BIDS format, facilitating easier analysis and collaboration.</p>
-<hr />
-<hr />
-<h3 id="11-converting-eye-tracking-data-to-bids">11. Converting Eye-Tracking Data to BIDS<a class="headerlink" href="#11-converting-eye-tracking-data-to-bids" title="Permanent link">&para;</a></h3>
+<hr>
+<hr>
+<h3 id="11-converting-eye-tracking-data-to-bids">11. Converting Eye-Tracking Data to BIDS<a class="headerlink" href="#11-converting-eye-tracking-data-to-bids" title="Permanent link">¶</a></h3>
 <p>If your experiment includes eye-tracking recorded during fMRI (e.g., using an EyeLink system), you can organize this data following the BIDS convention.</p>
 <p><strong>Pre-requisite:</strong> Install the <a href="https://www.sr-research.com/support/thread-13.html">EyeLink Developers Kit/API</a> to convert EDF files into ASC files.</p>
 <ol>
@@ -3736,12 +3743,12 @@ myproject
 <p class="admonition-title">BEP020 is not yet finalized</p>
 <p>The BIDS Extension Proposal for eye-tracking data (<a href="https://bids.neuroimaging.io/bep020">BEP020</a>) has <strong>not been approved yet</strong>. The specification may change before finalization. Consider whether event messages should be included in the BIDS structure, and be prepared to update your data organization as the standard evolves.</p>
 </div>
-<hr />
+<hr>
 <div class="admonition info">
 <p class="admonition-title">Next steps: Data storage</p>
 <p>Once your data is in BIDS format, make sure to follow the lab's <a href="../../rdm/SOPs.html">data management guidelines</a> for storing and backing up your dataset. See the <a href="../../rdm/mango_active.html">ManGO guide</a> for uploading your data to the lab's active research data storage.</p>
 </div>
-<p>Now that you have your data in BIDS format, we can proceed to data pre-processing and quality assessment. See the next guide for instructions. <a href="fmri-prepocessing-qa.html">&rarr; Pre-processing and QA</a></p>
+<p>Now that you have your data in BIDS format, we can proceed to data pre-processing and quality assessment. See the next guide for instructions. <a href="fmri-prepocessing-qa.html">→ Pre-processing and QA</a></p>
 
 
 
@@ -3764,7 +3771,7 @@ myproject
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
       <time class="md-source-file__time" datetime="2026-10-02T21:39:56+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 2, 2026 21:39:56 CEST">October 2, 2026</span></time>
@@ -3778,7 +3785,7 @@ myproject
   <span class="md-source-file__fact md-contributors">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"></path></svg>
       
     </span><span class="md-contributors__stack">
       
@@ -3788,13 +3795,11 @@ myproject
         
         
         
-          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 52% of this page" style="--z: 4"
-             data-name="Andrea Costantino" data-share="51.9%">
+          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 52% of this page" style="--z: 4" data-name="Andrea Costantino" data-share="51.9%">
         
             <span class="md-contributor__face">
               
-                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/59078281?s=96"
-                     alt="" width="36" height="36" loading="lazy">
+                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/59078281?s=96" alt="" width="36" height="36" loading="lazy">
               
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
@@ -3809,13 +3814,11 @@ myproject
         
         
         
-          <a class="md-contributor" href="https://github.com/timmaniquet" aria-label="Tim Maniquet, 26% of this page" style="--z: 3"
-             data-name="Tim Maniquet" data-share="26.45%">
+          <a class="md-contributor" href="https://github.com/timmaniquet" aria-label="Tim Maniquet, 26% of this page" style="--z: 3" data-name="Tim Maniquet" data-share="26.45%">
         
             <span class="md-contributor__face">
               
-                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/61991543?s=96"
-                     alt="" width="36" height="36" loading="lazy">
+                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/61991543?s=96" alt="" width="36" height="36" loading="lazy">
               
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
@@ -3830,13 +3833,11 @@ myproject
         
         
         
-          <a class="md-contributor" href="https://github.com/brentpitchford" aria-label="Brent Pitchford, 21% of this page" style="--z: 2"
-             data-name="Brent Pitchford" data-share="21.49%">
+          <a class="md-contributor" href="https://github.com/brentpitchford" aria-label="Brent Pitchford, 21% of this page" style="--z: 2" data-name="Brent Pitchford" data-share="21.49%">
         
             <span class="md-contributor__face">
               
-                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/107524850?s=96"
-                     alt="" width="36" height="36" loading="lazy">
+                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/107524850?s=96" alt="" width="36" height="36" loading="lazy">
               
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
@@ -3851,18 +3852,16 @@ myproject
         
         
         
-          <a class="md-contributor" href="https://github.com/kschevenels" aria-label="Klara Schevenels, <1% of this page" style="--z: 1"
-             data-name="Klara Schevenels" data-share="0.17%">
+          <a class="md-contributor" href="https://github.com/kschevenels" aria-label="Klara Schevenels, &lt;1% of this page" style="--z: 1" data-name="Klara Schevenels" data-share="0.17%">
         
             <span class="md-contributor__face">
               
-                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/110229499?s=96"
-                     alt="" width="36" height="36" loading="lazy">
+                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/110229499?s=96" alt="" width="36" height="36" loading="lazy">
               
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
               <span class="md-contributor__tip-name">Klara Schevenels</span>
-              <span class="md-contributor__tip-share"><1%</span>
+              <span class="md-contributor__tip-share">&lt;1%</span>
             </span>
         </a>
       
@@ -3878,7 +3877,7 @@ myproject
 
 
 
-  <form class="md-feedback" name="feedback" hidden>
+  <form class="md-feedback" name="feedback" hidden="">
     <fieldset>
       <legend class="md-feedback__title">
         Was this page helpful?
@@ -3887,17 +3886,17 @@ myproject
         <div class="md-feedback__list">
           
             <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"></path></svg>
             </button>
           
             <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"></path></svg>
             </button>
           
         </div>
         <div class="md-feedback__note">
           
-            <div data-md-value="1" hidden>
+            <div data-md-value="1" hidden="">
               
               
                 
@@ -3910,7 +3909,7 @@ myproject
               Thanks for your feedback!
             </div>
           
-            <div data-md-value="0" hidden>
+            <div data-md-value="0" hidden="">
               
               
                 
@@ -3939,9 +3938,9 @@ myproject
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -3951,13 +3950,13 @@ myproject
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="fmri-setup-env.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1. Set up your environment">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -3982,7 +3981,7 @@ myproject
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -4016,7 +4015,7 @@ myproject
     </div>
     
     
-      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden="">
         <div class="md-consent__overlay"></div>
         <aside class="md-consent__inner">
           <form class="md-consent__form md-grid md-typeset" name="consent">
@@ -4028,7 +4027,7 @@ myproject
 
 <h4>Cookie consent</h4>
 <p>Please, consider disabling your ad-blocker and allowing cookies for this Wiki . We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
-<input class="md-toggle" type="checkbox" id="__settings" >
+<input class="md-toggle" type="checkbox" id="__settings">
 <div class="md-consent__settings">
   <ul class="task-list">
     
@@ -4042,7 +4041,7 @@ myproject
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="analytics" checked>
+      <input type="checkbox" name="analytics" checked="">
       <span class="task-list-indicator"></span>
       Google Analytics
     </label>
@@ -4060,7 +4059,7 @@ myproject
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="github" checked>
+      <input type="checkbox" name="github" checked="">
       <span class="task-list-indicator"></span>
       GitHub
     </label>
@@ -4103,10 +4102,14 @@ myproject
       
         <script src="../../../javascripts/details.js"></script>
       
+        <script src="../../../javascripts/lightbox-zoom.js"></script>
+      
         <script src="../../../javascripts/source-file.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": false, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,8 +44,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,7 +70,17 @@
 
     
     
-  </head>
+  <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -115,7 +122,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -140,20 +147,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"></path></svg>
       </label>
     
   
@@ -169,29 +176,29 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -199,7 +206,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -217,7 +224,7 @@
         <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
   </div>
   <div class="md-source__repository">
     HOPLAB-LBP/hoplab-wiki
@@ -353,7 +360,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -376,7 +383,7 @@
       <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
   </div>
   <div class="md-source__repository">
     HOPLAB-LBP/hoplab-wiki
@@ -384,7 +391,7 @@
 </a>
     </div>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -449,7 +456,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -486,7 +493,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -705,7 +712,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -742,7 +749,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -784,7 +791,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -821,7 +828,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1057,7 +1064,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1094,7 +1101,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1190,7 +1197,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1227,7 +1234,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1245,7 +1252,7 @@
   <span class="md-ellipsis">
     
   
-    Environment & editor setup
+    Environment &amp; editor setup
   
 
     
@@ -1325,7 +1332,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1362,7 +1369,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1426,7 +1433,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1463,7 +1470,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1663,7 +1670,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1700,7 +1707,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -1888,7 +1895,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1925,7 +1932,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2311,7 +2318,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2348,7 +2355,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2476,7 +2483,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2513,7 +2520,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2671,7 +2678,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2708,7 +2715,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -2958,7 +2965,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#table-of-contents" class="md-nav__link">
@@ -3064,7 +3071,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -3080,7 +3087,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#table-of-contents" class="md-nav__link">
@@ -3189,20 +3196,20 @@
   
     <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/edit/main/docs/contribute.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="contribute-to-the-hoplab-wiki">Contribute to the Hoplab wiki<a class="headerlink" href="#contribute-to-the-hoplab-wiki" title="Permanent link">&para;</a></h1>
+<h1 id="contribute-to-the-hoplab-wiki">Contribute to the Hoplab wiki<a class="headerlink" href="#contribute-to-the-hoplab-wiki" title="Permanent link">¶</a></h1>
 <p>Welcome to the Hoplab Wiki repository. This Wiki is a work in progress and an ongoing effort to migrate all the Hoplab knowledge and procedures into a more user-friendly format. This process is currently managed by <a href="https://github.com/costantinoai">@costantinoai</a> and <a href="https://github.com/kschevenels">@kschevenels</a>. For any questions, feel free to <a href="mailto:andreaivan.costantino@kuleuven.be">ping me</a>.</p>
 <p>This guide will help you set up, update, and maintain the Wiki both locally and online. Follow the instructions if you want to make changes to the wiki.</p>
 <div class="admonition tip">
 <p class="admonition-title">Suggest or make quick changes</p>
 <p>For most cases, if you want to suggest some changes you can do so by opening a new Issue. If you want to make quick changes to any page, you can do so by clicking on the pencil icon (✏️) at the top right of the page to begin editing the file.</p>
 </div>
-<h2 id="table-of-contents">Table of contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<h2 id="table-of-contents">Table of contents<a class="headerlink" href="#table-of-contents" title="Permanent link">¶</a></h2>
 <ol>
 <li><a href="#getting-started">Getting started</a></li>
 <li><a href="#how-to-contribute">How to contribute</a><ul>
@@ -3222,22 +3229,22 @@
 <li><a href="#reviewing-and-accepting-pull-requests-for-admins">Reviewing and accepting pull requests (for admins)</a></li>
 <li><a href="#troubleshooting">Troubleshooting</a></li>
 </ol>
-<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">¶</a></h2>
 <p>Before you begin, ensure you have the following:</p>
 <ul>
 <li>A GitHub account (click <a href="https://github.com/signup">here</a> to sign up).</li>
 <li>Be part of the <a href="https://github.com/orgs/HOPLAB-LBP/people"><code>HOPLAB-LBP</code></a> organization (contact <a href="mailto:andreaivan.costantino@kuleuven.be">Andrea</a> if you need to be added).</li>
 <li>If you plan on following the <a href="#advanced-workflow-for-extensive-changes">Advanced workflow</a> (encouraged for more complex changes), also make sure that you have <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">Conda</a> or <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>, and <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a> or <a href="https://desktop.github.com/">GitHub Desktop</a> (strongly encouraged) installed. If you are new to Git, branches, and pull requests, see the <a href="https://hoplab-lbp.github.io/hoplab-wiki/research/coding/version-control.html">Version control</a> page for a full introduction.</li>
 </ul>
-<h2 id="how-to-contribute">How to contribute<a class="headerlink" href="#how-to-contribute" title="Permanent link">&para;</a></h2>
+<h2 id="how-to-contribute">How to contribute<a class="headerlink" href="#how-to-contribute" title="Permanent link">¶</a></h2>
 <p>We offer two workflows for contributing to the Hoplab Wiki: an Easy Workflow for quick changes to single files, and an Advanced Workflow for more extensive changes to multiple files.</p>
-<h3 id="easy-workflow-for-quick-changes">Easy workflow (for quick changes)<a class="headerlink" href="#easy-workflow-for-quick-changes" title="Permanent link">&para;</a></h3>
+<h3 id="easy-workflow-for-quick-changes">Easy workflow (for quick changes)<a class="headerlink" href="#easy-workflow-for-quick-changes" title="Permanent link">¶</a></h3>
 <p>This workflow is ideal for making small, quick changes to a single file. It can be done entirely through your web browser and doesn't require any local setup.</p>
 <details class="tip">
 <summary>Edit directly from this page!</summary>
-<p>Existing pages can be edited directly through the Wiki! If you need to edit or add information to any page, look for the paper and pencil symbol <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg></span> at the top-right of the page, next to the page title. This will let you edit the page and open a PR either by creating a new branch on the main repo (if you are part of the Hoplab organization on GitHub) or by forking your own copy of the repo (if you are an external contributor). Make sure to <a href="#step-3-submit-a-pr-with-your-proposed-changes">submit a PR</a> after your changes are made.</p>
+<p>Existing pages can be edited directly through the Wiki! If you need to edit or add information to any page, look for the paper and pencil symbol <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg></span> at the top-right of the page, next to the page title. This will let you edit the page and open a PR either by creating a new branch on the main repo (if you are part of the Hoplab organization on GitHub) or by forking your own copy of the repo (if you are an external contributor). Make sure to <a href="#step-3-submit-a-pr-with-your-proposed-changes">submit a PR</a> after your changes are made.</p>
 </details>
-<h4 id="step-1-make-your-changes">Step 1: Make your changes<a class="headerlink" href="#step-1-make-your-changes" title="Permanent link">&para;</a></h4>
+<h4 id="step-1-make-your-changes">Step 1: Make your changes<a class="headerlink" href="#step-1-make-your-changes" title="Permanent link">¶</a></h4>
 <ol>
 <li>
 <p><strong>To edit an existing page:</strong></p>
@@ -3259,14 +3266,14 @@
 </li>
 </ol>
 <p>You can then add/edit your content in Markdown format (see <a href="#editing-the-wiki">Editing the wiki</a> for more info), and click on "Preview" next to the "Edit" tab to see how your changes will look like.</p>
-<h4 id="step-2-commit-changes-to-a-temporary-branch">Step 2: Commit changes to a temporary branch<a class="headerlink" href="#step-2-commit-changes-to-a-temporary-branch" title="Permanent link">&para;</a></h4>
+<h4 id="step-2-commit-changes-to-a-temporary-branch">Step 2: Commit changes to a temporary branch<a class="headerlink" href="#step-2-commit-changes-to-a-temporary-branch" title="Permanent link">¶</a></h4>
 <ol>
 <li>Click on "Commit changes" after any necessary adjustments.</li>
 <li>In the pop-up window, add a commit message and description for your changes.</li>
 <li>Select "Create a new branch for this commit and start a pull request".</li>
 <li>Click on "Propose changes".</li>
 </ol>
-<h4 id="step-3-submit-a-pr-with-your-proposed-changes">Step 3: Submit a PR with your proposed changes<a class="headerlink" href="#step-3-submit-a-pr-with-your-proposed-changes" title="Permanent link">&para;</a></h4>
+<h4 id="step-3-submit-a-pr-with-your-proposed-changes">Step 3: Submit a PR with your proposed changes<a class="headerlink" href="#step-3-submit-a-pr-with-your-proposed-changes" title="Permanent link">¶</a></h4>
 <ol>
 <li>In the "Open a pull request page", add an informative title and a description of the changes in the PR.</li>
 <li>In the right panel, make sure to assign an admin (as of July 2024, <a href="https://github.com/costantinoai">@costantinoai</a>) to review your changes.</li>
@@ -3277,7 +3284,7 @@
 <p>If you want to make additional changes related to an already opened PR (e.g., you need to change info in two separate files, or make additional adjustments), you do not need to open a new PR. Just go to the main page of the branch you created (you can find the branch in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>) and <strong>keep editing your files in this branch</strong>. Every new commit you make in this branch will have the option to "Commit directly to the <code>&lt;name-of-new-branch&gt;</code> branch" or "Create a new branch for this commit and start a pull request". Make sure you select the first option to include your new commits to the original PR. Importantly, if you plan to add several commits to a PR this way, make sure you assign a reviewer <strong>only after your last commit</strong> to avoid merging PRs halfway in the process, or you can create a draft PR until all your changes are included.</p>
 </details>
 <p>These steps above will create a new branch in the repository, that will be visible in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>, and a new PR visible in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/pulls">PRs list</a>. Once the PR is approved by at least one reviewer and merged into the main branch, the newly created branch will be automatically deleted and the changes will go live.</p>
-<h2 id="advanced-workflow-for-extensive-changes">Advanced workflow (for extensive changes)<a class="headerlink" href="#advanced-workflow-for-extensive-changes" title="Permanent link">&para;</a></h2>
+<h2 id="advanced-workflow-for-extensive-changes">Advanced workflow (for extensive changes)<a class="headerlink" href="#advanced-workflow-for-extensive-changes" title="Permanent link">¶</a></h2>
 <p>The preferred way to contribute if you need to make <strong>significant/multiple changes</strong>, but it requires some familiarity with git, Python, and Conda environments. If you are not a Wiki maintainer, this workflow is probably overkill.</p>
 <p>With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session.</p>
 <div class="admonition tip">
@@ -3289,8 +3296,8 @@
 <p>A <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">Pull Request</a> (or PR) "<em>is a proposal to merge a set of changes from one branch into another</em>". Ideally, a PR should include all the commits <strong>for a specific feature</strong> or bugfix from end-to-end. Avoid making PRs that contain multiple unrelated changes. For instance, if you are working on a feature that requires modifications across multiple files, ensure all those changes are included in the same PR. Conversely, avoid combining changes for different features (e.g., adding unrelated updates to the fMRI workflow and the getting started section) in a single PR. Each PR should represent a cohesive unit of work.</p>
 </div>
 <p>Here's a step-by-step guide that includes forking and cloning the repository, making and testing changes locally, and then submitting those changes for review through a pull request.</p>
-<h3 id="step-1-forking-the-repository-and-cloning-your-fork">Step 1: Forking the repository and cloning your fork<a class="headerlink" href="#step-1-forking-the-repository-and-cloning-your-fork" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="using-the-cli" name="__tabbed_1" type="radio" /><input id="using-github-desktop" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="using-the-cli">Using the CLI</label><label for="using-github-desktop">Using GitHub Desktop</label></div>
+<h3 id="step-1-forking-the-repository-and-cloning-your-fork">Step 1: Forking the repository and cloning your fork<a class="headerlink" href="#step-1-forking-the-repository-and-cloning-your-fork" title="Permanent link">¶</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="using-the-cli" name="__tabbed_1" type="radio"><input id="using-github-desktop" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="using-the-cli">Using the CLI</label><label for="using-github-desktop">Using GitHub Desktop</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -3344,7 +3351,7 @@
 </div>
 </div>
 </div>
-<h3 id="step-2-setting-up-your-local-environment">Step 2: Setting up your local environment<a class="headerlink" href="#step-2-setting-up-your-local-environment" title="Permanent link">&para;</a></h3>
+<h3 id="step-2-setting-up-your-local-environment">Step 2: Setting up your local environment<a class="headerlink" href="#step-2-setting-up-your-local-environment" title="Permanent link">¶</a></h3>
 <ol>
 <li>
 <p><strong>Install Conda:</strong></p>
@@ -3362,12 +3369,12 @@
 </span></code></pre></div>
 </li>
 </ol>
-<h3 id="step-3-making-changes">Step 3: Making changes<a class="headerlink" href="#step-3-making-changes" title="Permanent link">&para;</a></h3>
+<h3 id="step-3-making-changes">Step 3: Making changes<a class="headerlink" href="#step-3-making-changes" title="Permanent link">¶</a></h3>
 <ol>
 <li><strong>Edit documentation:</strong>
      You can now make changes to your local clone of the documentation. Use a text editor or an IDE to open and edit the Markdown files in the repository. If changes are extensive, consider splitting them into smaller, manageable commits that focus on specific pages or sections for clarity and ease of review.</li>
 </ol>
-<h3 id="step-4-testing-your-changes-locally">Step 4: Testing your changes locally<a class="headerlink" href="#step-4-testing-your-changes-locally" title="Permanent link">&para;</a></h3>
+<h3 id="step-4-testing-your-changes-locally">Step 4: Testing your changes locally<a class="headerlink" href="#step-4-testing-your-changes-locally" title="Permanent link">¶</a></h3>
 <ol>
 <li><strong>Serve the documentation locally:</strong></li>
 <li>While in your project directory and with the Conda environment activated, launch the local server by typing:
@@ -3376,13 +3383,13 @@
 <li>Open a web browser and navigate to <code>http://127.0.0.1:8000/</code>. This allows you to see your changes as they would appear on the live site.</li>
 <li>Keep this server running as you make changes; refresh your browser to update the preview.</li>
 </ol>
-<h3 id="step-5-closing-the-local-server">Step 5: Closing the local server<a class="headerlink" href="#step-5-closing-the-local-server" title="Permanent link">&para;</a></h3>
+<h3 id="step-5-closing-the-local-server">Step 5: Closing the local server<a class="headerlink" href="#step-5-closing-the-local-server" title="Permanent link">¶</a></h3>
 <ol>
 <li><strong>Stop the server:</strong>
     When you are done previewing and editing and you are done with the changes, go back to the terminal where your server is running and press <code>Ctrl+C</code> to stop the server.</li>
 </ol>
-<h3 id="step-6-committing-your-changes">Step 6: Committing your changes<a class="headerlink" href="#step-6-committing-your-changes" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="using-the-cli_1" name="__tabbed_2" type="radio" /><input id="using-github-desktop_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="using-the-cli_1">Using the CLI</label><label for="using-github-desktop_1">Using GitHub Desktop</label></div>
+<h3 id="step-6-committing-your-changes">Step 6: Committing your changes<a class="headerlink" href="#step-6-committing-your-changes" title="Permanent link">¶</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="using-the-cli_1" name="__tabbed_2" type="radio"><input id="using-github-desktop_1" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="using-the-cli_1">Using the CLI</label><label for="using-github-desktop_1">Using GitHub Desktop</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -3422,7 +3429,7 @@
 </div>
 </div>
 </div>
-<h3 id="step-7-creating-a-pull-request">Step 7: Creating a pull request<a class="headerlink" href="#step-7-creating-a-pull-request" title="Permanent link">&para;</a></h3>
+<h3 id="step-7-creating-a-pull-request">Step 7: Creating a pull request<a class="headerlink" href="#step-7-creating-a-pull-request" title="Permanent link">¶</a></h3>
 <ol>
 <li>Navigate to your forked repository on GitHub.</li>
 <li>Click on the "Pull requests" tab.</li>
@@ -3436,7 +3443,7 @@
 <p class="admonition-title">Automatic Deployment with GitHub Actions</p>
 <p>This repository is set up to use GitHub Actions for automatic deployment. This means that every time changes are merged into the <code>main</code> branch, the documentation will automatically be built and deployed to GitHub Pages. You do not need to manually run the <code>mkdocs gh-deploy</code> command each time you make changes. Simply push your changes to the <code>main</code> branch, and GitHub Actions will handle the deployment.</p>
 </div>
-<h2 id="automated-pr-checks">Automated PR checks<a class="headerlink" href="#automated-pr-checks" title="Permanent link">&para;</a></h2>
+<h2 id="automated-pr-checks">Automated PR checks<a class="headerlink" href="#automated-pr-checks" title="Permanent link">¶</a></h2>
 <p>When you open or update a Pull Request, automated checks run to catch common issues early. A bot will post a comment on your PR summarizing the results — if anything fails, the comment explains exactly what went wrong and how to fix it. You can also view the full report in the job summary by clicking "Details" next to any check.</p>
 <p><strong>Auto-fixed for you</strong> (no action needed for PRs from branches in this repo):</p>
 <ul>
@@ -3489,9 +3496,9 @@
 <p class="admonition-title">Need help with a failing check?</p>
 <p>The bot comment on your PR will explain the issue and how to fix it. If you're still unsure, ping @costantinoai in the PR comments.</p>
 </div>
-<h2 id="editing-the-wiki">Editing the wiki<a class="headerlink" href="#editing-the-wiki" title="Permanent link">&para;</a></h2>
+<h2 id="editing-the-wiki">Editing the wiki<a class="headerlink" href="#editing-the-wiki" title="Permanent link">¶</a></h2>
 <p>We welcome contributions from all members. All the content of the wiki is written in Markdown files located in the <code>docs</code> directory. You can edit these files in your browser (if you follow the <a href="#easy-workflow-for-quick-changes">Easy workflow</a>) or locally using any text editor or IDE (e.g., VSCode, Sublime Text) if you follow the <a href="#advanced-workflow-for-extensive-changes">Advanced workflow</a>.</p>
-<h3 id="adding-a-new-page">Adding a new page<a class="headerlink" href="#adding-a-new-page" title="Permanent link">&para;</a></h3>
+<h3 id="adding-a-new-page">Adding a new page<a class="headerlink" href="#adding-a-new-page" title="Permanent link">¶</a></h3>
 <ol>
 <li>Create a new Markdown file in the <code>docs</code> directory (e.g., <code>docs/new-page.md</code>).</li>
 <li>Add the new page to the <code>nav</code> section of <code>mkdocs.yml</code>:
@@ -3501,7 +3508,7 @@
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">New Page</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">new-page.md</span>
 </span></code></pre></div></li>
 </ol>
-<h3 id="creating-child-pages">Creating child pages<a class="headerlink" href="#creating-child-pages" title="Permanent link">&para;</a></h3>
+<h3 id="creating-child-pages">Creating child pages<a class="headerlink" href="#creating-child-pages" title="Permanent link">¶</a></h3>
 <p>To create a child page, place the Markdown file in a subdirectory and update the <code>nav</code> section in <code>mkdocs.yml</code> accordingly:</p>
 <ol>
 <li>Create a new subdirectory in the <code>docs</code> directory (e.g., <code>docs/subdir</code>).</li>
@@ -3514,9 +3521,9 @@
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Child Page</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subdir/child-page.md</span>
 </span></code></pre></div></li>
 </ol>
-<h3 id="adding-todo-note-and-placeholder-tags">Adding <code>TODO</code>, <code>NOTE</code>, and <code>PLACEHOLDER</code> tags<a class="headerlink" href="#adding-todo-note-and-placeholder-tags" title="Permanent link">&para;</a></h3>
+<h3 id="adding-todo-note-and-placeholder-tags">Adding <code>TODO</code>, <code>NOTE</code>, and <code>PLACEHOLDER</code> tags<a class="headerlink" href="#adding-todo-note-and-placeholder-tags" title="Permanent link">¶</a></h3>
 <p>We track documentation tasks using <strong>tags</strong> inside Markdown files. A <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/actions/workflows/manage-docs-tags.yml">GitHub Action</a> automatically scans for these tags and creates one <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/issues?q=is%3Aissue+label%3Adoc-tags">Issue</a> per file to track them.</p>
-<h4 id="how-to-add-a-tag">How to add a tag<a class="headerlink" href="#how-to-add-a-tag" title="Permanent link">&para;</a></h4>
+<h4 id="how-to-add-a-tag">How to add a tag<a class="headerlink" href="#how-to-add-a-tag" title="Permanent link">¶</a></h4>
 <p>Write the tag as a <strong>standalone bullet point</strong> with the keyword in ALL CAPS, followed by a colon. It is a good practice to include your name in square brackets:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">-</span><span class="w"> </span>TODO: [Andrea] Fix hyperlinks to the fMRI section
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">-</span><span class="w"> </span>PLACEHOLDER: [Klara] Add info about the new ethics procedure
@@ -3532,12 +3539,12 @@
 <p class="admonition-title">Tags must be ALL CAPS</p>
 <p>Only <code>TODO</code>, <code>PLACEHOLDER</code>, and <code>NOTE</code> in uppercase are detected. <code>Todo</code>, <code>note</code>, or <code>placeholder</code> will be ignored.</p>
 </div>
-<h4 id="how-to-resolve-a-tag">How to resolve a tag<a class="headerlink" href="#how-to-resolve-a-tag" title="Permanent link">&para;</a></h4>
+<h4 id="how-to-resolve-a-tag">How to resolve a tag<a class="headerlink" href="#how-to-resolve-a-tag" title="Permanent link">¶</a></h4>
 <p><strong>Delete the tag line</strong> from the source file and commit. On the next push to <code>main</code>, the workflow will automatically remove the task from the Issue. If all tasks in a file are resolved, the Issue is closed automatically.</p>
-<h4 id="adding-tasks-via-issue-comments">Adding tasks via issue comments<a class="headerlink" href="#adding-tasks-via-issue-comments" title="Permanent link">&para;</a></h4>
+<h4 id="adding-tasks-via-issue-comments">Adding tasks via issue comments<a class="headerlink" href="#adding-tasks-via-issue-comments" title="Permanent link">¶</a></h4>
 <p>You can also add tasks by commenting on an existing doc-tags Issue. Write a tag line in your comment (e.g., <code>TODO: check the references</code>) and the workflow will detect it, add it to the task list, and reply with instructions on how to resolve it.</p>
 <p>To resolve a comment-added task, react with 🚀 on the comment that created the task. The workflow will pick this up on the next run and remove the task.</p>
-<h4 id="how-the-issues-look">How the issues look<a class="headerlink" href="#how-the-issues-look" title="Permanent link">&para;</a></h4>
+<h4 id="how-the-issues-look">How the issues look<a class="headerlink" href="#how-the-issues-look" title="Permanent link">¶</a></h4>
 <p>Each tracking Issue has a title like <code>Tags in docs/get-started/index.md [5 open]</code> showing the number of open tasks. The Issue body lists each task with a clickable source label:</p>
 <ul>
 <li><strong>(file)</strong> — links to the source file in edit mode, so you can delete the tag directly</li>
@@ -3547,7 +3554,7 @@
 <p class="admonition-title">Do not edit the Issue body directly</p>
 <p>The Issue body is auto-managed by the workflow. Any manual edits will be overwritten on the next run. To change tasks, edit the source file or use comment reactions.</p>
 </div>
-<h3 id="common-formatting-syntax">Common formatting syntax<a class="headerlink" href="#common-formatting-syntax" title="Permanent link">&para;</a></h3>
+<h3 id="common-formatting-syntax">Common formatting syntax<a class="headerlink" href="#common-formatting-syntax" title="Permanent link">¶</a></h3>
 <p>Here are some common Markdown elements:</p>
 <ul>
 <li><strong>Headers:</strong> <code># Header 1</code>, <code>## Header 2</code>, <code>### Header 3</code>, etc.</li>
@@ -3562,7 +3569,7 @@
 <li><strong>Images:</strong> <code>![Alt text](path/to/image.png)</code> (see <a href="#adding-and-linking-images">this section</a> for instructions on how to link images.)</li>
 </ul>
 <p>For more advanced formatting options, refer to the <a href="https://squidfunk.github.io/mkdocs-material/reference/">MkDocs Material Reference Guide</a>.</p>
-<h3 id="collapsible-definition-lists">Collapsible definition lists<a class="headerlink" href="#collapsible-definition-lists" title="Permanent link">&para;</a></h3>
+<h3 id="collapsible-definition-lists">Collapsible definition lists<a class="headerlink" href="#collapsible-definition-lists" title="Permanent link">¶</a></h3>
 <p>When a section is a <strong>list of things that each need a short explanation</strong> — the
 documents an application must contain, the tools on a machine, the fields in a
 form — use <code>??? numlist</code> (numbered) or <code>??? deflist</code> (bulleted) instead of a run
@@ -3623,7 +3630,7 @@ sequence. Numbering restarts at every heading, as for <code>numlist</code>.</p>
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>&lt;/div&gt;
 </span></code></pre></div>
-<h3 id="safety-guidance-care-cards-and-do-dont-lists">Safety guidance: care cards and do / don't lists<a class="headerlink" href="#safety-guidance-care-cards-and-do-dont-lists" title="Permanent link">&para;</a></h3>
+<h3 id="safety-guidance-care-cards-and-do-dont-lists">Safety guidance: care cards and do / don't lists<a class="headerlink" href="#safety-guidance-care-cards-and-do-dont-lists" title="Permanent link">¶</a></h3>
 <p>For safety and emergency information, two blocks follow the NHS design system
 (<a href="https://service-manual.nhs.uk/design-system/components/care-cards">care cards</a>,
 <a href="https://service-manual.nhs.uk/design-system/components/do-and-dont-lists">do and don't lists</a>).
@@ -3688,9 +3695,9 @@ Use them sparingly: one emergency card per page, for the number to call. For oth
 <p>A run of three or more <code>!!!</code> boxes in a row is a sign that none of them is
 really an aside, and that the section wants one of the list forms above.</p>
 </div>
-<h3 id="linking-and-referencing">Linking and referencing<a class="headerlink" href="#linking-and-referencing" title="Permanent link">&para;</a></h3>
+<h3 id="linking-and-referencing">Linking and referencing<a class="headerlink" href="#linking-and-referencing" title="Permanent link">¶</a></h3>
 <p>When creating or editing content, you may want to reference or link to other sections within the wiki, external resources, or images. Here's how to do it:</p>
-<h4 id="internal-links-within-the-wiki">Internal links (within the wiki)<a class="headerlink" href="#internal-links-within-the-wiki" title="Permanent link">&para;</a></h4>
+<h4 id="internal-links-within-the-wiki">Internal links (within the wiki)<a class="headerlink" href="#internal-links-within-the-wiki" title="Permanent link">¶</a></h4>
 <p>Use relative paths for internal links. The general format is:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>[<span class="nt">Link Text</span>](<span class="na">path/to/file.md</span>)
 </span></code></pre></div>
@@ -3698,30 +3705,30 @@ really an aside, and that the section wants one of the list forms above.</p>
 <ol>
 <li>
 <p>Linking to a page in the same directory:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>[<span class="nt">Getting Started</span>](<span class="na">getting-started.md</span>)
-</span></code></pre></div></p>
+   </p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>[<span class="nt">Getting Started</span>](<span class="na">getting-started.md</span>)
+</span></code></pre></div><p></p>
 </li>
 <li>
 <p>Linking to a page in a subdirectory:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>[<span class="nt">fMRI Analysis</span>](<span class="na">research/fmri/fmri-analysis.md</span>)
-</span></code></pre></div></p>
+   </p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>[<span class="nt">fMRI Analysis</span>](<span class="na">research/fmri/fmri-analysis.md</span>)
+</span></code></pre></div><p></p>
 </li>
 <li>
 <p>Linking to a specific section on another page:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>[<span class="nt">Ethics Guidelines</span>](<span class="na">research/ethics/index.md#ethical-guidelines</span>)
-</span></code></pre></div></p>
+   </p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>[<span class="nt">Ethics Guidelines</span>](<span class="na">research/ethics/index.md#ethical-guidelines</span>)
+</span></code></pre></div><p></p>
 </li>
 <li>
 <p>Linking to a parent directory:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>[<span class="nt">Back to Research</span>](<span class="na">../index.md</span>)
-</span></code></pre></div></p>
+   </p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>[<span class="nt">Back to Research</span>](<span class="na">../index.md</span>)
+</span></code></pre></div><p></p>
 </li>
 </ol>
-<h4 id="external-links-outside-the-wiki">External links (outside the wiki)<a class="headerlink" href="#external-links-outside-the-wiki" title="Permanent link">&para;</a></h4>
+<h4 id="external-links-outside-the-wiki">External links (outside the wiki)<a class="headerlink" href="#external-links-outside-the-wiki" title="Permanent link">¶</a></h4>
 <p>For external links, use the full URL:</p>
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>[<span class="nt">Hoplab Website</span>](<span class="na">https://www.hoplab.be/</span>)
 </span></code></pre></div>
-<h4 id="adding-and-linking-images">Adding and linking images<a class="headerlink" href="#adding-and-linking-images" title="Permanent link">&para;</a></h4>
+<h4 id="adding-and-linking-images">Adding and linking images<a class="headerlink" href="#adding-and-linking-images" title="Permanent link">¶</a></h4>
 <p>When adding images to the Wiki:</p>
 <ol>
 <li>Store all images in the <code>docs/assets</code> folder.</li>
@@ -3731,33 +3738,33 @@ really an aside, and that the section wants one of the list forms above.</p>
 <ul>
 <li>
 <p>If your Markdown file is in the main <code>docs</code> folder:
- <div class="language-markdown highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
-</span></code></pre></div></p>
+ </p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
+</span></code></pre></div><p></p>
 </li>
 <li>
 <p>If your file is in a subdirectory of <code>docs</code> (e.g., <code>docs/research/</code>):
- <div class="language-markdown highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../assets/fmri-analysis-workflow.png</span>)
-</span></code></pre></div></p>
+ </p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../assets/fmri-analysis-workflow.png</span>)
+</span></code></pre></div><p></p>
 </li>
 <li>
 <p>If your file is in a sub-subdirectory (e.g., <code>docs/research/fmri/</code>):
- <div class="language-markdown highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../../assets/fmri-analysis-workflow.png</span>)
-</span></code></pre></div></p>
+ </p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>![<span class="nt">fMRI Analysis Workflow</span>](<span class="na">../../../assets/fmri-analysis-workflow.png</span>)
+</span></code></pre></div><p></p>
 </li>
 </ul>
 </li>
 <li>
 <p>Always include descriptive alt text for accessibility:
-   <div class="language-markdown highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>![<span class="nt">Diagram showing steps of fMRI analysis</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
-</span></code></pre></div></p>
+   </p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>![<span class="nt">Diagram showing steps of fMRI analysis</span>](<span class="na">../assets/fmri-analysis-workflow.png</span>)
+</span></code></pre></div><p></p>
 </li>
 <li>
 <p>Optionally, specify image dimensions using HTML:
-   <div class="language-html highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"../assets/fmri-analysis-workflow.png"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"fMRI Analysis Workflow"</span> <span class="na">width</span><span class="o">=</span><span class="s">"500"</span><span class="p">&gt;</span>
-</span></code></pre></div></p>
+   </p><div class="language-html highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"../assets/fmri-analysis-workflow.png"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"fMRI Analysis Workflow"</span> <span class="na">width</span><span class="o">=</span><span class="s">"500"</span><span class="p">&gt;</span>
+</span></code></pre></div><p></p>
 </li>
 </ol>
-<h4 id="best-practices-for-linking">Best practices for linking<a class="headerlink" href="#best-practices-for-linking" title="Permanent link">&para;</a></h4>
+<h4 id="best-practices-for-linking">Best practices for linking<a class="headerlink" href="#best-practices-for-linking" title="Permanent link">¶</a></h4>
 <ol>
 <li>Use descriptive link text that gives users an idea of where the link will take them.</li>
 <li>Check your links after creating them to ensure they work correctly.</li>
@@ -3767,21 +3774,21 @@ really an aside, and that the section wants one of the list forms above.</p>
 <li>When linking to specific sections within long documents, use anchor links to improve user experience.</li>
 <li>For images, <strong>always use relative links</strong> and store images in the <code>docs/assets</code> folder to maintain a self-contained Wiki.</li>
 </ol>
-<h2 id="reviewing-and-accepting-pull-requests-for-admins">Reviewing and accepting pull requests (for admins)<a class="headerlink" href="#reviewing-and-accepting-pull-requests-for-admins" title="Permanent link">&para;</a></h2>
+<h2 id="reviewing-and-accepting-pull-requests-for-admins">Reviewing and accepting pull requests (for admins)<a class="headerlink" href="#reviewing-and-accepting-pull-requests-for-admins" title="Permanent link">¶</a></h2>
 <ol>
 <li>Go to the <code>hoplab-wiki</code> repository on GitHub.</li>
 <li>Click on the "Pull requests" tab.</li>
 <li>Review the pull request (Approve changes or suggest edits)</li>
 <li>When the changes are satisfactory, approve the changes and click "Merge pull request". This will delete the temporary branch.</li>
 </ol>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="permission-denied-or-authentication-issues">Permission denied or authentication issues<a class="headerlink" href="#permission-denied-or-authentication-issues" title="Permanent link">&para;</a></h3>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">¶</a></h2>
+<h3 id="permission-denied-or-authentication-issues">Permission denied or authentication issues<a class="headerlink" href="#permission-denied-or-authentication-issues" title="Permanent link">¶</a></h3>
 <p>If you encounter issues with pushing to the repository, you may need to use a personal access token. Follow these steps:</p>
 <ol>
 <li>Create a fine-grained personal access token <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token">here</a>.</li>
 <li>Use this token for authentication when pushing to the repository. More information on how to do so can be found on <a href="https://github.com/shiftkey/desktop/issues/217#issuecomment-934660228">this issue</a>. Please, first get a fine-grained Personal Access Token as described in the link above, and then follow the instructions in the "Manually temporary resolving this issue for a single git repository" section.</li>
 </ol>
-<h3 id="additional-help">Additional help<a class="headerlink" href="#additional-help" title="Permanent link">&para;</a></h3>
+<h3 id="additional-help">Additional help<a class="headerlink" href="#additional-help" title="Permanent link">¶</a></h3>
 <p>For further assistance, refer to the following resources:</p>
 <ul>
 <li><a href="https://www.mkdocs.org/">MkDocs Documentation</a></li>
@@ -3804,7 +3811,7 @@ really an aside, and that the section wants one of the list forms above.</p>
 
 
 
-  <form class="md-feedback" name="feedback" hidden>
+  <form class="md-feedback" name="feedback" hidden="">
     <fieldset>
       <legend class="md-feedback__title">
         Was this page helpful?
@@ -3813,17 +3820,17 @@ really an aside, and that the section wants one of the list forms above.</p>
         <div class="md-feedback__list">
           
             <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"></path></svg>
             </button>
           
             <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"></path></svg>
             </button>
           
         </div>
         <div class="md-feedback__note">
           
-            <div data-md-value="1" hidden>
+            <div data-md-value="1" hidden="">
               
               
                 
@@ -3836,7 +3843,7 @@ really an aside, and that the section wants one of the list forms above.</p>
               Thanks for your feedback!
             </div>
           
-            <div data-md-value="0" hidden>
+            <div data-md-value="0" hidden="">
               
               
                 
@@ -3865,9 +3872,9 @@ really an aside, and that the section wants one of the list forms above.</p>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -3877,13 +3884,13 @@ really an aside, and that the section wants one of the list forms above.</p>
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="outreach.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Science outreach">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -3926,7 +3933,7 @@ really an aside, and that the section wants one of the list forms above.</p>
     </div>
     
     
-      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden="">
         <div class="md-consent__overlay"></div>
         <aside class="md-consent__inner">
           <form class="md-consent__form md-grid md-typeset" name="consent">
@@ -3938,7 +3945,7 @@ really an aside, and that the section wants one of the list forms above.</p>
 
 <h4>Cookie consent</h4>
 <p>Please, consider disabling your ad-blocker and allowing cookies for this Wiki . We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
-<input class="md-toggle" type="checkbox" id="__settings" >
+<input class="md-toggle" type="checkbox" id="__settings">
 <div class="md-consent__settings">
   <ul class="task-list">
     
@@ -3952,7 +3959,7 @@ really an aside, and that the section wants one of the list forms above.</p>
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="analytics" checked>
+      <input type="checkbox" name="analytics" checked="">
       <span class="task-list-indicator"></span>
       Google Analytics
     </label>
@@ -3970,7 +3977,7 @@ really an aside, and that the section wants one of the list forms above.</p>
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="github" checked>
+      <input type="checkbox" name="github" checked="">
       <span class="task-list-indicator"></span>
       GitHub
     </label>
@@ -4013,10 +4020,14 @@ really an aside, and that the section wants one of the list forms above.</p>
       
         <script src="javascripts/details.js"></script>
       
+        <script src="javascripts/lightbox-zoom.js"></script>
+      
         <script src="javascripts/source-file.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": false, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

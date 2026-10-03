@@ -26,7 +26,7 @@
    Trained on
    :   ImageNet, 1000 labels
 
-   [![VOneNet on the cat sprite](../../assets/dnn/cards/vonenet.png){ .resource-card__figure }](../../assets/dnn/cards/vonenet.png)
+   ![VOneNet on the cat sprite](../../assets/dnn/cards/vonenet.png){ .resource-card__figure }
    { .resource-card__plate }
 
    What the panels show, in one or two sentences (optional).
@@ -217,7 +217,7 @@
   overflow-x: auto;
   overscroll-behavior-x: contain;
 }
-.md-typeset .resource-card__plate a { display: block; cursor: zoom-in; }
+.md-typeset .resource-card__plate a { display: block; } /* the lightbox link around the figure */
 .md-typeset .resource-card__plate a:focus-visible {
   outline: 2px solid var(--card-accent);
   outline-offset: 3px;
