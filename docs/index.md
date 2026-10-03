@@ -106,6 +106,14 @@ The [Hoplab](https://www.hoplab.be/) is part of the larger [NeuroSPACE consortiu
 
     [:octicons-arrow-right-24: RDM guidelines](./research/rdm/index.md)
 
+- :material-magnet:{ .lg .middle } __TMS__
+
+    ---
+
+    Safety procedures, equipment and session protocols for TMS studies
+
+    [:octicons-arrow-right-24: Learn more](research/tms/index.md)
+
 </div>
 
 ## Essential resources

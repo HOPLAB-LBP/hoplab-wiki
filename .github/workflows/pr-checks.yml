@@ -804,7 +804,7 @@ jobs:
 
           1. Open the file in the first column and update the broken link target.
           2. If the "Reported in" file is `docs/contribute.md`, edit `README.md` instead — CI copies `README.md` into `docs/contribute.md`.
-          3. In `README.md` / `docs/contribute.md`, avoid repo-root paths like `docs/...` for wiki pages; they're resolved from inside `docs/` and usually fail. Use a docs-relative path or the published-site URL.
+          3. In `README.md`, link to wiki pages with repo-root paths like `docs/contribute/admins.md`: `scripts/prepare_docs.sh` drops the `docs/` prefix in the `docs/contribute.md` copy.
           4. If the target page was renamed or moved, update the path to its new location.
           </details>
           EOF
