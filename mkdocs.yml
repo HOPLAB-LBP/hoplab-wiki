@@ -88,7 +88,11 @@ nav:
       - Compare with a model: research/dnn/dnn-model.md
       - Compare with brain data: research/dnn/dnn-compare.md
   - Science outreach: outreach.md
-  - Contribute: contribute.md
+  - Contribute:
+    - How to contribute: contribute.md
+    - Advanced workflow: contribute/advanced-workflow.md
+    - Formatting toolkit: contribute/formatting-toolkit.md
+    - For admins: contribute/admins.md
 #  - Tasks List: tasks-list.md
 
 theme:

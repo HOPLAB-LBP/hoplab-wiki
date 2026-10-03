@@ -3,6 +3,16 @@
   --md-primary-fg-color:        #44546A;
   --md-primary-fg-color--light: #8A97A8;
   --md-primary-fg-color--dark:  #2D3A4D;
+  /* Hover colour of collapsible list terms */
+  --hl-marker: var(--md-primary-fg-color);
+  /* Badges and dots of every list: soft dark slate with light digits,
+     lighter one list level down, and lighter again below that */
+  --hl-badge-bg: #5A697E;
+  --hl-badge-fg: #F4F6F9;
+  --hl-badge-bg-2: #A3AEBD;
+  --hl-badge-fg-2: #1E2433;
+  --hl-badge-bg-3: #C8D0DA;
+  --hl-badge-fg-3: #1E2433;
 }
 
 /* Light mode colors */
@@ -27,6 +37,16 @@
   --md-typeset-a-hover-color: #A8CFF5;
   /* Table of contents link base color */
   --md-toc-link-color: #94A3B8;
+  /* The dark primary is too faint on the dark background */
+  --hl-marker: #94A3B8;
+  /* Badges and dots of every list: soft light slate with dark digits,
+     darker one list level down, and darker again below that */
+  --hl-badge-bg: #B9C5D4;
+  --hl-badge-fg: #1E2433;
+  --hl-badge-bg-2: #7D8A9E;
+  --hl-badge-fg-2: #0F141C;
+  --hl-badge-bg-3: #4D5A6E;
+  --hl-badge-fg-3: #E8EDF3;
 
   /* Table of contents link colors */
   --md-toc-link-hover-color: #B0C4DE;
@@ -134,52 +154,85 @@
    Lists
    ========================= */
 
-/* First level: circles */
-.md-content ul {
-    list-style-type: disc;
-    margin: 0.5em 0;
-    padding-left: 20px;
-    color: var(--md-default-fg-color);
+/*
+  Every list gets the wiki's look on its own, without extra markup:
+  - bullets: markers drawn by the browser (::marker), so wrapped lines stay
+    aligned: a dot, a short dash one level down, then a ring;
+  - numbered lists: each number in a badge. Step lists (below) are numbered
+    lists plus a line joining the badges; numbered collapsible lists use the
+    same badge. One rule draws it, two tokens colour it (--hl-badge-bg/-fg:
+    dark badge in light mode, light badge in dark mode).
+  Left out: the code-note lists under annotated code blocks, grid cards, footnotes,
+  and do / don't and task lists (bullet lists with their own markers).
+*/
+
+/* The list level picks the colour: --badge-bg/-fg, read by markers and badges */
+.md-typeset :is(ul, ol) {
+  --badge-bg: var(--hl-badge-bg);
+  --badge-fg: var(--hl-badge-fg);
+}
+.md-typeset li :is(ul, ol) {
+  --badge-bg: var(--hl-badge-bg-2);
+  --badge-fg: var(--hl-badge-fg-2);
+}
+.md-typeset li li :is(ul, ol) {
+  --badge-bg: var(--hl-badge-bg-3);
+  --badge-fg: var(--hl-badge-fg-3);
 }
 
-/* Second level: hyphens */
-.md-content ul ul {
-    list-style-type: none;
-    margin: 0.25em 0;
+/* Bullets */
+.md-typeset ul > li::marker {
+  color: var(--badge-bg);
+}
+.md-typeset ul ul {
+  list-style-type: "\2013\00a0\00a0";
+}
+.md-typeset ul ul ul {
+  list-style-type: circle;
 }
 
-.md-content ul ul li::before {
-    content: "-";
-    color: var(--md-primary-fg-color);
-    margin-right: 8px;
-    font-weight: bold;
+/* Numbered lists */
+.md-typeset ol:not(.highlight:has(.md-annotation) + ol, .grid > ol, .footnote > ol) {
+  list-style: none;
+}
+.md-typeset ol:not(.highlight:has(.md-annotation) + ol, .grid > ol, .footnote > ol) > li {
+  position: relative;
+  margin-left: 0;
+  padding-left: 2.05em;
+}
+.md-typeset ol:not(.highlight:has(.md-annotation) + ol, .grid > ol, .footnote > ol) > li::before {
+  content: counter(list-item);
+  position: absolute;
+  left: 0;
+  top: .064em;             /* centres the badge (1.5 x the text size) on the first line (1.6) */
+}
+/* One level down, numbered lists count with letters; below that, with roman numerals */
+.md-typeset li ol:not(.steps-list > ol, .highlight:has(.md-annotation) + ol, .grid > ol, .footnote > ol) > li::before {
+  content: counter(list-item, lower-alpha);
+}
+.md-typeset li li ol:not(.steps-list > ol, .highlight:has(.md-annotation) + ol, .grid > ol, .footnote > ol) > li::before {
+  content: counter(list-item, lower-roman);
 }
 
-/* Third level: small arrows */
-.md-content ul ul ul {
-    list-style-type: none;
-    margin: 0.25em 0;
-}
-
-.md-content ul ul ul li::before {
-    content: "→";
-    color: var(--md-primary-fg-color--light);
-    margin-right: 8px;
-    font-weight: bold;
-}
-
-/* General styling for list items */
-.md-content ul li {
-    margin-bottom: 0.3em;
-    line-height: 1.5;
-}
-
-/* Styling for code blocks in pre elements, useful to display directory trees */
-.pre code {
-  background-color: var(--md-code-bg-color, #f5f5f5);
-  padding: 10px;
-  display: block;
-  font-family: monospace;
+/* The number badge, one look for every numbered marker */
+.md-typeset ol:not(.highlight:has(.md-annotation) + ol, .grid > ol, .footnote > ol) > li::before,
+.md-typeset details.numlist > summary::before,
+.md-typeset details.steps > summary::before {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.92em;       /* 1.5 x the text size, at this 0.78 font size */
+  height: 1.92em;
+  padding: 0 .38em;
+  border: 0;
+  border-radius: .96em;
+  background: var(--badge-bg, var(--hl-badge-bg));
+  color: var(--badge-fg, var(--hl-badge-fg));
+  font-size: .78em;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
 }
 
 /* =========================
@@ -257,6 +310,38 @@
   color: var(--md-primary-fg-color);
 }
 
+/*
+  Grid cards: as many per row as fit, each about square.
+  Material lays cards out with auto-fit, so one or two cards stretch over the
+  whole row. With auto-fill the empty columns stay: a card is between
+  --card-min and about 1.5 x --card-min wide wherever it is, and a row holds as
+  many cards as the width allows.
+  A zero-width float with padding-top: 83% makes each card at least 1/1.2 of its
+  width tall (a bit wider than tall). Percent padding is measured on the card's
+  own width, so unlike aspect-ratio it never feeds back into the column width.
+  Longer content makes a card taller; the cards of a row share its height.
+  With one card per row (phones) the minimum height is dropped: the 26.4rem in
+  the container query is 2 x --card-min plus the gap.
+*/
+.md-typeset .grid.cards:has(> ul, > ol) {   /* only real card lists, not a grid of loose buttons */
+  --card-min: 13rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--card-min)), 1fr));
+  container-type: inline-size;
+}
+@container (min-width: 26.4rem) {
+  .md-typeset .grid.cards > :is(ul, ol) > li::before {
+    content: "";
+    float: left;
+    width: 0;
+    padding-top: 83%;
+  }
+  .md-typeset .grid.cards > :is(ul, ol) > li::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
 /* Admonition polish */
 .md-typeset .admonition,
 .md-typeset details {
@@ -297,7 +382,7 @@
 }
 
 /* =========================
-   Buttons, Chips, Labels
+   Buttons
    ========================= */
 
 /* Primary button: use in Markdown as: [Label](url){ .md-button .md-button--primary } */
@@ -364,28 +449,6 @@
               box-shadow .15s ease, transform .05s ease;
 }
 
-/* Chips: {: .chip } or {: .chip .chip--green } */
-.chip {
-  display: inline-flex; align-items: center; gap: .4rem;
-  height: 1.6rem; padding: 0 .6rem;
-  border-radius: 999px; font-size: .8rem; font-weight: 500;
-  background: color-mix(in srgb, var(--md-primary-fg-color) 12%, transparent);
-  color: var(--md-primary-fg-color);
-  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 30%, transparent);
-}
-.chip--green { color: #2e7d32; background: #2e7d321A; border-color: #2e7d3236; }
-.chip--red   { color: #c62828; background: #c628281A; border-color: #c6282836; }
-.chip--blue  { color: #1565c0; background: #1565c01A; border-color: #1565c036; }
-
-/* Inline label: {: .label } */
-.label {
-  display: inline-block; padding: .15rem .4rem; border-radius: .35rem;
-  background: color-mix(in srgb, var(--md-primary-fg-color) 10%, transparent);
-  color: var(--md-default-fg-color);
-  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 25%, transparent);
-  font-size: .78rem; vertical-align: middle;
-}
-
 /* =========================
    Accessibility: focus indicators
    ========================= */
@@ -421,39 +484,12 @@
    ========================= */
 
 /* Responsive grid helpers: wrap content in <div class="grid-2">...</div> */
-.grid-2, .grid-3, .grid-4 {
+.grid-2 {
   display: grid; gap: 1rem; align-items: start;
 }
 .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 960px) {
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-}
-
-/* Timeline component: simple UL with class .timeline */
-.timeline { position: relative; list-style: none; padding-left: 1.25rem; }
-.timeline::before {
-  content: ""; position: absolute; left: .4rem; top: 0; bottom: 0;
-  width: 2px; background: color-mix(in srgb, var(--md-primary-fg-color) 25%, transparent);
-}
-[data-md-color-scheme="slate"] .timeline::before {
-  background: color-mix(in srgb, #7CB3F0 30%, transparent);
-}
-.timeline > li { position: relative; margin: 0 0 1rem 0; }
-.timeline > li::before {
-  content: ""; position: absolute; left: -.1rem; top: .25rem;
-  width: .7rem; height: .7rem; border-radius: 50%;
-  background: var(--md-default-bg-color);
-  border: 2px solid color-mix(in srgb, var(--md-primary-fg-color) 60%, transparent);
-}
-[data-md-color-scheme="slate"] .timeline > li::before {
-  border-color: color-mix(in srgb, #7CB3F0 70%, transparent);
-}
-.timeline > li > .timeline-card {
-  margin-left: .75rem; padding: .6rem .8rem; border-radius: .5rem;
-  box-shadow: 0 2px 10px rgb(0 0 0 / 6%);
-  border-left: 3px solid var(--md-primary-fg-color);
+  .grid-2 { grid-template-columns: 1fr; }
 }
 
 /* Task list checkboxes: more visible */
@@ -519,8 +555,8 @@
 .md-typeset details.deflist > summary:hover,
 .md-typeset details.numlist > summary:hover,
 .md-typeset details.steps > summary:hover {
-  color: var(--md-primary-fg-color);
-  background: color-mix(in srgb, var(--md-primary-fg-color) 7%, transparent);
+  color: var(--hl-marker);
+  background: color-mix(in srgb, var(--hl-marker) 7%, transparent);
 }
 
 /* marker replaces the admonition icon */
@@ -542,21 +578,13 @@
   content: counter(deflist-item);
   counter-increment: deflist-item;
   left: .35rem;
-  width: 1.35rem;
-  height: 1.35rem;
-  background: color-mix(in srgb, var(--md-primary-fg-color) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 28%, transparent);
-  color: var(--md-primary-fg-color);
-  font-size: .7rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
 }
 .md-typeset details.deflist > summary::before {
   content: "";
   left: .75rem;
   width: .4rem;
   height: .4rem;
-  background: color-mix(in srgb, var(--md-primary-fg-color) 55%, transparent);
+  background: var(--hl-badge-bg);
   border: 0;
 }
 .md-typeset details.deflist > summary { padding-left: 1.4rem; }
@@ -601,7 +629,7 @@
 .md-typeset details.steps:has(+ details.steps)::before {
   content: "";
   position: absolute;
-  left: calc(.675rem - 1px);
+  left: calc(.75em - 1px);  /* centre of the badge */
   top: .85em;
   bottom: -1.4em;
   width: 2px;
@@ -609,9 +637,6 @@
   z-index: 0;
 }
 .md-typeset details.steps > summary { z-index: 1; }
-.md-typeset details.steps > summary::before {
-  background: color-mix(in srgb, var(--md-primary-fg-color) 12%, var(--md-default-bg-color));
-}
 
 
 /* =========================
@@ -626,48 +651,23 @@
 
   </div>
 
-  A plain numbered list drawn like ??? steps: number circles joined by a
-  vertical line. For procedures written as plain sentences, and for those
+  A numbered list (badges from the Lists block) whose badges are joined by a
+  vertical line, like ??? steps. For procedures written as plain sentences, and for those
   where every step must stay visible (emergencies).
 */
 
-.md-typeset .steps-list > ol {
-  list-style: none;
-  counter-reset: steps-list;
-  margin-left: 0;
-  padding-left: 0;
-}
 .md-typeset .steps-list > ol > li {
-  counter-increment: steps-list;
-  position: relative;
   margin: 0 0 .9em 0;
-  padding-left: 2.1rem;
 }
 .md-typeset .steps-list > ol > li::before {
-  content: counter(steps-list);
-  position: absolute;
-  left: 0;
-  top: .05em;
   z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.35rem;
-  height: 1.35rem;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--md-primary-fg-color) 12%, var(--md-default-bg-color));
-  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 28%, transparent);
-  color: var(--md-primary-fg-color);
-  font-size: .7rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
 }
 .md-typeset .steps-list > ol > li:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: calc(.675rem - 1px);
-  top: 1.4rem;
-  bottom: -.9em;
+  left: calc(.75em - 1px);  /* centre of the badge */
+  top: 1.55em;              /* from the bottom of this badge ... */
+  bottom: -.95em;           /* ... to the top of the next one */
   width: 2px;
   background: var(--md-default-fg-color--lightest);
 }

@@ -12,15 +12,16 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
 1. [Getting started](#getting-started)
 2. [How to contribute](#how-to-contribute)
     - [Easy workflow (quick changes)](#easy-workflow-for-quick-changes)
-    - [Advanced workflow (extensive changes)](#advanced-workflow-for-extensive-changes)
+    - [Advanced workflow (extensive changes)](contribute/advanced-workflow.md)
 3. [Automated PR checks](#automated-pr-checks)
 4. [Editing the wiki](#editing-the-wiki)
     - [Adding a new page](#adding-a-new-page)
     - [Creating child pages](#creating-child-pages)
     - [Adding tags](#adding-todo-note-and-placeholder-tags)
     - [Common formatting syntax](#common-formatting-syntax)
+    - [Formatting toolkit](contribute/formatting-toolkit.md)
     - [Linking and referencing](#linking-and-referencing)
-5. [Reviewing and accepting pull requests (for admins)](#reviewing-and-accepting-pull-requests-for-admins)
+5. [For admins: reviewing, merging and the build](contribute/admins.md)
 6. [Troubleshooting](#troubleshooting)
 
 ## Getting started
@@ -29,7 +30,7 @@ Before you begin, ensure you have the following:
 
 - A GitHub account (click [here](https://github.com/signup) to sign up).
 - Be part of the [`HOPLAB-LBP`](https://github.com/orgs/HOPLAB-LBP/people) organization (contact [Andrea](mailto:andreaivan.costantino@kuleuven.be) if you need to be added).
-- If you plan on following the [Advanced workflow](#advanced-workflow-for-extensive-changes) (encouraged for more complex changes), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html), and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or [GitHub Desktop](https://desktop.github.com/) (strongly encouraged) installed. If you are new to Git, branches, and pull requests, see the [Version control](https://hoplab-lbp.github.io/hoplab-wiki/research/coding/version-control.html) page for a full introduction.
+- If you plan on following the [Advanced workflow](contribute/advanced-workflow.md) (encouraged for more complex changes), also make sure that you have [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html), and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) or [GitHub Desktop](https://desktop.github.com/) (strongly encouraged) installed. If you are new to Git, branches, and pull requests, see the [Version control](https://hoplab-lbp.github.io/hoplab-wiki/research/coding/version-control.html) page for a full introduction.
 
 ## How to contribute
 
@@ -44,13 +45,13 @@ This workflow is ideal for making small, quick changes to a single file. It can 
 
 #### Step 1: Make your changes
 
-=== "Edit an existing page"
+1. **To edit an existing page:**
 
     1. Navigate to the [`HOPLAB-LBP/hoplab-wiki`](https://github.com/HOPLAB-LBP/hoplab-wiki) repository.
     2. Click on the file you want to edit (usually, in `docs/`).
     3. Click on the pencil icon (✏️) at the top right to edit the file.
 
-=== "Create a new page"
+2. **To create a new page:**
 
     1. Navigate to the `mkdocs.yml` file.
     2. Click on the pencil icon (✏️) at the top right to edit the file.
@@ -78,145 +79,7 @@ You can then add/edit your content in Markdown format (see [Editing the wiki](#e
 
 These steps above will create a new branch in the repository, that will be visible in the [branches list](https://github.com/HOPLAB-LBP/hoplab-wiki/branches), and a new PR visible in the [PRs list](https://github.com/HOPLAB-LBP/hoplab-wiki/pulls). Once the PR is approved by at least one reviewer and merged into the main branch, the newly created branch will be automatically deleted and the changes will go live.
 
-## Advanced workflow (for extensive changes)
-
-The preferred way to contribute if you need to make **significant/multiple changes**, but it requires some familiarity with git, Python, and Conda environments. If you are not a Wiki maintainer, this workflow is probably overkill.
-
-With this workflow, you will make and preview all the edits locally (on your computer). This allows for more control and flexibility, as it lets you see your changes in a live session.
-
-!!! tip "Unfamiliar with branches and pull requests?"
-    This workflow relies on creating branches and opening pull requests. If these concepts are new to you, read the [Working with branches](https://hoplab-lbp.github.io/hoplab-wiki/research/coding/version-control.html#4-working-with-branches) and [Pull requests](https://hoplab-lbp.github.io/hoplab-wiki/research/coding/version-control.html#5-pull-requests) sections first.
-
-!!! question "How should I organize my PR?"
-    A [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (or PR) "*is a proposal to merge a set of changes from one branch into another*". Ideally, a PR should include all the commits **for a specific feature** or bugfix from end-to-end. Avoid making PRs that contain multiple unrelated changes. For instance, if you are working on a feature that requires modifications across multiple files, ensure all those changes are included in the same PR. Conversely, avoid combining changes for different features (e.g., adding unrelated updates to the fMRI workflow and the getting started section) in a single PR. Each PR should represent a cohesive unit of work.
-
-Here's a step-by-step guide that includes forking and cloning the repository, making and testing changes locally, and then submitting those changes for review through a pull request.
-
-### Step 1: Forking the repository and cloning your fork
-
-=== "Using the CLI"
-
-    1. **Navigate to the original repository:**
-
-        Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
-
-    2. **Fork the repository:**
-
-        Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
-
-    3. **Clone Your Fork:**
-        1. Click the "Code" button on your forked repository page and copy the URL.
-        2. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux) and navigate to the directory where you want to store the project, then type:
-           ```bash
-           git clone https://github.com/your-username/hoplab-wiki.git
-           ```
-        3. Change into the directory of the cloned repository:
-           ```bash
-           cd hoplab-wiki
-           ```
-
-=== "Using GitHub Desktop"
-
-    1. **Navigate to the Original Repository:**
-
-        Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
-
-    2. **Fork the Repository:**
-
-        Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
-
-    3. **Open GitHub Desktop:**
-
-        If you do not have GitHub Desktop installed, download and install it from [GitHub Desktop's official website](https://desktop.github.com/).
-
-    3. **Clone your fork using GitHub Desktop:**
-        1. Open GitHub Desktop.
-        2. In the top menu, click on `File > Clone Repository`.
-        3. In the "URL" tab, paste the URL of your forked repository from your GitHub account into the "Repository URL" field.
-        4. Choose the local path where you want to store the repository on your computer.
-        5. Click "Clone".
-
-### Step 2: Setting up your local environment
-
-1. **Install Conda:**
-
-    If you don't have Conda installed, download and install it from [Conda's official website](https://docs.conda.io/en/latest/miniconda.html).
-
-2. **Create and activate a Conda environment:**
-
-    ```bash
-    conda create --name hoplab-wiki python=3.9
-    conda activate hoplab-wiki
-    ```
-
-3. **Install necessary packages:**
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-### Step 3: Making changes
-
-1. **Edit documentation:**
-     You can now make changes to your local clone of the documentation. Use a text editor or an IDE to open and edit the Markdown files in the repository. If changes are extensive, consider splitting them into smaller, manageable commits that focus on specific pages or sections for clarity and ease of review.
-
-### Step 4: Testing your changes locally
-
-1. **Serve the documentation locally:**
-   1. While in your project directory and with the Conda environment activated, launch the local server by typing:
-      ```bash
-      mkdocs serve
-      ```
-   2. Open a web browser and navigate to `http://127.0.0.1:8000/`. This allows you to see your changes as they would appear on the live site.
-   3. Keep this server running as you make changes; refresh your browser to update the preview.
-
-### Step 5: Closing the local server
-
-1. **Stop the server:**
-    When you are done previewing and editing and you are done with the changes, go back to the terminal where your server is running and press `Ctrl+C` to stop the server.
-
-### Step 6: Committing your changes
-
-=== "Using the CLI"
-
-    1. **Stage and commit your changes:**
-        1. From your terminal, add all modified files to your commit:
-          ```bash
-          git add .
-          ```
-        2. Commit the changes, including a clear message about what was modified and why:
-          ```bash
-          git commit -m "Detailed description of changes"
-          ```
-    2. Push your commits to the forked repository on GitHub:
-          ```bash
-          git push origin main
-          ```
-
-=== "Using GitHub Desktop"
-
-    1. **Stage and commit your changes:**
-        1. In GitHub Desktop, you should see the list of changed files in the left sidebar.
-        2. Review the changes by clicking on each file.
-        3. Once you are ready to commit, write a summary of the changes in the "Summary" field at the bottom left.
-        4. Add a more detailed description in the "Description" field if necessary.
-        5. Click the "Commit to main" button.
-
-    2. **Push your changes:**
-        1. In GitHub Desktop, click on the `Push origin` button at the top to push your commits to GitHub.
-
-### Step 7: Creating a pull request
-
-1. Navigate to your forked repository on GitHub.
-2. Click on the "Pull requests" tab.
-3. Click on "New pull request".
-4. Choose the original repository's `main` branch as the base, and your fork's `main` branch as the compare.
-5. Fill out the form to describe the changes.
-6. In the right panel, make sure to assign an admin (as of July 2024, [@costantinoai](https://github.com/costantinoai)) to review your changes.
-7. Click on "Create pull request" to submit your changes.
-
-!!! note "Automatic Deployment with GitHub Actions"
-    This repository is set up to use GitHub Actions for automatic deployment. This means that every time changes are merged into the `main` branch, the documentation will automatically be built and deployed to GitHub Pages. You do not need to manually run the `mkdocs gh-deploy` command each time you make changes. Simply push your changes to the `main` branch, and GitHub Actions will handle the deployment.
+For larger changes that you edit and preview on your own computer, follow the [Advanced workflow](contribute/advanced-workflow.md).
 
 ## Automated PR checks
 
@@ -249,7 +112,7 @@ When you open or update a Pull Request, automated checks run to catch common iss
 
 ## Editing the wiki
 
-We welcome contributions from all members. All the content of the wiki is written in Markdown files located in the `docs` directory. You can edit these files in your browser (if you follow the [Easy workflow](#easy-workflow-for-quick-changes)) or locally using any text editor or IDE (e.g., VSCode, Sublime Text) if you follow the [Advanced workflow](#advanced-workflow-for-extensive-changes).
+We welcome contributions from all members. All the content of the wiki is written in Markdown files located in the `docs` directory. You can edit these files in your browser (if you follow the [Easy workflow](#easy-workflow-for-quick-changes)) or locally using any text editor or IDE (e.g., VSCode, Sublime Text) if you follow the [Advanced workflow](contribute/advanced-workflow.md).
 
 ### Adding a new page
 
@@ -335,114 +198,7 @@ Here are some common Markdown elements:
 
 For more advanced formatting options, refer to the [MkDocs Material Reference Guide](https://squidfunk.github.io/mkdocs-material/reference/).
 
-### Collapsible definition lists
-
-When a section is a **list of things that each need a short explanation** — the
-documents an application must contain, the tools on a machine, the fields in a
-form — use `??? numlist` (numbered) or `??? deflist` (bulleted) instead of a run
-of `!!!` boxes. The term stays visible so the whole list can be scanned at a
-glance, and the explanation opens on click:
-
-```markdown
-??? numlist "Accompanying letter signed by the PI"
-    You can find the guidelines [here](https://example.org).
-
-???+ numlist "Research protocol, including a summary in Dutch"
-    Best to follow the CTC template, which already covers safety procedures.
-```
-
-- `???` starts closed, `???+` starts open.
-- Indent the body by **four spaces**, exactly like an admonition.
-- Numbering is automatic and **restarts at every heading**, so you can reorder or
-  insert entries without renumbering anything by hand.
-- Each entry gets its own anchor from its term, so you can link straight to it:
-  `[the ICF requirements](MEC.md#informed-consent-forms-icfs)`. Opening such a
-  link expands that entry. If the term is the same as a heading or another entry
-  on the page, `-2`, `-3`, … is appended to keep the anchor unique. Everything also
-  expands automatically when the page is printed or saved as PDF.
-
-Which renders as:
-
-??? numlist "Accompanying letter signed by the PI"
-    You can find the guidelines [here](https://squidfunk.github.io/mkdocs-material/reference/).
-
-???+ numlist "Research protocol, including a summary in Dutch"
-    Best to follow the CTC template, which already covers safety procedures.
-
-??? numlist "Informed consent forms, in English and in Dutch"
-    The templates already carry the legal basis for data processing. Three parts:
-
-    - essential information to decide on participation
-    - the consent form
-    - any appendices
-
-For **steps that follow each other in order** (a procedure, the path to a first session), use `??? steps`. It looks
-exactly like `??? numlist`, and a vertical line joins the numbers so the steps read as one sequence. Write `???+ steps`
-to show every step open:
-
-```markdown
-???+ steps "Get ethical approval"
-    Submit the study to the ethics committee.
-
-???+ steps "Book the room"
-    Book it in Calira once approval is in.
-```
-
-The line runs only between consecutive `steps` entries, so a paragraph or heading between two entries ends the
-sequence. Numbering restarts at every heading, as for `numlist`.
-
-For a procedure whose steps are plain sentences, or one that must stay visible without clicking (an emergency), wrap an ordinary numbered list in a
-`steps-list` block. It draws the same circles and line:
-
-```markdown
-<div class="steps-list" markdown>
-
-1. Stop stimulating.
-2. Help the participant lie down.
-
-</div>
-```
-
-### Safety guidance: care cards and do / don't lists
-
-For safety and emergency information, two blocks follow the NHS design system
-([care cards](https://service-manual.nhs.uk/design-system/components/care-cards),
-[do and don't lists](https://service-manual.nhs.uk/design-system/components/do-and-dont-lists)).
-Use them sparingly: one emergency card per page, for the number to call. For other warnings, use the usual `!!! danger` or `!!! warning` boxes.
-
-```markdown
-<div class="care-card care-card--emergency" markdown>
-<p class="care-card__heading">Emergency: call +32 16 32 22 22</p>
-<div class="care-card__body" markdown>
-
-What to say and where you are.
-
-</div>
-</div>
-
-<div class="dont-list" markdown>
-<p class="do-list__heading">Don't</p>
-
-- Never get the TMS coil wet.
-
-</div>
-```
-
-`do-list` gives green ticks, `dont-list` red crosses.
-
-!!! tip "Which one do I use?"
-    | Your content | Use |
-    |---|---|
-    | A list of items, each with a paragraph or more of explanation, all relevant to every reader | `??? numlist` / `??? deflist` |
-    | Steps done in order, each with an explanation | `???+ steps` |
-    | Steps done in order, written as plain sentences or always visible (emergencies) | `<div class="steps-list" markdown>` around a numbered list |
-    | Items with a one-line explanation | a plain bullet list — there is nothing worth hiding |
-    | The reader needs exactly **one** of several alternatives (Windows/macOS, one of three procedures) | [content tabs](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/) (`=== "Tab"`) |
-    | A single aside, warning or tip interrupting the text | `!!! warning`, `!!! tip`, … |
-    | Troubleshooting entries the reader consults only when something breaks | `??? failure "Symptom"` |
-
-    A run of three or more `!!!` boxes in a row is a sign that none of them is
-    really an aside, and that the section wants one of the list forms above.
+The wiki's own building blocks (list styles, steps, boxes, tabs, cards, buttons, image options) are in the [Formatting toolkit](contribute/formatting-toolkit.md), each with a snippet and what it looks like.
 
 ### Linking and referencing
 
@@ -529,13 +285,6 @@ When adding images to the Wiki:
    ```
 4. When linking to specific sections within long documents, use anchor links to improve user experience.
 5. For images, **always use relative links** and store images in the `docs/assets` folder to maintain a self-contained Wiki.
-
-## Reviewing and accepting pull requests (for admins)
-
-1. Go to the `hoplab-wiki` repository on GitHub.
-2. Click on the "Pull requests" tab.
-3. Review the pull request (Approve changes or suggest edits)
-4. When the changes are satisfactory, approve the changes and click "Merge pull request". This will delete the temporary branch.
 
 ## Troubleshooting
 
