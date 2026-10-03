@@ -178,6 +178,17 @@ plugins:
   - offline
 #  - privacy
   - search
+  # Click an image to see it large, in front of the page (lightbox). Emoji and images
+  # inside a link are left alone; add { .off-glb } to an image to keep it out.
+  - glightbox:
+      effect: zoom
+      slide_effect: slide
+      zoomable: false   # zoom with the slider bar instead (javascripts/lightbox-zoom.js)
+      draggable: false  # mouse drag pans a zoomed image; arrows, keys and swipes change image
+      touchNavigation: true
+      loop: false
+      skip_classes:
+        - off-glb
   # The git-based page footer (last update, contributors) is added in mkdocs-ci.yml,
   # so a local `mkdocs serve` needs no git. Preview it with: mkdocs serve -f mkdocs-ci.yml
 
@@ -188,6 +199,7 @@ extra_css:
 extra_javascript:
   - javascripts/mathjax.js
   - javascripts/details.js
+  - javascripts/lightbox-zoom.js # zoom slider for the image lightbox
   - javascripts/source-file.js # footer: last update in the reader's time zone
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 

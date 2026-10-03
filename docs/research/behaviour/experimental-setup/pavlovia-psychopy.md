@@ -22,9 +22,9 @@ Follow the steps below to successfully upload your experiment to Pavlovia.
 
 1. Create the experiment in **PsychoPy Builder**.
 2. Create a [**Pavlovia account**](https://gitlab.pavlovia.org/users/sign_in) and log in.
-3. Link your account to the Builder via this button ![Pavlovia login button in PsychoPy Builder](../../../assets/bh-pavlovia-builder-button.png)
+3. Link your account to the Builder via this button ![Pavlovia login button in PsychoPy Builder](../../../assets/bh-pavlovia-builder-button.png){ .off-glb }
 4. Place all files for the experiment in a **single directory**.
-5. Click the **Syncing Globe** ![Pavlovia sync globe button in PsychoPy Builder](../../../assets/bh-pavlovia-sync-button.png) in the Builder, enter a project name, and upload. The icon will turn green when the upload is complete.
+5. Click the **Syncing Globe** ![Pavlovia sync globe button in PsychoPy Builder](../../../assets/bh-pavlovia-sync-button.png){ .off-glb } in the Builder, enter a project name, and upload. The icon will turn green when the upload is complete.
 6. Access your experiment on Pavlovia by navigating to **Dashboard > Experiments** in your account.
 7. To test the project, change the status to **piloting** and click **pilot**.
 
