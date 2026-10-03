@@ -15,6 +15,17 @@ INHERIT: mkdocs.yml
 plugins:
   - offline
   - search
+  # Click an image to see it large, in front of the page (lightbox). Emoji and images
+  # inside a link are left alone; add { .off-glb } to an image to keep it out.
+  - glightbox:
+      effect: zoom
+      slide_effect: slide
+      zoomable: false   # zoom with the slider bar instead (javascripts/lightbox-zoom.js)
+      draggable: false  # mouse drag pans a zoomed image; arrows, keys and swipes change image
+      touchNavigation: true
+      loop: false
+      skip_classes:
+        - off-glb
   # Page footer: last update and contributors, from the git history.
   # Only options that exist in older plugin versions too, so local installs keep working.
   # strict: false and the fallbacks keep builds going for pages not committed yet,

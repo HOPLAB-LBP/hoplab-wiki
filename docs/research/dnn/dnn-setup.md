@@ -185,7 +185,7 @@ In thingsvision
 License
 :   BSD-3 code; weights under ImageNet terms
 
-[![AlexNet: the cat sprite; four conv1 filters (horizontal edge, oblique edge, vertical grating, colour centre-surround), each above its response to the cat; RDMs of conv1 and fc7 over the 96 sprites](../../assets/dnn/cards/alexnet.png){ .resource-card__figure }](../../assets/dnn/cards/alexnet.png)
+![AlexNet: the cat sprite; four conv1 filters (horizontal edge, oblique edge, vertical grating, colour centre-surround), each above its response to the cat; RDMs of conv1 and fc7 over the 96 sprites](../../assets/dnn/cards/alexnet.png){ .resource-card__figure }
 { .resource-card__plate }
 
 ??? example "Load it"
@@ -230,7 +230,7 @@ In thingsvision
 License
 :   BSD-3 code; weights under ImageNet terms
 
-[![ResNet-50: the cat sprite; four conv1 filters (horizontal bar, oblique bars, colour edge, colour centre-surround), each above its response to the cat; RDMs of conv1 and avgpool over the 96 sprites](../../assets/dnn/cards/resnet50.png){ .resource-card__figure }](../../assets/dnn/cards/resnet50.png)
+![ResNet-50: the cat sprite; four conv1 filters (horizontal bar, oblique bars, colour edge, colour centre-surround), each above its response to the cat; RDMs of conv1 and avgpool over the 96 sprites](../../assets/dnn/cards/resnet50.png){ .resource-card__figure }
 { .resource-card__plate }
 
 ??? example "Load it"
@@ -278,7 +278,7 @@ In thingsvision
 License
 :   GPL-3.0
 
-[![CORnet-S: the cat sprite; four V1 filters (horizontal bar, oblique bar, colour edge, centre-surround), each above its response to the cat; RDMs of V1 and IT over the 96 sprites](../../assets/dnn/cards/cornet_s.png){ .resource-card__figure }](../../assets/dnn/cards/cornet_s.png)
+![CORnet-S: the cat sprite; four V1 filters (horizontal bar, oblique bar, colour edge, centre-surround), each above its response to the cat; RDMs of V1 and IT over the 96 sprites](../../assets/dnn/cards/cornet_s.png){ .resource-card__figure }
 { .resource-card__plate }
 
 ??? example "Load it"
@@ -323,7 +323,7 @@ In thingsvision
 License
 :   GPL-3.0
 
-[![VOneNet: the cat sprite; four fixed V1 filters (horizontal grating, oblique grating, vertical bar, centre blob), each above its response to the cat; RDMs of the VOne block and avgpool over the 96 sprites](../../assets/dnn/cards/vonenet.png){ .resource-card__figure }](../../assets/dnn/cards/vonenet.png)
+![VOneNet: the cat sprite; four fixed V1 filters (horizontal grating, oblique grating, vertical bar, centre blob), each above its response to the cat; RDMs of the VOne block and avgpool over the 96 sprites](../../assets/dnn/cards/vonenet.png){ .resource-card__figure }
 { .resource-card__plate }
 
 ??? example "Load it"
@@ -376,7 +376,7 @@ In thingsvision
 License
 :   no license file
 
-[![HMAX: the cat sprite; four S1 Gabor filters at four orientations, each above its response to the cat; RDMs of S1 and C2 over the 96 sprites](../../assets/dnn/cards/hmax.png){ .resource-card__figure }](../../assets/dnn/cards/hmax.png)
+![HMAX: the cat sprite; four S1 Gabor filters at four orientations, each above its response to the cat; RDMs of S1 and C2 over the 96 sprites](../../assets/dnn/cards/hmax.png){ .resource-card__figure }
 { .resource-card__plate }
 
 ??? example "Load it"
@@ -422,7 +422,7 @@ In thingsvision
 License
 :   MIT; research use only, per the model card
 
-[![CLIP: the cat sprite with CLIP's 7 × 7 patch grid; four principal components of the first-layer patch filters (colour-striped centre, vertical grating, oblique edge, centre-surround blob), each above its 7 × 7 map for the cat; RDMs of the first layer and of the class token before the projection over the 96 sprites](../../assets/dnn/cards/clip.png){ .resource-card__figure }](../../assets/dnn/cards/clip.png)
+![CLIP: the cat sprite with CLIP's 7 × 7 patch grid; four principal components of the first-layer patch filters (colour-striped centre, vertical grating, oblique edge, centre-surround blob), each above its 7 × 7 map for the cat; RDMs of the first layer and of the class token before the projection over the 96 sprites](../../assets/dnn/cards/clip.png){ .resource-card__figure }
 { .resource-card__plate }
 
 CLIP's 768 patch filters look noisy one by one, so the strip shows four principal components of them, as the ViT paper does ([Dosovitskiy et al., 2021](https://arxiv.org/abs/2010.11929), Fig. 7). Each map shows how strongly each of the 49 patches of the cat loads on that component.
@@ -473,7 +473,7 @@ In thingsvision
 License
 :   no license file
 
-[![TDANN: the cat sprite; the V1-like layer, layer2.0, on the cortical sheet: each unit's preferred orientation, with a key of oriented bars, and each unit's response to the cat; RDMs of layer2.0 and layer4.1 over the 96 sprites](../../assets/dnn/cards/tdann.png){ .resource-card__figure }](../../assets/dnn/cards/tdann.png)
+![TDANN: the cat sprite; the V1-like layer, layer2.0, on the cortical sheet: each unit's preferred orientation, with a key of oriented bars, and each unit's response to the cat; RDMs of layer2.0 and layer4.1 over the 96 sprites](../../assets/dnn/cards/tdann.png){ .resource-card__figure }
 { .resource-card__plate }
 
 On the left, each unit's preferred orientation, measured with TDANN's own grating images and tuning fits and smoothed over 1.5 mm as in the paper: neighbouring units prefer similar orientations, and the colours meet at pinwheel-like points. On the right, each unit's response to the cat at its position on the sheet, as in the TDANN demo.
@@ -525,7 +525,7 @@ In thingsvision
 License
 :   no license file
 
-[![TopoNets: the cat sprite; the response map of each channel of layer1.0.conv1, tiled at the channel's position on the 8 × 8 sheet; RDMs of layer1.0.conv1 and avgpool over the 96 sprites](../../assets/dnn/cards/toponets.png){ .resource-card__figure }](../../assets/dnn/cards/toponets.png)
+![TopoNets: the cat sprite; the response map of each channel of layer1.0.conv1, tiled at the channel's position on the 8 × 8 sheet; RDMs of layer1.0.conv1 and avgpool over the 96 sprites](../../assets/dnn/cards/toponets.png){ .resource-card__figure }
 { .resource-card__plate }
 
 The paper's vision maps show category selectivity (Fig. 5A). This view of the first topographic layer is ours: each channel's response to the cat, placed on the 8 × 8 grid that TopoLoss uses for this layer. Neighbouring tiles tend to look alike.
@@ -572,7 +572,7 @@ In thingsvision
 License
 :   MIT
 
-[![All-TNN: the cat sprite; the preferred orientation of every unit of sheet 1 on the cortical sheet, with a key of oriented bars, and the summed response to the cat at each position of the visual field; RDMs of sheet 1 and sheet 6 over the 96 sprites](../../assets/dnn/cards/alltnn.png){ .resource-card__figure }](../../assets/dnn/cards/alltnn.png)
+![All-TNN: the cat sprite; the preferred orientation of every unit of sheet 1 on the cortical sheet, with a key of oriented bars, and the summed response to the cat at each position of the visual field; RDMs of sheet 1 and sheet 6 over the 96 sprites](../../assets/dnn/cards/alltnn.png){ .resource-card__figure }
 { .resource-card__plate }
 
 On the left, each unit's preferred orientation, measured with gratings as in the repository's `get_tuning_curves`: neighbouring units prefer similar orientations, as in V1. White dots are units that respond to no grating (0.7%). On the right, the summed response of the 64 units at each position in the visual field, which traces the cat and the edge of the grass.
