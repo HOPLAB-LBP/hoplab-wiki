@@ -791,3 +791,169 @@
 .md-nav--primary .md-nav[data-md-level="1"] > .md-nav__list > .md-nav__item--nested > .md-nav__link {
   font-weight: 700;
 }
+
+/* =========================
+   Page footer: contributors (overrides/partials/source-file.html)
+   ========================= */
+
+/*
+  A stack of overlapping avatars, largest share first and in front. Hovering or
+  focusing one:
+  - opens room around it by growing its own padding. The neighbours slide away
+    through normal layout, and the room they leave is still part of the hovered
+    avatar, so the hover holds until the pointer reaches the next avatar;
+  - lifts it a little, with a soft halo behind;
+  - shows a small label with the name and the share of the page.
+  One easing curve and one duration for everything. Only padding (a few inline
+  boxes), transform and opacity change, so the motion stays smooth.
+*/
+.md-source-file__fact.md-contributors {
+  --md-contributor-size: 1.8rem;
+  --md-contributor-overlap: .5rem;   /* how much each avatar covers the previous one */
+  --md-contributor-room: .8rem;      /* padding on each side of the hovered avatar */
+  --md-contributor-time: 260ms;
+  --md-contributor-ease: cubic-bezier(.22, .8, .24, 1);
+  align-items: center;
+  margin-top: .35rem;
+}
+.md-contributors__stack {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: .5rem;
+  padding-left: .3rem;
+}
+.md-contributor {
+  position: relative;
+  display: inline-flex;
+  z-index: var(--z, 1); /* set in the template: the largest share is in front */
+  margin-left: calc(-1 * var(--md-contributor-overlap));
+  padding-inline: 0;
+  outline: none;
+  transition:
+    padding var(--md-contributor-time) var(--md-contributor-ease),
+    transform var(--md-contributor-time) var(--md-contributor-ease);
+}
+.md-contributor:first-child {
+  margin-left: 0;
+}
+.md-contributor:is(:hover, :focus-visible) {
+  z-index: 100;
+  padding-inline: var(--md-contributor-room);
+}
+/* Avatars before the hovered one step a little to the left (without :has() they stay) */
+.md-contributor:has(~ .md-contributor:is(:hover, :focus-visible)) {
+  transform: translateX(-.2rem);
+}
+
+/* Face: the avatar, with a ring in the page colour and a halo behind it */
+.md-contributor__face {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  border-radius: 50%;
+  transition: transform var(--md-contributor-time) var(--md-contributor-ease);
+}
+.md-contributor__face::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -45%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+    color-mix(in srgb, var(--md-accent-fg-color) 34%, transparent),
+    transparent);
+  opacity: 0;
+  transform: scale(.6);
+  transition:
+    opacity var(--md-contributor-time) var(--md-contributor-ease),
+    transform var(--md-contributor-time) var(--md-contributor-ease);
+}
+[data-md-color-scheme="slate"] .md-contributor__face::before {
+  background: radial-gradient(closest-side,
+    color-mix(in srgb, var(--md-accent-fg-color) 50%, transparent),
+    transparent);
+}
+.md-contributor:is(:hover, :focus-visible) .md-contributor__face {
+  transform: translateY(-.1rem) scale(1.14);
+}
+.md-contributor:is(:hover, :focus-visible) .md-contributor__face::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.md-content img.md-contributor__avatar,
+.md-contributor__avatar {
+  display: block;
+  width: var(--md-contributor-size);
+  height: var(--md-contributor-size);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--md-default-bg-color);
+  background: var(--md-default-fg-color--lightest);
+  cursor: pointer;
+}
+.md-content img.md-contributor__avatar:active {
+  transform: none; /* content images zoom on click (.md-content img:active): not avatars */
+  cursor: pointer;
+}
+.md-contributor:focus-visible .md-contributor__avatar {
+  box-shadow:
+    0 0 0 2px var(--md-default-bg-color),
+    0 0 0 3.5px var(--md-accent-fg-color);
+}
+.md-contributor__avatar--initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Label above the avatar, in the wiki's primary colour */
+.md-contributor__tip {
+  position: absolute;
+  bottom: calc(100% + .6rem);
+  left: 50%;
+  display: inline-flex;
+  align-items: baseline;
+  gap: .4rem;
+  padding: .2rem .5rem;
+  border-radius: .25rem;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  font-size: .62rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, .25rem);
+  transition:
+    opacity var(--md-contributor-time) var(--md-contributor-ease),
+    transform var(--md-contributor-time) var(--md-contributor-ease);
+}
+.md-contributor__tip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: .22rem solid transparent;
+  border-top-color: var(--md-primary-fg-color);
+  transform: translateX(-50%);
+}
+.md-contributor__tip-share {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.md-contributor:is(:hover, :focus-visible) .md-contributor__tip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-contributor,
+  .md-contributor__face,
+  .md-contributor__face::before,
+  .md-contributor__tip {
+    transition: none;
+  }
+}

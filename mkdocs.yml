@@ -93,6 +93,7 @@ nav:
 
 theme:
   name: material
+  custom_dir: overrides # partials/source-file.html: contributors with avatars and shares
   logo: assets/thicker_white_brain.svg
   favicon: assets/hoplab_favicon_white.ico
   icon:
@@ -177,10 +178,8 @@ plugins:
   - offline
 #  - privacy
   - search
-#  - git-authors
-#  - git-revision-date-localized:
-#      type: datetime
-#      timezone: Europe/Brussels
+  # The git-based page footer (last update, contributors) is added in mkdocs-ci.yml,
+  # so a local `mkdocs serve` needs no git. Preview it with: mkdocs serve -f mkdocs-ci.yml
 
 extra_css:
   - stylesheets/extra.css
@@ -189,6 +188,7 @@ extra_css:
 extra_javascript:
   - javascripts/mathjax.js
   - javascripts/details.js
+  - javascripts/source-file.js # footer: last update in the reader's time zone
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra:

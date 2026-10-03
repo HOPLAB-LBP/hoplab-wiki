@@ -1,0 +1,50 @@
+# Build configuration for CI: the PR checks and the deploy to GitHub Pages
+# (scripts/docs_ci_check.sh, .github/workflows/gh-pages.yml).
+#
+# It is mkdocs.yml plus the plugins that need the git history: the page footer with
+# the last update and the contributors (overrides/partials/source-file.html).
+# They live here, not in mkdocs.yml, because they need git on PATH and slow every
+# rebuild: a local `mkdocs serve` works without them. To preview the footer locally:
+#   mkdocs serve -f mkdocs-ci.yml
+#
+# INHERIT merges this file into mkdocs.yml, but a list replaces the parent's list:
+# keep the plugins of mkdocs.yml here too, in the same order.
+
+INHERIT: mkdocs.yml
+
+plugins:
+  - offline
+  - search
+  # Page footer: last update and contributors, from the git history.
+  # Only options that exist in older plugin versions too, so local installs keep working.
+  # strict: false and the fallbacks keep builds going for pages not committed yet,
+  # or without git: no warnings, which --strict would turn into errors.
+  # No creation date: after some renames it logs a warning that strict: false does not silence.
+  - git-revision-date-localized:
+      type: date
+      timezone: Europe/Brussels
+      fallback_to_build_date: true
+      strict: false
+      exclude:
+        - contribute.md # generated from README.md at build time
+  - git-authors:
+      show_email_address: false
+      show_contribution: true
+      sort_authors_by: contribution
+      fallback_to_empty: true
+      strict: false
+      exclude:
+        - contribute.md # generated from README.md at build time, so git blame has no history for it
+      # Bots and AI agents are not contributors. E-mails in lower case (the plugin lowercases them).
+      ignore_authors:
+        - noreply@anthropic.com
+        - 209825114+claude[bot]@users.noreply.github.com
+        - 199175422+chatgpt-codex-connector[bot]@users.noreply.github.com
+        - 198982749+copilot@users.noreply.github.com
+        - 198982749+copilot-swe-agent[bot]@users.noreply.github.com
+        - 175728472+copilot@users.noreply.github.com
+        - github-actions[bot]@users.noreply.github.com
+        - 41898282+github-actions[bot]@users.noreply.github.com
+        - 49699333+dependabot[bot]@users.noreply.github.com
+        - hoplab-bot@example.com
+        - not.committed.yet
