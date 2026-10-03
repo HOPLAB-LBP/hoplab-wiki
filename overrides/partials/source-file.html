@@ -1,0 +1,155 @@
+{#-
+  Override of Material's partials/source-file.html (the facts under each page).
+
+  Same as Material 9.6/9.7, except render_authors: the contributors are a stack of
+  GitHub avatars linking to their profiles; hovering or focusing one shows the name
+  and the share of the page's current lines (git-authors' "contribution", from git
+  blame). Styles: "Page footer: contributors" in docs/stylesheets/extra.css. Bots and AI agents are left
+  out through ignore_authors in mkdocs.yml; .mailmap gives every person one name
+  and a GitHub no-reply address, from which the avatar is taken. A contributor
+  without such an address gets their initial instead of an avatar.
+
+  Lookups use .get() so the file works with Material 9.6 and 9.7, and renders
+  nothing when git-authors is disabled or found no git repository.
+-#}
+{#- iso: the commit time with its UTC offset; javascripts/source-file.js rewrites it
+    as date and time in the reader's own time zone. Without JS the date stays. -#}
+{% macro render_updated(date, iso) %}
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="{{ lang.t('source.file.date.updated') }}">
+      {% include ".icons/material/clock-edit-outline.svg" %}
+    </span>
+    {% if iso %}
+      <time class="md-source-file__time" datetime="{{ iso }}">{{ date }}</time>
+    {% else %}
+      {{ date }}
+    {% endif %}
+  </span>
+{% endmacro %}
+{% macro render_created(date) %}
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="{{ lang.t('source.file.date.created') }}">
+      {% include ".icons/material/clock-plus-outline.svg" %}
+    </span>
+    {{ date }}
+  </span>
+{% endmacro %}
+{% macro render_authors(authors) %}
+  <span class="md-source-file__fact md-contributors">
+    <span class="md-icon" title="{{ lang.t('source.file.contributors') }}">
+      {% if authors | length == 1 %}
+        {% include ".icons/material/account.svg" %}
+      {% else %}
+        {% include ".icons/material/account-group.svg" %}
+      {% endif %}
+    </span>
+    {#- Overlapping avatars; hover or focus one to see the name and share above it -#}
+    <span class="md-contributors__stack">
+      {% for author in authors %}
+        {#- "59078281+costantinoai@users.noreply.github.com" -> id 59078281, login costantinoai -#}
+        {% set local = (author.email or "").split("@")[0] %}
+        {% set parts = local.split("+") %}
+        {% set github = (author.email or "").endswith("@users.noreply.github.com")
+                        and parts | length == 2 and parts[0].isdigit() %}
+        {% set share = (author.contribution | string).replace("%", "") | float %}
+        {% set share_label = ("<1" if share < 1 else share | round | int | string) ~ "%" %}
+        {% set label = author.name ~ ", " ~ share_label ~ " of this page" %}
+        {% if github %}
+          <a class="md-contributor" href="https://github.com/{{ parts[1] }}" aria-label="{{ label }}" style="--z: {{ authors | length - loop.index0 }}"
+             data-name="{{ author.name }}" data-share="{{ author.contribution }}">
+        {% else %}
+          <span class="md-contributor" tabindex="0" aria-label="{{ label }}" style="--z: {{ authors | length - loop.index0 }}"
+                data-name="{{ author.name }}" data-share="{{ author.contribution }}">
+        {% endif %}
+            <span class="md-contributor__face">
+              {% if github %}
+                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/{{ parts[0] }}?s=96"
+                     alt="" width="36" height="36" loading="lazy">
+              {% else %}
+                <span class="md-contributor__avatar md-contributor__avatar--initial">
+                  {{- author.name[:1] | upper -}}
+                </span>
+              {% endif %}
+            </span>
+            <span class="md-contributor__tip" aria-hidden="true">
+              <span class="md-contributor__tip-name">{{ author.name }}</span>
+              <span class="md-contributor__tip-share">{{ share_label }}</span>
+            </span>
+        {% if github %}</a>{% else %}</span>{% endif %}
+      {% endfor %}
+    </span>
+  </span>
+{% endmacro %}
+{% macro render_committers_github(title) %}
+  <span class="md-icon" title="{{ lang.t('source.file.contributors') }}">
+    {% include ".icons/material/github.svg" %}
+  </span>
+  <span>{{ title }}</span>
+{% endmacro %}
+{% macro render_committers_gitlab(title) %}
+  <span class="md-icon" title="{{ lang.t('source.file.contributors') }}">
+    {% include ".icons/material/gitlab.svg" %}
+  </span>
+  <span>{{ title }}</span>
+{% endmacro %}
+{% macro render_committers(authors) %}
+  <span class="md-source-file__fact">
+    {% if committers_source == "gitlab" %}
+      {{ render_committers_gitlab("GitLab") }}
+    {% else %}
+      {{ render_committers_github("GitHub") }}
+    {% endif %}
+    <nav>
+      {% for author in authors[:4] %}
+        <a href="{{ author.url }}" class="md-author" title="@{{ author.login }}">
+          {% set separator = "&" if "?" in author.avatar else "?" %}
+          <img src="{{ author.avatar }}{{ separator }}size=72" alt="{{ author.name or 'GitHub user' }}">
+        </a>
+      {% endfor %}
+      {% set more = authors[4:] | length %}
+      {% if more > 0 %}
+        {% if page.edit_url %}
+          <a href="{{ page.edit_url | replace('edit', 'blob') }}" class="md-author md-author--more">
+            +{{ more }}
+          </a>
+        {% else %}
+          <span class="md-author md-author--more">
+            +{{ more }}
+          </span>
+        {% endif %}
+      {% endif %}
+    </nav>
+  </span>
+{% endmacro %}
+{% if page.meta %}
+  {% if page.meta.git_revision_date_localized %}
+    {% set updated = page.meta.git_revision_date_localized %}
+    {#- The plugin's "timeago" format carries the ISO time: <span ... datetime="2026-10-02T15:13:00+02:00" ...> -#}
+    {% set timeago = page.meta.git_revision_date_localized_raw_timeago or "" %}
+    {% if 'datetime="' in timeago %}
+      {% set updated_iso = timeago.split('datetime="')[1].split('"')[0] %}
+    {% endif %}
+  {% elif page.meta.revision_date %}
+    {% set updated = page.meta.revision_date %}
+  {% endif %}
+  {% if page.meta.git_creation_date_localized %}
+    {% set created = page.meta.git_creation_date_localized %}
+  {% endif %}
+{% endif %}
+{% set page_authors = git_info.get("page_authors") if git_info else none %}
+{% if updated or created or page_authors or committers %}
+  <aside class="md-source-file">
+    {% if updated %}
+      {{ render_updated(updated, updated_iso) }}
+    {% endif %}
+    {% if created %}
+      {{ render_created(created) }}
+    {% endif %}
+    {% if page_authors %}
+      {{ render_authors(page_authors) }}
+    {% endif %}
+    {% if committers %}
+      {{ render_committers(committers) }}
+    {% endif %}
+  </aside>
+{% endif %}

@@ -5,6 +5,9 @@ on:
     paths:
       - "docs/**"
       - "mkdocs.yml"
+      - "mkdocs-ci.yml"
+      - "overrides/**"
+      - ".mailmap"
       - "README.md"
       - "requirements.txt"
       - ".markdownlint-cli2.yaml"
@@ -60,7 +63,7 @@ jobs:
 
       - name: Auto-fix YAML trailing whitespace
         run: |
-          sed -i 's/[[:space:]]*$//' mkdocs.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
+          sed -i 's/[[:space:]]*$//' mkdocs.yml mkdocs-ci.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
 
       - name: Commit and push fixes
         env:
@@ -149,7 +152,7 @@ jobs:
           python3 scripts/fix_markdown_table_pipes.py README.md docs/ || true
           npx -y markdownlint-cli2 README.md "docs/**/*.md" --fix || true
           python3 scripts/check_mkdocs_syntax.py --fix README.md docs/ || true
-          sed -i 's/[[:space:]]*$//' mkdocs.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
+          sed -i 's/[[:space:]]*$//' mkdocs.yml mkdocs-ci.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
 
       - name: Prepare generated docs
         run: bash scripts/prepare_docs.sh
@@ -197,7 +200,7 @@ jobs:
         if: always()
         run: |
           set -o pipefail
-          if yamllint -c .yamllint.yml -f parsable mkdocs.yml .github/workflows/ 2>&1 | tee /tmp/pr-checks/yamllint-output; then
+          if yamllint -c .yamllint.yml -f parsable mkdocs.yml mkdocs-ci.yml .github/workflows/ 2>&1 | tee /tmp/pr-checks/yamllint-output; then
             echo "passed" > /tmp/pr-checks/yamllint-status
           else
             echo "failed" > /tmp/pr-checks/yamllint-status

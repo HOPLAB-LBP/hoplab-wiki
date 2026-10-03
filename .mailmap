@@ -1,0 +1,32 @@
+# Who is who in the git history: one name and one GitHub address per person.
+#
+# The page footer (contributors with avatars and shares) reads names through this file,
+# and so do `git log` and `git blame`. It merges a person's different commit e-mails and
+# replaces GitHub handles with full names. The avatar comes from the GitHub no-reply
+# address (id+login@users.noreply.github.com).
+#
+# Format: Full Name <id+login@users.noreply.github.com> <e-mail used in commits>
+# A line without a second address only sets the name for that address.
+# New contributor with a handle as name or a second e-mail? Add a line here. The GitHub
+# account behind an e-mail: gh api repos/HOPLAB-LBP/hoplab-wiki/commits/<sha> -q .author
+
+Andrea Costantino <59078281+costantinoai@users.noreply.github.com>
+Andrea Costantino <59078281+costantinoai@users.noreply.github.com> <costantinoai@users.noreply.github.com>
+Andrea Costantino <59078281+costantinoai@users.noreply.github.com> <ilcosta9@hotmail.it>
+Brent Pitchford <107524850+brentpitchford@users.noreply.github.com>
+Emily Van Hove <95569841+EmilyVH10@users.noreply.github.com>
+Emma Goris <183533501+emma-goris@users.noreply.github.com> <emma.goris1@kuleuven.be>
+Ehsan Moravveji <6280576+moravveji@users.noreply.github.com> <e.moravveji@gmail.com>
+Filippo Cerpelloni <73432853+fcerpe@users.noreply.github.com> <filippo.cerpelloni@gmail.com>
+Hans Op de Beeck <57090553+opdebeeck@users.noreply.github.com>
+Josh Beem <189332030+JoshMBeem@users.noreply.github.com> <joshmaria.beem@student.kuleuven.be>
+Josh Beem <189332030+JoshMBeem@users.noreply.github.com> <josh.beem@gmx.de>
+Klara Schevenels <110229499+kschevenels@users.noreply.github.com>
+Klara Schevenels <110229499+kschevenels@users.noreply.github.com> <klara.schevenels@outlook.com>
+Klara Schevenels <110229499+kschevenels@users.noreply.github.com> <u0116743@kuleuven.be>
+Laura Soen <183722597+LauraSoen@users.noreply.github.com> <laura.soen@kuleuven.be>
+Laura Van Hove <117284089+laurauni@users.noreply.github.com>
+Matilda Gordon <89953219+tilly23@users.noreply.github.com>
+Silke Busschots <181976628+SilkeBusschots@users.noreply.github.com> <silke.busschots@kuleuven.be>
+Simen Hagen <17859589+simenhagen@users.noreply.github.com> <simenhagen1@gmail.com>
+Tim Maniquet <61991543+TimManiquet@users.noreply.github.com>

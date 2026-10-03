@@ -4,12 +4,15 @@ set -euo pipefail
 # Runs MkDocs build in strict mode and fails with clear messages
 # when documentation problems are detected. Any WARNING from MkDocs
 # is considered a failure in PRs.
+#
+# Builds with mkdocs-ci.yml: mkdocs.yml plus the git-based page footer
+# (last update and contributors), the same configuration the deploy uses.
 
 LOG_FILE="/tmp/mkdocs_build.log"
 
-echo "[docs-ci] mkdocs build --strict …"
+echo "[docs-ci] mkdocs build --strict -f mkdocs-ci.yml …"
 set +e
-mkdocs build --strict 2>&1 | tee "$LOG_FILE"
+mkdocs build --strict -f mkdocs-ci.yml 2>&1 | tee "$LOG_FILE"
 build_status=${PIPESTATUS[0]}
 set -e
 
