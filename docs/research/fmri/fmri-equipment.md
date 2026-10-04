@@ -224,7 +224,6 @@ __TODO__: [Andrea] Which display resolution should laptops and the stimulus PC s
 __TODO__: [Andrea] Which input does the dedicated headphone system (blue box) take from the computer? Add it to "Audio system" and "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] When will the EyeLink be installed at MR11, and how does it connect (network or other port on the stimulus computer)? Update "Eye tracker". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] How is a new laptop approved by the MRI Safety Officer before first use, and is there anything else to consider when choosing it? Add it to "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
-__TODO__: [Simen] Share the small code that converts visual angles to pixels in your experiment script, so we can add it to "Check your visual angles". (Not asked yet.)
 __TODO__: [Andrea] Confirm the second button pad codes (d, n, w, e in Simen's experiment settings) in mode 002: which colour sends which key, and which pad is for the left hand. The radiology wiki only documents B/Y/G/R and T. (Not asked yet.)
 __TODO__: [Andrea] Confirm with Ron that moving the trigger box USB cable from the stimulus PC to a laptop for each session is fine. (Not asked yet.)
 __TODO__: [Andrea] Check whether MATLAB and Psychtoolbox are installed on the MR11 stimulus PC (the radiology wiki only lists PsychoPy) and add the versions. (Not asked yet.)
