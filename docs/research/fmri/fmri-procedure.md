@@ -179,6 +179,7 @@ Do this before the participant goes into the magnet room.
     - Use your pseudonymised participant ID, never the participant's name.
     - Only letters, digits, `_` and `-` are allowed. No space inside an ID; one space between the two fields.
     - The session ID must be **unique within the whole project**, not just for that subject. Hence `sub-01_ses-01` rather than `ses-01`.
+    - Get it exactly right. With a wrong study comment the data do not land in your project, and Ron has to move them on the server by hand before you can download them.
 
 6. Select the patient orientation.
 7. Check all examination information again. Errors here send your data to the wrong place in XNAT or break the de-identification.
@@ -191,6 +192,8 @@ Do this before the participant goes into the magnet room.
     ```text
     Subject:pilot Session:pilot-ses1
     ```
+
+    For a phantom run (for example to test the trigger), use one of the phantom bottles in the fMRI lab. Before you start, switch off the data transfer: right-click the run, choose *Edit properties* and disable *PACS*.
 
 ---
 
@@ -221,7 +224,7 @@ Do this before the participant goes into the magnet room.
 <div class="steps-list" markdown>
 
 1. Turn the round knob to raise the table. Ask the participant to close their eyes.
-2. Use the same knob to align the light marker with the calibration line on the coil. **Hold the knob** to save the position: the table moves to the magnet centre by itself. For head scans, you can also select *head* on the screen at the scanner.
+2. Use the same knob to align the light marker with the calibration line on the coil. **Hold the knob** to save the position: the table moves to the magnet centre by itself. Instead of the light marker, you can also tap *head* (or *brain*) on the touch screen at the scanner and hold the big wheel until the table has moved the participant into the bore.
 3. If the table goes too far into the scanner, the calibration did not work: bring the table out and calibrate again.
 
 </div>

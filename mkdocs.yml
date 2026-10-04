@@ -199,12 +199,14 @@ plugins:
 extra_css:
   - stylesheets/extra.css
   - stylesheets/resource-cards.css
+  - stylesheets/visual-angle.css
 
 extra_javascript:
   - javascripts/mathjax.js
   - javascripts/details.js
   - javascripts/lightbox-zoom.js # zoom slider for the image lightbox
   - javascripts/source-file.js # footer: last update in the reader's time zone
+  - javascripts/visual-angle.js # visual angle calculator (fMRI equipment page)
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra:
