@@ -99,7 +99,14 @@
     return (lo + hi) / 2;
   }
 
-  /* Distances on the screen (mm) from the screen centre to the stimulus,
+  /* The stimulus is never stretched: it is drawn as a square with the same
+     size s on both sides. Off centre this is an approximation. s is exact
+     along the line from the screen centre (here horizontal), but across that
+     line the same s spans up to 1/cos(e) times more degrees (+0.4% at 5,
+     +1.5% at 10, +6.4% at 20 degrees). Correcting that would mean stretching
+     the image on the screen.
+
+     Distances on the screen (mm) from the screen centre to the stimulus,
      drawn as a square from xl to xr (mm) on the horizontal midline:
      nearest point (0 if the square covers the centre), angular centre and
      farthest corner. */
@@ -167,7 +174,7 @@
             "</tbody>";
         }).join("") +
       "</table>" +
-      '<p class="va-table__note">All distances are from the screen centre. Centre: negative values are left of it. Nearest point and farthest corner: straight-line distances.</p>';
+      '<p class="va-table__note">All distances are from the screen centre. Centre: negative values are left of it. Nearest point and farthest corner: straight-line distances. The stimulus keeps the same size on both sides, so it is never stretched; off centre, it is exact horizontally and spans up to 1/cos(e) times more degrees vertically (+0.4% at 5°, +1.5% at 10°).</p>';
 
     root.innerHTML =
       '<div class="va-calc__setup">' +
