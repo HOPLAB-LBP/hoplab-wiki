@@ -120,19 +120,19 @@ The participant sees the stimuli on a **Cambridge Research Systems BOLDscreen 32
 | Default input | Stimulus PC |
 | Default setting | L/R flip **ON** (corrects the mirror image) |
 | Native resolution | 3840 × 2160 at 60 Hz; other input resolutions are rescaled by the screen (manufacturer specification) |
-| Resolution used in lab experiments | 1920 × 1080, forced from the experiment script. Whether the screen really switches has not been checked, but the stimulus size measured on the screen was correct (see below) |
-| Screen width | 700 mm (Ron Peeters' measurement, not yet checked by the lab) |
+| Resolution used in lab experiments | 1920 × 1080, forced from the experiment script |
+| Screen width | 700 mm (used in lab experiments; image size checked in the scanner) |
 | Screen height | 395 mm (lab notes, to be confirmed) |
-| Eye-to-screen distance | 1850 mm (Ron Peeters' measurement, not yet checked by the lab) |
+| Eye-to-screen distance | 1850 mm (used in lab experiments; image size checked in the scanner) |
 
-!!! warning "Visual angles: check them yourself"
-    The width (700 mm) and eye-to-screen distance (1850 mm) come from one measurement by Ron Peeters, which nobody in the lab has checked yet. We also do not know at which resolution the BOLDscreen really runs when a script asks for 1920 × 1080 (the panel is 4K and rescales other inputs). Before you collect data, measure the set-up yourself and check your stimuli on the screen, as described in [Check your visual angles](#check-your-visual-angles).
+!!! info "Visual angles"
+    Use the width (700 mm) and eye-to-screen distance (1850 mm) above to compute visual angles. Lab experiments force 1920 × 1080 from the script, compute the number of pixels per degree from the resolution, width and distance, and size the stimuli from that; the image size measured on the screen in the scanner matched. The panel itself is 4K and rescales other inputs, so always size stimuli from the resolution your script actually uses. To verify your own script, follow [Check your visual angles](#check-your-visual-angles).
 
 - **End of session**: switch the screen off. The last user of the day puts the cover on the screen in the magnet room (the cover lies on its base).
 
 ### Check your visual angles
 
-Do this once in a test session (phantom or pilot), with the script and computer you will use for the study. Bring a non-metallic measuring tape: never take a metal tape measure into the magnet room.
+Do this once in a test session (phantom or pilot) to verify your own script on the screen, with the computer you will use for the study. Steps 1 and 2 check the set-up values above; steps 3 to 5 check your script. Bring a non-metallic measuring tape: never take a metal tape measure into the magnet room.
 
 <div class="steps-list" markdown>
 
@@ -219,7 +219,8 @@ __TODO__: [Andrea] Which display resolution should laptops and the stimulus PC s
 __TODO__: [Andrea] Which input does the dedicated headphone system (blue box) take from the computer? Add it to "Audio system" and "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] When will the EyeLink be installed at MR11, and how does it connect (network or other port on the stimulus computer)? Update "Eye tracker". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] How is a new laptop approved by the MRI Safety Officer before first use, and is there anything else to consider when choosing it? Add it to "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
-__TODO__: [Andrea] Get the screen width, height and eye-to-screen distance measured independently by a lab member, following "Check your visual angles" (e.g., at Emma's or Simen's next test session), and compare them with Ron Peeters' values (700 mm wide, 1850 mm). Height 395 mm is from lab notes only. Then update the table and the warning box. (Not asked yet.)
+__TODO__: [Andrea] Confirm the BOLDscreen image height (395 mm is from lab notes only; Simen's settings give width 700 mm and distance 1850 mm, which are taken as correct). (Not asked yet.)
+__TODO__: [Simen] Share the small code that converts visual angles to pixels in your experiment script, so we can add it to "Check your visual angles". (Not asked yet.)
 __TODO__: [Andrea] Confirm the second button pad codes (d, n, w, e in Simen's experiment settings) in mode 002: which colour sends which key, and which pad is for the left hand. The radiology wiki only documents B/Y/G/R and T. (Not asked yet.)
 __TODO__: [Andrea] Confirm with Ron that moving the trigger box USB cable from the stimulus PC to a laptop for each session is fine. (Not asked yet.)
 __TODO__: [Andrea] Check whether MATLAB and Psychtoolbox are installed on the MR11 stimulus PC (the radiology wiki only lists PsychoPy) and add the versions. (Not asked yet.)
