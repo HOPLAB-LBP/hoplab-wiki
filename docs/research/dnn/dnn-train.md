@@ -296,7 +296,7 @@ test_rows[["image_id", "sprite", "category"]].to_csv("sprite_alexnet_test_images
     - **Checkpoints:** save the model and optimiser state every epoch, so a crashed or time-limited job can resume.
     - **Speed:** mixed precision (`torch.autocast`) roughly halves memory use and time on recent GPUs.
     - **Smoke test:** before a long run, train for a few batches on a tiny subset to catch errors in minutes instead of hours.
-    - **Compute:** long trainings belong on a GPU server or on the VSC cluster ([HPC page](../fmri/fmri-hpc.md)), submitted as a batch job.
+    - **Compute:** long trainings belong on a GPU server or on the VSC cluster ([HPC page](../fmri/analysis/fmri-hpc.md)), submitted as a batch job.
 
 ---
 
