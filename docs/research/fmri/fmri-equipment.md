@@ -139,10 +139,16 @@ Do this once in a test session (phantom or pilot) to verify your own script on t
 1. **Screen size.** Show a full-screen image with a thin border from your script. Measure the width and height of the image on the screen.
 2. **Viewing distance.** The participant sees the screen through the mirror on the head coil, so the viewing distance is the path from the eyes to the mirror plus the path from the mirror to the screen. With the table at its scanning position (no one on it), measure from the mirror to the screen along the line of sight. Then measure from the eyes to the mirror on a screened colleague lying in the coil, before the table moves in, and add the two.
 3. **Resolution.** Log the resolution your script actually gets, not only the one it asks for (Psychtoolbox and PsychoPy both report the size of the window in pixels).
-4. **Pixels per degree.** Compute it from your own measurements: pixels per degree = horizontal resolution ÷ screen width × viewing distance × tan(1°), with the width and the distance in the same unit. Size your stimuli from this value.
+4. **Convert sizes.** A stimulus of θ degrees, centred on the screen, is 2 × viewing distance × tan(θ ÷ 2) wide on the screen; divide by the pixel size (screen width ÷ horizontal resolution) to get pixels. Use this exact formula, or the calculator below, for every size. Multiplying by a fixed number of pixels per degree is only close for small stimuli near the centre of the screen.
 5. **Cross-check on the screen.** Show a test stimulus that your script sizes at a known visual angle (for example a 10° square). Measure it on the screen and compute its angle as 2 × arctan(size ÷ (2 × viewing distance)). It should match the intended angle. If it does not, go back over steps 1 to 4.
 6. **Write it down.** Note the measured width, height, distance and resolution, with the date, in your lab notes and in the methods of your paper.
 
+</div>
+
+Use the calculator to convert between degrees, millimetres and pixels. It is filled in with the MR11 values; change any field for your own set-up.
+
+<div class="va-calc" data-setup="mr11">
+<p>Turn on JavaScript to use the visual angle calculator.</p>
 </div>
 
 If you use PsychoPy Builder, enter the measured width, distance and resolution in its monitor settings.

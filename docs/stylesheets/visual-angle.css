@@ -1,0 +1,352 @@
+/*
+  Visual angle calculator (javascripts/visual-angle.js).
+
+  Usage on a page:
+    <div class="va-calc" data-preset="..." data-width-mm="..." data-height-mm="..."
+         data-res-x="..." data-res-y="..." data-distance-mm="..." data-note="...">
+      <p>Fallback text shown without JavaScript.</p>
+    </div>
+
+  Colours come from the theme (Material variables and the --hl-* list
+  tokens in extra.css), so light and dark mode follow automatically.
+*/
+
+.md-typeset .va-calc {
+  --va-accent: var(--hl-marker);
+  --va-line: var(--md-default-fg-color--lightest);
+  --va-muted: var(--md-default-fg-color--light);
+  margin: 1.4em 0;
+  border: 1px solid var(--va-line);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 5%);
+  background: var(--md-default-bg-color);
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
+}
+
+.md-typeset .va-calc > p:only-child {
+  margin: 0;
+  padding: .8rem 1rem;
+  color: var(--va-muted);
+}
+
+/* Set-up panel */
+
+.md-typeset .va-calc__setup {
+  padding: .9rem 1rem 1rem;
+  background: color-mix(in srgb, var(--va-accent) 6%, transparent);
+  border-bottom: 1px solid var(--va-line);
+}
+
+.md-typeset .va-calc__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: .4rem 1rem;
+  margin-bottom: .7rem;
+}
+
+.md-typeset .va-calc__note {
+  flex: 1 1 14rem;
+  margin: 0;
+  font-size: .68rem;
+  line-height: 1.4;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-preset,
+.md-typeset .va-field {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  margin: 0;
+}
+
+.md-typeset .va-field__label {
+  font-size: .64rem;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-preset select {
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--hl-badge-fg);
+  background: var(--hl-badge-bg);
+  border: 0;
+  border-radius: 999px;
+  padding: .3rem 1.9rem .3rem .8rem;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - .95rem) 55%, calc(100% - .65rem) 55%;
+  background-size: .3rem .3rem;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.md-typeset .va-calc__fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: .6rem .8rem;
+}
+
+.md-typeset .va-field__box {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--va-line);
+  border-radius: 6px;
+  background: var(--md-default-bg-color);
+  transition: border-color .15s ease;
+}
+
+.md-typeset .va-field__box:focus-within {
+  border-color: var(--va-accent);
+}
+
+.md-typeset .va-field__box input {
+  flex: 1 1 auto;
+  min-width: 0;
+  font: inherit;
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--md-default-fg-color);
+  background: transparent;
+  border: 0;
+  padding: .35rem .5rem;
+  outline: none;
+}
+
+.md-typeset .va-field__unit {
+  padding-right: .5rem;
+  font-size: .68rem;
+  color: var(--va-muted);
+}
+
+/* Converter */
+
+.md-typeset .va-calc__convert {
+  padding: 1rem 1rem 1.1rem;
+}
+
+.md-typeset .va-calc__lead {
+  margin: 0 0 .7rem;
+  font-size: .7rem;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-equation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: .4rem .6rem;
+}
+
+.md-typeset .va-eq {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  flex: 1 1 6.5rem;
+  margin: 0;
+}
+
+.md-typeset .va-eq input {
+  width: 100%;
+  font: inherit;
+  font-size: 1.35rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--md-default-fg-color);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--va-line);
+  border-radius: 0;
+  padding: .1rem .1rem .15rem;
+  outline: none;
+  transition: border-color .15s ease;
+}
+
+.md-typeset .va-eq input:focus {
+  border-bottom-color: var(--va-accent);
+}
+
+.md-typeset .va-eq span {
+  font-size: .66rem;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-equation__sign {
+  align-self: center;
+  margin-top: -.9rem;
+  font-size: 1.2rem;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-ecc {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  max-width: 19rem;
+  margin: .9rem 0 0;
+}
+
+.md-typeset .va-views {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 1rem 1.4rem;
+  align-items: end;
+  margin: 1.1rem 0 .4rem;
+}
+
+.md-typeset .va-view {
+  margin: 0;
+}
+
+.md-typeset .va-view figcaption {
+  margin: .3rem 0 0;
+  max-width: none;
+  font-size: .64rem;
+  color: var(--va-muted);
+  text-align: left;
+}
+
+/* Front view of the screen */
+
+.md-typeset .va-front {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+.va-front__screen { fill: var(--md-default-bg-color); stroke: var(--md-default-fg-color--lighter); stroke-width: 1.2; }
+.va-front__axis   { stroke: var(--md-default-fg-color--lightest); stroke-width: .8; }
+.va-front__ring   { fill: none; stroke: var(--md-default-fg-color--lightest); stroke-width: .8; stroke-dasharray: 2 2.5; }
+.va-front__ringlabel { font-size: 7.5px; fill: var(--md-default-fg-color--light); }
+.va-front__fix    { fill: var(--md-default-fg-color); }
+.va-front__ecc    { stroke: var(--hl-marker); stroke-width: 1.2; stroke-dasharray: 3 2; }
+.va-front__stim   {
+  fill: color-mix(in srgb, var(--hl-marker) 22%, transparent);
+  stroke: var(--hl-marker);
+  stroke-width: 1.4;
+  cursor: grab;
+}
+.va-front__stim:focus { outline: none; stroke-width: 2.4; }
+.va-front__stim:focus-visible { stroke: var(--md-accent-fg-color); }
+.va-front__centre { fill: var(--hl-marker); }
+.va-front__handle {
+  fill: var(--md-default-bg-color);
+  stroke: var(--hl-marker);
+  stroke-width: 1.6;
+  cursor: ew-resize;
+}
+.va-front__dim    { stroke: var(--md-default-fg-color--light); stroke-width: .9; }
+.va-front__label  { font-size: 9px; fill: var(--md-default-fg-color); font-variant-numeric: tabular-nums; }
+.md-typeset .va-calc--dragging .va-front__stim { cursor: grabbing; }
+
+.md-typeset .va-calc__warn {
+  margin: .6rem 0 0;
+  font-size: .7rem;
+  color: var(--md-default-fg-color);
+  border-left: 3px solid var(--hl-marker);
+  padding-left: .5rem;
+}
+
+/* Diagram: the one illustration; labels update with the numbers */
+
+.md-typeset .va-diagram {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.va-diagram line,
+.va-diagram path,
+.va-diagram circle {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.va-diagram__screen { stroke: var(--md-default-fg-color--lighter); stroke-width: 4; }
+.va-diagram__ray    { stroke: var(--md-default-fg-color--light); stroke-width: 1.2; stroke-dasharray: 3 3; }
+.va-diagram__stim   { stroke: var(--hl-marker); stroke-width: 4; }
+.va-diagram__arc    { stroke: var(--hl-marker); stroke-width: 1.6; }
+.va-diagram__eye    { stroke: var(--md-default-fg-color--light); stroke-width: 1.6; }
+.va-diagram__dim    { stroke: var(--md-default-fg-color--lighter); stroke-width: 1; }
+
+.va-diagram__label {
+  font-size: 10.5px;
+  fill: var(--md-default-fg-color);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Derived values */
+
+.md-typeset .va-results {
+  margin: .9rem 0 0;
+  display: grid;
+  gap: .55rem;
+}
+
+.md-typeset .va-results > div {
+  display: flex;
+  justify-content: space-between;
+  gap: .8rem;
+  padding-bottom: .45rem;
+  border-bottom: 1px solid var(--va-line);
+}
+
+.md-typeset .va-results > div:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.md-typeset .va-results dt {
+  flex: 1 1 auto;
+  font-size: .7rem;
+  font-weight: 400;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-results dd {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  margin: 0;
+  font-size: .78rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .va-views {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .md-typeset .va-equation__sign {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .va-calc * {
+    transition: none !important;
+  }
+}
+
+@media print {
+  .md-typeset .va-calc {
+    box-shadow: none;
+  }
+}
+
+/* Only the stimulus and its handle take pointer input in the front view. */
+.va-front__ecc,
+.va-front__centre,
+.va-front__label,
+.va-front__dim,
+.va-front__ring,
+.va-front__ringlabel,
+.va-front__axis,
+.va-front__fix {
+  pointer-events: none;
+}
