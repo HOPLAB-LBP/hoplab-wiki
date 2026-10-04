@@ -56,6 +56,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/resource-cards.css">
     
+      <link rel="stylesheet" href="../../stylesheets/visual-angle.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -3539,6 +3541,7 @@
 <li>Use your pseudonymised participant ID, never the participant's name.</li>
 <li>Only letters, digits, <code>_</code> and <code>-</code> are allowed. No space inside an ID; one space between the two fields.</li>
 <li>The session ID must be <strong>unique within the whole project</strong>, not just for that subject. Hence <code>sub-01_ses-01</code> rather than <code>ses-01</code>.</li>
+<li>Get it exactly right. With a wrong study comment the data do not land in your project, and Ron has to move them on the server by hand before you can download them.</li>
 </ul>
 </li>
 <li>
@@ -3552,6 +3555,7 @@
 <p>Click <em>New examination</em> and fill in the details by hand (pseudo data for a phantom). The <strong>Study description</strong> (project ID) and <strong>Study comment</strong> still matter, so the data reach your XNAT project. Use a clear label, for example:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Subject:pilot Session:pilot-ses1
 </span></code></pre></div>
+<p>For a phantom run (for example to test the trigger), use one of the phantom bottles in the fMRI lab. Before you start, switch off the data transfer: right-click the run, choose <em>Edit properties</em> and disable <em>PACS</em>.</p>
 </details>
 <hr>
 <h2 id="getting-the-participant-ready">Getting the participant ready<a class="headerlink" href="#getting-the-participant-ready" title="Permanent link">¶</a></h2>
@@ -3584,7 +3588,7 @@
 <div class="steps-list">
 <ol>
 <li>Turn the round knob to raise the table. Ask the participant to close their eyes.</li>
-<li>Use the same knob to align the light marker with the calibration line on the coil. <strong>Hold the knob</strong> to save the position: the table moves to the magnet centre by itself. For head scans, you can also select <em>head</em> on the screen at the scanner.</li>
+<li>Use the same knob to align the light marker with the calibration line on the coil. <strong>Hold the knob</strong> to save the position: the table moves to the magnet centre by itself. Instead of the light marker, you can also tap <em>head</em> (or <em>brain</em>) on the touch screen at the scanner and hold the big wheel until the table has moved the participant into the bore.</li>
 <li>If the table goes too far into the scanner, the calibration did not work: bring the table out and calibrate again.</li>
 </ol>
 </div>
@@ -3755,7 +3759,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-02T21:39:56+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 2, 2026 21:39:56 CEST">October 2, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-04T13:34:40+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 4, 2026 13:34:40 CEST">October 4, 2026</span></time>
     
   </span>
 
@@ -3776,7 +3780,7 @@
         
         
         
-          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 97% of this page" style="--z: 3" data-name="Andrea Costantino" data-share="97.39%">
+          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 97% of this page" style="--z: 3" data-name="Andrea Costantino" data-share="97.41%">
         
             <span class="md-contributor__face">
               
@@ -3795,7 +3799,7 @@
         
         
         
-          <a class="md-contributor" href="https://github.com/kschevenels" aria-label="Klara Schevenels, 2% of this page" style="--z: 2" data-name="Klara Schevenels" data-share="2.09%">
+          <a class="md-contributor" href="https://github.com/kschevenels" aria-label="Klara Schevenels, 2% of this page" style="--z: 2" data-name="Klara Schevenels" data-share="2.07%">
         
             <span class="md-contributor__face">
               
@@ -4067,6 +4071,8 @@
         <script src="../../javascripts/lightbox-zoom.js"></script>
       
         <script src="../../javascripts/source-file.js"></script>
+      
+        <script src="../../javascripts/visual-angle.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

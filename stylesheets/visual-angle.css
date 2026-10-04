@@ -1,0 +1,472 @@
+/*
+  Visual angle calculator (javascripts/visual-angle.js).
+
+  Usage on a page:
+    <div class="va-calc" data-setup="mr11">
+      <p>Fallback text shown without JavaScript.</p>
+    </div>
+
+  Colours come from the theme (Material variables and the --hl-* list
+  tokens in extra.css), so light and dark mode follow automatically.
+  The drawing is made at the figure's real width (1 SVG unit = 1 CSS
+  pixel), so the SVG font sizes below are real pixel sizes.
+*/
+
+.md-typeset .va-calc {
+  --va-accent: var(--hl-marker);
+  --va-line: var(--md-default-fg-color--lightest);
+  --va-muted: var(--md-default-fg-color--light);
+  --va-panel: color-mix(in srgb, var(--va-accent) 6%, var(--md-default-bg-color));
+  --va-screen: color-mix(in srgb, var(--md-default-fg-color) 4%, var(--md-default-bg-color));
+  margin: 1.4em 0;
+  border: 1px solid var(--va-line);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 5%);
+  background: var(--md-default-bg-color);
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
+}
+
+.md-typeset .va-calc > p:only-child {
+  margin: 0;
+  padding: .8rem 1rem;
+  color: var(--va-muted);
+}
+
+/* Shared field parts */
+
+.md-typeset .va-field,
+.md-typeset .va-preset,
+.md-typeset .va-ecc {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  margin: 0;
+  min-width: 0;
+}
+
+.md-typeset .va-field__label {
+  font-size: .68rem;
+  line-height: 1.3;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-field__box {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--va-line);
+  border-radius: 6px;
+  background: var(--md-default-bg-color);
+  transition: border-color .15s ease;
+}
+
+.md-typeset .va-field__box:focus-within {
+  border-color: var(--va-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--va-accent) 20%, transparent);
+}
+
+.md-typeset .va-field__box input {
+  flex: 1 1 0;
+  min-width: 0;
+  font: inherit;
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--md-default-fg-color);
+  background: transparent;
+  border: 0;
+  padding: .4rem .55rem;
+  outline: none;
+}
+
+.md-typeset .va-field__times {
+  flex: 0 0 auto;
+  font-size: .72rem;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-field__unit {
+  flex: 0 0 auto;
+  padding: 0 .6rem 0 .3rem;
+  font-size: .7rem;
+  color: var(--va-muted);
+}
+
+/* Set-up panel */
+
+.md-typeset .va-calc__setup {
+  padding: 1rem 1.1rem 1.1rem;
+  background: var(--va-panel);
+  border-bottom: 1px solid var(--va-line);
+}
+
+.md-typeset .va-calc__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: .5rem 1.2rem;
+  margin-bottom: .9rem;
+}
+
+.md-typeset .va-calc__note {
+  flex: 1 1 16rem;
+  max-width: 34rem;
+  margin: 0;
+  font-size: .68rem;
+  line-height: 1.45;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-preset select {
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--hl-badge-fg);
+  background: var(--hl-badge-bg);
+  border: 0;
+  border-radius: 999px;
+  padding: .35rem 2rem .35rem .85rem;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 1rem) 55%, calc(100% - .7rem) 55%;
+  background-size: .3rem .3rem;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.md-typeset .va-preset select:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
+
+.md-typeset .va-calc__fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.15fr) minmax(0, .8fr);
+  gap: .7rem .9rem;
+}
+
+/* Converter */
+
+.md-typeset .va-calc__convert {
+  padding: 1.1rem 1.1rem 1.2rem;
+}
+
+.md-typeset .va-calc__lead {
+  margin: 0 0 .8rem;
+  font-size: .72rem;
+  line-height: 1.45;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-equation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: start;
+  gap: 0 .7rem;
+}
+
+.md-typeset .va-eq {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  margin: 0;
+  min-width: 0;
+}
+
+.md-typeset .va-eq input {
+  width: 100%;
+  font: inherit;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+  color: var(--md-default-fg-color);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--va-line);
+  border-radius: 0;
+  padding: .1rem .1rem .15rem;
+  outline: none;
+  transition: border-color .15s ease;
+}
+
+.md-typeset .va-eq input:focus {
+  border-bottom-color: var(--va-accent);
+}
+
+.md-typeset .va-eq span {
+  font-size: .68rem;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-equation__sign {
+  padding-top: .2rem;
+  font-size: 1.2rem;
+  line-height: 1.25;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-ecc {
+  max-width: 24rem;
+  margin: 1rem 0 0;
+}
+
+/* Drawing and results */
+
+.md-typeset .va-views {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(15rem, 1fr);
+  gap: 1rem 1.6rem;
+  align-items: start;
+  margin: 1.3rem 0 0;
+}
+
+.md-typeset .va-view {
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+}
+
+.md-typeset .va-view figcaption p {
+  margin: 0 0 .5rem;
+}
+
+.md-typeset .va-view figcaption p:last-child {
+  margin-bottom: 0;
+}
+
+.md-typeset .va-symbols {
+  display: grid;
+  gap: .15rem;
+}
+
+.md-typeset .va-symbols span {
+  display: grid;
+  grid-template-columns: 1.1rem minmax(0, 1fr);
+}
+
+.md-typeset .va-symbols i {
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset .va-view figcaption {
+  margin: .6rem 0 0;
+  max-width: none;
+  font-size: .68rem;
+  font-style: normal;
+  line-height: 1.45;
+  color: var(--va-muted);
+  text-align: left;
+}
+
+.md-typeset .va-front {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  touch-action: none;
+  user-select: none;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.va-front text {
+  paint-order: stroke;
+  stroke-linejoin: round;
+  stroke-width: 4px;
+  stroke: var(--md-default-bg-color);
+}
+
+.va-front__screen { fill: var(--va-screen); stroke: var(--md-default-fg-color--light); stroke-width: 1.5; }
+.va-front__axis   { stroke: var(--md-default-fg-color--lightest); stroke-width: 1; }
+.va-front__ring   { fill: none; stroke: var(--md-default-fg-color--lighter); stroke-width: 1; stroke-dasharray: 2 3; }
+.va-front .va-front__ringlabel {
+  font-size: 11px;
+  fill: var(--md-default-fg-color--light);
+  stroke: var(--va-screen);
+}
+.va-front__fix    { fill: var(--md-default-fg-color); }
+.va-front__ecc    { stroke: var(--va-accent); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.va-front__stim   {
+  fill: color-mix(in srgb, var(--va-accent) 22%, transparent);
+  stroke: var(--va-accent);
+  stroke-width: 1.5;
+  cursor: grab;
+}
+.va-front__stim:focus { outline: none; }
+.va-front__stim:focus-visible { stroke: var(--md-accent-fg-color); stroke-width: 2.5; }
+.va-front__centre { fill: var(--va-accent); }
+.va-front__reach  { fill: none; stroke: var(--va-accent); stroke-width: 1.2; stroke-opacity: .5; }
+.va-front__reach--centre { stroke-opacity: .35; stroke-dasharray: 5 3; }
+.va-front__handle { cursor: ew-resize; }
+.va-front__hit    { fill: transparent; }
+.va-front__knob   { fill: var(--md-default-bg-color); stroke: var(--va-accent); stroke-width: 2; }
+.va-front .va-front__label {
+  font-size: 12px;
+  font-weight: 600;
+  fill: var(--va-accent);
+  stroke: var(--va-screen);
+}
+.md-typeset .va-calc--dragging .va-front__stim { cursor: grabbing; }
+
+.va-proj          { stroke: var(--md-default-fg-color--lighter); stroke-width: 1; stroke-dasharray: 1 3; stroke-linecap: round; }
+.va-plan__screen  { stroke: var(--md-default-fg-color--light); stroke-width: 3; stroke-linecap: round; }
+.va-plan__stim    { stroke: var(--va-accent); stroke-width: 5; stroke-linecap: butt; }
+.va-plan__axis    { stroke: var(--md-default-fg-color--lightest); stroke-width: 1; }
+.va-plan__ray     { stroke: var(--md-default-fg-color--light); stroke-width: 1.2; stroke-dasharray: 4 3; }
+.va-plan__arc     { fill: none; stroke: var(--va-accent); stroke-width: 1.8; }
+.va-plan__eye     { fill: var(--md-default-bg-color); stroke: var(--md-default-fg-color); stroke-width: 1.5; stroke-linejoin: round; }
+.va-plan__pupil   { fill: var(--md-default-fg-color); }
+.va-plan__dim     { stroke: var(--md-default-fg-color--light); stroke-width: 1; }
+.va-front .va-plan__label {
+  font-size: 12px;
+  fill: var(--md-default-fg-color);
+}
+.va-front .va-plan__label--accent {
+  font-weight: 600;
+  fill: var(--va-accent);
+}
+
+/* Only the stimulus and its handle take pointer input in the drawing. */
+.va-front > :not(g),
+.va-front > g:not(.va-front__handle) > :not(.va-front__stim) {
+  pointer-events: none;
+}
+
+/* Result table: degrees, mm and pixels */
+
+.md-typeset .va-table {
+  display: table;
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: .72rem;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Undo the wiki's table stripes and sticky header (extra.css) here. */
+[data-md-color-scheme] .md-typeset .va-calc .va-table.va-table :is(th, td) {
+  position: static;
+  background: transparent;
+  border: 0;
+}
+
+.md-typeset .va-table th,
+.md-typeset .va-table td {
+  padding: .32rem 0 .32rem .7rem;
+  border: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+.md-typeset .va-table thead th {
+  padding-top: 0;
+  font-size: .64rem;
+  font-weight: 400;
+  color: var(--va-muted);
+  text-align: right;
+}
+
+.md-typeset .va-table tbody th[scope="row"] {
+  padding-left: 0;
+  font-weight: 400;
+  color: var(--va-muted);
+  text-align: left;
+}
+
+.md-typeset .va-table td {
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+  text-align: right;
+  white-space: nowrap;
+}
+
+[data-md-color-scheme] .md-typeset .va-calc .va-table.va-table tbody tr + tr > :is(th, td) {
+  border-top: 1px solid var(--va-line);
+}
+
+.md-typeset .va-table__group th {
+  padding: .9rem 0 .25rem;
+  font-size: .68rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+  text-align: left;
+}
+
+.md-typeset .va-table tbody:first-of-type .va-table__group th {
+  padding-top: .35rem;
+}
+
+.md-typeset .va-table__swatch {
+  display: inline-block;
+  width: .9rem;
+  margin-right: .4rem;
+  vertical-align: middle;
+  border-top: 2px solid color-mix(in srgb, var(--va-accent) 60%, transparent);
+}
+
+.md-typeset .va-table__swatch--centre {
+  border-top-style: dashed;
+  border-top-color: color-mix(in srgb, var(--va-accent) 45%, transparent);
+}
+
+.md-typeset .va-table__note {
+  margin: .7rem 0 0;
+  font-size: .64rem;
+  line-height: 1.45;
+  color: var(--va-muted);
+}
+
+.md-typeset .va-calc__warn {
+  margin: .6rem 0 0;
+  font-size: .72rem;
+  line-height: 1.45;
+  color: var(--md-default-fg-color);
+  border-left: 3px solid var(--va-accent);
+  padding-left: .55rem;
+}
+
+@media screen and (max-width: 59.9375em) {
+  .md-typeset .va-calc__fields {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .md-typeset .va-views {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media screen and (max-width: 29.9375em) {
+  .md-typeset .va-calc__setup,
+  .md-typeset .va-calc__convert {
+    padding-left: .8rem;
+    padding-right: .8rem;
+  }
+  .md-typeset .va-calc__fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .md-typeset .va-equation {
+    gap: 0 .35rem;
+  }
+  .md-typeset .va-eq input {
+    font-size: 1.05rem;
+  }
+  .md-typeset .va-equation__sign {
+    font-size: .95rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .va-calc * {
+    transition: none !important;
+  }
+}
+
+@media print {
+  .md-typeset .va-calc {
+    box-shadow: none;
+  }
+}
