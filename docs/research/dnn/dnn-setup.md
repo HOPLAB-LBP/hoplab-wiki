@@ -54,7 +54,7 @@ The first install downloads everything and takes a while.
 
 === "VSC cluster"
 
-    For large models or datasets, run on the GPU nodes of the VSC cluster. The [HPC page](../fmri/fmri-hpc.md) explains how to log in, where to store data and how to submit jobs with Slurm. Install the same environment there; if it does not work with the cluster's GPUs, split it as in the previous tab.
+    For large models or datasets, run on the GPU nodes of the VSC cluster. The [HPC page](../fmri/analysis/fmri-hpc.md) explains how to log in, where to store data and how to submit jobs with Slurm. Install the same environment there; if it does not work with the cluster's GPUs, split it as in the previous tab.
 
 Check that everything imports and whether PyTorch sees a GPU:
 

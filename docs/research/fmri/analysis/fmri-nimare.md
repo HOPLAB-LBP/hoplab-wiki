@@ -11,7 +11,7 @@ pip install numpy pandas pprint scipy nimare biopython nibabel nilearn
 ```
 
 !!! tip
-    Before starting a new project, make sure you set up your environment correctly. Each project should have its own dedicated environment. Please, follow the instructions provided in [this](analysis/fmri-setup-env.md#python-and-conda) and [this](../coding/environment-setup.md#setting-up-a-conda-environment) section.
+    Before starting a new project, make sure you set up your environment correctly. Each project should have its own dedicated environment. Please, follow the instructions provided in [this](fmri-setup-env.md#python-and-conda) and [this](../../coding/environment-setup.md#setting-up-a-conda-environment) section.
 
 ---
 
@@ -293,9 +293,9 @@ cluster_table = get_clusters_table(
 
 Which should produce the following plots for the uncorrected z scores and Montecarlo corrected scores:
 
-![Z scores map uncorrected](../../assets/nimare-uncorr.png)
+![Z scores map uncorrected](../../../assets/nimare-uncorr.png)
 
-![Z scores map corrected](../../assets/nimare-corr.png)
+![Z scores map corrected](../../../assets/nimare-corr.png)
 
 !!! warning
     The Monte Carlo algorithm may produce slightly different results, nd will be more precise with more iterations (10.000 iterations are reccommended for publication-level analyses).

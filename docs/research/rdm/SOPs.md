@@ -146,7 +146,7 @@ Throughout the process, you should make sure that any new or modified scripts an
 
 ### 1. Download data
 
-Download the data from Sharepoint or ManGO to a local computer (e.g., your laptop, a more performant local computer or the [HPC infrastructure](../fmri/fmri-hpc.md)).
+Download the data from Sharepoint or ManGO to a local computer (e.g., your laptop, a more performant local computer or the [HPC infrastructure](../fmri/analysis/fmri-hpc.md)).
 
 ### 2. Preprocess data
 

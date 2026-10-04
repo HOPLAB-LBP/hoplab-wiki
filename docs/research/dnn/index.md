@@ -54,7 +54,7 @@ Pick the path that matches your project. Every path starts with [Set up and pick
 </div>
 
 ??? question "Do I need a GPU?"
-    No. Everything in this section runs on a laptop CPU. For real projects with large models or many images, use a GPU machine or the VSC cluster (see [HPC](../fmri/fmri-hpc.md)). If the environment gives you trouble on a GPU machine, [Set up](dnn-setup.md#1-create-the-environment) shows how to keep training in a separate one.
+    No. Everything in this section runs on a laptop CPU. For real projects with large models or many images, use a GPU machine or the VSC cluster (see [HPC](../fmri/analysis/fmri-hpc.md)). If the environment gives you trouble on a GPU machine, [Set up](dnn-setup.md#1-create-the-environment) shows how to keep training in a separate one.
 
 ??? question "I work in MATLAB. Can I still use this?"
     The network side needs Python: the models, their weights and the tools to read their layers are all Python packages. Once you have saved the activations (as on [Extract activations](dnn-extract.md)), you can also save them as a `.mat` file with `scipy.io.savemat` and run RSA or decoding in MATLAB with the tools you know, for example [CoSMoMVPA](../fmri/analysis/fmri-mvpa.md).

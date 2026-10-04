@@ -26,7 +26,7 @@ VSC offers a [full documentation](https://docs.vscentrum.be/) of all the service
 may contact the [local support team at KU Leuven](https://docs.vscentrum.be/contact_vsc.html).
 
 !!! tip "General coding setup"
-    For general guidance on setting up Python/Conda environments and Git, see [Coding practices](../coding/index.md).
+    For general guidance on setting up Python/Conda environments and Git, see [Coding practices](../../coding/index.md).
 
 ## 1. Prerequisites
 
@@ -46,7 +46,7 @@ Once your account is active, you may follow [these steps](https://docs.vscentrum
 
 After a successful login, you will see something like:
 
-![VSC Login](../../assets/fmri-hpc-login.png)
+![VSC Login](../../../assets/fmri-hpc-login.png)
 
 Look at the last line:
 
@@ -665,7 +665,7 @@ htop -u $USER
 
 This opens a live system monitor like this one:
 
-![fmri-htop](../../assets/fmri-hpc-htop.png)
+![fmri-htop](../../../assets/fmri-hpc-htop.png)
 
 Which shows:
 
