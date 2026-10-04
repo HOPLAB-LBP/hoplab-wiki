@@ -206,9 +206,17 @@
   color: var(--va-muted);
 }
 
-.md-typeset .va-ecc {
-  max-width: 24rem;
+.md-typeset .va-pos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 18rem));
+  gap: .8rem 1.2rem;
   margin: 1rem 0 0;
+}
+
+@media screen and (max-width: 29.9375em) {
+  .md-typeset .va-pos {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 /* Drawing and results */
@@ -287,6 +295,7 @@
 }
 .va-front__fix    { fill: var(--md-default-fg-color); }
 .va-front__ecc    { stroke: var(--va-accent); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.va-front__track  { fill: none; stroke: var(--md-accent-fg-color); stroke-width: 2; stroke-opacity: .7; }
 .va-front__stim   {
   fill: color-mix(in srgb, var(--va-accent) 22%, transparent);
   stroke: var(--va-accent);
@@ -300,6 +309,7 @@
 .va-front__reach--centre { stroke-opacity: .35; stroke-dasharray: 5 3; }
 .va-front__handle { cursor: ew-resize; }
 .va-front__hit    { fill: transparent; }
+.va-front__grab   { fill: transparent; cursor: grab; }
 .va-front__knob   { fill: var(--md-default-bg-color); stroke: var(--va-accent); stroke-width: 2; }
 .va-front .va-front__label {
   font-size: 12px;
@@ -329,7 +339,7 @@
 
 /* Only the stimulus and its handle take pointer input in the drawing. */
 .va-front > :not(g),
-.va-front > g:not(.va-front__handle) > :not(.va-front__stim) {
+.va-front > g:not(.va-front__handle) > :not(.va-front__stim):not(.va-front__grab) {
   pointer-events: none;
 }
 
