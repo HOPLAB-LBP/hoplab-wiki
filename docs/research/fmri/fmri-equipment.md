@@ -121,12 +121,11 @@ The participant sees the stimuli on a **Cambridge Research Systems BOLDscreen 32
 | Default setting | L/R flip **ON** (corrects the mirror image) |
 | Native resolution | 3840 × 2160 at 60 Hz; other input resolutions are rescaled by the screen (manufacturer specification) |
 | Resolution used in lab experiments | 1920 × 1080, forced from the experiment script |
-| Screen width | 700 mm (used in lab experiments; image size checked in the scanner) |
-| Screen height | 395 mm (lab notes, to be confirmed) |
+| Screen width × height | 698.4 × 392.9 mm (active area, BOLDscreen 32 UHD user guide) |
 | Eye-to-screen distance | 1850 mm (used in lab experiments; image size checked in the scanner) |
 
 !!! info "Visual angles"
-    Use the width (700 mm) and eye-to-screen distance (1850 mm) above to compute visual angles. Lab experiments force 1920 × 1080 from the script, compute the number of pixels per degree from the resolution, width and distance, and size the stimuli from that; the image size measured on the screen in the scanner matched. The panel itself is 4K and rescales other inputs, so always size stimuli from the resolution your script actually uses. To verify your own script, follow [Check your visual angles](#check-your-visual-angles).
+    Use the width (698.4 mm) and eye-to-screen distance (1850 mm) above to compute visual angles. Lab experiments force 1920 × 1080 from the script, compute the number of pixels per degree from the resolution, width and distance, and size the stimuli from that; the image size measured on the screen in the scanner matched. The panel itself is 4K and rescales other inputs, so always size stimuli from the resolution your script actually uses. To verify your own script, follow [Check your visual angles](#check-your-visual-angles).
 
 - **End of session**: switch the screen off. The last user of the day puts the cover on the screen in the magnet room (the cover lies on its base).
 
@@ -225,7 +224,6 @@ __TODO__: [Andrea] Which display resolution should laptops and the stimulus PC s
 __TODO__: [Andrea] Which input does the dedicated headphone system (blue box) take from the computer? Add it to "Audio system" and "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] When will the EyeLink be installed at MR11, and how does it connect (network or other port on the stimulus computer)? Update "Eye tracker". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] How is a new laptop approved by the MRI Safety Officer before first use, and is there anything else to consider when choosing it? Add it to "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
-__TODO__: [Andrea] Confirm the BOLDscreen image height (395 mm is from lab notes only; Simen's settings give width 700 mm and distance 1850 mm, which are taken as correct). (Not asked yet.)
 __TODO__: [Simen] Share the small code that converts visual angles to pixels in your experiment script, so we can add it to "Check your visual angles". (Not asked yet.)
 __TODO__: [Andrea] Confirm the second button pad codes (d, n, w, e in Simen's experiment settings) in mode 002: which colour sends which key, and which pad is for the left hand. The radiology wiki only documents B/Y/G/R and T. (Not asked yet.)
 __TODO__: [Andrea] Confirm with Ron that moving the trigger box USB cable from the stimulus PC to a laptop for each session is fine. (Not asked yet.)

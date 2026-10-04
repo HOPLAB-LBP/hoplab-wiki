@@ -31,12 +31,12 @@
   const SETUPS = {
     mr11: {
       label: "MR11 (BOLDscreen)",
-      widthMm: 700,
-      heightMm: 395,
+      widthMm: 698.4,
+      heightMm: 392.9,
       resX: 1920,
       resY: 1080,
       distanceMm: 1850,
-      note: "The 395 mm height is from lab notes and not yet confirmed.",
+      note: "Active area from the BOLDscreen 32 UHD user guide; viewing distance as used in lab experiments.",
     },
   };
 
