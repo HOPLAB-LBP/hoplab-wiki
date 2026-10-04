@@ -206,7 +206,7 @@ extra_javascript:
   - javascripts/details.js
   - javascripts/lightbox-zoom.js # zoom slider for the image lightbox
   - javascripts/source-file.js # footer: last update in the reader's time zone
-  - javascripts/visual-angle.js # visual angle calculator (fMRI equipment page)
+  - javascripts/visual-angle.js # visual angle calculator (fMRI equipment and EEG task pages)
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra:

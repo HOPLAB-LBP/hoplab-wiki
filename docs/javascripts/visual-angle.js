@@ -1,5 +1,8 @@
 /*
-  Visual angle calculator, used on the MR11 equipment page.
+  Visual angle calculator, a wiki primitive (documented in the Formatting
+  toolkit, docs/contribute/formatting-toolkit.md). Used on the MR11
+  equipment page and the EEG task page; the text around it is shared in
+  includes/visual-angles.md.
 
   On a page:
 
@@ -37,6 +40,15 @@
       resY: 1080,
       distanceMm: 1850,
       note: "Active area from the BOLDscreen 32 UHD user guide; viewing distance as used in lab experiments.",
+    },
+    eeg: {
+      label: "EEG booth (BenQ XL2411)",
+      widthMm: 531,
+      heightMm: 299,
+      resX: 1920,
+      resY: 1080,
+      distanceMm: 630,
+      note: "Active area from the BenQ ZOWIE XL2411 specification; viewing distance as used in lab EEG experiments.",
     },
   };
 
