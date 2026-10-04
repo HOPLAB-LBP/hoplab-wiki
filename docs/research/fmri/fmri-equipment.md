@@ -120,13 +120,13 @@ The participant sees the stimuli on a **Cambridge Research Systems BOLDscreen 32
 | Default input | Stimulus PC |
 | Default setting | L/R flip **ON** (corrects the mirror image) |
 | Native resolution | 3840 × 2160 at 60 Hz; other input resolutions are rescaled by the screen (manufacturer specification) |
-| Resolution used in lab experiments | 1920 × 1080 |
-| Screen width | 700 mm (used in lab experiments) |
+| Resolution used in lab experiments | 1920 × 1080, set from the experiment script (Psychtoolbox can switch the display to it) |
+| Screen width | 700 mm (Ron Peeters' measurement, used in lab experiments) |
 | Screen height | 395 mm (lab notes, to be confirmed) |
-| Eye-to-screen distance | 1850 mm (used in lab experiments, to be confirmed) |
+| Eye-to-screen distance | 1850 mm (Ron Peeters' measurement, used in lab experiments) |
 
 !!! warning "Visual angles"
-    Compute visual angles from the values above only after they are confirmed. If your study depends on exact visual angles, measure the screen and the viewing distance yourself during your test session and report the values you used in your paper.
+    Compute visual angles from the screen width, the viewing distance and the resolution your script actually uses. At 1920 × 1080 the screen scales the image up to fill the panel, so the image is still 700 mm wide; lab members who set this resolution from Psychtoolbox found the image size in the scanner matched their calculation. If you use PsychoPy Builder, check that its monitor settings use the same resolution, width and distance. If your study depends on exact visual angles, check the image size during your test session and report the values you used in your paper.
 
 - **End of session**: switch the screen off. The last user of the day puts the cover on the screen in the magnet room (the cover lies on its base).
 
@@ -143,7 +143,7 @@ You may present stimuli from a laptop instead of the stimulus PC, **after approv
 </div>
 
 !!! tip "Display set-up"
-    Use one mirrored screen: in Windows choose *Duplicate*, with the laptop screen and the in-room screen both at 1920 × 1080, 60 Hz. Do not use an extended desktop. Before scanning, check that the Psychtoolbox synchronisation tests or the PsychoPy frame-timing checks pass without warnings. If they do not, switch the laptop's own screen off and present on the in-room screen only.
+    Use one screen where possible: the in-room screen only, with the laptop's own screen off. Otherwise, use *Duplicate* in Windows, with both screens at 1920 × 1080, 60 Hz. Before scanning, make sure the Psychtoolbox synchronisation tests or the PsychoPy frame-timing checks run without errors: sync errors usually mean the timing is off, often because more than one screen is in use. Some users have run their task with an extended desktop, but they reported sync errors.
 
 ---
 
@@ -198,11 +198,11 @@ An EyeLink eye tracker (EyeLink 1000 long range) is planned to be installed at M
 
 <!--
 __TODO__: [Andrea] Is there a console-room monitor that shows what the BOLDscreen shows (e.g., on the hub's Clone output), and is that image L/R flipped? Add it to "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
-__TODO__: [Andrea] Which display resolution should laptops and the stimulus PC send? The BOLDscreen panel is 3840 x 2160 at 60 Hz and rescales other inputs, while lab experiments use 1920 x 1080, which matters for visual angles. Can the BOLDscreen run at a lower native resolution, or should we move to 4K? Update "In-room screen". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
+__TODO__: [Andrea] Which display resolution should laptops and the stimulus PC send? The BOLDscreen panel is 3840 x 2160 at 60 Hz and rescales other inputs, while lab experiments use 1920 x 1080, which matters for visual angles. Can the BOLDscreen run at a lower native resolution, or should we move to 4K? Simen (Slack, 2026-10-02 and 2026-10-04) sets 1920 x 1080 from Psychtoolbox and the image size matched. Update "In-room screen". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] Which input does the dedicated headphone system (blue box) take from the computer? Add it to "Audio system" and "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] When will the EyeLink be installed at MR11, and how does it connect (network or other port on the stimulus computer)? Update "Eye tracker". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] How is a new laptop approved by the MRI Safety Officer before first use, and is there anything else to consider when choosing it? Add it to "Connecting a laptop". (Asked Ron and Stefan by e-mail, 2026-10-01; waiting for answer.)
-__TODO__: [Andrea] Confirm the BOLDscreen screen height (395 mm) and the eye-to-screen distance (1850 mm, from Simen's experiment settings; the original note said 185 mm), then remove the "to be confirmed" labels. (Not asked yet.)
+__TODO__: [Andrea] Confirm the BOLDscreen screen height (395 mm, from lab notes). Width 700 mm and eye-to-screen distance 1850 mm are Ron Peeters' measurements (Simen, Slack 2026-10-01). (Not asked yet.)
 __TODO__: [Andrea] Confirm the second button pad codes (d, n, w, e in Simen's experiment settings) in mode 002: which colour sends which key, and which pad is for the left hand. The radiology wiki only documents B/Y/G/R and T. (Not asked yet.)
 __TODO__: [Andrea] Confirm with Ron that moving the trigger box USB cable from the stimulus PC to a laptop for each session is fine. (Not asked yet.)
 __TODO__: [Andrea] Check whether MATLAB and Psychtoolbox are installed on the MR11 stimulus PC (the radiology wiki only lists PsychoPy) and add the versions. (Not asked yet.)
