@@ -80,6 +80,49 @@ The advantage of the photocell is not only that it allows you to know exactly *w
   <figcaption>Photocell colour switch logic.</figcaption>
 </figure>
 
+## Screen and visual angles
+
+The task screen in the EEG booth is a **BenQ ZOWIE XL2411** (24 inch). The participant sits with their head on the chin rest in front of it.
+
+| Property | Value |
+|----------|-------|
+| Resolution | 1920 × 1080 (native) |
+| Screen width × height | 531 × 299 mm (active area, manufacturer specification) |
+| Eye-to-screen distance | 630 mm (used in lab EEG experiments) |
+
+Give stimulus sizes in degrees of visual angle, the angle a stimulus spans at the participant's eye. Pixels depend on the screen, degrees do not, so other labs can reproduce your stimuli from them. You need three values from the table: the screen width, the resolution and the viewing distance.
+
+- One pixel is 531 mm ÷ 1920 = 0.277 mm wide.
+- A stimulus of θ degrees, centred on the screen, is 2 × 630 mm × tan(θ ÷ 2) wide. Divide by the pixel size to get pixels: a 5° stimulus is 55.0 mm, or 198.9 pixels.
+- Near the centre of the screen, one degree is about 39.8 pixels. Multiplying by this number is only close for small stimuli near the centre; use the formula or the calculator below for anything else.
+
+The angle changes with the viewing distance, so keep the participant's head on the chin rest. To verify your own script, follow [Check your visual angles](#check-your-visual-angles).
+
+### Check your visual angles
+
+Do this once, before your first participant, with the computer and script you will use for the study. Steps 1 and 2 check the set-up values above; steps 3 to 5 check your script.
+
+<div class="steps-list" markdown>
+
+--8<-- "includes/visual-angles.md:check-screen"
+2. **Viewing distance.** Sit a colleague with their head on the chin rest and measure from their eyes to the screen along the line of sight. Measure again whenever the chin rest or the screen has been moved.
+--8<-- "includes/visual-angles.md:check-script"
+
+</div>
+
+--8<-- "includes/visual-angles.md:calculator"
+
+<div class="va-calc" data-setup="eeg">
+<p>Turn on JavaScript to use the visual angle calculator.</p>
+</div>
+
+--8<-- "includes/visual-angles.md:psychopy"
+In the EEG booth, an 8° stimulus in `deg` units is 0.5 pixels smaller than the exact size, and a stimulus placed 8° from the centre lands 2.1 pixels closer to it (7.1 pixels at 12°).
+
+<!--
+__TODO__: [Andrea] Measure the screen and the eye-to-screen distance in the EEG booth. The table uses the BenQ specification (531.36 × 298.89 mm) and the 630 mm of the lab's EEG experiment configuration (eeg-pc.json); the animacy EEG manuscript reports the chin rest at about 60 cm. (Not measured yet.)
+-->
+
 ## Inter-trial interval and jitter
 
 When preparing your task for EEG, you will need pay extra attention to the trial timing, in particular to the **inter-trial interval** (ITI) and **jitter**. Having a decent ITI is important to allow the brain response to return to baseline. The jitter duration should also align with the design of your experiment—for example, to accommodate late ERP components such as the P300 or N400. A minimum inter-trial interval (ITI) of around 0.9 s provides sufficient time for these late components to resolve. Additionally, adding some jitter in the inter-trial interval is important to prevent participants from developing strong expectations about the upcoming stimulus. As a rule of thumb, think of having a jitter varying between 0.7 and 1.5s.
