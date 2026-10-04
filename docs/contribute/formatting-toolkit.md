@@ -17,6 +17,7 @@ Each snippet is followed by what it produces on the wiki. (On GitHub you only se
     | One action: download a file, open an external site | a button (`{ .md-button }`) |
     | Code lines that need a short explanation | code notes (`# (1)!` and a numbered list under the code) |
     | An icon or small screenshot that should not open large | `{ .off-glb }` after the image |
+    | Stimulus sizes in degrees, millimetres and pixels for a lab screen | the [visual angle calculator](#visual-angle-calculator) |
 
     A run of three or more `!!!` boxes in a row is a sign that none of them is
     really an aside, and that the section wants one of the list forms above.
@@ -408,6 +409,34 @@ Striped rows, with the header kept in view.
 |---|---|
 | PSI 00.57 | TMS |
 | PSI 00.52 | EEG |
+
+### Visual angle calculator
+
+Converts stimulus sizes between degrees, millimetres and pixels for one lab set-up, with a drawing of the screen. `data-setup` picks the set-up: `mr11` (MR11 BOLDscreen) or `eeg` (EEG booth). Each set-up's values live once, in `SETUPS` at the top of `docs/javascripts/visual-angle.js`; add a set-up there and keep it in step with the screen table on its page.
+
+```markdown
+<div class="va-calc" data-setup="eeg">
+<p>Turn on JavaScript to use the visual angle calculator.</p>
+</div>
+```
+
+<div class="va-calc" data-setup="eeg">
+<p>Turn on JavaScript to use the visual angle calculator.</p>
+</div>
+
+The text around it is shared too: the steps to check visual angles, the line that introduces the calculator and the PsychoPy note are sections of `includes/visual-angles.md`. A page pulls in each section by name and adds only what belongs to its set-up (the viewing distance step, its own numbers):
+
+```markdown
+<div class="steps-list" markdown>
+
+;--8<-- "includes/visual-angles.md:check-screen"
+2. **Viewing distance.** How to measure it in this room.
+;--8<-- "includes/visual-angles.md:check-script"
+
+</div>
+
+;--8<-- "includes/visual-angles.md:calculator"
+```
 
 ## Images
 
