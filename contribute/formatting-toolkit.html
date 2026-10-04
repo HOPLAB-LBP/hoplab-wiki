@@ -3448,6 +3448,10 @@
 <td>An icon or small screenshot that should not open large</td>
 <td><code>{ .off-glb }</code> after the image</td>
 </tr>
+<tr>
+<td>Stimulus sizes in degrees, millimetres and pixels for a lab screen</td>
+<td>the <a href="#visual-angle-calculator">visual angle calculator</a></td>
+</tr>
 </tbody>
 </table>
 <p>A run of three or more <code>!!!</code> boxes in a row is a sign that none of them is
@@ -3786,18 +3790,39 @@ really an aside, and that the section wants one of the list forms above.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="visual-angle-calculator">Visual angle calculator<a class="headerlink" href="#visual-angle-calculator" title="Permanent link">¶</a></h3>
+<p>Converts stimulus sizes between degrees, millimetres and pixels for one lab set-up, with a drawing of the screen. <code>data-setup</code> picks the set-up: <code>mr11</code> (MR11 BOLDscreen) or <code>eeg</code> (EEG booth). Each set-up's values live once, in <code>SETUPS</code> at the top of <code>docs/javascripts/visual-angle.js</code>; add a set-up there and keep it in step with the screen table on its page.</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>&lt;div class="va-calc" data-setup="eeg"&gt;
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>&lt;p&gt;Turn on JavaScript to use the visual angle calculator.&lt;/p&gt;
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>&lt;/div&gt;
+</span></code></pre></div>
+<div class="va-calc" data-setup="eeg">
+<p>Turn on JavaScript to use the visual angle calculator.</p>
+</div>
+
+<p>The text around it is shared too: the steps to check visual angles, the line that introduces the calculator and the PsychoPy note are sections of <code>includes/visual-angles.md</code>. A page pulls in each section by name and adds only what belongs to its set-up (the viewing distance step, its own numbers):</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>&lt;div class="steps-list" markdown&gt;
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>--8&lt;-- "includes/visual-angles.md:check-screen"
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="k">2.</span> <span class="gs">**Viewing distance.**</span> How to measure it in this room.
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>--8&lt;-- "includes/visual-angles.md:check-script"
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>&lt;/div&gt;
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>--8&lt;-- "includes/visual-angles.md:calculator"
+</span></code></pre></div>
 <h2 id="images">Images<a class="headerlink" href="#images" title="Permanent link">¶</a></h2>
 <h3 id="images_1">Images<a class="headerlink" href="#images_1" title="Permanent link">¶</a></h3>
 <p>Every image opens large on click, with a zoom bar.</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>![<span class="nt">Alt text</span>](<span class="na">path/to/figure.png</span>)                  &lt;!-- opens large on click --&gt;
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>![<span class="nt">Alt text</span>](<span class="na">path/to/icon.png</span>){ .off-glb }        &lt;!-- stays small: icons, buttons --&gt;
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>![<span class="nt">Alt text</span>](<span class="na">path/to/figure.png</span>){ .img-border }   &lt;!-- thin border --&gt;
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>![<span class="nt">Alt text</span>](<span class="na">path/to/figure.png</span>)                  &lt;!-- opens large on click --&gt;
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>![<span class="nt">Alt text</span>](<span class="na">path/to/icon.png</span>){ .off-glb }        &lt;!-- stays small: icons, buttons --&gt;
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>![<span class="nt">Alt text</span>](<span class="na">path/to/figure.png</span>){ .img-border }   &lt;!-- thin border --&gt;
 </span></code></pre></div>
 <h3 id="figure-with-a-caption">Figure with a caption<a class="headerlink" href="#figure-with-a-caption" title="Permanent link">¶</a></h3>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>&lt;figure markdown="span"&gt;
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>  ![<span class="nt">The cat sprite seen by VOneNet</span>](<span class="na">../assets/dnn/cards/vonenet.png</span>){ width="420" }
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>  &lt;figcaption&gt;A caption under the image.&lt;/figcaption&gt;
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>&lt;/figure&gt;
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>&lt;figure markdown="span"&gt;
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>  ![<span class="nt">The cat sprite seen by VOneNet</span>](<span class="na">../assets/dnn/cards/vonenet.png</span>){ width="420" }
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>  &lt;figcaption&gt;A caption under the image.&lt;/figcaption&gt;
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>&lt;/figure&gt;
 </span></code></pre></div>
 <figure>
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/dnn/cards/vonenet.png" data-desc-position="bottom"><img alt="The cat sprite seen by VOneNet" src="../assets/dnn/cards/vonenet.png" width="420"></a>
@@ -3806,15 +3831,15 @@ really an aside, and that the section wants one of the list forms above.</p>
 </figure>
 <h2 id="text">Text<a class="headerlink" href="#text" title="Permanent link">¶</a></h2>
 <h3 id="inline-formatting">Inline formatting<a class="headerlink" href="#inline-formatting" title="Permanent link">¶</a></h3>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Press ++ctrl+c++ to copy. Mark ==important words==, ^^inserted text^^ and <span class="gd">~~removed text~~</span>.
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>H~2~O and x^2^. A footnote[^1], an icon :material-brain:, and math: $E = mc^2$.
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>[<span class="nl">^1</span>]: <span class="na">The footnote text, shown at the bottom of the page.</span>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Press ++ctrl+c++ to copy. Mark ==important words==, ^^inserted text^^ and <span class="gd">~~removed text~~</span>.
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>H~2~O and x^2^. A footnote[^1], an icon :material-brain:, and math: $E = mc^2$.
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>[<span class="nl">^1</span>]: <span class="na">The footnote text, shown at the bottom of the page.</span>
 </span></code></pre></div>
 <p>Press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> to copy. Mark <mark>important words</mark>, <ins>inserted text</ins> and <del>removed text</del>.
 H<sub>2</sub>O and x<sup>2</sup>. A footnote<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, an icon <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"></path></svg></span>, and math: <span class="arithmatex">\(E = mc^2\)</span>.</p>
 <h3 id="progress-bar">Progress bar<a class="headerlink" href="#progress-bar" title="Permanent link">¶</a></h3>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>[=60% "60 %"]
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>[=60% "60 %"]
 </span></code></pre></div>
 <p>
 </p><div class="progress progress-60plus">
@@ -3826,25 +3851,25 @@ H<sub>2</sub>O and x<sup>2</sup>. A footnote<sup id="fnref:1"><a class="footnote
 <h2 id="code">Code<a class="headerlink" href="#code" title="Permanent link">¶</a></h2>
 <h3 id="code-blocks">Code blocks<a class="headerlink" href="#code-blocks" title="Permanent link">¶</a></h3>
 <p>Every code block gets a copy button. Add a title and highlight lines:</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="sb">```python</span><span class="w"> </span>title="analysis.py" hl_lines="2"
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"sub-01"</span><span class="p">)</span>
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">clean</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="sb">```</span>
-</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
-</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>Inline code with colour: <span class="sb">`#!python print("hello")`</span>.
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="sb">```python</span><span class="w"> </span>title="analysis.py" hl_lines="2"
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"sub-01"</span><span class="p">)</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">clean</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="sb">```</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>Inline code with colour: <span class="sb">`#!python print("hello")`</span>.
 </span></code></pre></div>
-<div class="language-python highlight"><span class="filename">analysis.py</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"sub-01"</span><span class="p">)</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="hll"><span class="n">clean</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class="language-python highlight"><span class="filename">analysis.py</span><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"sub-01"</span><span class="p">)</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="hll"><span class="n">clean</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </span></span></code></pre></div>
 <p>Inline code with colour: <code class="language-python highlight"><span class="nb">print</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">)</span></code>.</p>
 <h3 id="code-with-numbered-notes">Code with numbered notes<a class="headerlink" href="#code-with-numbered-notes" title="Permanent link">¶</a></h3>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="sb">```python</span>
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"sub-01"</span><span class="p">)</span>  <span class="c1"># (1)!</span>
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="sb">```</span>
-</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>
-</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="k">1.</span> A note that opens from the number in the code.
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="sb">```python</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"sub-01"</span><span class="p">)</span>  <span class="c1"># (1)!</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="sb">```</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="k">1.</span> A note that opens from the number in the code.
 </span></code></pre></div>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"sub-01"</span><span class="p">)</span>  <span class="c1"># (1)!</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">"sub-01"</span><span class="p">)</span>  <span class="c1"># (1)!</span>
 </span></code></pre></div>
 <ol>
 <li>A note that opens from the number in the code.</li>
@@ -3852,13 +3877,13 @@ H<sub>2</sub>O and x<sup>2</sup>. A footnote<sup id="fnref:1"><a class="footnote
 <h2 id="shared-and-hidden-text">Shared and hidden text<a class="headerlink" href="#shared-and-hidden-text" title="Permanent link">¶</a></h2>
 <h3 id="the-same-text-on-several-pages">The same text on several pages<a class="headerlink" href="#the-same-text-on-several-pages" title="Permanent link">¶</a></h3>
 <p>Write it once in <code>includes/</code> and pull it into each page with one line:</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>--8&lt;-- "includes/tms-exclusions.md"
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>--8&lt;-- "includes/tms-exclusions.md"
 </span></code></pre></div>
 <h3 id="open-tasks-on-a-page">Open tasks on a page<a class="headerlink" href="#open-tasks-on-a-page" title="Permanent link">¶</a></h3>
 <p>Hidden notes that open a GitHub issue for the page: see <a href="../contribute.html#adding-todo-note-and-placeholder-tags">Adding tags</a>.</p>
 <h3 id="your-name-under-each-page">Your name under each page<a class="headerlink" href="#your-name-under-each-page" title="Permanent link">¶</a></h3>
 <p>Every page lists the people who wrote it. If yours shows a GitHub handle, or twice, add a line to <code>.mailmap</code>:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Full Name &lt;id+login@users.noreply.github.com&gt; &lt;e-mail used in your commits&gt;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Full Name &lt;id+login@users.noreply.github.com&gt; &lt;e-mail used in your commits&gt;
 </span></code></pre></div>
 <h2 id="collapsible-definition-lists">Collapsible definition lists<a class="headerlink" href="#collapsible-definition-lists" title="Permanent link">¶</a></h2>
 <p>When a section is a <strong>list of things that each need a short explanation</strong> — the
@@ -3866,11 +3891,11 @@ documents an application must contain, the tools on a machine, the fields in a
 form — use <code>??? numlist</code> (numbered) or <code>??? deflist</code> (bulleted) instead of a run
 of <code>!!!</code> boxes. The term stays visible so the whole list can be scanned at a
 glance, and the explanation opens on click:</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>??? numlist "Accompanying letter signed by the PI"
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    You can find the guidelines [<span class="nt">here</span>](<span class="na">https://example.org</span>).
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
-</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>???+ numlist "Research protocol, including a summary in Dutch"
-</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>    Best to follow the CTC template, which already covers safety procedures.
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>??? numlist "Accompanying letter signed by the PI"
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    You can find the guidelines [<span class="nt">here</span>](<span class="na">https://example.org</span>).
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>???+ numlist "Research protocol, including a summary in Dutch"
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>    Best to follow the CTC template, which already covers safety procedures.
 </span></code></pre></div>
 <ul>
 <li><code>???</code> starts closed, <code>???+</code> starts open.</li>
@@ -3904,43 +3929,43 @@ glance, and the explanation opens on click:</p>
 <p>For <strong>steps that follow each other in order</strong> (a procedure, the path to a first session), use <code>??? steps</code>. It looks
 exactly like <code>??? numlist</code>, and a vertical line joins the numbers so the steps read as one sequence. Write <code>???+ steps</code>
 to show every step open:</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>???+ steps "Get ethical approval"
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    Submit the study to the ethics committee.
-</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
-</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>???+ steps "Book the room"
-</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    Book it in Calira once approval is in.
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>???+ steps "Get ethical approval"
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    Submit the study to the ethics committee.
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>???+ steps "Book the room"
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    Book it in Calira once approval is in.
 </span></code></pre></div>
 <p>The line runs only between consecutive <code>steps</code> entries, so a paragraph or heading between two entries ends the
 sequence. Numbering restarts at every heading, as for <code>numlist</code>.</p>
 <p>For a procedure whose steps are plain sentences, or one that must stay visible without clicking (an emergency), wrap an ordinary numbered list in a
 <code>steps-list</code> block. It draws the same circles and line:</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>&lt;div class="steps-list" markdown&gt;
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
-</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="k">1.</span> Stop stimulating.
-</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="k">2.</span> Help the participant lie down.
-</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>
-</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>&lt;/div&gt;
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>&lt;div class="steps-list" markdown&gt;
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="k">1.</span> Stop stimulating.
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="k">2.</span> Help the participant lie down.
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>&lt;/div&gt;
 </span></code></pre></div>
 <h2 id="safety-guidance-care-cards-and-do-dont-lists">Safety guidance: care cards and do / don't lists<a class="headerlink" href="#safety-guidance-care-cards-and-do-dont-lists" title="Permanent link">¶</a></h2>
 <p>For safety and emergency information, two blocks follow the NHS design system
 (<a href="https://service-manual.nhs.uk/design-system/components/care-cards">care cards</a>,
 <a href="https://service-manual.nhs.uk/design-system/components/do-and-dont-lists">do and don't lists</a>).
 Use them sparingly: one emergency card per page, for the number to call. For other warnings, use the usual <code>!!! danger</code> or <code>!!! warning</code> boxes.</p>
-<div class="language-markdown highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>&lt;div class="care-card care-card--emergency" markdown&gt;
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>&lt;p class="care-card__heading"&gt;Emergency: call +32 16 32 22 22&lt;/p&gt;
-</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>&lt;div class="care-card__body" markdown&gt;
-</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>
-</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>What to say and where you are.
-</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>
-</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>&lt;/div&gt;
-</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>&lt;/div&gt;
-</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>
-</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>&lt;div class="dont-list" markdown&gt;
-</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>&lt;p class="do-list__heading"&gt;Don't&lt;/p&gt;
-</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>
-</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="k">-</span><span class="w"> </span>Never get the TMS coil wet.
-</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a>
-</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a>&lt;/div&gt;
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>&lt;div class="care-card care-card--emergency" markdown&gt;
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>&lt;p class="care-card__heading"&gt;Emergency: call +32 16 32 22 22&lt;/p&gt;
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>&lt;div class="care-card__body" markdown&gt;
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>What to say and where you are.
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>&lt;/div&gt;
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>&lt;/div&gt;
+</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>
+</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>&lt;div class="dont-list" markdown&gt;
+</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>&lt;p class="do-list__heading"&gt;Don't&lt;/p&gt;
+</span><span id="__span-33-12"><a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>
+</span><span id="__span-33-13"><a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a><span class="k">-</span><span class="w"> </span>Never get the TMS coil wet.
+</span><span id="__span-33-14"><a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a>
+</span><span id="__span-33-15"><a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a>&lt;/div&gt;
 </span></code></pre></div>
 <p><code>do-list</code> gives green ticks, <code>dont-list</code> red crosses.</p>
 <div class="footnote">
@@ -3976,7 +4001,7 @@ Use them sparingly: one emergency card per page, for the number to call. For oth
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-03T14:26:43+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 3, 2026 14:26:43 CEST">October 3, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-04T16:30:59+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 4, 2026 16:30:59 CEST">October 4, 2026</span></time>
     
   </span>
 
