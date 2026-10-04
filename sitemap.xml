@@ -169,15 +169,7 @@
          <lastmod>2026-10-04</lastmod>
     </url>
     <url>
-         <loc>https://hoplab-lbp.github.io/hoplab-wiki/research/fmri/fmri-hpc.html</loc>
-         <lastmod>2026-10-04</lastmod>
-    </url>
-    <url>
          <loc>https://hoplab-lbp.github.io/hoplab-wiki/research/fmri/fmri-mr8.html</loc>
-         <lastmod>2026-10-04</lastmod>
-    </url>
-    <url>
-         <loc>https://hoplab-lbp.github.io/hoplab-wiki/research/fmri/fmri-nimare.html</loc>
          <lastmod>2026-10-04</lastmod>
     </url>
     <url>
@@ -213,7 +205,15 @@
          <lastmod>2026-10-04</lastmod>
     </url>
     <url>
+         <loc>https://hoplab-lbp.github.io/hoplab-wiki/research/fmri/analysis/fmri-hpc.html</loc>
+         <lastmod>2026-10-04</lastmod>
+    </url>
+    <url>
          <loc>https://hoplab-lbp.github.io/hoplab-wiki/research/fmri/analysis/fmri-mvpa.html</loc>
+         <lastmod>2026-10-04</lastmod>
+    </url>
+    <url>
+         <loc>https://hoplab-lbp.github.io/hoplab-wiki/research/fmri/analysis/fmri-nimare.html</loc>
          <lastmod>2026-10-04</lastmod>
     </url>
     <url>
