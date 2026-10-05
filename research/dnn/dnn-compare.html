@@ -24,7 +24,7 @@
     
     
       
-        <title>Compare with brain data - Hoplab Wiki</title>
+        <title>Compare with human data - Hoplab Wiki</title>
       
     
     
@@ -103,7 +103,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#compare-with-brain-data" class="md-skip">
+        <a href="#compare-with-human-data" class="md-skip">
           Skip to content
         </a>
       
@@ -138,7 +138,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Compare with brain data
+              Compare with human data
             
           </span>
         </div>
@@ -2868,7 +2868,7 @@
   <span class="md-ellipsis">
     
   
-    Compare with brain data
+    Compare with human data
   
 
     
@@ -2886,7 +2886,7 @@
   <span class="md-ellipsis">
     
   
-    Compare with brain data
+    Compare with human data
   
 
     
@@ -3302,17 +3302,24 @@
   
 
 
-<h1 id="compare-with-brain-data">Compare with brain data<a class="headerlink" href="#compare-with-brain-data" title="Permanent link">¶</a></h1>
+<h1 id="compare-with-human-data">Compare with human data<a class="headerlink" href="#compare-with-human-data" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">On this page</p>
 <ul>
-<li><strong>You need:</strong> network activations saved with their image order (<a href="dnn-extract.html">Extract activations</a>) and brain patterns for the same images.</li>
-<li><strong>You get:</strong> three ways to ask which layers resemble which brain regions: RSA with <a href="https://rsatoolbox.readthedocs.io/">rsatoolbox</a>, decoding with <a href="https://scikit-learn.org/">scikit-learn</a>, and encoding models with <a href="https://gallantlab.org/himalaya/">himalaya</a>, each read against a noise ceiling or chance level.</li>
+<li><strong>You need:</strong> network activations saved with their image order (<a href="dnn-extract.html">Extract activations</a>) and human data for the same images: brain patterns or behaviour.</li>
+<li><strong>You get:</strong> three ways to ask which layers resemble which brain regions or behaviours: RSA with <a href="https://rsatoolbox.readthedocs.io/">rsatoolbox</a>, decoding with <a href="https://scikit-learn.org/">scikit-learn</a>, and encoding models with <a href="https://gallantlab.org/himalaya/">himalaya</a>, each read against a noise ceiling or chance level.</li>
 </ul>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">The brain side comes first</p>
-<p>These analyses start from brain patterns that are already estimated: one pattern per image and run in each ROI, for example GLM betas from the <a href="../fmri/analysis/index.html">fMRI analysis workflow</a>. In the toy kit these patterns are synthetic. The <code>V1</code> ROI was built from the brightness, colours and edges in small patches of each image, the <code>IT</code> ROI from category and sprite identity (see <a href="dnn-setup.html#2-get-the-toy-kit">Set up and pick a model</a>), so we know the right answer in advance.</p>
+<p class="admonition-title">The human side comes first</p>
+<p>These analyses start from human data that are already estimated: one response pattern per image (and per run, if you have several). Any measure recorded for the same images works:</p>
+<ul>
+<li><strong>fMRI:</strong> the GLM betas of the voxels in each ROI, for example from the <a href="../fmri/analysis/index.html">fMRI analysis workflow</a> (<a href="https://doi.org/10.1523/JNEUROSCI.1714-18.2019">Bracci et al., 2019</a>; <a href="https://doi.org/10.1523/JNEUROSCI.2628-20.2021">Ritchie et al., 2021</a>).</li>
+<li><strong>EEG or MEG:</strong> the pattern across sensors at each time point after the image appears, which gives one RDM per time point (<a href="https://doi.org/10.1038/srep27755">Cichy et al., 2016</a>).</li>
+<li><strong>Intracranial recordings:</strong> the firing rate or high-gamma power at each electrode.</li>
+<li><strong>Behaviour:</strong> an RDM straight from similarity judgements or arrangements (<a href="https://doi.org/10.1371/journal.pcbi.1004896">Kubilius et al., 2016</a>), or the network's choices next to people's, such as which categories they confuse (<a href="https://doi.org/10.1038/s41598-025-20245-w">Maniquet et al., 2025</a>).</li>
+</ul>
+<p>The code on this page uses ROI patterns; for other data, the voxels become sensors, electrodes or the cells of a behavioural RDM. In the toy kit these patterns are synthetic. The <code>V1</code> ROI was built from the brightness, colours and edges in small patches of each image, the <code>IT</code> ROI from category and sprite identity (see <a href="dnn-setup.html#2-get-the-toy-kit">Set up and pick a model</a>), so we know the right answer in advance.</p>
 </div>
 <hr>
 <h2 id="load-and-line-up-the-data">Load and line up the data<a class="headerlink" href="#load-and-line-up-the-data" title="Permanent link">¶</a></h2>
@@ -3339,7 +3346,7 @@
 </span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nb">print</span><span class="p">({</span><span class="n">roi</span><span class="p">:</span> <span class="n">brain</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="n">rois</span><span class="p">})</span>  <span class="c1"># runs x images x voxels</span>
 </span></code></pre></div>
 <ol>
-<li>Stop here if the rows of the network and brain data are not the same images in the same order. A silent mismatch gives results that look plausible and mean nothing.</li>
+<li>Stop here if the rows of the network and human data are not the same images in the same order. A silent mismatch gives results that look plausible and mean nothing.</li>
 </ol>
 <details class="tip">
 <summary>Load your own brain data from an SPM GLM</summary>
@@ -3481,7 +3488,7 @@
 </details>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-rdms.png" data-desc-position="bottom"><img alt="RDMs of three AlexNet layers, with the category blocks marked" src="../../assets/dnn/dnn-rdms.png"></a></p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-rsa-v1.png" data-desc-position="bottom"><img alt="RSA model comparison for the V1-like ROI" src="../../assets/dnn/dnn-rsa-v1.png" width="49%"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-rsa-it.png" data-desc-position="bottom"><img alt="RSA model comparison for the IT-like ROI" src="../../assets/dnn/dnn-rsa-it.png" width="49%"></a></p>
-<p>The V1-like ROI is matched best by the early layers (conv1, r = 0.483; conv2, 0.468) and less by the later ones (fc7, 0.296). The IT-like ROI, which ignores where the sprite sits and its colours, shows the opposite profile: it is matched poorly by conv1 (0.134) and best by the deeper layers (conv5, 0.284). conv1 is not significantly below the noise ceiling of the V1-like ROI; every other layer falls below the ceiling of both ROIs. With crossnobis distances (box below), the IT profile has the same shape, highest at conv5.</p>
+<p>The V1-like ROI is matched best by conv1 (r = 0.502) and worst by fc7 (0.296); in between, the profile dips at conv3 (0.376) and rises again at conv5 (0.425). The IT-like ROI, which ignores where the sprite sits and its colours, peaks later: it rises from conv1 (0.216) to conv5 (0.283) and falls in the fully connected layers (fc7, 0.236). conv1 is not significantly below the noise ceiling of the V1-like ROI; every other layer falls below the ceiling of both ROIs. With crossnobis distances (box below), the IT profile has the same shape, highest at conv5.</p>
 <details class="info">
 <summary>Other dissimilarities and comparisons, and when to use them</summary>
 <p><strong>Dissimilarity between two patterns</strong> (<code>method</code> of <code>calc_rdm</code>):</p>
@@ -3572,28 +3579,26 @@
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Four folds: every sprite is tested once, with all its versions</span>
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedGroupKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">classifier</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">"linear"</span><span class="p">))</span>  <span class="c1"># (2)!</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># Or shrinkage LDA (see the note below):</span>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1"># from sklearn.decomposition import PCA</span>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1"># from sklearn.discriminant_analysis import LinearDiscriminantAnalysis</span>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1"># classifier = make_pipeline(StandardScaler(), PCA(n_components=50),</span>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1">#                            LinearDiscriminantAnalysis(solver="lsqr", shrinkage="auto"))</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="k">def</span><span class="w"> </span><span class="nf">decode</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span><span class="sd">"""Mean accuracy over the four folds, always tested on sprites the classifier has not seen."""</span>
-</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="k">return</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">sprites</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
-</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>
-</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="c1"># One accuracy per layer</span>
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="n">decoding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="n">layer</span><span class="p">:</span> <span class="n">decode</span><span class="p">(</span><span class="n">dnn</span><span class="p">[</span><span class="n">layer</span><span class="p">])</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">})</span>
-</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="c1"># Average over runs first</span>
-</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="n">brain_decoding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="n">roi</span><span class="p">:</span> <span class="n">decode</span><span class="p">(</span><span class="n">brain</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="n">rois</span><span class="p">})</span>
-</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="nb">print</span><span class="p">(</span><span class="n">decoding</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="nb">print</span><span class="p">(</span><span class="n">brain_decoding</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># Or, for ROI data only, shrinkage LDA (see the note below):</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1"># from sklearn.discriminant_analysis import LinearDiscriminantAnalysis</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1"># classifier = make_pipeline(StandardScaler(), LinearDiscriminantAnalysis(solver="lsqr", shrinkage="auto"))</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="k">def</span><span class="w"> </span><span class="nf">decode</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="sd">"""Mean accuracy over the four folds, always tested on sprites the classifier has not seen."""</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>    <span class="k">return</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">sprites</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="c1"># One accuracy per layer</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="n">decoding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="n">layer</span><span class="p">:</span> <span class="n">decode</span><span class="p">(</span><span class="n">dnn</span><span class="p">[</span><span class="n">layer</span><span class="p">])</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">})</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="c1"># Average over runs first</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="n">brain_decoding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="n">roi</span><span class="p">:</span> <span class="n">decode</span><span class="p">(</span><span class="n">brain</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="n">rois</span><span class="p">})</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="nb">print</span><span class="p">(</span><span class="n">decoding</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="nb">print</span><span class="p">(</span><span class="n">brain_decoding</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </span></code></pre></div>
 <ol>
 <li>All variants of a sprite stay in the same fold. Otherwise the classifier could recognise the shifted cat from the training set instead of learning what a critter is.</li>
-<li>A linear support vector machine, a common choice in MVPA. The scaler is part of the pipeline, so it is fitted on the training folds only: scaling all data before cross-validation leaks information from the test set. Shrinkage LDA, the commented alternative, is often preferred for brain data: it has no setting to tune (the shrinkage is estimated from the data, while the SVM's <code>C</code> is a choice), it takes the noise correlations between voxels into account, and it is fast, which helps when you repeat the decoding many times for a permutation test. It estimates a features × features covariance, so with thousands of network units reduce them first, as the PCA step does, inside the pipeline so that it is fitted on the training folds only.</li>
+<li>A linear support vector machine, a common choice in MVPA. The scaler is part of the pipeline, so it is fitted on the training folds only: scaling all data before cross-validation leaks information from the test set. Shrinkage LDA, the commented alternative, is often preferred for brain data: it has no setting to tune (the shrinkage is estimated from the data, while the SVM's <code>C</code> is a choice), it takes the noise correlations between voxels into account, and it is fast, which helps when you repeat the decoding many times for a permutation test. It estimates a features × features covariance, so keep it for ROIs: for a network layer with tens of thousands of units that matrix does not fit in memory.</li>
 </ol>
 <details class="example">
 <summary>Plot decoding by layer</summary>
@@ -3608,7 +3613,7 @@
 </span></code></pre></div>
 </details>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-decoding.png" data-desc-position="bottom"><img alt="Category decoding accuracy by AlexNet layer, with the two ROIs as reference lines" src="../../assets/dnn/dnn-decoding.png"></a></p>
-<p>Category is readable almost everywhere: from every AlexNet layer (92 to 100% correct on new sprites, chance 33%), from the V1-like ROI (98%) and from the IT-like ROI (86%). The reason is the scenes: grass, plates and night skies make the categories visible in the pixels themselves, so even the first layer and V1 can read them. Decoding tells you that the information is there, not what kind of feature carries it. To ask whether a layer represents the objects rather than their backgrounds, you would test on images that change the background, or compare the profiles with RSA and encoding.</p>
+<p>Category is readable almost everywhere: from every AlexNet layer (83 to 99% correct on new sprites, chance 33%), from the V1-like ROI (98%) and from the IT-like ROI (86%). The reason is the scenes: grass, plates and night skies make the categories visible in the pixels themselves, so even the first layer and V1 can read them. Decoding tells you that the information is there, not what kind of feature carries it. To ask whether a layer represents the objects rather than their backgrounds, you would test on images that change the background, or compare the profiles with RSA and encoding.</p>
 <details class="tip">
 <summary>Testing against chance</summary>
 <p>Chance is ⅓ here, and the plot marks it. To claim that an accuracy is <em>above</em> chance, though, you need a test: with few test images, a classifier that learned nothing still scatters widely around 33% (<a href="https://doi.org/10.1016/j.jneumeth.2015.01.010">Combrisson &amp; Jerbi, 2015</a>), and a binomial test does not apply because the four versions of a sprite are not independent. Use a permutation test: give the sprites random categories (all versions of a sprite the same one), rerun the same folds many times, and compare the real accuracy with that distribution. scikit-learn's <code>permutation_test_score</code> does not do this when you pass the sprite groups, because it then shuffles the labels only within each sprite. With the toy kit every accuracy is far above chance, so the test only matters for real data.</p>
@@ -3696,7 +3701,7 @@
 </span></code></pre></div>
 </details>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-encoding.png" data-desc-position="bottom"><img alt="Encoding performance by layer for the two ROIs" src="../../assets/dnn/dnn-encoding.png"></a></p>
-<p>conv1 predicts the V1-like voxels best (r = 0.61, against a ceiling of 0.73), and later layers less well (fc7, 0.50). Every layer predicts the IT-like voxels only weakly (r = 0.11 to 0.12, against a ceiling of 0.69). That is by design: the category part of the IT signal is predictable, because every layer sees the scenes, but most of the IT signal in the kit is a random pattern for each sprite, which no model can predict for a sprite it has not seen. RSA still finds IT structure in the deeper layers because it also compares the four variants of each sprite with one another, and those share the sprite's pattern.</p>
+<p>conv1 predicts the V1-like voxels best (r = 0.60, against a ceiling of 0.73), and later layers less well (fc7, 0.50). Every layer predicts the IT-like voxels only weakly (r = 0.11 to 0.13, against a ceiling of 0.69). That is by design: the category part of the IT signal is predictable, because every layer sees the scenes, but most of the IT signal in the kit is a random pattern for each sprite, which no model can predict for a sprite it has not seen. RSA still finds IT structure in the deeper layers because it also compares the four variants of each sprite with one another, and those share the sprite's pattern.</p>
 </div>
 </div>
 </div>
@@ -3704,7 +3709,7 @@
 <h2 id="which-layer-to-compare">Which layer to compare<a class="headerlink" href="#which-layer-to-compare" title="Permanent link">¶</a></h2>
 <p>A network has many layers, and which one you compare with a brain region changes the result. The references give the evidence behind each heuristic.</p>
 <p><strong>Record a spread of layers, and name them.</strong> Take the output of whole modules at five to eight depths (for a ResNet, the output of each block, not the steps inside it), and always include the last layer before the classifier (<a href="https://doi.org/10.1101/407007">Schrimpf et al., 2018</a>). That last layer is the usual choice for abstract or high-level questions, but results can differ for earlier layers (<a href="https://doi.org/10.3389/fninf.2021.679838">Muttenthaler &amp; Hebart, 2021</a>). Whether to take a layer before or after its ReLU, or, in a vision transformer, the class token or the average over tokens, has no settled answer: pick one, say which in your methods, and treat it like any other layer choice.</p>
-<p><strong>Expect a profile across layers, and report all of it.</strong> Early layers tend to match early visual cortex and later layers higher ventral areas, in fMRI, MEG and single neurons (<a href="https://doi.org/10.1073/pnas.1403112111">Yamins et al., 2014</a>; <a href="https://doi.org/10.1371/journal.pcbi.1003915">Khaligh-Razavi &amp; Kriegeskorte, 2014</a>; <a href="https://doi.org/10.1523/JNEUROSCI.5023-14.2015">Güçlü &amp; van Gerven, 2015</a>; <a href="https://doi.org/10.1038/srep27755">Cichy et al., 2016</a>; <a href="https://doi.org/10.1016/j.neuroimage.2016.10.001">Eickenberg et al., 2017</a>). The match is not strictly ordered: in Khaligh-Razavi &amp; Kriegeskorte (2014), early visual cortex was matched best by AlexNet's second and third layers, not its first. The toy kit's synthetic ROIs are built to show the textbook pattern.</p>
+<p><strong>Expect a profile across layers, and report all of it.</strong> Early layers tend to match early visual cortex and later layers higher ventral areas, in fMRI, MEG and single neurons (<a href="https://doi.org/10.1073/pnas.1403112111">Yamins et al., 2014</a>; <a href="https://doi.org/10.1371/journal.pcbi.1003915">Khaligh-Razavi &amp; Kriegeskorte, 2014</a>; <a href="https://doi.org/10.1523/JNEUROSCI.5023-14.2015">Güçlü &amp; van Gerven, 2015</a>; <a href="https://doi.org/10.1038/srep27755">Cichy et al., 2016</a>; <a href="https://doi.org/10.1016/j.neuroimage.2016.10.001">Eickenberg et al., 2017</a>; <a href="https://doi.org/10.1038/s41598-020-59175-0">Zeman et al., 2020</a>; <a href="https://doi.org/10.1523/JNEUROSCI.2628-20.2021">Ritchie et al., 2021</a>). The profile can reach beyond the ventral stream: in <a href="https://doi.org/10.1371/journal.pcbi.1011086">Bracci et al. (2023)</a>, the ventral temporal cortex matched mid-level layers best, while the final layers also captured the object-scene associations found in frontoparietal cortex. The match is not strictly ordered: in Khaligh-Razavi &amp; Kriegeskorte (2014), early visual cortex was matched best by AlexNet's second and third layers, not its first, and recordings from human lateral occipital cortex matched intermediate layers of VGG-19 and ResNet-50 best (<a href="https://doi.org/10.1038/s41467-024-49078-3">Bougou et al., 2024</a>). The toy kit's synthetic ROIs are built to show the textbook pattern.</p>
 <p><strong>Choose a single best layer only on independent data.</strong> Picking the best of seven layers and reporting its score on the same data inflates that score: it is double dipping (<a href="https://doi.org/10.1038/nn.2303">Kriegeskorte et al., 2009</a>). Either report every layer, fix the layer in advance, or choose it on separate images, runs or participants, for example with nested cross-validation, and test it on the rest. <a href="https://doi.org/10.1038/s41467-024-53147-y">Conwell et al. (2024)</a> choose each model's layer on 500 images and report its score on 500 others. When you compare models, compare each at its cross-validated best layer, and always next to the noise ceiling (<a href="https://doi.org/10.1371/journal.pcbi.1003553">Nili et al., 2014</a>).</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="rsa_1" name="__tabbed_2" type="radio"><input id="decoding_1" name="__tabbed_2" type="radio"><input id="encoding" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="rsa_1">RSA</label><label for="decoding_1">Decoding</label><label for="encoding">Encoding</label></div>
 <div class="tabbed-content">
@@ -3712,10 +3717,10 @@
 <p>Report the plain RSA of each layer first, as on this page: every unit counts the same. Reweighting the units, or combining layers with fitted weights, often fits the brain much better (<a href="https://doi.org/10.1016/j.jmp.2016.10.007">Khaligh-Razavi et al., 2017</a>; <a href="https://doi.org/10.1162/jocn_a_01755">Storrs et al., 2021</a>; <a href="https://doi.org/10.1016/j.neuroimage.2022.119294">Kaniuth &amp; Hebart, 2022</a>), but it is a fitted model: fit the weights on some images and participants and test on others. Reweighting can change which model comes out best (Kaniuth &amp; Hebart, 2022), and reweighted fits can even exceed the usual noise ceiling, which then needs to be computed differently (Kaniuth &amp; Hebart, 2022). <a href="https://doi.org/10.1038/s41467-024-53147-y">Conwell et al. (2024)</a> report both kinds of RSA and caution that standard mapping methods "may be too flexible". Treat the plain and the reweighted analysis as two separate questions.</p>
 </div>
 <div class="tabbed-block">
-<p>Categories become easier to read out linearly the deeper you go in a trained network (<a href="https://arxiv.org/abs/1610.01644">Alain &amp; Bengio, 2016</a>), as along the ventral stream (<a href="https://doi.org/10.1016/j.neuron.2012.01.010">DiCarlo et al., 2012</a>). Near-perfect decoding from the last layers is therefore expected and says little on its own. Decoding shows that the information is there in a readable form, not that the brain, or the network, uses it (<a href="https://doi.org/10.1016/j.neuroimage.2017.08.005">Hebart &amp; Baker, 2018</a>; <a href="https://doi.org/10.1016/j.conb.2019.04.002">Kriegeskorte &amp; Douglas, 2019</a>). Decode from every layer and compare the shape of that profile with the brain's.</p>
+<p>Categories become easier to read out linearly the deeper you go in a trained network (<a href="https://arxiv.org/abs/1610.01644">Alain &amp; Bengio, 2016</a>), as along the ventral stream (<a href="https://doi.org/10.1016/j.neuron.2012.01.010">DiCarlo et al., 2012</a>). Near-perfect decoding from the last layers is therefore expected and says little on its own. Decoding shows that the information is there in a readable form, not that the brain, or the network, uses it (<a href="https://doi.org/10.1016/j.neuroimage.2017.08.005">Hebart &amp; Baker, 2018</a>; <a href="https://doi.org/10.1016/j.conb.2019.04.002">Kriegeskorte &amp; Douglas, 2019</a>). Decode from every layer and compare the shape of that profile with the brain's. <a href="https://doi.org/10.1038/s41467-025-65468-7">Mattioni et al. (2025)</a> did this for people treated for dense bilateral cataracts at birth, repeating their fMRI category decoding on AlexNets trained or tested on blurred images.</p>
 </div>
 <div class="tabbed-block">
-<p>Layers differ enormously in size: the first layer of VGG16 has about 3.2 million numbers per image. More features give the ridge regression more freedom, so equalise the layers before you compare them. (A separate effect, whatever the number of units: layers whose representations have a higher effective dimensionality tend to predict held-out responses better; <a href="https://doi.org/10.1371/journal.pcbi.1011792">Elmoznino &amp; Bonner, 2024</a>.) Pool the feature maps (as the extract page does), project every layer onto the same number of dimensions with a random projection (<a href="https://doi.org/10.1038/s41467-024-53147-y">Conwell et al., 2024</a>), or reduce it with a PCA fitted on separate images (<a href="https://doi.org/10.1101/407007">Schrimpf et al., 2018</a>). To combine layers in one model, give each its own regularisation with banded ridge regression (<code>BandedRidgeCV</code> in himalaya; <a href="https://doi.org/10.1016/j.neuroimage.2019.04.012">Nunez-Elizalde et al., 2019</a>; <a href="https://doi.org/10.1016/j.neuroimage.2022.119728">Dupré la Tour et al., 2022</a>) and split the explained variance between layers: it can be largely shared, so the layer that predicts best may add little of its own (<a href="https://doi.org/10.3389/fncom.2015.00135">Lescroart et al., 2015</a>).</p>
+<p>Layers differ enormously in size: the first layer of AlexNet has 193,600 numbers per image, fc7 has 4,096. On these pages every layer keeps all its units. Kernel ridge regression is made for this case: with more features than images, himalaya fits the model through the images × images kernel, which has the same size for every layer, and the regularisation chosen on the training sprites keeps a large layer from simply memorising them. Compare layers by how well they predict held-out sprites. (A separate effect, whatever the number of units: layers whose representations have a higher effective dimensionality tend to predict held-out responses better; <a href="https://doi.org/10.1371/journal.pcbi.1011792">Elmoznino &amp; Bonner, 2024</a>.) If a layer does not fit in memory, or you want every layer to have the same number of features, project each layer onto the same number of dimensions with a seeded random projection (<a href="https://doi.org/10.1038/s41467-024-53147-y">Conwell et al., 2024</a>), or reduce it with a PCA fitted once on separate images and then kept fixed (<a href="https://doi.org/10.1101/407007">Schrimpf et al., 2018</a>). Never fit that PCA on the images you test on: the test images would then shape the features. To combine layers in one model, give each its own regularisation with banded ridge regression (<code>BandedRidgeCV</code> in himalaya; <a href="https://doi.org/10.1016/j.neuroimage.2019.04.012">Nunez-Elizalde et al., 2019</a>; <a href="https://doi.org/10.1016/j.neuroimage.2022.119728">Dupré la Tour et al., 2022</a>) and split the explained variance between layers: it can be largely shared, so the layer that predicts best may add little of its own (<a href="https://doi.org/10.3389/fncom.2015.00135">Lescroart et al., 2015</a>).</p>
 </div>
 </div>
 </div>
@@ -3724,7 +3729,7 @@
 <li>Record five to eight layers spread over the network, including the last one before the classifier, and name the modules in your methods.</li>
 <li>Report every layer, with the noise ceiling.</li>
 <li>If you need one layer, choose it on independent data or fix it in advance.</li>
-<li>For encoding, equalise the number of features across layers; to combine layers, use banded ridge.</li>
+<li>For encoding, keep every unit and use kernel ridge; reduce a layer only with a random projection or a PCA fitted on separate images. To combine layers, use banded ridge.</li>
 <li>Read high decoding from late layers as expected, and compare profiles rather than single numbers.</li>
 </ol>
 <hr>
@@ -3775,7 +3780,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-03T01:15:30+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 3, 2026 01:15:30 CEST">October 3, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-05T17:35:08+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 5, 2026 17:35:08 CEST">October 5, 2026</span></time>
     
   </span>
 
@@ -3863,7 +3868,7 @@
                 
                 
               
-              Thanks for your feedback! Help us improve this page by opening a new <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/issues/new/?title=[Feedback]+Compare%20with%20brain%20data+-+/research/dnn/dnn-compare.html" target="_blank" rel="noopener">Issue</a>, or contact a Wiki manager.
+              Thanks for your feedback! Help us improve this page by opening a new <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/issues/new/?title=[Feedback]+Compare%20with%20human%20data+-+/research/dnn/dnn-compare.html" target="_blank" rel="noopener">Issue</a>, or contact a Wiki manager.
             </div>
           
         </div>

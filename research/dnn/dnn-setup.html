@@ -2822,6 +2822,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#from-an-image-to-an-rdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From an image to an RDM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3-pick-a-model" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2961,7 +2972,7 @@
   <span class="md-ellipsis">
     
   
-    Compare with brain data
+    Compare with human data
   
 
     
@@ -3245,6 +3256,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#from-an-image-to-an-rdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From an image to an RDM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3-pick-a-model" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3386,7 +3408,7 @@
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">The brain data in the kit are synthetic</p>
-<p>These pages start <em>after</em> the brain analysis, with one activity pattern per image from each region of interest (see the <a href="../fmri/analysis/index.html">fMRI analysis workflow</a>; <a href="dnn-compare.html#load-and-line-up-the-data">Compare with brain data</a> shows how to read them from an SPM GLM). The kit fakes that result for a <code>V1</code>-like ROI, which responds to brightness, colour and edges at each position, and an <code>IT</code>-like ROI, which responds to category and sprite identity but not to position or colour.</p>
+<p>These pages start <em>after</em> the brain analysis, with one activity pattern per image from each region of interest (see the <a href="../fmri/analysis/index.html">fMRI analysis workflow</a>; <a href="dnn-compare.html#load-and-line-up-the-data">Compare with human data</a> shows how to read them from an SPM GLM). The kit fakes that result for a <code>V1</code>-like ROI, which responds to brightness, colour and edges at each position, and an <code>IT</code>-like ROI, which responds to category and sprite identity but not to position or colour.</p>
 </div>
 <p>Every file lists the images in the same order, the order of <code>manifest.csv</code>. Your own data should follow the same structure, so that the code on these pages works on it unchanged:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-data-layout.png" data-desc-position="bottom"><img alt="The toy kit lists the images in one order: the manifest, the stimuli and the brain data" src="../../assets/dnn/dnn-data-layout.png"></a></p>
@@ -3421,11 +3443,16 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-sprites.png" data-desc-position="bottom"><img alt="The 24 sprites of the toy kit, one row per category" src="../../assets/dnn/dnn-sprites.png" width="600"></a></p>
 </details>
 <hr>
+<h2 id="from-an-image-to-an-rdm">From an image to an RDM<a class="headerlink" href="#from-an-image-to-an-rdm" title="Permanent link">¶</a></h2>
+<p>If neural networks are new to you, start here: the animation shows what the rest of this section does with every image, and how to read the model cards below.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-conv-to-rdm.gif" data-desc-position="bottom"><img alt="Animation: a filter of AlexNet's first layer slides over the cat sprite and builds a channel map; the 64 maps of 55 × 55 are laid end to end into one vector; the same is done for a duck, a pizza, a banana, a ghost and a pumpkin, and the 6 × 6 RDM fills with 1 − Pearson r between the vectors, with the critter, food and spooky blocks marked" src="../../assets/dnn/dnn-conv-to-rdm.gif"></a></p>
+<p>Each filter of AlexNet's first layer slides over the image and gives one map of responses, and the ReLU sets the negative ones to zero. The 64 maps of 55 × 55 are laid end to end into one vector of 193,600 numbers per image. The RDM holds 1 − Pearson r between the vectors of every pair of images. The bars show a preview of each vector; the RDM uses all its values.</p>
+<hr>
 <h2 id="3-pick-a-model">3. Pick a model<a class="headerlink" href="#3-pick-a-model" title="Permanent link">¶</a></h2>
 <p>You rarely need to train a network yourself. Many trained models are public, and studies often compare several of them with the brain. Each card below says when a model is a good choice and shows what it does with our cat sprite: its first layer (four filters and their responses, or a view of the whole layer for models without shared filters) and the RDMs of its first and last layers over all 96 sprites, with the critter, food and spooky blocks marked.</p>
 <div class="admonition tip">
 <p class="admonition-title">Pick by your question, not by accuracy</p>
-<p>A model is a hypothesis about the brain. Choose models that differ in the way your question asks about (architecture, training data, objective, topography), and compare several rather than one.</p>
+<p>A model is a hypothesis about the brain. Choose models that differ in the way your question asks about (architecture, training data, objective, topography), and compare several rather than one. For example, <a href="https://doi.org/10.1038/s41598-025-20245-w">Maniquet et al. (2025)</a> compared feedforward and recurrent models of several sizes with human categorisation; <a href="https://doi.org/10.1038/s42003-024-07415-8">Duyck et al. (2024)</a> compared AlexNets trained on ImageNet, Stylized ImageNet and Ecoset, and CLIP; <a href="https://doi.org/10.1038/s41467-025-67855-6">Cortinovis et al. (2025)</a> compared networks trained on objects or on actions, and topographic networks.</p>
 </div>
 <p>The models at a glance; each name links to its card:</p>
 <table>
@@ -3692,7 +3719,7 @@
 <dd>MIT; research use only, per the model card</dd>
 </dl>
 <p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/clip.png" data-desc-position="bottom"><img alt="CLIP: the cat sprite with CLIP's 7 × 7 patch grid; four principal components of the first-layer patch filters (colour-striped centre, vertical grating, oblique edge, centre-surround blob), each above its 7 × 7 map for the cat; RDMs of the first layer and of the class token before the projection over the 96 sprites" class="resource-card__figure" src="../../assets/dnn/cards/clip.png"></a></p>
-<p class="resource-card__caption">CLIP's 768 patch filters look noisy one by one, so the strip shows four principal components of them, as the ViT paper does (<a href="https://arxiv.org/abs/2010.11929">Dosovitskiy et al., 2021</a>, Fig. 7). Each map shows how strongly each of the 49 patches of the cat loads on that component.</p>
+<p class="resource-card__caption">CLIP's 768 patch filters look noisy one by one, so the strip shows four principal components of them, as the ViT paper does (<a href="https://arxiv.org/abs/2010.11929">Dosovitskiy et al., 2021</a>, Fig. 7). Each map shows how strongly each of the 49 patches of the cat loads on that component. Loadings can be negative, so here white is the lowest loading, not 0.</p>
 <details class="example">
 <summary>Load it</summary>
 <p>
@@ -3910,7 +3937,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-04T15:04:06+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 4, 2026 15:04:06 CEST">October 4, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-05T17:35:08+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 5, 2026 17:35:08 CEST">October 5, 2026</span></time>
     
   </span>
 

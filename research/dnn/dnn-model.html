@@ -2983,7 +2983,7 @@
   <span class="md-ellipsis">
     
   
-    Compare with brain data
+    Compare with human data
   
 
     
@@ -3352,7 +3352,7 @@
 <ul>
 <li><strong>You need:</strong> the toy kit and the AlexNet features from <a href="dnn-extract.html">Extract activations</a> (<code>alexnet_features.npz</code>).</li>
 <li><strong>You get:</strong> which layers follow a visual property of the images and which follow their category, with RSA and with decoding.</li>
-<li><strong>No brain data needed.</strong> To compare the layers with brain patterns, go to <a href="dnn-compare.html">Compare with brain data</a>.</li>
+<li><strong>No human data needed.</strong> To compare the layers with brain or behavioural data, go to <a href="dnn-compare.html">Compare with human data</a>.</li>
 </ul>
 </div>
 <hr>
@@ -3394,7 +3394,7 @@
 </span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="n">model_rdms</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_categorical_rdm</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">values</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">category_name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># (3)!</span>
 </span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="n">model_rdms</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">pattern_descriptors</span><span class="p">[</span><span class="s2">"sprite"</span><span class="p">]</span> <span class="o">=</span> <span class="n">sprites</span>  <span class="c1"># (4)!</span>
 </span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="c1"># One RDM per layer, as on Compare with brain data</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="c1"># One RDM per layer, as on Compare with human data</span>
 </span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="n">layer_rdms</span> <span class="o">=</span> <span class="n">calc_rdm</span><span class="p">(</span>
 </span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="p">[</span><span class="n">Dataset</span><span class="p">(</span><span class="n">dnn</span><span class="p">[</span><span class="n">layer</span><span class="p">],</span> <span class="n">descriptors</span><span class="o">=</span><span class="p">{</span><span class="s2">"layer"</span><span class="p">:</span> <span class="n">layer</span><span class="p">},</span> <span class="n">obs_descriptors</span><span class="o">=</span><span class="p">{</span><span class="s2">"sprite"</span><span class="p">:</span> <span class="n">sprites</span><span class="p">})</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">],</span>
 </span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    <span class="n">method</span><span class="o">=</span><span class="s2">"correlation"</span><span class="p">,</span>
@@ -3431,11 +3431,11 @@
 <details class="example">
 <summary>Output</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>       category  position  background
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>conv1      0.22      0.06        0.24
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>conv2      0.30      0.18        0.34
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>conv3      0.30      0.16        0.29
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>conv4      0.34      0.15        0.32
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>conv5      0.35      0.11        0.26
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>conv1      0.35      0.07        0.38
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>conv2      0.35      0.17        0.36
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>conv3      0.33      0.19        0.33
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>conv4      0.38      0.16        0.39
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>conv5      0.39      0.12        0.34
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>fc6        0.29      0.06        0.23
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>fc7        0.24      0.03        0.20
 </span></code></pre></div>
@@ -3452,7 +3452,7 @@
 </span></code></pre></div>
 </details>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-model-rsa.png" data-desc-position="bottom"><img alt="Kendall's tau-A between each AlexNet layer and the category, position and background models" src="../../assets/dnn/dnn-model-rsa.png"></a></p>
-<p>Position shows up in the early convolutional layers: its τ<sub>A</sub> is low at conv1 (0.06), peaks at conv2 (0.18) and falls to 0.03 at fc7, as the network becomes less sensitive to where the sprite sits. Category rises from conv1 (0.22) to conv5 (0.35) and drops a little at the end (fc7, 0.24). Background follows almost the same profile, and in conv1 and conv2 it even matches better than category. Only the spooky sprites are out at night, so the two models overlap, and one model at a time cannot tell them apart.</p>
+<p>Position shows up in the early convolutional layers: its τ<sub>A</sub> is low at conv1 (0.07), peaks at conv3 (0.19) and falls to 0.03 at fc7, as the network becomes less sensitive to where the sprite sits. Category stays between 0.33 and 0.39 through the convolutional layers, highest at conv5, and drops in the fully connected ones (fc7, 0.24). Background follows almost the same profile, and in conv1, conv2 and conv4 it even matches slightly better than category. Only the spooky sprites are out at night, so the two models overlap, and one model at a time cannot tell them apart.</p>
 <hr>
 <h2 id="3-all-models-together-ridge-regression">3. All models together: ridge regression<a class="headerlink" href="#3-all-models-together-ridge-regression" title="Permanent link">¶</a></h2>
 <p>When models overlap, a layer that follows one of them also matches the other. A regression answers a different question: how much each model contributes once the others are taken into account. rsatoolbox does this with a weighted model, whose weights are fitted to the layer RDM by ridge regression:</p>
@@ -3494,25 +3494,25 @@
 <details class="example">
 <summary>Output</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>       category  position  background
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>conv1      0.81      0.31        0.50
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>conv2      0.69      0.52        0.49
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>conv3      0.80      0.49        0.35
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>conv4      0.84      0.43        0.32
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>conv5      0.95      0.30        0.09
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>conv1      0.85      0.28        0.45
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>conv2      0.89      0.38        0.25
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>conv3      0.85      0.45        0.28
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>conv4      0.86      0.39        0.32
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>conv5      0.93      0.31        0.18
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>fc6        0.96      0.21        0.18
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>fc7        0.97      0.13        0.22
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
 </span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>       category  position  background  all three
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>conv1      0.46      0.08        0.41       0.49
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>conv2      0.60      0.26        0.56       0.69
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>conv3      0.61      0.25        0.54       0.68
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>conv4      0.67      0.24        0.55       0.74
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>conv5      0.69      0.16        0.48       0.71
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>conv1      0.63      0.15        0.56       0.68
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>conv2      0.64      0.25        0.53       0.71
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>conv3      0.63      0.29        0.53       0.71
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>conv4      0.69      0.26        0.57       0.76
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>conv5      0.74      0.21        0.55       0.78
 </span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>fc6        0.60      0.04        0.43       0.58
 </span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>fc7        0.50     -0.01        0.37       0.48
 </span></code></pre></div>
 </details>
-<p>Once category is in the regression, background keeps a large weight only in the early layers (0.50 in conv1, against 0.81 for category) and almost none in conv5 (0.09 against 0.95): there, what looked like a match with the background was the category. Position keeps the profile it had on its own, peaking at conv2 (0.52), because it does not overlap with the other two. On held-out sprites, the combined model predicts the layer RDMs a little better than category alone from conv1 to conv5 (0.74 against 0.67 in conv4, for example), and a little worse in fc6 and fc7 (0.48 against 0.50 in fc7): there, the extra weights fit the training sprites more than they help with new ones. The ridge penalty barely matters here, because three models and 4,560 pairs of images leave little to stabilise.</p>
+<p>Once category is in the regression, background keeps a large weight only in conv1 (0.45, against 0.85 for category) and a small one from conv5 on (0.18 against 0.93 in conv5): there, what looked like a match with the background was mostly the category. Position keeps the profile it had on its own, peaking at conv3 (0.45), because it does not overlap with the other two. On held-out sprites, the combined model predicts the layer RDMs a little better than category alone from conv1 to conv5 (0.76 against 0.69 in conv4, for example), and a little worse in fc6 and fc7 (0.48 against 0.50 in fc7): there, the extra weights fit the training sprites more than they help with new ones. The ridge penalty barely matters here, because three models and 4,560 pairs of images leave little to stabilise.</p>
 <p><strong>When to use which.</strong></p>
 <table>
 <thead>
@@ -3569,16 +3569,16 @@
 </span></code></pre></div>
 <ol>
 <li>Four folds, each tested on sprites the classifier has not seen, with all four versions of a sprite on the same side.</li>
-<li>The same linear classifier as on <a href="dnn-compare.html">Compare with brain data</a>, where a note explains the alternatives.</li>
+<li>The same linear classifier as on <a href="dnn-compare.html">Compare with human data</a>, where a note explains the alternatives.</li>
 </ol>
 <details class="example">
 <summary>Output</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>       category  position
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>conv1      1.00      1.00
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>conv2      1.00      1.00
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>conv3      0.97      0.96
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>conv4      0.97      1.00
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>conv5      0.92      0.99
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>conv1      0.83      0.96
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>conv2      0.99      1.00
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>conv3      0.91      0.93
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>conv4      0.96      0.96
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>conv5      0.98      0.94
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>fc6        0.97      0.93
 </span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>fc7        0.95      0.86
 </span></code></pre></div>
@@ -3595,7 +3595,7 @@
 </span></code></pre></div>
 </details>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-model-decoding.png" data-desc-position="bottom"><img alt="Decoding accuracy for category and position by AlexNet layer, with chance levels" src="../../assets/dnn/dnn-model-decoding.png"></a></p>
-<p>Decoding reads both properties out of almost every layer, position with 86 to 100% (chance 50%) and category with 92 to 100% (chance 33%). Even fc7, whose geometry hardly follows position in the RSA, still tells shifted from centred sprites 86% of the time. Decoding finds any direction in the layer that separates the groups, however small, while RSA asks whether the property shapes the layer's overall geometry. A property can be decodable and still play a minor part in how the layer organises the images.</p>
+<p>Decoding reads both properties out of almost every layer, position with 86 to 100% (chance 50%) and category with 83 to 99% (chance 33%). Even fc7, whose geometry hardly follows position in the RSA, still tells shifted from centred sprites 86% of the time. Decoding finds any direction in the layer that separates the groups, however small, while RSA asks whether the property shapes the layer's overall geometry. A property can be decodable and still play a minor part in how the layer organises the images.</p>
 <hr>
 <h2 id="good-practice">Good practice<a class="headerlink" href="#good-practice" title="Permanent link">¶</a></h2>
 <details class="tip">
@@ -3611,9 +3611,9 @@
 <div class="grid cards">
 <ul>
 <li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"></path></svg></span> <strong><a href="dnn-compare.html">Compare with brain data</a></strong></p>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"></path></svg></span> <strong><a href="dnn-compare.html">Compare with human data</a></strong></p>
 <hr>
-<p>The same layers against brain patterns: RSA, decoding and encoding models, with noise ceilings.</p>
+<p>The same layers against brain or behavioural data: RSA, decoding and encoding models, with noise ceilings.</p>
 </li>
 </ul>
 </div>
@@ -3642,7 +3642,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-03T01:15:30+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 3, 2026 01:15:30 CEST">October 3, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-05T17:35:08+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 5, 2026 17:35:08 CEST">October 5, 2026</span></time>
     
   </span>
 
@@ -3781,13 +3781,13 @@
         
         
           
-          <a href="dnn-compare.html" class="md-footer__link md-footer__link--next" aria-label="Next: Compare with brain data">
+          <a href="dnn-compare.html" class="md-footer__link md-footer__link--next" aria-label="Next: Compare with human data">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Compare with brain data
+                Compare with human data
               </div>
             </div>
             <div class="md-footer__button md-icon">

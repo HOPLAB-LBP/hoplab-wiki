@@ -2972,7 +2972,7 @@
   <span class="md-ellipsis">
     
   
-    Compare with brain data
+    Compare with human data
   
 
     
@@ -3329,14 +3329,14 @@
 <p class="admonition-title">On this page</p>
 <ul>
 <li><strong>You need:</strong> a model (pretrained or your own) and your images listed in a manifest, as in <a href="dnn-setup.html">Set up and pick a model</a>.</li>
-<li><strong>You get:</strong> one file with the activation of every chosen layer for every image, in manifest order, ready to <a href="dnn-compare.html">compare with brain data</a>.</li>
+<li><strong>You get:</strong> one file with the activation of every chosen layer for every image, in manifest order, ready to <a href="dnn-compare.html">compare with human data</a>.</li>
 </ul>
 </div>
 <hr>
 <h2 id="what-is-an-activation">What is an activation?<a class="headerlink" href="#what-is-an-activation" title="Permanent link">¶</a></h2>
 <p>When an image goes through a network, every layer turns the output of the previous layer into a new set of numbers. A convolutional layer produces a stack of feature maps (channels × height × width); a fully connected layer produces a vector. These numbers, for one image, are that layer's <em>activation pattern</em>: the network's equivalent of a voxel pattern in an ROI.</p>
 <p>We record them with <a href="https://vicco-group.github.io/thingsvision/">thingsvision</a> (<a href="https://doi.org/10.3389/fninf.2021.679838">Muttenthaler &amp; Hebart, 2021</a>). It loads models from torchvision, timm, CORnet, CLIP and more through one interface, runs your images through them, and returns the activations of the layers you ask for.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-activation-to-matrix.png" data-desc-position="bottom"><img alt="From one image to one row of the activation matrix: feature maps, pooling, flattening" src="../../assets/dnn/dnn-activation-to-matrix.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-activation-to-matrix.png" data-desc-position="bottom"><img alt="From one image to one row of the activation matrix: the image, its 64 feature maps, the maps laid end to end, and the matrix of all 96 images" src="../../assets/dnn/dnn-activation-to-matrix.png"></a></p>
 <hr>
 <h2 id="1-load-the-model-and-find-its-layers">1. Load the model and find its layers<a class="headerlink" href="#1-load-the-model-and-find-its-layers" title="Permanent link">¶</a></h2>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -3440,32 +3440,25 @@
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">activations</span> <span class="o">=</span> <span class="n">extractor</span><span class="o">.</span><span class="n">extract_features</span><span class="p">(</span>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">batches</span><span class="o">=</span><span class="n">batches</span><span class="p">,</span>
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">module_names</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">layers</span><span class="p">),</span>  <span class="c1"># (1)!</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="c1"># Keep the maps as channels x height x width, so we can pool them below</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="c1"># Keep the maps as channels x height x width, to plot them further down</span>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="n">flatten_acts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">)</span>
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="k">def</span><span class="w"> </span><span class="nf">pool</span><span class="p">(</span><span class="n">activation</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="sd">"""Average each convolutional feature map down to size x size, then flatten to images x features."""</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="k">if</span> <span class="n">activation</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>        <span class="n">activation</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">adaptive_avg_pool2d</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">activation</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="k">return</span> <span class="n">activation</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">activation</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="n">features</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">pool</span><span class="p">(</span><span class="n">activations</span><span class="p">[</span><span class="n">module</span><span class="p">])</span> <span class="k">for</span> <span class="n">module</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">layers</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>  <span class="c1"># (2)!</span>
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">features</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&gt;5</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># images x features</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># One row per image: every value of every map, laid end to end</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="n">features</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">activations</span><span class="p">[</span><span class="n">module</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">activations</span><span class="p">[</span><span class="n">module</span><span class="p">]),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">module</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">layers</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>  <span class="c1"># (2)!</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">features</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&gt;5</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># images x features</span>
 </span></code></pre></div>
 <ol>
 <li>All layers come out of one pass through the network, as a dictionary from layer name to array.</li>
-<li>Convolutional maps are large (the first layer of AlexNet gives 64 × 55 × 55 = 193,600 numbers per image). Averaging each map down to 6 × 6 keeps the coarse spatial layout and makes the arrays small enough for decoding and regression. For RSA alone you can keep the full maps with <code>flatten_acts=True</code>. With thousands of images the full maps no longer fit in memory; thingsvision's <code>extractor.batch_extraction()</code> (see the <a href="https://github.com/ViCCo-Group/thingsvision">thingsvision README</a>) lets you pool each batch as it comes.</li>
+<li>Each layer becomes one row per image, with every value of every map laid end to end: the first layer of AlexNet gives 64 × 55 × 55 = 193,600 numbers per image. RSA, decoding and encoding on the next pages all use these full vectors, as <a href="https://doi.org/10.1038/s41467-024-53147-y">Conwell et al. (2024)</a> did for their RSA; averaging each map down first, say to 6 × 6, would discard most of the spatial detail of the early layers (conv1's maps are 55 × 55). With thousands of images the full maps no longer fit in memory; thingsvision can then write the features to disk as it extracts them (<code>output_dir</code>, see its <a href="https://vicco-group.github.io/thingsvision/LowMemOptions.html">low-memory options</a>).</li>
 </ol>
 <p>The output gives one matrix per layer, images × features:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>conv1: (96, 2304)
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>conv2: (96, 6912)
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>conv3: (96, 13824)
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>conv4: (96, 9216)
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>conv5: (96, 9216)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>conv1: (96, 193600)
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>conv2: (96, 139968)
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>conv3: (96, 64896)
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>conv4: (96, 43264)
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>conv5: (96, 43264)
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  fc6: (96, 4096)
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  fc7: (96, 4096)
 </span></code></pre></div>
@@ -3530,14 +3523,15 @@
 <p>Whether to record a layer before or after its ReLU has not been settled by direct comparisons. <a href="https://doi.org/10.1038/s41467-024-53147-y">Conwell et al. (2024)</a> treat a convolution and the ReLU after it as two candidate layers and choose between them on independent data. Whatever you pick, use the same kind of module throughout, and name the modules in your methods. Which of the recorded layers to compare with a brain region is covered in <a href="dnn-compare.html#which-layer-to-compare">Which layer to compare</a>.</p>
 <hr>
 <h2 id="4-save-them-with-the-image-order">4. Save them with the image order<a class="headerlink" href="#4-save-them-with-the-image-order" title="Permanent link">¶</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="s2">"alexnet_features.npz"</span><span class="p">,</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">image_id</span><span class="o">=</span><span class="n">manifest</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">),</span>  <span class="c1"># (1)!</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="o">**</span><span class="n">features</span><span class="p">,</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Compressed: most values are zeros after the ReLU, so the file shrinks about sixfold</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">np</span><span class="o">.</span><span class="n">savez_compressed</span><span class="p">(</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="s2">"alexnet_features.npz"</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">image_id</span><span class="o">=</span><span class="n">manifest</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">),</span>  <span class="c1"># (1)!</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="o">**</span><span class="n">features</span><span class="p">,</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">)</span>
 </span></code></pre></div>
 <ol>
-<li>Saving the image names with the activations lets every later script check that rows line up with the brain data, instead of trusting that the order never changed.</li>
+<li>Saving the image names with the activations lets every later script check that rows line up with the human data, instead of trusting that the order never changed.</li>
 </ol>
 <p>The file holds one array per layer, images × units, plus the image order:</p>
 <table>
@@ -3556,28 +3550,28 @@
 </tr>
 <tr>
 <td><code>conv1</code></td>
-<td><code>(96, 2304)</code></td>
-<td>images × units (64 channels × 6 × 6)</td>
+<td><code>(96, 193600)</code></td>
+<td>images × units (64 channels × 55 × 55)</td>
 </tr>
 <tr>
 <td><code>conv2</code></td>
-<td><code>(96, 6912)</code></td>
-<td>images × units (192 channels × 6 × 6)</td>
+<td><code>(96, 139968)</code></td>
+<td>images × units (192 channels × 27 × 27)</td>
 </tr>
 <tr>
 <td><code>conv3</code></td>
-<td><code>(96, 13824)</code></td>
-<td>images × units (384 channels × 6 × 6)</td>
+<td><code>(96, 64896)</code></td>
+<td>images × units (384 channels × 13 × 13)</td>
 </tr>
 <tr>
 <td><code>conv4</code></td>
-<td><code>(96, 9216)</code></td>
-<td>images × units (256 channels × 6 × 6)</td>
+<td><code>(96, 43264)</code></td>
+<td>images × units (256 channels × 13 × 13)</td>
 </tr>
 <tr>
 <td><code>conv5</code></td>
-<td><code>(96, 9216)</code></td>
-<td>images × units (256 channels × 6 × 6)</td>
+<td><code>(96, 43264)</code></td>
+<td>images × units (256 channels × 13 × 13)</td>
 </tr>
 <tr>
 <td><code>fc6</code></td>
@@ -3593,14 +3587,14 @@
 </table>
 <details class="example">
 <summary>Plot the feature maps of one image</summary>
-<p>The unpooled activations are still in <code>activations</code>, so plotting the maps of the first layer for the cat takes a few lines:</p>
+<p>The maps keep their shape in <code>activations</code>, so plotting the maps of the first layer for the cat takes a few lines:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">cat</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">manifest</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"cat_original"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># the row of the cat</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">))</span>  <span class="c1"># the first 16 of the 64 channels</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">for</span> <span class="n">channel</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">):</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="c1"># bright = strong response</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">activations</span><span class="p">[</span><span class="s2">"features.1"</span><span class="p">][</span><span class="n">cat</span><span class="p">,</span> <span class="n">channel</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"magma"</span><span class="p">)</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="c1"># white = 0, dark = strong response</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">activations</span><span class="p">[</span><span class="s2">"features.1"</span><span class="p">][</span><span class="n">cat</span><span class="p">,</span> <span class="n">channel</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"bone_r"</span><span class="p">)</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"channel </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 </span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -3642,7 +3636,7 @@
 <p>Test which layers follow a visual property and which follow category, with model RDMs and decoding.</p>
 </li>
 <li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"></path></svg></span> <strong><a href="dnn-compare.html">Compare with brain data</a></strong></p>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"></path></svg></span> <strong><a href="dnn-compare.html">Compare with human data</a></strong></p>
 <hr>
 <p>Use <code>alexnet_features.npz</code> and the ROI patterns for RSA, decoding and encoding models.</p>
 </li>
@@ -3673,7 +3667,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-03T01:15:30+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 3, 2026 01:15:30 CEST">October 3, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-05T17:35:08+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 5, 2026 17:35:08 CEST">October 5, 2026</span></time>
     
   </span>
 
