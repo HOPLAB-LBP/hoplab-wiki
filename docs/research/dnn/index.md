@@ -5,7 +5,7 @@ Deep neural networks (DNNs) trained on images predict neural responses along the
 ![Top: the toy kit, 24 pixel-art sprites in three categories, each in four versions. Bottom: the workflow, in which the same images go to a network and to a participant, and layer activations are compared with brain patterns by RSA, decoding and encoding](../../assets/dnn/dnn-overview.png)
 
 !!! info "Before you start"
-    You need basic Python and a conda installation. If either is new to you, start with [Coding practices](../coding/index.md).
+    You need basic Python and a conda installation. If either is new to you, start with [Coding practices](../coding/index.md). If neural networks are new to you, look at [From an image to an RDM](dnn-setup.md#from-an-image-to-an-rdm) first.
 
 All pages use the same small dataset, so you can run every code block as you read. It has 24 pixel-art sprites in three categories, each category with its own scene and each sprite in four variants, and synthetic "brain activations" for two regions of interest.
 

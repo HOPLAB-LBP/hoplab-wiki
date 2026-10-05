@@ -176,7 +176,7 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
 
     ![RSA model comparison for the V1-like ROI](../../assets/dnn/dnn-rsa-v1.png){ width="49%" } ![RSA model comparison for the IT-like ROI](../../assets/dnn/dnn-rsa-it.png){ width="49%" }
 
-    The V1-like ROI is matched best by the early layers (conv1, r = 0.483; conv2, 0.468) and less by the later ones (fc7, 0.296). The IT-like ROI, which ignores where the sprite sits and its colours, shows the opposite profile: it is matched poorly by conv1 (0.134) and best by the deeper layers (conv5, 0.284). conv1 is not significantly below the noise ceiling of the V1-like ROI; every other layer falls below the ceiling of both ROIs. With crossnobis distances (box below), the IT profile has the same shape, highest at conv5.
+    The V1-like ROI is matched best by conv1 (r = 0.502) and worst by fc7 (0.296); in between, the profile dips at conv3 (0.376) and rises again at conv5 (0.425). The IT-like ROI, which ignores where the sprite sits and its colours, peaks later: it rises from conv1 (0.216) to conv5 (0.283) and falls in the fully connected layers (fc7, 0.236). conv1 is not significantly below the noise ceiling of the V1-like ROI; every other layer falls below the ceiling of both ROIs. With crossnobis distances (box below), the IT profile has the same shape, highest at conv5.
 
     ??? info "Other dissimilarities and comparisons, and when to use them"
         **Dissimilarity between two patterns** (`method` of `calc_rdm`):
@@ -232,11 +232,9 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
     # Four folds: every sprite is tested once, with all its versions
     cv = StratifiedGroupKFold(n_splits=4, shuffle=True, random_state=0)
     classifier = make_pipeline(StandardScaler(), SVC(kernel="linear"))  # (2)!
-    # Or shrinkage LDA (see the note below):
-    # from sklearn.decomposition import PCA
+    # Or, for ROI data only, shrinkage LDA (see the note below):
     # from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-    # classifier = make_pipeline(StandardScaler(), PCA(n_components=50),
-    #                            LinearDiscriminantAnalysis(solver="lsqr", shrinkage="auto"))
+    # classifier = make_pipeline(StandardScaler(), LinearDiscriminantAnalysis(solver="lsqr", shrinkage="auto"))
     
     
     def decode(X):
@@ -253,7 +251,7 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
     ```
 
     1. All variants of a sprite stay in the same fold. Otherwise the classifier could recognise the shifted cat from the training set instead of learning what a critter is.
-    2. A linear support vector machine, a common choice in MVPA. The scaler is part of the pipeline, so it is fitted on the training folds only: scaling all data before cross-validation leaks information from the test set. Shrinkage LDA, the commented alternative, is often preferred for brain data: it has no setting to tune (the shrinkage is estimated from the data, while the SVM's `C` is a choice), it takes the noise correlations between voxels into account, and it is fast, which helps when you repeat the decoding many times for a permutation test. It estimates a features × features covariance, so with thousands of network units reduce them first, as the PCA step does, inside the pipeline so that it is fitted on the training folds only.
+    2. A linear support vector machine, a common choice in MVPA. The scaler is part of the pipeline, so it is fitted on the training folds only: scaling all data before cross-validation leaks information from the test set. Shrinkage LDA, the commented alternative, is often preferred for brain data: it has no setting to tune (the shrinkage is estimated from the data, while the SVM's `C` is a choice), it takes the noise correlations between voxels into account, and it is fast, which helps when you repeat the decoding many times for a permutation test. It estimates a features × features covariance, so keep it for ROIs: for a network layer with tens of thousands of units that matrix does not fit in memory.
 
     ??? example "Plot decoding by layer"
 
@@ -270,7 +268,7 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
 
     ![Category decoding accuracy by AlexNet layer, with the two ROIs as reference lines](../../assets/dnn/dnn-decoding.png)
 
-    Category is readable almost everywhere: from every AlexNet layer (92 to 100% correct on new sprites, chance 33%), from the V1-like ROI (98%) and from the IT-like ROI (86%). The reason is the scenes: grass, plates and night skies make the categories visible in the pixels themselves, so even the first layer and V1 can read them. Decoding tells you that the information is there, not what kind of feature carries it. To ask whether a layer represents the objects rather than their backgrounds, you would test on images that change the background, or compare the profiles with RSA and encoding.
+    Category is readable almost everywhere: from every AlexNet layer (83 to 99% correct on new sprites, chance 33%), from the V1-like ROI (98%) and from the IT-like ROI (86%). The reason is the scenes: grass, plates and night skies make the categories visible in the pixels themselves, so even the first layer and V1 can read them. Decoding tells you that the information is there, not what kind of feature carries it. To ask whether a layer represents the objects rather than their backgrounds, you would test on images that change the background, or compare the profiles with RSA and encoding.
 
     ??? tip "Testing against chance"
         Chance is 1/3 here, and the plot marks it. To claim that an accuracy is *above* chance, though, you need a test: with few test images, a classifier that learned nothing still scatters widely around 33% ([Combrisson & Jerbi, 2015](https://doi.org/10.1016/j.jneumeth.2015.01.010)), and a binomial test does not apply because the four versions of a sprite are not independent. Use a permutation test: give the sprites random categories (all versions of a sprite the same one), rerun the same folds many times, and compare the real accuracy with that distribution. scikit-learn's `permutation_test_score` does not do this when you pass the sprite groups, because it then shuffles the labels only within each sprite. With the toy kit every accuracy is far above chance, so the test only matters for real data.
@@ -364,7 +362,7 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
 
     ![Encoding performance by layer for the two ROIs](../../assets/dnn/dnn-encoding.png)
 
-    conv1 predicts the V1-like voxels best (r = 0.61, against a ceiling of 0.73), and later layers less well (fc7, 0.50). Every layer predicts the IT-like voxels only weakly (r = 0.11 to 0.12, against a ceiling of 0.69). That is by design: the category part of the IT signal is predictable, because every layer sees the scenes, but most of the IT signal in the kit is a random pattern for each sprite, which no model can predict for a sprite it has not seen. RSA still finds IT structure in the deeper layers because it also compares the four variants of each sprite with one another, and those share the sprite's pattern.
+    conv1 predicts the V1-like voxels best (r = 0.60, against a ceiling of 0.73), and later layers less well (fc7, 0.50). Every layer predicts the IT-like voxels only weakly (r = 0.11 to 0.13, against a ceiling of 0.69). That is by design: the category part of the IT signal is predictable, because every layer sees the scenes, but most of the IT signal in the kit is a random pattern for each sprite, which no model can predict for a sprite it has not seen. RSA still finds IT structure in the deeper layers because it also compares the four variants of each sprite with one another, and those share the sprite's pattern.
 
 ---
 
@@ -388,14 +386,14 @@ A network has many layers, and which one you compare with a brain region changes
 
 === "Encoding"
 
-    Layers differ enormously in size: the first layer of VGG16 has about 3.2 million numbers per image. More features give the ridge regression more freedom, so equalise the layers before you compare them. (A separate effect, whatever the number of units: layers whose representations have a higher effective dimensionality tend to predict held-out responses better; [Elmoznino & Bonner, 2024](https://doi.org/10.1371/journal.pcbi.1011792).) Pool the feature maps (as the extract page does), project every layer onto the same number of dimensions with a random projection ([Conwell et al., 2024](https://doi.org/10.1038/s41467-024-53147-y)), or reduce it with a PCA fitted on separate images ([Schrimpf et al., 2018](https://doi.org/10.1101/407007)). To combine layers in one model, give each its own regularisation with banded ridge regression (`BandedRidgeCV` in himalaya; [Nunez-Elizalde et al., 2019](https://doi.org/10.1016/j.neuroimage.2019.04.012); [Dupré la Tour et al., 2022](https://doi.org/10.1016/j.neuroimage.2022.119728)) and split the explained variance between layers: it can be largely shared, so the layer that predicts best may add little of its own ([Lescroart et al., 2015](https://doi.org/10.3389/fncom.2015.00135)).
+    Layers differ enormously in size: the first layer of AlexNet has 193,600 numbers per image, fc7 has 4,096. On these pages every layer keeps all its units. Kernel ridge regression is made for this case: with more features than images, himalaya fits the model through the images × images kernel, which has the same size for every layer, and the regularisation chosen on the training sprites keeps a large layer from simply memorising them. Compare layers by how well they predict held-out sprites. (A separate effect, whatever the number of units: layers whose representations have a higher effective dimensionality tend to predict held-out responses better; [Elmoznino & Bonner, 2024](https://doi.org/10.1371/journal.pcbi.1011792).) If a layer does not fit in memory, or you want every layer to have the same number of features, project each layer onto the same number of dimensions with a seeded random projection ([Conwell et al., 2024](https://doi.org/10.1038/s41467-024-53147-y)), or reduce it with a PCA fitted once on separate images and then kept fixed ([Schrimpf et al., 2018](https://doi.org/10.1101/407007)). Never fit that PCA on the images you test on: the test images would then shape the features. To combine layers in one model, give each its own regularisation with banded ridge regression (`BandedRidgeCV` in himalaya; [Nunez-Elizalde et al., 2019](https://doi.org/10.1016/j.neuroimage.2019.04.012); [Dupré la Tour et al., 2022](https://doi.org/10.1016/j.neuroimage.2022.119728)) and split the explained variance between layers: it can be largely shared, so the layer that predicts best may add little of its own ([Lescroart et al., 2015](https://doi.org/10.3389/fncom.2015.00135)).
 
 **A recipe.**
 
 1. Record five to eight layers spread over the network, including the last one before the classifier, and name the modules in your methods.
 2. Report every layer, with the noise ceiling.
 3. If you need one layer, choose it on independent data or fix it in advance.
-4. For encoding, equalise the number of features across layers; to combine layers, use banded ridge.
+4. For encoding, keep every unit and use kernel ridge; reduce a layer only with a random projection or a PCA fitted on separate images. To combine layers, use banded ridge.
 5. Read high decoding from late layers as expected, and compare profiles rather than single numbers.
 
 ---
