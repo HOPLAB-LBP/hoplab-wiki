@@ -680,3 +680,7 @@ The output is:
     Record what every layer does with each image and save it for analysis.
 
 </div>
+
+<!--
+__TODO__: [Andrea] Redesign the toy kit so that one low-level dimension (e.g. colour or position) and one high-level dimension (category) are crossed and clearly separable, and the layer RDMs show the shift from low to high level. With the full AlexNet activations it is not clear now: the V1-like ROI is matched best by conv1 (0.502) but the profile dips and rises again (conv3 0.376, conv5 0.425), and the IT-like ROI changes little across layers (conv1 0.216, conv5 0.283). (Not started.)
+-->
