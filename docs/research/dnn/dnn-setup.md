@@ -95,7 +95,7 @@ dnn-toy-kit/
 ```
 
 !!! warning "The brain data in the kit are synthetic"
-    These pages start *after* the brain analysis, with one activity pattern per image from each region of interest (see the [fMRI analysis workflow](../fmri/analysis/index.md); [Compare with brain data](dnn-compare.md#load-and-line-up-the-data) shows how to read them from an SPM GLM). The kit fakes that result for a `V1`-like ROI, which responds to brightness, colour and edges at each position, and an `IT`-like ROI, which responds to category and sprite identity but not to position or colour.
+    These pages start *after* the brain analysis, with one activity pattern per image from each region of interest (see the [fMRI analysis workflow](../fmri/analysis/index.md); [Compare with human data](dnn-compare.md#load-and-line-up-the-data) shows how to read them from an SPM GLM). The kit fakes that result for a `V1`-like ROI, which responds to brightness, colour and edges at each position, and an `IT`-like ROI, which responds to category and sprite identity but not to position or colour.
 
 Every file lists the images in the same order, the order of `manifest.csv`. Your own data should follow the same structure, so that the code on these pages works on it unchanged:
 
@@ -138,12 +138,22 @@ print(manifest.groupby("category")["sprite"].nunique())  # 8 sprites per categor
 
 ---
 
+## From an image to an RDM
+
+If neural networks are new to you, start here: the animation shows what the rest of this section does with every image, and how to read the model cards below.
+
+![Animation: a filter of AlexNet's first layer slides over the cat sprite and builds a channel map; the 64 maps of 55 × 55 are laid end to end into one vector; the same is done for a duck, a pizza, a banana, a ghost and a pumpkin, and the 6 × 6 RDM fills with 1 − Pearson r between the vectors, with the critter, food and spooky blocks marked](../../assets/dnn/dnn-conv-to-rdm.gif)
+
+Each filter of AlexNet's first layer slides over the image and gives one map of responses, and the ReLU sets the negative ones to zero. The 64 maps of 55 × 55 are laid end to end into one vector of 193,600 numbers per image. The RDM holds 1 − Pearson r between the vectors of every pair of images. The bars show a preview of each vector; the RDM uses all its values.
+
+---
+
 ## 3. Pick a model
 
 You rarely need to train a network yourself. Many trained models are public, and studies often compare several of them with the brain. Each card below says when a model is a good choice and shows what it does with our cat sprite: its first layer (four filters and their responses, or a view of the whole layer for models without shared filters) and the RDMs of its first and last layers over all 96 sprites, with the critter, food and spooky blocks marked.
 
 !!! tip "Pick by your question, not by accuracy"
-    A model is a hypothesis about the brain. Choose models that differ in the way your question asks about (architecture, training data, objective, topography), and compare several rather than one.
+    A model is a hypothesis about the brain. Choose models that differ in the way your question asks about (architecture, training data, objective, topography), and compare several rather than one. For example, [Maniquet et al. (2025)](https://doi.org/10.1038/s41598-025-20245-w) compared feedforward and recurrent models of several sizes with human categorisation; [Duyck et al. (2024)](https://doi.org/10.1038/s42003-024-07415-8) compared AlexNets trained on ImageNet, Stylized ImageNet and Ecoset, and CLIP; [Cortinovis et al. (2025)](https://doi.org/10.1038/s41467-025-67855-6) compared networks trained on objects or on actions, and topographic networks.
 
 The models at a glance; each name links to its card:
 
@@ -425,7 +435,7 @@ License
 ![CLIP: the cat sprite with CLIP's 7 × 7 patch grid; four principal components of the first-layer patch filters (colour-striped centre, vertical grating, oblique edge, centre-surround blob), each above its 7 × 7 map for the cat; RDMs of the first layer and of the class token before the projection over the 96 sprites](../../assets/dnn/cards/clip.png){ .resource-card__figure }
 { .resource-card__plate }
 
-CLIP's 768 patch filters look noisy one by one, so the strip shows four principal components of them, as the ViT paper does ([Dosovitskiy et al., 2021](https://arxiv.org/abs/2010.11929), Fig. 7). Each map shows how strongly each of the 49 patches of the cat loads on that component.
+CLIP's 768 patch filters look noisy one by one, so the strip shows four principal components of them, as the ViT paper does ([Dosovitskiy et al., 2021](https://arxiv.org/abs/2010.11929), Fig. 7). Each map shows how strongly each of the 49 patches of the cat loads on that component. Loadings can be negative, so here white is the lowest loading, not 0.
 { .resource-card__caption }
 
 ??? example "Load it"
@@ -670,3 +680,7 @@ The output is:
     Record what every layer does with each image and save it for analysis.
 
 </div>
+
+<!--
+__TODO__: [Andrea] Redesign the toy kit so that one low-level dimension (e.g. colour or position) and one high-level dimension (category) are crossed and clearly separable, and the layer RDMs show the shift from low to high level. With the full AlexNet activations it is not clear now: the V1-like ROI is matched best by conv1 (0.502) but the profile dips and rises again (conv3 0.376, conv5 0.425), and the IT-like ROI changes little across layers (conv1 0.216, conv5 0.283). (Not started.)
+-->

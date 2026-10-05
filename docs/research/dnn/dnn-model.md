@@ -3,7 +3,7 @@
 !!! abstract "On this page"
     - **You need:** the toy kit and the AlexNet features from [Extract activations](dnn-extract.md) (`alexnet_features.npz`).
     - **You get:** which layers follow a visual property of the images and which follow their category, with RSA and with decoding.
-    - **No brain data needed.** To compare the layers with brain patterns, go to [Compare with brain data](dnn-compare.md).
+    - **No human data needed.** To compare the layers with brain or behavioural data, go to [Compare with human data](dnn-compare.md).
 
 ---
 
@@ -50,7 +50,7 @@ for name, values in properties.items():
     model_rdms[name] = get_categorical_rdm(pd.factorize(values)[0], category_name=name)  # (3)!
     model_rdms[name].pattern_descriptors["sprite"] = sprites  # (4)!
 
-# One RDM per layer, as on Compare with brain data
+# One RDM per layer, as on Compare with human data
 layer_rdms = calc_rdm(
     [Dataset(dnn[layer], descriptors={"layer": layer}, obs_descriptors={"sprite": sprites}) for layer in layers],
     method="correlation",
@@ -94,11 +94,11 @@ print(tau.round(2))
 
     ```text
            category  position  background
-    conv1      0.22      0.06        0.24
-    conv2      0.30      0.18        0.34
-    conv3      0.30      0.16        0.29
-    conv4      0.34      0.15        0.32
-    conv5      0.35      0.11        0.26
+    conv1      0.35      0.07        0.38
+    conv2      0.35      0.17        0.36
+    conv3      0.33      0.19        0.33
+    conv4      0.38      0.16        0.39
+    conv5      0.39      0.12        0.34
     fc6        0.29      0.06        0.23
     fc7        0.24      0.03        0.20
     ```
@@ -117,7 +117,7 @@ print(tau.round(2))
 
 ![Kendall's tau-A between each AlexNet layer and the category, position and background models](../../assets/dnn/dnn-model-rsa.png)
 
-Position shows up in the early convolutional layers: its τ<sub>A</sub> is low at conv1 (0.06), peaks at conv2 (0.18) and falls to 0.03 at fc7, as the network becomes less sensitive to where the sprite sits. Category rises from conv1 (0.22) to conv5 (0.35) and drops a little at the end (fc7, 0.24). Background follows almost the same profile, and in conv1 and conv2 it even matches better than category. Only the spooky sprites are out at night, so the two models overlap, and one model at a time cannot tell them apart.
+Position shows up in the early convolutional layers: its τ<sub>A</sub> is low at conv1 (0.07), peaks at conv3 (0.19) and falls to 0.03 at fc7, as the network becomes less sensitive to where the sprite sits. Category stays between 0.33 and 0.39 through the convolutional layers, highest at conv5, and drops in the fully connected ones (fc7, 0.24). Background follows almost the same profile, and in conv1, conv2 and conv4 it even matches slightly better than category. Only the spooky sprites are out at night, so the two models overlap, and one model at a time cannot tell them apart.
 
 ---
 
@@ -165,25 +165,25 @@ print(held_out.round(2))
 
     ```text
            category  position  background
-    conv1      0.81      0.31        0.50
-    conv2      0.69      0.52        0.49
-    conv3      0.80      0.49        0.35
-    conv4      0.84      0.43        0.32
-    conv5      0.95      0.30        0.09
+    conv1      0.85      0.28        0.45
+    conv2      0.89      0.38        0.25
+    conv3      0.85      0.45        0.28
+    conv4      0.86      0.39        0.32
+    conv5      0.93      0.31        0.18
     fc6        0.96      0.21        0.18
     fc7        0.97      0.13        0.22
 
            category  position  background  all three
-    conv1      0.46      0.08        0.41       0.49
-    conv2      0.60      0.26        0.56       0.69
-    conv3      0.61      0.25        0.54       0.68
-    conv4      0.67      0.24        0.55       0.74
-    conv5      0.69      0.16        0.48       0.71
+    conv1      0.63      0.15        0.56       0.68
+    conv2      0.64      0.25        0.53       0.71
+    conv3      0.63      0.29        0.53       0.71
+    conv4      0.69      0.26        0.57       0.76
+    conv5      0.74      0.21        0.55       0.78
     fc6        0.60      0.04        0.43       0.58
     fc7        0.50     -0.01        0.37       0.48
     ```
 
-Once category is in the regression, background keeps a large weight only in the early layers (0.50 in conv1, against 0.81 for category) and almost none in conv5 (0.09 against 0.95): there, what looked like a match with the background was the category. Position keeps the profile it had on its own, peaking at conv2 (0.52), because it does not overlap with the other two. On held-out sprites, the combined model predicts the layer RDMs a little better than category alone from conv1 to conv5 (0.74 against 0.67 in conv4, for example), and a little worse in fc6 and fc7 (0.48 against 0.50 in fc7): there, the extra weights fit the training sprites more than they help with new ones. The ridge penalty barely matters here, because three models and 4,560 pairs of images leave little to stabilise.
+Once category is in the regression, background keeps a large weight only in conv1 (0.45, against 0.85 for category) and a small one from conv5 on (0.18 against 0.93 in conv5): there, what looked like a match with the background was mostly the category. Position keeps the profile it had on its own, peaking at conv3 (0.45), because it does not overlap with the other two. On held-out sprites, the combined model predicts the layer RDMs a little better than category alone from conv1 to conv5 (0.76 against 0.69 in conv4, for example), and a little worse in fc6 and fc7 (0.48 against 0.50 in fc7): there, the extra weights fit the training sprites more than they help with new ones. The ridge penalty barely matters here, because three models and 4,560 pairs of images leave little to stabilise.
 
 **When to use which.**
 
@@ -223,17 +223,17 @@ print(decoding.round(2))
 ```
 
 1. Four folds, each tested on sprites the classifier has not seen, with all four versions of a sprite on the same side.
-2. The same linear classifier as on [Compare with brain data](dnn-compare.md), where a note explains the alternatives.
+2. The same linear classifier as on [Compare with human data](dnn-compare.md), where a note explains the alternatives.
 
 ??? example "Output"
 
     ```text
            category  position
-    conv1      1.00      1.00
-    conv2      1.00      1.00
-    conv3      0.97      0.96
-    conv4      0.97      1.00
-    conv5      0.92      0.99
+    conv1      0.83      0.96
+    conv2      0.99      1.00
+    conv3      0.91      0.93
+    conv4      0.96      0.96
+    conv5      0.98      0.94
     fc6        0.97      0.93
     fc7        0.95      0.86
     ```
@@ -252,7 +252,7 @@ print(decoding.round(2))
 
 ![Decoding accuracy for category and position by AlexNet layer, with chance levels](../../assets/dnn/dnn-model-decoding.png)
 
-Decoding reads both properties out of almost every layer, position with 86 to 100% (chance 50%) and category with 92 to 100% (chance 33%). Even fc7, whose geometry hardly follows position in the RSA, still tells shifted from centred sprites 86% of the time. Decoding finds any direction in the layer that separates the groups, however small, while RSA asks whether the property shapes the layer's overall geometry. A property can be decodable and still play a minor part in how the layer organises the images.
+Decoding reads both properties out of almost every layer, position with 86 to 100% (chance 50%) and category with 83 to 99% (chance 33%). Even fc7, whose geometry hardly follows position in the RSA, still tells shifted from centred sprites 86% of the time. Decoding finds any direction in the layer that separates the groups, however small, while RSA asks whether the property shapes the layer's overall geometry. A property can be decodable and still play a minor part in how the layer organises the images.
 
 ---
 
@@ -270,10 +270,10 @@ Decoding reads both properties out of almost every layer, position with 86 to 10
 
 <div class="grid cards" markdown>
 
-- :material-brain:{ .lg .middle } __[Compare with brain data](dnn-compare.md)__
+- :material-brain:{ .lg .middle } __[Compare with human data](dnn-compare.md)__
 
     ---
 
-    The same layers against brain patterns: RSA, decoding and encoding models, with noise ceilings.
+    The same layers against brain or behavioural data: RSA, decoding and encoding models, with noise ceilings.
 
 </div>

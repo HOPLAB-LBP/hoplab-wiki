@@ -86,7 +86,7 @@ nav:
       - Train or fine-tune: research/dnn/dnn-train.md
       - Extract activations: research/dnn/dnn-extract.md
       - Compare with a model: research/dnn/dnn-model.md
-      - Compare with brain data: research/dnn/dnn-compare.md
+      - Compare with human data: research/dnn/dnn-compare.md
   - Science outreach: outreach.md
   - Contribute:
     - How to contribute: contribute.md

@@ -17,6 +17,8 @@ Training a network from nothing takes a large labelled dataset and days of GPU t
 | The model does not know your images or task (pixel art, chess boards, a new set of categories), and you have hundreds to thousands of labelled images | **Fine-tune** a pretrained model. If your images are far from photographs, also try training from scratch. |
 | The training itself is your question (what a network learns from a given diet of images), or no pretrained model fits your input | **Train from scratch**, usually on a large dataset and a GPU cluster. |
 
+Training can be the question itself. In [Duyck et al. (2024)](https://doi.org/10.1038/s42003-024-07415-8), only AlexNets fine-tuned to classify zoomorphic objects (a cuddly toy, a butterfly-shaped rattle) together with animals showed the human bias to group them with animals. [Cerpelloni et al. (2026)](https://doi.org/10.64898/2026.04.14.718353), a preprint, trained AlexNet and CORnet-Z to classify written words and then Braille words, to test whether a feedforward visual network explains how expert readers process Braille.
+
 Fine-tuning starts from a network that already learned useful features on ImageNet and changes only part of it. The figure shows which layers are trained in the three common choices, next to training from scratch:
 
 ![Four ways to adapt AlexNet: which layers are trained in each](../../assets/dnn/dnn-finetune-strategies.png)
@@ -28,8 +30,8 @@ Fine-tuning starts from a network that already learned useful features on ImageN
 | **Whole network** | Everything, with a small learning rate | More | All layers can change, the early ones least |
 | **From scratch** | Everything, from random weights | A lot | Nothing is kept from ImageNet |
 
-!!! info "Fine-tuning changes what you compare with the brain"
-    If you later compare layers with brain data, remember which layers you trained. With *head only* the network's features are exactly those of the public model; with *whole network* every layer may have moved towards your task.
+!!! info "Fine-tuning changes what you compare with human data"
+    If you later compare layers with brain or behavioural data, remember which layers you trained. With *head only* the network's features are exactly those of the public model; with *whole network* every layer may have moved towards your task.
 
 ---
 
@@ -310,7 +312,7 @@ test_rows[["image_id", "sprite", "category"]].to_csv("sprite_alexnet_test_images
 
     Record the layers of the pretrained (or your fine-tuned) network for every image.
 
-- :material-brain:{ .lg .middle } __[Compare with brain data](dnn-compare.md)__
+- :material-brain:{ .lg .middle } __[Compare with human data](dnn-compare.md)__
 
     ---
 

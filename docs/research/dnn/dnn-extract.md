@@ -2,7 +2,7 @@
 
 !!! abstract "On this page"
     - **You need:** a model (pretrained or your own) and your images listed in a manifest, as in [Set up and pick a model](dnn-setup.md).
-    - **You get:** one file with the activation of every chosen layer for every image, in manifest order, ready to [compare with brain data](dnn-compare.md).
+    - **You get:** one file with the activation of every chosen layer for every image, in manifest order, ready to [compare with human data](dnn-compare.md).
 
 ---
 
@@ -12,7 +12,7 @@ When an image goes through a network, every layer turns the output of the previo
 
 We record them with [thingsvision](https://vicco-group.github.io/thingsvision/) ([Muttenthaler & Hebart, 2021](https://doi.org/10.3389/fninf.2021.679838)). It loads models from torchvision, timm, CORnet, CLIP and more through one interface, runs your images through them, and returns the activations of the layers you ask for.
 
-![From one image to one row of the activation matrix: feature maps, pooling, flattening](../../assets/dnn/dnn-activation-to-matrix.png)
+![From one image to one row of the activation matrix: the image, its 64 feature maps, the maps laid end to end, and the matrix of all 96 images](../../assets/dnn/dnn-activation-to-matrix.png)
 
 ---
 
@@ -128,34 +128,27 @@ layers = {
 activations = extractor.extract_features(
     batches=batches,
     module_names=list(layers),  # (1)!
-    # Keep the maps as channels x height x width, so we can pool them below
+    # Keep the maps as channels x height x width, to plot them further down
     flatten_acts=False,
 )
 
-
-def pool(activation, size=6):
-    """Average each convolutional feature map down to size x size, then flatten to images x features."""
-    if activation.ndim == 4:
-        activation = torch.nn.functional.adaptive_avg_pool2d(torch.from_numpy(activation), size).numpy()
-    return activation.reshape(len(activation), -1)
-
-
-features = {name: pool(activations[module]) for module, name in layers.items()}  # (2)!
+# One row per image: every value of every map, laid end to end
+features = {name: activations[module].reshape(len(activations[module]), -1) for module, name in layers.items()}  # (2)!
 for name, x in features.items():
     print(f"{name:>5}: {x.shape}")  # images x features
 ```
 
 1. All layers come out of one pass through the network, as a dictionary from layer name to array.
-2. Convolutional maps are large (the first layer of AlexNet gives 64 × 55 × 55 = 193,600 numbers per image). Averaging each map down to 6 × 6 keeps the coarse spatial layout and makes the arrays small enough for decoding and regression. For RSA alone you can keep the full maps with `flatten_acts=True`. With thousands of images the full maps no longer fit in memory; thingsvision's `extractor.batch_extraction()` (see the [thingsvision README](https://github.com/ViCCo-Group/thingsvision)) lets you pool each batch as it comes.
+2. Each layer becomes one row per image, with every value of every map laid end to end: the first layer of AlexNet gives 64 × 55 × 55 = 193,600 numbers per image. RSA, decoding and encoding on the next pages all use these full vectors, as [Conwell et al. (2024)](https://doi.org/10.1038/s41467-024-53147-y) did for their RSA; averaging each map down first, say to 6 × 6, would discard most of the spatial detail of the early layers (conv1's maps are 55 × 55). With thousands of images the full maps no longer fit in memory; thingsvision can then write the features to disk as it extracts them (`output_dir`, see its [low-memory options](https://vicco-group.github.io/thingsvision/LowMemOptions.html)).
 
 The output gives one matrix per layer, images × features:
 
 ```text
-conv1: (96, 2304)
-conv2: (96, 6912)
-conv3: (96, 13824)
-conv4: (96, 9216)
-conv5: (96, 9216)
+conv1: (96, 193600)
+conv2: (96, 139968)
+conv3: (96, 64896)
+conv4: (96, 43264)
+conv5: (96, 43264)
   fc6: (96, 4096)
   fc7: (96, 4096)
 ```
@@ -183,31 +176,32 @@ Whether to record a layer before or after its ReLU has not been settled by direc
 ## 4. Save them with the image order
 
 ```python
-np.savez(
+# Compressed: most values are zeros after the ReLU, so the file shrinks about sixfold
+np.savez_compressed(
     "alexnet_features.npz",
     image_id=manifest["image_id"].to_numpy(dtype=str),  # (1)!
     **features,
 )
 ```
 
-1. Saving the image names with the activations lets every later script check that rows line up with the brain data, instead of trusting that the order never changed.
+1. Saving the image names with the activations lets every later script check that rows line up with the human data, instead of trusting that the order never changed.
 
 The file holds one array per layer, images × units, plus the image order:
 
 | Key | Shape | Dimensions |
 |---|---|---|
 | `image_id` | `(96,)` | images, the same order as `manifest.csv` |
-| `conv1` | `(96, 2304)` | images × units (64 channels × 6 × 6) |
-| `conv2` | `(96, 6912)` | images × units (192 channels × 6 × 6) |
-| `conv3` | `(96, 13824)` | images × units (384 channels × 6 × 6) |
-| `conv4` | `(96, 9216)` | images × units (256 channels × 6 × 6) |
-| `conv5` | `(96, 9216)` | images × units (256 channels × 6 × 6) |
+| `conv1` | `(96, 193600)` | images × units (64 channels × 55 × 55) |
+| `conv2` | `(96, 139968)` | images × units (192 channels × 27 × 27) |
+| `conv3` | `(96, 64896)` | images × units (384 channels × 13 × 13) |
+| `conv4` | `(96, 43264)` | images × units (256 channels × 13 × 13) |
+| `conv5` | `(96, 43264)` | images × units (256 channels × 13 × 13) |
 | `fc6` | `(96, 4096)` | images × units |
 | `fc7` | `(96, 4096)` | images × units |
 
 ??? example "Plot the feature maps of one image"
 
-    The unpooled activations are still in `activations`, so plotting the maps of the first layer for the cat takes a few lines:
+    The maps keep their shape in `activations`, so plotting the maps of the first layer for the cat takes a few lines:
 
     ```python
     import matplotlib.pyplot as plt
@@ -215,8 +209,8 @@ The file holds one array per layer, images × units, plus the image order:
     cat = manifest.index[manifest["image_id"] == "cat_original"][0]  # the row of the cat
     fig, axes = plt.subplots(2, 8, figsize=(9, 2.6))  # the first 16 of the 64 channels
     for channel, ax in enumerate(axes.flat):
-        # bright = strong response
-        ax.imshow(activations["features.1"][cat, channel], cmap="magma")
+        # white = 0, dark = strong response
+        ax.imshow(activations["features.1"][cat, channel], cmap="bone_r")
         ax.set_title(f"channel {channel}", fontsize=7)
         ax.set(xticks=[], yticks=[])
     plt.show()
@@ -259,7 +253,7 @@ The file holds one array per layer, images × units, plus the image order:
 
     Test which layers follow a visual property and which follow category, with model RDMs and decoding.
 
-- :material-brain:{ .lg .middle } __[Compare with brain data](dnn-compare.md)__
+- :material-brain:{ .lg .middle } __[Compare with human data](dnn-compare.md)__
 
     ---
 
