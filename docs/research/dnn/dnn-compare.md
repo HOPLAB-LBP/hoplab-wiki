@@ -1,11 +1,18 @@
-# Compare with brain data
+# Compare with human data
 
 !!! abstract "On this page"
-    - **You need:** network activations saved with their image order ([Extract activations](dnn-extract.md)) and brain patterns for the same images.
-    - **You get:** three ways to ask which layers resemble which brain regions: RSA with [rsatoolbox](https://rsatoolbox.readthedocs.io/), decoding with [scikit-learn](https://scikit-learn.org/), and encoding models with [himalaya](https://gallantlab.org/himalaya/), each read against a noise ceiling or chance level.
+    - **You need:** network activations saved with their image order ([Extract activations](dnn-extract.md)) and human data for the same images: brain patterns or behaviour.
+    - **You get:** three ways to ask which layers resemble which brain regions or behaviours: RSA with [rsatoolbox](https://rsatoolbox.readthedocs.io/), decoding with [scikit-learn](https://scikit-learn.org/), and encoding models with [himalaya](https://gallantlab.org/himalaya/), each read against a noise ceiling or chance level.
 
-!!! warning "The brain side comes first"
-    These analyses start from brain patterns that are already estimated: one pattern per image and run in each ROI, for example GLM betas from the [fMRI analysis workflow](../fmri/analysis/index.md). In the toy kit these patterns are synthetic. The `V1` ROI was built from the brightness, colours and edges in small patches of each image, the `IT` ROI from category and sprite identity (see [Set up and pick a model](dnn-setup.md#2-get-the-toy-kit)), so we know the right answer in advance.
+!!! warning "The human side comes first"
+    These analyses start from human data that are already estimated: one response pattern per image (and per run, if you have several). Any measure recorded for the same images works:
+
+    - **fMRI:** the GLM betas of the voxels in each ROI, for example from the [fMRI analysis workflow](../fmri/analysis/index.md) ([Bracci et al., 2019](https://doi.org/10.1523/JNEUROSCI.1714-18.2019); [Ritchie et al., 2021](https://doi.org/10.1523/JNEUROSCI.2628-20.2021)).
+    - **EEG or MEG:** the pattern across sensors at each time point after the image appears, which gives one RDM per time point ([Cichy et al., 2016](https://doi.org/10.1038/srep27755)).
+    - **Intracranial recordings:** the firing rate or high-gamma power at each electrode.
+    - **Behaviour:** an RDM straight from similarity judgements or arrangements ([Kubilius et al., 2016](https://doi.org/10.1371/journal.pcbi.1004896)), or the network's choices next to people's, such as which categories they confuse ([Maniquet et al., 2025](https://doi.org/10.1038/s41598-025-20245-w)).
+
+    The code on this page uses ROI patterns; for other data, the voxels become sensors, electrodes or the cells of a behavioural RDM. In the toy kit these patterns are synthetic. The `V1` ROI was built from the brightness, colours and edges in small patches of each image, the `IT` ROI from category and sprite identity (see [Set up and pick a model](dnn-setup.md#2-get-the-toy-kit)), so we know the right answer in advance.
 
 ---
 
@@ -37,7 +44,7 @@ rois = ["V1", "IT"]
 print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
 ```
 
-1. Stop here if the rows of the network and brain data are not the same images in the same order. A silent mismatch gives results that look plausible and mean nothing.
+1. Stop here if the rows of the network and human data are not the same images in the same order. A silent mismatch gives results that look plausible and mean nothing.
 
 ??? tip "Load your own brain data from an SPM GLM"
     With real data, rsatoolbox reads the betas straight from an SPM first-level folder into the same layout. Install its imaging extras first (`pip install "rsatoolbox[imaging]"`). The code assumes the standard case: one GLM per participant, one regressor per image named after its `image_id`, and every image in every run.
@@ -367,7 +374,7 @@ A network has many layers, and which one you compare with a brain region changes
 
 **Record a spread of layers, and name them.** Take the output of whole modules at five to eight depths (for a ResNet, the output of each block, not the steps inside it), and always include the last layer before the classifier ([Schrimpf et al., 2018](https://doi.org/10.1101/407007)). That last layer is the usual choice for abstract or high-level questions, but results can differ for earlier layers ([Muttenthaler & Hebart, 2021](https://doi.org/10.3389/fninf.2021.679838)). Whether to take a layer before or after its ReLU, or, in a vision transformer, the class token or the average over tokens, has no settled answer: pick one, say which in your methods, and treat it like any other layer choice.
 
-**Expect a profile across layers, and report all of it.** Early layers tend to match early visual cortex and later layers higher ventral areas, in fMRI, MEG and single neurons ([Yamins et al., 2014](https://doi.org/10.1073/pnas.1403112111); [Khaligh-Razavi & Kriegeskorte, 2014](https://doi.org/10.1371/journal.pcbi.1003915); [Güçlü & van Gerven, 2015](https://doi.org/10.1523/JNEUROSCI.5023-14.2015); [Cichy et al., 2016](https://doi.org/10.1038/srep27755); [Eickenberg et al., 2017](https://doi.org/10.1016/j.neuroimage.2016.10.001)). The match is not strictly ordered: in Khaligh-Razavi & Kriegeskorte (2014), early visual cortex was matched best by AlexNet's second and third layers, not its first. The toy kit's synthetic ROIs are built to show the textbook pattern.
+**Expect a profile across layers, and report all of it.** Early layers tend to match early visual cortex and later layers higher ventral areas, in fMRI, MEG and single neurons ([Yamins et al., 2014](https://doi.org/10.1073/pnas.1403112111); [Khaligh-Razavi & Kriegeskorte, 2014](https://doi.org/10.1371/journal.pcbi.1003915); [Güçlü & van Gerven, 2015](https://doi.org/10.1523/JNEUROSCI.5023-14.2015); [Cichy et al., 2016](https://doi.org/10.1038/srep27755); [Eickenberg et al., 2017](https://doi.org/10.1016/j.neuroimage.2016.10.001); [Zeman et al., 2020](https://doi.org/10.1038/s41598-020-59175-0); [Ritchie et al., 2021](https://doi.org/10.1523/JNEUROSCI.2628-20.2021)). The profile can reach beyond the ventral stream: in [Bracci et al. (2023)](https://doi.org/10.1371/journal.pcbi.1011086), the ventral temporal cortex matched mid-level layers best, while the final layers also captured the object-scene associations found in frontoparietal cortex. The match is not strictly ordered: in Khaligh-Razavi & Kriegeskorte (2014), early visual cortex was matched best by AlexNet's second and third layers, not its first, and recordings from human lateral occipital cortex matched intermediate layers of VGG-19 and ResNet-50 best ([Bougou et al., 2024](https://doi.org/10.1038/s41467-024-49078-3)). The toy kit's synthetic ROIs are built to show the textbook pattern.
 
 **Choose a single best layer only on independent data.** Picking the best of seven layers and reporting its score on the same data inflates that score: it is double dipping ([Kriegeskorte et al., 2009](https://doi.org/10.1038/nn.2303)). Either report every layer, fix the layer in advance, or choose it on separate images, runs or participants, for example with nested cross-validation, and test it on the rest. [Conwell et al. (2024)](https://doi.org/10.1038/s41467-024-53147-y) choose each model's layer on 500 images and report its score on 500 others. When you compare models, compare each at its cross-validated best layer, and always next to the noise ceiling ([Nili et al., 2014](https://doi.org/10.1371/journal.pcbi.1003553)).
 
@@ -377,7 +384,7 @@ A network has many layers, and which one you compare with a brain region changes
 
 === "Decoding"
 
-    Categories become easier to read out linearly the deeper you go in a trained network ([Alain & Bengio, 2016](https://arxiv.org/abs/1610.01644)), as along the ventral stream ([DiCarlo et al., 2012](https://doi.org/10.1016/j.neuron.2012.01.010)). Near-perfect decoding from the last layers is therefore expected and says little on its own. Decoding shows that the information is there in a readable form, not that the brain, or the network, uses it ([Hebart & Baker, 2018](https://doi.org/10.1016/j.neuroimage.2017.08.005); [Kriegeskorte & Douglas, 2019](https://doi.org/10.1016/j.conb.2019.04.002)). Decode from every layer and compare the shape of that profile with the brain's.
+    Categories become easier to read out linearly the deeper you go in a trained network ([Alain & Bengio, 2016](https://arxiv.org/abs/1610.01644)), as along the ventral stream ([DiCarlo et al., 2012](https://doi.org/10.1016/j.neuron.2012.01.010)). Near-perfect decoding from the last layers is therefore expected and says little on its own. Decoding shows that the information is there in a readable form, not that the brain, or the network, uses it ([Hebart & Baker, 2018](https://doi.org/10.1016/j.neuroimage.2017.08.005); [Kriegeskorte & Douglas, 2019](https://doi.org/10.1016/j.conb.2019.04.002)). Decode from every layer and compare the shape of that profile with the brain's. [Mattioni et al. (2025)](https://doi.org/10.1038/s41467-025-65468-7) did this for people treated for dense bilateral cataracts at birth, repeating their fMRI category decoding on AlexNets trained or tested on blurred images.
 
 === "Encoding"
 

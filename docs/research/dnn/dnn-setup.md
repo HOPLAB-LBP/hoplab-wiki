@@ -95,7 +95,7 @@ dnn-toy-kit/
 ```
 
 !!! warning "The brain data in the kit are synthetic"
-    These pages start *after* the brain analysis, with one activity pattern per image from each region of interest (see the [fMRI analysis workflow](../fmri/analysis/index.md); [Compare with brain data](dnn-compare.md#load-and-line-up-the-data) shows how to read them from an SPM GLM). The kit fakes that result for a `V1`-like ROI, which responds to brightness, colour and edges at each position, and an `IT`-like ROI, which responds to category and sprite identity but not to position or colour.
+    These pages start *after* the brain analysis, with one activity pattern per image from each region of interest (see the [fMRI analysis workflow](../fmri/analysis/index.md); [Compare with human data](dnn-compare.md#load-and-line-up-the-data) shows how to read them from an SPM GLM). The kit fakes that result for a `V1`-like ROI, which responds to brightness, colour and edges at each position, and an `IT`-like ROI, which responds to category and sprite identity but not to position or colour.
 
 Every file lists the images in the same order, the order of `manifest.csv`. Your own data should follow the same structure, so that the code on these pages works on it unchanged:
 
@@ -143,7 +143,7 @@ print(manifest.groupby("category")["sprite"].nunique())  # 8 sprites per categor
 You rarely need to train a network yourself. Many trained models are public, and studies often compare several of them with the brain. Each card below says when a model is a good choice and shows what it does with our cat sprite: its first layer (four filters and their responses, or a view of the whole layer for models without shared filters) and the RDMs of its first and last layers over all 96 sprites, with the critter, food and spooky blocks marked.
 
 !!! tip "Pick by your question, not by accuracy"
-    A model is a hypothesis about the brain. Choose models that differ in the way your question asks about (architecture, training data, objective, topography), and compare several rather than one.
+    A model is a hypothesis about the brain. Choose models that differ in the way your question asks about (architecture, training data, objective, topography), and compare several rather than one. For example, [Maniquet et al. (2025)](https://doi.org/10.1038/s41598-025-20245-w) compared feedforward and recurrent models of several sizes with human categorisation; [Duyck et al. (2024)](https://doi.org/10.1038/s42003-024-07415-8) compared AlexNets trained on ImageNet, Stylized ImageNet and Ecoset, and CLIP; [Cortinovis et al. (2025)](https://doi.org/10.1038/s41467-025-67855-6) compared networks trained on objects or on actions, and topographic networks.
 
 The models at a glance; each name links to its card:
 

@@ -1,6 +1,6 @@
 # Neural networks
 
-Deep neural networks (DNNs) trained on images predict neural responses along the primate ventral visual stream better than earlier models ([Yamins et al., 2014](https://doi.org/10.1073/pnas.1403112111); the [Brain-Score](https://www.brain-score.org) benchmarks compare many of them). We show a network the same images as our participants, record what its layers do, and compare those activations with fMRI or EEG data. This section gets you started with that workflow in Python and [PyTorch](https://pytorch.org/), using a small set of pixel-art images that runs on any laptop.
+Deep neural networks (DNNs) trained on images predict neural responses along the primate ventral visual stream better than earlier models ([Yamins et al., 2014](https://doi.org/10.1073/pnas.1403112111); the [Brain-Score](https://www.brain-score.org) benchmarks compare many of them). We show a network the same images as our participants, record what its layers do, and compare those activations with human data recorded for the same images: fMRI, EEG or MEG, intracranial recordings, or behaviour such as similarity judgements and categorisation. This section gets you started with that workflow in Python and [PyTorch](https://pytorch.org/), using a small set of pixel-art images that runs on any laptop.
 
 ![Top: the toy kit, 24 pixel-art sprites in three categories, each in four versions. Bottom: the workflow, in which the same images go to a network and to a participant, and layer activations are compared with brain patterns by RSA, decoding and encoding](../../assets/dnn/dnn-overview.png)
 
@@ -39,15 +39,15 @@ Pick the path that matches your project. Every path starts with [Set up and pick
 
     ---
 
-    No brain data yet: ask which layers follow a visual property and which follow category, with model RDMs and decoding.
+    No human data yet: ask which layers follow a visual property and which follow category, with model RDMs and decoding.
 
     [Set up](dnn-setup.md) → [Extract](dnn-extract.md) → [Compare with a model](dnn-model.md)
 
-- :material-brain:{ .lg .middle } __Compare a model with brain data__
+- :material-brain:{ .lg .middle } __Compare a model with human data__
 
     ---
 
-    You already have layer activations and brain patterns for the same images, and want RSA, decoding or an encoding model. The page also shows how to read betas from an SPM GLM.
+    You already have layer activations and human data for the same images (brain patterns or behaviour), and want RSA, decoding or an encoding model. The page also shows how to read betas from an SPM GLM.
 
     [Set up](dnn-setup.md) → [Compare](dnn-compare.md)
 

@@ -3,7 +3,7 @@
 !!! abstract "On this page"
     - **You need:** the toy kit and the AlexNet features from [Extract activations](dnn-extract.md) (`alexnet_features.npz`).
     - **You get:** which layers follow a visual property of the images and which follow their category, with RSA and with decoding.
-    - **No brain data needed.** To compare the layers with brain patterns, go to [Compare with brain data](dnn-compare.md).
+    - **No human data needed.** To compare the layers with brain or behavioural data, go to [Compare with human data](dnn-compare.md).
 
 ---
 
@@ -223,7 +223,7 @@ print(decoding.round(2))
 ```
 
 1. Four folds, each tested on sprites the classifier has not seen, with all four versions of a sprite on the same side.
-2. The same linear classifier as on [Compare with brain data](dnn-compare.md), where a note explains the alternatives.
+2. The same linear classifier as on [Compare with human data](dnn-compare.md), where a note explains the alternatives.
 
 ??? example "Output"
 
@@ -270,10 +270,10 @@ Decoding reads both properties out of almost every layer, position with 86 to 10
 
 <div class="grid cards" markdown>
 
-- :material-brain:{ .lg .middle } __[Compare with brain data](dnn-compare.md)__
+- :material-brain:{ .lg .middle } __[Compare with human data](dnn-compare.md)__
 
     ---
 
-    The same layers against brain patterns: RSA, decoding and encoding models, with noise ceilings.
+    The same layers against brain or behavioural data: RSA, decoding and encoding models, with noise ceilings.
 
 </div>

@@ -2,7 +2,7 @@
 
 !!! abstract "On this page"
     - **You need:** a model (pretrained or your own) and your images listed in a manifest, as in [Set up and pick a model](dnn-setup.md).
-    - **You get:** one file with the activation of every chosen layer for every image, in manifest order, ready to [compare with brain data](dnn-compare.md).
+    - **You get:** one file with the activation of every chosen layer for every image, in manifest order, ready to [compare with human data](dnn-compare.md).
 
 ---
 
@@ -190,7 +190,7 @@ np.savez(
 )
 ```
 
-1. Saving the image names with the activations lets every later script check that rows line up with the brain data, instead of trusting that the order never changed.
+1. Saving the image names with the activations lets every later script check that rows line up with the human data, instead of trusting that the order never changed.
 
 The file holds one array per layer, images × units, plus the image order:
 
@@ -259,7 +259,7 @@ The file holds one array per layer, images × units, plus the image order:
 
     Test which layers follow a visual property and which follow category, with model RDMs and decoding.
 
-- :material-brain:{ .lg .middle } __[Compare with brain data](dnn-compare.md)__
+- :material-brain:{ .lg .middle } __[Compare with human data](dnn-compare.md)__
 
     ---
 
