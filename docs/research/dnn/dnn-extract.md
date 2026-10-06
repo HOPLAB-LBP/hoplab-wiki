@@ -12,7 +12,7 @@ When an image goes through a network, every layer turns the output of the previo
 
 We record them with [thingsvision](https://vicco-group.github.io/thingsvision/) ([Muttenthaler & Hebart, 2021](https://doi.org/10.3389/fninf.2021.679838)). It loads models from torchvision, timm, CORnet, CLIP and more through one interface, runs your images through them, and returns the activations of the layers you ask for.
 
-![From one image to one row of the activation matrix: the image, its 64 feature maps, the maps laid end to end, and the matrix of all 96 images](../../assets/dnn/dnn-activation-to-matrix.png)
+![From one image to one row of the activation matrix: the image, its 64 feature maps, the maps laid end to end, and the matrix of all 144 images](../../assets/dnn/dnn-activation-to-matrix.png)
 
 ---
 
@@ -32,61 +32,36 @@ KIT = Path("dnn-toy-kit")
 manifest = pd.read_csv(KIT / "manifest.csv")  # the image order every array will follow
 device = "cuda" if torch.cuda.is_available() else "cpu"  # use the GPU when there is one
 
-# Load AlexNet with its ImageNet weights; the extractor can record any of its layers
+# Load ResNet-50 with its ImageNet weights; the extractor can record any of its layers
 extractor = get_extractor(
-    model_name="alexnet",
+    model_name="resnet50",
     source="torchvision",  # (1)!
     device=device,
     # Trained weights; False gives the same network with random weights
     pretrained=True,
-    model_parameters={"weights": "IMAGENET1K_V1"},  # name the weights you report
+    model_parameters={"weights": "IMAGENET1K_V2"},  # name the weights you report
 )
-print(extractor.show_model())  # (2)!
+# The top-level modules: the stem, four stages of residual blocks, and the head
+print([name for name in extractor.get_module_names() if "." not in name])  # (2)!
 ```
 
 1. Other sources work the same way, for example `source="timm"` with any timm model name, or `source="custom"` with `model_name="cornet-s"`, `"Alexnet_ecoset"`, `"clip"` and others. The [model list](https://vicco-group.github.io/thingsvision/AvailableModels.html) has them all.
-2. `show_model()` returns the network, so `print` shows every layer with its name. `extractor.get_module_names()` gives the names as a list.
+2. `extractor.get_module_names()` lists every module of the network by name, more than 150 for ResNet-50, because each stage contains several residual blocks. Names without a dot are the top level. `print(extractor.show_model())` shows the whole network with every module.
 
 ??? example "Output"
 
     ```text
-    AlexNet(
-      (features): Sequential(
-        (0): Conv2d(3, 64, kernel_size=(11, 11), stride=(4, 4), padding=(2, 2))
-        (1): ReLU(inplace=True)
-        (2): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
-        (3): Conv2d(64, 192, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
-        (4): ReLU(inplace=True)
-        (5): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
-        (6): Conv2d(192, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-        (7): ReLU(inplace=True)
-        (8): Conv2d(384, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-        (9): ReLU(inplace=True)
-        (10): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-        (11): ReLU(inplace=True)
-        (12): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
-      )
-      (avgpool): AdaptiveAvgPool2d(output_size=(6, 6))
-      (classifier): Sequential(
-        (0): Dropout(p=0.5, inplace=False)
-        (1): Linear(in_features=9216, out_features=4096, bias=True)
-        (2): ReLU(inplace=True)
-        (3): Dropout(p=0.5, inplace=False)
-        (4): Linear(in_features=4096, out_features=4096, bias=True)
-        (5): ReLU(inplace=True)
-        (6): Linear(in_features=4096, out_features=1000, bias=True)
-      )
-    )
+    ['conv1', 'bn1', 'relu', 'maxpool', 'layer1', 'layer2', 'layer3', 'layer4', 'avgpool', 'fc']
     ```
 
-We take the output of the ReLU after each layer (see *Which modules to record* below). In AlexNet these are `features.1`, `features.4`, `features.7`, `features.9` and `features.11` for the five convolutional layers, and `classifier.2` and `classifier.5` for the two fully connected layers.
+We take the output of each stage (see *Which modules to record* below). `maxpool` is the end of the stem, and `layer1` to `layer4` are the four stages of residual blocks. `avgpool` averages each feature map over space and gives the last representation before the classifier.
 
 ---
 
 ## 2. Point it at your images
 
 ```python
-# Turn each sprite into the input AlexNet expects: 224 x 224 pixels, scaled like the
+# Turn each sprite into the input ResNet-50 expects: 224 x 224 pixels, scaled like the
 # ImageNet photos
 preprocess = transforms.Compose([
     transforms.Resize(224, interpolation=transforms.InterpolationMode.NEAREST),  # (1)!
@@ -95,7 +70,7 @@ preprocess = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
 ])
 
-# e.g. "cat_original.png", in manifest order
+# e.g. "cat_meadow_centre.png", in manifest order
 file_names = [Path(f).name for f in manifest["file"]]
 dataset = ImageDataset(
     root=str(KIT / "stimuli"),
@@ -110,7 +85,7 @@ assert Path("features/file_names.txt").read_text().split() == file_names
 batches = DataLoader(dataset, batch_size=32, backend=extractor.get_backend())
 ```
 
-1. For photographs, use the model's own preprocessing with `transforms=extractor.get_transformations()`. Here we upsample the 16-pixel sprites 14 times with nearest-neighbour interpolation so they stay sharp.
+1. For photographs, use the model's own preprocessing with `transforms=extractor.get_transformations()`. Here we enlarge the 48-pixel images to 224 pixels with nearest-neighbour interpolation, so they stay sharp.
 2. thingsvision writes the order in which it will read the images to `features/file_names.txt`. The `assert` checks it against the manifest.
 3. Listing the files explicitly makes thingsvision read them in manifest order. Without `file_names` it sorts them alphabetically. Give the names relative to `root`, and keep `root` a folder without subfolders.
 
@@ -120,37 +95,32 @@ batches = DataLoader(dataset, batch_size=32, backend=extractor.get_backend())
 
 ```python
 # Module names in the network (left) and the short names we use for them (right)
-layers = {
-    "features.1": "conv1", "features.4": "conv2", "features.7": "conv3",
-    "features.9": "conv4", "features.11": "conv5",
-    "classifier.2": "fc6", "classifier.5": "fc7",
-}
+layers = ["maxpool", "layer1", "layer2", "layer3", "layer4", "avgpool"]  # the end of the stem, the four stages, the average
 activations = extractor.extract_features(
     batches=batches,
-    module_names=list(layers),  # (1)!
+    module_names=layers,  # (1)!
     # Keep the maps as channels x height x width, to plot them further down
     flatten_acts=False,
 )
 
 # One row per image: every value of every map, laid end to end
-features = {name: activations[module].reshape(len(activations[module]), -1) for module, name in layers.items()}  # (2)!
+features = {name: activations[name].reshape(len(activations[name]), -1) for name in layers}  # (2)!
 for name, x in features.items():
     print(f"{name:>5}: {x.shape}")  # images x features
 ```
 
 1. All layers come out of one pass through the network, as a dictionary from layer name to array.
-2. Each layer becomes one row per image, with the values of all its maps laid end to end. The first layer of AlexNet gives 64 × 55 × 55 = 193,600 numbers per image. RSA, decoding and encoding on the next pages use these full vectors, as [Conwell et al. (2024)](https://doi.org/10.1038/s41467-024-53147-y) did for their RSA. Averaging each map down first, say to 6 × 6, would discard most of the spatial detail of the early layers, whose maps are 55 × 55. With thousands of images the full maps no longer fit in memory, and thingsvision can then write the features to disk as it extracts them (`output_dir`, see its [low-memory options](https://vicco-group.github.io/thingsvision/LowMemOptions.html)).
+2. Each layer becomes one row per image, with the values of all its maps laid end to end. `layer1` of ResNet-50 gives 256 × 56 × 56 = 802,816 numbers per image. RSA, decoding and encoding on the next pages use these full vectors, as [Conwell et al. (2024)](https://doi.org/10.1038/s41467-024-53147-y) did for their RSA. Averaging each map down first, say to 6 × 6, would discard most of the spatial detail of the early stages, whose maps are 56 × 56. With thousands of images the full maps no longer fit in memory, and thingsvision can then write the features to disk as it extracts them (`output_dir`, see its [low-memory options](https://vicco-group.github.io/thingsvision/LowMemOptions.html)).
 
 The output gives one matrix per layer, images × features:
 
 ```text
-conv1: (96, 193600)
-conv2: (96, 139968)
-conv3: (96, 64896)
-conv4: (96, 43264)
-conv5: (96, 43264)
-  fc6: (96, 4096)
-  fc7: (96, 4096)
+maxpool: (144, 200704)
+layer1: (144, 802816)
+layer2: (144, 401408)
+layer3: (144, 200704)
+layer4: (144, 100352)
+avgpool: (144, 2048)
 ```
 
 ### Which modules to record
@@ -160,7 +130,7 @@ conv5: (96, 43264)
 | Module | What it does when you run the model | Record it? |
 |---|---|---|
 | Convolution (`Conv2d`) | Filters its input; responses can be negative | Usually take the ReLU after it: that is what the next layer receives |
-| ReLU | Sets negative responses to zero | Yes, the usual output of a layer. On these pages we take the ReLU after every AlexNet layer |
+| ReLU | Sets negative responses to zero | Yes, the usual output of a layer in a plain network such as AlexNet |
 | Max pooling (`MaxPool2d`) | Keeps the strongest response in each small patch | Fine as the end of a stage: [Brain-Score](https://github.com/brain-score/vision) records AlexNet after conv1, conv2 and conv5 at the pooling |
 | Batch normalisation (`BatchNorm2d`) | Rescales and shifts each channel by fixed amounts, set during training | Rarely: it is the convolution, rescaled channel by channel. Take the ReLU after it, or the block output |
 | Dropout | Passes its input through unchanged | Never: it is identical to the module before it |
@@ -178,7 +148,7 @@ Whether to record a layer before or after its ReLU has not been settled by direc
 ```python
 # Compressed: most values are zeros after the ReLU, so the file shrinks about sixfold
 np.savez_compressed(
-    "alexnet_features.npz",
+    "resnet50_features.npz",
     image_id=manifest["image_id"].to_numpy(dtype=str),  # (1)!
     **features,
 )
@@ -190,45 +160,44 @@ The file holds one array per layer, images × units, plus the image order:
 
 | Key | Shape | Dimensions |
 |---|---|---|
-| `image_id` | `(96,)` | images, the same order as `manifest.csv` |
-| `conv1` | `(96, 193600)` | images × units (64 channels × 55 × 55) |
-| `conv2` | `(96, 139968)` | images × units (192 channels × 27 × 27) |
-| `conv3` | `(96, 64896)` | images × units (384 channels × 13 × 13) |
-| `conv4` | `(96, 43264)` | images × units (256 channels × 13 × 13) |
-| `conv5` | `(96, 43264)` | images × units (256 channels × 13 × 13) |
-| `fc6` | `(96, 4096)` | images × units |
-| `fc7` | `(96, 4096)` | images × units |
+| `image_id` | `(144,)` | images, the same order as `manifest.csv` |
+| `maxpool` | `(144, 200704)` | images × units (64 channels × 56 × 56) |
+| `layer1` | `(144, 802816)` | images × units (256 channels × 56 × 56) |
+| `layer2` | `(144, 401408)` | images × units (512 channels × 28 × 28) |
+| `layer3` | `(144, 200704)` | images × units (1024 channels × 14 × 14) |
+| `layer4` | `(144, 100352)` | images × units (2048 channels × 7 × 7) |
+| `avgpool` | `(144, 2048)` | images × units (2048 channels × 1 × 1) |
 
 ??? example "Plot the feature maps of one image"
 
-    The maps keep their shape in `activations`, so plotting the maps of the first layer for the cat takes a few lines:
+    The maps keep their shape in `activations`, so plotting the maps at the end of the stem for the cat takes a few lines:
 
     ```python
     import matplotlib.pyplot as plt
     
-    cat = manifest.index[manifest["image_id"] == "cat_original"][0]  # the row of the cat
+    cat = manifest.index[manifest["image_id"] == "cat_meadow_centre"][0]  # the row of the cat on the meadow
     fig, axes = plt.subplots(2, 8, figsize=(9, 2.6))  # the first 16 of the 64 channels
     for channel, ax in enumerate(axes.flat):
         # white = 0, dark = strong response
-        ax.imshow(activations["features.1"][cat, channel], cmap="bone_r")
+        ax.imshow(activations["maxpool"][cat, channel], cmap="bone_r")
         ax.set_title(f"channel {channel}", fontsize=7)
         ax.set(xticks=[], yticks=[])
     plt.show()
     ```
 
-    ![Feature maps of the first convolutional layer of AlexNet for the cat sprite](../../assets/dnn/dnn-feature-maps.png)
+    ![Feature maps at the end of the stem of ResNet-50 (maxpool) for the cat on the meadow](../../assets/dnn/dnn-feature-maps.png)
 
 ??? tip "Your own trained model"
-    A network you trained yourself (for example the AlexNet saved at the end of [Train or fine-tune](dnn-train.md#3-save-the-network)) goes through the same steps. Rebuild the architecture, load the weights, and wrap it with `get_extractor_from_model`:
+    A network you trained yourself (for example the ResNet-50 saved at the end of [Train or fine-tune](dnn-train.md#3-save-the-network)) goes through the same steps. Rebuild the architecture, load the weights, and wrap it with `get_extractor_from_model`:
 
     ```python
     from thingsvision import get_extractor_from_model
     from torch import nn
     from torchvision import models
     
-    model = models.alexnet()  # the architecture, with random weights for now
-    model.classifier[6] = nn.Linear(4096, 3)  # same head as in training: 3 categories
-    model.load_state_dict(torch.load("sprite_alexnet.pt", weights_only=True))  # (1)!
+    model = models.resnet50()  # the architecture, with random weights for now
+    model.fc = nn.Linear(2048, 3)  # same head as in training: 3 categories
+    model.load_state_dict(torch.load("sprite_resnet50.pt", weights_only=True))  # (1)!
     extractor = get_extractor_from_model(model=model, device=device, backend="pt")
     ```
 
@@ -251,12 +220,12 @@ The file holds one array per layer, images × units, plus the image order:
 
     ---
 
-    Test which layers follow a visual property and which follow category, with model RDMs and decoding.
+    Test which layers follow the scene, the position or the category of the images, with model RDMs and decoding.
 
 - :material-brain:{ .lg .middle } __[Compare with human data](dnn-compare.md)__
 
     ---
 
-    Use `alexnet_features.npz` and the ROI patterns for RSA, decoding and encoding models.
+    Use `resnet50_features.npz` and the ROI patterns for RSA, decoding and encoding models.
 
 </div>

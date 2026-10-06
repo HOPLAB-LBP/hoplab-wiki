@@ -2,7 +2,7 @@
 
 !!! abstract "On this page"
     - **You need:** the environment and toy kit from [Set up and pick a model](dnn-setup.md).
-    - **You get:** AlexNet trained on the sprites, and a fair test of how well it learned.
+    - **You get:** ResNet-50 trained on the sprites, and a fair test of how well it learned.
     - **Skip this page** if a public model is good enough for your question, and go straight to [Extract activations](dnn-extract.md).
 
 ---
@@ -21,12 +21,12 @@ Training can be the question itself, for example when you ask whether a network 
 
 Fine-tuning starts from a network that already learned useful features on ImageNet and changes only part of it. The figure shows which layers are trained in the three common choices, next to training from scratch:
 
-![Four ways to adapt AlexNet: which layers are trained in each](../../assets/dnn/dnn-finetune-strategies.png)
+![Four ways to adapt ResNet-50: which stages are trained in each](../../assets/dnn/dnn-finetune-strategies.png)
 
 | Strategy | What is trained | Data needed | Representations in the frozen layers |
 |---|---|---|---|
 | **Head only** | A new output layer, on top of frozen features | Very little | Unchanged: identical to the pretrained model |
-| **Last layers** | The fully connected layers and the new head | Little | Convolutional layers unchanged |
+| **Last layers** | The last stage (`layer4`) and the new head | Little | The earlier stages unchanged |
 | **Whole network** | Everything, with a small learning rate | More | All layers can change, the early ones least |
 | **From scratch** | Everything, from random weights | A lot | Nothing is kept from ImageNet |
 
@@ -37,7 +37,7 @@ Fine-tuning starts from a network that already learned useful features on ImageN
 
 ## 1. Load the sprites and split them
 
-Our sprites are far from photographs. AlexNet calls the cat a jigsaw puzzle and the ghost a traffic light (see [the previous page](dnn-setup.md#4-run-the-model-on-the-sprites)). Here we teach it our three categories, critters, food and spooky things, and test it on sprites it has never seen. Each category has its own scene, grass, a plate or a night sky, so there is something visual to learn.
+Our sprites are far from photographs, and ResNet-50 does not recognise them (see [the previous page](dnn-setup.md#4-run-the-model-on-the-sprites)). It calls the cat, the banana and the pizza a picket fence, with at most 12% confidence. Here we teach it our three categories, critters, food and spooky things, and test it on sprites it has never seen. Every category appears on every scene and in every position, so the network has to learn the sprites themselves.
 
 ```python
 from pathlib import Path
@@ -53,15 +53,15 @@ KIT = Path("dnn-toy-kit")
 device = "cuda" if torch.cuda.is_available() else "cpu"  # use the GPU when there is one
 torch.manual_seed(0)  # (1)!
 
-# One row per image: file, category, sprite, variant
+# One row per image: file, sprite, category, scene, position
 manifest = pd.read_csv(KIT / "manifest.csv")
 classes = sorted(manifest["category"].unique())  # ['critter', 'food', 'spooky']
-# Scale every image to the mean and spread of the ImageNet photos AlexNet was trained on
+# Scale every image to the mean and spread of the ImageNet photos ResNet-50 was trained on
 normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
 # Training: a small random shift in every epoch, then enlarge to 224 x 224
 train_transform = transforms.Compose([
-    transforms.RandomCrop(16, padding=2, padding_mode="edge"),  # (2)!
+    transforms.RandomCrop(48, padding=4, padding_mode="edge"),  # (2)!
     # Keep the pixels sharp
     transforms.Resize(224, interpolation=transforms.InterpolationMode.NEAREST),
     transforms.ToTensor(),  # image -> tensor with values from 0 to 1
@@ -93,33 +93,42 @@ class SpriteDataset(Dataset):  # (3)!
 ```
 
 1. Fixes the random parts (the new layer's starting weights, the shifts, the order of the images), so a rerun on the same computer gives similar numbers. GPUs add some randomness of their own.
-2. Pads the 16 x 16 sprite by two pixels on each side, copying its edge pixels, and cuts a random 16 x 16 window out of it. The result is a random shift of up to two pixels, in which the grass or the night sky continues. Every epoch is slightly different, which helps against overfitting on a small dataset. We do not mirror the sprites, since many of them are symmetric and a mirrored sprite would be the same image.
+2. Pads the 48 x 48 image by four pixels on each side, copying its edge pixels, and cuts a random 48 x 48 window out of it. The result is a random shift of up to four pixels, in which the scene continues. Every epoch is slightly different, which helps against overfitting on a small dataset, and the network learns to ignore small shifts. We do not mirror the sprites, since many of them are symmetric and a mirrored sprite would be the same image.
 3. A `Dataset` tells PyTorch how many images there are and how to load image number `i`. Ours reads the rows of the manifest it is given.
 
 ### Training set and test set
 
 The network learns from a training set and is scored on a test set. Both contain all three categories, but no image is in both. Training runs in epochs. In each epoch the network sees every training image once and adjusts its weights after every batch. At the end of the epoch we score it on the test set, which it never learns from. A network that only remembers its training images fails on the test set, so the test score shows whether it has learned the categories well enough to recognise new examples.
 
-With our kit, a new example has to be a new sprite. The four versions of a sprite are the same object, so a new image of a known sprite does not count. If the shifted cat is in the training set and the original cat in the test set, the network can answer "critter" because it recognises that cat, without having learned anything general about critters. That is a leak. Test accuracy goes up, but it now measures memory of individual sprites. So all four versions of a sprite go to the same side.
+With our kit, a new example has to be a new sprite. The six versions of a sprite are the same object, so a new image of a known sprite does not count. If the cat on the meadow is in the training set and the cat at night in the test set, the network can answer "critter" because it recognises that cat, without having learned anything general about critters. That is a leak. Test accuracy goes up, but it now measures memory of individual sprites. So all six versions of a sprite go to the same side.
 
-We keep a quarter of the sprites for the test set, two from each category, which makes six sprites and 24 images in all. The other 18 sprites (72 images) are the training set.
+We keep a quarter of the sprites for the test set, two from each category, which makes six sprites and 36 images in all. The other 18 sprites (108 images) are the training set. A seeded split picks them once, before any training.
 
-![The split: a training set of 18 sprites and a test set of 6, both with all three categories and with all four versions of each sprite on one side; below, splitting by image puts versions of the same cat in both sets](../../assets/dnn/dnn-grouped-cv.png)
+![The split: a training set of 18 sprites and a test set of 6, both with all three categories and with all six versions of each sprite on one side; below, splitting by image puts versions of the same cat in both sets](../../assets/dnn/dnn-grouped-cv.png)
 
 ```python
-# Two sprites from each category, with all four versions of each
-test_sprites = ["cat", "penguin", "banana", "cherry", "pumpkin", "skull"]  # (1)!
-is_test = manifest["sprite"].isin(test_sprites)
-train_rows, test_rows = manifest[~is_test], manifest[is_test]
+from sklearn.model_selection import StratifiedGroupKFold
+
+# A quarter of the sprites for testing, with all six versions of each
+split = StratifiedGroupKFold(n_splits=4, shuffle=True, random_state=0)  # (1)!
+train_index, test_index = next(split.split(manifest, manifest["category"], groups=manifest["sprite"]))
+train_rows, test_rows = manifest.iloc[train_index], manifest.iloc[test_index]
 print(len(train_rows), "training images,", len(test_rows), "test images")
+print(test_rows.groupby("category")["sprite"].unique())  # (2)!
 ```
 
-1. Selecting by sprite keeps the four versions together, and two sprites per category keep the categories balanced. With more stimuli, `StratifiedGroupKFold` from scikit-learn picks a split like this for you. It keeps each object's images together through `groups`, and the category proportions as close as it can. Check the counts on each side, since it does not guarantee them.
+1. `groups` keeps the images of each sprite together, and the stratification keeps the category proportions as close as it can. We take the first of the four folds as the test set. The seed fixes which sprites land there, so the split is the same on every run and was chosen before any training.
+2. Check the counts on each side, since `StratifiedGroupKFold` does not guarantee them. Here every category has two test sprites.
 
 ??? example "Output"
 
     ```text
-    72 training images, 24 test images
+    108 training images, 36 test images
+    category
+    critter      [frog, dog]
+    food        [apple, egg]
+    spooky     [bat, spider]
+    Name: sprite, dtype: object
     ```
 
 Every choice you tune, such as the number of epochs or the learning rate, has to be made without looking at the test sprites. Score the final model on them once.
@@ -136,24 +145,25 @@ Every choice you tune, such as the number of epochs or the learning rate, has to
 
 ---
 
-## 2. Fine-tune AlexNet on them
+## 2. Fine-tune ResNet-50 on them
 
 We fine-tune the whole network. Every layer starts from its ImageNet weights and keeps learning, at a small learning rate. The commented lines give the other strategies from the table above.
 
 ```python
 def build_model(n_classes, pretrained=True):
-    """AlexNet with a new output layer, and an optimiser for the layers that learn."""
+    """ResNet-50 with a new output layer, and an optimiser for the layers that learn."""
     # None: random starting weights
-    weights = models.AlexNet_Weights.IMAGENET1K_V1 if pretrained else None
-    model = models.alexnet(weights=weights)
-    model.classifier[6] = nn.Linear(4096, n_classes)  # (1)!
+    weights = models.ResNet50_Weights.IMAGENET1K_V2 if pretrained else None
+    model = models.resnet50(weights=weights)
+    model.fc = nn.Linear(2048, n_classes)  # (1)!
 
     # All layers learn (fine-tune the whole network). To train only part of it,
-    # uncomment one pair:
+    # uncomment one group:
     # model.requires_grad_(False)               # head only: freeze everything ...
-    # model.classifier[6].requires_grad_(True)  # ... except the new output layer
+    # model.fc.requires_grad_(True)             # ... except the new output layer
     # model.requires_grad_(False)               # last layers: freeze everything ...
-    # model.classifier.requires_grad_(True)     # ... except fc6, fc7 and the head
+    # model.layer4.requires_grad_(True)         # ... except the last stage ...
+    # model.fc.requires_grad_(True)             # ... and the head
 
     trainable = [p for p in model.parameters() if p.requires_grad]
     optimizer = torch.optim.Adam(trainable, lr=1e-4)  # (2)!
@@ -172,18 +182,21 @@ def train_and_test(model, optimizer, train_loader, test_loader, epochs):
     """Train for a number of epochs; return the test accuracy before training and after each epoch."""
     history = [accuracy(model, test_loader)]  # epoch 0: before any training
     for epoch in range(epochs):  # one epoch = one pass through all training images
-        model.train()  # dropout on again for training
+        model.train()  # training mode again ...
+        for module in model.modules():  # (4)!
+            if isinstance(module, nn.BatchNorm2d) and not module.weight.requires_grad:
+                module.eval()  # ... except for the batch normalisation of frozen layers
         for x, y in train_loader:  # one batch of images x with their labels y
             # How wrong the predictions are
             loss = nn.functional.cross_entropy(model(x.to(device)), y.to(device))
             optimizer.zero_grad()  # forget the gradients of the previous batch
             loss.backward()        # compute how each weight should change
             optimizer.step()       # change the weights a little
-        history.append(accuracy(model, test_loader))  # (4)!
+        history.append(accuracy(model, test_loader))  # (5)!
     return history
 
 
-EPOCHS = 20  # (5)!
+EPOCHS = 40  # (6)!
 # A new random order of the training images in every epoch
 train_loader = DataLoader(SpriteDataset(train_rows, train_transform), batch_size=16, shuffle=True)
 test_loader = DataLoader(SpriteDataset(test_rows, test_transform), batch_size=64)
@@ -196,14 +209,15 @@ print(f"{history[-1]:.0%} correct on the test sprites after {EPOCHS} epochs")
 
 1. The ImageNet head has 1000 outputs, one per ImageNet class. We replace it with a new, randomly initialised layer with one output per category.
 2. A small learning rate keeps the pretrained features from being overwritten. If you train only the new head, use `lr=1e-3`, since a new layer on its own can learn faster. A common refinement is to give the pretrained layers an even smaller rate than the head, with one parameter group per part in the optimiser.
-3. `eval()` switches off dropout, so the network gives the same answer for the same image. `train()` switches it back on.
-4. The test accuracy before training (epoch 0) and after every epoch gives the learning curve. Before training, even a pretrained network is near chance, because its new output layer starts random. The score we report is the one after the last epoch.
-5. Long enough for every strategy to fit the training sprites. In our runs, training from scratch was the slowest and got them all right after 11 epochs. We chose the number from that training accuracy, so the test sprites played no part in the choice.
+3. `eval()` makes batch normalisation use the statistics it stored during training, so the network gives the same answer for the same image. `train()` switches back to training mode.
+4. In training mode, batch normalisation updates its running statistics with every batch, even in layers whose weights are frozen. Those layers would then still change. Keeping them in evaluation mode keeps the frozen part exactly as it was trained on ImageNet.
+5. The test accuracy before training (epoch 0) and after every epoch gives the learning curve. Before training, even a pretrained network is near chance, because its new output layer starts random. The score we report is the one after the last epoch.
+6. We chose the number from the training accuracy, so the test sprites played no part in the choice. After 40 epochs, fine-tuning the last layers or the whole network had fitted every training sprite (within 4 to 28 epochs, depending on the seed). The head alone stops near 90%, because the frozen ImageNet features cannot separate every training sprite, and training from scratch reaches 95 to 100% only towards the end.
 
 ??? example "Output"
 
     ```text
-    100% correct on the test sprites after 20 epochs
+    50% correct on the test sprites after 40 epochs
     ```
 
 ??? example "Plot the learning curve"
@@ -212,7 +226,7 @@ print(f"{history[-1]:.0%} correct on the test sprites after {EPOCHS} epochs")
     import matplotlib.pyplot as plt
     
     fig, ax = plt.subplots(figsize=(6, 3.5))
-    ax.plot(range(EPOCHS + 1), history, label="whole network")  # epochs 0 to 20
+    ax.plot(range(EPOCHS + 1), history, label="whole network")  # epochs 0 to 40
     # Three categories: 33% by guessing
     ax.axhline(1 / 3, color="grey", ls="--", lw=1, label="chance")
     ax.set(ylim=(0, 1.05), xlabel="epoch", ylabel="accuracy on the test sprites")
@@ -224,9 +238,11 @@ To compare the strategies, we ran this code with each of the alternatives switch
 
 ![Accuracy on the test sprites over training for the four strategies](../../assets/dnn/dnn-finetune-results.png)
 
-Averaged over three seeds, every strategy learns the categories (chance is 33%). Before training, at epoch 0, all of them are near chance, because the output layer starts random. The fine-tuned whole network learns fastest, with 75% correct on the test sprites after one epoch, 100% after two, and 100% again at the end. The last layers end at 97% and the head only at 86%. With its features frozen, the head can only reweigh what ImageNet taught the network. Training from scratch is at 65% after one epoch, passes 90% after five and ends at 100%. The scenes are easy to see, so a network that starts from nothing finds them too, although the pretrained features get there faster.
+Averaged over three seeds, every strategy recognises the category of a new sprite more often than chance (33%), and none comes close to the training sprites. After 40 epochs, the head only is at 63% on the test sprites, the last layers at 61%, the whole network at 50% and training from scratch at 53%. The seeds differ by up to 19 points (from scratch ends between 42% and 61%), and with six test sprites one sprite moves the score by 17 points, so the ranking is not reliable. Before training, at epoch 0, every strategy is near chance, because the output layer starts random. The head only and the last layers pass 50% within five epochs and the whole network within ten, while training from scratch stays near chance for about five epochs and climbs more slowly.
 
-On natural images, the advantage of fine-tuning is larger still, in training time and often in accuracy. A pretrained network has already learned features that extract meaning from images, and the statistics of natural images, so it starts close to a good solution for a visual task and only has to adjust. A network trained from scratch has to learn all of this from your images alone. In our runs on the ants and bees of the [PyTorch transfer-learning tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html), photos close to ImageNet, fine-tuned AlexNet was about 90% correct after a single epoch, while the same network trained from scratch reached 70% after 15. On our sprites, the scenes are a cue so plain that training from scratch catches up within a few epochs.
+Eighteen sprites are too few for a network to learn what makes a critter a critter. The scenes and positions no longer give the category away, so the network has to generalise from the sprites alone, and with this little data it mostly memorises them.
+
+On natural images, fine-tuning has a clear advantage, in training time and often in accuracy. A pretrained network has already learned features that extract meaning from images, and the statistics of natural images, so it starts close to a good solution for a visual task and only has to adjust. A network trained from scratch has to learn all of this from your images alone. In our runs on the ants and bees of the [PyTorch transfer-learning tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html), photos close to ImageNet, fine-tuned AlexNet was about 90% correct after a single epoch, while the same network trained from scratch reached 70% after 15.
 
 !!! tip "Want to train on real photos?"
     The code above works on any image dataset. For photos, load the images with `ImageFolder` instead of the manifest.
@@ -234,7 +250,7 @@ On natural images, the advantage of fine-tuning is larger still, in training tim
     - [Imagenette](https://github.com/fastai/imagenette) has ten easy ImageNet classes, 99 MB at 160 pixels (Apache-2.0), and is small enough for a laptop.
     - [ecoset](https://huggingface.co/datasets/kietzmannlab/ecoset) has 1.5 million images in 565 basic-level categories, chosen by how often people use their names and how concrete they are ([Mehrer et al., 2021](https://doi.org/10.1073/pnas.2011417118)). It takes 155 GB and is under CC BY-NC-SA.
     - [THINGS](https://things-initiative.org/) has 26,107 photos of 1,854 object concepts, with fMRI, MEG and EEG recorded on the same images. It is for academic use only, but the THINGSplus-CC0 subset is free to publish.
-    - [ImageNet](https://www.image-net.org/) holds the 1000 classes AlexNet and most models on these pages were trained on. Registration for research is free.
+    - [ImageNet](https://www.image-net.org/) holds the 1000 classes ResNet-50 and most models on these pages were trained on. Registration for research is free.
 
     <!-- doctest: skip -->
     ```python
@@ -259,7 +275,7 @@ On natural images, the advantage of fine-tuning is larger still, in training tim
     print(f"{history[-1]:.0%} correct on the test photos")
     ```
 
-    In our run, the fine-tuned AlexNet was 92% correct on the 3,925 test photos after one epoch and 93% after three.
+    In our run, the fine-tuned ResNet-50 was 98% correct on the 3,925 test photos after one epoch and still 98% after three.
 
 ---
 
@@ -268,8 +284,8 @@ On natural images, the advantage of fine-tuning is larger still, in training tim
 The network trained above has seen only the training sprites. Save its weights for the next pages, together with the list of test images, which are the images to use when you compare the network with the brain.
 
 ```python
-torch.save(model.state_dict(), "sprite_alexnet.pt")  # (1)!
-test_rows[["image_id", "sprite", "category"]].to_csv("sprite_alexnet_test_images.csv", index=False)
+torch.save(model.state_dict(), "sprite_resnet50.pt")  # (1)!
+test_rows[["image_id", "sprite", "category"]].to_csv("sprite_resnet50_test_images.csv", index=False)
 ```
 
 1. The file holds the weights without the architecture. To load it, build the same network first, as in [Extract activations](dnn-extract.md#4-save-them-with-the-image-order) (box "Your own trained model").
@@ -282,13 +298,13 @@ test_rows[["image_id", "sprite", "category"]].to_csv("sprite_alexnet_test_images
     Split by the thing you want to generalise over (sprite, object, participant, game), never by single images. `GroupKFold` and `StratifiedGroupKFold` from scikit-learn do this. You can score the test set as often as you like, for example after every epoch to draw a learning curve, but choose nothing from those scores. Fix the number of epochs, the learning rate and other settings in advance, or choose them on a validation split inside the training data.
 
 ??? tip "Very few images: cross-validate"
-    With a small stimulus set, one test set gives a noisy score, because it depends on which images happened to land in it. With our six test sprites, one image moves the score by 4%, and a different choice of test sprites gives a different score. Repeat the training with different test sets, so that every item is tested once, and average the scores. `StratifiedGroupKFold` from scikit-learn makes the splits, keeping the images of an item together and the category proportions as close as it can. The cost is one trained network per split.
+    With a small stimulus set, one test set gives a noisy score, because it depends on which images happened to land in it. With our six test sprites, one image moves the score by 3% and one sprite, with its six versions, by 17%, and a different choice of test sprites gives a different score. Repeat the training with different test sets, so that every item is tested once, and average the scores. `StratifiedGroupKFold` from scikit-learn makes the splits, keeping the images of an item together and the category proportions as close as it can. The cost is one trained network per split.
 
 ??? tip "Seeds, repeats and what to report"
     Results from one training run vary with the random seed. Train a few seeds per condition and report the mean and spread. Save the seed, the configuration and the code version with every trained model, so you can tell later which checkpoint came from which settings.
 
 ??? warning "Batch normalisation in partly frozen networks"
-    AlexNet has no batch-norm layers, but ResNets do. In `model.train()` mode these layers keep updating their running statistics even when their weights are frozen. When you freeze part of a ResNet, put the frozen part in `eval()` mode during training, or the "frozen" features still change.
+    ResNets have batch normalisation layers, and in `model.train()` mode they keep updating their running statistics even when their weights are frozen. The training loop above therefore puts the frozen ones back in `eval()` mode in every epoch. Forget this, and the "frozen" features still change.
 
 ??? info "Training from scratch on a large dataset"
     The loop above is the same at any scale, and only the infrastructure around it changes.
