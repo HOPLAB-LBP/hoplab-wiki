@@ -178,7 +178,7 @@ Do this before the participant goes into the magnet room.
 </div>
 
 ??? tip "Pilots, phantoms, or a participant who is not in the RIS list"
-    For pilot runs, follow the same booking procedure as regular participant (i.e., book through radiology). In addition, notify Ron by email (and potentially Radiology [to confirm]) that this is a pilot run, to avoid being charged for the run. Make sure to label your data as pilot data to not confuse with your experiment data when saved on the served (e.g., Subject:PIL001 Session:PIL001_MR1). 
+    For pilot runs, follow the same booking procedure as regular participant (i.e., book through radiology). In addition, notify Ron by email (and potentially Radiology [to confirm]) that this is a pilot run, to avoid being charged for the run. Make sure to label your data as pilot data to not confuse with your experiment data when saved on the served (e.g., Subject:PIL001 Session:PIL001_MR1).
 
     For a phantom run (for example to test the trigger), click *New examination* and fill in the details by hand (pseudo data for a phantom). For the scanning, use one of the phantom bottles in the fMRI lab. Before you start, switch off the data transfer: right-click the run, choose *Edit properties* and disable *PACS*.
 
