@@ -3394,14 +3394,14 @@
 <p>Nothing else to do. Everything in this section runs on a CPU.</p>
 </div>
 <div class="tabbed-block">
-<p>PyTorch uses the GPU when it finds one; the check below tells you whether it does. If the environment gives you trouble on your machine, for example PyTorch does not find the GPU, keep training apart: use this environment for extraction and analysis, and a second one with the latest PyTorch for the <a href="dnn-train.html">training page</a>, whose code runs there unchanged:</p>
+<p>PyTorch uses the GPU when it finds one, and the check below tells you whether it does. If the environment gives you trouble on your machine, for example when PyTorch does not find the GPU, keep training apart. Use this environment for extraction and analysis, and a second one with the latest PyTorch for the <a href="dnn-train.html">training page</a>, whose code runs there unchanged:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>dnn-train<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>dnn-train
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>pip<span class="w"> </span>install<span class="w"> </span>torch<span class="w"> </span>torchvision<span class="w"> </span>pandas<span class="w"> </span>scikit-learn<span class="w"> </span>matplotlib
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>For large models or datasets, run on the GPU nodes of the VSC cluster. The <a href="../fmri/analysis/fmri-hpc.html">HPC page</a> explains how to log in, where to store data and how to submit jobs with Slurm. Install the same environment there; if it does not work with the cluster's GPUs, split it as in the previous tab.</p>
+<p>For large models or datasets, run on the GPU nodes of the VSC cluster. The <a href="../fmri/analysis/fmri-hpc.html">HPC page</a> explains how to log in, where to store data and how to submit jobs with Slurm. Install the same environment there. If it does not work with the cluster's GPUs, split it as in the previous tab.</p>
 </div>
 </div>
 </div>
@@ -3427,7 +3427,7 @@
 </details>
 <hr>
 <h2 id="2-get-the-toy-kit">2. Get the toy kit<a class="headerlink" href="#2-get-the-toy-kit" title="Permanent link">¶</a></h2>
-<p>All pages in this section use the same small dataset: 24 pixel-art sprites in three categories (critters, food and spooky things), each shown in four variants: the original, the sprite shifted two pixels to the side and down, and both of these with the colours swapped. That makes 96 images. Each category has its own scene, so a network has something visual to learn: critters stand on grass, food sits on a plate, and spooky things are out at night.</p>
+<p>All pages in this section use the same small dataset of 24 pixel-art sprites in three categories (critters, food and spooky things). Each sprite is shown in four variants: the original, the sprite shifted two pixels to the side and down, and both of these with the colours swapped. That makes 96 images. Each category has its own scene, so a network has something visual to learn. Critters stand on grass, food sits on a plate, and spooky things are out at night.</p>
 <p><a class="md-button" href="../../assets/dnn/dnn-toy-kit.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"></path></svg></span> Download the toy kit</a></p>
 <p>Unzip it next to your scripts. You get this layout:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dnn-toy-kit/
@@ -3442,7 +3442,7 @@
 </div>
 <p>Every file lists the images in the same order, the order of <code>manifest.csv</code>. Your own data should follow the same structure, so that the code on these pages works on it unchanged:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-data-layout.png" data-desc-position="bottom"><img alt="The toy kit lists the images in one order: the manifest, the stimuli and the brain data" src="../../assets/dnn/dnn-data-layout.png"></a></p>
-<p>Two columns of the manifest matter later: <code>category</code> is the label we decode or train on, and <code>sprite</code> names the object, so that all four versions of a sprite stay together when you split the images into a training and a test set. In <code>roi_betas.npz</code>, the arrays are called <code>V1</code> and <code>IT</code>, and <code>image_id</code> stores the image order. Your own ROIs can have any number of runs and voxels; only the image axis must follow the manifest.</p>
+<p>Two columns of the manifest matter later. The <code>category</code> column is the label we decode or train on, and the <code>sprite</code> column names the object, so that all four versions of a sprite stay together when you split the images into a training and a test set. In <code>roi_betas.npz</code>, the arrays are called <code>V1</code> and <code>IT</code>, and <code>image_id</code> stores the image order. Your own ROIs can have any number of runs and voxels, as long as the image axis follows the manifest.</p>
 <p>Load the manifest:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
@@ -3474,17 +3474,17 @@
 </details>
 <hr>
 <h2 id="from-an-image-to-an-rdm">From an image to an RDM<a class="headerlink" href="#from-an-image-to-an-rdm" title="Permanent link">¶</a></h2>
-<p>If neural networks are new to you, start here: the animation shows what the rest of this section does with every image, and how to read the model cards below.</p>
+<p>If neural networks are new to you, start here. The animation shows what the rest of this section does with every image, and how to read the model cards below.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-conv-to-rdm.gif" data-desc-position="bottom"><img alt="Animation: a filter of AlexNet's first layer slides over the cat sprite and builds a channel map; the 64 maps of 55 × 55 are laid end to end into one vector; the same is done for a duck, a pizza, a banana, a ghost and a pumpkin, and the 6 × 6 RDM fills with 1 − Pearson r between the vectors, with the critter, food and spooky blocks marked" src="../../assets/dnn/dnn-conv-to-rdm.gif"></a></p>
-<p>Each filter of AlexNet's first layer slides over the image and gives one map of responses, and the ReLU sets the negative ones to zero. The 64 maps of 55 × 55 are laid end to end into one vector of 193,600 numbers per image. The RDM holds 1 − Pearson r between the vectors of every pair of images. The bars show a preview of each vector; the RDM uses all its values.</p>
+<p>Each filter of AlexNet's first layer slides over the image and gives one map of responses, and the ReLU sets the negative responses to zero. The 64 maps of 55 × 55 are laid end to end into one vector of 193,600 numbers per image, and the RDM holds 1 − Pearson r between the vectors of every pair of images. The bars are only a preview of each vector, while the RDM uses all its values.</p>
 <hr>
 <h2 id="3-pick-a-model">3. Pick a model<a class="headerlink" href="#3-pick-a-model" title="Permanent link">¶</a></h2>
-<p>You rarely need to train a network yourself. Many trained models are public, and studies often compare several of them with the brain. Each card below says when a model is a good choice and shows what it does with our cat sprite: its first layer (four filters and their responses, or a view of the whole layer for models without shared filters) and the RDMs of its first and last layers over all 96 sprites, with the critter, food and spooky blocks marked.</p>
+<p>You rarely need to train a network yourself. Many trained models are public, and studies often compare several of them with the brain. Each card below says when a model is a good choice and shows what it does with our cat sprite. You see its first layer (four filters and their responses, or a view of the whole layer for models without shared filters) and the RDMs of its first and last layers over all 96 sprites, with the critter, food and spooky blocks marked.</p>
 <div class="admonition tip">
 <p class="admonition-title">Pick by your question, not by accuracy</p>
-<p>A model is a hypothesis about the brain. Choose models that differ in the way your question asks about (architecture, training data, objective, topography), and compare several rather than one. For example, <a href="https://doi.org/10.1038/s41598-025-20245-w">Maniquet et al. (2025)</a> compared feedforward and recurrent models of several sizes with human categorisation; <a href="https://doi.org/10.1038/s42003-024-07415-8">Duyck et al. (2024)</a> compared AlexNets trained on ImageNet, Stylized ImageNet and Ecoset, and CLIP; <a href="https://doi.org/10.1038/s41467-025-67855-6">Cortinovis et al. (2025)</a> compared networks trained on objects or on actions, and topographic networks.</p>
+<p>A model is a hypothesis about the brain. Choose models that differ in the way your question asks about, such as architecture and size (<a href="https://doi.org/10.1038/s41598-025-20245-w">Maniquet et al., 2025</a>), training data and objective (<a href="https://doi.org/10.1038/s42003-024-07415-8">Duyck et al., 2024</a>) or topography (<a href="https://doi.org/10.1038/s41467-025-67855-6">Cortinovis et al., 2025</a>), and compare several rather than one.</p>
 </div>
-<p>The models at a glance; each name links to its card:</p>
+<p>The models at a glance (each name links to its card):</p>
 <table>
 <thead>
 <tr>
@@ -3582,7 +3582,7 @@
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="p">)</span>
 </span></code></pre></div>
 <ol>
-<li>Name the weights explicitly and report them: torchvision may change its default weights in a later release.</li>
+<li>Name the weights explicitly and report them, because torchvision may change its default weights in a later release.</li>
 </ol>
 </details>
 </details>
@@ -3617,7 +3617,7 @@
 </span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p">)</span>
 </span></code></pre></div><p></p>
 <ol>
-<li>torchvision has two sets of ResNet-50 weights: <code>IMAGENET1K_V1</code> (the original training recipe) and <code>IMAGENET1K_V2</code> (a newer recipe, more accurate). They are different models; report which one you used.</li>
+<li>torchvision has two sets of ResNet-50 weights: <code>IMAGENET1K_V1</code> (the original training recipe) and <code>IMAGENET1K_V2</code> (a newer recipe, more accurate). They are different models, so report which one you used.</li>
 </ol>
 </details>
 </details>
@@ -3652,7 +3652,7 @@
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">)</span>
 </span></code></pre></div><p></p>
 <ol>
-<li>thingsvision ships CORnet itself, so no extra package is needed. The first download is 408 MB. Areas such as <code>IT.output</code> run several times per image (the recurrent time steps); report which step you used.</li>
+<li>thingsvision ships CORnet itself, so no extra package is needed. The first download is 408 MB. Areas such as <code>IT.output</code> run several times per image (the recurrent time steps), so report which step you used.</li>
 </ol>
 </details>
 </details>
@@ -3693,7 +3693,7 @@
 </span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># (2)!</span>
 </span></code></pre></div><p></p>
 <ol>
-<li><code>get_model</code> returns the network wrapped for multiple GPUs; <code>.module</code> unwraps it, so layer names do not start with <code>module.</code>.</li>
+<li><code>get_model</code> returns the network wrapped for multiple GPUs, and <code>.module</code> unwraps it so that layer names do not start with <code>module.</code>.</li>
 <li>VOneNet adds random noise to its V1 responses on every pass, so two runs give slightly different activations. Fix the seed before extracting.</li>
 </ol>
 </details>
@@ -3727,7 +3727,7 @@
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">model</span> <span class="o">=</span> <span class="n">hmax</span><span class="o">.</span><span class="n">HMAX</span><span class="p">(</span><span class="s2">"pytorch_hmax/universal_patch_set.mat"</span><span class="p">)</span>  <span class="c1"># (1)!</span>
 </span></code></pre></div><p></p>
 <ol>
-<li>The patch file ships with the repository. HMAX takes grayscale images with values from 0 to 255, and its output is the top (C2) layer: 8 scales × 400 patches per image. It is not a thingsvision model, so call it directly; the repository's example shows how.</li>
+<li>The patch file ships with the repository. HMAX takes grayscale images with values from 0 to 255, and its output is the top (C2) layer, with 8 scales × 400 patches per image. It is not a thingsvision model, so call it directly, as the repository's example shows.</li>
 </ol>
 </details>
 </details>
@@ -3786,7 +3786,7 @@
 <dd>no license file</dd>
 </dl>
 <p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/tdann.png" data-desc-position="bottom"><img alt="TDANN: the cat sprite; the V1-like layer, layer2.0, on the cortical sheet: each unit's preferred orientation, with a key of oriented bars, and each unit's response to the cat; RDMs of layer2.0 and layer4.1 over the 96 sprites" class="resource-card__figure" src="../../assets/dnn/cards/tdann.png"></a></p>
-<p class="resource-card__caption">On the left, each unit's preferred orientation, measured with TDANN's own grating images and tuning fits and smoothed over 1.5 mm as in the paper: neighbouring units prefer similar orientations, and the colours meet at pinwheel-like points. On the right, each unit's response to the cat at its position on the sheet, as in the TDANN demo.</p>
+<p class="resource-card__caption">On the left, each unit's preferred orientation, measured with TDANN's own grating images and tuning fits and smoothed over 1.5 mm as in the paper. Neighbouring units prefer similar orientations, and the colours meet at pinwheel-like points. On the right, each unit's response to the cat at its position on the sheet, as in the TDANN demo.</p>
 <details class="example">
 <summary>Load it</summary>
 <p>
@@ -3804,7 +3804,7 @@
 </span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="n">extractor</span> <span class="o">=</span> <span class="n">get_extractor_from_model</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">"pt"</span><span class="p">)</span>
 </span></code></pre></div><p></p>
 <ol>
-<li>The SimCLR checkpoint from OSF (88 MB). On a computer without a GPU, the loader's <code>torch.load(path)</code> fails with "Attempting to deserialize object on a CUDA device"; change it to <code>torch.load(path, map_location="cpu", weights_only=True)</code> in <code>TDANN/demo/src/model.py</code> (<code>weights_only=True</code> also stops the file from running code when it loads). For maps you also need each unit's position, from the same OSF project.</li>
+<li>The SimCLR checkpoint from OSF (88 MB). On a computer without a GPU, the loader's <code>torch.load(path)</code> fails with "Attempting to deserialize object on a CUDA device". Change it to <code>torch.load(path, map_location="cpu", weights_only=True)</code> in <code>TDANN/demo/src/model.py</code> (<code>weights_only=True</code> also stops the file from running code when it loads). For maps you also need each unit's position, from the same OSF project.</li>
 </ol>
 </details>
 </details>
@@ -3825,7 +3825,7 @@
 <dd>no license file</dd>
 </dl>
 <p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/toponets.png" data-desc-position="bottom"><img alt="TopoNets: the cat sprite; the response map of each channel of layer1.0.conv1, tiled at the channel's position on the 8 × 8 sheet; RDMs of layer1.0.conv1 and avgpool over the 96 sprites" class="resource-card__figure" src="../../assets/dnn/cards/toponets.png"></a></p>
-<p class="resource-card__caption">The paper's vision maps show category selectivity (Fig. 5A). This view of the first topographic layer is ours: each channel's response to the cat, placed on the 8 × 8 grid that TopoLoss uses for this layer. Neighbouring tiles tend to look alike.</p>
+<p class="resource-card__caption">The paper's vision maps show category selectivity (Fig. 5A). This view of the first topographic layer is ours. It shows each channel's response to the cat, placed on the 8 × 8 grid that TopoLoss uses for this layer. Neighbouring tiles tend to look alike.</p>
 <details class="example">
 <summary>Load it</summary>
 <p>
@@ -3837,7 +3837,7 @@
 </span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="n">extractor</span> <span class="o">=</span> <span class="n">get_extractor_from_model</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">"pt"</span><span class="p">)</span>
 </span></code></pre></div><p></p>
 <ol>
-<li>With the PyTorch 2.0.1 of our environment, add <code>torch.amp.GradScaler = torch.cuda.amp.GradScaler</code> (after <code>import torch</code>) before this import; newer PyTorch versions do not need it.</li>
+<li>With the PyTorch 2.0.1 of our environment, add <code>torch.amp.GradScaler = torch.cuda.amp.GradScaler</code> (after <code>import torch</code>) before this import. Newer PyTorch versions do not need it.</li>
 <li><code>tau</code> sets the strength of the topographic loss. The checkpoint (45 MB) is downloaded from Hugging Face to <code>checkpoint_path</code> the first time, with <code>wget</code>.</li>
 </ol>
 </details>
@@ -3859,7 +3859,7 @@
 <dd>MIT</dd>
 </dl>
 <p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/alltnn.png" data-desc-position="bottom"><img alt="All-TNN: the cat sprite; the preferred orientation of every unit of sheet 1 on the cortical sheet, with a key of oriented bars, and the summed response to the cat at each position of the visual field; RDMs of sheet 1 and sheet 6 over the 96 sprites" class="resource-card__figure" src="../../assets/dnn/cards/alltnn.png"></a></p>
-<p class="resource-card__caption">On the left, each unit's preferred orientation, measured with gratings as in the repository's <code>get_tuning_curves</code>: neighbouring units prefer similar orientations, as in V1. White dots are units that respond to no grating (0.7%). On the right, the summed response of the 64 units at each position in the visual field, which traces the cat and the edge of the grass.</p>
+<p class="resource-card__caption">On the left, each unit's preferred orientation, measured with gratings as in the repository's <code>get_tuning_curves</code>. Neighbouring units prefer similar orientations, as in V1. White dots are units that respond to no grating (0.7%). On the right, the summed response of the 64 units at each position in the visual field, which traces the cat and the edge of the grass.</p>
 <details class="example">
 <summary>Load it</summary>
 <p>
@@ -3878,7 +3878,7 @@
 </span></code></pre></div><p></p>
 <ol>
 <li><code>pip install -e .</code> fails in the current repository (a missing <code>_version.py</code>), so put the clone on the path instead. The network is built from the code saved inside the model folder, which is why you need the whole folder, not only the checkpoint.</li>
-<li>The input layer has a fixed batch size, so set it before the model is built. Images go in as 150 × 150 RGB, scaled to the range −1 to 1; <code>activities_model</code> returns the response of each of the six sheets.</li>
+<li>The input layer has a fixed batch size, so set it before the model is built. Images go in as 150 × 150 RGB, scaled to the range −1 to 1, and <code>activities_model</code> returns the response of each of the six sheets.</li>
 </ol>
 </details>
 </details>
@@ -3912,8 +3912,8 @@
 <ol>
 <li>For this quick check we use torchvision directly. The weights object knows the preprocessing the model was trained with (<code>weights.transforms()</code>) and the names of the 1000 ImageNet classes (<code>weights.meta["categories"]</code>).</li>
 <li><code>.eval()</code> switches off dropout and freezes batch-norm statistics. Always use it when you only run images through a model.</li>
-<li>ImageNet models expect 224 × 224 pixels. Nearest-neighbour upsampling keeps the pixel art sharp; for photographs use <code>weights.transforms()</code>.</li>
-<li>The mean and standard deviation of the ImageNet images. Every model has its own; check the documentation of the weights you use.</li>
+<li>ImageNet models expect 224 × 224 pixels. Nearest-neighbour upsampling keeps the pixel art sharp. For photographs, use <code>weights.transforms()</code>.</li>
+<li>The mean and standard deviation of the ImageNet images. Every model has its own, so check the documentation of the weights you use.</li>
 <li>No gradients are needed to run a model, and skipping them saves memory and time.</li>
 </ol>
 <p>The output is:</p>
@@ -3924,7 +3924,7 @@
 </span></code></pre></div>
 <details class="question">
 <summary>Why does AlexNet get these wrong?</summary>
-<p>AlexNet learned from photographs. Tiny cartoons of 16 by 16 pixels are far from anything it has seen, so its 1000 ImageNet classes do not fit. This is common with experimental stimuli (line drawings, chess boards, scrambled images). You can still record its layers and compare them with the brain: the early layers respond to edges and colours whatever the image. If you need the network to <em>know</em> your categories, <a href="dnn-train.html">train or fine-tune it</a>.</p>
+<p>AlexNet learned from photographs. Tiny cartoons of 16 by 16 pixels are far from anything it has seen, so its 1000 ImageNet classes do not fit. This is common with experimental stimuli (line drawings, chess boards, scrambled images). You can still record its layers and compare them with the brain, because the early layers respond to edges and colours whatever the image. If you need the network to <em>know</em> your categories, <a href="dnn-train.html">train or fine-tune it</a>.</p>
 </details>
 <hr>
 <h2 id="where-next">Where next?<a class="headerlink" href="#where-next" title="Permanent link">¶</a></h2>
@@ -3967,7 +3967,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-05T17:35:08+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 5, 2026 17:35:08 CEST">October 5, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-06T13:57:17+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 6, 2026 13:57:17 CEST">October 6, 2026</span></time>
     
   </span>
 

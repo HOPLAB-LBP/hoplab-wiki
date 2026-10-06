@@ -3360,7 +3360,7 @@
 <ul>
 <li><strong>You need:</strong> the environment and toy kit from <a href="dnn-setup.html">Set up and pick a model</a>.</li>
 <li><strong>You get:</strong> AlexNet trained on the sprites, and a fair test of how well it learned.</li>
-<li><strong>Skip this page</strong> if a public model is good enough for your question: go to <a href="dnn-extract.html">Extract activations</a>.</li>
+<li><strong>Skip this page</strong> if a public model is good enough for your question, and go straight to <a href="dnn-extract.html">Extract activations</a>.</li>
 </ul>
 </div>
 <hr>
@@ -3388,7 +3388,7 @@
 </tr>
 </tbody>
 </table>
-<p>Training can be the question itself. In <a href="https://doi.org/10.1038/s42003-024-07415-8">Duyck et al. (2024)</a>, only AlexNets fine-tuned to classify zoomorphic objects (a cuddly toy, a butterfly-shaped rattle) together with animals showed the human bias to group them with animals. <a href="https://doi.org/10.64898/2026.04.14.718353">Cerpelloni et al. (2026)</a>, a preprint, trained AlexNet and CORnet-Z to classify written words and then Braille words, to test whether a feedforward visual network explains how expert readers process Braille.</p>
+<p>Training can be the question itself, for example when you ask whether a network trained on a particular set of images or labels comes closer to the human data (<a href="https://doi.org/10.1038/s42003-024-07415-8">Duyck et al., 2024</a>; <a href="https://doi.org/10.64898/2026.04.14.718353">Cerpelloni et al., 2026, preprint</a>).</p>
 <p>Fine-tuning starts from a network that already learned useful features on ImageNet and changes only part of it. The figure shows which layers are trained in the three common choices, next to training from scratch:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-finetune-strategies.png" data-desc-position="bottom"><img alt="Four ways to adapt AlexNet: which layers are trained in each" src="../../assets/dnn/dnn-finetune-strategies.png"></a></p>
 <table>
@@ -3429,11 +3429,11 @@
 </table>
 <div class="admonition info">
 <p class="admonition-title">Fine-tuning changes what you compare with human data</p>
-<p>If you later compare layers with brain or behavioural data, remember which layers you trained. With <em>head only</em> the network's features are exactly those of the public model; with <em>whole network</em> every layer may have moved towards your task.</p>
+<p>If you later compare layers with brain or behavioural data, remember which layers you trained. With <em>head only</em>, the network's features are exactly those of the public model. With <em>whole network</em>, every layer may have moved towards your task.</p>
 </div>
 <hr>
 <h2 id="1-load-the-sprites-and-split-them">1. Load the sprites and split them<a class="headerlink" href="#1-load-the-sprites-and-split-them" title="Permanent link">¶</a></h2>
-<p>Our sprites are far from photographs: AlexNet calls the cat a jigsaw puzzle and the ghost a traffic light (see <a href="dnn-setup.html#4-run-the-model-on-the-sprites">the previous page</a>). Here we teach it our three categories, critters, food and spooky things, and test it on sprites it has never seen. Each category has its own scene, grass, a plate or a night sky, so there is something visual to learn.</p>
+<p>Our sprites are far from photographs. AlexNet calls the cat a jigsaw puzzle and the ghost a traffic light (see <a href="dnn-setup.html#4-run-the-model-on-the-sprites">the previous page</a>). Here we teach it our three categories, critters, food and spooky things, and test it on sprites it has never seen. Each category has its own scene, grass, a plate or a night sky, so there is something visual to learn.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -3487,13 +3487,13 @@
 </span></code></pre></div>
 <ol>
 <li>Fixes the random parts (the new layer's starting weights, the shifts, the order of the images), so a rerun on the same computer gives similar numbers. GPUs add some randomness of their own.</li>
-<li>Pads the 16 x 16 sprite by two pixels on each side, copying its edge pixels, and cuts a random 16 x 16 window out of it: a random shift of up to two pixels, in which the grass or the night sky continues. Every epoch is slightly different, which helps against overfitting on a small dataset. We do not mirror the sprites: many of them are symmetric, so a mirrored sprite is the same image.</li>
+<li>Pads the 16 x 16 sprite by two pixels on each side, copying its edge pixels, and cuts a random 16 x 16 window out of it. The result is a random shift of up to two pixels, in which the grass or the night sky continues. Every epoch is slightly different, which helps against overfitting on a small dataset. We do not mirror the sprites, since many of them are symmetric and a mirrored sprite would be the same image.</li>
 <li>A <code>Dataset</code> tells PyTorch how many images there are and how to load image number <code>i</code>. Ours reads the rows of the manifest it is given.</li>
 </ol>
 <h3 id="training-set-and-test-set">Training set and test set<a class="headerlink" href="#training-set-and-test-set" title="Permanent link">¶</a></h3>
-<p>The network learns from a training set and is scored on a test set. Both contain all three categories, but no image is in both. Training runs in epochs: in each epoch the network sees every training image once and adjusts its weights after every batch, and at the end of the epoch we score it on the test set, which it never learns from. The test score shows whether the network has learned the categories well enough to recognise new examples, not whether it remembers its training images.</p>
-<p>With our kit, a new example has to be a new sprite, not only a new image. The four versions of a sprite are the same object: if the shifted cat is in the training set and the original cat in the test set, the network can answer "critter" because it recognises that cat, without having learned anything general about critters. That is a leak: test accuracy goes up, but it measures memory of individual sprites. So all four versions of a sprite go to the same side.</p>
-<p>We keep a quarter of the sprites for the test set: two from each category, six sprites and 24 images in all. The other 18 sprites (72 images) are the training set.</p>
+<p>The network learns from a training set and is scored on a test set. Both contain all three categories, but no image is in both. Training runs in epochs. In each epoch the network sees every training image once and adjusts its weights after every batch. At the end of the epoch we score it on the test set, which it never learns from. A network that only remembers its training images fails on the test set, so the test score shows whether it has learned the categories well enough to recognise new examples.</p>
+<p>With our kit, a new example has to be a new sprite. The four versions of a sprite are the same object, so a new image of a known sprite does not count. If the shifted cat is in the training set and the original cat in the test set, the network can answer "critter" because it recognises that cat, without having learned anything general about critters. That is a leak. Test accuracy goes up, but it now measures memory of individual sprites. So all four versions of a sprite go to the same side.</p>
+<p>We keep a quarter of the sprites for the test set, two from each category, which makes six sprites and 24 images in all. The other 18 sprites (72 images) are the training set.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-grouped-cv.png" data-desc-position="bottom"><img alt="The split: a training set of 18 sprites and a test set of 6, both with all three categories and with all four versions of each sprite on one side; below, splitting by image puts versions of the same cat in both sets" src="../../assets/dnn/dnn-grouped-cv.png"></a></p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Two sprites from each category, with all four versions of each</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">test_sprites</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"penguin"</span><span class="p">,</span> <span class="s2">"banana"</span><span class="p">,</span> <span class="s2">"cherry"</span><span class="p">,</span> <span class="s2">"pumpkin"</span><span class="p">,</span> <span class="s2">"skull"</span><span class="p">]</span>  <span class="c1"># (1)!</span>
@@ -3502,7 +3502,7 @@
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_rows</span><span class="p">),</span> <span class="s2">"training images,"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_rows</span><span class="p">),</span> <span class="s2">"test images"</span><span class="p">)</span>
 </span></code></pre></div>
 <ol>
-<li>Selecting by sprite keeps the four versions together, and two sprites per category keep the categories balanced. With more stimuli, <code>StratifiedGroupKFold</code> from scikit-learn picks a split like this for you: <code>groups</code> keeps each object's images together, and it keeps the category proportions as close as it can. Check the counts on each side, since it does not guarantee them.</li>
+<li>Selecting by sprite keeps the four versions together, and two sprites per category keep the categories balanced. With more stimuli, <code>StratifiedGroupKFold</code> from scikit-learn picks a split like this for you. It keeps each object's images together through <code>groups</code>, and the category proportions as close as it can. Check the counts on each side, since it does not guarantee them.</li>
 </ol>
 <details class="example">
 <summary>Output</summary>
@@ -3516,13 +3516,13 @@
 <p><strong>How to split them.</strong> The same two rules hold:</p>
 <ul>
 <li>Put every category in both the training and the test set, in the same proportions, so that chance is known.</li>
-<li>Keep together the images that show the same thing: the views, sizes, colours or crops of one object, the frames of one video, the photos of one scene. They all go to the same side, or the test measures memory of that object. <code>StratifiedGroupKFold</code> from scikit-learn makes such a split, with the object as the group; it keeps the category proportions as close as it can, so check the counts.</li>
+<li>Keep together the images that show the same thing, such as the views, sizes, colours or crops of one object, the frames of one video or the photos of one scene. They all go to the same side, or the test measures memory of that object. <code>StratifiedGroupKFold</code> from scikit-learn makes such a split, with the object as the group. It keeps the category proportions as close as it can, so check the counts.</li>
 </ul>
 <p><strong>Comparing with the brain.</strong> Training adjusts the network's features to the training images. Compare the network with the brain only on images it did not train on, the test images. Otherwise the comparison is circular, all the more if your brain measure was defined with the same category labels.</p>
 </div>
 <hr>
 <h2 id="2-fine-tune-alexnet-on-them">2. Fine-tune AlexNet on them<a class="headerlink" href="#2-fine-tune-alexnet-on-them" title="Permanent link">¶</a></h2>
-<p>We fine-tune the whole network: every layer starts from its ImageNet weights and keeps learning, at a small learning rate. The commented lines give the other strategies from the table above.</p>
+<p>We fine-tune the whole network. Every layer starts from its ImageNet weights and keeps learning, at a small learning rate. The commented lines give the other strategies from the table above.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">build_model</span><span class="p">(</span><span class="n">n_classes</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="sd">"""AlexNet with a new output layer, and an optimiser for the layers that learn."""</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="c1"># None: random starting weights</span>
@@ -3577,10 +3577,10 @@
 </span></code></pre></div>
 <ol>
 <li>The ImageNet head has 1000 outputs, one per ImageNet class. We replace it with a new, randomly initialised layer with one output per category.</li>
-<li>A small learning rate keeps the pretrained features from being overwritten. If you train only the new head, use <code>lr=1e-3</code>: a new layer on its own can learn faster. A common refinement is to give the pretrained layers an even smaller rate than the head, with one parameter group per part in the optimiser.</li>
+<li>A small learning rate keeps the pretrained features from being overwritten. If you train only the new head, use <code>lr=1e-3</code>, since a new layer on its own can learn faster. A common refinement is to give the pretrained layers an even smaller rate than the head, with one parameter group per part in the optimiser.</li>
 <li><code>eval()</code> switches off dropout, so the network gives the same answer for the same image. <code>train()</code> switches it back on.</li>
-<li>The test accuracy before training (epoch 0) and after every epoch gives the learning curve. Before training, even a pretrained network is near chance: its new output layer starts random. The score we report is the one after the last epoch.</li>
-<li>Long enough for every strategy to fit the training sprites: in our runs, training from scratch, the slowest, got them all right after 11 epochs. We chose the number from that training accuracy, not from the test sprites.</li>
+<li>The test accuracy before training (epoch 0) and after every epoch gives the learning curve. Before training, even a pretrained network is near chance, because its new output layer starts random. The score we report is the one after the last epoch.</li>
+<li>Long enough for every strategy to fit the training sprites. In our runs, training from scratch was the slowest and got them all right after 11 epochs. We chose the number from that training accuracy, so the test sprites played no part in the choice.</li>
 </ol>
 <details class="example">
 <summary>Output</summary>
@@ -3602,16 +3602,16 @@
 </details>
 <p>To compare the strategies, we ran this code with each of the alternatives switched on (and <code>lr=1e-3</code> for the head only), three times with different seeds:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-finetune-results.png" data-desc-position="bottom"><img alt="Accuracy on the test sprites over training for the four strategies" src="../../assets/dnn/dnn-finetune-results.png"></a></p>
-<p>Averaged over three seeds, every strategy learns the categories (chance is 33%). Before training, at epoch 0, all of them are near chance, because the output layer starts random. The fine-tuned whole network learns fastest: 75% correct on the test sprites after one epoch, 100% after two, and 100% again at the end. The last layers end at 97% and the head only at 86%: with its features frozen, the head can only reweigh what ImageNet taught the network. Training from scratch is at 65% after one epoch, passes 90% after five and ends at 100%. The scenes are easy to see, so a network that starts from nothing finds them too; the pretrained features get there faster.</p>
+<p>Averaged over three seeds, every strategy learns the categories (chance is 33%). Before training, at epoch 0, all of them are near chance, because the output layer starts random. The fine-tuned whole network learns fastest, with 75% correct on the test sprites after one epoch, 100% after two, and 100% again at the end. The last layers end at 97% and the head only at 86%. With its features frozen, the head can only reweigh what ImageNet taught the network. Training from scratch is at 65% after one epoch, passes 90% after five and ends at 100%. The scenes are easy to see, so a network that starts from nothing finds them too, although the pretrained features get there faster.</p>
 <p>On natural images, the advantage of fine-tuning is larger still, in training time and often in accuracy. A pretrained network has already learned features that extract meaning from images, and the statistics of natural images, so it starts close to a good solution for a visual task and only has to adjust. A network trained from scratch has to learn all of this from your images alone. In our runs on the ants and bees of the <a href="https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html">PyTorch transfer-learning tutorial</a>, photos close to ImageNet, fine-tuned AlexNet was about 90% correct after a single epoch, while the same network trained from scratch reached 70% after 15. On our sprites, the scenes are a cue so plain that training from scratch catches up within a few epochs.</p>
 <div class="admonition tip">
 <p class="admonition-title">Want to train on real photos?</p>
-<p>The code above works on any image dataset; for photos, load the images with <code>ImageFolder</code> instead of the manifest.</p>
+<p>The code above works on any image dataset. For photos, load the images with <code>ImageFolder</code> instead of the manifest.</p>
 <ul>
-<li><a href="https://github.com/fastai/imagenette">Imagenette</a>: ten easy ImageNet classes, 99 MB at 160 pixels (Apache-2.0). Small enough for a laptop.</li>
-<li><a href="https://huggingface.co/datasets/kietzmannlab/ecoset">ecoset</a>: 1.5 million images in 565 basic-level categories, chosen by how often people use their names and how concrete they are (<a href="https://doi.org/10.1073/pnas.2011417118">Mehrer et al., 2021</a>). 155 GB, CC BY-NC-SA.</li>
-<li><a href="https://things-initiative.org/">THINGS</a>: 26,107 photos of 1,854 object concepts, with fMRI, MEG and EEG recorded on the same images. Academic use only; the THINGSplus-CC0 subset is free to publish.</li>
-<li><a href="https://www.image-net.org/">ImageNet</a>: the 1000 classes AlexNet and most models on these pages were trained on. Free registration for research.</li>
+<li><a href="https://github.com/fastai/imagenette">Imagenette</a> has ten easy ImageNet classes, 99 MB at 160 pixels (Apache-2.0), and is small enough for a laptop.</li>
+<li><a href="https://huggingface.co/datasets/kietzmannlab/ecoset">ecoset</a> has 1.5 million images in 565 basic-level categories, chosen by how often people use their names and how concrete they are (<a href="https://doi.org/10.1073/pnas.2011417118">Mehrer et al., 2021</a>). It takes 155 GB and is under CC BY-NC-SA.</li>
+<li><a href="https://things-initiative.org/">THINGS</a> has 26,107 photos of 1,854 object concepts, with fMRI, MEG and EEG recorded on the same images. It is for academic use only, but the THINGSplus-CC0 subset is free to publish.</li>
+<li><a href="https://www.image-net.org/">ImageNet</a> holds the 1000 classes AlexNet and most models on these pages were trained on. Registration for research is free.</li>
 </ul>
 <p>
 </p><div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">torchvision</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span>
@@ -3638,12 +3638,12 @@
 </div>
 <hr>
 <h2 id="3-save-the-network">3. Save the network<a class="headerlink" href="#3-save-the-network" title="Permanent link">¶</a></h2>
-<p>The network trained above has seen only the training sprites. Save its weights for the next pages, together with the list of test images: when you compare the network with the brain, those are the images to use.</p>
+<p>The network trained above has seen only the training sprites. Save its weights for the next pages, together with the list of test images, which are the images to use when you compare the network with the brain.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s2">"sprite_alexnet.pt"</span><span class="p">)</span>  <span class="c1"># (1)!</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">test_rows</span><span class="p">[[</span><span class="s2">"image_id"</span><span class="p">,</span> <span class="s2">"sprite"</span><span class="p">,</span> <span class="s2">"category"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"sprite_alexnet_test_images.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span></code></pre></div>
 <ol>
-<li>The file holds the weights, not the architecture. To load it, build the same network first, as in <a href="dnn-extract.html#4-save-them-with-the-image-order">Extract activations</a> (box "Your own trained model").</li>
+<li>The file holds the weights without the architecture. To load it, build the same network first, as in <a href="dnn-extract.html#4-save-them-with-the-image-order">Extract activations</a> (box "Your own trained model").</li>
 </ol>
 <hr>
 <h2 id="good-practice">Good practice<a class="headerlink" href="#good-practice" title="Permanent link">¶</a></h2>
@@ -3653,7 +3653,7 @@
 </details>
 <details class="tip">
 <summary>Very few images: cross-validate</summary>
-<p>With a small stimulus set, one test set gives a noisy score: it depends on which images happened to land in it. With our six test sprites, one image moves the score by 4%, and a different choice of test sprites gives a different score. Repeat the training with different test sets, so that every item is tested once, and average the scores. <code>StratifiedGroupKFold</code> from scikit-learn makes the splits, keeping the images of an item together and the category proportions as close as it can. The cost is one trained network per split.</p>
+<p>With a small stimulus set, one test set gives a noisy score, because it depends on which images happened to land in it. With our six test sprites, one image moves the score by 4%, and a different choice of test sprites gives a different score. Repeat the training with different test sets, so that every item is tested once, and average the scores. <code>StratifiedGroupKFold</code> from scikit-learn makes the splits, keeping the images of an item together and the category proportions as close as it can. The cost is one trained network per split.</p>
 </details>
 <details class="tip">
 <summary>Seeds, repeats and what to report</summary>
@@ -3665,10 +3665,10 @@
 </details>
 <details class="info">
 <summary>Training from scratch on a large dataset</summary>
-<p>The loop above is the same at any scale; what changes is the infrastructure around it.</p>
+<p>The loop above is the same at any scale, and only the infrastructure around it changes.</p>
 <ul>
 <li><strong>Data:</strong> use a <code>DataLoader</code> with several workers (<code>num_workers=8</code>) and images stored on a fast local disk.</li>
-<li><strong>Configuration:</strong> keep every setting (model, learning rate, epochs, seed, data split) in a config file, not in the code, and save a copy next to each checkpoint.</li>
+<li><strong>Configuration:</strong> keep every setting (model, learning rate, epochs, seed, data split) in a config file outside the code, and save a copy next to each checkpoint.</li>
 <li><strong>Checkpoints:</strong> save the model and optimiser state every epoch, so a crashed or time-limited job can resume.</li>
 <li><strong>Speed:</strong> mixed precision (<code>torch.autocast</code>) roughly halves memory use and time on recent GPUs.</li>
 <li><strong>Smoke test:</strong> before a long run, train for a few batches on a tiny subset to catch errors in minutes instead of hours.</li>
@@ -3716,7 +3716,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-05T17:35:08+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 5, 2026 17:35:08 CEST">October 5, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-06T13:57:17+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 6, 2026 13:57:17 CEST">October 6, 2026</span></time>
     
   </span>
 

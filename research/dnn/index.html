@@ -3187,7 +3187,7 @@
 
 
 <h1 id="neural-networks">Neural networks<a class="headerlink" href="#neural-networks" title="Permanent link">¶</a></h1>
-<p>Deep neural networks (DNNs) trained on images predict neural responses along the primate ventral visual stream better than earlier models (<a href="https://doi.org/10.1073/pnas.1403112111">Yamins et al., 2014</a>; the <a href="https://www.brain-score.org">Brain-Score</a> benchmarks compare many of them). We show a network the same images as our participants, record what its layers do, and compare those activations with human data recorded for the same images: fMRI, EEG or MEG, intracranial recordings, or behaviour such as similarity judgements and categorisation. This section gets you started with that workflow in Python and <a href="https://pytorch.org/">PyTorch</a>, using a small set of pixel-art images that runs on any laptop.</p>
+<p>Deep neural networks (DNNs) trained on images predict neural responses along the primate ventral visual stream better than earlier models (<a href="https://doi.org/10.1073/pnas.1403112111">Yamins et al., 2014</a>), and the <a href="https://www.brain-score.org">Brain-Score</a> benchmarks compare many of them. We show a network the same images as our participants, record what its layers do, and compare those activations with human data recorded for the same images. These can be fMRI, EEG or MEG, intracranial recordings, or behaviour such as similarity judgements and categorisation. This section gets you started with that workflow in Python and <a href="https://pytorch.org/">PyTorch</a>, using a small set of pixel-art images that runs on any laptop.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-overview.png" data-desc-position="bottom"><img alt="Top: the toy kit, 24 pixel-art sprites in three categories, each in four versions. Bottom: the workflow, in which the same images go to a network and to a participant, and layer activations are compared with brain patterns by RSA, decoding and encoding" src="../../assets/dnn/dnn-overview.png"></a></p>
 <div class="admonition info">
 <p class="admonition-title">Before you start</p>
@@ -3203,7 +3203,7 @@
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v14c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2m3 14h8v-2H8zm8-7h-2.5V7h-3v3H8l4 4z"></path></svg></span> <strong>Use a pretrained model</strong></p>
 <hr>
-<p>The path most projects take: download a public network (AlexNet, ResNet, CORnet, ...), show it your stimuli and record its layers, without training anything.</p>
+<p>Most projects take this path. Download a public network (AlexNet, ResNet, CORnet, ...), show it your stimuli and record its layers, without training anything.</p>
 <p><a href="dnn-setup.html">Set up</a> → <a href="dnn-extract.html">Extract</a> → <a href="dnn-compare.html">Compare</a></p>
 </li>
 <li>
@@ -3215,7 +3215,7 @@
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 13.5v8H3v-8zm-2 2H5v4h4zM12 2l5.5 9h-11zm0 3.86L10.08 9h3.84zM17.5 13c2.5 0 4.5 2 4.5 4.5S20 22 17.5 22 13 20 13 17.5s2-4.5 4.5-4.5m0 2a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"></path></svg></span> <strong>Test a hypothesis about the layers</strong></p>
 <hr>
-<p>No human data yet: ask which layers follow a visual property and which follow category, with model RDMs and decoding.</p>
+<p>If you have no human data yet, ask which layers follow a visual property and which follow category, with model RDMs and decoding.</p>
 <p><a href="dnn-setup.html">Set up</a> → <a href="dnn-extract.html">Extract</a> → <a href="dnn-model.html">Compare with a model</a></p>
 </li>
 <li>
@@ -3232,7 +3232,7 @@
 </details>
 <details class="question">
 <summary>I work in MATLAB. Can I still use this?</summary>
-<p>The network side needs Python: the models, their weights and the tools to read their layers are all Python packages. Once you have saved the activations (as on <a href="dnn-extract.html">Extract activations</a>), you can also save them as a <code>.mat</code> file with <code>scipy.io.savemat</code> and run RSA or decoding in MATLAB with the tools you know, for example <a href="../fmri/analysis/fmri-mvpa.html">CoSMoMVPA</a>.</p>
+<p>The network side needs Python, because the models, their weights and the tools to read their layers are all Python packages. Once you have saved the activations (as on <a href="dnn-extract.html">Extract activations</a>), you can also save them as a <code>.mat</code> file with <code>scipy.io.savemat</code> and run RSA or decoding in MATLAB with the tools you know, for example <a href="../fmri/analysis/fmri-mvpa.html">CoSMoMVPA</a>.</p>
 </details>
 
 
@@ -3259,7 +3259,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-05T17:35:08+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 5, 2026 17:35:08 CEST">October 5, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-06T13:57:17+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 6, 2026 13:57:17 CEST">October 6, 2026</span></time>
     
   </span>
 
