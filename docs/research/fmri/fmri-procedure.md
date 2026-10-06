@@ -178,7 +178,11 @@ Do this before the participant goes into the magnet room.
 </div>
 
 ??? tip "Pilots, phantoms, or a participant who is not in the RIS list"
-    For pilot runs, follow the same booking procedure as regular participant (i.e., book through radiology). In addition, notify Ron by email (and potentially Radiology [to confirm]) that this is a pilot run, to avoid being charged for the run. Make sure to label your data as pilot data to not confuse with your experiment data when saved on the served (e.g., Subject:PIL001 Session:PIL001_MR1).
+    For pilot runs, follow the same booking procedure as for regular participants (i.e., [book through radiology](fmri-get-started.md#booking-the-scanner)). In addition, notify Ron by email that this is a pilot run, to avoid being charged for the run. At the console, the **Study description** (XNAT project ID) and **Study comment** still matter, so the data reach your XNAT project. Label your data as pilot data, so they are not confused with your experiment data on the server, for example:
+
+    ```text
+    Subject:PIL001 Session:PIL001_MR1
+    ```
 
     For a phantom run (for example to test the trigger), click *New examination* and fill in the details by hand (pseudo data for a phantom). For the scanning, use one of the phantom bottles in the fMRI lab. Before you start, switch off the data transfer: right-click the run, choose *Edit properties* and disable *PACS*.
 
@@ -364,7 +368,8 @@ __TODO__: [Emma] How to check head motion during or after a run on the MR11 cons
 __TODO__: [Simen] Protocol file or pictures of the functional and anatomical scans of your main task, so we can document the lab's standard MR11 parameters (TR, TE, voxel size, slices, multiband, dummies), as we had for MR8. (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] Find out where the MRI-compatible glasses are kept, how to get them, and which prescriptions are available, and add it to "Instruct the participant". (Not asked yet.)
 __TODO__: [Andrea] Check whether the check-in/check-out form is still used at MR11 (it was used before to record scanner hours for invoicing). If so, add it to "Required forms". (Raised by Klara in her PR review, 2026-10-02; not asked yet.)
-__TODO__: [Simen] Expand the scanning procedure section to clearly distinguish between pilot scans and real data collection runs: explain differences in booking, billing, and data handling at MR11.
+__TODO__: [Simen] Pilot runs: should Radiology also be told that a session is a pilot, besides Ron? (Not asked yet.)
+__TODO__: [Simen] Pilot runs: confirm with Ron that a pilot is not charged once he is told by e-mail, and whether this should go in the invoicing section of First steps. (Not asked yet.)
 __TODO__: [Andrea] Agree on a lab-wide XNAT subject and session naming convention (e.g., Subject:sub-01 Session:sub-01_ses-01) and add it to the RDM pages.
 __TODO__: [Andrea] Add eye-tracking set-up steps (positioning, camera set-up, calibration and validation) once the EyeLink is installed at MR11.
 -->

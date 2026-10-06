@@ -163,7 +163,7 @@ MR11 is booked through the **MRI Scientific Planning Agenda**: [kuleuven.be/radi
     Participant details sent by e-mail are ignored (not GDPR-compliant). The form is the only way to plan a participant. A scan can only be planned once all participant details are known, because every structural scan is checked for incidental findings and the participant's GP is contacted if needed.
 
 !!! tip "Booking a pilot"
-    Pilot sessions are usually booked through Ron Peeters: e-mail him ([ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be)) to ask for a pilot slot. At the console, register the pilot with *New examination* (see [Pilots, phantoms, or a participant who is not in the RIS list](fmri-procedure.md#register-the-participant-at-the-console)).
+    Book a pilot session like any other session, with the two steps above. Also e-mail Ron Peeters ([ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be)) that it is a pilot, so the session is not charged. To label the pilot data, see [Pilots, phantoms, or a participant who is not in the RIS list](fmri-procedure.md#register-the-participant-at-the-console).
 
 Tips for booking:
 
