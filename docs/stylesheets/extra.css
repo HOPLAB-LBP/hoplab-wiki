@@ -468,8 +468,8 @@
    Media & Figures
    ========================= */
 
-/* Figure captions */
-.md-typeset figure { margin: 1rem 0; }
+/* Figures: centred on the page, caption below */
+.md-typeset figure { margin: 1rem auto; }
 .md-typeset figcaption {
   margin-top: .4rem; text-align: center;
   color: var(--md-default-fg-color--light); font-size: .9rem;
