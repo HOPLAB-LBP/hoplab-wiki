@@ -99,6 +99,7 @@ Participants register at the **main entrance** of the hospital:
 - **No Belgian eID card**: at the registration desk with their foreign ID (open 7:00 to 18:30).
 - **Children under 12**: with a Kids-ID or ISI+ card.
 - **After 17:30**: participants can go directly to the MR11 waiting room.
+- **At the weekend**: participants do not register at the reception and come straight to the waiting room.
 
 After registering, participants go to the **Beeldvorming 2 waiting room** (*Gele straat, Poort 2, niveau 0*). Meet them there: they fill in the MRI Safety Checklist and the consent form, and then you go together to the scanner area. Ask participants to arrive **at least 30 minutes before** the scan slot.
 
@@ -133,18 +134,8 @@ In the preparation room:
 - If the session is long, offer water or a snack before they go in.
 - Explain what will happen: they may feel nerve or muscle twitches, must not cross hands or feet, must not touch the scanner, the scanner is loud and changes sound, you can talk through the intercom, and they can press the communication (panic) button at any time. They can stop the scan at any moment without giving a reason.
 
-!!! tip "Scanning children: preparation"
-    Floor Vandecruys has a full protocol for scanning children, including a mock-scanner demo and child-friendly games to prepare them. Ask her before your first session with children.
-
-    When scanning children, allow extra preparation time:
-
-    - Bring **biscuits** and **drinks** for the child.
-    - Make sure the time slot is long enough so the session is not rushed.
-    - Limit scanning sessions to **50 minutes of active tasks** with plenty of breaks.
-    - Show the child the console room before entering the scanner room.
-    - Go through the MRI Safety Checklist with the parents and **double-check** that the child has no metal on their clothes.
-    - Ask the child to use the toilet before scanning.
-    - Parents do **not** come into the console room. They wait in the waiting area. If the child is too scared, a screened parent can briefly accompany them into the magnet room (without metal, with earplugs), and leaves once the child is calm.
+!!! tip "Scanning children"
+    Children need extra preparation: see [Scanning children](fmri-children.md) for the planning, the preparation game, the team roles and the checks.
 
 ### Prepare the console room
 
@@ -194,6 +185,8 @@ Do this before the participant goes into the magnet room.
     ```
 
     For a phantom run (for example to test the trigger), use one of the phantom bottles in the fMRI lab. Before you start, switch off the data transfer: right-click the run, choose *Edit properties* and disable *PACS*.
+
+    If a booked participant is missing from the list, call the MR2 desk (internal 45351) or go there: the receptionist then takes the participant's order out by hand and loads it again.
 
 ---
 
@@ -266,12 +259,8 @@ During the session, regularly ask the participant (by intercom) how they are doi
 !!! warning "Keep settings constant"
     Keep TR, slices, coverage and all other sequence settings the same within and between participants.
 
-!!! tip "Scanning children: during scanning"
-    - Leave a bit of light on during scanning to reduce fear.
-    - For structural scans (where functional information isn't needed), you can play a video to keep the child entertained.
-    - Take a break after each run and ask the child how they are feeling.
-    - If the tasks change between runs, give the child a short reminder of the instructions.
-    - Use simple, reassuring language: call the coil a "helmet", explain that the table movement is like being on a ride, and tell them about the lights being off during scanning and that they need to stay very still.
+!!! tip "Scanning children"
+    For tips during the scan, see [Scanning children](fmri-children.md#good-practice).
 
 ??? failure "Door not closed properly"
     The magnet room door and the door from the magnet room to the technical room must both be closed (use the lock). Closing the changing-room door quickly can make the MR door open again: close it slowly. An open door can cause zipper or spike artefacts in your images.
@@ -379,7 +368,6 @@ __TODO__: [Emma] How to check head motion during or after a run on the MR11 cons
 __TODO__: [Simen] Protocol file or pictures of the functional and anatomical scans of your main task, so we can document the lab's standard MR11 parameters (TR, TE, voxel size, slices, multiband, dummies), as we had for MR8. (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] Find out where the MRI-compatible glasses are kept, how to get them, and which prescriptions are available, and add it to "Instruct the participant". (Not asked yet.)
 __TODO__: [Andrea] Check whether the check-in/check-out form is still used at MR11 (it was used before to record scanner hours for invoicing). If so, add it to "Required forms". (Raised by Klara in her PR review, 2026-10-02; not asked yet.)
-__TODO__: [Floor] Add the lab's protocol for scanning children (mock-scanner demo, child-friendly games, preparation steps) to the "Scanning children" tips, or link to it. (Suggested by Klara in her PR review, 2026-10-02.)
 __TODO__: [Simen] Expand the scanning procedure section to clearly distinguish between pilot scans and real data collection runs: explain differences in booking, billing, and data handling at MR11.
 __TODO__: [Andrea] Agree on a lab-wide XNAT subject and session naming convention (e.g., Subject:sub-01 Session:sub-01_ses-01) and add it to the RDM pages.
 __TODO__: [Andrea] Add eye-tracking set-up steps (positioning, camera set-up, calibration and validation) once the EyeLink is installed at MR11.
