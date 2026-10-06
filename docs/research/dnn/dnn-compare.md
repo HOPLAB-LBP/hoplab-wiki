@@ -1,18 +1,18 @@
 # Compare with human data
 
 !!! abstract "On this page"
-    - **You need:** network activations saved with their image order ([Extract activations](dnn-extract.md)) and human data for the same images: brain patterns or behaviour.
+    - **You need:** network activations saved with their image order ([Extract activations](dnn-extract.md)) and human data for the same images (brain patterns or behaviour).
     - **You get:** three ways to ask which layers resemble which brain regions or behaviours: RSA with [rsatoolbox](https://rsatoolbox.readthedocs.io/), decoding with [scikit-learn](https://scikit-learn.org/), and encoding models with [himalaya](https://gallantlab.org/himalaya/), each read against a noise ceiling or chance level.
 
 !!! warning "The human side comes first"
-    These analyses start from human data that are already estimated: one response pattern per image (and per run, if you have several). Any measure recorded for the same images works:
+    These analyses start from human data that are already estimated, with one response pattern per image (and per run, if you have several). Any measure recorded for the same images will do.
 
     - **fMRI:** the GLM betas of the voxels in each ROI, for example from the [fMRI analysis workflow](../fmri/analysis/index.md) ([Bracci et al., 2019](https://doi.org/10.1523/JNEUROSCI.1714-18.2019); [Ritchie et al., 2021](https://doi.org/10.1523/JNEUROSCI.2628-20.2021)).
     - **EEG or MEG:** the pattern across sensors at each time point after the image appears, which gives one RDM per time point ([Cichy et al., 2016](https://doi.org/10.1038/srep27755)).
     - **Intracranial recordings:** the firing rate or high-gamma power at each electrode.
-    - **Behaviour:** an RDM straight from similarity judgements or arrangements ([Kubilius et al., 2016](https://doi.org/10.1371/journal.pcbi.1004896)), or the network's choices next to people's, such as which categories they confuse ([Maniquet et al., 2025](https://doi.org/10.1038/s41598-025-20245-w)).
+    - **Behaviour:** an RDM taken directly from similarity judgements or arrangements ([Kubilius et al., 2016](https://doi.org/10.1371/journal.pcbi.1004896)), or a comparison of the network's choices with people's, such as the categories they confuse ([Maniquet et al., 2025](https://doi.org/10.1038/s41598-025-20245-w)).
 
-    The code on this page uses ROI patterns; for other data, the voxels become sensors, electrodes or the cells of a behavioural RDM. In the toy kit these patterns are synthetic. The `V1` ROI was built from the brightness, colours and edges in small patches of each image, the `IT` ROI from category and sprite identity (see [Set up and pick a model](dnn-setup.md#2-get-the-toy-kit)), so we know the right answer in advance.
+    The code on this page uses ROI patterns. With other data, the voxels become sensors, electrodes or the cells of a behavioural RDM. In the toy kit these patterns are synthetic. The `V1` ROI was built from the brightness, colours and edges in small patches of each image, the `IT` ROI from category and sprite identity (see [Set up and pick a model](dnn-setup.md#2-get-the-toy-kit)), so we know the right answer in advance.
 
 ---
 
@@ -47,7 +47,7 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
 1. Stop here if the rows of the network and human data are not the same images in the same order. A silent mismatch gives results that look plausible and mean nothing.
 
 ??? tip "Load your own brain data from an SPM GLM"
-    With real data, rsatoolbox reads the betas straight from an SPM first-level folder into the same layout. Install its imaging extras first (`pip install "rsatoolbox[imaging]"`). The code assumes the standard case: one GLM per participant, one regressor per image named after its `image_id`, and every image in every run.
+    With real data, rsatoolbox reads the betas straight from an SPM first-level folder into the same layout. Install its imaging extras first (`pip install "rsatoolbox[imaging]"`). The code assumes the standard case of one GLM per participant, one regressor per image named after its `image_id`, and every image in every run.
 
     <!-- doctest: skip -->
     ```python
@@ -70,9 +70,9 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
 
     1. The participant's first-level folder, with `SPM.mat` and the `beta_*.nii` images.
     2. An ROI mask on the same grid as the betas. You get one row per regressor of interest and one column per voxel, the residual variance of each voxel (`resms`), and the name and run of each regressor.
-    3. Voxels outside SPM's analysis mask have no betas; drop them.
+    3. Voxels outside SPM's analysis mask have no betas, so this line drops them.
     4. Dividing each voxel's betas by its residual standard deviation (univariate noise normalisation, as in rsatoolbox's SPM demo) gives noisy voxels less weight.
-    5. SPM names a regressor `Sn(1) cat_original*bf(1)`. The reader keeps `cat_original*bf(1)`; this removes the basis-function suffix so the names match `image_id`.
+    5. SPM names a regressor `Sn(1) cat_original*bf(1)`. The reader keeps `cat_original*bf(1)`, and this line removes the basis-function suffix so the names match `image_id`.
 
     Repeat for each ROI to build the `brain` dictionary used on this page.
 
@@ -90,7 +90,7 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
 
 === "RSA"
 
-    Representational similarity analysis compares *geometries*. For each layer and each ROI we compute a representational dissimilarity matrix (RDM): how different the patterns of every pair of images are. Then we compare the RDMs. The standard choice, used here, is Pearson at both steps: 1 − Pearson r between patterns as the dissimilarity, and Pearson r between RDMs as the comparison.
+    Representational similarity analysis compares *geometries*. For each layer and each ROI we compute a representational dissimilarity matrix (RDM), which holds how different the patterns of every pair of images are. Then we compare the RDMs. The standard choice, used here, is Pearson at both steps, with 1 − Pearson r between patterns as the dissimilarity and Pearson r between RDMs as the comparison.
 
     In rsatoolbox, every set of patterns is a `Dataset`, and `calc_rdm` turns a list of them into one `RDMs` object:
 
@@ -125,9 +125,9 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
     print(layer_rdms.n_rdm, "layer RDMs over", layer_rdms.n_cond, "images")
     ```
 
-    1. `"correlation"` is 1 − Pearson r. The rows stay in manifest order because we give one pattern per image and no `descriptor` to average over; with a `descriptor`, rsatoolbox sorts the images by its values.
-    2. One `Dataset` per ROI holds every run, one row per image and run. The descriptors say which image and run each row is; the crossnobis box below uses the same object.
-    3. One RDM per run. rsatoolbox treats them as repeated measurements: their spread gives the noise ceiling below. With several participants, use one RDM per participant instead.
+    1. `"correlation"` is 1 − Pearson r. The rows stay in manifest order because we give one pattern per image and no `descriptor` to average over. With a `descriptor`, rsatoolbox sorts the images by its values.
+    2. One `Dataset` per ROI holds every run, one row per image and run. The descriptors say which image and run each row is. The crossnobis box below uses the same object.
+    3. One RDM per run. rsatoolbox treats them as repeated measurements, and their spread gives the noise ceiling below. With several participants, use one RDM per participant instead.
 
     Each layer becomes a fixed model, and rsatoolbox evaluates all of them against the brain RDMs. `eval_bootstrap_pattern` resamples the sprites, so its error bars tell you how much the result depends on the particular objects you chose:
 
@@ -168,15 +168,15 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
                 plt.show()
         ```
 
-        1. rsatoolbox changes some global plot settings; `rc_context` restores them afterwards.
+        1. rsatoolbox changes some global plot settings, and `rc_context` restores them afterwards.
         2. The images are sorted by category, 32 per category, so these lines mark the critter, food and spooky blocks.
-        3. Bars are the mean correlation with the brain RDMs and error bars the bootstrap standard error. The grey band is the noise ceiling: its lower edge is how well the average RDM of the other runs predicts each run, its upper edge how well the average of all runs does. A layer inside the band is as good as the data allow. Set `test_pair_comparisons=True` to draw which layers differ significantly; the tests themselves are in the printed results.
+        3. Bars are the mean correlation with the brain RDMs and error bars the bootstrap standard error. The grey band is the noise ceiling. Its lower edge is how well the average RDM of the other runs predicts each run, and its upper edge how well the average of all runs does. A layer inside the band is as good as the data allow. Set `test_pair_comparisons=True` to draw which layers differ significantly. The tests themselves are in the printed results.
 
     ![RDMs of three AlexNet layers, with the category blocks marked](../../assets/dnn/dnn-rdms.png)
 
     ![RSA model comparison for the V1-like ROI](../../assets/dnn/dnn-rsa-v1.png){ width="49%" } ![RSA model comparison for the IT-like ROI](../../assets/dnn/dnn-rsa-it.png){ width="49%" }
 
-    The V1-like ROI is matched best by conv1 (r = 0.502) and worst by fc7 (0.296); in between, the profile dips at conv3 (0.376) and rises again at conv5 (0.425). The IT-like ROI, which ignores where the sprite sits and its colours, peaks later: it rises from conv1 (0.216) to conv5 (0.283) and falls in the fully connected layers (fc7, 0.236). conv1 is not significantly below the noise ceiling of the V1-like ROI; every other layer falls below the ceiling of both ROIs. With crossnobis distances (box below), the IT profile has the same shape, highest at conv5.
+    The V1-like ROI is matched best by conv1 (r = 0.502) and worst by fc7 (0.296), with a dip at conv3 (0.376) and a second rise at conv5 (0.425). The IT-like ROI, which ignores where the sprite sits and its colours, peaks later. It rises from conv1 (0.216) to conv5 (0.283) and falls in the fully connected layers (fc7, 0.236). conv1 is not significantly below the noise ceiling of the V1-like ROI, and every other layer falls below the ceiling of both ROIs. With crossnobis distances (box below), the IT profile has the same shape, highest at conv5.
 
     ??? info "Other dissimilarities and comparisons, and when to use them"
         **Dissimilarity between two patterns** (`method` of `calc_rdm`):
@@ -198,7 +198,7 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
         | **Cosine and whitened cosine** (`"cosine"`, `"cosine_cov"`) | Crossnobis RDMs, where 0 means "no difference". The whitened version accounts for the dependencies between RDM entries and is the most sensitive choice there ([Diedrichsen et al., 2021](https://doi.org/10.51628/001c.27664)). |
 
     !!! tip "Recommended for real data: crossnobis distances"
-        Correlation distances computed from noisy patterns are biased: noise makes every pair of images look more different than it is, and more so in noisier ROIs or participants. Crossnobis removes this bias by computing each distance from two independent runs, and whitens the voxels with the noise covariance. It needs at least two runs (the toy kit has four):
+        Correlation distances computed from noisy patterns are biased, because noise makes every pair of images look more different than it is, and more so in noisier ROIs or participants. Crossnobis removes this bias by computing each distance from two independent runs, and whitens the voxels with the noise covariance. It needs at least two runs (the toy kit has four):
 
         ```python
         from rsatoolbox.data.noise import prec_from_measurements
@@ -215,7 +215,7 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
 
         1. The noise covariance between voxels, estimated from how each image's pattern varies from run to run, and shrunk towards its diagonal for stability. With real data you can estimate it from the GLM residuals instead, with `prec_from_residuals(residuals, dof=glm.eff_df)`. The SPM reader above computes the residuals with `glm.get_residuals(mask)`, but only if the preprocessed time series the GLM was fitted on are still on disk, in a `func` folder next to the GLM folder.
         2. rsatoolbox averages and sorts the patterns by `descriptor`. The image descriptor holds integer positions, so the sorted order is the manifest order and the RDM lines up with the layer RDMs.
-        3. The whitened cosine similarity. Plain cosine gives every layer a high score here, because all distances are positive; the whitened version separates the layers much better.
+        3. The whitened cosine similarity. Plain cosine gives every layer a high score here, because all distances are positive. The whitened version separates the layers much better.
 
 === "Decoding"
 
@@ -251,7 +251,7 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
     ```
 
     1. All variants of a sprite stay in the same fold. Otherwise the classifier could recognise the shifted cat from the training set instead of learning what a critter is.
-    2. A linear support vector machine, a common choice in MVPA. The scaler is part of the pipeline, so it is fitted on the training folds only: scaling all data before cross-validation leaks information from the test set. Shrinkage LDA, the commented alternative, is often preferred for brain data: it has no setting to tune (the shrinkage is estimated from the data, while the SVM's `C` is a choice), it takes the noise correlations between voxels into account, and it is fast, which helps when you repeat the decoding many times for a permutation test. It estimates a features × features covariance, so keep it for ROIs: for a network layer with tens of thousands of units that matrix does not fit in memory.
+    2. A linear support vector machine, a common choice in MVPA. The scaler is part of the pipeline, so it is fitted on the training folds only. Scaling all data before cross-validation leaks information from the test set. Shrinkage LDA, the commented alternative, is often preferred for brain data. It has no setting to tune (the shrinkage is estimated from the data, while the SVM's `C` is a choice) and it takes the noise correlations between voxels into account. It is also fast, which helps when you repeat the decoding many times for a permutation test. It estimates a features × features covariance, so keep it for ROIs. For a network layer with tens of thousands of units, that matrix does not fit in memory.
 
     ??? example "Plot decoding by layer"
 
@@ -268,10 +268,10 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
 
     ![Category decoding accuracy by AlexNet layer, with the two ROIs as reference lines](../../assets/dnn/dnn-decoding.png)
 
-    Category is readable almost everywhere: from every AlexNet layer (83 to 99% correct on new sprites, chance 33%), from the V1-like ROI (98%) and from the IT-like ROI (86%). The reason is the scenes: grass, plates and night skies make the categories visible in the pixels themselves, so even the first layer and V1 can read them. Decoding tells you that the information is there, not what kind of feature carries it. To ask whether a layer represents the objects rather than their backgrounds, you would test on images that change the background, or compare the profiles with RSA and encoding.
+    Category is readable almost everywhere, from every AlexNet layer (83 to 99% correct on new sprites, chance 33%), from the V1-like ROI (98%) and from the IT-like ROI (86%). The scenes explain this. Grass, plates and night skies make the categories visible in the pixels themselves, so even the first layer and V1 can read them. Decoding shows that the information is there and leaves open what kind of feature carries it. To ask whether a layer represents the objects rather than their backgrounds, you would test on images that change the background, or compare the profiles with RSA and encoding.
 
     ??? tip "Testing against chance"
-        Chance is 1/3 here, and the plot marks it. To claim that an accuracy is *above* chance, though, you need a test: with few test images, a classifier that learned nothing still scatters widely around 33% ([Combrisson & Jerbi, 2015](https://doi.org/10.1016/j.jneumeth.2015.01.010)), and a binomial test does not apply because the four versions of a sprite are not independent. Use a permutation test: give the sprites random categories (all versions of a sprite the same one), rerun the same folds many times, and compare the real accuracy with that distribution. scikit-learn's `permutation_test_score` does not do this when you pass the sprite groups, because it then shuffles the labels only within each sprite. With the toy kit every accuracy is far above chance, so the test only matters for real data.
+        Chance is 1/3 here, and the plot marks it. To claim that an accuracy is *above* chance, though, you need a test. With few test images, a classifier that learned nothing still scatters widely around 33% ([Combrisson & Jerbi, 2015](https://doi.org/10.1016/j.jneumeth.2015.01.010)). A binomial test does not apply either, because the four versions of a sprite are not independent. Use a permutation test. Give the sprites random categories (all versions of a sprite the same one), rerun the same folds many times, and compare the real accuracy with that distribution. scikit-learn's `permutation_test_score` does not do this when you pass the sprite groups, because it then shuffles the labels only within each sprite. With the toy kit every accuracy is far above chance, so the test only matters for real data.
 
 === "Encoding model"
 
@@ -313,7 +313,7 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
     print(encoding.round(2))
     ```
 
-    1. himalaya runs on the GPU when PyTorch finds one and falls back to NumPy otherwise, with a warning, as in the [voxelwise tutorials](https://github.com/gallantlab/voxelwise_tutorials). The GPU wants 32-bit numbers; on the CPU we keep 64-bit ones, which change the scores less.
+    1. himalaya runs on the GPU when PyTorch finds one and falls back to NumPy otherwise, with a warning, as in the [voxelwise tutorials](https://github.com/gallantlab/voxelwise_tutorials). The GPU wants 32-bit numbers. On the CPU we keep 64-bit ones, which change the scores less.
     2. The same folds as for decoding, so both analyses are tested on the same held-out sprites.
     3. The regularisation strength of each voxel is chosen on the training sprites only, with the same grouping. himalaya cannot take the groups itself, so we give it the inner splits as a list.
     4. Score each test fold on its own and average. Pooling the predictions of all folds before correlating can produce spurious negative scores for voxels the model cannot predict.
@@ -344,8 +344,8 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
     print({roi: round(c, 2) for roi, c in encoding_ceiling.items()})
     ```
 
-    1. A correction for the small number of runs; without it, noise alone would look partly explainable.
-    2. The Spearman-Brown formula: how reliable the mean of several runs is, given how reliable one run is. Its square root is the highest correlation a perfect model can reach with that mean.
+    1. A correction for the small number of runs. Without it, noise alone would look partly explainable.
+    2. The Spearman-Brown formula predicts how reliable the mean of several runs is, given how reliable one run is. Its square root is the highest correlation a perfect model can reach with that mean.
 
     ??? example "Plot the encoding performance by layer"
 
@@ -362,7 +362,7 @@ print({roi: brain[roi].shape for roi in rois})  # runs x images x voxels
 
     ![Encoding performance by layer for the two ROIs](../../assets/dnn/dnn-encoding.png)
 
-    conv1 predicts the V1-like voxels best (r = 0.60, against a ceiling of 0.73), and later layers less well (fc7, 0.50). Every layer predicts the IT-like voxels only weakly (r = 0.11 to 0.13, against a ceiling of 0.69). That is by design: the category part of the IT signal is predictable, because every layer sees the scenes, but most of the IT signal in the kit is a random pattern for each sprite, which no model can predict for a sprite it has not seen. RSA still finds IT structure in the deeper layers because it also compares the four variants of each sprite with one another, and those share the sprite's pattern.
+    conv1 predicts the V1-like voxels best (r = 0.60, against a ceiling of 0.73), and later layers less well (fc7, 0.50). Every layer predicts the IT-like voxels only weakly (r = 0.11 to 0.13, against a ceiling of 0.69). That is by design. The category part of the IT signal is predictable, because every layer sees the scenes. Most of the IT signal in the kit, though, is a random pattern for each sprite, which no model can predict for a sprite it has not seen. RSA still finds IT structure in the deeper layers because it also compares the four variants of each sprite with one another, and those share the sprite's pattern.
 
 ---
 
@@ -372,28 +372,28 @@ A network has many layers, and which one you compare with a brain region changes
 
 **Record a spread of layers, and name them.** Take the output of whole modules at five to eight depths (for a ResNet, the output of each block, not the steps inside it), and always include the last layer before the classifier ([Schrimpf et al., 2018](https://doi.org/10.1101/407007)). That last layer is the usual choice for abstract or high-level questions, but results can differ for earlier layers ([Muttenthaler & Hebart, 2021](https://doi.org/10.3389/fninf.2021.679838)). Whether to take a layer before or after its ReLU, or, in a vision transformer, the class token or the average over tokens, has no settled answer: pick one, say which in your methods, and treat it like any other layer choice.
 
-**Expect a profile across layers, and report all of it.** Early layers tend to match early visual cortex and later layers higher ventral areas, in fMRI, MEG and single neurons ([Yamins et al., 2014](https://doi.org/10.1073/pnas.1403112111); [Khaligh-Razavi & Kriegeskorte, 2014](https://doi.org/10.1371/journal.pcbi.1003915); [Güçlü & van Gerven, 2015](https://doi.org/10.1523/JNEUROSCI.5023-14.2015); [Cichy et al., 2016](https://doi.org/10.1038/srep27755); [Eickenberg et al., 2017](https://doi.org/10.1016/j.neuroimage.2016.10.001); [Zeman et al., 2020](https://doi.org/10.1038/s41598-020-59175-0); [Ritchie et al., 2021](https://doi.org/10.1523/JNEUROSCI.2628-20.2021)). The profile can reach beyond the ventral stream: in [Bracci et al. (2023)](https://doi.org/10.1371/journal.pcbi.1011086), the ventral temporal cortex matched mid-level layers best, while the final layers also captured the object-scene associations found in frontoparietal cortex. The match is not strictly ordered: in Khaligh-Razavi & Kriegeskorte (2014), early visual cortex was matched best by AlexNet's second and third layers, not its first, and recordings from human lateral occipital cortex matched intermediate layers of VGG-19 and ResNet-50 best ([Bougou et al., 2024](https://doi.org/10.1038/s41467-024-49078-3)). The toy kit's synthetic ROIs are built to show the textbook pattern.
+**Expect a profile across layers, and report all of it.** Early layers tend to match early visual cortex and later layers higher ventral areas, in fMRI, MEG and single neurons ([Yamins et al., 2014](https://doi.org/10.1073/pnas.1403112111); [Khaligh-Razavi & Kriegeskorte, 2014](https://doi.org/10.1371/journal.pcbi.1003915); [Güçlü & van Gerven, 2015](https://doi.org/10.1523/JNEUROSCI.5023-14.2015); [Cichy et al., 2016](https://doi.org/10.1038/srep27755); [Eickenberg et al., 2017](https://doi.org/10.1016/j.neuroimage.2016.10.001); [Zeman et al., 2020](https://doi.org/10.1038/s41598-020-59175-0); [Ritchie et al., 2021](https://doi.org/10.1523/JNEUROSCI.2628-20.2021)). The last layers can also match regions beyond the ventral stream, such as frontoparietal cortex ([Bracci et al., 2023](https://doi.org/10.1371/journal.pcbi.1011086)). The match is not strictly ordered. In Khaligh-Razavi & Kriegeskorte (2014), early visual cortex was matched best by AlexNet's second and third layers rather than its first, and lateral occipital cortex can be matched best by intermediate layers ([Bougou et al., 2024](https://doi.org/10.1038/s41467-024-49078-3)). The toy kit's synthetic ROIs are built to show the textbook pattern.
 
 **Choose a single best layer only on independent data.** Picking the best of seven layers and reporting its score on the same data inflates that score: it is double dipping ([Kriegeskorte et al., 2009](https://doi.org/10.1038/nn.2303)). Either report every layer, fix the layer in advance, or choose it on separate images, runs or participants, for example with nested cross-validation, and test it on the rest. [Conwell et al. (2024)](https://doi.org/10.1038/s41467-024-53147-y) choose each model's layer on 500 images and report its score on 500 others. When you compare models, compare each at its cross-validated best layer, and always next to the noise ceiling ([Nili et al., 2014](https://doi.org/10.1371/journal.pcbi.1003553)).
 
 === "RSA"
 
-    Report the plain RSA of each layer first, as on this page: every unit counts the same. Reweighting the units, or combining layers with fitted weights, often fits the brain much better ([Khaligh-Razavi et al., 2017](https://doi.org/10.1016/j.jmp.2016.10.007); [Storrs et al., 2021](https://doi.org/10.1162/jocn_a_01755); [Kaniuth & Hebart, 2022](https://doi.org/10.1016/j.neuroimage.2022.119294)), but it is a fitted model: fit the weights on some images and participants and test on others. Reweighting can change which model comes out best (Kaniuth & Hebart, 2022), and reweighted fits can even exceed the usual noise ceiling, which then needs to be computed differently (Kaniuth & Hebart, 2022). [Conwell et al. (2024)](https://doi.org/10.1038/s41467-024-53147-y) report both kinds of RSA and caution that standard mapping methods "may be too flexible". Treat the plain and the reweighted analysis as two separate questions.
+    Report the plain RSA of each layer first, as on this page, where every unit counts the same. Reweighting the units, or combining layers with fitted weights, often fits the brain much better ([Khaligh-Razavi et al., 2017](https://doi.org/10.1016/j.jmp.2016.10.007); [Storrs et al., 2021](https://doi.org/10.1162/jocn_a_01755); [Kaniuth & Hebart, 2022](https://doi.org/10.1016/j.neuroimage.2022.119294)). It is a fitted model, though, so fit the weights on some images and participants and test on others. Reweighting can change which model comes out best (Kaniuth & Hebart, 2022), and reweighted fits can even exceed the usual noise ceiling, which then needs to be computed differently (Kaniuth & Hebart, 2022). [Conwell et al. (2024)](https://doi.org/10.1038/s41467-024-53147-y) report both kinds of RSA and caution that standard mapping methods "may be too flexible". Treat the plain and the reweighted analysis as two separate questions.
 
 === "Decoding"
 
-    Categories become easier to read out linearly the deeper you go in a trained network ([Alain & Bengio, 2016](https://arxiv.org/abs/1610.01644)), as along the ventral stream ([DiCarlo et al., 2012](https://doi.org/10.1016/j.neuron.2012.01.010)). Near-perfect decoding from the last layers is therefore expected and says little on its own. Decoding shows that the information is there in a readable form, not that the brain, or the network, uses it ([Hebart & Baker, 2018](https://doi.org/10.1016/j.neuroimage.2017.08.005); [Kriegeskorte & Douglas, 2019](https://doi.org/10.1016/j.conb.2019.04.002)). Decode from every layer and compare the shape of that profile with the brain's. [Mattioni et al. (2025)](https://doi.org/10.1038/s41467-025-65468-7) did this for people treated for dense bilateral cataracts at birth, repeating their fMRI category decoding on AlexNets trained or tested on blurred images.
+    Categories become easier to read out linearly the deeper you go in a trained network ([Alain & Bengio, 2016](https://arxiv.org/abs/1610.01644)), as along the ventral stream ([DiCarlo et al., 2012](https://doi.org/10.1016/j.neuron.2012.01.010)). Near-perfect decoding from the last layers is therefore expected and says little on its own. Decoding shows that the information is there in a readable form, not that the brain, or the network, uses it ([Hebart & Baker, 2018](https://doi.org/10.1016/j.neuroimage.2017.08.005); [Kriegeskorte & Douglas, 2019](https://doi.org/10.1016/j.conb.2019.04.002)). Decode from every layer and compare the shape of that profile with the brain's ([Mattioni et al., 2025](https://doi.org/10.1038/s41467-025-65468-7)).
 
 === "Encoding"
 
-    Layers differ enormously in size: the first layer of AlexNet has 193,600 numbers per image, fc7 has 4,096. On these pages every layer keeps all its units. Kernel ridge regression is made for this case: with more features than images, himalaya fits the model through the images × images kernel, which has the same size for every layer, and the regularisation chosen on the training sprites keeps a large layer from simply memorising them. Compare layers by how well they predict held-out sprites. (A separate effect, whatever the number of units: layers whose representations have a higher effective dimensionality tend to predict held-out responses better; [Elmoznino & Bonner, 2024](https://doi.org/10.1371/journal.pcbi.1011792).) If a layer does not fit in memory, or you want every layer to have the same number of features, project each layer onto the same number of dimensions with a seeded random projection ([Conwell et al., 2024](https://doi.org/10.1038/s41467-024-53147-y)), or reduce it with a PCA fitted once on separate images and then kept fixed ([Schrimpf et al., 2018](https://doi.org/10.1101/407007)). Never fit that PCA on the images you test on: the test images would then shape the features. To combine layers in one model, give each its own regularisation with banded ridge regression (`BandedRidgeCV` in himalaya; [Nunez-Elizalde et al., 2019](https://doi.org/10.1016/j.neuroimage.2019.04.012); [Dupré la Tour et al., 2022](https://doi.org/10.1016/j.neuroimage.2022.119728)) and split the explained variance between layers: it can be largely shared, so the layer that predicts best may add little of its own ([Lescroart et al., 2015](https://doi.org/10.3389/fncom.2015.00135)).
+    Layers differ enormously in size. The first layer of AlexNet has 193,600 numbers per image and fc7 has 4,096, yet on these pages every layer keeps all its units. Kernel ridge regression handles this well. With more features than images, himalaya fits the model through the images × images kernel, which has the same size for every layer, and the regularisation chosen on the training sprites keeps a large layer from memorising them. Compare layers by how well they predict held-out sprites. Independently of the number of units, layers whose representations have a higher effective dimensionality tend to predict held-out responses better ([Elmoznino & Bonner, 2024](https://doi.org/10.1371/journal.pcbi.1011792)). If a layer does not fit in memory, or you want every layer to have the same number of features, project each layer onto the same number of dimensions with a seeded random projection ([Conwell et al., 2024](https://doi.org/10.1038/s41467-024-53147-y)). Alternatively, reduce it with a PCA fitted once on separate images and then kept fixed ([Schrimpf et al., 2018](https://doi.org/10.1101/407007)). Never fit that PCA on the images you test on, because the test images would then shape the features. To combine layers in one model, give each its own regularisation with banded ridge regression (`BandedRidgeCV` in himalaya; [Nunez-Elizalde et al., 2019](https://doi.org/10.1016/j.neuroimage.2019.04.012); [Dupré la Tour et al., 2022](https://doi.org/10.1016/j.neuroimage.2022.119728)) and split the explained variance between layers. That variance can be largely shared, so the layer that predicts best may add little of its own ([Lescroart et al., 2015](https://doi.org/10.3389/fncom.2015.00135)).
 
 **A recipe.**
 
 1. Record five to eight layers spread over the network, including the last one before the classifier, and name the modules in your methods.
 2. Report every layer, with the noise ceiling.
 3. If you need one layer, choose it on independent data or fix it in advance.
-4. For encoding, keep every unit and use kernel ridge; reduce a layer only with a random projection or a PCA fitted on separate images. To combine layers, use banded ridge.
+4. For encoding, keep every unit and use kernel ridge. Reduce a layer only with a random projection or with a PCA fitted on separate images, and combine layers with banded ridge.
 5. Read high decoding from late layers as expected, and compare profiles rather than single numbers.
 
 ---
@@ -401,13 +401,13 @@ A network has many layers, and which one you compare with a brain region changes
 ## Good practice
 
 ??? tip "Statistics across participants and images"
-    The toy kit has one "participant", so the runs stood in for repeated measurements. In a real study, compute one RDM (or one encoding score) per participant. rsatoolbox's `eval_fixed` then generalises over participants, `eval_bootstrap_pattern` over images, and `eval_dual_bootstrap` over both; the [inference documentation](https://rsatoolbox.readthedocs.io/en/latest/inference.html) explains when to use which.
+    The toy kit has one "participant", so the runs stood in for repeated measurements. In a real study, compute one RDM (or one encoding score) per participant. rsatoolbox's `eval_fixed` then generalises over participants, `eval_bootstrap_pattern` over images, and `eval_dual_bootstrap` over both. The [inference documentation](https://rsatoolbox.readthedocs.io/en/latest/inference.html) explains when to use which.
 
 ??? tip "Choosing a layer"
-    If you pick the best layer on the same data you report, its score is inflated. Report the full layer profile, or choose the layer on independent data; see [Which layer to compare](#which-layer-to-compare).
+    If you pick the best layer on the same data you report, its score is inflated. Report the full layer profile, or choose the layer on independent data (see [Which layer to compare](#which-layer-to-compare)).
 
 ??? info "Does training on the sprites change the picture?"
-    The pretrained AlexNet never learned our three categories; its layers separate them only through the scenes. Run [Extract activations](dnn-extract.md) on the AlexNet you [trained on the sprites](dnn-train.md#2-fine-tune-alexnet-on-them), then rerun this page with its features. Use only sprites that were held out during training, or the comparison is circular: the IT-like ROI was built from the same category labels the network was trained on.
+    The pretrained AlexNet never learned our three categories. Its layers separate them only through the scenes. Run [Extract activations](dnn-extract.md) on the AlexNet you [trained on the sprites](dnn-train.md#2-fine-tune-alexnet-on-them), then rerun this page with its features. Use only sprites that were held out during training. Otherwise the comparison is circular, because the IT-like ROI was built from the same category labels the network was trained on.
 
 ---
 

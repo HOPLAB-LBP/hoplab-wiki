@@ -15,7 +15,7 @@ A model RDM writes a hypothesis down as distances between images. A category mod
 - **position:** whether the sprite is centred or shifted two pixels, a visual property;
 - **background:** night sky or daylight, another visual property. Only the spooky sprites are out at night, so this model overlaps with category, as visual properties often do with real stimuli.
 
-Comparing a layer's RDM with the models asks which description the layer follows: where things are, what they look like, or what they are.
+Comparing a layer's RDM with the models asks whether the layer follows where things are, what they look like, or what they are.
 
 ---
 
@@ -58,7 +58,7 @@ layer_rdms = calc_rdm(
 ```
 
 1. Stop here if the rows of the features are not the images of the manifest, in its order.
-2. The shifted and the colour-swapped-and-shifted versions are "shifted"; the other two are "centred".
+2. The shifted and the colour-swapped-and-shifted versions are "shifted", and the other two are "centred".
 3. `pd.factorize` turns the labels into numbers, and rsatoolbox builds the RDM from them.
 4. Which sprite each image shows. rsatoolbox needs it in section 3, to hold out whole sprites.
 
@@ -117,13 +117,13 @@ print(tau.round(2))
 
 ![Kendall's tau-A between each AlexNet layer and the category, position and background models](../../assets/dnn/dnn-model-rsa.png)
 
-Position shows up in the early convolutional layers: its τ<sub>A</sub> is low at conv1 (0.07), peaks at conv3 (0.19) and falls to 0.03 at fc7, as the network becomes less sensitive to where the sprite sits. Category stays between 0.33 and 0.39 through the convolutional layers, highest at conv5, and drops in the fully connected ones (fc7, 0.24). Background follows almost the same profile, and in conv1, conv2 and conv4 it even matches slightly better than category. Only the spooky sprites are out at night, so the two models overlap, and one model at a time cannot tell them apart.
+Position shows up in the early convolutional layers. Its τ<sub>A</sub> is low at conv1 (0.07), peaks at conv3 (0.19) and falls to 0.03 at fc7, as the network becomes less sensitive to where the sprite sits. Category stays between 0.33 and 0.39 through the convolutional layers, highest at conv5, and drops in the fully connected ones (fc7, 0.24). Background follows almost the same profile, and in conv1, conv2 and conv4 it even matches slightly better than category. Only the spooky sprites are out at night, so the two models overlap, and one model at a time cannot tell them apart.
 
 ---
 
 ## 3. All models together: ridge regression
 
-When models overlap, a layer that follows one of them also matches the other. A regression answers a different question: how much each model contributes once the others are taken into account. rsatoolbox does this with a weighted model, whose weights are fitted to the layer RDM by ridge regression:
+When models overlap, a layer that follows one of them also matches the other. A regression instead asks how much each model contributes once the others are taken into account. rsatoolbox does this with a weighted model, whose weights are fitted to the layer RDM by ridge regression:
 
 ```python
 from functools import partial
@@ -158,8 +158,8 @@ print(held_out.round(2))
 
 1. One model whose prediction is a weighted sum of the three model RDMs.
 2. `fit_regress` estimates the weights by regression, and `ridge_weight` shrinks them towards zero, which keeps them stable when the models are strongly correlated or many. With `method="corr"` (given to `fit` and `crossval` below), the mean of every RDM is removed first, so the weights describe the pattern of distances rather than their overall level.
-3. The weights are scaled to length 1 within each layer: compare them within a layer, not across layers.
-4. Four folds of sprites, with all four versions of a sprite on the same side. The fixed models need no fitting; the weighted one is refitted on every training fold and scored on the held-out sprites.
+3. The weights are scaled to length 1 within each layer, so compare them only within a layer.
+4. Four folds of sprites, with all four versions of a sprite on the same side. The fixed models need no fitting. The weighted one is refitted on every training fold and scored on the held-out sprites.
 
 ??? example "Output"
 
@@ -183,7 +183,7 @@ print(held_out.round(2))
     fc7        0.50     -0.01        0.37       0.48
     ```
 
-Once category is in the regression, background keeps a large weight only in conv1 (0.45, against 0.85 for category) and a small one from conv5 on (0.18 against 0.93 in conv5): there, what looked like a match with the background was mostly the category. Position keeps the profile it had on its own, peaking at conv3 (0.45), because it does not overlap with the other two. On held-out sprites, the combined model predicts the layer RDMs a little better than category alone from conv1 to conv5 (0.76 against 0.69 in conv4, for example), and a little worse in fc6 and fc7 (0.48 against 0.50 in fc7): there, the extra weights fit the training sprites more than they help with new ones. The ridge penalty barely matters here, because three models and 4,560 pairs of images leave little to stabilise.
+Once category is in the regression, background keeps a large weight only in conv1 (0.45, against 0.85 for category) and a small one from conv5 on (0.18 against 0.93 in conv5). So from conv5 on, what looked like a match with the background was mostly the category. Position keeps the profile it had on its own, peaking at conv3 (0.45), because it does not overlap with the other two. On held-out sprites, the combined model predicts the layer RDMs a little better than category alone from conv1 to conv5 (0.76 against 0.69 in conv4, for example). In fc6 and fc7 it does a little worse (0.48 against 0.50 in fc7), and there the extra weights fit the training sprites more than they help with new ones. The ridge penalty barely matters here, because three models and 4,560 pairs of images leave little to stabilise.
 
 **When to use which.**
 
@@ -194,13 +194,13 @@ Once category is in the regression, background keeps a large weight only in conv
 | Fitting | None: nothing can be overfitted | Weights are fitted, so judge the model on held-out images, as above |
 | Watch out for | Two overlapping models both look good | With many or strongly correlated models, the weights become unstable without the ridge penalty |
 
-For statistics on either, resample images: `rsatoolbox.inference.eval_bootstrap_pattern` for the fixed models and `bootstrap_crossval` for the weighted one, both with `pattern_descriptor="sprite"`.
+For statistics on either, resample images, using `rsatoolbox.inference.eval_bootstrap_pattern` for the fixed models and `bootstrap_crossval` for the weighted one, both with `pattern_descriptor="sprite"`.
 
 ---
 
 ## 4. Decoding: which layers let you read out each property
 
-Decoding asks the same question in another way: can a linear classifier read the property out of the layer, for sprites it has not seen?
+Decoding asks the same question in another way, by testing whether a linear classifier can read the property out of the layer for sprites it has not seen.
 
 ```python
 from sklearn.model_selection import StratifiedGroupKFold, cross_val_score
@@ -262,7 +262,7 @@ Decoding reads both properties out of almost every layer, position with 86 to 10
     Two models can make similar predictions. In the toy kit, each category has its own scene, so the category model also describes grass, plates and night skies, a visual property. With real stimuli, build a model RDM for each property that could explain the result (colour, size, background, ...) and check how much they correlate before you interpret one of them.
 
 ??? tip "Several models at once"
-    To ask what each model explains beyond the others, fit them together: rsatoolbox's weighted models (`ModelWeighted`) or a regression on the RDMs, cross-validated across images. The [rsatoolbox documentation](https://rsatoolbox.readthedocs.io/en/latest/) has examples.
+    To ask what each model explains beyond the others, fit them together with rsatoolbox's weighted models (`ModelWeighted`) or a regression on the RDMs, cross-validated across images. The [rsatoolbox documentation](https://rsatoolbox.readthedocs.io/en/latest/) has examples.
 
 ---
 
@@ -274,6 +274,6 @@ Decoding reads both properties out of almost every layer, position with 86 to 10
 
     ---
 
-    The same layers against brain or behavioural data: RSA, decoding and encoding models, with noise ceilings.
+    The same layers against brain or behavioural data, through RSA, decoding and encoding models with noise ceilings.
 
 </div>
