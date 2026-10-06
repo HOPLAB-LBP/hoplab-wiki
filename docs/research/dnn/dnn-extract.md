@@ -8,7 +8,7 @@
 
 ## What is an activation?
 
-When an image goes through a network, every layer turns the output of the previous layer into a new set of numbers. A convolutional layer produces a stack of feature maps (channels × height × width); a fully connected layer produces a vector. These numbers, for one image, are that layer's *activation pattern*: the network's equivalent of a voxel pattern in an ROI.
+When an image goes through a network, every layer turns the output of the previous layer into a new set of numbers. A convolutional layer produces a stack of feature maps (channels × height × width), and a fully connected layer produces a vector. These numbers, for one image, are that layer's *activation pattern*, the network's equivalent of a voxel pattern in an ROI.
 
 We record them with [thingsvision](https://vicco-group.github.io/thingsvision/) ([Muttenthaler & Hebart, 2021](https://doi.org/10.3389/fninf.2021.679838)). It loads models from torchvision, timm, CORnet, CLIP and more through one interface, runs your images through them, and returns the activations of the layers you ask for.
 
@@ -44,7 +44,7 @@ extractor = get_extractor(
 print(extractor.show_model())  # (2)!
 ```
 
-1. Other sources work the same way: `source="timm"` with any timm model name, or `source="custom"` with `model_name="cornet-s"`, `"Alexnet_ecoset"`, `"clip"` and others. The [model list](https://vicco-group.github.io/thingsvision/AvailableModels.html) has them all.
+1. Other sources work the same way, for example `source="timm"` with any timm model name, or `source="custom"` with `model_name="cornet-s"`, `"Alexnet_ecoset"`, `"clip"` and others. The [model list](https://vicco-group.github.io/thingsvision/AvailableModels.html) has them all.
 2. `show_model()` returns the network, so `print` shows every layer with its name. `extractor.get_module_names()` gives the names as a list.
 
 ??? example "Output"
@@ -110,7 +110,7 @@ assert Path("features/file_names.txt").read_text().split() == file_names
 batches = DataLoader(dataset, batch_size=32, backend=extractor.get_backend())
 ```
 
-1. For photographs, use the model's own preprocessing: `transforms=extractor.get_transformations()`. Here we upsample the 16-pixel sprites 14 times with nearest-neighbour interpolation so they stay sharp.
+1. For photographs, use the model's own preprocessing with `transforms=extractor.get_transformations()`. Here we upsample the 16-pixel sprites 14 times with nearest-neighbour interpolation so they stay sharp.
 2. thingsvision writes the order in which it will read the images to `features/file_names.txt`. The `assert` checks it against the manifest.
 3. Listing the files explicitly makes thingsvision read them in manifest order. Without `file_names` it sorts them alphabetically. Give the names relative to `root`, and keep `root` a folder without subfolders.
 
@@ -139,7 +139,7 @@ for name, x in features.items():
 ```
 
 1. All layers come out of one pass through the network, as a dictionary from layer name to array.
-2. Each layer becomes one row per image, with every value of every map laid end to end: the first layer of AlexNet gives 64 × 55 × 55 = 193,600 numbers per image. RSA, decoding and encoding on the next pages all use these full vectors, as [Conwell et al. (2024)](https://doi.org/10.1038/s41467-024-53147-y) did for their RSA; averaging each map down first, say to 6 × 6, would discard most of the spatial detail of the early layers (conv1's maps are 55 × 55). With thousands of images the full maps no longer fit in memory; thingsvision can then write the features to disk as it extracts them (`output_dir`, see its [low-memory options](https://vicco-group.github.io/thingsvision/LowMemOptions.html)).
+2. Each layer becomes one row per image, with the values of all its maps laid end to end. The first layer of AlexNet gives 64 × 55 × 55 = 193,600 numbers per image. RSA, decoding and encoding on the next pages use these full vectors, as [Conwell et al. (2024)](https://doi.org/10.1038/s41467-024-53147-y) did for their RSA. Averaging each map down first, say to 6 × 6, would discard most of the spatial detail of the early layers, whose maps are 55 × 55. With thousands of images the full maps no longer fit in memory, and thingsvision can then write the features to disk as it extracts them (`output_dir`, see its [low-memory options](https://vicco-group.github.io/thingsvision/LowMemOptions.html)).
 
 The output gives one matrix per layer, images × features:
 
@@ -238,7 +238,7 @@ The file holds one array per layer, images × units, plus the image order:
 
 ??? info "Other kinds of models"
     - **Recurrent models (CORnet-RT, CORnet-S):** a layer runs several times per image. Check in the thingsvision documentation which time step a module name refers to, and report it.
-    - **Vision transformers:** layers output tokens (images × tokens × features). thingsvision can return the class token or the token average (`model_parameters={"token_extraction": "cls_token"}` or `"avg_pool"`); say which in your methods.
+    - **Vision transformers:** layers output tokens (images × tokens × features). thingsvision can return the class token or the token average (`model_parameters={"token_extraction": "cls_token"}` or `"avg_pool"`). Say which in your methods.
     - **Models thingsvision does not ship** (VOneNet, TDANN, TopoNets): load them with their own package, then wrap them with `get_extractor_from_model` as above.
 
 ---

@@ -1,6 +1,6 @@
 # Neural networks
 
-Deep neural networks (DNNs) trained on images predict neural responses along the primate ventral visual stream better than earlier models ([Yamins et al., 2014](https://doi.org/10.1073/pnas.1403112111); the [Brain-Score](https://www.brain-score.org) benchmarks compare many of them). We show a network the same images as our participants, record what its layers do, and compare those activations with human data recorded for the same images: fMRI, EEG or MEG, intracranial recordings, or behaviour such as similarity judgements and categorisation. This section gets you started with that workflow in Python and [PyTorch](https://pytorch.org/), using a small set of pixel-art images that runs on any laptop.
+Deep neural networks (DNNs) trained on images predict neural responses along the primate ventral visual stream better than earlier models ([Yamins et al., 2014](https://doi.org/10.1073/pnas.1403112111)), and the [Brain-Score](https://www.brain-score.org) benchmarks compare many of them. We show a network the same images as our participants, record what its layers do, and compare those activations with human data recorded for the same images. These can be fMRI, EEG or MEG, intracranial recordings, or behaviour such as similarity judgements and categorisation. This section gets you started with that workflow in Python and [PyTorch](https://pytorch.org/), using a small set of pixel-art images that runs on any laptop.
 
 ![Top: the toy kit, 24 pixel-art sprites in three categories, each in four versions. Bottom: the workflow, in which the same images go to a network and to a participant, and layer activations are compared with brain patterns by RSA, decoding and encoding](../../assets/dnn/dnn-overview.png)
 
@@ -23,7 +23,7 @@ Pick the path that matches your project. Every path starts with [Set up and pick
 
     ---
 
-    The path most projects take: download a public network (AlexNet, ResNet, CORnet, ...), show it your stimuli and record its layers, without training anything.
+    Most projects take this path. Download a public network (AlexNet, ResNet, CORnet, ...), show it your stimuli and record its layers, without training anything.
 
     [Set up](dnn-setup.md) → [Extract](dnn-extract.md) → [Compare](dnn-compare.md)
 
@@ -39,7 +39,7 @@ Pick the path that matches your project. Every path starts with [Set up and pick
 
     ---
 
-    No human data yet: ask which layers follow a visual property and which follow category, with model RDMs and decoding.
+    If you have no human data yet, ask which layers follow a visual property and which follow category, with model RDMs and decoding.
 
     [Set up](dnn-setup.md) → [Extract](dnn-extract.md) → [Compare with a model](dnn-model.md)
 
@@ -57,4 +57,4 @@ Pick the path that matches your project. Every path starts with [Set up and pick
     No. Everything in this section runs on a laptop CPU. For real projects with large models or many images, use a GPU machine or the VSC cluster (see [HPC](../fmri/analysis/fmri-hpc.md)). If the environment gives you trouble on a GPU machine, [Set up](dnn-setup.md#1-create-the-environment) shows how to keep training in a separate one.
 
 ??? question "I work in MATLAB. Can I still use this?"
-    The network side needs Python: the models, their weights and the tools to read their layers are all Python packages. Once you have saved the activations (as on [Extract activations](dnn-extract.md)), you can also save them as a `.mat` file with `scipy.io.savemat` and run RSA or decoding in MATLAB with the tools you know, for example [CoSMoMVPA](../fmri/analysis/fmri-mvpa.md).
+    The network side needs Python, because the models, their weights and the tools to read their layers are all Python packages. Once you have saved the activations (as on [Extract activations](dnn-extract.md)), you can also save them as a `.mat` file with `scipy.io.savemat` and run RSA or decoding in MATLAB with the tools you know, for example [CoSMoMVPA](../fmri/analysis/fmri-mvpa.md).

@@ -44,7 +44,7 @@ The first install downloads everything and takes a while.
 
 === "Machine with an NVIDIA GPU"
 
-    PyTorch uses the GPU when it finds one; the check below tells you whether it does. If the environment gives you trouble on your machine, for example PyTorch does not find the GPU, keep training apart: use this environment for extraction and analysis, and a second one with the latest PyTorch for the [training page](dnn-train.md), whose code runs there unchanged:
+    PyTorch uses the GPU when it finds one, and the check below tells you whether it does. If the environment gives you trouble on your machine, for example when PyTorch does not find the GPU, keep training apart. Use this environment for extraction and analysis, and a second one with the latest PyTorch for the [training page](dnn-train.md), whose code runs there unchanged:
 
     ```bash
     conda create -n dnn-train python=3.11
@@ -54,7 +54,7 @@ The first install downloads everything and takes a while.
 
 === "VSC cluster"
 
-    For large models or datasets, run on the GPU nodes of the VSC cluster. The [HPC page](../fmri/analysis/fmri-hpc.md) explains how to log in, where to store data and how to submit jobs with Slurm. Install the same environment there; if it does not work with the cluster's GPUs, split it as in the previous tab.
+    For large models or datasets, run on the GPU nodes of the VSC cluster. The [HPC page](../fmri/analysis/fmri-hpc.md) explains how to log in, where to store data and how to submit jobs with Slurm. Install the same environment there. If it does not work with the cluster's GPUs, split it as in the previous tab.
 
 Check that everything imports and whether PyTorch sees a GPU:
 
@@ -80,7 +80,7 @@ print("GPU available:", torch.cuda.is_available())
 
 ## 2. Get the toy kit
 
-All pages in this section use the same small dataset: 24 pixel-art sprites in three categories (critters, food and spooky things), each shown in four variants: the original, the sprite shifted two pixels to the side and down, and both of these with the colours swapped. That makes 96 images. Each category has its own scene, so a network has something visual to learn: critters stand on grass, food sits on a plate, and spooky things are out at night.
+All pages in this section use the same small dataset of 24 pixel-art sprites in three categories (critters, food and spooky things). Each sprite is shown in four variants: the original, the sprite shifted two pixels to the side and down, and both of these with the colours swapped. That makes 96 images. Each category has its own scene, so a network has something visual to learn. Critters stand on grass, food sits on a plate, and spooky things are out at night.
 
 [:material-download: Download the toy kit](../../assets/dnn/dnn-toy-kit.zip){ .md-button }
 
@@ -101,7 +101,7 @@ Every file lists the images in the same order, the order of `manifest.csv`. Your
 
 ![The toy kit lists the images in one order: the manifest, the stimuli and the brain data](../../assets/dnn/dnn-data-layout.png)
 
-Two columns of the manifest matter later: `category` is the label we decode or train on, and `sprite` names the object, so that all four versions of a sprite stay together when you split the images into a training and a test set. In `roi_betas.npz`, the arrays are called `V1` and `IT`, and `image_id` stores the image order. Your own ROIs can have any number of runs and voxels; only the image axis must follow the manifest.
+Two columns of the manifest matter later. The `category` column is the label we decode or train on, and the `sprite` column names the object, so that all four versions of a sprite stay together when you split the images into a training and a test set. In `roi_betas.npz`, the arrays are called `V1` and `IT`, and `image_id` stores the image order. Your own ROIs can have any number of runs and voxels, as long as the image axis follows the manifest.
 
 Load the manifest:
 
@@ -140,22 +140,22 @@ print(manifest.groupby("category")["sprite"].nunique())  # 8 sprites per categor
 
 ## From an image to an RDM
 
-If neural networks are new to you, start here: the animation shows what the rest of this section does with every image, and how to read the model cards below.
+If neural networks are new to you, start here. The animation shows what the rest of this section does with every image, and how to read the model cards below.
 
 ![Animation: a filter of AlexNet's first layer slides over the cat sprite and builds a channel map; the 64 maps of 55 × 55 are laid end to end into one vector; the same is done for a duck, a pizza, a banana, a ghost and a pumpkin, and the 6 × 6 RDM fills with 1 − Pearson r between the vectors, with the critter, food and spooky blocks marked](../../assets/dnn/dnn-conv-to-rdm.gif)
 
-Each filter of AlexNet's first layer slides over the image and gives one map of responses, and the ReLU sets the negative ones to zero. The 64 maps of 55 × 55 are laid end to end into one vector of 193,600 numbers per image. The RDM holds 1 − Pearson r between the vectors of every pair of images. The bars show a preview of each vector; the RDM uses all its values.
+Each filter of AlexNet's first layer slides over the image and gives one map of responses, and the ReLU sets the negative responses to zero. The 64 maps of 55 × 55 are laid end to end into one vector of 193,600 numbers per image, and the RDM holds 1 − Pearson r between the vectors of every pair of images. The bars are only a preview of each vector, while the RDM uses all its values.
 
 ---
 
 ## 3. Pick a model
 
-You rarely need to train a network yourself. Many trained models are public, and studies often compare several of them with the brain. Each card below says when a model is a good choice and shows what it does with our cat sprite: its first layer (four filters and their responses, or a view of the whole layer for models without shared filters) and the RDMs of its first and last layers over all 96 sprites, with the critter, food and spooky blocks marked.
+You rarely need to train a network yourself. Many trained models are public, and studies often compare several of them with the brain. Each card below says when a model is a good choice and shows what it does with our cat sprite. You see its first layer (four filters and their responses, or a view of the whole layer for models without shared filters) and the RDMs of its first and last layers over all 96 sprites, with the critter, food and spooky blocks marked.
 
 !!! tip "Pick by your question, not by accuracy"
-    A model is a hypothesis about the brain. Choose models that differ in the way your question asks about (architecture, training data, objective, topography), and compare several rather than one. For example, [Maniquet et al. (2025)](https://doi.org/10.1038/s41598-025-20245-w) compared feedforward and recurrent models of several sizes with human categorisation; [Duyck et al. (2024)](https://doi.org/10.1038/s42003-024-07415-8) compared AlexNets trained on ImageNet, Stylized ImageNet and Ecoset, and CLIP; [Cortinovis et al. (2025)](https://doi.org/10.1038/s41467-025-67855-6) compared networks trained on objects or on actions, and topographic networks.
+    A model is a hypothesis about the brain. Choose models that differ in the way your question asks about, such as architecture and size ([Maniquet et al., 2025](https://doi.org/10.1038/s41598-025-20245-w)), training data and objective ([Duyck et al., 2024](https://doi.org/10.1038/s42003-024-07415-8)) or topography ([Cortinovis et al., 2025](https://doi.org/10.1038/s41467-025-67855-6)), and compare several rather than one.
 
-The models at a glance; each name links to its card:
+The models at a glance (each name links to its card):
 
 | Model | Kind | Pick it when | Loads with |
 |---|---|---|---|
@@ -212,7 +212,7 @@ License
     )
     ```
 
-    1. Name the weights explicitly and report them: torchvision may change its default weights in a later release.
+    1. Name the weights explicitly and report them, because torchvision may change its default weights in a later release.
 
 </details>
 
@@ -258,7 +258,7 @@ License
     )
     ```
 
-    1. torchvision has two sets of ResNet-50 weights: `IMAGENET1K_V1` (the original training recipe) and `IMAGENET1K_V2` (a newer recipe, more accurate). They are different models; report which one you used.
+    1. torchvision has two sets of ResNet-50 weights: `IMAGENET1K_V1` (the original training recipe) and `IMAGENET1K_V2` (a newer recipe, more accurate). They are different models, so report which one you used.
 
 </details>
 
@@ -305,7 +305,7 @@ License
     )
     ```
 
-    1. thingsvision ships CORnet itself, so no extra package is needed. The first download is 408 MB. Areas such as `IT.output` run several times per image (the recurrent time steps); report which step you used.
+    1. thingsvision ships CORnet itself, so no extra package is needed. The first download is 408 MB. Areas such as `IT.output` run several times per image (the recurrent time steps), so report which step you used.
 
 </details>
 
@@ -357,7 +357,7 @@ License
     torch.manual_seed(0)  # (2)!
     ```
 
-    1. `get_model` returns the network wrapped for multiple GPUs; `.module` unwraps it, so layer names do not start with `module.`.
+    1. `get_model` returns the network wrapped for multiple GPUs, and `.module` unwraps it so that layer names do not start with `module.`.
     2. VOneNet adds random noise to its V1 responses on every pass, so two runs give slightly different activations. Fix the seed before extracting.
 
 </details>
@@ -402,7 +402,7 @@ License
     model = hmax.HMAX("pytorch_hmax/universal_patch_set.mat")  # (1)!
     ```
 
-    1. The patch file ships with the repository. HMAX takes grayscale images with values from 0 to 255, and its output is the top (C2) layer: 8 scales × 400 patches per image. It is not a thingsvision model, so call it directly; the repository's example shows how.
+    1. The patch file ships with the repository. HMAX takes grayscale images with values from 0 to 255, and its output is the top (C2) layer, with 8 scales × 400 patches per image. It is not a thingsvision model, so call it directly, as the repository's example shows.
 
 </details>
 
@@ -486,7 +486,7 @@ License
 ![TDANN: the cat sprite; the V1-like layer, layer2.0, on the cortical sheet: each unit's preferred orientation, with a key of oriented bars, and each unit's response to the cat; RDMs of layer2.0 and layer4.1 over the 96 sprites](../../assets/dnn/cards/tdann.png){ .resource-card__figure }
 { .resource-card__plate }
 
-On the left, each unit's preferred orientation, measured with TDANN's own grating images and tuning fits and smoothed over 1.5 mm as in the paper: neighbouring units prefer similar orientations, and the colours meet at pinwheel-like points. On the right, each unit's response to the cat at its position on the sheet, as in the TDANN demo.
+On the left, each unit's preferred orientation, measured with TDANN's own grating images and tuning fits and smoothed over 1.5 mm as in the paper. Neighbouring units prefer similar orientations, and the colours meet at pinwheel-like points. On the right, each unit's response to the cat at its position on the sheet, as in the TDANN demo.
 { .resource-card__caption }
 
 ??? example "Load it"
@@ -507,7 +507,7 @@ On the left, each unit's preferred orientation, measured with TDANN's own gratin
     extractor = get_extractor_from_model(model=model, device="cpu", backend="pt")
     ```
 
-    1. The SimCLR checkpoint from OSF (88 MB). On a computer without a GPU, the loader's `torch.load(path)` fails with "Attempting to deserialize object on a CUDA device"; change it to `torch.load(path, map_location="cpu", weights_only=True)` in `TDANN/demo/src/model.py` (`weights_only=True` also stops the file from running code when it loads). For maps you also need each unit's position, from the same OSF project.
+    1. The SimCLR checkpoint from OSF (88 MB). On a computer without a GPU, the loader's `torch.load(path)` fails with "Attempting to deserialize object on a CUDA device". Change it to `torch.load(path, map_location="cpu", weights_only=True)` in `TDANN/demo/src/model.py` (`weights_only=True` also stops the file from running code when it loads). For maps you also need each unit's position, from the same OSF project.
 
 </details>
 
@@ -538,7 +538,7 @@ License
 ![TopoNets: the cat sprite; the response map of each channel of layer1.0.conv1, tiled at the channel's position on the 8 × 8 sheet; RDMs of layer1.0.conv1 and avgpool over the 96 sprites](../../assets/dnn/cards/toponets.png){ .resource-card__figure }
 { .resource-card__plate }
 
-The paper's vision maps show category selectivity (Fig. 5A). This view of the first topographic layer is ours: each channel's response to the cat, placed on the 8 × 8 grid that TopoLoss uses for this layer. Neighbouring tiles tend to look alike.
+The paper's vision maps show category selectivity (Fig. 5A). This view of the first topographic layer is ours. It shows each channel's response to the cat, placed on the 8 × 8 grid that TopoLoss uses for this layer. Neighbouring tiles tend to look alike.
 { .resource-card__caption }
 
 ??? example "Load it"
@@ -553,7 +553,7 @@ The paper's vision maps show category selectivity (Fig. 5A). This view of the fi
     extractor = get_extractor_from_model(model=model, device="cpu", backend="pt")
     ```
 
-    1. With the PyTorch 2.0.1 of our environment, add `torch.amp.GradScaler = torch.cuda.amp.GradScaler` (after `import torch`) before this import; newer PyTorch versions do not need it.
+    1. With the PyTorch 2.0.1 of our environment, add `torch.amp.GradScaler = torch.cuda.amp.GradScaler` (after `import torch`) before this import. Newer PyTorch versions do not need it.
     2. `tau` sets the strength of the topographic loss. The checkpoint (45 MB) is downloaded from Hugging Face to `checkpoint_path` the first time, with `wget`.
 
 </details>
@@ -585,7 +585,7 @@ License
 ![All-TNN: the cat sprite; the preferred orientation of every unit of sheet 1 on the cortical sheet, with a key of oriented bars, and the summed response to the cat at each position of the visual field; RDMs of sheet 1 and sheet 6 over the 96 sprites](../../assets/dnn/cards/alltnn.png){ .resource-card__figure }
 { .resource-card__plate }
 
-On the left, each unit's preferred orientation, measured with gratings as in the repository's `get_tuning_curves`: neighbouring units prefer similar orientations, as in V1. White dots are units that respond to no grating (0.7%). On the right, the summed response of the 64 units at each position in the visual field, which traces the cat and the edge of the grass.
+On the left, each unit's preferred orientation, measured with gratings as in the repository's `get_tuning_curves`. Neighbouring units prefer similar orientations, as in V1. White dots are units that respond to no grating (0.7%). On the right, the summed response of the 64 units at each position in the visual field, which traces the cat and the edge of the grass.
 { .resource-card__caption }
 
 ??? example "Load it"
@@ -607,7 +607,7 @@ On the left, each unit's preferred orientation, measured with gratings as in the
     ```
 
     1. `pip install -e .` fails in the current repository (a missing `_version.py`), so put the clone on the path instead. The network is built from the code saved inside the model folder, which is why you need the whole folder, not only the checkpoint.
-    2. The input layer has a fixed batch size, so set it before the model is built. Images go in as 150 × 150 RGB, scaled to the range −1 to 1; `activities_model` returns the response of each of the six sheets.
+    2. The input layer has a fixed batch size, so set it before the model is built. Images go in as 150 × 150 RGB, scaled to the range −1 to 1, and `activities_model` returns the response of each of the six sheets.
 
 </details>
 
@@ -645,8 +645,8 @@ for sprite in ["cat", "banana", "ghost", "pizza"]:
 
 1. For this quick check we use torchvision directly. The weights object knows the preprocessing the model was trained with (`weights.transforms()`) and the names of the 1000 ImageNet classes (`weights.meta["categories"]`).
 2. `.eval()` switches off dropout and freezes batch-norm statistics. Always use it when you only run images through a model.
-3. ImageNet models expect 224 × 224 pixels. Nearest-neighbour upsampling keeps the pixel art sharp; for photographs use `weights.transforms()`.
-4. The mean and standard deviation of the ImageNet images. Every model has its own; check the documentation of the weights you use.
+3. ImageNet models expect 224 × 224 pixels. Nearest-neighbour upsampling keeps the pixel art sharp. For photographs, use `weights.transforms()`.
+4. The mean and standard deviation of the ImageNet images. Every model has its own, so check the documentation of the weights you use.
 5. No gradients are needed to run a model, and skipping them saves memory and time.
 
 The output is:
@@ -659,7 +659,7 @@ The output is:
 ```
 
 ??? question "Why does AlexNet get these wrong?"
-    AlexNet learned from photographs. Tiny cartoons of 16 by 16 pixels are far from anything it has seen, so its 1000 ImageNet classes do not fit. This is common with experimental stimuli (line drawings, chess boards, scrambled images). You can still record its layers and compare them with the brain: the early layers respond to edges and colours whatever the image. If you need the network to *know* your categories, [train or fine-tune it](dnn-train.md).
+    AlexNet learned from photographs. Tiny cartoons of 16 by 16 pixels are far from anything it has seen, so its 1000 ImageNet classes do not fit. This is common with experimental stimuli (line drawings, chess boards, scrambled images). You can still record its layers and compare them with the brain, because the early layers respond to edges and colours whatever the image. If you need the network to *know* your categories, [train or fine-tune it](dnn-train.md).
 
 ---
 
