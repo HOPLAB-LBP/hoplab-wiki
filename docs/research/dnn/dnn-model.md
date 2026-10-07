@@ -349,7 +349,7 @@ print(p_category.round(3))
 ??? example "Plot decoding by layer"
 
     ```python
-    fig, axes = plt.subplots(1, 3, figsize=(11, 3.4), sharey=True)
+    fig, axes = plt.subplots(1, 3, figsize=(8.4, 3.2), sharey=True)
     for ax, name in zip(axes, properties):
         ax.plot(layers, decoding.loc[layers, name], "o-", color="#44546A", label="ResNet-50")
         ax.plot(layers, decoding.loc[[f"random {layer}" for layer in layers], name], "o--", color="#8A97A8",
