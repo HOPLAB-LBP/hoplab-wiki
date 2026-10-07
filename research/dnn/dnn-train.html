@@ -3618,7 +3618,7 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-finetune-results.png" data-desc-position="bottom"><img alt="Accuracy on the test sprites over training for the four strategies" src="../../assets/dnn/dnn-finetune-results.png"></a></p>
 <p>Averaged over three seeds, every strategy recognises the category of a new sprite more often than chance (33%), and none comes close to the training sprites. After 40 epochs, the head only is at 63% on the test sprites, the last layers at 61%, the whole network at 50% and training from scratch at 53%. The seeds differ by up to 19 points (from scratch ends between 42% and 61%), and with six test sprites one sprite moves the score by 17 points, so the ranking is not reliable. Before training, at epoch 0, every strategy is near chance, because the output layer starts random. The head only and the last layers pass 50% within five epochs and the whole network within ten, while training from scratch stays near chance for about five epochs and climbs more slowly.</p>
 <p>Eighteen sprites are too few for a network to learn what makes a critter a critter. The scenes and positions no longer give the category away, so the network has to generalise from the sprites alone, and with this little data it mostly memorises them.</p>
-<p>On natural images, fine-tuning has a clear advantage, in training time and often in accuracy. A pretrained network has already learned features that extract meaning from images, and the statistics of natural images, so it starts close to a good solution for a visual task and only has to adjust. A network trained from scratch has to learn all of this from your images alone. In our runs on the ants and bees of the <a href="https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html">PyTorch transfer-learning tutorial</a>, photos close to ImageNet, fine-tuned AlexNet was about 90% correct after a single epoch, while the same network trained from scratch reached 70% after 15.</p>
+<p>On natural images, fine-tuning has a clear advantage, in training time and often in accuracy. A pretrained network has already learned features that extract meaning from images, and the statistics of natural images, so it starts close to a good solution for a visual task and only has to adjust. A network trained from scratch has to learn all of this from your images alone.</p>
 <div class="admonition tip">
 <p class="admonition-title">Want to train on real photos?</p>
 <p>The code above works on any image dataset. For photos, load the images with <code>ImageFolder</code> instead of the manifest.</p>
@@ -3731,7 +3731,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-07T10:35:11+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 7, 2026 10:35:11 CEST">October 7, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-07T11:21:16+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 7, 2026 11:21:16 CEST">October 7, 2026</span></time>
     
   </span>
 
