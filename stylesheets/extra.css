@@ -470,6 +470,10 @@
 
 /* Figures: centred on the page, caption below */
 .md-typeset figure { margin: 1rem auto; }
+
+/* Images on their own line (alone or side by side) are centred like figures.
+   Icons inside text use { .off-glb }, have no lightbox link and stay inline. */
+.md-typeset p:has(> a.glightbox) { text-align: center; }
 .md-typeset figcaption {
   margin-top: .4rem; text-align: center;
   color: var(--md-default-fg-color--light); font-size: .9rem;
