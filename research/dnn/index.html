@@ -3188,12 +3188,12 @@
 
 <h1 id="neural-networks">Neural networks<a class="headerlink" href="#neural-networks" title="Permanent link">¶</a></h1>
 <p>Deep neural networks (DNNs) trained on images predict neural responses along the primate ventral visual stream better than earlier models (<a href="https://doi.org/10.1073/pnas.1403112111">Yamins et al., 2014</a>), and the <a href="https://www.brain-score.org">Brain-Score</a> benchmarks compare many of them. We show a network the same images as our participants, record what its layers do, and compare those activations with human data recorded for the same images. These can be fMRI, EEG or MEG, intracranial recordings, or behaviour such as similarity judgements and categorisation. This section gets you started with that workflow in Python and <a href="https://pytorch.org/">PyTorch</a>, using a small set of pixel-art images that runs on any laptop.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-overview.png" data-desc-position="bottom"><img alt="Top: the toy kit, 24 pixel-art sprites in three categories, each in four versions. Bottom: the workflow, in which the same images go to a network and to a participant, and layer activations are compared with brain patterns by RSA, decoding and encoding" src="../../assets/dnn/dnn-overview.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-overview.png" data-desc-position="bottom"><img alt="Top: the toy kit, 24 pixel-art sprites in three categories, and the design of each sprite, shown on three scenes (meadow, room, night) in two positions (centred, shifted), 144 images in all. Bottom: the workflow, in which the same images go to a network and to a participant, and layer activations are compared with brain patterns by RSA, decoding and encoding" src="../../assets/dnn/dnn-overview.png"></a></p>
 <div class="admonition info">
 <p class="admonition-title">Before you start</p>
 <p>You need basic Python and a conda installation. If either is new to you, start with <a href="../coding/index.html">Coding practices</a>. If neural networks are new to you, look at <a href="dnn-setup.html#from-an-image-to-an-rdm">From an image to an RDM</a> first.</p>
 </div>
-<p>All pages use the same small dataset, so you can run every code block as you read. It has 24 pixel-art sprites in three categories, each category with its own scene and each sprite in four variants, and synthetic "brain activations" for two regions of interest.</p>
+<p>All pages use the same small dataset, so you can run every code block as you read. It has 24 pixel-art sprites in three categories, each shown on three scenes in two positions, and simulated brain data from ten participants for two regions of interest.</p>
 <p><a class="md-button" href="../../assets/dnn/dnn-toy-kit.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"></path></svg></span> Download the toy kit</a> <a class="md-button" href="dnn-setup.html#2-get-the-toy-kit">What is inside</a></p>
 <hr>
 <h2 id="what-do-you-want-to-do">What do you want to do?<a class="headerlink" href="#what-do-you-want-to-do" title="Permanent link">¶</a></h2>
@@ -3215,7 +3215,7 @@
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 13.5v8H3v-8zm-2 2H5v4h4zM12 2l5.5 9h-11zm0 3.86L10.08 9h3.84zM17.5 13c2.5 0 4.5 2 4.5 4.5S20 22 17.5 22 13 20 13 17.5s2-4.5 4.5-4.5m0 2a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"></path></svg></span> <strong>Test a hypothesis about the layers</strong></p>
 <hr>
-<p>If you have no human data yet, ask which layers follow a visual property and which follow category, with model RDMs and decoding.</p>
+<p>If you have no human data yet, ask which layers follow the scene, the position or the category of the images, with model RDMs and decoding.</p>
 <p><a href="dnn-setup.html">Set up</a> → <a href="dnn-extract.html">Extract</a> → <a href="dnn-model.html">Compare with a model</a></p>
 </li>
 <li>
@@ -3259,7 +3259,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-06T13:57:17+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 6, 2026 13:57:17 CEST">October 6, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-07T10:35:11+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 7, 2026 10:35:11 CEST">October 7, 2026</span></time>
     
   </span>
 
