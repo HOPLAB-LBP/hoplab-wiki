@@ -894,7 +894,7 @@ This code generates a new folder containing **subject-specific ROIs**. While pre
 
 ---
 
-Now that you have your beta images (from the GLM) and your ROIs, you have everything you need to run your multi-variate analysis. [--> MVPA](fmri-mvpa.md)
+Now that you have your beta images (from the GLM) and your ROIs, you have everything you need to run your multi-variate analysis. [--> MVPA in Python](fmri-mvpa-python.md) or [in MATLAB](fmri-mvpa.md)
 
 ---
 

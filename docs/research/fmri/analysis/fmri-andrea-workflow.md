@@ -80,7 +80,7 @@ With beta images and ROIs in hand, we ran independent cross-validated SVM classi
 
 The results are saved as decoding accuracy per ROI in a BIDS-compatible `derivatives/mvpa` structure.
 
-:material-arrow-right: MVPA concepts and tutorial: [MVPA](fmri-mvpa.md).
+:material-arrow-right: MVPA concepts and tutorial: [MVPA in Python](fmri-mvpa-python.md) or [in MATLAB](fmri-mvpa.md).
 
 ---
 

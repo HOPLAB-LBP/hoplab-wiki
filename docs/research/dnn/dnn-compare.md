@@ -706,4 +706,4 @@ Chosen on half of the participants and sprites and tested on the other half, the
 - Kriegeskorte, Mur & Bandettini (2008). [Representational similarity analysis: connecting the branches of systems neuroscience](https://doi.org/10.3389/neuro.06.004.2008). *Frontiers in Systems Neuroscience*.
 - Naselaris, Kay, Nishimoto & Gallant (2011). [Encoding and decoding in fMRI](https://doi.org/10.1016/j.neuroimage.2010.07.073). *NeuroImage*.
 - The [Brain-Score](http://brain-score.org) benchmarks compare many models with neural and behavioural data.
-- Our [fMRI MVPA page](../fmri/analysis/fmri-mvpa.md) shows decoding and RSA on brain data with CoSMoMVPA in MATLAB.
+- Our fMRI pages show decoding and RSA on brain data from an SPM GLM, [in Python](../fmri/analysis/fmri-mvpa-python.md) with rsatoolbox and scikit-learn, and [in MATLAB](../fmri/analysis/fmri-mvpa.md) with CoSMoMVPA.
