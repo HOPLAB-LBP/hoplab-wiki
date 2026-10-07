@@ -242,7 +242,7 @@ Averaged over three seeds, every strategy recognises the category of a new sprit
 
 Eighteen sprites are too few for a network to learn what makes a critter a critter. The scenes and positions no longer give the category away, so the network has to generalise from the sprites alone, and with this little data it mostly memorises them.
 
-On natural images, fine-tuning has a clear advantage, in training time and often in accuracy. A pretrained network has already learned features that extract meaning from images, and the statistics of natural images, so it starts close to a good solution for a visual task and only has to adjust. A network trained from scratch has to learn all of this from your images alone. In our runs on the ants and bees of the [PyTorch transfer-learning tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html), photos close to ImageNet, fine-tuned AlexNet was about 90% correct after a single epoch, while the same network trained from scratch reached 70% after 15.
+On natural images, fine-tuning has a clear advantage, in training time and often in accuracy. A pretrained network has already learned features that extract meaning from images, and the statistics of natural images, so it starts close to a good solution for a visual task and only has to adjust. A network trained from scratch has to learn all of this from your images alone.
 
 !!! tip "Want to train on real photos?"
     The code above works on any image dataset. For photos, load the images with `ImageFolder` instead of the manifest.
