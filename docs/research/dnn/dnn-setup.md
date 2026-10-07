@@ -80,7 +80,7 @@ print("GPU available:", torch.cuda.is_available())
 
 ## 2. Get the toy kit
 
-All pages in this section use the same small dataset of 24 pixel-art sprites in three categories (critters, food and spooky things). Each sprite is shown in four variants: the original, the sprite shifted two pixels to the side and down, and both of these with the colours swapped. That makes 96 images. Each category has its own scene, so a network has something visual to learn. Critters stand on grass, food sits on a plate, and spooky things are out at night.
+All pages in this section use the same small dataset. It has 24 pixel-art sprites in three categories (critters, food and spooky things), and every sprite is shown on three scenes (a meadow, a room and a night sky) in two positions (centred, and shifted 6 pixels down and to the right). That makes 144 images of 48 × 48 pixels. Every sprite appears in every scene and position, so neither the scene nor the position tells you the category. A layer or a brain region that separates the categories has to do it from the sprites themselves.
 
 [:material-download: Download the toy kit](../../assets/dnn/dnn-toy-kit.zip){ .md-button }
 
@@ -89,19 +89,21 @@ Unzip it next to your scripts. You get this layout:
 ```text
 dnn-toy-kit/
 ├── manifest.csv          # one row per image
-├── stimuli/              # 96 PNG files, 16 x 16 pixels
+├── stimuli/              # 144 PNG files, 48 x 48 pixels
 └── brain/
-    └── roi_betas.npz     # "brain activations" for two ROIs
+    ├── sub-01.npz        # one file per participant: V1 and IT patterns
+    ├── ...
+    └── sub-10.npz
 ```
 
-!!! warning "The brain data in the kit are synthetic"
-    These pages start *after* the brain analysis, with one activity pattern per image from each region of interest (see the [fMRI analysis workflow](../fmri/analysis/index.md); [Compare with human data](dnn-compare.md#load-and-line-up-the-data) shows how to read them from an SPM GLM). The kit fakes that result for a `V1`-like ROI, which responds to brightness, colour and edges at each position, and an `IT`-like ROI, which responds to category and sprite identity but not to position or colour.
+!!! warning "The brain data in the kit are simulated"
+    These pages start *after* the brain analysis, with one activity pattern per image and run from each region of interest (see the [fMRI analysis workflow](../fmri/analysis/index.md); [Compare with human data](dnn-compare.md#load-and-line-up-the-data) shows how to read them from an SPM GLM). The kit's patterns are simulated with [PcmPy](https://pcm-toolbox-python.readthedocs.io/) for ten participants with six runs each, in two regions of interest called `V1` and `IT`.
 
 Every file lists the images in the same order, the order of `manifest.csv`. Your own data should follow the same structure, so that the code on these pages works on it unchanged:
 
-![The toy kit lists the images in one order: the manifest, the stimuli and the brain data](../../assets/dnn/dnn-data-layout.png)
+![The toy kit lists the images in one order: the manifest, the stimuli and the brain data of every participant](../../assets/dnn/dnn-data-layout.png)
 
-Two columns of the manifest matter later. The `category` column is the label we decode or train on, and the `sprite` column names the object, so that all four versions of a sprite stay together when you split the images into a training and a test set. In `roi_betas.npz`, the arrays are called `V1` and `IT`, and `image_id` stores the image order. Your own ROIs can have any number of runs and voxels, as long as the image axis follows the manifest.
+The manifest has one row per image. The `category`, `scene` and `position` columns are the three properties we test on the next pages. The `sprite` column names the object, so that all six versions of a sprite stay together when you split the images into a training and a test set. In each participant's file, the arrays `V1` and `IT` hold the patterns as runs × images × voxels, and `image_id` stores the image order. The two ROIs have different numbers of voxels. Your own ROIs can have any number of runs and voxels, as long as the image axis follows the manifest.
 
 Load the manifest:
 
@@ -113,9 +115,27 @@ import pandas as pd
 KIT = Path("dnn-toy-kit")  # the folder you unzipped, next to this script
 # One row per image, in the order every array uses
 manifest = pd.read_csv(KIT / "manifest.csv")
-print(manifest.head())
-print(manifest.groupby("category")["sprite"].nunique())  # 8 sprites per category
+print(manifest[["image_id", "sprite", "category", "scene", "position"]].head())
+# Sprites per category in every scene and position: 8 everywhere
+print(pd.crosstab(manifest["category"], [manifest["scene"], manifest["position"]]))
 ```
+
+??? example "Output"
+
+    ```text
+                    image_id   sprite category   scene position
+    0      cat_meadow_centre      cat  critter  meadow   centre
+    1     duck_meadow_centre     duck  critter  meadow   centre
+    2     frog_meadow_centre     frog  critter  meadow   centre
+    3  penguin_meadow_centre  penguin  critter  meadow   centre
+    4      dog_meadow_centre      dog  critter  meadow   centre
+    scene    meadow        night         room
+    position centre shift centre shift centre shift
+    category
+    critter       8     8      8     8      8     8
+    food          8     8      8     8      8     8
+    spooky        8     8      8     8      8     8
+    ```
 
 ??? example "Plot the sprites"
 
@@ -123,18 +143,30 @@ print(manifest.groupby("category")["sprite"].nunique())  # 8 sprites per categor
     import matplotlib.pyplot as plt
     from PIL import Image
 
-    originals = manifest[manifest["variant"] == "original"]  # one version of each sprite
-    fig, axes = plt.subplots(3, 8, figsize=(8, 3.4))  # one row per category
-    for ax, (_, row) in zip(axes.flat, originals.iterrows()):
+    # One image per sprite: the meadow, centred
+    one_version = manifest[(manifest["scene"] == "meadow") & (manifest["position"] == "centre")]
+    fig, axes = plt.subplots(3, 8, figsize=(9, 4))  # one row per category
+    for ax, (_, row) in zip(axes.flat, one_version.iterrows()):
         ax.imshow(Image.open(KIT / row["file"]), interpolation="nearest")  # (1)!
-        ax.set_title(row["sprite"], fontsize=8)
+        ax.set_title(row["sprite"], fontsize=9)
         ax.set(xticks=[], yticks=[])  # no ticks, but keep the thin frame around each image
+    plt.show()
+
+    # The six versions of one sprite: three scenes, two positions
+    cat = manifest[manifest["sprite"] == "cat"]
+    fig, axes = plt.subplots(1, 6, figsize=(9, 1.9))
+    for ax, (_, row) in zip(axes, cat.iterrows()):
+        ax.imshow(Image.open(KIT / row["file"]), interpolation="nearest")
+        ax.set_title(f"{row['scene']}, {row['position']}", fontsize=9)
+        ax.set(xticks=[], yticks=[])
     plt.show()
     ```
 
-    1. `interpolation="nearest"` draws each pixel as a sharp square. The default smooths the 16 × 16 image into a blur.
+    1. `interpolation="nearest"` draws each pixel as a sharp square. The default smooths the pixel art into a blur.
 
-    ![The 24 sprites of the toy kit, one row per category](../../assets/dnn/dnn-sprites.png){ width="600" }
+    ![The 24 sprites of the toy kit on the meadow, one row per category](../../assets/dnn/dnn-sprites.png){ width="680" }
+
+    ![The cat in its six versions: meadow, room and night, each centred and shifted](../../assets/dnn/dnn-sprite-versions.png){ width="680" }
 
 ---
 
@@ -142,15 +174,15 @@ print(manifest.groupby("category")["sprite"].nunique())  # 8 sprites per categor
 
 If neural networks are new to you, start here. The animation shows what the rest of this section does with every image, and how to read the model cards below.
 
-![Animation: a filter of AlexNet's first layer slides over the cat sprite and builds a channel map; the 64 maps of 55 × 55 are laid end to end into one vector; the same is done for a duck, a pizza, a banana, a ghost and a pumpkin, and the 6 × 6 RDM fills with 1 − Pearson r between the vectors, with the critter, food and spooky blocks marked](../../assets/dnn/dnn-conv-to-rdm.gif)
+![Animation: a filter of AlexNet's first layer slides over the cat on the meadow and builds a channel map; the 64 maps of 55 × 55 are laid end to end into one vector; the same is done for a duck on the meadow, a pizza and a banana in the room, and a ghost and a pumpkin at night, and the 6 × 6 RDM fills with 1 − Pearson r between the vectors, with the critter, food and spooky blocks marked](../../assets/dnn/dnn-conv-to-rdm.gif)
 
-Each filter of AlexNet's first layer slides over the image and gives one map of responses, and the ReLU sets the negative responses to zero. The 64 maps of 55 × 55 are laid end to end into one vector of 193,600 numbers per image, and the RDM holds 1 − Pearson r between the vectors of every pair of images. The bars are only a preview of each vector, while the RDM uses all its values.
+Each filter of AlexNet's first layer slides over the image and gives one map of responses, and the ReLU sets the negative responses to zero. The 64 maps of 55 × 55 are laid end to end into one vector of 193,600 numbers per image, and the RDM holds 1 − Pearson r between the vectors of every pair of images. The bars are only a preview of each vector, while the RDM uses all its values. Each pair of sprites in the animation shares a scene, the critters on the meadow, the food in the room and the spooky sprites at night, so the three dark blocks of the RDM can come from the scene as much as from the category. The kit crosses the two, and [Compare with a model](dnn-model.md) shows how to tell them apart. The animation uses AlexNet, whose first layer is the simplest to show. The rest of this section uses ResNet-50, which works the same way with more layers.
 
 ---
 
 ## 3. Pick a model
 
-You rarely need to train a network yourself. Many trained models are public, and studies often compare several of them with the brain. Each card below says when a model is a good choice and shows what it does with our cat sprite. You see its first layer (four filters and their responses, or a view of the whole layer for models without shared filters) and the RDMs of its first and last layers over all 96 sprites, with the critter, food and spooky blocks marked.
+You rarely need to train a network yourself. Many trained models are public, and studies often compare several of them with the brain. Each card below says when a model is a good choice and shows what it does with our cat sprite. You see its first layer (four filters and their responses, or a view of the whole layer for models without shared filters) and the RDMs of its first and last layers over all 144 images, with the critter, food and spooky blocks marked.
 
 !!! tip "Pick by your question, not by accuracy"
     A model is a hypothesis about the brain. Choose models that differ in the way your question asks about, such as architecture and size ([Maniquet et al., 2025](https://doi.org/10.1038/s41598-025-20245-w)), training data and objective ([Duyck et al., 2024](https://doi.org/10.1038/s42003-024-07415-8)) or topography ([Cortinovis et al., 2025](https://doi.org/10.1038/s41467-025-67855-6)), and compare several rather than one.
@@ -159,8 +191,8 @@ The models at a glance (each name links to its card):
 
 | Model | Kind | Pick it when | Loads with |
 |---|---|---|---|
-| [AlexNet](#alexnet) | <span class="resource-swatch resource-swatch--classic"></span> classic | you want the shared reference model | thingsvision |
 | [ResNet-50](#resnet-50) | <span class="resource-swatch resource-swatch--classic"></span> classic | you want a deep, strong ImageNet baseline | thingsvision |
+| [AlexNet](#alexnet) | <span class="resource-swatch resource-swatch--classic"></span> classic | you want the shared reference model | thingsvision |
 | [CORnet-S](#cornet-s) | <span class="resource-swatch resource-swatch--brain"></span> brain-inspired | layers should map onto V1, V2, V4 and IT | thingsvision |
 | [VOneNet](#vonenet) | <span class="resource-swatch resource-swatch--brain"></span> brain-inspired | you want a fixed model of V1 at the front | its own package |
 | [HMAX](#hmax) | <span class="resource-swatch resource-swatch--brain"></span> brain-inspired | you want a model without trained weights | its own repository |
@@ -172,51 +204,6 @@ The models at a glance (each name links to its card):
 ### Classic image classifiers { .resource-group .resource-group--classic }
 
 <details class="resource-card resource-card--classic" markdown open>
-<summary markdown="block">
-
-#### AlexNet
-
-[:material-file-document-outline: Krizhevsky et al., 2012](https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html) [:material-book-open-variant: Docs](https://pytorch.org/vision/stable/models/generated/torchvision.models.alexnet.html)
-{ .resource-card__links }
-
-**Pick it when** you want the shared reference point: five convolutional and three fully connected layers, reported in many DNN-brain studies. Small and fast.
-
-</summary>
-
-Architecture
-:   CNN, 8 layers: 5 convolutional, 3 fully connected
-
-Trained on
-:   ImageNet, 1000 labels
-
-In thingsvision
-:   `alexnet`, source `torchvision`
-
-License
-:   BSD-3 code; weights under ImageNet terms
-
-![AlexNet: the cat sprite; four conv1 filters (horizontal edge, oblique edge, vertical grating, colour centre-surround), each above its response to the cat; RDMs of conv1 and fc7 over the 96 sprites](../../assets/dnn/cards/alexnet.png){ .resource-card__figure }
-{ .resource-card__plate }
-
-??? example "Load it"
-
-    ```python
-    from thingsvision import get_extractor
-    
-    extractor = get_extractor(
-        model_name="alexnet",
-        source="torchvision",  # the model comes from torchvision's model zoo
-        device="cpu",
-        pretrained=True,
-        model_parameters={"weights": "IMAGENET1K_V1"},  # (1)!
-    )
-    ```
-
-    1. Name the weights explicitly and report them, because torchvision may change its default weights in a later release.
-
-</details>
-
-<details class="resource-card resource-card--classic" markdown>
 <summary markdown="block">
 
 #### ResNet-50
@@ -240,7 +227,7 @@ In thingsvision
 License
 :   BSD-3 code; weights under ImageNet terms
 
-![ResNet-50: the cat sprite; four conv1 filters (horizontal bar, oblique bars, colour edge, colour centre-surround), each above its response to the cat; RDMs of conv1 and avgpool over the 96 sprites](../../assets/dnn/cards/resnet50.png){ .resource-card__figure }
+![ResNet-50: the cat sprite; four conv1 filters (horizontal bar, oblique bars, colour edge, colour centre-surround), each above its response to the cat; RDMs of conv1 and avgpool over the 144 images](../../assets/dnn/cards/resnet50.png){ .resource-card__figure }
 { .resource-card__plate }
 
 ??? example "Load it"
@@ -259,6 +246,51 @@ License
     ```
 
     1. torchvision has two sets of ResNet-50 weights: `IMAGENET1K_V1` (the original training recipe) and `IMAGENET1K_V2` (a newer recipe, more accurate). They are different models, so report which one you used.
+
+</details>
+
+<details class="resource-card resource-card--classic" markdown>
+<summary markdown="block">
+
+#### AlexNet
+
+[:material-file-document-outline: Krizhevsky et al., 2012](https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html) [:material-book-open-variant: Docs](https://pytorch.org/vision/stable/models/generated/torchvision.models.alexnet.html)
+{ .resource-card__links }
+
+**Pick it when** you want the shared reference point: five convolutional and three fully connected layers, reported in many DNN-brain studies. Small and fast.
+
+</summary>
+
+Architecture
+:   CNN, 8 layers: 5 convolutional, 3 fully connected
+
+Trained on
+:   ImageNet, 1000 labels
+
+In thingsvision
+:   `alexnet`, source `torchvision`
+
+License
+:   BSD-3 code; weights under ImageNet terms
+
+![AlexNet: the cat sprite; four conv1 filters (horizontal edge, oblique edge, vertical grating, colour centre-surround), each above its response to the cat; RDMs of conv1 and fc7 over the 144 images](../../assets/dnn/cards/alexnet.png){ .resource-card__figure }
+{ .resource-card__plate }
+
+??? example "Load it"
+
+    ```python
+    from thingsvision import get_extractor
+    
+    extractor = get_extractor(
+        model_name="alexnet",
+        source="torchvision",  # the model comes from torchvision's model zoo
+        device="cpu",
+        pretrained=True,
+        model_parameters={"weights": "IMAGENET1K_V1"},  # (1)!
+    )
+    ```
+
+    1. Name the weights explicitly and report them, because torchvision may change its default weights in a later release.
 
 </details>
 
@@ -288,7 +320,7 @@ In thingsvision
 License
 :   GPL-3.0
 
-![CORnet-S: the cat sprite; four V1 filters (horizontal bar, oblique bar, colour edge, centre-surround), each above its response to the cat; RDMs of V1 and IT over the 96 sprites](../../assets/dnn/cards/cornet_s.png){ .resource-card__figure }
+![CORnet-S: the cat sprite; four V1 filters (horizontal bar, oblique bar, colour edge, centre-surround), each above its response to the cat; RDMs of V1 and IT over the 144 images](../../assets/dnn/cards/cornet_s.png){ .resource-card__figure }
 { .resource-card__plate }
 
 ??? example "Load it"
@@ -333,7 +365,7 @@ In thingsvision
 License
 :   GPL-3.0
 
-![VOneNet: the cat sprite; four fixed V1 filters (horizontal grating, oblique grating, vertical bar, centre blob), each above its response to the cat; RDMs of the VOne block and avgpool over the 96 sprites](../../assets/dnn/cards/vonenet.png){ .resource-card__figure }
+![VOneNet: the cat sprite; four fixed V1 filters (horizontal grating, oblique grating, vertical bar, centre blob), each above its response to the cat; RDMs of the VOne block and avgpool over the 144 images](../../assets/dnn/cards/vonenet.png){ .resource-card__figure }
 { .resource-card__plate }
 
 ??? example "Load it"
@@ -386,7 +418,7 @@ In thingsvision
 License
 :   no license file
 
-![HMAX: the cat sprite; four S1 Gabor filters at four orientations, each above its response to the cat; RDMs of S1 and C2 over the 96 sprites](../../assets/dnn/cards/hmax.png){ .resource-card__figure }
+![HMAX: the cat sprite; four S1 Gabor filters at four orientations, each above its response to the cat; RDMs of S1 and C2 over the 144 images](../../assets/dnn/cards/hmax.png){ .resource-card__figure }
 { .resource-card__plate }
 
 ??? example "Load it"
@@ -432,7 +464,7 @@ In thingsvision
 License
 :   MIT; research use only, per the model card
 
-![CLIP: the cat sprite with CLIP's 7 × 7 patch grid; four principal components of the first-layer patch filters (colour-striped centre, vertical grating, oblique edge, centre-surround blob), each above its 7 × 7 map for the cat; RDMs of the first layer and of the class token before the projection over the 96 sprites](../../assets/dnn/cards/clip.png){ .resource-card__figure }
+![CLIP: the cat sprite with CLIP's 7 × 7 patch grid; four principal components of the first-layer patch filters (colour-striped centre, vertical grating, oblique edge, centre-surround blob), each above its 7 × 7 map for the cat; RDMs of the first layer and of the class token before the projection over the 144 images](../../assets/dnn/cards/clip.png){ .resource-card__figure }
 { .resource-card__plate }
 
 CLIP's 768 patch filters look noisy one by one, so the strip shows four principal components of them, as the ViT paper does ([Dosovitskiy et al., 2021](https://arxiv.org/abs/2010.11929), Fig. 7). Each map shows how strongly each of the 49 patches of the cat loads on that component. Loadings can be negative, so here white is the lowest loading, not 0.
@@ -483,7 +515,7 @@ In thingsvision
 License
 :   no license file
 
-![TDANN: the cat sprite; the V1-like layer, layer2.0, on the cortical sheet: each unit's preferred orientation, with a key of oriented bars, and each unit's response to the cat; RDMs of layer2.0 and layer4.1 over the 96 sprites](../../assets/dnn/cards/tdann.png){ .resource-card__figure }
+![TDANN: the cat sprite; the V1-like layer, layer2.0, on the cortical sheet: each unit's preferred orientation, with a key of oriented bars, and each unit's response to the cat; RDMs of layer2.0 and layer4.1 over the 144 images](../../assets/dnn/cards/tdann.png){ .resource-card__figure }
 { .resource-card__plate }
 
 On the left, each unit's preferred orientation, measured with TDANN's own grating images and tuning fits and smoothed over 1.5 mm as in the paper. Neighbouring units prefer similar orientations, and the colours meet at pinwheel-like points. On the right, each unit's response to the cat at its position on the sheet, as in the TDANN demo.
@@ -535,7 +567,7 @@ In thingsvision
 License
 :   no license file
 
-![TopoNets: the cat sprite; the response map of each channel of layer1.0.conv1, tiled at the channel's position on the 8 × 8 sheet; RDMs of layer1.0.conv1 and avgpool over the 96 sprites](../../assets/dnn/cards/toponets.png){ .resource-card__figure }
+![TopoNets: the cat sprite; the response map of each channel of layer1.0.conv1, tiled at the channel's position on the 8 × 8 sheet; RDMs of layer1.0.conv1 and avgpool over the 144 images](../../assets/dnn/cards/toponets.png){ .resource-card__figure }
 { .resource-card__plate }
 
 The paper's vision maps show category selectivity (Fig. 5A). This view of the first topographic layer is ours. It shows each channel's response to the cat, placed on the 8 × 8 grid that TopoLoss uses for this layer. Neighbouring tiles tend to look alike.
@@ -582,7 +614,7 @@ In thingsvision
 License
 :   MIT
 
-![All-TNN: the cat sprite; the preferred orientation of every unit of sheet 1 on the cortical sheet, with a key of oriented bars, and the summed response to the cat at each position of the visual field; RDMs of sheet 1 and sheet 6 over the 96 sprites](../../assets/dnn/cards/alltnn.png){ .resource-card__figure }
+![All-TNN: the cat sprite; the preferred orientation of every unit of sheet 1 on the cortical sheet, with a key of oriented bars, and the summed response to the cat at each position of the visual field; RDMs of sheet 1 and sheet 6 over the 144 images](../../assets/dnn/cards/alltnn.png){ .resource-card__figure }
 { .resource-card__plate }
 
 On the left, each unit's preferred orientation, measured with gratings as in the repository's `get_tuning_curves`. Neighbouring units prefer similar orientations, as in V1. White dots are units that respond to no grating (0.7%). On the right, the summed response of the 64 units at each position in the visual field, which traces the cat and the edge of the grass.
@@ -615,7 +647,7 @@ On the left, each unit's preferred orientation, measured with gratings as in the
 
 ## 4. Run the model on the sprites
 
-Before any analysis, check that the model runs on your images and that the preprocessing matches what it was trained on. What does AlexNet see in our sprites?
+Before any analysis, check that the model runs on your images and that the preprocessing matches what it was trained on. The example network on these pages is ResNet-50. What does it see in our sprites?
 
 ```python
 from pathlib import Path
@@ -625,8 +657,8 @@ from PIL import Image
 from torchvision import models, transforms
 
 KIT = Path("dnn-toy-kit")
-weights = models.AlexNet_Weights.IMAGENET1K_V1  # (1)!
-model = models.alexnet(weights=weights).eval()  # (2)!
+weights = models.ResNet50_Weights.IMAGENET1K_V2  # (1)!
+model = models.resnet50(weights=weights).eval()  # (2)!
 
 preprocess = transforms.Compose([
     transforms.Resize(224, interpolation=transforms.InterpolationMode.NEAREST),  # (3)!
@@ -635,7 +667,7 @@ preprocess = transforms.Compose([
 ])
 
 for sprite in ["cat", "banana", "ghost", "pizza"]:
-    img = Image.open(KIT / f"stimuli/{sprite}_original.png").convert("RGB")
+    img = Image.open(KIT / f"stimuli/{sprite}_meadow_centre.png").convert("RGB")
     with torch.no_grad():  # (5)!
         # unsqueeze(0): a batch of one image; softmax: the 1000 outputs as probabilities
         probs = model(preprocess(img).unsqueeze(0)).softmax(dim=1)
@@ -644,7 +676,7 @@ for sprite in ["cat", "banana", "ghost", "pizza"]:
 ```
 
 1. For this quick check we use torchvision directly. The weights object knows the preprocessing the model was trained with (`weights.transforms()`) and the names of the 1000 ImageNet classes (`weights.meta["categories"]`).
-2. `.eval()` switches off dropout and freezes batch-norm statistics. Always use it when you only run images through a model.
+2. `.eval()` makes batch normalisation use the statistics stored during training (and switches off dropout, in networks that have it). Always use it when you only run images through a model.
 3. ImageNet models expect 224 × 224 pixels. Nearest-neighbour upsampling keeps the pixel art sharp. For photographs, use `weights.transforms()`.
 4. The mean and standard deviation of the ImageNet images. Every model has its own, so check the documentation of the weights you use.
 5. No gradients are needed to run a model, and skipping them saves memory and time.
@@ -652,14 +684,14 @@ for sprite in ["cat", "banana", "ghost", "pizza"]:
 The output is:
 
 ```text
-    cat -> jigsaw puzzle (44%)
- banana -> envelope (17%)
-  ghost -> traffic light (51%)
-  pizza -> envelope (34%)
+    cat -> picket fence (3%)
+ banana -> picket fence (5%)
+  ghost -> envelope (3%)
+  pizza -> picket fence (12%)
 ```
 
-??? question "Why does AlexNet get these wrong?"
-    AlexNet learned from photographs. Tiny cartoons of 16 by 16 pixels are far from anything it has seen, so its 1000 ImageNet classes do not fit. This is common with experimental stimuli (line drawings, chess boards, scrambled images). You can still record its layers and compare them with the brain, because the early layers respond to edges and colours whatever the image. If you need the network to *know* your categories, [train or fine-tune it](dnn-train.md).
+??? question "Why does ResNet-50 get these wrong?"
+    ResNet-50 learned from photographs. Cartoons of 48 by 48 pixels are far from anything it has seen, so its 1000 ImageNet classes do not fit. This is common with experimental stimuli (line drawings, chess boards, scrambled images). You can still record its layers and compare them with the brain, because the early layers respond to edges and colours whatever the image. If you need the network to *know* your categories, [train or fine-tune it](dnn-train.md).
 
 ---
 
@@ -671,7 +703,7 @@ The output is:
 
     ---
 
-    Teach AlexNet the sprites' categories, by fine-tuning or from scratch, and test it on sprites it has not seen.
+    Teach ResNet-50 the sprites' categories, by fine-tuning or from scratch, and test it on sprites it has not seen.
 
 - :material-layers-triple:{ .lg .middle } __[Extract activations](dnn-extract.md)__
 
@@ -680,7 +712,3 @@ The output is:
     Record what every layer does with each image and save it for analysis.
 
 </div>
-
-<!--
-__TODO__: [Andrea] Redesign the toy kit so that one low-level dimension (e.g. colour or position) and one high-level dimension (category) are crossed and clearly separable, and the layer RDMs show the shift from low to high level. With the full AlexNet activations it is not clear now: the V1-like ROI is matched best by conv1 (0.502) but the profile dips and rises again (conv3 0.376, conv5 0.425), and the IT-like ROI changes little across layers (conv1 0.216, conv5 0.283). (Not started.)
--->

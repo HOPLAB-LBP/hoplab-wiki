@@ -2,12 +2,12 @@
 
 Deep neural networks (DNNs) trained on images predict neural responses along the primate ventral visual stream better than earlier models ([Yamins et al., 2014](https://doi.org/10.1073/pnas.1403112111)), and the [Brain-Score](https://www.brain-score.org) benchmarks compare many of them. We show a network the same images as our participants, record what its layers do, and compare those activations with human data recorded for the same images. These can be fMRI, EEG or MEG, intracranial recordings, or behaviour such as similarity judgements and categorisation. This section gets you started with that workflow in Python and [PyTorch](https://pytorch.org/), using a small set of pixel-art images that runs on any laptop.
 
-![Top: the toy kit, 24 pixel-art sprites in three categories, each in four versions. Bottom: the workflow, in which the same images go to a network and to a participant, and layer activations are compared with brain patterns by RSA, decoding and encoding](../../assets/dnn/dnn-overview.png)
+![Top: the toy kit, 24 pixel-art sprites in three categories, and the design of each sprite, shown on three scenes (meadow, room, night) in two positions (centred, shifted), 144 images in all. Bottom: the workflow, in which the same images go to a network and to a participant, and layer activations are compared with brain patterns by RSA, decoding and encoding](../../assets/dnn/dnn-overview.png)
 
 !!! info "Before you start"
     You need basic Python and a conda installation. If either is new to you, start with [Coding practices](../coding/index.md). If neural networks are new to you, look at [From an image to an RDM](dnn-setup.md#from-an-image-to-an-rdm) first.
 
-All pages use the same small dataset, so you can run every code block as you read. It has 24 pixel-art sprites in three categories, each category with its own scene and each sprite in four variants, and synthetic "brain activations" for two regions of interest.
+All pages use the same small dataset, so you can run every code block as you read. It has 24 pixel-art sprites in three categories, each shown on three scenes in two positions, and simulated brain data from ten participants for two regions of interest.
 
 [:material-download: Download the toy kit](../../assets/dnn/dnn-toy-kit.zip){ .md-button } [What is inside](dnn-setup.md#2-get-the-toy-kit){ .md-button }
 
@@ -39,7 +39,7 @@ Pick the path that matches your project. Every path starts with [Set up and pick
 
     ---
 
-    If you have no human data yet, ask which layers follow a visual property and which follow category, with model RDMs and decoding.
+    If you have no human data yet, ask which layers follow the scene, the position or the category of the images, with model RDMs and decoding.
 
     [Set up](dnn-setup.md) → [Extract](dnn-extract.md) → [Compare with a model](dnn-model.md)
 
