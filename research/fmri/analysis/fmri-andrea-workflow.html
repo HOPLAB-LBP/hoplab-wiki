@@ -1930,6 +1930,8 @@
       
         
       
+        
+      
     
     
     
@@ -2213,6 +2215,34 @@
   
   
     <li class="md-nav__item">
+      <a href="fmri-mvpa-python.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6a. Multivariate analysis - Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="fmri-mvpa.html" class="md-nav__link">
         
   
@@ -2220,7 +2250,7 @@
   <span class="md-ellipsis">
     
   
-    6. Multivariate analysis
+    6b. Multivariate analysis - MATLAB
   
 
     
@@ -3290,7 +3320,7 @@
 <h3 id="8-whole-brain-mvpa-decoding">8. Whole-brain MVPA decoding<a class="headerlink" href="#8-whole-brain-mvpa-decoding" title="Permanent link">¶</a></h3>
 <p>With beta images and ROIs in hand, we ran independent cross-validated SVM classification in each of the 180 Glasser parcels per hemisphere (<code>script04</code>). This tells us which brain regions carry information about the experimental conditions (in this case, chess expertise).</p>
 <p>The results are saved as decoding accuracy per ROI in a BIDS-compatible <code>derivatives/mvpa</code> structure.</p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg></span> MVPA concepts and tutorial: <a href="fmri-mvpa.html">MVPA</a>.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg></span> MVPA concepts and tutorial: <a href="fmri-mvpa-python.html">MVPA in Python</a> or <a href="fmri-mvpa.html">in MATLAB</a>.</p>
 <hr>
 <h3 id="9-hierarchical-aggregation-significance-testing-and-visualization">9. Hierarchical aggregation, significance testing, and visualization<a class="headerlink" href="#9-hierarchical-aggregation-significance-testing-and-visualization" title="Permanent link">¶</a></h3>
 <p>The Glasser parcellation has a built-in hierarchy: the 180 fine-grained parcels group into larger cortical regions, which in turn group into broad cortical divisions. We leveraged this by running the analysis at the finest level and then aggregating upward (<code>script06</code>):</p>
@@ -3326,7 +3356,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-02-25T15:38:37+01:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 25, 2026 15:38:37 CET">February 25, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-08T07:59:24+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 8, 2026 07:59:24 CEST">October 8, 2026</span></time>
     
   </span>
 
@@ -3448,7 +3478,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="fmri-mvpa.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 6. Multivariate analysis">
+          <a href="fmri-mvpa.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 6b. Multivariate analysis - MATLAB">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -3458,7 +3488,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                6. Multivariate analysis
+                6b. Multivariate analysis - MATLAB
               </div>
             </div>
           </a>
