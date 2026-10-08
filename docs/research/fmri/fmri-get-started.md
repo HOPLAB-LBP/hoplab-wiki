@@ -72,8 +72,11 @@ Most of the lab's standard 3T studies at UZ Leuven are covered by the approved u
 ???+ steps "Get approval from the ethical committee of UZ/KU Leuven"
     For more info, we refer you to [this page](../ethics/MEC.md#step-2-apply-for-ec-approval).
 
-???+ steps "Follow the MR safety course"
+???+ steps "Complete the MR safety course"
     And become an authorized user of the MRI-scanner (see below).
+
+???+ steps "Complete the MR induction (user) course"
+    Complete the 45 min induction course on how to operate the software and the Mr11 lab. This course is new with the start of MR11, and how it will be offered in the future is still to be decided. 
 
 !!! warning "Research sequences (WIP and C2P)"
     Some advanced sequences on MR11 are Siemens *works-in-progress* (WIP) or come from other Siemens sites (C2P). They show a lab-flask icon on the console. Using them can require an extra CTC notification, and their authors may require a citation, an acknowledgement or co-authorship. Ask Ron Peeters, Stefan Sunaert or Daan Christiaens which ones your protocol uses before you start data collection.
