@@ -64,7 +64,8 @@ nav:
           - 4a. First-level analysis - GUI: research/fmri/analysis/fmri-glm.md
           - 4b. First-level analysis - Scripting: research/fmri/analysis/fmri-glm-script.md
           - 5. Regions of interest: research/fmri/analysis/fmri-rois.md
-          - 6. Multivariate analysis: research/fmri/analysis/fmri-mvpa.md
+          - 6a. Multivariate analysis - Python: research/fmri/analysis/fmri-mvpa-python.md
+          - 6b. Multivariate analysis - MATLAB: research/fmri/analysis/fmri-mvpa.md
           - fMRI workflow example: research/fmri/analysis/fmri-andrea-workflow.md
           - Meta-analysis with NiMARE: research/fmri/analysis/fmri-nimare.md
           - fMRIprep on HPC: research/fmri/analysis/fmri-hpc.md

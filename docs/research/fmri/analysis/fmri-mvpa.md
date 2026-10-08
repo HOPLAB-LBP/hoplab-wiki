@@ -1,5 +1,8 @@
 # Multi-variate analysis (MVPA/RSA) with CoSMoMVPA
 
+!!! tip "We suggest Python for RSA"
+    This page shows the MATLAB route with CoSMoMVPA. For RSA we suggest the [Python tutorial](fmri-mvpa-python.md) with [rsatoolbox](https://rsatoolbox.readthedocs.io/): it handles many details of RSA that are easy to get wrong, such as cross-validated distances, noise normalisation, the noise ceiling and model comparison.
+
 ## Overview
 
 This page shows how to use **CoSMoMVPA for Multivariate Pattern Analysis (MVPA) and Representational Similarity Analysis (RSA)** in fMRI research. It assumes that you understand basic fMRI concepts and want to

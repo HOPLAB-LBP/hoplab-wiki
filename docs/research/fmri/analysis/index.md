@@ -26,8 +26,9 @@ This section of the wiki provides a comprehensive guide for analyzing fMRI data.
 - :material-brain: **[Regions of Interest (ROIs)](fmri-rois.md)**  
   Create and analyze regions of interest for targeted brain analysis. ROIs are crucial for advanced analyses like MVPA.
 
-- :material-brain: **[Multi-Variate Pattern Analysis (MVPA)](fmri-mvpa.md)**  
-  Decode complex neural patterns using machine learning methods like SVM. Analyze brain activity across different conditions.
+- :material-brain: **[Multi-Variate Pattern Analysis (MVPA)](fmri-mvpa-python.md)**  
+  Decode complex neural patterns using machine learning methods like SVM. Analyze brain activity across different conditions.  
+  [Python](fmri-mvpa-python.md) · [MATLAB](fmri-mvpa.md)
 
 - :material-format-list-checks: **[Complete Workflow Example](fmri-andrea-workflow.md)**  
   An end-to-end guide that ties everything together, providing an example of a full fMRI analysis pipeline.

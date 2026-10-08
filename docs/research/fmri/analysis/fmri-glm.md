@@ -717,7 +717,7 @@ After running first-level GLMs for each subject, the next step is to test for ef
 - To report results in publications (most fMRI papers require group-level statistics)
 
 !!! note
-    For multivariate analyses (MVPA, RSA), group statistics are typically handled differently — see the [MVPA page](fmri-mvpa.md). Second-level GLM is primarily for **univariate** analyses.
+    For multivariate analyses (MVPA, RSA), group statistics are typically handled differently — see the MVPA pages ([Python](fmri-mvpa-python.md), [MATLAB](fmri-mvpa.md)). Second-level GLM is primarily for **univariate** analyses.
 
 ### Setting up a second-level model in SPM
 
