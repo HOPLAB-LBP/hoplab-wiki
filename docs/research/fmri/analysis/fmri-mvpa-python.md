@@ -1133,7 +1133,7 @@ plt.show()
 
     [Compare with human data](../../dnn/dnn-compare.md)
 
-- :material-language-matlab: **The MATLAB route**
+- :material-matrix: **The MATLAB route**
 
     ---
 
