@@ -157,7 +157,7 @@ Do this before the participant goes into the magnet room.
 
 <div class="steps-list" markdown>
 
-1. Select the participant from the **RIS** list (scheduler). Name and date of birth are filled in automatically; check them.
+1. Select the participant from the **RIS** list (scheduler). Name and date of birth are filled in automatically; check them. **If the participant name is not visible, refresh the list**.
 2. Fill in **height and weight** from the MRI Safety Checklist, and implants if applicable.
 3. Click *Program selection* › *others* and select your protocol.
 4. Check that the **Study description** contains your XNAT project ID: your S-number followed by a letter (e.g., `S12345a`). This sends the images to your XNAT project.
