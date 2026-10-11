@@ -80,6 +80,7 @@ The box has several output modes, selected with the knob. Check the mode at the 
 
 - **Default: mode 002, `HID NAR BYGRT`**. The box acts as a USB keyboard; keys stay pressed until the button is released ("no auto-release"). This mode works best with the stimulus PC and PsychoPy.
 - If you find the box in another mode, set it back to 002 and leave it in 002 at the end of your session.
+- If you find the box turned off, then check that the powercable in the back of the box is inserted.
 
 LEDs on the box show each trigger and button press, which helps when you check the set-up.
 
