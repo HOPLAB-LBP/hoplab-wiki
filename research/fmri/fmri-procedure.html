@@ -3591,7 +3591,7 @@
 <ul>
 <li>Use your pseudonymised participant ID, never the participant's name.</li>
 <li>Only letters, digits, <code>_</code> and <code>-</code> are allowed. No space inside an ID; one space between the two fields.</li>
-<li>The session ID must be <strong>unique within the whole project</strong>, not just for that subject. Hence <code>sub-01_ses-01</code> rather than <code>ses-01</code>.</li>
+<li>The session ID must be <strong>unique within the whole project</strong>, not just for that subject. Hence <code>sub-01_ses-01</code> rather than <code>ses-01</code>. Otherwise the data of an earlier session can be overwritten.</li>
 <li>Get it exactly right. With a wrong study comment the data do not land in your project, and Ron has to move them on the server by hand before you can download them.</li>
 </ul>
 </li>
@@ -3665,10 +3665,16 @@
 <div class="steps-list">
 <ol>
 <li>Run the localiser, then set the imaging and shim volumes.</li>
-<li>Start your experiment on the stimulus PC so it waits for the trigger, <strong>then</strong> start the functional sequence on the console.</li>
-<li>After each scan, check the images for movement and artefacts.</li>
+<li>Start your experiment on the stimulus PC so it waits for the trigger, <strong>then</strong> start the functional sequence on the console: select it and press <em>Go</em>.</li>
+<li>After each scan, check the images for movement (see <a href="#check-head-motion">Check head motion</a>) and artefacts.</li>
 </ol>
 </div>
+<p>A small "working men" icon in front of a sequence means that you start it by hand. Without the icon, the sequences run one after the other on their own. Ron normally sets manual starting for everyone, especially for task-based fMRI.</p>
+<figure>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/fmri/mr11-console-start-sequence.jpg" data-desc-position="bottom"><img alt="The MR11 console with the list of sequences: a red circle marks the working-men icon in front of a sequence, and another the orange Go button below the list" class="img-border" src="../../assets/fmri/mr11-console-start-sequence.jpg" width="420"></a>
+<br>
+<figcaption>Starting a sequence on the MR11 console: the working-men icon (left circle) means manual start; select the sequence and press Go.</figcaption>
+</figure>
 <p>During the session, regularly ask the participant (by intercom) how they are doing, and watch the console for warnings.</p>
 <div class="admonition warning">
 <p class="admonition-title">Keep settings constant</p>
@@ -3710,6 +3716,20 @@
 <summary>No key press seems to be recorded</summary>
 <p>Always press every button you will use <em>before</em> the participant goes in. A good way to check during the session is an instruction screen that waits for a button press. If no key presses arrive, check the LEDs on the trigger box: if they light up, the problem is on the PC side; if not, check that the participant holds the right pad and call the MR technician.</p>
 </details>
+<h4 id="check-head-motion">Check head motion<a class="headerlink" href="#check-head-motion" title="Permanent link">¶</a></h4>
+<div class="steps-list">
+<ol>
+<li>Drag the run you want to check into one of the image boxes.</li>
+<li>Click the small head icon at the top left of the box.</li>
+<li>Choose <em>Movie</em>: the run plays frame by frame.</li>
+</ol>
+</div>
+<p>The movie plays slowly, and we have not found yet how to speed it up, but it gives a good first check of motion.</p>
+<figure>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/fmri/mr11-console-motion-movie.jpg" data-desc-position="bottom"><img alt="Two views of the MR11 console viewer: a red circle marks the head icon at the top left of an image box, and another marks Movie in the menu that opens" class="img-border" src="../../assets/fmri/mr11-console-motion-movie.jpg"></a>
+<br>
+<figcaption>Checking motion on the MR11 console: the head icon at the top left of the image box (left) opens a menu with Movie (right).</figcaption>
+</figure>
 <h3 id="anatomical-scan">Anatomical scan<a class="headerlink" href="#anatomical-scan" title="Permanent link">¶</a></h3>
 <p>Schedule the anatomical scan at the end of the session or between functional runs (as a break). During the anatomical run, participants can close their eyes or watch a video on the in-room screen.</p>
 <hr>
@@ -3719,7 +3739,7 @@
 <ol>
 <li><strong>Wait about 30 minutes</strong> after the session, then check your project page in XNAT.</li>
 <li>If the session is not there, look in the <strong>prearchive</strong> of your project. A <em>conflict</em> status usually means a wrong or duplicate session ID: fix it in XNAT (see the XNAT FAQ on the radiology wiki).</li>
-<li><strong>Download</strong> the DICOMs:<ul>
+<li><strong>Download</strong> the DICOMs (step by step <a href="#download-from-xnat-step-by-step">below</a>):<ul>
 <li>at the XNAT PC in <strong>preparation room 1</strong>, one of the <em>onderzoekslokalen</em> next to the console room (generic login, see the radiology wiki), to your encrypted SSD or USB drive; the browser does not remember the address, so type it each time;</li>
 <li>or from anywhere inside the hospital network, or with a UZ Leuven VPN (only for people with a UZ Leuven account).</li>
 </ul>
@@ -3727,6 +3747,32 @@
 <li>Move the data to the lab storage as described in the <a href="../rdm/SOPs.html">RDM study workflow</a>.</li>
 </ol>
 </div>
+<h3 id="download-from-xnat-step-by-step">Download from XNAT step by step<a class="headerlink" href="#download-from-xnat-step-by-step" title="Permanent link">¶</a></h3>
+<details class="steps">
+<summary>Log in</summary>
+<p>Go to <a href="https://prdaradxnat01.uz.kuleuven.ac.be/">prdaradxnat01.uz.kuleuven.ac.be</a> and log in with your KU Leuven number or your UZ Leuven username. The home page shows your projects. If you do not have a project yet, request one through the radiology wiki (<a href="https://wiki.kulradiology.be/s/radxnat/p/request-a-new-project-YjdKPOgwrn">Request a new project</a>).</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/fmri/xnat-download-1-home.jpg" data-desc-position="bottom"><img alt="The RADXNAT home page with the Projects list and Recent Data Activity" class="img-border" src="../../assets/fmri/xnat-download-1-home.jpg" width="600"></a></p>
+</details>
+<details class="steps">
+<summary>Open your project</summary>
+<p>Click the project you want to download data from. The project page shows the project description and all subjects and sessions completed in the project.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/fmri/xnat-download-2-project.jpg" data-desc-position="bottom"><img alt="A RADXNAT project page with the Subjects table" class="img-border" src="../../assets/fmri/xnat-download-2-project.jpg" width="600"></a></p>
+</details>
+<details class="steps">
+<summary>Open the subject</summary>
+<p>Click the subject whose data you want. It can take up to 30 minutes after the scan before the data are in XNAT. On the subject page, click <em>Download Images</em> under <em>Actions</em>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/fmri/xnat-download-3-subject.jpg" data-desc-position="bottom"><img alt="A RADXNAT subject page, with Download Images in the Actions menu" class="img-border" src="../../assets/fmri/xnat-download-3-subject.jpg" width="600"></a></p>
+</details>
+<details class="steps">
+<summary>Choose what to download</summary>
+<p>Choose the session (if there are several; this is why the session ID at the console must be unique, otherwise data are overwritten), select the scans you want, and choose <em>Option 2: ZIP download</em> to get the DICOMs in one .zip file. Then click <em>Submit</em>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/fmri/xnat-download-4-select.jpg" data-desc-position="bottom"><img alt="The Imaging Data Download page: sessions, scan formats and types, and the download options with ZIP download selected" class="img-border" src="../../assets/fmri/xnat-download-4-select.jpg" width="600"></a></p>
+</details>
+<details class="steps">
+<summary>Save to your drive</summary>
+<p>A pop-up opens to choose where to save the file. On the UZ Leuven computers you cannot reach your own folders from the desktop, but in this pop-up you can go to your own drive and make new folders. You can also use an encrypted drive: selecting it opens the usual prompt to unlock it.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/fmri/xnat-download-5-save.jpg" data-desc-position="bottom"><img alt="The Save as dialog in front of the download page, with the BitLocker prompt to unlock an encrypted drive" class="img-border" src="../../assets/fmri/xnat-download-5-save.jpg" width="600"></a></p>
+</details>
 <div class="admonition warning">
 <p class="admonition-title">Archive your data quickly</p>
 <p>The XNAT <strong>prearchive is not backed up</strong>, and images older than 30 days that are not archived to a project are deleted. Check after every session that your data arrived in your project.</p>
@@ -3805,7 +3851,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-10T14:42:47+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 10, 2026 14:42:47 CEST">October 10, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-12T12:44:54+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 12, 2026 12:44:54 CEST">October 12, 2026</span></time>
     
   </span>
 
@@ -3826,7 +3872,7 @@
         
         
         
-          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 97% of this page" style="--z: 4" data-name="Andrea Costantino" data-share="96.8%">
+          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 97% of this page" style="--z: 4" data-name="Andrea Costantino" data-share="97.18%">
         
             <span class="md-contributor__face">
               
@@ -3845,7 +3891,7 @@
         
         
         
-          <a class="md-contributor" href="https://github.com/kschevenels" aria-label="Klara Schevenels, 2% of this page" style="--z: 3" data-name="Klara Schevenels" data-share="2.13%">
+          <a class="md-contributor" href="https://github.com/kschevenels" aria-label="Klara Schevenels, 2% of this page" style="--z: 3" data-name="Klara Schevenels" data-share="1.88%">
         
             <span class="md-contributor__face">
               
@@ -3864,7 +3910,7 @@
         
         
         
-          <a class="md-contributor" href="https://github.com/simenhagen" aria-label="Simen Hagen, &lt;1% of this page" style="--z: 2" data-name="Simen Hagen" data-share="0.53%">
+          <a class="md-contributor" href="https://github.com/simenhagen" aria-label="Simen Hagen, &lt;1% of this page" style="--z: 2" data-name="Simen Hagen" data-share="0.47%">
         
             <span class="md-contributor__face">
               
@@ -3883,7 +3929,7 @@
         
         
         
-          <a class="md-contributor" href="https://github.com/timmaniquet" aria-label="Tim Maniquet, &lt;1% of this page" style="--z: 1" data-name="Tim Maniquet" data-share="0.53%">
+          <a class="md-contributor" href="https://github.com/timmaniquet" aria-label="Tim Maniquet, &lt;1% of this page" style="--z: 1" data-name="Tim Maniquet" data-share="0.47%">
         
             <span class="md-contributor__face">
               
