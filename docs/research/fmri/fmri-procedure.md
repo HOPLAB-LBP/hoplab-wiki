@@ -169,7 +169,7 @@ Do this before the participant goes into the magnet room.
 
     - Use your pseudonymised participant ID, never the participant's name.
     - Only letters, digits, `_` and `-` are allowed. No space inside an ID; one space between the two fields.
-    - The session ID must be **unique within the whole project**, not just for that subject. Hence `sub-01_ses-01` rather than `ses-01`.
+    - The session ID must be **unique within the whole project**, not just for that subject. Hence `sub-01_ses-01` rather than `ses-01`. Otherwise the data of an earlier session can be overwritten.
     - Get it exactly right. With a wrong study comment the data do not land in your project, and Ron has to move them on the server by hand before you can download them.
 
 6. Select the patient orientation.
@@ -249,10 +249,17 @@ Your protocol is set up with Ron Peeters when you prepare the study. The lab's s
 <div class="steps-list" markdown>
 
 1. Run the localiser, then set the imaging and shim volumes.
-2. Start your experiment on the stimulus PC so it waits for the trigger, **then** start the functional sequence on the console.
-3. After each scan, check the images for movement and artefacts.
+2. Start your experiment on the stimulus PC so it waits for the trigger, **then** start the functional sequence on the console: select it and press *Go*.
+3. After each scan, check the images for movement (see [Check head motion](#check-head-motion)) and artefacts.
 
 </div>
+
+A small "working men" icon in front of a sequence means that you start it by hand. Without the icon, the sequences run one after the other on their own. Ron normally sets manual starting for everyone, especially for task-based fMRI.
+
+<figure markdown="span">
+  ![The MR11 console with the list of sequences: a red circle marks the working-men icon in front of a sequence, and another the orange Go button below the list](../../assets/fmri/mr11-console-start-sequence.jpg){ width="420" .img-border }
+  <figcaption>Starting a sequence on the MR11 console: the working-men icon (left circle) means manual start; select the sequence and press Go.</figcaption>
+</figure>
 
 During the session, regularly ask the participant (by intercom) how they are doing, and watch the console for warnings.
 
@@ -286,6 +293,23 @@ During the session, regularly ask the participant (by intercom) how they are doi
 ??? failure "No key press seems to be recorded"
     Always press every button you will use *before* the participant goes in. A good way to check during the session is an instruction screen that waits for a button press. If no key presses arrive, check the LEDs on the trigger box: if they light up, the problem is on the PC side; if not, check that the participant holds the right pad and call the MR technician.
 
+#### Check head motion
+
+<div class="steps-list" markdown>
+
+1. Drag the run you want to check into one of the image boxes.
+2. Click the small head icon at the top left of the box.
+3. Choose *Movie*: the run plays frame by frame.
+
+</div>
+
+The movie plays slowly, and we have not found yet how to speed it up, but it gives a good first check of motion.
+
+<figure markdown="span">
+  ![Two views of the MR11 console viewer: a red circle marks the head icon at the top left of an image box, and another marks Movie in the menu that opens](../../assets/fmri/mr11-console-motion-movie.jpg){ .img-border }
+  <figcaption>Checking motion on the MR11 console: the head icon at the top left of the image box (left) opens a menu with Movie (right).</figcaption>
+</figure>
+
 ### Anatomical scan
 
 Schedule the anatomical scan at the end of the session or between functional runs (as a break). During the anatomical run, participants can close their eyes or watch a video on the in-room screen.
@@ -300,12 +324,39 @@ MR11 sends all images **automatically** to the radiology research image server R
 
 1. **Wait about 30 minutes** after the session, then check your project page in XNAT.
 2. If the session is not there, look in the **prearchive** of your project. A *conflict* status usually means a wrong or duplicate session ID: fix it in XNAT (see the XNAT FAQ on the radiology wiki).
-3. **Download** the DICOMs:
+3. **Download** the DICOMs (step by step [below](#download-from-xnat-step-by-step)):
     - at the XNAT PC in **preparation room 1**, one of the *onderzoekslokalen* next to the console room (generic login, see the radiology wiki), to your encrypted SSD or USB drive; the browser does not remember the address, so type it each time;
     - or from anywhere inside the hospital network, or with a UZ Leuven VPN (only for people with a UZ Leuven account).
 4. Move the data to the lab storage as described in the [RDM study workflow](../rdm/SOPs.md).
 
 </div>
+
+### Download from XNAT step by step
+
+??? steps "Log in"
+    Go to [prdaradxnat01.uz.kuleuven.ac.be](https://prdaradxnat01.uz.kuleuven.ac.be/) and log in with your KU Leuven number or your UZ Leuven username. The home page shows your projects. If you do not have a project yet, request one through the radiology wiki ([Request a new project](https://wiki.kulradiology.be/s/radxnat/p/request-a-new-project-YjdKPOgwrn)).
+
+    ![The RADXNAT home page with the Projects list and Recent Data Activity](../../assets/fmri/xnat-download-1-home.jpg){ width="600" .img-border }
+
+??? steps "Open your project"
+    Click the project you want to download data from. The project page shows the project description and all subjects and sessions completed in the project.
+
+    ![A RADXNAT project page with the Subjects table](../../assets/fmri/xnat-download-2-project.jpg){ width="600" .img-border }
+
+??? steps "Open the subject"
+    Click the subject whose data you want. It can take up to 30 minutes after the scan before the data are in XNAT. On the subject page, click *Download Images* under *Actions*.
+
+    ![A RADXNAT subject page, with Download Images in the Actions menu](../../assets/fmri/xnat-download-3-subject.jpg){ width="600" .img-border }
+
+??? steps "Choose what to download"
+    Choose the session (if there are several; this is why the session ID at the console must be unique, otherwise data are overwritten), select the scans you want, and choose *Option 2: ZIP download* to get the DICOMs in one .zip file. Then click *Submit*.
+
+    ![The Imaging Data Download page: sessions, scan formats and types, and the download options with ZIP download selected](../../assets/fmri/xnat-download-4-select.jpg){ width="600" .img-border }
+
+??? steps "Save to your drive"
+    A pop-up opens to choose where to save the file. On the UZ Leuven computers you cannot reach your own folders from the desktop, but in this pop-up you can go to your own drive and make new folders. You can also use an encrypted drive: selecting it opens the usual prompt to unlock it.
+
+    ![The Save as dialog in front of the download page, with the BitLocker prompt to unlock an encrypted drive](../../assets/fmri/xnat-download-5-save.jpg){ width="600" .img-border }
 
 !!! warning "Archive your data quickly"
     The XNAT **prearchive is not backed up**, and images older than 30 days that are not archived to a project are deleted. Check after every session that your data arrived in your project.
@@ -363,8 +414,8 @@ Also take your behavioural log files from the stimulus PC (on your encrypted dri
     Now that you're familiar with the scanning procedure, see the [Analysis workflow](analysis/index.md) to learn how to process and analyze your fMRI data.
 
 <!--
-__TODO__: [Emma] Click-by-click guide for the MR11 console with screenshots or phone photos, from registering the participant to starting a run (and restarting after a break). Replace "Run your sequences" with it. (Emma will make it at her scan session in the week of 2026-10-05.)
-__TODO__: [Emma] How to check head motion during or after a run on the MR11 console. Add it to "Run your sequences". (Emma is looking into it at her next scan session.)
+__TODO__: [Emma] Click-by-click guide for the MR11 console with screenshots or phone photos, from registering the participant to restarting after a break. Starting a sequence and checking motion are now on the page (Emma's e-mail of 2026-10-12). (Emma made a first part; rest not asked yet.)
+__TODO__: [Emma] Is there a way to speed up the motion movie on the console? (Not asked yet.)
 __TODO__: [Simen] Protocol file or pictures of the functional and anatomical scans of your main task, so we can document the lab's standard MR11 parameters (TR, TE, voxel size, slices, multiband, dummies), as we had for MR8. (Asked Emma, Floor and Simen by e-mail, 2026-10-01; waiting for answer.)
 __TODO__: [Andrea] Find out where the MRI-compatible glasses are kept, how to get them, and which prescriptions are available, and add it to "Instruct the participant". (Not asked yet.)
 __TODO__: [Andrea] Check whether the check-in/check-out form is still used at MR11 (it was used before to record scanner hours for invoicing). If so, add it to "Required forms". (Raised by Klara in her PR review, 2026-10-02; not asked yet.)
