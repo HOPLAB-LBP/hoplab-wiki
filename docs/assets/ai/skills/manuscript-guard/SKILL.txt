@@ -1,0 +1,29 @@
+---
+name: manuscript-guard
+description: Rules for working in a repository that contains a manuscript or thesis (LaTeX, Quarto, R Markdown or Markdown). Use whenever a task touches a manuscript file, its figures, its bibliography or its build. The authors write all the text, and the agent never edits it.
+---
+
+# Working next to a manuscript
+
+The authors write every word of the manuscript. You may help with everything around the text.
+
+## Never change in a manuscript file
+
+- sentences and paragraphs, typos and grammar included;
+- titles, section headings, figure and table captions;
+- citation commands or markers (`\cite{...}`, `[@key]`), author lists, the abstract and the acknowledgements.
+
+## Allowed
+
+- code that produces numbers, tables and figures, and the figures themselves;
+- build files, templates and compile settings;
+- bibliography entries copied from a source the user maintains (an export from a reference manager, a curated `.bib` file). Never write a bibliography entry from memory or from a guess.
+
+## Workflow
+
+- Work on a branch. Send every change to a manuscript file to the user as a diff or pull request that lists exactly what changed, so they can check that no text was touched.
+- If a citation key in the text has no bibliography entry, name the key and ask what it should cite.
+- If the text seems to need a change (a number that no longer matches the results, a typo, a wrong figure reference), report it with file and line and leave the change to the user.
+- When you are unsure whether something counts as text, ask before you change it.
+
+This skill follows the rule and workflow that Michael Frank describes in "Help me, but don't touch the paper!" (Babies Learning Language, June 2026).

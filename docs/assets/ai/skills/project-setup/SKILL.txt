@@ -1,0 +1,16 @@
+---
+name: project-setup
+description: Set up a small research code or analysis repository with AGENTS.md, an isolated environment, central configuration and a reproducible run command. Use when starting a project, not for restructuring an existing repository.
+---
+
+# Set up a research project
+
+Read the current directory and any project instructions first. Establish the task, language, environment and expected outputs from the user's request; ask only for missing choices that affect setup.
+
+1. Propose the smallest useful folder tree and the exact setup commands. Include AGENTS.md, a README with the run command, an environment specification, code, tests and generated outputs. Add a central configuration and shared plotting style only when needed. Wait for approval before setup.
+2. List existing files and refuse to overwrite them. Use AGENTS.md as the only project rules file. Put the agreed scope, data restrictions, environment and verification commands there. Keep the task plan and evidence in a separate short task file.
+3. Keep participant data, unpublished material and secrets outside the agent's workspace. Use synthetic fixtures. Do not create data symlinks or search outside the workspace for real data.
+4. Create the approved files and a project-local or named environment. Record dependencies and versions. Do not install system-wide or add unapproved packages. Do not create a remote repository, publish or push as part of setup.
+5. Run the documented entry point on synthetic input and inspect its saved outputs. Run meaningful checks against a known answer if analysis code is included. Report commands, exit status, output paths, remaining placeholders and anything not checked. Empty scaffolding is not a working analysis.
+
+Preserve the user's existing work and analysis choices. Do not add a dashboard, CI, a manuscript, example analyses or other tooling unless requested.

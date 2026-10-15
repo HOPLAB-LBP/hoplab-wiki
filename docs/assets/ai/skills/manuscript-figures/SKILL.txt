@@ -1,0 +1,17 @@
+---
+name: manuscript-figures
+description: Create or restyle code-generated scientific multi-panel figures with shared style settings, final-size exports and provenance. Use for paper figures or plotting scripts, not manuscript prose or changes to the analysis.
+---
+
+# Consistent manuscript figures
+
+Keep the analysis and manuscript text unchanged. Use synthetic or public examples in an agent workspace; this skill grants no access to participant data or unpublished results.
+
+1. Read the producing code, numerical inputs and existing style. Establish the purpose, source, units and intended layout of each panel. Confirm the target journal and whether the figure is a main or supplementary figure. Propose the layout before implementing a new figure.
+2. Read the target journal's current official artwork requirements. For Nature, start with https://research-figure-guide.nature.com/figures/preparing-figures-our-specifications/ and https://research-figure-guide.nature.com/figures/building-and-exporting-figure-panels/. Record the source and date. Distinguish requirements from configurable lab preferences; do not apply main-figure rules blindly to Extended Data or other journals.
+3. Keep font family and sizes, widths, palette, panel labels and export settings in one style.py or the project's existing equivalent. Use accessible colours and redundant labels or marks. Compared panels should use comparable scales. A diverging colour scale needs a scientifically justified centre.
+4. Arrange panels with Matplotlib GridSpec, subplot_mosaic or an equivalent established layout tool. Render at the intended final size, with units and unobscured labels. Generate the figure from numerical outputs; never trace a screenshot or hand-edit data marks. If values look wrong, report the discrepancy rather than changing the analysis.
+5. Export editable vector artwork in the required format, plus a preview. For a Nature main figure, use 5–7 pt ordinary text, bold upright lowercase 8 pt panel labels and embedded fonts; Matplotlib PDF font type 42 preserves text. Use an installed Arial or Helvetica where available and disclose a fallback. Check raster resolution separately when images are present.
+6. Record the generating command, input and source hashes, environment and time. Inspect every export at final size for clipping, legend overlap, panel order, colour accessibility and agreement with numerical input. Report the actual files and checks; a successful save command alone is insufficient.
+
+Do not add panels, interpretations or manuscript edits outside the agreed request. Show the rendered figure for review before replacing a manuscript asset. Do not claim journal compliance from an unchecked preset.

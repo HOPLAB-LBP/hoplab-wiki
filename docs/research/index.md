@@ -8,7 +8,7 @@ Welcome to the central hub for all research activities at Hoplab. This page serv
 
     ---
 
-    KU Leuven rules and lab guidelines for chat assistants and coding agents.
+    KU Leuven rules, lab guidelines and advice for chat assistants and coding agents.
 
     [:octicons-arrow-right-24: Read the guidelines](ai/index.md)
 

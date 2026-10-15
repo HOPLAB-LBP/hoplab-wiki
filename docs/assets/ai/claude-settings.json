@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "defaultMode": "default",
+    "disableBypassPermissionsMode": "disable",
+    "deny": [
+      "Read(./data/**)",
+      "Read(./sourcedata/**)",
+      "Read(./derivatives/**)",
+      "Read(**/.env)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)"
+    ]
+  }
+}

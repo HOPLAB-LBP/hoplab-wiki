@@ -1,0 +1,27 @@
+---
+name: known-answer-test
+description: Test new analysis code on simulated data with a known answer before it runs on real data. Use when an analysis function or pipeline (decoding, RSA, GLM, statistics, model fitting) has been written or changed, or when asked to validate an analysis.
+---
+
+# Known-answer test for analysis code
+
+Before analysis code touches real data, show that it finds an effect you planted and finds nothing where there is nothing.
+
+## Steps
+
+1. Read the analysis code and write down, in two or three sentences, what it should return for a given input.
+2. Write a small simulation in `tests/` that produces data in the same format as the real data (shapes, labels, file layout), in two versions:
+   - with a known effect of a set size, for example two conditions whose patterns differ by a fixed amount, or a planted correlation;
+   - without any effect, for example the same data with shuffled labels, or pure noise.
+   Fix the random seed, and keep the data small so that the test runs in seconds.
+3. Write tests that run the real analysis code (never a copy of it) on both versions:
+   - with the effect, the result is close to the planted value, or clearly above chance;
+   - without the effect, the result is at chance, within the expected noise.
+4. Run the tests and report the numbers, not only pass or fail.
+5. If a test fails, report it and stop. Do not change the analysis or the simulation to make the test pass without the user's OK.
+
+## Rules
+
+- Call the same functions the real analysis uses.
+- Never read real participant data.
+- Keep the simulation with the code so that others can rerun it.

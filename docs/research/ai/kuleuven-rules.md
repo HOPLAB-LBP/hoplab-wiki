@@ -51,7 +51,7 @@ KU Leuven asks you to be open about AI whenever it produced new content.
 - Master's students follow the research guidelines and any rules of their programme or course.
 - Journals and funders can be stricter, so check their policy as well.
 
-Hiding the use of AI in creating content or drafting publications is a violation of research integrity under the European Code of Conduct for Research Integrity (2023).
+Hiding the use of AI in creating content or drafting publications is a violation of research integrity under the European Code of Conduct for Research Integrity (2023). [Resources](resources.md#templates-for-disclosure) has sentences you can adapt.
 
 ## Peer review
 
@@ -85,6 +85,14 @@ Do not use generative AI to evaluate a manuscript or a project proposal, neither
     What we agree on in the Hoplab, on top of these rules.
 
     [Lab guidelines](lab-guidelines.md)
+
+- :material-toolbox-outline: **Resources**
+
+    ---
+
+    Settings files, skills and templates that help you follow the rules.
+
+    [Resources](resources.md)
 
 </div>
 
