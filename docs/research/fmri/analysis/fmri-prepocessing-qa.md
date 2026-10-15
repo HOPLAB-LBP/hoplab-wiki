@@ -249,7 +249,7 @@ Replace the paths as appropriate for your dataset.
 
 bidsmreye saves its outputs following the [BIDS derivatives](https://bids-specification.readthedocs.io/en/stable/derivatives/introduction.html) convention. After running the `all` (or `generalize` + `qc`) steps, you will find:
 
-```
+``` { .text .nowrap }
 derivatives/bidsmreye/
 ├── dataset_description.json
 ├── group_eyetrack.tsv                         # group-level QC summary

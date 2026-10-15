@@ -508,7 +508,7 @@ tree -L 2 .
 
 Expected output:
 
-```
+``` { .text .nowrap }
 fmriprep/
 ├── dataset_description.json
 ├── logs/
@@ -629,7 +629,7 @@ squeue -M genius,wice -u $USER
 
 Example output:
 
-```
+``` { .text .nowrap }
 CLUSTER: genius
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
           58070026     batch fmriprep vsc12345  R      40:46      1 r27i27n19
@@ -694,7 +694,7 @@ sam-balance
 
 You’ll see an output like this:
 
-```
+``` { .text .nowrap }
 ✘ [Jul/10 12:06] vsc12345@tier2-p-login-2 /data/leuven/123/vsc12345 $  sam-balance
 ID       Name                   Balance         Reserved        Available      
 ======== ====================== =============== =============== ===============
@@ -709,7 +709,7 @@ sam-statement --account=intro_vsc12345
 
 (where `--account` is your credits account name, and *not* your username) which returns:
 
-```
+``` { .text .nowrap }
 ###############################################################################
 #
 # Includes Account=intro_vsc12345
@@ -747,7 +747,7 @@ You can adjust the `--start` and `--end` dates to fit the period you want to inv
 
 This returns a table like:
 
-```
+``` { .text .nowrap }
 JobID      Cluster  Account         State      User      Credits     Start              End
 ========== ======== ==============  ========== ========= ==========  ================== ===================
 58270696   genius   intro_vsc12345  COMPLETED  vsc12345   23348       2025-07-08T12:45   2025-07-08T17:15

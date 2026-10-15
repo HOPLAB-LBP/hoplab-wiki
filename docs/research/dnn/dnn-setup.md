@@ -86,7 +86,7 @@ All pages in this section use the same small dataset. It has 24 pixel-art sprite
 
 Unzip it next to your scripts. You get this layout:
 
-```text
+``` { .text .nowrap }
 dnn-toy-kit/
 ├── manifest.csv          # one row per image
 ├── stimuli/              # 144 PNG files, 48 x 48 pixels

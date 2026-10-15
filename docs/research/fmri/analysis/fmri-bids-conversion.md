@@ -355,7 +355,7 @@ To **create event files from log files**, here is what you need to do (see the e
 
 For example, this is what a log file looks like:
 
-```
+``` { .text .nowrap }
 EVENT_TYPE  EVENT_NAME  DATETIME                EXP_ONSET     ACTUAL_ONSET  DELTA     EVENT_ID
 START       -           yyyy-mm-dd-hh-mm-ss  -               0.000000  -         -
 FLIP        Instr       yyyy-mm-dd-hh-mm-ss  -               0.099950  -         -
@@ -383,7 +383,7 @@ PULSE       Trigger     yyyy-mm-dd-hh-mm-ss  -              40.451415  -        
 
 This is what the corresponding event file should look like:
 
-```
+``` { .text .nowrap }
 onset           duration        trial_type     event_id
 10.022209       0.0473259       building       building_image.png
 13.072346       0.0482089       face           face_image.png

@@ -642,7 +642,7 @@ for roi in rois:
 
 ??? example "Output"
 
-    ```text
+    ``` { .text .nowrap }
     V1 Results for running dual_bootstrap evaluation for corr on 1 models:
     Model      |   Eval ± SEM   | p (against 0) | p (against NC) |
     --------------------------------------------------------------

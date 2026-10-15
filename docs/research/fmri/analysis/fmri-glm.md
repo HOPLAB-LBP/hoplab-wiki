@@ -623,7 +623,7 @@ Below are example directory trees showing file organisation before and after run
 
 ### Before GLM (after preprocessing)
 
-```
+``` { .text .nowrap }
 BIDS/
 ├── sub-01/
 │   └── func/
@@ -656,7 +656,7 @@ BIDS/
 
 ### After GLM estimation
 
-```
+``` { .text .nowrap }
 derivatives/
 └── SPM/
     └── GLM/
