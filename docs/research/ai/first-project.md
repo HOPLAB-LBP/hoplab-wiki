@@ -4,9 +4,9 @@ Start with a task small enough that you can check the answer yourself. This exam
 
 Follow the [lab guidelines](lab-guidelines.md) before starting. Agree the use with your supervisor, use an approved licence, and work in a code-only environment that cannot reach participant data or unpublished material. For students, use this example to practise something you already understand; agree what you may delegate.
 
-## 1. Open an empty project
+## 1. Start from the project template
 
-Create a folder called `rt-prototype`, open it in your editor, and copy the [project rules template](resources.md#for-a-project) into it as `AGENTS.md`. Fill in its environment and project details. Use the [agent settings](resources.md#agent-settings), keep approval enabled, and start Claude Code or Codex in that folder. The [environment and editor](../coding/environment-setup.md) and [version control](../coding/version-control.md) pages cover the prerequisites.
+On GitHub, create a repository called `rt-prototype` from the [Hoplab project template](resources.md#project-template) (**Use this template**), clone it and open it in your editor. Follow the template's README to create the environment and run its example once, so you know the set-up works. Fill in the project part of `AGENTS.md`, keep the template's agent settings, and start Claude Code or Codex in that folder. The [environment and editor](../coding/environment-setup.md) and [version control](../coding/version-control.md) pages cover the prerequisites.
 
 Give the agent this first prompt:
 
@@ -20,24 +20,21 @@ Do not create files, install packages or run setup commands yet.
 List the commands you would use and wait for my approval.
 ```
 
-For this example, a sufficient layout is:
+The template already has the layout this example needs:
 
 ```text
 rt-prototype/
-├── AGENTS.md
-├── README.md
-├── environment.yml
-├── .gitignore
-├── config/project.toml
-├── src/analyse.py
-├── src/style.py
-├── tests/test_analyse.py
-├── tests/data/rt.csv
-├── tasks/01_prototype.md
-└── results/
+├── AGENTS.md                 # rules for the agent (golden rules first)
+├── config/project.toml       # paths and settings
+├── src/project/              # reusable pieces; plotting/style.py holds the figure style
+├── scripts/NN_<name>.py      # numbered analysis steps, as # %% cells
+├── figures/figN_<name>.py    # one script per figure
+├── docs/                     # one page per step, and the decision log
+├── tests/                    # known-answer and pipeline tests
+└── results/                  # generated, not in git
 ```
 
-The configuration holds input and output paths; `style.py` holds figure settings. `tests/data/` contains invented examples only. Keep a short task list with the agreed scope and the commands that demonstrate each finished step. Ignore the local environment and generated results in Git. Use the [project-setup skill](skills.md#project-setup) if you want to repeat this setup in future projects.
+Your prototype adds a step such as `scripts/01_rt_summary.py`, its doc page and its tests. `tests/data/` holds invented examples only. The agent keeps its plan and the evidence for each finished step in `tasks/`.
 
 Read the proposed commands, correct the layout if needed, then approve setup. Review the files it creates before proceeding. Do not approve a command you cannot explain.
 
@@ -57,7 +54,7 @@ weight per participant. Do not average all trials together.
 
 Output: results/means.csv, results/differences.csv and a paired plot
 in PDF and PNG. Print the mean difference to the terminal.
-Read paths from config/project.toml and style from src/style.py.
+Read paths from config/project.toml and style from src/project/plotting/style.py.
 Provide one command that runs everything from the project root.
 
 Reject empty input, missing columns, non-finite or non-positive times,
@@ -105,7 +102,7 @@ implementation is absent. Do not edit their expected answers later
 without explaining the change and asking me.
 ```
 
-Read the tests. A missing implementation is expected at this stage; a syntax error or a test that never reaches the analysis is not useful evidence. For a noisy simulation, choose a justified tolerance before looking at the output; the [known-answer-test skill](resources.md#skills) helps with this.
+Read the tests. A missing implementation is expected at this stage; a syntax error or a test that never reaches the analysis is not useful evidence. For a noisy simulation, choose a justified tolerance before looking at the output; the [known-answer-test skill](resources.md#skills-and-helper-agents) helps with this.
 
 ## 4. Implement and run the prototype
 
@@ -119,13 +116,13 @@ the plot. Report what failed or what you could not verify.
 Do not commit or push yet.
 ```
 
-Run the documented command yourself. Open both exported figures and check labels, units, paired lines and the values against the CSV. A passing test suite alone does not show that the documented command, configuration and saved files work together. The [figure example](skills.md#manuscript-figures) provides a reusable style and a multi-panel layout when you need one.
+Run the documented command yourself. Open both exported figures and check labels, units, paired lines and the values against the CSV. A passing test suite alone does not show that the documented command, configuration and saved files work together. The template's figure scripts show the shared style and a multi-panel layout when you need one.
 
 ## 5. Review before adding anything
 
 ```text
 Review the current files against tasks/01_prototype.md and AGENTS.md.
-Use review-ai-code. Report findings with file and line; edit nothing.
+Use review-code. Report findings with file and line; edit nothing.
 Check especially participant weighting, missing conditions, tests that
 bypass the computation, and any unrequested analysis choices.
 Distinguish what you ran from what you only read.

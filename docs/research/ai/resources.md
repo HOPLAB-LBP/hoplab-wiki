@@ -1,17 +1,13 @@
 # Resources
 
-Files, settings, skills and templates that help you follow the [KU Leuven rules](kuleuven-rules.md) and the [lab guidelines](lab-guidelines.md), and ten rules for writing code with AI. Copy what fits your project and adapt it.
+Tools, rules and templates that help you follow the [KU Leuven rules](kuleuven-rules.md) and the [lab guidelines](lab-guidelines.md). For a worked sequence of prompts, start with [Your first project](first-project.md).
 
-For a worked sequence of prompts, start with [Your first project](first-project.md). For the skill review, project setup and multi-panel figure examples, see [Research skills](skills.md).
-
-| Resource | What it does | Where it goes |
-|---|---|---|
-| [Project rules file](#for-a-project) | Tells an agent about the project, the data and how we work | `AGENTS.md` at the top of the repository |
-| [Personal rules file](#for-yourself) | Your own rules for every project | See the tool-specific locations below |
-| [Agent settings](#agent-settings) | Keep coding agents away from data and secrets, and keep your approval on | `.claude/settings.json` or `.codex/config.toml` |
-| [Skills](#skills) | Review AI-written code, test an analysis on simulated data, protect a manuscript | `.claude/skills/` or `.agents/skills/` |
-| [Reference checker](#check-your-references) | Checks that every DOI in a BibTeX file exists and matches its title | Run it on your `.bib` file |
-| [Disclosure templates](#templates-for-disclosure) | Sentences for papers, theses, repositories and slides | Adapt and paste |
+| Resource | What it does |
+|---|---|
+| [Hoplab project template](#project-template) | A ready project for working with coding agents: folder layout, rules for agents, settings, skills and tests |
+| [Writing code with AI](#writing-code-with-ai) | Ten rules that work, with practices from Poldrack's book |
+| [Reference checker](#check-your-references) | Checks that every DOI in a BibTeX file exists and matches its title |
+| [Disclosure templates](#templates-for-disclosure) | Sentences for papers, theses, repositories and slides |
 
 ---
 
@@ -34,7 +30,7 @@ Eric Bridgeford, Russ Poldrack and colleagues summed up what works in ten rules 
 ??? numlist "Manage the context"
     The model works from what is in its context, and it works less well as the context fills up. Give it what it needs at the start, restate key constraints in long sessions, and clear or compact the context at natural breakpoints. Keep the project's rules in `AGENTS.md`, and its plan, task list and decisions in separate files linked from it. When the agent does something you do not want again, add a rule.
 
-    Ready-made rules files for a project and for yourself are [below](#rules-files).
+    The [project template](#project-template) comes with a rules file for agents, `AGENTS.md`.
 
 ??? numlist "Write the tests first"
     Describe what the code must do as tests before you ask for the code, and check that they fail while the code does not exist yet. Then watch every test the AI writes or changes. Agents often edit a test until it passes, mock the very function they should test, or feed it placeholder data, so the test passes and proves nothing. Other weak tests to look for: assertions that pass whatever the result, tests that only check that something was returned, exact comparisons of floating-point numbers, and modules without any test. When you find a bug, add a test that catches it. For analysis code, the strongest test is simulated data with a known answer.
@@ -53,117 +49,46 @@ Eric Bridgeford, Russ Poldrack and colleagues summed up what works in ten rules 
 
 ---
 
-## Rules files
+## Project template
 
-Coding agents read a rules file at the start of every session. Keep two: one per project, with what the agent must know about that project, and one for yourself, with your rules for every project. When an agent does something you do not want again, add a line.
+The [Hoplab project template](https://github.com/HOPLAB-LBP/hoplab-project-template) is where the lab keeps its rules, settings and skills for coding agents, in one place. Start a new analysis project from it (**Use this template** on GitHub) and you get:
 
-### For a project
+- `AGENTS.md`: the rules every agent reads first, starting with the lab's golden rules (plan with your approval, every analysis step visible in the script, libraries first, no repeated code, traceable results, known-answer tests, a permanent decision log, no confidential material without asking);
+- a layout with numbered analysis scripts that save their results with a record of the settings, code version and inputs, one script per figure in a shared journal style, and a doc page per step;
+- settings for Claude Code and Codex (below);
+- skills and two helper agents (below);
+- tests, including known-answer tests on simulated data, and a small decoding and RSA example.
 
-Save it at the top of the repository as `AGENTS.md` and fill in the parts in angle brackets. Use this one project rules file for both agents. [Codex loads it at startup](https://learn.chatgpt.com/docs/agent-configuration/agents-md). [Claude Code supports it directly](https://code.claude.com/docs/en/memory#agentsmd) from version 2.1.277; use an up-to-date version and check that its Project instructions setting includes `AGENTS.md`.
+The template's README explains how to start, and which agents read which files.
 
-At the start of a new project, ask the agent to read `AGENTS.md` and summarise its constraints before editing. In Claude Code, also use `/memory` to check that the file is listed. If it is missing, check the version, Project instructions setting and competing project instructions using the linked documentation.
+### What the settings do
 
-[:material-download: Download AGENTS.md](../../assets/ai/agents-project.txt){ .md-button download="AGENTS.md" }
+| Tool | With the template's settings | What they do not do |
+|---|---|---|
+| Claude Code | Asks before every file edit and every command; cannot be started in the mode that skips approvals; its own tools cannot read `data/`, `.env` or key files | A Python script the agent runs can still read `data/` |
+| Codex | Commands run in a read-only sandbox, so every file edit and every command that writes asks you first, and you approve yourself rather than an automatic reviewer | Codex can read files anywhere on your computer; the settings load only after you trust the project folder |
 
-??? example "Show the file"
-    ```markdown
-    --8<-- "docs/assets/ai/agents-project.txt"
-    ```
+Settings lower the risk. They do not replace the [lab guideline](lab-guidelines.md): keep participant data and other confidential material out of the agent's reach.
 
-### For yourself
+### Skills and helper agents
 
-For Codex, save it as `~/.codex/AGENTS.md`. For Claude Code, save the same personal rules as `~/.claude/rules/personal.md`, a [user-level rules file](https://code.claude.com/docs/en/memory#user-level-rules). These are personal preferences; the shared project contract remains `AGENTS.md`.
+A skill is a short procedure that the agent loads when your request matches it. You do not call skills by name; ask in plain words.
 
-[:material-download: Download the personal rules file](../../assets/ai/agents-personal.txt){ .md-button download="personal-rules.md" }
+| Ask, for example | Skill | What happens |
+|---|---|---|
+| "Add a permutation test to step 2" (any task with three or more steps) | `task-ledger` | The agent writes a plan in `tasks/`, waits for your OK, then ticks each step only with evidence |
+| "Review my last commit" | `review-code` | A review of the change, with one line per golden rule |
+| "Test this analysis before I run it on real data" | `known-answer-test` | The analysis runs on simulated data with and without a planted effect |
+| "Is this decoding valid?" | `analysis-audit` | Leakage, cross-validation, transformations, significance tests, permutations, chance level, corrections |
+| "Does the paper match the code?" | `paper-code-audit` | Methods text against code and settings, and every number against the results files |
+| "Check my references" | `cite-check` | Every reference resolves to a real paper; each citation is checked against the claim |
+| "Make figure 2 with panels for ..." | `manuscript-figures` | A multi-panel figure in the lab's style, from the saved results |
+| "Clean up the code" | `repo-cleanup` | A separate cleanup agent reports duplicates, hidden steps and hand-written library functions, then fixes what you approve, with the results unchanged |
+| "Is this result real?" | `skeptic` | A separate agent that has not seen how the result was made recomputes it and tries to break it |
 
-??? example "Show the file"
-    ```markdown
-    --8<-- "docs/assets/ai/agents-personal.txt"
-    ```
+Skills that read a manuscript, unpublished results or paper PDFs ask you first whether the material may be sent to the tool; under the KU Leuven rules the answer for unpublished work is no unless you use Copilot with your KU Leuven login.
 
----
-
-## Agent settings
-
-These settings put [lab guideline 2](lab-guidelines.md) into practice: the agent asks before it edits a file or runs a command, and it cannot read data folders or secrets.
-
-=== "Claude Code"
-
-    Save the file as `.claude/settings.json` in the repository and commit it, so that everyone who works on the project gets the same settings. It blocks reading the folders `data/`, `sourcedata/` and `derivatives/`, `.env` files and key files; keeps the default mode, in which Claude Code asks before it edits a file or runs a command; and switches off the mode that skips all approvals (`--dangerously-skip-permissions`). Adapt the folder names to your project.
-
-    [:material-download: Download settings.json](../../assets/ai/claude-settings.json){ .md-button download="settings.json" }
-
-    On macOS, Linux or WSL2 you can use the variant with Claude Code's sandbox, which also stops programs that the agent runs, such as a Python script, from reading those folders. The variant keeps asking before every command.
-
-    [:material-download: Download settings.json with sandbox](../../assets/ai/claude-settings-sandbox.json){ .md-button download="settings.json" }
-
-    ??? example "Show both files"
-        ```json
-        --8<-- "docs/assets/ai/claude-settings.json"
-        ```
-
-        ```json
-        --8<-- "docs/assets/ai/claude-settings-sandbox.json"
-        ```
-
-=== "Codex"
-
-    Save the file as `.codex/config.toml` in the repository. Codex asks before it runs commands outside its sandbox, may edit files only inside the project, and its commands have no internet access.
-
-    [:material-download: Download config.toml](../../assets/ai/codex-config.toml){ .md-button download="config.toml" }
-
-    ??? example "Show the file"
-        ```toml
-        --8<-- "docs/assets/ai/codex-config.toml"
-        ```
-
-!!! warning "What the settings do not do"
-    We tested the files with Claude Code 2.1.296 and Codex 0.162.1 on Linux. Claude Code's rules stop its own file tools and commands such as `cat` from reading `data/`, but a Python script that the agent runs can still read the folder; only the sandbox variant stops that. Codex's sandbox blocks writing outside the project and network access, but its commands can read files anywhere on your computer. Settings make mistakes less likely. They do not replace the lab guideline: run the agent where it cannot reach participant data.
-
----
-
-## Skills
-
-A skill is a folder with a `SKILL.md` file: instructions that the agent loads when a task matches the skill's description, or when you call it by name (`/review-ai-code` in Claude Code). Claude Code and Codex use the same format. Put each skill in its own folder:
-
-- Claude Code: `.claude/skills/<name>/SKILL.md` in the repository, or `~/.claude/skills/<name>/SKILL.md` for all your projects;
-- Codex: `.agents/skills/<name>/SKILL.md` in the repository, or `~/.agents/skills/<name>/SKILL.md` for all your projects.
-
-These locations follow the current [Claude Code](https://code.claude.com/docs/en/skills#choose-where-skills-load) and [Codex](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills) documentation. You can use the same skill contents with both tools. Read the instructions and any scripts before installing; a skill does not enforce permissions. See [Research skills](skills.md) for a review of these downloads and ideas for your own.
-
-We tested the three skills below with Claude Code on small examples with planted problems.
-
-??? deflist "review-ai-code: review changes written with an AI agent"
-    Goes through a diff the way a careful colleague would: tests first (edited or loosened tests, mocks, placeholder data), then the code (silenced errors, leftovers, hard-coded paths, analysis choices nobody asked for). It reports problems with file and line and fixes nothing unless you ask. In our test it flagged a loosened test tolerance and an error handler that returned zeros as blocking problems.
-
-    [:material-download: Download SKILL.md](../../assets/ai/skills/review-ai-code/SKILL.txt){ .md-button download="SKILL.md" }
-
-    ??? example "Show the file"
-        ```markdown
-        --8<-- "docs/assets/ai/skills/review-ai-code/SKILL.txt"
-        ```
-
-??? deflist "known-answer-test: test an analysis on simulated data first"
-    Builds a small simulation in the format of your data, with a planted effect and a version without one, and checks that the real analysis code finds the first and stays at chance on the second. It reports the numbers and does not change the analysis to make a test pass. In our test on a small decoding function it recovered the planted effects, gave chance on noise, and showed that a class with a single trial produced a plausible accuracy without any warning.
-
-    [:material-download: Download SKILL.md](../../assets/ai/skills/known-answer-test/SKILL.txt){ .md-button download="SKILL.md" }
-
-    ??? example "Show the file"
-        ```markdown
-        --8<-- "docs/assets/ai/skills/known-answer-test/SKILL.txt"
-        ```
-
-??? deflist "manuscript-guard: keep agents out of the text of a paper"
-    For repositories that hold a paper or thesis. The agent may work on code, figures, the build and curated bibliography entries, but never on sentences, headings, captions or citations; it reports what it thinks should change and leaves the change to you. It follows the rule and workflow that [Michael Frank](https://babieslearninglanguage.blogspot.com/2026/06/help-me-but-dont-touch-paper.html) describes. In our test it reported a typo in a LaTeX file with its line and did not touch the file.
-
-    [:material-download: Download SKILL.md](../../assets/ai/skills/manuscript-guard/SKILL.txt){ .md-button download="SKILL.md" }
-
-    ??? example "Show the file"
-        ```markdown
-        --8<-- "docs/assets/ai/skills/manuscript-guard/SKILL.txt"
-        ```
-
-Other labs share skills too. Michael Frank's [skill for R Markdown and Quarto manuscripts](https://gist.github.com/mcfrank/bb6bfed4c8294fdeb08b0f09442711c7) is the original of the manuscript guard, and the Matsen lab describes its set of agents and skills in [Bipartite](https://matsen.fredhutch.org/general/2026/06/06/bipartite.html).
+Other labs share skills too. Michael Frank's [skill for R Markdown and Quarto manuscripts](https://gist.github.com/mcfrank/bb6bfed4c8294fdeb08b0f09442711c7) keeps agents out of manuscript text, and the Matsen lab describes its set of agents and skills in [Bipartite](https://matsen.fredhutch.org/general/2026/06/06/bipartite.html).
 
 ---
 

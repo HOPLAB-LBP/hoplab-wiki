@@ -2,6 +2,9 @@
 
 These are our own agreements. They build on the [KU Leuven rules](kuleuven-rules.md) and are stricter where our data or our training need it. If a guideline does not fit your project, talk to your supervisor. [Resources](resources.md) has files and templates that help you follow them.
 
+!!! warning "Draft for the lab meeting"
+    These guidelines are a proposal that the lab still has to agree on. We have also asked KU Leuven Research Integrity whether coding agents may work on code without data, and whether unpublished analysis code counts as confidential. Until both answers are in, follow the stricter reading.
+
 ---
 
 ??? numlist "Keep participant data out of AI tools"
@@ -15,13 +18,13 @@ These are our own agreements. They build on the [KU Leuven rules](kuleuven-rules
     - never run an agent on a lab server or shared drive that holds data, and never give it your accounts or your browser;
     - agree with your supervisor before you use an agent on a project, since your code goes to the provider and KU Leuven requires a licence, not a free account.
 
-    The [agent settings](resources.md#agent-settings) set this up for Claude Code and Codex.
+    The [Hoplab project template](resources.md#project-template) has settings for Claude Code and Codex that do this, and says what they do not cover.
 
 ??? numlist "Be able to explain everything you share"
     Code, figures, numbers and sentences that you show in a lab meeting, give to a colleague or publish are yours. You should be able to explain each of them and why it is there. If an AI made an analysis choice you cannot explain (a smoothing kernel, a statistical test, a threshold), find out why or take it out. "The AI wrote it" is not an answer.
 
 ??? numlist "Test AI-written analysis code before it touches real data"
-    Run the code on simulated data where you know the right answer, like the data in our [DNN](../dnn/index.md) and [fMRI multivariate](../fmri/analysis/fmri-mvpa-python.md) tutorials, and keep that test with the code. Read every change the AI makes. Never accept a change that edits a test so that it passes, or that swaps the real computation for placeholder data, and work as described in [Writing code with AI](resources.md#writing-code-with-ai). The [skills](resources.md#skills) for reviewing AI-written code and for known-answer tests help with both. Before results from AI-assisted code go into a paper or thesis, have someone else in the lab look at the code.
+    Run the code on simulated data where you know the right answer, like the data in our [DNN](../dnn/index.md) and [fMRI multivariate](../fmri/analysis/fmri-mvpa-python.md) tutorials, and keep that test with the code. Read every change the AI makes. Never accept a change that edits a test so that it passes, or that swaps the real computation for placeholder data, and work as described in [Writing code with AI](resources.md#writing-code-with-ai). The [skills](resources.md#skills-and-helper-agents) for reviewing AI-written code and for known-answer tests help with both. Before results from AI-assisted code go into a paper or thesis, have someone else in the lab look at the code.
 
 ??? numlist "Write your own science"
     The research question, the hypotheses, the interpretation and the arguments of a paper or thesis are yours. Draft the text yourself, then use AI for feedback on structure, for grammar and for final polishing. We do not put AI-generated paragraphs into papers or theses, and coding agents do not edit manuscript text. Unpublished drafts only go into Copilot with your KU Leuven login.

@@ -38,7 +38,7 @@ This section is about using generative AI for lab work, from analysis code to pa
 
 ## Try it on a small project
 
-[Your first project](first-project.md) walks through setting up a repository, writing a clear specification, testing a small prototype and asking for one change at a time. [Research skills](skills.md) reviews the downloadable skills and adds examples for project folders and consistent manuscript figures.
+[Your first project](first-project.md) walks through starting from the lab's project template, writing a clear specification, testing a small prototype and asking for one change at a time.
 
 ## How the three parts fit together
 
