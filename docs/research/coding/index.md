@@ -277,7 +277,7 @@ To keep your project organized, we've provided a **set of utility functions** th
 !!! example "Example results folder structure"
     After running the script, your results might be structured as follows:
 
-    ```text
+    ``` { .text .nowrap }
     results/
     ├── 20241018-153045_train-pair-temp-ws-softmax_proba-0.2_probb-0.2_probtest-0.6_tempa-0.1_tempb-5_lr-1e-5/
     │   ├── log_output.txt        # Logs of the run

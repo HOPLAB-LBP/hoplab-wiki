@@ -510,6 +510,17 @@ clean = filter(data)
 
 Inline code with colour: `#!python print("hello")`.
 
+### Long lines in text blocks
+
+Blocks marked `text` or `markdown`, and blocks without a language, wrap long lines so that prompts and templates stay readable. Code in Python, MATLAB, bash and other languages keeps its lines and scrolls sideways. For program output, logs or directory trees whose columns must stay aligned, turn wrapping off:
+
+````markdown
+``` { .text .nowrap }
+sub-01    0.27    0.29
+sub-02    0.15    0.10
+```
+````
+
 ### Code with numbered notes
 
 ````markdown

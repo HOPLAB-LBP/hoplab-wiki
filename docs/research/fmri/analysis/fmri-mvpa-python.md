@@ -53,7 +53,7 @@ The order of the rows is the order of the conditions in every RDM and plot, so p
 
 The project folder of this page looks like this:
 
-```text
+``` { .text .nowrap }
 project/
 ├── derivatives/spm-glm/
 │   ├── sub-01/          SPM.mat, beta_0001.nii, beta_0002.nii, ..., mask.nii, ResMS.nii
@@ -146,7 +146,7 @@ print(f"{len(conditions)} conditions, {len(participants)} participants")
 
 ??? example "Output"
 
-    ```text
+    ``` { .text .nowrap }
                                 condition  checkmate  strategy  visual_pair
     0             C1_Images_Frombeautiful  checkmate         1            1
     1                C1_Images_SteinitzNN  checkmate         1            2
@@ -189,7 +189,7 @@ print(regressors.groupby("run").size().to_string())  # (3)!
 
 ??? example "Output"
 
-    ```text
+    ``` { .text .nowrap }
     5 runs, 245 columns in the design matrix
          run                                             regressor           file
     0      1     NC4_Images_StrekalovskyShaposhlikov(Nomate)*bf(1)  beta_0001.nii
@@ -375,7 +375,7 @@ print(summary.to_string(index=False))
 
 ??? example "Output"
 
-    ```text
+    ``` { .text .nowrap }
     participant   roi  betas  voxels  runs  conditions betas per condition and run
          sub-01    V1    200    2813     5          40                         [1]
          sub-01 DLPFC    200    7896     5          40                         [1]
@@ -732,7 +732,7 @@ print(table.round(2).to_string())
 
 ??? example "Output"
 
-    ```text
+    ``` { .text .nowrap }
     distance        1 - r                                                     crossnobis
     roi             DLPFC                             V1                           DLPFC                             V1
     model       checkmate strategy visual_pair checkmate strategy visual_pair  checkmate strategy visual_pair checkmate strategy visual_pair
@@ -765,7 +765,7 @@ for (roi, distance), result in results.items():
 
 ??? example "Output"
 
-    ```text
+    ``` { .text .nowrap }
     --- V1, crossnobis
     Results for running fixed evaluation for corr on 3 models:
 

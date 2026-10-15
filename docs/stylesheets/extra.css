@@ -381,6 +381,14 @@
   border-color: color-mix(in srgb, var(--md-default-fg-color) 10%, transparent);
 }
 
+/* Prose blocks (text, markdown, and fences without a language) wrap long lines.
+   Program code keeps scrolling sideways. Aligned output, logs and directory
+   trees opt out with { .text .nowrap } on the fence. */
+.md-typeset :is(.language-text, .language-txt, .language-markdown, .language-md):not(.nowrap) pre > code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 /* =========================
    Buttons
    ========================= */

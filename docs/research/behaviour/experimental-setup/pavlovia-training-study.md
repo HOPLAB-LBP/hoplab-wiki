@@ -30,7 +30,7 @@ The simplest, free way to do this is a **Google Sheet** that your experiment tal
 
 ## How the pieces fit together
 
-```
+``` { .text .nowrap }
 PARTICIPANT'S BROWSER (Pavlovia)
    |
    |  1. Session starts -> experiment asks the Sheet:
