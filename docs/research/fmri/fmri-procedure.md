@@ -269,6 +269,9 @@ During the session, regularly ask the participant (by intercom) how they are doi
 !!! tip "Scanning children"
     For tips during the scan, see [Scanning children](fmri-children.md#good-practice).
 
+??? failure "the screen on the scanner is dark"
+    If you are the first to scan in the morning, and the scanner was not shut down correctly the night before (e.g., due to a scan running overnight), you may experience a black screen on the scanner. In this case, you will need to reboot the system (see MR11 wiki). Thus, if you are the first person to scan in the morning, it may be wise to come early to check whether a reboot is necessary (this can take ~15-20 min).
+
 ??? failure "Door not closed properly"
     The magnet room door and the door from the magnet room to the technical room must both be closed (use the lock). Closing the changing-room door quickly can make the MR door open again: close it slowly. An open door can cause zipper or spike artefacts in your images.
 
