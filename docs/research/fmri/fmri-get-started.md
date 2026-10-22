@@ -61,9 +61,9 @@ Before diving into your (f)MRI study, make sure you're prepared by following the
 
 ### Get formal ethical approval
 
-Most of the lab's standard 3T studies at UZ Leuven are covered by the approved umbrella application **S70813** (Methusalem), which replaced S62131 (ended 31 December 2025). 
+Most of the lab's standard 3T studies at UZ Leuven are covered by the approved umbrella application **S70813** (Methusalem), which replaced S62131 (ended 31 December 2025).
 
-Check with Klara and/or your PI whether it covers your experiment before you set up anything else. S70813 does **not** cover scanning at the 7T. 
+Check with Klara and/or your PI whether it covers your experiment before you set up anything else. S70813 does **not** cover scanning at the 7T.
 
 See the [ethics pages](../ethics/MEC.md) for details on how to file a new study at EC UZ/KU Leuven.
 
@@ -86,7 +86,7 @@ After EC approval you will automatically be given access to the MRI Scientific P
 
 ### Become an Authorized Other User (AOU)
 
-This is a **10-step process**, which is thoroughly described in the *Safety Notes, Rules and Procedures* document in the [Radiology Google Drive folder](https://drive.google.com/drive/folders/1D9eakayRtrxAd25N_rZnzZYHVJTEu2la?usp=sharing) or on the Radiology Wiki (access required). We'll summarize the main steps here: 
+This is a **10-step process**, which is thoroughly described in the *Safety Notes, Rules and Procedures* document in the [Radiology Google Drive folder](https://drive.google.com/drive/folders/1D9eakayRtrxAd25N_rZnzZYHVJTEu2la?usp=sharing) or on the Radiology Wiki (access required). We'll summarize the main steps here:
 
 1. Screen yourself by using the [AOU MR Safety Checklist Form](https://docs.google.com/forms/d/e/1FAIpQLSc8Zcgz-ezngCgN4yTJ0kG2hyeF42HeK7V8tfZtFTmykNCwBQ/viewform). In this form, you also enter the badge number associated with the personnel card you will use to enter the MR research department and gain access to all MR facilities. Send Ron an e-mail if you filled in the form, but your card hasn't been activated.
 2. Make sure you have attended the Safety course given by the MR Safety Officer (see above).
@@ -96,11 +96,11 @@ This is a **10-step process**, which is thoroughly described in the *Safety Note
 6. Make sure you are subscribed to the [MR mailing list](https://ls.kuleuven.be/cgi-bin/wa?SUBED1=MRI&A=1&SUB=1) (see above).
 7. Make sure you are registered to the [Radiology wiki](wiki.kulradiology.be) so you have access to the latest manuals and information (see above).
 
-If you have reached this point, you are considered a **Probationary Authorized Other User** if (and only if) you also 
+If you have reached this point, you are considered a **Probationary Authorized Other User** if (and only if) you also
 - fill in and sign the form [Probationary Authorized Other User Declaration](https://docs.google.com/forms/d/e/1FAIpQLScytf6YztwTDqlTcIhgrUQgPXEKYZPI4cJE1VJCXCzegBrghA/viewform) to declare that you have performed the steps above and agree to follow the local rules of operation.
 - let your supervising PI complete and sign the [Principal Investigator Agreement](https://docs.google.com/forms/d/e/1FAIpQLSfnHLMWxvsO7fqNyqcFvApf8vQyzynvvc1WcWGS8Snic0cRoQ/viewform) where (s)he pledges to instruct their personnel to follow the rules and procedures.
 
-Those who only assist with scanning sessions (e.g., students) only need to obtain a Probationary AOU status via the steps above. To lose the probationary status (e.g., for PhDs and postdocs who will independently run a study), you need to complete additional practical training at the scanner. 
+Those who only assist with scanning sessions (e.g., students) only need to obtain a Probationary AOU status via the steps above. To lose the probationary status (e.g., for PhDs and postdocs who will independently run a study), you need to complete additional practical training at the scanner.
 
 This involves 3 more steps:
 
@@ -108,7 +108,7 @@ This involves 3 more steps:
 9. When you feel ready, contact Ron (via email) such that he can come and observe you during a few scanning sessions to make sure everything runs smoothly.
 10. During these sessions, he might ask you some questions to make sure you have all the knowledge you need.
 
-When you completed all 10 steps, you can get the **full AOU status**. 
+When you completed all 10 steps, you can get the **full AOU status**.
 
 ???+ "Existing MR8 users"
     Existing MR8 users do not need to go through the entire procedure described, but are required to attend one of the induction sessions specific to MR11 (announced via the MRI mailing list), reapply for access to the scanner room (via [this](https://docs.google.com/forms/d/e/1FAIpQLSc8Zcgz-ezngCgN4yTJ0kG2hyeF42HeK7V8tfZtFTmykNCwBQ/viewform) form), and keep up to date with the Radiology wiki (especially the *Safety Notes, Rules and Procedures* document). To be fully in order administratively, also fill in and sign the [Probationary Authorized Other User Declaration](https://docs.google.com/forms/d/e/1FAIpQLScytf6YztwTDqlTcIhgrUQgPXEKYZPI4cJE1VJCXCzegBrghA/viewform) and have your PI complete and sign the [Principal Investigator Agreement](https://docs.google.com/forms/d/e/1FAIpQLSfnHLMWxvsO7fqNyqcFvApf8vQyzynvvc1WcWGS8Snic0cRoQ/viewform)
