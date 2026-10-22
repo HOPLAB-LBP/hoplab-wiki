@@ -91,10 +91,10 @@ This is a **10-step process**, which is thoroughly described in the *Safety Note
 1. Screen yourself by using the [AOU MR Safety Checklist Form](https://docs.google.com/forms/d/e/1FAIpQLSc8Zcgz-ezngCgN4yTJ0kG2hyeF42HeK7V8tfZtFTmykNCwBQ/viewform). In this form, you also enter the badge number associated with the personnel card you will use to enter the MR research department and gain access to all MR facilities. Send Ron an e-mail if you filled in the form, but your card hasn't been activated.
 2. Make sure you have attended the Safety course given by the MR Safety Officer (see above).
 3. View the [current safety video](https://www.youtube.com/watch?v=VzdSqYkMlRw).
-4. Read Chapters 1 and 2 of the [Guidelines for Magnetic Resonance Equipment in Clinical Use (2nd edn. 2002)](https://drive.google.com/file/d/154nW1YcN6AM5AsMy6XH8FjTjBYbookAU/view) published by the Medical Devices Agency.
+4. Read Chapters 1 and 2 of the [Guidelines for Magnetic Resonance Equipment in Clinical Use (2nd edition, 2002)](https://drive.google.com/file/d/154nW1YcN6AM5AsMy6XH8FjTjBYbookAU/view) published by the Medical Devices Agency.
 5. Study the (standard & emergency) procedures by thoroughly reading the *Safety Notes, Rules and Procedures* document in the [Radiology Google Drive folder](https://drive.google.com/drive/folders/1D9eakayRtrxAd25N_rZnzZYHVJTEu2la?usp=sharing) or on the Radiology Wiki (access required).
 6. Make sure you are subscribed to the [MR mailing list](https://ls.kuleuven.be/cgi-bin/wa?SUBED1=MRI&A=1&SUB=1) (see above).
-7. Make sure you are registered to the [Radiology wiki](wiki.kulradiology.be) so you have access to the latest manuals and information (see above).
+7. Make sure you are registered to the [Radiology wiki](https://wiki.kulradiology.be) so you have access to the latest manuals and information (see above).
 
 If you have reached this point, you are considered a **Probationary Authorized Other User** if (and only if) you also
 - fill in and sign the form [Probationary Authorized Other User Declaration](https://docs.google.com/forms/d/e/1FAIpQLScytf6YztwTDqlTcIhgrUQgPXEKYZPI4cJE1VJCXCzegBrghA/viewform) to declare that you have performed the steps above and agree to follow the local rules of operation.

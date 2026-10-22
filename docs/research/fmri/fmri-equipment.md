@@ -19,7 +19,7 @@ This page describes the equipment you use around **MR11**, the Siemens MAGNETOM 
 - **Rooms**: the console room (scanner console, stimulus PC, trigger box, audio system and screen control box), the magnet room, the technical room, preparation rooms 1 and 2 (participant instructions and preparation; the XNAT download PC is in preparation room 1), a waiting room and a storage room.
 
 !!! danger "The magnetic field reaches outside the magnet room"
-    The 5 Gauss line extends into the technical room, and the hallway door of the magnet room is only about 2.7 m from the magnet centre. Bring no equipment into the MRI department without approval of the MRI Safety Officer (see [First steps](fmri-get-started.md#attend-the-mr-safety-course)).
+    The 5 Gauss line extends into the technical room, and the hallway door of the magnet room is only about 2.7 m from the magnet centre. Bring no equipment into the MRI department without approval of the MRI Safety Officer (see [First steps](fmri-get-started.md#attend-the-mr-safety-and-induction-course)).
 
 ---
 
