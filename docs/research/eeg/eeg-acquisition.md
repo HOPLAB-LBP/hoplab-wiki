@@ -52,7 +52,7 @@ To keep scheduling fair during busy periods with multiple studies running, the f
 - **Book realistic durations.** Please don’t reserve a 4h block for a 2h EEG session. Book the time you need to comfortably prepare the participant (up to 45-60 minutes, depending on your experience and the participant's hair type), collect the EEG data (depending on the study), and take care of cleaning (probably around 20-30 minutes).  
 
 !!! warning "Testing outside of regular office hours (evening/weekends)"
-    For the safety of both participants and researchers, we ask that EEG testing outside office hours is not done alone, but **with two people present**. If, for any exceptional reason, you do need to test alone outside office hours, please make sure there is **a clear communication line with a colleague** who is reachable and able to come to the lab on short notice if needed. Please make sure you know who this person is for your study.
+    For the safety of both participants and researchers, we ask that EEG testing outside office hours is not done alone, but **with two people present**. If, for any exceptional reason, you do need to test alone outside office hours, please make sure there is **a clear communication line with a colleague who is also present within PSI**.
 
 ## On the day: before the participant arrives
 
