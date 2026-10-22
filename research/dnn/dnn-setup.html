@@ -3473,7 +3473,7 @@
 <p>These pages start <em>after</em> the brain analysis, with one activity pattern per image and run from each region of interest (see the <a href="../fmri/analysis/index.html">fMRI analysis workflow</a>; <a href="dnn-compare.html#load-and-line-up-the-data">Compare with human data</a> shows how to read them from an SPM GLM). The kit's patterns are simulated with <a href="https://pcm-toolbox-python.readthedocs.io/">PcmPy</a> for ten participants with six runs each, in two regions of interest called <code>V1</code> and <code>IT</code>.</p>
 </div>
 <p>Every file lists the images in the same order, the order of <code>manifest.csv</code>. Your own data should follow the same structure, so that the code on these pages works on it unchanged:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-data-layout.png" data-desc-position="bottom"><img alt="The toy kit lists the images in one order: the manifest, the stimuli and the brain data of every participant" src="../../assets/dnn/dnn-data-layout.png"></a></p>
+<p></p>
 <p>The manifest has one row per image. The <code>category</code>, <code>scene</code> and <code>position</code> columns are the three properties we test on the next pages. The <code>sprite</code> column names the object, so that all six versions of a sprite stay together when you split the images into a training and a test set. In each participant's file, the arrays <code>V1</code> and <code>IT</code> hold the patterns as runs × images × voxels, and <code>image_id</code> stores the image order. The two ROIs have different numbers of voxels. Your own ROIs can have any number of runs and voxels, as long as the image axis follows the manifest.</p>
 <p>Load the manifest:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -3529,13 +3529,13 @@
 <ol>
 <li><code>interpolation="nearest"</code> draws each pixel as a sharp square. The default smooths the pixel art into a blur.</li>
 </ol>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-sprites.png" data-desc-position="bottom"><img alt="The 24 sprites of the toy kit on the meadow, one row per category" src="../../assets/dnn/dnn-sprites.png" width="680"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-sprite-versions.png" data-desc-position="bottom"><img alt="The cat in its six versions: meadow, room and night, each centred and shifted" src="../../assets/dnn/dnn-sprite-versions.png" width="680"></a></p>
+<p></p>
+<p></p>
 </details>
 <hr>
 <h2 id="from-an-image-to-an-rdm">From an image to an RDM<a class="headerlink" href="#from-an-image-to-an-rdm" title="Permanent link">¶</a></h2>
 <p>If neural networks are new to you, start here. The animation shows what the rest of this section does with every image, and how to read the model cards below.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-conv-to-rdm.gif" data-desc-position="bottom"><img alt="Animation: a filter of AlexNet's first layer slides over the cat on the meadow and builds a channel map; the 64 maps of 55 × 55 are laid end to end into one vector; the same is done for a duck on the meadow, a pizza and a banana in the room, and a ghost and a pumpkin at night, and the 6 × 6 RDM fills with 1 − Pearson r between the vectors, with the critter, food and spooky blocks marked" src="../../assets/dnn/dnn-conv-to-rdm.gif"></a></p>
+<p></p>
 <p>Each filter of AlexNet's first layer slides over the image and gives one map of responses, and the ReLU sets the negative responses to zero. The 64 maps of 55 × 55 are laid end to end into one vector of 193,600 numbers per image, and the RDM holds 1 − Pearson r between the vectors of every pair of images. The bars are only a preview of each vector, while the RDM uses all its values. Each pair of sprites in the animation shares a scene, the critters on the meadow, the food in the room and the spooky sprites at night, so the three dark blocks of the RDM can come from the scene as much as from the category. The kit crosses the two, and <a href="dnn-model.html">Compare with a model</a> shows how to tell them apart. The animation uses AlexNet, whose first layer is the simplest to show. The rest of this section uses ResNet-50, which works the same way with more layers.</p>
 <hr>
 <h2 id="3-pick-a-model">3. Pick a model<a class="headerlink" href="#3-pick-a-model" title="Permanent link">¶</a></h2>
@@ -3628,7 +3628,7 @@
 <dt>License</dt>
 <dd>BSD-3 code; weights under ImageNet terms</dd>
 </dl>
-<p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/resnet50.png" data-desc-position="bottom"><img alt="ResNet-50: the cat sprite; four conv1 filters (horizontal bar, oblique bars, colour edge, colour centre-surround), each above its response to the cat; RDMs of conv1 and avgpool over the 144 images" class="resource-card__figure" src="../../assets/dnn/cards/resnet50.png"></a></p>
+<p class="resource-card__plate"></p>
 <details class="example">
 <summary>Load it</summary>
 <p>
@@ -3663,7 +3663,7 @@
 <dt>License</dt>
 <dd>BSD-3 code; weights under ImageNet terms</dd>
 </dl>
-<p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/alexnet.png" data-desc-position="bottom"><img alt="AlexNet: the cat sprite; four conv1 filters (horizontal edge, oblique edge, vertical grating, colour centre-surround), each above its response to the cat; RDMs of conv1 and fc7 over the 144 images" class="resource-card__figure" src="../../assets/dnn/cards/alexnet.png"></a></p>
+<p class="resource-card__plate"></p>
 <details class="example">
 <summary>Load it</summary>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">thingsvision</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_extractor</span>
@@ -3698,7 +3698,7 @@
 <dt>License</dt>
 <dd>GPL-3.0</dd>
 </dl>
-<p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/cornet_s.png" data-desc-position="bottom"><img alt="CORnet-S: the cat sprite; four V1 filters (horizontal bar, oblique bar, colour edge, centre-surround), each above its response to the cat; RDMs of V1 and IT over the 144 images" class="resource-card__figure" src="../../assets/dnn/cards/cornet_s.png"></a></p>
+<p class="resource-card__plate"></p>
 <details class="example">
 <summary>Load it</summary>
 <p>
@@ -3732,7 +3732,7 @@
 <dt>License</dt>
 <dd>GPL-3.0</dd>
 </dl>
-<p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/vonenet.png" data-desc-position="bottom"><img alt="VOneNet: the cat sprite; four fixed V1 filters (horizontal grating, oblique grating, vertical bar, centre blob), each above its response to the cat; RDMs of the VOne block and avgpool over the 144 images" class="resource-card__figure" src="../../assets/dnn/cards/vonenet.png"></a></p>
+<p class="resource-card__plate"></p>
 <details class="example">
 <summary>Load it</summary>
 <p>
@@ -3774,7 +3774,7 @@
 <dt>License</dt>
 <dd>no license file</dd>
 </dl>
-<p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/hmax.png" data-desc-position="bottom"><img alt="HMAX: the cat sprite; four S1 Gabor filters at four orientations, each above its response to the cat; RDMs of S1 and C2 over the 144 images" class="resource-card__figure" src="../../assets/dnn/cards/hmax.png"></a></p>
+<p class="resource-card__plate"></p>
 <details class="example">
 <summary>Load it</summary>
 <p>
@@ -3808,7 +3808,7 @@
 <dt>License</dt>
 <dd>MIT; research use only, per the model card</dd>
 </dl>
-<p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/clip.png" data-desc-position="bottom"><img alt="CLIP: the cat sprite with CLIP's 7 × 7 patch grid; four principal components of the first-layer patch filters (colour-striped centre, vertical grating, oblique edge, centre-surround blob), each above its 7 × 7 map for the cat; RDMs of the first layer and of the class token before the projection over the 144 images" class="resource-card__figure" src="../../assets/dnn/cards/clip.png"></a></p>
+<p class="resource-card__plate"></p>
 <p class="resource-card__caption">CLIP's 768 patch filters look noisy one by one, so the strip shows four principal components of them, as the ViT paper does (<a href="https://arxiv.org/abs/2010.11929">Dosovitskiy et al., 2021</a>, Fig. 7). Each map shows how strongly each of the 49 patches of the cat loads on that component. Loadings can be negative, so here white is the lowest loading, not 0.</p>
 <details class="example">
 <summary>Load it</summary>
@@ -3845,7 +3845,7 @@
 <dt>License</dt>
 <dd>no license file</dd>
 </dl>
-<p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/tdann.png" data-desc-position="bottom"><img alt="TDANN: the cat sprite; the V1-like layer, layer2.0, on the cortical sheet: each unit's preferred orientation, with a key of oriented bars, and each unit's response to the cat; RDMs of layer2.0 and layer4.1 over the 144 images" class="resource-card__figure" src="../../assets/dnn/cards/tdann.png"></a></p>
+<p class="resource-card__plate"></p>
 <p class="resource-card__caption">On the left, each unit's preferred orientation, measured with TDANN's own grating images and tuning fits and smoothed over 1.5 mm as in the paper. Neighbouring units prefer similar orientations, and the colours meet at pinwheel-like points. On the right, each unit's response to the cat at its position on the sheet, as in the TDANN demo.</p>
 <details class="example">
 <summary>Load it</summary>
@@ -3884,7 +3884,7 @@
 <dt>License</dt>
 <dd>no license file</dd>
 </dl>
-<p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/toponets.png" data-desc-position="bottom"><img alt="TopoNets: the cat sprite; the response map of each channel of layer1.0.conv1, tiled at the channel's position on the 8 × 8 sheet; RDMs of layer1.0.conv1 and avgpool over the 144 images" class="resource-card__figure" src="../../assets/dnn/cards/toponets.png"></a></p>
+<p class="resource-card__plate"></p>
 <p class="resource-card__caption">The paper's vision maps show category selectivity (Fig. 5A). This view of the first topographic layer is ours. It shows each channel's response to the cat, placed on the 8 × 8 grid that TopoLoss uses for this layer. Neighbouring tiles tend to look alike.</p>
 <details class="example">
 <summary>Load it</summary>
@@ -3918,7 +3918,7 @@
 <dt>License</dt>
 <dd>MIT</dd>
 </dl>
-<p class="resource-card__plate"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/cards/alltnn.png" data-desc-position="bottom"><img alt="All-TNN: the cat sprite; the preferred orientation of every unit of sheet 1 on the cortical sheet, with a key of oriented bars, and the summed response to the cat at each position of the visual field; RDMs of sheet 1 and sheet 6 over the 144 images" class="resource-card__figure" src="../../assets/dnn/cards/alltnn.png"></a></p>
+<p class="resource-card__plate"></p>
 <p class="resource-card__caption">On the left, each unit's preferred orientation, measured with gratings as in the repository's <code>get_tuning_curves</code>. Neighbouring units prefer similar orientations, as in V1. White dots are units that respond to no grating (0.7%). On the right, the summed response of the 64 units at each position in the visual field, which traces the cat and the edge of the grass.</p>
 <details class="example">
 <summary>Load it</summary>

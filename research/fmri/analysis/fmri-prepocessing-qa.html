@@ -3828,7 +3828,7 @@
 <ul>
 <li><strong>Brain Mask Overlay</strong>: Displays the brain mask (red outline), gray matter (magenta), and white matter boundaries (blue) overlaid on the anatomical image in sagittal, axial, and coronal views.</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmriprep-report-brainmaskoverlay.png" data-desc-position="bottom"><img alt="Trigger box" src="../../../assets/fmriprep-report-brainmaskoverlay.png"></a></p>
+<p></p>
 <ul>
 <li>
 <p><strong>Normalization Check</strong>: A GIF compares the subject’s anatomical image with the MNI template. Ensure that:</p>
@@ -3838,7 +3838,7 @@
 </li>
 <li>Any misalignment could indicate poor normalization, which may need further inspection.</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmriprep-report-normalization.png" data-desc-position="bottom"><img alt="Trigger box" src="../../../assets/fmriprep-report-normalization.png"></a></p>
+<p></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p><strong>Hover over the GIF</strong> to see the back-and-forth comparison between the subject's brain and the template. Look closely at the alignment of internal brain structures.</p>
@@ -3846,7 +3846,7 @@
 <ul>
 <li><strong>Surface Reconstruction</strong> if you ran the <code>recon-all</code> routine in fMRIprep</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmriprep-report-surfacerecon.png" data-desc-position="bottom"><img alt="Trigger box" src="../../../assets/fmriprep-report-surfacerecon.png"></a></p>
+<p></p>
 <h4 id="5-functional-quality-checks">5. Functional Quality Checks<a class="headerlink" href="#5-functional-quality-checks" title="Permanent link">¶</a></h4>
 <p>In the <strong>Functional</strong> section, you’ll find:</p>
 <ul>
@@ -3856,7 +3856,7 @@
 <p class="admonition-title">Check for alignment</p>
 <p>Check for alignment between internal structures like ventricles in the functional and anatomical images. Open the image in a new tab (Right Click on the image -&gt; Open in a new tab) and hover to see the dynamic image.</p>
 </div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmriprep-report-coreg.svg" data-desc-position="bottom"><img alt="Trigger box" src="../../../assets/fmriprep-report-coreg.svg"></a></p>
+<p></p>
 <ul>
 <li><strong>CompCor Masks</strong>: Displays masks used for <strong>Anatomical Component Correction (aCompCor)</strong>:</li>
 <li><strong>White Matter and CSF (Magenta)</strong>: Masks used to extract noise components.</li>
@@ -3885,7 +3885,7 @@
 <li><strong>Cortex</strong> (blue), <strong>Subcortex</strong> (orange), <strong>Gray Matter</strong> (green), and <strong>White Matter/CSF</strong> (red).</li>
 <li>Look for <strong>sudden changes across a column</strong>, which may indicate motion artifacts affecting the entire brain at a particular time point.</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmriprep-report-boldsummary.png" data-desc-position="bottom"><img alt="Trigger box" src="../../../assets/fmriprep-report-boldsummary.png"></a></p>
+<p></p>
 <h4 id="7-correlation-matrix-of-confound-regressors">7. Correlation Matrix of Confound Regressors<a class="headerlink" href="#7-correlation-matrix-of-confound-regressors" title="Permanent link">¶</a></h4>
 <p>The report also includes a <strong>correlation matrix</strong> showing relationships between confound regressors:</p>
 <ul>
@@ -3896,7 +3896,7 @@
 <p class="admonition-title">High Correlations</p>
 <p>High correlation values may suggest redundancy among some regressors. Consider removing or combining them to avoid overfitting when building your GLM.</p>
 </div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmriprep-report-confoundscorr.png" data-desc-position="bottom"><img alt="Trigger box" src="../../../assets/fmriprep-report-confoundscorr.png"></a></p>
+<p></p>
 <h4 id="8-making-decisions-for-further-analysis">8. Making Decisions for Further Analysis<a class="headerlink" href="#8-making-decisions-for-further-analysis" title="Permanent link">¶</a></h4>
 <p>After reviewing the report:</p>
 <ul>

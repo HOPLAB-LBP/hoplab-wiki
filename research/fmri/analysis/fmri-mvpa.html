@@ -3379,7 +3379,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </div>
 <hr>
 <h3 id="typical-pipeline-for-real-fmri-data">Typical Pipeline for Real fMRI Data<a class="headerlink" href="#typical-pipeline-for-real-fmri-data" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_data_flowchart.png" data-desc-position="bottom"><img alt="pipeline_flowchart" src="../../../assets/fmri_mvpa_data_flowchart.png"></a></p>
+<p></p>
 <ol>
 <li><strong>Data Acquisition</strong>: Collect fMRI data as participants perform tasks or view stimuli from different categories.</li>
 <li><strong>BIDS Conversion</strong>: Convert raw data into the Brain Imaging Data Structure (BIDS) format. This standardization makes subsequent preprocessing and analysis much easier.</li>
@@ -3411,7 +3411,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 <li><strong>Runs</strong>: 10 runs/subject</li>
 <li><strong>Categories</strong> (8 total): Human face, Human body, Animal face, Animal body, Natural round object, Natural spiky object, Artificial round object, Artificial spiky object</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_categories_pretty.png" data-desc-position="bottom"><img alt="flowchart" src="../../../assets/fmri_mvpa_categories_pretty.png"></a></p>
+<p></p>
 <hr>
 <h3 id="hypothesis">Hypothesis<a class="headerlink" href="#hypothesis" title="Permanent link">¶</a></h3>
 <ul>
@@ -3479,12 +3479,12 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c">% Plot activation patterns</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">plot_activation_heatmap</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
 </span></code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_IT_Activation_Heatmap.png" data-desc-position="bottom"><img alt="activation heatmap" src="../../../assets/fmri_mvpa_IT_Activation_Heatmap.png"></a></p>
+<p></p>
 <hr>
 <h3 id="5-mvpa-classification-analysis">5. MVPA: Classification Analysis<a class="headerlink" href="#5-mvpa-classification-analysis" title="Permanent link">¶</a></h3>
 <p>We use a simple Linear Discriminant Analysis (<strong>LDA</strong>) classifier with cross-validation to decode category information.</p>
 <p>The central idea is that <strong>if differences between categories are present, the classifier will be able to pick that signal up</strong>. When we use an MVPA classifier to brain data, we are testing whether the neural patterns (represented as voxel activity) for different categories contain distinct, systematic differences. If the brain region being analyzed encodes information about the categories in its activity patterns, the classifier will achieve accuracy above chance.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_brain_patterns_svm.png" data-desc-position="bottom"><img alt="brain pattern svm" src="../../../assets/fmri_mvpa_brain_patterns_svm.png"></a></p>
+<p></p>
 <p>In other words, the classifier looks at the activity from multiple voxels and tries to <strong>find consistent differences between patterns</strong> for different categories (e.g., cats vs. dogs). If those patterns are different enough, the classifier can "learn" to predict the category based on the brain activity by identifying separable representations in a high-dimensional space of neural activity.</p>
 <p>This works because the brain encodes information about what we see in these patterns—like a unique "signature" for each category. If the classifier succeeds, it shows that the brain region we're analyzing contains information relevant to distinguishing those categories.</p>
 <h4 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">¶</a></h4>
@@ -3514,10 +3514,10 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="n">labelNames</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
 </span></code></pre></div>
 <p>A confusion matrix helps identify which categories are easily distinguishable and which are often confounded.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_IT_Confusion_Matrix.png" data-desc-position="bottom"><img alt="confusion matrix" src="../../../assets/fmri_mvpa_IT_Confusion_Matrix.png"></a></p>
+<p></p>
 <hr>
 <h3 id="6-representational-dissimilarity-matrices-rdms">6. Representational Dissimilarity Matrices (RDMs)<a class="headerlink" href="#6-representational-dissimilarity-matrices-rdms" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_correlation_matrix.png" data-desc-position="bottom"><img alt="correlation matrix" src="../../../assets/fmri_mvpa_correlation_matrix.png"></a></p>
+<p></p>
 <p>RSA involves comparing the RDMs from brain data to RDM for our theoretical models. We do this by computing RDMs:</p>
 <ol>
 <li><strong>Mean Patterns</strong>: Average the data across runs for each category.</li>
@@ -3530,7 +3530,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c">% Visualize categories in a 2D space using MDS</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">plot_mds</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
 </span></code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_IT_MDS_Plot_.png" data-desc-position="bottom"><img alt="mds plot" src="../../../assets/fmri_mvpa_IT_MDS_Plot_.png"></a></p>
+<p></p>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c">% Compute the data RDM</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">measureDsm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@</span><span class="n">cosmo_dissimilarity_matrix_measure</span><span class="p">;</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">argsDsm</span><span class="p">.</span><span class="n">metric</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'correlation'</span><span class="p">;</span>
@@ -3570,7 +3570,7 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="c">% Plot results: observed RDM, model RDMs, and regression coefficients</span>
 </span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="n">plot_rdms_and_coefficients</span><span class="p">(</span><span class="n">dataRdm</span><span class="p">,</span><span class="w"> </span><span class="n">rdms</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">outDir</span><span class="p">);</span>
 </span></code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_IT_RSA_regression.png" data-desc-position="bottom"><img alt="regression result" src="../../../assets/fmri_mvpa_IT_RSA_regression.png"></a></p>
+<p></p>
 <h2 id="full-code-example-comparison-with-v1">Full code example: comparison with V1<a class="headerlink" href="#full-code-example-comparison-with-v1" title="Permanent link">¶</a></h2>
 <p>Now that we have the full picture, let's re-run our full code, but this time we only see the main results for <strong>the other synthetic ROI: V1</strong>.</p>
 <div class="language-matlab highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
@@ -3768,10 +3768,10 @@ learn how to go from raw data to advanced analyses that reveal the <a href="http
 </span><span id="__span-9-97"><a id="__codelineno-9-97" name="__codelineno-9-97"></a><span class="n">plot_rdms_and_coefficients</span><span class="p">(</span><span class="n">dataRdm</span><span class="p">,</span><span class="w"> </span><span class="n">rdms</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="n">roiName</span><span class="p">,</span><span class="w"> </span><span class="n">o</span>
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>And the results:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_V1_Activation_Heatmap.png" data-desc-position="bottom"><img alt="V1 activations" src="../../../assets/fmri_mvpa_V1_Activation_Heatmap.png"></a>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_V1_Confusion_Matrix.png" data-desc-position="bottom"><img alt="V1 confusion matrix" src="../../../assets/fmri_mvpa_V1_Confusion_Matrix.png"></a>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_V1_MDS_Plot_.png" data-desc-position="bottom"><img alt="V1 MDS plot" src="../../../assets/fmri_mvpa_V1_MDS_Plot_.png"></a>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri_mvpa_V1_RSA_regression.png" data-desc-position="bottom"><img alt="V1 RSA results" src="../../../assets/fmri_mvpa_V1_RSA_regression.png"></a></p>
+<p>
+
+
+</p>
 <hr>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">¶</a></h2>
 <p><strong>What we learned</strong>:</p>

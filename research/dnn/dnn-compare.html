@@ -3428,7 +3428,7 @@
 <hr>
 <h2 id="load-and-line-up-the-data">Load and line up the data<a class="headerlink" href="#load-and-line-up-the-data" title="Permanent link">¶</a></h2>
 <p>The activations from <a href="dnn-extract.html">Extract activations</a> and each participant's brain data list the images in the same order as the manifest:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-data-layout-full.png" data-desc-position="bottom"><img alt="Every file lists the images in the same order: manifest, stimuli, activations and the brain data of every participant" src="../../assets/dnn/dnn-data-layout-full.png"></a></p>
+<p></p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -3561,7 +3561,7 @@
 <p>Every participant saw the same 24 sprites. A test over participants alone treats those sprites as fixed, so its p-value says "for these sprites". A small link between the network and the brain that comes from the particular sprites repeats in every participant, and with enough participants it becomes significant. Report effect sizes with their confidence intervals, and use the dual bootstrap for RSA, which resamples participants and sprites together. With 10 participants and 24 sprites the dual bootstrap has few degrees of freedom. Schütt et al. (2023) recommend at least 20 participants and 40 conditions.</p>
 <hr>
 <h2 id="which-method-answers-which-question">Which method answers which question?<a class="headerlink" href="#which-method-answers-which-question" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-methods.png" data-desc-position="bottom"><img alt="RSA compares dissimilarity matrices, decoding reads out a label, encoding predicts each voxel" src="../../assets/dnn/dnn-methods.png"></a></p>
+<p></p>
 <table>
 <thead>
 <tr>
@@ -3696,7 +3696,7 @@
 <li>Bars are the mean correlation with the participants' RDMs and error bars the bootstrap standard error. The grey band is the noise ceiling. Its lower edge is how well the average RDM of the other participants predicts each participant, and its upper edge how well the average of all participants does. Set <code>test_pair_comparisons=True</code> to draw which layers differ significantly. The tests themselves are in the printed results. The RDMs themselves are plotted in <a href="#look-at-your-rdms">Look at your RDMs</a>.</li>
 </ol>
 </details>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-rsa-v1.png" data-desc-position="bottom"><img alt="RSA model comparison for the V1 region" src="../../assets/dnn/dnn-rsa-v1.png" width="49%"></a> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-rsa-it.png" data-desc-position="bottom"><img alt="RSA model comparison for the IT region" src="../../assets/dnn/dnn-rsa-it.png" width="49%"></a></p>
+<p> </p>
 <p>Every layer matches V1 closely, best maxpool (r = 0.509) and the others between 0.467 and 0.491, and none is significantly below the noise ceiling. Region and network both follow the scene. IT is matched only weakly, from 0.033 to 0.074. Every layer is above zero but far below the noise ceiling, so the ImageNet features of ResNet-50 miss most of what IT does with these sprites.</p>
 <details class="info">
 <summary>Other dissimilarities and comparisons, and when to use them</summary>
@@ -3835,7 +3835,7 @@
 </span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></code></pre></div>
 </details>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-decoding.png" data-desc-position="bottom"><img alt="Decoding accuracy of category and scene in the V1 and IT regions: each participant's accuracy, and the mean with its 95% confidence interval" src="../../assets/dnn/dnn-decoding.png"></a></p>
+<p></p>
 <p>Category can be read out of IT for new sprites in a new run, 71.6% correct on average (95% CI 66.8% to 76.3%), and the scene out of V1 (84.2%, 80.1% to 88.4%). The other two combinations stay at chance (V1 category 33.4%, IT scene 32.1%).</p>
 <details class="tip">
 <summary>What the test across participants tells you</summary>
@@ -3968,7 +3968,7 @@
 </span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></code></pre></div>
 </details>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-encoding.png" data-desc-position="bottom"><img alt="Encoding performance by layer for the V1 and IT regions, with 95% confidence intervals over participants and the noise ceilings" src="../../assets/dnn/dnn-encoding.png"></a></p>
+<p></p>
 <p>Every layer predicts the V1 voxels about equally well (median r from 0.217 to 0.236, against a noise ceiling of 0.313), with maxpool and layer1 slightly ahead. The IT voxels are predicted barely above zero (0.025 to 0.037, against a ceiling of 0.335). The layers carry the scene and position information that drives V1, and little of what drives IT.</p>
 </div>
 </div>
@@ -4031,7 +4031,7 @@
 <li>The images are in manifest order: three blocks of 48 for the categories (the coloured bars), and in each block the meadow, the room and the night, 16 images each.</li>
 <li>Crossnobis distances can fall slightly below 0 when two images evoke the same pattern, because of noise. MDS needs distances of at least 0, so we set those to 0 for this picture only. MDS places the 144 points so that their distances match the RDM as closely as two dimensions allow.</li>
 </ol>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-rdm-mds.png" data-desc-position="bottom"><img alt="Top: the mean RDMs of the V1 and IT regions and the RDMs of maxpool, layer3 and avgpool of ResNet-50. Bottom: the MDS of each RDM, with every image drawn at its point" src="../../assets/dnn/dnn-rdm-mds.png"></a></p>
+<p></p>
 <p>Read each column from top to bottom. In V1, maxpool and layer3, the RDM has dark blocks that repeat in a regular pattern: inside each category, images of the same scene are similar to each other. The MDS shows the same thing as three clusters, one per scene, and the night images sit furthest from the other two. In IT, the dark blocks are the three categories instead, and the MDS has three clusters of critters, food and spooky sprites, each mixing all scenes. In avgpool the scene blocks fade, and in its MDS the scene clusters start to mix.</p>
 <p>MDS squeezes 144 images into two dimensions, so some distances are bent to fit. Use it to build an intuition for the geometry and to spot structure, and keep the statistics on the RDMs.</p>
 <p><strong>What would explain the structure you see?</strong> Each guess becomes a new model RDM. We try two and compare each with the regions and the layers:</p>
@@ -4079,7 +4079,7 @@
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>CLIP    0.26  0.23     0.43    0.53     0.48
 </span></code></pre></div>
 </details>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-candidate-mds.png" data-desc-position="bottom"><img alt="The two candidate models, pixels and CLIP, as RDMs on top and MDS below, drawn like the data above" src="../../assets/dnn/dnn-candidate-mds.png"></a></p>
+<p></p>
 <p>The pixel model holds the scene structure and little else. Its MDS has three clusters, one per scene, with the categories mixed inside each. It fits maxpool closely (0.90), layer3 and avgpool less (0.64 and 0.68), V1 well (0.48) and IT not at all (0.03). Most of what we saw in V1 and the early layers is in the raw pixels already.</p>
 <p>CLIP's RDM has some of both. Faint category blocks run along the diagonal, and thin dark stripes mark the six versions of the same sprite, which CLIP treats as similar whatever the scene or position. In its MDS the night images still form a group of their own, while food sprites gather on one side and spooky sprites on the other. CLIP is the only candidate that fits IT (0.23, against 0.03 for the pixels), and it fits V1 less well than the pixels (0.26). Neither candidate describes everything. A picture like this tells you which new model is worth adding to the RSA, where the dual bootstrap tests it properly.</p>
 <hr>

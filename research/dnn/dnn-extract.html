@@ -3396,7 +3396,7 @@
 <h2 id="what-is-an-activation">What is an activation?<a class="headerlink" href="#what-is-an-activation" title="Permanent link">¶</a></h2>
 <p>When an image goes through a network, every layer turns the output of the previous layer into a new set of numbers. A convolutional layer produces a stack of feature maps (channels × height × width), and a fully connected layer produces a vector. These numbers, for one image, are that layer's <em>activation pattern</em>, the network's equivalent of a voxel pattern in an ROI.</p>
 <p>We record them with <a href="https://vicco-group.github.io/thingsvision/">thingsvision</a> (<a href="https://doi.org/10.3389/fninf.2021.679838">Muttenthaler &amp; Hebart, 2021</a>). It loads models from torchvision, timm, CORnet, CLIP and more through one interface, runs your images through them, and returns the activations of the layers you ask for.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-activation-to-matrix.png" data-desc-position="bottom"><img alt="From one image to one row of the activation matrix: the image, its 64 feature maps, the maps laid end to end, and the matrix of all 144 images" src="../../assets/dnn/dnn-activation-to-matrix.png"></a></p>
+<p></p>
 <hr>
 <h2 id="1-load-the-model-and-find-its-layers">1. Load the model and find its layers<a class="headerlink" href="#1-load-the-model-and-find-its-layers" title="Permanent link">¶</a></h2>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -3624,7 +3624,7 @@
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 </span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-feature-maps.png" data-desc-position="bottom"><img alt="Feature maps at the end of the stem of ResNet-50 (maxpool) for the cat on the meadow" src="../../assets/dnn/dnn-feature-maps.png"></a></p>
+<p></p>
 </details>
 <details class="tip">
 <summary>Your own trained model</summary>
