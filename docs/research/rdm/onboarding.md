@@ -11,7 +11,7 @@ You can follow the checklist step by step below or [download a personal copy](ht
     | Get a key to your new office | Find more information [here](../../get-started/practical-setup.md#keys) | ☐ |
     | Order laptop and required peripherals | Find more information [here](../../get-started/practical-setup.md#office-set-up) | ☐ |
     | Get access to all communication channels | See the overview [here](../../get-started/computer-setup.md#communication-channels) | ☐ |
-    | Get access to relevant physical spaces | e.g., the [MRI scanner room](../fmri/fmri-get-started.md#gain-access-to-mr-facilities) | ☐ |
+    | Get access to relevant physical spaces | e.g., the [MRI scanner room](../fmri/fmri-get-started.md#become-an-authorized-other-user-aou) | ☐ |
     | Get added to the lab’s [meeting schedule](../../outreach.md#schedule) | Ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to add you to the planning | ☐ |
     | Appear as a member on the [Hoplab website](https://www.hoplab.be) | Find inspiration from your colleagues [here](https://www.hoplab.be/people/) | ☐ |
     | Read getting started section on Wiki | Here’s a [quick link](../../get-started/index.md) | ☐ |
