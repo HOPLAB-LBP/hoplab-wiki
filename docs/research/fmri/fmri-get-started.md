@@ -9,8 +9,8 @@ The lab scans at two research scanners:
 
 MR11 has been the lab's 3T research scanner since June 2026. Notes on the previous scanner, for older datasets only, are on the [MR8 (decommissioned)](fmri-mr8.md) page. If you find outdated instructions elsewhere, please tell [Andrea](mailto:andreaivan.costantino@kuleuven.be) or open an issue.
 
-!!! tip "For detailed information, go to the radiology wiki"
-    The KU Leuven radiology department keeps the reference documentation for both scanners at **[wiki.kulradiology.be](https://wiki.kulradiology.be)**: the full MR11 user guide, safety rules and procedures, peripheral equipment manuals, XNAT instructions, and a separate space for the Flanders 7T. Our pages cover what lab members need day to day. For anything more detailed, check the radiology wiki first.
+!!! tip "For detailed information, go to the Radiology wiki"
+    The KU Leuven radiology department keeps the reference documentation for both scanners at **[wiki.kulradiology.be](https://wiki.kulradiology.be)**: the full MR11 user guide, safety rules and procedures, peripheral equipment manuals, XNAT instructions, and a separate space for the Flanders 7T. Our pages cover what lab members need day-to-day. For anything more detailed, check the radiology wiki first.
 
     [:octicons-link-external-16: Open the radiology wiki](https://wiki.kulradiology.be){ .md-button }
 
@@ -61,32 +61,22 @@ Before diving into your (f)MRI study, make sure you're prepared by following the
 
 ### Get formal ethical approval
 
-Most of the lab's standard 3T studies at UZ Leuven are covered by the approved umbrella application **S70813** (Methusalem), which replaced S62131 (ended 31 December 2025). Check with Klara and/or your PI whether it covers your experiment before you set up anything else. S70813 does **not** cover scanning at the 7T. See the [ethics pages](../ethics/index.md) for details.
+Most of the lab's standard 3T studies at UZ Leuven are covered by the approved umbrella application **S70813** (Methusalem), which replaced S62131 (ended 31 December 2025). 
 
-???+ steps "Register your study at the CTC"
-    After this you receive an S-number (for more info, we refer you to [this page](../ethics/MEC.md#step-1-register-your-study-at-the-ctc)).
+Check with Klara and/or your PI whether it covers your experiment before you set up anything else. S70813 does **not** cover scanning at the 7T. 
 
-???+ steps "Register your study at the MR research department"
-    Upload the [application form for support from the Radiology department](https://gbiomed.kuleuven.be/english/ctc/supporting-hospital-departments-for-public-ctc-website/aanvraagformulier_radiologie_eng) via [this link](https://www.uzleuven.be/en/uploading-application-forms-supporting-departments-ctc). Include the Clinical Study Coordinator of Radiology (currently, that is <lesley.cockmartin@uzleuven.be>) as contact person, who will approve your request via email.
+See the [ethics pages](../ethics/MEC.md) for details on how to file a new study at EC UZ/KU Leuven.
 
-???+ steps "Get approval from the ethical committee of UZ/KU Leuven"
-    For more info, we refer you to [this page](../ethics/MEC.md#step-2-apply-for-ec-approval).
+After EC approval you will automatically be given access to the MRI Scientific Planning Agenda (see below).
 
-???+ steps "Complete the MR safety course"
-    And become an authorized user of the MRI-scanner (see below).
+### Attend the MR safety and induction course
 
-???+ steps "Complete the MR induction (user) course"
-    Complete the 45 min induction course on how to operate the software and the Mr11 lab. This course is new with the start of MR11, and how it will be offered in the future is still to be decided.
-
-!!! warning "Research sequences (WIP and C2P)"
-    Some advanced sequences on MR11 are Siemens *works-in-progress* (WIP) or come from other Siemens sites (C2P). They show a lab-flask icon on the console. Using them can require an extra CTC notification, and their authors may require a citation, an acknowledgement or co-authorship. Ask Ron Peeters, Stefan Sunaert or Daan Christiaens which ones your protocol uses before you start data collection.
-
-### Attend the MR safety course
-
-- **Course dates**:  
-   The MR Safety Officer, Dr. Ron(ald) Peeters, gives the KU Leuven MRI safety course (about 90 minutes, in person at the MIRC auditorium) several times a year. Dates are announced on the MR mailing list. Reply to Ron directly to register, not to the list.
 - **Preparation**:  
-   Before attending, read the *Safety Notes, Rules and Procedures* in the [radiology Google Drive folder](https://drive.google.com/drive/folders/1D9eakayRtrxAd25N_rZnzZYHVJTEu2la?usp=sharing). The Hoplab Teams folder also has some [additional safety information](https://kuleuven.sharepoint.com/:b:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Scanner%20info%20%26%20safety/Additional%20safety%20information.pdf?csf=1&web=1&e=2gYT4M).
+   Before attending any course, read the *Safety Notes, Rules and Procedures* in the [Radiology Google Drive folder](https://drive.google.com/drive/folders/1D9eakayRtrxAd25N_rZnzZYHVJTEu2la?usp=sharing) or on the Radiology Wiki (access required). The Hoplab Teams folder also has some [additional safety information](https://kuleuven.sharepoint.com/:b:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Scanner%20info%20%26%20safety/Additional%20safety%20information.pdf?csf=1&web=1&e=2gYT4M).
+- **Safety course**:  
+   The MR Safety Officer, Dr. Ron(ald) Peeters, gives the KU Leuven MRI safety course (about 90 minutes, in person at the MIRC auditorium) several times a year. Dates are announced on the MR mailing list. Reply to Ron directly to register, not to the list.
+- **Induction course**:  
+  Complete the 45 min induction course on how to operate the software and the MR11 lab, which is recommended for both new users (MR11) and previous users (MR8). This course is new with the start of MR11, and how it will be offered in the future is still to be decided. New dates will be announced via the MR mailing list.
 
 !!! danger "The magnetic field reaches outside the magnet room"
     The MR11 magnet room is small, so the magnetic field reaches into the console room, parts of the hallway and the technical room (the 5 Gauss line extends into the technical room). The door from the hallway to the magnet room is only about 2.7 m from the magnet centre. A steel object such as a camera tripod can start to be pulled at the door itself.
@@ -94,39 +84,34 @@ Most of the lab's standard 3T studies at UZ Leuven are covered by the approved u
     - Screen **everyone** who enters the MRI department with the MRI Safety Checklist: participants, accompanying persons, researchers and visitors.
     - Do **not** bring any equipment into the MRI department (tripods, cameras, pumps, wheelchairs, laptops, ...) without prior approval of the MRI Safety Officer, whether or not it contains metal.
 
-### Gain access to MR facilities
+### Become an Authorized Other User (AOU)
 
-!!! warning "This procedure is being updated"
-    The procedure to become an authorised MR11 user changed considerably in 2026. The steps in this section and in "Training and preparation" below may be outdated. Check with Klara before you start; this section will be updated once the radiology team has confirmed the new procedure.
+This is a **10-step process**, which is thoroughly described in the *Safety Notes, Rules and Procedures* document in the [Radiology Google Drive folder](https://drive.google.com/drive/folders/1D9eakayRtrxAd25N_rZnzZYHVJTEu2la?usp=sharing) or on the Radiology Wiki (access required). We'll summarize the main steps here: 
 
-???+ steps "Document submission"
-    - After obtaining ethical approval, send the completed [MR Access file](https://www.dropbox.com/s/hh0l3swkjnx96vb/MR_Access.xlsx?e=1&dl=0) and the approved ICF to [ilse.roebben@uzleuven.be](mailto:ilse.roebben@uzleuven.be) and [silvia.kovacs@uzleuven.be](mailto:silvia.kovacs@uzleuven.be).  
-    - Before entering the Controlled Area for the first time, complete the following:  
+1. Screen yourself by using the [AOU MR Safety Checklist Form](https://docs.google.com/forms/d/e/1FAIpQLSc8Zcgz-ezngCgN4yTJ0kG2hyeF42HeK7V8tfZtFTmykNCwBQ/viewform). In this form, you also enter the badge number associated with the personnel card you will use to enter the MR research department and gain access to all MR facilities. Send Ron an e-mail if you filled in the form, but your card hasn't been activated.
+2. Make sure you have attended the Safety course given by the MR Safety Officer (see above).
+3. View the [current safety video](https://www.youtube.com/watch?v=VzdSqYkMlRw).
+4. Read Chapters 1 and 2 of the [Guidelines for Magnetic Resonance Equipment in Clinical Use (2nd edn. 2002)](https://drive.google.com/file/d/154nW1YcN6AM5AsMy6XH8FjTjBYbookAU/view) published by the Medical Devices Agency.
+5. Study the (standard & emergency) procedures by thoroughly reading the *Safety Notes, Rules and Procedures* document in the [Radiology Google Drive folder](https://drive.google.com/drive/folders/1D9eakayRtrxAd25N_rZnzZYHVJTEu2la?usp=sharing) or on the Radiology Wiki (access required).
+6. Make sure you are subscribed to the [MR mailing list](https://ls.kuleuven.be/cgi-bin/wa?SUBED1=MRI&A=1&SUB=1) (see above).
+7. Make sure you are registered to the [Radiology wiki](wiki.kulradiology.be) so you have access to the latest manuals and information (see above).
 
-        - [MRI Safety Checklist](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=1&preview=MR+patient+Questionnaire+-+ENGELS.pdf)  
-        - [Appendix](https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=1&preview=Appendix1A_v1.2.pdf) confirming you completed the MR safety course  
-        - [Key and badge access form](https://docs.google.com/document/d/143GdWPMCy9pAAmRcEm8toCgNDZ-5E7Vn/edit)  
+If you have reached this point, you are considered a **Probationary Authorized Other User** if (and only if) you also 
+- fill in and sign the form [Probationary Authorized Other User Declaration](https://docs.google.com/forms/d/e/1FAIpQLScytf6YztwTDqlTcIhgrUQgPXEKYZPI4cJE1VJCXCzegBrghA/viewform) to declare that you have performed the steps above and agree to follow the local rules of operation.
+- let your supervising PI complete and sign the [Principal Investigator Agreement](https://docs.google.com/forms/d/e/1FAIpQLSfnHLMWxvsO7fqNyqcFvApf8vQyzynvvc1WcWGS8Snic0cRoQ/viewform) where (s)he pledges to instruct their personnel to follow the rules and procedures.
 
-        Send all three documents to [ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be), along with the S-number of your study and the following details:
+Those who only assist with scanning sessions (e.g., students) only need to obtain a Probationary AOU status via the steps above. To lose the probationary status (e.g., for PhDs and postdocs who will independently run a study), you need to complete additional practical training at the scanner. 
 
-        | Field                     | Value (to be filled in)           |
-        |---------------------------|----------------------------------|
-        | First name                |                                  |
-        | Last name                 |                                  |
-        | Place of birth            |                                  |
-        | Date of birth             |                                  |
-        | Start date                |                                  |
-        | Expiry date               |                                  |
-        | Purpose                   | Scanning on research scanner MR11 |
-        | Educational institution   | KU Leuven                        |
-        | National register number  |                                  |
-        | KU Leuven u-number        |                                  |
-        | Email address             |                                  |
-        | Extranet required         | No                               |
-        | Phone number              |                                  |
+This involves 3 more steps:
 
-???+ steps "Card activation for MR suite access"
-    After you have completed all the steps above, Ron will arrange everything and your KU Leuven staff/student card will give you access to the MR11 suite. Access is valid for one year and has to be renewed.
+8. Attend and carefully observe at least **five scanning sessions** performed by trained personnel (e.g., more experienced colleagues). We have an internal (NeuroSPACE) Slack channel (#mri-time-slots) to keep track of upcoming scans, so make sure you are in it if you want to be up to date.
+9. When you feel ready, contact Ron (via email) such that he can come and observe you during a few scanning sessions to make sure everything runs smoothly.
+10. During these sessions, he might ask you some questions to make sure you have all the knowledge you need.
+
+When you completed all 10 steps, you can get the **full AOU status**. 
+
+???+ "Existing MR8 users"
+    Existing MR8 users do not need to go through the entire procedure described, but are required to attend one of the induction sessions specific to MR11 (announced via the MRI mailing list), reapply for access to the scanner room (via [this](https://docs.google.com/forms/d/e/1FAIpQLSc8Zcgz-ezngCgN4yTJ0kG2hyeF42HeK7V8tfZtFTmykNCwBQ/viewform) form), and keep up to date with the Radiology wiki (especially the *Safety Notes, Rules and Procedures* document). To be fully in order administratively, also fill in and sign the [Probationary Authorized Other User Declaration](https://docs.google.com/forms/d/e/1FAIpQLScytf6YztwTDqlTcIhgrUQgPXEKYZPI4cJE1VJCXCzegBrghA/viewform) and have your PI complete and sign the [Principal Investigator Agreement](https://docs.google.com/forms/d/e/1FAIpQLSfnHLMWxvsO7fqNyqcFvApf8vQyzynvvc1WcWGS8Snic0cRoQ/viewform)
 
 ### Set up XNAT for your study
 
@@ -137,18 +122,12 @@ MR11 sends all images automatically to **RADXNAT**, the radiology research image
 
 How the data reach your project and how you download them is explained in the [Scanning procedure](fmri-procedure.md#getting-your-data-xnat).
 
-### Training and preparation
+### Set up your scanning protocol
 
-Before you can become an Authorized Other User (AOU), you must undergo practical training and testing:
+Before your pilot (f)MRI session with an actual participant, set up your sequences with Ron and test your experiment script at the scanner. Book a phantom session by contacting Dr. Ron(ald) Peeters at [ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be). Use the session to check the trigger and the button boxes with your own script (see [Trigger box and buttons](fmri-equipment.md#trigger-box-and-buttons)) and to check that your stimuli look right on the in-room screen.
 
-???+ steps "Observational training"
-    After reviewing all relevant documentation, observe scan procedures by joining sessions of your colleagues. We have an internal Slack channel to keep track of upcoming scans, so make sure you are invited to it if you want to be up to date.
-
-???+ steps "Testing protocols"
-    Before your pilot (f)MRI session with an actual participant, set up your sequences with Ron and test your experiment script at the scanner. Book a phantom session by contacting Dr. Ron(ald) Peeters at [ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be). Use the session to check the trigger and the button boxes with your own script (see [Trigger box and buttons](fmri-equipment.md#trigger-box-and-buttons)) and to check that your stimuli look right on the in-room screen.
-
-!!! warning "Independent scanning"
-    You are allowed to conduct scans independently after attending approximately **10 sessions** with experienced personnel (e.g., more senior colleagues). This will help you learn how to control the scanner effectively. After 2 sessions, you should know how to control the scanner and you are allowed to be the second researcher during a scan session outside office hours.
+!!! warning "Research sequences (WIP and C2P)"
+    Some advanced sequences on MR11 are Siemens *work-in-progress* (WIP) or come from other Siemens sites (C2P). They show a lab-flask icon on the console. Using them can require an extra CTC notification, and their authors may require a citation, an acknowledgement or co-authorship. Ask Ron Peeters, Stefan Sunaert or Daan Christiaens which ones your protocol uses before you start data collection.
 
 ## During your experiment
 
@@ -166,7 +145,7 @@ MR11 is booked through the **MRI Scientific Planning Agenda**: [kuleuven.be/radi
     Participant details sent by e-mail are ignored (not GDPR-compliant). The form is the only way to plan a participant. A scan can only be planned once all participant details are known, because every structural scan is checked for incidental findings and the participant's GP is contacted if needed.
 
 !!! tip "Booking a pilot"
-    Book a pilot session like any other session, with the two steps above. Also e-mail Ron Peeters ([ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be)) that it is a pilot, so the session is not charged. To label the pilot data, see [Pilots, phantoms, or a participant who is not in the RIS list](fmri-procedure.md#register-the-participant-at-the-console).
+    Book a pilot session like any other session via the reservation system, with the two steps above. Also e-mail Ron Peeters ([ronald.peeters@uzleuven.be](mailto:ronald.peeters@uzleuven.be)) that it is a pilot, so the session is not charged. To label the pilot data, see [Pilots, phantoms, or a participant who is not in the RIS list](fmri-procedure.md#register-the-participant-at-the-console). Note that an informed consent form (ICF) and the MRI Safety checklist are **always** required, even if the pilot data will not be used for analysis or publication, and that we strive to financially compensate all (external and internal) pilot participants for their time.
 
 Tips for booking:
 
@@ -180,20 +159,10 @@ For the practical steps on the scan day, see the [Scanning procedure](fmri-proce
 ### Managing scan data and invoicing
 
 ??? deflist "Tracking sessions"
-    Keep detailed records of all scan sessions, noting which sessions provided useful data and/or when you experienced technical issues. Regular reports should be made to your Principal Investigator (PI). In case of technical issues, it is useful to also include what kind of issues you had as well as an estimation of the amount of time lost due to the issues.
+    Keep detailed records of all scan sessions, noting down which sessions included pilot participants, which sessions provided useful data and/or when you experienced technical issues. Regular reports should be made to your Principal Investigator (PI). In case of technical issues, it is useful to also include what kind of issues you had as well as an estimation of the amount of time lost due to the issues.
 
 ??? deflist "Quarterly reports"
-    Every four months, your PI will receive an Excel sheet listing all scan sessions conducted during that period. This file will be forwarded to all researchers who have scanned in the corresponding period.
-
-??? deflist "Documenting experiments"
-    Complete the Excel sheet with the experiment name for each session and clearly note down comments for any session that did not yield useful data for various reasons (e.g., participant cancellation, no-shows, artifacts, technical issues) and send it back.
-
-??? deflist "Scan rate"
-    MR11 is invoiced at **€400 per hour** (MR8 was €300 per hour). The invoicing procedure is the same as for MR8.
+    Every four months, your PI will receive an Excel sheet listing all scan sessions conducted during that period. This file will be forwarded to all researchers who have scanned in the corresponding period. Clearly indicate in the Excel sheet whether a session was a pilot session or not (in case this was not communicated to Ron beforehand, it will end up in the scan overview), and add comments for any session that did not yield useful data for various reasons (e.g., participant cancellation, no-shows, artifacts, technical issues). In case you have multiple sessions per participant, it is also useful information to note down which sessions belong to the same participant. Generally, the more info you can give, the better. Once you are done, send the form back.
 
 ??? deflist "Financial management"
-    Support staff (currently Klara) will further process the file by including the name of the SAP antenna (i.e., Agna Marien), specifying the funding source for each researcher, and by adjusting the total invoice amount on the invoice to reflect the actual scan hours based on successful data collection sessions ("corrected total").
-
-<!--
-__TODO__: [Klara] Update "Gain access to MR facilities" and "Training and preparation" with the new procedure to become an authorised MR11 user (forms, where they are, who to send them to), then remove the warning box. (Klara asked Ron by e-mail on 2026-09-25; she will update the page after his answer.)
--->
+    MR11 is invoiced at **€400 per hour** (MR8 was €300 per hour). The invoicing procedure is the same as for MR8: Support staff (currently Klara) will further process the Excel file by including the name of the SAP antenna (i.e., Agna Mariën), specifying the funding source for each researcher, and adjusting the total invoice amount on the invoice to reflect the actual scan hours based on successful data collection sessions ("corrected total").
