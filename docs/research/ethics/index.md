@@ -16,7 +16,7 @@ For more detailed info, please check out the following pages.
 
 ## Ethics tracker
 
-Once you have identified the ethical application number(s) under which you will test participants (either a new or an existing application), add this information to our [**ethics tracker**](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/ethics_tracker.xlsx?d=w3176be826a5c428987db1b936bb8f422&csf=1&web=1&e=16Etx3) (one row per participant subgroup and method). Please keep this overview up to date by regularly updating the number of included participants for each application. This tracker helps us to:
+Once you have identified the ethical application number(s) under which you will test participants (either a new or an existing application), add this information to our [**ethics tracker**](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/ethics_tracker.xlsx?d=waf0f5900a39547bab006b7d238d6d957&csf=1&web=1&e=HpRB8n) (one row per participant subgroup and method). Please keep this overview up to date by regularly updating the number of included participants for each application. This tracker helps us to:
 
 - keep an overview of all active ethical applications
 - track the number of participants included per application
