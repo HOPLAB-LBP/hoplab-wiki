@@ -97,6 +97,7 @@ This is a **10-step process**, which is thoroughly described in the *Safety Note
 7. Make sure you are registered to the [Radiology wiki](https://wiki.kulradiology.be) so you have access to the latest manuals and information (see above).
 
 If you have reached this point, you are considered a **Probationary Authorized Other User** if (and only if) you also
+
 - fill in and sign the form [Probationary Authorized Other User Declaration](https://docs.google.com/forms/d/e/1FAIpQLScytf6YztwTDqlTcIhgrUQgPXEKYZPI4cJE1VJCXCzegBrghA/viewform) to declare that you have performed the steps above and agree to follow the local rules of operation.
 - let your supervising PI complete and sign the [Principal Investigator Agreement](https://docs.google.com/forms/d/e/1FAIpQLSfnHLMWxvsO7fqNyqcFvApf8vQyzynvvc1WcWGS8Snic0cRoQ/viewform) where (s)he pledges to instruct their personnel to follow the rules and procedures.
 
