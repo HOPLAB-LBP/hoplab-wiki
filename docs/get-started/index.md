@@ -14,6 +14,14 @@ To help you get settled quickly, here are some essential resources:
 
 <div class="grid cards" markdown>
 
+- :fontawesome-solid-clipboard-check: **Onboarding checklist**
+
+    ---
+
+    Starting point for new lab members.
+
+    [:octicons-arrow-right-24: Take me to the checklist](../research/rdm/onboarding.md)
+
 - :fontawesome-solid-computer: **Setting up your digital workspace**
 
     ---
