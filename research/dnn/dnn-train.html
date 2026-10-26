@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -28,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3420,7 +3420,7 @@
 </table>
 <p>Training can be the question itself, for example when you ask whether a network trained on a particular set of images or labels comes closer to the human data (<a href="https://doi.org/10.1038/s42003-024-07415-8">Duyck et al., 2024</a>; <a href="https://doi.org/10.64898/2026.04.14.718353">Cerpelloni et al., 2026, preprint</a>).</p>
 <p>Fine-tuning starts from a network that already learned useful features on ImageNet and changes only part of it. The figure shows which layers are trained in the three common choices, next to training from scratch:</p>
-<p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-finetune-strategies.png" data-desc-position="bottom"><img alt="Four ways to adapt ResNet-50: which stages are trained in each" src="../../assets/dnn/dnn-finetune-strategies.png"></a></p>
 <table>
 <thead>
 <tr>
@@ -3524,7 +3524,7 @@
 <p>The network learns from a training set and is scored on a test set. Both contain all three categories, but no image is in both. Training runs in epochs. In each epoch the network sees every training image once and adjusts its weights after every batch. At the end of the epoch we score it on the test set, which it never learns from. A network that only remembers its training images fails on the test set, so the test score shows whether it has learned the categories well enough to recognise new examples.</p>
 <p>With our kit, a new example has to be a new sprite. The six versions of a sprite are the same object, so a new image of a known sprite does not count. If the cat on the meadow is in the training set and the cat at night in the test set, the network can answer "critter" because it recognises that cat, without having learned anything general about critters. That is a leak. Test accuracy goes up, but it now measures memory of individual sprites. So all six versions of a sprite go to the same side.</p>
 <p>We keep a quarter of the sprites for the test set, two from each category, which makes six sprites and 36 images in all. The other 18 sprites (108 images) are the training set. A seeded split picks them once, before any training.</p>
-<p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-grouped-cv.png" data-desc-position="bottom"><img alt="The split: a training set of 18 sprites and a test set of 6, both with all three categories and with all six versions of each sprite on one side; below, splitting by image puts versions of the same cat in both sets" src="../../assets/dnn/dnn-grouped-cv.png"></a></p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedGroupKFold</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># A quarter of the sprites for testing, with all six versions of each</span>
@@ -3645,7 +3645,7 @@
 </span></code></pre></div>
 </details>
 <p>To compare the strategies, we ran this code with each of the alternatives switched on (and <code>lr=1e-3</code> for the head only), three times with different seeds:</p>
-<p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-finetune-results.png" data-desc-position="bottom"><img alt="Accuracy on the test sprites over training for the four strategies" src="../../assets/dnn/dnn-finetune-results.png"></a></p>
 <p>Averaged over three seeds, every strategy recognises the category of a new sprite more often than chance (33%), and none comes close to the training sprites. After 40 epochs, the head only is at 63% on the test sprites, the last layers at 61%, the whole network at 50% and training from scratch at 53%. The seeds differ by up to 19 points (from scratch ends between 42% and 61%), and with six test sprites one sprite moves the score by 17 points, so the ranking is not reliable. Before training, at epoch 0, every strategy is near chance, because the output layer starts random. The head only and the last layers pass 50% within five epochs and the whole network within ten, while training from scratch stays near chance for about five epochs and climbs more slowly.</p>
 <p>Eighteen sprites are too few for a network to learn what makes a critter a critter. The scenes and positions no longer give the category away, so the network has to generalise from the sprites alone, and with this little data it mostly memorises them.</p>
 <p>On natural images, fine-tuning has a clear advantage, in training time and often in accuracy. A pretrained network has already learned features that extract meaning from images, and the statistics of natural images, so it starts close to a good solution for a visual task and only has to adjust. A network trained from scratch has to learn all of this from your images alone.</p>
@@ -4023,10 +4023,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "search.share", "navigation.indexes", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "search.share", "navigation.indexes", "navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       

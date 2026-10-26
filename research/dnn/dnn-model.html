@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -28,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3503,7 +3503,7 @@
 <li>The images are in manifest order: by category, then scene, then position. The coloured bars on the left and bottom mark the critter, food and spooky images.</li>
 </ol>
 </details>
-<p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-model-rdms.png" data-desc-position="bottom"><img alt="Three model RDMs over the 144 images: category in three blocks, scene as a repeating pattern of three, and position as a fine checkerboard" src="../../assets/dnn/dnn-model-rdms.png"></a></p>
 <hr>
 <h2 id="2-one-model-at-a-time">2. One model at a time<a class="headerlink" href="#2-one-model-at-a-time" title="Permanent link">¶</a></h2>
 <p>We compare each model RDM with each layer RDM, and resample the sprites to see how much the result depends on the particular sprites in the kit:</p>
@@ -3552,7 +3552,7 @@
 </span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></code></pre></div>
 </details>
-<p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-model-rsa.png" data-desc-position="bottom"><img alt="Correlation of each ResNet-50 layer with the category, scene and position models, with 95% confidence intervals over sprites" src="../../assets/dnn/dnn-model-rsa.png"></a></p>
 <p>Every layer follows the scene far more than anything else, from 0.76 at maxpool to 0.88 at layer3 and 0.78 at avgpool. Position rises to 0.23 at layer2 and falls to 0.00 at avgpool, which averages every map over space and so discards where things are. Category stays near zero in every layer (0.03 to 0.07): the ImageNet features of ResNet-50 do not group our cartoon sprites by category.</p>
 <details class="example">
 <summary>Several models at once</summary>
@@ -3746,7 +3746,7 @@
 </span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></code></pre></div>
 </details>
-<p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../assets/dnn/dnn-model-decoding.png" data-desc-position="bottom"><img alt="Decoding accuracy for category, scene and position from each ResNet-50 layer, from the same layers with random weights, and from the pixels, with chance levels" src="../../assets/dnn/dnn-model-decoding.png"></a></p>
 <p>The scene is decoded perfectly from every input, the pixels included, and position nearly so from the layers (94% to 100%, against 84% from the pixels). Category is a different story. On new sprites, the pretrained layers reach 31% to 49% (chance 33%), no better than the same network with random weights (34% to 49%) or the pixels (38%), and only layer3 comes close to significance (p = 0.050 with 100 permutations). For these cartoon categories, the ImageNet training of ResNet-50 adds nothing that a random network or the pixels do not already give. The <a href="dnn-train.html">training page</a> tells the same story: even a network trained on the sprites recognises the category of new ones only 50% to 63% of the time.</p>
 <hr>
 <h2 id="look-at-the-rdms">Look at the RDMs<a class="headerlink" href="#look-at-the-rdms" title="Permanent link">¶</a></h2>
@@ -4063,10 +4063,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "search.share", "navigation.indexes", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "search.share", "navigation.indexes", "navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       

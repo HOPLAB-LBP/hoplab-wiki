@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -28,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3368,8 +3368,8 @@
 </table>
 <p>MR11 has been the lab's 3T research scanner since June 2026. Notes on the previous scanner, for older datasets only, are on the <a href="fmri-mr8.html">MR8 (decommissioned)</a> page. If you find outdated instructions elsewhere, please tell <a href="mailto:andreaivan.costantino@kuleuven.be">Andrea</a> or open an issue.</p>
 <div class="admonition tip">
-<p class="admonition-title">For detailed information, go to the radiology wiki</p>
-<p>The KU Leuven radiology department keeps the reference documentation for both scanners at <strong><a href="https://wiki.kulradiology.be">wiki.kulradiology.be</a></strong>: the full MR11 user guide, safety rules and procedures, peripheral equipment manuals, XNAT instructions, and a separate space for the Flanders 7T. Our pages cover what lab members need day to day. For anything more detailed, check the radiology wiki first.</p>
+<p class="admonition-title">For detailed information, go to the Radiology wiki</p>
+<p>The KU Leuven radiology department keeps the reference documentation for both scanners at <strong><a href="https://wiki.kulradiology.be">wiki.kulradiology.be</a></strong>: the full MR11 user guide, safety rules and procedures, peripheral equipment manuals, XNAT instructions, and a separate space for the Flanders 7T. Our pages cover what lab members need day-to-day. For anything more detailed, check the radiology wiki first.</p>
 <p><a class="md-button" href="https://wiki.kulradiology.be"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2m6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1"></path></svg></span> Open the radiology wiki</a></p>
 <p>You need an account: ask Rodrigo Trevisan Massera (<a href="mailto:rodrigo.trevisanmassera@kuleuven.be">rodrigo.trevisanmassera@kuleuven.be</a>).</p>
 </div>
@@ -3447,37 +3447,18 @@
 <h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">¶</a></h2>
 <p>Before diving into your (f)MRI study, make sure you're prepared by following the steps below. The steps are written for MR11. For the 7T, see the <a href="fmri-7t.html">Flanders 7T</a> page.</p>
 <h3 id="get-formal-ethical-approval">Get formal ethical approval<a class="headerlink" href="#get-formal-ethical-approval" title="Permanent link">¶</a></h3>
-<p>Most of the lab's standard 3T studies at UZ Leuven are covered by the approved umbrella application <strong>S70813</strong> (Methusalem), which replaced S62131 (ended 31 December 2025). Check with Klara and/or your PI whether it covers your experiment before you set up anything else. S70813 does <strong>not</strong> cover scanning at the 7T. See the <a href="../ethics/index.html">ethics pages</a> for details.</p>
-<details class="steps" open="open">
-<summary>Register your study at the CTC</summary>
-<p>After this you receive an S-number (for more info, we refer you to <a href="../ethics/MEC.html#step-1-register-your-study-at-the-ctc">this page</a>).</p>
-</details>
-<details class="steps" open="open">
-<summary>Register your study at the MR research department</summary>
-<p>Upload the <a href="https://gbiomed.kuleuven.be/english/ctc/supporting-hospital-departments-for-public-ctc-website/aanvraagformulier_radiologie_eng">application form for support from the Radiology department</a> via <a href="https://www.uzleuven.be/en/uploading-application-forms-supporting-departments-ctc">this link</a>. Include the Clinical Study Coordinator of Radiology (currently, that is <a href="mailto:lesley.cockmartin@uzleuven.be">lesley.cockmartin@uzleuven.be</a>) as contact person, who will approve your request via email.</p>
-</details>
-<details class="steps" open="open">
-<summary>Get approval from the ethical committee of UZ/KU Leuven</summary>
-<p>For more info, we refer you to <a href="../ethics/MEC.html#step-2-apply-for-ec-approval">this page</a>.</p>
-</details>
-<details class="steps" open="open">
-<summary>Complete the MR safety course</summary>
-<p>And become an authorized user of the MRI-scanner (see below).</p>
-</details>
-<details class="steps" open="open">
-<summary>Complete the MR induction (user) course</summary>
-<p>Complete the 45 min induction course on how to operate the software and the Mr11 lab. This course is new with the start of MR11, and how it will be offered in the future is still to be decided.</p>
-</details>
-<div class="admonition warning">
-<p class="admonition-title">Research sequences (WIP and C2P)</p>
-<p>Some advanced sequences on MR11 are Siemens <em>works-in-progress</em> (WIP) or come from other Siemens sites (C2P). They show a lab-flask icon on the console. Using them can require an extra CTC notification, and their authors may require a citation, an acknowledgement or co-authorship. Ask Ron Peeters, Stefan Sunaert or Daan Christiaens which ones your protocol uses before you start data collection.</p>
-</div>
-<h3 id="attend-the-mr-safety-course">Attend the MR safety course<a class="headerlink" href="#attend-the-mr-safety-course" title="Permanent link">¶</a></h3>
+<p>Most of the lab's standard 3T studies at UZ Leuven are covered by the approved umbrella application <strong>S70813</strong> (Methusalem), which replaced S62131 (ended 31 December 2025).</p>
+<p>Check with Klara and/or your PI whether it covers your experiment before you set up anything else. S70813 does <strong>not</strong> cover scanning at the 7T.</p>
+<p>See the <a href="../ethics/MEC.html">ethics pages</a> for details on how to file a new study at EC UZ/KU Leuven.</p>
+<p>After EC approval you will automatically be given access to the MRI Scientific Planning Agenda (see below).</p>
+<h3 id="attend-the-mr-safety-and-induction-course">Attend the MR safety and induction course<a class="headerlink" href="#attend-the-mr-safety-and-induction-course" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Course dates</strong>:<br>
-   The MR Safety Officer, Dr. Ron(ald) Peeters, gives the KU Leuven MRI safety course (about 90 minutes, in person at the MIRC auditorium) several times a year. Dates are announced on the MR mailing list. Reply to Ron directly to register, not to the list.</li>
 <li><strong>Preparation</strong>:<br>
-   Before attending, read the <em>Safety Notes, Rules and Procedures</em> in the <a href="https://drive.google.com/drive/folders/1D9eakayRtrxAd25N_rZnzZYHVJTEu2la?usp=sharing">radiology Google Drive folder</a>. The Hoplab Teams folder also has some <a href="https://kuleuven.sharepoint.com/:b:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Scanner%20info%20%26%20safety/Additional%20safety%20information.pdf?csf=1&amp;web=1&amp;e=2gYT4M">additional safety information</a>.</li>
+   Before attending any course, read the <em>Safety Notes, Rules and Procedures</em> in the <a href="https://drive.google.com/drive/folders/1D9eakayRtrxAd25N_rZnzZYHVJTEu2la?usp=sharing">Radiology Google Drive folder</a> or on the Radiology Wiki (access required). The Hoplab Teams folder also has some <a href="https://kuleuven.sharepoint.com/:b:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/MRI/Scanner%20info%20%26%20safety/Additional%20safety%20information.pdf?csf=1&amp;web=1&amp;e=2gYT4M">additional safety information</a>.</li>
+<li><strong>Safety course</strong>:<br>
+   The MR Safety Officer, Dr. Ron(ald) Peeters, gives the KU Leuven MRI safety course (about 90 minutes, in person at the MIRC auditorium) several times a year. Dates are announced on the MR mailing list. Reply to Ron directly to register, not to the list.</li>
+<li><strong>Induction course</strong>:<br>
+  Complete the 45 min induction course on how to operate the software and the MR11 lab, which is recommended for both new users (MR11) and previous users (MR8). This course is new with the start of MR11, and how it will be offered in the future is still to be decided. New dates will be announced via the MR mailing list.</li>
 </ul>
 <div class="admonition danger">
 <p class="admonition-title">The magnetic field reaches outside the magnet room</p>
@@ -3487,91 +3468,31 @@
 <li>Do <strong>not</strong> bring any equipment into the MRI department (tripods, cameras, pumps, wheelchairs, laptops, ...) without prior approval of the MRI Safety Officer, whether or not it contains metal.</li>
 </ul>
 </div>
-<h3 id="gain-access-to-mr-facilities">Gain access to MR facilities<a class="headerlink" href="#gain-access-to-mr-facilities" title="Permanent link">¶</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">This procedure is being updated</p>
-<p>The procedure to become an authorised MR11 user changed considerably in 2026. The steps in this section and in "Training and preparation" below may be outdated. Check with Klara before you start; this section will be updated once the radiology team has confirmed the new procedure.</p>
-</div>
-<details class="steps" open="open">
-<summary>Document submission</summary>
-<ul>
-<li>After obtaining ethical approval, send the completed <a href="https://www.dropbox.com/s/hh0l3swkjnx96vb/MR_Access.xlsx?e=1&amp;dl=0">MR Access file</a> and the approved ICF to <a href="mailto:ilse.roebben@uzleuven.be">ilse.roebben@uzleuven.be</a> and <a href="mailto:silvia.kovacs@uzleuven.be">silvia.kovacs@uzleuven.be</a>.  </li>
-<li>
-<p>Before entering the Controlled Area for the first time, complete the following:  </p>
-<ul>
-<li><a href="https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=1&amp;preview=MR+patient+Questionnaire+-+ENGELS.pdf">MRI Safety Checklist</a>  </li>
-<li><a href="https://www.dropbox.com/sh/6hdu5z594ojaxh2/AABZQbnhdwjvfqvxcW6YztQda?e=1&amp;preview=Appendix1A_v1.2.pdf">Appendix</a> confirming you completed the MR safety course  </li>
-<li><a href="https://docs.google.com/document/d/143GdWPMCy9pAAmRcEm8toCgNDZ-5E7Vn/edit">Key and badge access form</a>  </li>
-</ul>
-<p>Send all three documents to <a href="mailto:ronald.peeters@uzleuven.be">ronald.peeters@uzleuven.be</a>, along with the S-number of your study and the following details:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value (to be filled in)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>First name</td>
-<td></td>
-</tr>
-<tr>
-<td>Last name</td>
-<td></td>
-</tr>
-<tr>
-<td>Place of birth</td>
-<td></td>
-</tr>
-<tr>
-<td>Date of birth</td>
-<td></td>
-</tr>
-<tr>
-<td>Start date</td>
-<td></td>
-</tr>
-<tr>
-<td>Expiry date</td>
-<td></td>
-</tr>
-<tr>
-<td>Purpose</td>
-<td>Scanning on research scanner MR11</td>
-</tr>
-<tr>
-<td>Educational institution</td>
-<td>KU Leuven</td>
-</tr>
-<tr>
-<td>National register number</td>
-<td></td>
-</tr>
-<tr>
-<td>KU Leuven u-number</td>
-<td></td>
-</tr>
-<tr>
-<td>Email address</td>
-<td></td>
-</tr>
-<tr>
-<td>Extranet required</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Phone number</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</li>
-</ul>
-</details>
-<details class="steps" open="open">
-<summary>Card activation for MR suite access</summary>
-<p>After you have completed all the steps above, Ron will arrange everything and your KU Leuven staff/student card will give you access to the MR11 suite. Access is valid for one year and has to be renewed.</p>
+<h3 id="become-an-authorized-other-user-aou">Become an Authorized Other User (AOU)<a class="headerlink" href="#become-an-authorized-other-user-aou" title="Permanent link">¶</a></h3>
+<p>This is a <strong>10-step process</strong>, which is thoroughly described in the <em>Safety Notes, Rules and Procedures</em> document in the <a href="https://drive.google.com/drive/folders/1D9eakayRtrxAd25N_rZnzZYHVJTEu2la?usp=sharing">Radiology Google Drive folder</a> or on the Radiology Wiki (access required). We'll summarize the main steps here:</p>
+<ol>
+<li>Screen yourself by using the <a href="https://docs.google.com/forms/d/e/1FAIpQLSc8Zcgz-ezngCgN4yTJ0kG2hyeF42HeK7V8tfZtFTmykNCwBQ/viewform">AOU MR Safety Checklist Form</a>. In this form, you also enter the badge number associated with the personnel card you will use to enter the MR research department and gain access to all MR facilities. Send Ron an e-mail if you filled in the form, but your card hasn't been activated.</li>
+<li>Make sure you have attended the Safety course given by the MR Safety Officer (see above).</li>
+<li>View the <a href="https://www.youtube.com/watch?v=VzdSqYkMlRw">current safety video</a>.</li>
+<li>Read Chapters 1 and 2 of the <a href="https://drive.google.com/file/d/154nW1YcN6AM5AsMy6XH8FjTjBYbookAU/view">Guidelines for Magnetic Resonance Equipment in Clinical Use (2<sup>nd</sup> edition, 2002)</a> published by the Medical Devices Agency.</li>
+<li>Study the (standard &amp; emergency) procedures by thoroughly reading the <em>Safety Notes, Rules and Procedures</em> document in the <a href="https://drive.google.com/drive/folders/1D9eakayRtrxAd25N_rZnzZYHVJTEu2la?usp=sharing">Radiology Google Drive folder</a> or on the Radiology Wiki (access required).</li>
+<li>Make sure you are subscribed to the <a href="https://ls.kuleuven.be/cgi-bin/wa?SUBED1=MRI&amp;A=1&amp;SUB=1">MR mailing list</a> (see above).</li>
+<li>Make sure you are registered to the <a href="https://wiki.kulradiology.be">Radiology wiki</a> so you have access to the latest manuals and information (see above).</li>
+</ol>
+<p>If you have reached this point, you are considered a <strong>Probationary Authorized Other User</strong> if (and only if) you also
+- fill in and sign the form <a href="https://docs.google.com/forms/d/e/1FAIpQLScytf6YztwTDqlTcIhgrUQgPXEKYZPI4cJE1VJCXCzegBrghA/viewform">Probationary Authorized Other User Declaration</a> to declare that you have performed the steps above and agree to follow the local rules of operation.
+- let your supervising PI complete and sign the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnHLMWxvsO7fqNyqcFvApf8vQyzynvvc1WcWGS8Snic0cRoQ/viewform">Principal Investigator Agreement</a> where (s)he pledges to instruct their personnel to follow the rules and procedures.</p>
+<p>Those who only assist with scanning sessions (e.g., students) only need to obtain a Probationary AOU status via the steps above. To lose the probationary status (e.g., for PhDs and postdocs who will independently run a study), you need to complete additional practical training at the scanner.</p>
+<p>This involves 3 more steps:</p>
+<ol>
+<li>Attend and carefully observe at least <strong>five scanning sessions</strong> performed by trained personnel (e.g., more experienced colleagues). We have an internal (NeuroSPACE) Slack channel (#mri-time-slots) to keep track of upcoming scans, so make sure you are in it if you want to be up to date.</li>
+<li>When you feel ready, contact Ron (via email) such that he can come and observe you during a few scanning sessions to make sure everything runs smoothly.</li>
+<li>During these sessions, he might ask you some questions to make sure you have all the knowledge you need.</li>
+</ol>
+<p>When you completed all 10 steps, you can get the <strong>full AOU status</strong>.</p>
+<details open="open">
+<summary>Existing MR8 users</summary>
+<p>Existing MR8 users do not need to go through the entire procedure described, but are required to attend one of the induction sessions specific to MR11 (announced via the MRI mailing list), reapply for access to the scanner room (via <a href="https://docs.google.com/forms/d/e/1FAIpQLSc8Zcgz-ezngCgN4yTJ0kG2hyeF42HeK7V8tfZtFTmykNCwBQ/viewform">this</a> form), and keep up to date with the Radiology wiki (especially the <em>Safety Notes, Rules and Procedures</em> document). To be fully in order administratively, also fill in and sign the <a href="https://docs.google.com/forms/d/e/1FAIpQLScytf6YztwTDqlTcIhgrUQgPXEKYZPI4cJE1VJCXCzegBrghA/viewform">Probationary Authorized Other User Declaration</a> and have your PI complete and sign the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnHLMWxvsO7fqNyqcFvApf8vQyzynvvc1WcWGS8Snic0cRoQ/viewform">Principal Investigator Agreement</a></p>
 </details>
 <h3 id="set-up-xnat-for-your-study">Set up XNAT for your study<a class="headerlink" href="#set-up-xnat-for-your-study" title="Permanent link">¶</a></h3>
 <p>MR11 sends all images automatically to <strong>RADXNAT</strong>, the radiology research image server. There is no USB export at the console any more, so you need these two things <strong>before your first scan</strong> (including pilots):</p>
@@ -3580,19 +3501,11 @@
 <li><strong>An XNAT project for your study</strong>: ask for one through the radiology wiki (<em>XNAT - Research PACS › Request a new project</em>). Only studies with EC approval and an S-number can get a project. The project ID is your S-number followed by a letter (e.g., <code>S12345a</code>). Register first, so you become the project owner.</li>
 </ol>
 <p>How the data reach your project and how you download them is explained in the <a href="fmri-procedure.html#getting-your-data-xnat">Scanning procedure</a>.</p>
-<h3 id="training-and-preparation">Training and preparation<a class="headerlink" href="#training-and-preparation" title="Permanent link">¶</a></h3>
-<p>Before you can become an Authorized Other User (AOU), you must undergo practical training and testing:</p>
-<details class="steps" open="open">
-<summary>Observational training</summary>
-<p>After reviewing all relevant documentation, observe scan procedures by joining sessions of your colleagues. We have an internal Slack channel to keep track of upcoming scans, so make sure you are invited to it if you want to be up to date.</p>
-</details>
-<details class="steps" open="open">
-<summary>Testing protocols</summary>
+<h3 id="set-up-your-scanning-protocol">Set up your scanning protocol<a class="headerlink" href="#set-up-your-scanning-protocol" title="Permanent link">¶</a></h3>
 <p>Before your pilot (f)MRI session with an actual participant, set up your sequences with Ron and test your experiment script at the scanner. Book a phantom session by contacting Dr. Ron(ald) Peeters at <a href="mailto:ronald.peeters@uzleuven.be">ronald.peeters@uzleuven.be</a>. Use the session to check the trigger and the button boxes with your own script (see <a href="fmri-equipment.html#trigger-box-and-buttons">Trigger box and buttons</a>) and to check that your stimuli look right on the in-room screen.</p>
-</details>
 <div class="admonition warning">
-<p class="admonition-title">Independent scanning</p>
-<p>You are allowed to conduct scans independently after attending approximately <strong>10 sessions</strong> with experienced personnel (e.g., more senior colleagues). This will help you learn how to control the scanner effectively. After 2 sessions, you should know how to control the scanner and you are allowed to be the second researcher during a scan session outside office hours.</p>
+<p class="admonition-title">Research sequences (WIP and C2P)</p>
+<p>Some advanced sequences on MR11 are Siemens <em>work-in-progress</em> (WIP) or come from other Siemens sites (C2P). They show a lab-flask icon on the console. Using them can require an extra CTC notification, and their authors may require a citation, an acknowledgement or co-authorship. Ask Ron Peeters, Stefan Sunaert or Daan Christiaens which ones your protocol uses before you start data collection.</p>
 </div>
 <h2 id="during-your-experiment">During your experiment<a class="headerlink" href="#during-your-experiment" title="Permanent link">¶</a></h2>
 <h3 id="booking-the-scanner">Booking the scanner<a class="headerlink" href="#booking-the-scanner" title="Permanent link">¶</a></h3>
@@ -3611,7 +3524,7 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Booking a pilot</p>
-<p>Book a pilot session like any other session, with the two steps above. Also e-mail Ron Peeters (<a href="mailto:ronald.peeters@uzleuven.be">ronald.peeters@uzleuven.be</a>) that it is a pilot, so the session is not charged. To label the pilot data, see <a href="fmri-procedure.html#register-the-participant-at-the-console">Pilots, phantoms, or a participant who is not in the RIS list</a>.</p>
+<p>Book a pilot session like any other session via the reservation system, with the two steps above. Also e-mail Ron Peeters (<a href="mailto:ronald.peeters@uzleuven.be">ronald.peeters@uzleuven.be</a>) that it is a pilot, so the session is not charged. To label the pilot data, see <a href="fmri-procedure.html#register-the-participant-at-the-console">Pilots, phantoms, or a participant who is not in the RIS list</a>. Note that an informed consent form (ICF) and the MRI Safety checklist are <strong>always</strong> required, even if the pilot data will not be used for analysis or publication, and that we strive to financially compensate all (external and internal) pilot participants for their time.</p>
 </div>
 <p>Tips for booking:</p>
 <ul>
@@ -3624,23 +3537,15 @@
 <h3 id="managing-scan-data-and-invoicing">Managing scan data and invoicing<a class="headerlink" href="#managing-scan-data-and-invoicing" title="Permanent link">¶</a></h3>
 <details class="deflist">
 <summary>Tracking sessions</summary>
-<p>Keep detailed records of all scan sessions, noting which sessions provided useful data and/or when you experienced technical issues. Regular reports should be made to your Principal Investigator (PI). In case of technical issues, it is useful to also include what kind of issues you had as well as an estimation of the amount of time lost due to the issues.</p>
+<p>Keep detailed records of all scan sessions, noting down which sessions included pilot participants, which sessions provided useful data and/or when you experienced technical issues. Regular reports should be made to your Principal Investigator (PI). In case of technical issues, it is useful to also include what kind of issues you had as well as an estimation of the amount of time lost due to the issues.</p>
 </details>
 <details class="deflist">
 <summary>Quarterly reports</summary>
-<p>Every four months, your PI will receive an Excel sheet listing all scan sessions conducted during that period. This file will be forwarded to all researchers who have scanned in the corresponding period.</p>
-</details>
-<details class="deflist">
-<summary>Documenting experiments</summary>
-<p>Complete the Excel sheet with the experiment name for each session and clearly note down comments for any session that did not yield useful data for various reasons (e.g., participant cancellation, no-shows, artifacts, technical issues) and send it back.</p>
-</details>
-<details class="deflist">
-<summary>Scan rate</summary>
-<p>MR11 is invoiced at <strong>€400 per hour</strong> (MR8 was €300 per hour). The invoicing procedure is the same as for MR8.</p>
+<p>Every four months, your PI will receive an Excel sheet listing all scan sessions conducted during that period. This file will be forwarded to all researchers who have scanned in the corresponding period. Clearly indicate in the Excel sheet whether a session was a pilot session or not (in case this was not communicated to Ron beforehand, it will end up in the scan overview), and add comments for any session that did not yield useful data for various reasons (e.g., participant cancellation, no-shows, artifacts, technical issues). In case you have multiple sessions per participant, it is also useful information to note down which sessions belong to the same participant. Generally, the more info you can give, the better. Once you are done, send the form back.</p>
 </details>
 <details class="deflist">
 <summary>Financial management</summary>
-<p>Support staff (currently Klara) will further process the file by including the name of the SAP antenna (i.e., Agna Marien), specifying the funding source for each researcher, and by adjusting the total invoice amount on the invoice to reflect the actual scan hours based on successful data collection sessions ("corrected total").</p>
+<p>MR11 is invoiced at <strong>€400 per hour</strong> (MR8 was €300 per hour). The invoicing procedure is the same as for MR8: Support staff (currently Klara) will further process the Excel file by including the name of the SAP antenna (i.e., Agna Mariën), specifying the funding source for each researcher, and adjusting the total invoice amount on the invoice to reflect the actual scan hours based on successful data collection sessions ("corrected total").</p>
 </details>
 
 
@@ -3667,7 +3572,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-08T20:04:46+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 8, 2026 20:04:46 CEST">October 8, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-22T17:55:29+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2026 17:55:29 CEST">October 22, 2026</span></time>
     
   </span>
 
@@ -3688,7 +3593,7 @@
         
         
         
-          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 70% of this page" style="--z: 5" data-name="Andrea Costantino" data-share="69.85%">
+          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 62% of this page" style="--z: 3" data-name="Andrea Costantino" data-share="62.5%">
         
             <span class="md-contributor__face">
               
@@ -3697,7 +3602,7 @@
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
               <span class="md-contributor__tip-name">Andrea Costantino</span>
-              <span class="md-contributor__tip-share">70%</span>
+              <span class="md-contributor__tip-share">62%</span>
             </span>
         </a>
       
@@ -3707,7 +3612,7 @@
         
         
         
-          <a class="md-contributor" href="https://github.com/kschevenels" aria-label="Klara Schevenels, 27% of this page" style="--z: 4" data-name="Klara Schevenels" data-share="26.63%">
+          <a class="md-contributor" href="https://github.com/kschevenels" aria-label="Klara Schevenels, 37% of this page" style="--z: 2" data-name="Klara Schevenels" data-share="36.9%">
         
             <span class="md-contributor__face">
               
@@ -3716,7 +3621,7 @@
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
               <span class="md-contributor__tip-name">Klara Schevenels</span>
-              <span class="md-contributor__tip-share">27%</span>
+              <span class="md-contributor__tip-share">37%</span>
             </span>
         </a>
       
@@ -3726,7 +3631,7 @@
         
         
         
-          <a class="md-contributor" href="https://github.com/simenhagen" aria-label="Simen Hagen, 3% of this page" style="--z: 3" data-name="Simen Hagen" data-share="2.51%">
+          <a class="md-contributor" href="https://github.com/simenhagen" aria-label="Simen Hagen, &lt;1% of this page" style="--z: 1" data-name="Simen Hagen" data-share="0.6%">
         
             <span class="md-contributor__face">
               
@@ -3735,44 +3640,6 @@
             </span>
             <span class="md-contributor__tip" aria-hidden="true">
               <span class="md-contributor__tip-name">Simen Hagen</span>
-              <span class="md-contributor__tip-share">3%</span>
-            </span>
-        </a>
-      
-        
-        
-        
-        
-        
-        
-          <a class="md-contributor" href="https://github.com/timmaniquet" aria-label="Tim Maniquet, &lt;1% of this page" style="--z: 2" data-name="Tim Maniquet" data-share="0.5%">
-        
-            <span class="md-contributor__face">
-              
-                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/61991543?s=96" alt="" width="36" height="36" loading="lazy">
-              
-            </span>
-            <span class="md-contributor__tip" aria-hidden="true">
-              <span class="md-contributor__tip-name">Tim Maniquet</span>
-              <span class="md-contributor__tip-share">&lt;1%</span>
-            </span>
-        </a>
-      
-        
-        
-        
-        
-        
-        
-          <a class="md-contributor" href="https://github.com/tilly23" aria-label="Matilda Gordon, &lt;1% of this page" style="--z: 1" data-name="Matilda Gordon" data-share="0.5%">
-        
-            <span class="md-contributor__face">
-              
-                <img class="md-contributor__avatar" src="https://avatars.githubusercontent.com/u/89953219?s=96" alt="" width="36" height="36" loading="lazy">
-              
-            </span>
-            <span class="md-contributor__tip" aria-hidden="true">
-              <span class="md-contributor__tip-name">Matilda Gordon</span>
               <span class="md-contributor__tip-share">&lt;1%</span>
             </span>
         </a>
@@ -4005,10 +3872,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "search.share", "navigation.indexes", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "search.share", "navigation.indexes", "navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       

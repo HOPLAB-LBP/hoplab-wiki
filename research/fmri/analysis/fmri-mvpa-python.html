@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/hoplab_favicon_white.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -28,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3555,7 +3555,7 @@
 <h2 id="the-example-study-and-its-questions">The example study and its questions<a class="headerlink" href="#the-example-study-and-its-questions" title="Permanent link">¶</a></h2>
 <p>The stimuli are 40 chessboards, built so that the same boards can be grouped in different ways. The figure shows two examples and the models that follow from the groupings.</p>
 <figure style="width: 67%; margin-left: auto; margin-right: auto">
-  
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri-mvpa-python/design.png" data-desc-position="bottom"><img alt="Two visual pairs, as in the published figure: non-checkmate twin on the left with the moved piece circled, checkmate board on the right with the mating sequence drawn as arrows; below, the three model RDMs for all 40 boards" src="../../../assets/fmri-mvpa-python/design.png"></a>
 <br>
 <figcaption style="font-size: .7rem; max-width: none">Chess pieces: chessnut by Alexis Luengas, <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.</figcaption>
 </figure>
@@ -3819,7 +3819,7 @@
 </span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
 </span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></code></pre></div>
-<p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri-mvpa-python/rois.png" data-desc-position="bottom"><img alt="V1 (green) and DLPFC (orange) on a glass brain, seen from the left, front, right and top" src="../../../assets/fmri-mvpa-python/rois.png"></a></p>
 <p>For every participant and region, <code>get_betas</code> samples all betas within the mask and returns, with them, the residual variance of every voxel (<code>ResMS</code>) and the run and name of every beta. We keep the condition betas and store them as an rsatoolbox <code>Dataset</code>: one row per beta (condition × run), one column per voxel, and the condition, run and properties of every row as descriptors.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rsatoolbox.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
@@ -4035,7 +4035,7 @@
 <li>These are twenty of Kenneth Kelly's colours of maximum contrast, chosen to be easy to tell apart. With more than 20 values, the colours come from one colour map, and neighbouring values look alike.</li>
 <li>The shades follow the order in which the values first appear in the table, from light to full colour, as in the figures of the published study.</li>
 </ol>
-<p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri-mvpa-python/model-rdms.png" data-desc-position="bottom"><img alt="The three model RDMs of the example: checkmate, strategy and visual pair" src="../../../assets/fmri-mvpa-python/model-rdms.png"></a></p>
 <p>The boards are in the order of <code>conditions.tsv</code>: the 20 checkmate boards first, grouped by strategy, then their 20 non-checkmate twins in the same order. The checkmate model has two large blocks, the strategy model ten smaller blocks inside them, and the visual-pair model two diagonal lines that link each board to its twin. The models overlap. Strategy correlates with checkmate (0.33), because each strategy belongs to one side only, and visual pair correlates negatively with checkmate (−0.16), because the two boards of a pair always differ in checkmate.</p>
 <hr>
 <h2 id="5-build-the-brain-rdms-two-ways">5. Build the brain RDMs, two ways<a class="headerlink" href="#5-build-the-brain-rdms-two-ways" title="Permanent link">¶</a></h2>
@@ -4138,7 +4138,7 @@
 </span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>        <span class="n">show_rdm</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">percentiles</span><span class="p">(</span><span class="n">rdm</span><span class="p">),</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">roi</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">distance</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></code></pre></div>
-<p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri-mvpa-python/brain-rdms.png" data-desc-position="bottom"><img alt="The RDMs of one participant in V1 and DLPFC as percentiles, with correlation distance on the left and crossnobis distance on the right" src="../../../assets/fmri-mvpa-python/brain-rdms.png"></a></p>
 <p>In DLPFC, both RDMs have dark blocks along the diagonal: boards with the same strategy evoke more similar patterns. The blocks are sharper with crossnobis. In V1, crossnobis shows faint diagonal lines where each board meets its twin; with 1 − r they are hard to see. The RDM of a single participant is noisy, so this is about as much structure as you can expect to see in one.</p>
 <h3 id="look-at-the-rdms-before-testing-them">Look at the RDMs before testing them<a class="headerlink" href="#look-at-the-rdms-before-testing-them" title="Permanent link">¶</a></h3>
 <p>Before testing any model, look at the mean RDM of each region and its MDS: it builds an intuition for what the region represents, and for what the tests in the next steps will find. Multidimensional scaling (MDS) places every condition as a point in two dimensions so that the distances between the points follow the RDM as closely as possible: conditions with a small distance end up close together, and a block of small distances becomes a cluster. The <a href="../../dnn/dnn-compare.html#look-at-your-rdms">DNN tutorial</a> explains how to read the two side by side.</p>
@@ -4177,7 +4177,7 @@
 <li>Joins the conditions that share a value of <code>MDS_LINK_BY</code>, here the two boards of each visual pair. Short lines mean that the region gives the two boards similar patterns.</li>
 <li>Each region's points are coloured by the property in <code>MDS_COLOUR_BY</code>: in V1 the visual pair (the two boards of a pair share a colour), in DLPFC checkmate or not.</li>
 </ol>
-<p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri-mvpa-python/rdm-mds.png" data-desc-position="bottom"><img alt="Mean crossnobis RDMs of V1 and DLPFC as percentiles, with the MDS of each below" src="../../../assets/fmri-mvpa-python/rdm-mds.png"></a></p>
 <p>In DLPFC, the mean RDM splits into the checkmate and the non-checkmate halves, with a dark block for each strategy inside them, and the MDS shows the same split as two groups of points. The grey lines between visual twins are long and cross from one group to the other: DLPFC gives the two boards of a pair different patterns, because they differ in checkmate. V1 has no blocks, only dark diagonal lines where each board meets its twin, and in its MDS most twins sit close together, joined by short lines. MDS squeezes 40 conditions into two dimensions, so some distances are bent to fit. Use it to see the structure, and keep the statistics on the RDMs.</p>
 <details class="tip">
 <summary>What the MDS tells you about RSA and decoding</summary>
@@ -4377,7 +4377,7 @@
 <li>The distance from each mean to the edges of its 95% confidence interval, from rsatoolbox's <code>Result</code>. rsatoolbox also has <code>rsatoolbox.vis.plot_model_comparison</code>, which draws a similar plot with its own tests, but in version 0.3.2 it fails when asked for confidence intervals.</li>
 <li>The stars use the FDR-corrected p-values of step 7.</li>
 </ol>
-<p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri-mvpa-python/rsa-results.png" data-desc-position="bottom"><img alt="Model fits per region for both distances: bars are means with 95% confidence intervals, dots are participants, grey bands are the noise ceilings, stars mark fits above 0" src="../../../assets/fmri-mvpa-python/rsa-results.png"></a></p>
 <h3 id="how-good-can-a-model-get-the-noise-ceiling">How good can a model get? The noise ceiling<a class="headerlink" href="#how-good-can-a-model-get-the-noise-ceiling" title="Permanent link">¶</a></h3>
 <p>A correlation of 0.2 can be a poor fit or the best fit the data allow. The noise ceiling tells which (<a href="https://doi.org/10.1371/journal.pcbi.1003553">Nili et al., 2014</a>). It estimates how well the true model, whatever it is, would correlate with each participant's RDM, from how much the participants agree with each other. Its upper bound correlates each participant with the mean of all participants' RDMs, that participant included; its lower bound, with the mean of the others. For the correlation comparator, each RDM is standardised before averaging. A fit near the lower bound is about as high as the participants' agreement with each other. In the figure above, the noise ceiling is the grey band behind each region's bars.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">for</span> <span class="p">(</span><span class="n">roi</span><span class="p">,</span> <span class="n">distance</span><span class="p">),</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -4547,7 +4547,7 @@
 <li>A two-sided 95% confidence interval of the mean across participants, from pingouin's t-test, not corrected for multiple comparisons. A star and an interval can therefore disagree near the threshold.</li>
 <li>Where this tick sits well above 0 but the bar does not, testing against 1/k would have reported an effect these data do not support.</li>
 </ol>
-<p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../assets/fmri-mvpa-python/decoding.png" data-desc-position="bottom"><img alt="Decoding accuracy above each participant's chance level, per region and property: bars are means with 95% confidence intervals, dots are participants, black ticks mark the accuracy above 1/k, stars mark significant results" src="../../../assets/fmri-mvpa-python/decoding.png"></a></p>
 <hr>
 <h2 id="good-practice">Good practice<a class="headerlink" href="#good-practice" title="Permanent link">¶</a></h2>
 <details class="warning">
@@ -4884,10 +4884,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "search.share", "navigation.indexes", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "content.code.select", "content.action.edit", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.suggest", "search.share", "navigation.indexes", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
