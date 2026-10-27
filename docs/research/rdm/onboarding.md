@@ -9,9 +9,9 @@ You can follow the checklist step by step below or [download a personal copy](ht
     |------|-------------|------|
     | Activate your KU Leuven account | Find more information [here](../../get-started/admin-procedures.md#activate-your-ku-leuven-account) | ☐ |
     | Get a key to your new office | Find more information [here](../../get-started/practical-setup.md#keys) | ☐ |
-    | Order laptop and required peripherals | Find more information [here](../../get-started/practical-setup.md#office-set-up) | ☐ |
+    | Order laptop and required peripherals | Find more information [here](../../get-started/practical-setup.md#office-set-up) and [here](../../get-started/admin-procedures.md#ordering-stuff) | ☐ |
     | Get access to all communication channels | See the overview [here](../../get-started/computer-setup.md#communication-channels) | ☐ |
-    | Get access to relevant physical spaces | e.g., the [MRI scanner room](../fmri/fmri-get-started.md#gain-access-to-mr-facilities) | ☐ |
+    | Get access to relevant physical spaces | e.g., the [MRI scanner room](../fmri/fmri-get-started.md#become-an-authorized-other-user-aou) | ☐ |
     | Get added to the lab’s [meeting schedule](../../outreach.md#schedule) | Ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to add you to the planning | ☐ |
     | Appear as a member on the [Hoplab website](https://www.hoplab.be) | Find inspiration from your colleagues [here](https://www.hoplab.be/people/) | ☐ |
     | Read getting started section on Wiki | Here’s a [quick link](../../get-started/index.md) | ☐ |
@@ -25,8 +25,8 @@ You can follow the checklist step by step below or [download a personal copy](ht
     | Read [guidelines regarding documentation](offboarding.md#documentation-expectations) | To make your data FAIR | ☐ |
     | Get acquainted with the [BIDS standard](https://bids-specification.readthedocs.io/en/stable/) | [Hoplab example for fMRI datasets](../fmri/analysis/fmri-bids-conversion.md) | ☐ |
     | Get access to your [Sharepoint](https://icts.kuleuven.be/sc/english/collaboration/sharepointonline) site (day-to-day work) | Ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to request one with dICT | ☐ |
-    | Get access to [ManGO](https://rdm-docs.icts.kuleuven.be/mango/index) (active research data) | Ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to create a new folder for you | ☐ |
-    | Get access to [FriGO](https://rdm-docs.icts.kuleuven.be/frigo/index) (data archive) | (This is currently still in pilot phase, tbc) | ☐ |
+    | Get access to [ManGO](https://rdm-docs.icts.kuleuven.be/mango/index.html) (active research data) | Ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to create a new folder for you | ☐ |
+    | Get access to [FriGO](https://rdm-docs.icts.kuleuven.be/frigo/index.html) (data archive) | (This is currently still in pilot phase, tbc) | ☐ |
     | Read our [guidelines regarding data sharing](./RDR_sharing.md) | Useful links: [Hoplab OSF](https://osf.io/g23pm/), [RDR manual](https://www.kuleuven.be/rdm/en/rdr/manual) | ☐ |
 
 ??? note "🛡️ Ethics and data protection"
