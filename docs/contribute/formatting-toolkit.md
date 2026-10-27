@@ -410,6 +410,30 @@ Striped rows, with the header kept in view.
 | PSI 00.57 | TMS |
 | PSI 00.52 | EEG |
 
+### Yes/no tables
+
+For tables that answer the same question for several options. Cells that say exactly `Yes` get a green tick, `No` a red cross, and any other text an amber mark for a conditional answer. The first column is left as it is. More in [Yes/no tables](yes-no-tables.md).
+
+```markdown
+<div class="yn-table" markdown>
+
+| Data | Copilot | Other AI tools |
+|---|---|---|
+| Public information | Yes | Yes |
+| Health data | Only pseudonymised | No |
+
+</div>
+```
+
+<div class="yn-table" markdown>
+
+| Data | Copilot | Other AI tools |
+|---|---|---|
+| Public information | Yes | Yes |
+| Health data | Only pseudonymised | No |
+
+</div>
+
 ### Visual angle calculator
 
 Converts stimulus sizes between degrees, millimetres and pixels for one lab set-up, with a drawing of the screen. `data-setup` picks the set-up: `mr11` (MR11 BOLDscreen) or `eeg` (EEG booth). Each set-up's values live once, in `SETUPS` at the top of `docs/javascripts/visual-angle.js`; add a set-up there and keep it in step with the screen table on its page.
