@@ -161,10 +161,8 @@ These tips come from [Eye tracking in neuroimaging: tips & tricks][nau] by Matth
 
 Copy the EDF files with the rest of your data, and store them as described in [BIDS conversion](analysis/fmri-bids-conversion.md#11-converting-eye-tracking-data-to-bids).
 
-The recording starts a few seconds before the scan, so the first sample of an EDF file is not scanner time 0. Time 0 is the `TRIGGER_RECEIVED` message, which the task script writes into the EDF when the first trigger arrives. Time eye data, messages and the task log from that message.
-
 <!--
-__TODO__: [Andrea] Link align_eye_to_trigger.py (eyelink-task-template) here once the repo is public: it drops the pre-scan part and makes TRIGGER_RECEIVED time 0. (Repo local only, 2026-10-27.)
+__TODO__: [Andrea] When eyelink-task-template is public: say that EDF time 0 is its TRIGGER_RECEIVED message (recording starts before the scan; the 2023 task script writes no trigger message) and link align_eye_to_trigger.py. (Removed from the page 2026-10-28 until then.)
 __TODO__: [Andrea] Add the tested MATLAB (Psychtoolbox) and Python (PsychoPy) snippets from the eyelink-task-template repo as a section "Control the EyeLink from your task script": connect, open the EDF, camera set-up and calibration, recording around the trigger, messages, stop, close and receive the file. (Code parked, 2026-10-27.)
 -->
 
