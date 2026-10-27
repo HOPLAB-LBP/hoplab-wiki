@@ -94,6 +94,7 @@ nav:
     - How to contribute: contribute.md
     - Advanced workflow: contribute/advanced-workflow.md
     - Formatting toolkit: contribute/formatting-toolkit.md
+    - Yes/no tables: contribute/yes-no-tables.md
     - For admins: contribute/admins.md
 #  - Tasks List: tasks-list.md
 
@@ -206,6 +207,7 @@ extra_css:
 extra_javascript:
   - javascripts/mathjax.js
   - javascripts/details.js
+  - javascripts/yes-no-table.js # pills for Yes/No cells in <div class="yn-table">
   - javascripts/lightbox-zoom.js # zoom slider for the image lightbox
   - javascripts/source-file.js # footer: last update in the reader's time zone
   - javascripts/visual-angle.js # visual angle calculator (fMRI equipment and EEG task pages)

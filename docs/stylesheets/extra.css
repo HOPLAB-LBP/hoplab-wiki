@@ -792,6 +792,120 @@
   /* Material Design Icons "check-bold" and "close-thick" */
   --hl-tick: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 20.42 2.79 14.21l2.83-2.83L9 14.77l9.88-9.89 2.83 2.83L9 20.42Z"/></svg>');
   --hl-cross: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 6.91 17.09 4 12 9.09 6.91 4 4 6.91 9.09 12 4 17.09 6.91 20 12 14.91 17.09 20 20 17.09 14.91 12 20 6.91Z"/></svg>');
+  /* A ring with its right half filled, for "partly" */
+  --hl-half: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM12 4v16a8 8 0 0 1 0-16Z"/></svg>');
+}
+
+/* =========================
+   Yes/no tables
+   ========================= */
+/*
+  A plain Markdown table inside the wrapper. The first column holds the row
+  labels; every other non-empty cell gets a marker (javascripts/yes-no-table.js):
+  exactly "Yes" a green disc with a tick, exactly "No" a red disc with a cross,
+  any other text an amber half-filled ring. The word stays visible next to the icon.
+
+  <div class="yn-table" markdown>
+
+  | What | Tool A | Tool B |
+  |---|---|---|
+  | Public data | Yes | Yes |
+  | Health data | Only pseudonymised | No |
+
+  </div>
+*/
+
+.md-typeset .yn-table {
+  --yn-yes: #007f3b;
+  --yn-no: #c4261a;
+  --yn-maybe: #9a5b00;
+  --yn-rule: color-mix(in srgb, var(--md-default-fg-color) 12%, transparent);
+  --yn-head: color-mix(in srgb, var(--md-default-fg-color) 55%, transparent);
+  /* Solid discs with the tick or cross cut out */
+  --yn-disc-yes: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><mask id="m"><circle cx="12" cy="12" r="12" fill="white"/><path transform="translate(5.4 5.4) scale(.55)" fill="black" d="M9 20.42 2.79 14.21l2.83-2.83L9 14.77l9.88-9.89 2.83 2.83L9 20.42Z"/></mask></defs><circle cx="12" cy="12" r="12" mask="url(%23m)"/></svg>');
+  --yn-disc-no: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><mask id="m"><circle cx="12" cy="12" r="12" fill="white"/><path transform="translate(5.4 5.4) scale(.55)" fill="black" d="M20 6.91 17.09 4 12 9.09 6.91 4 4 6.91 9.09 12 4 17.09 6.91 20 12 14.91 17.09 20 20 17.09 14.91 12 20 6.91Z"/></mask></defs><circle cx="12" cy="12" r="12" mask="url(%23m)"/></svg>');
+}
+[data-md-color-scheme="slate"] .md-typeset .yn-table {
+  --yn-yes: #6fd39b;
+  --yn-no: #ff8f84;
+  --yn-maybe: #f0b860;
+}
+
+/* No outline, no stripes, no hover fill: one rule under the header, hairlines between rows */
+.md-typeset .yn-table table:not([class]) {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  font-size: .7rem;
+}
+.md-typeset .yn-table table:not(.highlighttable) th {
+  background: var(--md-default-bg-color);
+  border-bottom: 2px solid color-mix(in srgb, var(--md-default-fg-color) 30%, transparent);
+  color: var(--yn-head);
+  font-weight: 600;
+  vertical-align: bottom;
+  padding: .6em 1em .7em;
+}
+.md-typeset .yn-table table:not(.highlighttable) tbody tr:nth-child(even) td,
+.md-typeset .yn-table table:not(.highlighttable) td {
+  background: transparent;
+  border-top: none;
+  border-bottom: 1px solid var(--yn-rule);
+  padding: .85em 1em;
+  vertical-align: middle;
+}
+.md-typeset .yn-table table:not([class]) tbody tr:hover {
+  background: transparent;
+  box-shadow: none;
+}
+.md-typeset .yn-table table:not(.highlighttable) tbody tr:last-child td { border-bottom: none; }
+.md-typeset .yn-table th:first-child,
+.md-typeset .yn-table td:first-child { padding-left: 0; min-width: 8rem; }
+.md-typeset .yn-table th:not(:first-child),
+.md-typeset .yn-table td:not(:first-child) { text-align: center; }
+
+/* The answer: a coloured disc and the word in the same colour */
+.md-typeset .yn {
+  --yn-c: var(--yn-maybe);
+  display: inline-flex;
+  align-items: center;
+  gap: .45em;
+  color: var(--yn-c);
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.md-typeset .yn::before {
+  content: "";
+  flex: none;
+  width: 1.15em;
+  height: 1.15em;
+  background-color: currentColor;
+  -webkit-mask: var(--hl-half) center / contain no-repeat;
+  mask: var(--hl-half) center / contain no-repeat;
+}
+.md-typeset .yn--yes { --yn-c: var(--yn-yes); }
+.md-typeset .yn--no { --yn-c: var(--yn-no); }
+.md-typeset .yn--yes::before {
+  -webkit-mask-image: var(--yn-disc-yes);
+  mask-image: var(--yn-disc-yes);
+}
+.md-typeset .yn--no::before {
+  -webkit-mask-image: var(--yn-disc-no);
+  mask-image: var(--yn-disc-no);
+}
+/* Conditional answers may wrap onto two lines */
+.md-typeset .yn--maybe {
+  white-space: normal;
+  text-align: left;
+}
+
+/* Phones: tighter cells, so two answer columns fit next to the labels */
+@media screen and (max-width: 44.984375em) {
+  .md-typeset .yn-table table:not(.highlighttable) th,
+  .md-typeset .yn-table table:not(.highlighttable) td { padding-left: .6em; padding-right: .6em; }
 }
 
 /* Sidebar: sections are collapsible (navigation.sections is off), but their names stay bold */
