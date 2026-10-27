@@ -216,6 +216,8 @@ Participants always wear earplugs as well. Participants who refuse hearing prote
 
 An EyeLink eye tracker (EyeLink 1000 long range) is planned to be installed at MR11, but is not available yet. If your study needs eye tracking, contact Ron Peeters to confirm whether and when it can be used.
 
+The set-up we used at MR8, and how to control the tracker from your task script, are in [Eye tracking during fMRI](fmri-eyetracking.md).
+
 ---
 
 <!--
