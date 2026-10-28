@@ -225,4 +225,4 @@ You're done. All you have left to do is to save the results (choose an appropria
 
 ```python
 epochs.save('my_bids_compatible_file.fif')
-````
+```
