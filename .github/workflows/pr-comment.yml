@@ -15,6 +15,12 @@ on:
 permissions:
   pull-requests: write
 
+# One report job at a time per PR branch, in event order, so an older run
+# cannot overwrite the report of a newer one.
+concurrency:
+  group: "pr-comment-${{ github.event.workflow_run.head_repository.full_name }}-${{ github.event.workflow_run.head_branch }}"
+  cancel-in-progress: false
+
 jobs:
   delete-stale-comment:
     runs-on: ubuntu-latest
@@ -68,13 +74,32 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Read PR number
+      # The artifact comes from the PR's own run, so its PR number is not
+      # trusted: resolve the PR from the run's head repo/branch (as above) and
+      # post only when both agree.
+      - name: Read and verify PR number
         id: meta
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_OWNER: ${{ github.event.workflow_run.head_repository.owner.login }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
         run: |
-          PR=$(cat pr-number.txt)
-          echo "pr_number=$PR" >> "$GITHUB_OUTPUT"
+          CLAIMED=$(head -c 20 pr-number.txt | tr -cd '0-9')
+          ACTUAL=$(gh api -X GET "/repos/${{ github.repository }}/pulls" \
+            -f head="$HEAD_OWNER:$HEAD_BRANCH" -f state=open \
+            --jq '.[0].number // empty')
+          if [ -z "$ACTUAL" ]; then
+            echo "::notice::No open PR for $HEAD_OWNER:$HEAD_BRANCH; nothing to post."
+            exit 0
+          fi
+          if [ "$CLAIMED" != "$ACTUAL" ]; then
+            echo "::error::Report artifact names PR #$CLAIMED, but this run belongs to PR #$ACTUAL. Not posting."
+            exit 1
+          fi
+          echo "pr_number=$ACTUAL" >> "$GITHUB_OUTPUT"
 
       - name: Find existing bot comment
+        if: steps.meta.outputs.pr_number != ''
         uses: peter-evans/find-comment@v3
         id: find-comment
         with:
@@ -83,6 +108,7 @@ jobs:
           body-includes: "<!-- pr-checks-report -->"
 
       - name: Post or update PR comment
+        if: steps.meta.outputs.pr_number != ''
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ steps.meta.outputs.pr_number }}

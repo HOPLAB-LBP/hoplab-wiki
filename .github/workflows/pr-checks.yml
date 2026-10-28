@@ -6,6 +6,7 @@ on:
       - "docs/**"
       - "mkdocs.yml"
       - "mkdocs-ci.yml"
+      - "includes/**"
       - "overrides/**"
       - ".mailmap"
       - "README.md"
@@ -17,6 +18,7 @@ on:
       - ".github/workflows/*.yml"
       - "scripts/docs_ci_check.sh"
       - "scripts/check_mkdocs_syntax.py"
+      - "scripts/fix_markdown_table_pipes.py"
       - "scripts/prepare_docs.sh"
       - "scripts/manage-docs-tags.js"
       - "tests/**"
@@ -28,6 +30,9 @@ concurrency:
 permissions:
   contents: write
   pull-requests: read
+  # Lets check-and-report put its result on the auto-fix commit, which gets
+  # no run of its own (pushes made with GITHUB_TOKEN start no workflows).
+  statuses: write
 
 jobs:
   # ───────────────────────────────────────────────────────────
@@ -35,6 +40,10 @@ jobs:
   # ───────────────────────────────────────────────────────────
   autofix:
     runs-on: ubuntu-latest
+    outputs:
+      # "true" only when the fix commit reached the PR branch.
+      pushed: ${{ steps.push.outputs.pushed }}
+      fix_sha: ${{ steps.push.outputs.fix_sha }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -66,6 +75,7 @@ jobs:
           sed -i 's/[[:space:]]*$//' mkdocs.yml mkdocs-ci.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
 
       - name: Commit and push fixes
+        id: push
         env:
           HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
           BASE_REPO: ${{ github.repository }}
@@ -74,13 +84,18 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           if ! git diff --cached --quiet; then
-            # [skip ci]: this bot push must not trigger another "PR checks"
-            # run. Such a run lands as 'action_required' (never executes), so
-            # it can't refresh the report — the current run already reports
-            # the post-fix state (see "Apply safe auto-fixes locally").
+            # A push made with GITHUB_TOKEN starts no new "PR checks" run
+            # ([skip ci] makes that explicit). The current run reports the
+            # post-fix state instead (see "Apply safe auto-fixes locally"),
+            # and check-and-report puts its result on the fix commit.
             git commit -m "style: auto-fix formatting issues [skip ci]"
             if [ "$HEAD_REPO" = "$BASE_REPO" ]; then
+              # If the push fails (e.g. the contributor pushed meanwhile),
+              # this step fails, "pushed" stays unset and the report shows
+              # the branch as it is.
               git push
+              echo "pushed=true" >> "$GITHUB_OUTPUT"
+              echo "fix_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
             else
               echo "::notice::Auto-fixes were found but cannot be pushed to fork PRs. See the check report for what needs manual fixing."
             fi
@@ -143,11 +158,13 @@ jobs:
       # issues the autofix job already fixed in the same run. The corrected
       # re-run that would refresh the comment is usually blocked (pushes by
       # github-actions land as 'action_required'), so a stale "Failed"
-      # comment would linger. Same-repo PRs only: forks can't be auto-fixed
-      # (the autofix job can't push to them), so their report must keep
-      # showing the real issues for manual fixing.
+      # comment would linger. Only when the autofix push succeeded: fork PRs
+      # (never pushed to) and failed pushes must keep showing the real issues
+      # for manual fixing.
       - name: Apply safe auto-fixes locally (keeps the report accurate)
-        if: github.event.pull_request.head.repo.full_name == github.repository
+        # Only when the fix commit reached the branch: otherwise the report
+        # must describe the branch as it is (fork PRs, failed pushes).
+        if: needs.autofix.outputs.pushed == 'true'
         run: |
           python3 scripts/fix_markdown_table_pipes.py README.md docs/ || true
           npx -y markdownlint-cli2 README.md "docs/**/*.md" --fix || true
@@ -302,12 +319,25 @@ jobs:
       - name: Build report
         if: always()
         env:
-          EDIT_BASE: ${{ github.server_url }}/${{ github.repository }}/edit/${{ github.head_ref }}
+          # The head repository: for fork PRs the branch only exists there.
+          EDIT_BASE: ${{ github.server_url }}/${{ github.event.pull_request.head.repo.full_name }}/edit/${{ github.head_ref }}
+          AUTOFIX_RESULT: ${{ needs.autofix.result }}
+          AUTOFIX_PUSHED: ${{ needs.autofix.outputs.pushed }}
+          AUTOFIX_SHA: ${{ needs.autofix.outputs.fix_sha }}
+          SAME_REPO: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         run: |
           REPORT="/tmp/pr-checks/report.md"
 
           # Hidden marker so we can find and update this comment on future runs
           echo '<!-- pr-checks-report -->' > "$REPORT"
+
+          # Notes about the auto-fix commit, printed under the result heading.
+          AUTOFIX_NOTE=""
+          if [ "$AUTOFIX_PUSHED" = "true" ]; then
+            AUTOFIX_NOTE="> :robot: The bot pushed formatting fixes to this branch (commit ${AUTOFIX_SHA:0:7}). Pull before you edit it again on your computer."
+          elif [ "$SAME_REPO" = "true" ] && [ "$AUTOFIX_RESULT" != "success" ]; then
+            AUTOFIX_NOTE="> :warning: The bot could not push its formatting fixes to this branch, so this report shows the branch as it is. Pushing again usually solves it."
+          fi
 
           SPELL=$(cat /tmp/pr-checks/spellcheck-status 2>/dev/null || echo "skipped")
           MDLINT=$(cat /tmp/pr-checks/markdownlint-status 2>/dev/null || echo "skipped")
@@ -402,16 +432,18 @@ jobs:
 
           Great job! Your changes look good.
 
+          $AUTOFIX_NOTE
+
           | Check | Status |
           |-------|--------|
-          | Spell check | $(emoji "$SPELL") Passed |
-          | Markdown lint | $(emoji "$MDLINT") Passed |
-          | YAML lint | $(emoji "$YAML") Passed |
-          | Link check | $(link_emoji "$LINKS") Passed |
-          | MkDocs build | $(emoji "$BUILD") Passed |
-          | MkDocs syntax | $(emoji "$SYNTAX") Passed |
-          | Automation regression tests | $(emoji "$AUTOTESTS") Passed |
-          | Workflow lint | $(emoji "$WFLINT") Passed |
+          | Spell check | $(emoji "$SPELL") $(status_label "$SPELL") |
+          | Markdown lint | $(emoji "$MDLINT") $(status_label "$MDLINT") |
+          | YAML lint | $(emoji "$YAML") $(status_label "$YAML") |
+          | Link check | $(link_emoji "$LINKS") $(link_status_label "$LINKS") |
+          | MkDocs build | $(emoji "$BUILD") $(status_label "$BUILD") |
+          | MkDocs syntax | $(emoji "$SYNTAX") $(status_label "$SYNTAX") |
+          | Automation regression tests | $(emoji "$AUTOTESTS") $(status_label "$AUTOTESTS") |
+          | Workflow lint | $(emoji "$WFLINT") $(status_label "$WFLINT") |
 
           A reviewer will take a look shortly.
           EOF
@@ -422,6 +454,8 @@ jobs:
           ## :mag: PR check results
 
           Some checks found issues that need your attention. Don't worry — most of these are easy to fix!
+
+          $AUTOFIX_NOTE
 
           | Check | Status |
           |-------|--------|
@@ -972,6 +1006,7 @@ jobs:
 
       # ── Final verdict ──────────────────────────────────
       - name: Fail if any check failed
+        id: verdict
         if: always()
         run: |
           SPELL=$(cat /tmp/pr-checks/spellcheck-status 2>/dev/null || echo "skipped")
@@ -1001,6 +1036,25 @@ jobs:
             [ "$s" = "failed" ] && FAILED=true
           done
           if [ "$FAILED" = "true" ]; then
+            echo "verdict=failure" >> "$GITHUB_OUTPUT"
             echo "One or more checks failed. See the PR comment for details."
             exit 1
           fi
+          echo "verdict=success" >> "$GITHUB_OUTPUT"
+
+      # The auto-fix commit gets no run of its own, so without this the newest
+      # commit of the PR shows no checks. The tree checked above is that
+      # commit's tree (the same fixes, applied locally).
+      - name: Put the result on the auto-fix commit
+        if: always() && needs.autofix.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FIX_SHA: ${{ needs.autofix.outputs.fix_sha }}
+          VERDICT: ${{ steps.verdict.outputs.verdict || 'failure' }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh api -X POST "/repos/${{ github.repository }}/statuses/$FIX_SHA" \
+            -f state="$VERDICT" \
+            -f context="PR checks / check-and-report" \
+            -f description="Result of the run that made this auto-fix commit" \
+            -f target_url="$RUN_URL" > /dev/null
