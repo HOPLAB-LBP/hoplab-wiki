@@ -93,8 +93,9 @@ nav:
       - Compare with human data: research/dnn/dnn-compare.md
   - Science outreach: outreach.md
   - Contribute:
-    - How to contribute: contribute.md
+    - Quick start: contribute.md
     - Advanced workflow: contribute/advanced-workflow.md
+    - Writing pages: contribute/writing-pages.md
     - Formatting gallery: contribute/formatting-gallery.md
     - For admins: contribute/admins.md
 #  - Tasks List: tasks-list.md

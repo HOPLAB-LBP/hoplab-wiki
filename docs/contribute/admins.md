@@ -2,31 +2,21 @@
 
 Admins review and merge pull requests and keep the build working. Repository admins today: [@costantinoai](https://github.com/costantinoai), [@kschevenels](https://github.com/kschevenels) and [@opdebeeck](https://github.com/opdebeeck).
 
-## Reviewing and accepting pull requests
+## Review and merge a pull request
 
-1. Go to the `hoplab-wiki` repository on GitHub.
-2. Click on the "Pull requests" tab.
-3. Review the pull request (Approve changes or suggest edits)
-4. When the changes are satisfactory, approve them and click **Squash and merge**. GitHub deletes the branch.
+1. Open the pull request from the [Pull requests](https://github.com/HOPLAB-LBP/hoplab-wiki/pulls) tab.
+2. Wait until all checks pass, and read the bot comment with the check report.
+3. Read the changes in **Files changed**. Ask for changes in a review, or push small fixes yourself (see [Edit a contributor's pull request](#edit-a-contributors-pull-request)).
+4. Approve, then click **Squash and merge**.
 
-The rules on `main`:
+The pull request becomes one commit on `main`. Its author is the person who opened the pull request; anyone else who committed is added as co-author. GitHub deletes the branch, and the merge starts the deploy: the live site updates a few minutes later. If you had the branch on your computer, delete it there with `git branch -D <branch>`.
 
-- Changes reach `main` only through a pull request, with one approving review from a code owner. `.github/CODEOWNERS` makes @costantinoai the reviewer of every pull request.
-- Nobody can push to `main` directly, admins included. Admins can bypass the review, but only when merging a pull request.
-- A new push to the pull request dismisses earlier approvals.
-- Force pushes to `main` are blocked.
-- Squash merge is the only merge method; merge commits and rebase merges are switched off in the repository settings.
+??? info "Merging your own pull request"
+    You cannot approve your own pull request. Admins can bypass the review: tick the bypass box under the merge button, or run `gh pr merge <number> --squash --admin`. Do this only when all checks have passed.
 
-## Merging
+    A pull request opened by the code owner (@costantinoai) can also be merged after any lab member approves it, without the bypass.
 
-- Wait until all checks pass, and read the bot comment with the check report.
-- **Squash and merge** turns each pull request into one commit on `main`. Its author is the person who opened the pull request; anyone else who committed is added as co-author.
-- You cannot approve your own pull request. Admins can bypass the review rule: tick the bypass box under the merge button, or run `gh pr merge <number> --squash --admin`. Do this only when all checks have passed.
-- A pull request opened by the code owner (@costantinoai) can also be merged after any lab member approves it, without the bypass.
-- GitHub deletes the branch after the merge. Delete your local copy with `git branch -D <branch>`.
-- The merge starts the deploy: the live site updates a few minutes later.
-
-## Editing a contributor's pull request
+## Edit a contributor's pull request
 
 You can push fixes to a pull request before merging it.
 
@@ -34,6 +24,14 @@ You can push fixes to a pull request before merging it.
 - **Fork**: the same works when the pull request has **Allow edits by maintainers** ticked (`gh pr view <number> --json maintainerCanModify`). Pushing there writes to the contributor's fork. If the box is not ticked, ask the contributor to tick it, or to move the change to a branch in this repository.
 
 Tell the contributor to pull before they continue, since their copy no longer has your commits.
+
+## The rules on `main`
+
+- Changes reach `main` only through a pull request, with one approving review from a code owner. `.github/CODEOWNERS` makes @costantinoai the reviewer of every pull request.
+- Nobody can push to `main` directly, admins included. Admins can bypass the review, but only when merging a pull request.
+- A new push to the pull request dismisses earlier approvals.
+- Force pushes to `main` are blocked.
+- Squash merge is the only merge method; merge commits and rebase merges are switched off in the repository settings.
 
 ## What runs where
 
@@ -60,11 +58,11 @@ To run one by hand: **Actions** tab, pick the workflow, **Run workflow**.
 - Add it to `requirements.txt` with a version range, for example `mkdocs-glightbox>=0.5,<0.6`, so CI never jumps to a new major version on its own.
 - A plugin that needs git, network access or system libraries while building goes in `mkdocs-ci.yml` only. Any other plugin goes in both files.
 - A plugin in `mkdocs.yml` stops `mkdocs serve` for everyone who has not installed it. Say so in the pull request and tell the lab to run `pip install -r requirements.txt` once.
-- Use only options that older versions of the plugin know too: contributors on Python 3.9 get older releases, and an unknown option fails the strict build.
+- Use only options that older versions of the plugin know too: contributors with an older environment (Python 3.9) get older releases, and an unknown option fails the strict build.
 
 ## The Contribute pages
 
-- `docs/contribute.md` is a copy of `README.md`, made by `scripts/prepare_docs.sh` before every build. Edit `README.md`, never `docs/contribute.md`.
+- `docs/contribute.md` (Quick start) is a copy of `README.md`, made by `scripts/prepare_docs.sh` before every build. Edit `README.md`, never `docs/contribute.md`.
 - In `README.md`, link to wiki pages with paths from the repository root, such as `docs/contribute/admins.md`. They work on GitHub, and `prepare_docs.sh` turns them into wiki links in the copy.
 - The other Contribute pages, such as this one, are normal wiki pages in `docs/contribute/`.
 
