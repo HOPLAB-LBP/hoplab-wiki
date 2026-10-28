@@ -3045,6 +3045,8 @@
       
         
       
+        
+      
     
     
     
@@ -3105,7 +3107,7 @@
   <span class="md-ellipsis">
     
   
-    How to contribute
+    Quick start
   
 
     
@@ -3134,6 +3136,34 @@
     
   
     Advanced workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="writing-pages.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing pages
   
 
     
@@ -3242,10 +3272,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#reviewing-and-accepting-pull-requests" class="md-nav__link">
+  <a href="#review-and-merge-a-pull-request" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reviewing and accepting pull requests
+        Review and merge a pull request
       
     </span>
   </a>
@@ -3253,10 +3283,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#merging" class="md-nav__link">
+  <a href="#edit-a-contributors-pull-request" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Merging
+        Edit a contributor's pull request
       
     </span>
   </a>
@@ -3264,10 +3294,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#editing-a-contributors-pull-request" class="md-nav__link">
+  <a href="#the-rules-on-main" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Editing a contributor's pull request
+        The rules on main
       
     </span>
   </a>
@@ -3383,10 +3413,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#reviewing-and-accepting-pull-requests" class="md-nav__link">
+  <a href="#review-and-merge-a-pull-request" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reviewing and accepting pull requests
+        Review and merge a pull request
       
     </span>
   </a>
@@ -3394,10 +3424,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#merging" class="md-nav__link">
+  <a href="#edit-a-contributors-pull-request" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Merging
+        Edit a contributor's pull request
       
     </span>
   </a>
@@ -3405,10 +3435,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#editing-a-contributors-pull-request" class="md-nav__link">
+  <a href="#the-rules-on-main" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Editing a contributor's pull request
+        The rules on main
       
     </span>
   </a>
@@ -3508,14 +3538,27 @@
 
 <h1 id="for-admins">For admins<a class="headerlink" href="#for-admins" title="Permanent link">¶</a></h1>
 <p>Admins review and merge pull requests and keep the build working. Repository admins today: <a href="https://github.com/costantinoai">@costantinoai</a>, <a href="https://github.com/kschevenels">@kschevenels</a> and <a href="https://github.com/opdebeeck">@opdebeeck</a>.</p>
-<h2 id="reviewing-and-accepting-pull-requests">Reviewing and accepting pull requests<a class="headerlink" href="#reviewing-and-accepting-pull-requests" title="Permanent link">¶</a></h2>
+<h2 id="review-and-merge-a-pull-request">Review and merge a pull request<a class="headerlink" href="#review-and-merge-a-pull-request" title="Permanent link">¶</a></h2>
 <ol>
-<li>Go to the <code>hoplab-wiki</code> repository on GitHub.</li>
-<li>Click on the "Pull requests" tab.</li>
-<li>Review the pull request (Approve changes or suggest edits)</li>
-<li>When the changes are satisfactory, approve them and click <strong>Squash and merge</strong>. GitHub deletes the branch.</li>
+<li>Open the pull request from the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/pulls">Pull requests</a> tab.</li>
+<li>Wait until all checks pass, and read the bot comment with the check report.</li>
+<li>Read the changes in <strong>Files changed</strong>. Ask for changes in a review, or push small fixes yourself (see <a href="#edit-a-contributors-pull-request">Edit a contributor's pull request</a>).</li>
+<li>Approve, then click <strong>Squash and merge</strong>.</li>
 </ol>
-<p>The rules on <code>main</code>:</p>
+<p>The pull request becomes one commit on <code>main</code>. Its author is the person who opened the pull request; anyone else who committed is added as co-author. GitHub deletes the branch, and the merge starts the deploy: the live site updates a few minutes later. If you had the branch on your computer, delete it there with <code>git branch -D &lt;branch&gt;</code>.</p>
+<details class="info">
+<summary>Merging your own pull request</summary>
+<p>You cannot approve your own pull request. Admins can bypass the review: tick the bypass box under the merge button, or run <code>gh pr merge &lt;number&gt; --squash --admin</code>. Do this only when all checks have passed.</p>
+<p>A pull request opened by the code owner (@costantinoai) can also be merged after any lab member approves it, without the bypass.</p>
+</details>
+<h2 id="edit-a-contributors-pull-request">Edit a contributor's pull request<a class="headerlink" href="#edit-a-contributors-pull-request" title="Permanent link">¶</a></h2>
+<p>You can push fixes to a pull request before merging it.</p>
+<ul>
+<li><strong>Branch in this repository</strong> (web editor <code>user-patch-N</code> branches, Advanced workflow): <code>gh pr checkout &lt;number&gt;</code>, edit, commit, <code>git push</code>. Or edit the files on GitHub, in the pull request's <strong>Files changed</strong> tab.</li>
+<li><strong>Fork</strong>: the same works when the pull request has <strong>Allow edits by maintainers</strong> ticked (<code>gh pr view &lt;number&gt; --json maintainerCanModify</code>). Pushing there writes to the contributor's fork. If the box is not ticked, ask the contributor to tick it, or to move the change to a branch in this repository.</li>
+</ul>
+<p>Tell the contributor to pull before they continue, since their copy no longer has your commits.</p>
+<h2 id="the-rules-on-main">The rules on <code>main</code><a class="headerlink" href="#the-rules-on-main" title="Permanent link">¶</a></h2>
 <ul>
 <li>Changes reach <code>main</code> only through a pull request, with one approving review from a code owner. <code>.github/CODEOWNERS</code> makes @costantinoai the reviewer of every pull request.</li>
 <li>Nobody can push to <code>main</code> directly, admins included. Admins can bypass the review, but only when merging a pull request.</li>
@@ -3523,22 +3566,6 @@
 <li>Force pushes to <code>main</code> are blocked.</li>
 <li>Squash merge is the only merge method; merge commits and rebase merges are switched off in the repository settings.</li>
 </ul>
-<h2 id="merging">Merging<a class="headerlink" href="#merging" title="Permanent link">¶</a></h2>
-<ul>
-<li>Wait until all checks pass, and read the bot comment with the check report.</li>
-<li><strong>Squash and merge</strong> turns each pull request into one commit on <code>main</code>. Its author is the person who opened the pull request; anyone else who committed is added as co-author.</li>
-<li>You cannot approve your own pull request. Admins can bypass the review rule: tick the bypass box under the merge button, or run <code>gh pr merge &lt;number&gt; --squash --admin</code>. Do this only when all checks have passed.</li>
-<li>A pull request opened by the code owner (@costantinoai) can also be merged after any lab member approves it, without the bypass.</li>
-<li>GitHub deletes the branch after the merge. Delete your local copy with <code>git branch -D &lt;branch&gt;</code>.</li>
-<li>The merge starts the deploy: the live site updates a few minutes later.</li>
-</ul>
-<h2 id="editing-a-contributors-pull-request">Editing a contributor's pull request<a class="headerlink" href="#editing-a-contributors-pull-request" title="Permanent link">¶</a></h2>
-<p>You can push fixes to a pull request before merging it.</p>
-<ul>
-<li><strong>Branch in this repository</strong> (web editor <code>user-patch-N</code> branches, Advanced workflow): <code>gh pr checkout &lt;number&gt;</code>, edit, commit, <code>git push</code>. Or edit the files on GitHub, in the pull request's <strong>Files changed</strong> tab.</li>
-<li><strong>Fork</strong>: the same works when the pull request has <strong>Allow edits by maintainers</strong> ticked (<code>gh pr view &lt;number&gt; --json maintainerCanModify</code>). Pushing there writes to the contributor's fork. If the box is not ticked, ask the contributor to tick it, or to move the change to a branch in this repository.</li>
-</ul>
-<p>Tell the contributor to pull before they continue, since their copy no longer has your commits.</p>
 <h2 id="what-runs-where">What runs where<a class="headerlink" href="#what-runs-where" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -3594,11 +3621,11 @@
 <li>Add it to <code>requirements.txt</code> with a version range, for example <code>mkdocs-glightbox&gt;=0.5,&lt;0.6</code>, so CI never jumps to a new major version on its own.</li>
 <li>A plugin that needs git, network access or system libraries while building goes in <code>mkdocs-ci.yml</code> only. Any other plugin goes in both files.</li>
 <li>A plugin in <code>mkdocs.yml</code> stops <code>mkdocs serve</code> for everyone who has not installed it. Say so in the pull request and tell the lab to run <code>pip install -r requirements.txt</code> once.</li>
-<li>Use only options that older versions of the plugin know too: contributors on Python 3.9 get older releases, and an unknown option fails the strict build.</li>
+<li>Use only options that older versions of the plugin know too: contributors with an older environment (Python 3.9) get older releases, and an unknown option fails the strict build.</li>
 </ul>
 <h2 id="the-contribute-pages">The Contribute pages<a class="headerlink" href="#the-contribute-pages" title="Permanent link">¶</a></h2>
 <ul>
-<li><code>docs/contribute.md</code> is a copy of <code>README.md</code>, made by <code>scripts/prepare_docs.sh</code> before every build. Edit <code>README.md</code>, never <code>docs/contribute.md</code>.</li>
+<li><code>docs/contribute.md</code> (Quick start) is a copy of <code>README.md</code>, made by <code>scripts/prepare_docs.sh</code> before every build. Edit <code>README.md</code>, never <code>docs/contribute.md</code>.</li>
 <li>In <code>README.md</code>, link to wiki pages with paths from the repository root, such as <code>docs/contribute/admins.md</code>. They work on GitHub, and <code>prepare_docs.sh</code> turns them into wiki links in the copy.</li>
 <li>The other Contribute pages, such as this one, are normal wiki pages in <code>docs/contribute/</code>.</li>
 </ul>
@@ -3659,7 +3686,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-28T15:47:35+01:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 28, 2026 15:47:35 CET">October 28, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-28T23:28:18+01:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 28, 2026 23:28:18 CET">October 28, 2026</span></time>
     
   </span>
 
