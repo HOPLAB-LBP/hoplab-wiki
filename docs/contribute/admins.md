@@ -7,32 +7,44 @@ Admins review and merge pull requests and keep the build working. Repository adm
 1. Go to the `hoplab-wiki` repository on GitHub.
 2. Click on the "Pull requests" tab.
 3. Review the pull request (Approve changes or suggest edits)
-4. When the changes are satisfactory, approve the changes and click "Merge pull request". This will delete the temporary branch.
+4. When the changes are satisfactory, approve them and click **Squash and merge**. GitHub deletes the branch.
 
 The rules on `main`:
 
 - Changes reach `main` only through a pull request, with one approving review from a code owner. `.github/CODEOWNERS` makes @costantinoai the reviewer of every pull request.
+- Nobody can push to `main` directly, admins included. Admins can bypass the review, but only when merging a pull request.
 - A new push to the pull request dismisses earlier approvals.
 - Force pushes to `main` are blocked.
+- Squash merge is the only merge method; merge commits and rebase merges are switched off in the repository settings.
 
 ## Merging
 
 - Wait until all checks pass, and read the bot comment with the check report.
-- Use **Squash and merge**, so each pull request becomes one commit on `main`.
+- **Squash and merge** turns each pull request into one commit on `main`. Its author is the person who opened the pull request; anyone else who committed is added as co-author.
 - You cannot approve your own pull request. Admins can bypass the review rule: tick the bypass box under the merge button, or run `gh pr merge <number> --squash --admin`. Do this only when all checks have passed.
+- A pull request opened by the code owner (@costantinoai) can also be merged after any lab member approves it, without the bypass.
 - GitHub deletes the branch after the merge. Delete your local copy with `git branch -D <branch>`.
 - The merge starts the deploy: the live site updates a few minutes later.
+
+## Editing a contributor's pull request
+
+You can push fixes to a pull request before merging it.
+
+- **Branch in this repository** (web editor `user-patch-N` branches, Advanced workflow): `gh pr checkout <number>`, edit, commit, `git push`. Or edit the files on GitHub, in the pull request's **Files changed** tab.
+- **Fork**: the same works when the pull request has **Allow edits by maintainers** ticked (`gh pr view <number> --json maintainerCanModify`). Pushing there writes to the contributor's fork. If the box is not ticked, ask the contributor to tick it, or to move the change to a branch in this repository.
+
+Tell the contributor to pull before they continue, since their copy no longer has your commits.
 
 ## What runs where
 
 | Workflow | When | What it does |
 |---|---|---|
-| PR checks | Every pull request that touches the docs, the configuration, the scripts or the tests | Pushes safe auto-fixes (whitespace, quotes) to branches of this repository, then runs the spell check, Markdown and YAML lint, link check, MkDocs build and syntax check; tests the scripts and lints the workflows when those change |
+| PR checks | Every pull request that touches the docs, the snippets in `includes/`, the configuration, the scripts or the tests | Pushes safe auto-fixes (whitespace, quotes) to branches of this repository, then runs the spell check, Markdown and YAML lint, link check, MkDocs build and syntax check; tests the scripts and lints the workflows when those change |
 | Post PR check report | After each PR checks run | Posts the report as a comment on the pull request |
 | Automation tests | Pull requests and pushes to `main` that touch workflows, scripts, tests or check settings | Tests the scripts and lints the workflows |
 | Deploy to GitHub Pages | Every push to `main`; also by hand | Builds the site with `mkdocs-ci.yml` and publishes it on the `gh-pages` branch |
 | Manage Docs Tags and Issues | Every push to `main`, every day at 07:00 UTC, issue comments; also by hand | Keeps one issue per page with its `TODO`, `NOTE` and `PLACEHOLDER` tags |
-| Autofix docs | Only by hand | Runs the auto-fixes on all of `main` and opens a pull request with them |
+| Autofix docs | Only by hand | Runs the auto-fixes on all of `main` and opens a pull request with them. Checks do not start on a pull request the bot opens: close and reopen it to run them |
 
 To run one by hand: **Actions** tab, pick the workflow, **Run workflow**.
 
