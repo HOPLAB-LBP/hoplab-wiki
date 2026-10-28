@@ -19,7 +19,7 @@ This guide will help you set up, update, and maintain the Wiki both locally and 
     - [Creating child pages](#creating-child-pages)
     - [Adding tags](#adding-todo-note-and-placeholder-tags)
     - [Common formatting syntax](#common-formatting-syntax)
-    - [Formatting toolkit](docs/contribute/formatting-toolkit.md)
+    - [Formatting gallery](docs/contribute/formatting-gallery.md)
     - [Linking and referencing](#linking-and-referencing)
 5. [For admins: reviewing, merging and the build](docs/contribute/admins.md)
 6. [Troubleshooting](#troubleshooting)
@@ -181,7 +181,7 @@ Here are some common Markdown elements:
 
 For more advanced formatting options, refer to the [MkDocs Material Reference Guide](https://squidfunk.github.io/mkdocs-material/reference/).
 
-The wiki's own building blocks (list styles, steps, boxes, tabs, cards, buttons, image options) are in the [Formatting toolkit](docs/contribute/formatting-toolkit.md), each with a snippet and what it looks like.
+The wiki's own building blocks (list styles, steps, boxes, tabs, cards, buttons, image options) are in the [Formatting gallery](docs/contribute/formatting-gallery.md), each with a snippet and what it looks like.
 
 ### Linking and referencing
 
