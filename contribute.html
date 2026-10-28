@@ -3510,55 +3510,36 @@
 <h2 id="how-to-contribute">How to contribute<a class="headerlink" href="#how-to-contribute" title="Permanent link">¶</a></h2>
 <p>We offer two workflows for contributing to the Hoplab Wiki: an Easy Workflow for quick changes to single files, and an Advanced Workflow for more extensive changes to multiple files.</p>
 <h3 id="easy-workflow-for-quick-changes">Easy workflow (for quick changes)<a class="headerlink" href="#easy-workflow-for-quick-changes" title="Permanent link">¶</a></h3>
-<p>This workflow is ideal for making small, quick changes to a single file. It can be done entirely through your web browser and doesn't require any local setup.</p>
+<p>Everything happens in your web browser. GitHub puts your change on a new branch and opens a pull request (PR) for it; we review it and publish it. You never need to create a branch yourself.</p>
+<h4 id="edit-a-page">Edit a page<a class="headerlink" href="#edit-a-page" title="Permanent link">¶</a></h4>
+<ol>
+<li>On the wiki page, click the pencil <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg></span> at the top right, next to the page title. GitHub opens the page source.</li>
+<li>Make your changes. The "Preview" tab shows how they will look (see <a href="#editing-the-wiki">Editing the wiki</a> for the syntax).</li>
+<li>Click <strong>Commit changes...</strong> and write one line saying what you changed. GitHub has already selected <strong>Create a new branch for this commit and start a pull request</strong>, since nobody can commit to <code>main</code> directly.</li>
+<li>Click <strong>Propose changes</strong>, then <strong>Create pull request</strong>.</li>
+</ol>
+<p>GitHub then asks <a href="https://github.com/costantinoai">@costantinoai</a> to review, the <a href="#automated-pr-checks">automated checks</a> run, and the change goes live once the PR is merged. We may push small fixes to your PR before merging it.</p>
 <details class="tip">
-<summary>Edit directly from this page!</summary>
-<p>Existing pages can be edited directly through the Wiki! If you need to edit or add information to any page, look for the paper and pencil symbol <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg></span> at the top-right of the page, next to the page title. This will let you edit the page and open a PR either by creating a new branch on the main repo (if you are part of the Hoplab organization on GitHub) or by forking your own copy of the repo (if you are an external contributor). Make sure to <a href="#step-3-submit-a-pr-with-your-proposed-changes">submit a PR</a> after your changes are made.</p>
+<summary>Change more in the same PR</summary>
+<p>Open your PR, go to the <strong>Files changed</strong> tab, click <strong>...</strong> on a file and choose <strong>Edit file</strong>. Commits made there go to the same PR. To edit a file that is not in the PR yet, pick your branch in the branch menu of the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki">repository</a> (it starts with your user name, e.g. <code>yourname-patch-1</code>), open the file and edit it there. When you commit, choose <strong>Commit directly to the <code>yourname-patch-1</code> branch</strong>.</p>
+<p>If you are not done yet, say so in the PR (or click <strong>Convert to draft</strong>), so we do not merge it halfway.</p>
 </details>
-<h4 id="step-1-make-your-changes">Step 1: Make your changes<a class="headerlink" href="#step-1-make-your-changes" title="Permanent link">¶</a></h4>
-<ol>
-<li>
-<p><strong>To edit an existing page:</strong></p>
-<ol>
-<li>Navigate to the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki"><code>HOPLAB-LBP/hoplab-wiki</code></a> repository.</li>
-<li>Click on the file you want to edit (usually, in <code>docs/</code>).</li>
-<li>Click on the pencil icon (✏️) at the top right to edit the file.</li>
-</ol>
-</li>
-<li>
-<p><strong>To create a new page:</strong></p>
-<ol>
-<li>Navigate to the <code>mkdocs.yml</code> file.</li>
-<li>Click on the pencil icon (✏️) at the top right to edit the file.</li>
-<li>Add the new page (e.g., <code>docs/new-page.md</code>) to the <code>nav</code> section and commit (follow the steps in the section 2 below).</li>
-<li>In the <code>docs</code> folder, click on "Add file" &gt; "Create new file".</li>
-<li>Enter a name for your file in the <code>docs</code> directory (the same you used before, e.g., <code>docs/new-page.md</code>).</li>
-</ol>
-</li>
-</ol>
-<p>You can then add/edit your content in Markdown format (see <a href="#editing-the-wiki">Editing the wiki</a> for more info), and click on "Preview" next to the "Edit" tab to see how your changes will look like.</p>
-<h4 id="step-2-commit-changes-to-a-temporary-branch">Step 2: Commit changes to a temporary branch<a class="headerlink" href="#step-2-commit-changes-to-a-temporary-branch" title="Permanent link">¶</a></h4>
-<ol>
-<li>Click on "Commit changes" after any necessary adjustments.</li>
-<li>In the pop-up window, add a commit message and description for your changes.</li>
-<li>Select "Create a new branch for this commit and start a pull request".</li>
-<li>Click on "Propose changes".</li>
-</ol>
-<h4 id="step-3-submit-a-pr-with-your-proposed-changes">Step 3: Submit a PR with your proposed changes<a class="headerlink" href="#step-3-submit-a-pr-with-your-proposed-changes" title="Permanent link">¶</a></h4>
-<ol>
-<li>In the "Open a pull request page", add an informative title and a description of the changes in the PR.</li>
-<li>In the right panel, make sure to assign an admin (as of July 2024, <a href="https://github.com/costantinoai">@costantinoai</a>) to review your changes.</li>
-<li>Click on "Create pull request" to submit your changes.</li>
-</ol>
 <details class="tip">
-<summary>Add multiple commits to a single PR</summary>
-<p>If you want to make additional changes related to an already opened PR (e.g., you need to change info in two separate files, or make additional adjustments), you do not need to open a new PR. Just go to the main page of the branch you created (you can find the branch in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>) and <strong>keep editing your files in this branch</strong>. Every new commit you make in this branch will have the option to "Commit directly to the <code>&lt;name-of-new-branch&gt;</code> branch" or "Create a new branch for this commit and start a pull request". Make sure you select the first option to include your new commits to the original PR. Importantly, if you plan to add several commits to a PR this way, make sure you assign a reviewer <strong>only after your last commit</strong> to avoid merging PRs halfway in the process, or you can create a draft PR until all your changes are included.</p>
+<summary>Add a new page</summary>
+<ol>
+<li>Open the folder where the page belongs on <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/tree/main/docs">GitHub</a>, click <strong>Add file</strong> &gt; <strong>Create new file</strong>, and type the file name (for example <code>my-new-page.md</code>).</li>
+<li>Write the content and commit as above (new branch, <strong>Propose changes</strong>, <strong>Create pull request</strong>).</li>
+<li>Add a line for the page to the <code>nav</code> section of <code>mkdocs.yml</code> on the same branch (see <a href="#adding-a-new-page">Adding a new page</a>); the build check fails for a page that is not in the menu. Not sure where it goes? Put it next to similar pages and say so in the PR; we can move it.</li>
+</ol>
 </details>
-<p>These steps above will create a new branch in the repository, that will be visible in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/branches">branches list</a>, and a new PR visible in the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/pulls">PRs list</a>. Once the PR is approved by at least one reviewer and merged into the main branch, the newly created branch will be automatically deleted and the changes will go live.</p>
+<details class="info">
+<summary>Not part of the HOPLAB-LBP organisation?</summary>
+<p>GitHub offers to fork the repository (make your own copy of it). Follow its steps and leave <strong>Allow edits by maintainers</strong> ticked on the PR, so we can fix small things for you.</p>
+</details>
 <p>For larger changes that you edit and preview on your own computer, follow the <a href="contribute/advanced-workflow.html">Advanced workflow</a>.</p>
 <h2 id="automated-pr-checks">Automated PR checks<a class="headerlink" href="#automated-pr-checks" title="Permanent link">¶</a></h2>
 <p>When you open or update a Pull Request, automated checks run to catch common issues early. A bot will post a comment on your PR summarizing the results — if anything fails, the comment explains exactly what went wrong and how to fix it. You can also view the full report in the job summary by clicking "Details" next to any check.</p>
-<p><strong>Auto-fixed for you</strong> (no action needed for PRs from branches in this repo):</p>
+<p><strong>Auto-fixed for you</strong> (no action needed for PRs from branches in this repo). The bot pushes the fixes to your branch as a new commit and says so in its comment; if you work on your computer, pull before you continue.</p>
 <ul>
 <li>Trailing whitespace and extra blank lines in Markdown files</li>
 <li>Hard tabs converted to spaces</li>
@@ -3568,7 +3549,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Fork PRs</p>
-<p>If your PR comes from a fork, auto-fixes cannot be pushed automatically (GitHub restricts write access on fork PRs). The check report will tell you exactly what needs manual fixing. The bot comment and all other checks work normally for fork PRs.</p>
+<p>If your PR comes from a fork, auto-fixes cannot be pushed automatically (GitHub restricts write access on fork PRs). The check report tells you what needs fixing by hand, or we fix it for you if <strong>Allow edits by maintainers</strong> is ticked.</p>
 </div>
 <p><strong>Checked and reported</strong> (you fix these if flagged):</p>
 <table>
