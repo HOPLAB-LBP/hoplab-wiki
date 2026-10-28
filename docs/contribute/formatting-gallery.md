@@ -18,11 +18,10 @@ Every building block the wiki uses, each shown twice: **Preview** is what reader
     | A list of items, each with a paragraph or more of explanation, all relevant to every reader | `??? numlist` / `??? deflist` |
     | Steps done in order, each with an explanation | `???+ steps` |
     | Steps done in order, written as plain sentences or always visible (emergencies) | `<div class="steps-list" markdown>` around a numbered list |
-    | Items with a one-line explanation | a plain bullet list — there is nothing worth hiding |
+    | Items with a one-line explanation, points with no order, or steps short enough to need no line | a plain bullet or numbered list (styled automatically) |
     | The reader needs exactly **one** of several alternatives (Windows/macOS, one of three procedures) | [content tabs](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/) (`=== "Tab"`) |
     | A single aside, warning or tip interrupting the text | `!!! warning`, `!!! tip`, … |
     | Troubleshooting entries the reader consults only when something breaks | `??? failure "Symptom"` |
-    | Points with no order, or steps short enough to need no line | a plain bullet or numbered list (styled automatically) |
     | The main places a reader can go from an index page | grid cards (`<div class="grid cards" markdown>`) |
     | One action: download a file, open an external site | a button (`{ .md-button }`) |
     | Code lines that need a short explanation | code notes (`# (1)!` and a numbered list under the code) |
@@ -88,9 +87,9 @@ The numbers get a connecting line. Use it for a procedure whose steps are plain 
 
 ### Collapsible lists
 
-When a section is a **list of things that each need a short explanation** — the
-documents an application must contain, the tools on a machine, the fields in a
-form — use `??? numlist` (numbered) or `??? deflist` (bulleted) instead of a run
+When a section is a **list of things that each need a short explanation**, such as the
+documents an application must contain, the tools on a machine or the fields in a
+form, use `??? numlist` (numbered) or `??? deflist` (bulleted) instead of a run
 of `!!!` boxes. The term stays visible so the whole list can be scanned at a
 glance, and the explanation opens on click. For **steps that follow each other in order** (a procedure, the path to a first session), use `??? steps`: a vertical line joins the numbers so the steps read as one sequence.
 
@@ -701,7 +700,7 @@ Write it once in `includes/` and pull it into each page with one line:
 
 ### Open tasks on a page
 
-Hidden notes that open a GitHub issue for the page: see [Adding tags](../contribute.md#adding-todo-note-and-placeholder-tags).
+Hidden notes that open a GitHub issue for the page: see [Open tasks and notes](writing-pages.md#open-tasks-and-notes).
 
 ### Your name under each page
 

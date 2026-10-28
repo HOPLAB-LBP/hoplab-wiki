@@ -42,7 +42,7 @@ The [Hoplab](https://www.hoplab.be/) is part of the larger [NeuroSPACE consortiu
 
     Learn how you can help improve and expand our knowledge base
 
-    [:octicons-arrow-right-24: How to contribute](contribute.md)
+    [:octicons-arrow-right-24: Quick start](contribute.md)
 
 </div>
 
