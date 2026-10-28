@@ -1,6 +1,6 @@
 /*
   Visual angle calculator, a wiki primitive (documented in the Formatting
-  toolkit, docs/contribute/formatting-toolkit.md). Used on the MR11
+  toolkit, docs/contribute/formatting-gallery.md). Used on the MR11
   equipment page and the EEG task page; the text around it is shared in
   includes/visual-angles.md.
 
