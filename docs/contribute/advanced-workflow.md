@@ -10,51 +10,28 @@ With this workflow, you will make and preview all the edits locally (on your com
 !!! question "How should I organize my PR?"
     A [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (or PR) "*is a proposal to merge a set of changes from one branch into another*". Ideally, a PR should include all the commits **for a specific feature** or bugfix from end-to-end. Avoid making PRs that contain multiple unrelated changes. For instance, if you are working on a feature that requires modifications across multiple files, ensure all those changes are included in the same PR. Conversely, avoid combining changes for different features (e.g., adding unrelated updates to the fMRI workflow and the getting started section) in a single PR. Each PR should represent a cohesive unit of work.
 
-Here's a step-by-step guide that includes forking and cloning the repository, making and testing changes locally, and then submitting those changes for review through a pull request.
+Each change lives on its own branch in the `HOPLAB-LBP/hoplab-wiki` repository, and reaches `main` through a pull request. Nobody can push to `main` directly. You clone the repository once; after that, every change follows steps 3 to 7.
 
-## Step 1: Forking the repository and cloning your fork
-
-=== "Using the CLI"
-
-    1. **Navigate to the original repository:**
-
-        Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
-
-    2. **Fork the repository:**
-
-        Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
-
-    3. **Clone Your Fork:**
-        1. Click the "Code" button on your forked repository page and copy the URL.
-        2. Open your terminal (Command Prompt on Windows, Terminal on macOS and Linux) and navigate to the directory where you want to store the project, then type:
-           ```bash
-           git clone https://github.com/your-username/hoplab-wiki.git
-           ```
-        3. Change into the directory of the cloned repository:
-           ```bash
-           cd hoplab-wiki
-           ```
+## Step 1: Clone the repository (once)
 
 === "Using GitHub Desktop"
 
-    1. **Navigate to the Original Repository:**
+    1. In GitHub Desktop, click `File > Clone Repository`.
+    2. In the "GitHub.com" tab, pick `HOPLAB-LBP/hoplab-wiki` (or paste `https://github.com/HOPLAB-LBP/hoplab-wiki` in the "URL" tab).
+    3. Choose where to store it on your computer and click "Clone".
 
-        Open your web browser and go to the GitHub page for the `hoplab-wiki` repository located under the `HOPLAB-LBP` organization.
+=== "Using the CLI"
 
-    2. **Fork the Repository:**
+    ```bash
+    git clone https://github.com/HOPLAB-LBP/hoplab-wiki.git
+    cd hoplab-wiki
+    ```
 
-        Click the "Fork" button at the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
+??? info "Not part of the HOPLAB-LBP organisation?"
+    You cannot push branches to the lab repository. Fork it on GitHub (the "Fork" button), clone your fork instead, and follow the same steps: work on a new branch (never on your fork's `main`), push it to your fork, and open the pull request against `HOPLAB-LBP/hoplab-wiki` `main`. Leave **Allow edits by maintainers** ticked so we can fix small things for you.
 
-    3. **Open GitHub Desktop:**
-
-        If you do not have GitHub Desktop installed, download and install it from [GitHub Desktop's official website](https://desktop.github.com/).
-
-    3. **Clone your fork using GitHub Desktop:**
-        1. Open GitHub Desktop.
-        2. In the top menu, click on `File > Clone Repository`.
-        3. In the "URL" tab, paste the URL of your forked repository from your GitHub account into the "Repository URL" field.
-        4. Choose the local path where you want to store the repository on your computer.
-        5. Click "Clone".
+??? failure "Did you clone a fork in the past?"
+    Older versions of this page told everyone to fork. If your copy points to `your-username/hoplab-wiki`, clone the lab repository as above and work there; you can delete the old fork on GitHub (Settings, at the bottom of the page). GitHub Desktop shows a fork when it asks "How are you planning to use this fork?".
 
 ## Step 2: Setting up your local environment
 
@@ -78,10 +55,24 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 !!! tip "After pulling new changes"
     Run `pip install -r requirements.txt` again whenever `requirements.txt` has changed. If a new plugin is missing, `mkdocs serve` stops with an error such as `The "glightbox" plugin is not installed`.
 
-## Step 3: Making changes
+## Step 3: Start a branch for your change
 
-1. **Edit documentation:**
-     You can now make changes to your local clone of the documentation. Use a text editor or an IDE to open and edit the Markdown files in the repository. If changes are extensive, consider splitting them into smaller, manageable commits that focus on specific pages or sections for clarity and ease of review.
+Start from an up-to-date `main` and give the branch a short name that says what it is for, such as `eeg-filter-section`.
+
+=== "Using GitHub Desktop"
+
+    1. With `main` as the current branch, click "Fetch origin" (then "Pull origin" if it appears).
+    2. Click "Current Branch" > "New Branch", type the name and click "Create Branch".
+
+=== "Using the CLI"
+
+    ```bash
+    git switch main
+    git pull
+    git switch -c eeg-filter-section
+    ```
+
+Then edit the Markdown files in a text editor or IDE. Keep one topic per branch; for an unrelated change, start another branch from `main`.
 
 ## Step 4: Testing your changes locally
 
@@ -101,45 +92,50 @@ Here's a step-by-step guide that includes forking and cloning the repository, ma
 1. **Stop the server:**
     When you are done previewing and editing and you are done with the changes, go back to the terminal where your server is running and press `Ctrl+C` to stop the server.
 
-## Step 6: Committing your changes
-
-=== "Using the CLI"
-
-    1. **Stage and commit your changes:**
-        1. From your terminal, add all modified files to your commit:
-          ```bash
-          git add .
-          ```
-        2. Commit the changes, including a clear message about what was modified and why:
-          ```bash
-          git commit -m "Detailed description of changes"
-          ```
-    2. Push your commits to the forked repository on GitHub:
-          ```bash
-          git push origin main
-          ```
+## Step 6: Commit and push your branch
 
 === "Using GitHub Desktop"
 
-    1. **Stage and commit your changes:**
-        1. In GitHub Desktop, you should see the list of changed files in the left sidebar.
-        2. Review the changes by clicking on each file.
-        3. Once you are ready to commit, write a summary of the changes in the "Summary" field at the bottom left.
-        4. Add a more detailed description in the "Description" field if necessary.
-        5. Click the "Commit to main" button.
+    1. Check the changed files in the left sidebar and write a summary at the bottom left.
+    2. Click "Commit to eeg-filter-section" (your branch name, never `main`).
+    3. Click "Publish branch" (later pushes: "Push origin").
 
-    2. **Push your changes:**
-        1. In GitHub Desktop, click on the `Push origin` button at the top to push your commits to GitHub.
+    If you are still on `main`, GitHub Desktop warns you before committing. Click "switch branches", create your branch, and your changes move with you.
 
-## Step 7: Creating a pull request
+=== "Using the CLI"
 
-1. Navigate to your forked repository on GitHub.
-2. Click on the "Pull requests" tab.
-3. Click on "New pull request".
-4. Choose the original repository's `main` branch as the base, and your fork's `main` branch as the compare.
-5. Fill out the form to describe the changes.
-6. In the right panel, make sure to assign an admin (as of July 2024, [@costantinoai](https://github.com/costantinoai)) to review your changes.
-7. Click on "Create pull request" to submit your changes.
+    ```bash
+    git add docs/path/to/page.md
+    git commit -m "Add the filter section to the EEG preprocessing page"
+    git push -u origin eeg-filter-section
+    ```
 
-!!! note "Automatic Deployment with GitHub Actions"
-    This repository is set up to use GitHub Actions for automatic deployment. This means that every time changes are merged into the `main` branch, the documentation will automatically be built and deployed to GitHub Pages. You do not need to manually run the `mkdocs gh-deploy` command each time you make changes. Simply push your changes to the `main` branch, and GitHub Actions will handle the deployment.
+    Later pushes on the same branch are just `git push`.
+
+??? failure "Push declined, or you committed on `main` by mistake"
+    `main` only accepts changes through pull requests, so a push to it fails with "push declined due to repository rule violations". Move your commits to a branch and push that instead:
+
+    ```bash
+    git switch -c eeg-filter-section
+    git push -u origin eeg-filter-section
+    ```
+
+    Your local `main` still has the commits that GitHub's `main` does not. Once your pull request is open, reset it with `git switch main && git reset --hard origin/main`. In GitHub Desktop, run these lines from "Repository" > "Open in Terminal" (or "Open in Command Prompt"), or ask us.
+
+## Step 7: Open a pull request
+
+=== "Using GitHub Desktop"
+
+    Click "Preview Pull Request", then "Create Pull Request". GitHub opens in your browser with your branch already selected; add a title and a short description and click "Create pull request".
+
+=== "Using the CLI"
+
+    Open the link that `git push` printed, or the yellow "Compare & pull request" banner on the [repository page](https://github.com/HOPLAB-LBP/hoplab-wiki), add a title and a short description and click "Create pull request".
+
+[@costantinoai](https://github.com/costantinoai) is asked to review automatically, and the [automated checks](../contribute.md#automated-pr-checks) run and post a report on the pull request. Not finished yet? Use the arrow next to the button to create a draft pull request instead, and click "Ready for review" when you are done.
+
+To change the pull request, commit and push to the same branch again; we may push small fixes to it too, so pull before you continue (GitHub Desktop: "Fetch origin" > "Pull origin"; CLI: `git pull`).
+
+## Step 8: After the merge
+
+We squash-merge the pull request: your branch becomes one commit on `main`, the branch is deleted on GitHub, and the site updates a few minutes later. Switch back to `main`, pull, and delete your local branch (GitHub Desktop: "Branch" > "Delete..."; CLI: `git switch main && git pull && git branch -D eeg-filter-section`). Start the next change from step 3.
