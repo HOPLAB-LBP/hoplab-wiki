@@ -1,6 +1,6 @@
 # For admins
 
-Admins review and merge pull requests and keep the build working. Repository admins today: [@costantinoai](https://github.com/costantinoai), [@kschevenels](https://github.com/kschevenels) and [@opdebeeck](https://github.com/opdebeeck).
+Admins review and merge pull requests and keep the build working. Repository admins today: [@costantinoai](https://github.com/costantinoai), [@kschevenels](https://github.com/kschevenels) and [@opdebeeck](https://github.com/opdebeeck). Pull requests are reviewed by the [`reviewers` team](https://github.com/orgs/HOPLAB-LBP/teams/reviewers) (today: @costantinoai).
 
 ## Reviewing and accepting pull requests
 
@@ -11,7 +11,7 @@ Admins review and merge pull requests and keep the build working. Repository adm
 
 The rules on `main`:
 
-- Changes reach `main` only through a pull request, with one approving review from a code owner. `.github/CODEOWNERS` makes @costantinoai the reviewer of every pull request.
+- Changes reach `main` only through a pull request, with one approving review from a member of the `reviewers` team. GitHub asks the team to review every pull request.
 - Nobody can push to `main` directly, admins included. Admins can bypass the review, but only when merging a pull request.
 - A new push to the pull request dismisses earlier approvals.
 - Force pushes to `main` are blocked.
@@ -22,7 +22,6 @@ The rules on `main`:
 - Wait until all checks pass, and read the bot comment with the check report.
 - **Squash and merge** turns each pull request into one commit on `main`. Its author is the person who opened the pull request; anyone else who committed is added as co-author.
 - You cannot approve your own pull request. Admins can bypass the review rule: tick the bypass box under the merge button, or run `gh pr merge <number> --squash --admin`. Do this only when all checks have passed.
-- A pull request opened by the code owner (@costantinoai) can also be merged after any lab member approves it, without the bypass.
 - GitHub deletes the branch after the merge. Delete your local copy with `git branch -D <branch>`.
 - The merge starts the deploy: the live site updates a few minutes later.
 
@@ -34,6 +33,16 @@ You can push fixes to a pull request before merging it.
 - **Fork**: the same works when the pull request has **Allow edits by maintainers** ticked (`gh pr view <number> --json maintainerCanModify`). Pushing there writes to the contributor's fork. If the box is not ticked, ask the contributor to tick it, or to move the change to a branch in this repository.
 
 Tell the contributor to pull before they continue, since their copy no longer has your commits.
+
+## Other lab repositories
+
+Every repository in the HOPLAB-LBP organisation follows the same rules on its default branch: changes only through a pull request, one approval from the `reviewers` team, no force pushes, squash merges only, and merged branches deleted. Admins bypass the rules only when merging a pull request.
+
+The organisation is on GitHub's free plan, which has no organisation-wide rules and enforces rules only on public repositories, so a new repository starts without them. Set it up once, as an admin:
+
+1. **Settings** > **General**: under "Pull Requests", keep only "Allow squash merging" and tick "Automatically delete head branches".
+2. **Settings** > **Collaborators and teams**: add the `reviewers` team with the Write role.
+3. **Settings** > **Rules** > **Rulesets**: export the ruleset of another lab repository and import it here (**New ruleset** > **Import a ruleset**).
 
 ## What runs where
 
