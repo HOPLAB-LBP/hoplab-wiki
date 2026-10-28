@@ -58,7 +58,6 @@ eeg_data.info['bads'] = bad_channels
 raw_eeg.pick_channels(eeg_channels)
 ```
 
-
 ### 2. Make copies & band pass filter
 
 We start by making 2 copies of our data. There is a *main copy*, which we will use to create the actual events, and an *ICA copy*, on which we will run the ICA. We separate these two as the optimal filtering parameters differ between them.
@@ -70,7 +69,6 @@ ica_copy = eeg_data.copy()
 ```
 
 In order to filter, make sure you have enough empty data surrounding your actual EEG data. Filtering affects the edges of continuous data disproportionately, so starting the recording a bit before and ending a bit after the task ensures we don't distort actual useful data when filtering. This is what the `filtering_recording_margin` parameter is for. You can check that you have enough slack around your actual data with this kind of check:
-
 
 ```python
 # Read in the events
@@ -177,7 +175,6 @@ ica.apply(main_copy)
 Below are some examples of plotted ICA topographies. You can spot the bad components linked to eye blink and jaw clenching by visual inspection.
 
 ![ICA bad components](https://raw.githubusercontent.com/HOPLAB-LBP/hoplab-wiki/main/docs/assets/eeg-preprocessing-fig1.png)
-
 
 ### 6. Re-reference the EEG signal
 
