@@ -75,6 +75,7 @@ nav:
       - Data acquisition: research/eeg/eeg-acquisition.md
       - Creating EEG tasks: research/eeg/eeg-task.md
       - EEG data analysis: research/eeg/eeg-analysis.md
+      - EEG data preprocessing: research/eeg/analysis/eeg-preprocessing.md
     - TMS:
       - research/tms/index.md
       - First steps: research/tms/tms-get-started.md
