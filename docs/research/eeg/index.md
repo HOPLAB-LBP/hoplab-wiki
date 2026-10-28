@@ -38,6 +38,14 @@ In Hoplab, we typically set up experiments for multivariate EEG ("Representation
 
     [:octicons-arrow-right-24: Start scripting](eeg-task.md)
 
+- :octicons-gear-16:{ .lg .middle } __EEG data preprocessing__
+
+    ---
+
+    A simple workflow to preprocess your EEG data, from *raw files* to *epochs*.
+
+    [:octicons-arrow-right-24: Preprocess your data](analysis/eeg-preprocessing.md)
+
 </div>
 
 <!--
