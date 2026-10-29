@@ -44,6 +44,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           REPORT: ${{ runner.temp }}/links.md
+          LYCHEE_OUTCOME: ${{ steps.lychee.outcome }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           LABEL="link-check"
@@ -60,6 +61,10 @@ jobs:
           ERRORS=$(grep -oP 'Errors\s*\|\s*\K[0-9]+' "$REPORT" | head -1)
           echo "Errors: ${ERRORS:-unknown}"
 
+          if [ "$LYCHEE_OUTCOME" != "success" ]; then
+            echo "::error::The link check itself failed, so its result cannot be trusted; the issue is left as it is."
+            exit 1
+          fi
           if [ "${ERRORS:-1}" = "0" ]; then
             if [ -n "$NUM" ]; then
               gh api -X POST "repos/$REPO/issues/$NUM/comments" \
@@ -142,7 +147,9 @@ jobs:
             git reset -q --hard origin/gh-pages
             REMOVED=""
             for NUM in $STALE; do
-              if [ -d "pr-preview/pr-$NUM" ] && [ "$(pr_state "$NUM")" = "closed" ]; then
+              [ -d "pr-preview/pr-$NUM" ] || continue
+              STATE=$(pr_state "$NUM")
+              if [ "$STATE" = "closed" ]; then
                 git rm -rq "pr-preview/pr-$NUM"
                 REMOVED="$REMOVED #$NUM"
               fi

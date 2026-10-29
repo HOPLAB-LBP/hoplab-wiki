@@ -21,6 +21,9 @@ concurrency:
 
 jobs:
   deploy:
+    # Run by hand, the workflow could be started from any branch: publish
+    # only what is on main.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:

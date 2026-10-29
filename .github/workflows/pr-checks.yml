@@ -30,7 +30,7 @@ jobs:
     env:
       # Previews only for branches of this repository: fork PRs and Dependabot
       # get a read-only token, which cannot push to gh-pages.
-      PREVIEW_ALLOWED: ${{ github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]' }}
+      PREVIEW_ALLOWED: ${{ github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot[bot]' }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -327,7 +327,7 @@ jobs:
           $(cat /tmp/pr-checks/preview-pages.md 2>/dev/null)
           <!-- /pr-preview -->"
           elif [ "$PREVIEW_ALLOWED" = "true" ] && [ "$BUILD_STATUS" = "failed" ]; then
-            PREVIEW_NOTE="> :no_entry: **No preview:** the site did not build. An older preview of this pull request was taken offline; a new one appears once the build passes."
+            PREVIEW_NOTE="<!-- pr-preview-stale -->"
           fi
 
           # Hidden marker so we can find and update this comment on future runs
@@ -1163,7 +1163,7 @@ jobs:
     if: >-
       always() && needs.check-and-report.outputs.build == 'failed' &&
       github.event.pull_request.head.repo.full_name == github.repository &&
-      github.actor != 'dependabot[bot]'
+      github.actor != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot[bot]'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -1193,18 +1193,16 @@ jobs:
   # ───────────────────────────────────────────────────────────
   # Runs the safe fixes (table pipes, Markdown spacing, quotes and blank lines
   # in tab and box titles, YAML trailing spaces, spellings typos is sure of) on
-  # a copy of the PR and posts each change as a review suggestion on the lines
-  # the PR added; "Commit suggestion" applies it. Nothing is pushed: every
-  # commit is checked by its own run of check-and-report. The fix scripts come
-  # from the base branch, so the PR cannot change what runs with this token.
-  suggest-fixes:
+  # a copy of the PR and keeps the difference. Markdown lint loads settings
+  # from the PR, which can include code, so this job has no token at all.
+  # Nothing is pushed: every commit is checked by its own run of
+  # check-and-report.
+  find-fixes:
     if: >-
       github.event.pull_request.head.repo.full_name == github.repository &&
-      github.actor != 'dependabot[bot]'
+      github.actor != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot[bot]'
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
+    permissions: {}
     steps:
       - name: Check out the pull request
         uses: actions/checkout@v7
@@ -1240,9 +1238,7 @@ jobs:
           install "$RUNNER_TEMP/typos-extract/typos" "$RUNNER_TEMP/bin/typos"
           echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
 
-      # Each fixer changes only the working tree; the next step turns the
-      # difference into suggestions. typos --write-changes applies only
-      # corrections it is sure of.
+      # typos --write-changes applies only corrections it is sure of.
       - name: Apply the safe fixes to the working tree
         working-directory: pr
         run: |
@@ -1251,11 +1247,54 @@ jobs:
           python3 ../trusted/scripts/check_mkdocs_syntax.py --fix README.md docs/ || true
           sed -i 's/[[:space:]]*$//' mkdocs.yml mkdocs-ci.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
           typos --config ./_typos.toml --write-changes || true
-          git status --short
+          git diff --no-ext-diff --no-color > "$RUNNER_TEMP/fixes.diff"
+          wc -c < "$RUNNER_TEMP/fixes.diff"
+
+      - name: Keep the fixes
+        uses: actions/upload-artifact@v7
+        with:
+          name: fixes-diff
+          path: ${{ runner.temp }}/fixes.diff
+          retention-days: 1
+
+  # Posts the difference as review suggestions on the lines the PR added
+  # ("Commit suggestion" applies one). It runs no code from the PR: it only
+  # reads the difference, as text, and refuses an implausibly large one.
+  suggest-fixes:
+    needs: find-fixes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      # reviewdog needs a git checkout to resolve paths; nothing in it runs.
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      - name: Get the fixes
+        uses: actions/download-artifact@v8
+        with:
+          name: fixes-diff
+          path: ${{ runner.temp }}/fixes
+
+      - uses: reviewdog/action-setup@v1.5.0
+        with:
+          reviewdog_version: v0.21.2
 
       - name: Post the fixes as suggestions
-        uses: reviewdog/action-suggester@v1.26.3
-        with:
-          path: pr
-          tool_name: Fix
-          filter_mode: added
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DIFF: ${{ runner.temp }}/fixes/fixes.diff
+        run: |
+          if [ ! -s "$DIFF" ]; then
+            echo "Nothing to suggest."
+            exit 0
+          fi
+          if [ "$(wc -c < "$DIFF")" -gt 1000000 ]; then
+            echo "::warning::The fixes are too large to post as suggestions."
+            exit 0
+          fi
+          reviewdog -name=Fix -f=diff -f.diff.strip=1 -reporter=github-pr-review \
+            -filter-mode=added -fail-level=none -level=warning < "$DIFF"

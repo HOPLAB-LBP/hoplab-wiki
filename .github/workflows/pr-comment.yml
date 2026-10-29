@@ -111,9 +111,11 @@ jobs:
           RUN_ID: ${{ github.event.workflow_run.id }}
           RUN_URL: ${{ github.event.workflow_run.html_url }}
         run: |
-          grep -qx '<!-- pr-preview -->' report.md || exit 0
-          RESULT=$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/jobs" \
-            --jq '.jobs[] | select(.name == "preview") | .conclusion')
+          grep -qxE '<!-- pr-preview(-stale)? -->' report.md || exit 0
+          JOBS=$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/jobs?per_page=100")
+          RESULT=$(jq -r '.jobs[] | select(.name == "preview") | .conclusion' <<< "$JOBS")
+          REMOVED=$(jq -r '.jobs[] | select(.name == "preview-remove-stale") | .conclusion' <<< "$JOBS")
+          export REMOVED
           OWNER="${GITHUB_REPOSITORY%%/*}"
           export RESULT
           export URL="https://${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}/pr-preview/pr-${PR_NUMBER}/"
@@ -136,6 +138,15 @@ jobs:
               else:
                   text = ""
               report = report[:block.start()] + text + report[block.end():]
+          if os.environ["REMOVED"] == "success":
+              stale = ("> :no_entry: **No preview:** the site did not build, so the older preview of this "
+                       "pull request was taken offline. A new one appears once the build passes.")
+          elif os.environ["REMOVED"] == "failure":
+              stale = ("> :warning: **No preview:** the site did not build, and the older preview of this "
+                       f"pull request could not be taken offline (see the [run]({os.environ['RUN_URL']})).")
+          else:
+              stale = "> :no_entry: **No preview:** the site did not build."
+          report = report.replace("<!-- pr-preview-stale -->", stale)
           with open("report.md", "w", encoding="utf-8") as f:
               f.write(report)
           PY

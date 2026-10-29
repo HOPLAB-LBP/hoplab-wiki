@@ -13,7 +13,7 @@ permissions:
 jobs:
   remove:
     # Previews exist only for branches of this repository (see pr-checks.yml).
-    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot[bot]'
     runs-on: ubuntu-latest
     # Waits for a preview deploy of the same PR that is still running.
     concurrency:
