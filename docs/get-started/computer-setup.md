@@ -170,7 +170,7 @@ In Hoplab, several communication channels are used, on different levels. Here is
 
 | Channel | Level | Purpose | How to get access |
 |---------|-------|---------|-------------------|
-| **Google Calendar** | Hoplab | Share group meetings, events, holidays | Ask [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046) or [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) |
+| **Google Calendar** | Hoplab | Share group meetings, events, holidays, and days you work from home or abroad | Ask [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046) or [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) |
 | **Slack LBP workspace** | Hoplab | Quick (disappearing) communication | Ask any lab member |
 | **Hoplab mailing list** | Hoplab | More formal communication | See [this page](mailing-lists.md#some-useful-mailing-lists) |
 | **Hoplab Teams** | Hoplab | Shared documents | Ask [Andrea](https://www.kuleuven.be/wieiswie/en/person/00152046), [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) or [Silke](https://www.kuleuven.be/wieiswie/en/person/00170487) |

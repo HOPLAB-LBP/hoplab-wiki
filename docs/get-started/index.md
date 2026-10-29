@@ -106,6 +106,7 @@ Finally, at Hoplab, we care deeply about creating a safe and respectful environm
 ## Get involved
 
 - **Visit the [HopLab website](https://www.hoplab.be)** for information on our research projects, team members, and recent publications.
+- **Meet the lab**: for a list of current and previous lab members, alumni included, see the [People page](https://www.hoplab.be/people/) on the Hoplab website.
 - **Contribute to this Wiki**: Your insights are valuable! If you spot missing information or have suggestions for improvement, please let us know.
 
 We hope this guide helps you settle into your new role. Dive in, and enjoy your journey with HOPLAB!
