@@ -97,11 +97,21 @@ function getLabel(file) {
 function parseTags(content) {
   function stripCode(inp) {
     const lines = inp.split(/\r?\n/);
-    let inFence = false;
+    // A fence opens with three or more backticks or tildes and closes with a
+    // run of the same character at least as long (CommonMark).
+    let fence = null;
     const out = [];
     for (const line of lines) {
-      if (/^```/.test(line.trim())) { inFence = !inFence; out.push(''); continue; }
-      if (inFence) { out.push(''); continue; }
+      const m = /^(`{3,}|~{3,})/.exec(line.trim());
+      if (!fence && m) { fence = m[1]; out.push(''); continue; }
+      if (fence) {
+        if (m && m[1][0] === fence[0] && m[1].length >= fence.length
+            && line.trim().slice(m[1].length).trim() === '') {
+          fence = null;
+        }
+        out.push('');
+        continue;
+      }
       out.push(line.replace(/`[^`]*`/g, ''));
     }
     return out.join('\n');

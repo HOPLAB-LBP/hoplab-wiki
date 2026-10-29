@@ -73,6 +73,18 @@ else
   FAIL=$((FAIL + 1))
 fi
 
+# An empty box followed by a paragraph is reported, never re-indented
+cp "$FIXTURES/mkdocs_syntax_empty_admonition.md" "$TMPDIR/empty_adm.md"
+run_test "empty admonition before a paragraph is reported" 1 python3 "$SCRIPT" "$TMPDIR/empty_adm.md"
+python3 "$SCRIPT" --fix "$TMPDIR/empty_adm.md" > /dev/null 2>&1 || true
+if diff -q "$FIXTURES/mkdocs_syntax_empty_admonition.md" "$TMPDIR/empty_adm.md" > /dev/null 2>&1; then
+  echo "  PASS: fix mode leaves the paragraph after an empty admonition alone"
+  PASS=$((PASS + 1))
+else
+  echo "  FAIL: fix mode moved the paragraph after an empty admonition into it"
+  FAIL=$((FAIL + 1))
+fi
+
 # ── Empty/nonexistent paths ──
 echo "Edge cases:"
 EMPTYDIR=$(mktemp -d)
