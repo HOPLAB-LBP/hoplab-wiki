@@ -1,21 +1,14 @@
 name: Automation tests
 
+# Pull requests get the same tests and actionlint in "PR checks". This
+# workflow is the safety net for what lands on main.
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/*.yml"
-      - "scripts/**"
-      - "tests/**"
-      - "requirements.txt"
-      - ".markdownlint-cli2.yaml"
-      - ".yamllint.yml"
-      - ".lychee.toml"
-      - "_typos.toml"
   push:
     branches:
       - main
     paths:
       - ".github/workflows/*.yml"
+      - ".github/workflows/*.yaml"
       - "scripts/**"
       - "tests/**"
       - "requirements.txt"
@@ -26,12 +19,11 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: "automation-tests-${{ github.event.pull_request.number || github.ref }}"
+  group: "automation-tests-${{ github.ref }}"
   cancel-in-progress: true
 
 permissions:
   contents: read
-  pull-requests: read
 
 jobs:
   detect-changes:
@@ -50,6 +42,7 @@ jobs:
           filters: |
             workflow:
               - ".github/workflows/*.yml"
+              - ".github/workflows/*.yaml"
             automation:
               - "scripts/**"
               - "tests/**"
