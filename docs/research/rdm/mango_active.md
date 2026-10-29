@@ -35,7 +35,7 @@ Next, we have to make sure you are logged in to ManGO and your `irods_environmen
 pip install mango_auth
 ```
 
-Then, go to the "How to connect" page in [the ManGO portal](https://mango.kuleuven.be/) to get your `irods_user_name`, `irods_zone_name` and `irods_host` information. Execute the command below with your own information in your terminal:
+Then, go to the "How to connect" page in [the ManGO portal](https://mango.kuleuven.be/) to get your `irods_user_name`, `irods_zone_name` and `irods_host` information. Make sure you are connected to the KU Leuven VPN, otherwise your machine might not be able to reach the iRODS ports (see the [KU Leuven VPN page](https://uafw.icts.kuleuven.be/). Execute the command below with your own information in your terminal:
 
 ```bash
 # log in to mango
