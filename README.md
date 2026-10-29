@@ -64,35 +64,24 @@ Then see [what happens next](#after-you-open-a-pull-request).
 
 ## After you open a pull request
 
-- The lab's reviewers (the `reviewers` team on GitHub) are asked to review it. We may push small fixes to it before merging.
-- Automated checks run, and a bot posts one comment on the pull request with the results. When something fails, the comment says what went wrong and how to fix it. For the full report, click **Details** next to a check. The pull request can be merged only once the checks pass.
-- Where the bot knows the fix for a small problem on a line you changed, it suggests it on that line under **Files changed**. Click **Commit suggestion** to apply it. If you work on your computer, pull before you continue.
-- The bot's comment links a preview: the whole wiki with your changes, with a direct link to each page you changed (up to 15). It updates with every push and disappears when the pull request closes.
-- Once the pull request is merged, the live wiki updates within a few minutes.
+1. **Look at the preview.** A few minutes later a bot comments on your pull request with a link to the wiki as it will look with your changes, and a link to each page you changed.
+2. **Fix what the checks flag.** The same comment says what to fix. Where the bot knows the fix, it waits for you under **Files changed**: click **Commit suggestion** (or **Add suggestion to batch** for several, then commit once). Your pull request can be merged once the checks pass.
+3. **Wait for the review.** A reviewer reads it, may ask for changes or make small ones, and merges it. The live wiki updates a few minutes later.
 
-??? info "What the bot can suggest"
-    - Spellings the spell check is sure of
-    - Spaces at the end of a line and extra blank lines in Markdown files
-    - Tabs, which become spaces
-    - Spaces at the end of a line in YAML files
-    - Curly quotes in the titles of tabs (`=== "..."`) and boxes (`!!! type "..."`)
-    - A missing blank line after a tab title (`=== "Title"`)
-    - Box content that is not indented, and missing `|` at the end of table rows
-    - `*` bullets (the wiki uses `-`), spaces inside link brackets, a colon or full stop at the end of a heading
-    - Links the build cannot follow, when there is one clear target: a link starting with `/`, a page that moved or whose name has a typo, a heading anchor with a typo
-
-??? info "What the checks report (you fix these)"
+??? info "What the checks look at"
     | Check | What it does |
     |-------|--------------|
     | **Spell check** | Catches typos. If it flags a real word (a name or a technical term), add it to `_typos.toml`. |
-    | **Markdown lint** | Checks that the formatting is consistent (heading style, bare URLs and so on). |
-    | **Link check** | Checks the links on every page. It only warns and never blocks your pull request: some sites refuse automated checks, so open a flagged link in your browser before changing it. |
-    | **YAML lint** | Checks the syntax of `mkdocs.yml` and the workflow files. |
+    | **Markdown lint** | Checks that the formatting is consistent (heading style, bullets, spacing). |
     | **MkDocs build** | Builds the whole site and fails on broken links, missing pages or configuration errors. |
-    | **MkDocs syntax** | Catches content that MkDocs would quietly render wrong, such as tab or box content that is not indented enough, or a code block at the wrong indent. |
+    | **MkDocs syntax** | Catches content that would quietly render wrong, such as tab or box content that is not indented enough. |
+    | **YAML lint** | Checks the syntax of `mkdocs.yml` and the workflow files. |
+    | **Link check** | Checks that links open. It only warns: some sites refuse automated checks, so open a flagged link in your browser before changing it. |
+
+    The bot suggests a fix for spelling it is sure of, spacing and quotes, and links with one clear target. Anything else, the comment explains.
 
 ??? note "Does your pull request come from a fork?"
-    Then the bot cannot suggest fixes or publish a preview (GitHub gives it no write access for forks). The report tells you what to fix by hand, or we fix it for you if **Allow edits by maintainers** is ticked.
+    Then the bot cannot suggest fixes or publish a preview (GitHub gives it no write access for forks). The comment tells you what to fix by hand, or we fix it for you if **Allow edits by maintainers** is ticked.
 
 ## Need help?
 
