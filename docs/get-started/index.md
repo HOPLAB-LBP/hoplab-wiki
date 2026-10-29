@@ -85,13 +85,21 @@ If you have any questions or run into issues while getting set up, the following
 - **PPW Research resources**: Funding info, research support, and infrastructure — see the [PPW Research page](https://ppw.kuleuven.be/en/research).
 - **Report technical defects**: Use [KU Loket](https://www.kuleuven.be/kuloket) (HSE & Spaces > Reporting technical defects > New notification) to report building or equipment issues. For lab-specific equipment, contact CLD/technical services directly.
 
-## Health, Safety and Environment
+## HSE (Health, Safety and Environment) orientation
 
-All new employees (students, PhDs and postdocs) receive a personalized introduction and orientation at their workspace covering Health, Safety, and Environment ([HSE](https://admin.kuleuven.be/sab/vgm/en/doc/hse-organisation/intranet/general-hse-info-brochure-en)). This includes information on first aid and emergency procedures, pregnancy-related guidelines, ergonomics, waste management, psychosocial support, what to do in case of a work accident, how to report issues, and more. It is taken to heart by the unit's HSE Network Coordinator ([Nathalie de Swaef](https://www.kuleuven.be/wieiswie/nl/person/00061461)) or delegated to VGM antenna.
+All new employees with a full-time or part-time workplace in a KU Leuven building must receive an HSE orientation (*VGM-onthaal*). Shortly after starting, you will receive an email invitation from the faculty's HSE contact person (VGM-antennecoördinator), currently [Jasmine Vanuytrecht](https://www.kuleuven.be/wieiswie/nl/person/00064455). **You are responsible for following up on this invitation.**
 
-If you will be working at Hoplab, [Zsuzsanna](https://www.kuleuven.be/wieiswie/nl/person/00048902) can conduct your **HSE orientation** in person and register it via SAP. Afterward, you then need to confirm the registration in KU Loket. Please contact Zsuzsa to go over the HSE checklist with you ([Dutch](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/General%20information/HSE/vgm-onthaal_checklist_kantooromgeving_v202402.docx?d=w79bd31b4dfc44dd6aa4241a55ea198aa&csf=1&web=1&e=D0NdvQ) | [English](https://kuleuven.sharepoint.com/:w:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/General%20information/HSE/vgm-onthaal_checklist_kantooromgeving_EN_v202402.docx?d=wb980767944504104b2c90e2038ce32c1&csf=1&web=1&e=aJjkyc)). Alternatively, you can go over the checklist yourself. In both cases, you and your PI will need to sign a copy and deposit it with [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497).
+The email provides information about:
 
-KU Leuven is required by welfare legislation to record the risks each employee is exposed to and the preventative measures provided. This information is stored digitally in KU Loket as your **HSE file**, applicable to both staff and students. If you are new in Hoplab and you haven't been contacted by Zsuzsa, make sure she (and/or Manou) has been informed about your start, including where your office is and what your activities entail.
+- Your personal HSE file in KU Loket.
+- The [online HSE information brochure](https://admin.kuleuven.be/sab/vgm/en/doc/hse-organisation/intranet/general-hse-info-brochure-en).
+- [KU Leuven HSE roles and responsibilities](https://admin.kuleuven.be/sab/vgm/kuleuven/vgm-actoren/intranet/actoren).
+- The [PPW HSE Orientation document](https://admin.kuleuven.be/mykuleuven/kanaal/50000339/ruimtegebruik-veiligheid/hse-orientation.pdf/).
+- Faculty HSE contacts, waste recycling information, and available support.
+
+The orientation covers emergency and evacuation procedures, the emergency number (**016 32 22 22**), reporting building defects, ergonomics, well-being, and social safety. It can be tailored to specific work contexts and individual needs.
+
+Most staff members receive a personal HSE file automatically in KU Loket. Separate files are prepared for job students, visiting scholars, and employees exposed to elevated HSE risks.
 
 Finally, at Hoplab, we care deeply about creating a safe and respectful environment for everyone. If you ever experience or witness inappropriate behaviour, or if something doesn’t feel right, know that you are not alone and there is always someone to talk to. KU Leuven offers various support contacts that will listen to you, handle your concerns confidentially, and take further action only if you explicitly request it. Visit the website [here](https://admin.kuleuven.be/mykuleuven/en/channel/50000339/hr-wellbeing/social-safety).
 
