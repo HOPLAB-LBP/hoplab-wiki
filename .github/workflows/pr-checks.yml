@@ -1,24 +1,9 @@
 name: PR checks
 
+# Runs on every pull request: check-and-report is a required check, so a
+# pull request without it could never be merged.
 on:
   pull_request:
-    paths:
-      - "docs/**"
-      - "mkdocs.yml"
-      - "mkdocs-ci.yml"
-      - "includes/**"
-      - "overrides/**"
-      - ".mailmap"
-      - "README.md"
-      - "requirements.txt"
-      - ".markdownlint-cli2.yaml"
-      - ".yamllint.yml"
-      - "_typos.toml"
-      - ".lychee.toml"
-      - ".github/workflows/*.yml"
-      - ".github/workflows/*.yaml"
-      - "scripts/**"
-      - "tests/**"
 
 concurrency:
   group: "pr-checks-${{ github.event.pull_request.number || github.head_ref || github.ref }}"
@@ -29,97 +14,23 @@ permissions:
 
 jobs:
   # ───────────────────────────────────────────────────────────
-  #  Job 1: Auto-fix safe issues and push back
-  # ───────────────────────────────────────────────────────────
-  autofix:
-    runs-on: ubuntu-latest
-    permissions:
-      # Pushes the safe fixes back to branches of this repository.
-      contents: write
-    outputs:
-      # "true" only when the fix commit reached the PR branch.
-      pushed: ${{ steps.push.outputs.pushed }}
-      fix_sha: ${{ steps.push.outputs.fix_sha }}
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          # Checkout from the head repo so fork PRs work too. Pushing
-          # fixes back is still same-repo only (see guard below).
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.head_ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Auto-fix markdown table trailing pipes
-        run: python3 scripts/fix_markdown_table_pipes.py README.md docs/
-        continue-on-error: true
-
-      - name: Auto-fix markdown (trailing spaces, tabs, blank lines)
-        uses: DavidAnson/markdownlint-cli2-action@v25
-        with:
-          globs: |
-            README.md
-            docs/**/*.md
-          fix: true
-        continue-on-error: true
-
-      - name: Auto-fix MkDocs Material syntax (curly quotes, missing blank lines)
-        run: python3 scripts/check_mkdocs_syntax.py --fix README.md docs/
-        continue-on-error: true
-
-      - name: Auto-fix YAML trailing whitespace
-        run: |
-          sed -i 's/[[:space:]]*$//' mkdocs.yml mkdocs-ci.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
-
-      - name: Commit and push fixes
-        id: push
-        env:
-          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
-          BASE_REPO: ${{ github.repository }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if ! git diff --cached --quiet; then
-            # A push made with GITHUB_TOKEN starts no new "PR checks" run
-            # ([skip ci] makes that explicit). The current run reports the
-            # post-fix state instead (see "Apply safe auto-fixes locally"),
-            # and check-and-report puts its result on the fix commit.
-            git commit -m "style: auto-fix formatting issues [skip ci]"
-            if [ "$HEAD_REPO" = "$BASE_REPO" ]; then
-              # If the push fails (e.g. the contributor pushed meanwhile),
-              # this step fails, "pushed" stays unset and the report shows
-              # the branch as it is.
-              git push
-              echo "pushed=true" >> "$GITHUB_OUTPUT"
-              echo "fix_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-            else
-              echo "::notice::Auto-fixes were found but cannot be pushed to fork PRs. See the check report for what needs manual fixing."
-            fi
-          else
-            echo "Nothing to fix."
-          fi
-
-  # ───────────────────────────────────────────────────────────
-  #  Job 2: Run all checks and post a single report comment
+  #  Job 1: Run all checks and write the report
   # ───────────────────────────────────────────────────────────
   check-and-report:
-    needs: autofix
-    if: always() && !cancelled()
     runs-on: ubuntu-latest
     # This job runs code from the pull request, so it gets a read-only token.
     permissions:
       contents: read
       pull-requests: read
-      # Puts the result on the auto-fix commit, which gets no run of its own
-      # (pushes made with GITHUB_TOKEN start no workflows).
-      statuses: write
     outputs:
       # "true" when the site built and was uploaded for the preview job.
       preview: ${{ steps.preview_site.outcome == 'success' }}
+      # passed or failed: a failed build removes an older preview.
+      build: ${{ steps.mkdocs.outputs.status }}
     env:
       # Previews only for branches of this repository: fork PRs and Dependabot
       # get a read-only token, which cannot push to gh-pages.
-      PREVIEW_ALLOWED: ${{ github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]' }}
+      PREVIEW_ALLOWED: ${{ github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot[bot]' }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -130,7 +41,7 @@ jobs:
 
       - name: Detect automation-related changes
         id: changes
-        uses: dorny/paths-filter@v4
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
             workflow:
@@ -161,27 +72,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt yamllint
-
-      # Re-apply the same safe auto-fixes the autofix job makes, but only in
-      # this job's working tree (never committed). The report below is built
-      # from the result, so it always reflects the post-autofix state.
-      #
-      # Without this, the report lints the pre-fix merge commit and flags
-      # issues the autofix job already fixed in the same run. The corrected
-      # re-run that would refresh the comment is usually blocked (pushes by
-      # github-actions land as 'action_required'), so a stale "Failed"
-      # comment would linger. Only when the autofix push succeeded: fork PRs
-      # (never pushed to) and failed pushes must keep showing the real issues
-      # for manual fixing.
-      - name: Apply safe auto-fixes locally (keeps the report accurate)
-        # Only when the fix commit reached the branch: otherwise the report
-        # must describe the branch as it is (fork PRs, failed pushes).
-        if: needs.autofix.outputs.pushed == 'true'
-        run: |
-          python3 scripts/fix_markdown_table_pipes.py README.md docs/ || true
-          npx -y markdownlint-cli2 README.md "docs/**/*.md" --fix || true
-          python3 scripts/check_mkdocs_syntax.py --fix README.md docs/ || true
-          sed -i 's/[[:space:]]*$//' mkdocs.yml mkdocs-ci.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
 
       - name: Prepare generated docs
         run: bash scripts/prepare_docs.sh
@@ -246,7 +136,7 @@ jobs:
       - name: Link check
         id: linkcheck
         continue-on-error: true
-        uses: lycheeverse/lychee-action@v2.9.0
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
           args: --config .lychee.toml --format markdown README.md docs/**/*.md
           output: /tmp/pr-checks/linkcheck-output.md
@@ -288,6 +178,76 @@ jobs:
           name: pr-preview-site
           path: site/
           retention-days: 1
+
+      # Links straight to the pages this PR changed, written with a {{PREVIEW}}
+      # placeholder that pr-comment.yml fills in once the preview is online.
+      - name: List the changed pages for the preview
+        if: always() && steps.preview_site.outcome == 'success'
+        run: |
+          python3 - <<'PY'
+          import os, subprocess, urllib.parse
+
+          # The checkout is the merge commit: its first parent is the base branch.
+          raw = subprocess.run(
+              ["git", "diff", "--name-status", "-z", "-M", "HEAD^1", "HEAD"],
+              capture_output=True, check=True,
+          ).stdout.decode("utf-8", "replace").split("\0")
+          changes, i = [], 0
+          while i < len(raw) - 1:
+              status = raw[i][:1]
+              if status in "RC":
+                  changes.append((status, raw[i + 2]))
+                  i += 3
+              else:
+                  changes.append((status, raw[i + 1]))
+                  i += 2
+
+          def built(src):
+              # With the offline plugin, docs/a/b.md is published as a/b.html.
+              rel = src[len("docs/"):-len(".md")] + ".html"
+              return rel if os.path.isfile(os.path.join("site", rel)) else None
+
+          def label(text):
+              return "".join(c for c in text if c not in "[]()<>`|*_")
+
+          pages, notes, broad = {}, [], False
+          for status, path in changes:
+              if path == "README.md":
+                  pages.setdefault("contribute.html", "Quick start (README.md)")
+              elif path == "docs/contribute.md":
+                  continue
+              elif path.startswith("docs/") and path.endswith(".md"):
+                  if status == "D":
+                      notes.append(f"{label(path)} was deleted")
+                  elif built(path):
+                      pages.setdefault(built(path), label(path[len("docs/"):]) + (" (renamed)" if status == "R" else ""))
+              elif path.startswith("includes/"):
+                  for root, _, files in os.walk("docs"):
+                      for name in sorted(files):
+                          page = os.path.join(root, name)
+                          if name.endswith(".md") and page != "docs/contribute.md":
+                              with open(page, encoding="utf-8", errors="replace") as f:
+                                  if path in f.read() and built(page):
+                                      pages.setdefault(built(page), label(page[len("docs/"):]) + f" (uses {label(path)})")
+              elif path.startswith(("docs/", "overrides/")) or path in ("mkdocs.yml", "mkdocs-ci.yml", "requirements.txt"):
+                  broad = True
+
+          lines, shown = [], list(pages.items())[:15]
+          if shown:
+              lines.append(">")
+              lines.append("> Pages changed here:")
+              for url, text in shown:
+                  lines.append(f"> - [{text}]({{{{PREVIEW}}}}{urllib.parse.quote(url)})")
+              if len(pages) > len(shown):
+                  lines.append(f"> - and {len(pages) - len(shown)} more (see **Files changed**)")
+          for note in notes:
+              lines.append(f"> - {note}")
+          if broad:
+              lines.append(">")
+              lines.append("> This pull request also changes settings, styles or scripts that can affect every page.")
+          with open("/tmp/pr-checks/preview-pages.md", "w", encoding="utf-8") as f:
+              f.write("\n".join(lines) + ("\n" if lines else ""))
+          PY
 
       # ── Check 6: MkDocs Material syntax ─────────────────
       - name: MkDocs Material syntax check
@@ -350,33 +310,29 @@ jobs:
         env:
           # The head repository: for fork PRs the branch only exists there.
           EDIT_BASE: ${{ github.server_url }}/${{ github.event.pull_request.head.repo.full_name }}/edit/${{ github.head_ref }}
-          AUTOFIX_RESULT: ${{ needs.autofix.result }}
-          AUTOFIX_PUSHED: ${{ needs.autofix.outputs.pushed }}
-          AUTOFIX_SHA: ${{ needs.autofix.outputs.fix_sha }}
-          SAME_REPO: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
           PREVIEW_UPLOADED: ${{ steps.preview_site.outcome }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BUILD_STATUS: ${{ steps.mkdocs.outputs.status }}
+          CHANGES_OUTCOME: ${{ steps.changes.outcome }}
+          AUTOTESTS_EXPECTED: ${{ steps.changes.outputs.automation }}
+          WFLINT_EXPECTED: ${{ steps.changes.outputs.workflow }}
         run: |
           REPORT="/tmp/pr-checks/report.md"
 
-          # The preview job publishes the site at a fixed address per pull request.
+          # The preview job runs after this report. pr-comment.yml replaces the
+          # block between the two markers with the links, or a note, once it
+          # knows how that job ended.
           PREVIEW_NOTE=""
           if [ "$PREVIEW_UPLOADED" = "success" ]; then
-            OWNER="${GITHUB_REPOSITORY%%/*}"
-            PREVIEW_URL="https://${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}/pr-preview/pr-${PR_NUMBER}/"
-            PREVIEW_NOTE="> :eyes: **Preview:** see the wiki with your changes at $PREVIEW_URL (ready about a minute after this report; it updates with every push and disappears when the pull request closes)."
+            PREVIEW_NOTE="<!-- pr-preview -->
+          $(cat /tmp/pr-checks/preview-pages.md 2>/dev/null)
+          <!-- /pr-preview -->"
+          elif [ "$PREVIEW_ALLOWED" = "true" ] && [ "$BUILD_STATUS" = "failed" ]; then
+            PREVIEW_NOTE="<!-- pr-preview-stale -->"
           fi
 
           # Hidden marker so we can find and update this comment on future runs
           echo '<!-- pr-checks-report -->' > "$REPORT"
 
-          # Notes about the auto-fix commit, printed under the result heading.
-          AUTOFIX_NOTE=""
-          if [ "$AUTOFIX_PUSHED" = "true" ]; then
-            AUTOFIX_NOTE="> :robot: The bot pushed formatting fixes to this branch (commit ${AUTOFIX_SHA:0:7}). Pull before you edit it again on your computer."
-          elif [ "$SAME_REPO" = "true" ] && [ "$AUTOFIX_RESULT" != "success" ]; then
-            AUTOFIX_NOTE="> :warning: The bot could not push its formatting fixes to this branch, so this report shows the branch as it is. Pushing again usually solves it."
-          fi
 
           # Checks that always run: no status file means the step did not run
           # (e.g. setup failed), which must not read as a pass.
@@ -388,6 +344,28 @@ jobs:
           SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "missing")
           AUTOTESTS=$(cat /tmp/pr-checks/automation-tests-status 2>/dev/null || echo "skipped")
           WFLINT=$(cat /tmp/pr-checks/workflow-lint-status 2>/dev/null || echo "skipped")
+          # Change detection decides which of these two run. If it failed, or a
+          # check it asked for left no result, that must not read as skipped.
+          if [ "$CHANGES_OUTCOME" != "success" ]; then
+            AUTOTESTS=missing
+            WFLINT=missing
+          fi
+          if [ "$AUTOTESTS_EXPECTED" = "true" ] && [ "$AUTOTESTS" = "skipped" ]; then
+            AUTOTESTS=missing
+          fi
+          if [ "$WFLINT_EXPECTED" = "true" ] && [ "$WFLINT" = "skipped" ]; then
+            WFLINT=missing
+          fi
+
+          # Where the bot can fix something itself, it suggests the fix on the line.
+          FIX_NOTE=""
+          if [ "$PREVIEW_ALLOWED" = "true" ]; then
+            for c in "$SPELL" "$MDLINT" "$SYNTAX"; do
+              if [ "$c" = "failed" ]; then
+                FIX_NOTE="> :bulb: Where the bot knows the fix (spelling, spaces, quotes, blank lines), it suggests it on the line under **Files changed**: click **Commit suggestion** to apply it."
+              fi
+            done
+          fi
 
           # Helper: clickable edit link for a file at a line number
           # Usage: edit_link "path/to/file" "42" → markdown link to GitHub edit view
@@ -479,8 +457,6 @@ jobs:
 
           Great job! Your changes look good.
 
-          $AUTOFIX_NOTE
-
           $PREVIEW_NOTE
 
           | Check | Status |
@@ -504,7 +480,7 @@ jobs:
 
           Some checks found issues that need your attention. Don't worry — most of these are easy to fix!
 
-          $AUTOFIX_NOTE
+          $FIX_NOTE
 
           $PREVIEW_NOTE
 
@@ -572,7 +548,7 @@ jobs:
 
               cat << 'EOF'
 
-          **How to fix:** open each file at the line shown and correct the spelling. On lines you changed in this pull request, the bot also leaves the correction as a suggestion under **Files changed**: click **Commit suggestion** to apply it.
+          **How to fix:** open each file at the line shown and correct the spelling. On lines you changed in this pull request, the bot suggests the correction under **Files changed**: click **Commit suggestion** to apply it.
 
           <details>
           <summary>Is the word actually correct? (add it to the dictionary)</summary>
@@ -978,7 +954,7 @@ jobs:
 
               cat << 'EOF'
 
-          Most of these are auto-fixed by CI; anything still listed above needs a manual fix.
+          On lines you changed, the bot suggests most of these fixes under **Files changed** (**Commit suggestion** applies one); anything else needs a manual fix.
 
           <details>
           <summary>How to fix each issue, with examples</summary>
@@ -1059,6 +1035,10 @@ jobs:
       - name: Fail if any check failed
         id: verdict
         if: always()
+        env:
+          CHANGES_OUTCOME: ${{ steps.changes.outcome }}
+          AUTOTESTS_EXPECTED: ${{ steps.changes.outputs.automation }}
+          WFLINT_EXPECTED: ${{ steps.changes.outputs.workflow }}
         run: |
           # Checks that always run: no status file means the step did not run
           # (e.g. setup failed), which must not read as a pass.
@@ -1070,6 +1050,18 @@ jobs:
           SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "missing")
           AUTOTESTS=$(cat /tmp/pr-checks/automation-tests-status 2>/dev/null || echo "skipped")
           WFLINT=$(cat /tmp/pr-checks/workflow-lint-status 2>/dev/null || echo "skipped")
+          # Change detection decides which of these two run. If it failed, or a
+          # check it asked for left no result, that must not read as skipped.
+          if [ "$CHANGES_OUTCOME" != "success" ]; then
+            AUTOTESTS=missing
+            WFLINT=missing
+          fi
+          if [ "$AUTOTESTS_EXPECTED" = "true" ] && [ "$AUTOTESTS" = "skipped" ]; then
+            AUTOTESTS=missing
+          fi
+          if [ "$WFLINT_EXPECTED" = "true" ] && [ "$WFLINT" = "skipped" ]; then
+            WFLINT=missing
+          fi
 
           # Link check is advisory only — external sites may block CI runners.
           # Results still appear in the PR comment for manual review.
@@ -1095,25 +1087,8 @@ jobs:
           fi
           echo "verdict=success" >> "$GITHUB_OUTPUT"
 
-      # The auto-fix commit gets no run of its own, so without this the newest
-      # commit of the PR shows no checks. The tree checked above is that
-      # commit's tree (the same fixes, applied locally).
-      - name: Put the result on the auto-fix commit
-        if: always() && needs.autofix.outputs.pushed == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FIX_SHA: ${{ needs.autofix.outputs.fix_sha }}
-          VERDICT: ${{ steps.verdict.outputs.verdict || 'failure' }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          gh api -X POST "/repos/${{ github.repository }}/statuses/$FIX_SHA" \
-            -f state="$VERDICT" \
-            -f context="PR checks / check-and-report" \
-            -f description="Result of the run that made this auto-fix commit" \
-            -f target_url="$RUN_URL" > /dev/null
-
   # ───────────────────────────────────────────────────────────
-  #  Job 3: Publish the built site as a preview of the PR
+  #  Job 2: Publish the built site as a preview of the PR
   # ───────────────────────────────────────────────────────────
   # The site goes to gh-pages under pr-preview/pr-<number>/; pr-preview-remove.yml
   # deletes it when the PR closes. This job runs no code from the pull request:
@@ -1138,8 +1113,10 @@ jobs:
           name: pr-preview-site
           path: preview-site
 
-      # Search engines must not index the previews, and readers must see that
-      # a preview is not the wiki.
+      # Search engines must not index the previews, readers must see that a
+      # preview is not the wiki, and visits must not count in the wiki's
+      # statistics. The canonical link would point search engines at the live
+      # page, which may not exist yet.
       - name: Mark the pages as a preview
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
@@ -1148,7 +1125,18 @@ jobs:
           BANNER="<div style=\"background:#b60205;color:#fff;text-align:center;padding:.4rem;font-size:.8rem\">Preview of <a style=\"color:#fff;text-decoration:underline\" href=\"$PR_URL\">pull request #$PR_NUMBER</a>. This is not the live wiki.</div>"
           find preview-site -name '*.html' -print0 | xargs -0 sed -i \
             -e 's|<head>|<head><meta name="robots" content="noindex">|' \
+            -e 's|<link rel="canonical"[^>]*>||' \
+            -e 's|function __md_analytics(){|function __md_analytics(){return;|' \
             -e "s|<body\([^>]*\)>|<body\1>$BANNER|"
+          # Publish nothing unless every page got the marks.
+          TOTAL=$(find preview-site -name '*.html' | wc -l)
+          ROBOTS=$(grep -rlF --include='*.html' '<meta name="robots" content="noindex">' preview-site | wc -l)
+          BANNERS=$(grep -rlF --include='*.html' 'This is not the live wiki.' preview-site | wc -l)
+          echo "$TOTAL pages, $ROBOTS with noindex, $BANNERS with the banner."
+          if [ "$TOTAL" -eq 0 ] || [ "$ROBOTS" -ne "$TOTAL" ] || [ "$BANNERS" -ne "$TOTAL" ]; then
+            echo "::error::Some preview pages lack the noindex tag or the banner; not publishing."
+            exit 1
+          fi
 
       - name: Find the Pages address
         id: pages
@@ -1157,7 +1145,7 @@ jobs:
           echo "base=${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}" >> "$GITHUB_OUTPUT"
 
       - name: Deploy the preview
-        uses: rossjrw/pr-preview-action@v1.8.2
+        uses: rossjrw/pr-preview-action@873417d2df72380da1f3978378fb58560bcde976 # v1.8.2
         with:
           source-dir: preview-site
           action: deploy
@@ -1166,28 +1154,78 @@ jobs:
           comment: false
 
   # ───────────────────────────────────────────────────────────
-  #  Job 4: One-click fixes for typos
+  #  Job 3: Take an outdated preview offline
   # ───────────────────────────────────────────────────────────
-  # Where typos knows the one correct spelling, it posts the fix as a review
-  # suggestion on lines the PR changed ("Commit suggestion" applies it).
-  # Skipped when the autofix job pushed a commit: the suggestions would point
-  # at the commit before it. The next push brings them back.
-  suggest-typos:
-    needs: autofix
+  # When a push breaks the build there is no new preview, and the old one no
+  # longer matches the pull request: remove it so nobody reviews stale pages.
+  preview-remove-stale:
+    needs: check-and-report
     if: >-
-      always() && !cancelled() &&
+      always() && needs.check-and-report.outputs.build == 'failed' &&
       github.event.pull_request.head.repo.full_name == github.repository &&
-      github.actor != 'dependabot[bot]' &&
-      needs.autofix.outputs.pushed != 'true'
+      github.actor != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot[bot]'
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pull-requests: write
+      contents: write
+    concurrency:
+      group: "pr-preview-${{ github.event.pull_request.number }}"
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
+
+      - name: Find the Pages address
+        id: pages
+        run: |
+          OWNER="${GITHUB_REPOSITORY%%/*}"
+          echo "base=${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}" >> "$GITHUB_OUTPUT"
+
+      - name: Remove the preview
+        uses: rossjrw/pr-preview-action@873417d2df72380da1f3978378fb58560bcde976 # v1.8.2
+        with:
+          action: remove
+          pages-base-url: ${{ steps.pages.outputs.base }}
+          comment: false
+
+  # ───────────────────────────────────────────────────────────
+  #  Job 4: One-click fixes
+  # ───────────────────────────────────────────────────────────
+  # Runs the safe fixes (table pipes, Markdown spacing, quotes and blank lines
+  # in tab and box titles, YAML trailing spaces, spellings typos is sure of) on
+  # a copy of the PR and keeps the difference. Markdown lint loads settings
+  # from the PR, which can include code, so this job has no token at all.
+  # Nothing is pushed: every commit is checked by its own run of
+  # check-and-report.
+  find-fixes:
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.actor != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Check out the pull request
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: pr
+          persist-credentials: false
+
+      - name: Check out the fix scripts from the base branch
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: trusted
+          sparse-checkout: scripts
+          persist-credentials: false
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
 
       # The same version as the spell check above.
       - name: Install typos
@@ -1200,13 +1238,63 @@ jobs:
           install "$RUNNER_TEMP/typos-extract/typos" "$RUNNER_TEMP/bin/typos"
           echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
 
-      # --write-changes applies only the corrections typos is sure of; words
-      # with several possible corrections stay for the report.
-      - name: Fix the typos in the working tree
-        run: typos --config ./_typos.toml --write-changes || true
+      # typos --write-changes applies only corrections it is sure of.
+      - name: Apply the safe fixes to the working tree
+        working-directory: pr
+        run: |
+          python3 ../trusted/scripts/fix_markdown_table_pipes.py README.md docs/ || true
+          npx -y markdownlint-cli2 "README.md" "docs/**/*.md" --fix || true
+          python3 ../trusted/scripts/check_mkdocs_syntax.py --fix README.md docs/ || true
+          sed -i 's/[[:space:]]*$//' mkdocs.yml mkdocs-ci.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
+          typos --config ./_typos.toml --write-changes || true
+          git diff --no-ext-diff --no-color > "$RUNNER_TEMP/fixes.diff"
+          wc -c < "$RUNNER_TEMP/fixes.diff"
+
+      - name: Keep the fixes
+        uses: actions/upload-artifact@v7
+        with:
+          name: fixes-diff
+          path: ${{ runner.temp }}/fixes.diff
+          retention-days: 1
+
+  # Posts the difference as review suggestions on the lines the PR added
+  # ("Commit suggestion" applies one). It runs no code from the PR: it only
+  # reads the difference, as text, and refuses an implausibly large one.
+  suggest-fixes:
+    needs: find-fixes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      # reviewdog needs a git checkout to resolve paths; nothing in it runs.
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      - name: Get the fixes
+        uses: actions/download-artifact@v8
+        with:
+          name: fixes-diff
+          path: ${{ runner.temp }}/fixes
+
+      - uses: reviewdog/action-setup@d8a7baabd7f3e8544ee4dbde3ee41d0011c3a93f # v1.5.0
+        with:
+          reviewdog_version: v0.21.2
 
       - name: Post the fixes as suggestions
-        uses: reviewdog/action-suggester@v1.26.3
-        with:
-          tool_name: Spell check
-          filter_mode: added
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DIFF: ${{ runner.temp }}/fixes/fixes.diff
+        run: |
+          if [ ! -s "$DIFF" ]; then
+            echo "Nothing to suggest."
+            exit 0
+          fi
+          if [ "$(wc -c < "$DIFF")" -gt 1000000 ]; then
+            echo "::warning::The fixes are too large to post as suggestions."
+            exit 0
+          fi
+          reviewdog -name=Fix -f=diff -f.diff.strip=1 -reporter=github-pr-review \
+            -filter-mode=added -fail-level=none -level=warning < "$DIFF"

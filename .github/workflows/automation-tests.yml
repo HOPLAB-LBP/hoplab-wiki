@@ -36,7 +36,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: dorny/paths-filter@v4
+      - uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         id: filter
         with:
           filters: |
@@ -83,4 +83,4 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: rhysd/actionlint@v1.7.12
+      - uses: rhysd/actionlint@914e7df21a07ef503a81201c76d2b11c789d3fca # v1.7.12

@@ -14,6 +14,8 @@ on:
 
 permissions:
   pull-requests: write
+  # Reads how the preview job of the PR checks run ended.
+  actions: read
 
 # One report job at a time per PR branch, in event order, so an older run
 # cannot overwrite the report of a newer one.
@@ -45,7 +47,7 @@ jobs:
 
       - name: Find existing bot comment
         if: steps.pr.outputs.pr_number != ''
-        uses: peter-evans/find-comment@v4
+        uses: peter-evans/find-comment@b30e6a3c0ed37e7c023ccd3f1db5c6c0b0c23aad # v4.0.0
         id: find-comment
         with:
           issue-number: ${{ steps.pr.outputs.pr_number }}
@@ -98,9 +100,60 @@ jobs:
           fi
           echo "pr_number=$ACTUAL" >> "$GITHUB_OUTPUT"
 
+      # The report marks where the preview link goes. The whole PR checks run,
+      # preview job included, has finished by now: link the preview only if it
+      # was published, so the comment never shows a link that leads nowhere.
+      - name: Add the preview links
+        if: steps.meta.outputs.pr_number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.meta.outputs.pr_number }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+        run: |
+          grep -qxE '<!-- pr-preview(-stale)? -->' report.md || exit 0
+          JOBS=$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/jobs?per_page=100")
+          RESULT=$(jq -r '.jobs[] | select(.name == "preview") | .conclusion' <<< "$JOBS")
+          REMOVED=$(jq -r '.jobs[] | select(.name == "preview-remove-stale") | .conclusion' <<< "$JOBS")
+          export REMOVED
+          OWNER="${GITHUB_REPOSITORY%%/*}"
+          export RESULT
+          export URL="https://${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}/pr-preview/pr-${PR_NUMBER}/"
+          python3 - <<'PY'
+          import os, re
+
+          with open("report.md", encoding="utf-8") as f:
+              report = f.read()
+          block = re.search(r"^<!-- pr-preview -->\n(.*?)^<!-- /pr-preview -->\n?", report, re.S | re.M)
+          if block:
+              url, result = os.environ["URL"], os.environ["RESULT"]
+              if result == "success":
+                  text = (f"> :eyes: **Preview:** see the wiki with your changes at {url}. "
+                          "It updates with every push and disappears when the pull request closes.\n"
+                          + block.group(1).replace("{{PREVIEW}}", url))
+              elif result == "failure":
+                  text = ("> :warning: **Preview:** the site built, but publishing the preview failed "
+                          f"(see the `preview` job in the [run]({os.environ['RUN_URL']})). "
+                          "Pushing again usually solves it.\n")
+              else:
+                  text = ""
+              report = report[:block.start()] + text + report[block.end():]
+          if os.environ["REMOVED"] == "success":
+              stale = ("> :no_entry: **No preview:** the site did not build, so the older preview of this "
+                       "pull request was taken offline. A new one appears once the build passes.")
+          elif os.environ["REMOVED"] == "failure":
+              stale = ("> :warning: **No preview:** the site did not build, and the older preview of this "
+                       f"pull request could not be taken offline (see the [run]({os.environ['RUN_URL']})).")
+          else:
+              stale = "> :no_entry: **No preview:** the site did not build."
+          report = report.replace("<!-- pr-preview-stale -->", stale)
+          with open("report.md", "w", encoding="utf-8") as f:
+              f.write(report)
+          PY
+
       - name: Find existing bot comment
         if: steps.meta.outputs.pr_number != ''
-        uses: peter-evans/find-comment@v4
+        uses: peter-evans/find-comment@b30e6a3c0ed37e7c023ccd3f1db5c6c0b0c23aad # v4.0.0
         id: find-comment
         with:
           issue-number: ${{ steps.meta.outputs.pr_number }}
@@ -109,7 +162,7 @@ jobs:
 
       - name: Post or update PR comment
         if: steps.meta.outputs.pr_number != ''
-        uses: peter-evans/create-or-update-comment@v5
+        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5.0.0
         with:
           issue-number: ${{ steps.meta.outputs.pr_number }}
           comment-id: ${{ steps.find-comment.outputs.comment-id }}

@@ -128,7 +128,7 @@ Reorganise all the raw data files in your `BIDS/` folder according to the **BIDS
 
 ### 2. Backup to ManGO
 
-Push the data in your `sourcedata/` and `BIDS/` folders on Sharepoint to ManGO (central storage) **on a regular basis** during data collection (e.g., every week or after N participants). See [this page](/mango_active.md) for more information on how to do that.
+Push the data in your `sourcedata/` and `BIDS/` folders on Sharepoint to ManGO (central storage) **on a regular basis** during data collection (e.g., every week or after N participants). See [this page](mango_active.md) for more information on how to do that.
 
 !!! warning "Important"
     Only pseudonymized data can be transferred to ManGO. Do not transfer your `confidential/` folder: this information should stay on Sharepoint only and should definitely not be in further back-ups or hard drives that you carry around. The `confidential/` folder might be deleted once it is no longer necessary to keep your pseudonymization key (to be discussed with your PI based on your ethics application).
