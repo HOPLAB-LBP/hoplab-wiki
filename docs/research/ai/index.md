@@ -26,20 +26,8 @@ This section is about using generative AI for lab work, from analysis code to pa
 
     [Lab guidelines](lab-guidelines.md)
 
-- :material-toolbox-outline: **Set up your tools and work well**
-
-    ---
-
-    Ten rules for writing code with AI, and files you can copy into your projects.
-
-    [Resources](resources.md)
-
 </div>
 
-## Try it on a small project
+## How the two parts fit together
 
-[Your first project](first-project.md) walks through starting from the lab's project template, writing a clear specification, testing a small prototype and asking for one change at a time.
-
-## How the three parts fit together
-
-The KU Leuven rules bind everyone at the university. The lab guidelines add our own limits on top of them and never loosen them. The resources are suggestions and tools: use what helps your project.
+The KU Leuven rules bind everyone at the university. The lab guidelines add our own limits on top of them and never loosen them.
