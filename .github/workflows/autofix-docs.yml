@@ -23,7 +23,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Auto-fix markdown table trailing pipes
         run: python3 scripts/fix_markdown_table_pipes.py README.md docs/

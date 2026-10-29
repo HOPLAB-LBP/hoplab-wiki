@@ -65,7 +65,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Run MkDocs syntax tests
         run: bash tests/test_check_mkdocs_syntax.sh
