@@ -25,8 +25,11 @@ jobs:
         with:
           persist-credentials: false
 
+      # lychee-action v2.0.2 fails the step whenever lychee finds a problem,
+      # even with fail: false; the next step decides what to do.
       - name: Check links
         id: lychee
+        continue-on-error: true
         uses: lycheeverse/lychee-action@v2.0.2
         with:
           args: --config .lychee.toml --format markdown README.md docs/**/*.md
@@ -39,7 +42,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
-          EXIT_CODE: ${{ steps.lychee.outputs.exit_code }}
           REPORT: ${{ runner.temp }}/links.md
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
@@ -48,7 +50,16 @@ jobs:
             -f description="Broken links found by the weekly link check" > /dev/null 2>&1 || true
           NUM=$(gh api "repos/$REPO/issues?labels=$LABEL&state=open" --jq '.[0].number // empty')
 
-          if [ "$EXIT_CODE" = "0" ]; then
+          if [ ! -s "$REPORT" ]; then
+            echo "::error::lychee wrote no report; see the 'Check links' step."
+            exit 1
+          fi
+          # Only real errors open the issue: a site that is slow once
+          # (a timeout) is not worth a weekly issue.
+          ERRORS=$(grep -oP 'Errors\s*\|\s*\K[0-9]+' "$REPORT" | head -1)
+          echo "Errors: ${ERRORS:-unknown}"
+
+          if [ "${ERRORS:-1}" = "0" ]; then
             if [ -n "$NUM" ]; then
               gh api -X POST "repos/$REPO/issues/$NUM/comments" \
                 -f body="All links work again ([run]($RUN_URL)). Closing." > /dev/null
