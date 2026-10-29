@@ -21,7 +21,7 @@ jobs:
   links:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -30,7 +30,7 @@ jobs:
       - name: Check links
         id: lychee
         continue-on-error: true
-        uses: lycheeverse/lychee-action@v2.0.2
+        uses: lycheeverse/lychee-action@v2.9.0
         with:
           args: --config .lychee.toml --format markdown README.md docs/**/*.md
           output: ${{ runner.temp }}/links.md
