@@ -1250,7 +1250,10 @@ jobs:
           python3 ../trusted/scripts/fix_links.py --fix docs/ || true
           sed -i 's/[[:space:]]*$//' mkdocs.yml mkdocs-ci.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
           typos --config ./_typos.toml --write-changes || true
-          git diff --no-ext-diff --no-color > "$RUNNER_TEMP/fixes.diff"
+          # No context lines: each change becomes its own hunk, so each
+          # suggestion covers only the lines it changes and can be applied
+          # on its own, in any order.
+          git diff -U0 --no-ext-diff --no-color > "$RUNNER_TEMP/fixes.diff"
           wc -c < "$RUNNER_TEMP/fixes.diff"
 
       - name: Keep the fixes
