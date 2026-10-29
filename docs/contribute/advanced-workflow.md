@@ -139,9 +139,9 @@ Open `http://127.0.0.1:8000/hoplab-wiki/` in your browser. The page reloads each
 
     Open the link that `git push` printed, or the yellow **Compare & pull request** banner on the [lab repository](https://github.com/HOPLAB-LBP/hoplab-wiki), add a title and a short description and click **Create pull request**.
 
-The lab's reviewers (the `reviewers` team) are asked to review automatically, and the [automated checks](../contribute.md#after-you-open-a-pull-request) run and post a report on the pull request. Not finished yet? Use the arrow next to the button to create a draft pull request instead, and click **Ready for review** when you are done.
+The lab's reviewers (the `reviewers` team) are asked to review automatically, and the bot comments with the [check results and a preview](../contribute.md#after-you-open-a-pull-request). Not finished yet? Use the arrow next to the button to create a draft pull request instead, and click **Ready for review** when you are done.
 
-To change the pull request, commit and push to the same branch again. We may push small fixes to it too, so pull before you continue (GitHub Desktop: **Fetch origin** > **Pull origin**; CLI: `git pull`).
+To change the pull request, commit and push to the same branch again. Suggestions you commit on GitHub and small fixes we push are commits too, so pull before you continue (GitHub Desktop: **Fetch origin** > **Pull origin**; CLI: `git pull`).
 
 ## 7. After the merge
 

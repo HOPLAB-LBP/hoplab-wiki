@@ -5,7 +5,7 @@ Admins review and merge pull requests and keep the build working. Repository adm
 ## Review and merge a pull request
 
 1. Open the pull request from the [Pull requests](https://github.com/HOPLAB-LBP/hoplab-wiki/pulls) tab.
-2. Wait until all checks pass, and read the bot comment with the check report.
+2. Wait until all checks pass. The bot comment has the check report and links to the preview of each changed page.
 3. Read the changes in **Files changed**. Ask for changes in a review, or push small fixes yourself (see [Edit a contributor's pull request](#edit-a-contributors-pull-request)).
 4. Approve, then click **Squash and merge**.
 
@@ -40,7 +40,7 @@ The wiki also has a ruleset of its own, `pr-checks` (**Settings** > **Rules** > 
 
 | Workflow | When | What it does |
 |---|---|---|
-| PR checks | Every pull request | `check-and-report` runs the spell check, Markdown and YAML lint, link check (a warning only), MkDocs build and syntax check, and tests the scripts and lints the workflows when those change; it must pass before a merge. For branches of this repository it also posts the safe fixes (spelling, spaces, quotes, blank lines, links with one clear target) as review suggestions on changed lines, and publishes a preview of the site at `pr-preview/pr-<number>/` on `gh-pages` (no index, no analytics, with a banner; linked in the report, with a link per changed page). A push that breaks the build takes the old preview offline. Fork and Dependabot pull requests get no suggestions and no preview: their token is read-only |
+| PR checks | Every pull request | Runs the checks (`check-and-report`, required), posts fix suggestions and publishes the preview: see [Checks, suggestions and previews](#checks-suggestions-and-previews) |
 | Remove PR preview | A pull request closes | Deletes its preview from `gh-pages` |
 | Post PR check report | After each PR checks run | Posts the report as a comment on the pull request |
 | Automation tests | Pushes to `main` that touch workflows, scripts, tests or check settings; also by hand | Tests the scripts and lints the workflows (pull requests get the same in PR checks) |
@@ -51,6 +51,15 @@ The wiki also has a ruleset of its own, `pr-checks` (**Settings** > **Rules** > 
 | Autofix docs | Only by hand | Runs the auto-fixes on all of `main` and opens a pull request with them. Checks do not start on a pull request the bot opens: close and reopen it to run them |
 
 To run one by hand: **Actions** tab, pick the workflow, **Run workflow**.
+
+## Checks, suggestions and previews
+
+- `check-and-report` runs the spell check, Markdown and YAML lint, MkDocs build and syntax check, and the script tests and workflow lint when those change. The link check only warns. The job writes the report that `pr-comment.yml` posts.
+- `find-fixes` runs the safe fixers on a copy of the pull request, with no token; `suggest-fixes` posts each change as a review suggestion on the lines it covers (`scripts/post_suggestions.py`, from the base branch). The fixers are the ones in `scripts/` plus `markdownlint-cli2 --fix` and `typos --write-changes`; `scripts/fix_links.py` handles links with one clear target. The bot never pushes.
+- `preview` publishes the built site at `pr-preview/pr-<number>/` on `gh-pages`, with a banner, no search indexing and no analytics. A push that breaks the build takes the old preview offline; closing the pull request removes it, and the weekly link check removes any left over.
+- Forks and Dependabot get the checks but no suggestions and no preview: their token is read-only.
+- Every pull request gets the checks, whatever it changes, so none waits forever on the required check.
+- `gh-pages` (the live site) is not protected. Never push to it by hand: every deploy of `main` rewrites it.
 
 ## Two build configurations
 

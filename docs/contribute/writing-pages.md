@@ -21,7 +21,7 @@ Link to another wiki page with its path from the page you are editing, ending in
 - A section of a page: `[Sending triggers](eeg-task.md#sending-triggers)`. To get the part after `#`, hover over the heading on the live wiki, click the link symbol next to it and copy the end of the address.
 - A site outside the wiki: the full address, `[Hoplab website](https://www.hoplab.be/)`. To open it in a new tab, add `{target="_blank"}` right after it.
 
-Make the link text say where the link goes ("the EEG preprocessing page", not "here"). The build check fails when a link points to a page or section that does not exist.
+Make the link text say where the link goes ("the EEG preprocessing page", not "here"). Never start a link with `/`, and do not use the wiki's full address for a wiki page (it opens the live wiki, not your version). The build check fails on links that start with `/` and on links to a page or section that does not exist.
 
 ## Images
 
