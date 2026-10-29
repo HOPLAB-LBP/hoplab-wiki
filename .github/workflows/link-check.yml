@@ -1,0 +1,79 @@
+name: Weekly link check
+
+# Links on the live wiki can break after their page was merged. This checks
+# every page once a week and keeps one issue with the broken links: it opens
+# or updates the issue when links fail, and closes it when they work again.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"  # Mondays, 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: link-check
+  cancel-in-progress: false
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2.0.2
+        with:
+          args: --config .lychee.toml --format markdown README.md docs/**/*.md
+          output: ${{ runner.temp }}/links.md
+          fail: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Open, update or close the link issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          EXIT_CODE: ${{ steps.lychee.outputs.exit_code }}
+          REPORT: ${{ runner.temp }}/links.md
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          LABEL="link-check"
+          gh api "repos/$REPO/labels" -f name="$LABEL" -f color="d93f0b" \
+            -f description="Broken links found by the weekly link check" > /dev/null 2>&1 || true
+          NUM=$(gh api "repos/$REPO/issues?labels=$LABEL&state=open" --jq '.[0].number // empty')
+
+          if [ "$EXIT_CODE" = "0" ]; then
+            if [ -n "$NUM" ]; then
+              gh api -X POST "repos/$REPO/issues/$NUM/comments" \
+                -f body="All links work again ([run]($RUN_URL)). Closing." > /dev/null
+              gh api -X PATCH "repos/$REPO/issues/$NUM" -f state=closed > /dev/null
+            fi
+            echo "No broken links."
+            exit 0
+          fi
+
+          BODY="$RUNNER_TEMP/issue.md"
+          {
+            echo "The weekly link check found links that do not open ([run]($RUN_URL))."
+            echo
+            echo "Some sites block automated checks: open each link in your browser before changing it. A link that works but keeps failing can go under \`exclude\` in \`.lychee.toml\`, with a comment saying why."
+            echo
+            echo "This issue is updated every Monday and closed automatically once all links work."
+            echo
+            head -c 60000 "$REPORT"
+          } > "$BODY"
+
+          if [ -n "$NUM" ]; then
+            gh api -X PATCH "repos/$REPO/issues/$NUM" -F body=@"$BODY" > /dev/null
+            echo "Updated issue #$NUM."
+          else
+            gh api -X POST "repos/$REPO/issues" -f title="Broken links on the wiki" \
+              -F body=@"$BODY" -f "labels[]=$LABEL" -f "assignees[]=costantinoai" > /dev/null
+            echo "Opened a new issue."
+          fi
