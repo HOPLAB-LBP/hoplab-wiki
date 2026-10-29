@@ -25,8 +25,8 @@ jobs:
         with:
           persist-credentials: false
 
-      # lychee-action v2.0.2 fails the step whenever lychee finds a problem,
-      # even with fail: false; the next step decides what to do.
+      # The next step reads lychee's report and decides about the issue;
+      # continue-on-error keeps it running if the action itself fails.
       - name: Check links
         id: lychee
         continue-on-error: true
