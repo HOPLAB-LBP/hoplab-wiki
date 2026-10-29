@@ -1,7 +1,9 @@
 [default]
 extend-ignore-re = [
-  # Inline code spans
-  "`[^`]+`",
+  # Fenced code blocks (``` or ~~~), then inline code spans on one line
+  "(?s)```.*?```",
+  "(?s)~~~.*?~~~",
+  "`[^`\\n]+`",
   # URLs
   "https?://[^\\s)]+",
   # Material / FontAwesome / Octicons icon syntax

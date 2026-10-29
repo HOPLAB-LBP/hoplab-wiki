@@ -71,7 +71,7 @@ Your VSC account comes equipped with several folders, each with different charac
 
 - `VSC_HOME`: Small quota, do *not* use it at all.
 - `VSC_DATA`: Persistent but slow, larger capacity. Store big data, installed packages (e.g., Miniforge/Miniconda), and your project files.
-  All files and folders in your data directory are snapshoted, so you can recover them if you delete them by mistake.
+  All files and folders in your data directory are snapshotted, so you can recover them if you delete them by mistake.
   For that purpose, look inside the `.snapshot` directory inside any folder in your data directory for available snapshot timestamps.
 - `VSC_SCRATCH`: Temporary storage but fast I/O. Files here will be deleted if not accessed after 30 days. Do not store your project data here!
 - `VSC_SCRATCH_NODE`: Temporary storage available on the compute node which can be only used when your job is running on a compute node.
@@ -301,7 +301,7 @@ fmriprep-25.0.0.sif  data  license.txt  run_fmriprep_job.slurm
 Congrats! Your job is now being executed on the cluster.
 
 !!! tip "Runtime"
-    Your runtime depends critically on various factors, such as the choice of hardware, the number of threads used, the amount of memory used, and your I/O pattern. You may choose one of the `batch_*` partitions from either of Genius or wICE clusters to find the most performant hardware for your workflow. Detailed information about avaialble hardware can be found on [Ku Leuven Tier-2 specifications](https://docs.vscentrum.be/leuven/tier2_hardware.html).
+    Your runtime depends critically on various factors, such as the choice of hardware, the number of threads used, the amount of memory used, and your I/O pattern. You may choose one of the `batch_*` partitions from either of Genius or wICE clusters to find the most performant hardware for your workflow. Detailed information about available hardware can be found on [Ku Leuven Tier-2 specifications](https://docs.vscentrum.be/leuven/tier2_hardware.html).
 
     From a first test on the call above (which includes the FreeSurfer workflow) on a subjects with one anatomical image and two functional scans:
     

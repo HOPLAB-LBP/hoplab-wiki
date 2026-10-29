@@ -73,6 +73,9 @@ jobs:
       - name: Run markdown table autofix tests
         run: bash tests/test_fix_markdown_table_pipes.sh
 
+      - name: Run link fixer tests
+        run: bash tests/test_fix_links.sh
+
       - name: Run docs tag automation tests
         run: node tests/test-manage-docs-tags.js
 

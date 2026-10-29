@@ -211,7 +211,7 @@ With the filtered studies, we can now perform meta-analyses using algorithms ava
     - **FWER (Bonferroni)**: Controls for a single false positive but is highly conservative.
     - **FWER (Monte Carlo)**: Suitable for spatially dependent data and ideal for whole-brain analyses.
 
-The following code exmple shows how to run an ALE meta-analysis with Monte Carlo correction
+The following code example shows how to run an ALE meta-analysis with Monte Carlo correction
 
 ```python
 # --- Step 5: Running Meta-Analysis ---
@@ -298,7 +298,7 @@ Which should produce the following plots for the uncorrected z scores and Montec
 ![Z scores map corrected](../../../assets/nimare-corr.png)
 
 !!! warning
-    The Monte Carlo algorithm may produce slightly different results, nd will be more precise with more iterations (10.000 iterations are reccommended for publication-level analyses).
+    The Monte Carlo algorithm may produce slightly different results, nd will be more precise with more iterations (10.000 iterations are recommended for publication-level analyses).
 
 And for the region names:
 

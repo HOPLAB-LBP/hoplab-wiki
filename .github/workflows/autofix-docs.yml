@@ -34,6 +34,9 @@ jobs:
       - name: Auto-fix MkDocs Material syntax
         run: python3 scripts/check_mkdocs_syntax.py --fix README.md docs/
 
+      - name: Auto-fix links with one clear target
+        run: python3 scripts/fix_links.py --fix docs/
+
       - name: Auto-fix YAML trailing whitespace
         run: |
           sed -i 's/[[:space:]]*$//' mkdocs.yml .github/workflows/*.yml 2>/dev/null || true

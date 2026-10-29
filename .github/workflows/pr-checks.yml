@@ -273,6 +273,7 @@ jobs:
           rc=0
           bash tests/test_check_mkdocs_syntax.sh >> "$OUT" 2>&1 || rc=1
           bash tests/test_fix_markdown_table_pipes.sh >> "$OUT" 2>&1 || rc=1
+          bash tests/test_fix_links.sh >> "$OUT" 2>&1 || rc=1
           node tests/test-manage-docs-tags.js >> "$OUT" 2>&1 || rc=1
           cat "$OUT"
           if [ "$rc" -eq 0 ]; then
@@ -362,7 +363,7 @@ jobs:
           if [ "$PREVIEW_ALLOWED" = "true" ]; then
             for c in "$SPELL" "$MDLINT" "$SYNTAX"; do
               if [ "$c" = "failed" ]; then
-                FIX_NOTE="> :bulb: Where the bot knows the fix (spelling, spaces, quotes, blank lines), it suggests it on the line under **Files changed**: click **Commit suggestion** to apply it."
+                FIX_NOTE="> :bulb: Where the bot knows the fix (spelling, spaces, quotes, blank lines), it suggests it on the line under **Files changed**: click **Commit suggestion** to apply it. Links the build cannot follow get a suggestion too when there is one clear target."
               fi
             done
           fi
@@ -580,6 +581,7 @@ jobs:
              ```bash
              bash tests/test_check_mkdocs_syntax.sh
              bash tests/test_fix_markdown_table_pipes.sh
+             bash tests/test_fix_links.sh
              node tests/test-manage-docs-tags.js
              ```
           2. Read the first failing test output below and fix the underlying script or fixture mismatch.
@@ -1245,6 +1247,7 @@ jobs:
           python3 ../trusted/scripts/fix_markdown_table_pipes.py README.md docs/ || true
           npx -y markdownlint-cli2 "README.md" "docs/**/*.md" --fix || true
           python3 ../trusted/scripts/check_mkdocs_syntax.py --fix README.md docs/ || true
+          python3 ../trusted/scripts/fix_links.py --fix docs/ || true
           sed -i 's/[[:space:]]*$//' mkdocs.yml mkdocs-ci.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
           typos --config ./_typos.toml --write-changes || true
           git diff --no-ext-diff --no-color > "$RUNNER_TEMP/fixes.diff"

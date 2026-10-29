@@ -92,13 +92,13 @@ Project_Name/
 
 ### Docker Desktop
 
-Docker is crucial for running containerized applications like fMRIPrep. Althoug Docker can be installed as a command-line tool, we strongly advise installing the GUI version (Docker Desktop).
+Docker is crucial for running containerized applications like fMRIPrep. Although Docker can be installed as a command-line tool, we strongly advise installing the GUI version (Docker Desktop).
 
 For up-to-date installation info, please consult the Docker Desktop installation pages for [Mac](https://docs.docker.com/desktop/install/mac-install/), [Windows](https://docs.docker.com/desktop/install/windows-install/) or [Linux](https://docs.docker.com/desktop/install/linux-install/).
 
 After installation, one need to configure Docker resources.
 
-For operating sustems using a WSL2 backend as its default backend for the Windows Subsystem for Linux (e.g., Windows 11 home), resource configurations must be done in a .wslconfig file.
+For operating systems using a WSL2 backend as its default backend for the Windows Subsystem for Linux (e.g., Windows 11 home), resource configurations must be done in a .wslconfig file.
 
 <div class="steps-list" markdown>
 
@@ -347,7 +347,7 @@ Install the following MATLAB toolboxes:
     savepath
     ```
 
-    !!! warning "Mac installtion"
+    !!! warning "Mac installation"
         For mac users, potential installation issues can be tackled with the [instructions for mac](https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)) on the SPM wiki. Make sure **Xcode** is installed on your computer before installing SPM.
 
 ??? deflist "CoSMoMVPA"
