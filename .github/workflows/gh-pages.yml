@@ -11,9 +11,10 @@ on:
   workflow_dispatch:  # Allow manual trigger
 
 # mkdocs gh-deploy pushes the built site to the gh-pages branch, which GitHub Pages
-# serves. That push is all the token needs.
+# serves. The token also opens an issue when a deploy fails.
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: "gh-pages"
@@ -51,3 +52,39 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdocs gh-deploy --force -f mkdocs-ci.yml
+
+      # A failed deploy leaves the live wiki on the previous version, and
+      # nobody notices from the site itself: keep one open issue about it.
+      - name: Open or update the deploy-failure issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          LABEL="deploy-failure"
+          gh api "repos/$REPO/labels" -f name="$LABEL" -f color="b60205" \
+            -f description="The wiki deploy failed" > /dev/null 2>&1 || true
+          NUM=$(gh api "repos/$REPO/issues?labels=$LABEL&state=open" --jq '.[0].number // empty')
+          MSG="The deploy of commit ${SHA:0:7} failed, so the live wiki still shows the previous version. See the [run]($RUN_URL); the step that failed has the error. This issue closes itself after the next successful deploy."
+          if [ -n "$NUM" ]; then
+            gh api -X POST "repos/$REPO/issues/$NUM/comments" -f body="$MSG" > /dev/null
+          else
+            gh api -X POST "repos/$REPO/issues" -f title="The wiki deploy failed" \
+              -f body="$MSG" -f "labels[]=$LABEL" -f "assignees[]=costantinoai" > /dev/null
+          fi
+
+      - name: Close the deploy-failure issue
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          NUM=$(gh api "repos/$REPO/issues?labels=deploy-failure&state=open" --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh api -X POST "repos/$REPO/issues/$NUM/comments" \
+              -f body="Commit ${SHA:0:7} deployed successfully. Closing." > /dev/null
+            gh api -X PATCH "repos/$REPO/issues/$NUM" -f state=closed > /dev/null
+          fi

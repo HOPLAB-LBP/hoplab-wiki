@@ -81,7 +81,7 @@ Then see [what happens next](#after-you-open-a-pull-request).
     |-------|--------------|
     | **Spell check** | Catches typos. If it flags a real word (a name or a technical term), add it to `_typos.toml`. |
     | **Markdown lint** | Checks that the formatting is consistent (heading style, bare URLs and so on). |
-    | **Link check** | Checks that every link opens. |
+    | **Link check** | Checks the links on the pages you changed. It only warns and never blocks your pull request: some sites refuse automated checks, so open a flagged link in your browser before changing it. |
     | **YAML lint** | Checks the syntax of `mkdocs.yml` and the workflow files. |
     | **MkDocs build** | Builds the whole site and fails on broken links, missing pages or configuration errors. |
     | **MkDocs syntax** | Catches content that MkDocs would quietly render wrong, such as tab or box content that is not indented enough, or a code block at the wrong indent. |
