@@ -67,6 +67,8 @@ Then see [what happens next](#after-you-open-a-pull-request).
 - The lab's reviewers (the `reviewers` team on GitHub) are asked to review it. We may push small fixes to it before merging.
 - Automated checks run, and a bot posts one comment on the pull request with the results. When something fails, the comment says what went wrong and how to fix it. For the full report, click **Details** next to a check.
 - Small formatting problems are fixed for you: the bot pushes the fixes to your branch as a new commit and says so in its comment. If you work on your computer, pull before you continue.
+- The bot's comment links a preview: the whole wiki with your changes, so you can check how your pages look. It updates with every push and disappears when the pull request closes.
+- When the spell check knows the right spelling of a word on a line you changed, the bot suggests the fix on that line under **Files changed**. Click **Commit suggestion** to apply it.
 - Once the pull request is merged, the live wiki updates within a few minutes.
 
 ??? info "What the bot fixes"

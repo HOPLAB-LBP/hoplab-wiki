@@ -1,0 +1,38 @@
+name: Remove PR preview
+
+# Deletes pr-preview/pr-<number>/ from gh-pages when a pull request closes
+# (merged or not). The preview job in pr-checks.yml publishes it.
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  remove:
+    # Previews exist only for branches of this repository (see pr-checks.yml).
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    # Waits for a preview deploy of the same PR that is still running.
+    concurrency:
+      group: "pr-preview-${{ github.event.pull_request.number }}"
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Find the Pages address
+        id: pages
+        run: |
+          OWNER="${GITHUB_REPOSITORY%%/*}"
+          echo "base=${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}" >> "$GITHUB_OUTPUT"
+
+      - name: Remove the preview
+        uses: rossjrw/pr-preview-action@v1.8.2
+        with:
+          action: remove
+          pages-base-url: ${{ steps.pages.outputs.base }}
+          comment: false
