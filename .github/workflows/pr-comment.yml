@@ -103,7 +103,7 @@ jobs:
       # The report marks where the preview link goes. The whole PR checks run,
       # preview job included, has finished by now: link the preview only if it
       # was published, so the comment never shows a link that leads nowhere.
-      - name: Add the preview link
+      - name: Add the preview links
         if: steps.meta.outputs.pr_number != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -115,15 +115,30 @@ jobs:
           RESULT=$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/jobs" \
             --jq '.jobs[] | select(.name == "preview") | .conclusion')
           OWNER="${GITHUB_REPOSITORY%%/*}"
-          URL="https://${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}/pr-preview/pr-${PR_NUMBER}/"
-          case "$RESULT" in
-            success) LINE="> :eyes: **Preview:** see the wiki with your changes at $URL. It updates with every push and disappears when the pull request closes." ;;
-            failure) LINE="> :warning: **Preview:** the site built, but publishing the preview failed (see the \`preview\` job in the [run]($RUN_URL)). Pushing again usually solves it." ;;
-            *) LINE="" ;;
-          esac
-          LINE="$LINE" awk '$0 == "<!-- pr-preview -->" { print ENVIRON["LINE"]; next } { print }' \
-            report.md > report.tmp
-          mv report.tmp report.md
+          export RESULT
+          export URL="https://${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}/pr-preview/pr-${PR_NUMBER}/"
+          python3 - <<'PY'
+          import os, re
+
+          with open("report.md", encoding="utf-8") as f:
+              report = f.read()
+          block = re.search(r"^<!-- pr-preview -->\n(.*?)^<!-- /pr-preview -->\n?", report, re.S | re.M)
+          if block:
+              url, result = os.environ["URL"], os.environ["RESULT"]
+              if result == "success":
+                  text = (f"> :eyes: **Preview:** see the wiki with your changes at {url}. "
+                          "It updates with every push and disappears when the pull request closes.\n"
+                          + block.group(1).replace("{{PREVIEW}}", url))
+              elif result == "failure":
+                  text = ("> :warning: **Preview:** the site built, but publishing the preview failed "
+                          f"(see the `preview` job in the [run]({os.environ['RUN_URL']})). "
+                          "Pushing again usually solves it.\n")
+              else:
+                  text = ""
+              report = report[:block.start()] + text + report[block.end():]
+          with open("report.md", "w", encoding="utf-8") as f:
+              f.write(report)
+          PY
 
       - name: Find existing bot comment
         if: steps.meta.outputs.pr_number != ''

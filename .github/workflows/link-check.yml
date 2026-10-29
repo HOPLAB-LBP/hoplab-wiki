@@ -112,33 +112,51 @@ jobs:
             echo "No previews."
             exit 0
           fi
-          REMOVED=""
-          for DIR in pr-preview/pr-*/; do
-            [ -d "$DIR" ] || continue
-            NUM="${DIR#pr-preview/pr-}"
-            NUM="${NUM%/}"
-            case "$NUM" in ''|*[!0-9]*) continue ;; esac
-            # If GitHub cannot say, keep the preview.
-            STATE=$(gh api "repos/$REPO/pulls/$NUM" --jq .state) || continue
-            if [ "$STATE" != "open" ]; then
-              git rm -rq "$DIR"
-              REMOVED="$REMOVED #$NUM"
+          # A folder stays unless GitHub says its pull request is closed; if
+          # GitHub cannot answer, the run fails so someone looks at it.
+          pr_state() {
+            gh api "repos/$REPO/pulls/$1" --jq .state
+          }
+          STALE=""
+          for DIR in pr-preview/*/; do
+            NAME="$(basename "$DIR")"
+            NUM="${NAME#pr-}"
+            case "$NAME" in pr-*) ;; *) echo "::warning::Unexpected folder pr-preview/$NAME left alone."; continue ;; esac
+            case "$NUM" in ''|*[!0-9]*) echo "::warning::Unexpected folder pr-preview/$NAME left alone."; continue ;; esac
+            STATE=$(pr_state "$NUM")
+            if [ "$STATE" = "closed" ]; then
+              STALE="$STALE $NUM"
             fi
           done
-          if [ -z "$REMOVED" ]; then
+          if [ -z "$STALE" ]; then
             echo "Every preview belongs to an open pull request."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -qm "Remove previews of closed pull requests:$REMOVED"
-          # A deploy or a preview may push meanwhile: rebase and try again.
+          # Delete, then push; if a deploy or a preview pushed meanwhile, start
+          # again from the new gh-pages. Each round checks the state again, so a
+          # pull request reopened in between keeps its preview.
           for TRY in 1 2 3; do
-            if git push origin HEAD:gh-pages; then
+            git fetch -q origin gh-pages
+            git reset -q --hard origin/gh-pages
+            REMOVED=""
+            for NUM in $STALE; do
+              if [ -d "pr-preview/pr-$NUM" ] && [ "$(pr_state "$NUM")" = "closed" ]; then
+                git rm -rq "pr-preview/pr-$NUM"
+                REMOVED="$REMOVED #$NUM"
+              fi
+            done
+            if [ -z "$REMOVED" ]; then
+              echo "Nothing left to remove."
+              exit 0
+            fi
+            git commit -qm "Remove previews of closed pull requests:$REMOVED"
+            if git push -q origin HEAD:gh-pages; then
               echo "Removed the previews of$REMOVED."
               exit 0
             fi
-            echo "Push attempt $TRY failed; rebasing."
-            git pull --rebase -q origin gh-pages
+            echo "Push attempt $TRY failed; trying again from the new gh-pages."
           done
+          echo "::error::Could not remove the stale previews after 3 attempts."
           exit 1

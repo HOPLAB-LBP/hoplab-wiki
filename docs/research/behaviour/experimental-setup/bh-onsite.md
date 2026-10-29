@@ -5,7 +5,7 @@
 ## Preparation
 
 On-site experiments can vary depending on the participant population you are approaching and the format of the experiment.
-For recruitment from the Psychology Bachelor Student population, please see information on recruitment via EMS [here](https://hoplab-lbp.github.io/hoplab-wiki/research/behaviour/bh-participants.html). After setting up an account, you will need to set up your experiment on SONA, which is also explained on that page. Once you have completed all steps on that page, you can continue here:
+For recruitment from the Psychology Bachelor Student population, please see information on recruitment via EMS [here](../bh-participants.md). After setting up an account, you will need to set up your experiment on SONA, which is also explained on that page. Once you have completed all steps on that page, you can continue here:
 
 ## Room reservations
 There are two types of rooms you can book with their respective system.
@@ -23,7 +23,7 @@ For a **room with PC's** you might opt for a room in VHI. Pick one of the “ICT
 
 **2) To book experiment rooms located in the basement of PSI**
 
-Use Calira for booking Experiment cubicles, TMS rooms, etc. For more information see: (<https://hoplab-lbp.github.io/hoplab-wiki/get-started/admin-procedures.html?h=calir#reserve-equipment-or-a-room-for-testing>)
+Use Calira for booking Experiment cubicles, TMS rooms, etc. For more information see: ([https://hoplab-lbp.github.io/hoplab-wiki/get-started/admin-procedures.html?h=calir#reserve-equipment-or-a-room-for-testing](../../../get-started/admin-procedures.md#reserve-equipment-or-a-room-for-testing))
 
 ## Add timeslots to your SONA study
 On the EMS home page, go to View, add or edit timeslots. In your list of studies, click Timeslots on the right of your study name. You can choose to add a timeslot or to add multiple timeslots.

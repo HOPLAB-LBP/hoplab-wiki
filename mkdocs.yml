@@ -143,6 +143,13 @@ theme:
     - navigation.indexes
     - navigation.footer
 
+# A link that starts with "/" points at the root of hoplab-lbp.github.io, not at
+# the wiki, so it breaks on the live site and in previews. As a warning it fails
+# the strict build; write links relative to the page instead.
+validation:
+  links:
+    absolute_links: warn
+
 markdown_extensions:
   - toc:
       permalink: true

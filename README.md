@@ -57,7 +57,7 @@ Then see [what happens next](#after-you-open-a-pull-request).
     3. On the same branch, add the page to the menu in `mkdocs.yml` (see [Add a new page](docs/contribute/writing-pages.md#add-a-new-page)). The build check fails for a page that is not in the menu.
 
 ??? tip "Do you have your own fork of the wiki?"
-    Start your edit from the pencil on the wiki page, or from the [lab repository](https://github.com/HOPLAB-LBP/hoplab-wiki), never from your fork. Then GitHub puts your branch in the lab repository, and the bot can fix small formatting problems for you.
+    Start your edit from the pencil on the wiki page, or from the [lab repository](https://github.com/HOPLAB-LBP/hoplab-wiki), never from your fork. Then GitHub puts your branch in the lab repository, and the bot can suggest fixes for small formatting problems.
 
 ??? info "Not part of the HOPLAB-LBP organisation?"
     GitHub offers to fork the lab repository (make your own copy of it). Follow its steps and leave **Allow edits by maintainers** ticked on the pull request, so we can fix small things for you.
@@ -65,13 +65,13 @@ Then see [what happens next](#after-you-open-a-pull-request).
 ## After you open a pull request
 
 - The lab's reviewers (the `reviewers` team on GitHub) are asked to review it. We may push small fixes to it before merging.
-- Automated checks run, and a bot posts one comment on the pull request with the results. When something fails, the comment says what went wrong and how to fix it. For the full report, click **Details** next to a check.
-- Small formatting problems are fixed for you: the bot pushes the fixes to your branch as a new commit and says so in its comment. If you work on your computer, pull before you continue.
-- The bot's comment links a preview: the whole wiki with your changes, so you can check how your pages look. It updates with every push and disappears when the pull request closes.
-- When the spell check knows the right spelling of a word on a line you changed, the bot suggests the fix on that line under **Files changed**. Click **Commit suggestion** to apply it.
+- Automated checks run, and a bot posts one comment on the pull request with the results. When something fails, the comment says what went wrong and how to fix it. For the full report, click **Details** next to a check. The pull request can be merged only once the checks pass.
+- Where the bot knows the fix for a small problem on a line you changed, it suggests it on that line under **Files changed**. Click **Commit suggestion** to apply it. If you work on your computer, pull before you continue.
+- The bot's comment links a preview: the whole wiki with your changes, with a direct link to each page you changed. It updates with every push and disappears when the pull request closes.
 - Once the pull request is merged, the live wiki updates within a few minutes.
 
-??? info "What the bot fixes"
+??? info "What the bot can suggest"
+    - Spellings the spell check is sure of
     - Spaces at the end of a line and extra blank lines in Markdown files
     - Tabs, which become spaces
     - Spaces at the end of a line in YAML files

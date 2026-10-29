@@ -182,7 +182,7 @@ In Hoplab, several communication channels are used, on different levels. Here is
 ### Encrypting external hard drives
 
 When storing research data on external drives, encryption is strongly recommended to protect sensitive information (e.g., participant data).
-For more information on hard drive encryption see: [Study workflow > Store raw data](https://hoplab-lbp.github.io/hoplab-wiki/research/rdm/SOPs.html#5-store-raw-data).
+For more information on hard drive encryption see: [Study workflow > Store raw data](../research/rdm/SOPs.md#5-store-raw-data).
 
 ## Printing
 

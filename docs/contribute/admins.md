@@ -34,11 +34,16 @@ One organisation ruleset, `default-branch`, covers the default branch of every H
 - Force pushes and deleting the default branch are blocked.
 - Squash merge is the only merge method.
 
+The wiki has two rulesets of its own (**Settings** > **Rules** > **Rulesets** of this repository):
+
+- `pr-checks`: on `main`, the check `check-and-report` must pass before a pull request can be merged, for admins too. A pull request opened by the bot (Autofix docs) starts no checks: close and reopen it.
+- `gh-pages`: only the workflows (GitHub Actions) and organisation admins can change the `gh-pages` branch, which is the live site. Nobody else can push to it, force-push or delete it.
+
 ## What runs where
 
 | Workflow | When | What it does |
 |---|---|---|
-| PR checks | Every pull request that touches the docs, the snippets in `includes/`, the configuration, the scripts or the tests | Pushes safe auto-fixes (whitespace, quotes) to branches of this repository, then runs the spell check, Markdown and YAML lint, link check, MkDocs build and syntax check; tests the scripts and lints the workflows when those change. For branches of this repository it also publishes a preview of the site at `pr-preview/pr-<number>/` on `gh-pages` (no index, with a banner; linked in the report) and posts spelling fixes as review suggestions on changed lines. Fork and Dependabot pull requests get neither: their token is read-only |
+| PR checks | Every pull request | `check-and-report` runs the spell check, Markdown and YAML lint, link check (a warning only), MkDocs build and syntax check, and tests the scripts and lints the workflows when those change; it must pass before a merge. For branches of this repository it also posts the safe fixes (spelling, spaces, quotes, blank lines) as review suggestions on changed lines, and publishes a preview of the site at `pr-preview/pr-<number>/` on `gh-pages` (no index, no analytics, with a banner; linked in the report, with a link per changed page). A push that breaks the build takes the old preview offline. Fork and Dependabot pull requests get no suggestions and no preview: their token is read-only |
 | Remove PR preview | A pull request closes | Deletes its preview from `gh-pages` |
 | Post PR check report | After each PR checks run | Posts the report as a comment on the pull request |
 | Automation tests | Pushes to `main` that touch workflows, scripts, tests or check settings; also by hand | Tests the scripts and lints the workflows (pull requests get the same in PR checks) |
