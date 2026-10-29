@@ -77,6 +77,9 @@ Then see [what happens next](#after-you-open-a-pull-request).
     - Spaces at the end of a line in YAML files
     - Curly quotes in the titles of tabs (`=== "..."`) and boxes (`!!! type "..."`)
     - A missing blank line after a tab title (`=== "Title"`)
+    - Box content that is not indented, and missing `|` at the end of table rows
+    - `*` bullets (the wiki uses `-`), spaces inside link brackets, a colon or full stop at the end of a heading
+    - Links the build cannot follow, when there is one clear target: a link starting with `/`, a page that moved or whose name has a typo, a heading anchor with a typo
 
 ??? info "What the checks report (you fix these)"
     | Check | What it does |

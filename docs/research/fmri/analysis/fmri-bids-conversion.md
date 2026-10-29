@@ -294,7 +294,7 @@ Create `.json` sidecar files for each functional run `.nii` file, using the outp
 Each `nii` file **must** have a sidecar JSON file. Make sure you [anonymised and converted your DICOM files](./fmri-bids-conversion.md#4-convert-dicom-files) and go through the following steps:
 
   1. Locate the JSON sidecar files in `sourcedata/sub-xx/nifti/`.
-  2. Open each JSON file and Check that the `PhaseEncodingDirection` and `SliceTiming` fields are filled in (They should be automacially completed for the new Siemens scanner when using dicom2nii function in MATLAB, but they were missing in older Philips (MR8) data; see [Missing fields in JSON files](../fmri-mr8.md#missing-fields-in-json-files)).
+  2. Open each JSON file and Check that the `PhaseEncodingDirection` and `SliceTiming` fields are filled in (They should be automatically completed for the new Siemens scanner when using dicom2nii function in MATLAB, but they were missing in older Philips (MR8) data; see [Missing fields in JSON files](../fmri-mr8.md#missing-fields-in-json-files)).
   3. Copy-paste the updated JSON files to accompany each NIfTI file in the `BIDS/sub-xx/func` folder: each run should have its accompanying `sub-xx_task-{taskname}_run-{runnumber}_bold.json` sidecar file.
 
 ---

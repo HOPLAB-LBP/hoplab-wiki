@@ -28,7 +28,7 @@ pip install python-irodsclient
 pip show python-irodsclient
 ```
 
-Next, we have to make sure you are logged in to ManGO and your `irods_environment.json` is configured correctly. The Python client needs an environment file that tells it which server to connect to, your username, SSL settings and authentification method. To do so, we have to install the required authentication package:
+Next, we have to make sure you are logged in to ManGO and your `irods_environment.json` is configured correctly. The Python client needs an environment file that tells it which server to connect to, your username, SSL settings and authentication method. To do so, we have to install the required authentication package:
 
 ```bash
 # install authentication package
@@ -311,7 +311,7 @@ This is useful when you regularly add or update files locally (for example, duri
 
 ManGO Ingest can:
 
-- run once and upload everthing currently present, or
+- run once and upload everything currently present, or
 - continuously monitor the folder and upload new files automatically
 
 !!! Tip "Remarks & practical tips"
