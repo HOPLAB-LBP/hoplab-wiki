@@ -15,7 +15,7 @@ You can follow the checklist step by step below or [download a personal copy](ht
     | Get added to the lab’s [meeting schedule](../../outreach.md#schedule) | Ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to add you to the planning | ☐ |
     | Appear as a member on the [Hoplab website](https://www.hoplab.be) | Find inspiration from your colleagues [here](https://www.hoplab.be/people/) | ☐ |
     | Read getting started section on Wiki | Here’s a [quick link](../../get-started/index.md) | ☐ |
-    | Receive and register [HSE orientation](../../get-started/index.md/#hse-health-safety-and-environment-orientation) | Inform [Zsuzsa](https://www.kuleuven.be/wieiswie/nl/person/00048902) and [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497) about your start-up | ☐ |
+    | Complete [HSE orientation](../../get-started/index.md/#hse-health-safety-and-environment-orientation) | Review the information provided by the faculty and follow up on the HSE orientation invitation | ☐ |
 
 ??? note "📊 Research data management"
     | Task | Information | Done |
