@@ -80,10 +80,3 @@ To run one by hand: **Actions** tab, pick the workflow, **Run workflow**.
 | Link check fails on a site that blocks bots (login page, CAPTCHA, error 400) | Add a pattern to `exclude` in `.lychee.toml`, with a comment that says why |
 | Markdown lint rejects an HTML element | Add it to `allowed_elements` under `MD033` in `.markdownlint-cli2.yaml` |
 | The strict build warns about a shallow clone | Check out with `fetch-depth: 0`, as the two building workflows already do |
-
-<!-- TEMP TEST, will be reverted -->
-[gone](no-such-page.md) ![missing](../assets/no-such-image.png) [anchor](writing-pages.md#no-such-heading)
-
-!!! note "Empty box"
-
-This paragraph follows an empty box.
