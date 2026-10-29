@@ -43,6 +43,7 @@ One organisation ruleset, `default-branch`, covers the default branch of every H
 | Automation tests | Pull requests and pushes to `main` that touch workflows, scripts, tests or check settings | Tests the scripts and lints the workflows |
 | Deploy to GitHub Pages | Every push to `main`; also by hand | Builds the site with `mkdocs-ci.yml` and publishes it on the `gh-pages` branch. When a deploy fails, it opens an issue labelled `deploy-failure` and assigned to @costantinoai; the next successful deploy closes it |
 | Weekly link check | Mondays at 06:00 UTC; also by hand | Checks every link on the wiki and keeps one issue labelled `link-check` with the broken ones, assigned to @costantinoai; closes it when all links work again |
+| Dependabot (`.github/dependabot.yml`) | Once a month | Opens one pull request that updates all the actions the workflows use to their newest versions. Read the release notes of any new major version before you merge it |
 | Manage Docs Tags and Issues | Every push to `main`, every day at 07:00 UTC, issue comments; also by hand | Keeps one issue per page with its `TODO`, `NOTE` and `PLACEHOLDER` tags |
 | Autofix docs | Only by hand | Runs the auto-fixes on all of `main` and opens a pull request with them. Checks do not start on a pull request the bot opens: close and reopen it to run them |
 
