@@ -47,7 +47,7 @@ jobs:
 
       - name: Find existing bot comment
         if: steps.pr.outputs.pr_number != ''
-        uses: peter-evans/find-comment@v4
+        uses: peter-evans/find-comment@b30e6a3c0ed37e7c023ccd3f1db5c6c0b0c23aad # v4.0.0
         id: find-comment
         with:
           issue-number: ${{ steps.pr.outputs.pr_number }}
@@ -153,7 +153,7 @@ jobs:
 
       - name: Find existing bot comment
         if: steps.meta.outputs.pr_number != ''
-        uses: peter-evans/find-comment@v4
+        uses: peter-evans/find-comment@b30e6a3c0ed37e7c023ccd3f1db5c6c0b0c23aad # v4.0.0
         id: find-comment
         with:
           issue-number: ${{ steps.meta.outputs.pr_number }}
@@ -162,7 +162,7 @@ jobs:
 
       - name: Post or update PR comment
         if: steps.meta.outputs.pr_number != ''
-        uses: peter-evans/create-or-update-comment@v5
+        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5.0.0
         with:
           issue-number: ${{ steps.meta.outputs.pr_number }}
           comment-id: ${{ steps.find-comment.outputs.comment-id }}

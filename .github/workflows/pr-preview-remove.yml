@@ -31,7 +31,7 @@ jobs:
           echo "base=${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}" >> "$GITHUB_OUTPUT"
 
       - name: Remove the preview
-        uses: rossjrw/pr-preview-action@v1.8.2
+        uses: rossjrw/pr-preview-action@873417d2df72380da1f3978378fb58560bcde976 # v1.8.2
         with:
           action: remove
           pages-base-url: ${{ steps.pages.outputs.base }}

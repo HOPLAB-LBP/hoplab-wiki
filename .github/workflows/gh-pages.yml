@@ -55,7 +55,7 @@ jobs:
       # Deploys the site checked above. The pr-preview/ folder holds the
       # previews of open pull requests (pr-checks.yml), so it stays.
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.9.0
+        uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # v4.9.0
         with:
           folder: site
           branch: gh-pages

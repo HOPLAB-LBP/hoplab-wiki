@@ -41,7 +41,7 @@ jobs:
 
       - name: Detect automation-related changes
         id: changes
-        uses: dorny/paths-filter@v4
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
             workflow:
@@ -136,7 +136,7 @@ jobs:
       - name: Link check
         id: linkcheck
         continue-on-error: true
-        uses: lycheeverse/lychee-action@v2.9.0
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
           args: --config .lychee.toml --format markdown README.md docs/**/*.md
           output: /tmp/pr-checks/linkcheck-output.md
@@ -1145,7 +1145,7 @@ jobs:
           echo "base=${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}" >> "$GITHUB_OUTPUT"
 
       - name: Deploy the preview
-        uses: rossjrw/pr-preview-action@v1.8.2
+        uses: rossjrw/pr-preview-action@873417d2df72380da1f3978378fb58560bcde976 # v1.8.2
         with:
           source-dir: preview-site
           action: deploy
@@ -1182,7 +1182,7 @@ jobs:
           echo "base=${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}" >> "$GITHUB_OUTPUT"
 
       - name: Remove the preview
-        uses: rossjrw/pr-preview-action@v1.8.2
+        uses: rossjrw/pr-preview-action@873417d2df72380da1f3978378fb58560bcde976 # v1.8.2
         with:
           action: remove
           pages-base-url: ${{ steps.pages.outputs.base }}
@@ -1279,7 +1279,7 @@ jobs:
           name: fixes-diff
           path: ${{ runner.temp }}/fixes
 
-      - uses: reviewdog/action-setup@v1.5.0
+      - uses: reviewdog/action-setup@d8a7baabd7f3e8544ee4dbde3ee41d0011c3a93f # v1.5.0
         with:
           reviewdog_version: v0.21.2
 
