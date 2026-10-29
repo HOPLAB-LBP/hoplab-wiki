@@ -3,7 +3,7 @@
 These are our own agreements. They build on the [KU Leuven rules](kuleuven-rules.md) and are stricter where our data or our training need it. If a guideline does not fit your project, talk to your supervisor. [Resources](resources.md) has files and templates that help you follow them.
 
 !!! warning "Draft for the lab meeting"
-    These guidelines are a proposal that the lab still has to agree on. We have also asked KU Leuven Research Integrity whether coding agents may work on code without data, and whether unpublished analysis code counts as confidential. Until both answers are in, follow the stricter reading.
+    These guidelines are a proposal that the lab still has to agree on. KU Leuven has no clear rule on coding agents yet, and its advice until then is to err on the side of caution (see [AI that acts on its own](kuleuven-rules.md#ai-that-acts-on-its-own)). Follow the stricter reading.
 
 ---
 
@@ -14,7 +14,7 @@ These are our own agreements. They build on the [KU Leuven rules](kuleuven-rules
     A coding agent sends the files it reads to its provider and can change anything in the folder it runs in. Following the KU Leuven rules on agentic AI and the ICTS [charter for AI-assisted coding](https://admin.kuleuven.be/icts/gen-ai/charter) (login):
 
     - start the agent in a project folder that holds code only: no participant data, no unpublished results, no passwords, tokens or `.env` files;
-    - keep the setting in which the agent asks before it edits a file or runs a command, and never turn on a mode that skips approval (in Claude Code, `--dangerously-skip-permissions`);
+    - let the agent ask before every file edit and every command: never turn on auto mode, auto-accept edits or a mode that skips approval (in Claude Code, `--dangerously-skip-permissions`);
     - never run an agent on a lab server or shared drive that holds data, and never give it your accounts or your browser;
     - agree with your supervisor before you use an agent on a project, since your code goes to the provider and KU Leuven requires a licence, not a free account.
 
@@ -62,7 +62,9 @@ These are our own agreements. They build on the [KU Leuven rules](kuleuven-rules
 
 <!--
 __TODO__: [Andrea] Agree the lab guidelines with Hans and the lab (lab meeting) before the section goes live; points to settle are in local/ai-guidelines/lab-meeting-discussion.md. (Not asked yet.)
-__TODO__: [Andrea] Ask researchintegrity@kuleuven.be whether coding agents (Claude Code, Codex) used with approval on code without data are allowed, and whether unpublished analysis code counts as confidential. (Not asked yet.)
+__TODO__: [Andrea] Still open with Research Integrity: who decides on agents that act after approval; may agents read analysis results; does the audit trail for raw AI output apply to code. (Asked 2026-10-15; no answer yet.)
+__TODO__: [Andrea] Ask PPW dICT whether coding agents may be installed on KU Leuven laptops and lab servers. (Not asked yet; Research Integrity's advice, 2026-10-22.)
+__TODO__: [Andrea] Ask CTC whether per-participant derived data (RDMs, accuracies) need an ethical review before an AI tool sees them. (Not asked yet; RDM helpdesk's advice, 2026-10-22.)
 __TODO__: [Andrea] Check whether the Faculty of Psychology and Educational Sciences has its own rules on AI in master's theses. (Not asked yet.)
 __TODO__: [Andrea] Decide whether the lab offers a shared licence for an AI tool, and which one. (Not asked yet.)
 -->
