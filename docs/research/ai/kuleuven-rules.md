@@ -36,10 +36,10 @@ When data of different levels are mixed, the strictest level applies.
     Putting unpublished data into a cloud tool shares them before they are published. KU Leuven also owns the research data its staff produce ([regulations on intellectual property](https://admin.kuleuven.be/reglementen/en/research/intranet/intellectual-properties#autotoc-item-autotoc-3), login). Our [RDM rules](../rdm/SOPs.md) explain why our study data count as confidential or strictly confidential.
 
 ??? info "Results per participant are not anonymous"
-    RDMs, decoding accuracies or averaged values stored under a participant code such as `sub-01` are pseudonymised data, not anonymous data. They have to be made anonymous before any tool other than Copilot sees them. Ask the [CTC](https://gbiomed.kuleuven.be/english/ctc/) whether your study needs an ethical review for this. The KU Leuven guidance on [personal data](https://www.kuleuven.be/rdm/en/guidance/legal-ethical/personal_data) explains the difference.
+    RDMs, decoding accuracies or averaged values stored under a participant code such as `sub-01` are pseudonymised data, not anonymous data. For KU Leuven's RDM team, pseudonymisation is not enough: such data should be made anonymous. The team also thinks an ethical review is needed and advises contacting the [CTC](https://gbiomed.kuleuven.be/english/ctc/). The KU Leuven guidance on [personal data](https://www.kuleuven.be/rdm/en/guidance/legal-ethical/personal_data) explains the difference.
 
 ??? info "Licences for other tools"
-    Free consumer accounts are not permitted for professional use. You need a licence, bought following the [SaaS guidelines](https://admin.kuleuven.be/icts/associatienet/saas) (login, in Dutch). KU Leuven has no plans for institution-wide licences for Claude or ChatGPT. For specific uses, its bonsAI environment may be an option.
+    Free consumer accounts are not permitted for professional use. You need a licence, bought following the [SaaS guidelines](https://admin.kuleuven.be/icts/associatienet/saas) (login, in Dutch). KU Leuven currently has no plans for institution-wide licences for Claude or ChatGPT. For specific uses, its bonsAI environment may be an option.
 
 ??? failure "Confidential data ended up in the wrong tool"
     Report it to the owner of the data and to [privacy@kuleuven.be](mailto:privacy@kuleuven.be).
