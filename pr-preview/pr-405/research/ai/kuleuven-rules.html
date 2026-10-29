@@ -1335,6 +1335,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1476,10 +1480,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#you-stay-responsible" class="md-nav__link">
+  <a href="#check-what-ai-gives-you" class="md-nav__link">
     <span class="md-ellipsis">
       
-        You stay responsible
+        Check what AI gives you
       
     </span>
   </a>
@@ -1565,6 +1569,62 @@
     
   
     Lab guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="first-project.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your first project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resources.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
   
 
     
@@ -3563,10 +3623,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#you-stay-responsible" class="md-nav__link">
+  <a href="#check-what-ai-gives-you" class="md-nav__link">
     <span class="md-ellipsis">
       
-        You stay responsible
+        Check what AI gives you
       
     </span>
   </a>
@@ -3654,11 +3714,22 @@
 
 
 <h1 id="ku-leuven-rules">KU Leuven rules<a class="headerlink" href="#ku-leuven-rules" title="Permanent link">¶</a></h1>
-<p>These rules come from the KU Leuven guidelines on generative AI and apply to all staff and students. This page gives the parts that matter most for our work. The <a href="#ku-leuven-pages">KU Leuven pages</a> at the bottom are the reference; some of them need your KU Leuven login. Our own agreements, which build on these rules, are in the <a href="lab-guidelines.html">lab guidelines</a>.</p>
+<p>These rules come from the KU Leuven guidelines on generative AI and apply to all staff and students. This page gives the parts that matter most for our work and links to the <a href="#ku-leuven-pages">KU Leuven pages</a> for the rest; some of them need your KU Leuven login. Our own agreements, which build on these rules, are in the <a href="lab-guidelines.html">lab guidelines</a>.</p>
+<div class="admonition abstract">
+<p class="admonition-title">In short</p>
+<ul>
+<li>Confidential material, such as participant data, unpublished work and PDFs of papers, only goes into <a href="#which-tool-for-which-data">Copilot with your KU Leuven login</a>.</li>
+<li><a href="#ai-that-acts-on-its-own">AI that acts on its own</a>, such as agentic browsers and assistants that work across your computer, is not permitted. Coding agents have no clear rule yet: in the lab they ask before every step.</li>
+<li>You are <a href="#check-what-ai-gives-you">responsible for the output</a>: check facts, sources and code.</li>
+<li><a href="#say-how-you-used-it">Say how you used AI</a> whenever it produced content. AI is never an author.</li>
+<li>Do not use AI to <a href="#peer-review">review a manuscript or a proposal</a>.</li>
+</ul>
+</div>
 <hr>
 <h2 id="which-tool-for-which-data">Which tool for which data<a class="headerlink" href="#which-tool-for-which-data" title="Permanent link">¶</a></h2>
-<p>KU Leuven has a data protection agreement for one AI assistant: Microsoft Copilot, used at <a href="https://copilot.cloud.microsoft/">copilot.cloud.microsoft</a> while you are logged in with your KU Leuven account. Microsoft does not use what you enter there to train its models, and the data stay in European data centres. It is the only AI tool you may use with confidential data. GitHub Copilot is a different product.</p>
-<p>Every other assistant (ChatGPT, Claude, Gemini, Mistral and so on, paid accounts included) may only be used with information that is not confidential. Free consumer accounts are not permitted for professional use: you need a licence, bought following the <a href="https://admin.kuleuven.be/icts/associatienet/saas">SaaS guidelines</a> (login, in Dutch).</p>
+<p>KU Leuven has a data protection agreement for one AI assistant: Microsoft Copilot, used at <a href="https://copilot.cloud.microsoft/">copilot.cloud.microsoft</a> while you are logged in with your KU Leuven account. Microsoft does not use what you enter there to train its models, and the data stay in European data centres. It is the only AI tool you may use with confidential data.</p>
+<p>Every other assistant (ChatGPT, Claude, Gemini, Mistral and so on, paid accounts included) may only be used with information that is not confidential. GitHub Copilot is a different product from Microsoft Copilot, and KU Leuven is still checking whether the agreement covers it.</p>
+<div class="yn-table">
 <table>
 <thead>
 <tr>
@@ -3700,16 +3771,37 @@
 </tr>
 </tbody>
 </table>
-<p>Our <a href="../rdm/SOPs.html">RDM rules</a> explain why our study data count as confidential or strictly confidential. When data of different levels are mixed, the strictest level applies. If confidential data end up in a tool where they do not belong, report it to the owner of the data and to <a href="mailto:privacy@kuleuven.be">privacy@kuleuven.be</a>.</p>
+</div>
+<p>When data of different levels are mixed, the strictest level applies.</p>
+<details class="info">
+<summary>Why unpublished research counts as confidential</summary>
+<p>Putting unpublished data into a cloud tool shares them before they are published. KU Leuven also owns the research data its staff produce (<a href="https://admin.kuleuven.be/reglementen/en/research/intranet/intellectual-properties#autotoc-item-autotoc-3">regulations on intellectual property</a>, login). Our <a href="../rdm/SOPs.html">RDM rules</a> explain why our study data count as confidential or strictly confidential.</p>
+</details>
+<details class="info">
+<summary>Results per participant are not anonymous</summary>
+<p>RDMs, decoding accuracies or averaged values stored under a participant code such as <code>sub-01</code> are pseudonymised data, not anonymous data. They have to be made anonymous before any tool other than Copilot sees them. Ask the <a href="https://gbiomed.kuleuven.be/english/ctc/">CTC</a> whether your study needs an ethical review for this. The KU Leuven guidance on <a href="https://www.kuleuven.be/rdm/en/guidance/legal-ethical/personal_data">personal data</a> explains the difference.</p>
+</details>
+<details class="info">
+<summary>Licences for other tools</summary>
+<p>Free consumer accounts are not permitted for professional use. You need a licence, bought following the <a href="https://admin.kuleuven.be/icts/associatienet/saas">SaaS guidelines</a> (login, in Dutch). KU Leuven has no plans for institution-wide licences for Claude or ChatGPT. For specific uses, its bonsAI environment may be an option.</p>
+</details>
+<details class="failure">
+<summary>Confidential data ended up in the wrong tool</summary>
+<p>Report it to the owner of the data and to <a href="mailto:privacy@kuleuven.be">privacy@kuleuven.be</a>.</p>
+</details>
 <h2 id="ai-that-acts-on-its-own">AI that acts on its own<a class="headerlink" href="#ai-that-acts-on-its-own" title="Permanent link">¶</a></h2>
-<p>Agentic AI does more than answer: it opens files, runs programs, fills in forms or pays for you. KU Leuven considers the combination of autonomy, broad access and unreliable input high risk. Unreliable input includes prompt injection: instructions hidden in a document or web page that the AI then follows. For this reason:</p>
+<p>Agentic AI does more than answer: it opens files, runs programs, fills in forms or pays for you. KU Leuven's rules of thumb are to use AI that advises you and avoid AI that acts for you, and to give an AI system access only to data you would be willing to make public. In practice:</p>
 <ul>
 <li>agentic browsers (Comet, Atlas) and system assistants that work across your computer (OpenClaw, Claude Cowork, Perplexity Computer) are not permitted until further notice, and Microsoft's Copilot Cowork is not permitted yet either;</li>
 <li>tools that act on their own are not permitted unless KU Leuven says otherwise;</li>
 <li>agents that plan and carry out tasks only after you approve them are judged case by case.</li>
 </ul>
-<p>KU Leuven's rules of thumb are to use AI that advises you and avoid AI that acts for you, and to give an AI system access only to data you would be willing to make public. Coding agents such as Claude Code and Codex are not named in these rules. How we use them in the lab is in the <a href="lab-guidelines.html">lab guidelines</a>.</p>
-<h2 id="you-stay-responsible">You stay responsible<a class="headerlink" href="#you-stay-responsible" title="Permanent link">¶</a></h2>
+<p>Coding agents such as Claude Code and Codex are not named in these rules, and KU Leuven has no clearer framework for them yet. Until it has, be cautious. Before you install one on a KU Leuven computer, ask local IT support (for us, <a href="http://ppw.kuleuven.be/dict">PPW dICT</a>). In the lab, a coding agent asks before every file edit and every command: no auto mode, no auto-accepted edits and no mode that skips approval. The rest of how we use coding agents is in the <a href="lab-guidelines.html">lab guidelines</a>.</p>
+<details class="info">
+<summary>Why KU Leuven is careful with agents</summary>
+<p>KU Leuven considers the combination of autonomy, broad access and unreliable input high risk. Unreliable input includes prompt injection: instructions hidden in a document or web page that the AI then follows.</p>
+</details>
+<h2 id="check-what-ai-gives-you">Check what AI gives you<a class="headerlink" href="#check-what-ai-gives-you" title="Permanent link">¶</a></h2>
 <p>You are responsible for what you put into an AI tool and for what you do with its output, including all work you hand in or publish. AI output can sound convincing and still be wrong, so:</p>
 <ul>
 <li>check facts, and check that every source exists and supports the claim;</li>
@@ -3718,16 +3810,21 @@
 <li>ask whether AI adds anything to the task at all, since every request costs energy.</li>
 </ul>
 <h2 id="say-how-you-used-it">Say how you used it<a class="headerlink" href="#say-how-you-used-it" title="Permanent link">¶</a></h2>
-<p>KU Leuven asks you to be open about AI whenever it produced new content.</p>
+<p>KU Leuven asks you to be open about AI whenever it produced new content. Hiding it is a violation of research integrity under the European Code of Conduct for Research Integrity (2023).</p>
 <ul>
 <li>In papers and grant applications, state the use in the Methods or the Acknowledgements. This applies to text about existing knowledge or new ideas, to code, to synthetic data and to figures. Code generation must be stated explicitly, with a reference to the tool. Help with the language of a text you wrote yourself needs no statement.</li>
 <li>An AI tool is never an author.</li>
 <li>When AI generates ideas or text for you, keep its raw output: the KU Leuven research data policy asks for an audit trail.</li>
+</ul>
+<p><a href="resources.html#templates-for-disclosure">Resources</a> has sentences you can adapt.</p>
+<details class="info">
+<summary>Theses, journals and funders</summary>
+<ul>
 <li>A PhD thesis describes the use of generative AI like any other method. In the Doctoral School Humanities and Social Sciences every thesis needs a statement, even if you did not use AI, following its <a href="https://www.kuleuven.be/genai/generative-ai-and-doctoral-thesis.pdf">template</a>, and blocks of text generated by AI are not allowed. Other doctoral schools have their own form.</li>
 <li>Master's students follow the research guidelines and any rules of their programme or course.</li>
 <li>Journals and funders can be stricter, so check their policy as well.</li>
 </ul>
-<p>Hiding the use of AI in creating content or drafting publications is a violation of research integrity under the European Code of Conduct for Research Integrity (2023).</p>
+</details>
 <h2 id="peer-review">Peer review<a class="headerlink" href="#peer-review" title="Permanent link">¶</a></h2>
 <p>Do not use generative AI to evaluate a manuscript or a project proposal, neither to write the review nor to summarise the document. These documents are confidential, and the evaluation needs your own expertise. You may improve the language of a review you wrote yourself, with a tool that does not store or reuse the text.</p>
 <h2 id="training-and-questions">Training and questions<a class="headerlink" href="#training-and-questions" title="Permanent link">¶</a></h2>
@@ -3742,6 +3839,7 @@
 <li><a href="https://www.kuleuven.be/english/genai/tools-overview">GenAI tools at KU Leuven</a> (login): what Copilot guarantees, and other tools by task (translation, literature, code).</li>
 <li><a href="https://www.kuleuven.be/english/genai/agentic-ai">Agentic AI</a> (login): what is not permitted, and why.</li>
 <li><a href="https://admin.kuleuven.be/privacy/intranet/ict-aanpak-iv">Data classification</a> (login): the three confidentiality levels.</li>
+<li><a href="https://www.kuleuven.be/rdm/en/guidance/legal-ethical/personal_data">Personal data</a> (RDM guidance): what counts as personal, pseudonymised and anonymous data.</li>
 <li><a href="https://research.kuleuven.be/en/integrity-ethics/integrity/practices/genai/use-genai-research">GenAI in research</a> and <a href="https://research.kuleuven.be/en/integrity-ethics/integrity/practices/genai/transparency">transparency</a>: what to check and what to state for each kind of use.</li>
 <li><a href="https://www.kuleuven.be/english/education/student/educational-tools/responsible-use-of-generative-artificial-intelligence">Guidelines for students</a>.</li>
 <li><a href="https://admin.kuleuven.be/icts/gen-ai/charter">Charter for AI-assisted coding</a> (login): the rules ICTS set for its own developers; our guideline on coding agents follows it.</li>
@@ -3755,6 +3853,12 @@
 <hr>
 <p>What we agree on in the Hoplab, on top of these rules.</p>
 <p><a href="lab-guidelines.html">Lab guidelines</a></p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 8h-3V6c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v10h20V10c0-1.1-.9-2-2-2M9 6h6v2H9zm11 12H4v-3h2v1h2v-1h8v1h2v-1h2zm-2-5v-1h-2v1H8v-1H6v1H4v-3h16v3z"></path></svg></span> <strong>Resources</strong></p>
+<hr>
+<p>Settings files, skills and templates that help you follow the rules.</p>
+<p><a href="resources.html">Resources</a></p>
 </li>
 </ul>
 </div>
@@ -3783,7 +3887,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-15T15:20:42+02:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 15, 2026 15:20:42 CEST">October 15, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-29T15:17:15+01:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 29, 2026 15:17:15 CET">October 29, 2026</span></time>
     
   </span>
 

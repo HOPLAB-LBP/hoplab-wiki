@@ -1326,6 +1326,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1421,6 +1425,62 @@
     
   
     Lab guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../research/ai/first-project.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your first project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../research/ai/resources.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
   
 
     
@@ -3451,6 +3511,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#checks-suggestions-and-previews" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checks, suggestions and previews
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#two-build-configurations" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3592,6 +3663,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#checks-suggestions-and-previews" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checks, suggestions and previews
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#two-build-configurations" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3676,7 +3758,7 @@
 <h2 id="review-and-merge-a-pull-request">Review and merge a pull request<a class="headerlink" href="#review-and-merge-a-pull-request" title="Permanent link">¶</a></h2>
 <ol>
 <li>Open the pull request from the <a href="https://github.com/HOPLAB-LBP/hoplab-wiki/pulls">Pull requests</a> tab.</li>
-<li>Wait until all checks pass, and read the bot comment with the check report.</li>
+<li>Wait until all checks pass. The bot comment has the check report and links to the preview of each changed page.</li>
 <li>Read the changes in <strong>Files changed</strong>. Ask for changes in a review, or push small fixes yourself (see <a href="#edit-a-contributors-pull-request">Edit a contributor's pull request</a>).</li>
 <li>Approve, then click <strong>Squash and merge</strong>.</li>
 </ol>
@@ -3702,7 +3784,7 @@
 <li>Force pushes and deleting the default branch are blocked.</li>
 <li>Squash merge is the only merge method.</li>
 </ul>
-<p>The wiki also has a ruleset of its own, <code>pr-checks</code> (<strong>Settings</strong> &gt; <strong>Rules</strong> &gt; <strong>Rulesets</strong> of this repository): on <code>main</code>, the check <code>check-and-report</code> must pass before a pull request can be merged, for admins too. A pull request opened by the bot (Autofix docs) starts no checks: close and reopen it.</p>
+<p>The wiki also has a ruleset of its own, <code>pr-checks</code> (<strong>Settings</strong> &gt; <strong>Rules</strong> &gt; <strong>Rulesets</strong> of this repository): on <code>main</code>, the check <code>check-and-report</code> must pass before a pull request can be merged. Organisation admins can bypass it when merging, for emergencies only: when GitHub never started the checks (push a new commit or close and reopen the pull request first) or GitHub Actions is down. A pull request opened by the bot (Autofix docs) starts no checks: close and reopen it.</p>
 <h2 id="what-runs-where">What runs where<a class="headerlink" href="#what-runs-where" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -3716,7 +3798,7 @@
 <tr>
 <td>PR checks</td>
 <td>Every pull request</td>
-<td><code>check-and-report</code> runs the spell check, Markdown and YAML lint, link check (a warning only), MkDocs build and syntax check, and tests the scripts and lints the workflows when those change; it must pass before a merge. For branches of this repository it also posts the safe fixes (spelling, spaces, quotes, blank lines) as review suggestions on changed lines, and publishes a preview of the site at <code>pr-preview/pr-&lt;number&gt;/</code> on <code>gh-pages</code> (no index, no analytics, with a banner; linked in the report, with a link per changed page). A push that breaks the build takes the old preview offline. Fork and Dependabot pull requests get no suggestions and no preview: their token is read-only</td>
+<td>Runs the checks (<code>check-and-report</code>, required), posts fix suggestions and publishes the preview: see <a href="#checks-suggestions-and-previews">Checks, suggestions and previews</a></td>
 </tr>
 <tr>
 <td>Remove PR preview</td>
@@ -3761,6 +3843,15 @@
 </tbody>
 </table>
 <p>To run one by hand: <strong>Actions</strong> tab, pick the workflow, <strong>Run workflow</strong>.</p>
+<h2 id="checks-suggestions-and-previews">Checks, suggestions and previews<a class="headerlink" href="#checks-suggestions-and-previews" title="Permanent link">¶</a></h2>
+<ul>
+<li><code>check-and-report</code> runs the spell check, Markdown and YAML lint, MkDocs build and syntax check, and the script tests and workflow lint when those change. The link check only warns. The job writes the report that <code>pr-comment.yml</code> posts.</li>
+<li><code>find-fixes</code> runs the safe fixers on a copy of the pull request, with no token; <code>suggest-fixes</code> posts each change as a review suggestion on the lines it covers (<code>scripts/post_suggestions.py</code>, from the base branch). The fixers are the ones in <code>scripts/</code> plus <code>markdownlint-cli2 --fix</code> and <code>typos --write-changes</code>; <code>scripts/fix_links.py</code> handles links with one clear target. The bot never pushes.</li>
+<li><code>preview</code> publishes the built site at <code>pr-preview/pr-&lt;number&gt;/</code> on <code>gh-pages</code>, with a banner, no search indexing and no analytics. A push that breaks the build takes the old preview offline; closing the pull request removes it, and the weekly link check removes any left over.</li>
+<li>Forks and Dependabot get the checks but no suggestions and no preview: their token is read-only.</li>
+<li>Every pull request gets the checks, whatever it changes, so none waits forever on the required check.</li>
+<li><code>gh-pages</code> (the live site) is not protected. Never push to it by hand: every deploy of <code>main</code> rewrites it.</li>
+</ul>
 <h2 id="two-build-configurations">Two build configurations<a class="headerlink" href="#two-build-configurations" title="Permanent link">¶</a></h2>
 <ul>
 <li><code>mkdocs.yml</code> is what contributors use with <code>mkdocs serve</code>. It has no plugin that needs git.</li>
@@ -3838,7 +3929,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-29T13:18:26+01:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 29, 2026 13:18:26 CET">October 29, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-29T14:18:57+01:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 29, 2026 14:18:57 CET">October 29, 2026</span></time>
     
   </span>
 

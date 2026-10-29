@@ -1,0 +1,6 @@
+messeri2024: OK (10.1038/s41586-024-07146-0)
+roth2025: TITLE MISMATCH (10.1038/s44271-025-00236-3)
+    title at the DOI: Ten principles for reliable, efficient, and adaptable coding in psychology and cognitive neuroscience
+bridgeford2025: EXISTS, title not checked (10.48550/arXiv.2510.22254)
+invented2026: NOT FOUND (10.1234/does-not-exist.2026)
+nodoi: NO DOI

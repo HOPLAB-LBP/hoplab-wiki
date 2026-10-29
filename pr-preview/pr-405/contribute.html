@@ -1328,6 +1328,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1423,6 +1427,62 @@
     
   
     Lab guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="research/ai/first-project.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your first project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="research/ai/resources.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
   
 
     
@@ -3643,26 +3703,13 @@
 <p>GitHub offers to fork the lab repository (make your own copy of it). Follow its steps and leave <strong>Allow edits by maintainers</strong> ticked on the pull request, so we can fix small things for you.</p>
 </details>
 <h2 id="after-you-open-a-pull-request">After you open a pull request<a class="headerlink" href="#after-you-open-a-pull-request" title="Permanent link">¶</a></h2>
-<ul>
-<li>The lab's reviewers (the <code>reviewers</code> team on GitHub) are asked to review it. We may push small fixes to it before merging.</li>
-<li>Automated checks run, and a bot posts one comment on the pull request with the results. When something fails, the comment says what went wrong and how to fix it. For the full report, click <strong>Details</strong> next to a check. The pull request can be merged only once the checks pass.</li>
-<li>Where the bot knows the fix for a small problem on a line you changed, it suggests it on that line under <strong>Files changed</strong>. Click <strong>Commit suggestion</strong> to apply it. If you work on your computer, pull before you continue.</li>
-<li>The bot's comment links a preview: the whole wiki with your changes, with a direct link to each page you changed (up to 15). It updates with every push and disappears when the pull request closes.</li>
-<li>Once the pull request is merged, the live wiki updates within a few minutes.</li>
-</ul>
+<ol>
+<li><strong>Look at the preview.</strong> A few minutes later a bot comments on your pull request with a link to the wiki as it will look with your changes, and a link to each page you changed.</li>
+<li><strong>Fix what the checks flag.</strong> The same comment says what to fix. Where the bot knows the fix, it waits for you under <strong>Files changed</strong>: click <strong>Commit suggestion</strong> (or <strong>Add suggestion to batch</strong> for several, then commit once). Your pull request can be merged once the checks pass.</li>
+<li><strong>Wait for the review.</strong> A reviewer reads it, may ask for changes or make small ones, and merges it. The live wiki updates a few minutes later.</li>
+</ol>
 <details class="info">
-<summary>What the bot can suggest</summary>
-<ul>
-<li>Spellings the spell check is sure of</li>
-<li>Spaces at the end of a line and extra blank lines in Markdown files</li>
-<li>Tabs, which become spaces</li>
-<li>Spaces at the end of a line in YAML files</li>
-<li>Curly quotes in the titles of tabs (<code>=== "..."</code>) and boxes (<code>!!! type "..."</code>)</li>
-<li>A missing blank line after a tab title (<code>=== "Title"</code>)</li>
-</ul>
-</details>
-<details class="info">
-<summary>What the checks report (you fix these)</summary>
+<summary>What the checks look at</summary>
 <table>
 <thead>
 <tr>
@@ -3677,15 +3724,7 @@
 </tr>
 <tr>
 <td><strong>Markdown lint</strong></td>
-<td>Checks that the formatting is consistent (heading style, bare URLs and so on).</td>
-</tr>
-<tr>
-<td><strong>Link check</strong></td>
-<td>Checks the links on every page. It only warns and never blocks your pull request: some sites refuse automated checks, so open a flagged link in your browser before changing it.</td>
-</tr>
-<tr>
-<td><strong>YAML lint</strong></td>
-<td>Checks the syntax of <code>mkdocs.yml</code> and the workflow files.</td>
+<td>Checks that the formatting is consistent (heading style, bullets, spacing).</td>
 </tr>
 <tr>
 <td><strong>MkDocs build</strong></td>
@@ -3693,14 +3732,23 @@
 </tr>
 <tr>
 <td><strong>MkDocs syntax</strong></td>
-<td>Catches content that MkDocs would quietly render wrong, such as tab or box content that is not indented enough, or a code block at the wrong indent.</td>
+<td>Catches content that would quietly render wrong, such as tab or box content that is not indented enough.</td>
+</tr>
+<tr>
+<td><strong>YAML lint</strong></td>
+<td>Checks the syntax of <code>mkdocs.yml</code> and the workflow files.</td>
+</tr>
+<tr>
+<td><strong>Link check</strong></td>
+<td>Checks that links open. It only warns: some sites refuse automated checks, so open a flagged link in your browser before changing it.</td>
 </tr>
 </tbody>
 </table>
+<p>The bot suggests a fix for spelling it is sure of, spacing and quotes, and links with one clear target. Anything else, the comment explains.</p>
 </details>
 <details class="note">
 <summary>Does your pull request come from a fork?</summary>
-<p>Then the bot cannot suggest fixes or publish a preview (GitHub gives it no write access for forks). The report tells you what to fix by hand, or we fix it for you if <strong>Allow edits by maintainers</strong> is ticked.</p>
+<p>Then the bot cannot suggest fixes or publish a preview (GitHub gives it no write access for forks). The comment tells you what to fix by hand, or we fix it for you if <strong>Allow edits by maintainers</strong> is ticked.</p>
 </details>
 <h2 id="need-help">Need help?<a class="headerlink" href="#need-help" title="Permanent link">¶</a></h2>
 <ul>
