@@ -364,9 +364,14 @@ jobs:
 
           # docs/contribute.md is generated from README.md, so send contributors
           # to the source file they actually need to edit.
+          # MkDocs reports paths relative to docs/, so add the prefix the edit link needs.
           report_fix_target() {
             local filepath="$1"
             filepath="${filepath#./}"
+            case "$filepath" in
+              docs/*|README.md|"(unknown file)") ;;
+              *) filepath="docs/$filepath" ;;
+            esac
             if [ "$filepath" = "docs/contribute.md" ]; then
               echo "[\`README.md\` (sync source for \`docs/contribute.md\`)]($EDIT_BASE/README.md)"
             else
