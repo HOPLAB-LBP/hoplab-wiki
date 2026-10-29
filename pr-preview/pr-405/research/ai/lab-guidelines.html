@@ -13,7 +13,7 @@
         <link rel="prev" href="kuleuven-rules.html">
       
       
-        <link rel="next" href="first-project.html">
+        <link rel="next" href="../behaviour/index.html">
       
       
         
@@ -1335,10 +1335,6 @@
       
         
       
-        
-      
-        
-      
     
     
     
@@ -1500,62 +1496,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="first-project.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Your first project
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="resources.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Resources
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -3560,7 +3500,7 @@
 
 
 <h1 id="lab-guidelines">Lab guidelines<a class="headerlink" href="#lab-guidelines" title="Permanent link">¶</a></h1>
-<p>These are our own agreements. They build on the <a href="kuleuven-rules.html">KU Leuven rules</a> and are stricter where our data or our training need it. If a guideline does not fit your project, talk to your supervisor. <a href="resources.html">Resources</a> has files and templates that help you follow them.</p>
+<p>These are our own agreements. They build on the <a href="kuleuven-rules.html">KU Leuven rules</a> and are stricter where our data or our training need it. If a guideline does not fit your project, talk to your supervisor.</p>
 <div class="admonition warning">
 <p class="admonition-title">Draft for the lab meeting</p>
 <p>These guidelines are a proposal that the lab still has to agree on. KU Leuven has no clear rule on coding agents yet, and its advice until then is to err on the side of caution (see <a href="kuleuven-rules.html#ai-that-acts-on-its-own">AI that acts on its own</a>). Follow the stricter reading.</p>
@@ -3579,7 +3519,6 @@
 <li>never run an agent on a lab server or shared drive that holds data, and never give it your accounts or your browser;</li>
 <li>agree with your supervisor before you use an agent on a project, since your code goes to the provider and KU Leuven requires a licence, not a free account.</li>
 </ul>
-<p>The <a href="resources.html#project-template">Hoplab project template</a> has settings for Claude Code and Codex that do this, and says what they do not cover.</p>
 </details>
 <details class="numlist">
 <summary>Be able to explain everything you share</summary>
@@ -3587,7 +3526,7 @@
 </details>
 <details class="numlist">
 <summary>Test AI-written analysis code before it touches real data</summary>
-<p>Run the code on simulated data where you know the right answer, like the data in our <a href="../dnn/index.html">DNN</a> and <a href="../fmri/analysis/fmri-mvpa-python.html">fMRI multivariate</a> tutorials, and keep that test with the code. Read every change the AI makes. Never accept a change that edits a test so that it passes, or that swaps the real computation for placeholder data, and work as described in <a href="resources.html#writing-code-with-ai">Writing code with AI</a>. The <a href="resources.html#skills-and-helper-agents">skills</a> for reviewing AI-written code and for known-answer tests help with both. Before results from AI-assisted code go into a paper or thesis, have someone else in the lab look at the code.</p>
+<p>Run the code on simulated data where you know the right answer, like the data in our <a href="../dnn/index.html">DNN</a> and <a href="../fmri/analysis/fmri-mvpa-python.html">fMRI multivariate</a> tutorials, and keep that test with the code. Read every change the AI makes. Never accept a change that edits a test so that it passes, or that swaps the real computation for placeholder data. Before results from AI-assisted code go into a paper or thesis, have someone else in the lab look at the code.</p>
 </details>
 <details class="numlist">
 <summary>Write your own science</summary>
@@ -3595,11 +3534,11 @@
 </details>
 <details class="numlist">
 <summary>Check every reference yourself</summary>
-<p>Cite only papers you have found and read, at least the abstract, and check that each DOI leads to the paper you mean. Never let an AI add references from memory: AI tools invent sources, and they cite real papers that do not support the claim. The <a href="resources.html#check-your-references">reference checker</a> finds DOIs that do not exist or point to another paper.</p>
+<p>Cite only papers you have found and read, at least the abstract, and check that each DOI leads to the paper you mean. Never let an AI add references from memory: AI tools invent sources, and they cite real papers that do not support the claim.</p>
 </details>
 <details class="numlist">
 <summary>Be open about it in the lab</summary>
-<p>Tell your supervisor and co-authors how you used AI in a project, including the parts you do not fully understand yet. Say on your slides when AI produced an analysis or a figure, and mention AI-written code in the README. If you find an error in AI-assisted work, report it straight away so that it can be corrected. <a href="resources.html#templates-for-disclosure">Templates</a> for papers, repositories and slides are in Resources.</p>
+<p>Tell your supervisor and co-authors how you used AI in a project, including the parts you do not fully understand yet. Say on your slides when AI produced an analysis or a figure, and mention AI-written code in the README. If you find an error in AI-assisted work, report it straight away so that it can be corrected.</p>
 </details>
 <details class="numlist">
 <summary>Students: learn the skill before you delegate it</summary>
@@ -3613,12 +3552,6 @@
 <hr>
 <p>The university rules these guidelines build on.</p>
 <p><a href="kuleuven-rules.html">KU Leuven rules</a></p>
-</li>
-<li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 8h-3V6c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v10h20V10c0-1.1-.9-2-2-2M9 6h6v2H9zm11 12H4v-3h2v1h2v-1h8v1h2v-1h2zm-2-5v-1h-2v1H8v-1H6v1H4v-3h16v3z"></path></svg></span> <strong>Resources</strong></p>
-<hr>
-<p>Ten rules for writing code with AI, settings files, skills and templates.</p>
-<p><a href="resources.html">Resources</a></p>
 </li>
 </ul>
 </div>
@@ -3647,7 +3580,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-29T15:17:15+01:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 29, 2026 15:17:15 CET">October 29, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-10-29T20:52:21+01:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 29, 2026 20:52:21 CET">October 29, 2026</span></time>
     
   </span>
 
@@ -3786,13 +3719,13 @@
         
         
           
-          <a href="first-project.html" class="md-footer__link md-footer__link--next" aria-label="Next: Your first project">
+          <a href="../behaviour/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: Behavioural research">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Your first project
+                Behavioural research
               </div>
             </div>
             <div class="md-footer__button md-icon">
