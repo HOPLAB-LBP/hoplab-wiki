@@ -274,6 +274,7 @@ jobs:
           bash tests/test_check_mkdocs_syntax.sh >> "$OUT" 2>&1 || rc=1
           bash tests/test_fix_markdown_table_pipes.sh >> "$OUT" 2>&1 || rc=1
           bash tests/test_fix_links.sh >> "$OUT" 2>&1 || rc=1
+          bash tests/test_post_suggestions.sh >> "$OUT" 2>&1 || rc=1
           node tests/test-manage-docs-tags.js >> "$OUT" 2>&1 || rc=1
           cat "$OUT"
           if [ "$rc" -eq 0 ]; then
@@ -582,6 +583,7 @@ jobs:
              bash tests/test_check_mkdocs_syntax.sh
              bash tests/test_fix_markdown_table_pipes.sh
              bash tests/test_fix_links.sh
+             bash tests/test_post_suggestions.sh
              node tests/test-manage-docs-tags.js
              ```
           2. Read the first failing test output below and fix the underlying script or fixture mismatch.
@@ -1250,22 +1252,26 @@ jobs:
           python3 ../trusted/scripts/fix_links.py --fix docs/ || true
           sed -i 's/[[:space:]]*$//' mkdocs.yml mkdocs-ci.yml .yamllint.yml .github/workflows/*.yml 2>/dev/null || true
           typos --config ./_typos.toml --write-changes || true
-          # No context lines: each change becomes its own hunk, so each
-          # suggestion covers only the lines it changes and can be applied
-          # on its own, in any order.
-          git diff -U0 --no-ext-diff --no-color > "$RUNNER_TEMP/fixes.diff"
-          wc -c < "$RUNNER_TEMP/fixes.diff"
+          # Keep the fixed version of every changed file, at its path.
+          mkdir -p "$RUNNER_TEMP/fixed"
+          git diff --name-only -z | while IFS= read -r -d '' f; do
+            mkdir -p "$RUNNER_TEMP/fixed/$(dirname "$f")"
+            cp -- "$f" "$RUNNER_TEMP/fixed/$f"
+          done
+          git diff --stat
 
       - name: Keep the fixes
         uses: actions/upload-artifact@v7
         with:
-          name: fixes-diff
-          path: ${{ runner.temp }}/fixes.diff
+          name: fixed-files
+          path: ${{ runner.temp }}/fixed/
           retention-days: 1
+          if-no-files-found: ignore
 
-  # Posts the difference as review suggestions on the lines the PR added
-  # ("Commit suggestion" applies one). It runs no code from the PR: it only
-  # reads the difference, as text, and refuses an implausibly large one.
+  # Posts each fix as a review suggestion covering exactly the lines it
+  # changes, on lines the PR touched ("Commit suggestion" applies one, "Add
+  # suggestion to batch" several). It runs no code from the PR: the script
+  # comes from the base branch and reads the PR's files as text.
   suggest-fixes:
     needs: find-fixes
     runs-on: ubuntu-latest
@@ -1273,34 +1279,46 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      # reviewdog needs a git checkout to resolve paths; nothing in it runs.
-      - uses: actions/checkout@v7
+      - name: Check out the pull request (read as data only)
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          path: head
+          persist-credentials: false
+
+      - name: Check out the script from the base branch
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: trusted
+          sparse-checkout: scripts
           persist-credentials: false
 
       - name: Get the fixes
         uses: actions/download-artifact@v8
+        continue-on-error: true
         with:
-          name: fixes-diff
-          path: ${{ runner.temp }}/fixes
-
-      - uses: reviewdog/action-setup@d8a7baabd7f3e8544ee4dbde3ee41d0011c3a93f # v1.5.0
-        with:
-          reviewdog_version: v0.21.2
+          name: fixed-files
+          path: ${{ runner.temp }}/fixed
 
       - name: Post the fixes as suggestions
         env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DIFF: ${{ runner.temp }}/fixes/fixes.diff
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FIXED: ${{ runner.temp }}/fixed
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          if [ ! -s "$DIFF" ]; then
+          if [ ! -d "$FIXED" ]; then
             echo "Nothing to suggest."
             exit 0
           fi
-          if [ "$(wc -c < "$DIFF")" -gt 1000000 ]; then
+          if [ "$(du -sk "$FIXED" | cut -f1)" -gt 20000 ]; then
             echo "::warning::The fixes are too large to post as suggestions."
             exit 0
           fi
-          reviewdog -name=Fix -f=diff -f.diff.strip=1 -reporter=github-pr-review \
-            -filter-mode=added -fail-level=none -level=warning < "$DIFF"
+          if [ ! -f trusted/scripts/post_suggestions.py ]; then
+            echo "::notice::The base branch has no scripts/post_suggestions.py yet."
+            exit 0
+          fi
+          python3 trusted/scripts/post_suggestions.py --head head --fixed "$FIXED" \
+            --repo "$GITHUB_REPOSITORY" --pr "$PR_NUMBER" --sha "$HEAD_SHA"
