@@ -40,7 +40,7 @@ One organisation ruleset, `default-branch`, covers the default branch of every H
 |---|---|---|
 | PR checks | Every pull request that touches the docs, the snippets in `includes/`, the configuration, the scripts or the tests | Pushes safe auto-fixes (whitespace, quotes) to branches of this repository, then runs the spell check, Markdown and YAML lint, link check, MkDocs build and syntax check; tests the scripts and lints the workflows when those change |
 | Post PR check report | After each PR checks run | Posts the report as a comment on the pull request |
-| Automation tests | Pull requests and pushes to `main` that touch workflows, scripts, tests or check settings | Tests the scripts and lints the workflows |
+| Automation tests | Pushes to `main` that touch workflows, scripts, tests or check settings; also by hand | Tests the scripts and lints the workflows (pull requests get the same in PR checks) |
 | Deploy to GitHub Pages | Every push to `main`; also by hand | Builds the site with `mkdocs-ci.yml` and publishes it on the `gh-pages` branch. When a deploy fails, it opens an issue labelled `deploy-failure` and assigned to @costantinoai; the next successful deploy closes it |
 | Weekly link check | Mondays at 06:00 UTC; also by hand | Checks every link on the wiki and keeps one issue labelled `link-check` with the broken ones, assigned to @costantinoai; closes it when all links work again |
 | Dependabot (`.github/dependabot.yml`) | Once a month | Opens one pull request that updates all the actions the workflows use to their newest versions. Read the release notes of any new major version before you merge it |
