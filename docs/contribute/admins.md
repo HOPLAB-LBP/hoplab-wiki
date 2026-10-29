@@ -12,9 +12,7 @@ Admins review and merge pull requests and keep the build working. Repository adm
 The pull request becomes one commit on `main`. Its author is the person who opened the pull request; anyone else who committed is added as co-author. GitHub deletes the branch, and the merge starts the deploy: the live site updates a few minutes later. If you had the branch on your computer, delete it there with `git branch -D <branch>`.
 
 ??? info "Merging your own pull request"
-    You cannot approve your own pull request. Admins can bypass the review: tick the bypass box under the merge button, or run `gh pr merge <number> --squash --admin`. Do this only when all checks have passed.
-
-    A pull request opened by the code owner (@costantinoai) can also be merged after any lab member approves it, without the bypass.
+    You cannot approve your own pull request. Ask another member of `reviewers` to approve it, or bypass the review as an admin: tick the bypass box under the merge button, or run `gh pr merge <number> --squash --admin`. Bypass only when all checks have passed.
 
 ## Edit a contributor's pull request
 
@@ -27,11 +25,14 @@ Tell the contributor to pull before they continue, since their copy no longer ha
 
 ## The rules on `main`
 
-- Changes reach `main` only through a pull request, with one approving review from a code owner. `.github/CODEOWNERS` makes @costantinoai the reviewer of every pull request.
-- Nobody can push to `main` directly, admins included. Admins can bypass the review, but only when merging a pull request.
+One organisation ruleset, `default-branch`, covers the default branch of every HOPLAB-LBP repository, this wiki included, and every new repository from the moment it is created. Change it under the organisation's **Settings** > **Rulesets**.
+
+- Changes reach the default branch only through a pull request, with one approval from a member of the `reviewers` team. The team is asked to review automatically, but only on repositories it has access to, and only while it stays visible.
+- **New repository**: add the team right after creating it (**Settings** > **Collaborators and teams** > **Add teams** > `reviewers`, role **Write**). Without it, pull requests are blocked and nobody is asked to review them.
+- Nobody can push to the default branch directly, admins included. Admins can bypass the review, but only when merging a pull request.
 - A new push to the pull request dismisses earlier approvals.
-- Force pushes to `main` are blocked.
-- Squash merge is the only merge method; merge commits and rebase merges are switched off in the repository settings.
+- Force pushes and deleting the default branch are blocked.
+- Squash merge is the only merge method.
 
 ## What runs where
 
