@@ -40,11 +40,11 @@ jobs:
       automation: ${{ steps.filter.outputs.automation }}
       workflow: ${{ steps.filter.outputs.workflow }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
-      - uses: dorny/paths-filter@v3
+      - uses: dorny/paths-filter@v4
         id: filter
         with:
           filters: |
@@ -64,13 +64,13 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.automation == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "20"
 
@@ -88,6 +88,6 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || needs.detect-changes.outputs.workflow == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: rhysd/actionlint@v1.7.12
