@@ -34,7 +34,7 @@ One organisation ruleset, `default-branch`, covers the default branch of every H
 - Force pushes and deleting the default branch are blocked.
 - Squash merge is the only merge method.
 
-The wiki also has a ruleset of its own, `pr-checks` (**Settings** > **Rules** > **Rulesets** of this repository): on `main`, the check `check-and-report` must pass before a pull request can be merged, for admins too. A pull request opened by the bot (Autofix docs) starts no checks: close and reopen it.
+The wiki also has a ruleset of its own, `pr-checks` (**Settings** > **Rules** > **Rulesets** of this repository): on `main`, the check `check-and-report` must pass before a pull request can be merged. Organisation admins can bypass it when merging, for emergencies only: when GitHub never started the checks (push a new commit or close and reopen the pull request first) or GitHub Actions is down. A pull request opened by the bot (Autofix docs) starts no checks: close and reopen it.
 
 ## What runs where
 
