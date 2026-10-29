@@ -10,8 +10,7 @@ on:
 
   workflow_dispatch:  # Allow manual trigger
 
-# mkdocs gh-deploy pushes the built site to the gh-pages branch, which GitHub Pages
-# serves. The token also opens an issue when a deploy fails.
+# The built site is pushed to the gh-pages branch, which GitHub Pages serves. The token also opens an issue when a deploy fails.
 permissions:
   contents: write
   issues: write
@@ -43,15 +42,24 @@ jobs:
         run: |
           bash scripts/prepare_docs.sh
 
+      # Builds the site into site/ with mkdocs-ci.yml and fails on any warning.
       - name: Validate the documentation
         run: |
           bash scripts/docs_ci_check.sh
+          # GitHub Pages must serve the files as they are, without Jekyll.
+          touch site/.nojekyll
 
+      # Deploys the site checked above. The pr-preview/ folder holds the
+      # previews of open pull requests (pr-checks.yml), so it stays.
       - name: Deploy to GitHub Pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          mkdocs gh-deploy --force -f mkdocs-ci.yml
+        uses: JamesIves/github-pages-deploy-action@v4.9.0
+        with:
+          folder: site
+          branch: gh-pages
+          clean-exclude: pr-preview/
+          # Rebase onto a preview pushed meanwhile instead of overwriting it.
+          force: false
+          commit-message: "Deploy ${{ github.sha }}"
 
       # A failed deploy leaves the live wiki on the previous version, and
       # nobody notices from the site itself: keep one open issue about it.
