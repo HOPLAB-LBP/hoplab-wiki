@@ -355,16 +355,14 @@ jobs:
           AUTOFIX_SHA: ${{ needs.autofix.outputs.fix_sha }}
           SAME_REPO: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
           PREVIEW_UPLOADED: ${{ steps.preview_site.outcome }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           REPORT="/tmp/pr-checks/report.md"
 
-          # The preview job publishes the site at a fixed address per pull request.
+          # The preview job runs after this report. pr-comment.yml replaces this
+          # marker with the link, or a note, once it knows how that job ended.
           PREVIEW_NOTE=""
           if [ "$PREVIEW_UPLOADED" = "success" ]; then
-            OWNER="${GITHUB_REPOSITORY%%/*}"
-            PREVIEW_URL="https://${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}/pr-preview/pr-${PR_NUMBER}/"
-            PREVIEW_NOTE="> :eyes: **Preview:** see the wiki with your changes at $PREVIEW_URL (ready about a minute after this report; it updates with every push and disappears when the pull request closes)."
+            PREVIEW_NOTE="<!-- pr-preview -->"
           fi
 
           # Hidden marker so we can find and update this comment on future runs

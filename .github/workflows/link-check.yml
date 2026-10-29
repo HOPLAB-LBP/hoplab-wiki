@@ -3,6 +3,7 @@ name: Weekly link check
 # Links on the live wiki can break after their page was merged. This checks
 # every page once a week and keeps one issue with the broken links: it opens
 # or updates the issue when links fail, and closes it when they work again.
+# It also removes the previews of pull requests that are no longer open.
 
 on:
   schedule:
@@ -88,3 +89,56 @@ jobs:
               -F body=@"$BODY" -f "labels[]=$LABEL" -f "assignees[]=costantinoai" > /dev/null
             echo "Opened a new issue."
           fi
+
+  # pr-preview-remove.yml deletes a preview when its pull request closes. If
+  # that run failed, the folder would stay online: this removes the previews
+  # of every pull request that is no longer open.
+  stale-previews:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+
+      - name: Remove previews of closed pull requests
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [ ! -d pr-preview ]; then
+            echo "No previews."
+            exit 0
+          fi
+          REMOVED=""
+          for DIR in pr-preview/pr-*/; do
+            [ -d "$DIR" ] || continue
+            NUM="${DIR#pr-preview/pr-}"
+            NUM="${NUM%/}"
+            case "$NUM" in ''|*[!0-9]*) continue ;; esac
+            # If GitHub cannot say, keep the preview.
+            STATE=$(gh api "repos/$REPO/pulls/$NUM" --jq .state) || continue
+            if [ "$STATE" != "open" ]; then
+              git rm -rq "$DIR"
+              REMOVED="$REMOVED #$NUM"
+            fi
+          done
+          if [ -z "$REMOVED" ]; then
+            echo "Every preview belongs to an open pull request."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -qm "Remove previews of closed pull requests:$REMOVED"
+          # A deploy or a preview may push meanwhile: rebase and try again.
+          for TRY in 1 2 3; do
+            if git push origin HEAD:gh-pages; then
+              echo "Removed the previews of$REMOVED."
+              exit 0
+            fi
+            echo "Push attempt $TRY failed; rebasing."
+            git pull --rebase -q origin gh-pages
+          done
+          exit 1

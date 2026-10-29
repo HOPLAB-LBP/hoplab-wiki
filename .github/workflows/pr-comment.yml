@@ -14,6 +14,8 @@ on:
 
 permissions:
   pull-requests: write
+  # Reads how the preview job of the PR checks run ended.
+  actions: read
 
 # One report job at a time per PR branch, in event order, so an older run
 # cannot overwrite the report of a newer one.
@@ -97,6 +99,31 @@ jobs:
             exit 1
           fi
           echo "pr_number=$ACTUAL" >> "$GITHUB_OUTPUT"
+
+      # The report marks where the preview link goes. The whole PR checks run,
+      # preview job included, has finished by now: link the preview only if it
+      # was published, so the comment never shows a link that leads nowhere.
+      - name: Add the preview link
+        if: steps.meta.outputs.pr_number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.meta.outputs.pr_number }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+        run: |
+          grep -qx '<!-- pr-preview -->' report.md || exit 0
+          RESULT=$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/jobs" \
+            --jq '.jobs[] | select(.name == "preview") | .conclusion')
+          OWNER="${GITHUB_REPOSITORY%%/*}"
+          URL="https://${OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}/pr-preview/pr-${PR_NUMBER}/"
+          case "$RESULT" in
+            success) LINE="> :eyes: **Preview:** see the wiki with your changes at $URL. It updates with every push and disappears when the pull request closes." ;;
+            failure) LINE="> :warning: **Preview:** the site built, but publishing the preview failed (see the \`preview\` job in the [run]($RUN_URL)). Pushing again usually solves it." ;;
+            *) LINE="" ;;
+          esac
+          LINE="$LINE" awk '$0 == "<!-- pr-preview -->" { print ENVIRON["LINE"]; next } { print }' \
+            report.md > report.tmp
+          mv report.tmp report.md
 
       - name: Find existing bot comment
         if: steps.meta.outputs.pr_number != ''
