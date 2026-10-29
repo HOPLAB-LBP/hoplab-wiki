@@ -303,12 +303,22 @@ def check_file(filepath: Path, fix: bool = False) -> list[Issue]:
                         and not content_line.strip().startswith("#")
                         and not content_line.strip().startswith("---")):
                     delta = expected_len - actual_indent
-                    issues.append(Issue(
-                        rel, j + 1,
-                        f"admonition content indented {actual_indent} space{'s' if actual_indent != 1 else ''}, expected {expected_len}",
-                        fixable=True,
-                    ))
-                    if fix:
+                    # Text right under the header belongs to the box. After a
+                    # blank line it may be a separate paragraph under an empty
+                    # box, so report it and leave the choice to the author.
+                    separated = j > i + 1
+                    if separated:
+                        message = (
+                            "admonition has no indented content; indent the lines "
+                            f"that belong inside it by {expected_len} spaces, or remove the empty box"
+                        )
+                    else:
+                        message = (
+                            f"admonition content indented {actual_indent} "
+                            f"space{'s' if actual_indent != 1 else ''}, expected {expected_len}"
+                        )
+                    issues.append(Issue(rel, j + 1, message, fixable=not separated))
+                    if fix and not separated:
                         _reindent_block(lines, j, indent, delta)
                         modified = True
 

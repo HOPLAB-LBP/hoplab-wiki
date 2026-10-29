@@ -16,11 +16,8 @@ on:
       - "_typos.toml"
       - ".lychee.toml"
       - ".github/workflows/*.yml"
-      - "scripts/docs_ci_check.sh"
-      - "scripts/check_mkdocs_syntax.py"
-      - "scripts/fix_markdown_table_pipes.py"
-      - "scripts/prepare_docs.sh"
-      - "scripts/manage-docs-tags.js"
+      - ".github/workflows/*.yaml"
+      - "scripts/**"
       - "tests/**"
 
 concurrency:
@@ -28,11 +25,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: write
-  pull-requests: read
-  # Lets check-and-report put its result on the auto-fix commit, which gets
-  # no run of its own (pushes made with GITHUB_TOKEN start no workflows).
-  statuses: write
+  contents: read
 
 jobs:
   # ───────────────────────────────────────────────────────────
@@ -40,6 +33,9 @@ jobs:
   # ───────────────────────────────────────────────────────────
   autofix:
     runs-on: ubuntu-latest
+    permissions:
+      # Pushes the safe fixes back to branches of this repository.
+      contents: write
     outputs:
       # "true" only when the fix commit reached the PR branch.
       pushed: ${{ steps.push.outputs.pushed }}
@@ -110,12 +106,20 @@ jobs:
     needs: autofix
     if: always() && !cancelled()
     runs-on: ubuntu-latest
+    # This job runs code from the pull request, so it gets a read-only token.
+    permissions:
+      contents: read
+      pull-requests: read
+      # Puts the result on the auto-fix commit, which gets no run of its own
+      # (pushes made with GITHUB_TOKEN start no workflows).
+      statuses: write
     steps:
       - uses: actions/checkout@v4
         with:
           # No ref: checks out the PR merge commit, which exists in the
           # base repo even for fork PRs (and tests the merged result).
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Detect automation-related changes
         id: changes
@@ -124,6 +128,7 @@ jobs:
           filters: |
             workflow:
               - ".github/workflows/*.yml"
+              - ".github/workflows/*.yaml"
             automation:
               - "scripts/**"
               - "tests/**"
@@ -282,12 +287,16 @@ jobs:
         id: automation_tests
         if: always() && steps.changes.outputs.automation == 'true'
         run: |
-          set -o pipefail
-          if {
-            bash tests/test_check_mkdocs_syntax.sh
-            bash tests/test_fix_markdown_table_pipes.sh
-            node tests/test-manage-docs-tags.js
-          } 2>&1 | tee /tmp/pr-checks/automation-tests-output; then
+          # Run every suite and fail if any of them fails (a single pipeline
+          # would only report the exit status of the last one).
+          OUT=/tmp/pr-checks/automation-tests-output
+          : > "$OUT"
+          rc=0
+          bash tests/test_check_mkdocs_syntax.sh >> "$OUT" 2>&1 || rc=1
+          bash tests/test_fix_markdown_table_pipes.sh >> "$OUT" 2>&1 || rc=1
+          node tests/test-manage-docs-tags.js >> "$OUT" 2>&1 || rc=1
+          cat "$OUT"
+          if [ "$rc" -eq 0 ]; then
             echo "passed" > /tmp/pr-checks/automation-tests-status
           else
             echo "failed" > /tmp/pr-checks/automation-tests-status
@@ -309,7 +318,8 @@ jobs:
           export PATH="$RUNNER_TEMP/bin:$PATH"
           actionlint -version
           set -o pipefail
-          if actionlint .github/workflows/*.yml 2>&1 | tee /tmp/pr-checks/workflow-lint-output; then
+          # Without arguments actionlint checks every file in .github/workflows.
+          if actionlint 2>&1 | tee /tmp/pr-checks/workflow-lint-output; then
             echo "passed" > /tmp/pr-checks/workflow-lint-status
           else
             echo "failed" > /tmp/pr-checks/workflow-lint-status
@@ -339,12 +349,14 @@ jobs:
             AUTOFIX_NOTE="> :warning: The bot could not push its formatting fixes to this branch, so this report shows the branch as it is. Pushing again usually solves it."
           fi
 
-          SPELL=$(cat /tmp/pr-checks/spellcheck-status 2>/dev/null || echo "skipped")
-          MDLINT=$(cat /tmp/pr-checks/markdownlint-status 2>/dev/null || echo "skipped")
-          YAML=$(cat /tmp/pr-checks/yamllint-status 2>/dev/null || echo "skipped")
+          # Checks that always run: no status file means the step did not run
+          # (e.g. setup failed), which must not read as a pass.
+          SPELL=$(cat /tmp/pr-checks/spellcheck-status 2>/dev/null || echo "missing")
+          MDLINT=$(cat /tmp/pr-checks/markdownlint-status 2>/dev/null || echo "missing")
+          YAML=$(cat /tmp/pr-checks/yamllint-status 2>/dev/null || echo "missing")
           LINKS=$(cat /tmp/pr-checks/linkcheck-status 2>/dev/null || echo "skipped")
-          BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "skipped")
-          SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "skipped")
+          BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "missing")
+          SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "missing")
           AUTOTESTS=$(cat /tmp/pr-checks/automation-tests-status 2>/dev/null || echo "skipped")
           WFLINT=$(cat /tmp/pr-checks/workflow-lint-status 2>/dev/null || echo "skipped")
 
@@ -383,7 +395,7 @@ jobs:
           emoji() {
             case "$1" in
               passed)  echo ":white_check_mark:" ;;
-              failed)  echo ":x:" ;;
+              failed|missing)  echo ":x:" ;;
               *)       echo ":white_circle:" ;;
             esac
           }
@@ -401,6 +413,7 @@ jobs:
             case "$1" in
               passed) echo "Passed" ;;
               failed) echo "**Failed**" ;;
+              missing) echo "**Did not run** (see the job log)" ;;
               skipped) echo "Skipped" ;;
               *) echo "$1" ;;
             esac
@@ -427,7 +440,7 @@ jobs:
           # Count failures (link check is advisory — excluded from count)
           FAILURES=0
           for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX" "$AUTOTESTS" "$WFLINT"; do
-            [ "$s" = "failed" ] && FAILURES=$((FAILURES + 1))
+            case "$s" in failed|missing) FAILURES=$((FAILURES + 1)) ;; esac
           done
 
           # ── All passed ──────────────────────────────────
@@ -815,7 +828,7 @@ jobs:
                 fi
 
                 # Check for broken internal links / unresolved targets
-                if grep -Eq "unrecognized relative link|contains a link '.*', but the target '.*' is not found among documentation files|target not found" /tmp/pr-checks/mkdocs-output; then
+                if grep -Eq "unrecognized relative link|contains a link '.*', but the target ('.*' )?is not found among documentation files|target not found" /tmp/pr-checks/mkdocs-output; then
                   cat << 'EOF'
 
           **Broken documentation links:** Some links point to pages MkDocs cannot resolve from the page being built.
@@ -823,7 +836,7 @@ jobs:
           | Fix in | Reported in | Broken target |
           |--------|-------------|---------------|
           EOF
-                  grep -E "unrecognized relative link|contains a link '.*', but the target '.*' is not found among documentation files|target not found" /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
+                  grep -E "unrecognized relative link|contains a link '.*', but the target ('.*' )?is not found among documentation files|target not found" /tmp/pr-checks/mkdocs-output | while IFS= read -r line; do
                     file=$(echo "$line" | grep -oP "Doc( file)? '\\K[^']+" | head -1)
                     link=$(echo "$line" | grep -oP "contains an unrecognized relative link '\\K[^']+" | head -1)
                     if [ -z "$link" ]; then
@@ -867,7 +880,7 @@ jobs:
                     [ -z "$file" ] && file="(unknown file)"
                     [ -z "$link" ] && link="(could not parse anchor)"
                     echo "| $(report_fix_target "$file") | \`$file\` | \`$link\` |"
-                  done
+                  done | awk '!seen[$0]++'
                   echo ''
                   cat << 'EOF'
 
@@ -1014,12 +1027,14 @@ jobs:
         id: verdict
         if: always()
         run: |
-          SPELL=$(cat /tmp/pr-checks/spellcheck-status 2>/dev/null || echo "skipped")
-          MDLINT=$(cat /tmp/pr-checks/markdownlint-status 2>/dev/null || echo "skipped")
-          YAML=$(cat /tmp/pr-checks/yamllint-status 2>/dev/null || echo "skipped")
+          # Checks that always run: no status file means the step did not run
+          # (e.g. setup failed), which must not read as a pass.
+          SPELL=$(cat /tmp/pr-checks/spellcheck-status 2>/dev/null || echo "missing")
+          MDLINT=$(cat /tmp/pr-checks/markdownlint-status 2>/dev/null || echo "missing")
+          YAML=$(cat /tmp/pr-checks/yamllint-status 2>/dev/null || echo "missing")
           LINKS=$(cat /tmp/pr-checks/linkcheck-status 2>/dev/null || echo "skipped")
-          BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "skipped")
-          SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "skipped")
+          BUILD=$(cat /tmp/pr-checks/mkdocs-status 2>/dev/null || echo "missing")
+          SYNTAX=$(cat /tmp/pr-checks/mkdocs-syntax-status 2>/dev/null || echo "missing")
           AUTOTESTS=$(cat /tmp/pr-checks/automation-tests-status 2>/dev/null || echo "skipped")
           WFLINT=$(cat /tmp/pr-checks/workflow-lint-status 2>/dev/null || echo "skipped")
 
@@ -1031,14 +1046,14 @@ jobs:
 
           if [ "$BUILD" = "failed" ]; then
             echo "::error::MkDocs build failed. See the PR comment for a parsed breakdown of missing nav entries, broken documentation links, and broken anchors."
-            if grep -Eq "target not found|unrecognized relative link|does not contain an anchor|no such anchor|not included in the \"nav\"" /tmp/pr-checks/mkdocs-output 2>/dev/null; then
-              grep -E "target not found|unrecognized relative link|does not contain an anchor|no such anchor|not included in the \"nav\"|^\\[ERROR\\]|^\\[docs-ci\\]" /tmp/pr-checks/mkdocs-output | head -40 || true
+            if grep -Eq "target not found|target ('.*' )?is not found|unrecognized relative link|does not contain an anchor|no such anchor|not included in the \"nav\"" /tmp/pr-checks/mkdocs-output 2>/dev/null; then
+              grep -E "target not found|target ('.*' )?is not found|unrecognized relative link|does not contain an anchor|no such anchor|not included in the \"nav\"|^\\[ERROR\\]|^\\[docs-ci\\]" /tmp/pr-checks/mkdocs-output | head -40 || true
             fi
           fi
 
           FAILED=false
           for s in "$SPELL" "$MDLINT" "$YAML" "$BUILD" "$SYNTAX" "$AUTOTESTS" "$WFLINT"; do
-            [ "$s" = "failed" ] && FAILED=true
+            case "$s" in failed|missing) FAILED=true ;; esac
           done
           if [ "$FAILED" = "true" ]; then
             echo "verdict=failure" >> "$GITHUB_OUTPUT"

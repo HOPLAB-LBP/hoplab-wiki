@@ -292,6 +292,14 @@ assertEqual(parseTags('```\nTODO: block 1\n```\nTODO: outside\n```\nTODO: block 
 // Indented code block with fence
 assertEqual(parseTags('  ```\n  TODO: indented block\n  ```').length, 0, 'indented fence: ignored');
 
+// Tilde fences and longer fences
+assertEqual(parseTags('~~~python\nTODO: example\n~~~').length, 0, 'tilde fence: ignored');
+assertEqual(parseTags('~~~\nTODO: in tilde\n~~~\nTODO: after tilde').length, 1, 'after tilde fence: detected');
+assertEqual(parseTags('````markdown\n```\nTODO: nested example\n```\n````\nTODO: after').length, 1,
+  'four-backtick fence holding a three-backtick example: only the line after');
+assertEqual(parseTags('~~~\n```\nTODO: backticks inside tilde\n~~~').length, 0,
+  'backtick line inside a tilde fence does not close it');
+
 // Inline code
 assertEqual(parseTags('run `TODO: inline` test').length, 0, 'inline code: ignored');
 assertEqual(parseTags('`TODO: code` and `NOTE: more code`').length, 0, 'multiple inline codes');
