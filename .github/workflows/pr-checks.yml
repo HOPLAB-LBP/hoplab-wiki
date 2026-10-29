@@ -333,11 +333,6 @@ jobs:
           # Hidden marker so we can find and update this comment on future runs
           echo '<!-- pr-checks-report -->' > "$REPORT"
 
-          # Where the bot can fix something itself, it suggests the fix on the line.
-          FIX_NOTE=""
-          if [ "$PREVIEW_ALLOWED" = "true" ]; then
-            FIX_NOTE="> :bulb: Where the bot knows the fix (spelling, spaces, quotes, blank lines), it suggests it on the line under **Files changed**: click **Commit suggestion** to apply it."
-          fi
 
           # Checks that always run: no status file means the step did not run
           # (e.g. setup failed), which must not read as a pass.
@@ -360,6 +355,16 @@ jobs:
           fi
           if [ "$WFLINT_EXPECTED" = "true" ] && [ "$WFLINT" = "skipped" ]; then
             WFLINT=missing
+          fi
+
+          # Where the bot can fix something itself, it suggests the fix on the line.
+          FIX_NOTE=""
+          if [ "$PREVIEW_ALLOWED" = "true" ]; then
+            for c in "$SPELL" "$MDLINT" "$SYNTAX"; do
+              if [ "$c" = "failed" ]; then
+                FIX_NOTE="> :bulb: Where the bot knows the fix (spelling, spaces, quotes, blank lines), it suggests it on the line under **Files changed**: click **Commit suggestion** to apply it."
+              fi
+            done
           fi
 
           # Helper: clickable edit link for a file at a line number
