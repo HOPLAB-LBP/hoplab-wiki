@@ -409,12 +409,15 @@ Also take your behavioural log files from the stimulus PC (on your encrypted dri
     - A pop-up message will appear, where you have to confirm that you want to shut down the system.
     - This process can take up to 10 minutes. Wait until the screens are black and the red lights on the intercom flicker.
     - Then press *system off* below the quench button on the wall (key turned to *unlock*); the last blinking light on the intercom will go out.
-![Procedure to shut down scanner](../../assets/fmri/shut-down-procedure.jpg){ width="600" .img-border }
-4. Switch off all screens (including the stimulus PC monitor) and the lights in the magnet room, the console room and the rooms next to it.
-5. Put the cover on the in-room screen (the cover lies on its base).
-6. Close all doors.
+
+    ![Procedure to shut down scanner](../../assets/fmri/shut-down-procedure.jpg){ width="600" .img-border }
+
+3. Switch off all screens (including the stimulus PC monitor) and the lights in the magnet room, the console room and the rooms next to it.
+4. Put the cover on the in-room screen (the cover lies on its base).
+5. Close all doors.
 
 </div>
+
 ---
 
 !!! info "Next steps"
