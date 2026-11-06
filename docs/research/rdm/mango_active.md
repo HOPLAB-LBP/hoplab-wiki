@@ -2,9 +2,15 @@
 
 After logging in in [ManGO](https://mango.kuleuven.be/) with your KU Leuven credentials, every researcher should have access to a personal folder within the `Hoplab project`. In your personal folder, you can then create a subfolder per (active) study. If this is not the case, contact [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to create a new folder and set the correct permissions. Check out the [research workflow page](SOPs.md) for more specific guidelines on how to organize your study data in ManGO.
 
-ManGO is based on the open source software iRODS. General documentation on ManGO can be found [here](https://rdm-docs.icts.kuleuven.be/mango/index.html). This page will focus on the setup and use of two clients to interact with ManGO, i.e., the **Python-iRODSClient** and **ManGO Ingest**, and is mainly based on the instructions on [this](https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html) and [this](https://github.com/kuleuven/mango-ingest/blob/development/README.md) page, respectively. Note that there exist other clients to connect to ManGO (e.g., the ManGO portal in the browser, iron CLI Client, iCommands and several SFTP clients), which we won't cover here but you are of course welcome to explore.
+ManGO is based on the open source software iRODS. General documentation on ManGO can be found [here](https://rdm-docs.icts.kuleuven.be/mango/index.html). You can interact with ManGO using various interfaces, the easiest of which is the [**web interface**](https://mango.kuleuven.be/). While it gives data managers a good overview of what's on there, it is not meant to process heavy datasets. Therefore, this page will focus on the setup and use of two clients to interact with ManGO, i.e., the **Python-iRODSClient** and **ManGO Ingest**, and is mainly based on the instructions on [this](https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html) and [this](https://github.com/kuleuven/mango-ingest/blob/development/README.md) page, respectively. Note that there exist other clients to connect to ManGO (e.g., iron CLI Client, iCommands and several SFTP clients), which we won't cover here but you are of course welcome to explore.
+
+If you would like to **make ManGO available in your (Windows) file explorer**, you can do so via ManGO Drive or OwnCloud. We will briefly cover both options in the last section on this page.
 
 ## The Python-iRODSClient (PRC)
+
+The PRC allows users to interact with ManGO directly from Python scripts. This is particularly useful for Python-based workflows: downloading data, performing analyses and uploading processed data can all be integrated into a single script. Metadata can also be added programmatically (e.g. documenting which script was used to process the data).
+
+It is also possible to stream data from ManGO and keep it in memory, rather than downloading and uploading files. This can be useful for analyses that do not require local file storage, but its feasibility depends on file size, network connection and available memory. See the [ManGO Python client training](https://github.com/kuleuven/ManGO_Python_client_training/blob/main/ManGO-python-tutorial.md#stream-data-from-memory), for an example.
 
 ### Installing and setting up the client
 
@@ -412,3 +418,26 @@ Use:
 when you want a **safe one-time upload of a full dataset**.
 
 Omit `-nw` when you want **continuous automatic syncing** during ongoing data collection.
+
+## Accessing ManGO through your file explorer
+
+There are two main options for making ManGO files accessible through your (Windows) computer's file explorer:
+
+=== "ManGO Drive"
+
+    - ManGO Drive mounts ManGO as a network drive (M:), allowing you to browse, open and edit files directly through Windows File Explorer.
+    - Files can be accessed directly from the server, including through file paths in analysis software, provided you are connected to the network.
+    - Does not require local storage space, as files remain on the server.
+    - Requires an active network connection; files are not available offline.
+    - You can find the setup instructions on [this page](https://rdm-docs.icts.kuleuven.be/mango/clients/mango_drive.html).
+
+=== "ownCloud"
+
+    - ownCloud synchronises ManGO files between ManGO and your local computer.
+    - Works similarly to OneDrive: files are downloaded when opened and can be kept locally for offline access.    
+    - Files that are downloaded on demand are stored locally, so this option uses local disk space.
+    - You can find the setup instructions on [this page](https://rdm-docs.icts.kuleuven.be/mango/clients/owncloud.html).
+
+!!! warning "Real-time collaboration is not supported"
+
+    Do not work on the same file simultaneously through ManGO Drive and ownCloud (or from multiple locations). If multiple versions are edited concurrently, the most recently saved version will be retained, potentially overwriting other changes.
