@@ -1018,6 +1018,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#accessing-mango-through-your-file-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing ManGO through your file explorer
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3361,6 +3372,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#accessing-mango-through-your-file-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing ManGO through your file explorer
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3388,8 +3410,11 @@
 
 <h1 id="mango-for-active-research-data">ManGO for active research data<a class="headerlink" href="#mango-for-active-research-data" title="Permanent link">¶</a></h1>
 <p>After logging in in <a href="https://mango.kuleuven.be/">ManGO</a> with your KU Leuven credentials, every researcher should have access to a personal folder within the <code>Hoplab project</code>. In your personal folder, you can then create a subfolder per (active) study. If this is not the case, contact <a href="https://www.kuleuven.be/wieiswie/nl/person/00116743">Klara</a> to create a new folder and set the correct permissions. Check out the <a href="SOPs.html">research workflow page</a> for more specific guidelines on how to organize your study data in ManGO.</p>
-<p>ManGO is based on the open source software iRODS. General documentation on ManGO can be found <a href="https://rdm-docs.icts.kuleuven.be/mango/index.html">here</a>. This page will focus on the setup and use of two clients to interact with ManGO, i.e., the <strong>Python-iRODSClient</strong> and <strong>ManGO Ingest</strong>, and is mainly based on the instructions on <a href="https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html">this</a> and <a href="https://github.com/kuleuven/mango-ingest/blob/development/README.md">this</a> page, respectively. Note that there exist other clients to connect to ManGO (e.g., the ManGO portal in the browser, iron CLI Client, iCommands and several SFTP clients), which we won't cover here but you are of course welcome to explore.</p>
+<p>ManGO is based on the open source software iRODS. General documentation on ManGO can be found <a href="https://rdm-docs.icts.kuleuven.be/mango/index.html">here</a>. You can interact with ManGO using various interfaces, the easiest of which is the <a href="https://mango.kuleuven.be/"><strong>web interface</strong></a>. While it gives data managers a good overview of what's on there, it is not meant to process heavy datasets. Therefore, this page will focus on the setup and use of two clients to interact with ManGO, i.e., the <strong>Python-iRODSClient</strong> and <strong>ManGO Ingest</strong>, and is mainly based on the instructions on <a href="https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html">this</a> and <a href="https://github.com/kuleuven/mango-ingest/blob/development/README.md">this</a> page, respectively. Note that there exist other clients to connect to ManGO (e.g., iron CLI Client, iCommands and several SFTP clients), which we won't cover here but you are of course welcome to explore.</p>
+<p>If you would like to <strong>make ManGO available in your (Windows) file explorer</strong>, you can do so via ManGO Drive or OwnCloud. We will briefly cover both options in the last section on this page.</p>
 <h2 id="the-python-irodsclient-prc">The Python-iRODSClient (PRC)<a class="headerlink" href="#the-python-irodsclient-prc" title="Permanent link">¶</a></h2>
+<p>The PRC allows users to interact with ManGO directly from Python scripts. This is particularly useful for Python-based workflows: downloading data, performing analyses and uploading processed data can all be integrated into a single script. Metadata can also be added programmatically (e.g. documenting which script was used to process the data).</p>
+<p>It is also possible to stream data from ManGO and keep it in memory, rather than downloading and uploading files. This can be useful for analyses that do not require local file storage, but its feasibility depends on file size, network connection and available memory. See the <a href="https://github.com/kuleuven/ManGO_Python_client_training/blob/main/ManGO-python-tutorial.md#stream-data-from-memory">ManGO Python client training</a>, for an example.</p>
 <h3 id="installing-and-setting-up-the-client">Installing and setting up the client<a class="headerlink" href="#installing-and-setting-up-the-client" title="Permanent link">¶</a></h3>
 <p>Using a virtual environment keeps things clean and avoids breaking other Python setups. To do so, open a terminal in your project folder and activate it. To avoid issues with KU Leuven policy restrictions, we use Conda for this. If you don't have Conda installed, download and install it from <a href="https://www.anaconda.com/docs/getting-started/miniconda/main">Conda's official website</a>.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># create environment</span>
@@ -3832,6 +3857,33 @@
 </span></code></pre></div>
 <p>when you want a <strong>safe one-time upload of a full dataset</strong>.</p>
 <p>Omit <code>-nw</code> when you want <strong>continuous automatic syncing</strong> during ongoing data collection.</p>
+<h2 id="accessing-mango-through-your-file-explorer">Accessing ManGO through your file explorer<a class="headerlink" href="#accessing-mango-through-your-file-explorer" title="Permanent link">¶</a></h2>
+<p>There are two main options for making ManGO files accessible through your (Windows) computer's file explorer:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="mango-drive" name="__tabbed_1" type="radio"><input id="owncloud" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="mango-drive">ManGO Drive</label><label for="owncloud">ownCloud</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>ManGO Drive mounts ManGO as a network drive (M:), allowing you to browse, open and edit files directly through Windows File Explorer.</li>
+<li>Files can be accessed directly from the server, including through file paths in analysis software, provided you are connected to the network.</li>
+<li>Does not require local storage space, as files remain on the server.</li>
+<li>Requires an active network connection; files are not available offline.</li>
+<li>You can find the setup instructions on <a href="https://rdm-docs.icts.kuleuven.be/mango/clients/mango_drive.html">this page</a>.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>ownCloud synchronises ManGO files between ManGO and your local computer.</li>
+<li>Works similarly to OneDrive: files are downloaded when opened and can be kept locally for offline access.    </li>
+<li>Files that are downloaded on demand are stored locally, so this option uses local disk space.</li>
+<li>You can find the setup instructions on <a href="https://rdm-docs.icts.kuleuven.be/mango/clients/owncloud.html">this page</a>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Real-time collaboration is not supported</p>
+<p>Do not work on the same file simultaneously through ManGO Drive and ownCloud (or from multiple locations). If multiple versions are edited concurrently, the most recently saved version will be retained, potentially overwriting other changes.</p>
+</div>
 
 
 
@@ -3857,7 +3909,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     
-      <time class="md-source-file__time" datetime="2026-10-29T14:06:39+01:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 29, 2026 14:06:39 CET">October 29, 2026</span></time>
+      <time class="md-source-file__time" datetime="2026-11-06T17:00:52+01:00"><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 6, 2026 17:00:52 CET">November 6, 2026</span></time>
     
   </span>
 
@@ -3878,7 +3930,7 @@
         
         
         
-          <a class="md-contributor" href="https://github.com/kschevenels" aria-label="Klara Schevenels, 99% of this page" style="--z: 2" data-name="Klara Schevenels" data-share="98.55%">
+          <a class="md-contributor" href="https://github.com/kschevenels" aria-label="Klara Schevenels, 99% of this page" style="--z: 2" data-name="Klara Schevenels" data-share="98.65%">
         
             <span class="md-contributor__face">
               
@@ -3897,7 +3949,7 @@
         
         
         
-          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 1% of this page" style="--z: 1" data-name="Andrea Costantino" data-share="1.45%">
+          <a class="md-contributor" href="https://github.com/costantinoai" aria-label="Andrea Costantino, 1% of this page" style="--z: 1" data-name="Andrea Costantino" data-share="1.35%">
         
             <span class="md-contributor__face">
               
