@@ -8,6 +8,7 @@ You can follow the checklist step by step below or [download a personal copy](ht
     | Task | Information | Done |
     |------|-------------|------|
     | Activate your KU Leuven account | Find more information [here](../../get-started/admin-procedures.md#activate-your-ku-leuven-account) | ☐ |
+    | Obtain your KU Leuven personnel card | Normally it will be sent by post to your work address; [Agna](https://www.kuleuven.be/wieiswie/nl/person/00088446) or [Manou](https://www.kuleuven.be/wieiswie/nl/person/00160497) will bring it to you once it has arrived | ☐ |
     | Get a key to your new office | Find more information [here](../../get-started/practical-setup.md#keys) | ☐ |
     | Order laptop and required peripherals | Find more information [here](../../get-started/practical-setup.md#office-set-up) and [here](../../get-started/admin-procedures.md#ordering-stuff) | ☐ |
     | Get access to all communication channels | See the overview [here](../../get-started/computer-setup.md#communication-channels) | ☐ |
@@ -15,7 +16,8 @@ You can follow the checklist step by step below or [download a personal copy](ht
     | Get added to the lab’s [meeting schedule](../../outreach.md#schedule) | Ask [Klara](https://www.kuleuven.be/wieiswie/nl/person/00116743) to add you to the planning | ☐ |
     | Appear as a member on the [Hoplab website](https://www.hoplab.be) | Find inspiration from your colleagues [here](https://www.hoplab.be/people/) | ☐ |
     | Read getting started section on Wiki | Here’s a [quick link](../../get-started/index.md) | ☐ |
-    | Complete [HSE orientation](../../get-started/index.md/#hse-health-safety-and-environment-orientation) | Review the information provided by the faculty and follow up on the HSE orientation invitation | ☐ |
+    | Complete [HSE orientation](../../get-started/index.md/#hse-health-safety-and-environment-orientation) | Review the information provided by the faculty via e-mail and register the orientation in KU Loket | ☐ |
+    | Review the doctoral school requirements (PhDs only) | Check the requirements and milestones [here](https://ppw.kuleuven.be/en/research/doctoral-programme) | ☐ |
 
 ??? note "📊 Research data management"
     | Task | Information | Done |
@@ -34,7 +36,7 @@ You can follow the checklist step by step below or [download a personal copy](ht
     |------|-------------|------|
     | Get [ethical approval](../ethics/index.md#general-information) (if needed) | Don't forget to update our [ethics tracker](../ethics/index.md#ethics-tracker) | ☐ |
     | Fulfill e-learning *GDPR and privacy in research* | [Link](https://admin.kuleuven.be/privacy/en/studpers/index) to e-learning | ☐ |
-    | Obtain your GCP certificate and upload it [here](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/GCP?d=wd7ef0bd74e6c4f508c3bdd76ed00a66c&csf=1&web=1&e=yD6tVt) | [Link](https://gbiomed.kuleuven.be/english/ctc/intern/ctc-academy/ich-gcp-e6-r2-training-certification) to e-learning | ☐ |
+    | Obtain your GCP certificate and upload it [here](https://kuleuven.sharepoint.com/:f:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/GCP?d=wd7ef0bd74e6c4f508c3bdd76ed00a66c&csf=1&web=1&e=yD6tVt) | Link to e-learning for [staff](https://gbiomed.kuleuven.be/english/ctc/intern/ctc-academy/ich-gcp-e6-r2-training-certification) and [students](https://globalhealthtrainingcentre.tghn.org/ich-good-clinical-practice/) | ☐ |
     | Make sure you know [how to handle confidential info](./SOPs.md) | ICFs, contact info, pseudonymization keys, etc. | ☐ |
     | Get to know our [participant database](https://forms.office.com/Pages/ResponsePage.aspx?id=m1hzOUCetU6ADrC2OD0WIZquopqLrtBFjNZoWiO2ApRUNFdCTzlBM1AxTTBMRENONjNHNzFYTjEwOS4u) (healthy adults) | Contact [Silke](https://www.kuleuven.be/wieiswie/nl/person/00170487) or [Klara](https://www.kuleuven.be/wieiswie/en/person/00116743) if you need participants| ☐ |
 
