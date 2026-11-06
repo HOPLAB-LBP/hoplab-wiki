@@ -4,7 +4,7 @@ After logging in in [ManGO](https://mango.kuleuven.be/) with your KU Leuven cred
 
 ManGO is based on the open source software iRODS. General documentation on ManGO can be found [here](https://rdm-docs.icts.kuleuven.be/mango/index.html). You can interact with ManGO using various interfaces, the easiest of which is the [**web interface**](https://mango.kuleuven.be/). While it gives data managers a good overview of what's on there, it is not meant to process heavy datasets. Therefore, this page will focus on the setup and use of two clients to interact with ManGO, i.e., the **Python-iRODSClient** and **ManGO Ingest**, and is mainly based on the instructions on [this](https://rdm-docs.icts.kuleuven.be/mango/clients/python_client.html) and [this](https://github.com/kuleuven/mango-ingest/blob/development/README.md) page, respectively. Note that there exist other clients to connect to ManGO (e.g., iron CLI Client, iCommands and several SFTP clients), which we won't cover here but you are of course welcome to explore.
 
-If you would like to **make ManGO available in your (Windows) file explorer**, you can do so via ManGO Drive or OwnCloud. We will briefly cover both options in the last section on this page. 
+If you would like to **make ManGO available in your (Windows) file explorer**, you can do so via ManGO Drive or OwnCloud. We will briefly cover both options in the last section on this page.
 
 ## The Python-iRODSClient (PRC)
 
