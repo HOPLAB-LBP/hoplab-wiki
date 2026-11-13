@@ -4,6 +4,14 @@ Welcome to the central hub for all research activities at Hoplab. This page serv
 
 <div class="grid cards" markdown>
 
+- :material-robot-outline:{ .lg .middle } __AI in research__
+
+    ---
+
+    KU Leuven rules and lab guidelines for chat assistants and coding agents.
+
+    [:octicons-arrow-right-24: Read the guidelines](ai/index.md)
+
 - :octicons-person-24:{ .lg .middle } __Behavioral research__
 
     ---

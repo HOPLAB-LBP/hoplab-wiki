@@ -36,6 +36,10 @@ nav:
       - research/coding/index.md
       - Environment & editor setup: research/coding/environment-setup.md
       - Version control: research/coding/version-control.md
+    - AI in research:
+      - research/ai/index.md
+      - KU Leuven rules: research/ai/kuleuven-rules.md
+      - Lab guidelines: research/ai/lab-guidelines.md
     - Behaviour:
       - research/behaviour/index.md
       - Find participants: research/behaviour/bh-participants.md
