@@ -25,7 +25,7 @@ To ensure a smooth transition for everyone, you can find some general guidelines
     | Specify how long your data should be stored and any specific requirements for destruction of (personal) data (e.g., delete files allowing reidentification after publication; see your ethics forms). | [10 years (SMEC) or 25 years (EC)] | ☐ |
     | Specify the exact date for reassessment of the retention period (e.g., in 10 years from now). | [DD/MM/YYYY] | ☐ |
     | If you have shared/will share any data, confirm that it is in accordance with your ICF and that there are no legal or IP issues nor ethical objections (check compliance with your [PRET](https://www.groupware.kuleuven.be/sites/pret/Pages/en/default.aspx) application). | [remarks] | ☐ |
-    | Update the final number of participants per ethical application in the [ethics tracker](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/ethics_tracker.xlsx?d=w3176be826a5c428987db1b936bb8f422&csf=1&web=1&e=M6PfpP). If applicable to you, submit a final progress report to the EC. | [remarks] | ☐ |
+    | Update the final number of participants per ethical application in the [ethics tracker](https://kuleuven.sharepoint.com/:x:/r/sites/T0005824-Hoplab/Shared%20Documents/Hoplab/Research/Ethical%20applications/ethics_tracker.xlsx?d=w3176be826a5c428987db1b936bb8f422&csf=1&web=1&e=M6PfpP). If applicable to you, submit a [final study report](https://www.uzleuven.be/en/ethics-committee-research/supplement-approved-study-ec-research/closing-studies-ec-research) to the EC. | [remarks] | ☐ |
 
 ??? note "🔒 Data protection & sensitive data"
     | Task | Information  | Done |
@@ -38,16 +38,17 @@ To ensure a smooth transition for everyone, you can find some general guidelines
 ??? note "📦 Data storage & organization"
     | Task | Information  | Done |
     |------|--------------|------|
-    | Ensure all research data has been organized in BIDS and is stored on your personal SharePoint, [ManGO](mango_active.md) (active data) or [FriGO](frigo_archive.md) (archived data), including raw and derived data (outputs from preprocessing and analysis steps), with [clear documentation](#research-data-in-bids). | [BIDS folder path(s)] | ☐ |
-    | Ensure all raw (non-BIDS) data are saved in a single separate immutable “ground truth” folder per project on your personal SharePoint, [ManGO](mango_active.md) (active data) or [FriGO](frigo_archive.md) (archived data), with read-only access and the correct permissions set. | [raw data folder path(s)] | ☐ |
-    | Make sure that all other relevant project data files (non-research data) have been transferred from OneDrive/local drive to your personal SharePoint site (see [these guidelines](./sharepoint_daily.md)) or FriGO, organized in a single directory per project, with logical subfolders and [documentation](#non-research-project-files) in the root on the content of the folders and files. | [project folder path(s)] | ☐ |
-    | Provide an estimation of your total data volume (to be archived on KU Leuven servers). | [estimated total data volume] | ☐ |
+    | Ensure **all research data** have been organized in BIDS and are stored in appropriate KU Leuven-managed locations ([SharePoint](sharepoint_daily.md)/[ManGO](mango_active.md) for active data, [FriGO](frigo_archive.md) for archived data), including raw and derived data (outputs from preprocessing and analysis steps), with [clear documentation](#research-data-in-bids). | [BIDS folder path(s)] | ☐ |
+    | Ensure **all raw (non-BIDS) data** are saved in a single separate immutable “ground truth” folder per project in an appropriate KU Leuven-managed storage location, with read-only access and the correct permissions set. | [raw data folder path(s)] | ☐ |
+    | Make sure that **all other relevant project data files** (non-research data) have been transferred from OneDrive/local drive to your SharePoint site ([how?](./sharepoint_daily.md)) or FriGO, organized in a single directory per project, with logical subfolders and [documentation](#non-research-project-files) in the root on the content of the folders and files. | [project folder path(s)] | ☐ |
+    | Ensure continuity of access: Confirm that ongoing projects and relevant team members retain the necessary access after your departure. | [person(s) taking over responsibility and access arrangements] | ☐ |
+    | Provide an estimation of your total data volume (to be archived on FriGO). | [estimated total data volume] | ☐ |
 
 ??? note "💻 Local data & hardware"
     | Task | Information  | Done |
     |------|--------------|------|
-    | If you keep a local copy of your research data, ensure it is [pseudonymized](https://www.kuleuven.be/rdm/en/guidance/legal-ethical/anonymise-pseudonymise) and that any local/external hard drive is [Bitlocker encrypted](https://admin.kuleuven.be/icts/english/research/datamgmtpract/ape/encryption). All files containing confidential personal data must remain on KU Leuven servers (no local copies allowed). | [remarks] | ☐ |
-    | Return all pc material (laptop, mouse, keyboard, external screen, cables, external HD) and office keys to your PI (unless otherwise agreed). | [remarks] | ☐ |
+    | If there is a copy of your research data on an external drive, ensure it is [pseudonymized](https://www.kuleuven.be/rdm/en/guidance/legal-ethical/anonymise-pseudonymise) and that the drive is [encrypted](https://admin.kuleuven.be/icts/english/research/datamgmtpract/ape/encryption). All files containing confidential personal data must remain on KU Leuven-managed environments (no local copies). | [remarks] | ☐ |
+    | Return all PC material (laptop, mouse, keyboard, external screen, cables, external HD) and office keys to your PI (unless otherwise agreed). | [remarks] | ☐ | 
 
 ??? note "📄 Physical documents"
     | Task | Information  | Done |
@@ -57,9 +58,10 @@ To ensure a smooth transition for everyone, you can find some general guidelines
 ??? note "📊 Code and data sharing"
     | Task | Information  | Done |
     |------|--------------|------|
-    | Make all (final) scripts and research software available on or linked to the lab’s Gitlab/[Github](https://github.com/HOPLAB-LBP) space (or Sharepoint in case of unfinished projects), and make sure they are [properly documented](#scripts-and-research-software). | [link to the relevant Github/Gitlab pages, public or private] | ☐ |
+    | Make all (final) scripts and research software available on or linked to the lab’s Gitlab/[Github](https://github.com/HOPLAB-LBP) space (Sharepoint in case of unfinished projects), and make sure they are [properly documented](#scripts-and-research-software). | [link to the relevant Github/Gitlab pages, public or private] | ☐ |
     | For datasets on public repositories (e.g., OSF, OpenNeuro, GIN): ensure the dataset is public with a DOI, linked to Hoplab (for OSF), with [sufficient documentation](#datasets-published-in-public-repositories), complete metadata and [registered in Lirias](https://research.kuleuven.be/en/associatienet/output/lirias/register-datasets-in-lirias). *Pseudonymous data should be on RDR with restricted access (you can transfer data from OSF to RDR using the [integration dashboard](https://www.kuleuven.be/rdm/en/rdr/integration-dashboard)).*  | [DOI(s) and repository name(s) of projects on public repositories] | ☐ |
     | For datasets on RDR ([manual](https://www.kuleuven.be/rdm/en/rdr/manual)): ensure metadata have been added, there is [sufficient documentation](#datasets-published-in-public-repositories), **all necessary files** have been restricted, and it includes a DTA README file. *The metadata will be registered in Lirias automatically 24h after publication of the dataset.* | [DOI(s) of all projects on RDR] | ☐ |
+    | If you need **continued access** to your research data after leaving KU Leuven, discuss the arrangements with your PI and make sure the necessary agreements are in place (e.g., through a volunteer researcher contract or a Data Transfer Agreement). | [arrangements made for continued access] | ☐ |
 
 ??? note "📢 Outreach & participants"
     | Task | Information  | Done |
@@ -72,6 +74,7 @@ To ensure a smooth transition for everyone, you can find some general guidelines
     |------|--------------|------|
     | Complete the [ICTS offboarding steps related to your KUL mailbox](https://admin.kuleuven.be/icts/english/services/email/leaving-university). Note that if you back-up your e-mails and they contain confidential information of your participants, the file should be [encrypted](https://admin.kuleuven.be/icts/english/research/datamgmtpract/ape/encryption). | [remarks] | ☐ |
     | Check out the [HR page on practical steps to complete when leaving employment](https://admin.kuleuven.be/personeel/english/intranet/endofcontract-pension/practical-steps-leaving/practical-steps-leaving-employment), and handle [these administrative formalities if you are leaving Belgium](https://www.kuleuven.be/english/life-at-ku-leuven/upon-leaving). | [remarks] | ☐ |
+    | Review and revoke access rights and subscriptions that are no longer needed (e.g., project platforms, storage solutions, shared folders, email lists, Teams groups, Slack workspaces, etc.). Do this together with your PI or RDM responsible. | [remarks] | ☐ |
     | In case of unfinished projects: check [here](https://ppw.kuleuven.be/ppw-dict/faq#autotoc-item-autotoc-66) how long you retain access to KU Leuven services (mailbox, pc login, Teams, MS Office, OneDrive, etc.) after your contract ends. If needed, request minimal registration ([PhD](https://icts.kuleuven.be/docs/at/oz/doctoraten/s/doctoraatsgegevens-extra-info/MRE)/[EEA/non-EEA](https://admin.kuleuven.be/sab/od/intranet/minimale_registratie.html#autotoc-item-autotoc-3)) or discuss a [volunteer researcher contract](https://admin.kuleuven.be/personeel/intranet/statuten/vrijwillig-wetenschappelijk-medewerker) with your PI. You can find more detailed information on this [below](#in-case-of-unfinished-projects). | [specify the arrangements made] | ☐ |
 
 ??? note "💬 Optional feedback"
