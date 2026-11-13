@@ -48,7 +48,7 @@ To ensure a smooth transition for everyone, you can find some general guidelines
     | Task | Information  | Done |
     |------|--------------|------|
     | If there is a copy of your research data on an external drive, ensure it is [pseudonymized](https://www.kuleuven.be/rdm/en/guidance/legal-ethical/anonymise-pseudonymise) and that the drive is [encrypted](https://admin.kuleuven.be/icts/english/research/datamgmtpract/ape/encryption). All files containing confidential personal data must remain on KU Leuven-managed environments (no local copies). | [remarks] | ☐ |
-    | Return all PC material (laptop, mouse, keyboard, external screen, cables, external HD) and office keys to your PI (unless otherwise agreed). | [remarks] | ☐ | 
+    | Return all PC material (laptop, mouse, keyboard, external screen, cables, external HD) and office keys to your PI (unless otherwise agreed). | [remarks] | ☐ |
 
 ??? note "📄 Physical documents"
     | Task | Information  | Done |
