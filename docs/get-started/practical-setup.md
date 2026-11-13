@@ -2,7 +2,7 @@
 
 ## Keys
 
-Ask the LBP lab technician ([Manou](https://www.kuleuven.be/wieiswie/en/person/00160497)), whom you can find in room 02.37, for a key to your new office. You can also ask her for a key to the underground private bike parking (next to the Alma) if you need it.
+Your new colleagues will usually have arranged a key for you. If this is not the case, ask the LBP lab technician ([Manou](https://www.kuleuven.be/wieiswie/en/person/00160497)), whom you can find in room 02.37, for a key to your new office. You can also ask her for a key to the underground private bike parking (next to the Alma) if you need it.
 
 ## Staff card
 
@@ -18,32 +18,6 @@ For each new member, a laptop and other pc material (e.g., an external hard driv
 
 You can get a phone from [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497). If you do, make sure you submit the serial number [here](https://ppw.kuleuven.be/intranet/onlineform/lynctelefoon).
 
-## Hybrid working policy
-
-Hoplab follows the official KU Leuven hybrid working framework, which defines the general rules and administrative procedures for remote and hybrid work. The full policy can be consulted [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/).
-
-***A few highlights***
-
-- KU Leuven provides a **remote work allowance** for eligible staff members. Staff members can consult KU Loket to verify which allowances they are registered for and can indicate whether they wish to receive them. More information [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/allowances-and-registration/index).
-
-- Structural teleworking **must always be formally registered** in KU Loket. Once this registration is completed, both the staff member and their supervisor receive a confirmation email. Any later changes to the telework arrangement must also be updated through KU Loket to ensure compliance with administrative requirements. More information [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/allowances-and-registration/index#registration).
-
-- **Remote working from abroad is not automatically permitted**. Due to additional legal and administrative obligations, working outside Belgium requires prior verification and may not always be possible. Staff members are expected to consult the official KU Leuven guidelines before planning any work abroad. More information [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/remote-working-from-abroad).
-
-***Hoplab-Specific Expectations***
-
-In addition to the KU Leuven framework, Hoplab applies its own working agreements to ensure smooth collaboration within the lab. The number of working hours remains defined by the individual employment contract. Within those contractual hours, there is flexibility in how work is organized, allowing team members to structure their days in a way that best fits their tasks and personal rhythm. This flexibility is granted on the condition that it remains compatible with lab meetings, project deadlines, and other scheduled commitments.
-
-To support collaboration and in-person interaction, we work with designated on-campus days. **Monday, Tuesday, and Thursday** are expected office days, during which team members are generally present in the lab. Wednesday and Friday are considered more flexible, meaning that work can be performed either from home or from the office. Some team members still choose to come to the lab on these days, and this is always welcome.
-
-To maintain transparency and coordination, team members are expected to indicate in the **shared Google Calendar** if they are working from home or abroad. The goal is to ensure that collaboration remains easy and predictable for everyone in the team.
-
-## Broader research environment
-
-Within the Faculty of Psychology and Educational Sciences, Brain and Cognition (B&C, headed by [Ralf Krampe](https://www.kuleuven.be/wieiswie/nl/person/00046921)) is a research unit dedicated to the experimental and neuroscientific study of psychological functions and metacognition. B&C consists of several research groups, each specializing in specific themes and methodologies. One of these is the Laboratory of Biological Psychology (LBP, led by [Rudi D'Hooge](https://www.kuleuven.be/wieiswie/nl/person/00043549)) which investigates the biological foundations of behaviour and cognition, including learning, memory, perception, motivation, and emotion. Hoplab is a subgroup within LBP, led by [Hans](https://www.kuleuven.be/wieiswie/nl/person/00029058). As a member of Hoplab, you will work closely with the broader LBP team.
-
-An overview of the office spaces and who is located where, can be found [here](https://www.kuleuven.be/wieiswie/nl/person/00029058).
-
 ## Kitchen
 
 All members of Hoplab have access to the LBP kitchen (shared with the labs of [Bram](https://www.kuleuven.be/wieiswie/nl/person/00035504), [Rudi](https://www.kuleuven.be/wieiswie/nl/person/00043549), and [Markus](https://www.kuleuven.be/wieiswie/nl/person/00140784)). The kitchen is located in PSI 02.53 and has a fridge, coffee machine, kettle, microwave and diswasher.
@@ -53,3 +27,29 @@ There is a rotation system (hanging in the kitchen) indicating two people every 
 - Please check the coffee, sugar, and milk supplies at least once a week. If anything is running low, inform [Manou](https://www.kuleuven.be/wieiswie/en/person/00160497) in time so she can place a new order.
 - Make sure the table and microwave are clean; wipe them down if necessary. The coffee room is occasionally used for general meetings (including meetings with external visitors), so it should always be presentable without last-minute cleaning.
 - There are plenty of towels available. If any look dirty or worn, replace them. In particular, do not use a grimy towel to dry clean dishes when unloading the dishwasher.
+  
+## Hybrid working policy
+
+Hoplab follows the official KU Leuven hybrid working framework, which defines the general rules and administrative procedures for remote and hybrid work. The full policy can be consulted [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/).
+
+### A few highlights
+
+- KU Leuven provides a **remote work allowance** for eligible staff members. Staff members can consult KU Loket to verify which allowances they are registered for and can indicate whether they wish to receive them. More information [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/allowances-and-registration/index).
+
+- Structural teleworking **must always be formally registered** in KU Loket. Once this registration is completed, both the staff member and their supervisor receive a confirmation email. Any later changes to the telework arrangement must also be updated through KU Loket to ensure compliance with administrative requirements. More information [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/allowances-and-registration/index#registration).
+
+- **Remote working from abroad is not automatically permitted**. Due to additional legal and administrative obligations, working outside Belgium requires prior verification and may not always be possible. Staff members are expected to consult the official KU Leuven guidelines before planning any work abroad. More information [here](https://admin.kuleuven.be/personeel/english/intranet/workinghours-teleworking/hybrid-working/remote-working-from-abroad).
+
+### Hoplab-specific expectations
+
+In addition to the KU Leuven framework, Hoplab applies its own working agreements to ensure smooth collaboration within the lab. The number of working hours remains defined by the individual employment contract. Within those contractual hours, there is flexibility in how work is organized, allowing team members to structure their days in a way that best fits their tasks and personal rhythm. This flexibility is granted on the condition that it remains compatible with lab meetings, project deadlines, and other scheduled commitments.
+
+To support collaboration and in-person interaction, we work with designated on-campus days. **Monday and Wednesday** are expected office days, during which team members are generally present in the lab. **Tuesday and Friday** are considered more flexible, meaning that work can be performed either from home or from the office. Some team members still choose to come to the lab on these days, and this is always welcome. Especially on Tuesdays when a B&C seminar is scheduled, in-person attendance is strongly encouraged.
+
+To maintain transparency and coordination, team members are expected to indicate in the **shared Google Calendar** if they are working from home or abroad. The goal is to ensure that collaboration remains easy and predictable for everyone in the team.
+
+## Broader research environment
+
+Within the Faculty of Psychology and Educational Sciences, Brain and Cognition (B&C, headed by [Ralf Krampe](https://www.kuleuven.be/wieiswie/nl/person/00046921)) is a research unit dedicated to the experimental and neuroscientific study of psychological functions and metacognition. B&C consists of several research groups, each specializing in specific themes and methodologies. One of these is the Laboratory of Biological Psychology (LBP, led by [Rudi D'Hooge](https://www.kuleuven.be/wieiswie/nl/person/00043549)), which investigates the biological foundations of behaviour and cognition, including learning, memory, perception, motivation, and emotion. Hoplab is a subgroup within LBP, led by [Hans](https://www.kuleuven.be/wieiswie/nl/person/00029058). As a member of Hoplab, you will work closely with the broader LBP team.
+
+An overview of the office spaces and who is located where can be found [here](https://www.kuleuven.be/wieiswie/nl/person/00029058).
