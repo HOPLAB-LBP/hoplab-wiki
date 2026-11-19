@@ -98,8 +98,8 @@ Participants register at the **main entrance** of the hospital:
 - **Belgian eID card**: at the self-service kiosks (or with the Mynexuzhealth app).
 - **No Belgian eID card**: at the registration desk with their foreign ID (open 7:00 to 18:30).
 - **Children under 12**: with a Kids-ID or ISI+ card.
-- **After 17:30**: participants can go directly to the MR11 waiting room.
-- **At the weekend**: participants do not register at the reception and come straight to the waiting room.
+- **After 17:30**: register with the automatic machines, online Nexus health app, OR if that doesnt work, go to main reception by the entrance, which will phone emergency and for registering.
+- **At the weekend**: register with the automatic machines, online Nexus health app, OR if that doesnt work, go to main reception by the entrance, which will phone emergency and for registering (Radiology is often open in the weekend, and they will require that you have registered with the hospital).
 
 After registering, participants go to the **Beeldvorming 2 waiting room** (*Gele straat, Poort 2, niveau 0*). Meet them there: they fill in the MRI Safety Checklist and the consent form, and then you go together to the scanner area. Ask participants to arrive **at least 30 minutes before** the scan slot.
 
